@@ -15,9 +15,9 @@
 package main
 
 import (
-	ovh "github.com/dirien/pulumi-ovh/provider"
-	"github.com/dirien/pulumi-ovh/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	ovh "github.com/scraly/pulumi-ovh/provider"
+	"github.com/scraly/pulumi-ovh/provider/pkg/version"
 )
 
 func main() {

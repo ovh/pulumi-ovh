@@ -1,4 +1,4 @@
-module github.com/dirien/pulumi-ovh/provider
+module github.com/scraly/pulumi-ovh/provider
 
 go 1.20
 

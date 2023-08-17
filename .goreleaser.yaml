@@ -19,7 +19,7 @@ builds:
       - linux
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
-      - -X github.com/dirien/pulumi-ovh/provider/pkg/version.Version={{.Tag }}
+      - -X github.com/scraly/pulumi-ovh/provider/pkg/version.Version={{.Tag }}
     main: ./cmd/pulumi-resource-ovh/
 
 signs:

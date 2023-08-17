@@ -153,7 +153,7 @@ namespace ediri.Ovh.IpLoadBalancing
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "github://api.github.com/dirien/pulumi-ovh",
+                PluginDownloadURL = "github://api.github.com/scraly/pulumi-ovh",
                 AdditionalSecretOutputs =
                 {
                     "metricsToken",

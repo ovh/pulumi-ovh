@@ -53,7 +53,7 @@ namespace ediri.Ovh
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github://api.github.com/dirien/pulumi-ovh";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github://api.github.com/scraly/pulumi-ovh";
             return dst;
         }
 

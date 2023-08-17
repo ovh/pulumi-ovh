@@ -10,9 +10,9 @@
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`ovh` Terraform Provider](https://github.com/ovh/terraform-provider-ovh).",
-    "repository": "https://github.com/dirien/pulumi-ovh",
-    "pluginDownloadURL": "github://api.github.com/dirien/pulumi-ovh",
-    "publisher": "dirien",
+    "repository": "https://github.com/scraly/pulumi-ovh",
+    "pluginDownloadURL": "github://api.github.com/scraly/pulumi-ovh",
+    "publisher": "scraly",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
     },
@@ -28,7 +28,7 @@
         "go": {
             "generateExtraInputTypes": true,
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/dirien/pulumi-ovh/sdk/go/ovh"
+            "importBasePath": "github.com/scraly/pulumi-ovh/sdk/go/ovh"
         },
         "java": {
             "basePackage": "com.ediri",
@@ -49,13 +49,13 @@
             "packageName": "@ediri/ovh",
             "pluginName": "",
             "pluginVersion": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/dirien/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/scraly/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
             "typescriptVersion": ""
         },
         "python": {
             "compatibility": "tfbridge20",
             "packageName": "ediri_ovh",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/dirien/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/scraly/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }

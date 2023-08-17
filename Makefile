@@ -2,7 +2,7 @@ PROJECT_NAME := OVH Package
 
 SHELL            := /bin/bash
 PACK             := ovh
-ORG              := dirien
+ORG              := scraly
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
 NODE_MODULE_NAME := @pulumi/${PACK}
 TF_NAME          := ${PACK}

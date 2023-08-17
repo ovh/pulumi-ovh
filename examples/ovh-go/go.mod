@@ -3,12 +3,12 @@ module ovh-go
 go 1.18
 
 replace (
-	github.com/dirien/pulumi-ovh/sdk => ../../sdk/
+	github.com/scraly/pulumi-ovh/sdk => ../../sdk/
 )
 
 require (
 	github.com/pulumi/pulumi/sdk/v3 v3.60.1
-	github.com/dirien/pulumi-ovh/sdk v0.0.0
+	github.com/scraly/pulumi-ovh/sdk v0.0.0
 )
 
 require (
