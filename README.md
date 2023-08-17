@@ -58,6 +58,12 @@ The following configuration points are available for the `Ovh` provider:
 - `ovh:applicationSecret` (environment: `OVH_APPLICATION_SECRET`) - the Ovh application secret
 - `ovh:consumerKey` (environment: `OVH_CONSUMER_KEY`) - the Ovh consumer key
 
+## Upgrading
+
+```bash
+$ upgrade-provider scraly/pulumi-ovh
+```
+
 ## Reference
 
 For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/ovh/api-docs/).
