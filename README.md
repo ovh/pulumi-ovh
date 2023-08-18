@@ -33,7 +33,7 @@ yarn add @scraly/pulumi-ovh
 To use from Python, install using `pip`:
 
 ```bash
-pip install lbrlabs-pulumi-ovh
+pip install scraly-pulumi-ovh
 ```
 
 ### Go
@@ -41,7 +41,7 @@ pip install lbrlabs-pulumi-ovh
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/lbrlabs/pulumi-ovh/sdk/go/...
+go get github.com/scraly/pulumi-ovh/sdk/go/...
 ```
 
 ### .NET
@@ -49,7 +49,7 @@ go get github.com/lbrlabs/pulumi-ovh/sdk/go/...
 To use from .NET, install using `dotnet add package`:
 
 ```bash
-dotnet add package Lbrlabs.PulumiPackage.Ovh
+dotnet add package Scraly.PulumiPackage.Ovh
 ```
 
 ## Configuration
