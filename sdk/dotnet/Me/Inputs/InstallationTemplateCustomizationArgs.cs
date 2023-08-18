@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Me.Inputs
+namespace scraly.Ovh.Me.Inputs
 {
 
     public sealed class InstallationTemplateCustomizationArgs : global::Pulumi.ResourceArgs

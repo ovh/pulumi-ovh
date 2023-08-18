@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Vrack
+namespace scraly.Ovh.Vrack
 {
     /// <summary>
     /// Attach an IP block to a VRack.

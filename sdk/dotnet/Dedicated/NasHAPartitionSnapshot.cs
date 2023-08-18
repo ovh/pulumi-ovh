@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Dedicated
+namespace scraly.Ovh.Dedicated
 {
     /// <summary>
     /// Provides a resource for managing **snapshot** to partitions on HA-NAS services

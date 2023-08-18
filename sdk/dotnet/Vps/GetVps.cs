@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Vps
+namespace scraly.Ovh.Vps
 {
     public static class GetVps
     {

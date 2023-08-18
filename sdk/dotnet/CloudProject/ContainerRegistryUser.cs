@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.CloudProject
+namespace scraly.Ovh.CloudProject
 {
     /// <summary>
     /// Creates a user for a container registry associated with a public cloud project.

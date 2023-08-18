@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Dedicated.Inputs
+namespace scraly.Ovh.Dedicated.Inputs
 {
 
     public sealed class ServerNetworkingInterfaceGetArgs : global::Pulumi.ResourceArgs

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.CloudProject.Outputs
+namespace scraly.Ovh.CloudProject.Outputs
 {
 
     [OutputType]

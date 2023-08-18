@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Domain
+namespace scraly.Ovh.Domain
 {
     /// <summary>
     /// ## Example Usage

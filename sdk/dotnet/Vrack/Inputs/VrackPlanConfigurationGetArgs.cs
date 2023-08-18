@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Vrack.Inputs
+namespace scraly.Ovh.Vrack.Inputs
 {
 
     public sealed class VrackPlanConfigurationGetArgs : global::Pulumi.ResourceArgs

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Vrack.Outputs
+namespace scraly.Ovh.Vrack.Outputs
 {
 
     [OutputType]

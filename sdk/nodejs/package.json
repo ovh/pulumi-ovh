@@ -1,5 +1,5 @@
 {
-    "name": "@ediri/ovh",
+    "name": "@scraly/ovh",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing OVH resources.",
     "keywords": [

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Dbaas.Inputs
+namespace scraly.Ovh.Dbaas.Inputs
 {
 
     public sealed class LogsInputConfigurationArgs : global::Pulumi.ResourceArgs

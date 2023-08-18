@@ -23,7 +23,7 @@
             "packageReferences": {
                 "Pulumi": "3.*"
             },
-            "rootNamespace": "ediri"
+            "rootNamespace": "scraly"
         },
         "go": {
             "generateExtraInputTypes": true,
@@ -31,7 +31,7 @@
             "importBasePath": "github.com/scraly/pulumi-ovh/sdk/go/ovh"
         },
         "java": {
-            "basePackage": "com.ediri",
+            "basePackage": "com.scraly",
             "buildFiles": "",
             "gradleNexusPublishPluginVersion": ""
         },
@@ -46,7 +46,7 @@
             },
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing OVH resources.",
-            "packageName": "@ediri/ovh",
+            "packageName": "@scraly/ovh",
             "pluginName": "",
             "pluginVersion": "",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/scraly/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
@@ -54,7 +54,7 @@
         },
         "python": {
             "compatibility": "tfbridge20",
-            "packageName": "ediri_ovh",
+            "packageName": "scraly_ovh",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/scraly/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"

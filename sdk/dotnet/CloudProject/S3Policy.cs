@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.CloudProject
+namespace scraly.Ovh.CloudProject
 {
     /// <summary>
     /// Set the S3 Policy of a public cloud project user.

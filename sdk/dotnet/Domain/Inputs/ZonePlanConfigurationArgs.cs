@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Domain.Inputs
+namespace scraly.Ovh.Domain.Inputs
 {
 
     public sealed class ZonePlanConfigurationArgs : global::Pulumi.ResourceArgs

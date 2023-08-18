@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.CloudProject
+namespace scraly.Ovh.CloudProject
 {
     /// <summary>
     /// Creates a subnet in a private network of a public cloud project.

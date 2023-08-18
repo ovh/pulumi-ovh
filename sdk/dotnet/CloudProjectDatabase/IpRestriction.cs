@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.CloudProjectDatabase
+namespace scraly.Ovh.CloudProjectDatabase
 {
     /// <summary>
     /// Apply IP restrictions to an OVHcloud Managed Database cluster.

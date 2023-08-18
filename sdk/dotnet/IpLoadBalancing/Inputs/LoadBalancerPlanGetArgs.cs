@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.IpLoadBalancing.Inputs
+namespace scraly.Ovh.IpLoadBalancing.Inputs
 {
 
     public sealed class LoadBalancerPlanGetArgs : global::Pulumi.ResourceArgs

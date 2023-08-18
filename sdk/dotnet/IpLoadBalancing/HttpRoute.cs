@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.IpLoadBalancing
+namespace scraly.Ovh.IpLoadBalancing
 {
     /// <summary>
     /// Manage HTTP route for a loadbalancer service

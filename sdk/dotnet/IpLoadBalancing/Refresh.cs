@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.IpLoadBalancing
+namespace scraly.Ovh.IpLoadBalancing
 {
     /// <summary>
     /// Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.

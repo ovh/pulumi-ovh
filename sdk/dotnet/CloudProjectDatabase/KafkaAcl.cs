@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.CloudProjectDatabase
+namespace scraly.Ovh.CloudProjectDatabase
 {
     /// <summary>
     /// Creates an ACL for a kafka cluster associated with a public cloud project.

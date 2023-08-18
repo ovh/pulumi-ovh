@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Me
+namespace scraly.Ovh.Me
 {
     /// <summary>
     /// Use this resource to create a partition in the partition scheme of a custom installation template available for dedicated servers.

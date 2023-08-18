@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Ip.Inputs
+namespace scraly.Ovh.Ip.Inputs
 {
 
     public sealed class IpServiceRoutedToArgs : global::Pulumi.ResourceArgs

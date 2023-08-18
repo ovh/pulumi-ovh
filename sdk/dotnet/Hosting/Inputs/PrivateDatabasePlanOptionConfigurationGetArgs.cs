@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Hosting.Inputs
+namespace scraly.Ovh.Hosting.Inputs
 {
 
     public sealed class PrivateDatabasePlanOptionConfigurationGetArgs : global::Pulumi.ResourceArgs

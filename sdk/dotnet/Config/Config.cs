@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace ediri.Ovh
+namespace scraly.Ovh
 {
     public static class Config
     {

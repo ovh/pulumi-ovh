@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Order
+namespace scraly.Ovh.Order
 {
     public static class GetCartProductOptions
     {

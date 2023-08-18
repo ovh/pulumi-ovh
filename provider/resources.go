@@ -16,9 +16,10 @@ package ovh
 
 import (
 	"fmt"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"path/filepath"
 	"unicode"
+
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/ovh/terraform-provider-ovh/ovh"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -658,7 +659,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			PackageName: "@ediri/ovh",
+			PackageName: "@scraly/ovh",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
@@ -673,7 +674,7 @@ func Provider() tfbridge.ProviderInfo {
 			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
-			PackageName: "ediri_ovh",
+			PackageName: "scraly_ovh",
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
@@ -689,13 +690,13 @@ func Provider() tfbridge.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
-			RootNamespace: "ediri",
+			RootNamespace: "scraly",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
 		},
 		Java: &tfbridge.JavaInfo{
-			BasePackage: "com.ediri",
+			BasePackage: "com.scraly",
 		},
 	}
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.IpLoadBalancing
+namespace scraly.Ovh.IpLoadBalancing
 {
     /// <summary>
     /// Creates a backend server entry linked to HTTP loadbalancing group (farm)

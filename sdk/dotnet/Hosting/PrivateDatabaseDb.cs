@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Hosting
+namespace scraly.Ovh.Hosting
 {
     /// <summary>
     /// Create a new database on your private cloud database service.

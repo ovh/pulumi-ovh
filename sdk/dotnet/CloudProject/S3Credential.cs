@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.CloudProject
+namespace scraly.Ovh.CloudProject
 {
     /// <summary>
     /// Creates an S3 Credential for a user in a public cloud project.

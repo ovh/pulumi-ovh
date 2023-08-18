@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Dbaas
+namespace scraly.Ovh.Dbaas
 {
     public static class GetLogsCluster
     {

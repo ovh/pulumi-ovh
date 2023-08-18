@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Vrack
+namespace scraly.Ovh.Vrack
 {
     /// <summary>
     /// &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServer` is DEPRECATED and will be removed in a future version.

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Me
+namespace scraly.Ovh.Me
 {
     public static class GetPaymentmeanBankAccount
     {

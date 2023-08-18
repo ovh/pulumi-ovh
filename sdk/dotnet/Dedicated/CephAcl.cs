@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Dedicated
+namespace scraly.Ovh.Dedicated
 {
     /// <summary>
     /// Add a new access ACL for the given network/mask.

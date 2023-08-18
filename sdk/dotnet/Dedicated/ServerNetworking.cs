@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Dedicated
+namespace scraly.Ovh.Dedicated
 {
     /// <summary>
     /// Manage dedicated server networking interface on SCALE and HIGH-GRADE range.

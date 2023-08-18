@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.CloudProject
+namespace scraly.Ovh.CloudProject
 {
     /// <summary>
     /// Generates a temporary presigned S3 URLs to download or upload an object.

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Hosting
+namespace scraly.Ovh.Hosting
 {
     /// <summary>
     /// Add grant on a database in your private cloud database instance.

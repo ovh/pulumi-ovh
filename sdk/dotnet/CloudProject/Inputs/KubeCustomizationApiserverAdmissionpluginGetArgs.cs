@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.CloudProject.Inputs
+namespace scraly.Ovh.CloudProject.Inputs
 {
 
     public sealed class KubeCustomizationApiserverAdmissionpluginGetArgs : global::Pulumi.ResourceArgs

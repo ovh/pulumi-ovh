@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.Dedicated
+namespace scraly.Ovh.Dedicated
 {
     public static class GetServerBoots
     {

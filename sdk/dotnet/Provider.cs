@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh
+namespace scraly.Ovh
 {
     /// <summary>
     /// The provider type for the ovh package. By default, resources use package-wide configuration

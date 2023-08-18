@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.IpLoadBalancing.Outputs
+namespace scraly.Ovh.IpLoadBalancing.Outputs
 {
 
     [OutputType]

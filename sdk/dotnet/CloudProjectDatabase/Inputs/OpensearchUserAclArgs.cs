@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace ediri.Ovh.CloudProjectDatabase.Inputs
+namespace scraly.Ovh.CloudProjectDatabase.Inputs
 {
 
     public sealed class OpensearchUserAclArgs : global::Pulumi.ResourceArgs
