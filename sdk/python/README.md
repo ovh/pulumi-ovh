@@ -32,7 +32,7 @@ yarn add @scraly/pulumi-ovh
 To use from Python, install using `pip`:
 
 ```bash
-pip install scraly_pulumi_ovh
+pip install scraly-pulumi-ovh
 ```
 
 ### Go
