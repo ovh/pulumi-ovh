@@ -659,7 +659,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			PackageName: "@scraly/ovh",
+			PackageName: "@scraly/pulumi-ovh",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
@@ -674,7 +674,7 @@ func Provider() tfbridge.ProviderInfo {
 			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
-			PackageName: "scraly_ovh",
+			PackageName: "scraly_pulumi_ovh",
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
@@ -690,7 +690,7 @@ func Provider() tfbridge.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
-			RootNamespace: "scraly",
+			RootNamespace: "Scraly.PulumiPackage",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
