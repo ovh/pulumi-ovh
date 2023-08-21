@@ -10,7 +10,7 @@ The OVH Resource Provider lets you manage [OVHcloud](https://www.ovhcloud.com/en
 [![NuGet version](https://badge.fury.io/nu/pulumi.databricks.svg)](https://badge.fury.io/nu/pulumi.databricks)
 <a href="https://gitpod.io/#https://github.com/scraly/pulumi-ovh"><img src="https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod" alt="Contribute with Gitpod"/></a>
 
-## Installing
+## Usage
 
 This package is available for several languages/platforms:
 
