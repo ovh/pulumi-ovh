@@ -6,7 +6,19 @@ RUN brew install gh
 
 RUN brew install pulumi/tap/pulumi
 
-# install dotnet CLI
+RUN brew install pulumi/tap/pulumictl 
+
+# Install dotnet CLI
+
+ARG DOTNET_VERSION="6.0"
+
+RUN curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- -channel ${DOTNET_VERSION}
+
+ENV PATH "/home/gitpod/.dotnet:${PATH}"
+ENV DOTNET_ROOT /home/gitpod/.dotnet
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT 1
+# Allow newer dotnet version (e.g. 6) to build projects targeting older frameworks (v3.1)
+ENV DOTNET_ROLL_FORWARD Major
 
 # install python?
 
