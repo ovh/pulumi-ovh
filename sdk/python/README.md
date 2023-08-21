@@ -4,10 +4,9 @@ The OVH Resource Provider lets you manage [OVHcloud](https://www.ovhcloud.com/en
 
 <a href="https://github.com/scraly/pulumi-ovh/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/v/release/scraly/pulumi-ovh?logo=github&style=flat-square"></a>
 [![GoDoc](https://godoc.org/github.com/scraly/pulumi-ovh?status.svg)](https://godoc.org/github.com/scraly/pulumi-ovh)
-[![Go Report Card](https://goreportcard.com/badge/github.com/scraly/pulumi-ovh)](https://goreportcard.com/report/github.com/scraly/pulumi-ovh)
-[![NPM version](https://badge.fury.io/js/%40pulumi%2Fdatabricks.svg)](https://www.npmjs.com/package/@pulumi/databricks)
-[![Python version](https://badge.fury.io/py/pulumi-databricks.svg)](https://pypi.org/project/pulumi-databricks)
-[![NuGet version](https://badge.fury.io/nu/pulumi.databricks.svg)](https://badge.fury.io/nu/pulumi.databricks)
+[![NPM version](https://badge.fury.io/js/@scraly%2Fovh.svg)](https://badge.fury.io/js/@scraly%2Fovh)
+[![PyPI version](https://badge.fury.io/py/scraly-ovh.svg)](https://badge.fury.io/py/scraly-ovh)
+[![NuGet version](https://badge.fury.io/nu/scraly.Ovh.svg)](https://badge.fury.io/nu/scraly.Ovh)
 <a href="https://gitpod.io/#https://github.com/scraly/pulumi-ovh"><img src="https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod" alt="Contribute with Gitpod"/></a>
 
 ## Usage
