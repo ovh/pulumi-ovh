@@ -1586,8 +1586,8 @@ github.com/openzipkin/zipkin-go v0.2.1/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnh
 github.com/openzipkin/zipkin-go v0.2.2/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnhQw8ySjnjRyN4=
 github.com/ovh/go-ovh v1.4.1 h1:VBGa5wMyQtTP7Zb+w97zRCh9sLtM/2YKRyy+MEJmWaM=
 github.com/ovh/go-ovh v1.4.1/go.mod h1:6bL6pPyUT7tBfI0pqOegJgRjgjuO+mOo+MyXd1EEC0M=
-github.com/ovh/terraform-provider-ovh v0.32.0 h1:z0brX59xdStu7S8URiaTzprqJSXly6HAcfbVCAjtgDA=
-github.com/ovh/terraform-provider-ovh v0.32.0/go.mod h1:IRRKMbzIYIT2ez1w/3VQCaCrLP8BgeRwAFZ1zk2iNWM=
+github.com/ovh/terraform-provider-ovh v0.33.0 h1:0gUsZopNIUqjEwRAXlVAGmrFpsMVryrPuJogB0gStSc=
+github.com/ovh/terraform-provider-ovh v0.33.0/go.mod h1:+DOWY0xAbFmqPfhxfyFGzVBdoUtGk24Cg2HOXAN5MDE=
 github.com/pact-foundation/pact-go v1.0.4/go.mod h1:uExwJY4kCzNPcHRj+hCR/HBbOOIwwtUjcrb0b5/5kLM=
 github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
 github.com/pascaldekloe/goe v0.1.0 h1:cBOtyMzM9HTpWjXfbbunk26uA6nG3a8n06Wieeh0MwY=
