@@ -59,10 +59,6 @@ def get_reference_resource_type(opts: Optional[pulumi.InvokeOptions] = None) -> 
     """
     Use this data source to list all the IAM resource types.
 
-    ## Important
-
-    > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
-
     ## Example Usage
     """
     __args__ = dict()

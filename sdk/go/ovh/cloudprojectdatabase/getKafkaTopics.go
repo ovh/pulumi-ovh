@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
 //
 // ## Example Usage
 func GetKafkaTopics(ctx *pulumi.Context, args *GetKafkaTopicsArgs, opts ...pulumi.InvokeOption) (*GetKafkaTopicsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKafkaTopicsResult
 	err := ctx.Invoke("ovh:CloudProjectDatabase/getKafkaTopics:getKafkaTopics", args, &rv, opts...)
 	if err != nil {

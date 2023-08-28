@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information of order cart product options.
 //
 // ## Example Usage
 func LookupCartProductOptions(ctx *pulumi.Context, args *LookupCartProductOptionsArgs, opts ...pulumi.InvokeOption) (*LookupCartProductOptionsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCartProductOptionsResult
 	err := ctx.Invoke("ovh:Order/getCartProductOptions:getCartProductOptions", args, &rv, opts...)
 	if err != nil {

@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the list of users of a database cluster associated with a public cloud project.
 //
 // ## Example Usage
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult
 	err := ctx.Invoke("ovh:CloudProjectDatabase/getUsers:getUsers", args, &rv, opts...)
 	if err != nil {

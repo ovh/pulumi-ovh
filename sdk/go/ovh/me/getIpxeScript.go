@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about an IPXE Script.
 //
 // ## Example Usage
 func LookupIpxeScript(ctx *pulumi.Context, args *LookupIpxeScriptArgs, opts ...pulumi.InvokeOption) (*LookupIpxeScriptResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIpxeScriptResult
 	err := ctx.Invoke("ovh:Me/getIpxeScript:getIpxeScript", args, &rv, opts...)
 	if err != nil {

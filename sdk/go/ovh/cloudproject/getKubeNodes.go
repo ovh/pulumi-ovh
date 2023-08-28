@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get a list of OVHcloud Managed Kubernetes nodes.
 //
 // ## Example Usage
 func GetKubeNodes(ctx *pulumi.Context, args *GetKubeNodesArgs, opts ...pulumi.InvokeOption) (*GetKubeNodesResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubeNodesResult
 	err := ctx.Invoke("ovh:CloudProject/getKubeNodes:getKubeNodes", args, &rv, opts...)
 	if err != nil {

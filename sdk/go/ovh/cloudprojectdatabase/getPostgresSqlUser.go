@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
 //
 // ## Example Usage
 func LookupPostgresSqlUser(ctx *pulumi.Context, args *LookupPostgresSqlUserArgs, opts ...pulumi.InvokeOption) (*LookupPostgresSqlUserResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresSqlUserResult
 	err := ctx.Invoke("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", args, &rv, opts...)
 	if err != nil {

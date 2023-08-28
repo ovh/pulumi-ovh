@@ -17,23 +17,23 @@ namespace Scraly.PulumiPackage.Ovh.CloudProject.Outputs
         /// <summary>
         /// Annotations to apply to each node
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
-        /// Finalizers to apply to each node
+        /// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
         /// </summary>
         public readonly ImmutableArray<string> Finalizers;
         /// <summary>
         /// Labels to apply to each node
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
 
         [OutputConstructor]
         private KubeNodePoolTemplateMetadata(
-            ImmutableDictionary<string, string>? annotations,
+            ImmutableDictionary<string, string> annotations,
 
             ImmutableArray<string> finalizers,
 
-            ImmutableDictionary<string, string>? labels)
+            ImmutableDictionary<string, string> labels)
         {
             Annotations = annotations;
             Finalizers = finalizers;

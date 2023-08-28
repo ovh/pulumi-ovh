@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates an identity user.
@@ -62,7 +63,7 @@ func NewIdentityUser(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IdentityUser
 	err := ctx.RegisterResource("ovh:Me/identityUser:IdentityUser", name, args, &resource, opts...)
 	if err != nil {

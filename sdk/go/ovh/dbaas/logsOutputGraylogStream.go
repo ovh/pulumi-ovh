@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 type LogsOutputGraylogStream struct {
@@ -80,7 +81,7 @@ func NewLogsOutputGraylogStream(ctx *pulumi.Context,
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LogsOutputGraylogStream
 	err := ctx.RegisterResource("ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream", name, args, &resource, opts...)
 	if err != nil {

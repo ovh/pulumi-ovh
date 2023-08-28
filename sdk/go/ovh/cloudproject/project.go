@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // ## Example Usage
@@ -57,7 +58,7 @@ func NewProject(ctx *pulumi.Context,
 	if args.Plan == nil {
 		return nil, errors.New("invalid value for required argument 'Plan'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Project
 	err := ctx.RegisterResource("ovh:CloudProject/project:Project", name, args, &resource, opts...)
 	if err != nil {

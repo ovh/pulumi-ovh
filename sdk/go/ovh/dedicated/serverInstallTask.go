@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // ## Example Usage
@@ -56,7 +57,7 @@ func NewServerInstallTask(ctx *pulumi.Context,
 	if args.TemplateName == nil {
 		return nil, errors.New("invalid value for required argument 'TemplateName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServerInstallTask
 	err := ctx.RegisterResource("ovh:Dedicated/serverInstallTask:ServerInstallTask", name, args, &resource, opts...)
 	if err != nil {

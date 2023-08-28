@@ -8,7 +8,7 @@ import (
 
 	"github.com/blang/semver"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/scraly/pulumi-ovh/sdk/go/ovh"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 type module struct {
@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IpRestriction{}
 	case "ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl":
 		r = &KafkaAcl{}
+	case "ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl":
+		r = &KafkaSchemaRegistryAcl{}
 	case "ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic":
 		r = &KafkaTopic{}
 	case "ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace":
@@ -56,7 +58,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 }
 
 func init() {
-	version, err := ovh.PkgVersion()
+	version, err := internal.PkgVersion()
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
@@ -78,6 +80,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProjectDatabase/kafkaAcl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProjectDatabase/kafkaSchemaRegistryAcl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

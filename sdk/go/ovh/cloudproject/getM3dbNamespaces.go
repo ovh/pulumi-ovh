@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
 //
 // ## Example Usage
 func GetM3dbNamespaces(ctx *pulumi.Context, args *GetM3dbNamespacesArgs, opts ...pulumi.InvokeOption) (*GetM3dbNamespacesResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetM3dbNamespacesResult
 	err := ctx.Invoke("ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces", args, &rv, opts...)
 	if err != nil {

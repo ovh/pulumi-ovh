@@ -296,10 +296,6 @@ class Policy(pulumi.CustomResource):
         """
         Creates an IAM policy.
 
-        ## Important
-
-        > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
-
         ## Example Usage
 
         :param str resource_name: The name of the resource.
@@ -319,10 +315,6 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an IAM policy.
-
-        ## Important
-
-        > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
 
         ## Example Usage
 

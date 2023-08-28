@@ -13,10 +13,6 @@ namespace Scraly.PulumiPackage.Ovh.Iam
     /// <summary>
     /// Creates an IAM policy.
     /// 
-    /// ## Important
-    /// 
-    /// &gt; Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
-    /// 
     /// ## Example Usage
     /// </summary>
     [OvhResourceType("ovh:Iam/policy:Policy")]

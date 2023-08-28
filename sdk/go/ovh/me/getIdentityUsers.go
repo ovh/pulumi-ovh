@@ -5,13 +5,14 @@ package me
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve list of user logins of the account's identity users.
 //
 // ## Example Usage
 func GetIdentityUsers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIdentityUsersResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIdentityUsersResult
 	err := ctx.Invoke("ovh:Me/getIdentityUsers:getIdentityUsers", nil, &rv, opts...)
 	if err != nil {

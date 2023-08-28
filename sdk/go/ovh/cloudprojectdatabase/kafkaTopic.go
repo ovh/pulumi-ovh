@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates a topic for a kafka cluster associated with a public cloud project.
@@ -53,7 +54,7 @@ func NewKafkaTopic(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KafkaTopic
 	err := ctx.RegisterResource("ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic", name, args, &resource, opts...)
 	if err != nil {

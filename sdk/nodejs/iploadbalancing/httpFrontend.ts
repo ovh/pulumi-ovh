@@ -10,6 +10,10 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * ### With HTTP Header
+ *
+ * ## Import
+ *
+ * HTTP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
  */
 export class HttpFrontend extends pulumi.CustomResource {
     /**

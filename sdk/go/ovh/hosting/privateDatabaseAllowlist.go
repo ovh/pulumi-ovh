@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Create a new IP whitelist on your private cloud database instance.
@@ -52,7 +53,7 @@ func NewPrivateDatabaseAllowlist(ctx *pulumi.Context,
 	if args.Sftp == nil {
 		return nil, errors.New("invalid value for required argument 'Sftp'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PrivateDatabaseAllowlist
 	err := ctx.RegisterResource("ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist", name, args, &resource, opts...)
 	if err != nil {

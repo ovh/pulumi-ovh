@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // The provider type for the ovh package. By default, resources use package-wide configuration
@@ -38,7 +39,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Endpoint == nil {
 		return nil, errors.New("invalid value for required argument 'Endpoint'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:ovh", name, args, &resource, opts...)
 	if err != nil {

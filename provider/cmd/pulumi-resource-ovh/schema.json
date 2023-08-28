@@ -18,25 +18,27 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
-            "namespaces": null,
             "packageReferences": {
                 "Pulumi": "3.*"
             },
+            "compatibility": "tfbridge20",
             "rootNamespace": "Scraly.PulumiPackage"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/scraly/pulumi-ovh/sdk/go/ovh",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/scraly/pulumi-ovh/sdk/go/ovh"
+            "generateExtraInputTypes": true
         },
         "java": {
             "basePackage": "com.scraly",
             "buildFiles": "",
-            "gradleNexusPublishPluginVersion": ""
+            "gradleNexusPublishPluginVersion": "",
+            "gradleTest": ""
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageName": "@scraly/pulumi-ovh",
+            "packageDescription": "A Pulumi package for creating and managing OVH resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/scraly/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -44,21 +46,17 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing OVH resources.",
-            "packageName": "@scraly/pulumi-ovh",
-            "pluginName": "",
-            "pluginVersion": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/scraly/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
             "packageName": "scraly_pulumi_ovh",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/scraly/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/scraly/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {
@@ -413,7 +411,11 @@
                     "description": "Spec of each node in the pool\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "metadata",
+                "spec"
+            ]
         },
         "ovh:CloudProject/KubeNodePoolTemplateMetadata:KubeNodePoolTemplateMetadata": {
             "properties": {
@@ -429,7 +431,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Finalizers to apply to each node\n"
+                    "description": "Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.\n"
                 },
                 "labels": {
                     "type": "object",
@@ -439,7 +441,12 @@
                     "description": "Labels to apply to each node\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "annotations",
+                "finalizers",
+                "labels"
+            ]
         },
         "ovh:CloudProject/KubeNodePoolTemplateSpec:KubeNodePoolTemplateSpec": {
             "properties": {
@@ -458,7 +465,11 @@
                     "description": "If true, set nodes as un-schedulable\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "taints",
+                "unschedulable"
+            ]
         },
         "ovh:CloudProject/KubePrivateNetworkConfiguration:KubePrivateNetworkConfiguration": {
             "properties": {
@@ -4345,7 +4356,7 @@
             }
         },
         "ovh:CloudProject/database:Database": {
-            "description": "## Example Usage\n\nMinimum settings for each engine (region choice is up to the user):\n\n```hcl\nresource \"ovh_cloud_project_database\" \"cassandradb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-cassandra\"\n  engine        = \"cassandra\"\n  version       = \"4.0\"\n  plan          = \"essential\"\n  nodes {\n    region  = \"BHS\"\n  }\n  nodes {\n    region  = \"BHS\"\n  }\n  nodes {\n    region  = \"BHS\"\n  }\n  flavor        = \"db1-4\"\n}\n\nresource \"ovh_cloud_project_database\" \"kafkadb\" {\n  service_name    = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description     = \"my-first-kafka\"\n  engine          = \"kafka\"\n  version         = \"3.1\"\n  plan            = \"business\"\n  kafka_rest_api  = true\n  nodes {\n    region  = \"DE\"\n  }\n  nodes {\n    region  = \"DE\"\n  }\n  nodes {\n    region  = \"DE\"\n  }\n  flavor           = \"db1-4\"\n}\n\nresource \"ovh_cloud_project_database\" \"m3db\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-m3db\"\n  engine        = \"m3db\"\n  version       = \"1.2\"\n  plan          = \"essential\"\n  nodes {\n    region  = \"BHS\"\n  }\n  flavor        = \"db1-7\"\n}\n\nresource \"ovh_cloud_project_database\" \"mongodb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-mongodb\"\n  engine        = \"mongodb\"\n  version       = \"5.0\"\n  plan          = \"essential\"\n  nodes {\n    region =  \"GRA\"\n  }\n  flavor        = \"db1-2\"\n}\n\nresource \"ovh_cloud_project_database\" \"mysqldb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-mysql\"\n  engine        = \"mysql\"\n  version       = \"8\"\n  plan          = \"essential\"\n  nodes {\n    region  = \"SBG\"\n  }\n  flavor        = \"db1-4\"\n  advanced_configuration = {\n    \"mysql.sql_mode\": \"ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES\",\n    \"mysql.sql_require_primary_key\": \"true\"\n  }\n}\n\nresource \"ovh_cloud_project_database\" \"opensearchdb\" {\n  service_name            = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description             = \"my-first-opensearch\"\n  engine                  = \"opensearch\"\n  version                 = \"1\"\n  plan                    = \"essential\"\n  opensearch_acls_enabled = true\n  nodes {\n    region = \"UK\"\n  }\n  flavor                  = \"db1-4\"\n}\n\nresource \"ovh_cloud_project_database\" \"pgsqldb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-postgresql\"\n  engine        = \"postgresql\"\n  version       = \"14\"\n  plan          = \"essential\"\n  nodes {\n    region  = \"WAW\"\n  }\n  flavor        = \"db1-4\"\n}\n\nresource \"ovh_cloud_project_database\" \"redisdb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-redis\"\n  engine        = \"redis\"\n  version       = \"6.2\"\n  plan          = \"essential\"\n  nodes {\n    region  = \"BHS\"\n  }\n  flavor        = \"db1-4\"\n}\n\nresource \"ovh_cloud_project_database\" \"grafana\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-grafana\"\n  engine        = \"grafana\"\n  version       = \"9.1\"\n  plan          = \"essential\"\n  nodes {\n    region =  \"GRA\"\n  }\n  flavor        = \"db1-4\"\n}\n```\n\nTo deploy a business PostgreSQL service with two nodes on public network:\n\n```hcl\nresource \"ovh_cloud_project_database\" \"postgresql\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-postgresql\"\n  engine        = \"postgresql\"\n  version       = \"14\"\n  plan          = \"business\"\n  nodes {\n    region  = \"GRA\"\n  }\n  nodes {\n    region  = \"GRA\"\n  }\n  flavor        = \"db1-15\"\n}\n```\n\n\nTo deploy an enterprise MongoDB service with three nodes on private network:\n\n```hcl\nresource \"ovh_cloud_project_database\" \"mongodb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-mongodb\"\n  engine        = \"mongodb\"\n  version       = \"5.0\"\n  plan          = \"enterprise\"\n  nodes {\n    region      = \"SBG\"\n    subnet_id   = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n    network_id  = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  }\n  nodes {\n    region      = \"SBG\"\n    subnet_id   = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n    network_id  = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  }\n  nodes {\n    region      = \"SBG\"\n    subnet_id   = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n    network_id  = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  }\n  flavor        = \"db1-30\"\n}\n```\n\n## Import\n\nOVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by \"/\" E.g., bash \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
+            "description": "## Example Usage\n\nMinimum settings for each engine (region choice is up to the user):\n\n```hcl\nresource \"ovh_cloud_project_database\" \"cassandradb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-cassandra\"\n  engine        = \"cassandra\"\n  version       = \"4.0\"\n  plan          = \"essential\"\n  nodes {\n    region  = \"BHS\"\n  }\n  nodes {\n    region  = \"BHS\"\n  }\n  nodes {\n    region  = \"BHS\"\n  }\n  flavor        = \"db1-4\"\n}\n\nresource \"ovh_cloud_project_database\" \"kafkadb\" {\n  service_name    = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description     = \"my-first-kafka\"\n  engine          = \"kafka\"\n  version         = \"3.4\"\n  plan            = \"business\"\n  kafka_rest_api  = true\n  nodes {\n    region  = \"DE\"\n  }\n  nodes {\n    region  = \"DE\"\n  }\n  nodes {\n    region  = \"DE\"\n  }\n  flavor           = \"db1-4\"\n}\n\nresource \"ovh_cloud_project_database\" \"m3db\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-m3db\"\n  engine        = \"m3db\"\n  version       = \"1.2\"\n  plan          = \"essential\"\n  nodes {\n    region  = \"BHS\"\n  }\n  flavor        = \"db1-7\"\n}\n\nresource \"ovh_cloud_project_database\" \"mongodb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-mongodb\"\n  engine        = \"mongodb\"\n  version       = \"5.0\"\n  plan          = \"essential\"\n  nodes {\n    region =  \"GRA\"\n  }\n  flavor        = \"db1-2\"\n}\n\nresource \"ovh_cloud_project_database\" \"mysqldb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-mysql\"\n  engine        = \"mysql\"\n  version       = \"8\"\n  plan          = \"essential\"\n  nodes {\n    region  = \"SBG\"\n  }\n  flavor        = \"db1-4\"\n  advanced_configuration = {\n    \"mysql.sql_mode\": \"ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES\",\n    \"mysql.sql_require_primary_key\": \"true\"\n  }\n}\n\nresource \"ovh_cloud_project_database\" \"opensearchdb\" {\n  service_name            = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description             = \"my-first-opensearch\"\n  engine                  = \"opensearch\"\n  version                 = \"1\"\n  plan                    = \"essential\"\n  opensearch_acls_enabled = true\n  nodes {\n    region = \"UK\"\n  }\n  flavor                  = \"db1-4\"\n}\n\nresource \"ovh_cloud_project_database\" \"pgsqldb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-postgresql\"\n  engine        = \"postgresql\"\n  version       = \"14\"\n  plan          = \"essential\"\n  nodes {\n    region  = \"WAW\"\n  }\n  flavor        = \"db1-4\"\n}\n\nresource \"ovh_cloud_project_database\" \"redisdb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-redis\"\n  engine        = \"redis\"\n  version       = \"6.2\"\n  plan          = \"essential\"\n  nodes {\n    region  = \"BHS\"\n  }\n  flavor        = \"db1-4\"\n}\n\nresource \"ovh_cloud_project_database\" \"grafana\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-grafana\"\n  engine        = \"grafana\"\n  version       = \"9.1\"\n  plan          = \"essential\"\n  nodes {\n    region =  \"GRA\"\n  }\n  flavor        = \"db1-4\"\n}\n```\n\nTo deploy a business PostgreSQL service with two nodes on public network:\n\n```hcl\nresource \"ovh_cloud_project_database\" \"postgresql\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-postgresql\"\n  engine        = \"postgresql\"\n  version       = \"14\"\n  plan          = \"business\"\n  nodes {\n    region  = \"GRA\"\n  }\n  nodes {\n    region  = \"GRA\"\n  }\n  flavor        = \"db1-15\"\n}\n```\n\n\nTo deploy an enterprise MongoDB service with three nodes on private network:\n\n```hcl\nresource \"ovh_cloud_project_database\" \"mongodb\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  description   = \"my-first-mongodb\"\n  engine        = \"mongodb\"\n  version       = \"5.0\"\n  plan          = \"enterprise\"\n  nodes {\n    region      = \"SBG\"\n    subnet_id   = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n    network_id  = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  }\n  nodes {\n    region      = \"SBG\"\n    subnet_id   = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n    network_id  = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  }\n  nodes {\n    region      = \"SBG\"\n    subnet_id   = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n    network_id  = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  }\n  flavor        = \"db1-30\"\n}\n```\n\n## Import\n\nOVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by \"/\" E.g., bash \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "advancedConfiguration": {
                     "type": "object",
@@ -5072,7 +5083,7 @@
             }
         },
         "ovh:CloudProject/kubeNodePool:KubeNodePool": {
-            "description": "Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.\n\n## Example Usage\n\nCreate a simple node pool in your Kubernetes cluster:\n\n```hcl\nresource \"ovh_cloud_project_kube_nodepool\" \"node_pool\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  kube_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name          = \"my-pool-1\" //Warning: \"_\" char is not allowed!\n  flavor_name   = \"b2-7\"\n  desired_nodes = 3\n  max_nodes     = 3\n  min_nodes     = 3\n}\n```\n\nCreate an advanced node pool in your Kubernetes cluster:\n\n```hcl\nresource \"ovh_cloud_project_kube_nodepool\" \"pool\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  kube_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name          = \"my-pool\"\n  flavor_name   = \"b2-7\"\n  desired_nodes = 3\n  max_nodes     = 3\n  min_nodes     = 3\n  template {\n    metadata {\n      annotations = {\n        k1 = \"v1\"\n        k2 = \"v2\"\n      }\n      finalizers = [\"F1\", \"F2\"]\n      labels = {\n        k3 = \"v3\"\n        k4 = \"v4\"\n      }\n    }\n    spec {\n      unschedulable = false\n      taints = [\n        {\n          effect = \"PreferNoSchedule\"\n          key    = \"k\"\n          value  = \"v\"\n        }\n      ]\n    }\n  }\n}\n```\n\n## Import\n\nOVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by \"/\" E.g., bash \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
+            "description": "Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.\n\n## Example Usage\n\nCreate a simple node pool in your Kubernetes cluster:\n\n```hcl\nresource \"ovh_cloud_project_kube_nodepool\" \"node_pool\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  kube_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name          = \"my-pool-1\" //Warning: \"_\" char is not allowed!\n  flavor_name   = \"b2-7\"\n  desired_nodes = 3\n  max_nodes     = 3\n  min_nodes     = 3\n}\n```\n\nCreate an advanced node pool in your Kubernetes cluster:\n\n```hcl\nresource \"ovh_cloud_project_kube_nodepool\" \"pool\" {\n  service_name  = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n  kube_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name          = \"my-pool\"\n  flavor_name   = \"b2-7\"\n  desired_nodes = 3\n  max_nodes     = 3\n  min_nodes     = 3\n  template {\n    metadata {\n      annotations = {\n        k1 = \"v1\"\n        k2 = \"v2\"\n      }\n      finalizers = [\"ovhcloud.com/v1beta1\", \"ovhcloud.com/v1\"]\n      labels = {\n        k3 = \"v3\"\n        k4 = \"v4\"\n      }\n    }\n    spec {\n      unschedulable = false\n      taints = [\n        {\n          effect = \"PreferNoSchedule\"\n          key    = \"k\"\n          value  = \"v\"\n        }\n      ]\n    }\n  }\n}\n```\n\n## Import\n\nOVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by \"/\" E.g., bash \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "antiAffinity": {
                     "type": "boolean",
@@ -6951,6 +6962,103 @@
                     "username": {
                         "type": "string",
                         "description": "Username affected by this ACL.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": {
+            "description": "Creates a schema registry ACL for a Kafka cluster associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_database\" \"kafka\" {\n  service_name  = \"XXX\"\n  engine        = \"kafka\"\n  id            = \"ZZZ\"\n}\n\nresource \"ovh_cloud_project_database_kafka_schemaregistryacl\" \"schemaRegistryAcl\" {\n  service_name    = data.ovh_cloud_project_database.kafka.service_name\n  cluster_id      = data.ovh_cloud_project_database.kafka.id\n  permission      = \"schema_registry_read\"\n  resource        = \"Subject:myResource\"\n  username        = \"johndoe\"\n}\n```\n\n## Import\n\nOVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by \"/\" E.g., bash \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "Cluster ID.\n"
+                },
+                "permission": {
+                    "type": "string",
+                    "description": "Permission to give to this username on this resource.\nAvailable permissions:\n"
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "Resource affected by this schema registry ACL.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The id of the public cloud project. If omitted,\nthe `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username affected by this schema registry ACL.\n"
+                }
+            },
+            "required": [
+                "clusterId",
+                "permission",
+                "resource",
+                "serviceName",
+                "username"
+            ],
+            "inputProperties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "Cluster ID.\n",
+                    "willReplaceOnChanges": true
+                },
+                "permission": {
+                    "type": "string",
+                    "description": "Permission to give to this username on this resource.\nAvailable permissions:\n",
+                    "willReplaceOnChanges": true
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "Resource affected by this schema registry ACL.\n",
+                    "willReplaceOnChanges": true
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The id of the public cloud project. If omitted,\nthe `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n",
+                    "willReplaceOnChanges": true
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username affected by this schema registry ACL.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "clusterId",
+                "permission",
+                "resource",
+                "serviceName",
+                "username"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering KafkaSchemaRegistryAcl resources.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "Cluster ID.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "permission": {
+                        "type": "string",
+                        "description": "Permission to give to this username on this resource.\nAvailable permissions:\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "resource": {
+                        "type": "string",
+                        "description": "Resource affected by this schema registry ACL.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project. If omitted,\nthe `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "Username affected by this schema registry ACL.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -9366,7 +9474,7 @@
             }
         },
         "ovh:Dedicated/serverNetworking:ServerNetworking": {
-            "description": "Manage dedicated server networking interface on SCALE and HIGH-GRADE range.\n\n## Example Usage\n\nThe following example aims to bind all interfaces in a vRack\n\n```hcl\nlocals {\n  dedicated_server = \"nsXXXXXX.ip-XX-XXX-XX.eu\"\n}\n\ndata \"ovh_dedicated_server\" \"server\" {\n  service_name = local.dedicated_server\n}\n\nresource \"ovh_dedicated_server_networking\" \"server\"{\n  service_name = local.dedicated_server\n  interfaces {\n      macs = sort(flatten(data.ovh_dedicated_server.server.vnis.*.nics)),\n      type = \"vrack\"\n  }\n} \n```\n\nThe following example aims to attach the server to two different vRack.\n\n```hcl\nlocals {\n  dedicated_server = \"nsXXXXXX.ip-XX-XXX-XX.eu\"\n}\n\ndata \"ovh_dedicated_server\" \"server\" {\n  service_name = local.dedicated_server\n}\n\nresource \"ovh_dedicated_server_networking\" \"server\"{\n  service_name = local.dedicated_server\n  # Bond the two first interfaces in the first vrack\n  interfaces {\n      macs = slice(sort(flatten(data.ovh_dedicated_server.server.vnis.*.nics)), 0, 2)\n      type = \"vrack\"\n  }\n  # Bond the two last interfaces in the last vrack\n  interfaces {\n      macs = slice(sort(flatten(data.ovh_dedicated_server.server.vnis.*.nics)), 2, 4)\n      type = \"vrack\"\n  }\n} \n```\n\n## Import\n\nA dedicated server networking configuration can be imported using the `service_name`. bash \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
+            "description": "Manage dedicated server networking interface on SCALE and HIGH-GRADE range.\n\n!\u003e The API route targeted by this resource are restricted to OVHCloud users (`Internal API`) with additional restrictions.\n\n\n## Example Usage\n\nThe following example aims to bind all interfaces in a vRack\n\n```hcl\nlocals {\n  dedicated_server = \"nsXXXXXX.ip-XX-XXX-XX.eu\"\n}\n\ndata \"ovh_dedicated_server\" \"server\" {\n  service_name = local.dedicated_server\n}\n\nresource \"ovh_dedicated_server_networking\" \"server\"{\n  service_name = local.dedicated_server\n  interfaces {\n      macs = sort(flatten(data.ovh_dedicated_server.server.vnis.*.nics)),\n      type = \"vrack\"\n  }\n} \n```\n\nThe following example aims to attach the server to two different vRack.\n\n```hcl\nlocals {\n  dedicated_server = \"nsXXXXXX.ip-XX-XXX-XX.eu\"\n}\n\ndata \"ovh_dedicated_server\" \"server\" {\n  service_name = local.dedicated_server\n}\n\nresource \"ovh_dedicated_server_networking\" \"server\"{\n  service_name = local.dedicated_server\n  # Bond the two first interfaces in the first vrack\n  interfaces {\n      macs = slice(sort(flatten(data.ovh_dedicated_server.server.vnis.*.nics)), 0, 2)\n      type = \"vrack\"\n  }\n  # Bond the two last interfaces in the last vrack\n  interfaces {\n      macs = slice(sort(flatten(data.ovh_dedicated_server.server.vnis.*.nics)), 2, 4)\n      type = \"vrack\"\n  }\n} \n```\n\n## Import\n\nA dedicated server networking configuration can be imported using the `service_name`. bash \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -9794,7 +9902,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "The name of the record\n"
+                    "description": "The name of the record. It can be an empty string.\n"
                 },
                 "target": {
                     "type": "string",
@@ -9822,7 +9930,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "The name of the record\n"
+                    "description": "The name of the record. It can be an empty string.\n"
                 },
                 "target": {
                     "type": "string",
@@ -9852,7 +9960,7 @@
                     },
                     "subdomain": {
                         "type": "string",
-                        "description": "The name of the record\n"
+                        "description": "The name of the record. It can be an empty string.\n"
                     },
                     "target": {
                         "type": "string",
@@ -10558,7 +10666,7 @@
             }
         },
         "ovh:Iam/policy:Policy": {
-            "description": "Creates an IAM policy.\n\n## Important\n\n\u003e Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/) \n\n\n## Example Usage\n\n```hcl\ndata \"ovh_me\" \"account\" {}\n\nresource \"ovh_me_identity_group\" \"my_group\" {\n  name        = \"my_group\"\n  description = \"my_group created in Terraform\"\n}\n\nresource \"ovh_iam_policy\" \"manager\" {\n  name        = \"allow_ovh_manager\"\n  description = \"Users are allowed to use the OVH manager\"\n  identities  = [ovh_me_identity_group.my_group.urn]\n  resources   = [data.ovh_me.account.urn]\n  # these are all the actions \n  allow = [\n    \"account:apiovh:me/get\",\n    \"account:apiovh:me/supportLevel/get\",\n    \"account:apiovh:me/certificates/get\",\n    \"account:apiovh:me/tag/get\",\n    \"account:apiovh:services/get\",\n    \"account:apiovh:*\",\n  ]\n}\n```\n",
+            "description": "Creates an IAM policy.\n\n## Example Usage\n\n```hcl\ndata \"ovh_me\" \"account\" {}\n\nresource \"ovh_me_identity_group\" \"my_group\" {\n  name        = \"my_group\"\n  description = \"my_group created in Terraform\"\n}\n\nresource \"ovh_iam_policy\" \"manager\" {\n  name        = \"allow_ovh_manager\"\n  description = \"Users are allowed to use the OVH manager\"\n  identities  = [ovh_me_identity_group.my_group.urn]\n  resources   = [data.ovh_me.account.urn]\n  # these are all the actions \n  allow = [\n    \"account:apiovh:me/get\",\n    \"account:apiovh:me/supportLevel/get\",\n    \"account:apiovh:me/certificates/get\",\n    \"account:apiovh:me/tag/get\",\n    \"account:apiovh:services/get\",\n    \"account:apiovh:*\",\n  ]\n}\n```\n",
             "properties": {
                 "allows": {
                     "type": "array",
@@ -10975,7 +11083,7 @@
             }
         },
         "ovh:IpLoadBalancing/httpFarm:HttpFarm": {
-            "description": "Creates a HTTP backend server group (farm) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_http_farm\" \"farmname\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name = \"ingress-8080-gra\"\n  zone         = \"GRA\"\n}\n```\n",
+            "description": "Creates a HTTP backend server group (farm) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_http_farm\" \"farmname\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name = \"ingress-8080-gra\"\n  zone         = \"GRA\"\n}\n```\n\n## Import \n\nHTTP farm can be imported using the following format `service_name` and the `id` of the farm, separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_http_farm.farmname service_name/farm_id\n```\n",
             "properties": {
                 "balance": {
                     "type": "string",
@@ -11096,7 +11204,7 @@
             }
         },
         "ovh:IpLoadBalancing/httpFarmServer:HttpFarmServer": {
-            "description": "Creates a backend server entry linked to HTTP loadbalancing group (farm)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_http_farm\" \"farmname\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  port         = 8080\n  zone         = \"all\"\n}\n\nresource \"ovh_iploadbalancing_http_farm_server\" \"backend\" {\n  service_name           = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  farm_id                = \"${ovh_iploadbalancing_http_farm.farmname.id}\"\n  display_name           = \"mybackend\"\n  address                = \"4.5.6.7\"\n  status                 = \"active\"\n  port                   = 80\n  proxy_protocol_version = \"v2\"\n  weight                 = 2\n  probe                  = true\n  ssl                    = false\n  backup                 = true\n}\n```\n",
+            "description": "Creates a backend server entry linked to HTTP loadbalancing group (farm)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_http_farm\" \"farmname\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  port         = 8080\n  zone         = \"all\"\n}\n\nresource \"ovh_iploadbalancing_http_farm_server\" \"backend\" {\n  service_name           = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  farm_id                = \"${ovh_iploadbalancing_http_farm.farmname.id}\"\n  display_name           = \"mybackend\"\n  address                = \"4.5.6.7\"\n  status                 = \"active\"\n  port                   = 80\n  proxy_protocol_version = \"v2\"\n  weight                 = 2\n  probe                  = true\n  ssl                    = false\n  backup                 = true\n}\n```\n\n## Import \n\nHTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_http_farm_server.backend service_name/farm_id/server_id\n```\n",
             "properties": {
                 "address": {
                     "type": "string",
@@ -11289,7 +11397,7 @@
             }
         },
         "ovh:IpLoadBalancing/httpFrontend:HttpFrontend": {
-            "description": "Creates a backend HTTP server group (frontend) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_http_farm\" \"farm80\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name = \"ingress-8080-gra\"\n  zone         = \"all\"\n  port         = 80\n}\n\nresource \"ovh_iploadbalancing_http_frontend\" \"testfrontend\" {\n  service_name    = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name    = \"ingress-8080-gra\"\n  zone            = \"all\"\n  port            = \"80,443\"\n  default_farm_id = \"${ovh_iploadbalancing_http_farm.farm80.id}\"\n}\n```\n\n\n### With HTTP Header\n\n```\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_http_farm\" \"farm80\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name = \"ingress-8080-gra\"\n  zone         = \"all\"\n  port         = 80\n}\n\nresource \"ovh_iploadbalancing_http_frontend\" \"testfrontend\" {\n  service_name    = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name    = \"ingress-8080-gra\"\n  zone            = \"all\"\n  port            = \"80,443\"\n  default_farm_id = \"${ovh_iploadbalancing_http_farm.farm80.id}\"\n  http_header     = [\"X-Ip-Header %%ci\", \"X-Port-Header %%cp\"]\n}\n```\n",
+            "description": "Creates a backend HTTP server group (frontend) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_http_farm\" \"farm80\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name = \"ingress-8080-gra\"\n  zone         = \"all\"\n  port         = 80\n}\n\nresource \"ovh_iploadbalancing_http_frontend\" \"testfrontend\" {\n  service_name    = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name    = \"ingress-8080-gra\"\n  zone            = \"all\"\n  port            = \"80,443\"\n  default_farm_id = \"${ovh_iploadbalancing_http_farm.farm80.id}\"\n}\n```\n\n\n### With HTTP Header\n\n```\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_http_farm\" \"farm80\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name = \"ingress-8080-gra\"\n  zone         = \"all\"\n  port         = 80\n}\n\nresource \"ovh_iploadbalancing_http_frontend\" \"testfrontend\" {\n  service_name    = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name    = \"ingress-8080-gra\"\n  zone            = \"all\"\n  port            = \"80,443\"\n  default_farm_id = \"${ovh_iploadbalancing_http_farm.farm80.id}\"\n  http_header     = [\"X-Ip-Header %%ci\", \"X-Port-Header %%cp\"]\n}\n```\n\n## Import \n\nHTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_http_frontend.testfrontend service_name/http_frontend_id\n```\n",
             "properties": {
                 "allowedSources": {
                     "type": "array",
@@ -11499,7 +11607,7 @@
             }
         },
         "ovh:IpLoadBalancing/httpRoute:HttpRoute": {
-            "description": "Manage HTTP route for a loadbalancer service\n\n## Example Usage\n\nRoute which redirect all url to https.\n\n```hcl\nresource \"ovh_iploadbalancing_http_route\" \"httpsredirect\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  display_name = \"Redirect to HTTPS\"\n  weight = 1\n\n  action {\n    status = 302\n    target = \"https://$${host}$${path}$${arguments}\"\n    type   = \"redirect\"\n  }\n}\n```\n",
+            "description": "Manage HTTP route for a loadbalancer service\n\n## Example Usage\n\nRoute which redirect all url to https.\n\n```hcl\nresource \"ovh_iploadbalancing_http_route\" \"httpsredirect\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  display_name = \"Redirect to HTTPS\"\n  weight = 1\n\n  action {\n    status = 302\n    target = \"https://$${host}$${path}$${arguments}\"\n    type   = \"redirect\"\n  }\n}\n```\n\n## Import \n\nHTTP route can be imported using the following format `service_name` and the `id` of the route separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_http_route.httpsredirect service_name/route_id\n```\n",
             "properties": {
                 "action": {
                     "$ref": "#/types/ovh:IpLoadBalancing/HttpRouteAction:HttpRouteAction",
@@ -11608,7 +11716,7 @@
             }
         },
         "ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule": {
-            "description": "Manage rules for HTTP route.\n\n## Example Usage\n\nRoute which redirect all URL to HTTPs for example.com (Vhost).\n\n```hcl\nresource \"ovh_iploadbalancing_http_route\" \"httpsredirect\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  display_name = \"Redirect to HTTPS\"\n  weight       = 1\n  frontend_id  = 11111\n\n  action {\n    status = 302\n    target = \"https://$${host}$${path}$${arguments}\"\n    type   = \"redirect\"\n  }\n}\n\nresource \"ovh_iploadbalancing_http_route_rule\" \"examplerule\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  route_id     = \"${ovh_iploadbalancing_http_route.httpsredirect.id}\"\n  display_name = \"Match example.com host\"\n  field        = \"host\"\n  match        = \"is\"\n  negate       = false\n  pattern      = \"example.com\"\n}\n```\n\nRule which match a specific header (same effect as the host match above).\n\n```hcl\nresource \"ovh_iploadbalancing_http_route_rule\" \"examplerule\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  route_id     = \"${ovh_iploadbalancing_http_route.httpsredirect.id}\"\n  display_name = \"Match example.com Host header\"\n  field        = \"headers\"\n  match        = \"is\"\n  negate       = false\n  pattern      = \"example.com\"\n  sub_field    = \"Host\"\n}\n```\n",
+            "description": "Manage rules for HTTP route.\n\n## Example Usage\n\nRoute which redirect all URL to HTTPs for example.com (Vhost).\n\n```hcl\nresource \"ovh_iploadbalancing_http_route\" \"httpsredirect\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  display_name = \"Redirect to HTTPS\"\n  weight       = 1\n  frontend_id  = 11111\n\n  action {\n    status = 302\n    target = \"https://$${host}$${path}$${arguments}\"\n    type   = \"redirect\"\n  }\n}\n\nresource \"ovh_iploadbalancing_http_route_rule\" \"examplerule\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  route_id     = \"${ovh_iploadbalancing_http_route.httpsredirect.id}\"\n  display_name = \"Match example.com host\"\n  field        = \"host\"\n  match        = \"is\"\n  negate       = false\n  pattern      = \"example.com\"\n}\n```\n\nRule which match a specific header (same effect as the host match above).\n\n```hcl\nresource \"ovh_iploadbalancing_http_route_rule\" \"examplerule\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  route_id     = \"${ovh_iploadbalancing_http_route.httpsredirect.id}\"\n  display_name = \"Match example.com Host header\"\n  field        = \"headers\"\n  match        = \"is\"\n  negate       = false\n  pattern      = \"example.com\"\n  sub_field    = \"Host\"\n}\n```\n\n## Import \n\nHTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_http_route_rule.examplerule service_name/route_id/rule_id\n```\n",
             "properties": {
                 "displayName": {
                     "type": "string",
@@ -12044,7 +12152,7 @@
             }
         },
         "ovh:IpLoadBalancing/tcpFarm:TcpFarm": {
-            "description": "Creates a backend server group (farm) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_tcp_farm\" \"farmname\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name = \"ingress-8080-gra\"\n  zone         = \"GRA\"\n}\n```\n",
+            "description": "Creates a backend server group (farm) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_tcp_farm\" \"farmname\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name = \"ingress-8080-gra\"\n  zone         = \"GRA\"\n}\n```\n\n## Import \n\nTCP Farm can be imported using the following format `service_name` and the `id` of the farm, separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_tcp_farm.farmname service_name/farm_id\n```\n",
             "properties": {
                 "balance": {
                     "type": "string",
@@ -12165,7 +12273,7 @@
             }
         },
         "ovh:IpLoadBalancing/tcpFarmServer:TcpFarmServer": {
-            "description": "Creates a backend server entry linked to loadbalancing group (farm)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_tcp_farm\" \"farmname\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  port         = 8080\n  zone         = \"all\"\n}\n\nresource \"ovh_iploadbalancing_tcp_farm_server\" \"backend\" {\n  service_name           = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  farm_id                = \"${ovh_iploadbalancing_tcp_farm.farmname.id}\"\n  display_name           = \"mybackend\"\n  address                = \"4.5.6.7\"\n  status                 = \"active\"\n  port                   = 80\n  proxy_protocol_version = \"v2\"\n  weight                 = 2\n  probe                  = true\n  ssl                    = false\n  backup                 = true\n}\n```\n",
+            "description": "Creates a backend server entry linked to loadbalancing group (farm)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_tcp_farm\" \"farmname\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  port         = 8080\n  zone         = \"all\"\n}\n\nresource \"ovh_iploadbalancing_tcp_farm_server\" \"backend\" {\n  service_name           = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  farm_id                = \"${ovh_iploadbalancing_tcp_farm.farmname.id}\"\n  display_name           = \"mybackend\"\n  address                = \"4.5.6.7\"\n  status                 = \"active\"\n  port                   = 80\n  proxy_protocol_version = \"v2\"\n  weight                 = 2\n  probe                  = true\n  ssl                    = false\n  backup                 = true\n}\n```\n\n## Import \n\nTCP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_tcp_farm_server.backend service_name/farm_id/server_id\n```\n",
             "properties": {
                 "address": {
                     "type": "string",
@@ -12349,7 +12457,7 @@
             }
         },
         "ovh:IpLoadBalancing/tcpFrontend:TcpFrontend": {
-            "description": "Creates a backend server group (frontend) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_tcp_farm\" \"farm80\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name = \"ingress-8080-gra\"\n  zone         = \"all\"\n  port         = 80\n}\n\nresource \"ovh_iploadbalancing_tcp_frontend\" \"testfrontend\" {\n  service_name    = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name    = \"ingress-8080-gra\"\n  zone            = \"all\"\n  port            = \"80,443\"\n  default_farm_id = \"${ovh_iploadbalancing_tcp_farm.farm80.id}\"\n}\n```\n",
+            "description": "Creates a backend server group (frontend) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n```hcl\ndata \"ovh_iploadbalancing\" \"lb\" {\n  service_name = \"ip-1.2.3.4\"\n  state        = \"ok\"\n}\n\nresource \"ovh_iploadbalancing_tcp_farm\" \"farm80\" {\n  service_name = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name = \"ingress-8080-gra\"\n  zone         = \"all\"\n  port         = 80\n}\n\nresource \"ovh_iploadbalancing_tcp_frontend\" \"testfrontend\" {\n  service_name    = \"${data.ovh_iploadbalancing.lb.service_name}\"\n  display_name    = \"ingress-8080-gra\"\n  zone            = \"all\"\n  port            = \"80,443\"\n  default_farm_id = \"${ovh_iploadbalancing_tcp_farm.farm80.id}\"\n}\n```\n\n## Import \n\nTCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_tcp_frontend.testfrontend service_name/tcp_frontend_id\n```\n",
             "properties": {
                 "allowedSources": {
                     "type": "array",
@@ -12514,7 +12622,7 @@
             }
         },
         "ovh:IpLoadBalancing/tcpRoute:TcpRoute": {
-            "description": "Manage TCP route for a loadbalancer service\n\n## Example Usage\n\n```hcl\nresource \"ovh_iploadbalancing_tcp_route\" \"tcpreject\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  weight = 1\n\n  action {\n    type = \"reject\"\n  }\n}\n```\n",
+            "description": "Manage TCP route for a loadbalancer service\n\n## Example Usage\n\n```hcl\nresource \"ovh_iploadbalancing_tcp_route\" \"tcpreject\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  weight = 1\n\n  action {\n    type = \"reject\"\n  }\n}\n```\n\n## Import \n\nTCP route can be imported using the following format `service_name` and the `id` of the route separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_tcp_route.tcpreject service_name/route_id\n```\n",
             "properties": {
                 "action": {
                     "$ref": "#/types/ovh:IpLoadBalancing/TcpRouteAction:TcpRouteAction",
@@ -12623,7 +12731,7 @@
             }
         },
         "ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule": {
-            "description": "Manage rules for TCP route.\n\n## Example Usage\n\n```hcl\nresource \"ovh_iploadbalancing_tcp_route\" \"reject\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  weight       = 1\n  frontend_id  = 11111\n\n  action {\n    type = \"reject\"\n  }\n}\n\nresource \"ovh_iploadbalancing_tcp_route_rule\" \"examplerule\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  route_id     = ovh_iploadbalancing_tcp_route.reject.id\n  display_name = \"Match example.com host\"\n  field        = \"sni\"\n  match        = \"is\"\n  negate       = false\n  pattern      = \"example.com\"\n}\n```\n",
+            "description": "Manage rules for TCP route.\n\n## Example Usage\n\n```hcl\nresource \"ovh_iploadbalancing_tcp_route\" \"reject\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  weight       = 1\n  frontend_id  = 11111\n\n  action {\n    type = \"reject\"\n  }\n}\n\nresource \"ovh_iploadbalancing_tcp_route_rule\" \"examplerule\" {\n  service_name = \"loadbalancer-xxxxxxxxxxxxxxxxxx\"\n  route_id     = ovh_iploadbalancing_tcp_route.reject.id\n  display_name = \"Match example.com host\"\n  field        = \"sni\"\n  match        = \"is\"\n  negate       = false\n  pattern      = \"example.com\"\n}\n```\n\n## Import \n\nTCP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_tcp_route_rule.examplerule service_name/route_id/rule_id\n```\n",
             "properties": {
                 "displayName": {
                     "type": "string",
@@ -16898,6 +17006,122 @@
                 ]
             }
         },
+        "ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl": {
+            "description": "Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_database_kafka_schemaregistryacl\" \"schemaRegistryAcl\" {\n  service_name  = \"XXX\"\n  cluster_id    = \"YYY\"\n  id            = \"ZZZ\"\n}\n\noutput \"acl_permission\" {\n  value = data.ovh_cloud_project_database_kafka_schemaregistryacl.schemaRegistryAcl.permission\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getKafkaSchemaRegistryAcl.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "Cluster ID\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Schema registry ACL ID\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project. If omitted,\nthe `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId",
+                    "id",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getKafkaSchemaRegistryAcl.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "permission": {
+                        "type": "string",
+                        "description": "Permission to give to this username on this topic.\n"
+                    },
+                    "resource": {
+                        "type": "string",
+                        "description": "Resource affected by this ACL.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "Username affected by this ACL.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId",
+                    "id",
+                    "permission",
+                    "resource",
+                    "serviceName",
+                    "username"
+                ]
+            }
+        },
+        "ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcls:getKafkaSchemaRegistryAcls": {
+            "description": "Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_database_kafka_schemaregistryacls\" \"schemaRegistryAcls\" {\n  service_name  = \"XXX\"\n  cluster_id    = \"YYY\"\n}\n\noutput \"acl_ids\" {\n  value = data.ovh_cloud_project_database_kafka_schemaregistryacls.schemaRegistryAcls.acl_ids\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getKafkaSchemaRegistryAcls.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "Cluster ID\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project. If omitted,\nthe `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getKafkaSchemaRegistryAcls.\n",
+                "properties": {
+                    "aclIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of schema refistry ACLs ids of the kafka cluster associated with the project.\n"
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "aclIds",
+                    "clusterId",
+                    "serviceName",
+                    "id"
+                ]
+            }
+        },
         "ovh:CloudProjectDatabase/getKafkaTopic:getKafkaTopic": {
             "description": "Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_database_kafka_topic\" \"topic\" {\n  service_name  = \"XXX\"\n  cluster_id    = \"YYY\"\n  id            = \"ZZZ\"\n}\n\noutput \"topic_name\" {\n  value = data.ovh_cloud_project_database_kafka_topic.topic.name\n}\n```\n",
             "inputs": {
@@ -18271,7 +18495,7 @@
             }
         },
         "ovh:Iam/getPolicies:getPolicies": {
-            "description": "Use this data source to list the existing IAM policies of an account.\n\n## Important\n\n\u003e Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/) \n\n## Example Usage\n\n```hcl\ndata \"ovh_iam_policies\" \"my_policies\" {\n}\n```\n",
+            "description": "Use this data source to list the existing IAM policies of an account.\n\n## Example Usage\n\n```hcl\ndata \"ovh_iam_policies\" \"my_policies\" {\n}\n```\n",
             "outputs": {
                 "description": "A collection of values returned by getPolicies.\n",
                 "properties": {
@@ -18295,7 +18519,7 @@
             }
         },
         "ovh:Iam/getPolicy:getPolicy": {
-            "description": "Use this data source to retrieve am IAM policy.\n\n## Important\n\n\u003e Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/) \n\n## Example Usage\n\n```hcl\ndata \"ovh_iam_policy\" \"my_policy\" {\n  id = \"my_policy_id\"\n}\n```\n",
+            "description": "Use this data source to retrieve am IAM policy.\n\n## Example Usage\n\n```hcl\ndata \"ovh_iam_policy\" \"my_policy\" {\n  id = \"my_policy_id\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPolicy.\n",
                 "properties": {
@@ -18400,7 +18624,7 @@
             }
         },
         "ovh:Iam/getReferenceActions:getReferenceActions": {
-            "description": "Use this data source to list the IAM action associated with a resource type.\n\n## Important\n\n\u003e Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/) \n\n## Example Usage\n\n```hcl\ndata \"ovh_iam_reference_actions\" \"vps_actions\" {\n    resource_type = \"vps\"\n}\n```\n",
+            "description": "Use this data source to list the IAM action associated with a resource type.\n\n## Example Usage\n\n```hcl\ndata \"ovh_iam_reference_actions\" \"vps_actions\" {\n    resource_type = \"vps\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getReferenceActions.\n",
                 "properties": {
@@ -18441,7 +18665,7 @@
             }
         },
         "ovh:Iam/getReferenceResourceType:getReferenceResourceType": {
-            "description": "Use this data source to list all the IAM resource types.\n\n## Important\n\n\u003e Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/) \n\n## Example Usage\n\n```hcl\ndata \"ovh_iam_reference_resource_type\" \"types\" {\n}\n```\n",
+            "description": "Use this data source to list all the IAM resource types.\n\n## Example Usage\n\n```hcl\ndata \"ovh_iam_reference_resource_type\" \"types\" {\n}\n```\n",
             "outputs": {
                 "description": "A collection of values returned by getReferenceResourceType.\n",
                 "properties": {

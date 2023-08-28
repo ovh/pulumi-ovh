@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates an SSH Key.
@@ -38,7 +39,7 @@ func NewSshKey(ctx *pulumi.Context,
 	if args.KeyName == nil {
 		return nil, errors.New("invalid value for required argument 'KeyName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SshKey
 	err := ctx.RegisterResource("ovh:Me/sshKey:SshKey", name, args, &resource, opts...)
 	if err != nil {

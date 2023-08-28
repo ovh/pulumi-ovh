@@ -13,6 +13,8 @@ namespace Scraly.PulumiPackage.Ovh.Dedicated
     /// <summary>
     /// Manage dedicated server networking interface on SCALE and HIGH-GRADE range.
     /// 
+    /// !&gt; The API route targeted by this resource are restricted to OVHCloud users (`Internal API`) with additional restrictions.
+    /// 
     /// ## Example Usage
     /// 
     /// The following example aims to bind all interfaces in a vRack

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Manage HTTP route for a loadbalancer service
@@ -16,6 +17,10 @@ import (
 // ## Example Usage
 //
 // Route which redirect all url to https.
+//
+// ## Import
+//
+// HTTP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
 type HttpRoute struct {
 	pulumi.CustomResourceState
 
@@ -48,7 +53,7 @@ func NewHttpRoute(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HttpRoute
 	err := ctx.RegisterResource("ovh:IpLoadBalancing/httpRoute:HttpRoute", name, args, &resource, opts...)
 	if err != nil {

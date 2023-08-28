@@ -5,13 +5,14 @@ package me
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve a list of the names of the account's IPXE Scripts.
 //
 // ## Example Usage
 func GetIpxeScripts(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpxeScriptsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpxeScriptsResult
 	err := ctx.Invoke("ovh:Me/getIpxeScripts:getIpxeScripts", nil, &rv, opts...)
 	if err != nil {

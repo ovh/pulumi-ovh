@@ -8,7 +8,10 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type ContainerRegistryPlan struct {
 	// Plan code from the catalog
@@ -1620,9 +1623,9 @@ func (o KubeKubeconfigAttributeArrayOutput) Index(i pulumi.IntInput) KubeKubecon
 
 type KubeNodePoolTemplate struct {
 	// Metadata of each node in the pool
-	Metadata *KubeNodePoolTemplateMetadata `pulumi:"metadata"`
+	Metadata KubeNodePoolTemplateMetadata `pulumi:"metadata"`
 	// Spec of each node in the pool
-	Spec *KubeNodePoolTemplateSpec `pulumi:"spec"`
+	Spec KubeNodePoolTemplateSpec `pulumi:"spec"`
 }
 
 // KubeNodePoolTemplateInput is an input type that accepts KubeNodePoolTemplateArgs and KubeNodePoolTemplateOutput values.
@@ -1638,9 +1641,9 @@ type KubeNodePoolTemplateInput interface {
 
 type KubeNodePoolTemplateArgs struct {
 	// Metadata of each node in the pool
-	Metadata KubeNodePoolTemplateMetadataPtrInput `pulumi:"metadata"`
+	Metadata KubeNodePoolTemplateMetadataInput `pulumi:"metadata"`
 	// Spec of each node in the pool
-	Spec KubeNodePoolTemplateSpecPtrInput `pulumi:"spec"`
+	Spec KubeNodePoolTemplateSpecInput `pulumi:"spec"`
 }
 
 func (KubeNodePoolTemplateArgs) ElementType() reflect.Type {
@@ -1721,13 +1724,13 @@ func (o KubeNodePoolTemplateOutput) ToKubeNodePoolTemplatePtrOutputWithContext(c
 }
 
 // Metadata of each node in the pool
-func (o KubeNodePoolTemplateOutput) Metadata() KubeNodePoolTemplateMetadataPtrOutput {
-	return o.ApplyT(func(v KubeNodePoolTemplate) *KubeNodePoolTemplateMetadata { return v.Metadata }).(KubeNodePoolTemplateMetadataPtrOutput)
+func (o KubeNodePoolTemplateOutput) Metadata() KubeNodePoolTemplateMetadataOutput {
+	return o.ApplyT(func(v KubeNodePoolTemplate) KubeNodePoolTemplateMetadata { return v.Metadata }).(KubeNodePoolTemplateMetadataOutput)
 }
 
 // Spec of each node in the pool
-func (o KubeNodePoolTemplateOutput) Spec() KubeNodePoolTemplateSpecPtrOutput {
-	return o.ApplyT(func(v KubeNodePoolTemplate) *KubeNodePoolTemplateSpec { return v.Spec }).(KubeNodePoolTemplateSpecPtrOutput)
+func (o KubeNodePoolTemplateOutput) Spec() KubeNodePoolTemplateSpecOutput {
+	return o.ApplyT(func(v KubeNodePoolTemplate) KubeNodePoolTemplateSpec { return v.Spec }).(KubeNodePoolTemplateSpecOutput)
 }
 
 type KubeNodePoolTemplatePtrOutput struct{ *pulumi.OutputState }
@@ -1760,7 +1763,7 @@ func (o KubeNodePoolTemplatePtrOutput) Metadata() KubeNodePoolTemplateMetadataPt
 		if v == nil {
 			return nil
 		}
-		return v.Metadata
+		return &v.Metadata
 	}).(KubeNodePoolTemplateMetadataPtrOutput)
 }
 
@@ -1770,14 +1773,14 @@ func (o KubeNodePoolTemplatePtrOutput) Spec() KubeNodePoolTemplateSpecPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return v.Spec
+		return &v.Spec
 	}).(KubeNodePoolTemplateSpecPtrOutput)
 }
 
 type KubeNodePoolTemplateMetadata struct {
 	// Annotations to apply to each node
 	Annotations map[string]string `pulumi:"annotations"`
-	// Finalizers to apply to each node
+	// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
 	Finalizers []string `pulumi:"finalizers"`
 	// Labels to apply to each node
 	Labels map[string]string `pulumi:"labels"`
@@ -1797,7 +1800,7 @@ type KubeNodePoolTemplateMetadataInput interface {
 type KubeNodePoolTemplateMetadataArgs struct {
 	// Annotations to apply to each node
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Finalizers to apply to each node
+	// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
 	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
 	// Labels to apply to each node
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -1885,7 +1888,7 @@ func (o KubeNodePoolTemplateMetadataOutput) Annotations() pulumi.StringMapOutput
 	return o.ApplyT(func(v KubeNodePoolTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Finalizers to apply to each node
+// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
 func (o KubeNodePoolTemplateMetadataOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeNodePoolTemplateMetadata) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
 }
@@ -1929,7 +1932,7 @@ func (o KubeNodePoolTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOut
 	}).(pulumi.StringMapOutput)
 }
 
-// Finalizers to apply to each node
+// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
 func (o KubeNodePoolTemplateMetadataPtrOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KubeNodePoolTemplateMetadata) []string {
 		if v == nil {
@@ -1953,7 +1956,7 @@ type KubeNodePoolTemplateSpec struct {
 	// Taints to apply to each node
 	Taints []map[string]interface{} `pulumi:"taints"`
 	// If true, set nodes as un-schedulable
-	Unschedulable *bool `pulumi:"unschedulable"`
+	Unschedulable bool `pulumi:"unschedulable"`
 }
 
 // KubeNodePoolTemplateSpecInput is an input type that accepts KubeNodePoolTemplateSpecArgs and KubeNodePoolTemplateSpecOutput values.
@@ -1971,7 +1974,7 @@ type KubeNodePoolTemplateSpecArgs struct {
 	// Taints to apply to each node
 	Taints pulumi.MapArrayInput `pulumi:"taints"`
 	// If true, set nodes as un-schedulable
-	Unschedulable pulumi.BoolPtrInput `pulumi:"unschedulable"`
+	Unschedulable pulumi.BoolInput `pulumi:"unschedulable"`
 }
 
 func (KubeNodePoolTemplateSpecArgs) ElementType() reflect.Type {
@@ -2057,8 +2060,8 @@ func (o KubeNodePoolTemplateSpecOutput) Taints() pulumi.MapArrayOutput {
 }
 
 // If true, set nodes as un-schedulable
-func (o KubeNodePoolTemplateSpecOutput) Unschedulable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v KubeNodePoolTemplateSpec) *bool { return v.Unschedulable }).(pulumi.BoolPtrOutput)
+func (o KubeNodePoolTemplateSpecOutput) Unschedulable() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubeNodePoolTemplateSpec) bool { return v.Unschedulable }).(pulumi.BoolOutput)
 }
 
 type KubeNodePoolTemplateSpecPtrOutput struct{ *pulumi.OutputState }
@@ -2101,7 +2104,7 @@ func (o KubeNodePoolTemplateSpecPtrOutput) Unschedulable() pulumi.BoolPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return v.Unschedulable
+		return &v.Unschedulable
 	}).(pulumi.BoolPtrOutput)
 }
 

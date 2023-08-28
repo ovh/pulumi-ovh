@@ -14,6 +14,10 @@ namespace Scraly.PulumiPackage.Ovh.IpLoadBalancing
     /// Manage rules for TCP route.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// TCP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule")]
     public partial class TcpRouteRule : global::Pulumi.CustomResource

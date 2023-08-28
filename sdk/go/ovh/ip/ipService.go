@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // ## Example Usage
@@ -58,7 +59,7 @@ func NewIpService(ctx *pulumi.Context,
 	if args.Plan == nil {
 		return nil, errors.New("invalid value for required argument 'Plan'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IpService
 	err := ctx.RegisterResource("ovh:Ip/ipService:IpService", name, args, &resource, opts...)
 	if err != nil {

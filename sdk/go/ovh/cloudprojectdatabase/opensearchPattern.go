@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates a pattern for a opensearch cluster associated with a public cloud project.
@@ -48,7 +49,7 @@ func NewOpensearchPattern(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OpensearchPattern
 	err := ctx.RegisterResource("ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern", name, args, &resource, opts...)
 	if err != nil {

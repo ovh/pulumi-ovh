@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates an identity group.
@@ -39,7 +40,7 @@ func NewIdentityGroup(ctx *pulumi.Context,
 		args = &IdentityGroupArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IdentityGroup
 	err := ctx.RegisterResource("ovh:Me/identityGroup:IdentityGroup", name, args, &resource, opts...)
 	if err != nil {

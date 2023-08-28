@@ -59,10 +59,6 @@ def get_policies(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPol
     """
     Use this data source to list the existing IAM policies of an account.
 
-    ## Important
-
-    > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
-
     ## Example Usage
     """
     __args__ = dict()

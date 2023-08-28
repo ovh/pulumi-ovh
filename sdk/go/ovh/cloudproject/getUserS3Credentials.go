@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve the list of all the S3 accessKeyId associated with a public cloud project's user.
 //
 // ## Example Usage
 func GetUserS3Credentials(ctx *pulumi.Context, args *GetUserS3CredentialsArgs, opts ...pulumi.InvokeOption) (*GetUserS3CredentialsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUserS3CredentialsResult
 	err := ctx.Invoke("ovh:CloudProject/getUserS3Credentials:getUserS3Credentials", args, &rv, opts...)
 	if err != nil {

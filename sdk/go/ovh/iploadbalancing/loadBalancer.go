@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // ## Example Usage
@@ -74,7 +75,7 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		"metricsToken",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LoadBalancer
 	err := ctx.RegisterResource("ovh:IpLoadBalancing/loadBalancer:LoadBalancer", name, args, &resource, opts...)
 	if err != nil {

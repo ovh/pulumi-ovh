@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Manage a worflow that schedules backups of public cloud instance.
@@ -58,7 +59,7 @@ func NewWorkflowBackup(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkflowBackup
 	err := ctx.RegisterResource("ovh:CloudProject/workflowBackup:WorkflowBackup", name, args, &resource, opts...)
 	if err != nil {

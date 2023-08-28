@@ -12,6 +12,10 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * Route which redirect all url to https.
+ *
+ * ## Import
+ *
+ * HTTP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
  */
 export class HttpRoute extends pulumi.CustomResource {
     /**

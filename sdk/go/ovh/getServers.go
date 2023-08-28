@@ -5,13 +5,14 @@ package ovh
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
 //
 // ## Example Usage
 func GetServers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetServersResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServersResult
 	err := ctx.Invoke("ovh:index/getServers:getServers", nil, &rv, opts...)
 	if err != nil {

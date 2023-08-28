@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to create a temporary order cart to retrieve information order cart products.
 //
 // ## Example Usage
 func GetCart(ctx *pulumi.Context, args *GetCartArgs, opts ...pulumi.InvokeOption) (*GetCartResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCartResult
 	err := ctx.Invoke("ovh:Order/getCart:getCart", args, &rv, opts...)
 	if err != nil {

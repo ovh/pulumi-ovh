@@ -44,7 +44,7 @@ export class ZoneRecord extends pulumi.CustomResource {
      */
     public readonly fieldtype!: pulumi.Output<string>;
     /**
-     * The name of the record
+     * The name of the record. It can be an empty string.
      */
     public readonly subdomain!: pulumi.Output<string | undefined>;
     /**
@@ -109,7 +109,7 @@ export interface ZoneRecordState {
      */
     fieldtype?: pulumi.Input<string>;
     /**
-     * The name of the record
+     * The name of the record. It can be an empty string.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -135,7 +135,7 @@ export interface ZoneRecordArgs {
      */
     fieldtype: pulumi.Input<string>;
     /**
-     * The name of the record
+     * The name of the record. It can be an empty string.
      */
     subdomain?: pulumi.Input<string>;
     /**

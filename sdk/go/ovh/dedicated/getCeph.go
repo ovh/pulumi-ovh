@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about a dedicated CEPH.
 //
 // ## Example Usage
 func GetCeph(ctx *pulumi.Context, args *GetCephArgs, opts ...pulumi.InvokeOption) (*GetCephResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCephResult
 	err := ctx.Invoke("ovh:Dedicated/getCeph:getCeph", args, &rv, opts...)
 	if err != nil {

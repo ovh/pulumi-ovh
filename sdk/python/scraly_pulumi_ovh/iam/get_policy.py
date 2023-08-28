@@ -169,10 +169,6 @@ def get_policy(allows: Optional[Sequence[str]] = None,
     """
     Use this data source to retrieve am IAM policy.
 
-    ## Important
-
-    > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
-
     ## Example Usage
 
 
@@ -211,10 +207,6 @@ def get_policy_output(allows: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
     """
     Use this data source to retrieve am IAM policy.
-
-    ## Important
-
-    > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
 
     ## Example Usage
 

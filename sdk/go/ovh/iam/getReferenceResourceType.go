@@ -5,17 +5,14 @@ package iam
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to list all the IAM resource types.
 //
-// ## Important
-//
-// > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
-//
 // ## Example Usage
 func GetReferenceResourceType(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetReferenceResourceTypeResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReferenceResourceTypeResult
 	err := ctx.Invoke("ovh:Iam/getReferenceResourceType:getReferenceResourceType", nil, &rv, opts...)
 	if err != nil {

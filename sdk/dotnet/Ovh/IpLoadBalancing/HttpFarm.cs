@@ -14,6 +14,10 @@ namespace Scraly.PulumiPackage.Ovh.IpLoadBalancing
     /// Creates a HTTP backend server group (farm) to be used by loadbalancing frontend(s)
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// HTTP farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/httpFarm:HttpFarm")]
     public partial class HttpFarm : global::Pulumi.CustomResource

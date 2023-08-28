@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about a DBaas logs input engine.
 //
 // ## Example Usage
 func GetLogsInputEngine(ctx *pulumi.Context, args *GetLogsInputEngineArgs, opts ...pulumi.InvokeOption) (*GetLogsInputEngineResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogsInputEngineResult
 	err := ctx.Invoke("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", args, &rv, opts...)
 	if err != nil {

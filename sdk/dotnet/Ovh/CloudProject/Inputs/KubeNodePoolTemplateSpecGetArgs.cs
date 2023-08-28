@@ -13,7 +13,7 @@ namespace Scraly.PulumiPackage.Ovh.CloudProject.Inputs
 
     public sealed class KubeNodePoolTemplateSpecGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("taints")]
+        [Input("taints", required: true)]
         private InputList<ImmutableDictionary<string, object>>? _taints;
 
         /// <summary>
@@ -28,8 +28,8 @@ namespace Scraly.PulumiPackage.Ovh.CloudProject.Inputs
         /// <summary>
         /// If true, set nodes as un-schedulable
         /// </summary>
-        [Input("unschedulable")]
-        public Input<bool>? Unschedulable { get; set; }
+        [Input("unschedulable", required: true)]
+        public Input<bool> Unschedulable { get; set; } = null!;
 
         public KubeNodePoolTemplateSpecGetArgs()
         {

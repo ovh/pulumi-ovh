@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about a credit card
@@ -15,7 +16,7 @@ import (
 //
 // ## Example Usage
 func GetPaymentmeanCreditCard(ctx *pulumi.Context, args *GetPaymentmeanCreditCardArgs, opts ...pulumi.InvokeOption) (*GetPaymentmeanCreditCardResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPaymentmeanCreditCardResult
 	err := ctx.Invoke("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", args, &rv, opts...)
 	if err != nil {

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // ## Example Usage
@@ -21,7 +22,7 @@ type ZoneRecord struct {
 
 	// The type of the record
 	Fieldtype pulumi.StringOutput `pulumi:"fieldtype"`
-	// The name of the record
+	// The name of the record. It can be an empty string.
 	Subdomain pulumi.StringPtrOutput `pulumi:"subdomain"`
 	// The value of the record
 	Target pulumi.StringOutput `pulumi:"target"`
@@ -47,7 +48,7 @@ func NewZoneRecord(ctx *pulumi.Context,
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZoneRecord
 	err := ctx.RegisterResource("ovh:Domain/zoneRecord:ZoneRecord", name, args, &resource, opts...)
 	if err != nil {
@@ -72,7 +73,7 @@ func GetZoneRecord(ctx *pulumi.Context,
 type zoneRecordState struct {
 	// The type of the record
 	Fieldtype *string `pulumi:"fieldtype"`
-	// The name of the record
+	// The name of the record. It can be an empty string.
 	Subdomain *string `pulumi:"subdomain"`
 	// The value of the record
 	Target *string `pulumi:"target"`
@@ -85,7 +86,7 @@ type zoneRecordState struct {
 type ZoneRecordState struct {
 	// The type of the record
 	Fieldtype pulumi.StringPtrInput
-	// The name of the record
+	// The name of the record. It can be an empty string.
 	Subdomain pulumi.StringPtrInput
 	// The value of the record
 	Target pulumi.StringPtrInput
@@ -102,7 +103,7 @@ func (ZoneRecordState) ElementType() reflect.Type {
 type zoneRecordArgs struct {
 	// The type of the record
 	Fieldtype string `pulumi:"fieldtype"`
-	// The name of the record
+	// The name of the record. It can be an empty string.
 	Subdomain *string `pulumi:"subdomain"`
 	// The value of the record
 	Target string `pulumi:"target"`
@@ -116,7 +117,7 @@ type zoneRecordArgs struct {
 type ZoneRecordArgs struct {
 	// The type of the record
 	Fieldtype pulumi.StringInput
-	// The name of the record
+	// The name of the record. It can be an empty string.
 	Subdomain pulumi.StringPtrInput
 	// The value of the record
 	Target pulumi.StringInput
@@ -218,7 +219,7 @@ func (o ZoneRecordOutput) Fieldtype() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Fieldtype }).(pulumi.StringOutput)
 }
 
-// The name of the record
+// The name of the record. It can be an empty string.
 func (o ZoneRecordOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringPtrOutput { return v.Subdomain }).(pulumi.StringPtrOutput)
 }

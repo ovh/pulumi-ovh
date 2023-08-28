@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
 //
 // ## Example Usage
 func GetServerBoots(ctx *pulumi.Context, args *GetServerBootsArgs, opts ...pulumi.InvokeOption) (*GetServerBootsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerBootsResult
 	err := ctx.Invoke("ovh:Dedicated/getServerBoots:getServerBoots", args, &rv, opts...)
 	if err != nil {

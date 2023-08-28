@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the list of users of a container registry associated with a public cloud project.
 //
 // ## Example Usage
 func LookupContainerRegistryUsers(ctx *pulumi.Context, args *LookupContainerRegistryUsersArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryUsersResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryUsersResult
 	err := ctx.Invoke("ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers", args, &rv, opts...)
 	if err != nil {

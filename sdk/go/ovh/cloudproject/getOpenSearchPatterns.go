@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the list of pattern of a opensearch cluster associated with a public cloud project.
 //
 // ## Example Usage
 func GetOpenSearchPatterns(ctx *pulumi.Context, args *GetOpenSearchPatternsArgs, opts ...pulumi.InvokeOption) (*GetOpenSearchPatternsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenSearchPatternsResult
 	err := ctx.Invoke("ovh:CloudProject/getOpenSearchPatterns:getOpenSearchPatterns", args, &rv, opts...)
 	if err != nil {

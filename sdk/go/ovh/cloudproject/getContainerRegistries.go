@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the container registries of a public cloud project.
 //
 // ## Example Usage
 func LookupContainerRegistries(ctx *pulumi.Context, args *LookupContainerRegistriesArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistriesResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistriesResult
 	err := ctx.Invoke("ovh:CloudProject/getContainerRegistries:getContainerRegistries", args, &rv, opts...)
 	if err != nil {

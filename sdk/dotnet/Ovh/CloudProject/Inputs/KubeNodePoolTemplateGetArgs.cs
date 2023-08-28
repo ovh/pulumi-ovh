@@ -16,14 +16,14 @@ namespace Scraly.PulumiPackage.Ovh.CloudProject.Inputs
         /// <summary>
         /// Metadata of each node in the pool
         /// </summary>
-        [Input("metadata")]
-        public Input<Inputs.KubeNodePoolTemplateMetadataGetArgs>? Metadata { get; set; }
+        [Input("metadata", required: true)]
+        public Input<Inputs.KubeNodePoolTemplateMetadataGetArgs> Metadata { get; set; } = null!;
 
         /// <summary>
         /// Spec of each node in the pool
         /// </summary>
-        [Input("spec")]
-        public Input<Inputs.KubeNodePoolTemplateSpecGetArgs>? Spec { get; set; }
+        [Input("spec", required: true)]
+        public Input<Inputs.KubeNodePoolTemplateSpecGetArgs> Spec { get; set; } = null!;
 
         public KubeNodePoolTemplateGetArgs()
         {

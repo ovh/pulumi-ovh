@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Manage rules for HTTP route.
@@ -18,6 +19,10 @@ import (
 // Route which redirect all URL to HTTPs for example.com (Vhost).
 //
 // Rule which match a specific header (same effect as the host match above).
+//
+// ## Import
+//
+// HTTP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
 type HttpRouteRule struct {
 	pulumi.CustomResourceState
 
@@ -58,7 +63,7 @@ func NewHttpRouteRule(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HttpRouteRule
 	err := ctx.RegisterResource("ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule", name, args, &resource, opts...)
 	if err != nil {

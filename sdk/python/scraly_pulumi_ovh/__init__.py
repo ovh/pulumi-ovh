@@ -223,6 +223,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProjectDatabase/kafkaSchemaRegistryAcl",
+  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "classes": {
+   "ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": "KafkaSchemaRegistryAcl"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProjectDatabase/kafkaTopic",
   "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
   "classes": {

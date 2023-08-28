@@ -5,13 +5,14 @@ package me
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve the list of the account's identity groups
 //
 // ## Example Usage
 func GetIdentityGroups(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIdentityGroupsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIdentityGroupsResult
 	err := ctx.Invoke("ovh:Me/getIdentityGroups:getIdentityGroups", nil, &rv, opts...)
 	if err != nil {

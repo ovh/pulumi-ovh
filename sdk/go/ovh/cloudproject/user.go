@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates a user in a public cloud project.
@@ -69,7 +70,7 @@ func NewUser(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("ovh:CloudProject/user:User", name, args, &resource, opts...)
 	if err != nil {

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Provides a OVHcloud IP reverse.
@@ -45,7 +46,7 @@ func NewReverse(ctx *pulumi.Context,
 	if args.Ip == nil {
 		return nil, errors.New("invalid value for required argument 'Ip'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Reverse
 	err := ctx.RegisterResource("ovh:Ip/reverse:Reverse", name, args, &resource, opts...)
 	if err != nil {

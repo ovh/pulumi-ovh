@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this resource to create a custom installation template available for dedicated servers.
@@ -78,7 +79,7 @@ func NewInstallationTemplate(ctx *pulumi.Context,
 	if args.TemplateName == nil {
 		return nil, errors.New("invalid value for required argument 'TemplateName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstallationTemplate
 	err := ctx.RegisterResource("ovh:Me/installationTemplate:InstallationTemplate", name, args, &resource, opts...)
 	if err != nil {

@@ -765,133 +765,126 @@ class KubeKubeconfigAttributeArgs:
 @pulumi.input_type
 class KubeNodePoolTemplateArgs:
     def __init__(__self__, *,
-                 metadata: Optional[pulumi.Input['KubeNodePoolTemplateMetadataArgs']] = None,
-                 spec: Optional[pulumi.Input['KubeNodePoolTemplateSpecArgs']] = None):
+                 metadata: pulumi.Input['KubeNodePoolTemplateMetadataArgs'],
+                 spec: pulumi.Input['KubeNodePoolTemplateSpecArgs']):
         """
         :param pulumi.Input['KubeNodePoolTemplateMetadataArgs'] metadata: Metadata of each node in the pool
         :param pulumi.Input['KubeNodePoolTemplateSpecArgs'] spec: Spec of each node in the pool
         """
-        if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
-        if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "spec", spec)
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['KubeNodePoolTemplateMetadataArgs']]:
+    def metadata(self) -> pulumi.Input['KubeNodePoolTemplateMetadataArgs']:
         """
         Metadata of each node in the pool
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['KubeNodePoolTemplateMetadataArgs']]):
+    def metadata(self, value: pulumi.Input['KubeNodePoolTemplateMetadataArgs']):
         pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['KubeNodePoolTemplateSpecArgs']]:
+    def spec(self) -> pulumi.Input['KubeNodePoolTemplateSpecArgs']:
         """
         Spec of each node in the pool
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['KubeNodePoolTemplateSpecArgs']]):
+    def spec(self, value: pulumi.Input['KubeNodePoolTemplateSpecArgs']):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class KubeNodePoolTemplateMetadataArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 finalizers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 annotations: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 finalizers: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 labels: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to apply to each node
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] finalizers: Finalizers to apply to each node
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] finalizers: Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to each node
         """
-        if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
-        if finalizers is not None:
-            pulumi.set(__self__, "finalizers", finalizers)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "finalizers", finalizers)
+        pulumi.set(__self__, "labels", labels)
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def annotations(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         Annotations to apply to each node
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def annotations(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter
-    def finalizers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def finalizers(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Finalizers to apply to each node
+        Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
         """
         return pulumi.get(self, "finalizers")
 
     @finalizers.setter
-    def finalizers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def finalizers(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "finalizers", value)
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         Labels to apply to each node
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "labels", value)
 
 
 @pulumi.input_type
 class KubeNodePoolTemplateSpecArgs:
     def __init__(__self__, *,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
-                 unschedulable: Optional[pulumi.Input[bool]] = None):
+                 taints: pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]],
+                 unschedulable: pulumi.Input[bool]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] taints: Taints to apply to each node
         :param pulumi.Input[bool] unschedulable: If true, set nodes as un-schedulable
         """
-        if taints is not None:
-            pulumi.set(__self__, "taints", taints)
-        if unschedulable is not None:
-            pulumi.set(__self__, "unschedulable", unschedulable)
+        pulumi.set(__self__, "taints", taints)
+        pulumi.set(__self__, "unschedulable", unschedulable)
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+    def taints(self) -> pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]:
         """
         Taints to apply to each node
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+    def taints(self, value: pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]):
         pulumi.set(self, "taints", value)
 
     @property
     @pulumi.getter
-    def unschedulable(self) -> Optional[pulumi.Input[bool]]:
+    def unschedulable(self) -> pulumi.Input[bool]:
         """
         If true, set nodes as un-schedulable
         """
         return pulumi.get(self, "unschedulable")
 
     @unschedulable.setter
-    def unschedulable(self, value: Optional[pulumi.Input[bool]]):
+    def unschedulable(self, value: pulumi.Input[bool]):
         pulumi.set(self, "unschedulable", value)
 
 

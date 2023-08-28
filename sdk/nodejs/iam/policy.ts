@@ -7,10 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Creates an IAM policy.
  *
- * ## Important
- *
- * > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
- *
  * ## Example Usage
  */
 export class Policy extends pulumi.CustomResource {

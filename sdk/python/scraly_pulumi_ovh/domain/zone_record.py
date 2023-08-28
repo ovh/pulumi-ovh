@@ -24,7 +24,7 @@ class ZoneRecordArgs:
         :param pulumi.Input[str] fieldtype: The type of the record
         :param pulumi.Input[str] target: The value of the record
         :param pulumi.Input[str] zone: The domain to add the record to
-        :param pulumi.Input[str] subdomain: The name of the record
+        :param pulumi.Input[str] subdomain: The name of the record. It can be an empty string.
         :param pulumi.Input[int] ttl: The TTL of the record, it shall be >= to 60.
         """
         pulumi.set(__self__, "fieldtype", fieldtype)
@@ -75,7 +75,7 @@ class ZoneRecordArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the record
+        The name of the record. It can be an empty string.
         """
         return pulumi.get(self, "subdomain")
 
@@ -107,7 +107,7 @@ class _ZoneRecordState:
         """
         Input properties used for looking up and filtering ZoneRecord resources.
         :param pulumi.Input[str] fieldtype: The type of the record
-        :param pulumi.Input[str] subdomain: The name of the record
+        :param pulumi.Input[str] subdomain: The name of the record. It can be an empty string.
         :param pulumi.Input[str] target: The value of the record
         :param pulumi.Input[int] ttl: The TTL of the record, it shall be >= to 60.
         :param pulumi.Input[str] zone: The domain to add the record to
@@ -139,7 +139,7 @@ class _ZoneRecordState:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the record
+        The name of the record. It can be an empty string.
         """
         return pulumi.get(self, "subdomain")
 
@@ -205,7 +205,7 @@ class ZoneRecord(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fieldtype: The type of the record
-        :param pulumi.Input[str] subdomain: The name of the record
+        :param pulumi.Input[str] subdomain: The name of the record. It can be an empty string.
         :param pulumi.Input[str] target: The value of the record
         :param pulumi.Input[int] ttl: The TTL of the record, it shall be >= to 60.
         :param pulumi.Input[str] zone: The domain to add the record to
@@ -286,7 +286,7 @@ class ZoneRecord(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fieldtype: The type of the record
-        :param pulumi.Input[str] subdomain: The name of the record
+        :param pulumi.Input[str] subdomain: The name of the record. It can be an empty string.
         :param pulumi.Input[str] target: The value of the record
         :param pulumi.Input[int] ttl: The TTL of the record, it shall be >= to 60.
         :param pulumi.Input[str] zone: The domain to add the record to
@@ -314,7 +314,7 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter
     def subdomain(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the record
+        The name of the record. It can be an empty string.
         """
         return pulumi.get(self, "subdomain")
 
