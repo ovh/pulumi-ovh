@@ -9,10 +9,6 @@ The `OVH` provider must be configured with credentials to deploy and update reso
 
 ## Example
 
-TODO: goooooooooo!!!
-
-
-
 {{< chooser language "go,typescript,python" >}}
 {{% choosable language go %}}
 
@@ -31,6 +27,24 @@ if err != nil {
 ctx.Export("kubeconfig", pulumi.ToSecret(myKube.Kubeconfig))
 ```
 
+{{% choosable language python %}}
+
+```python
+import pulumi
+import scraly_pulumi_ovh as ovh
+
+config = pulumi.Config();
+service_name = config.require('serviceName')
+
+print(service_name);
+
+my_kube_cluster = cloudproject.get_kube(service_name,
+    kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx");
+pulumi.export("version", my_kube_cluster.version)
+```
+
+{{% /choosable %}}
+
 {{% choosable language typescript %}}
 
 ```typescript
@@ -38,12 +52,6 @@ TODO
 ```
 
 {{% /choosable %}}
-{{% choosable language python %}}
 
-```python
-TODO
-```
-
-{{% /choosable %}}
 {{< /chooser >}}
 
