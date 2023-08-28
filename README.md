@@ -142,12 +142,30 @@ $ upgrade-provider scraly/pulumi-ovh
 warning: A new version of Pulumi is available. To upgrade from version '3.78.1' to '3.79.0', run 
    $ curl -sSL https://get.pulumi.com | sh
 or visit https://pulumi.com/docs/install/ for manual instructions and release notes.
-
-
-
+...
+- Update TF Provider
+  - ✓ Update TF Plugin SDK Fork: already up to date
+  - ✓ Lookup Tag SHA: 6f0cc4b7d791d1682b613e2c2cbd9a48d4267686
+  - ✓ /usr/local/go/bin/go get github.com/ovh/terraform-provider-ovh@6f0cc4b7d791d1682...: done
+- ✓ /usr/local/go/bin/go get github.com/pulumi/pulumi-terraform-bridge/v3@v3.57.0: done
+- ✓ /usr/local/go/bin/go get github.com/pulumi/pulumi-terraform-bridge/pf@v0.15.2: done
+- ✓ /usr/local/go/bin/go mod tidy: done
+- ✓ /usr/local/go/bin/go mod tidy: done
+- ✓ /bin/echo Plugins not removed.: done
+- ✓ /usr/bin/make tfgen: done
+- ✓ /usr/bin/git add --all: done
+- ✓ /usr/bin/git commit -m make tfgen: done
+- ✓ /usr/bin/make build_sdks: done
+- ✓ /usr/bin/git add --all: done
+- ✓ /usr/bin/git commit -m make build_sdks: done
+- GitHub
+  - ✓ /usr/bin/git push --set-upstream origin upgrade-terraform-provider-ovh-to-v0.33....: done
+  - ✓ /usr/bin/gh pr create --assignee @me --base main --head upgrade-terraform-provid...: done
+  - Assign Issues
 ```
 
 Add new TF resources in `provider/resources.go` file and execute the command again and again.
+A new Pull Request will be created at this step.
 
 ## Reference
 
