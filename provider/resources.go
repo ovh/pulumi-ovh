@@ -157,6 +157,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_database_kafka_acl": {
 				Tok: ovhResource(cloudProjectDbMod, "KafkaAcl"),
 			},
+			"ovh_cloud_project_database_kafka_schemaregistryacl": {
+				Tok: ovhResource(cloudProjectDbMod, "KafkaSchemaRegistryAcl"),
+			},
 			"ovh_cloud_project_database_kafka_topic": {
 				Tok: ovhResource(cloudProjectDbMod, "KafkaTopic"),
 			},
@@ -426,6 +429,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_database_kafka_acls": {
 				Tok: ovhDataSource(cloudProjectDbMod, "getKafkaAcls"),
+			},
+			"ovh_cloud_project_database_kafka_schemaregistryacl": {
+				Tok: ovhDataSource(cloudProjectDbMod, "getKafkaSchemaRegistryAcl"),
+			},
+			"ovh_cloud_project_database_kafka_schemaregistryacls": {
+				Tok: ovhDataSource(cloudProjectDbMod, "getKafkaSchemaRegistryAcls"),
 			},
 			"ovh_cloud_project_database_kafka_topic": {
 				Tok: ovhDataSource(cloudProjectDbMod, "getKafkaTopic"),
