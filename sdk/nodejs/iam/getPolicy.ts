@@ -7,10 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to retrieve am IAM policy.
  *
- * ## Important
- *
- * > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
- *
  * ## Example Usage
  */
 export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
@@ -94,10 +90,6 @@ export interface GetPolicyResult {
 }
 /**
  * Use this data source to retrieve am IAM policy.
- *
- * ## Important
- *
- * > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
  *
  * ## Example Usage
  */

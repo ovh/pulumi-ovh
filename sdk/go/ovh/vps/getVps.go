@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about a vps associated with your OVHcloud Account.
 //
 // ## Example Usage
 func GetVps(ctx *pulumi.Context, args *GetVpsArgs, opts ...pulumi.InvokeOption) (*GetVpsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpsResult
 	err := ctx.Invoke("ovh:Vps/getVps:getVps", args, &rv, opts...)
 	if err != nil {

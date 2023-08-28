@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this resource to create a hardware raid group in the partition scheme of a custom installation template available for dedicated servers.
@@ -57,7 +58,7 @@ func NewInstallationTemplatePartitionSchemeHardwareRaid(ctx *pulumi.Context,
 	if args.TemplateName == nil {
 		return nil, errors.New("invalid value for required argument 'TemplateName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstallationTemplatePartitionSchemeHardwareRaid
 	err := ctx.RegisterResource("ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid", name, args, &resource, opts...)
 	if err != nil {

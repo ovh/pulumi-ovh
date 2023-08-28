@@ -5,13 +5,14 @@ package me
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get information about the current OVHcloud account.
 //
 // ## Example Usage
 func GetMe(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetMeResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMeResult
 	err := ctx.Invoke("ovh:Me/getMe:getMe", nil, &rv, opts...)
 	if err != nil {

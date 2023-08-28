@@ -6,7 +6,10 @@ package config
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // The OVH API Application Key.
 func GetApplicationKey(ctx *pulumi.Context) string {

@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the container registry capabilities of a public cloud project.
 //
 // ## Example Usage
 func LookupCapabilitiesContainerRegistry(ctx *pulumi.Context, args *LookupCapabilitiesContainerRegistryArgs, opts ...pulumi.InvokeOption) (*LookupCapabilitiesContainerRegistryResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapabilitiesContainerRegistryResult
 	err := ctx.Invoke("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", args, &rv, opts...)
 	if err != nil {

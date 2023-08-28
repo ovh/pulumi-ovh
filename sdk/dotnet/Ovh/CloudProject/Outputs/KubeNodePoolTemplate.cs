@@ -17,17 +17,17 @@ namespace Scraly.PulumiPackage.Ovh.CloudProject.Outputs
         /// <summary>
         /// Metadata of each node in the pool
         /// </summary>
-        public readonly Outputs.KubeNodePoolTemplateMetadata? Metadata;
+        public readonly Outputs.KubeNodePoolTemplateMetadata Metadata;
         /// <summary>
         /// Spec of each node in the pool
         /// </summary>
-        public readonly Outputs.KubeNodePoolTemplateSpec? Spec;
+        public readonly Outputs.KubeNodePoolTemplateSpec Spec;
 
         [OutputConstructor]
         private KubeNodePoolTemplate(
-            Outputs.KubeNodePoolTemplateMetadata? metadata,
+            Outputs.KubeNodePoolTemplateMetadata metadata,
 
-            Outputs.KubeNodePoolTemplateSpec? spec)
+            Outputs.KubeNodePoolTemplateSpec spec)
         {
             Metadata = metadata;
             Spec = spec;

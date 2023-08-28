@@ -763,20 +763,18 @@ class KubeKubeconfigAttribute(dict):
 @pulumi.output_type
 class KubeNodePoolTemplate(dict):
     def __init__(__self__, *,
-                 metadata: Optional['outputs.KubeNodePoolTemplateMetadata'] = None,
-                 spec: Optional['outputs.KubeNodePoolTemplateSpec'] = None):
+                 metadata: 'outputs.KubeNodePoolTemplateMetadata',
+                 spec: 'outputs.KubeNodePoolTemplateSpec'):
         """
         :param 'KubeNodePoolTemplateMetadataArgs' metadata: Metadata of each node in the pool
         :param 'KubeNodePoolTemplateSpecArgs' spec: Spec of each node in the pool
         """
-        if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
-        if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "spec", spec)
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional['outputs.KubeNodePoolTemplateMetadata']:
+    def metadata(self) -> 'outputs.KubeNodePoolTemplateMetadata':
         """
         Metadata of each node in the pool
         """
@@ -784,7 +782,7 @@ class KubeNodePoolTemplate(dict):
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional['outputs.KubeNodePoolTemplateSpec']:
+    def spec(self) -> 'outputs.KubeNodePoolTemplateSpec':
         """
         Spec of each node in the pool
         """
@@ -794,24 +792,21 @@ class KubeNodePoolTemplate(dict):
 @pulumi.output_type
 class KubeNodePoolTemplateMetadata(dict):
     def __init__(__self__, *,
-                 annotations: Optional[Mapping[str, str]] = None,
-                 finalizers: Optional[Sequence[str]] = None,
-                 labels: Optional[Mapping[str, str]] = None):
+                 annotations: Mapping[str, str],
+                 finalizers: Sequence[str],
+                 labels: Mapping[str, str]):
         """
         :param Mapping[str, str] annotations: Annotations to apply to each node
-        :param Sequence[str] finalizers: Finalizers to apply to each node
+        :param Sequence[str] finalizers: Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
         :param Mapping[str, str] labels: Labels to apply to each node
         """
-        if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
-        if finalizers is not None:
-            pulumi.set(__self__, "finalizers", finalizers)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "finalizers", finalizers)
+        pulumi.set(__self__, "labels", labels)
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[Mapping[str, str]]:
+    def annotations(self) -> Mapping[str, str]:
         """
         Annotations to apply to each node
         """
@@ -819,15 +814,15 @@ class KubeNodePoolTemplateMetadata(dict):
 
     @property
     @pulumi.getter
-    def finalizers(self) -> Optional[Sequence[str]]:
+    def finalizers(self) -> Sequence[str]:
         """
-        Finalizers to apply to each node
+        Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
         """
         return pulumi.get(self, "finalizers")
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> Mapping[str, str]:
         """
         Labels to apply to each node
         """
@@ -837,20 +832,18 @@ class KubeNodePoolTemplateMetadata(dict):
 @pulumi.output_type
 class KubeNodePoolTemplateSpec(dict):
     def __init__(__self__, *,
-                 taints: Optional[Sequence[Mapping[str, Any]]] = None,
-                 unschedulable: Optional[bool] = None):
+                 taints: Sequence[Mapping[str, Any]],
+                 unschedulable: bool):
         """
         :param Sequence[Mapping[str, Any]] taints: Taints to apply to each node
         :param bool unschedulable: If true, set nodes as un-schedulable
         """
-        if taints is not None:
-            pulumi.set(__self__, "taints", taints)
-        if unschedulable is not None:
-            pulumi.set(__self__, "unschedulable", unschedulable)
+        pulumi.set(__self__, "taints", taints)
+        pulumi.set(__self__, "unschedulable", unschedulable)
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[Sequence[Mapping[str, Any]]]:
+    def taints(self) -> Sequence[Mapping[str, Any]]:
         """
         Taints to apply to each node
         """
@@ -858,7 +851,7 @@ class KubeNodePoolTemplateSpec(dict):
 
     @property
     @pulumi.getter
-    def unschedulable(self) -> Optional[bool]:
+    def unschedulable(self) -> bool:
         """
         If true, set nodes as un-schedulable
         """

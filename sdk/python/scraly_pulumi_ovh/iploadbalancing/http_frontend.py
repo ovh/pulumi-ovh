@@ -474,6 +474,10 @@ class HttpFrontend(pulumi.CustomResource):
 
         ### With HTTP Header
 
+        ## Import
+
+        HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_sources: Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
@@ -504,6 +508,10 @@ class HttpFrontend(pulumi.CustomResource):
         ## Example Usage
 
         ### With HTTP Header
+
+        ## Import
+
+        HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param HttpFrontendArgs args: The arguments to use to populate this resource's properties.

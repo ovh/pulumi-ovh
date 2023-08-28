@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about a dedicated HA-NAS.
 //
 // ## Example Usage
 func GetNasHA(ctx *pulumi.Context, args *GetNasHAArgs, opts ...pulumi.InvokeOption) (*GetNasHAResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNasHAResult
 	err := ctx.Invoke("ovh:Dedicated/getNasHA:getNasHA", args, &rv, opts...)
 	if err != nil {

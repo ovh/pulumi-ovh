@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the list of managed databases of a public cloud project.
@@ -16,7 +17,7 @@ import (
 //
 // To get the list of database clusters service for a given engine:
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabasesResult
 	err := ctx.Invoke("ovh:CloudProjectDatabase/getDatabases:getDatabases", args, &rv, opts...)
 	if err != nil {

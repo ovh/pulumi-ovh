@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about an IP Load Balancing product
 //
 // ## Example Usage
 func GetIpLoadBalancing(ctx *pulumi.Context, args *GetIpLoadBalancingArgs, opts ...pulumi.InvokeOption) (*GetIpLoadBalancingResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpLoadBalancingResult
 	err := ctx.Invoke("ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing", args, &rv, opts...)
 	if err != nil {

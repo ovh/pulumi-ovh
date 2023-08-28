@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about an hosting privatedatabase.
 //
 // ## Example Usage
 func LookupPrivateDatabaseDb(ctx *pulumi.Context, args *LookupPrivateDatabaseDbArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDatabaseDbResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateDatabaseDbResult
 	err := ctx.Invoke("ovh:Hosting/getPrivateDatabaseDb:getPrivateDatabaseDb", args, &rv, opts...)
 	if err != nil {

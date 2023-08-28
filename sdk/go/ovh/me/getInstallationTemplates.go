@@ -5,13 +5,14 @@ package me
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the list of custom installation templates available for dedicated servers.
 //
 // ## Example Usage
 func GetInstallationTemplates(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetInstallationTemplatesResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstallationTemplatesResult
 	err := ctx.Invoke("ovh:Me/getInstallationTemplates:getInstallationTemplates", nil, &rv, opts...)
 	if err != nil {

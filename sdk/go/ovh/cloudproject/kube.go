@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // ## Import
@@ -79,7 +80,7 @@ func NewKube(ctx *pulumi.Context,
 		"kubeconfigAttributes",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Kube
 	err := ctx.RegisterResource("ovh:CloudProject/kube:Kube", name, args, &resource, opts...)
 	if err != nil {

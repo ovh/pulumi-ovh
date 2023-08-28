@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // ## Import
@@ -53,7 +54,7 @@ func NewM3DbUser(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource M3DbUser
 	err := ctx.RegisterResource("ovh:CloudProjectDatabase/m3DbUser:M3DbUser", name, args, &resource, opts...)
 	if err != nil {

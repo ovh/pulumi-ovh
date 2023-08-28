@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates a private network in a public cloud project.
@@ -59,7 +60,7 @@ func NewNetworkPrivate(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NetworkPrivate
 	err := ctx.RegisterResource("ovh:CloudProject/networkPrivate:NetworkPrivate", name, args, &resource, opts...)
 	if err != nil {

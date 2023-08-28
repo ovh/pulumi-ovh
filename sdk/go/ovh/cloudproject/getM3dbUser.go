@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
 //
 // ## Example Usage
 func GetM3dbUser(ctx *pulumi.Context, args *GetM3dbUserArgs, opts ...pulumi.InvokeOption) (*GetM3dbUserResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetM3dbUserResult
 	err := ctx.Invoke("ovh:CloudProject/getM3dbUser:getM3dbUser", args, &rv, opts...)
 	if err != nil {

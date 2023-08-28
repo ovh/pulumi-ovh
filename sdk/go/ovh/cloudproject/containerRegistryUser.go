@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates a user for a container registry associated with a public cloud project.
@@ -55,7 +56,7 @@ func NewContainerRegistryUser(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ContainerRegistryUser
 	err := ctx.RegisterResource("ovh:CloudProject/containerRegistryUser:ContainerRegistryUser", name, args, &resource, opts...)
 	if err != nil {

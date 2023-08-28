@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates a backend HTTP server group (frontend) to be used by loadbalancing frontend(s)
@@ -16,6 +17,10 @@ import (
 // ## Example Usage
 //
 // ### With HTTP Header
+//
+// ## Import
+//
+// HTTP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
 type HttpFrontend struct {
 	pulumi.CustomResourceState
 
@@ -65,7 +70,7 @@ func NewHttpFrontend(ctx *pulumi.Context,
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HttpFrontend
 	err := ctx.RegisterResource("ovh:IpLoadBalancing/httpFrontend:HttpFrontend", name, args, &resource, opts...)
 	if err != nil {

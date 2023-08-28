@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve informations about a DBaas logs cluster tenant.
 //
 // ## Example Usage
 func LookupLogsCluster(ctx *pulumi.Context, args *LookupLogsClusterArgs, opts ...pulumi.InvokeOption) (*LookupLogsClusterResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogsClusterResult
 	err := ctx.Invoke("ovh:Dbaas/getLogsCluster:getLogsCluster", args, &rv, opts...)
 	if err != nil {

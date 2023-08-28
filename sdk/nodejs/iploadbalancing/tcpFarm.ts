@@ -10,6 +10,10 @@ import * as utilities from "../utilities";
  * Creates a backend server group (farm) to be used by loadbalancing frontend(s)
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * TCP Farm can be imported using the following format `serviceName` and the `id` of the farm, separated by "/" e.g.
  */
 export class TcpFarm extends pulumi.CustomResource {
     /**

@@ -15,10 +15,6 @@ namespace Scraly.PulumiPackage.Ovh.Iam
         /// <summary>
         /// Use this data source to retrieve am IAM policy.
         /// 
-        /// ## Important
-        /// 
-        /// &gt; Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/) 
-        /// 
         /// ## Example Usage
         /// 
         /// ```hcl
@@ -32,10 +28,6 @@ namespace Scraly.PulumiPackage.Ovh.Iam
 
         /// <summary>
         /// Use this data source to retrieve am IAM policy.
-        /// 
-        /// ## Important
-        /// 
-        /// &gt; Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/) 
         /// 
         /// ## Example Usage
         /// 

@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
 //
 // ## Example Usage
 func GetMongoDbUser(ctx *pulumi.Context, args *GetMongoDbUserArgs, opts ...pulumi.InvokeOption) (*GetMongoDbUserResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMongoDbUserResult
 	err := ctx.Invoke("ovh:CloudProject/getMongoDbUser:getMongoDbUser", args, &rv, opts...)
 	if err != nil {

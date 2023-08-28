@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about an identity user.
 //
 // ## Example Usage
 func LookupIdentityUser(ctx *pulumi.Context, args *LookupIdentityUserArgs, opts ...pulumi.InvokeOption) (*LookupIdentityUserResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIdentityUserResult
 	err := ctx.Invoke("ovh:Me/getIdentityUser:getIdentityUser", args, &rv, opts...)
 	if err != nil {

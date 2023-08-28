@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Provides a resource for managing partitions on HA-NAS services
@@ -53,7 +54,7 @@ func NewNasHAPartition(ctx *pulumi.Context,
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NasHAPartition
 	err := ctx.RegisterResource("ovh:Dedicated/nasHAPartition:NasHAPartition", name, args, &resource, opts...)
 	if err != nil {

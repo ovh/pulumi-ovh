@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about an hosting privatedatabase whitelist.
 //
 // ## Example Usage
 func LookupPrivateDatabaseAllowlist(ctx *pulumi.Context, args *LookupPrivateDatabaseAllowlistArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDatabaseAllowlistResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateDatabaseAllowlistResult
 	err := ctx.Invoke("ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist", args, &rv, opts...)
 	if err != nil {

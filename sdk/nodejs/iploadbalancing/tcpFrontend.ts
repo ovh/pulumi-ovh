@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
  * Creates a backend server group (frontend) to be used by loadbalancing frontend(s)
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * TCP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
  */
 export class TcpFrontend extends pulumi.CustomResource {
     /**

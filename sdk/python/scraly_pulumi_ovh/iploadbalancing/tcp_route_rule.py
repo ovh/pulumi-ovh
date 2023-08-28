@@ -298,6 +298,10 @@ class TcpRouteRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        TCP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human readable name for your rule, this field is for you
@@ -319,6 +323,10 @@ class TcpRouteRule(pulumi.CustomResource):
         Manage rules for TCP route.
 
         ## Example Usage
+
+        ## Import
+
+        TCP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param TcpRouteRuleInitArgs args: The arguments to use to populate this resource's properties.

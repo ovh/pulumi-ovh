@@ -9,11 +9,16 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates a backend server entry linked to HTTP loadbalancing group (farm)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// HTTP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
 type HttpFarmServer struct {
 	pulumi.CustomResourceState
 
@@ -65,7 +70,7 @@ func NewHttpFarmServer(ctx *pulumi.Context,
 	if args.Status == nil {
 		return nil, errors.New("invalid value for required argument 'Status'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HttpFarmServer
 	err := ctx.RegisterResource("ovh:IpLoadBalancing/httpFarmServer:HttpFarmServer", name, args, &resource, opts...)
 	if err != nil {

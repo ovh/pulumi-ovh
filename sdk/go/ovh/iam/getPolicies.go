@@ -5,17 +5,14 @@ package iam
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to list the existing IAM policies of an account.
 //
-// ## Important
-//
-// > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
-//
 // ## Example Usage
 func GetPolicies(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetPoliciesResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPoliciesResult
 	err := ctx.Invoke("ovh:Iam/getPolicies:getPolicies", nil, &rv, opts...)
 	if err != nil {

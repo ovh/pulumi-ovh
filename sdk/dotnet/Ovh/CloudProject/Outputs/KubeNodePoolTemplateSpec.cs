@@ -21,13 +21,13 @@ namespace Scraly.PulumiPackage.Ovh.CloudProject.Outputs
         /// <summary>
         /// If true, set nodes as un-schedulable
         /// </summary>
-        public readonly bool? Unschedulable;
+        public readonly bool Unschedulable;
 
         [OutputConstructor]
         private KubeNodePoolTemplateSpec(
             ImmutableArray<ImmutableDictionary<string, object>> taints,
 
-            bool? unschedulable)
+            bool unschedulable)
         {
             Taints = taints;
             Unschedulable = unschedulable;

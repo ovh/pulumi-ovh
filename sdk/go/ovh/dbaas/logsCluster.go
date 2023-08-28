@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // ## Example Usage
@@ -66,7 +67,7 @@ func NewLogsCluster(ctx *pulumi.Context,
 		"initialQueryAllowedNetworks",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LogsCluster
 	err := ctx.RegisterResource("ovh:Dbaas/logsCluster:LogsCluster", name, args, &resource, opts...)
 	if err != nil {

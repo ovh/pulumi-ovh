@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
 //
 // ## Example Usage
 func GetCapabilitiesContainerFilter(ctx *pulumi.Context, args *GetCapabilitiesContainerFilterArgs, opts ...pulumi.InvokeOption) (*GetCapabilitiesContainerFilterResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCapabilitiesContainerFilterResult
 	err := ctx.Invoke("ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter", args, &rv, opts...)
 	if err != nil {

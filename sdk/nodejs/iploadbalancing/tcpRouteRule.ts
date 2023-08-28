@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
  * Manage rules for TCP route.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * TCP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
  */
 export class TcpRouteRule extends pulumi.CustomResource {
     /**

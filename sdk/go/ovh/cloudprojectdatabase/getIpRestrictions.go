@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use the list of IP restrictions associated with a public cloud project.
@@ -16,7 +17,7 @@ import (
 //
 // To get the list of IP restriction on a database cluster service:
 func GetIpRestrictions(ctx *pulumi.Context, args *GetIpRestrictionsArgs, opts ...pulumi.InvokeOption) (*GetIpRestrictionsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpRestrictionsResult
 	err := ctx.Invoke("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args, &rv, opts...)
 	if err != nil {

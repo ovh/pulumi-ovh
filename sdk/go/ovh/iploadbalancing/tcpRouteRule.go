@@ -9,11 +9,16 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Manage rules for TCP route.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// TCP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
 type TcpRouteRule struct {
 	pulumi.CustomResourceState
 
@@ -54,7 +59,7 @@ func NewTcpRouteRule(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TcpRouteRule
 	err := ctx.RegisterResource("ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule", name, args, &resource, opts...)
 	if err != nil {

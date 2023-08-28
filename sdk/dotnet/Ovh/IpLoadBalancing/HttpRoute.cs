@@ -16,6 +16,10 @@ namespace Scraly.PulumiPackage.Ovh.IpLoadBalancing
     /// ## Example Usage
     /// 
     /// Route which redirect all url to https.
+    /// 
+    /// ## Import
+    /// 
+    /// HTTP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/httpRoute:HttpRoute")]
     public partial class HttpRoute : global::Pulumi.CustomResource

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates an S3 Credential for a user in a public cloud project.
@@ -50,7 +51,7 @@ func NewS3Credential(ctx *pulumi.Context,
 		"secretAccessKey",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource S3Credential
 	err := ctx.RegisterResource("ovh:CloudProject/s3Credential:S3Credential", name, args, &resource, opts...)
 	if err != nil {

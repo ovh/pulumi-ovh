@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
 //
 // ## Example Usage
 func LookupKube(ctx *pulumi.Context, args *LookupKubeArgs, opts ...pulumi.InvokeOption) (*LookupKubeResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubeResult
 	err := ctx.Invoke("ovh:CloudProject/getKube:getKube", args, &rv, opts...)
 	if err != nil {

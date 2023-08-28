@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // ## Example Usage
@@ -86,7 +87,7 @@ func NewPrivateDatabase(ctx *pulumi.Context,
 	if args.Plan == nil {
 		return nil, errors.New("invalid value for required argument 'Plan'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PrivateDatabase
 	err := ctx.RegisterResource("ovh:Hosting/privateDatabase:PrivateDatabase", name, args, &resource, opts...)
 	if err != nil {

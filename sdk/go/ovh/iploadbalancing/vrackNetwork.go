@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Manage a vrack network for your IP Loadbalancing service.
@@ -49,7 +50,7 @@ func NewVrackNetwork(ctx *pulumi.Context,
 	if args.Subnet == nil {
 		return nil, errors.New("invalid value for required argument 'Subnet'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VrackNetwork
 	err := ctx.RegisterResource("ovh:IpLoadBalancing/vrackNetwork:VrackNetwork", name, args, &resource, opts...)
 	if err != nil {

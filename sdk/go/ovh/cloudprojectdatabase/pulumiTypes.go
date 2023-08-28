@@ -8,7 +8,10 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type OpensearchUserAcl struct {
 	// Pattern of the ACL.

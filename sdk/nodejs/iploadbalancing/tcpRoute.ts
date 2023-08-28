@@ -10,6 +10,10 @@ import * as utilities from "../utilities";
  * Manage TCP route for a loadbalancer service
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * TCP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
  */
 export class TcpRoute extends pulumi.CustomResource {
     /**

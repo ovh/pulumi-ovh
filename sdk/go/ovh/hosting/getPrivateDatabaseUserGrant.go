@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about an hosting privatedatabase user grant.
 //
 // ## Example Usage
 func LookupPrivateDatabaseUserGrant(ctx *pulumi.Context, args *LookupPrivateDatabaseUserGrantArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDatabaseUserGrantResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateDatabaseUserGrantResult
 	err := ctx.Invoke("ovh:Hosting/getPrivateDatabaseUserGrant:getPrivateDatabaseUserGrant", args, &rv, opts...)
 	if err != nil {

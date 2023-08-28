@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates an integration for a database cluster associated with a public cloud project.
@@ -70,7 +71,7 @@ func NewIntegration(ctx *pulumi.Context,
 	if args.SourceServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'SourceServiceId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Integration
 	err := ctx.RegisterResource("ovh:CloudProjectDatabase/integration:Integration", name, args, &resource, opts...)
 	if err != nil {

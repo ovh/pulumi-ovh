@@ -655,37 +655,37 @@ export namespace CloudProject {
         /**
          * Metadata of each node in the pool
          */
-        metadata?: outputs.CloudProject.KubeNodePoolTemplateMetadata;
+        metadata: outputs.CloudProject.KubeNodePoolTemplateMetadata;
         /**
          * Spec of each node in the pool
          */
-        spec?: outputs.CloudProject.KubeNodePoolTemplateSpec;
+        spec: outputs.CloudProject.KubeNodePoolTemplateSpec;
     }
 
     export interface KubeNodePoolTemplateMetadata {
         /**
          * Annotations to apply to each node
          */
-        annotations?: {[key: string]: string};
+        annotations: {[key: string]: string};
         /**
-         * Finalizers to apply to each node
+         * Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
          */
-        finalizers?: string[];
+        finalizers: string[];
         /**
          * Labels to apply to each node
          */
-        labels?: {[key: string]: string};
+        labels: {[key: string]: string};
     }
 
     export interface KubeNodePoolTemplateSpec {
         /**
          * Taints to apply to each node
          */
-        taints?: {[key: string]: any}[];
+        taints: {[key: string]: any}[];
         /**
          * If true, set nodes as un-schedulable
          */
-        unschedulable?: boolean;
+        unschedulable: boolean;
     }
 
     export interface KubePrivateNetworkConfiguration {

@@ -9,11 +9,16 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Creates a backend server entry linked to loadbalancing group (farm)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// TCP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
 type TcpFarmServer struct {
 	pulumi.CustomResourceState
 
@@ -63,7 +68,7 @@ func NewTcpFarmServer(ctx *pulumi.Context,
 	if args.Status == nil {
 		return nil, errors.New("invalid value for required argument 'Status'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TcpFarmServer
 	err := ctx.RegisterResource("ovh:IpLoadBalancing/tcpFarmServer:TcpFarmServer", name, args, &resource, opts...)
 	if err != nil {

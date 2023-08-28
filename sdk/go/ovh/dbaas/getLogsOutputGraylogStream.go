@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about a DBaas logs output graylog stream.
 //
 // ## Example Usage
 func LookupLogsOutputGraylogStream(ctx *pulumi.Context, args *LookupLogsOutputGraylogStreamArgs, opts ...pulumi.InvokeOption) (*LookupLogsOutputGraylogStreamResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogsOutputGraylogStreamResult
 	err := ctx.Invoke("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args, &rv, opts...)
 	if err != nil {

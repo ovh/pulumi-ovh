@@ -389,37 +389,37 @@ export namespace CloudProject {
         /**
          * Metadata of each node in the pool
          */
-        metadata?: pulumi.Input<inputs.CloudProject.KubeNodePoolTemplateMetadata>;
+        metadata: pulumi.Input<inputs.CloudProject.KubeNodePoolTemplateMetadata>;
         /**
          * Spec of each node in the pool
          */
-        spec?: pulumi.Input<inputs.CloudProject.KubeNodePoolTemplateSpec>;
+        spec: pulumi.Input<inputs.CloudProject.KubeNodePoolTemplateSpec>;
     }
 
     export interface KubeNodePoolTemplateMetadata {
         /**
          * Annotations to apply to each node
          */
-        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        annotations: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Finalizers to apply to each node
+         * Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
          */
-        finalizers?: pulumi.Input<pulumi.Input<string>[]>;
+        finalizers: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Labels to apply to each node
          */
-        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface KubeNodePoolTemplateSpec {
         /**
          * Taints to apply to each node
          */
-        taints?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        taints: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
         /**
          * If true, set nodes as un-schedulable
          */
-        unschedulable?: pulumi.Input<boolean>;
+        unschedulable: pulumi.Input<boolean>;
     }
 
     export interface KubePrivateNetworkConfiguration {

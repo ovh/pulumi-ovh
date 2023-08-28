@@ -147,6 +147,8 @@ or visit https://pulumi.com/docs/install/ for manual instructions and release no
 
 ```
 
+Add new TF resources in `provider/resources.go` file and execute the command again and again.
+
 ## Reference
 
 For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/ovh/api-docs/).

@@ -7,10 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to list the existing IAM policies of an account.
  *
- * ## Important
- *
- * > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
- *
  * ## Example Usage
  */
 export function getPolicies(opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {

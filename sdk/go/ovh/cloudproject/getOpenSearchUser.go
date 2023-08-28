@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
 //
 // ## Example Usage
 func GetOpenSearchUser(ctx *pulumi.Context, args *GetOpenSearchUserArgs, opts ...pulumi.InvokeOption) (*GetOpenSearchUserResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenSearchUserResult
 	err := ctx.Invoke("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", args, &rv, opts...)
 	if err != nil {

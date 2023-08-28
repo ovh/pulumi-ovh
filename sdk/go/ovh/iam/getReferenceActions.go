@@ -8,17 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to list the IAM action associated with a resource type.
 //
-// ## Important
-//
-// > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
-//
 // ## Example Usage
 func GetReferenceActions(ctx *pulumi.Context, args *GetReferenceActionsArgs, opts ...pulumi.InvokeOption) (*GetReferenceActionsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReferenceActionsResult
 	err := ctx.Invoke("ovh:Iam/getReferenceActions:getReferenceActions", args, &rv, opts...)
 	if err != nil {

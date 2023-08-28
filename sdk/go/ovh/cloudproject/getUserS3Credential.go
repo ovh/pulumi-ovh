@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project's user.
 //
 // ## Example Usage
 func GetUserS3Credential(ctx *pulumi.Context, args *GetUserS3CredentialArgs, opts ...pulumi.InvokeOption) (*GetUserS3CredentialResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUserS3CredentialResult
 	err := ctx.Invoke("ovh:CloudProject/getUserS3Credential:getUserS3Credential", args, &rv, opts...)
 	if err != nil {

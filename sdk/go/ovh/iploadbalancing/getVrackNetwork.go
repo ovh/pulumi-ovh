@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
 //
 // ## Example Usage
 func LookupVrackNetwork(ctx *pulumi.Context, args *LookupVrackNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVrackNetworkResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVrackNetworkResult
 	err := ctx.Invoke("ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork", args, &rv, opts...)
 	if err != nil {

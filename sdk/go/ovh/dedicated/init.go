@@ -8,7 +8,7 @@ import (
 
 	"github.com/blang/semver"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/scraly/pulumi-ovh/sdk/go/ovh"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 type module struct {
@@ -46,7 +46,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 }
 
 func init() {
-	version, err := ovh.PkgVersion()
+	version, err := internal.PkgVersion()
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}

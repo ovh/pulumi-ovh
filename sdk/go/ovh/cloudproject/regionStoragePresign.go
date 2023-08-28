@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Generates a temporary presigned S3 URLs to download or upload an object.
@@ -59,7 +60,7 @@ func NewRegionStoragePresign(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionStoragePresign
 	err := ctx.RegisterResource("ovh:CloudProject/regionStoragePresign:RegionStoragePresign", name, args, &resource, opts...)
 	if err != nil {

@@ -471,6 +471,10 @@ class HttpFarmServer(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: Address of the backend server (IP from either internal or OVHcloud network)
@@ -496,6 +500,10 @@ class HttpFarmServer(pulumi.CustomResource):
         Creates a backend server entry linked to HTTP loadbalancing group (farm)
 
         ## Example Usage
+
+        ## Import
+
+        HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param HttpFarmServerArgs args: The arguments to use to populate this resource's properties.

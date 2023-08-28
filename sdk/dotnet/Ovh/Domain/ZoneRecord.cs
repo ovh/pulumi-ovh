@@ -27,7 +27,7 @@ namespace Scraly.PulumiPackage.Ovh.Domain
         public Output<string> Fieldtype { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the record
+        /// The name of the record. It can be an empty string.
         /// </summary>
         [Output("subdomain")]
         public Output<string?> Subdomain { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Scraly.PulumiPackage.Ovh.Domain
         public Input<string> Fieldtype { get; set; } = null!;
 
         /// <summary>
-        /// The name of the record
+        /// The name of the record. It can be an empty string.
         /// </summary>
         [Input("subdomain")]
         public Input<string>? Subdomain { get; set; }
@@ -142,7 +142,7 @@ namespace Scraly.PulumiPackage.Ovh.Domain
         public Input<string>? Fieldtype { get; set; }
 
         /// <summary>
-        /// The name of the record
+        /// The name of the record. It can be an empty string.
         /// </summary>
         [Input("subdomain")]
         public Input<string>? Subdomain { get; set; }

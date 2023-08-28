@@ -9,10 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to list the IAM action associated with a resource type.
  *
- * ## Important
- *
- * > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
- *
  * ## Example Usage
  */
 export function getReferenceActions(args: GetReferenceActionsArgs, opts?: pulumi.InvokeOptions): Promise<GetReferenceActionsResult> {
@@ -49,10 +45,6 @@ export interface GetReferenceActionsResult {
 }
 /**
  * Use this data source to list the IAM action associated with a resource type.
- *
- * ## Important
- *
- * > Using this resource requires that the account is enrolled in the OVHcloud [IAM beta](https://labs.ovhcloud.com/en/iam/)
  *
  * ## Example Usage
  */

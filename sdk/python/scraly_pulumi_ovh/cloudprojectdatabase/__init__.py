@@ -17,6 +17,8 @@ from .get_databases import *
 from .get_ip_restrictions import *
 from .get_kafka_acl import *
 from .get_kafka_acls import *
+from .get_kafka_schema_registry_acl import *
+from .get_kafka_schema_registry_acls import *
 from .get_kafka_topic import *
 from .get_kafka_topics import *
 from .get_kafka_user_access import *
@@ -26,6 +28,7 @@ from .get_users import *
 from .integration import *
 from .ip_restriction import *
 from .kafka_acl import *
+from .kafka_schema_registry_acl import *
 from .kafka_topic import *
 from .m3_db_namespace import *
 from .m3_db_user import *

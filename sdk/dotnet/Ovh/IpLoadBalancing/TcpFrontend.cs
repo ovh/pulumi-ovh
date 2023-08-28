@@ -14,6 +14,10 @@ namespace Scraly.PulumiPackage.Ovh.IpLoadBalancing
     /// Creates a backend server group (frontend) to be used by loadbalancing frontend(s)
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/tcpFrontend:TcpFrontend")]
     public partial class TcpFrontend : global::Pulumi.CustomResource

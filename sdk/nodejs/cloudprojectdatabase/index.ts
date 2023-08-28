@@ -65,6 +65,16 @@ export const getKafkaAcls: typeof import("./getKafkaAcls").getKafkaAcls = null a
 export const getKafkaAclsOutput: typeof import("./getKafkaAcls").getKafkaAclsOutput = null as any;
 utilities.lazyLoad(exports, ["getKafkaAcls","getKafkaAclsOutput"], () => require("./getKafkaAcls"));
 
+export { GetKafkaSchemaRegistryAclArgs, GetKafkaSchemaRegistryAclResult, GetKafkaSchemaRegistryAclOutputArgs } from "./getKafkaSchemaRegistryAcl";
+export const getKafkaSchemaRegistryAcl: typeof import("./getKafkaSchemaRegistryAcl").getKafkaSchemaRegistryAcl = null as any;
+export const getKafkaSchemaRegistryAclOutput: typeof import("./getKafkaSchemaRegistryAcl").getKafkaSchemaRegistryAclOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaSchemaRegistryAcl","getKafkaSchemaRegistryAclOutput"], () => require("./getKafkaSchemaRegistryAcl"));
+
+export { GetKafkaSchemaRegistryAclsArgs, GetKafkaSchemaRegistryAclsResult, GetKafkaSchemaRegistryAclsOutputArgs } from "./getKafkaSchemaRegistryAcls";
+export const getKafkaSchemaRegistryAcls: typeof import("./getKafkaSchemaRegistryAcls").getKafkaSchemaRegistryAcls = null as any;
+export const getKafkaSchemaRegistryAclsOutput: typeof import("./getKafkaSchemaRegistryAcls").getKafkaSchemaRegistryAclsOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaSchemaRegistryAcls","getKafkaSchemaRegistryAclsOutput"], () => require("./getKafkaSchemaRegistryAcls"));
+
 export { GetKafkaTopicArgs, GetKafkaTopicResult, GetKafkaTopicOutputArgs } from "./getKafkaTopic";
 export const getKafkaTopic: typeof import("./getKafkaTopic").getKafkaTopic = null as any;
 export const getKafkaTopicOutput: typeof import("./getKafkaTopic").getKafkaTopicOutput = null as any;
@@ -109,6 +119,11 @@ export { KafkaAclArgs, KafkaAclState } from "./kafkaAcl";
 export type KafkaAcl = import("./kafkaAcl").KafkaAcl;
 export const KafkaAcl: typeof import("./kafkaAcl").KafkaAcl = null as any;
 utilities.lazyLoad(exports, ["KafkaAcl"], () => require("./kafkaAcl"));
+
+export { KafkaSchemaRegistryAclArgs, KafkaSchemaRegistryAclState } from "./kafkaSchemaRegistryAcl";
+export type KafkaSchemaRegistryAcl = import("./kafkaSchemaRegistryAcl").KafkaSchemaRegistryAcl;
+export const KafkaSchemaRegistryAcl: typeof import("./kafkaSchemaRegistryAcl").KafkaSchemaRegistryAcl = null as any;
+utilities.lazyLoad(exports, ["KafkaSchemaRegistryAcl"], () => require("./kafkaSchemaRegistryAcl"));
 
 export { KafkaTopicArgs, KafkaTopicState } from "./kafkaTopic";
 export type KafkaTopic = import("./kafkaTopic").KafkaTopic;
@@ -168,6 +183,8 @@ const _module = {
                 return new IpRestriction(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl":
                 return new KafkaAcl(name, <any>undefined, { urn })
+            case "ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl":
+                return new KafkaSchemaRegistryAcl(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic":
                 return new KafkaTopic(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace":
@@ -195,6 +212,7 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/databaseInsta
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/integration", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/ipRestriction", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/kafkaAcl", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/kafkaSchemaRegistryAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/kafkaTopic", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/m3DbNamespace", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/m3DbUser", _module)

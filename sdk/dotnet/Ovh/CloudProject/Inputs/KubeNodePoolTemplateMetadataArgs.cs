@@ -13,7 +13,7 @@ namespace Scraly.PulumiPackage.Ovh.CloudProject.Inputs
 
     public sealed class KubeNodePoolTemplateMetadataArgs : global::Pulumi.ResourceArgs
     {
-        [Input("annotations")]
+        [Input("annotations", required: true)]
         private InputMap<string>? _annotations;
 
         /// <summary>
@@ -25,11 +25,11 @@ namespace Scraly.PulumiPackage.Ovh.CloudProject.Inputs
             set => _annotations = value;
         }
 
-        [Input("finalizers")]
+        [Input("finalizers", required: true)]
         private InputList<string>? _finalizers;
 
         /// <summary>
-        /// Finalizers to apply to each node
+        /// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
         /// </summary>
         public InputList<string> Finalizers
         {
@@ -37,7 +37,7 @@ namespace Scraly.PulumiPackage.Ovh.CloudProject.Inputs
             set => _finalizers = value;
         }
 
-        [Input("labels")]
+        [Input("labels", required: true)]
         private InputMap<string>? _labels;
 
         /// <summary>

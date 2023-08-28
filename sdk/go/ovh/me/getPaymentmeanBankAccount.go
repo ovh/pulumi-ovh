@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve information about a bank account
@@ -15,7 +16,7 @@ import (
 //
 // ## Example Usage
 func GetPaymentmeanBankAccount(ctx *pulumi.Context, args *GetPaymentmeanBankAccountArgs, opts ...pulumi.InvokeOption) (*GetPaymentmeanBankAccountResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPaymentmeanBankAccountResult
 	err := ctx.Invoke("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", args, &rv, opts...)
 	if err != nil {
