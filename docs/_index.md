@@ -49,10 +49,22 @@ pulumi.export("version", my_kube_cluster.version)
 {{% choosable language typescript %}}
 
 ```typescript
-TODO
+import * as pulumi from "@pulumi/pulumi";
+
+import * as ovh from "@scraly/pulumi-ovh"
+
+let config = new pulumi.Config();
+let serviceName = config.require("serviceName")
+
+console.log(serviceName)
+
+// Get a Kubernetes cluster version
+let myKubeCluster = ovh.cloudproject.getKube({
+    serviceName: serviceName,
+    kubeId: "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
+}) 
 ```
 
 {{% /choosable %}}
 
 {{< /chooser >}}
-
