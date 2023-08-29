@@ -6,7 +6,7 @@ The OVH Resource Provider lets you manage [OVHcloud](https://www.ovhcloud.com/en
 [![GoDoc](https://godoc.org/github.com/scraly/pulumi-ovh?status.svg)](https://godoc.org/github.com/scraly/pulumi-ovh)
 [![NPM version](https://badge.fury.io/js/@scraly%2Fpulumi-ovh.svg)](https://badge.fury.io/js/@scraly%2Fpulumi-ovh)
 [![PyPI version](https://badge.fury.io/py/scraly-pulumi-ovh.svg)](https://badge.fury.io/py/scraly-pulumi-ovh)
-[![NuGet version](https://badge.fury.io/nu/Scraly.PulumiPackage.Ovh.svg)](https://badge.fury.io/nu/Scraly.PulumiPackage.Ovh)
+[![NuGet version](https://badge.fury.io/nu/Pulumi.Ovh.svg)](https://badge.fury.io/nu/Pulumi.Ovh)
 <a href="https://gitpod.io/#https://github.com/scraly/pulumi-ovh"><img src="https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod" alt="Contribute with Gitpod"/></a>
 
 ## Usage
@@ -48,7 +48,7 @@ go get github.com/scraly/pulumi-ovh/sdk/go/...
 To use from .NET, install using `dotnet add package`:
 
 ```bash
-dotnet add package Scraly.PulumiPackage.Ovh
+dotnet add package Pulumi.Ovh
 ```
 
 ## Configuration

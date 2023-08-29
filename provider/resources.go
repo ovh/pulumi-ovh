@@ -699,7 +699,7 @@ func Provider() tfbridge.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
-			RootNamespace: "Scraly.PulumiPackage",
+			RootNamespace: "Pulumi",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
