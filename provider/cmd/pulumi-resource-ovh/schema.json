@@ -22,7 +22,7 @@
                 "Pulumi": "3.*"
             },
             "compatibility": "tfbridge20",
-            "rootNamespace": "Scraly.PulumiPackage"
+            "rootNamespace": "Pulumi"
         },
         "go": {
             "importBasePath": "github.com/scraly/pulumi-ovh/sdk/go/ovh",

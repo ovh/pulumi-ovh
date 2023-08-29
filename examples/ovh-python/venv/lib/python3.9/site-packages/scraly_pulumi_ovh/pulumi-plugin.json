@@ -1,0 +1,5 @@
+{
+  "resource": true,
+  "name": "ovh",
+  "server": "github://api.github.com/scraly/pulumi-ovh"
+}

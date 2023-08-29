@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Scraly.PulumiPackage.Ovh
+namespace Pulumi.Ovh
 {
     public static class Config
     {
