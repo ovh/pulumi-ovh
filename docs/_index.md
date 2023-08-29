@@ -30,6 +30,7 @@ ctx.Export("kubeconfig", pulumi.ToSecret(myKube.Kubeconfig))
 {{% choosable language python %}}
 
 ```python
+"""Get a Kubernetes cluster version"""
 import pulumi
 import scraly_pulumi_ovh as ovh
 
@@ -38,8 +39,8 @@ service_name = config.require('serviceName')
 
 print(service_name);
 
-my_kube_cluster = cloudproject.get_kube(service_name,
-    kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx");
+my_kube_cluster = ovh.cloudproject.get_kube(service_name=service_name,
+    kube_id="xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx");
 pulumi.export("version", my_kube_cluster.version)
 ```
 
