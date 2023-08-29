@@ -4,6 +4,10 @@ meta_desc: Information on how to install the OVH provider.
 layout: installation
 ---
 
+## Information
+
+Note that the [lbrlabs Pulumi OVH provider](https://github.com/lbrlabs/pulumi-ovh) is replaced by this official one.
+
 ## Installation
 
 The Pulumi `OVH` provider is available as a package in all Pulumi languages:

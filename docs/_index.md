@@ -7,6 +7,10 @@ layout: overview
 The `OVH` provider for Pulumi can be used to provision any of the resources available in [OVHcloud](https://www.ovhcloud.com/fr/).
 The `OVH` provider must be configured with credentials to deploy and update resources in `OVH`.
 
+## Information
+
+Note that the [lbrlabs Pulumi OVH provider](https://github.com/lbrlabs/pulumi-ovh) is replaced by this official one.
+
 ## Example
 
 {{< chooser language "go,typescript,python" >}}
