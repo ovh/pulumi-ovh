@@ -1,0 +1,5 @@
+name: ovh-typescript
+runtime: nodejs
+description: A minimal TypeScript Pulumi program
+config:
+  serviceName: <your-service-name>

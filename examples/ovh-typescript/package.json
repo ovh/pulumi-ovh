@@ -1,0 +1,11 @@
+{
+    "name": "ovh-typescript",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^16"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.0.0",
+        "@scraly/pulumi-ovh": "^0.33.0"
+    }
+}
