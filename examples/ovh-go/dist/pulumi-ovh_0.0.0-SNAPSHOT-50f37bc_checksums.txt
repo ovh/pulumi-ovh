@@ -1,8 +1,0 @@
-2d45107695b0adaeec4123663a6cc1079aaff529678a19cb6ed77d389f99f36e  pulumi-ovh_0.0.0-SNAPSHOT-50f37bc_windows_386.tar.gz
-3143ac17776c67ad748d99ec56034293478270495ee266ca3ef15d35bf70b25f  pulumi-ovh_0.0.0-SNAPSHOT-50f37bc_linux_arm64.tar.gz
-545a8ae76426c1c9f400e3bc7933a6205af51f379e09a76c5801177d4d6b2dff  pulumi-ovh_0.0.0-SNAPSHOT-50f37bc_windows_arm64.tar.gz
-7288b70db9467ed63d9c4be4986cd0e4bfe508d785cbc18b41af62b0cdb48a9a  pulumi-ovh_0.0.0-SNAPSHOT-50f37bc_darwin_arm64.tar.gz
-8748b2c4f239f05b9e87f2740f39c9bee309837265bca9a2d1002871ee596d45  pulumi-ovh_0.0.0-SNAPSHOT-50f37bc_linux_amd64.tar.gz
-c54b4aa56d482c1066bed2877af1011fdd2dd60778e8197184c5a2014f632ab7  pulumi-ovh_0.0.0-SNAPSHOT-50f37bc_windows_amd64.tar.gz
-f095d6781c3f68e9b7f7eb9ca52f11a5144b7b7c5eb03af662de64f2fea89207  pulumi-ovh_0.0.0-SNAPSHOT-50f37bc_darwin_amd64.tar.gz
-fd93b8038473ad376cf038358129c577cfbc692ad6f82aeb16768fe15fd90f9a  pulumi-ovh_0.0.0-SNAPSHOT-50f37bc_linux_386.tar.gz
