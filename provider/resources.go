@@ -683,7 +683,7 @@ func Provider() tfbridge.ProviderInfo {
 			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
-			PackageName: "scraly_pulumi_ovh",
+			PackageName: "pulumi_ovh",
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",

@@ -50,7 +50,7 @@
             "disableUnionOutputTypes": true
         },
         "python": {
-            "packageName": "scraly_pulumi_ovh",
+            "packageName": "pulumi_ovh",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             },

@@ -1,7 +1,7 @@
 """A Python Pulumi program"""
 
 import pulumi
-import scraly_pulumi_ovh as ovh
+import pulumi_ovh as ovh
 
 config = pulumi.Config();
 service_name = config.require('serviceName')

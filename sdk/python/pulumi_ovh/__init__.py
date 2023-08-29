@@ -14,49 +14,49 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import scraly_pulumi_ovh.cloudproject as __cloudproject
+    import pulumi_ovh.cloudproject as __cloudproject
     cloudproject = __cloudproject
-    import scraly_pulumi_ovh.cloudprojectdatabase as __cloudprojectdatabase
+    import pulumi_ovh.cloudprojectdatabase as __cloudprojectdatabase
     cloudprojectdatabase = __cloudprojectdatabase
-    import scraly_pulumi_ovh.config as __config
+    import pulumi_ovh.config as __config
     config = __config
-    import scraly_pulumi_ovh.dbaas as __dbaas
+    import pulumi_ovh.dbaas as __dbaas
     dbaas = __dbaas
-    import scraly_pulumi_ovh.dedicated as __dedicated
+    import pulumi_ovh.dedicated as __dedicated
     dedicated = __dedicated
-    import scraly_pulumi_ovh.domain as __domain
+    import pulumi_ovh.domain as __domain
     domain = __domain
-    import scraly_pulumi_ovh.hosting as __hosting
+    import pulumi_ovh.hosting as __hosting
     hosting = __hosting
-    import scraly_pulumi_ovh.iam as __iam
+    import pulumi_ovh.iam as __iam
     iam = __iam
-    import scraly_pulumi_ovh.ip as __ip
+    import pulumi_ovh.ip as __ip
     ip = __ip
-    import scraly_pulumi_ovh.iploadbalancing as __iploadbalancing
+    import pulumi_ovh.iploadbalancing as __iploadbalancing
     iploadbalancing = __iploadbalancing
-    import scraly_pulumi_ovh.me as __me
+    import pulumi_ovh.me as __me
     me = __me
-    import scraly_pulumi_ovh.order as __order
+    import pulumi_ovh.order as __order
     order = __order
-    import scraly_pulumi_ovh.vps as __vps
+    import pulumi_ovh.vps as __vps
     vps = __vps
-    import scraly_pulumi_ovh.vrack as __vrack
+    import pulumi_ovh.vrack as __vrack
     vrack = __vrack
 else:
-    cloudproject = _utilities.lazy_import('scraly_pulumi_ovh.cloudproject')
-    cloudprojectdatabase = _utilities.lazy_import('scraly_pulumi_ovh.cloudprojectdatabase')
-    config = _utilities.lazy_import('scraly_pulumi_ovh.config')
-    dbaas = _utilities.lazy_import('scraly_pulumi_ovh.dbaas')
-    dedicated = _utilities.lazy_import('scraly_pulumi_ovh.dedicated')
-    domain = _utilities.lazy_import('scraly_pulumi_ovh.domain')
-    hosting = _utilities.lazy_import('scraly_pulumi_ovh.hosting')
-    iam = _utilities.lazy_import('scraly_pulumi_ovh.iam')
-    ip = _utilities.lazy_import('scraly_pulumi_ovh.ip')
-    iploadbalancing = _utilities.lazy_import('scraly_pulumi_ovh.iploadbalancing')
-    me = _utilities.lazy_import('scraly_pulumi_ovh.me')
-    order = _utilities.lazy_import('scraly_pulumi_ovh.order')
-    vps = _utilities.lazy_import('scraly_pulumi_ovh.vps')
-    vrack = _utilities.lazy_import('scraly_pulumi_ovh.vrack')
+    cloudproject = _utilities.lazy_import('pulumi_ovh.cloudproject')
+    cloudprojectdatabase = _utilities.lazy_import('pulumi_ovh.cloudprojectdatabase')
+    config = _utilities.lazy_import('pulumi_ovh.config')
+    dbaas = _utilities.lazy_import('pulumi_ovh.dbaas')
+    dedicated = _utilities.lazy_import('pulumi_ovh.dedicated')
+    domain = _utilities.lazy_import('pulumi_ovh.domain')
+    hosting = _utilities.lazy_import('pulumi_ovh.hosting')
+    iam = _utilities.lazy_import('pulumi_ovh.iam')
+    ip = _utilities.lazy_import('pulumi_ovh.ip')
+    iploadbalancing = _utilities.lazy_import('pulumi_ovh.iploadbalancing')
+    me = _utilities.lazy_import('pulumi_ovh.me')
+    order = _utilities.lazy_import('pulumi_ovh.order')
+    vps = _utilities.lazy_import('pulumi_ovh.vps')
+    vrack = _utilities.lazy_import('pulumi_ovh.vrack')
 
 _utilities.register(
     resource_modules="""
@@ -64,7 +64,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/containerRegistry",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/containerRegistry:ContainerRegistry": "ContainerRegistry"
   }
@@ -72,7 +72,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/containerRegistryUser",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/containerRegistryUser:ContainerRegistryUser": "ContainerRegistryUser"
   }
@@ -80,7 +80,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/database",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/database:Database": "Database"
   }
@@ -88,7 +88,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/failoverIpAttach",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/failoverIpAttach:FailoverIpAttach": "FailoverIpAttach"
   }
@@ -96,7 +96,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/kube",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/kube:Kube": "Kube"
   }
@@ -104,7 +104,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/kubeIpRestrictions",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions": "KubeIpRestrictions"
   }
@@ -112,7 +112,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/kubeNodePool",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/kubeNodePool:KubeNodePool": "KubeNodePool"
   }
@@ -120,7 +120,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/kubeOidc",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/kubeOidc:KubeOidc": "KubeOidc"
   }
@@ -128,7 +128,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/networkPrivate",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/networkPrivate:NetworkPrivate": "NetworkPrivate"
   }
@@ -136,7 +136,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/networkPrivateSubnet",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet": "NetworkPrivateSubnet"
   }
@@ -144,7 +144,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/project",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/project:Project": "Project"
   }
@@ -152,7 +152,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/regionStoragePresign",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/regionStoragePresign:RegionStoragePresign": "RegionStoragePresign"
   }
@@ -160,7 +160,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/s3Credential",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/s3Credential:S3Credential": "S3Credential"
   }
@@ -168,7 +168,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/s3Policy",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/s3Policy:S3Policy": "S3Policy"
   }
@@ -176,7 +176,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/user",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/user:User": "User"
   }
@@ -184,7 +184,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProject/workflowBackup",
-  "fqn": "scraly_pulumi_ovh.cloudproject",
+  "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/workflowBackup:WorkflowBackup": "WorkflowBackup"
   }
@@ -192,7 +192,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/databaseInstance",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance": "DatabaseInstance"
   }
@@ -200,7 +200,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/integration",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/integration:Integration": "Integration"
   }
@@ -208,7 +208,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/ipRestriction",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/ipRestriction:IpRestriction": "IpRestriction"
   }
@@ -216,7 +216,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/kafkaAcl",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl": "KafkaAcl"
   }
@@ -224,7 +224,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/kafkaSchemaRegistryAcl",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": "KafkaSchemaRegistryAcl"
   }
@@ -232,7 +232,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/kafkaTopic",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic": "KafkaTopic"
   }
@@ -240,7 +240,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/m3DbNamespace",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace": "M3DbNamespace"
   }
@@ -248,7 +248,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/m3DbUser",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/m3DbUser:M3DbUser": "M3DbUser"
   }
@@ -256,7 +256,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/mongoDbUser",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser": "MongoDbUser"
   }
@@ -264,7 +264,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/opensearchPattern",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern": "OpensearchPattern"
   }
@@ -272,7 +272,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/opensearchUser",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/opensearchUser:OpensearchUser": "OpensearchUser"
   }
@@ -280,7 +280,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/postgresSqlUser",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser": "PostgresSqlUser"
   }
@@ -288,7 +288,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/redisUser",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/redisUser:RedisUser": "RedisUser"
   }
@@ -296,7 +296,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "CloudProjectDatabase/user",
-  "fqn": "scraly_pulumi_ovh.cloudprojectdatabase",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/user:User": "User"
   }
@@ -304,7 +304,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Dbaas/logsCluster",
-  "fqn": "scraly_pulumi_ovh.dbaas",
+  "fqn": "pulumi_ovh.dbaas",
   "classes": {
    "ovh:Dbaas/logsCluster:LogsCluster": "LogsCluster"
   }
@@ -312,7 +312,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Dbaas/logsInput",
-  "fqn": "scraly_pulumi_ovh.dbaas",
+  "fqn": "pulumi_ovh.dbaas",
   "classes": {
    "ovh:Dbaas/logsInput:LogsInput": "LogsInput"
   }
@@ -320,7 +320,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Dbaas/logsOutputGraylogStream",
-  "fqn": "scraly_pulumi_ovh.dbaas",
+  "fqn": "pulumi_ovh.dbaas",
   "classes": {
    "ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream": "LogsOutputGraylogStream"
   }
@@ -328,7 +328,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Dedicated/cephAcl",
-  "fqn": "scraly_pulumi_ovh.dedicated",
+  "fqn": "pulumi_ovh.dedicated",
   "classes": {
    "ovh:Dedicated/cephAcl:CephAcl": "CephAcl"
   }
@@ -336,7 +336,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Dedicated/nasHAPartition",
-  "fqn": "scraly_pulumi_ovh.dedicated",
+  "fqn": "pulumi_ovh.dedicated",
   "classes": {
    "ovh:Dedicated/nasHAPartition:NasHAPartition": "NasHAPartition"
   }
@@ -344,7 +344,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Dedicated/nasHAPartitionAccess",
-  "fqn": "scraly_pulumi_ovh.dedicated",
+  "fqn": "pulumi_ovh.dedicated",
   "classes": {
    "ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess": "NasHAPartitionAccess"
   }
@@ -352,7 +352,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Dedicated/nasHAPartitionSnapshot",
-  "fqn": "scraly_pulumi_ovh.dedicated",
+  "fqn": "pulumi_ovh.dedicated",
   "classes": {
    "ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot": "NasHAPartitionSnapshot"
   }
@@ -360,7 +360,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Dedicated/serverInstallTask",
-  "fqn": "scraly_pulumi_ovh.dedicated",
+  "fqn": "pulumi_ovh.dedicated",
   "classes": {
    "ovh:Dedicated/serverInstallTask:ServerInstallTask": "ServerInstallTask"
   }
@@ -368,7 +368,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Dedicated/serverNetworking",
-  "fqn": "scraly_pulumi_ovh.dedicated",
+  "fqn": "pulumi_ovh.dedicated",
   "classes": {
    "ovh:Dedicated/serverNetworking:ServerNetworking": "ServerNetworking"
   }
@@ -376,7 +376,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Dedicated/serverRebootTask",
-  "fqn": "scraly_pulumi_ovh.dedicated",
+  "fqn": "pulumi_ovh.dedicated",
   "classes": {
    "ovh:Dedicated/serverRebootTask:ServerRebootTask": "ServerRebootTask"
   }
@@ -384,7 +384,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Dedicated/serverUpdate",
-  "fqn": "scraly_pulumi_ovh.dedicated",
+  "fqn": "pulumi_ovh.dedicated",
   "classes": {
    "ovh:Dedicated/serverUpdate:ServerUpdate": "ServerUpdate"
   }
@@ -392,7 +392,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Domain/zone",
-  "fqn": "scraly_pulumi_ovh.domain",
+  "fqn": "pulumi_ovh.domain",
   "classes": {
    "ovh:Domain/zone:Zone": "Zone"
   }
@@ -400,7 +400,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Domain/zoneRecord",
-  "fqn": "scraly_pulumi_ovh.domain",
+  "fqn": "pulumi_ovh.domain",
   "classes": {
    "ovh:Domain/zoneRecord:ZoneRecord": "ZoneRecord"
   }
@@ -408,7 +408,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Domain/zoneRedirection",
-  "fqn": "scraly_pulumi_ovh.domain",
+  "fqn": "pulumi_ovh.domain",
   "classes": {
    "ovh:Domain/zoneRedirection:ZoneRedirection": "ZoneRedirection"
   }
@@ -416,7 +416,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Hosting/privateDatabase",
-  "fqn": "scraly_pulumi_ovh.hosting",
+  "fqn": "pulumi_ovh.hosting",
   "classes": {
    "ovh:Hosting/privateDatabase:PrivateDatabase": "PrivateDatabase"
   }
@@ -424,7 +424,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Hosting/privateDatabaseAllowlist",
-  "fqn": "scraly_pulumi_ovh.hosting",
+  "fqn": "pulumi_ovh.hosting",
   "classes": {
    "ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist": "PrivateDatabaseAllowlist"
   }
@@ -432,7 +432,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Hosting/privateDatabaseDb",
-  "fqn": "scraly_pulumi_ovh.hosting",
+  "fqn": "pulumi_ovh.hosting",
   "classes": {
    "ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb": "PrivateDatabaseDb"
   }
@@ -440,7 +440,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Hosting/privateDatabaseUser",
-  "fqn": "scraly_pulumi_ovh.hosting",
+  "fqn": "pulumi_ovh.hosting",
   "classes": {
    "ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser": "PrivateDatabaseUser"
   }
@@ -448,7 +448,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Hosting/privateDatabaseUserGrant",
-  "fqn": "scraly_pulumi_ovh.hosting",
+  "fqn": "pulumi_ovh.hosting",
   "classes": {
    "ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant": "PrivateDatabaseUserGrant"
   }
@@ -456,7 +456,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Iam/policy",
-  "fqn": "scraly_pulumi_ovh.iam",
+  "fqn": "pulumi_ovh.iam",
   "classes": {
    "ovh:Iam/policy:Policy": "Policy"
   }
@@ -464,7 +464,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Ip/ipService",
-  "fqn": "scraly_pulumi_ovh.ip",
+  "fqn": "pulumi_ovh.ip",
   "classes": {
    "ovh:Ip/ipService:IpService": "IpService"
   }
@@ -472,7 +472,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Ip/reverse",
-  "fqn": "scraly_pulumi_ovh.ip",
+  "fqn": "pulumi_ovh.ip",
   "classes": {
    "ovh:Ip/reverse:Reverse": "Reverse"
   }
@@ -480,7 +480,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/httpFarm",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/httpFarm:HttpFarm": "HttpFarm"
   }
@@ -488,7 +488,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/httpFarmServer",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/httpFarmServer:HttpFarmServer": "HttpFarmServer"
   }
@@ -496,7 +496,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/httpFrontend",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/httpFrontend:HttpFrontend": "HttpFrontend"
   }
@@ -504,7 +504,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/httpRoute",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/httpRoute:HttpRoute": "HttpRoute"
   }
@@ -512,7 +512,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/httpRouteRule",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule": "HttpRouteRule"
   }
@@ -520,7 +520,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/loadBalancer",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/loadBalancer:LoadBalancer": "LoadBalancer"
   }
@@ -528,7 +528,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/refresh",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/refresh:Refresh": "Refresh"
   }
@@ -536,7 +536,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/tcpFarm",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/tcpFarm:TcpFarm": "TcpFarm"
   }
@@ -544,7 +544,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/tcpFarmServer",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/tcpFarmServer:TcpFarmServer": "TcpFarmServer"
   }
@@ -552,7 +552,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/tcpFrontend",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/tcpFrontend:TcpFrontend": "TcpFrontend"
   }
@@ -560,7 +560,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/tcpRoute",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/tcpRoute:TcpRoute": "TcpRoute"
   }
@@ -568,7 +568,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/tcpRouteRule",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule": "TcpRouteRule"
   }
@@ -576,7 +576,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "IpLoadBalancing/vrackNetwork",
-  "fqn": "scraly_pulumi_ovh.iploadbalancing",
+  "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/vrackNetwork:VrackNetwork": "VrackNetwork"
   }
@@ -584,7 +584,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Me/identityGroup",
-  "fqn": "scraly_pulumi_ovh.me",
+  "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/identityGroup:IdentityGroup": "IdentityGroup"
   }
@@ -592,7 +592,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Me/identityUser",
-  "fqn": "scraly_pulumi_ovh.me",
+  "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/identityUser:IdentityUser": "IdentityUser"
   }
@@ -600,7 +600,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Me/installationTemplate",
-  "fqn": "scraly_pulumi_ovh.me",
+  "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/installationTemplate:InstallationTemplate": "InstallationTemplate"
   }
@@ -608,7 +608,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Me/installationTemplatePartitionScheme",
-  "fqn": "scraly_pulumi_ovh.me",
+  "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme": "InstallationTemplatePartitionScheme"
   }
@@ -616,7 +616,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Me/installationTemplatePartitionSchemeHardwareRaid",
-  "fqn": "scraly_pulumi_ovh.me",
+  "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid": "InstallationTemplatePartitionSchemeHardwareRaid"
   }
@@ -624,7 +624,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Me/installationTemplatePartitionSchemePartition",
-  "fqn": "scraly_pulumi_ovh.me",
+  "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition": "InstallationTemplatePartitionSchemePartition"
   }
@@ -632,7 +632,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Me/ipxeScript",
-  "fqn": "scraly_pulumi_ovh.me",
+  "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/ipxeScript:IpxeScript": "IpxeScript"
   }
@@ -640,7 +640,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Me/sshKey",
-  "fqn": "scraly_pulumi_ovh.me",
+  "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/sshKey:SshKey": "SshKey"
   }
@@ -648,7 +648,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Vrack/cloudProject",
-  "fqn": "scraly_pulumi_ovh.vrack",
+  "fqn": "pulumi_ovh.vrack",
   "classes": {
    "ovh:Vrack/cloudProject:CloudProject": "CloudProject"
   }
@@ -656,7 +656,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Vrack/dedicatedServer",
-  "fqn": "scraly_pulumi_ovh.vrack",
+  "fqn": "pulumi_ovh.vrack",
   "classes": {
    "ovh:Vrack/dedicatedServer:DedicatedServer": "DedicatedServer"
   }
@@ -664,7 +664,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Vrack/dedicatedServerInterface",
-  "fqn": "scraly_pulumi_ovh.vrack",
+  "fqn": "pulumi_ovh.vrack",
   "classes": {
    "ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface": "DedicatedServerInterface"
   }
@@ -672,7 +672,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Vrack/ipAddress",
-  "fqn": "scraly_pulumi_ovh.vrack",
+  "fqn": "pulumi_ovh.vrack",
   "classes": {
    "ovh:Vrack/ipAddress:IpAddress": "IpAddress"
   }
@@ -680,7 +680,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Vrack/ipLoadbalancing",
-  "fqn": "scraly_pulumi_ovh.vrack",
+  "fqn": "pulumi_ovh.vrack",
   "classes": {
    "ovh:Vrack/ipLoadbalancing:IpLoadbalancing": "IpLoadbalancing"
   }
@@ -688,7 +688,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "mod": "Vrack/vrack",
-  "fqn": "scraly_pulumi_ovh.vrack",
+  "fqn": "pulumi_ovh.vrack",
   "classes": {
    "ovh:Vrack/vrack:Vrack": "Vrack"
   }
@@ -700,7 +700,7 @@ _utilities.register(
  {
   "pkg": "ovh",
   "token": "pulumi:providers:ovh",
-  "fqn": "scraly_pulumi_ovh",
+  "fqn": "pulumi_ovh",
   "class": "Provider"
  }
 ]
