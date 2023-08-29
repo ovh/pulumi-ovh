@@ -67,6 +67,8 @@ let myKubeCluster = ovh.cloudproject.getKube({
     serviceName: serviceName,
     kubeId: "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
 }) 
+
+export const version = myKubeCluster.then(myKubeCluster => myKubeCluster.version);
 ```
 
 {{% /choosable %}}
