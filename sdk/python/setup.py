@@ -37,7 +37,7 @@ def readme():
         return "ovh Pulumi Package - Development Version"
 
 
-setup(name='scraly_pulumi_ovh',
+setup(name='pulumi_ovh',
       python_requires='>=3.7',
       version=VERSION,
       description="A Pulumi package for creating and managing OVH resources.",
@@ -54,7 +54,7 @@ setup(name='scraly_pulumi_ovh',
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'scraly_pulumi_ovh': [
+          'pulumi_ovh': [
               'py.typed',
               'pulumi-plugin.json',
           ]
