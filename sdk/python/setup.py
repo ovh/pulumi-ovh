@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'ovh', PLUGIN_VERSION, '--server', 'github://api.github.com/scraly/pulumi-ovh'])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'ovh', PLUGIN_VERSION, '--server', 'github://api.github.com/ovh/pulumi-ovh'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""
@@ -49,7 +49,7 @@ setup(name='pulumi_ovh',
       keywords='pulumi ovh category/cloud',
       url='https://www.pulumi.com',
       project_urls={
-          'Repository': 'https://github.com/scraly/pulumi-ovh'
+          'Repository': 'https://github.com/ovh/pulumi-ovh'
       },
       license='Apache-2.0',
       packages=find_packages(),

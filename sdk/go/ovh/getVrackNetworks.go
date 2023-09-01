@@ -7,8 +7,8 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.

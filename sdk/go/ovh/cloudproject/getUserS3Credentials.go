@@ -7,8 +7,8 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Use this data source to retrieve the list of all the S3 accessKeyId associated with a public cloud project's user.

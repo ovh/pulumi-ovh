@@ -7,8 +7,8 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Get the S3 Policy of a public cloud project user. The policy can be set by using the `CloudProject.S3Policy` resource.

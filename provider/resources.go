@@ -26,7 +26,7 @@ import (
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/scraly/pulumi-ovh/provider/pkg/version"
+	"github.com/ovh/pulumi-ovh/provider/pkg/version"
 )
 
 // all of the token components used below.
@@ -101,7 +101,7 @@ func Provider() tfbridge.ProviderInfo {
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "scraly",
+		Publisher: "OVHcloud",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -111,7 +111,7 @@ func Provider() tfbridge.ProviderInfo {
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "github://api.github.com/scraly/pulumi-ovh",
+		PluginDownloadURL: "github://api.github.com/ovh/pulumi-ovh",
 		Description:       "A Pulumi package for creating and managing OVH resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
@@ -119,7 +119,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:   []string{"pulumi", "ovh", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/scraly/pulumi-ovh",
+		Repository: "https://github.com/ovh/pulumi-ovh",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "ovh",
@@ -691,7 +691,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/scraly/pulumi-%[1]s/sdk/", ovhPkg),
+				fmt.Sprintf("github.com/ovh/pulumi-%[1]s/sdk/", ovhPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				ovhPkg,
@@ -705,7 +705,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Java: &tfbridge.JavaInfo{
-			BasePackage: "com.scraly",
+			BasePackage: "com.ovh",
 		},
 	}
 

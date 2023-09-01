@@ -14,13 +14,13 @@ $ export GITHUB_TOKEN="<your-gh-pat>"
 If the provider is already up to date:
 
 ```bash
-$ upgrade-provider scraly/pulumi-ovh
+$ upgrade-provider ovh/pulumi-ovh
 ---- Setting Up Environment ----
 - ✓ GOWORK="off": done
 - ✓ PULUMI_MISSING_DOCS_ERROR="false": done
 - ✓ PULUMI_CONVERT_EXAMPLES_CACHE_DIR="": done
 ---- Discovering Repository ----
-- Ensure 'github.com/scraly/pulumi-ovh'
+- Ensure 'github.com/ovh/pulumi-ovh'
   - ✓ Expected Location: /workspace/pulumi-ovh
   - ✓ Downloading: skipped - already exists
   - ✓ Validating: done
@@ -38,13 +38,13 @@ In this case, OK nothing to do :)
 
 If the provider need to be upgraded:
 ```bash
-$ upgrade-provider scraly/pulumi-ovh
+$ upgrade-provider ovh/pulumi-ovh
 ---- Setting Up Environment ----
 - ✓ GOWORK="off": done
 - ✓ PULUMI_MISSING_DOCS_ERROR="false": done
 - ✓ PULUMI_CONVERT_EXAMPLES_CACHE_DIR="": done
 ---- Discovering Repository ----
-- Ensure 'github.com/scraly/pulumi-ovh'
+- Ensure 'github.com/ovh/pulumi-ovh'
   - ✓ Expected Location: /workspaces/pulumi-ovh
   - ✓ Downloading: skipped - already exists
   - ✓ Validating: done

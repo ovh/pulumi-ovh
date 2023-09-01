@@ -8,8 +8,8 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Add a new access ACL for the given network/mask.

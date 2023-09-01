@@ -1,3 +1,3 @@
-module github.com/scraly/pulumi-ovh/examples
+module github.com/ovh/pulumi-ovh/examples
 
 go 1.20

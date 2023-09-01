@@ -4,9 +4,9 @@
 package config
 
 import (
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 var _ = internal.GetEnvOrDefault

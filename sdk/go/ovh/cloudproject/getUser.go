@@ -7,8 +7,8 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Get the user details of a previously created public cloud project user.

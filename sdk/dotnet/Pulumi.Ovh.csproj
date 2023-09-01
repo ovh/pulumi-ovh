@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>scraly</Authors>
-    <Company>scraly</Company>
+    <Authors>OVHcloud</Authors>
+    <Company>OVHcloud</Company>
     <Description>A Pulumi package for creating and managing OVH resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://www.pulumi.com</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/scraly/pulumi-ovh</RepositoryUrl>
+    <RepositoryUrl>https://github.com/ovh/pulumi-ovh</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
 
     <TargetFramework>net6.0</TargetFramework>

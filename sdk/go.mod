@@ -1,4 +1,4 @@
-module github.com/scraly/pulumi-ovh/sdk
+module github.com/ovh/pulumi-ovh/sdk
 
 go 1.20
 

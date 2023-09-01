@@ -8,8 +8,8 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/scraly/pulumi-ovh/sdk/go/ovh/internal"
 )
 
 // Provides a resource for managing access rights to partitions on HA-NAS services
