@@ -125,8 +125,8 @@ github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 h1:OkMGxebDj
 github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06/go.mod h1:+ePHsJ1keEjQtpvf9HHw0f4ZeJ0TLRsxhunSI2hYJSs=
 github.com/santhosh-tekuri/jsonschema/v5 v5.0.0 h1:TToq11gyfNlrMFZiYujSekIsPd9AmsA2Bj/iv+s4JHE=
 github.com/santhosh-tekuri/jsonschema/v5 v5.0.0/go.mod h1:FKdcjfQW6rpZSnxxUvEA5H/cDPdvJ/SZJQLWWXWGrZ0=
-github.com/scraly/pulumi-ovh/sdk v0.33.0 h1:sEkD3EUPfE+dcg8y+l0HWJ59q2rv5PemBziZbY5cDLg=
-github.com/scraly/pulumi-ovh/sdk v0.33.0/go.mod h1:O4Urx6SAaikzC12y3jgBBfZBwv2YITt6E08aonapJ60=
+github.com/ovh/pulumi-ovh/sdk v0.33.0 h1:sEkD3EUPfE+dcg8y+l0HWJ59q2rv5PemBziZbY5cDLg=
+github.com/ovh/pulumi-ovh/sdk v0.33.0/go.mod h1:O4Urx6SAaikzC12y3jgBBfZBwv2YITt6E08aonapJ60=
 github.com/sergi/go-diff v1.1.0/go.mod h1:STckp+ISIX8hZLjrqAeVduY0gWCT9IjLuqbuNXdaHfM=
 github.com/sergi/go-diff v1.2.0 h1:XU+rvMAioB0UC3q1MFrIQy4Vo5/4VsRDQQXHsEya6xQ=
 github.com/sergi/go-diff v1.2.0/go.mod h1:STckp+ISIX8hZLjrqAeVduY0gWCT9IjLuqbuNXdaHfM=

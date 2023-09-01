@@ -10,9 +10,9 @@
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`ovh` Terraform Provider](https://github.com/ovh/terraform-provider-ovh).",
-    "repository": "https://github.com/scraly/pulumi-ovh",
-    "pluginDownloadURL": "github://api.github.com/scraly/pulumi-ovh",
-    "publisher": "scraly",
+    "repository": "https://github.com/ovh/pulumi-ovh",
+    "pluginDownloadURL": "github://api.github.com/ovh/pulumi-ovh",
+    "publisher": "OVHcloud",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
     },
@@ -25,12 +25,12 @@
             "rootNamespace": "Pulumi"
         },
         "go": {
-            "importBasePath": "github.com/scraly/pulumi-ovh/sdk/go/ovh",
+            "importBasePath": "github.com/ovh/pulumi-ovh/sdk/go/ovh",
             "generateResourceContainerTypes": true,
             "generateExtraInputTypes": true
         },
         "java": {
-            "basePackage": "com.scraly",
+            "basePackage": "com.ovh",
             "buildFiles": "",
             "gradleNexusPublishPluginVersion": "",
             "gradleTest": ""
@@ -38,7 +38,7 @@
         "nodejs": {
             "packageName": "@scraly/pulumi-ovh",
             "packageDescription": "A Pulumi package for creating and managing OVH resources.",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/scraly/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/ovh/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -54,7 +54,7 @@
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             },
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/scraly/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/ovh/terraform-provider-ovh)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-ovh` repo](https://github.com/ovh/pulumi-ovh/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-ovh` repo](https://github.com/ovh/terraform-provider-ovh/issues).",
             "compatibility": "tfbridge20",
             "pyproject": {}
         }

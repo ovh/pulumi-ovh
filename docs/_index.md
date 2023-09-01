@@ -36,7 +36,7 @@ ctx.Export("kubeconfig", pulumi.ToSecret(myKube.Kubeconfig))
 ```python
 """Get a Kubernetes cluster version"""
 import pulumi
-import scraly_pulumi_ovh as ovh
+import pulumi_ovh as ovh
 
 config = pulumi.Config();
 service_name = config.require('serviceName')

@@ -156,7 +156,7 @@ namespace Pulumi.Ovh.CloudProject
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "github://api.github.com/scraly/pulumi-ovh",
+                PluginDownloadURL = "github://api.github.com/ovh/pulumi-ovh",
                 AdditionalSecretOutputs =
                 {
                     "kubeconfig",
