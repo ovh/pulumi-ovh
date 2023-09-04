@@ -1,5 +1,5 @@
 {
-    "name": "@scraly/pulumi-ovh",
+    "name": "@ovh-devrelteam/pulumi-ovh",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing OVH resources.",
     "keywords": [

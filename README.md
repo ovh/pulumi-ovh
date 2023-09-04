@@ -4,7 +4,7 @@ The OVH Resource Provider lets you manage [OVHcloud](https://www.ovhcloud.com/en
 
 <a href="https://github.com/ovh/pulumi-ovh/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/v/release/ovh/pulumi-ovh?logo=github&style=flat-square"></a>
 [![GoDoc](https://godoc.org/github.com/ovh/pulumi-ovh?status.svg)](https://godoc.org/github.com/ovh/pulumi-ovh)
-[![NPM version](https://badge.fury.io/js/@scraly%2Fpulumi-ovh.svg)](https://badge.fury.io/js/@ovh%2Fpulumi-ovh)
+[![NPM version](https://badge.fury.io/js/@ovh-devrelteam%2Fpulumi-ovh.svg)](https://badge.fury.io/js/@ovh%2Fpulumi-ovh)
 [![PyPI version](https://badge.fury.io/py/pulumi-ovh.svg)](https://badge.fury.io/py/pulumi-ovh)
 [![NuGet version](https://badge.fury.io/nu/Pulumi.Ovh.svg)](https://badge.fury.io/nu/Pulumi.Ovh)
 <a href="https://gitpod.io/#https://github.com/ovh/pulumi-ovh"><img src="https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod" alt="Contribute with Gitpod"/></a>
@@ -18,13 +18,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @scraly/pulumi-ovh
+npm install @ovh-devrelteam/pulumi-ovh
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @scraly/pulumi-ovh
+yarn add @ovh-devrelteam/pulumi-ovh
 ```
 
 ### Python
