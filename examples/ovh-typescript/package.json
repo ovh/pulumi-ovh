@@ -6,6 +6,6 @@
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.0.0",
-        "@scraly/pulumi-ovh": "^0.33.0"
+        "@ovh-devrelteam/pulumi-ovh": "^0.33.0"
     }
 }

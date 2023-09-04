@@ -55,7 +55,7 @@ pulumi.export("version", my_kube_cluster.version)
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 
-import * as ovh from "@scraly/pulumi-ovh"
+import * as ovh from "@ovh-devrelteam/pulumi-ovh"
 
 let config = new pulumi.Config();
 let serviceName = config.require("serviceName")
