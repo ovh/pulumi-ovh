@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -28,7 +29,7 @@ type IpService struct {
 	Orders IpServiceOrderArrayOutput `pulumi:"orders"`
 	// IP block organisation Id
 	OrganisationId pulumi.StringOutput `pulumi:"organisationId"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -94,7 +95,7 @@ type ipServiceState struct {
 	Orders []IpServiceOrder `pulumi:"orders"`
 	// IP block organisation Id
 	OrganisationId *string `pulumi:"organisationId"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -125,7 +126,7 @@ type IpServiceState struct {
 	Orders IpServiceOrderArrayInput
 	// IP block organisation Id
 	OrganisationId pulumi.StringPtrInput
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -150,7 +151,7 @@ func (IpServiceState) ElementType() reflect.Type {
 type ipServiceArgs struct {
 	// Custom description on your ip.
 	Description *string `pulumi:"description"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -166,7 +167,7 @@ type ipServiceArgs struct {
 type IpServiceArgs struct {
 	// Custom description on your ip.
 	Description pulumi.StringPtrInput
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode
 	//
@@ -201,6 +202,12 @@ func (i *IpService) ToIpServiceOutputWithContext(ctx context.Context) IpServiceO
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceOutput)
 }
 
+func (i *IpService) ToOutput(ctx context.Context) pulumix.Output[*IpService] {
+	return pulumix.Output[*IpService]{
+		OutputState: i.ToIpServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpServiceArrayInput is an input type that accepts IpServiceArray and IpServiceArrayOutput values.
 // You can construct a concrete instance of `IpServiceArrayInput` via:
 //
@@ -224,6 +231,12 @@ func (i IpServiceArray) ToIpServiceArrayOutput() IpServiceArrayOutput {
 
 func (i IpServiceArray) ToIpServiceArrayOutputWithContext(ctx context.Context) IpServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceArrayOutput)
+}
+
+func (i IpServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*IpService] {
+	return pulumix.Output[[]*IpService]{
+		OutputState: i.ToIpServiceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IpServiceMapInput is an input type that accepts IpServiceMap and IpServiceMapOutput values.
@@ -251,6 +264,12 @@ func (i IpServiceMap) ToIpServiceMapOutputWithContext(ctx context.Context) IpSer
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceMapOutput)
 }
 
+func (i IpServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpService] {
+	return pulumix.Output[map[string]*IpService]{
+		OutputState: i.ToIpServiceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpServiceOutput struct{ *pulumi.OutputState }
 
 func (IpServiceOutput) ElementType() reflect.Type {
@@ -263,6 +282,12 @@ func (o IpServiceOutput) ToIpServiceOutput() IpServiceOutput {
 
 func (o IpServiceOutput) ToIpServiceOutputWithContext(ctx context.Context) IpServiceOutput {
 	return o
+}
+
+func (o IpServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*IpService] {
+	return pulumix.Output[*IpService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // can be terminated
@@ -295,7 +320,7 @@ func (o IpServiceOutput) OrganisationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpService) pulumi.StringOutput { return v.OrganisationId }).(pulumi.StringOutput)
 }
 
-// OVHcloud Subsidiary
+// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 func (o IpServiceOutput) OvhSubsidiary() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpService) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
 }
@@ -346,6 +371,12 @@ func (o IpServiceArrayOutput) ToIpServiceArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o IpServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IpService] {
+	return pulumix.Output[[]*IpService]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IpServiceArrayOutput) Index(i pulumi.IntInput) IpServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IpService {
 		return vs[0].([]*IpService)[vs[1].(int)]
@@ -364,6 +395,12 @@ func (o IpServiceMapOutput) ToIpServiceMapOutput() IpServiceMapOutput {
 
 func (o IpServiceMapOutput) ToIpServiceMapOutputWithContext(ctx context.Context) IpServiceMapOutput {
 	return o
+}
+
+func (o IpServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpService] {
+	return pulumix.Output[map[string]*IpService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpServiceMapOutput) MapIndex(k pulumi.StringInput) IpServiceOutput {

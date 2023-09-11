@@ -11,5 +11,6 @@ utilities.lazyLoad(exports, ["getVps","getVpsOutput"], () => require("./getVps")
 
 export { GetVpssResult } from "./getVpss";
 export const getVpss: typeof import("./getVpss").getVpss = null as any;
-utilities.lazyLoad(exports, ["getVpss"], () => require("./getVpss"));
+export const getVpssOutput: typeof import("./getVpss").getVpssOutput = null as any;
+utilities.lazyLoad(exports, ["getVpss","getVpssOutput"], () => require("./getVpss"));
 

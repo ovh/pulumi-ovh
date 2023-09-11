@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
@@ -117,6 +118,12 @@ func (o GetServerResultOutput) ToGetServerResultOutput() GetServerResultOutput {
 
 func (o GetServerResultOutput) ToGetServerResultOutputWithContext(ctx context.Context) GetServerResultOutput {
 	return o
+}
+
+func (o GetServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerResult] {
+	return pulumix.Output[GetServerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // boot id of the server

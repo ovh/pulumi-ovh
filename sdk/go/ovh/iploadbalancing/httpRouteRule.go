@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manage rules for HTTP route.
@@ -189,6 +190,12 @@ func (i *HttpRouteRule) ToHttpRouteRuleOutputWithContext(ctx context.Context) Ht
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleOutput)
 }
 
+func (i *HttpRouteRule) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRule] {
+	return pulumix.Output[*HttpRouteRule]{
+		OutputState: i.ToHttpRouteRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HttpRouteRuleArrayInput is an input type that accepts HttpRouteRuleArray and HttpRouteRuleArrayOutput values.
 // You can construct a concrete instance of `HttpRouteRuleArrayInput` via:
 //
@@ -212,6 +219,12 @@ func (i HttpRouteRuleArray) ToHttpRouteRuleArrayOutput() HttpRouteRuleArrayOutpu
 
 func (i HttpRouteRuleArray) ToHttpRouteRuleArrayOutputWithContext(ctx context.Context) HttpRouteRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleArrayOutput)
+}
+
+func (i HttpRouteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*HttpRouteRule] {
+	return pulumix.Output[[]*HttpRouteRule]{
+		OutputState: i.ToHttpRouteRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HttpRouteRuleMapInput is an input type that accepts HttpRouteRuleMap and HttpRouteRuleMapOutput values.
@@ -239,6 +252,12 @@ func (i HttpRouteRuleMap) ToHttpRouteRuleMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMapOutput)
 }
 
+func (i HttpRouteRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpRouteRule] {
+	return pulumix.Output[map[string]*HttpRouteRule]{
+		OutputState: i.ToHttpRouteRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleOutput) ElementType() reflect.Type {
@@ -251,6 +270,12 @@ func (o HttpRouteRuleOutput) ToHttpRouteRuleOutput() HttpRouteRuleOutput {
 
 func (o HttpRouteRuleOutput) ToHttpRouteRuleOutputWithContext(ctx context.Context) HttpRouteRuleOutput {
 	return o
+}
+
+func (o HttpRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRule] {
+	return pulumix.Output[*HttpRouteRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Human readable name for your rule, this field is for you
@@ -307,6 +332,12 @@ func (o HttpRouteRuleArrayOutput) ToHttpRouteRuleArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o HttpRouteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HttpRouteRule] {
+	return pulumix.Output[[]*HttpRouteRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpRouteRuleArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HttpRouteRule {
 		return vs[0].([]*HttpRouteRule)[vs[1].(int)]
@@ -325,6 +356,12 @@ func (o HttpRouteRuleMapOutput) ToHttpRouteRuleMapOutput() HttpRouteRuleMapOutpu
 
 func (o HttpRouteRuleMapOutput) ToHttpRouteRuleMapOutputWithContext(ctx context.Context) HttpRouteRuleMapOutput {
 	return o
+}
+
+func (o HttpRouteRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpRouteRule] {
+	return pulumix.Output[map[string]*HttpRouteRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleMapOutput) MapIndex(k pulumi.StringInput) HttpRouteRuleOutput {

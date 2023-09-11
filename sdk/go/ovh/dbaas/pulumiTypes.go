@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i LogsInputConfigurationArgs) ToLogsInputConfigurationOutput() LogsInputCo
 
 func (i LogsInputConfigurationArgs) ToLogsInputConfigurationOutputWithContext(ctx context.Context) LogsInputConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogsInputConfigurationOutput)
+}
+
+func (i LogsInputConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[LogsInputConfiguration] {
+	return pulumix.Output[LogsInputConfiguration]{
+		OutputState: i.ToLogsInputConfigurationOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i LogsInputConfigurationArgs) ToLogsInputConfigurationPtrOutput() LogsInputConfigurationPtrOutput {
@@ -91,6 +98,12 @@ func (i *logsInputConfigurationPtrType) ToLogsInputConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(LogsInputConfigurationPtrOutput)
 }
 
+func (i *logsInputConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogsInputConfiguration] {
+	return pulumix.Output[*LogsInputConfiguration]{
+		OutputState: i.ToLogsInputConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogsInputConfigurationOutput struct{ *pulumi.OutputState }
 
 func (LogsInputConfigurationOutput) ElementType() reflect.Type {
@@ -115,6 +128,12 @@ func (o LogsInputConfigurationOutput) ToLogsInputConfigurationPtrOutputWithConte
 	}).(LogsInputConfigurationPtrOutput)
 }
 
+func (o LogsInputConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[LogsInputConfiguration] {
+	return pulumix.Output[LogsInputConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flowgger configuration
 func (o LogsInputConfigurationOutput) Flowgger() LogsInputConfigurationFlowggerPtrOutput {
 	return o.ApplyT(func(v LogsInputConfiguration) *LogsInputConfigurationFlowgger { return v.Flowgger }).(LogsInputConfigurationFlowggerPtrOutput)
@@ -137,6 +156,12 @@ func (o LogsInputConfigurationPtrOutput) ToLogsInputConfigurationPtrOutput() Log
 
 func (o LogsInputConfigurationPtrOutput) ToLogsInputConfigurationPtrOutputWithContext(ctx context.Context) LogsInputConfigurationPtrOutput {
 	return o
+}
+
+func (o LogsInputConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogsInputConfiguration] {
+	return pulumix.Output[*LogsInputConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogsInputConfigurationPtrOutput) Elem() LogsInputConfigurationOutput {
@@ -206,6 +231,12 @@ func (i LogsInputConfigurationFlowggerArgs) ToLogsInputConfigurationFlowggerOutp
 	return pulumi.ToOutputWithContext(ctx, i).(LogsInputConfigurationFlowggerOutput)
 }
 
+func (i LogsInputConfigurationFlowggerArgs) ToOutput(ctx context.Context) pulumix.Output[LogsInputConfigurationFlowgger] {
+	return pulumix.Output[LogsInputConfigurationFlowgger]{
+		OutputState: i.ToLogsInputConfigurationFlowggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LogsInputConfigurationFlowggerArgs) ToLogsInputConfigurationFlowggerPtrOutput() LogsInputConfigurationFlowggerPtrOutput {
 	return i.ToLogsInputConfigurationFlowggerPtrOutputWithContext(context.Background())
 }
@@ -247,6 +278,12 @@ func (i *logsInputConfigurationFlowggerPtrType) ToLogsInputConfigurationFlowgger
 	return pulumi.ToOutputWithContext(ctx, i).(LogsInputConfigurationFlowggerPtrOutput)
 }
 
+func (i *logsInputConfigurationFlowggerPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogsInputConfigurationFlowgger] {
+	return pulumix.Output[*LogsInputConfigurationFlowgger]{
+		OutputState: i.ToLogsInputConfigurationFlowggerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogsInputConfigurationFlowggerOutput struct{ *pulumi.OutputState }
 
 func (LogsInputConfigurationFlowggerOutput) ElementType() reflect.Type {
@@ -271,6 +308,12 @@ func (o LogsInputConfigurationFlowggerOutput) ToLogsInputConfigurationFlowggerPt
 	}).(LogsInputConfigurationFlowggerPtrOutput)
 }
 
+func (o LogsInputConfigurationFlowggerOutput) ToOutput(ctx context.Context) pulumix.Output[LogsInputConfigurationFlowgger] {
+	return pulumix.Output[LogsInputConfigurationFlowgger]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
 func (o LogsInputConfigurationFlowggerOutput) LogFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v LogsInputConfigurationFlowgger) string { return v.LogFormat }).(pulumi.StringOutput)
@@ -293,6 +336,12 @@ func (o LogsInputConfigurationFlowggerPtrOutput) ToLogsInputConfigurationFlowgge
 
 func (o LogsInputConfigurationFlowggerPtrOutput) ToLogsInputConfigurationFlowggerPtrOutputWithContext(ctx context.Context) LogsInputConfigurationFlowggerPtrOutput {
 	return o
+}
+
+func (o LogsInputConfigurationFlowggerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogsInputConfigurationFlowgger] {
+	return pulumix.Output[*LogsInputConfigurationFlowgger]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogsInputConfigurationFlowggerPtrOutput) Elem() LogsInputConfigurationFlowggerOutput {
@@ -366,6 +415,12 @@ func (i LogsInputConfigurationLogstashArgs) ToLogsInputConfigurationLogstashOutp
 	return pulumi.ToOutputWithContext(ctx, i).(LogsInputConfigurationLogstashOutput)
 }
 
+func (i LogsInputConfigurationLogstashArgs) ToOutput(ctx context.Context) pulumix.Output[LogsInputConfigurationLogstash] {
+	return pulumix.Output[LogsInputConfigurationLogstash]{
+		OutputState: i.ToLogsInputConfigurationLogstashOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LogsInputConfigurationLogstashArgs) ToLogsInputConfigurationLogstashPtrOutput() LogsInputConfigurationLogstashPtrOutput {
 	return i.ToLogsInputConfigurationLogstashPtrOutputWithContext(context.Background())
 }
@@ -407,6 +462,12 @@ func (i *logsInputConfigurationLogstashPtrType) ToLogsInputConfigurationLogstash
 	return pulumi.ToOutputWithContext(ctx, i).(LogsInputConfigurationLogstashPtrOutput)
 }
 
+func (i *logsInputConfigurationLogstashPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogsInputConfigurationLogstash] {
+	return pulumix.Output[*LogsInputConfigurationLogstash]{
+		OutputState: i.ToLogsInputConfigurationLogstashPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogsInputConfigurationLogstashOutput struct{ *pulumi.OutputState }
 
 func (LogsInputConfigurationLogstashOutput) ElementType() reflect.Type {
@@ -429,6 +490,12 @@ func (o LogsInputConfigurationLogstashOutput) ToLogsInputConfigurationLogstashPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogsInputConfigurationLogstash) *LogsInputConfigurationLogstash {
 		return &v
 	}).(LogsInputConfigurationLogstashPtrOutput)
+}
+
+func (o LogsInputConfigurationLogstashOutput) ToOutput(ctx context.Context) pulumix.Output[LogsInputConfigurationLogstash] {
+	return pulumix.Output[LogsInputConfigurationLogstash]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The filter section of logstash.conf
@@ -458,6 +525,12 @@ func (o LogsInputConfigurationLogstashPtrOutput) ToLogsInputConfigurationLogstas
 
 func (o LogsInputConfigurationLogstashPtrOutput) ToLogsInputConfigurationLogstashPtrOutputWithContext(ctx context.Context) LogsInputConfigurationLogstashPtrOutput {
 	return o
+}
+
+func (o LogsInputConfigurationLogstashPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogsInputConfigurationLogstash] {
+	return pulumix.Output[*LogsInputConfigurationLogstash]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogsInputConfigurationLogstashPtrOutput) Elem() LogsInputConfigurationLogstashOutput {

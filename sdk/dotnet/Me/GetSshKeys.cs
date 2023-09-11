@@ -22,6 +22,18 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public static Task<GetSshKeysResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshKeysResult>("ovh:Me/getSshKeys:getSshKeys", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve list of names of the account's SSH keys.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```hcl
+        /// data "ovh_me_ssh_keys" "mykeys" {}
+        /// ```
+        /// </summary>
+        public static Output<GetSshKeysResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSshKeysResult>("ovh:Me/getSshKeys:getSshKeys", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

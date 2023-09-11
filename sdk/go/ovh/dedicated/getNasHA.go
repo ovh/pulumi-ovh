@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a dedicated HA-NAS.
@@ -92,6 +93,12 @@ func (o GetNasHAResultOutput) ToGetNasHAResultOutput() GetNasHAResultOutput {
 
 func (o GetNasHAResultOutput) ToGetNasHAResultOutputWithContext(ctx context.Context) GetNasHAResultOutput {
 	return o
+}
+
+func (o GetNasHAResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNasHAResult] {
+	return pulumix.Output[GetNasHAResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // True, if partition creation is allowed on this HA-NAS

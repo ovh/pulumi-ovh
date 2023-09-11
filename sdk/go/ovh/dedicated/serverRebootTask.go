@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -149,6 +150,12 @@ func (i *ServerRebootTask) ToServerRebootTaskOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServerRebootTaskOutput)
 }
 
+func (i *ServerRebootTask) ToOutput(ctx context.Context) pulumix.Output[*ServerRebootTask] {
+	return pulumix.Output[*ServerRebootTask]{
+		OutputState: i.ToServerRebootTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServerRebootTaskArrayInput is an input type that accepts ServerRebootTaskArray and ServerRebootTaskArrayOutput values.
 // You can construct a concrete instance of `ServerRebootTaskArrayInput` via:
 //
@@ -172,6 +179,12 @@ func (i ServerRebootTaskArray) ToServerRebootTaskArrayOutput() ServerRebootTaskA
 
 func (i ServerRebootTaskArray) ToServerRebootTaskArrayOutputWithContext(ctx context.Context) ServerRebootTaskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerRebootTaskArrayOutput)
+}
+
+func (i ServerRebootTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServerRebootTask] {
+	return pulumix.Output[[]*ServerRebootTask]{
+		OutputState: i.ToServerRebootTaskArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServerRebootTaskMapInput is an input type that accepts ServerRebootTaskMap and ServerRebootTaskMapOutput values.
@@ -199,6 +212,12 @@ func (i ServerRebootTaskMap) ToServerRebootTaskMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServerRebootTaskMapOutput)
 }
 
+func (i ServerRebootTaskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerRebootTask] {
+	return pulumix.Output[map[string]*ServerRebootTask]{
+		OutputState: i.ToServerRebootTaskMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerRebootTaskOutput struct{ *pulumi.OutputState }
 
 func (ServerRebootTaskOutput) ElementType() reflect.Type {
@@ -211,6 +230,12 @@ func (o ServerRebootTaskOutput) ToServerRebootTaskOutput() ServerRebootTaskOutpu
 
 func (o ServerRebootTaskOutput) ToServerRebootTaskOutputWithContext(ctx context.Context) ServerRebootTaskOutput {
 	return o
+}
+
+func (o ServerRebootTaskOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerRebootTask] {
+	return pulumix.Output[*ServerRebootTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Details of this task. (should be `Reboot asked`)
@@ -267,6 +292,12 @@ func (o ServerRebootTaskArrayOutput) ToServerRebootTaskArrayOutputWithContext(ct
 	return o
 }
 
+func (o ServerRebootTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServerRebootTask] {
+	return pulumix.Output[[]*ServerRebootTask]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServerRebootTaskArrayOutput) Index(i pulumi.IntInput) ServerRebootTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerRebootTask {
 		return vs[0].([]*ServerRebootTask)[vs[1].(int)]
@@ -285,6 +316,12 @@ func (o ServerRebootTaskMapOutput) ToServerRebootTaskMapOutput() ServerRebootTas
 
 func (o ServerRebootTaskMapOutput) ToServerRebootTaskMapOutputWithContext(ctx context.Context) ServerRebootTaskMapOutput {
 	return o
+}
+
+func (o ServerRebootTaskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerRebootTask] {
+	return pulumix.Output[map[string]*ServerRebootTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServerRebootTaskMapOutput) MapIndex(k pulumi.StringInput) ServerRebootTaskOutput {

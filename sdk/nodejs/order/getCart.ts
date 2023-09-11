@@ -37,7 +37,7 @@ export interface GetCartArgs {
      */
     expire?: string;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary: string;
 }
@@ -93,7 +93,7 @@ export interface GetCartOutputArgs {
      */
     expire?: pulumi.Input<string>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary: pulumi.Input<string>;
 }

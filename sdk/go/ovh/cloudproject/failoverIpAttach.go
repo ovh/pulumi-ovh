@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Attaches a failover IP address to a compute instance
@@ -175,6 +176,12 @@ func (i *FailoverIpAttach) ToFailoverIpAttachOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(FailoverIpAttachOutput)
 }
 
+func (i *FailoverIpAttach) ToOutput(ctx context.Context) pulumix.Output[*FailoverIpAttach] {
+	return pulumix.Output[*FailoverIpAttach]{
+		OutputState: i.ToFailoverIpAttachOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FailoverIpAttachArrayInput is an input type that accepts FailoverIpAttachArray and FailoverIpAttachArrayOutput values.
 // You can construct a concrete instance of `FailoverIpAttachArrayInput` via:
 //
@@ -198,6 +205,12 @@ func (i FailoverIpAttachArray) ToFailoverIpAttachArrayOutput() FailoverIpAttachA
 
 func (i FailoverIpAttachArray) ToFailoverIpAttachArrayOutputWithContext(ctx context.Context) FailoverIpAttachArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FailoverIpAttachArrayOutput)
+}
+
+func (i FailoverIpAttachArray) ToOutput(ctx context.Context) pulumix.Output[[]*FailoverIpAttach] {
+	return pulumix.Output[[]*FailoverIpAttach]{
+		OutputState: i.ToFailoverIpAttachArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FailoverIpAttachMapInput is an input type that accepts FailoverIpAttachMap and FailoverIpAttachMapOutput values.
@@ -225,6 +238,12 @@ func (i FailoverIpAttachMap) ToFailoverIpAttachMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(FailoverIpAttachMapOutput)
 }
 
+func (i FailoverIpAttachMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FailoverIpAttach] {
+	return pulumix.Output[map[string]*FailoverIpAttach]{
+		OutputState: i.ToFailoverIpAttachMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FailoverIpAttachOutput struct{ *pulumi.OutputState }
 
 func (FailoverIpAttachOutput) ElementType() reflect.Type {
@@ -237,6 +256,12 @@ func (o FailoverIpAttachOutput) ToFailoverIpAttachOutput() FailoverIpAttachOutpu
 
 func (o FailoverIpAttachOutput) ToFailoverIpAttachOutputWithContext(ctx context.Context) FailoverIpAttachOutput {
 	return o
+}
+
+func (o FailoverIpAttachOutput) ToOutput(ctx context.Context) pulumix.Output[*FailoverIpAttach] {
+	return pulumix.Output[*FailoverIpAttach]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP block
@@ -299,6 +324,12 @@ func (o FailoverIpAttachArrayOutput) ToFailoverIpAttachArrayOutputWithContext(ct
 	return o
 }
 
+func (o FailoverIpAttachArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FailoverIpAttach] {
+	return pulumix.Output[[]*FailoverIpAttach]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FailoverIpAttachArrayOutput) Index(i pulumi.IntInput) FailoverIpAttachOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FailoverIpAttach {
 		return vs[0].([]*FailoverIpAttach)[vs[1].(int)]
@@ -317,6 +348,12 @@ func (o FailoverIpAttachMapOutput) ToFailoverIpAttachMapOutput() FailoverIpAttac
 
 func (o FailoverIpAttachMapOutput) ToFailoverIpAttachMapOutputWithContext(ctx context.Context) FailoverIpAttachMapOutput {
 	return o
+}
+
+func (o FailoverIpAttachMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FailoverIpAttach] {
+	return pulumix.Output[map[string]*FailoverIpAttach]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FailoverIpAttachMapOutput) MapIndex(k pulumi.StringInput) FailoverIpAttachOutput {

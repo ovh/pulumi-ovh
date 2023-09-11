@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// ## Import
     /// 
-    /// OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g., &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser")]
     public partial class PrivateDatabaseUser : global::Pulumi.CustomResource

@@ -29,3 +29,11 @@ export interface GetReferenceResourceTypeResult {
      */
     readonly types: string[];
 }
+/**
+ * Use this data source to list all the IAM resource types.
+ *
+ * ## Example Usage
+ */
+export function getReferenceResourceTypeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceResourceTypeResult> {
+    return pulumi.output(getReferenceResourceType(opts))
+}

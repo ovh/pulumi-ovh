@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information of order cart product products.
@@ -80,6 +81,12 @@ func (o LookupCartProductResultOutput) ToLookupCartProductResultOutput() LookupC
 
 func (o LookupCartProductResultOutput) ToLookupCartProductResultOutputWithContext(ctx context.Context) LookupCartProductResultOutput {
 	return o
+}
+
+func (o LookupCartProductResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCartProductResult] {
+	return pulumix.Output[LookupCartProductResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupCartProductResultOutput) CartId() pulumi.StringOutput {

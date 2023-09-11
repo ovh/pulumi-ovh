@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of managed databases of a public cloud project.
@@ -88,6 +89,12 @@ func (o GetDatabasesResultOutput) ToGetDatabasesResultOutput() GetDatabasesResul
 
 func (o GetDatabasesResultOutput) ToGetDatabasesResultOutputWithContext(ctx context.Context) GetDatabasesResultOutput {
 	return o
+}
+
+func (o GetDatabasesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabasesResult] {
+	return pulumix.Output[GetDatabasesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of managed databases ids of the project.

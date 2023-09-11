@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a private network in a public cloud project.
@@ -196,6 +197,12 @@ func (i *NetworkPrivate) ToNetworkPrivateOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPrivateOutput)
 }
 
+func (i *NetworkPrivate) ToOutput(ctx context.Context) pulumix.Output[*NetworkPrivate] {
+	return pulumix.Output[*NetworkPrivate]{
+		OutputState: i.ToNetworkPrivateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkPrivateArrayInput is an input type that accepts NetworkPrivateArray and NetworkPrivateArrayOutput values.
 // You can construct a concrete instance of `NetworkPrivateArrayInput` via:
 //
@@ -219,6 +226,12 @@ func (i NetworkPrivateArray) ToNetworkPrivateArrayOutput() NetworkPrivateArrayOu
 
 func (i NetworkPrivateArray) ToNetworkPrivateArrayOutputWithContext(ctx context.Context) NetworkPrivateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPrivateArrayOutput)
+}
+
+func (i NetworkPrivateArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkPrivate] {
+	return pulumix.Output[[]*NetworkPrivate]{
+		OutputState: i.ToNetworkPrivateArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NetworkPrivateMapInput is an input type that accepts NetworkPrivateMap and NetworkPrivateMapOutput values.
@@ -246,6 +259,12 @@ func (i NetworkPrivateMap) ToNetworkPrivateMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPrivateMapOutput)
 }
 
+func (i NetworkPrivateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkPrivate] {
+	return pulumix.Output[map[string]*NetworkPrivate]{
+		OutputState: i.ToNetworkPrivateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkPrivateOutput struct{ *pulumi.OutputState }
 
 func (NetworkPrivateOutput) ElementType() reflect.Type {
@@ -258,6 +277,12 @@ func (o NetworkPrivateOutput) ToNetworkPrivateOutput() NetworkPrivateOutput {
 
 func (o NetworkPrivateOutput) ToNetworkPrivateOutputWithContext(ctx context.Context) NetworkPrivateOutput {
 	return o
+}
+
+func (o NetworkPrivateOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkPrivate] {
+	return pulumix.Output[*NetworkPrivate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the network.
@@ -324,6 +349,12 @@ func (o NetworkPrivateArrayOutput) ToNetworkPrivateArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o NetworkPrivateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkPrivate] {
+	return pulumix.Output[[]*NetworkPrivate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkPrivateArrayOutput) Index(i pulumi.IntInput) NetworkPrivateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkPrivate {
 		return vs[0].([]*NetworkPrivate)[vs[1].(int)]
@@ -342,6 +373,12 @@ func (o NetworkPrivateMapOutput) ToNetworkPrivateMapOutput() NetworkPrivateMapOu
 
 func (o NetworkPrivateMapOutput) ToNetworkPrivateMapOutputWithContext(ctx context.Context) NetworkPrivateMapOutput {
 	return o
+}
+
+func (o NetworkPrivateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkPrivate] {
+	return pulumix.Output[map[string]*NetworkPrivate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkPrivateMapOutput) MapIndex(k pulumi.StringInput) NetworkPrivateOutput {

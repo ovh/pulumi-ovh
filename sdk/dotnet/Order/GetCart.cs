@@ -17,9 +17,10 @@ namespace Pulumi.Ovh.Order
         /// ## Example Usage
         /// 
         /// ```hcl
+        /// data "ovh_me" "myaccount" {}
+        /// 
         /// data "ovh_order_cart" "mycart" {
-        ///  ovh_subsidiary = "fr"
-        ///  description    = "my cart"
+        ///  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary
         /// }
         /// ```
         /// </summary>
@@ -32,9 +33,10 @@ namespace Pulumi.Ovh.Order
         /// ## Example Usage
         /// 
         /// ```hcl
+        /// data "ovh_me" "myaccount" {}
+        /// 
         /// data "ovh_order_cart" "mycart" {
-        ///  ovh_subsidiary = "fr"
-        ///  description    = "my cart"
+        ///  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary
         /// }
         /// ```
         /// </summary>
@@ -64,7 +66,7 @@ namespace Pulumi.Ovh.Order
         public string? Expire { get; set; }
 
         /// <summary>
-        /// OVHcloud Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary", required: true)]
         public string OvhSubsidiary { get; set; } = null!;
@@ -96,7 +98,7 @@ namespace Pulumi.Ovh.Order
         public Input<string>? Expire { get; set; }
 
         /// <summary>
-        /// OVHcloud Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary", required: true)]
         public Input<string> OvhSubsidiary { get; set; } = null!;

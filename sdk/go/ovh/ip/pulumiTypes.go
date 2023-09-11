@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i IpServiceOrderArgs) ToIpServiceOrderOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceOrderOutput)
 }
 
+func (i IpServiceOrderArgs) ToOutput(ctx context.Context) pulumix.Output[IpServiceOrder] {
+	return pulumix.Output[IpServiceOrder]{
+		OutputState: i.ToIpServiceOrderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpServiceOrderArrayInput is an input type that accepts IpServiceOrderArray and IpServiceOrderArrayOutput values.
 // You can construct a concrete instance of `IpServiceOrderArrayInput` via:
 //
@@ -83,6 +90,12 @@ func (i IpServiceOrderArray) ToIpServiceOrderArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceOrderArrayOutput)
 }
 
+func (i IpServiceOrderArray) ToOutput(ctx context.Context) pulumix.Output[[]IpServiceOrder] {
+	return pulumix.Output[[]IpServiceOrder]{
+		OutputState: i.ToIpServiceOrderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpServiceOrderOutput struct{ *pulumi.OutputState }
 
 func (IpServiceOrderOutput) ElementType() reflect.Type {
@@ -95,6 +108,12 @@ func (o IpServiceOrderOutput) ToIpServiceOrderOutput() IpServiceOrderOutput {
 
 func (o IpServiceOrderOutput) ToIpServiceOrderOutputWithContext(ctx context.Context) IpServiceOrderOutput {
 	return o
+}
+
+func (o IpServiceOrderOutput) ToOutput(ctx context.Context) pulumix.Output[IpServiceOrder] {
+	return pulumix.Output[IpServiceOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 // date
@@ -129,6 +148,12 @@ func (o IpServiceOrderArrayOutput) ToIpServiceOrderArrayOutput() IpServiceOrderA
 
 func (o IpServiceOrderArrayOutput) ToIpServiceOrderArrayOutputWithContext(ctx context.Context) IpServiceOrderArrayOutput {
 	return o
+}
+
+func (o IpServiceOrderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpServiceOrder] {
+	return pulumix.Output[[]IpServiceOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpServiceOrderArrayOutput) Index(i pulumi.IntInput) IpServiceOrderOutput {
@@ -182,6 +207,12 @@ func (i IpServiceOrderDetailArgs) ToIpServiceOrderDetailOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceOrderDetailOutput)
 }
 
+func (i IpServiceOrderDetailArgs) ToOutput(ctx context.Context) pulumix.Output[IpServiceOrderDetail] {
+	return pulumix.Output[IpServiceOrderDetail]{
+		OutputState: i.ToIpServiceOrderDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpServiceOrderDetailArrayInput is an input type that accepts IpServiceOrderDetailArray and IpServiceOrderDetailArrayOutput values.
 // You can construct a concrete instance of `IpServiceOrderDetailArrayInput` via:
 //
@@ -207,6 +238,12 @@ func (i IpServiceOrderDetailArray) ToIpServiceOrderDetailArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceOrderDetailArrayOutput)
 }
 
+func (i IpServiceOrderDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]IpServiceOrderDetail] {
+	return pulumix.Output[[]IpServiceOrderDetail]{
+		OutputState: i.ToIpServiceOrderDetailArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpServiceOrderDetailOutput struct{ *pulumi.OutputState }
 
 func (IpServiceOrderDetailOutput) ElementType() reflect.Type {
@@ -219,6 +256,12 @@ func (o IpServiceOrderDetailOutput) ToIpServiceOrderDetailOutput() IpServiceOrde
 
 func (o IpServiceOrderDetailOutput) ToIpServiceOrderDetailOutputWithContext(ctx context.Context) IpServiceOrderDetailOutput {
 	return o
+}
+
+func (o IpServiceOrderDetailOutput) ToOutput(ctx context.Context) pulumix.Output[IpServiceOrderDetail] {
+	return pulumix.Output[IpServiceOrderDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Custom description on your ip.
@@ -253,6 +296,12 @@ func (o IpServiceOrderDetailArrayOutput) ToIpServiceOrderDetailArrayOutput() IpS
 
 func (o IpServiceOrderDetailArrayOutput) ToIpServiceOrderDetailArrayOutputWithContext(ctx context.Context) IpServiceOrderDetailArrayOutput {
 	return o
+}
+
+func (o IpServiceOrderDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpServiceOrderDetail] {
+	return pulumix.Output[[]IpServiceOrderDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpServiceOrderDetailArrayOutput) Index(i pulumi.IntInput) IpServiceOrderDetailOutput {
@@ -310,6 +359,12 @@ func (i IpServicePlanArgs) ToIpServicePlanOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IpServicePlanOutput)
 }
 
+func (i IpServicePlanArgs) ToOutput(ctx context.Context) pulumix.Output[IpServicePlan] {
+	return pulumix.Output[IpServicePlan]{
+		OutputState: i.ToIpServicePlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IpServicePlanArgs) ToIpServicePlanPtrOutput() IpServicePlanPtrOutput {
 	return i.ToIpServicePlanPtrOutputWithContext(context.Background())
 }
@@ -351,6 +406,12 @@ func (i *ipServicePlanPtrType) ToIpServicePlanPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(IpServicePlanPtrOutput)
 }
 
+func (i *ipServicePlanPtrType) ToOutput(ctx context.Context) pulumix.Output[*IpServicePlan] {
+	return pulumix.Output[*IpServicePlan]{
+		OutputState: i.ToIpServicePlanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpServicePlanOutput struct{ *pulumi.OutputState }
 
 func (IpServicePlanOutput) ElementType() reflect.Type {
@@ -373,6 +434,12 @@ func (o IpServicePlanOutput) ToIpServicePlanPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpServicePlan) *IpServicePlan {
 		return &v
 	}).(IpServicePlanPtrOutput)
+}
+
+func (o IpServicePlanOutput) ToOutput(ctx context.Context) pulumix.Output[IpServicePlan] {
+	return pulumix.Output[IpServicePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Catalog name
@@ -412,6 +479,12 @@ func (o IpServicePlanPtrOutput) ToIpServicePlanPtrOutput() IpServicePlanPtrOutpu
 
 func (o IpServicePlanPtrOutput) ToIpServicePlanPtrOutputWithContext(ctx context.Context) IpServicePlanPtrOutput {
 	return o
+}
+
+func (o IpServicePlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IpServicePlan] {
+	return pulumix.Output[*IpServicePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpServicePlanPtrOutput) Elem() IpServicePlanOutput {
@@ -511,6 +584,12 @@ func (i IpServicePlanConfigurationArgs) ToIpServicePlanConfigurationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(IpServicePlanConfigurationOutput)
 }
 
+func (i IpServicePlanConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[IpServicePlanConfiguration] {
+	return pulumix.Output[IpServicePlanConfiguration]{
+		OutputState: i.ToIpServicePlanConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpServicePlanConfigurationArrayInput is an input type that accepts IpServicePlanConfigurationArray and IpServicePlanConfigurationArrayOutput values.
 // You can construct a concrete instance of `IpServicePlanConfigurationArrayInput` via:
 //
@@ -536,6 +615,12 @@ func (i IpServicePlanConfigurationArray) ToIpServicePlanConfigurationArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(IpServicePlanConfigurationArrayOutput)
 }
 
+func (i IpServicePlanConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]IpServicePlanConfiguration] {
+	return pulumix.Output[[]IpServicePlanConfiguration]{
+		OutputState: i.ToIpServicePlanConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpServicePlanConfigurationOutput struct{ *pulumi.OutputState }
 
 func (IpServicePlanConfigurationOutput) ElementType() reflect.Type {
@@ -548,6 +633,12 @@ func (o IpServicePlanConfigurationOutput) ToIpServicePlanConfigurationOutput() I
 
 func (o IpServicePlanConfigurationOutput) ToIpServicePlanConfigurationOutputWithContext(ctx context.Context) IpServicePlanConfigurationOutput {
 	return o
+}
+
+func (o IpServicePlanConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[IpServicePlanConfiguration] {
+	return pulumix.Output[IpServicePlanConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of the resource
@@ -572,6 +663,12 @@ func (o IpServicePlanConfigurationArrayOutput) ToIpServicePlanConfigurationArray
 
 func (o IpServicePlanConfigurationArrayOutput) ToIpServicePlanConfigurationArrayOutputWithContext(ctx context.Context) IpServicePlanConfigurationArrayOutput {
 	return o
+}
+
+func (o IpServicePlanConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpServicePlanConfiguration] {
+	return pulumix.Output[[]IpServicePlanConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpServicePlanConfigurationArrayOutput) Index(i pulumi.IntInput) IpServicePlanConfigurationOutput {
@@ -629,6 +726,12 @@ func (i IpServicePlanOptionArgs) ToIpServicePlanOptionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(IpServicePlanOptionOutput)
 }
 
+func (i IpServicePlanOptionArgs) ToOutput(ctx context.Context) pulumix.Output[IpServicePlanOption] {
+	return pulumix.Output[IpServicePlanOption]{
+		OutputState: i.ToIpServicePlanOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpServicePlanOptionArrayInput is an input type that accepts IpServicePlanOptionArray and IpServicePlanOptionArrayOutput values.
 // You can construct a concrete instance of `IpServicePlanOptionArrayInput` via:
 //
@@ -654,6 +757,12 @@ func (i IpServicePlanOptionArray) ToIpServicePlanOptionArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(IpServicePlanOptionArrayOutput)
 }
 
+func (i IpServicePlanOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]IpServicePlanOption] {
+	return pulumix.Output[[]IpServicePlanOption]{
+		OutputState: i.ToIpServicePlanOptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpServicePlanOptionOutput struct{ *pulumi.OutputState }
 
 func (IpServicePlanOptionOutput) ElementType() reflect.Type {
@@ -666,6 +775,12 @@ func (o IpServicePlanOptionOutput) ToIpServicePlanOptionOutput() IpServicePlanOp
 
 func (o IpServicePlanOptionOutput) ToIpServicePlanOptionOutputWithContext(ctx context.Context) IpServicePlanOptionOutput {
 	return o
+}
+
+func (o IpServicePlanOptionOutput) ToOutput(ctx context.Context) pulumix.Output[IpServicePlanOption] {
+	return pulumix.Output[IpServicePlanOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Catalog name
@@ -705,6 +820,12 @@ func (o IpServicePlanOptionArrayOutput) ToIpServicePlanOptionArrayOutput() IpSer
 
 func (o IpServicePlanOptionArrayOutput) ToIpServicePlanOptionArrayOutputWithContext(ctx context.Context) IpServicePlanOptionArrayOutput {
 	return o
+}
+
+func (o IpServicePlanOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpServicePlanOption] {
+	return pulumix.Output[[]IpServicePlanOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpServicePlanOptionArrayOutput) Index(i pulumi.IntInput) IpServicePlanOptionOutput {
@@ -750,6 +871,12 @@ func (i IpServicePlanOptionConfigurationArgs) ToIpServicePlanOptionConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(IpServicePlanOptionConfigurationOutput)
 }
 
+func (i IpServicePlanOptionConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[IpServicePlanOptionConfiguration] {
+	return pulumix.Output[IpServicePlanOptionConfiguration]{
+		OutputState: i.ToIpServicePlanOptionConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpServicePlanOptionConfigurationArrayInput is an input type that accepts IpServicePlanOptionConfigurationArray and IpServicePlanOptionConfigurationArrayOutput values.
 // You can construct a concrete instance of `IpServicePlanOptionConfigurationArrayInput` via:
 //
@@ -775,6 +902,12 @@ func (i IpServicePlanOptionConfigurationArray) ToIpServicePlanOptionConfiguratio
 	return pulumi.ToOutputWithContext(ctx, i).(IpServicePlanOptionConfigurationArrayOutput)
 }
 
+func (i IpServicePlanOptionConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]IpServicePlanOptionConfiguration] {
+	return pulumix.Output[[]IpServicePlanOptionConfiguration]{
+		OutputState: i.ToIpServicePlanOptionConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpServicePlanOptionConfigurationOutput struct{ *pulumi.OutputState }
 
 func (IpServicePlanOptionConfigurationOutput) ElementType() reflect.Type {
@@ -787,6 +920,12 @@ func (o IpServicePlanOptionConfigurationOutput) ToIpServicePlanOptionConfigurati
 
 func (o IpServicePlanOptionConfigurationOutput) ToIpServicePlanOptionConfigurationOutputWithContext(ctx context.Context) IpServicePlanOptionConfigurationOutput {
 	return o
+}
+
+func (o IpServicePlanOptionConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[IpServicePlanOptionConfiguration] {
+	return pulumix.Output[IpServicePlanOptionConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of the resource
@@ -811,6 +950,12 @@ func (o IpServicePlanOptionConfigurationArrayOutput) ToIpServicePlanOptionConfig
 
 func (o IpServicePlanOptionConfigurationArrayOutput) ToIpServicePlanOptionConfigurationArrayOutputWithContext(ctx context.Context) IpServicePlanOptionConfigurationArrayOutput {
 	return o
+}
+
+func (o IpServicePlanOptionConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpServicePlanOptionConfiguration] {
+	return pulumix.Output[[]IpServicePlanOptionConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpServicePlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) IpServicePlanOptionConfigurationOutput {
@@ -852,6 +997,12 @@ func (i IpServiceRoutedToArgs) ToIpServiceRoutedToOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceRoutedToOutput)
 }
 
+func (i IpServiceRoutedToArgs) ToOutput(ctx context.Context) pulumix.Output[IpServiceRoutedTo] {
+	return pulumix.Output[IpServiceRoutedTo]{
+		OutputState: i.ToIpServiceRoutedToOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpServiceRoutedToArrayInput is an input type that accepts IpServiceRoutedToArray and IpServiceRoutedToArrayOutput values.
 // You can construct a concrete instance of `IpServiceRoutedToArrayInput` via:
 //
@@ -877,6 +1028,12 @@ func (i IpServiceRoutedToArray) ToIpServiceRoutedToArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceRoutedToArrayOutput)
 }
 
+func (i IpServiceRoutedToArray) ToOutput(ctx context.Context) pulumix.Output[[]IpServiceRoutedTo] {
+	return pulumix.Output[[]IpServiceRoutedTo]{
+		OutputState: i.ToIpServiceRoutedToArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpServiceRoutedToOutput struct{ *pulumi.OutputState }
 
 func (IpServiceRoutedToOutput) ElementType() reflect.Type {
@@ -889,6 +1046,12 @@ func (o IpServiceRoutedToOutput) ToIpServiceRoutedToOutput() IpServiceRoutedToOu
 
 func (o IpServiceRoutedToOutput) ToIpServiceRoutedToOutputWithContext(ctx context.Context) IpServiceRoutedToOutput {
 	return o
+}
+
+func (o IpServiceRoutedToOutput) ToOutput(ctx context.Context) pulumix.Output[IpServiceRoutedTo] {
+	return pulumix.Output[IpServiceRoutedTo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // service name
@@ -908,6 +1071,12 @@ func (o IpServiceRoutedToArrayOutput) ToIpServiceRoutedToArrayOutput() IpService
 
 func (o IpServiceRoutedToArrayOutput) ToIpServiceRoutedToArrayOutputWithContext(ctx context.Context) IpServiceRoutedToArrayOutput {
 	return o
+}
+
+func (o IpServiceRoutedToArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpServiceRoutedTo] {
+	return pulumix.Output[[]IpServiceRoutedTo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpServiceRoutedToArrayOutput) Index(i pulumi.IntInput) IpServiceRoutedToOutput {
@@ -949,6 +1118,12 @@ func (i GetServiceRoutedToArgs) ToGetServiceRoutedToOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceRoutedToOutput)
 }
 
+func (i GetServiceRoutedToArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceRoutedTo] {
+	return pulumix.Output[GetServiceRoutedTo]{
+		OutputState: i.ToGetServiceRoutedToOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceRoutedToArrayInput is an input type that accepts GetServiceRoutedToArray and GetServiceRoutedToArrayOutput values.
 // You can construct a concrete instance of `GetServiceRoutedToArrayInput` via:
 //
@@ -974,6 +1149,12 @@ func (i GetServiceRoutedToArray) ToGetServiceRoutedToArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceRoutedToArrayOutput)
 }
 
+func (i GetServiceRoutedToArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceRoutedTo] {
+	return pulumix.Output[[]GetServiceRoutedTo]{
+		OutputState: i.ToGetServiceRoutedToArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceRoutedToOutput struct{ *pulumi.OutputState }
 
 func (GetServiceRoutedToOutput) ElementType() reflect.Type {
@@ -986,6 +1167,12 @@ func (o GetServiceRoutedToOutput) ToGetServiceRoutedToOutput() GetServiceRoutedT
 
 func (o GetServiceRoutedToOutput) ToGetServiceRoutedToOutputWithContext(ctx context.Context) GetServiceRoutedToOutput {
 	return o
+}
+
+func (o GetServiceRoutedToOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceRoutedTo] {
+	return pulumix.Output[GetServiceRoutedTo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The service name
@@ -1005,6 +1192,12 @@ func (o GetServiceRoutedToArrayOutput) ToGetServiceRoutedToArrayOutput() GetServ
 
 func (o GetServiceRoutedToArrayOutput) ToGetServiceRoutedToArrayOutputWithContext(ctx context.Context) GetServiceRoutedToArrayOutput {
 	return o
+}
+
+func (o GetServiceRoutedToArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceRoutedTo] {
+	return pulumix.Output[[]GetServiceRoutedTo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceRoutedToArrayOutput) Index(i pulumi.IntInput) GetServiceRoutedToOutput {

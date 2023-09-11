@@ -130,7 +130,7 @@ def get_cart(assign: Optional[bool] = None,
     :param bool assign: Assign a shopping cart to a logged in client. Values can be `true` or `false`.
     :param str description: Description of your cart
     :param str expire: Expiration time (format: 2006-01-02T15:04:05+00:00)
-    :param str ovh_subsidiary: OVHcloud Subsidiary
+    :param str ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
     """
     __args__ = dict()
     __args__['assign'] = assign
@@ -166,6 +166,6 @@ def get_cart_output(assign: Optional[pulumi.Input[Optional[bool]]] = None,
     :param bool assign: Assign a shopping cart to a logged in client. Values can be `true` or `false`.
     :param str description: Description of your cart
     :param str expire: Expiration time (format: 2006-01-02T15:04:05+00:00)
-    :param str ovh_subsidiary: OVHcloud Subsidiary
+    :param str ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
     """
     ...

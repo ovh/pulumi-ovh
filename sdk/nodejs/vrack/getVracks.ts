@@ -29,3 +29,11 @@ export interface GetVracksResult {
      */
     readonly results: string[];
 }
+/**
+ * Use this data source to get the list of Vrack IDs available for your OVHcloud account.
+ *
+ * ## Example Usage
+ */
+export function getVracksOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVracksResult> {
+    return pulumi.output(getVracks(opts))
+}

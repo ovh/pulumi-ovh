@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a domain zone.
@@ -83,6 +84,12 @@ func (o LookupZoneResultOutput) ToLookupZoneResultOutput() LookupZoneResultOutpu
 
 func (o LookupZoneResultOutput) ToLookupZoneResultOutputWithContext(ctx context.Context) LookupZoneResultOutput {
 	return o
+}
+
+func (o LookupZoneResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupZoneResult] {
+	return pulumix.Output[LookupZoneResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Is DNSSEC supported by this zone

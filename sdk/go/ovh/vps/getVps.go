@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a vps associated with your OVHcloud Account.
@@ -109,6 +110,12 @@ func (o GetVpsResultOutput) ToGetVpsResultOutput() GetVpsResultOutput {
 
 func (o GetVpsResultOutput) ToGetVpsResultOutputWithContext(ctx context.Context) GetVpsResultOutput {
 	return o
+}
+
+func (o GetVpsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpsResult] {
+	return pulumix.Output[GetVpsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The OVHcloud cluster the vps is in

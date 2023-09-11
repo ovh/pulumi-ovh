@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a bank account
@@ -100,6 +101,12 @@ func (o GetPaymentmeanBankAccountResultOutput) ToGetPaymentmeanBankAccountResult
 
 func (o GetPaymentmeanBankAccountResultOutput) ToGetPaymentmeanBankAccountResultOutputWithContext(ctx context.Context) GetPaymentmeanBankAccountResultOutput {
 	return o
+}
+
+func (o GetPaymentmeanBankAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPaymentmeanBankAccountResult] {
+	return pulumix.Output[GetPaymentmeanBankAccountResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // a boolean which tells if the retrieved bank account

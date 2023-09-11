@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new IP whitelist on your private cloud database instance.
@@ -18,7 +19,7 @@ import (
 //
 // ## Import
 //
-// OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g., <break><break>```sh<break> $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip <break>```<break><break>
+// OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
 type PrivateDatabaseAllowlist struct {
 	pulumi.CustomResourceState
 
@@ -155,6 +156,12 @@ func (i *PrivateDatabaseAllowlist) ToPrivateDatabaseAllowlistOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseAllowlistOutput)
 }
 
+func (i *PrivateDatabaseAllowlist) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabaseAllowlist] {
+	return pulumix.Output[*PrivateDatabaseAllowlist]{
+		OutputState: i.ToPrivateDatabaseAllowlistOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateDatabaseAllowlistArrayInput is an input type that accepts PrivateDatabaseAllowlistArray and PrivateDatabaseAllowlistArrayOutput values.
 // You can construct a concrete instance of `PrivateDatabaseAllowlistArrayInput` via:
 //
@@ -178,6 +185,12 @@ func (i PrivateDatabaseAllowlistArray) ToPrivateDatabaseAllowlistArrayOutput() P
 
 func (i PrivateDatabaseAllowlistArray) ToPrivateDatabaseAllowlistArrayOutputWithContext(ctx context.Context) PrivateDatabaseAllowlistArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseAllowlistArrayOutput)
+}
+
+func (i PrivateDatabaseAllowlistArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabaseAllowlist] {
+	return pulumix.Output[[]*PrivateDatabaseAllowlist]{
+		OutputState: i.ToPrivateDatabaseAllowlistArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PrivateDatabaseAllowlistMapInput is an input type that accepts PrivateDatabaseAllowlistMap and PrivateDatabaseAllowlistMapOutput values.
@@ -205,6 +218,12 @@ func (i PrivateDatabaseAllowlistMap) ToPrivateDatabaseAllowlistMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseAllowlistMapOutput)
 }
 
+func (i PrivateDatabaseAllowlistMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabaseAllowlist] {
+	return pulumix.Output[map[string]*PrivateDatabaseAllowlist]{
+		OutputState: i.ToPrivateDatabaseAllowlistMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateDatabaseAllowlistOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabaseAllowlistOutput) ElementType() reflect.Type {
@@ -217,6 +236,12 @@ func (o PrivateDatabaseAllowlistOutput) ToPrivateDatabaseAllowlistOutput() Priva
 
 func (o PrivateDatabaseAllowlistOutput) ToPrivateDatabaseAllowlistOutputWithContext(ctx context.Context) PrivateDatabaseAllowlistOutput {
 	return o
+}
+
+func (o PrivateDatabaseAllowlistOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabaseAllowlist] {
+	return pulumix.Output[*PrivateDatabaseAllowlist]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The whitelisted IP in your instance.
@@ -258,6 +283,12 @@ func (o PrivateDatabaseAllowlistArrayOutput) ToPrivateDatabaseAllowlistArrayOutp
 	return o
 }
 
+func (o PrivateDatabaseAllowlistArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabaseAllowlist] {
+	return pulumix.Output[[]*PrivateDatabaseAllowlist]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateDatabaseAllowlistArrayOutput) Index(i pulumi.IntInput) PrivateDatabaseAllowlistOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrivateDatabaseAllowlist {
 		return vs[0].([]*PrivateDatabaseAllowlist)[vs[1].(int)]
@@ -276,6 +307,12 @@ func (o PrivateDatabaseAllowlistMapOutput) ToPrivateDatabaseAllowlistMapOutput()
 
 func (o PrivateDatabaseAllowlistMapOutput) ToPrivateDatabaseAllowlistMapOutputWithContext(ctx context.Context) PrivateDatabaseAllowlistMapOutput {
 	return o
+}
+
+func (o PrivateDatabaseAllowlistMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabaseAllowlist] {
+	return pulumix.Output[map[string]*PrivateDatabaseAllowlist]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateDatabaseAllowlistMapOutput) MapIndex(k pulumi.StringInput) PrivateDatabaseAllowlistOutput {

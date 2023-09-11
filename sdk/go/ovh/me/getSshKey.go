@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about an SSH key.
@@ -79,6 +80,12 @@ func (o LookupSshKeyResultOutput) ToLookupSshKeyResultOutput() LookupSshKeyResul
 
 func (o LookupSshKeyResultOutput) ToLookupSshKeyResultOutputWithContext(ctx context.Context) LookupSshKeyResultOutput {
 	return o
+}
+
+func (o LookupSshKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSshKeyResult] {
+	return pulumix.Output[LookupSshKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // True when this public SSH key is used for rescue mode and reinstallations.

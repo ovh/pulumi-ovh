@@ -29,3 +29,11 @@ export interface GetIpxeScriptsResult {
      */
     readonly results: string[];
 }
+/**
+ * Use this data source to retrieve a list of the names of the account's IPXE Scripts.
+ *
+ * ## Example Usage
+ */
+export function getIpxeScriptsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetIpxeScriptsResult> {
+    return pulumi.output(getIpxeScripts(opts))
+}

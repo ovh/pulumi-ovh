@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to create a temporary order cart to retrieve information order cart products.
@@ -32,7 +33,7 @@ type GetCartArgs struct {
 	Description *string `pulumi:"description"`
 	// Expiration time (format: 2006-01-02T15:04:05+00:00)
 	Expire *string `pulumi:"expire"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 }
 
@@ -73,7 +74,7 @@ type GetCartOutputArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Expiration time (format: 2006-01-02T15:04:05+00:00)
 	Expire pulumi.StringPtrInput `pulumi:"expire"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput `pulumi:"ovhSubsidiary"`
 }
 
@@ -94,6 +95,12 @@ func (o GetCartResultOutput) ToGetCartResultOutput() GetCartResultOutput {
 
 func (o GetCartResultOutput) ToGetCartResultOutputWithContext(ctx context.Context) GetCartResultOutput {
 	return o
+}
+
+func (o GetCartResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartResult] {
+	return pulumix.Output[GetCartResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCartResultOutput) Assign() pulumi.BoolPtrOutput {

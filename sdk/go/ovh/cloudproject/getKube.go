@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
@@ -148,6 +149,12 @@ func (o LookupKubeResultOutput) ToLookupKubeResultOutput() LookupKubeResultOutpu
 
 func (o LookupKubeResultOutput) ToLookupKubeResultOutputWithContext(ctx context.Context) LookupKubeResultOutput {
 	return o
+}
+
+func (o LookupKubeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKubeResult] {
+	return pulumix.Output[LookupKubeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // True if control-plane is up-to-date.

@@ -142,6 +142,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_containerregistry_user": {
 				Tok: ovhResource(cloudProjectMod, "ContainerRegistryUser"),
 			},
+			"ovh_cloud_project_containerregistry_oidc": {
+				Tok: ovhResource(cloudProjectMod, "ContainerRegistryOIDC"),
+			},
 			"ovh_cloud_project_database": {
 				Tok: ovhResource(cloudProjectMod, "Database"),
 			},
@@ -399,6 +402,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_containerregistry_users": {
 				Tok: ovhDataSource(cloudProjectMod, "getContainerRegistryUsers"),
+			},
+			"ovh_cloud_project_containerregistry_oidc": {
+				Tok: ovhDataSource(cloudProjectMod, "getContainerRegistryOIDC"),
 			},
 			"ovh_cloud_project_database": {
 				Tok: ovhDataSource(cloudProjectDbMod, "getDatabase"),

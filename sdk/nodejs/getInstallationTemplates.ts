@@ -29,3 +29,11 @@ export interface GetInstallationTemplatesResult {
      */
     readonly results: string[];
 }
+/**
+ * Use this data source to get the list of installation templates available for dedicated servers.
+ *
+ * ## Example Usage
+ */
+export function getInstallationTemplatesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetInstallationTemplatesResult> {
+    return pulumi.output(getInstallationTemplates(opts))
+}

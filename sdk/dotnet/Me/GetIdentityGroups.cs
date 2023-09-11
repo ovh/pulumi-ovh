@@ -22,6 +22,18 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public static Task<GetIdentityGroupsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIdentityGroupsResult>("ovh:Me/getIdentityGroups:getIdentityGroups", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve the list of the account's identity groups
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```hcl
+        /// data "ovh_me_identity_groups" "groups" {}
+        /// ```
+        /// </summary>
+        public static Output<GetIdentityGroupsResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIdentityGroupsResult>("ovh:Me/getIdentityGroups:getIdentityGroups", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i GetReferenceActionsActionArgs) ToGetReferenceActionsActionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetReferenceActionsActionOutput)
 }
 
+func (i GetReferenceActionsActionArgs) ToOutput(ctx context.Context) pulumix.Output[GetReferenceActionsAction] {
+	return pulumix.Output[GetReferenceActionsAction]{
+		OutputState: i.ToGetReferenceActionsActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetReferenceActionsActionArrayInput is an input type that accepts GetReferenceActionsActionArray and GetReferenceActionsActionArrayOutput values.
 // You can construct a concrete instance of `GetReferenceActionsActionArrayInput` via:
 //
@@ -83,6 +90,12 @@ func (i GetReferenceActionsActionArray) ToGetReferenceActionsActionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetReferenceActionsActionArrayOutput)
 }
 
+func (i GetReferenceActionsActionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetReferenceActionsAction] {
+	return pulumix.Output[[]GetReferenceActionsAction]{
+		OutputState: i.ToGetReferenceActionsActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetReferenceActionsActionOutput struct{ *pulumi.OutputState }
 
 func (GetReferenceActionsActionOutput) ElementType() reflect.Type {
@@ -95,6 +108,12 @@ func (o GetReferenceActionsActionOutput) ToGetReferenceActionsActionOutput() Get
 
 func (o GetReferenceActionsActionOutput) ToGetReferenceActionsActionOutputWithContext(ctx context.Context) GetReferenceActionsActionOutput {
 	return o
+}
+
+func (o GetReferenceActionsActionOutput) ToOutput(ctx context.Context) pulumix.Output[GetReferenceActionsAction] {
+	return pulumix.Output[GetReferenceActionsAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the action
@@ -129,6 +148,12 @@ func (o GetReferenceActionsActionArrayOutput) ToGetReferenceActionsActionArrayOu
 
 func (o GetReferenceActionsActionArrayOutput) ToGetReferenceActionsActionArrayOutputWithContext(ctx context.Context) GetReferenceActionsActionArrayOutput {
 	return o
+}
+
+func (o GetReferenceActionsActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetReferenceActionsAction] {
+	return pulumix.Output[[]GetReferenceActionsAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetReferenceActionsActionArrayOutput) Index(i pulumi.IntInput) GetReferenceActionsActionOutput {

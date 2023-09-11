@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.CloudProject
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
     /// ## Import
     /// 
     /// Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.  bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
@@ -35,7 +33,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<Outputs.ProjectOrder>> Orders { get; private set; } = null!;
 
         /// <summary>
-        /// OVHcloud Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Output("ovhSubsidiary")]
         public Output<string> OvhSubsidiary { get; private set; } = null!;
@@ -136,7 +134,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// OVHcloud Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary", required: true)]
         public Input<string> OvhSubsidiary { get; set; } = null!;
@@ -195,7 +193,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// OVHcloud Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }

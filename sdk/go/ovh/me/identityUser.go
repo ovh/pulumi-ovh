@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an identity user.
@@ -185,6 +186,12 @@ func (i *IdentityUser) ToIdentityUserOutputWithContext(ctx context.Context) Iden
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityUserOutput)
 }
 
+func (i *IdentityUser) ToOutput(ctx context.Context) pulumix.Output[*IdentityUser] {
+	return pulumix.Output[*IdentityUser]{
+		OutputState: i.ToIdentityUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IdentityUserArrayInput is an input type that accepts IdentityUserArray and IdentityUserArrayOutput values.
 // You can construct a concrete instance of `IdentityUserArrayInput` via:
 //
@@ -208,6 +215,12 @@ func (i IdentityUserArray) ToIdentityUserArrayOutput() IdentityUserArrayOutput {
 
 func (i IdentityUserArray) ToIdentityUserArrayOutputWithContext(ctx context.Context) IdentityUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityUserArrayOutput)
+}
+
+func (i IdentityUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*IdentityUser] {
+	return pulumix.Output[[]*IdentityUser]{
+		OutputState: i.ToIdentityUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IdentityUserMapInput is an input type that accepts IdentityUserMap and IdentityUserMapOutput values.
@@ -235,6 +248,12 @@ func (i IdentityUserMap) ToIdentityUserMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityUserMapOutput)
 }
 
+func (i IdentityUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IdentityUser] {
+	return pulumix.Output[map[string]*IdentityUser]{
+		OutputState: i.ToIdentityUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IdentityUserOutput struct{ *pulumi.OutputState }
 
 func (IdentityUserOutput) ElementType() reflect.Type {
@@ -247,6 +266,12 @@ func (o IdentityUserOutput) ToIdentityUserOutput() IdentityUserOutput {
 
 func (o IdentityUserOutput) ToIdentityUserOutputWithContext(ctx context.Context) IdentityUserOutput {
 	return o
+}
+
+func (o IdentityUserOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityUser] {
+	return pulumix.Output[*IdentityUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation date of this user.
@@ -313,6 +338,12 @@ func (o IdentityUserArrayOutput) ToIdentityUserArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o IdentityUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IdentityUser] {
+	return pulumix.Output[[]*IdentityUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IdentityUserArrayOutput) Index(i pulumi.IntInput) IdentityUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IdentityUser {
 		return vs[0].([]*IdentityUser)[vs[1].(int)]
@@ -331,6 +362,12 @@ func (o IdentityUserMapOutput) ToIdentityUserMapOutput() IdentityUserMapOutput {
 
 func (o IdentityUserMapOutput) ToIdentityUserMapOutputWithContext(ctx context.Context) IdentityUserMapOutput {
 	return o
+}
+
+func (o IdentityUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IdentityUser] {
+	return pulumix.Output[map[string]*IdentityUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityUserMapOutput) MapIndex(k pulumi.StringInput) IdentityUserOutput {

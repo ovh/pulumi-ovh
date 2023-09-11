@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -78,6 +79,12 @@ func (i InstallationTemplateCustomizationArgs) ToInstallationTemplateCustomizati
 	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplateCustomizationOutput)
 }
 
+func (i InstallationTemplateCustomizationArgs) ToOutput(ctx context.Context) pulumix.Output[InstallationTemplateCustomization] {
+	return pulumix.Output[InstallationTemplateCustomization]{
+		OutputState: i.ToInstallationTemplateCustomizationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstallationTemplateCustomizationArgs) ToInstallationTemplateCustomizationPtrOutput() InstallationTemplateCustomizationPtrOutput {
 	return i.ToInstallationTemplateCustomizationPtrOutputWithContext(context.Background())
 }
@@ -119,6 +126,12 @@ func (i *installationTemplateCustomizationPtrType) ToInstallationTemplateCustomi
 	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplateCustomizationPtrOutput)
 }
 
+func (i *installationTemplateCustomizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstallationTemplateCustomization] {
+	return pulumix.Output[*InstallationTemplateCustomization]{
+		OutputState: i.ToInstallationTemplateCustomizationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstallationTemplateCustomizationOutput struct{ *pulumi.OutputState }
 
 func (InstallationTemplateCustomizationOutput) ElementType() reflect.Type {
@@ -141,6 +154,12 @@ func (o InstallationTemplateCustomizationOutput) ToInstallationTemplateCustomiza
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstallationTemplateCustomization) *InstallationTemplateCustomization {
 		return &v
 	}).(InstallationTemplateCustomizationPtrOutput)
+}
+
+func (o InstallationTemplateCustomizationOutput) ToOutput(ctx context.Context) pulumix.Output[InstallationTemplateCustomization] {
+	return pulumix.Output[InstallationTemplateCustomization]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Template change log details.
@@ -194,6 +213,12 @@ func (o InstallationTemplateCustomizationPtrOutput) ToInstallationTemplateCustom
 
 func (o InstallationTemplateCustomizationPtrOutput) ToInstallationTemplateCustomizationPtrOutputWithContext(ctx context.Context) InstallationTemplateCustomizationPtrOutput {
 	return o
+}
+
+func (o InstallationTemplateCustomizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstallationTemplateCustomization] {
+	return pulumix.Output[*InstallationTemplateCustomization]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstallationTemplateCustomizationPtrOutput) Elem() InstallationTemplateCustomizationOutput {
@@ -345,6 +370,12 @@ func (i GetInstallationTemplateCustomizationArgs) ToGetInstallationTemplateCusto
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateCustomizationOutput)
 }
 
+func (i GetInstallationTemplateCustomizationArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstallationTemplateCustomization] {
+	return pulumix.Output[GetInstallationTemplateCustomization]{
+		OutputState: i.ToGetInstallationTemplateCustomizationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstallationTemplateCustomizationArrayInput is an input type that accepts GetInstallationTemplateCustomizationArray and GetInstallationTemplateCustomizationArrayOutput values.
 // You can construct a concrete instance of `GetInstallationTemplateCustomizationArrayInput` via:
 //
@@ -370,6 +401,12 @@ func (i GetInstallationTemplateCustomizationArray) ToGetInstallationTemplateCust
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateCustomizationArrayOutput)
 }
 
+func (i GetInstallationTemplateCustomizationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstallationTemplateCustomization] {
+	return pulumix.Output[[]GetInstallationTemplateCustomization]{
+		OutputState: i.ToGetInstallationTemplateCustomizationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstallationTemplateCustomizationOutput struct{ *pulumi.OutputState }
 
 func (GetInstallationTemplateCustomizationOutput) ElementType() reflect.Type {
@@ -382,6 +419,12 @@ func (o GetInstallationTemplateCustomizationOutput) ToGetInstallationTemplateCus
 
 func (o GetInstallationTemplateCustomizationOutput) ToGetInstallationTemplateCustomizationOutputWithContext(ctx context.Context) GetInstallationTemplateCustomizationOutput {
 	return o
+}
+
+func (o GetInstallationTemplateCustomizationOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstallationTemplateCustomization] {
+	return pulumix.Output[GetInstallationTemplateCustomization]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (DEPRECATED) Template change log details.
@@ -437,6 +480,12 @@ func (o GetInstallationTemplateCustomizationArrayOutput) ToGetInstallationTempla
 	return o
 }
 
+func (o GetInstallationTemplateCustomizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstallationTemplateCustomization] {
+	return pulumix.Output[[]GetInstallationTemplateCustomization]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstallationTemplateCustomizationArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateCustomizationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateCustomization {
 		return vs[0].([]GetInstallationTemplateCustomization)[vs[1].(int)]
@@ -484,6 +533,12 @@ func (i GetInstallationTemplatePartitionSchemeTypeArgs) ToGetInstallationTemplat
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplatePartitionSchemeTypeOutput)
 }
 
+func (i GetInstallationTemplatePartitionSchemeTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstallationTemplatePartitionSchemeType] {
+	return pulumix.Output[GetInstallationTemplatePartitionSchemeType]{
+		OutputState: i.ToGetInstallationTemplatePartitionSchemeTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstallationTemplatePartitionSchemeTypeArrayInput is an input type that accepts GetInstallationTemplatePartitionSchemeTypeArray and GetInstallationTemplatePartitionSchemeTypeArrayOutput values.
 // You can construct a concrete instance of `GetInstallationTemplatePartitionSchemeTypeArrayInput` via:
 //
@@ -509,6 +564,12 @@ func (i GetInstallationTemplatePartitionSchemeTypeArray) ToGetInstallationTempla
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplatePartitionSchemeTypeArrayOutput)
 }
 
+func (i GetInstallationTemplatePartitionSchemeTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstallationTemplatePartitionSchemeType] {
+	return pulumix.Output[[]GetInstallationTemplatePartitionSchemeType]{
+		OutputState: i.ToGetInstallationTemplatePartitionSchemeTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstallationTemplatePartitionSchemeTypeOutput struct{ *pulumi.OutputState }
 
 func (GetInstallationTemplatePartitionSchemeTypeOutput) ElementType() reflect.Type {
@@ -521,6 +582,12 @@ func (o GetInstallationTemplatePartitionSchemeTypeOutput) ToGetInstallationTempl
 
 func (o GetInstallationTemplatePartitionSchemeTypeOutput) ToGetInstallationTemplatePartitionSchemeTypeOutputWithContext(ctx context.Context) GetInstallationTemplatePartitionSchemeTypeOutput {
 	return o
+}
+
+func (o GetInstallationTemplatePartitionSchemeTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstallationTemplatePartitionSchemeType] {
+	return pulumix.Output[GetInstallationTemplatePartitionSchemeType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstallationTemplatePartitionSchemeTypeOutput) HardwareRaids() GetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayOutput {
@@ -557,6 +624,12 @@ func (o GetInstallationTemplatePartitionSchemeTypeArrayOutput) ToGetInstallation
 
 func (o GetInstallationTemplatePartitionSchemeTypeArrayOutput) ToGetInstallationTemplatePartitionSchemeTypeArrayOutputWithContext(ctx context.Context) GetInstallationTemplatePartitionSchemeTypeArrayOutput {
 	return o
+}
+
+func (o GetInstallationTemplatePartitionSchemeTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstallationTemplatePartitionSchemeType] {
+	return pulumix.Output[[]GetInstallationTemplatePartitionSchemeType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstallationTemplatePartitionSchemeTypeArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplatePartitionSchemeTypeOutput {
@@ -610,6 +683,12 @@ func (i GetInstallationTemplatePartitionSchemeHardwareRaidTypeArgs) ToGetInstall
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplatePartitionSchemeHardwareRaidTypeOutput)
 }
 
+func (i GetInstallationTemplatePartitionSchemeHardwareRaidTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstallationTemplatePartitionSchemeHardwareRaidType] {
+	return pulumix.Output[GetInstallationTemplatePartitionSchemeHardwareRaidType]{
+		OutputState: i.ToGetInstallationTemplatePartitionSchemeHardwareRaidTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayInput is an input type that accepts GetInstallationTemplatePartitionSchemeHardwareRaidTypeArray and GetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayOutput values.
 // You can construct a concrete instance of `GetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayInput` via:
 //
@@ -635,6 +714,12 @@ func (i GetInstallationTemplatePartitionSchemeHardwareRaidTypeArray) ToGetInstal
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayOutput)
 }
 
+func (i GetInstallationTemplatePartitionSchemeHardwareRaidTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstallationTemplatePartitionSchemeHardwareRaidType] {
+	return pulumix.Output[[]GetInstallationTemplatePartitionSchemeHardwareRaidType]{
+		OutputState: i.ToGetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstallationTemplatePartitionSchemeHardwareRaidTypeOutput struct{ *pulumi.OutputState }
 
 func (GetInstallationTemplatePartitionSchemeHardwareRaidTypeOutput) ElementType() reflect.Type {
@@ -647,6 +732,12 @@ func (o GetInstallationTemplatePartitionSchemeHardwareRaidTypeOutput) ToGetInsta
 
 func (o GetInstallationTemplatePartitionSchemeHardwareRaidTypeOutput) ToGetInstallationTemplatePartitionSchemeHardwareRaidTypeOutputWithContext(ctx context.Context) GetInstallationTemplatePartitionSchemeHardwareRaidTypeOutput {
 	return o
+}
+
+func (o GetInstallationTemplatePartitionSchemeHardwareRaidTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstallationTemplatePartitionSchemeHardwareRaidType] {
+	return pulumix.Output[GetInstallationTemplatePartitionSchemeHardwareRaidType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Disk List. Syntax is cX:dY for disks and [cX:dY,cX:dY] for groups. With X and Y resp. the controller id and the disk id.
@@ -681,6 +772,12 @@ func (o GetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayOutput) ToGet
 
 func (o GetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayOutput) ToGetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayOutputWithContext(ctx context.Context) GetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayOutput {
 	return o
+}
+
+func (o GetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstallationTemplatePartitionSchemeHardwareRaidType] {
+	return pulumix.Output[[]GetInstallationTemplatePartitionSchemeHardwareRaidType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplatePartitionSchemeHardwareRaidTypeOutput {
@@ -746,6 +843,12 @@ func (i GetInstallationTemplatePartitionSchemePartitionTypeArgs) ToGetInstallati
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplatePartitionSchemePartitionTypeOutput)
 }
 
+func (i GetInstallationTemplatePartitionSchemePartitionTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstallationTemplatePartitionSchemePartitionType] {
+	return pulumix.Output[GetInstallationTemplatePartitionSchemePartitionType]{
+		OutputState: i.ToGetInstallationTemplatePartitionSchemePartitionTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstallationTemplatePartitionSchemePartitionTypeArrayInput is an input type that accepts GetInstallationTemplatePartitionSchemePartitionTypeArray and GetInstallationTemplatePartitionSchemePartitionTypeArrayOutput values.
 // You can construct a concrete instance of `GetInstallationTemplatePartitionSchemePartitionTypeArrayInput` via:
 //
@@ -771,6 +874,12 @@ func (i GetInstallationTemplatePartitionSchemePartitionTypeArray) ToGetInstallat
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplatePartitionSchemePartitionTypeArrayOutput)
 }
 
+func (i GetInstallationTemplatePartitionSchemePartitionTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstallationTemplatePartitionSchemePartitionType] {
+	return pulumix.Output[[]GetInstallationTemplatePartitionSchemePartitionType]{
+		OutputState: i.ToGetInstallationTemplatePartitionSchemePartitionTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstallationTemplatePartitionSchemePartitionTypeOutput struct{ *pulumi.OutputState }
 
 func (GetInstallationTemplatePartitionSchemePartitionTypeOutput) ElementType() reflect.Type {
@@ -783,6 +892,12 @@ func (o GetInstallationTemplatePartitionSchemePartitionTypeOutput) ToGetInstalla
 
 func (o GetInstallationTemplatePartitionSchemePartitionTypeOutput) ToGetInstallationTemplatePartitionSchemePartitionTypeOutputWithContext(ctx context.Context) GetInstallationTemplatePartitionSchemePartitionTypeOutput {
 	return o
+}
+
+func (o GetInstallationTemplatePartitionSchemePartitionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstallationTemplatePartitionSchemePartitionType] {
+	return pulumix.Output[GetInstallationTemplatePartitionSchemePartitionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Partition filesystem.
@@ -834,6 +949,12 @@ func (o GetInstallationTemplatePartitionSchemePartitionTypeArrayOutput) ToGetIns
 	return o
 }
 
+func (o GetInstallationTemplatePartitionSchemePartitionTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstallationTemplatePartitionSchemePartitionType] {
+	return pulumix.Output[[]GetInstallationTemplatePartitionSchemePartitionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstallationTemplatePartitionSchemePartitionTypeArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplatePartitionSchemePartitionTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplatePartitionSchemePartitionType {
 		return vs[0].([]GetInstallationTemplatePartitionSchemePartitionType)[vs[1].(int)]
@@ -877,6 +998,12 @@ func (i GetMeCurrencyArgs) ToGetMeCurrencyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetMeCurrencyOutput)
 }
 
+func (i GetMeCurrencyArgs) ToOutput(ctx context.Context) pulumix.Output[GetMeCurrency] {
+	return pulumix.Output[GetMeCurrency]{
+		OutputState: i.ToGetMeCurrencyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMeCurrencyArrayInput is an input type that accepts GetMeCurrencyArray and GetMeCurrencyArrayOutput values.
 // You can construct a concrete instance of `GetMeCurrencyArrayInput` via:
 //
@@ -902,6 +1029,12 @@ func (i GetMeCurrencyArray) ToGetMeCurrencyArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetMeCurrencyArrayOutput)
 }
 
+func (i GetMeCurrencyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMeCurrency] {
+	return pulumix.Output[[]GetMeCurrency]{
+		OutputState: i.ToGetMeCurrencyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMeCurrencyOutput struct{ *pulumi.OutputState }
 
 func (GetMeCurrencyOutput) ElementType() reflect.Type {
@@ -914,6 +1047,12 @@ func (o GetMeCurrencyOutput) ToGetMeCurrencyOutput() GetMeCurrencyOutput {
 
 func (o GetMeCurrencyOutput) ToGetMeCurrencyOutputWithContext(ctx context.Context) GetMeCurrencyOutput {
 	return o
+}
+
+func (o GetMeCurrencyOutput) ToOutput(ctx context.Context) pulumix.Output[GetMeCurrency] {
+	return pulumix.Output[GetMeCurrency]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Currency code used by this account (e.g EUR, USD, ...)
@@ -938,6 +1077,12 @@ func (o GetMeCurrencyArrayOutput) ToGetMeCurrencyArrayOutput() GetMeCurrencyArra
 
 func (o GetMeCurrencyArrayOutput) ToGetMeCurrencyArrayOutputWithContext(ctx context.Context) GetMeCurrencyArrayOutput {
 	return o
+}
+
+func (o GetMeCurrencyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMeCurrency] {
+	return pulumix.Output[[]GetMeCurrency]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMeCurrencyArrayOutput) Index(i pulumi.IntInput) GetMeCurrencyOutput {

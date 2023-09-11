@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g., <break><break>```sh<break> $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name <break>```<break><break>
+ * OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
  */
 export class PrivateDatabaseDb extends pulumi.CustomResource {
     /**

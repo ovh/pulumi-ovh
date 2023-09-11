@@ -29,3 +29,11 @@ export interface GetPoliciesResult {
      */
     readonly policies: string[];
 }
+/**
+ * Use this data source to list the existing IAM policies of an account.
+ *
+ * ## Example Usage
+ */
+export function getPoliciesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
+    return pulumi.output(getPolicies(opts))
+}

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -183,6 +184,12 @@ func (i *ServerInstallTask) ToServerInstallTaskOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskOutput)
 }
 
+func (i *ServerInstallTask) ToOutput(ctx context.Context) pulumix.Output[*ServerInstallTask] {
+	return pulumix.Output[*ServerInstallTask]{
+		OutputState: i.ToServerInstallTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServerInstallTaskArrayInput is an input type that accepts ServerInstallTaskArray and ServerInstallTaskArrayOutput values.
 // You can construct a concrete instance of `ServerInstallTaskArrayInput` via:
 //
@@ -206,6 +213,12 @@ func (i ServerInstallTaskArray) ToServerInstallTaskArrayOutput() ServerInstallTa
 
 func (i ServerInstallTaskArray) ToServerInstallTaskArrayOutputWithContext(ctx context.Context) ServerInstallTaskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskArrayOutput)
+}
+
+func (i ServerInstallTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServerInstallTask] {
+	return pulumix.Output[[]*ServerInstallTask]{
+		OutputState: i.ToServerInstallTaskArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServerInstallTaskMapInput is an input type that accepts ServerInstallTaskMap and ServerInstallTaskMapOutput values.
@@ -233,6 +246,12 @@ func (i ServerInstallTaskMap) ToServerInstallTaskMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskMapOutput)
 }
 
+func (i ServerInstallTaskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerInstallTask] {
+	return pulumix.Output[map[string]*ServerInstallTask]{
+		OutputState: i.ToServerInstallTaskMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerInstallTaskOutput struct{ *pulumi.OutputState }
 
 func (ServerInstallTaskOutput) ElementType() reflect.Type {
@@ -245,6 +264,12 @@ func (o ServerInstallTaskOutput) ToServerInstallTaskOutput() ServerInstallTaskOu
 
 func (o ServerInstallTaskOutput) ToServerInstallTaskOutputWithContext(ctx context.Context) ServerInstallTaskOutput {
 	return o
+}
+
+func (o ServerInstallTaskOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerInstallTask] {
+	return pulumix.Output[*ServerInstallTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If set, reboot the server on the specified boot id during destroy phase.
@@ -316,6 +341,12 @@ func (o ServerInstallTaskArrayOutput) ToServerInstallTaskArrayOutputWithContext(
 	return o
 }
 
+func (o ServerInstallTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServerInstallTask] {
+	return pulumix.Output[[]*ServerInstallTask]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServerInstallTaskArrayOutput) Index(i pulumi.IntInput) ServerInstallTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerInstallTask {
 		return vs[0].([]*ServerInstallTask)[vs[1].(int)]
@@ -334,6 +365,12 @@ func (o ServerInstallTaskMapOutput) ToServerInstallTaskMapOutput() ServerInstall
 
 func (o ServerInstallTaskMapOutput) ToServerInstallTaskMapOutputWithContext(ctx context.Context) ServerInstallTaskMapOutput {
 	return o
+}
+
+func (o ServerInstallTaskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerInstallTask] {
+	return pulumix.Output[map[string]*ServerInstallTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServerInstallTaskMapOutput) MapIndex(k pulumi.StringInput) ServerInstallTaskOutput {

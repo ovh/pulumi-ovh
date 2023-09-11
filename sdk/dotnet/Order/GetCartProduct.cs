@@ -17,9 +17,10 @@ namespace Pulumi.Ovh.Order
         /// ## Example Usage
         /// 
         /// ```hcl
+        /// data "ovh_me" "myaccount" {}
+        /// 
         /// data "ovh_order_cart" "mycart" {
-        ///   ovh_subsidiary = "fr"
-        ///   description    = "my cart"
+        ///   ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary
         /// }
         /// 
         /// data "ovh_order_cart_product" "plans" {
@@ -37,9 +38,10 @@ namespace Pulumi.Ovh.Order
         /// ## Example Usage
         /// 
         /// ```hcl
+        /// data "ovh_me" "myaccount" {}
+        /// 
         /// data "ovh_order_cart" "mycart" {
-        ///   ovh_subsidiary = "fr"
-        ///   description    = "my cart"
+        ///   ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary
         /// }
         /// 
         /// data "ovh_order_cart_product" "plans" {

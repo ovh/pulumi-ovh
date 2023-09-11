@@ -50,7 +50,7 @@ export class Vrack extends pulumi.CustomResource {
      */
     public /*out*/ readonly orders!: pulumi.Output<outputs.Vrack.VrackOrder[]>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     public readonly ovhSubsidiary!: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export interface VrackState {
      */
     orders?: pulumi.Input<pulumi.Input<inputs.Vrack.VrackOrder>[]>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**
@@ -178,7 +178,7 @@ export interface VrackArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary: pulumi.Input<string>;
     /**

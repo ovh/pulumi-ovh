@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a custom installation template available for dedicated servers.
@@ -106,6 +107,12 @@ func (o LookupInstallationTemplateResultOutput) ToLookupInstallationTemplateResu
 
 func (o LookupInstallationTemplateResultOutput) ToLookupInstallationTemplateResultOutputWithContext(ctx context.Context) LookupInstallationTemplateResultOutput {
 	return o
+}
+
+func (o LookupInstallationTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstallationTemplateResult] {
+	return pulumix.Output[LookupInstallationTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of all language available for this template.

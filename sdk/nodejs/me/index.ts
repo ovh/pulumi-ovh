@@ -12,7 +12,8 @@ utilities.lazyLoad(exports, ["getIdentityGroup","getIdentityGroupOutput"], () =>
 
 export { GetIdentityGroupsResult } from "./getIdentityGroups";
 export const getIdentityGroups: typeof import("./getIdentityGroups").getIdentityGroups = null as any;
-utilities.lazyLoad(exports, ["getIdentityGroups"], () => require("./getIdentityGroups"));
+export const getIdentityGroupsOutput: typeof import("./getIdentityGroups").getIdentityGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getIdentityGroups","getIdentityGroupsOutput"], () => require("./getIdentityGroups"));
 
 export { GetIdentityUserArgs, GetIdentityUserResult, GetIdentityUserOutputArgs } from "./getIdentityUser";
 export const getIdentityUser: typeof import("./getIdentityUser").getIdentityUser = null as any;
@@ -21,7 +22,8 @@ utilities.lazyLoad(exports, ["getIdentityUser","getIdentityUserOutput"], () => r
 
 export { GetIdentityUsersResult } from "./getIdentityUsers";
 export const getIdentityUsers: typeof import("./getIdentityUsers").getIdentityUsers = null as any;
-utilities.lazyLoad(exports, ["getIdentityUsers"], () => require("./getIdentityUsers"));
+export const getIdentityUsersOutput: typeof import("./getIdentityUsers").getIdentityUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getIdentityUsers","getIdentityUsersOutput"], () => require("./getIdentityUsers"));
 
 export { GetInstallationTemplateArgs, GetInstallationTemplateResult, GetInstallationTemplateOutputArgs } from "./getInstallationTemplate";
 export const getInstallationTemplate: typeof import("./getInstallationTemplate").getInstallationTemplate = null as any;
@@ -30,7 +32,8 @@ utilities.lazyLoad(exports, ["getInstallationTemplate","getInstallationTemplateO
 
 export { GetInstallationTemplatesResult } from "./getInstallationTemplates";
 export const getInstallationTemplates: typeof import("./getInstallationTemplates").getInstallationTemplates = null as any;
-utilities.lazyLoad(exports, ["getInstallationTemplates"], () => require("./getInstallationTemplates"));
+export const getInstallationTemplatesOutput: typeof import("./getInstallationTemplates").getInstallationTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstallationTemplates","getInstallationTemplatesOutput"], () => require("./getInstallationTemplates"));
 
 export { GetIpxeScriptArgs, GetIpxeScriptResult, GetIpxeScriptOutputArgs } from "./getIpxeScript";
 export const getIpxeScript: typeof import("./getIpxeScript").getIpxeScript = null as any;
@@ -39,11 +42,13 @@ utilities.lazyLoad(exports, ["getIpxeScript","getIpxeScriptOutput"], () => requi
 
 export { GetIpxeScriptsResult } from "./getIpxeScripts";
 export const getIpxeScripts: typeof import("./getIpxeScripts").getIpxeScripts = null as any;
-utilities.lazyLoad(exports, ["getIpxeScripts"], () => require("./getIpxeScripts"));
+export const getIpxeScriptsOutput: typeof import("./getIpxeScripts").getIpxeScriptsOutput = null as any;
+utilities.lazyLoad(exports, ["getIpxeScripts","getIpxeScriptsOutput"], () => require("./getIpxeScripts"));
 
 export { GetMeResult } from "./getMe";
 export const getMe: typeof import("./getMe").getMe = null as any;
-utilities.lazyLoad(exports, ["getMe"], () => require("./getMe"));
+export const getMeOutput: typeof import("./getMe").getMeOutput = null as any;
+utilities.lazyLoad(exports, ["getMe","getMeOutput"], () => require("./getMe"));
 
 export { GetPaymentmeanBankAccountArgs, GetPaymentmeanBankAccountResult, GetPaymentmeanBankAccountOutputArgs } from "./getPaymentmeanBankAccount";
 export const getPaymentmeanBankAccount: typeof import("./getPaymentmeanBankAccount").getPaymentmeanBankAccount = null as any;
@@ -62,7 +67,8 @@ utilities.lazyLoad(exports, ["getSshKey","getSshKeyOutput"], () => require("./ge
 
 export { GetSshKeysResult } from "./getSshKeys";
 export const getSshKeys: typeof import("./getSshKeys").getSshKeys = null as any;
-utilities.lazyLoad(exports, ["getSshKeys"], () => require("./getSshKeys"));
+export const getSshKeysOutput: typeof import("./getSshKeys").getSshKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getSshKeys","getSshKeysOutput"], () => require("./getSshKeys"));
 
 export { IdentityGroupArgs, IdentityGroupState } from "./identityGroup";
 export type IdentityGroup = import("./identityGroup").IdentityGroup;

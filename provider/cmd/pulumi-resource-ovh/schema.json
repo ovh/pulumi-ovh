@@ -4106,7 +4106,7 @@
     },
     "resources": {
         "ovh:CloudProject/containerRegistry:ContainerRegistry": {
-            "description": "Creates a container registry associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_capabilities_containerregistry_filter\" \"regcap\" {\n  service_name = \"XXXXXX\"\n  plan_name    = \"SMALL\"\n  region       = \"GRA\"\n}\n\nresource \"ovh_cloud_project_containerregistry\" \"reg\" {\n  service_name = data.ovh_cloud_project_capabilities_containerregistry_filter.regcap.service_name\n  plan_id      = data.ovh_cloud_project_capabilities_containerregistry_filter.regcap.id\n  region       = data.ovh_cloud_project_capabilities_containerregistry_filter.regcap.region\n  name         = \"mydockerregistry\"\n}\n```\n\n\u003e __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.\n",
+            "description": "Creates a container registry associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_capabilities_containerregistry_filter\" \"regcap\" {\n  service_name = \"XXXXXX\"\n  plan_name    = \"SMALL\"\n  region       = \"GRA\"\n}\n\nresource \"ovh_cloud_project_containerregistry\" \"my-registry\" {\n  service_name = data.ovh_cloud_project_capabilities_containerregistry_filter.regcap.service_name\n  plan_id      = data.ovh_cloud_project_capabilities_containerregistry_filter.regcap.id\n  region       = data.ovh_cloud_project_capabilities_containerregistry_filter.regcap.region\n  name         = \"mydockerregistry\"\n}\n```\n\n\u003e __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.\n",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -4254,8 +4254,204 @@
                 "type": "object"
             }
         },
+        "ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC": {
+            "description": "Creates an OIDC configuration in an OVHcloud Managed Private Registry.\n\n## Example Usage\n\n```hcl\nresource \"ovh_cloud_project_containerregistry_oidc\" \"my-oidc\" {\n  service_name = \"XXXXXX\"\n  registry_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\"\n\n  #required field\n  oidc_name          = \"my-oidc-provider\"\n  oidc_endpoint      = \"https://xxxx.yyy.com\"\n  oidc_client_id     = \"xxx\"\n  oidc_client_secret = \"xxx\"\n  oidc_scope         = \"openid,profile,email,offline_access\"\n\n  #optional field\n  oidc_groups_claim = \"groups\"\n  oidc_admin_group  = \"harbor-admin\"\n  oidc_verify_cert  = true\n  oidc_auto_onboard = true\n  oidc_user_claim   = \"preferred_username\"\n  delete_users      = false\n}\n\noutput \"oidc_client_secret\" {\n  value = ovh_cloud_project_containerregistry_oidc.my-oidc.oidc_client_secret\n  sensitive = true\n}\n```\n\n## Import\n\nOVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by \"/\" E.g., bash \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
+            "properties": {
+                "deleteUsers": {
+                    "type": "boolean",
+                    "description": "Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**\n"
+                },
+                "oidcAdminGroup": {
+                    "type": "string",
+                    "description": "Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.\n"
+                },
+                "oidcAutoOnboard": {
+                    "type": "boolean",
+                    "description": "Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.\n"
+                },
+                "oidcClientId": {
+                    "type": "string",
+                    "description": "The client ID with which Harbor is registered as client application with the OIDC provider.\n"
+                },
+                "oidcClientSecret": {
+                    "type": "string",
+                    "description": "The secret for the Harbor client application.\n",
+                    "secret": true
+                },
+                "oidcEndpoint": {
+                    "type": "string",
+                    "description": "The URL of an OIDC-compliant server.\n"
+                },
+                "oidcGroupsClaim": {
+                    "type": "string",
+                    "description": "The name of Claim in the ID token whose value is the list of group names.\n"
+                },
+                "oidcName": {
+                    "type": "string",
+                    "description": "The name of the OIDC provider.\n"
+                },
+                "oidcScope": {
+                    "type": "string",
+                    "description": "The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.\n"
+                },
+                "oidcUserClaim": {
+                    "type": "string",
+                    "description": "The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).\n"
+                },
+                "oidcVerifyCert": {
+                    "type": "boolean",
+                    "description": "Set it to `false` if your OIDC server is hosted via self-signed certificate.\n"
+                },
+                "registryId": {
+                    "type": "string",
+                    "description": "The ID of the Managed Private Registry. **Changing this value recreates the resource.**\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**\n"
+                }
+            },
+            "required": [
+                "oidcClientId",
+                "oidcClientSecret",
+                "oidcEndpoint",
+                "oidcName",
+                "oidcScope",
+                "registryId",
+                "serviceName"
+            ],
+            "inputProperties": {
+                "deleteUsers": {
+                    "type": "boolean",
+                    "description": "Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "oidcAdminGroup": {
+                    "type": "string",
+                    "description": "Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.\n"
+                },
+                "oidcAutoOnboard": {
+                    "type": "boolean",
+                    "description": "Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.\n"
+                },
+                "oidcClientId": {
+                    "type": "string",
+                    "description": "The client ID with which Harbor is registered as client application with the OIDC provider.\n"
+                },
+                "oidcClientSecret": {
+                    "type": "string",
+                    "description": "The secret for the Harbor client application.\n",
+                    "secret": true
+                },
+                "oidcEndpoint": {
+                    "type": "string",
+                    "description": "The URL of an OIDC-compliant server.\n"
+                },
+                "oidcGroupsClaim": {
+                    "type": "string",
+                    "description": "The name of Claim in the ID token whose value is the list of group names.\n"
+                },
+                "oidcName": {
+                    "type": "string",
+                    "description": "The name of the OIDC provider.\n"
+                },
+                "oidcScope": {
+                    "type": "string",
+                    "description": "The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.\n"
+                },
+                "oidcUserClaim": {
+                    "type": "string",
+                    "description": "The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).\n"
+                },
+                "oidcVerifyCert": {
+                    "type": "boolean",
+                    "description": "Set it to `false` if your OIDC server is hosted via self-signed certificate.\n"
+                },
+                "registryId": {
+                    "type": "string",
+                    "description": "The ID of the Managed Private Registry. **Changing this value recreates the resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "oidcClientId",
+                "oidcClientSecret",
+                "oidcEndpoint",
+                "oidcName",
+                "oidcScope",
+                "registryId",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ContainerRegistryOIDC resources.\n",
+                "properties": {
+                    "deleteUsers": {
+                        "type": "boolean",
+                        "description": "Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "oidcAdminGroup": {
+                        "type": "string",
+                        "description": "Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.\n"
+                    },
+                    "oidcAutoOnboard": {
+                        "type": "boolean",
+                        "description": "Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.\n"
+                    },
+                    "oidcClientId": {
+                        "type": "string",
+                        "description": "The client ID with which Harbor is registered as client application with the OIDC provider.\n"
+                    },
+                    "oidcClientSecret": {
+                        "type": "string",
+                        "description": "The secret for the Harbor client application.\n",
+                        "secret": true
+                    },
+                    "oidcEndpoint": {
+                        "type": "string",
+                        "description": "The URL of an OIDC-compliant server.\n"
+                    },
+                    "oidcGroupsClaim": {
+                        "type": "string",
+                        "description": "The name of Claim in the ID token whose value is the list of group names.\n"
+                    },
+                    "oidcName": {
+                        "type": "string",
+                        "description": "The name of the OIDC provider.\n"
+                    },
+                    "oidcScope": {
+                        "type": "string",
+                        "description": "The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.\n"
+                    },
+                    "oidcUserClaim": {
+                        "type": "string",
+                        "description": "The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).\n"
+                    },
+                    "oidcVerifyCert": {
+                        "type": "boolean",
+                        "description": "Set it to `false` if your OIDC server is hosted via self-signed certificate.\n"
+                    },
+                    "registryId": {
+                        "type": "string",
+                        "description": "The ID of the Managed Private Registry. **Changing this value recreates the resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "ovh:CloudProject/containerRegistryUser:ContainerRegistryUser": {
-            "description": "Creates a user for a container registry associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_containerregistry\" \"registry\" {\n  service_name = \"XXXXXX\"\n  registry_id  = \"yyyy\"\n}\n\nresource \"ovh_cloud_project_containerregistry_user\" \"user\" {\n  service_name = ovh_cloud_project_containerregistry.registry.service_name\n  registry_id  = ovh_cloud_project_containerregistry.registry.id\n  email        = \"foo@bar.com\"\n  login        = \"foobar\"\n}\n```\n",
+            "description": "Creates a user for a container registry associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_containerregistry\" \"registry\" {\n  service_name = \"XXXXXX\"\n  registry_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\"\n}\n\nresource \"ovh_cloud_project_containerregistry_user\" \"user\" {\n  service_name = ovh_cloud_project_containerregistry.registry.service_name\n  registry_id  = ovh_cloud_project_containerregistry.registry.id\n  email        = \"foo@bar.com\"\n  login        = \"foobar\"\n}\n```\n",
             "properties": {
                 "email": {
                     "type": "string",
@@ -5813,7 +6009,7 @@
             }
         },
         "ovh:CloudProject/project:Project": {
-            "description": "## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = \"fr\"\n  description    = \"my cloud order cart\"\n}\n\ndata \"ovh_order_cart_product_plan\" \"cloud\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"cloud\"\n  plan_code      = \"project.2018\"\n}\n\nresource \"ovh_cloud_project\" \"my_cloud_project\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n  description    = \"my cloud project\"\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.cloud.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_plan.cloud.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.cloud.selected_price.0.pricing_mode\n  }\n}\n```\n\n## Import\n\nCloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.  bash \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
+            "description": "\n\n## Import\n\nCloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.  bash \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "access": {
                     "type": "string"
@@ -5831,7 +6027,7 @@
                 },
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n"
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n"
                 },
                 "paymentMean": {
                     "type": "string",
@@ -5884,7 +6080,7 @@
                 },
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n",
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                     "willReplaceOnChanges": true
                 },
                 "paymentMean": {
@@ -5930,7 +6126,7 @@
                     },
                     "ovhSubsidiary": {
                         "type": "string",
-                        "description": "OVHcloud Subsidiary\n",
+                        "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                         "willReplaceOnChanges": true
                     },
                     "paymentMean": {
@@ -9732,7 +9928,7 @@
             }
         },
         "ovh:Domain/zone:Zone": {
-            "description": "## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = \"fr\"\n}\n\ndata \"ovh_order_cart_product_plan\" \"zone\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"dns\"\n  plan_code      = \"zone\"\n}\n\nresource \"ovh_domain_zone\" \"zone\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.zone.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_plan.zone.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.zone.selected_price.0.pricing_mode\n\n    configuration {\n      label = \"zone\"\n      value = \"myzone.mydomain.com\"\n    }\n\n    configuration {\n      label = \"template\"\n      value = \"minimized\"\n    }\n  }\n}\n```\n",
+            "description": "## Example Usage\n\n```hcl\ndata \"ovh_me\" \"myaccount\" {}\n\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary\n}\n\ndata \"ovh_order_cart_product_plan\" \"zone\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"dns\"\n  plan_code      = \"zone\"\n}\n\nresource \"ovh_domain_zone\" \"zone\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.zone.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_plan.zone.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.zone.selected_price.0.pricing_mode\n\n    configuration {\n      label = \"zone\"\n      value = \"myzone.mydomain.com\"\n    }\n\n    configuration {\n      label = \"template\"\n      value = \"minimized\"\n    }\n  }\n}\n```\n",
             "properties": {
                 "dnssecSupported": {
                     "type": "boolean",
@@ -9766,7 +9962,7 @@
                 },
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n"
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n"
                 },
                 "paymentMean": {
                     "type": "string",
@@ -9802,7 +9998,7 @@
             "inputProperties": {
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n",
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                     "willReplaceOnChanges": true
                 },
                 "paymentMean": {
@@ -9864,7 +10060,7 @@
                     },
                     "ovhSubsidiary": {
                         "type": "string",
-                        "description": "OVHcloud Subsidiary\n",
+                        "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                         "willReplaceOnChanges": true
                     },
                     "paymentMean": {
@@ -10088,7 +10284,7 @@
             }
         },
         "ovh:Hosting/privateDatabase:PrivateDatabase": {
-            "description": "## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = \"fr\"\n  description    = \"my privatedatabase order cart\"\n}\n\ndata \"ovh_order_cart_product_plan\" \"database\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"privateSQL\"\n  plan_code      = \"private-sql-512-instance\"\n}\n\nresource \"ovh_hosting_privatedatabase\" \"database\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n  display_name   = \"Postgresql-12\"\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.database.prices[3].duration\n    plan_code    = data.ovh_order_cart_product_plan.database.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.database.selected_price[0].pricing_mode\n\n    configuration {\n      label = \"dc\"\n      value = \"gra3\"\n    }\n\n    configuration {\n      label = \"engine\"\n      value = \"postgresql_12\"\n    }\n  }\n}\n\noutput \"privatedatabase_service_name\" {\n  value = ovh_hosting_privatedatabase.database.service_name\n}\n```\n\n## Import\n\nOVHcloud Webhosting database can be imported using the `service_name`, E.g., \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
+            "description": "## Example Usage\n\n```hcl\ndata \"ovh_me\" \"myaccount\" {}\n\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary\n}\n\ndata \"ovh_order_cart_product_plan\" \"database\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"privateSQL\"\n  plan_code      = \"private-sql-512-instance\"\n}\n\nresource \"ovh_hosting_privatedatabase\" \"database\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n  display_name   = \"Postgresql-12\"\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.database.prices[3].duration\n    plan_code    = data.ovh_order_cart_product_plan.database.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.database.selected_price[0].pricing_mode\n\n    configuration {\n      label = \"dc\"\n      value = \"gra3\"\n    }\n\n    configuration {\n      label = \"engine\"\n      value = \"postgresql_12\"\n    }\n  }\n}\n\noutput \"privatedatabase_service_name\" {\n  value = ovh_hosting_privatedatabase.database.service_name\n}\n```\n\n## Import\n\nOVHcloud Webhosting database can be imported using the `service_name`, E.g.,\n\n```sh\u003cbreak\u003e\n$ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name\n\u003cbreak\u003e```\u003cbreak\u003e\n",
             "properties": {
                 "cpu": {
                     "type": "integer",
@@ -10127,7 +10323,7 @@
                 },
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n"
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n"
                 },
                 "paymentMean": {
                     "type": "string",
@@ -10230,7 +10426,7 @@
                 },
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n",
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                     "willReplaceOnChanges": true
                 },
                 "paymentMean": {
@@ -10301,7 +10497,7 @@
                     },
                     "ovhSubsidiary": {
                         "type": "string",
-                        "description": "OVHcloud Subsidiary\n",
+                        "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                         "willReplaceOnChanges": true
                     },
                     "paymentMean": {
@@ -10380,7 +10576,7 @@
             }
         },
         "ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist": {
-            "description": "Create a new IP whitelist on your private cloud database instance.\n\n## Example Usage\n\n```hcl\nresource \"ovh_hosting_privatedatabase_whitelist\" \"ip\" {\n  service_name = \"XXXXXX\"\n  ip           = \"1.2.3.4\"\n  name         = \"A name for your IP address\"\n  service      = true\n  sftp         = true\n}\n```\n\n## Import\n\nOVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by \"/\" E.g., \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
+            "description": "Create a new IP whitelist on your private cloud database instance.\n\n## Example Usage\n\n```hcl\nresource \"ovh_hosting_privatedatabase_whitelist\" \"ip\" {\n  service_name = \"XXXXXX\"\n  ip           = \"1.2.3.4\"\n  name         = \"A name for your IP address\"\n  service      = true\n  sftp         = true\n}\n```\n\n## Import\n\nOVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by \"/\" E.g.,\n\n```sh\u003cbreak\u003e\n$ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip\n\u003cbreak\u003e```\u003cbreak\u003e\n",
             "properties": {
                 "ip": {
                     "type": "string",
@@ -10468,7 +10664,7 @@
             }
         },
         "ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb": {
-            "description": "Create a new database on your private cloud database service.\n\n## Example Usage\n\n```hcl\nresource \"ovh_hosting_privatedatabase_database\" \"database\" {\n  service_name  = \"XXXXXX\"\n  database_name = \"XXXXXX\"\n}\n```\n\n## Import\n\nOVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by \"/\" E.g., \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
+            "description": "Create a new database on your private cloud database service.\n\n## Example Usage\n\n```hcl\nresource \"ovh_hosting_privatedatabase_database\" \"database\" {\n  service_name  = \"XXXXXX\"\n  database_name = \"XXXXXX\"\n}\n```\n\n## Import\n\nOVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by \"/\" E.g.,\n\n```sh\u003cbreak\u003e\n$ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name\n\u003cbreak\u003e```\u003cbreak\u003e\n",
             "properties": {
                 "databaseName": {
                     "type": "string",
@@ -10517,7 +10713,7 @@
             }
         },
         "ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser": {
-            "description": "Create a new user on your private cloud database instance.\n\n## Example Usage\n\n```hcl\nresource \"ovh_hosting_privatedatabase_user\" \"user\" {\n  service_name  = \"XXXXXX\"\n  password      = \"XXXXXX\"\n  user_name     = \"XXXXXX\"\n}\n```\n\n## Import\n\nOVHcloud database user can be imported using the `service_name` and the `user_name`, separated by \"/\" E.g., \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
+            "description": "Create a new user on your private cloud database instance.\n\n## Example Usage\n\n```hcl\nresource \"ovh_hosting_privatedatabase_user\" \"user\" {\n  service_name  = \"XXXXXX\"\n  password      = \"XXXXXX\"\n  user_name     = \"XXXXXX\"\n}\n```\n\n## Import\n\nOVHcloud database user can be imported using the `service_name` and the `user_name`, separated by \"/\" E.g.,\n\n```sh\u003cbreak\u003e\n$ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name\n\u003cbreak\u003e```\u003cbreak\u003e\n",
             "properties": {
                 "password": {
                     "type": "string",
@@ -10585,7 +10781,7 @@
             }
         },
         "ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant": {
-            "description": "Add grant on a database in your private cloud database instance.\n\n## Example Usage\n\n```hcl\nresource \"ovh_hosting_privatedatabase_user_grant\" \"user_grant\" {\n  service_name  = \"XXXXXX\"\n  user_name     = \"terraform\"\n  database_name = \"ovhcloud\"\n  grant         = \"admin\"\n}\n```\n\n## Import\n\nOVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by \"/\" E.g., \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n",
+            "description": "Add grant on a database in your private cloud database instance.\n\n## Example Usage\n\n```hcl\nresource \"ovh_hosting_privatedatabase_user_grant\" \"user_grant\" {\n  service_name  = \"XXXXXX\"\n  user_name     = \"terraform\"\n  database_name = \"ovhcloud\"\n  grant         = \"admin\"\n}\n```\n\n## Import\n\nOVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by \"/\" E.g.,\n\n```sh\u003cbreak\u003e\n$ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant\n\u003cbreak\u003e```\u003cbreak\u003e\n",
             "properties": {
                 "databaseName": {
                     "type": "string",
@@ -10832,7 +11028,7 @@
             }
         },
         "ovh:Ip/ipService:IpService": {
-            "description": "## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = \"fr\"\n  description    = \"order ip block\"\n}\n\ndata \"ovh_order_cart_product_plan\" \"ipblock\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"ip\"\n  plan_code      = \"ip-v4-s30-ripe\"\n}\n\nresource \"ovh_ip_service\" \"ipblock\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n  description    = \"my ip block\"\n\n plan {\n  duration     = data.ovh_order_cart_product_plan.ipblock.selected_price.0.duration\n  plan_code    = data.ovh_order_cart_product_plan.ipblock.plan_code\n  pricing_mode = data.ovh_order_cart_product_plan.ipblock.selected_price.0.pricing_mode\n\n  configuration {\n    label = \"country\"\n    value = \"FR\"\n  }\n }\n}\n```\n",
+            "description": "## Example Usage\n\n```hcl\ndata \"ovh_me\" \"myaccount\" {}\n\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = \"fr\"\n}\n\ndata \"ovh_order_cart_product_plan\" \"ipblock\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"ip\"\n  plan_code      = \"ip-v4-s30-ripe\"\n}\n\nresource \"ovh_ip_service\" \"ipblock\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n  description    = \"my ip block\"\n\n plan {\n  duration     = data.ovh_order_cart_product_plan.ipblock.selected_price.0.duration\n  plan_code    = data.ovh_order_cart_product_plan.ipblock.plan_code\n  pricing_mode = data.ovh_order_cart_product_plan.ipblock.selected_price.0.pricing_mode\n\n  configuration {\n    label = \"country\"\n    value = \"FR\"\n  }\n }\n}\n```\n",
             "properties": {
                 "canBeTerminated": {
                     "type": "boolean",
@@ -10863,7 +11059,7 @@
                 },
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n"
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n"
                 },
                 "paymentMean": {
                     "type": "string",
@@ -10917,7 +11113,7 @@
                 },
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n",
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                     "willReplaceOnChanges": true
                 },
                 "paymentMean": {
@@ -10976,7 +11172,7 @@
                     },
                     "ovhSubsidiary": {
                         "type": "string",
-                        "description": "OVHcloud Subsidiary\n",
+                        "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                         "willReplaceOnChanges": true
                     },
                     "paymentMean": {
@@ -11842,7 +12038,7 @@
             }
         },
         "ovh:IpLoadBalancing/loadBalancer:LoadBalancer": {
-            "description": "## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n ovh_subsidiary = \"fr\"\n description    = \"mycart\"\n}\n\ndata \"ovh_order_cart_product_plan\" \"iplb\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"ipLoadbalancing\"\n  plan_code      = \"iplb-lb1\"\n}\n\ndata \"ovh_order_cart_product_options_plan\" \"bhs\" {\n  cart_id           = data.ovh_order_cart_product_plan.iplb.cart_id\n  price_capacity    = data.ovh_order_cart_product_plan.iplb.price_capacity\n  product           = data.ovh_order_cart_product_plan.iplb.product\n  plan_code         = data.ovh_order_cart_product_plan.iplb.plan_code\n  options_plan_code = \"iplb-zone-lb1-rbx\"\n}\n\nresource \"ovh_iploadbalancing\" \"iplb-lb1\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n  display_name   = \"my ip loadbalancing\"\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.iplb.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_plan.iplb.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.iplb.selected_price.0.pricing_mode\n  }\n\n  plan_option {\n    duration     = data.ovh_order_cart_product_options_plan.bhs.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_options_plan.bhs.plan_code\n    pricing_mode = data.ovh_order_cart_product_options_plan.bhs.selected_price.0.pricing_mode\n  }\n}\n```\n",
+            "description": "## Example Usage\n\n```hcl\ndata \"ovh_me\" \"myaccount\" {}\n\ndata \"ovh_order_cart\" \"mycart\" {\n ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary\n}\n\ndata \"ovh_order_cart_product_plan\" \"iplb\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"ipLoadbalancing\"\n  plan_code      = \"iplb-lb1\"\n}\n\ndata \"ovh_order_cart_product_options_plan\" \"bhs\" {\n  cart_id           = data.ovh_order_cart_product_plan.iplb.cart_id\n  price_capacity    = data.ovh_order_cart_product_plan.iplb.price_capacity\n  product           = data.ovh_order_cart_product_plan.iplb.product\n  plan_code         = data.ovh_order_cart_product_plan.iplb.plan_code\n  options_plan_code = \"iplb-zone-lb1-rbx\"\n}\n\nresource \"ovh_iploadbalancing\" \"iplb-lb1\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n  display_name   = \"my ip loadbalancing\"\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.iplb.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_plan.iplb.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.iplb.selected_price.0.pricing_mode\n  }\n\n  plan_option {\n    duration     = data.ovh_order_cart_product_options_plan.bhs.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_options_plan.bhs.plan_code\n    pricing_mode = data.ovh_order_cart_product_options_plan.bhs.selected_price.0.pricing_mode\n  }\n}\n```\n",
             "properties": {
                 "displayName": {
                     "type": "string",
@@ -11885,7 +12081,7 @@
                 },
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n"
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n"
                 },
                 "paymentMean": {
                     "type": "string",
@@ -11961,7 +12157,7 @@
                 },
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n",
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                     "willReplaceOnChanges": true
                 },
                 "paymentMean": {
@@ -12036,7 +12232,7 @@
                     },
                     "ovhSubsidiary": {
                         "type": "string",
-                        "description": "OVHcloud Subsidiary\n",
+                        "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                         "willReplaceOnChanges": true
                     },
                     "paymentMean": {
@@ -14010,7 +14206,7 @@
             }
         },
         "ovh:Vrack/ipAddress:IpAddress": {
-            "description": "Attach an IP block to a VRack.\n\n\n## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = \"fr\"\n  description    = \"my cart\"\n}\n\ndata \"ovh_order_cart_product_plan\" \"vrack\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"vrack\"\n  plan_code      = \"vrack\"\n}\n\nresource \"ovh_vrack\" \"vrack\" {\n  description    = data.ovh_order_cart.mycart.description\n  name           = data.ovh_order_cart.mycart.description\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.vrack.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_plan.vrack.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.vrack.selected_price.0.pricing_mode\n  }\n}\n\ndata \"ovh_order_cart_product_plan\" \"ipblock\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"ip\"\n  plan_code      = \"ip-v4-s30-ripe\"\n}\n\nresource \"ovh_ip_service\" \"ipblock\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n  description    = data.ovh_order_cart.mycart.description\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.ipblock.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_plan.ipblock.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.ipblock.selected_price.0.pricing_mode\n\n    configuration {\n      label = \"country\"\n      value = \"FR\"\n    }\n  }\n}\n\nresource \"ovh_vrack_ip\" \"vrackblock\" {\n  service_name = ovh_vrack.vrack.service_name\n  block        = ovh_ip_service.ipblock.ip\n}\n```\n",
+            "description": "Attach an IP block to a VRack.\n\n\n## Example Usage\n\n```hcl\ndata \"ovh_me\" \"myaccount\" {}\n\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary\n}\n\ndata \"ovh_order_cart_product_plan\" \"vrack\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"vrack\"\n  plan_code      = \"vrack\"\n}\n\nresource \"ovh_vrack\" \"vrack\" {\n  description    = data.ovh_order_cart.mycart.description\n  name           = data.ovh_order_cart.mycart.description\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.vrack.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_plan.vrack.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.vrack.selected_price.0.pricing_mode\n  }\n}\n\ndata \"ovh_order_cart_product_plan\" \"ipblock\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"ip\"\n  plan_code      = \"ip-v4-s30-ripe\"\n}\n\nresource \"ovh_ip_service\" \"ipblock\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n  description    = data.ovh_order_cart.mycart.description\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.ipblock.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_plan.ipblock.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.ipblock.selected_price.0.pricing_mode\n\n    configuration {\n      label = \"country\"\n      value = \"FR\"\n    }\n  }\n}\n\nresource \"ovh_vrack_ip\" \"vrackblock\" {\n  service_name = ovh_vrack.vrack.service_name\n  block        = ovh_ip_service.ipblock.ip\n}\n```\n",
             "properties": {
                 "block": {
                     "type": "string",
@@ -14135,7 +14331,7 @@
             }
         },
         "ovh:Vrack/vrack:Vrack": {
-            "description": "## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = \"fr\"\n  description    = \"my vrack order cart\"\n}\n\ndata \"ovh_order_cart_product_plan\" \"vrack\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"vrack\"\n  plan_code      = \"vrack\"\n}\n\nresource \"ovh_vrack\" \"vrack\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n  name           = \"my vrack\"\n  description    = \"my vrack\"\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.vrack.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_plan.vrack.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.vrack.selected_price.0.pricing_mode\n  }\n}\n```\n",
+            "description": "## Example Usage\n\n```hcl\ndata \"ovh_me\" \"myaccount\" {}\n\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary\n}\n\ndata \"ovh_order_cart_product_plan\" \"vrack\" {\n  cart_id        = data.ovh_order_cart.mycart.id\n  price_capacity = \"renew\"\n  product        = \"vrack\"\n  plan_code      = \"vrack\"\n}\n\nresource \"ovh_vrack\" \"vrack\" {\n  ovh_subsidiary = data.ovh_order_cart.mycart.ovh_subsidiary\n  name           = \"my vrack\"\n  description    = \"my vrack\"\n\n  plan {\n    duration     = data.ovh_order_cart_product_plan.vrack.selected_price.0.duration\n    plan_code    = data.ovh_order_cart_product_plan.vrack.plan_code\n    pricing_mode = data.ovh_order_cart_product_plan.vrack.selected_price.0.pricing_mode\n  }\n}\n```\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -14154,7 +14350,7 @@
                 },
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n"
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n"
                 },
                 "paymentMean": {
                     "type": "string",
@@ -14201,7 +14397,7 @@
                 },
                 "ovhSubsidiary": {
                     "type": "string",
-                    "description": "OVHcloud Subsidiary\n",
+                    "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                     "willReplaceOnChanges": true
                 },
                 "paymentMean": {
@@ -14248,7 +14444,7 @@
                     },
                     "ovhSubsidiary": {
                         "type": "string",
-                        "description": "OVHcloud Subsidiary\n",
+                        "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                         "willReplaceOnChanges": true
                     },
                     "paymentMean": {
@@ -14454,7 +14650,7 @@
             }
         },
         "ovh:CloudProject/getContainerRegistry:getContainerRegistry": {
-            "description": "Use this data source to get information about a container registry associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_containerregistry\" \"registry\" {\n  service_name = \"XXXXXX\"\n  registry_id  = \"yyyy\"\n}\n```\n",
+            "description": "Use this data source to get information about a container registry associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_containerregistry\" \"my-registry\" {\n  service_name = \"XXXXXX\"\n  registry_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getContainerRegistry.\n",
                 "properties": {
@@ -14540,8 +14736,126 @@
                 ]
             }
         },
+        "ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC": {
+            "description": "Use this data source to get a OVHcloud Managed Private Registry OIDC.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_containerregistry_oidc\" \"my-oidc\" {\n  service_name = \"XXXXXX\"\n  registry_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\"\n}\n\noutput \"oidc-client-id\" {\n  value = data.ovh_cloud_project_containerregistry_oidc.my-oidc.oidc_client_id\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getContainerRegistryOIDC.\n",
+                "properties": {
+                    "oidcAdminGroup": {
+                        "type": "string",
+                        "description": "Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.\n"
+                    },
+                    "oidcAutoOnboard": {
+                        "type": "boolean",
+                        "description": "Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.\n"
+                    },
+                    "oidcClientId": {
+                        "type": "string",
+                        "description": "The client ID with which Harbor is registered as client application with the OIDC provider.\n"
+                    },
+                    "oidcEndpoint": {
+                        "type": "string",
+                        "description": "The URL of an OIDC-compliant server.\n"
+                    },
+                    "oidcGroupsClaim": {
+                        "type": "string",
+                        "description": "The name of Claim in the ID token whose value is the list of group names.\n"
+                    },
+                    "oidcName": {
+                        "type": "string",
+                        "description": "The name of the OIDC provider.\n"
+                    },
+                    "oidcScope": {
+                        "type": "string",
+                        "description": "The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.\n"
+                    },
+                    "oidcUserClaim": {
+                        "type": "string",
+                        "description": "The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).\n"
+                    },
+                    "oidcVerifyCert": {
+                        "type": "boolean",
+                        "description": "Set it to `false` if your OIDC server is hosted via self-signed certificate.\n"
+                    },
+                    "registryId": {
+                        "type": "string",
+                        "description": "The id of the Managed Private Registry.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "registryId",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getContainerRegistryOIDC.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "oidcAdminGroup": {
+                        "type": "string",
+                        "description": "Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.\n"
+                    },
+                    "oidcAutoOnboard": {
+                        "type": "boolean",
+                        "description": "Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.\n"
+                    },
+                    "oidcClientId": {
+                        "type": "string",
+                        "description": "The client ID with which Harbor is registered as client application with the OIDC provider.\n"
+                    },
+                    "oidcEndpoint": {
+                        "type": "string",
+                        "description": "The URL of an OIDC-compliant server.\n"
+                    },
+                    "oidcGroupsClaim": {
+                        "type": "string",
+                        "description": "The name of Claim in the ID token whose value is the list of group names.\n"
+                    },
+                    "oidcName": {
+                        "type": "string",
+                        "description": "The name of the OIDC provider.\n"
+                    },
+                    "oidcScope": {
+                        "type": "string",
+                        "description": "The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.\n"
+                    },
+                    "oidcUserClaim": {
+                        "type": "string",
+                        "description": "The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).\n"
+                    },
+                    "oidcVerifyCert": {
+                        "type": "boolean",
+                        "description": "Set it to `false` if your OIDC server is hosted via self-signed certificate.\n"
+                    },
+                    "registryId": {
+                        "type": "string",
+                        "description": "The ID of the Managed Private Registry.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "registryId",
+                    "serviceName",
+                    "id"
+                ]
+            }
+        },
         "ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers": {
-            "description": "Use this data source to get the list of users of a container registry associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_containerregistry\" \"registry\" {\n  service_name = \"XXXXXX\"\n  registry_id  = \"yyyy\"\n}\n\ndata \"ovh_cloud_project_containerregistry_users\" \"users\" {\n  service_name = ovh_cloud_project_containerregistry.registry.service_name\n  registry_id  = ovh_cloud_project_containerregistry.registry.id\n}\n```\n",
+            "description": "Use this data source to get the list of users of a container registry associated with a public cloud project.\n\n## Example Usage\n\n```hcl\ndata \"ovh_cloud_project_containerregistry\" \"my-registry\" {\n  service_name = \"XXXXXX\"\n  registry_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\"\n}\n\ndata \"ovh_cloud_project_containerregistry_users\" \"users\" {\n  service_name = ovh_cloud_project_containerregistry.registry.service_name\n  registry_id  = ovh_cloud_project_containerregistry.registry.id\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getContainerRegistryUsers.\n",
                 "properties": {
@@ -19736,7 +20050,7 @@
             }
         },
         "ovh:Order/getCart:getCart": {
-            "description": "Use this data source to create a temporary order cart to retrieve information order cart products.\n\n## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n ovh_subsidiary = \"fr\"\n description    = \"my cart\"\n}\n```\n",
+            "description": "Use this data source to create a temporary order cart to retrieve information order cart products.\n\n## Example Usage\n\n```hcl\ndata \"ovh_me\" \"myaccount\" {}\n\ndata \"ovh_order_cart\" \"mycart\" {\n ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getCart.\n",
                 "properties": {
@@ -19755,7 +20069,7 @@
                     },
                     "ovhSubsidiary": {
                         "type": "string",
-                        "description": "OVHcloud Subsidiary\n",
+                        "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -19811,7 +20125,7 @@
             }
         },
         "ovh:Order/getCartProduct:getCartProduct": {
-            "description": "Use this data source to retrieve information of order cart product products.\n\n## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = \"fr\"\n  description    = \"my cart\"\n}\n\ndata \"ovh_order_cart_product\" \"plans\" {\n  cart_id = data.ovh_order_cart.mycart.id\n  product = \"...\"\n}\n```\n",
+            "description": "Use this data source to retrieve information of order cart product products.\n\n## Example Usage\n\n```hcl\ndata \"ovh_me\" \"myaccount\" {}\n\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary\n}\n\ndata \"ovh_order_cart_product\" \"plans\" {\n  cart_id = data.ovh_order_cart.mycart.id\n  product = \"...\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getCartProduct.\n",
                 "properties": {
@@ -19861,7 +20175,7 @@
             }
         },
         "ovh:Order/getCartProductOptions:getCartProductOptions": {
-            "description": "Use this data source to retrieve information of order cart product options.\n\n## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = \"fr\"\n  description    = \"my cart\"\n}\n\ndata \"ovh_order_cart_product_options\" \"options\" {\n  cart_id   = data.ovh_order_cart.mycart.id\n  product   = \"cloud\"\n  plan_code = \"project\"\n}\n```\n",
+            "description": "Use this data source to retrieve information of order cart product options.\n\n## Example Usage\n\n```hcl\ndata \"ovh_me\" \"myaccount\" {}\n\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary\n}\n\ndata \"ovh_order_cart_product_options\" \"options\" {\n  cart_id   = data.ovh_order_cart.mycart.id\n  product   = \"cloud\"\n  plan_code = \"project\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getCartProductOptions.\n",
                 "properties": {
@@ -19928,7 +20242,7 @@
             }
         },
         "ovh:Order/getCartProductOptionsPlan:getCartProductOptionsPlan": {
-            "description": "Use this data source to retrieve information of order cart product options plan.\n\n## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = \"fr\"\n  description    = \"my cart\"\n}\n\ndata \"ovh_order_cart_product_options_plan\" \"plan\" {\n  cart_id           = data.ovh_order_cart.mycart.id\n  price_capacity    = \"renew\"\n  product           = \"cloud\"\n  plan_code         = \"project\"\n  options_plan_code = \"vrack\"\n}\n```\n",
+            "description": "Use this data source to retrieve information of order cart product options plan.\n\n## Example Usage\n\n```hcl\ndata \"ovh_me\" \"myaccount\" {}\n\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary\n}\n\ndata \"ovh_order_cart_product_options_plan\" \"plan\" {\n  cart_id           = data.ovh_order_cart.mycart.id\n  price_capacity    = \"renew\"\n  product           = \"cloud\"\n  plan_code         = \"project\"\n  options_plan_code = \"vrack\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getCartProductOptionsPlan.\n",
                 "properties": {
@@ -20046,7 +20360,7 @@
             }
         },
         "ovh:Order/getCartProductPlan:getCartProductPlan": {
-            "description": "Use this data source to retrieve information of order cart product plan.\n\n## Example Usage\n\n```hcl\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = \"fr\"\n  description    = \"my cart\"\n}\n\ndata \"ovh_order_cart_product_plan\" \"plan\" {\n  cart_id           = data.ovh_order_cart.mycart.id\n  price_capacity    = \"renew\"\n  product           = \"cloud\"\n  plan_code         = \"project\"\n}\n```\n",
+            "description": "Use this data source to retrieve information of order cart product plan.\n\n## Example Usage\n\n```hcl\ndata \"ovh_me\" \"myaccount\" {}\n\ndata \"ovh_order_cart\" \"mycart\" {\n  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary\n}\n\ndata \"ovh_order_cart_product_plan\" \"plan\" {\n  cart_id           = data.ovh_order_cart.mycart.id\n  price_capacity    = \"renew\"\n  product           = \"cloud\"\n  plan_code         = \"project\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getCartProductPlan.\n",
                 "properties": {

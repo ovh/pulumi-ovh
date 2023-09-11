@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -22,7 +23,7 @@ type Vrack struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Details about an Order
 	Orders VrackOrderArrayOutput `pulumi:"orders"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -80,7 +81,7 @@ type vrackState struct {
 	Name *string `pulumi:"name"`
 	// Details about an Order
 	Orders []VrackOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -103,7 +104,7 @@ type VrackState struct {
 	Name pulumi.StringPtrInput
 	// Details about an Order
 	Orders VrackOrderArrayInput
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -128,7 +129,7 @@ type vrackArgs struct {
 	Description *string `pulumi:"description"`
 	// yourvrackname
 	Name *string `pulumi:"name"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -146,7 +147,7 @@ type VrackArgs struct {
 	Description pulumi.StringPtrInput
 	// yourvrackname
 	Name pulumi.StringPtrInput
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode
 	//
@@ -181,6 +182,12 @@ func (i *Vrack) ToVrackOutputWithContext(ctx context.Context) VrackOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VrackOutput)
 }
 
+func (i *Vrack) ToOutput(ctx context.Context) pulumix.Output[*Vrack] {
+	return pulumix.Output[*Vrack]{
+		OutputState: i.ToVrackOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VrackArrayInput is an input type that accepts VrackArray and VrackArrayOutput values.
 // You can construct a concrete instance of `VrackArrayInput` via:
 //
@@ -204,6 +211,12 @@ func (i VrackArray) ToVrackArrayOutput() VrackArrayOutput {
 
 func (i VrackArray) ToVrackArrayOutputWithContext(ctx context.Context) VrackArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VrackArrayOutput)
+}
+
+func (i VrackArray) ToOutput(ctx context.Context) pulumix.Output[[]*Vrack] {
+	return pulumix.Output[[]*Vrack]{
+		OutputState: i.ToVrackArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VrackMapInput is an input type that accepts VrackMap and VrackMapOutput values.
@@ -231,6 +244,12 @@ func (i VrackMap) ToVrackMapOutputWithContext(ctx context.Context) VrackMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(VrackMapOutput)
 }
 
+func (i VrackMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vrack] {
+	return pulumix.Output[map[string]*Vrack]{
+		OutputState: i.ToVrackMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VrackOutput struct{ *pulumi.OutputState }
 
 func (VrackOutput) ElementType() reflect.Type {
@@ -243,6 +262,12 @@ func (o VrackOutput) ToVrackOutput() VrackOutput {
 
 func (o VrackOutput) ToVrackOutputWithContext(ctx context.Context) VrackOutput {
 	return o
+}
+
+func (o VrackOutput) ToOutput(ctx context.Context) pulumix.Output[*Vrack] {
+	return pulumix.Output[*Vrack]{
+		OutputState: o.OutputState,
+	}
 }
 
 // yourvrackdescription
@@ -260,7 +285,7 @@ func (o VrackOutput) Orders() VrackOrderArrayOutput {
 	return o.ApplyT(func(v *Vrack) VrackOrderArrayOutput { return v.Orders }).(VrackOrderArrayOutput)
 }
 
-// OVHcloud Subsidiary
+// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 func (o VrackOutput) OvhSubsidiary() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vrack) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
 }
@@ -306,6 +331,12 @@ func (o VrackArrayOutput) ToVrackArrayOutputWithContext(ctx context.Context) Vra
 	return o
 }
 
+func (o VrackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Vrack] {
+	return pulumix.Output[[]*Vrack]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VrackArrayOutput) Index(i pulumi.IntInput) VrackOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Vrack {
 		return vs[0].([]*Vrack)[vs[1].(int)]
@@ -324,6 +355,12 @@ func (o VrackMapOutput) ToVrackMapOutput() VrackMapOutput {
 
 func (o VrackMapOutput) ToVrackMapOutputWithContext(ctx context.Context) VrackMapOutput {
 	return o
+}
+
+func (o VrackMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vrack] {
+	return pulumix.Output[map[string]*Vrack]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VrackMapOutput) MapIndex(k pulumi.StringInput) VrackOutput {

@@ -62,7 +62,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public /*out*/ readonly orders!: pulumi.Output<outputs.Domain.ZoneOrder[]>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     public readonly ovhSubsidiary!: pulumi.Output<string>;
     /**
@@ -159,7 +159,7 @@ export interface ZoneState {
      */
     orders?: pulumi.Input<pulumi.Input<inputs.Domain.ZoneOrder>[]>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**
@@ -184,7 +184,7 @@ export interface ZoneState {
  */
 export interface ZoneArgs {
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary: pulumi.Input<string>;
     /**

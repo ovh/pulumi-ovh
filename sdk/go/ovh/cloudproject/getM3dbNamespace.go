@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
@@ -106,6 +107,12 @@ func (o GetM3dbNamespaceResultOutput) ToGetM3dbNamespaceResultOutput() GetM3dbNa
 
 func (o GetM3dbNamespaceResultOutput) ToGetM3dbNamespaceResultOutputWithContext(ctx context.Context) GetM3dbNamespaceResultOutput {
 	return o
+}
+
+func (o GetM3dbNamespaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetM3dbNamespaceResult] {
+	return pulumix.Output[GetM3dbNamespaceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // See Argument Reference above.

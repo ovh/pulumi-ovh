@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a backend HTTP server group (frontend) to be used by loadbalancing frontend(s)
@@ -244,6 +245,12 @@ func (i *HttpFrontend) ToHttpFrontendOutputWithContext(ctx context.Context) Http
 	return pulumi.ToOutputWithContext(ctx, i).(HttpFrontendOutput)
 }
 
+func (i *HttpFrontend) ToOutput(ctx context.Context) pulumix.Output[*HttpFrontend] {
+	return pulumix.Output[*HttpFrontend]{
+		OutputState: i.ToHttpFrontendOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HttpFrontendArrayInput is an input type that accepts HttpFrontendArray and HttpFrontendArrayOutput values.
 // You can construct a concrete instance of `HttpFrontendArrayInput` via:
 //
@@ -267,6 +274,12 @@ func (i HttpFrontendArray) ToHttpFrontendArrayOutput() HttpFrontendArrayOutput {
 
 func (i HttpFrontendArray) ToHttpFrontendArrayOutputWithContext(ctx context.Context) HttpFrontendArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HttpFrontendArrayOutput)
+}
+
+func (i HttpFrontendArray) ToOutput(ctx context.Context) pulumix.Output[[]*HttpFrontend] {
+	return pulumix.Output[[]*HttpFrontend]{
+		OutputState: i.ToHttpFrontendArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HttpFrontendMapInput is an input type that accepts HttpFrontendMap and HttpFrontendMapOutput values.
@@ -294,6 +307,12 @@ func (i HttpFrontendMap) ToHttpFrontendMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HttpFrontendMapOutput)
 }
 
+func (i HttpFrontendMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpFrontend] {
+	return pulumix.Output[map[string]*HttpFrontend]{
+		OutputState: i.ToHttpFrontendMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpFrontendOutput struct{ *pulumi.OutputState }
 
 func (HttpFrontendOutput) ElementType() reflect.Type {
@@ -306,6 +325,12 @@ func (o HttpFrontendOutput) ToHttpFrontendOutput() HttpFrontendOutput {
 
 func (o HttpFrontendOutput) ToHttpFrontendOutputWithContext(ctx context.Context) HttpFrontendOutput {
 	return o
+}
+
+func (o HttpFrontendOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpFrontend] {
+	return pulumix.Output[*HttpFrontend]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
@@ -389,6 +414,12 @@ func (o HttpFrontendArrayOutput) ToHttpFrontendArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o HttpFrontendArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HttpFrontend] {
+	return pulumix.Output[[]*HttpFrontend]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpFrontendArrayOutput) Index(i pulumi.IntInput) HttpFrontendOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HttpFrontend {
 		return vs[0].([]*HttpFrontend)[vs[1].(int)]
@@ -407,6 +438,12 @@ func (o HttpFrontendMapOutput) ToHttpFrontendMapOutput() HttpFrontendMapOutput {
 
 func (o HttpFrontendMapOutput) ToHttpFrontendMapOutputWithContext(ctx context.Context) HttpFrontendMapOutput {
 	return o
+}
+
+func (o HttpFrontendMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpFrontend] {
+	return pulumix.Output[map[string]*HttpFrontend]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpFrontendMapOutput) MapIndex(k pulumi.StringInput) HttpFrontendOutput {

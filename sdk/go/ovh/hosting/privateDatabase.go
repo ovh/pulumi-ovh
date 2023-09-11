@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
 //
 // ## Import
 //
-// OVHcloud Webhosting database can be imported using the `service_name`, E.g., <break><break>```sh<break> $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name <break>```<break><break>
+// OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
 type PrivateDatabase struct {
 	pulumi.CustomResourceState
 
@@ -36,7 +37,7 @@ type PrivateDatabase struct {
 	Offer pulumi.StringOutput `pulumi:"offer"`
 	// Details about your Order
 	Orders PrivateDatabaseOrderArrayOutput `pulumi:"orders"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -126,7 +127,7 @@ type privateDatabaseState struct {
 	Offer *string `pulumi:"offer"`
 	// Details about your Order
 	Orders []PrivateDatabaseOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -181,7 +182,7 @@ type PrivateDatabaseState struct {
 	Offer pulumi.StringPtrInput
 	// Details about your Order
 	Orders PrivateDatabaseOrderArrayInput
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -226,7 +227,7 @@ func (PrivateDatabaseState) ElementType() reflect.Type {
 type privateDatabaseArgs struct {
 	// Name displayed in customer panel for your private database
 	DisplayName *string `pulumi:"displayName"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -244,7 +245,7 @@ type privateDatabaseArgs struct {
 type PrivateDatabaseArgs struct {
 	// Name displayed in customer panel for your private database
 	DisplayName pulumi.StringPtrInput
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode
 	//
@@ -281,6 +282,12 @@ func (i *PrivateDatabase) ToPrivateDatabaseOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseOutput)
 }
 
+func (i *PrivateDatabase) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabase] {
+	return pulumix.Output[*PrivateDatabase]{
+		OutputState: i.ToPrivateDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateDatabaseArrayInput is an input type that accepts PrivateDatabaseArray and PrivateDatabaseArrayOutput values.
 // You can construct a concrete instance of `PrivateDatabaseArrayInput` via:
 //
@@ -304,6 +311,12 @@ func (i PrivateDatabaseArray) ToPrivateDatabaseArrayOutput() PrivateDatabaseArra
 
 func (i PrivateDatabaseArray) ToPrivateDatabaseArrayOutputWithContext(ctx context.Context) PrivateDatabaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseArrayOutput)
+}
+
+func (i PrivateDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabase] {
+	return pulumix.Output[[]*PrivateDatabase]{
+		OutputState: i.ToPrivateDatabaseArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PrivateDatabaseMapInput is an input type that accepts PrivateDatabaseMap and PrivateDatabaseMapOutput values.
@@ -331,6 +344,12 @@ func (i PrivateDatabaseMap) ToPrivateDatabaseMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseMapOutput)
 }
 
+func (i PrivateDatabaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabase] {
+	return pulumix.Output[map[string]*PrivateDatabase]{
+		OutputState: i.ToPrivateDatabaseMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateDatabaseOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabaseOutput) ElementType() reflect.Type {
@@ -343,6 +362,12 @@ func (o PrivateDatabaseOutput) ToPrivateDatabaseOutput() PrivateDatabaseOutput {
 
 func (o PrivateDatabaseOutput) ToPrivateDatabaseOutputWithContext(ctx context.Context) PrivateDatabaseOutput {
 	return o
+}
+
+func (o PrivateDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabase] {
+	return pulumix.Output[*PrivateDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number of CPU on your private database
@@ -385,7 +410,7 @@ func (o PrivateDatabaseOutput) Orders() PrivateDatabaseOrderArrayOutput {
 	return o.ApplyT(func(v *PrivateDatabase) PrivateDatabaseOrderArrayOutput { return v.Orders }).(PrivateDatabaseOrderArrayOutput)
 }
 
-// OVHcloud Subsidiary
+// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 func (o PrivateDatabaseOutput) OvhSubsidiary() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabase) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
 }
@@ -486,6 +511,12 @@ func (o PrivateDatabaseArrayOutput) ToPrivateDatabaseArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o PrivateDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabase] {
+	return pulumix.Output[[]*PrivateDatabase]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateDatabaseArrayOutput) Index(i pulumi.IntInput) PrivateDatabaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrivateDatabase {
 		return vs[0].([]*PrivateDatabase)[vs[1].(int)]
@@ -504,6 +535,12 @@ func (o PrivateDatabaseMapOutput) ToPrivateDatabaseMapOutput() PrivateDatabaseMa
 
 func (o PrivateDatabaseMapOutput) ToPrivateDatabaseMapOutputWithContext(ctx context.Context) PrivateDatabaseMapOutput {
 	return o
+}
+
+func (o PrivateDatabaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabase] {
+	return pulumix.Output[map[string]*PrivateDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateDatabaseMapOutput) MapIndex(k pulumi.StringInput) PrivateDatabaseOutput {

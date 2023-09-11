@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a DBaas logs output graylog stream.
@@ -121,6 +122,12 @@ func (o LookupLogsOutputGraylogStreamResultOutput) ToLookupLogsOutputGraylogStre
 
 func (o LookupLogsOutputGraylogStreamResultOutput) ToLookupLogsOutputGraylogStreamResultOutputWithContext(ctx context.Context) LookupLogsOutputGraylogStreamResultOutput {
 	return o
+}
+
+func (o LookupLogsOutputGraylogStreamResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLogsOutputGraylogStreamResult] {
+	return pulumix.Output[LookupLogsOutputGraylogStreamResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupLogsOutputGraylogStreamResultOutput) CanAlert() pulumi.BoolOutput {

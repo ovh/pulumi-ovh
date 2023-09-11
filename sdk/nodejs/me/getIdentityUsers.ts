@@ -29,3 +29,11 @@ export interface GetIdentityUsersResult {
      */
     readonly users: string[];
 }
+/**
+ * Use this data source to retrieve list of user logins of the account's identity users.
+ *
+ * ## Example Usage
+ */
+export function getIdentityUsersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityUsersResult> {
+    return pulumi.output(getIdentityUsers(opts))
+}

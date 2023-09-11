@@ -29,3 +29,11 @@ export interface GetIdentityGroupsResult {
      */
     readonly id: string;
 }
+/**
+ * Use this data source to retrieve the list of the account's identity groups
+ *
+ * ## Example Usage
+ */
+export function getIdentityGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityGroupsResult> {
+    return pulumi.output(getIdentityGroups(opts))
+}
