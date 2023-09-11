@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud Webhosting database can be imported using the `service_name`, E.g., <break><break>```sh<break> $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name <break>```<break><break>
+ * OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
  */
 export class PrivateDatabase extends pulumi.CustomResource {
     /**
@@ -74,7 +74,7 @@ export class PrivateDatabase extends pulumi.CustomResource {
      */
     public /*out*/ readonly orders!: pulumi.Output<outputs.Hosting.PrivateDatabaseOrder[]>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     public readonly ovhSubsidiary!: pulumi.Output<string>;
     /**
@@ -258,7 +258,7 @@ export interface PrivateDatabaseState {
      */
     orders?: pulumi.Input<pulumi.Input<inputs.Hosting.PrivateDatabaseOrder>[]>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**
@@ -338,7 +338,7 @@ export interface PrivateDatabaseArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary: pulumi.Input<string>;
     /**

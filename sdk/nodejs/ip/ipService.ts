@@ -62,7 +62,7 @@ export class IpService extends pulumi.CustomResource {
      */
     public /*out*/ readonly organisationId!: pulumi.Output<string>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     public readonly ovhSubsidiary!: pulumi.Output<string>;
     /**
@@ -174,7 +174,7 @@ export interface IpServiceState {
      */
     organisationId?: pulumi.Input<string>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**
@@ -214,7 +214,7 @@ export interface IpServiceArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * OVHcloud Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary: pulumi.Input<string>;
     /**

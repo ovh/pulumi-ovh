@@ -29,3 +29,11 @@ export interface GetServersResult {
      */
     readonly results: string[];
 }
+/**
+ * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
+ *
+ * ## Example Usage
+ */
+export function getServersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetServersResult> {
+    return pulumi.output(getServers(opts))
+}

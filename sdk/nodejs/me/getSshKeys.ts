@@ -29,3 +29,11 @@ export interface GetSshKeysResult {
      */
     readonly names: string[];
 }
+/**
+ * Use this data source to retrieve list of names of the account's SSH keys.
+ *
+ * ## Example Usage
+ */
+export function getSshKeysOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeysResult> {
+    return pulumi.output(getSshKeys(opts))
+}

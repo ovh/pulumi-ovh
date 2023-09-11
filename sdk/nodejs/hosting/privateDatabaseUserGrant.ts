@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g., <break><break>```sh<break> $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant <break>```<break><break>
+ * OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
  */
 export class PrivateDatabaseUserGrant extends pulumi.CustomResource {
     /**

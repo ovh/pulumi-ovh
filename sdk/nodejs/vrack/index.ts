@@ -22,7 +22,8 @@ utilities.lazyLoad(exports, ["DedicatedServerInterface"], () => require("./dedic
 
 export { GetVracksResult } from "./getVracks";
 export const getVracks: typeof import("./getVracks").getVracks = null as any;
-utilities.lazyLoad(exports, ["getVracks"], () => require("./getVracks"));
+export const getVracksOutput: typeof import("./getVracks").getVracksOutput = null as any;
+utilities.lazyLoad(exports, ["getVracks","getVracksOutput"], () => require("./getVracks"));
 
 export { IpAddressArgs, IpAddressState } from "./ipAddress";
 export type IpAddress = import("./ipAddress").IpAddress;

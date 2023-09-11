@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g., <break><break>```sh<break> $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name <break>```<break><break>
+ * OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
  */
 export class PrivateDatabaseUser extends pulumi.CustomResource {
     /**

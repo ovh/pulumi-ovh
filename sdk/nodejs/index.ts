@@ -7,7 +7,8 @@ import * as utilities from "./utilities";
 // Export members:
 export { GetInstallationTemplatesResult } from "./getInstallationTemplates";
 export const getInstallationTemplates: typeof import("./getInstallationTemplates").getInstallationTemplates = null as any;
-utilities.lazyLoad(exports, ["getInstallationTemplates"], () => require("./getInstallationTemplates"));
+export const getInstallationTemplatesOutput: typeof import("./getInstallationTemplates").getInstallationTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstallationTemplates","getInstallationTemplatesOutput"], () => require("./getInstallationTemplates"));
 
 export { GetServerArgs, GetServerResult, GetServerOutputArgs } from "./getServer";
 export const getServer: typeof import("./getServer").getServer = null as any;
@@ -16,7 +17,8 @@ utilities.lazyLoad(exports, ["getServer","getServerOutput"], () => require("./ge
 
 export { GetServersResult } from "./getServers";
 export const getServers: typeof import("./getServers").getServers = null as any;
-utilities.lazyLoad(exports, ["getServers"], () => require("./getServers"));
+export const getServersOutput: typeof import("./getServers").getServersOutput = null as any;
+utilities.lazyLoad(exports, ["getServers","getServersOutput"], () => require("./getServers"));
 
 export { GetVrackNetworksArgs, GetVrackNetworksResult, GetVrackNetworksOutputArgs } from "./getVrackNetworks";
 export const getVrackNetworks: typeof import("./getVrackNetworks").getVrackNetworks = null as any;

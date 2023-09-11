@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g., <break><break>```sh<break> $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip <break>```<break><break>
+ * OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
  */
 export class PrivateDatabaseAllowlist extends pulumi.CustomResource {
     /**

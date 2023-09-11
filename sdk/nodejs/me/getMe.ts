@@ -144,3 +144,11 @@ export interface GetMeResult {
      */
     readonly zip: string;
 }
+/**
+ * Use this data source to get information about the current OVHcloud account.
+ *
+ * ## Example Usage
+ */
+export function getMeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetMeResult> {
+    return pulumi.output(getMe(opts))
+}

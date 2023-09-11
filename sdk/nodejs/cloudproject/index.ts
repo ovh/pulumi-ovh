@@ -10,6 +10,11 @@ export type ContainerRegistry = import("./containerRegistry").ContainerRegistry;
 export const ContainerRegistry: typeof import("./containerRegistry").ContainerRegistry = null as any;
 utilities.lazyLoad(exports, ["ContainerRegistry"], () => require("./containerRegistry"));
 
+export { ContainerRegistryOIDCArgs, ContainerRegistryOIDCState } from "./containerRegistryOIDC";
+export type ContainerRegistryOIDC = import("./containerRegistryOIDC").ContainerRegistryOIDC;
+export const ContainerRegistryOIDC: typeof import("./containerRegistryOIDC").ContainerRegistryOIDC = null as any;
+utilities.lazyLoad(exports, ["ContainerRegistryOIDC"], () => require("./containerRegistryOIDC"));
+
 export { ContainerRegistryUserArgs, ContainerRegistryUserState } from "./containerRegistryUser";
 export type ContainerRegistryUser = import("./containerRegistryUser").ContainerRegistryUser;
 export const ContainerRegistryUser: typeof import("./containerRegistryUser").ContainerRegistryUser = null as any;
@@ -44,6 +49,11 @@ export { GetContainerRegistryArgs, GetContainerRegistryResult, GetContainerRegis
 export const getContainerRegistry: typeof import("./getContainerRegistry").getContainerRegistry = null as any;
 export const getContainerRegistryOutput: typeof import("./getContainerRegistry").getContainerRegistryOutput = null as any;
 utilities.lazyLoad(exports, ["getContainerRegistry","getContainerRegistryOutput"], () => require("./getContainerRegistry"));
+
+export { GetContainerRegistryOIDCArgs, GetContainerRegistryOIDCResult, GetContainerRegistryOIDCOutputArgs } from "./getContainerRegistryOIDC";
+export const getContainerRegistryOIDC: typeof import("./getContainerRegistryOIDC").getContainerRegistryOIDC = null as any;
+export const getContainerRegistryOIDCOutput: typeof import("./getContainerRegistryOIDC").getContainerRegistryOIDCOutput = null as any;
+utilities.lazyLoad(exports, ["getContainerRegistryOIDC","getContainerRegistryOIDCOutput"], () => require("./getContainerRegistryOIDC"));
 
 export { GetContainerRegistryUsersArgs, GetContainerRegistryUsersResult, GetContainerRegistryUsersOutputArgs } from "./getContainerRegistryUsers";
 export const getContainerRegistryUsers: typeof import("./getContainerRegistryUsers").getContainerRegistryUsers = null as any;
@@ -227,6 +237,8 @@ const _module = {
         switch (type) {
             case "ovh:CloudProject/containerRegistry:ContainerRegistry":
                 return new ContainerRegistry(name, <any>undefined, { urn })
+            case "ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC":
+                return new ContainerRegistryOIDC(name, <any>undefined, { urn })
             case "ovh:CloudProject/containerRegistryUser:ContainerRegistryUser":
                 return new ContainerRegistryUser(name, <any>undefined, { urn })
             case "ovh:CloudProject/database:Database":
@@ -263,6 +275,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistry", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistryOIDC", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistryUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/database", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/failoverIpAttach", _module)

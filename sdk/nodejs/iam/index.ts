@@ -7,7 +7,8 @@ import * as utilities from "../utilities";
 // Export members:
 export { GetPoliciesResult } from "./getPolicies";
 export const getPolicies: typeof import("./getPolicies").getPolicies = null as any;
-utilities.lazyLoad(exports, ["getPolicies"], () => require("./getPolicies"));
+export const getPoliciesOutput: typeof import("./getPolicies").getPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicies","getPoliciesOutput"], () => require("./getPolicies"));
 
 export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
 export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
@@ -21,7 +22,8 @@ utilities.lazyLoad(exports, ["getReferenceActions","getReferenceActionsOutput"],
 
 export { GetReferenceResourceTypeResult } from "./getReferenceResourceType";
 export const getReferenceResourceType: typeof import("./getReferenceResourceType").getReferenceResourceType = null as any;
-utilities.lazyLoad(exports, ["getReferenceResourceType"], () => require("./getReferenceResourceType"));
+export const getReferenceResourceTypeOutput: typeof import("./getReferenceResourceType").getReferenceResourceTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getReferenceResourceType","getReferenceResourceTypeOutput"], () => require("./getReferenceResourceType"));
 
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;

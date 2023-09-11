@@ -29,3 +29,11 @@ export interface GetVpssResult {
      */
     readonly results: string[];
 }
+/**
+ * Use this data source to get the list of VPS associated with your OVH Account.
+ *
+ * ## Example Usage
+ */
+export function getVpssOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVpssResult> {
+    return pulumi.output(getVpss(opts))
+}
