@@ -120,6 +120,7 @@ jobs:
           user: ${{ env.PYPI_USERNAME }}
           password: ${{ env.PYPI_PASSWORD }}
           packages-dir: ${{github.workspace}}/sdk/python/bin/dist
+          skip-existing: true
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
         uses: JS-DevTools/npm-publish@5a85faf05d2ade2d5b6682bfe5359915d5159c6c # tag=v2.2.1
         with:
