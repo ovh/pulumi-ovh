@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -130,6 +131,12 @@ func (i *ServerUpdate) ToServerUpdateOutputWithContext(ctx context.Context) Serv
 	return pulumi.ToOutputWithContext(ctx, i).(ServerUpdateOutput)
 }
 
+func (i *ServerUpdate) ToOutput(ctx context.Context) pulumix.Output[*ServerUpdate] {
+	return pulumix.Output[*ServerUpdate]{
+		OutputState: i.ToServerUpdateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServerUpdateArrayInput is an input type that accepts ServerUpdateArray and ServerUpdateArrayOutput values.
 // You can construct a concrete instance of `ServerUpdateArrayInput` via:
 //
@@ -153,6 +160,12 @@ func (i ServerUpdateArray) ToServerUpdateArrayOutput() ServerUpdateArrayOutput {
 
 func (i ServerUpdateArray) ToServerUpdateArrayOutputWithContext(ctx context.Context) ServerUpdateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerUpdateArrayOutput)
+}
+
+func (i ServerUpdateArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServerUpdate] {
+	return pulumix.Output[[]*ServerUpdate]{
+		OutputState: i.ToServerUpdateArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServerUpdateMapInput is an input type that accepts ServerUpdateMap and ServerUpdateMapOutput values.
@@ -180,6 +193,12 @@ func (i ServerUpdateMap) ToServerUpdateMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ServerUpdateMapOutput)
 }
 
+func (i ServerUpdateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerUpdate] {
+	return pulumix.Output[map[string]*ServerUpdate]{
+		OutputState: i.ToServerUpdateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerUpdateOutput struct{ *pulumi.OutputState }
 
 func (ServerUpdateOutput) ElementType() reflect.Type {
@@ -192,6 +211,12 @@ func (o ServerUpdateOutput) ToServerUpdateOutput() ServerUpdateOutput {
 
 func (o ServerUpdateOutput) ToServerUpdateOutputWithContext(ctx context.Context) ServerUpdateOutput {
 	return o
+}
+
+func (o ServerUpdateOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerUpdate] {
+	return pulumix.Output[*ServerUpdate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // boot id of the server
@@ -228,6 +253,12 @@ func (o ServerUpdateArrayOutput) ToServerUpdateArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o ServerUpdateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServerUpdate] {
+	return pulumix.Output[[]*ServerUpdate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServerUpdateArrayOutput) Index(i pulumi.IntInput) ServerUpdateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerUpdate {
 		return vs[0].([]*ServerUpdate)[vs[1].(int)]
@@ -246,6 +277,12 @@ func (o ServerUpdateMapOutput) ToServerUpdateMapOutput() ServerUpdateMapOutput {
 
 func (o ServerUpdateMapOutput) ToServerUpdateMapOutputWithContext(ctx context.Context) ServerUpdateMapOutput {
 	return o
+}
+
+func (o ServerUpdateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerUpdate] {
+	return pulumix.Output[map[string]*ServerUpdate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServerUpdateMapOutput) MapIndex(k pulumi.StringInput) ServerUpdateOutput {

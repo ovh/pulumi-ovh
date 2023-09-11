@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about an integration of a database cluster associated with a public cloud project.
@@ -104,6 +105,12 @@ func (o GetDatabaseIntegrationResultOutput) ToGetDatabaseIntegrationResultOutput
 
 func (o GetDatabaseIntegrationResultOutput) ToGetDatabaseIntegrationResultOutputWithContext(ctx context.Context) GetDatabaseIntegrationResultOutput {
 	return o
+}
+
+func (o GetDatabaseIntegrationResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseIntegrationResult] {
+	return pulumix.Output[GetDatabaseIntegrationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // See Argument Reference above.

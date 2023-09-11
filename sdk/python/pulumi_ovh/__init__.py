@@ -71,6 +71,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProject/containerRegistryOIDC",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC": "ContainerRegistryOIDC"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProject/containerRegistryUser",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {

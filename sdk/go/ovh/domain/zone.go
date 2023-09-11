@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -28,7 +29,7 @@ type Zone struct {
 	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
 	// Details about an Order
 	Orders ZoneOrderArrayOutput `pulumi:"orders"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -89,7 +90,7 @@ type zoneState struct {
 	NameServers []string `pulumi:"nameServers"`
 	// Details about an Order
 	Orders []ZoneOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -115,7 +116,7 @@ type ZoneState struct {
 	NameServers pulumi.StringArrayInput
 	// Details about an Order
 	Orders ZoneOrderArrayInput
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -133,7 +134,7 @@ func (ZoneState) ElementType() reflect.Type {
 }
 
 type zoneArgs struct {
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -147,7 +148,7 @@ type zoneArgs struct {
 
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode
 	//
@@ -182,6 +183,12 @@ func (i *Zone) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneOutput)
 }
 
+func (i *Zone) ToOutput(ctx context.Context) pulumix.Output[*Zone] {
+	return pulumix.Output[*Zone]{
+		OutputState: i.ToZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneArrayInput is an input type that accepts ZoneArray and ZoneArrayOutput values.
 // You can construct a concrete instance of `ZoneArrayInput` via:
 //
@@ -205,6 +212,12 @@ func (i ZoneArray) ToZoneArrayOutput() ZoneArrayOutput {
 
 func (i ZoneArray) ToZoneArrayOutputWithContext(ctx context.Context) ZoneArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneArrayOutput)
+}
+
+func (i ZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]*Zone] {
+	return pulumix.Output[[]*Zone]{
+		OutputState: i.ToZoneArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ZoneMapInput is an input type that accepts ZoneMap and ZoneMapOutput values.
@@ -232,6 +245,12 @@ func (i ZoneMap) ToZoneMapOutputWithContext(ctx context.Context) ZoneMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneMapOutput)
 }
 
+func (i ZoneMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Zone] {
+	return pulumix.Output[map[string]*Zone]{
+		OutputState: i.ToZoneMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneOutput struct{ *pulumi.OutputState }
 
 func (ZoneOutput) ElementType() reflect.Type {
@@ -244,6 +263,12 @@ func (o ZoneOutput) ToZoneOutput() ZoneOutput {
 
 func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return o
+}
+
+func (o ZoneOutput) ToOutput(ctx context.Context) pulumix.Output[*Zone] {
+	return pulumix.Output[*Zone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Is DNSSEC supported by this zone
@@ -276,7 +301,7 @@ func (o ZoneOutput) Orders() ZoneOrderArrayOutput {
 	return o.ApplyT(func(v *Zone) ZoneOrderArrayOutput { return v.Orders }).(ZoneOrderArrayOutput)
 }
 
-// OVHcloud Subsidiary
+// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 func (o ZoneOutput) OvhSubsidiary() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
 }
@@ -316,6 +341,12 @@ func (o ZoneArrayOutput) ToZoneArrayOutputWithContext(ctx context.Context) ZoneA
 	return o
 }
 
+func (o ZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Zone] {
+	return pulumix.Output[[]*Zone]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ZoneArrayOutput) Index(i pulumi.IntInput) ZoneOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Zone {
 		return vs[0].([]*Zone)[vs[1].(int)]
@@ -334,6 +365,12 @@ func (o ZoneMapOutput) ToZoneMapOutput() ZoneMapOutput {
 
 func (o ZoneMapOutput) ToZoneMapOutputWithContext(ctx context.Context) ZoneMapOutput {
 	return o
+}
+
+func (o ZoneMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Zone] {
+	return pulumix.Output[map[string]*Zone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneMapOutput) MapIndex(k pulumi.StringInput) ZoneOutput {

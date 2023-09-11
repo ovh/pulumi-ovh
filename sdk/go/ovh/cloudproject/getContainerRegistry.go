@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a container registry associated with a public cloud project.
@@ -98,6 +99,12 @@ func (o LookupContainerRegistryResultOutput) ToLookupContainerRegistryResultOutp
 
 func (o LookupContainerRegistryResultOutput) ToLookupContainerRegistryResultOutputWithContext(ctx context.Context) LookupContainerRegistryResultOutput {
 	return o
+}
+
+func (o LookupContainerRegistryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerRegistryResult] {
+	return pulumix.Output[LookupContainerRegistryResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Registry creation date

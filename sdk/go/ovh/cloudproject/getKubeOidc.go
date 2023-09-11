@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
@@ -115,6 +116,12 @@ func (o LookupKubeOidcResultOutput) ToLookupKubeOidcResultOutput() LookupKubeOid
 
 func (o LookupKubeOidcResultOutput) ToLookupKubeOidcResultOutputWithContext(ctx context.Context) LookupKubeOidcResultOutput {
 	return o
+}
+
+func (o LookupKubeOidcResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKubeOidcResult] {
+	return pulumix.Output[LookupKubeOidcResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The OIDC client ID.

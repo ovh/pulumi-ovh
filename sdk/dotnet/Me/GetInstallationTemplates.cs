@@ -22,6 +22,18 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public static Task<GetInstallationTemplatesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstallationTemplatesResult>("ovh:Me/getInstallationTemplates:getInstallationTemplates", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the list of custom installation templates available for dedicated servers.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```hcl
+        /// data "ovh_me_installation_templates" "templates" {}
+        /// ```
+        /// </summary>
+        public static Output<GetInstallationTemplatesResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstallationTemplatesResult>("ovh:Me/getInstallationTemplates:getInstallationTemplates", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

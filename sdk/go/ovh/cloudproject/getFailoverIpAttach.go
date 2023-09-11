@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the details of a failover IP address of a service in a public cloud project.
@@ -101,6 +102,12 @@ func (o LookupFailoverIpAttachResultOutput) ToLookupFailoverIpAttachResultOutput
 
 func (o LookupFailoverIpAttachResultOutput) ToLookupFailoverIpAttachResultOutputWithContext(ctx context.Context) LookupFailoverIpAttachResultOutput {
 	return o
+}
+
+func (o LookupFailoverIpAttachResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFailoverIpAttachResult] {
+	return pulumix.Output[LookupFailoverIpAttachResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP block

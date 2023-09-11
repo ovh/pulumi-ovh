@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a pattern of a opensearch cluster associated with a public cloud project.
@@ -90,6 +91,12 @@ func (o GetOpenSearchPatternResultOutput) ToGetOpenSearchPatternResultOutput() G
 
 func (o GetOpenSearchPatternResultOutput) ToGetOpenSearchPatternResultOutputWithContext(ctx context.Context) GetOpenSearchPatternResultOutput {
 	return o
+}
+
+func (o GetOpenSearchPatternResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOpenSearchPatternResult] {
+	return pulumix.Output[GetOpenSearchPatternResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // See Argument Reference above.

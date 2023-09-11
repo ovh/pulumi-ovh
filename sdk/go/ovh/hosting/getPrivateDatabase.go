@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about an hosting database.
@@ -110,6 +111,12 @@ func (o LookupPrivateDatabaseResultOutput) ToLookupPrivateDatabaseResultOutput()
 
 func (o LookupPrivateDatabaseResultOutput) ToLookupPrivateDatabaseResultOutputWithContext(ctx context.Context) LookupPrivateDatabaseResultOutput {
 	return o
+}
+
+func (o LookupPrivateDatabaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateDatabaseResult] {
+	return pulumix.Output[LookupPrivateDatabaseResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number of CPU on your private database

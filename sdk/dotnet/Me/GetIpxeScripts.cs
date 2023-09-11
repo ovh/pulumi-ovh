@@ -22,6 +22,18 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public static Task<GetIpxeScriptsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpxeScriptsResult>("ovh:Me/getIpxeScripts:getIpxeScripts", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve a list of the names of the account's IPXE Scripts.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```hcl
+        /// data "ovh_me_ipxe_scripts" "scripts" {}
+        /// ```
+        /// </summary>
+        public static Output<GetIpxeScriptsResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpxeScriptsResult>("ovh:Me/getIpxeScripts:getIpxeScripts", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

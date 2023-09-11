@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about an hosting privatedatabase whitelist.
@@ -90,6 +91,12 @@ func (o LookupPrivateDatabaseAllowlistResultOutput) ToLookupPrivateDatabaseAllow
 
 func (o LookupPrivateDatabaseAllowlistResultOutput) ToLookupPrivateDatabaseAllowlistResultOutputWithContext(ctx context.Context) LookupPrivateDatabaseAllowlistResultOutput {
 	return o
+}
+
+func (o LookupPrivateDatabaseAllowlistResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateDatabaseAllowlistResult] {
+	return pulumix.Output[LookupPrivateDatabaseAllowlistResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation date of the database

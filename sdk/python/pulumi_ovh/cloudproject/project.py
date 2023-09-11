@@ -23,7 +23,7 @@ class ProjectArgs:
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectPlanOptionArgs']]]] = None):
         """
         The set of arguments for constructing a Project resource.
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input['ProjectPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[str] description: A description associated with the user.
         :param pulumi.Input[str] payment_mean: Ovh payment mode
@@ -45,7 +45,7 @@ class ProjectArgs:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> pulumi.Input[str]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -123,7 +123,7 @@ class _ProjectState:
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[str] description: A description associated with the user.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectOrderArgs']]] orders: Details about the order that was used to create the public cloud project
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input['ProjectPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['ProjectPlanOptionArgs']]] plan_options: Product Plan to order
@@ -195,7 +195,7 @@ class _ProjectState:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -303,8 +303,6 @@ class Project(pulumi.CustomResource):
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectPlanOptionArgs']]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
         ## Import
 
         Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.  bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id <break>```<break><break>
@@ -312,7 +310,7 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description associated with the user.
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['ProjectPlanArgs']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectPlanOptionArgs']]]] plan_options: Product Plan to order
@@ -324,8 +322,6 @@ class Project(pulumi.CustomResource):
                  args: ProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
         ## Import
 
         Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.  bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id <break>```<break><break>
@@ -407,7 +403,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description associated with the user.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectOrderArgs']]]] orders: Details about the order that was used to create the public cloud project
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['ProjectPlanArgs']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectPlanOptionArgs']]]] plan_options: Product Plan to order
@@ -458,7 +454,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> pulumi.Output[str]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 

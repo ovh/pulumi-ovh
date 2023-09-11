@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i ZoneOrderArgs) ToZoneOrderOutputWithContext(ctx context.Context) ZoneOrd
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneOrderOutput)
 }
 
+func (i ZoneOrderArgs) ToOutput(ctx context.Context) pulumix.Output[ZoneOrder] {
+	return pulumix.Output[ZoneOrder]{
+		OutputState: i.ToZoneOrderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneOrderArrayInput is an input type that accepts ZoneOrderArray and ZoneOrderArrayOutput values.
 // You can construct a concrete instance of `ZoneOrderArrayInput` via:
 //
@@ -83,6 +90,12 @@ func (i ZoneOrderArray) ToZoneOrderArrayOutputWithContext(ctx context.Context) Z
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneOrderArrayOutput)
 }
 
+func (i ZoneOrderArray) ToOutput(ctx context.Context) pulumix.Output[[]ZoneOrder] {
+	return pulumix.Output[[]ZoneOrder]{
+		OutputState: i.ToZoneOrderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneOrderOutput struct{ *pulumi.OutputState }
 
 func (ZoneOrderOutput) ElementType() reflect.Type {
@@ -95,6 +108,12 @@ func (o ZoneOrderOutput) ToZoneOrderOutput() ZoneOrderOutput {
 
 func (o ZoneOrderOutput) ToZoneOrderOutputWithContext(ctx context.Context) ZoneOrderOutput {
 	return o
+}
+
+func (o ZoneOrderOutput) ToOutput(ctx context.Context) pulumix.Output[ZoneOrder] {
+	return pulumix.Output[ZoneOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 // date
@@ -129,6 +148,12 @@ func (o ZoneOrderArrayOutput) ToZoneOrderArrayOutput() ZoneOrderArrayOutput {
 
 func (o ZoneOrderArrayOutput) ToZoneOrderArrayOutputWithContext(ctx context.Context) ZoneOrderArrayOutput {
 	return o
+}
+
+func (o ZoneOrderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ZoneOrder] {
+	return pulumix.Output[[]ZoneOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneOrderArrayOutput) Index(i pulumi.IntInput) ZoneOrderOutput {
@@ -182,6 +207,12 @@ func (i ZoneOrderDetailArgs) ToZoneOrderDetailOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneOrderDetailOutput)
 }
 
+func (i ZoneOrderDetailArgs) ToOutput(ctx context.Context) pulumix.Output[ZoneOrderDetail] {
+	return pulumix.Output[ZoneOrderDetail]{
+		OutputState: i.ToZoneOrderDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneOrderDetailArrayInput is an input type that accepts ZoneOrderDetailArray and ZoneOrderDetailArrayOutput values.
 // You can construct a concrete instance of `ZoneOrderDetailArrayInput` via:
 //
@@ -207,6 +238,12 @@ func (i ZoneOrderDetailArray) ToZoneOrderDetailArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneOrderDetailArrayOutput)
 }
 
+func (i ZoneOrderDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]ZoneOrderDetail] {
+	return pulumix.Output[[]ZoneOrderDetail]{
+		OutputState: i.ToZoneOrderDetailArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneOrderDetailOutput struct{ *pulumi.OutputState }
 
 func (ZoneOrderDetailOutput) ElementType() reflect.Type {
@@ -219,6 +256,12 @@ func (o ZoneOrderDetailOutput) ToZoneOrderDetailOutput() ZoneOrderDetailOutput {
 
 func (o ZoneOrderDetailOutput) ToZoneOrderDetailOutputWithContext(ctx context.Context) ZoneOrderDetailOutput {
 	return o
+}
+
+func (o ZoneOrderDetailOutput) ToOutput(ctx context.Context) pulumix.Output[ZoneOrderDetail] {
+	return pulumix.Output[ZoneOrderDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // description
@@ -253,6 +296,12 @@ func (o ZoneOrderDetailArrayOutput) ToZoneOrderDetailArrayOutput() ZoneOrderDeta
 
 func (o ZoneOrderDetailArrayOutput) ToZoneOrderDetailArrayOutputWithContext(ctx context.Context) ZoneOrderDetailArrayOutput {
 	return o
+}
+
+func (o ZoneOrderDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ZoneOrderDetail] {
+	return pulumix.Output[[]ZoneOrderDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneOrderDetailArrayOutput) Index(i pulumi.IntInput) ZoneOrderDetailOutput {
@@ -310,6 +359,12 @@ func (i ZonePlanArgs) ToZonePlanOutputWithContext(ctx context.Context) ZonePlanO
 	return pulumi.ToOutputWithContext(ctx, i).(ZonePlanOutput)
 }
 
+func (i ZonePlanArgs) ToOutput(ctx context.Context) pulumix.Output[ZonePlan] {
+	return pulumix.Output[ZonePlan]{
+		OutputState: i.ToZonePlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ZonePlanArgs) ToZonePlanPtrOutput() ZonePlanPtrOutput {
 	return i.ToZonePlanPtrOutputWithContext(context.Background())
 }
@@ -351,6 +406,12 @@ func (i *zonePlanPtrType) ToZonePlanPtrOutputWithContext(ctx context.Context) Zo
 	return pulumi.ToOutputWithContext(ctx, i).(ZonePlanPtrOutput)
 }
 
+func (i *zonePlanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ZonePlan] {
+	return pulumix.Output[*ZonePlan]{
+		OutputState: i.ToZonePlanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZonePlanOutput struct{ *pulumi.OutputState }
 
 func (ZonePlanOutput) ElementType() reflect.Type {
@@ -373,6 +434,12 @@ func (o ZonePlanOutput) ToZonePlanPtrOutputWithContext(ctx context.Context) Zone
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZonePlan) *ZonePlan {
 		return &v
 	}).(ZonePlanPtrOutput)
+}
+
+func (o ZonePlanOutput) ToOutput(ctx context.Context) pulumix.Output[ZonePlan] {
+	return pulumix.Output[ZonePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Catalog name
@@ -412,6 +479,12 @@ func (o ZonePlanPtrOutput) ToZonePlanPtrOutput() ZonePlanPtrOutput {
 
 func (o ZonePlanPtrOutput) ToZonePlanPtrOutputWithContext(ctx context.Context) ZonePlanPtrOutput {
 	return o
+}
+
+func (o ZonePlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ZonePlan] {
+	return pulumix.Output[*ZonePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZonePlanPtrOutput) Elem() ZonePlanOutput {
@@ -511,6 +584,12 @@ func (i ZonePlanConfigurationArgs) ToZonePlanConfigurationOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ZonePlanConfigurationOutput)
 }
 
+func (i ZonePlanConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ZonePlanConfiguration] {
+	return pulumix.Output[ZonePlanConfiguration]{
+		OutputState: i.ToZonePlanConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZonePlanConfigurationArrayInput is an input type that accepts ZonePlanConfigurationArray and ZonePlanConfigurationArrayOutput values.
 // You can construct a concrete instance of `ZonePlanConfigurationArrayInput` via:
 //
@@ -536,6 +615,12 @@ func (i ZonePlanConfigurationArray) ToZonePlanConfigurationArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ZonePlanConfigurationArrayOutput)
 }
 
+func (i ZonePlanConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]ZonePlanConfiguration] {
+	return pulumix.Output[[]ZonePlanConfiguration]{
+		OutputState: i.ToZonePlanConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZonePlanConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ZonePlanConfigurationOutput) ElementType() reflect.Type {
@@ -548,6 +633,12 @@ func (o ZonePlanConfigurationOutput) ToZonePlanConfigurationOutput() ZonePlanCon
 
 func (o ZonePlanConfigurationOutput) ToZonePlanConfigurationOutputWithContext(ctx context.Context) ZonePlanConfigurationOutput {
 	return o
+}
+
+func (o ZonePlanConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ZonePlanConfiguration] {
+	return pulumix.Output[ZonePlanConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of the resource
@@ -572,6 +663,12 @@ func (o ZonePlanConfigurationArrayOutput) ToZonePlanConfigurationArrayOutput() Z
 
 func (o ZonePlanConfigurationArrayOutput) ToZonePlanConfigurationArrayOutputWithContext(ctx context.Context) ZonePlanConfigurationArrayOutput {
 	return o
+}
+
+func (o ZonePlanConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ZonePlanConfiguration] {
+	return pulumix.Output[[]ZonePlanConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZonePlanConfigurationArrayOutput) Index(i pulumi.IntInput) ZonePlanConfigurationOutput {
@@ -629,6 +726,12 @@ func (i ZonePlanOptionArgs) ToZonePlanOptionOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ZonePlanOptionOutput)
 }
 
+func (i ZonePlanOptionArgs) ToOutput(ctx context.Context) pulumix.Output[ZonePlanOption] {
+	return pulumix.Output[ZonePlanOption]{
+		OutputState: i.ToZonePlanOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZonePlanOptionArrayInput is an input type that accepts ZonePlanOptionArray and ZonePlanOptionArrayOutput values.
 // You can construct a concrete instance of `ZonePlanOptionArrayInput` via:
 //
@@ -654,6 +757,12 @@ func (i ZonePlanOptionArray) ToZonePlanOptionArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ZonePlanOptionArrayOutput)
 }
 
+func (i ZonePlanOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]ZonePlanOption] {
+	return pulumix.Output[[]ZonePlanOption]{
+		OutputState: i.ToZonePlanOptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZonePlanOptionOutput struct{ *pulumi.OutputState }
 
 func (ZonePlanOptionOutput) ElementType() reflect.Type {
@@ -666,6 +775,12 @@ func (o ZonePlanOptionOutput) ToZonePlanOptionOutput() ZonePlanOptionOutput {
 
 func (o ZonePlanOptionOutput) ToZonePlanOptionOutputWithContext(ctx context.Context) ZonePlanOptionOutput {
 	return o
+}
+
+func (o ZonePlanOptionOutput) ToOutput(ctx context.Context) pulumix.Output[ZonePlanOption] {
+	return pulumix.Output[ZonePlanOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Catalog name
@@ -705,6 +820,12 @@ func (o ZonePlanOptionArrayOutput) ToZonePlanOptionArrayOutput() ZonePlanOptionA
 
 func (o ZonePlanOptionArrayOutput) ToZonePlanOptionArrayOutputWithContext(ctx context.Context) ZonePlanOptionArrayOutput {
 	return o
+}
+
+func (o ZonePlanOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ZonePlanOption] {
+	return pulumix.Output[[]ZonePlanOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZonePlanOptionArrayOutput) Index(i pulumi.IntInput) ZonePlanOptionOutput {
@@ -750,6 +871,12 @@ func (i ZonePlanOptionConfigurationArgs) ToZonePlanOptionConfigurationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ZonePlanOptionConfigurationOutput)
 }
 
+func (i ZonePlanOptionConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ZonePlanOptionConfiguration] {
+	return pulumix.Output[ZonePlanOptionConfiguration]{
+		OutputState: i.ToZonePlanOptionConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZonePlanOptionConfigurationArrayInput is an input type that accepts ZonePlanOptionConfigurationArray and ZonePlanOptionConfigurationArrayOutput values.
 // You can construct a concrete instance of `ZonePlanOptionConfigurationArrayInput` via:
 //
@@ -775,6 +902,12 @@ func (i ZonePlanOptionConfigurationArray) ToZonePlanOptionConfigurationArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ZonePlanOptionConfigurationArrayOutput)
 }
 
+func (i ZonePlanOptionConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]ZonePlanOptionConfiguration] {
+	return pulumix.Output[[]ZonePlanOptionConfiguration]{
+		OutputState: i.ToZonePlanOptionConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZonePlanOptionConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ZonePlanOptionConfigurationOutput) ElementType() reflect.Type {
@@ -787,6 +920,12 @@ func (o ZonePlanOptionConfigurationOutput) ToZonePlanOptionConfigurationOutput()
 
 func (o ZonePlanOptionConfigurationOutput) ToZonePlanOptionConfigurationOutputWithContext(ctx context.Context) ZonePlanOptionConfigurationOutput {
 	return o
+}
+
+func (o ZonePlanOptionConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ZonePlanOptionConfiguration] {
+	return pulumix.Output[ZonePlanOptionConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of the resource
@@ -811,6 +950,12 @@ func (o ZonePlanOptionConfigurationArrayOutput) ToZonePlanOptionConfigurationArr
 
 func (o ZonePlanOptionConfigurationArrayOutput) ToZonePlanOptionConfigurationArrayOutputWithContext(ctx context.Context) ZonePlanOptionConfigurationArrayOutput {
 	return o
+}
+
+func (o ZonePlanOptionConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ZonePlanOptionConfiguration] {
+	return pulumix.Output[[]ZonePlanOptionConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZonePlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) ZonePlanOptionConfigurationOutput {

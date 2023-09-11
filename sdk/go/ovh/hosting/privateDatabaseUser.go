@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new user on your private cloud database instance.
@@ -18,7 +19,7 @@ import (
 //
 // ## Import
 //
-// OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g., <break><break>```sh<break> $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name <break>```<break><break>
+// OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
 type PrivateDatabaseUser struct {
 	pulumi.CustomResourceState
 
@@ -139,6 +140,12 @@ func (i *PrivateDatabaseUser) ToPrivateDatabaseUserOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseUserOutput)
 }
 
+func (i *PrivateDatabaseUser) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabaseUser] {
+	return pulumix.Output[*PrivateDatabaseUser]{
+		OutputState: i.ToPrivateDatabaseUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateDatabaseUserArrayInput is an input type that accepts PrivateDatabaseUserArray and PrivateDatabaseUserArrayOutput values.
 // You can construct a concrete instance of `PrivateDatabaseUserArrayInput` via:
 //
@@ -162,6 +169,12 @@ func (i PrivateDatabaseUserArray) ToPrivateDatabaseUserArrayOutput() PrivateData
 
 func (i PrivateDatabaseUserArray) ToPrivateDatabaseUserArrayOutputWithContext(ctx context.Context) PrivateDatabaseUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseUserArrayOutput)
+}
+
+func (i PrivateDatabaseUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabaseUser] {
+	return pulumix.Output[[]*PrivateDatabaseUser]{
+		OutputState: i.ToPrivateDatabaseUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PrivateDatabaseUserMapInput is an input type that accepts PrivateDatabaseUserMap and PrivateDatabaseUserMapOutput values.
@@ -189,6 +202,12 @@ func (i PrivateDatabaseUserMap) ToPrivateDatabaseUserMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseUserMapOutput)
 }
 
+func (i PrivateDatabaseUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabaseUser] {
+	return pulumix.Output[map[string]*PrivateDatabaseUser]{
+		OutputState: i.ToPrivateDatabaseUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateDatabaseUserOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabaseUserOutput) ElementType() reflect.Type {
@@ -201,6 +220,12 @@ func (o PrivateDatabaseUserOutput) ToPrivateDatabaseUserOutput() PrivateDatabase
 
 func (o PrivateDatabaseUserOutput) ToPrivateDatabaseUserOutputWithContext(ctx context.Context) PrivateDatabaseUserOutput {
 	return o
+}
+
+func (o PrivateDatabaseUserOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabaseUser] {
+	return pulumix.Output[*PrivateDatabaseUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
@@ -232,6 +257,12 @@ func (o PrivateDatabaseUserArrayOutput) ToPrivateDatabaseUserArrayOutputWithCont
 	return o
 }
 
+func (o PrivateDatabaseUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabaseUser] {
+	return pulumix.Output[[]*PrivateDatabaseUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateDatabaseUserArrayOutput) Index(i pulumi.IntInput) PrivateDatabaseUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrivateDatabaseUser {
 		return vs[0].([]*PrivateDatabaseUser)[vs[1].(int)]
@@ -250,6 +281,12 @@ func (o PrivateDatabaseUserMapOutput) ToPrivateDatabaseUserMapOutput() PrivateDa
 
 func (o PrivateDatabaseUserMapOutput) ToPrivateDatabaseUserMapOutputWithContext(ctx context.Context) PrivateDatabaseUserMapOutput {
 	return o
+}
+
+func (o PrivateDatabaseUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabaseUser] {
+	return pulumix.Output[map[string]*PrivateDatabaseUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateDatabaseUserMapOutput) MapIndex(k pulumi.StringInput) PrivateDatabaseUserOutput {

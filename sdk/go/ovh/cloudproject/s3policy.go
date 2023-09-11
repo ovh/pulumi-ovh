@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Set the S3 Policy of a public cloud project user.
@@ -137,6 +138,12 @@ func (i *S3Policy) ToS3PolicyOutputWithContext(ctx context.Context) S3PolicyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(S3PolicyOutput)
 }
 
+func (i *S3Policy) ToOutput(ctx context.Context) pulumix.Output[*S3Policy] {
+	return pulumix.Output[*S3Policy]{
+		OutputState: i.ToS3PolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // S3PolicyArrayInput is an input type that accepts S3PolicyArray and S3PolicyArrayOutput values.
 // You can construct a concrete instance of `S3PolicyArrayInput` via:
 //
@@ -160,6 +167,12 @@ func (i S3PolicyArray) ToS3PolicyArrayOutput() S3PolicyArrayOutput {
 
 func (i S3PolicyArray) ToS3PolicyArrayOutputWithContext(ctx context.Context) S3PolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3PolicyArrayOutput)
+}
+
+func (i S3PolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*S3Policy] {
+	return pulumix.Output[[]*S3Policy]{
+		OutputState: i.ToS3PolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // S3PolicyMapInput is an input type that accepts S3PolicyMap and S3PolicyMapOutput values.
@@ -187,6 +200,12 @@ func (i S3PolicyMap) ToS3PolicyMapOutputWithContext(ctx context.Context) S3Polic
 	return pulumi.ToOutputWithContext(ctx, i).(S3PolicyMapOutput)
 }
 
+func (i S3PolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3Policy] {
+	return pulumix.Output[map[string]*S3Policy]{
+		OutputState: i.ToS3PolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type S3PolicyOutput struct{ *pulumi.OutputState }
 
 func (S3PolicyOutput) ElementType() reflect.Type {
@@ -199,6 +218,12 @@ func (o S3PolicyOutput) ToS3PolicyOutput() S3PolicyOutput {
 
 func (o S3PolicyOutput) ToS3PolicyOutputWithContext(ctx context.Context) S3PolicyOutput {
 	return o
+}
+
+func (o S3PolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*S3Policy] {
+	return pulumix.Output[*S3Policy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
@@ -231,6 +256,12 @@ func (o S3PolicyArrayOutput) ToS3PolicyArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o S3PolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*S3Policy] {
+	return pulumix.Output[[]*S3Policy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o S3PolicyArrayOutput) Index(i pulumi.IntInput) S3PolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *S3Policy {
 		return vs[0].([]*S3Policy)[vs[1].(int)]
@@ -249,6 +280,12 @@ func (o S3PolicyMapOutput) ToS3PolicyMapOutput() S3PolicyMapOutput {
 
 func (o S3PolicyMapOutput) ToS3PolicyMapOutputWithContext(ctx context.Context) S3PolicyMapOutput {
 	return o
+}
+
+func (o S3PolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3Policy] {
+	return pulumix.Output[map[string]*S3Policy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3PolicyMapOutput) MapIndex(k pulumi.StringInput) S3PolicyOutput {

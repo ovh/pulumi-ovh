@@ -24,7 +24,7 @@ class PrivateDatabaseArgs:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PrivateDatabase resource.
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input['PrivateDatabasePlanArgs'] plan: Product Plan to order
         :param pulumi.Input[str] display_name: Name displayed in customer panel for your private database
         :param pulumi.Input[str] payment_mean: Ovh payment mode
@@ -49,7 +49,7 @@ class PrivateDatabaseArgs:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> pulumi.Input[str]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -159,7 +159,7 @@ class _PrivateDatabaseState:
         :param pulumi.Input[str] infrastructure: Infrastructure where service was stored
         :param pulumi.Input[str] offer: Type of the private database offer
         :param pulumi.Input[Sequence[pulumi.Input['PrivateDatabaseOrderArgs']]] orders: Details about your Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input['PrivateDatabasePlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['PrivateDatabasePlanOptionArgs']]] plan_options: Product Plan to order
@@ -331,7 +331,7 @@ class _PrivateDatabaseState:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -552,12 +552,12 @@ class PrivateDatabase(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud Webhosting database can be imported using the `service_name`, E.g., <break><break>```sh<break> $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name <break>```<break><break>
+        OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name displayed in customer panel for your private database
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['PrivateDatabasePlanArgs']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabasePlanOptionArgs']]]] plan_options: Product Plan to order
@@ -574,7 +574,7 @@ class PrivateDatabase(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud Webhosting database can be imported using the `service_name`, E.g., <break><break>```sh<break> $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name <break>```<break><break>
+        OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
 
         :param str resource_name: The name of the resource.
         :param PrivateDatabaseArgs args: The arguments to use to populate this resource's properties.
@@ -688,7 +688,7 @@ class PrivateDatabase(pulumi.CustomResource):
         :param pulumi.Input[str] infrastructure: Infrastructure where service was stored
         :param pulumi.Input[str] offer: Type of the private database offer
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabaseOrderArgs']]]] orders: Details about your Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['PrivateDatabasePlanArgs']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabasePlanOptionArgs']]]] plan_options: Product Plan to order
@@ -805,7 +805,7 @@ class PrivateDatabase(pulumi.CustomResource):
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> pulumi.Output[str]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 

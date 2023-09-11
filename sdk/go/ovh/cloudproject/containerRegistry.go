@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a container registry associated with a public cloud project.
@@ -190,6 +191,12 @@ func (i *ContainerRegistry) ToContainerRegistryOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryOutput)
 }
 
+func (i *ContainerRegistry) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistry] {
+	return pulumix.Output[*ContainerRegistry]{
+		OutputState: i.ToContainerRegistryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerRegistryArrayInput is an input type that accepts ContainerRegistryArray and ContainerRegistryArrayOutput values.
 // You can construct a concrete instance of `ContainerRegistryArrayInput` via:
 //
@@ -213,6 +220,12 @@ func (i ContainerRegistryArray) ToContainerRegistryArrayOutput() ContainerRegist
 
 func (i ContainerRegistryArray) ToContainerRegistryArrayOutputWithContext(ctx context.Context) ContainerRegistryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryArrayOutput)
+}
+
+func (i ContainerRegistryArray) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerRegistry] {
+	return pulumix.Output[[]*ContainerRegistry]{
+		OutputState: i.ToContainerRegistryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ContainerRegistryMapInput is an input type that accepts ContainerRegistryMap and ContainerRegistryMapOutput values.
@@ -240,6 +253,12 @@ func (i ContainerRegistryMap) ToContainerRegistryMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryMapOutput)
 }
 
+func (i ContainerRegistryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerRegistry] {
+	return pulumix.Output[map[string]*ContainerRegistry]{
+		OutputState: i.ToContainerRegistryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerRegistryOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryOutput) ElementType() reflect.Type {
@@ -252,6 +271,12 @@ func (o ContainerRegistryOutput) ToContainerRegistryOutput() ContainerRegistryOu
 
 func (o ContainerRegistryOutput) ToContainerRegistryOutputWithContext(ctx context.Context) ContainerRegistryOutput {
 	return o
+}
+
+func (o ContainerRegistryOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistry] {
+	return pulumix.Output[*ContainerRegistry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Plan creation date
@@ -329,6 +354,12 @@ func (o ContainerRegistryArrayOutput) ToContainerRegistryArrayOutputWithContext(
 	return o
 }
 
+func (o ContainerRegistryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerRegistry] {
+	return pulumix.Output[[]*ContainerRegistry]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerRegistryArrayOutput) Index(i pulumi.IntInput) ContainerRegistryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContainerRegistry {
 		return vs[0].([]*ContainerRegistry)[vs[1].(int)]
@@ -347,6 +378,12 @@ func (o ContainerRegistryMapOutput) ToContainerRegistryMapOutput() ContainerRegi
 
 func (o ContainerRegistryMapOutput) ToContainerRegistryMapOutputWithContext(ctx context.Context) ContainerRegistryMapOutput {
 	return o
+}
+
+func (o ContainerRegistryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerRegistry] {
+	return pulumix.Output[map[string]*ContainerRegistry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerRegistryMapOutput) MapIndex(k pulumi.StringInput) ContainerRegistryOutput {

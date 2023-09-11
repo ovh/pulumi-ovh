@@ -22,6 +22,18 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public static Task<GetIdentityUsersResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIdentityUsersResult>("ovh:Me/getIdentityUsers:getIdentityUsers", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve list of user logins of the account's identity users.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```hcl
+        /// data "ovh_me_identity_users" "users" {}
+        /// ```
+        /// </summary>
+        public static Output<GetIdentityUsersResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIdentityUsersResult>("ovh:Me/getIdentityUsers:getIdentityUsers", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

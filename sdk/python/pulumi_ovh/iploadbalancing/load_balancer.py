@@ -24,7 +24,7 @@ class LoadBalancerArgs:
                  ssl_configuration: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input['LoadBalancerPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[str] display_name: Set the name displayed in ManagerV6 for your iplb (max 50 chars)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
@@ -49,7 +49,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> pulumi.Input[str]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -153,7 +153,7 @@ class _LoadBalancerState:
         :param pulumi.Input[str] offer: The offer of your IP load balancing
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerOrderableZoneArgs']]] orderable_zones: Available additional zone for your Load Balancer
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerOrderArgs']]] orders: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input['LoadBalancerPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPlanOptionArgs']]] plan_options: Product Plan to order
@@ -307,7 +307,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -457,7 +457,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Set the name displayed in ManagerV6 for your iplb (max 50 chars)
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['LoadBalancerPlanArgs']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPlanOptionArgs']]]] plan_options: Product Plan to order
@@ -574,7 +574,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] offer: The offer of your IP load balancing
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderableZoneArgs']]]] orderable_zones: Available additional zone for your Load Balancer
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderArgs']]]] orders: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['LoadBalancerPlanArgs']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPlanOptionArgs']]]] plan_options: Product Plan to order
@@ -679,7 +679,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> pulumi.Output[str]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 

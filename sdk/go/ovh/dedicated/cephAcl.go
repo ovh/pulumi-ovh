@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Add a new access ACL for the given network/mask.
@@ -134,6 +135,12 @@ func (i *CephAcl) ToCephAclOutputWithContext(ctx context.Context) CephAclOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(CephAclOutput)
 }
 
+func (i *CephAcl) ToOutput(ctx context.Context) pulumix.Output[*CephAcl] {
+	return pulumix.Output[*CephAcl]{
+		OutputState: i.ToCephAclOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CephAclArrayInput is an input type that accepts CephAclArray and CephAclArrayOutput values.
 // You can construct a concrete instance of `CephAclArrayInput` via:
 //
@@ -157,6 +164,12 @@ func (i CephAclArray) ToCephAclArrayOutput() CephAclArrayOutput {
 
 func (i CephAclArray) ToCephAclArrayOutputWithContext(ctx context.Context) CephAclArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CephAclArrayOutput)
+}
+
+func (i CephAclArray) ToOutput(ctx context.Context) pulumix.Output[[]*CephAcl] {
+	return pulumix.Output[[]*CephAcl]{
+		OutputState: i.ToCephAclArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CephAclMapInput is an input type that accepts CephAclMap and CephAclMapOutput values.
@@ -184,6 +197,12 @@ func (i CephAclMap) ToCephAclMapOutputWithContext(ctx context.Context) CephAclMa
 	return pulumi.ToOutputWithContext(ctx, i).(CephAclMapOutput)
 }
 
+func (i CephAclMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CephAcl] {
+	return pulumix.Output[map[string]*CephAcl]{
+		OutputState: i.ToCephAclMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CephAclOutput struct{ *pulumi.OutputState }
 
 func (CephAclOutput) ElementType() reflect.Type {
@@ -196,6 +215,12 @@ func (o CephAclOutput) ToCephAclOutput() CephAclOutput {
 
 func (o CephAclOutput) ToCephAclOutputWithContext(ctx context.Context) CephAclOutput {
 	return o
+}
+
+func (o CephAclOutput) ToOutput(ctx context.Context) pulumix.Output[*CephAcl] {
+	return pulumix.Output[*CephAcl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // IP family. `IPv4` or `IPv6`
@@ -232,6 +257,12 @@ func (o CephAclArrayOutput) ToCephAclArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o CephAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CephAcl] {
+	return pulumix.Output[[]*CephAcl]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CephAclArrayOutput) Index(i pulumi.IntInput) CephAclOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CephAcl {
 		return vs[0].([]*CephAcl)[vs[1].(int)]
@@ -250,6 +281,12 @@ func (o CephAclMapOutput) ToCephAclMapOutput() CephAclMapOutput {
 
 func (o CephAclMapOutput) ToCephAclMapOutputWithContext(ctx context.Context) CephAclMapOutput {
 	return o
+}
+
+func (o CephAclMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CephAcl] {
+	return pulumix.Output[map[string]*CephAcl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CephAclMapOutput) MapIndex(k pulumi.StringInput) CephAclOutput {

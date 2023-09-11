@@ -10,10 +10,9 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// ## Example Usage
-//
 // ## Import
 //
 // Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.  bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id <break>```<break><break>
@@ -25,7 +24,7 @@ type Project struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Details about the order that was used to create the public cloud project
 	Orders ProjectOrderArrayOutput `pulumi:"orders"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -86,7 +85,7 @@ type projectState struct {
 	Description *string `pulumi:"description"`
 	// Details about the order that was used to create the public cloud project
 	Orders []ProjectOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -112,7 +111,7 @@ type ProjectState struct {
 	Description pulumi.StringPtrInput
 	// Details about the order that was used to create the public cloud project
 	Orders ProjectOrderArrayInput
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -139,7 +138,7 @@ func (ProjectState) ElementType() reflect.Type {
 type projectArgs struct {
 	// A description associated with the user.
 	Description *string `pulumi:"description"`
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -155,7 +154,7 @@ type projectArgs struct {
 type ProjectArgs struct {
 	// A description associated with the user.
 	Description pulumi.StringPtrInput
-	// OVHcloud Subsidiary
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode
 	//
@@ -190,6 +189,12 @@ func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
 }
 
+func (i *Project) ToOutput(ctx context.Context) pulumix.Output[*Project] {
+	return pulumix.Output[*Project]{
+		OutputState: i.ToProjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectArrayInput is an input type that accepts ProjectArray and ProjectArrayOutput values.
 // You can construct a concrete instance of `ProjectArrayInput` via:
 //
@@ -213,6 +218,12 @@ func (i ProjectArray) ToProjectArrayOutput() ProjectArrayOutput {
 
 func (i ProjectArray) ToProjectArrayOutputWithContext(ctx context.Context) ProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectArrayOutput)
+}
+
+func (i ProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*Project] {
+	return pulumix.Output[[]*Project]{
+		OutputState: i.ToProjectArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectMapInput is an input type that accepts ProjectMap and ProjectMapOutput values.
@@ -240,6 +251,12 @@ func (i ProjectMap) ToProjectMapOutputWithContext(ctx context.Context) ProjectMa
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMapOutput)
 }
 
+func (i ProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Project] {
+	return pulumix.Output[map[string]*Project]{
+		OutputState: i.ToProjectMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectOutput struct{ *pulumi.OutputState }
 
 func (ProjectOutput) ElementType() reflect.Type {
@@ -252,6 +269,12 @@ func (o ProjectOutput) ToProjectOutput() ProjectOutput {
 
 func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
 	return o
+}
+
+func (o ProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*Project] {
+	return pulumix.Output[*Project]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectOutput) Access() pulumi.StringOutput {
@@ -268,7 +291,7 @@ func (o ProjectOutput) Orders() ProjectOrderArrayOutput {
 	return o.ApplyT(func(v *Project) ProjectOrderArrayOutput { return v.Orders }).(ProjectOrderArrayOutput)
 }
 
-// OVHcloud Subsidiary
+// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 func (o ProjectOutput) OvhSubsidiary() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
 }
@@ -324,6 +347,12 @@ func (o ProjectArrayOutput) ToProjectArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Project] {
+	return pulumix.Output[[]*Project]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectArrayOutput) Index(i pulumi.IntInput) ProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Project {
 		return vs[0].([]*Project)[vs[1].(int)]
@@ -342,6 +371,12 @@ func (o ProjectMapOutput) ToProjectMapOutput() ProjectMapOutput {
 
 func (o ProjectMapOutput) ToProjectMapOutputWithContext(ctx context.Context) ProjectMapOutput {
 	return o
+}
+
+func (o ProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Project] {
+	return pulumix.Output[map[string]*Project]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectMapOutput) MapIndex(k pulumi.StringInput) ProjectOutput {

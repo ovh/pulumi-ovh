@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
@@ -90,6 +91,12 @@ func (o GetKubeNodePoolNodesResultOutput) ToGetKubeNodePoolNodesResultOutput() G
 
 func (o GetKubeNodePoolNodesResultOutput) ToGetKubeNodePoolNodesResultOutputWithContext(ctx context.Context) GetKubeNodePoolNodesResultOutput {
 	return o
+}
+
+func (o GetKubeNodePoolNodesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKubeNodePoolNodesResult] {
+	return pulumix.Output[GetKubeNodePoolNodesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

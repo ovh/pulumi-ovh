@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
@@ -92,6 +93,12 @@ func (o LookupKafkaAclResultOutput) ToLookupKafkaAclResultOutput() LookupKafkaAc
 
 func (o LookupKafkaAclResultOutput) ToLookupKafkaAclResultOutputWithContext(ctx context.Context) LookupKafkaAclResultOutput {
 	return o
+}
+
+func (o LookupKafkaAclResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKafkaAclResult] {
+	return pulumix.Output[LookupKafkaAclResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // See Argument Reference above.

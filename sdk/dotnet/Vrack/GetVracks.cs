@@ -22,6 +22,18 @@ namespace Pulumi.Ovh.Vrack
         /// </summary>
         public static Task<GetVracksResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVracksResult>("ovh:Vrack/getVracks:getVracks", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the list of Vrack IDs available for your OVHcloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```hcl
+        /// data ovh_vracks vracks {}
+        /// ```
+        /// </summary>
+        public static Output<GetVracksResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVracksResult>("ovh:Vrack/getVracks:getVracks", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.
@@ -115,6 +116,12 @@ func (i *Refresh) ToRefreshOutputWithContext(ctx context.Context) RefreshOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RefreshOutput)
 }
 
+func (i *Refresh) ToOutput(ctx context.Context) pulumix.Output[*Refresh] {
+	return pulumix.Output[*Refresh]{
+		OutputState: i.ToRefreshOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RefreshArrayInput is an input type that accepts RefreshArray and RefreshArrayOutput values.
 // You can construct a concrete instance of `RefreshArrayInput` via:
 //
@@ -138,6 +145,12 @@ func (i RefreshArray) ToRefreshArrayOutput() RefreshArrayOutput {
 
 func (i RefreshArray) ToRefreshArrayOutputWithContext(ctx context.Context) RefreshArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RefreshArrayOutput)
+}
+
+func (i RefreshArray) ToOutput(ctx context.Context) pulumix.Output[[]*Refresh] {
+	return pulumix.Output[[]*Refresh]{
+		OutputState: i.ToRefreshArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RefreshMapInput is an input type that accepts RefreshMap and RefreshMapOutput values.
@@ -165,6 +178,12 @@ func (i RefreshMap) ToRefreshMapOutputWithContext(ctx context.Context) RefreshMa
 	return pulumi.ToOutputWithContext(ctx, i).(RefreshMapOutput)
 }
 
+func (i RefreshMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Refresh] {
+	return pulumix.Output[map[string]*Refresh]{
+		OutputState: i.ToRefreshMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RefreshOutput struct{ *pulumi.OutputState }
 
 func (RefreshOutput) ElementType() reflect.Type {
@@ -177,6 +196,12 @@ func (o RefreshOutput) ToRefreshOutput() RefreshOutput {
 
 func (o RefreshOutput) ToRefreshOutputWithContext(ctx context.Context) RefreshOutput {
 	return o
+}
+
+func (o RefreshOutput) ToOutput(ctx context.Context) pulumix.Output[*Refresh] {
+	return pulumix.Output[*Refresh]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of values tracked to trigger refresh, used also to form implicit dependencies
@@ -203,6 +228,12 @@ func (o RefreshArrayOutput) ToRefreshArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o RefreshArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Refresh] {
+	return pulumix.Output[[]*Refresh]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RefreshArrayOutput) Index(i pulumi.IntInput) RefreshOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Refresh {
 		return vs[0].([]*Refresh)[vs[1].(int)]
@@ -221,6 +252,12 @@ func (o RefreshMapOutput) ToRefreshMapOutput() RefreshMapOutput {
 
 func (o RefreshMapOutput) ToRefreshMapOutputWithContext(ctx context.Context) RefreshMapOutput {
 	return o
+}
+
+func (o RefreshMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Refresh] {
+	return pulumix.Output[map[string]*Refresh]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RefreshMapOutput) MapIndex(k pulumi.StringInput) RefreshOutput {

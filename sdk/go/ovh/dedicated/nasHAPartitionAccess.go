@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource for managing access rights to partitions on HA-NAS services
@@ -142,6 +143,12 @@ func (i *NasHAPartitionAccess) ToNasHAPartitionAccessOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(NasHAPartitionAccessOutput)
 }
 
+func (i *NasHAPartitionAccess) ToOutput(ctx context.Context) pulumix.Output[*NasHAPartitionAccess] {
+	return pulumix.Output[*NasHAPartitionAccess]{
+		OutputState: i.ToNasHAPartitionAccessOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NasHAPartitionAccessArrayInput is an input type that accepts NasHAPartitionAccessArray and NasHAPartitionAccessArrayOutput values.
 // You can construct a concrete instance of `NasHAPartitionAccessArrayInput` via:
 //
@@ -165,6 +172,12 @@ func (i NasHAPartitionAccessArray) ToNasHAPartitionAccessArrayOutput() NasHAPart
 
 func (i NasHAPartitionAccessArray) ToNasHAPartitionAccessArrayOutputWithContext(ctx context.Context) NasHAPartitionAccessArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NasHAPartitionAccessArrayOutput)
+}
+
+func (i NasHAPartitionAccessArray) ToOutput(ctx context.Context) pulumix.Output[[]*NasHAPartitionAccess] {
+	return pulumix.Output[[]*NasHAPartitionAccess]{
+		OutputState: i.ToNasHAPartitionAccessArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NasHAPartitionAccessMapInput is an input type that accepts NasHAPartitionAccessMap and NasHAPartitionAccessMapOutput values.
@@ -192,6 +205,12 @@ func (i NasHAPartitionAccessMap) ToNasHAPartitionAccessMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(NasHAPartitionAccessMapOutput)
 }
 
+func (i NasHAPartitionAccessMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasHAPartitionAccess] {
+	return pulumix.Output[map[string]*NasHAPartitionAccess]{
+		OutputState: i.ToNasHAPartitionAccessMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NasHAPartitionAccessOutput struct{ *pulumi.OutputState }
 
 func (NasHAPartitionAccessOutput) ElementType() reflect.Type {
@@ -204,6 +223,12 @@ func (o NasHAPartitionAccessOutput) ToNasHAPartitionAccessOutput() NasHAPartitio
 
 func (o NasHAPartitionAccessOutput) ToNasHAPartitionAccessOutputWithContext(ctx context.Context) NasHAPartitionAccessOutput {
 	return o
+}
+
+func (o NasHAPartitionAccessOutput) ToOutput(ctx context.Context) pulumix.Output[*NasHAPartitionAccess] {
+	return pulumix.Output[*NasHAPartitionAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ip block in x.x.x.x/x format
@@ -240,6 +265,12 @@ func (o NasHAPartitionAccessArrayOutput) ToNasHAPartitionAccessArrayOutputWithCo
 	return o
 }
 
+func (o NasHAPartitionAccessArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NasHAPartitionAccess] {
+	return pulumix.Output[[]*NasHAPartitionAccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NasHAPartitionAccessArrayOutput) Index(i pulumi.IntInput) NasHAPartitionAccessOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NasHAPartitionAccess {
 		return vs[0].([]*NasHAPartitionAccess)[vs[1].(int)]
@@ -258,6 +289,12 @@ func (o NasHAPartitionAccessMapOutput) ToNasHAPartitionAccessMapOutput() NasHAPa
 
 func (o NasHAPartitionAccessMapOutput) ToNasHAPartitionAccessMapOutputWithContext(ctx context.Context) NasHAPartitionAccessMapOutput {
 	return o
+}
+
+func (o NasHAPartitionAccessMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasHAPartitionAccess] {
+	return pulumix.Output[map[string]*NasHAPartitionAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NasHAPartitionAccessMapOutput) MapIndex(k pulumi.StringInput) NasHAPartitionAccessOutput {

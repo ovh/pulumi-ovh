@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -90,6 +91,12 @@ func (i GetCartProductOptionsPlanPriceArgs) ToGetCartProductOptionsPlanPriceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsPlanPriceOutput)
 }
 
+func (i GetCartProductOptionsPlanPriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsPlanPrice] {
+	return pulumix.Output[GetCartProductOptionsPlanPrice]{
+		OutputState: i.ToGetCartProductOptionsPlanPriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductOptionsPlanPriceArrayInput is an input type that accepts GetCartProductOptionsPlanPriceArray and GetCartProductOptionsPlanPriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductOptionsPlanPriceArrayInput` via:
 //
@@ -115,6 +122,12 @@ func (i GetCartProductOptionsPlanPriceArray) ToGetCartProductOptionsPlanPriceArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsPlanPriceArrayOutput)
 }
 
+func (i GetCartProductOptionsPlanPriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsPlanPrice] {
+	return pulumix.Output[[]GetCartProductOptionsPlanPrice]{
+		OutputState: i.ToGetCartProductOptionsPlanPriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductOptionsPlanPriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductOptionsPlanPriceOutput) ElementType() reflect.Type {
@@ -127,6 +140,12 @@ func (o GetCartProductOptionsPlanPriceOutput) ToGetCartProductOptionsPlanPriceOu
 
 func (o GetCartProductOptionsPlanPriceOutput) ToGetCartProductOptionsPlanPriceOutputWithContext(ctx context.Context) GetCartProductOptionsPlanPriceOutput {
 	return o
+}
+
+func (o GetCartProductOptionsPlanPriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsPlanPrice] {
+	return pulumix.Output[GetCartProductOptionsPlanPrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Capacities of the pricing (type of pricing)
@@ -203,6 +222,12 @@ func (o GetCartProductOptionsPlanPriceArrayOutput) ToGetCartProductOptionsPlanPr
 	return o
 }
 
+func (o GetCartProductOptionsPlanPriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsPlanPrice] {
+	return pulumix.Output[[]GetCartProductOptionsPlanPrice]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetCartProductOptionsPlanPriceArrayOutput) Index(i pulumi.IntInput) GetCartProductOptionsPlanPriceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCartProductOptionsPlanPrice {
 		return vs[0].([]GetCartProductOptionsPlanPrice)[vs[1].(int)]
@@ -250,6 +275,12 @@ func (i GetCartProductOptionsPlanPricePriceArgs) ToGetCartProductOptionsPlanPric
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsPlanPricePriceOutput)
 }
 
+func (i GetCartProductOptionsPlanPricePriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsPlanPricePrice] {
+	return pulumix.Output[GetCartProductOptionsPlanPricePrice]{
+		OutputState: i.ToGetCartProductOptionsPlanPricePriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductOptionsPlanPricePriceArrayInput is an input type that accepts GetCartProductOptionsPlanPricePriceArray and GetCartProductOptionsPlanPricePriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductOptionsPlanPricePriceArrayInput` via:
 //
@@ -275,6 +306,12 @@ func (i GetCartProductOptionsPlanPricePriceArray) ToGetCartProductOptionsPlanPri
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsPlanPricePriceArrayOutput)
 }
 
+func (i GetCartProductOptionsPlanPricePriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsPlanPricePrice] {
+	return pulumix.Output[[]GetCartProductOptionsPlanPricePrice]{
+		OutputState: i.ToGetCartProductOptionsPlanPricePriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductOptionsPlanPricePriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductOptionsPlanPricePriceOutput) ElementType() reflect.Type {
@@ -287,6 +324,12 @@ func (o GetCartProductOptionsPlanPricePriceOutput) ToGetCartProductOptionsPlanPr
 
 func (o GetCartProductOptionsPlanPricePriceOutput) ToGetCartProductOptionsPlanPricePriceOutputWithContext(ctx context.Context) GetCartProductOptionsPlanPricePriceOutput {
 	return o
+}
+
+func (o GetCartProductOptionsPlanPricePriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsPlanPricePrice] {
+	return pulumix.Output[GetCartProductOptionsPlanPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Currency code
@@ -316,6 +359,12 @@ func (o GetCartProductOptionsPlanPricePriceArrayOutput) ToGetCartProductOptionsP
 
 func (o GetCartProductOptionsPlanPricePriceArrayOutput) ToGetCartProductOptionsPlanPricePriceArrayOutputWithContext(ctx context.Context) GetCartProductOptionsPlanPricePriceArrayOutput {
 	return o
+}
+
+func (o GetCartProductOptionsPlanPricePriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsPlanPricePrice] {
+	return pulumix.Output[[]GetCartProductOptionsPlanPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCartProductOptionsPlanPricePriceArrayOutput) Index(i pulumi.IntInput) GetCartProductOptionsPlanPricePriceOutput {
@@ -401,6 +450,12 @@ func (i GetCartProductOptionsPlanSelectedPriceArgs) ToGetCartProductOptionsPlanS
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsPlanSelectedPriceOutput)
 }
 
+func (i GetCartProductOptionsPlanSelectedPriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsPlanSelectedPrice] {
+	return pulumix.Output[GetCartProductOptionsPlanSelectedPrice]{
+		OutputState: i.ToGetCartProductOptionsPlanSelectedPriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductOptionsPlanSelectedPriceArrayInput is an input type that accepts GetCartProductOptionsPlanSelectedPriceArray and GetCartProductOptionsPlanSelectedPriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductOptionsPlanSelectedPriceArrayInput` via:
 //
@@ -426,6 +481,12 @@ func (i GetCartProductOptionsPlanSelectedPriceArray) ToGetCartProductOptionsPlan
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsPlanSelectedPriceArrayOutput)
 }
 
+func (i GetCartProductOptionsPlanSelectedPriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsPlanSelectedPrice] {
+	return pulumix.Output[[]GetCartProductOptionsPlanSelectedPrice]{
+		OutputState: i.ToGetCartProductOptionsPlanSelectedPriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductOptionsPlanSelectedPriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductOptionsPlanSelectedPriceOutput) ElementType() reflect.Type {
@@ -438,6 +499,12 @@ func (o GetCartProductOptionsPlanSelectedPriceOutput) ToGetCartProductOptionsPla
 
 func (o GetCartProductOptionsPlanSelectedPriceOutput) ToGetCartProductOptionsPlanSelectedPriceOutputWithContext(ctx context.Context) GetCartProductOptionsPlanSelectedPriceOutput {
 	return o
+}
+
+func (o GetCartProductOptionsPlanSelectedPriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsPlanSelectedPrice] {
+	return pulumix.Output[GetCartProductOptionsPlanSelectedPrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Capacities of the pricing (type of pricing)
@@ -516,6 +583,12 @@ func (o GetCartProductOptionsPlanSelectedPriceArrayOutput) ToGetCartProductOptio
 	return o
 }
 
+func (o GetCartProductOptionsPlanSelectedPriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsPlanSelectedPrice] {
+	return pulumix.Output[[]GetCartProductOptionsPlanSelectedPrice]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetCartProductOptionsPlanSelectedPriceArrayOutput) Index(i pulumi.IntInput) GetCartProductOptionsPlanSelectedPriceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCartProductOptionsPlanSelectedPrice {
 		return vs[0].([]GetCartProductOptionsPlanSelectedPrice)[vs[1].(int)]
@@ -563,6 +636,12 @@ func (i GetCartProductOptionsPlanSelectedPricePriceArgs) ToGetCartProductOptions
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsPlanSelectedPricePriceOutput)
 }
 
+func (i GetCartProductOptionsPlanSelectedPricePriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsPlanSelectedPricePrice] {
+	return pulumix.Output[GetCartProductOptionsPlanSelectedPricePrice]{
+		OutputState: i.ToGetCartProductOptionsPlanSelectedPricePriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductOptionsPlanSelectedPricePriceArrayInput is an input type that accepts GetCartProductOptionsPlanSelectedPricePriceArray and GetCartProductOptionsPlanSelectedPricePriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductOptionsPlanSelectedPricePriceArrayInput` via:
 //
@@ -588,6 +667,12 @@ func (i GetCartProductOptionsPlanSelectedPricePriceArray) ToGetCartProductOption
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsPlanSelectedPricePriceArrayOutput)
 }
 
+func (i GetCartProductOptionsPlanSelectedPricePriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsPlanSelectedPricePrice] {
+	return pulumix.Output[[]GetCartProductOptionsPlanSelectedPricePrice]{
+		OutputState: i.ToGetCartProductOptionsPlanSelectedPricePriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductOptionsPlanSelectedPricePriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductOptionsPlanSelectedPricePriceOutput) ElementType() reflect.Type {
@@ -600,6 +685,12 @@ func (o GetCartProductOptionsPlanSelectedPricePriceOutput) ToGetCartProductOptio
 
 func (o GetCartProductOptionsPlanSelectedPricePriceOutput) ToGetCartProductOptionsPlanSelectedPricePriceOutputWithContext(ctx context.Context) GetCartProductOptionsPlanSelectedPricePriceOutput {
 	return o
+}
+
+func (o GetCartProductOptionsPlanSelectedPricePriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsPlanSelectedPricePrice] {
+	return pulumix.Output[GetCartProductOptionsPlanSelectedPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Currency code
@@ -629,6 +720,12 @@ func (o GetCartProductOptionsPlanSelectedPricePriceArrayOutput) ToGetCartProduct
 
 func (o GetCartProductOptionsPlanSelectedPricePriceArrayOutput) ToGetCartProductOptionsPlanSelectedPricePriceArrayOutputWithContext(ctx context.Context) GetCartProductOptionsPlanSelectedPricePriceArrayOutput {
 	return o
+}
+
+func (o GetCartProductOptionsPlanSelectedPricePriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsPlanSelectedPricePrice] {
+	return pulumix.Output[[]GetCartProductOptionsPlanSelectedPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCartProductOptionsPlanSelectedPricePriceArrayOutput) Index(i pulumi.IntInput) GetCartProductOptionsPlanSelectedPricePriceOutput {
@@ -694,6 +791,12 @@ func (i GetCartProductOptionsResultArgs) ToGetCartProductOptionsResultOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsResultOutput)
 }
 
+func (i GetCartProductOptionsResultArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsResult] {
+	return pulumix.Output[GetCartProductOptionsResult]{
+		OutputState: i.ToGetCartProductOptionsResultOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductOptionsResultArrayInput is an input type that accepts GetCartProductOptionsResultArray and GetCartProductOptionsResultArrayOutput values.
 // You can construct a concrete instance of `GetCartProductOptionsResultArrayInput` via:
 //
@@ -719,6 +822,12 @@ func (i GetCartProductOptionsResultArray) ToGetCartProductOptionsResultArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsResultArrayOutput)
 }
 
+func (i GetCartProductOptionsResultArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsResult] {
+	return pulumix.Output[[]GetCartProductOptionsResult]{
+		OutputState: i.ToGetCartProductOptionsResultArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductOptionsResultOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductOptionsResultOutput) ElementType() reflect.Type {
@@ -731,6 +840,12 @@ func (o GetCartProductOptionsResultOutput) ToGetCartProductOptionsResultOutput()
 
 func (o GetCartProductOptionsResultOutput) ToGetCartProductOptionsResultOutputWithContext(ctx context.Context) GetCartProductOptionsResultOutput {
 	return o
+}
+
+func (o GetCartProductOptionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsResult] {
+	return pulumix.Output[GetCartProductOptionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Define if options of this family are exclusive with each other
@@ -780,6 +895,12 @@ func (o GetCartProductOptionsResultArrayOutput) ToGetCartProductOptionsResultArr
 
 func (o GetCartProductOptionsResultArrayOutput) ToGetCartProductOptionsResultArrayOutputWithContext(ctx context.Context) GetCartProductOptionsResultArrayOutput {
 	return o
+}
+
+func (o GetCartProductOptionsResultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsResult] {
+	return pulumix.Output[[]GetCartProductOptionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCartProductOptionsResultArrayOutput) Index(i pulumi.IntInput) GetCartProductOptionsResultOutput {
@@ -865,6 +986,12 @@ func (i GetCartProductOptionsResultPriceArgs) ToGetCartProductOptionsResultPrice
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsResultPriceOutput)
 }
 
+func (i GetCartProductOptionsResultPriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsResultPrice] {
+	return pulumix.Output[GetCartProductOptionsResultPrice]{
+		OutputState: i.ToGetCartProductOptionsResultPriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductOptionsResultPriceArrayInput is an input type that accepts GetCartProductOptionsResultPriceArray and GetCartProductOptionsResultPriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductOptionsResultPriceArrayInput` via:
 //
@@ -890,6 +1017,12 @@ func (i GetCartProductOptionsResultPriceArray) ToGetCartProductOptionsResultPric
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsResultPriceArrayOutput)
 }
 
+func (i GetCartProductOptionsResultPriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsResultPrice] {
+	return pulumix.Output[[]GetCartProductOptionsResultPrice]{
+		OutputState: i.ToGetCartProductOptionsResultPriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductOptionsResultPriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductOptionsResultPriceOutput) ElementType() reflect.Type {
@@ -902,6 +1035,12 @@ func (o GetCartProductOptionsResultPriceOutput) ToGetCartProductOptionsResultPri
 
 func (o GetCartProductOptionsResultPriceOutput) ToGetCartProductOptionsResultPriceOutputWithContext(ctx context.Context) GetCartProductOptionsResultPriceOutput {
 	return o
+}
+
+func (o GetCartProductOptionsResultPriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsResultPrice] {
+	return pulumix.Output[GetCartProductOptionsResultPrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Capacities of the pricing (type of pricing)
@@ -978,6 +1117,12 @@ func (o GetCartProductOptionsResultPriceArrayOutput) ToGetCartProductOptionsResu
 	return o
 }
 
+func (o GetCartProductOptionsResultPriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsResultPrice] {
+	return pulumix.Output[[]GetCartProductOptionsResultPrice]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetCartProductOptionsResultPriceArrayOutput) Index(i pulumi.IntInput) GetCartProductOptionsResultPriceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCartProductOptionsResultPrice {
 		return vs[0].([]GetCartProductOptionsResultPrice)[vs[1].(int)]
@@ -1025,6 +1170,12 @@ func (i GetCartProductOptionsResultPricePriceArgs) ToGetCartProductOptionsResult
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsResultPricePriceOutput)
 }
 
+func (i GetCartProductOptionsResultPricePriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsResultPricePrice] {
+	return pulumix.Output[GetCartProductOptionsResultPricePrice]{
+		OutputState: i.ToGetCartProductOptionsResultPricePriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductOptionsResultPricePriceArrayInput is an input type that accepts GetCartProductOptionsResultPricePriceArray and GetCartProductOptionsResultPricePriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductOptionsResultPricePriceArrayInput` via:
 //
@@ -1050,6 +1201,12 @@ func (i GetCartProductOptionsResultPricePriceArray) ToGetCartProductOptionsResul
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductOptionsResultPricePriceArrayOutput)
 }
 
+func (i GetCartProductOptionsResultPricePriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsResultPricePrice] {
+	return pulumix.Output[[]GetCartProductOptionsResultPricePrice]{
+		OutputState: i.ToGetCartProductOptionsResultPricePriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductOptionsResultPricePriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductOptionsResultPricePriceOutput) ElementType() reflect.Type {
@@ -1062,6 +1219,12 @@ func (o GetCartProductOptionsResultPricePriceOutput) ToGetCartProductOptionsResu
 
 func (o GetCartProductOptionsResultPricePriceOutput) ToGetCartProductOptionsResultPricePriceOutputWithContext(ctx context.Context) GetCartProductOptionsResultPricePriceOutput {
 	return o
+}
+
+func (o GetCartProductOptionsResultPricePriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductOptionsResultPricePrice] {
+	return pulumix.Output[GetCartProductOptionsResultPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Currency code
@@ -1091,6 +1254,12 @@ func (o GetCartProductOptionsResultPricePriceArrayOutput) ToGetCartProductOption
 
 func (o GetCartProductOptionsResultPricePriceArrayOutput) ToGetCartProductOptionsResultPricePriceArrayOutputWithContext(ctx context.Context) GetCartProductOptionsResultPricePriceArrayOutput {
 	return o
+}
+
+func (o GetCartProductOptionsResultPricePriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductOptionsResultPricePrice] {
+	return pulumix.Output[[]GetCartProductOptionsResultPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCartProductOptionsResultPricePriceArrayOutput) Index(i pulumi.IntInput) GetCartProductOptionsResultPricePriceOutput {
@@ -1176,6 +1345,12 @@ func (i GetCartProductPlanPriceArgs) ToGetCartProductPlanPriceOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductPlanPriceOutput)
 }
 
+func (i GetCartProductPlanPriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductPlanPrice] {
+	return pulumix.Output[GetCartProductPlanPrice]{
+		OutputState: i.ToGetCartProductPlanPriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductPlanPriceArrayInput is an input type that accepts GetCartProductPlanPriceArray and GetCartProductPlanPriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductPlanPriceArrayInput` via:
 //
@@ -1201,6 +1376,12 @@ func (i GetCartProductPlanPriceArray) ToGetCartProductPlanPriceArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductPlanPriceArrayOutput)
 }
 
+func (i GetCartProductPlanPriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductPlanPrice] {
+	return pulumix.Output[[]GetCartProductPlanPrice]{
+		OutputState: i.ToGetCartProductPlanPriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductPlanPriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductPlanPriceOutput) ElementType() reflect.Type {
@@ -1213,6 +1394,12 @@ func (o GetCartProductPlanPriceOutput) ToGetCartProductPlanPriceOutput() GetCart
 
 func (o GetCartProductPlanPriceOutput) ToGetCartProductPlanPriceOutputWithContext(ctx context.Context) GetCartProductPlanPriceOutput {
 	return o
+}
+
+func (o GetCartProductPlanPriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductPlanPrice] {
+	return pulumix.Output[GetCartProductPlanPrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Capacities of the pricing (type of pricing)
@@ -1289,6 +1476,12 @@ func (o GetCartProductPlanPriceArrayOutput) ToGetCartProductPlanPriceArrayOutput
 	return o
 }
 
+func (o GetCartProductPlanPriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductPlanPrice] {
+	return pulumix.Output[[]GetCartProductPlanPrice]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetCartProductPlanPriceArrayOutput) Index(i pulumi.IntInput) GetCartProductPlanPriceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCartProductPlanPrice {
 		return vs[0].([]GetCartProductPlanPrice)[vs[1].(int)]
@@ -1336,6 +1529,12 @@ func (i GetCartProductPlanPricePriceArgs) ToGetCartProductPlanPricePriceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductPlanPricePriceOutput)
 }
 
+func (i GetCartProductPlanPricePriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductPlanPricePrice] {
+	return pulumix.Output[GetCartProductPlanPricePrice]{
+		OutputState: i.ToGetCartProductPlanPricePriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductPlanPricePriceArrayInput is an input type that accepts GetCartProductPlanPricePriceArray and GetCartProductPlanPricePriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductPlanPricePriceArrayInput` via:
 //
@@ -1361,6 +1560,12 @@ func (i GetCartProductPlanPricePriceArray) ToGetCartProductPlanPricePriceArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductPlanPricePriceArrayOutput)
 }
 
+func (i GetCartProductPlanPricePriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductPlanPricePrice] {
+	return pulumix.Output[[]GetCartProductPlanPricePrice]{
+		OutputState: i.ToGetCartProductPlanPricePriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductPlanPricePriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductPlanPricePriceOutput) ElementType() reflect.Type {
@@ -1373,6 +1578,12 @@ func (o GetCartProductPlanPricePriceOutput) ToGetCartProductPlanPricePriceOutput
 
 func (o GetCartProductPlanPricePriceOutput) ToGetCartProductPlanPricePriceOutputWithContext(ctx context.Context) GetCartProductPlanPricePriceOutput {
 	return o
+}
+
+func (o GetCartProductPlanPricePriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductPlanPricePrice] {
+	return pulumix.Output[GetCartProductPlanPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Currency code
@@ -1402,6 +1613,12 @@ func (o GetCartProductPlanPricePriceArrayOutput) ToGetCartProductPlanPricePriceA
 
 func (o GetCartProductPlanPricePriceArrayOutput) ToGetCartProductPlanPricePriceArrayOutputWithContext(ctx context.Context) GetCartProductPlanPricePriceArrayOutput {
 	return o
+}
+
+func (o GetCartProductPlanPricePriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductPlanPricePrice] {
+	return pulumix.Output[[]GetCartProductPlanPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCartProductPlanPricePriceArrayOutput) Index(i pulumi.IntInput) GetCartProductPlanPricePriceOutput {
@@ -1487,6 +1704,12 @@ func (i GetCartProductPlanSelectedPriceArgs) ToGetCartProductPlanSelectedPriceOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductPlanSelectedPriceOutput)
 }
 
+func (i GetCartProductPlanSelectedPriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductPlanSelectedPrice] {
+	return pulumix.Output[GetCartProductPlanSelectedPrice]{
+		OutputState: i.ToGetCartProductPlanSelectedPriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductPlanSelectedPriceArrayInput is an input type that accepts GetCartProductPlanSelectedPriceArray and GetCartProductPlanSelectedPriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductPlanSelectedPriceArrayInput` via:
 //
@@ -1512,6 +1735,12 @@ func (i GetCartProductPlanSelectedPriceArray) ToGetCartProductPlanSelectedPriceA
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductPlanSelectedPriceArrayOutput)
 }
 
+func (i GetCartProductPlanSelectedPriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductPlanSelectedPrice] {
+	return pulumix.Output[[]GetCartProductPlanSelectedPrice]{
+		OutputState: i.ToGetCartProductPlanSelectedPriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductPlanSelectedPriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductPlanSelectedPriceOutput) ElementType() reflect.Type {
@@ -1524,6 +1753,12 @@ func (o GetCartProductPlanSelectedPriceOutput) ToGetCartProductPlanSelectedPrice
 
 func (o GetCartProductPlanSelectedPriceOutput) ToGetCartProductPlanSelectedPriceOutputWithContext(ctx context.Context) GetCartProductPlanSelectedPriceOutput {
 	return o
+}
+
+func (o GetCartProductPlanSelectedPriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductPlanSelectedPrice] {
+	return pulumix.Output[GetCartProductPlanSelectedPrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Capacities of the pricing (type of pricing)
@@ -1600,6 +1835,12 @@ func (o GetCartProductPlanSelectedPriceArrayOutput) ToGetCartProductPlanSelected
 	return o
 }
 
+func (o GetCartProductPlanSelectedPriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductPlanSelectedPrice] {
+	return pulumix.Output[[]GetCartProductPlanSelectedPrice]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetCartProductPlanSelectedPriceArrayOutput) Index(i pulumi.IntInput) GetCartProductPlanSelectedPriceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCartProductPlanSelectedPrice {
 		return vs[0].([]GetCartProductPlanSelectedPrice)[vs[1].(int)]
@@ -1647,6 +1888,12 @@ func (i GetCartProductPlanSelectedPricePriceArgs) ToGetCartProductPlanSelectedPr
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductPlanSelectedPricePriceOutput)
 }
 
+func (i GetCartProductPlanSelectedPricePriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductPlanSelectedPricePrice] {
+	return pulumix.Output[GetCartProductPlanSelectedPricePrice]{
+		OutputState: i.ToGetCartProductPlanSelectedPricePriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductPlanSelectedPricePriceArrayInput is an input type that accepts GetCartProductPlanSelectedPricePriceArray and GetCartProductPlanSelectedPricePriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductPlanSelectedPricePriceArrayInput` via:
 //
@@ -1672,6 +1919,12 @@ func (i GetCartProductPlanSelectedPricePriceArray) ToGetCartProductPlanSelectedP
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductPlanSelectedPricePriceArrayOutput)
 }
 
+func (i GetCartProductPlanSelectedPricePriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductPlanSelectedPricePrice] {
+	return pulumix.Output[[]GetCartProductPlanSelectedPricePrice]{
+		OutputState: i.ToGetCartProductPlanSelectedPricePriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductPlanSelectedPricePriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductPlanSelectedPricePriceOutput) ElementType() reflect.Type {
@@ -1684,6 +1937,12 @@ func (o GetCartProductPlanSelectedPricePriceOutput) ToGetCartProductPlanSelected
 
 func (o GetCartProductPlanSelectedPricePriceOutput) ToGetCartProductPlanSelectedPricePriceOutputWithContext(ctx context.Context) GetCartProductPlanSelectedPricePriceOutput {
 	return o
+}
+
+func (o GetCartProductPlanSelectedPricePriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductPlanSelectedPricePrice] {
+	return pulumix.Output[GetCartProductPlanSelectedPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Currency code
@@ -1713,6 +1972,12 @@ func (o GetCartProductPlanSelectedPricePriceArrayOutput) ToGetCartProductPlanSel
 
 func (o GetCartProductPlanSelectedPricePriceArrayOutput) ToGetCartProductPlanSelectedPricePriceArrayOutputWithContext(ctx context.Context) GetCartProductPlanSelectedPricePriceArrayOutput {
 	return o
+}
+
+func (o GetCartProductPlanSelectedPricePriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductPlanSelectedPricePrice] {
+	return pulumix.Output[[]GetCartProductPlanSelectedPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCartProductPlanSelectedPricePriceArrayOutput) Index(i pulumi.IntInput) GetCartProductPlanSelectedPricePriceOutput {
@@ -1766,6 +2031,12 @@ func (i GetCartProductResultArgs) ToGetCartProductResultOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductResultOutput)
 }
 
+func (i GetCartProductResultArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductResult] {
+	return pulumix.Output[GetCartProductResult]{
+		OutputState: i.ToGetCartProductResultOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductResultArrayInput is an input type that accepts GetCartProductResultArray and GetCartProductResultArrayOutput values.
 // You can construct a concrete instance of `GetCartProductResultArrayInput` via:
 //
@@ -1791,6 +2062,12 @@ func (i GetCartProductResultArray) ToGetCartProductResultArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductResultArrayOutput)
 }
 
+func (i GetCartProductResultArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductResult] {
+	return pulumix.Output[[]GetCartProductResult]{
+		OutputState: i.ToGetCartProductResultArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductResultOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductResultOutput) ElementType() reflect.Type {
@@ -1803,6 +2080,12 @@ func (o GetCartProductResultOutput) ToGetCartProductResultOutput() GetCartProduc
 
 func (o GetCartProductResultOutput) ToGetCartProductResultOutputWithContext(ctx context.Context) GetCartProductResultOutput {
 	return o
+}
+
+func (o GetCartProductResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductResult] {
+	return pulumix.Output[GetCartProductResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Product offer identifier
@@ -1837,6 +2120,12 @@ func (o GetCartProductResultArrayOutput) ToGetCartProductResultArrayOutput() Get
 
 func (o GetCartProductResultArrayOutput) ToGetCartProductResultArrayOutputWithContext(ctx context.Context) GetCartProductResultArrayOutput {
 	return o
+}
+
+func (o GetCartProductResultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductResult] {
+	return pulumix.Output[[]GetCartProductResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCartProductResultArrayOutput) Index(i pulumi.IntInput) GetCartProductResultOutput {
@@ -1922,6 +2211,12 @@ func (i GetCartProductResultPriceArgs) ToGetCartProductResultPriceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductResultPriceOutput)
 }
 
+func (i GetCartProductResultPriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductResultPrice] {
+	return pulumix.Output[GetCartProductResultPrice]{
+		OutputState: i.ToGetCartProductResultPriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductResultPriceArrayInput is an input type that accepts GetCartProductResultPriceArray and GetCartProductResultPriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductResultPriceArrayInput` via:
 //
@@ -1947,6 +2242,12 @@ func (i GetCartProductResultPriceArray) ToGetCartProductResultPriceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductResultPriceArrayOutput)
 }
 
+func (i GetCartProductResultPriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductResultPrice] {
+	return pulumix.Output[[]GetCartProductResultPrice]{
+		OutputState: i.ToGetCartProductResultPriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductResultPriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductResultPriceOutput) ElementType() reflect.Type {
@@ -1959,6 +2260,12 @@ func (o GetCartProductResultPriceOutput) ToGetCartProductResultPriceOutput() Get
 
 func (o GetCartProductResultPriceOutput) ToGetCartProductResultPriceOutputWithContext(ctx context.Context) GetCartProductResultPriceOutput {
 	return o
+}
+
+func (o GetCartProductResultPriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductResultPrice] {
+	return pulumix.Output[GetCartProductResultPrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Capacities of the pricing (type of pricing)
@@ -2035,6 +2342,12 @@ func (o GetCartProductResultPriceArrayOutput) ToGetCartProductResultPriceArrayOu
 	return o
 }
 
+func (o GetCartProductResultPriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductResultPrice] {
+	return pulumix.Output[[]GetCartProductResultPrice]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetCartProductResultPriceArrayOutput) Index(i pulumi.IntInput) GetCartProductResultPriceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCartProductResultPrice {
 		return vs[0].([]GetCartProductResultPrice)[vs[1].(int)]
@@ -2082,6 +2395,12 @@ func (i GetCartProductResultPricePriceArgs) ToGetCartProductResultPricePriceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductResultPricePriceOutput)
 }
 
+func (i GetCartProductResultPricePriceArgs) ToOutput(ctx context.Context) pulumix.Output[GetCartProductResultPricePrice] {
+	return pulumix.Output[GetCartProductResultPricePrice]{
+		OutputState: i.ToGetCartProductResultPricePriceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCartProductResultPricePriceArrayInput is an input type that accepts GetCartProductResultPricePriceArray and GetCartProductResultPricePriceArrayOutput values.
 // You can construct a concrete instance of `GetCartProductResultPricePriceArrayInput` via:
 //
@@ -2107,6 +2426,12 @@ func (i GetCartProductResultPricePriceArray) ToGetCartProductResultPricePriceArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetCartProductResultPricePriceArrayOutput)
 }
 
+func (i GetCartProductResultPricePriceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductResultPricePrice] {
+	return pulumix.Output[[]GetCartProductResultPricePrice]{
+		OutputState: i.ToGetCartProductResultPricePriceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCartProductResultPricePriceOutput struct{ *pulumi.OutputState }
 
 func (GetCartProductResultPricePriceOutput) ElementType() reflect.Type {
@@ -2119,6 +2444,12 @@ func (o GetCartProductResultPricePriceOutput) ToGetCartProductResultPricePriceOu
 
 func (o GetCartProductResultPricePriceOutput) ToGetCartProductResultPricePriceOutputWithContext(ctx context.Context) GetCartProductResultPricePriceOutput {
 	return o
+}
+
+func (o GetCartProductResultPricePriceOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductResultPricePrice] {
+	return pulumix.Output[GetCartProductResultPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Currency code
@@ -2148,6 +2479,12 @@ func (o GetCartProductResultPricePriceArrayOutput) ToGetCartProductResultPricePr
 
 func (o GetCartProductResultPricePriceArrayOutput) ToGetCartProductResultPricePriceArrayOutputWithContext(ctx context.Context) GetCartProductResultPricePriceArrayOutput {
 	return o
+}
+
+func (o GetCartProductResultPricePriceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCartProductResultPricePrice] {
+	return pulumix.Output[[]GetCartProductResultPricePrice]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCartProductResultPricePriceArrayOutput) Index(i pulumi.IntInput) GetCartProductResultPricePriceOutput {

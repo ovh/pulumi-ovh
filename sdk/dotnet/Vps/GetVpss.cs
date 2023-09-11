@@ -22,6 +22,18 @@ namespace Pulumi.Ovh.Vps
         /// </summary>
         public static Task<GetVpssResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpssResult>("ovh:Vps/getVpss:getVpss", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the list of VPS associated with your OVH Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```hcl
+        /// data "ovh_vpss" "servers" {}
+        /// ```
+        /// </summary>
+        public static Output<GetVpssResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpssResult>("ovh:Vps/getVpss:getVpss", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
@@ -86,6 +87,12 @@ func (o LookupVrackNetworkResultOutput) ToLookupVrackNetworkResultOutput() Looku
 
 func (o LookupVrackNetworkResultOutput) ToLookupVrackNetworkResultOutputWithContext(ctx context.Context) LookupVrackNetworkResultOutput {
 	return o
+}
+
+func (o LookupVrackNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVrackNetworkResult] {
+	return pulumix.Output[LookupVrackNetworkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Human readable name for your vrack network

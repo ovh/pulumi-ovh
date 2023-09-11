@@ -22,7 +22,7 @@ class ZoneArgs:
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionArgs']]]] = None):
         """
         The set of arguments for constructing a Zone resource.
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input['ZonePlanArgs'] plan: Product Plan to order
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionArgs']]] plan_options: Product Plan to order
@@ -41,7 +41,7 @@ class ZoneArgs:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> pulumi.Input[str]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -111,7 +111,7 @@ class _ZoneState:
         :param pulumi.Input[str] name: Zone name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Name servers that host the DNS zone
         :param pulumi.Input[Sequence[pulumi.Input['ZoneOrderArgs']]] orders: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input['ZonePlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionArgs']]] plan_options: Product Plan to order
@@ -218,7 +218,7 @@ class _ZoneState:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -290,7 +290,7 @@ class Zone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['ZonePlanArgs']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZonePlanOptionArgs']]]] plan_options: Product Plan to order
@@ -384,7 +384,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] name: Zone name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Name servers that host the DNS zone
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneOrderArgs']]]] orders: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['ZonePlanArgs']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZonePlanOptionArgs']]]] plan_options: Product Plan to order
@@ -458,7 +458,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> pulumi.Output[str]:
         """
-        OVHcloud Subsidiary
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         """
         return pulumi.get(self, "ovh_subsidiary")
 

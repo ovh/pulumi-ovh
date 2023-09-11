@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// ## Import
     /// 
-    /// OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g., &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant")]
     public partial class PrivateDatabaseUserGrant : global::Pulumi.CustomResource

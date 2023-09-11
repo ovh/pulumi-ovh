@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an OIDC configuration in an OVHcloud Managed Kubernetes cluster.
@@ -180,6 +181,12 @@ func (i *KubeOidc) ToKubeOidcOutputWithContext(ctx context.Context) KubeOidcOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KubeOidcOutput)
 }
 
+func (i *KubeOidc) ToOutput(ctx context.Context) pulumix.Output[*KubeOidc] {
+	return pulumix.Output[*KubeOidc]{
+		OutputState: i.ToKubeOidcOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KubeOidcArrayInput is an input type that accepts KubeOidcArray and KubeOidcArrayOutput values.
 // You can construct a concrete instance of `KubeOidcArrayInput` via:
 //
@@ -203,6 +210,12 @@ func (i KubeOidcArray) ToKubeOidcArrayOutput() KubeOidcArrayOutput {
 
 func (i KubeOidcArray) ToKubeOidcArrayOutputWithContext(ctx context.Context) KubeOidcArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubeOidcArrayOutput)
+}
+
+func (i KubeOidcArray) ToOutput(ctx context.Context) pulumix.Output[[]*KubeOidc] {
+	return pulumix.Output[[]*KubeOidc]{
+		OutputState: i.ToKubeOidcArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KubeOidcMapInput is an input type that accepts KubeOidcMap and KubeOidcMapOutput values.
@@ -230,6 +243,12 @@ func (i KubeOidcMap) ToKubeOidcMapOutputWithContext(ctx context.Context) KubeOid
 	return pulumi.ToOutputWithContext(ctx, i).(KubeOidcMapOutput)
 }
 
+func (i KubeOidcMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubeOidc] {
+	return pulumix.Output[map[string]*KubeOidc]{
+		OutputState: i.ToKubeOidcMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KubeOidcOutput struct{ *pulumi.OutputState }
 
 func (KubeOidcOutput) ElementType() reflect.Type {
@@ -242,6 +261,12 @@ func (o KubeOidcOutput) ToKubeOidcOutput() KubeOidcOutput {
 
 func (o KubeOidcOutput) ToKubeOidcOutputWithContext(ctx context.Context) KubeOidcOutput {
 	return o
+}
+
+func (o KubeOidcOutput) ToOutput(ctx context.Context) pulumix.Output[*KubeOidc] {
+	return pulumix.Output[*KubeOidc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The OIDC client ID.
@@ -306,6 +331,12 @@ func (o KubeOidcArrayOutput) ToKubeOidcArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o KubeOidcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KubeOidc] {
+	return pulumix.Output[[]*KubeOidc]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KubeOidcArrayOutput) Index(i pulumi.IntInput) KubeOidcOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KubeOidc {
 		return vs[0].([]*KubeOidc)[vs[1].(int)]
@@ -324,6 +355,12 @@ func (o KubeOidcMapOutput) ToKubeOidcMapOutput() KubeOidcMapOutput {
 
 func (o KubeOidcMapOutput) ToKubeOidcMapOutputWithContext(ctx context.Context) KubeOidcMapOutput {
 	return o
+}
+
+func (o KubeOidcMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubeOidc] {
+	return pulumix.Output[map[string]*KubeOidc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KubeOidcMapOutput) MapIndex(k pulumi.StringInput) KubeOidcOutput {

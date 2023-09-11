@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
@@ -94,6 +95,12 @@ func (o GetMongoDbUserResultOutput) ToGetMongoDbUserResultOutput() GetMongoDbUse
 
 func (o GetMongoDbUserResultOutput) ToGetMongoDbUserResultOutputWithContext(ctx context.Context) GetMongoDbUserResultOutput {
 	return o
+}
+
+func (o GetMongoDbUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMongoDbUserResult] {
+	return pulumix.Output[GetMongoDbUserResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // See Argument Reference above.

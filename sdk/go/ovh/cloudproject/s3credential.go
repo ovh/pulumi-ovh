@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an S3 Credential for a user in a public cloud project.
@@ -143,6 +144,12 @@ func (i *S3Credential) ToS3CredentialOutputWithContext(ctx context.Context) S3Cr
 	return pulumi.ToOutputWithContext(ctx, i).(S3CredentialOutput)
 }
 
+func (i *S3Credential) ToOutput(ctx context.Context) pulumix.Output[*S3Credential] {
+	return pulumix.Output[*S3Credential]{
+		OutputState: i.ToS3CredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 // S3CredentialArrayInput is an input type that accepts S3CredentialArray and S3CredentialArrayOutput values.
 // You can construct a concrete instance of `S3CredentialArrayInput` via:
 //
@@ -166,6 +173,12 @@ func (i S3CredentialArray) ToS3CredentialArrayOutput() S3CredentialArrayOutput {
 
 func (i S3CredentialArray) ToS3CredentialArrayOutputWithContext(ctx context.Context) S3CredentialArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3CredentialArrayOutput)
+}
+
+func (i S3CredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]*S3Credential] {
+	return pulumix.Output[[]*S3Credential]{
+		OutputState: i.ToS3CredentialArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // S3CredentialMapInput is an input type that accepts S3CredentialMap and S3CredentialMapOutput values.
@@ -193,6 +206,12 @@ func (i S3CredentialMap) ToS3CredentialMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(S3CredentialMapOutput)
 }
 
+func (i S3CredentialMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3Credential] {
+	return pulumix.Output[map[string]*S3Credential]{
+		OutputState: i.ToS3CredentialMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type S3CredentialOutput struct{ *pulumi.OutputState }
 
 func (S3CredentialOutput) ElementType() reflect.Type {
@@ -205,6 +224,12 @@ func (o S3CredentialOutput) ToS3CredentialOutput() S3CredentialOutput {
 
 func (o S3CredentialOutput) ToS3CredentialOutputWithContext(ctx context.Context) S3CredentialOutput {
 	return o
+}
+
+func (o S3CredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*S3Credential] {
+	return pulumix.Output[*S3Credential]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the Access Key ID
@@ -246,6 +271,12 @@ func (o S3CredentialArrayOutput) ToS3CredentialArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o S3CredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*S3Credential] {
+	return pulumix.Output[[]*S3Credential]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o S3CredentialArrayOutput) Index(i pulumi.IntInput) S3CredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *S3Credential {
 		return vs[0].([]*S3Credential)[vs[1].(int)]
@@ -264,6 +295,12 @@ func (o S3CredentialMapOutput) ToS3CredentialMapOutput() S3CredentialMapOutput {
 
 func (o S3CredentialMapOutput) ToS3CredentialMapOutputWithContext(ctx context.Context) S3CredentialMapOutput {
 	return o
+}
+
+func (o S3CredentialMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3Credential] {
+	return pulumix.Output[map[string]*S3Credential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3CredentialMapOutput) MapIndex(k pulumi.StringInput) S3CredentialOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information of order cart product plan.
@@ -102,6 +103,12 @@ func (o GetCartProductPlanResultOutput) ToGetCartProductPlanResultOutput() GetCa
 
 func (o GetCartProductPlanResultOutput) ToGetCartProductPlanResultOutputWithContext(ctx context.Context) GetCartProductPlanResultOutput {
 	return o
+}
+
+func (o GetCartProductPlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartProductPlanResult] {
+	return pulumix.Output[GetCartProductPlanResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCartProductPlanResultOutput) CartId() pulumi.StringOutput {

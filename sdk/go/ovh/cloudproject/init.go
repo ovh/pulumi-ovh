@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "ovh:CloudProject/containerRegistry:ContainerRegistry":
 		r = &ContainerRegistry{}
+	case "ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC":
+		r = &ContainerRegistryOIDC{}
 	case "ovh:CloudProject/containerRegistryUser:ContainerRegistryUser":
 		r = &ContainerRegistryUser{}
 	case "ovh:CloudProject/database:Database":
@@ -69,6 +71,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProject/containerRegistry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/containerRegistryOIDC",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

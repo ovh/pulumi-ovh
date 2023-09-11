@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manage dedicated server networking interface on SCALE and HIGH-GRADE range.
@@ -137,6 +138,12 @@ func (i *ServerNetworking) ToServerNetworkingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServerNetworkingOutput)
 }
 
+func (i *ServerNetworking) ToOutput(ctx context.Context) pulumix.Output[*ServerNetworking] {
+	return pulumix.Output[*ServerNetworking]{
+		OutputState: i.ToServerNetworkingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServerNetworkingArrayInput is an input type that accepts ServerNetworkingArray and ServerNetworkingArrayOutput values.
 // You can construct a concrete instance of `ServerNetworkingArrayInput` via:
 //
@@ -160,6 +167,12 @@ func (i ServerNetworkingArray) ToServerNetworkingArrayOutput() ServerNetworkingA
 
 func (i ServerNetworkingArray) ToServerNetworkingArrayOutputWithContext(ctx context.Context) ServerNetworkingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerNetworkingArrayOutput)
+}
+
+func (i ServerNetworkingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServerNetworking] {
+	return pulumix.Output[[]*ServerNetworking]{
+		OutputState: i.ToServerNetworkingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServerNetworkingMapInput is an input type that accepts ServerNetworkingMap and ServerNetworkingMapOutput values.
@@ -187,6 +200,12 @@ func (i ServerNetworkingMap) ToServerNetworkingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServerNetworkingMapOutput)
 }
 
+func (i ServerNetworkingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerNetworking] {
+	return pulumix.Output[map[string]*ServerNetworking]{
+		OutputState: i.ToServerNetworkingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerNetworkingOutput struct{ *pulumi.OutputState }
 
 func (ServerNetworkingOutput) ElementType() reflect.Type {
@@ -199,6 +218,12 @@ func (o ServerNetworkingOutput) ToServerNetworkingOutput() ServerNetworkingOutpu
 
 func (o ServerNetworkingOutput) ToServerNetworkingOutputWithContext(ctx context.Context) ServerNetworkingOutput {
 	return o
+}
+
+func (o ServerNetworkingOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerNetworking] {
+	return pulumix.Output[*ServerNetworking]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Operation description.
@@ -235,6 +260,12 @@ func (o ServerNetworkingArrayOutput) ToServerNetworkingArrayOutputWithContext(ct
 	return o
 }
 
+func (o ServerNetworkingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServerNetworking] {
+	return pulumix.Output[[]*ServerNetworking]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServerNetworkingArrayOutput) Index(i pulumi.IntInput) ServerNetworkingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerNetworking {
 		return vs[0].([]*ServerNetworking)[vs[1].(int)]
@@ -253,6 +284,12 @@ func (o ServerNetworkingMapOutput) ToServerNetworkingMapOutput() ServerNetworkin
 
 func (o ServerNetworkingMapOutput) ToServerNetworkingMapOutputWithContext(ctx context.Context) ServerNetworkingMapOutput {
 	return o
+}
+
+func (o ServerNetworkingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerNetworking] {
+	return pulumix.Output[map[string]*ServerNetworking]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServerNetworkingMapOutput) MapIndex(k pulumi.StringInput) ServerNetworkingOutput {

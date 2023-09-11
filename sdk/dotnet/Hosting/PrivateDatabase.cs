@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// ## Import
     /// 
-    /// OVHcloud Webhosting database can be imported using the `service_name`, E.g., &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabase:PrivateDatabase")]
     public partial class PrivateDatabase : global::Pulumi.CustomResource
@@ -68,7 +68,7 @@ namespace Pulumi.Ovh.Hosting
         public Output<ImmutableArray<Outputs.PrivateDatabaseOrder>> Orders { get; private set; } = null!;
 
         /// <summary>
-        /// OVHcloud Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Output("ovhSubsidiary")]
         public Output<string> OvhSubsidiary { get; private set; } = null!;
@@ -223,7 +223,7 @@ namespace Pulumi.Ovh.Hosting
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// OVHcloud Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary", required: true)]
         public Input<string> OvhSubsidiary { get; set; } = null!;
@@ -321,7 +321,7 @@ namespace Pulumi.Ovh.Hosting
         }
 
         /// <summary>
-        /// OVHcloud Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }

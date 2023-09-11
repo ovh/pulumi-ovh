@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -172,6 +173,12 @@ func (i *M3DbUser) ToM3DbUserOutputWithContext(ctx context.Context) M3DbUserOutp
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbUserOutput)
 }
 
+func (i *M3DbUser) ToOutput(ctx context.Context) pulumix.Output[*M3DbUser] {
+	return pulumix.Output[*M3DbUser]{
+		OutputState: i.ToM3DbUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // M3DbUserArrayInput is an input type that accepts M3DbUserArray and M3DbUserArrayOutput values.
 // You can construct a concrete instance of `M3DbUserArrayInput` via:
 //
@@ -195,6 +202,12 @@ func (i M3DbUserArray) ToM3DbUserArrayOutput() M3DbUserArrayOutput {
 
 func (i M3DbUserArray) ToM3DbUserArrayOutputWithContext(ctx context.Context) M3DbUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbUserArrayOutput)
+}
+
+func (i M3DbUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*M3DbUser] {
+	return pulumix.Output[[]*M3DbUser]{
+		OutputState: i.ToM3DbUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // M3DbUserMapInput is an input type that accepts M3DbUserMap and M3DbUserMapOutput values.
@@ -222,6 +235,12 @@ func (i M3DbUserMap) ToM3DbUserMapOutputWithContext(ctx context.Context) M3DbUse
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbUserMapOutput)
 }
 
+func (i M3DbUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*M3DbUser] {
+	return pulumix.Output[map[string]*M3DbUser]{
+		OutputState: i.ToM3DbUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type M3DbUserOutput struct{ *pulumi.OutputState }
 
 func (M3DbUserOutput) ElementType() reflect.Type {
@@ -234,6 +253,12 @@ func (o M3DbUserOutput) ToM3DbUserOutput() M3DbUserOutput {
 
 func (o M3DbUserOutput) ToM3DbUserOutputWithContext(ctx context.Context) M3DbUserOutput {
 	return o
+}
+
+func (o M3DbUserOutput) ToOutput(ctx context.Context) pulumix.Output[*M3DbUser] {
+	return pulumix.Output[*M3DbUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cluster ID.
@@ -291,6 +316,12 @@ func (o M3DbUserArrayOutput) ToM3DbUserArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o M3DbUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*M3DbUser] {
+	return pulumix.Output[[]*M3DbUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o M3DbUserArrayOutput) Index(i pulumi.IntInput) M3DbUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *M3DbUser {
 		return vs[0].([]*M3DbUser)[vs[1].(int)]
@@ -309,6 +340,12 @@ func (o M3DbUserMapOutput) ToM3DbUserMapOutput() M3DbUserMapOutput {
 
 func (o M3DbUserMapOutput) ToM3DbUserMapOutputWithContext(ctx context.Context) M3DbUserMapOutput {
 	return o
+}
+
+func (o M3DbUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*M3DbUser] {
+	return pulumix.Output[map[string]*M3DbUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o M3DbUserMapOutput) MapIndex(k pulumi.StringInput) M3DbUserOutput {

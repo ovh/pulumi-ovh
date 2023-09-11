@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// ## Import
     /// 
-    /// OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g., &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb")]
     public partial class PrivateDatabaseDb : global::Pulumi.CustomResource

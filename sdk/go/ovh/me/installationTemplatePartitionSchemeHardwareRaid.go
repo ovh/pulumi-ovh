@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this resource to create a hardware raid group in the partition scheme of a custom installation template available for dedicated servers.
@@ -168,6 +169,12 @@ func (i *InstallationTemplatePartitionSchemeHardwareRaid) ToInstallationTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplatePartitionSchemeHardwareRaidOutput)
 }
 
+func (i *InstallationTemplatePartitionSchemeHardwareRaid) ToOutput(ctx context.Context) pulumix.Output[*InstallationTemplatePartitionSchemeHardwareRaid] {
+	return pulumix.Output[*InstallationTemplatePartitionSchemeHardwareRaid]{
+		OutputState: i.ToInstallationTemplatePartitionSchemeHardwareRaidOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstallationTemplatePartitionSchemeHardwareRaidArrayInput is an input type that accepts InstallationTemplatePartitionSchemeHardwareRaidArray and InstallationTemplatePartitionSchemeHardwareRaidArrayOutput values.
 // You can construct a concrete instance of `InstallationTemplatePartitionSchemeHardwareRaidArrayInput` via:
 //
@@ -191,6 +198,12 @@ func (i InstallationTemplatePartitionSchemeHardwareRaidArray) ToInstallationTemp
 
 func (i InstallationTemplatePartitionSchemeHardwareRaidArray) ToInstallationTemplatePartitionSchemeHardwareRaidArrayOutputWithContext(ctx context.Context) InstallationTemplatePartitionSchemeHardwareRaidArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplatePartitionSchemeHardwareRaidArrayOutput)
+}
+
+func (i InstallationTemplatePartitionSchemeHardwareRaidArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstallationTemplatePartitionSchemeHardwareRaid] {
+	return pulumix.Output[[]*InstallationTemplatePartitionSchemeHardwareRaid]{
+		OutputState: i.ToInstallationTemplatePartitionSchemeHardwareRaidArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InstallationTemplatePartitionSchemeHardwareRaidMapInput is an input type that accepts InstallationTemplatePartitionSchemeHardwareRaidMap and InstallationTemplatePartitionSchemeHardwareRaidMapOutput values.
@@ -218,6 +231,12 @@ func (i InstallationTemplatePartitionSchemeHardwareRaidMap) ToInstallationTempla
 	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplatePartitionSchemeHardwareRaidMapOutput)
 }
 
+func (i InstallationTemplatePartitionSchemeHardwareRaidMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstallationTemplatePartitionSchemeHardwareRaid] {
+	return pulumix.Output[map[string]*InstallationTemplatePartitionSchemeHardwareRaid]{
+		OutputState: i.ToInstallationTemplatePartitionSchemeHardwareRaidMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstallationTemplatePartitionSchemeHardwareRaidOutput struct{ *pulumi.OutputState }
 
 func (InstallationTemplatePartitionSchemeHardwareRaidOutput) ElementType() reflect.Type {
@@ -230,6 +249,12 @@ func (o InstallationTemplatePartitionSchemeHardwareRaidOutput) ToInstallationTem
 
 func (o InstallationTemplatePartitionSchemeHardwareRaidOutput) ToInstallationTemplatePartitionSchemeHardwareRaidOutputWithContext(ctx context.Context) InstallationTemplatePartitionSchemeHardwareRaidOutput {
 	return o
+}
+
+func (o InstallationTemplatePartitionSchemeHardwareRaidOutput) ToOutput(ctx context.Context) pulumix.Output[*InstallationTemplatePartitionSchemeHardwareRaid] {
+	return pulumix.Output[*InstallationTemplatePartitionSchemeHardwareRaid]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Disk List. Syntax is cX:dY for disks and [cX:dY,cX:dY] for groups. With X and Y resp. the controller id and the disk id.
@@ -276,6 +301,12 @@ func (o InstallationTemplatePartitionSchemeHardwareRaidArrayOutput) ToInstallati
 	return o
 }
 
+func (o InstallationTemplatePartitionSchemeHardwareRaidArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstallationTemplatePartitionSchemeHardwareRaid] {
+	return pulumix.Output[[]*InstallationTemplatePartitionSchemeHardwareRaid]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstallationTemplatePartitionSchemeHardwareRaidArrayOutput) Index(i pulumi.IntInput) InstallationTemplatePartitionSchemeHardwareRaidOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstallationTemplatePartitionSchemeHardwareRaid {
 		return vs[0].([]*InstallationTemplatePartitionSchemeHardwareRaid)[vs[1].(int)]
@@ -294,6 +325,12 @@ func (o InstallationTemplatePartitionSchemeHardwareRaidMapOutput) ToInstallation
 
 func (o InstallationTemplatePartitionSchemeHardwareRaidMapOutput) ToInstallationTemplatePartitionSchemeHardwareRaidMapOutputWithContext(ctx context.Context) InstallationTemplatePartitionSchemeHardwareRaidMapOutput {
 	return o
+}
+
+func (o InstallationTemplatePartitionSchemeHardwareRaidMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstallationTemplatePartitionSchemeHardwareRaid] {
+	return pulumix.Output[map[string]*InstallationTemplatePartitionSchemeHardwareRaid]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstallationTemplatePartitionSchemeHardwareRaidMapOutput) MapIndex(k pulumi.StringInput) InstallationTemplatePartitionSchemeHardwareRaidOutput {

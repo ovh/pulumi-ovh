@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i PrivateDatabaseOrderArgs) ToPrivateDatabaseOrderOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseOrderOutput)
 }
 
+func (i PrivateDatabaseOrderArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabaseOrder] {
+	return pulumix.Output[PrivateDatabaseOrder]{
+		OutputState: i.ToPrivateDatabaseOrderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateDatabaseOrderArrayInput is an input type that accepts PrivateDatabaseOrderArray and PrivateDatabaseOrderArrayOutput values.
 // You can construct a concrete instance of `PrivateDatabaseOrderArrayInput` via:
 //
@@ -83,6 +90,12 @@ func (i PrivateDatabaseOrderArray) ToPrivateDatabaseOrderArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseOrderArrayOutput)
 }
 
+func (i PrivateDatabaseOrderArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateDatabaseOrder] {
+	return pulumix.Output[[]PrivateDatabaseOrder]{
+		OutputState: i.ToPrivateDatabaseOrderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateDatabaseOrderOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabaseOrderOutput) ElementType() reflect.Type {
@@ -95,6 +108,12 @@ func (o PrivateDatabaseOrderOutput) ToPrivateDatabaseOrderOutput() PrivateDataba
 
 func (o PrivateDatabaseOrderOutput) ToPrivateDatabaseOrderOutputWithContext(ctx context.Context) PrivateDatabaseOrderOutput {
 	return o
+}
+
+func (o PrivateDatabaseOrderOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabaseOrder] {
+	return pulumix.Output[PrivateDatabaseOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 // date
@@ -129,6 +148,12 @@ func (o PrivateDatabaseOrderArrayOutput) ToPrivateDatabaseOrderArrayOutput() Pri
 
 func (o PrivateDatabaseOrderArrayOutput) ToPrivateDatabaseOrderArrayOutputWithContext(ctx context.Context) PrivateDatabaseOrderArrayOutput {
 	return o
+}
+
+func (o PrivateDatabaseOrderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateDatabaseOrder] {
+	return pulumix.Output[[]PrivateDatabaseOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateDatabaseOrderArrayOutput) Index(i pulumi.IntInput) PrivateDatabaseOrderOutput {
@@ -182,6 +207,12 @@ func (i PrivateDatabaseOrderDetailArgs) ToPrivateDatabaseOrderDetailOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseOrderDetailOutput)
 }
 
+func (i PrivateDatabaseOrderDetailArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabaseOrderDetail] {
+	return pulumix.Output[PrivateDatabaseOrderDetail]{
+		OutputState: i.ToPrivateDatabaseOrderDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateDatabaseOrderDetailArrayInput is an input type that accepts PrivateDatabaseOrderDetailArray and PrivateDatabaseOrderDetailArrayOutput values.
 // You can construct a concrete instance of `PrivateDatabaseOrderDetailArrayInput` via:
 //
@@ -207,6 +238,12 @@ func (i PrivateDatabaseOrderDetailArray) ToPrivateDatabaseOrderDetailArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseOrderDetailArrayOutput)
 }
 
+func (i PrivateDatabaseOrderDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateDatabaseOrderDetail] {
+	return pulumix.Output[[]PrivateDatabaseOrderDetail]{
+		OutputState: i.ToPrivateDatabaseOrderDetailArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateDatabaseOrderDetailOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabaseOrderDetailOutput) ElementType() reflect.Type {
@@ -219,6 +256,12 @@ func (o PrivateDatabaseOrderDetailOutput) ToPrivateDatabaseOrderDetailOutput() P
 
 func (o PrivateDatabaseOrderDetailOutput) ToPrivateDatabaseOrderDetailOutputWithContext(ctx context.Context) PrivateDatabaseOrderDetailOutput {
 	return o
+}
+
+func (o PrivateDatabaseOrderDetailOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabaseOrderDetail] {
+	return pulumix.Output[PrivateDatabaseOrderDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Custom description on your privatedatabase order.
@@ -253,6 +296,12 @@ func (o PrivateDatabaseOrderDetailArrayOutput) ToPrivateDatabaseOrderDetailArray
 
 func (o PrivateDatabaseOrderDetailArrayOutput) ToPrivateDatabaseOrderDetailArrayOutputWithContext(ctx context.Context) PrivateDatabaseOrderDetailArrayOutput {
 	return o
+}
+
+func (o PrivateDatabaseOrderDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateDatabaseOrderDetail] {
+	return pulumix.Output[[]PrivateDatabaseOrderDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateDatabaseOrderDetailArrayOutput) Index(i pulumi.IntInput) PrivateDatabaseOrderDetailOutput {
@@ -310,6 +359,12 @@ func (i PrivateDatabasePlanArgs) ToPrivateDatabasePlanOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabasePlanOutput)
 }
 
+func (i PrivateDatabasePlanArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabasePlan] {
+	return pulumix.Output[PrivateDatabasePlan]{
+		OutputState: i.ToPrivateDatabasePlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateDatabasePlanArgs) ToPrivateDatabasePlanPtrOutput() PrivateDatabasePlanPtrOutput {
 	return i.ToPrivateDatabasePlanPtrOutputWithContext(context.Background())
 }
@@ -351,6 +406,12 @@ func (i *privateDatabasePlanPtrType) ToPrivateDatabasePlanPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabasePlanPtrOutput)
 }
 
+func (i *privateDatabasePlanPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabasePlan] {
+	return pulumix.Output[*PrivateDatabasePlan]{
+		OutputState: i.ToPrivateDatabasePlanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateDatabasePlanOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabasePlanOutput) ElementType() reflect.Type {
@@ -373,6 +434,12 @@ func (o PrivateDatabasePlanOutput) ToPrivateDatabasePlanPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateDatabasePlan) *PrivateDatabasePlan {
 		return &v
 	}).(PrivateDatabasePlanPtrOutput)
+}
+
+func (o PrivateDatabasePlanOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabasePlan] {
+	return pulumix.Output[PrivateDatabasePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Catalog name
@@ -412,6 +479,12 @@ func (o PrivateDatabasePlanPtrOutput) ToPrivateDatabasePlanPtrOutput() PrivateDa
 
 func (o PrivateDatabasePlanPtrOutput) ToPrivateDatabasePlanPtrOutputWithContext(ctx context.Context) PrivateDatabasePlanPtrOutput {
 	return o
+}
+
+func (o PrivateDatabasePlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabasePlan] {
+	return pulumix.Output[*PrivateDatabasePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateDatabasePlanPtrOutput) Elem() PrivateDatabasePlanOutput {
@@ -515,6 +588,12 @@ func (i PrivateDatabasePlanConfigurationArgs) ToPrivateDatabasePlanConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabasePlanConfigurationOutput)
 }
 
+func (i PrivateDatabasePlanConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabasePlanConfiguration] {
+	return pulumix.Output[PrivateDatabasePlanConfiguration]{
+		OutputState: i.ToPrivateDatabasePlanConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateDatabasePlanConfigurationArrayInput is an input type that accepts PrivateDatabasePlanConfigurationArray and PrivateDatabasePlanConfigurationArrayOutput values.
 // You can construct a concrete instance of `PrivateDatabasePlanConfigurationArrayInput` via:
 //
@@ -540,6 +619,12 @@ func (i PrivateDatabasePlanConfigurationArray) ToPrivateDatabasePlanConfiguratio
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabasePlanConfigurationArrayOutput)
 }
 
+func (i PrivateDatabasePlanConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateDatabasePlanConfiguration] {
+	return pulumix.Output[[]PrivateDatabasePlanConfiguration]{
+		OutputState: i.ToPrivateDatabasePlanConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateDatabasePlanConfigurationOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabasePlanConfigurationOutput) ElementType() reflect.Type {
@@ -552,6 +637,12 @@ func (o PrivateDatabasePlanConfigurationOutput) ToPrivateDatabasePlanConfigurati
 
 func (o PrivateDatabasePlanConfigurationOutput) ToPrivateDatabasePlanConfigurationOutputWithContext(ctx context.Context) PrivateDatabasePlanConfigurationOutput {
 	return o
+}
+
+func (o PrivateDatabasePlanConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabasePlanConfiguration] {
+	return pulumix.Output[PrivateDatabasePlanConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of the resource
@@ -578,6 +669,12 @@ func (o PrivateDatabasePlanConfigurationArrayOutput) ToPrivateDatabasePlanConfig
 
 func (o PrivateDatabasePlanConfigurationArrayOutput) ToPrivateDatabasePlanConfigurationArrayOutputWithContext(ctx context.Context) PrivateDatabasePlanConfigurationArrayOutput {
 	return o
+}
+
+func (o PrivateDatabasePlanConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateDatabasePlanConfiguration] {
+	return pulumix.Output[[]PrivateDatabasePlanConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateDatabasePlanConfigurationArrayOutput) Index(i pulumi.IntInput) PrivateDatabasePlanConfigurationOutput {
@@ -635,6 +732,12 @@ func (i PrivateDatabasePlanOptionArgs) ToPrivateDatabasePlanOptionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabasePlanOptionOutput)
 }
 
+func (i PrivateDatabasePlanOptionArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabasePlanOption] {
+	return pulumix.Output[PrivateDatabasePlanOption]{
+		OutputState: i.ToPrivateDatabasePlanOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateDatabasePlanOptionArrayInput is an input type that accepts PrivateDatabasePlanOptionArray and PrivateDatabasePlanOptionArrayOutput values.
 // You can construct a concrete instance of `PrivateDatabasePlanOptionArrayInput` via:
 //
@@ -660,6 +763,12 @@ func (i PrivateDatabasePlanOptionArray) ToPrivateDatabasePlanOptionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabasePlanOptionArrayOutput)
 }
 
+func (i PrivateDatabasePlanOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateDatabasePlanOption] {
+	return pulumix.Output[[]PrivateDatabasePlanOption]{
+		OutputState: i.ToPrivateDatabasePlanOptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateDatabasePlanOptionOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabasePlanOptionOutput) ElementType() reflect.Type {
@@ -672,6 +781,12 @@ func (o PrivateDatabasePlanOptionOutput) ToPrivateDatabasePlanOptionOutput() Pri
 
 func (o PrivateDatabasePlanOptionOutput) ToPrivateDatabasePlanOptionOutputWithContext(ctx context.Context) PrivateDatabasePlanOptionOutput {
 	return o
+}
+
+func (o PrivateDatabasePlanOptionOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabasePlanOption] {
+	return pulumix.Output[PrivateDatabasePlanOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Catalog name
@@ -711,6 +826,12 @@ func (o PrivateDatabasePlanOptionArrayOutput) ToPrivateDatabasePlanOptionArrayOu
 
 func (o PrivateDatabasePlanOptionArrayOutput) ToPrivateDatabasePlanOptionArrayOutputWithContext(ctx context.Context) PrivateDatabasePlanOptionArrayOutput {
 	return o
+}
+
+func (o PrivateDatabasePlanOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateDatabasePlanOption] {
+	return pulumix.Output[[]PrivateDatabasePlanOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateDatabasePlanOptionArrayOutput) Index(i pulumi.IntInput) PrivateDatabasePlanOptionOutput {
@@ -760,6 +881,12 @@ func (i PrivateDatabasePlanOptionConfigurationArgs) ToPrivateDatabasePlanOptionC
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabasePlanOptionConfigurationOutput)
 }
 
+func (i PrivateDatabasePlanOptionConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabasePlanOptionConfiguration] {
+	return pulumix.Output[PrivateDatabasePlanOptionConfiguration]{
+		OutputState: i.ToPrivateDatabasePlanOptionConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateDatabasePlanOptionConfigurationArrayInput is an input type that accepts PrivateDatabasePlanOptionConfigurationArray and PrivateDatabasePlanOptionConfigurationArrayOutput values.
 // You can construct a concrete instance of `PrivateDatabasePlanOptionConfigurationArrayInput` via:
 //
@@ -785,6 +912,12 @@ func (i PrivateDatabasePlanOptionConfigurationArray) ToPrivateDatabasePlanOption
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabasePlanOptionConfigurationArrayOutput)
 }
 
+func (i PrivateDatabasePlanOptionConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateDatabasePlanOptionConfiguration] {
+	return pulumix.Output[[]PrivateDatabasePlanOptionConfiguration]{
+		OutputState: i.ToPrivateDatabasePlanOptionConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateDatabasePlanOptionConfigurationOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabasePlanOptionConfigurationOutput) ElementType() reflect.Type {
@@ -797,6 +930,12 @@ func (o PrivateDatabasePlanOptionConfigurationOutput) ToPrivateDatabasePlanOptio
 
 func (o PrivateDatabasePlanOptionConfigurationOutput) ToPrivateDatabasePlanOptionConfigurationOutputWithContext(ctx context.Context) PrivateDatabasePlanOptionConfigurationOutput {
 	return o
+}
+
+func (o PrivateDatabasePlanOptionConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateDatabasePlanOptionConfiguration] {
+	return pulumix.Output[PrivateDatabasePlanOptionConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of the resource
@@ -823,6 +962,12 @@ func (o PrivateDatabasePlanOptionConfigurationArrayOutput) ToPrivateDatabasePlan
 
 func (o PrivateDatabasePlanOptionConfigurationArrayOutput) ToPrivateDatabasePlanOptionConfigurationArrayOutputWithContext(ctx context.Context) PrivateDatabasePlanOptionConfigurationArrayOutput {
 	return o
+}
+
+func (o PrivateDatabasePlanOptionConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateDatabasePlanOptionConfiguration] {
+	return pulumix.Output[[]PrivateDatabasePlanOptionConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateDatabasePlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) PrivateDatabasePlanOptionConfigurationOutput {
@@ -868,6 +1013,12 @@ func (i GetPrivateDatabaseDbUserArgs) ToGetPrivateDatabaseDbUserOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateDatabaseDbUserOutput)
 }
 
+func (i GetPrivateDatabaseDbUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivateDatabaseDbUser] {
+	return pulumix.Output[GetPrivateDatabaseDbUser]{
+		OutputState: i.ToGetPrivateDatabaseDbUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivateDatabaseDbUserArrayInput is an input type that accepts GetPrivateDatabaseDbUserArray and GetPrivateDatabaseDbUserArrayOutput values.
 // You can construct a concrete instance of `GetPrivateDatabaseDbUserArrayInput` via:
 //
@@ -893,6 +1044,12 @@ func (i GetPrivateDatabaseDbUserArray) ToGetPrivateDatabaseDbUserArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateDatabaseDbUserArrayOutput)
 }
 
+func (i GetPrivateDatabaseDbUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateDatabaseDbUser] {
+	return pulumix.Output[[]GetPrivateDatabaseDbUser]{
+		OutputState: i.ToGetPrivateDatabaseDbUserArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivateDatabaseDbUserOutput struct{ *pulumi.OutputState }
 
 func (GetPrivateDatabaseDbUserOutput) ElementType() reflect.Type {
@@ -905,6 +1062,12 @@ func (o GetPrivateDatabaseDbUserOutput) ToGetPrivateDatabaseDbUserOutput() GetPr
 
 func (o GetPrivateDatabaseDbUserOutput) ToGetPrivateDatabaseDbUserOutputWithContext(ctx context.Context) GetPrivateDatabaseDbUserOutput {
 	return o
+}
+
+func (o GetPrivateDatabaseDbUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivateDatabaseDbUser] {
+	return pulumix.Output[GetPrivateDatabaseDbUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Grant of this user for this database
@@ -929,6 +1092,12 @@ func (o GetPrivateDatabaseDbUserArrayOutput) ToGetPrivateDatabaseDbUserArrayOutp
 
 func (o GetPrivateDatabaseDbUserArrayOutput) ToGetPrivateDatabaseDbUserArrayOutputWithContext(ctx context.Context) GetPrivateDatabaseDbUserArrayOutput {
 	return o
+}
+
+func (o GetPrivateDatabaseDbUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateDatabaseDbUser] {
+	return pulumix.Output[[]GetPrivateDatabaseDbUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateDatabaseDbUserArrayOutput) Index(i pulumi.IntInput) GetPrivateDatabaseDbUserOutput {
@@ -974,6 +1143,12 @@ func (i GetPrivateDatabaseUserDatabaseArgs) ToGetPrivateDatabaseUserDatabaseOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateDatabaseUserDatabaseOutput)
 }
 
+func (i GetPrivateDatabaseUserDatabaseArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivateDatabaseUserDatabase] {
+	return pulumix.Output[GetPrivateDatabaseUserDatabase]{
+		OutputState: i.ToGetPrivateDatabaseUserDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivateDatabaseUserDatabaseArrayInput is an input type that accepts GetPrivateDatabaseUserDatabaseArray and GetPrivateDatabaseUserDatabaseArrayOutput values.
 // You can construct a concrete instance of `GetPrivateDatabaseUserDatabaseArrayInput` via:
 //
@@ -999,6 +1174,12 @@ func (i GetPrivateDatabaseUserDatabaseArray) ToGetPrivateDatabaseUserDatabaseArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateDatabaseUserDatabaseArrayOutput)
 }
 
+func (i GetPrivateDatabaseUserDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateDatabaseUserDatabase] {
+	return pulumix.Output[[]GetPrivateDatabaseUserDatabase]{
+		OutputState: i.ToGetPrivateDatabaseUserDatabaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivateDatabaseUserDatabaseOutput struct{ *pulumi.OutputState }
 
 func (GetPrivateDatabaseUserDatabaseOutput) ElementType() reflect.Type {
@@ -1011,6 +1192,12 @@ func (o GetPrivateDatabaseUserDatabaseOutput) ToGetPrivateDatabaseUserDatabaseOu
 
 func (o GetPrivateDatabaseUserDatabaseOutput) ToGetPrivateDatabaseUserDatabaseOutputWithContext(ctx context.Context) GetPrivateDatabaseUserDatabaseOutput {
 	return o
+}
+
+func (o GetPrivateDatabaseUserDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivateDatabaseUserDatabase] {
+	return pulumix.Output[GetPrivateDatabaseUserDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Database's name linked to this user
@@ -1035,6 +1222,12 @@ func (o GetPrivateDatabaseUserDatabaseArrayOutput) ToGetPrivateDatabaseUserDatab
 
 func (o GetPrivateDatabaseUserDatabaseArrayOutput) ToGetPrivateDatabaseUserDatabaseArrayOutputWithContext(ctx context.Context) GetPrivateDatabaseUserDatabaseArrayOutput {
 	return o
+}
+
+func (o GetPrivateDatabaseUserDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateDatabaseUserDatabase] {
+	return pulumix.Output[[]GetPrivateDatabaseUserDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateDatabaseUserDatabaseArrayOutput) Index(i pulumi.IntInput) GetPrivateDatabaseUserDatabaseOutput {

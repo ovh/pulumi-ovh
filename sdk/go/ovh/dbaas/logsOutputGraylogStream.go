@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type LogsOutputGraylogStream struct {
@@ -303,6 +304,12 @@ func (i *LogsOutputGraylogStream) ToLogsOutputGraylogStreamOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(LogsOutputGraylogStreamOutput)
 }
 
+func (i *LogsOutputGraylogStream) ToOutput(ctx context.Context) pulumix.Output[*LogsOutputGraylogStream] {
+	return pulumix.Output[*LogsOutputGraylogStream]{
+		OutputState: i.ToLogsOutputGraylogStreamOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogsOutputGraylogStreamArrayInput is an input type that accepts LogsOutputGraylogStreamArray and LogsOutputGraylogStreamArrayOutput values.
 // You can construct a concrete instance of `LogsOutputGraylogStreamArrayInput` via:
 //
@@ -326,6 +333,12 @@ func (i LogsOutputGraylogStreamArray) ToLogsOutputGraylogStreamArrayOutput() Log
 
 func (i LogsOutputGraylogStreamArray) ToLogsOutputGraylogStreamArrayOutputWithContext(ctx context.Context) LogsOutputGraylogStreamArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogsOutputGraylogStreamArrayOutput)
+}
+
+func (i LogsOutputGraylogStreamArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogsOutputGraylogStream] {
+	return pulumix.Output[[]*LogsOutputGraylogStream]{
+		OutputState: i.ToLogsOutputGraylogStreamArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LogsOutputGraylogStreamMapInput is an input type that accepts LogsOutputGraylogStreamMap and LogsOutputGraylogStreamMapOutput values.
@@ -353,6 +366,12 @@ func (i LogsOutputGraylogStreamMap) ToLogsOutputGraylogStreamMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(LogsOutputGraylogStreamMapOutput)
 }
 
+func (i LogsOutputGraylogStreamMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogsOutputGraylogStream] {
+	return pulumix.Output[map[string]*LogsOutputGraylogStream]{
+		OutputState: i.ToLogsOutputGraylogStreamMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogsOutputGraylogStreamOutput struct{ *pulumi.OutputState }
 
 func (LogsOutputGraylogStreamOutput) ElementType() reflect.Type {
@@ -365,6 +384,12 @@ func (o LogsOutputGraylogStreamOutput) ToLogsOutputGraylogStreamOutput() LogsOut
 
 func (o LogsOutputGraylogStreamOutput) ToLogsOutputGraylogStreamOutputWithContext(ctx context.Context) LogsOutputGraylogStreamOutput {
 	return o
+}
+
+func (o LogsOutputGraylogStreamOutput) ToOutput(ctx context.Context) pulumix.Output[*LogsOutputGraylogStream] {
+	return pulumix.Output[*LogsOutputGraylogStream]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates if the current user can create alert on the stream
@@ -501,6 +526,12 @@ func (o LogsOutputGraylogStreamArrayOutput) ToLogsOutputGraylogStreamArrayOutput
 	return o
 }
 
+func (o LogsOutputGraylogStreamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogsOutputGraylogStream] {
+	return pulumix.Output[[]*LogsOutputGraylogStream]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogsOutputGraylogStreamArrayOutput) Index(i pulumi.IntInput) LogsOutputGraylogStreamOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogsOutputGraylogStream {
 		return vs[0].([]*LogsOutputGraylogStream)[vs[1].(int)]
@@ -519,6 +550,12 @@ func (o LogsOutputGraylogStreamMapOutput) ToLogsOutputGraylogStreamMapOutput() L
 
 func (o LogsOutputGraylogStreamMapOutput) ToLogsOutputGraylogStreamMapOutputWithContext(ctx context.Context) LogsOutputGraylogStreamMapOutput {
 	return o
+}
+
+func (o LogsOutputGraylogStreamMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogsOutputGraylogStream] {
+	return pulumix.Output[map[string]*LogsOutputGraylogStream]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogsOutputGraylogStreamMapOutput) MapIndex(k pulumi.StringInput) LogsOutputGraylogStreamOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve informations about a DBaas logs cluster tenant.
@@ -95,6 +96,12 @@ func (o LookupLogsClusterResultOutput) ToLookupLogsClusterResultOutput() LookupL
 
 func (o LookupLogsClusterResultOutput) ToLookupLogsClusterResultOutputWithContext(ctx context.Context) LookupLogsClusterResultOutput {
 	return o
+}
+
+func (o LookupLogsClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLogsClusterResult] {
+	return pulumix.Output[LookupLogsClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // is allowed networks for ARCHIVE flow type

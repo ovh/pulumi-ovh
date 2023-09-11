@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -278,6 +279,12 @@ func (i *Kube) ToKubeOutputWithContext(ctx context.Context) KubeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubeOutput)
 }
 
+func (i *Kube) ToOutput(ctx context.Context) pulumix.Output[*Kube] {
+	return pulumix.Output[*Kube]{
+		OutputState: i.ToKubeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KubeArrayInput is an input type that accepts KubeArray and KubeArrayOutput values.
 // You can construct a concrete instance of `KubeArrayInput` via:
 //
@@ -301,6 +308,12 @@ func (i KubeArray) ToKubeArrayOutput() KubeArrayOutput {
 
 func (i KubeArray) ToKubeArrayOutputWithContext(ctx context.Context) KubeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubeArrayOutput)
+}
+
+func (i KubeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Kube] {
+	return pulumix.Output[[]*Kube]{
+		OutputState: i.ToKubeArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KubeMapInput is an input type that accepts KubeMap and KubeMapOutput values.
@@ -328,6 +341,12 @@ func (i KubeMap) ToKubeMapOutputWithContext(ctx context.Context) KubeMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubeMapOutput)
 }
 
+func (i KubeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Kube] {
+	return pulumix.Output[map[string]*Kube]{
+		OutputState: i.ToKubeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KubeOutput struct{ *pulumi.OutputState }
 
 func (KubeOutput) ElementType() reflect.Type {
@@ -340,6 +359,12 @@ func (o KubeOutput) ToKubeOutput() KubeOutput {
 
 func (o KubeOutput) ToKubeOutputWithContext(ctx context.Context) KubeOutput {
 	return o
+}
+
+func (o KubeOutput) ToOutput(ctx context.Context) pulumix.Output[*Kube] {
+	return pulumix.Output[*Kube]{
+		OutputState: o.OutputState,
+	}
 }
 
 // True if control-plane is up-to-date.
@@ -455,6 +480,12 @@ func (o KubeArrayOutput) ToKubeArrayOutputWithContext(ctx context.Context) KubeA
 	return o
 }
 
+func (o KubeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Kube] {
+	return pulumix.Output[[]*Kube]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KubeArrayOutput) Index(i pulumi.IntInput) KubeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Kube {
 		return vs[0].([]*Kube)[vs[1].(int)]
@@ -473,6 +504,12 @@ func (o KubeMapOutput) ToKubeMapOutput() KubeMapOutput {
 
 func (o KubeMapOutput) ToKubeMapOutputWithContext(ctx context.Context) KubeMapOutput {
 	return o
+}
+
+func (o KubeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Kube] {
+	return pulumix.Output[map[string]*Kube]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KubeMapOutput) MapIndex(k pulumi.StringInput) KubeOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
@@ -94,6 +95,12 @@ func (o LookupPostgresSqlUserResultOutput) ToLookupPostgresSqlUserResultOutput()
 
 func (o LookupPostgresSqlUserResultOutput) ToLookupPostgresSqlUserResultOutputWithContext(ctx context.Context) LookupPostgresSqlUserResultOutput {
 	return o
+}
+
+func (o LookupPostgresSqlUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPostgresSqlUserResult] {
+	return pulumix.Output[LookupPostgresSqlUserResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // See Argument Reference above.

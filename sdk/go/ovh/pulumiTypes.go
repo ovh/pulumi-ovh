@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -70,6 +71,12 @@ func (i GetServerVniArgs) ToGetServerVniOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerVniOutput)
 }
 
+func (i GetServerVniArgs) ToOutput(ctx context.Context) pulumix.Output[GetServerVni] {
+	return pulumix.Output[GetServerVni]{
+		OutputState: i.ToGetServerVniOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServerVniArrayInput is an input type that accepts GetServerVniArray and GetServerVniArrayOutput values.
 // You can construct a concrete instance of `GetServerVniArrayInput` via:
 //
@@ -95,6 +102,12 @@ func (i GetServerVniArray) ToGetServerVniArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerVniArrayOutput)
 }
 
+func (i GetServerVniArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServerVni] {
+	return pulumix.Output[[]GetServerVni]{
+		OutputState: i.ToGetServerVniArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServerVniOutput struct{ *pulumi.OutputState }
 
 func (GetServerVniOutput) ElementType() reflect.Type {
@@ -107,6 +120,12 @@ func (o GetServerVniOutput) ToGetServerVniOutput() GetServerVniOutput {
 
 func (o GetServerVniOutput) ToGetServerVniOutputWithContext(ctx context.Context) GetServerVniOutput {
 	return o
+}
+
+func (o GetServerVniOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerVni] {
+	return pulumix.Output[GetServerVni]{
+		OutputState: o.OutputState,
+	}
 }
 
 // VirtualNetworkInterface activation state
@@ -156,6 +175,12 @@ func (o GetServerVniArrayOutput) ToGetServerVniArrayOutput() GetServerVniArrayOu
 
 func (o GetServerVniArrayOutput) ToGetServerVniArrayOutputWithContext(ctx context.Context) GetServerVniArrayOutput {
 	return o
+}
+
+func (o GetServerVniArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServerVni] {
+	return pulumix.Output[[]GetServerVni]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServerVniArrayOutput) Index(i pulumi.IntInput) GetServerVniOutput {

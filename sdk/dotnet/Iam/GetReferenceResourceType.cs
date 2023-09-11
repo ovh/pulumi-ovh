@@ -23,6 +23,19 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         public static Task<GetReferenceResourceTypeResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReferenceResourceTypeResult>("ovh:Iam/getReferenceResourceType:getReferenceResourceType", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to list all the IAM resource types.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```hcl
+        /// data "ovh_iam_reference_resource_type" "types" {
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetReferenceResourceTypeResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetReferenceResourceTypeResult>("ovh:Iam/getReferenceResourceType:getReferenceResourceType", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

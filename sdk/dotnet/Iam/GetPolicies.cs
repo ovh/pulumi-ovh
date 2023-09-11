@@ -23,6 +23,19 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("ovh:Iam/getPolicies:getPolicies", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to list the existing IAM policies of an account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```hcl
+        /// data "ovh_iam_policies" "my_policies" {
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetPoliciesResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("ovh:Iam/getPolicies:getPolicies", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

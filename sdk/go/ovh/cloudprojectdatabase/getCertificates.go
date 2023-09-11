@@ -9,6 +9,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about certificates of a cluster associated with a public cloud project.
@@ -94,6 +95,12 @@ func (o GetCertificatesResultOutput) ToGetCertificatesResultOutput() GetCertific
 
 func (o GetCertificatesResultOutput) ToGetCertificatesResultOutputWithContext(ctx context.Context) GetCertificatesResultOutput {
 	return o
+}
+
+func (o GetCertificatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCertificatesResult] {
+	return pulumix.Output[GetCertificatesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // CA certificate used for the service.

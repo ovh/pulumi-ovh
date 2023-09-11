@@ -22,6 +22,18 @@ namespace Pulumi.Ovh
         /// </summary>
         public static Task<GetServersResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServersResult>("ovh:index/getServers:getServers", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```hcl
+        /// data "ovh_dedicated_servers" "servers" {}
+        /// ```
+        /// </summary>
+        public static Output<GetServersResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServersResult>("ovh:index/getServers:getServers", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

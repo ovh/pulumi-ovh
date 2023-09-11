@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a user for a container registry associated with a public cloud project.
@@ -162,6 +163,12 @@ func (i *ContainerRegistryUser) ToContainerRegistryUserOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryUserOutput)
 }
 
+func (i *ContainerRegistryUser) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryUser] {
+	return pulumix.Output[*ContainerRegistryUser]{
+		OutputState: i.ToContainerRegistryUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerRegistryUserArrayInput is an input type that accepts ContainerRegistryUserArray and ContainerRegistryUserArrayOutput values.
 // You can construct a concrete instance of `ContainerRegistryUserArrayInput` via:
 //
@@ -185,6 +192,12 @@ func (i ContainerRegistryUserArray) ToContainerRegistryUserArrayOutput() Contain
 
 func (i ContainerRegistryUserArray) ToContainerRegistryUserArrayOutputWithContext(ctx context.Context) ContainerRegistryUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryUserArrayOutput)
+}
+
+func (i ContainerRegistryUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerRegistryUser] {
+	return pulumix.Output[[]*ContainerRegistryUser]{
+		OutputState: i.ToContainerRegistryUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ContainerRegistryUserMapInput is an input type that accepts ContainerRegistryUserMap and ContainerRegistryUserMapOutput values.
@@ -212,6 +225,12 @@ func (i ContainerRegistryUserMap) ToContainerRegistryUserMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryUserMapOutput)
 }
 
+func (i ContainerRegistryUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerRegistryUser] {
+	return pulumix.Output[map[string]*ContainerRegistryUser]{
+		OutputState: i.ToContainerRegistryUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerRegistryUserOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryUserOutput) ElementType() reflect.Type {
@@ -224,6 +243,12 @@ func (o ContainerRegistryUserOutput) ToContainerRegistryUserOutput() ContainerRe
 
 func (o ContainerRegistryUserOutput) ToContainerRegistryUserOutputWithContext(ctx context.Context) ContainerRegistryUserOutput {
 	return o
+}
+
+func (o ContainerRegistryUserOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryUser] {
+	return pulumix.Output[*ContainerRegistryUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User email
@@ -271,6 +296,12 @@ func (o ContainerRegistryUserArrayOutput) ToContainerRegistryUserArrayOutputWith
 	return o
 }
 
+func (o ContainerRegistryUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerRegistryUser] {
+	return pulumix.Output[[]*ContainerRegistryUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerRegistryUserArrayOutput) Index(i pulumi.IntInput) ContainerRegistryUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContainerRegistryUser {
 		return vs[0].([]*ContainerRegistryUser)[vs[1].(int)]
@@ -289,6 +320,12 @@ func (o ContainerRegistryUserMapOutput) ToContainerRegistryUserMapOutput() Conta
 
 func (o ContainerRegistryUserMapOutput) ToContainerRegistryUserMapOutputWithContext(ctx context.Context) ContainerRegistryUserMapOutput {
 	return o
+}
+
+func (o ContainerRegistryUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerRegistryUser] {
+	return pulumix.Output[map[string]*ContainerRegistryUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerRegistryUserMapOutput) MapIndex(k pulumi.StringInput) ContainerRegistryUserOutput {

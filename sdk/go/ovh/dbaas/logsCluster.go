@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -197,6 +198,12 @@ func (i *LogsCluster) ToLogsClusterOutputWithContext(ctx context.Context) LogsCl
 	return pulumi.ToOutputWithContext(ctx, i).(LogsClusterOutput)
 }
 
+func (i *LogsCluster) ToOutput(ctx context.Context) pulumix.Output[*LogsCluster] {
+	return pulumix.Output[*LogsCluster]{
+		OutputState: i.ToLogsClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogsClusterArrayInput is an input type that accepts LogsClusterArray and LogsClusterArrayOutput values.
 // You can construct a concrete instance of `LogsClusterArrayInput` via:
 //
@@ -220,6 +227,12 @@ func (i LogsClusterArray) ToLogsClusterArrayOutput() LogsClusterArrayOutput {
 
 func (i LogsClusterArray) ToLogsClusterArrayOutputWithContext(ctx context.Context) LogsClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogsClusterArrayOutput)
+}
+
+func (i LogsClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogsCluster] {
+	return pulumix.Output[[]*LogsCluster]{
+		OutputState: i.ToLogsClusterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LogsClusterMapInput is an input type that accepts LogsClusterMap and LogsClusterMapOutput values.
@@ -247,6 +260,12 @@ func (i LogsClusterMap) ToLogsClusterMapOutputWithContext(ctx context.Context) L
 	return pulumi.ToOutputWithContext(ctx, i).(LogsClusterMapOutput)
 }
 
+func (i LogsClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogsCluster] {
+	return pulumix.Output[map[string]*LogsCluster]{
+		OutputState: i.ToLogsClusterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogsClusterOutput struct{ *pulumi.OutputState }
 
 func (LogsClusterOutput) ElementType() reflect.Type {
@@ -259,6 +278,12 @@ func (o LogsClusterOutput) ToLogsClusterOutput() LogsClusterOutput {
 
 func (o LogsClusterOutput) ToLogsClusterOutputWithContext(ctx context.Context) LogsClusterOutput {
 	return o
+}
+
+func (o LogsClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*LogsCluster] {
+	return pulumix.Output[*LogsCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of IP blocks
@@ -344,6 +369,12 @@ func (o LogsClusterArrayOutput) ToLogsClusterArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o LogsClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogsCluster] {
+	return pulumix.Output[[]*LogsCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogsClusterArrayOutput) Index(i pulumi.IntInput) LogsClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogsCluster {
 		return vs[0].([]*LogsCluster)[vs[1].(int)]
@@ -362,6 +393,12 @@ func (o LogsClusterMapOutput) ToLogsClusterMapOutput() LogsClusterMapOutput {
 
 func (o LogsClusterMapOutput) ToLogsClusterMapOutputWithContext(ctx context.Context) LogsClusterMapOutput {
 	return o
+}
+
+func (o LogsClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogsCluster] {
+	return pulumix.Output[map[string]*LogsCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogsClusterMapOutput) MapIndex(k pulumi.StringInput) LogsClusterOutput {
