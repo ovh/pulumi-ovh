@@ -40,12 +40,8 @@ jobs:
           wget https://github.com/pulumi/pulumictl/releases/download/v0.0.42/pulumictl-v0.0.42-linux-amd64.tar.gz -O /tmp/pulumictl-v0.0.42-linux-amd64.tar.gz
           tar -xvf /tmp/pulumictl-v0.0.42-linux-amd64.tar.gz -C /tmp
           mv /tmp/pulumictl /usr/local/bin
-      # - name: Install pulumictl
-      #   uses: jaxxstorm/action-install-gh-release@c5ead9a448b4660cf1e7866ee22e4dc56538031a # tag=v1.10.0
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     repo: pulumi/pulumictl
+      - name: Get version
+        run: pulumictl get version --language generic
       - name: Set PreRelease Version
         run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
       - uses: sigstore/cosign-installer@6e04d228eb30da1757ee4e1dd75a0ec73a653e06 # v3.1.1
@@ -122,12 +118,13 @@ jobs:
           packages-dir: ${{github.workspace}}/sdk/python/bin/dist
           skip-existing: true
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
-        uses: JS-DevTools/npm-publish@5a85faf05d2ade2d5b6682bfe5359915d5159c6c # tag=v2.2.1
+        uses: JS-DevTools/npm-publish@v2.2.1
         with:
           access: "public"
           token: ${{ env.NPM_TOKEN }}
           package: ${{github.workspace}}/sdk/nodejs/bin/package.json
           provenance: true
+          strategy: upgrade
       - if: ${{ matrix.language == 'dotnet' && env.PUBLISH_NUGET == 'true' }}
         name: publish nuget package
         run: |
