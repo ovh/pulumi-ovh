@@ -3,7 +3,7 @@
 The OVH Resource Provider lets you manage [OVHcloud](https://www.ovhcloud.com/en/) resources.
 
 <a href="https://github.com/ovh/pulumi-ovh/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/v/release/ovh/pulumi-ovh?logo=github&style=flat-square"></a>
-[![GoDoc](https://godoc.org/github.com/ovh/pulumi-ovh?status.svg)](https://godoc.org/github.com/ovh/pulumi-ovh)
+[![GoDoc](https://godoc.org/github.com/ovh/pulumi-ovh?status.svg)](https://pkg.go.dev/github.com/ovh/pulumi-ovh/sdk)
 [![NPM version](https://badge.fury.io/js/@ovh-devrelteam%2Fpulumi-ovh.svg)](https://badge.fury.io/js/@ovh-devrelteam%2Fpulumi-ovh)
 [![PyPI version](https://badge.fury.io/py/pulumi-ovh.svg)](https://badge.fury.io/py/pulumi-ovh)
 [![NuGet version](https://badge.fury.io/nu/Pulumi.Ovh.svg)](https://badge.fury.io/nu/Pulumi.Ovh)
