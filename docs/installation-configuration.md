@@ -29,7 +29,32 @@ Replace the version string with your desired version.
 
 ## Setup
 
-To provision resources with the Pulumi OVH provider, you need to have OVH credentials. 
+To provision resources with the Pulumi OVH provider, you need to have OVH credentials.
+Your OVH credentials are never sent to pulumi.com. Pulumi uses the OVH API and the credentials in your environment to authenticate requests from your computer to OVH.
+
+### Get your credentials
+
+The "OVH provider" needs to be configured with a set of credentials:
+
+* an `endpoint` (environment variable: OVH_ENDPOINT)
+* an `applicationKey` (environment variable: OVH_APPLICATION_KEY)
+* an `applicationSecret` (environment variable: OVH_APPLICATION_SECRET)
+* a `consumerKey` (environment variable: OVH_CONSUMER_KEY)
+
+Why?
+
+Because, behind the scenes, the provider is doing requests to OVHcloud APIs. 
+
+In order to retrieve this necessary information, please follow [First steps with the OVHcloud APIs](https://docs.ovh.com/gb/en/customer/first-steps-with-ovh-api/) tutorial.
+
+Concretely, you have to generate these credentials via the [OVH token generation page](https://api.ovh.com/createToken/?GET=/*&POST=/*&PUT=/*&DELETE=/*) with the following rights:
+
+* GET `/`
+* POST `/*`
+* PUT `/*`
+* DELETE `/*`
+
+When you have successfully generated your OVH tokens, please keep them. You'll have to define them in the coming minutes ;-).
 
 ### Set environment variables
 
