@@ -8,6 +8,13 @@ import * as utilities from "./utilities";
  * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const servers = ovh.getServers({});
+ * ```
  */
 export function getServers(opts?: pulumi.InvokeOptions): Promise<GetServersResult> {
 
@@ -33,6 +40,13 @@ export interface GetServersResult {
  * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const servers = ovh.getServers({});
+ * ```
  */
 export function getServersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetServersResult> {
     return pulumi.output(getServers(opts))

@@ -257,6 +257,19 @@ class RegionStoragePresign(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        presigned_url_region_storage_presign = ovh.cloud_project.RegionStoragePresign("presignedUrlRegionStoragePresign",
+            service_name="xxxxxxxxxxxxxxxxx",
+            region_name="GRA",
+            expire=3600,
+            method="GET",
+            object="an-object-in-the-bucket")
+        pulumi.export("presignedUrl", presigned_url_region_storage_presign.url)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be valid.
@@ -280,6 +293,19 @@ class RegionStoragePresign(pulumi.CustomResource):
         > __NOTE__ This resource is only compatible with the `High Performance - S3` solution for object storage.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        presigned_url_region_storage_presign = ovh.cloud_project.RegionStoragePresign("presignedUrlRegionStoragePresign",
+            service_name="xxxxxxxxxxxxxxxxx",
+            region_name="GRA",
+            expire=3600,
+            method="GET",
+            object="an-object-in-the-bucket")
+        pulumi.export("presignedUrl", presigned_url_region_storage_presign.url)
+        ```
 
         :param str resource_name: The name of the resource.
         :param RegionStoragePresignArgs args: The arguments to use to populate this resource's properties.

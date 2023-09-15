@@ -302,6 +302,19 @@ class WorkflowBackup(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_backup = ovh.cloud_project.WorkflowBackup("myBackup",
+            cron="50 4 * * *",
+            instance_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+            max_execution_count=0,
+            region_name="GRA11",
+            rotation=7,
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_name: The name of the backup files that are created. If empty, the `name` attribute is used.
@@ -323,6 +336,19 @@ class WorkflowBackup(pulumi.CustomResource):
         Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_backup = ovh.cloud_project.WorkflowBackup("myBackup",
+            cron="50 4 * * *",
+            instance_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+            max_execution_count=0,
+            region_name="GRA11",
+            rotation=7,
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        ```
 
         :param str resource_name: The name of the resource.
         :param WorkflowBackupArgs args: The arguments to use to populate this resource's properties.

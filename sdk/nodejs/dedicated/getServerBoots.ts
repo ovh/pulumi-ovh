@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const netboots = ovh.Dedicated.getServerBoots({
+ *     bootType: "harddisk",
+ *     serviceName: "myserver",
+ * });
+ * ```
  */
 export function getServerBoots(args: GetServerBootsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerBootsResult> {
 
@@ -54,6 +64,16 @@ export interface GetServerBootsResult {
  * Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const netboots = ovh.Dedicated.getServerBoots({
+ *     bootType: "harddisk",
+ *     serviceName: "myserver",
+ * });
+ * ```
  */
 export function getServerBootsOutput(args: GetServerBootsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerBootsResult> {
     return pulumi.output(args).apply((a: any) => getServerBoots(a, opts))

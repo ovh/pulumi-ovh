@@ -15,6 +15,31 @@ import (
 // Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := CloudProject.GetRegion(ctx, &cloudproject.GetRegionArgs{
+//				Name:        "GRA1",
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOption) (*GetRegionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionResult

@@ -19,6 +19,31 @@ import (
 // Attach a dedicated server to a VRack.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Vrack.NewDedicatedServer(ctx, "vds", &Vrack.DedicatedServerArgs{
+//				ServerId:    pulumi.String("67890"),
+//				ServiceName: pulumi.String("XXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type DedicatedServer struct {
 	pulumi.CustomResourceState
 

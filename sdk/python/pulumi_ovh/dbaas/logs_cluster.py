@@ -319,9 +319,24 @@ class LogsCluster(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        ldp = ovh.dbaas.LogsCluster("ldp",
+            archive_allowed_networks=["10.0.0.0/16"],
+            direct_input_allowed_networks=["10.0.0.0/16"],
+            query_allowed_networks=["10.0.0.0/16"],
+            service_name="ldp-xx-xxxxx")
+        ```
+
         ## Import
 
-        OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id <break>```<break><break>
+        OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -338,9 +353,24 @@ class LogsCluster(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        ldp = ovh.dbaas.LogsCluster("ldp",
+            archive_allowed_networks=["10.0.0.0/16"],
+            direct_input_allowed_networks=["10.0.0.0/16"],
+            query_allowed_networks=["10.0.0.0/16"],
+            service_name="ldp-xx-xxxxx")
+        ```
+
         ## Import
 
-        OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id <break>```<break><break>
+        OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param LogsClusterArgs args: The arguments to use to populate this resource's properties.

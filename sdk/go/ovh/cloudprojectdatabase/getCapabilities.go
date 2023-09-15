@@ -13,8 +13,6 @@ import (
 )
 
 // Use this data source to get information about capabilities of a public cloud project.
-//
-// ## Example Usage
 func GetCapabilities(ctx *pulumi.Context, args *GetCapabilitiesArgs, opts ...pulumi.InvokeOption) (*GetCapabilitiesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCapabilitiesResult

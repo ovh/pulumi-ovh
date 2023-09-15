@@ -17,6 +17,40 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			regcap, err := CloudProject.GetCapabilitiesContainerFilter(ctx, &cloudproject.GetCapabilitiesContainerFilterArgs{
+//				ServiceName: "XXXXXX",
+//				PlanName:    "SMALL",
+//				Region:      "GRA",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = CloudProject.NewContainerRegistry(ctx, "my-registry", &CloudProject.ContainerRegistryArgs{
+//				ServiceName: *pulumi.String(regcap.ServiceName),
+//				PlanId:      *pulumi.String(regcap.Id),
+//				Region:      *pulumi.String(regcap.Region),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
 type ContainerRegistry struct {
 	pulumi.CustomResourceState

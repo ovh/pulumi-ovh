@@ -136,15 +136,13 @@ class ServerNetworking(pulumi.CustomResource):
 
         !> The API route targeted by this resource are restricted to OVHCloud users (`Internal API`) with additional restrictions.
 
-        ## Example Usage
-
-        The following example aims to bind all interfaces in a vRack
-
-        The following example aims to attach the server to two different vRack.
-
         ## Import
 
-        A dedicated server networking configuration can be imported using the `service_name`. bash <break><break>```sh<break> $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name <break>```<break><break>
+        A dedicated server networking configuration can be imported using the `service_name`. bash
+
+        ```sh
+         $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -162,15 +160,13 @@ class ServerNetworking(pulumi.CustomResource):
 
         !> The API route targeted by this resource are restricted to OVHCloud users (`Internal API`) with additional restrictions.
 
-        ## Example Usage
-
-        The following example aims to bind all interfaces in a vRack
-
-        The following example aims to attach the server to two different vRack.
-
         ## Import
 
-        A dedicated server networking configuration can be imported using the `service_name`. bash <break><break>```sh<break> $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name <break>```<break><break>
+        A dedicated server networking configuration can be imported using the `service_name`. bash
+
+        ```sh
+         $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param ServerNetworkingArgs args: The arguments to use to populate this resource's properties.

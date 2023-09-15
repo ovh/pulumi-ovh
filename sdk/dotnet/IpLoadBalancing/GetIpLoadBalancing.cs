@@ -14,14 +14,28 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// <summary>
         /// Use this data source to retrieve information about an IP Load Balancing product
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_iploadbalancing" "lb" {
-        ///   service_name = "XXXXXX"
-        ///   state        = "ok"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         State = "ok",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpLoadBalancingResult> InvokeAsync(GetIpLoadBalancingArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpLoadBalancingResult>("ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing", args ?? new GetIpLoadBalancingArgs(), options.WithDefaults());
@@ -29,14 +43,28 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// <summary>
         /// Use this data source to retrieve information about an IP Load Balancing product
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_iploadbalancing" "lb" {
-        ///   service_name = "XXXXXX"
-        ///   state        = "ok"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         State = "ok",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpLoadBalancingResult> Invoke(GetIpLoadBalancingInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpLoadBalancingResult>("ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing", args ?? new GetIpLoadBalancingInvokeArgs(), options.WithDefaults());

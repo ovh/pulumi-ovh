@@ -14,6 +14,57 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myaccount, err := Me.GetMe(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: myaccount.OvhSubsidiary,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vrackCartProductPlan, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//				CartId:        mycart.Id,
+//				PriceCapacity: "renew",
+//				Product:       "vrack",
+//				PlanCode:      "vrack",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Vrack.NewVrack(ctx, "vrackVrack", &Vrack.VrackArgs{
+//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				Description:   pulumi.String("my vrack"),
+//				Plan: &vrack.VrackPlanArgs{
+//					Duration:    *pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),
+//					PlanCode:    *pulumi.String(vrackCartProductPlan.PlanCode),
+//					PricingMode: *pulumi.String(vrackCartProductPlan.SelectedPrices[0].PricingMode),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Vrack struct {
 	pulumi.CustomResourceState
 

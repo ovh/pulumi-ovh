@@ -14,15 +14,13 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// !&gt; The API route targeted by this resource are restricted to OVHCloud users (`Internal API`) with additional restrictions.
     /// 
-    /// ## Example Usage
-    /// 
-    /// The following example aims to bind all interfaces in a vRack
-    /// 
-    /// The following example aims to attach the server to two different vRack.
-    /// 
     /// ## Import
     /// 
-    /// A dedicated server networking configuration can be imported using the `service_name`. bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// A dedicated server networking configuration can be imported using the `service_name`. bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dedicated/serverNetworking:ServerNetworking")]
     public partial class ServerNetworking : global::Pulumi.CustomResource

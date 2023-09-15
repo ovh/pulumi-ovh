@@ -14,13 +14,27 @@ namespace Pulumi.Ovh.Domain
         /// <summary>
         /// Use this data source to retrieve information about a domain zone.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_domain_zone" "rootzone" {
-        ///   name = "mysite.ovh"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rootzone = Ovh.Domain.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "mysite.ovh",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZoneResult> InvokeAsync(GetZoneArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("ovh:Domain/getZone:getZone", args ?? new GetZoneArgs(), options.WithDefaults());
@@ -28,13 +42,27 @@ namespace Pulumi.Ovh.Domain
         /// <summary>
         /// Use this data source to retrieve information about a domain zone.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_domain_zone" "rootzone" {
-        ///   name = "mysite.ovh"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rootzone = Ovh.Domain.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "mysite.ovh",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("ovh:Domain/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());

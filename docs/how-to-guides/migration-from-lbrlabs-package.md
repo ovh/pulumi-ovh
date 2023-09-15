@@ -87,3 +87,34 @@ Your project has now been updated to use the new SDK. When running `pulumi previ
 you should see no changes to your OVH resources reported.
 
 If you do encounter something unexpected, please file an issue in [the Github repository](https://github.com/ovh/pulumi-ovh/issues).
+
+## Provider configuration
+
+The LbrLabs OVH package marked the consumer key as a Pulumi secret. This was incorrect. This OVH package has it marked
+as a regular configuration item, but marks the application secret correctly as a Pulumi secret.
+
+If you have an existing setup where the provider configuration was passed using stack configuration, you have to
+change the stack configuration. Make sure you have valid credentials at hand. Then run the following commands:
+
+```sh
+pulumi config rm ovh:consumerKey
+pulumi config set ovh:consumerKey <your-consumer-key>
+```
+
+The consumer key is removed from the stack config as the old encrypted value, and re-added as a non-encrypted value.
+
+```sh
+pulumi config rm ovh:applicationSecret
+pulumi config set ovh:applicationSecret --secret
+value: <paste-your-application-secret>
+```
+
+The application secret was unencrypted before. This means that the value could have been save in Pulumi state unencrypted.
+By removing it from config and re-adding it as a Pulumi secret config value, Pulumi can now track the value wherever it
+is used and it will never be saved in clear text.
+
+Because the application secret was processed unencrypted before by the LbrLabs OVH package,
+it is adviced to rotate your application credentials and add the new set as an encrypted value.
+In this case, it is possible that Pulumi reports a change to the state, without any clear change to a resource.
+The clear text value is replaced by the encrypted value. Please accept this Pulumi update to increase
+the security posture of your setup.

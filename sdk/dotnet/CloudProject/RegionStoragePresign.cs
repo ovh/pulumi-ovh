@@ -15,6 +15,30 @@ namespace Pulumi.Ovh.CloudProject
     /// &gt; __NOTE__ This resource is only compatible with the `High Performance - S3` solution for object storage.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var presignedUrlRegionStoragePresign = new Ovh.CloudProject.RegionStoragePresign("presignedUrlRegionStoragePresign", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxx",
+    ///         RegionName = "GRA",
+    ///         Expire = 3600,
+    ///         Method = "GET",
+    ///         Object = "an-object-in-the-bucket",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["presignedUrl"] = presignedUrlRegionStoragePresign.Url,
+    ///     };
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/regionStoragePresign:RegionStoragePresign")]
     public partial class RegionStoragePresign : global::Pulumi.CustomResource

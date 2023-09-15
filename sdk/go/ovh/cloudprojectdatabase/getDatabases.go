@@ -17,6 +17,32 @@ import (
 // ## Example Usage
 //
 // To get the list of database clusters service for a given engine:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dbs, err := CloudProjectDatabase.GetDatabases(ctx, &cloudprojectdatabase.GetDatabasesArgs{
+//				ServiceName: "XXXXXX",
+//				Engine:      "YYYY",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("clusterIds", dbs.ClusterIds)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabasesResult

@@ -153,6 +153,15 @@ def get_capabilities_container_filter(plan_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    capability = ovh.CloudProject.get_capabilities_container_filter(plan_name="SMALL",
+        region="GRA",
+        service_name="XXXXXX")
+    ```
+
 
     :param str plan_name: The plan name. It can be 'SMALL', 'MEDIUM' or 'LARGE'.
     :param str region: The region name
@@ -188,6 +197,15 @@ def get_capabilities_container_filter_output(plan_name: Optional[pulumi.Input[st
     Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    capability = ovh.CloudProject.get_capabilities_container_filter(plan_name="SMALL",
+        region="GRA",
+        service_name="XXXXXX")
+    ```
 
 
     :param str plan_name: The plan name. It can be 'SMALL', 'MEDIUM' or 'LARGE'.

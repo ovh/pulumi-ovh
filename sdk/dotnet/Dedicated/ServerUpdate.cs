@@ -11,6 +11,32 @@ namespace Pulumi.Ovh.Dedicated
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rescue = Ovh.Dedicated.GetServerBoots.Invoke(new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///         BootType = "rescue",
+    ///         Kernel = "rescue64-pro",
+    ///     });
+    /// 
+    ///     var server = new Ovh.Dedicated.ServerUpdate("server", new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///         BootId = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.Results[0]),
+    ///         Monitoring = true,
+    ///         State = "ok",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dedicated/serverUpdate:ServerUpdate")]
     public partial class ServerUpdate : global::Pulumi.CustomResource

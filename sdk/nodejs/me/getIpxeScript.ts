@@ -8,6 +8,15 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about an IPXE Script.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const script = ovh.Me.getIpxeScript({
+ *     name: "myscript",
+ * });
+ * ```
  */
 export function getIpxeScript(args: GetIpxeScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetIpxeScriptResult> {
 
@@ -48,6 +57,15 @@ export interface GetIpxeScriptResult {
  * Use this data source to retrieve information about an IPXE Script.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const script = ovh.Me.getIpxeScript({
+ *     name: "myscript",
+ * });
+ * ```
  */
 export function getIpxeScriptOutput(args: GetIpxeScriptOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpxeScriptResult> {
     return pulumi.output(args).apply((a: any) => getIpxeScript(a, opts))

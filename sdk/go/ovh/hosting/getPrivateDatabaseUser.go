@@ -15,6 +15,31 @@ import (
 // Use this data source to retrieve information about an hosting privatedatabase user.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Hosting"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Hosting.GetPrivateDatabaseUser(ctx, &hosting.GetPrivateDatabaseUserArgs{
+//				ServiceName: "XXXXXX",
+//				UserName:    "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPrivateDatabaseUser(ctx *pulumi.Context, args *LookupPrivateDatabaseUserArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDatabaseUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateDatabaseUserResult

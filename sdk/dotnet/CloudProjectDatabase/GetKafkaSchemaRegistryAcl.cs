@@ -14,19 +14,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_kafka_schemaregistryacl" "schemaRegistryAcl" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   id            = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "acl_permission" {
-        ///   value = data.ovh_cloud_project_database_kafka_schemaregistryacl.schemaRegistryAcl.permission
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var schemaRegistryAcl = Ovh.CloudProjectDatabase.GetKafkaSchemaRegistryAcl.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Id = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["aclPermission"] = schemaRegistryAcl.Apply(getKafkaSchemaRegistryAclResult =&gt; getKafkaSchemaRegistryAclResult.Permission),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaSchemaRegistryAclResult> InvokeAsync(GetKafkaSchemaRegistryAclArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaRegistryAclResult>("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args ?? new GetKafkaSchemaRegistryAclArgs(), options.WithDefaults());
@@ -34,19 +48,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_kafka_schemaregistryacl" "schemaRegistryAcl" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   id            = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "acl_permission" {
-        ///   value = data.ovh_cloud_project_database_kafka_schemaregistryacl.schemaRegistryAcl.permission
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var schemaRegistryAcl = Ovh.CloudProjectDatabase.GetKafkaSchemaRegistryAcl.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Id = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["aclPermission"] = schemaRegistryAcl.Apply(getKafkaSchemaRegistryAclResult =&gt; getKafkaSchemaRegistryAclResult.Permission),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaSchemaRegistryAclResult> Invoke(GetKafkaSchemaRegistryAclInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaRegistryAclResult>("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args ?? new GetKafkaSchemaRegistryAclInvokeArgs(), options.WithDefaults());

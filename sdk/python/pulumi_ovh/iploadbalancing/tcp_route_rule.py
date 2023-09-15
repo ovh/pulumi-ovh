@@ -298,9 +298,26 @@ class TcpRouteRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
 
-        TCP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+        reject = ovh.ip_load_balancing.TcpRoute("reject",
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            weight=1,
+            frontend_id=11111,
+            action=ovh.ip_load_balancing.TcpRouteActionArgs(
+                type="reject",
+            ))
+        examplerule = ovh.ip_load_balancing.TcpRouteRule("examplerule",
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            route_id=reject.id,
+            display_name="Match example.com host",
+            field="sni",
+            match="is",
+            negate=False,
+            pattern="example.com")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -324,9 +341,26 @@ class TcpRouteRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
 
-        TCP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+        reject = ovh.ip_load_balancing.TcpRoute("reject",
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            weight=1,
+            frontend_id=11111,
+            action=ovh.ip_load_balancing.TcpRouteActionArgs(
+                type="reject",
+            ))
+        examplerule = ovh.ip_load_balancing.TcpRouteRule("examplerule",
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            route_id=reject.id,
+            display_name="Match example.com host",
+            field="sni",
+            match="is",
+            negate=False,
+            pattern="example.com")
+        ```
 
         :param str resource_name: The name of the resource.
         :param TcpRouteRuleInitArgs args: The arguments to use to populate this resource's properties.

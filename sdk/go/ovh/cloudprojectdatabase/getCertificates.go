@@ -15,6 +15,33 @@ import (
 // Use this data source to get information about certificates of a cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			certificates, err := CloudProjectDatabase.GetCertificates(ctx, &cloudprojectdatabase.GetCertificatesArgs{
+//				ServiceName: "XXX",
+//				Engine:      "YYY",
+//				ClusterId:   "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("certificatesCa", certificates.Ca)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCertificatesResult

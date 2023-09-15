@@ -13,6 +13,58 @@ namespace Pulumi.Ovh.Dbaas
     /// Creates a dbaas logs input.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var logstash = Ovh.Dbaas.GetLogsInputEngine.Invoke(new()
+    ///     {
+    ///         Name = "logstash",
+    ///         Version = "7.x",
+    ///     });
+    /// 
+    ///     var stream = new Ovh.Dbaas.LogsOutputGraylogStream("stream", new()
+    ///     {
+    ///         ServiceName = "....",
+    ///         Title = "my stream",
+    ///         Description = "my graylog stream",
+    ///     });
+    /// 
+    ///     var input = new Ovh.Dbaas.LogsInput("input", new()
+    ///     {
+    ///         ServiceName = stream.ServiceName,
+    ///         Description = stream.Description,
+    ///         Title = stream.Title,
+    ///         EngineId = logstash.Apply(getLogsInputEngineResult =&gt; getLogsInputEngineResult.Id),
+    ///         StreamId = stream.Id,
+    ///         AllowedNetworks = new[]
+    ///         {
+    ///             "10.0.0.0/16",
+    ///         },
+    ///         ExposedPort = "6154",
+    ///         NbInstance = 2,
+    ///         Configuration = new Ovh.Dbaas.Inputs.LogsInputConfigurationArgs
+    ///         {
+    ///             Logstash = new Ovh.Dbaas.Inputs.LogsInputConfigurationLogstashArgs
+    ///             {
+    ///                 InputSection = @"  beats {
+    ///     port =&gt; 6514
+    ///     ssl =&gt; true
+    ///     ssl_certificate =&gt; ""/etc/ssl/private/server.crt""
+    ///     ssl_key =&gt; ""/etc/ssl/private/server.key""
+    ///   }
+    /// ",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dbaas/logsInput:LogsInput")]
     public partial class LogsInput : global::Pulumi.CustomResource

@@ -12,9 +12,34 @@ namespace Pulumi.Ovh.Domain
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Add a record to a sub-domain
+    ///     var test = new Ovh.Domain.ZoneRecord("test", new()
+    ///     {
+    ///         Fieldtype = "A",
+    ///         Subdomain = "test",
+    ///         Target = "0.0.0.0",
+    ///         Ttl = 3600,
+    ///         Zone = "testdemo.ovh",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Domain/zoneRecord:ZoneRecord")]
     public partial class ZoneRecord : global::Pulumi.CustomResource

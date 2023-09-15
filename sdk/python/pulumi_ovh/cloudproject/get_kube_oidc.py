@@ -172,6 +172,15 @@ def get_kube_oidc(client_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    oidc = ovh.CloudProject.get_kube_oidc(service_name="XXXXXX",
+        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+    pulumi.export("oidc-val", oidc.client_id)
+    ```
+
 
     :param str client_id: The OIDC client ID.
     :param str issuer_url: The OIDC issuer url.
@@ -226,6 +235,15 @@ def get_kube_oidc_output(client_id: Optional[pulumi.Input[Optional[str]]] = None
     Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    oidc = ovh.CloudProject.get_kube_oidc(service_name="XXXXXX",
+        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+    pulumi.export("oidc-val", oidc.client_id)
+    ```
 
 
     :param str client_id: The OIDC client ID.

@@ -8,8 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about capabilities of a public cloud project.
- *
- * ## Example Usage
  */
 export function getCapabilities(args: GetCapabilitiesArgs, opts?: pulumi.InvokeOptions): Promise<GetCapabilitiesResult> {
 
@@ -61,8 +59,6 @@ export interface GetCapabilitiesResult {
 }
 /**
  * Use this data source to get information about capabilities of a public cloud project.
- *
- * ## Example Usage
  */
 export function getCapabilitiesOutput(args: GetCapabilitiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapabilitiesResult> {
     return pulumi.output(args).apply((a: any) => getCapabilities(a, opts))

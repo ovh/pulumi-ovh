@@ -14,15 +14,28 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve information about a DBaas logs output graylog stream.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// data "ovh_dbaas_logs_output_graylog_stream" "stream" {
-        ///   service_name = "ldp-xx-xxxxx"
-        ///   title        = "my stream"
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var stream = Ovh.Dbaas.GetLogsOutputGraylogStream.Invoke(new()
+        ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Title = "my stream",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLogsOutputGraylogStreamResult> InvokeAsync(GetLogsOutputGraylogStreamArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogsOutputGraylogStreamResult>("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args ?? new GetLogsOutputGraylogStreamArgs(), options.WithDefaults());
@@ -30,15 +43,28 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve information about a DBaas logs output graylog stream.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// data "ovh_dbaas_logs_output_graylog_stream" "stream" {
-        ///   service_name = "ldp-xx-xxxxx"
-        ///   title        = "my stream"
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var stream = Ovh.Dbaas.GetLogsOutputGraylogStream.Invoke(new()
+        ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Title = "my stream",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetLogsOutputGraylogStreamResult> Invoke(GetLogsOutputGraylogStreamInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsOutputGraylogStreamResult>("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args ?? new GetLogsOutputGraylogStreamInvokeArgs(), options.WithDefaults());

@@ -88,6 +88,15 @@ def get_kube_ip_restrictions(kube_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    iprestrictions = ovh.CloudProject.get_kube_ip_restrictions(service_name="XXXXXX",
+        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+    pulumi.export("ips", iprestrictions.ips)
+    ```
+
 
     :param str kube_id: The id of the managed kubernetes cluster.
     :param str service_name: The id of the public cloud project. If omitted,
@@ -114,6 +123,15 @@ def get_kube_ip_restrictions_output(kube_id: Optional[pulumi.Input[str]] = None,
     Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    iprestrictions = ovh.CloudProject.get_kube_ip_restrictions(service_name="XXXXXX",
+        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+    pulumi.export("ips", iprestrictions.ips)
+    ```
 
 
     :param str kube_id: The id of the managed kubernetes cluster.

@@ -15,6 +15,32 @@ import (
 // Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			oidc, err := CloudProject.GetKubeOidc(ctx, &cloudproject.GetKubeOidcArgs{
+//				ServiceName: "XXXXXX",
+//				KubeId:      "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("oidc-val", oidc.ClientId)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupKubeOidc(ctx *pulumi.Context, args *LookupKubeOidcArgs, opts ...pulumi.InvokeOption) (*LookupKubeOidcResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubeOidcResult

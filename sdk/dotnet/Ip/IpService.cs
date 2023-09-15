@@ -11,6 +11,52 @@ namespace Pulumi.Ovh.Ip
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myaccount = Ovh.Me.GetMe.Invoke();
+    /// 
+    ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+    ///     {
+    ///         OvhSubsidiary = "fr",
+    ///     });
+    /// 
+    ///     var ipblockCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     {
+    ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+    ///         PriceCapacity = "renew",
+    ///         Product = "ip",
+    ///         PlanCode = "ip-v4-s30-ripe",
+    ///     });
+    /// 
+    ///     var ipblockIpService = new Ovh.Ip.IpService("ipblockIpService", new()
+    ///     {
+    ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
+    ///         Description = "my ip block",
+    ///         Plan = new Ovh.Ip.Inputs.IpServicePlanArgs
+    ///         {
+    ///             Duration = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Configurations = new[]
+    ///             {
+    ///                 new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "country",
+    ///                     Value = "FR",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Ip/ipService:IpService")]
     public partial class IpService : global::Pulumi.CustomResource

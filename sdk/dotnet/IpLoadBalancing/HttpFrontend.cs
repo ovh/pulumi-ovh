@@ -14,11 +14,79 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
+    ///     {
+    ///         ServiceName = "ip-1.2.3.4",
+    ///         State = "ok",
+    ///     });
+    /// 
+    ///     var farm80 = new Ovh.IpLoadBalancing.HttpFarm("farm80", new()
+    ///     {
+    ///         DisplayName = "ingress-8080-gra",
+    ///         Port = 80,
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         Zone = "all",
+    ///     });
+    /// 
+    ///     var testfrontend = new Ovh.IpLoadBalancing.HttpFrontend("testfrontend", new()
+    ///     {
+    ///         DefaultFarmId = farm80.Id,
+    ///         DisplayName = "ingress-8080-gra",
+    ///         Port = "80,443",
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         Zone = "all",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### With HTTP Header
     /// 
-    /// ## Import
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
     /// 
-    /// HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
+    ///     {
+    ///         ServiceName = "ip-1.2.3.4",
+    ///         State = "ok",
+    ///     });
+    /// 
+    ///     var farm80 = new Ovh.IpLoadBalancing.HttpFarm("farm80", new()
+    ///     {
+    ///         DisplayName = "ingress-8080-gra",
+    ///         Port = 80,
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         Zone = "all",
+    ///     });
+    /// 
+    ///     var testfrontend = new Ovh.IpLoadBalancing.HttpFrontend("testfrontend", new()
+    ///     {
+    ///         DefaultFarmId = farm80.Id,
+    ///         DisplayName = "ingress-8080-gra",
+    ///         HttpHeaders = new[]
+    ///         {
+    ///             "X-Ip-Header %%ci",
+    ///             "X-Port-Header %%cp",
+    ///         },
+    ///         Port = "80,443",
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         Zone = "all",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/httpFrontend:HttpFrontend")]
     public partial class HttpFrontend : global::Pulumi.CustomResource

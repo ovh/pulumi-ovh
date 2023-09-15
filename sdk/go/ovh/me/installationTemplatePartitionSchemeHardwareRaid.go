@@ -17,9 +17,61 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mytemplate, err := Me.NewInstallationTemplate(ctx, "mytemplate", &Me.InstallationTemplateArgs{
+//				BaseTemplateName: pulumi.String("centos7_64"),
+//				TemplateName:     pulumi.String("mytemplate"),
+//				DefaultLanguage:  pulumi.String("fr"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			scheme, err := Me.NewInstallationTemplatePartitionScheme(ctx, "scheme", &Me.InstallationTemplatePartitionSchemeArgs{
+//				TemplateName: mytemplate.TemplateName,
+//				Priority:     pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Me.NewInstallationTemplatePartitionSchemeHardwareRaid(ctx, "group1", &Me.InstallationTemplatePartitionSchemeHardwareRaidArgs{
+//				TemplateName: scheme.TemplateName,
+//				SchemeName:   scheme.Name,
+//				Disks: pulumi.StringArray{
+//					pulumi.String("[c1:d1,c1:d2,c1:d3]"),
+//					pulumi.String("[c1:d10,c1:d20,c1:d30]"),
+//				},
+//				Mode: pulumi.String("raid50"),
+//				Step: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name <break>```<break><break>
+// The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name
+//
+// ```
 type InstallationTemplatePartitionSchemeHardwareRaid struct {
 	pulumi.CustomResourceState
 

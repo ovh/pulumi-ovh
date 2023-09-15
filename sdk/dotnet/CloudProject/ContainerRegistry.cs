@@ -14,6 +14,31 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var regcap = Ovh.CloudProject.GetCapabilitiesContainerFilter.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXXXXX",
+    ///         PlanName = "SMALL",
+    ///         Region = "GRA",
+    ///     });
+    /// 
+    ///     var my_registry = new Ovh.CloudProject.ContainerRegistry("my-registry", new()
+    ///     {
+    ///         ServiceName = regcap.Apply(getCapabilitiesContainerFilterResult =&gt; getCapabilitiesContainerFilterResult.ServiceName),
+    ///         PlanId = regcap.Apply(getCapabilitiesContainerFilterResult =&gt; getCapabilitiesContainerFilterResult.Id),
+    ///         Region = regcap.Apply(getCapabilitiesContainerFilterResult =&gt; getCapabilitiesContainerFilterResult.Region),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// &gt; __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
     /// </summary>
     [OvhResourceType("ovh:CloudProject/containerRegistry:ContainerRegistry")]

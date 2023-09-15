@@ -14,13 +14,278 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// Minimum settings for each engine (region choice is up to the user):
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cassandradb = new Ovh.CloudProject.Database("cassandradb", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Description = "my-first-cassandra",
+    ///         Engine = "cassandra",
+    ///         Version = "4.0",
+    ///         Plan = "essential",
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "BHS",
+    ///             },
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "BHS",
+    ///             },
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "BHS",
+    ///             },
+    ///         },
+    ///         Flavor = "db1-4",
+    ///     });
+    /// 
+    ///     var kafkadb = new Ovh.CloudProject.Database("kafkadb", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Description = "my-first-kafka",
+    ///         Engine = "kafka",
+    ///         Version = "3.4",
+    ///         Plan = "business",
+    ///         KafkaRestApi = true,
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "DE",
+    ///             },
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "DE",
+    ///             },
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "DE",
+    ///             },
+    ///         },
+    ///         Flavor = "db1-4",
+    ///     });
+    /// 
+    ///     var m3db = new Ovh.CloudProject.Database("m3db", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Description = "my-first-m3db",
+    ///         Engine = "m3db",
+    ///         Version = "1.2",
+    ///         Plan = "essential",
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "BHS",
+    ///             },
+    ///         },
+    ///         Flavor = "db1-7",
+    ///     });
+    /// 
+    ///     var mongodb = new Ovh.CloudProject.Database("mongodb", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Description = "my-first-mongodb",
+    ///         Engine = "mongodb",
+    ///         Version = "5.0",
+    ///         Plan = "essential",
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "GRA",
+    ///             },
+    ///         },
+    ///         Flavor = "db1-2",
+    ///     });
+    /// 
+    ///     var mysqldb = new Ovh.CloudProject.Database("mysqldb", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Description = "my-first-mysql",
+    ///         Engine = "mysql",
+    ///         Version = "8",
+    ///         Plan = "essential",
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "SBG",
+    ///             },
+    ///         },
+    ///         Flavor = "db1-4",
+    ///         AdvancedConfiguration = 
+    ///         {
+    ///             { "mysql.sql_mode", "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES" },
+    ///             { "mysql.sql_require_primary_key", "true" },
+    ///         },
+    ///     });
+    /// 
+    ///     var opensearchdb = new Ovh.CloudProject.Database("opensearchdb", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Description = "my-first-opensearch",
+    ///         Engine = "opensearch",
+    ///         Version = "1",
+    ///         Plan = "essential",
+    ///         OpensearchAclsEnabled = true,
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "UK",
+    ///             },
+    ///         },
+    ///         Flavor = "db1-4",
+    ///     });
+    /// 
+    ///     var pgsqldb = new Ovh.CloudProject.Database("pgsqldb", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Description = "my-first-postgresql",
+    ///         Engine = "postgresql",
+    ///         Version = "14",
+    ///         Plan = "essential",
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "WAW",
+    ///             },
+    ///         },
+    ///         Flavor = "db1-4",
+    ///     });
+    /// 
+    ///     var redisdb = new Ovh.CloudProject.Database("redisdb", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Description = "my-first-redis",
+    ///         Engine = "redis",
+    ///         Version = "6.2",
+    ///         Plan = "essential",
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "BHS",
+    ///             },
+    ///         },
+    ///         Flavor = "db1-4",
+    ///     });
+    /// 
+    ///     var grafana = new Ovh.CloudProject.Database("grafana", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Description = "my-first-grafana",
+    ///         Engine = "grafana",
+    ///         Version = "9.1",
+    ///         Plan = "essential",
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "GRA",
+    ///             },
+    ///         },
+    ///         Flavor = "db1-4",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// To deploy a business PostgreSQL service with two nodes on public network:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var postgresql = new Ovh.CloudProject.Database("postgresql", new()
+    ///     {
+    ///         Description = "my-first-postgresql",
+    ///         Engine = "postgresql",
+    ///         Flavor = "db1-15",
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "GRA",
+    ///             },
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "GRA",
+    ///             },
+    ///         },
+    ///         Plan = "business",
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Version = "14",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// To deploy an enterprise MongoDB service with three nodes on private network:
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mongodb = new Ovh.CloudProject.Database("mongodb", new()
+    ///     {
+    ///         Description = "my-first-mongodb",
+    ///         Engine = "mongodb",
+    ///         Flavor = "db1-30",
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    ///                 Region = "SBG",
+    ///                 SubnetId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    ///             },
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    ///                 Region = "SBG",
+    ///                 SubnetId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    ///             },
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    ///                 Region = "SBG",
+    ///                 SubnetId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    ///             },
+    ///         },
+    ///         Plan = "enterprise",
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Version = "5.0",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/database:Database")]
     public partial class Database : global::Pulumi.CustomResource

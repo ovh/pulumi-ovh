@@ -17,9 +17,52 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := CloudProject.NewContainerRegistryOIDC(ctx, "my-oidc", &CloudProject.ContainerRegistryOIDCArgs{
+//				ServiceName:      pulumi.String("XXXXXX"),
+//				RegistryId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"),
+//				OidcName:         pulumi.String("my-oidc-provider"),
+//				OidcEndpoint:     pulumi.String("https://xxxx.yyy.com"),
+//				OidcClientId:     pulumi.String("xxx"),
+//				OidcClientSecret: pulumi.String("xxx"),
+//				OidcScope:        pulumi.String("openid,profile,email,offline_access"),
+//				OidcGroupsClaim:  pulumi.String("groups"),
+//				OidcAdminGroup:   pulumi.String("harbor-admin"),
+//				OidcVerifyCert:   pulumi.Bool(true),
+//				OidcAutoOnboard:  pulumi.Bool(true),
+//				OidcUserClaim:    pulumi.String("preferred_username"),
+//				DeleteUsers:      pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("oidcClientSecret", my_oidc.OidcClientSecret)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id <break>```<break><break>
+// OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
+//
+// ```
 type ContainerRegistryOIDC struct {
 	pulumi.CustomResourceState
 

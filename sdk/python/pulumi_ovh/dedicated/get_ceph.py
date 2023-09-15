@@ -178,6 +178,13 @@ def get_ceph(ceph_version: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_ceph = ovh.Dedicated.get_ceph(service_name="XXXXXX")
+    ```
+
 
     :param str ceph_version: CEPH cluster version
     :param str service_name: The service name of the dedicated CEPH cluster.
@@ -213,6 +220,13 @@ def get_ceph_output(ceph_version: Optional[pulumi.Input[Optional[str]]] = None,
     Use this data source to retrieve information about a dedicated CEPH.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_ceph = ovh.Dedicated.get_ceph(service_name="XXXXXX")
+    ```
 
 
     :param str ceph_version: CEPH cluster version

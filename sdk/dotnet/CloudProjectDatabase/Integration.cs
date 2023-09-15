@@ -20,9 +20,48 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// Push PostgreSQL logs in an OpenSearch DB:
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dbpostgresql = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXXX",
+    ///         Engine = "postgresql",
+    ///         Id = "ZZZZ",
+    ///     });
+    /// 
+    ///     var dbopensearch = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXXX",
+    ///         Engine = "opensearch",
+    ///         Id = "ZZZZ",
+    ///     });
+    /// 
+    ///     var integration = new Ovh.CloudProjectDatabase.Integration("integration", new()
+    ///     {
+    ///         ServiceName = dbpostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         Engine = dbpostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.Engine),
+    ///         ClusterId = dbpostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         SourceServiceId = dbpostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         DestinationServiceId = dbopensearch.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         Type = "opensearchLogs",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource

@@ -8,8 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to list the IAM action associated with a resource type.
- *
- * ## Example Usage
  */
 export function getReferenceActions(args: GetReferenceActionsArgs, opts?: pulumi.InvokeOptions): Promise<GetReferenceActionsResult> {
 
@@ -45,8 +43,6 @@ export interface GetReferenceActionsResult {
 }
 /**
  * Use this data source to list the IAM action associated with a resource type.
- *
- * ## Example Usage
  */
 export function getReferenceActionsOutput(args: GetReferenceActionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceActionsResult> {
     return pulumi.output(args).apply((a: any) => getReferenceActions(a, opts))

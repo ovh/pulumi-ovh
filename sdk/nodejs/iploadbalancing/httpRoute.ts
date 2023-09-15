@@ -13,9 +13,21 @@ import * as utilities from "../utilities";
  *
  * Route which redirect all url to https.
  *
- * ## Import
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
  *
- * HTTP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
+ * const httpsredirect = new ovh.iploadbalancing.HttpRoute("httpsredirect", {
+ *     action: {
+ *         status: 302,
+ *         target: "https://${host}${path}${arguments}",
+ *         type: "redirect",
+ *     },
+ *     displayName: "Redirect to HTTPS",
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ *     weight: 1,
+ * });
+ * ```
  */
 export class HttpRoute extends pulumi.CustomResource {
     /**

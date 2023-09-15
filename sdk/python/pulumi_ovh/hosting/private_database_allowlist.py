@@ -199,9 +199,24 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        ip = ovh.hosting.PrivateDatabaseAllowlist("ip",
+            ip="1.2.3.4",
+            service=True,
+            service_name="XXXXXX",
+            sftp=True)
+        ```
+
         ## Import
 
         OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
+
+        ```sh
+         $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -222,9 +237,24 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        ip = ovh.hosting.PrivateDatabaseAllowlist("ip",
+            ip="1.2.3.4",
+            service=True,
+            service_name="XXXXXX",
+            sftp=True)
+        ```
+
         ## Import
 
         OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
+
+        ```sh
+         $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
+        ```
 
         :param str resource_name: The name of the resource.
         :param PrivateDatabaseAllowlistArgs args: The arguments to use to populate this resource's properties.

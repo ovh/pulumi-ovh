@@ -17,9 +17,49 @@ import (
 //
 // ## Example Usage
 //
-// ## Import
+// ```go
+// package main
 //
-// TCP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			lb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
+//				State:       pulumi.StringRef("ok"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			farm80, err := IpLoadBalancing.NewTcpFarm(ctx, "farm80", &IpLoadBalancing.TcpFarmArgs{
+//				DisplayName: pulumi.String("ingress-8080-gra"),
+//				Port:        pulumi.Int(80),
+//				ServiceName: *pulumi.String(lb.ServiceName),
+//				Zone:        pulumi.String("all"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = IpLoadBalancing.NewTcpFrontend(ctx, "testfrontend", &IpLoadBalancing.TcpFrontendArgs{
+//				DefaultFarmId: farm80.ID(),
+//				DisplayName:   pulumi.String("ingress-8080-gra"),
+//				Port:          pulumi.String("80,443"),
+//				ServiceName:   *pulumi.String(lb.ServiceName),
+//				Zone:          pulumi.String("all"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type TcpFrontend struct {
 	pulumi.CustomResourceState
 

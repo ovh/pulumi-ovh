@@ -14,18 +14,32 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_kube" "my_kube_cluster" {
-        ///   service_name = "XXXXXX"
-        ///   kube_id      = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "version" {
-        ///   value = data.ovh_cloud_project_kube.my_kube_cluster.version
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myKubeCluster = Ovh.CloudProject.GetKube.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["version"] = myKubeCluster.Apply(getKubeResult =&gt; getKubeResult.Version),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubeResult> InvokeAsync(GetKubeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubeResult>("ovh:CloudProject/getKube:getKube", args ?? new GetKubeArgs(), options.WithDefaults());
@@ -33,18 +47,32 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_kube" "my_kube_cluster" {
-        ///   service_name = "XXXXXX"
-        ///   kube_id      = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "version" {
-        ///   value = data.ovh_cloud_project_kube.my_kube_cluster.version
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myKubeCluster = Ovh.CloudProject.GetKube.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["version"] = myKubeCluster.Apply(getKubeResult =&gt; getKubeResult.Version),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubeResult> Invoke(GetKubeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeResult>("ovh:CloudProject/getKube:getKube", args ?? new GetKubeInvokeArgs(), options.WithDefaults());

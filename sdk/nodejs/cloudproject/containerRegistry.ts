@@ -11,6 +11,23 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const regcap = ovh.CloudProject.getCapabilitiesContainerFilter({
+ *     serviceName: "XXXXXX",
+ *     planName: "SMALL",
+ *     region: "GRA",
+ * });
+ * const my_registry = new ovh.cloudproject.ContainerRegistry("my-registry", {
+ *     serviceName: regcap.then(regcap => regcap.serviceName),
+ *     planId: regcap.then(regcap => regcap.id),
+ *     region: regcap.then(regcap => regcap.region),
+ * });
+ * ```
+ *
  * > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
  */
 export class ContainerRegistry extends pulumi.CustomResource {

@@ -14,9 +14,31 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var user = new Ovh.Hosting.PrivateDatabaseUser("user", new()
+    ///     {
+    ///         Password = "XXXXXX",
+    ///         ServiceName = "XXXXXX",
+    ///         UserName = "XXXXXX",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser")]
     public partial class PrivateDatabaseUser : global::Pulumi.CustomResource

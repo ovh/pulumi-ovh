@@ -12,7 +12,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// <summary>
     /// ## Import
     /// 
-    /// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProjectDatabase/user:User my_user service_name/engine/cluster_id/id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProjectDatabase/user:User my_user service_name/engine/cluster_id/id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/user:User")]
     public partial class User : global::Pulumi.CustomResource

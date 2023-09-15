@@ -14,9 +14,48 @@ namespace Pulumi.Ovh.Me
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mytemplate = new Ovh.Me.InstallationTemplate("mytemplate", new()
+    ///     {
+    ///         BaseTemplateName = "centos7_64",
+    ///         TemplateName = "mytemplate",
+    ///         DefaultLanguage = "fr",
+    ///     });
+    /// 
+    ///     var scheme = new Ovh.Me.InstallationTemplatePartitionScheme("scheme", new()
+    ///     {
+    ///         TemplateName = mytemplate.TemplateName,
+    ///         Priority = 1,
+    ///     });
+    /// 
+    ///     var root = new Ovh.Me.InstallationTemplatePartitionSchemePartition("root", new()
+    ///     {
+    ///         TemplateName = scheme.TemplateName,
+    ///         SchemeName = scheme.Name,
+    ///         Mountpoint = "/",
+    ///         Filesystem = "ext4",
+    ///         Size = 400,
+    ///         Order = 1,
+    ///         Type = "primary",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition")]
     public partial class InstallationTemplatePartitionSchemePartition : global::Pulumi.CustomResource

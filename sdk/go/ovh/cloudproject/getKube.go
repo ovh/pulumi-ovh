@@ -15,6 +15,32 @@ import (
 // Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myKubeCluster, err := CloudProject.GetKube(ctx, &cloudproject.GetKubeArgs{
+//				ServiceName: "XXXXXX",
+//				KubeId:      "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("version", myKubeCluster.Version)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupKube(ctx *pulumi.Context, args *LookupKubeArgs, opts ...pulumi.InvokeOption) (*LookupKubeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubeResult

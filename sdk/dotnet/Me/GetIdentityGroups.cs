@@ -14,11 +14,24 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve the list of the account's identity groups
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_identity_groups" "groups" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = Ovh.Me.GetIdentityGroups.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIdentityGroupsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIdentityGroupsResult>("ovh:Me/getIdentityGroups:getIdentityGroups", InvokeArgs.Empty, options.WithDefaults());
@@ -26,11 +39,24 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve the list of the account's identity groups
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_identity_groups" "groups" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = Ovh.Me.GetIdentityGroups.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIdentityGroupsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityGroupsResult>("ovh:Me/getIdentityGroups:getIdentityGroups", InvokeArgs.Empty, options.WithDefaults());

@@ -13,6 +13,26 @@ namespace Pulumi.Ovh.Domain
     /// Provides a OVHcloud domain zone redirection.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Add a redirection to a sub-domain
+    ///     var test = new Ovh.Domain.ZoneRedirection("test", new()
+    ///     {
+    ///         Subdomain = "test",
+    ///         Target = "http://www.ovh",
+    ///         Type = "visiblePermanent",
+    ///         Zone = "testdemo.ovh",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Domain/zoneRedirection:ZoneRedirection")]
     public partial class ZoneRedirection : global::Pulumi.CustomResource

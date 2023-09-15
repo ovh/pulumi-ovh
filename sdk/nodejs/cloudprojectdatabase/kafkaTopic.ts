@@ -9,9 +9,34 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const kafka = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXX",
+ *     engine: "kafka",
+ *     id: "ZZZ",
+ * });
+ * const topic = new ovh.cloudprojectdatabase.KafkaTopic("topic", {
+ *     serviceName: kafka.then(kafka => kafka.serviceName),
+ *     clusterId: kafka.then(kafka => kafka.id),
+ *     minInsyncReplicas: 1,
+ *     partitions: 3,
+ *     replication: 2,
+ *     retentionBytes: 4,
+ *     retentionHours: 5,
+ * });
+ * ```
+ *
  * ## Import
  *
- * OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id <break>```<break><break>
+ * OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
+ * ```
  */
 export class KafkaTopic extends pulumi.CustomResource {
     /**

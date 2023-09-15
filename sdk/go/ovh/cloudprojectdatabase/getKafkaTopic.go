@@ -15,6 +15,33 @@ import (
 // Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			topic, err := CloudProjectDatabase.GetKafkaTopic(ctx, &cloudprojectdatabase.GetKafkaTopicArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				Id:          "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("topicName", topic.Name)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupKafkaTopic(ctx *pulumi.Context, args *LookupKafkaTopicArgs, opts ...pulumi.InvokeOption) (*LookupKafkaTopicResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaTopicResult

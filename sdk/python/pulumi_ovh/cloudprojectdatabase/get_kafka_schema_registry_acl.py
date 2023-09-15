@@ -113,6 +113,16 @@ def get_kafka_schema_registry_acl(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    schema_registry_acl = ovh.CloudProjectDatabase.get_kafka_schema_registry_acl(service_name="XXX",
+        cluster_id="YYY",
+        id="ZZZ")
+    pulumi.export("aclPermission", schema_registry_acl.permission)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str id: Schema registry ACL ID
@@ -144,6 +154,16 @@ def get_kafka_schema_registry_acl_output(cluster_id: Optional[pulumi.Input[str]]
     Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    schema_registry_acl = ovh.CloudProjectDatabase.get_kafka_schema_registry_acl(service_name="XXX",
+        cluster_id="YYY",
+        id="ZZZ")
+    pulumi.export("aclPermission", schema_registry_acl.permission)
+    ```
 
 
     :param str cluster_id: Cluster ID

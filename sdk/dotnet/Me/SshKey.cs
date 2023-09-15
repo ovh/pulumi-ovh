@@ -13,6 +13,23 @@ namespace Pulumi.Ovh.Me
     /// Creates an SSH Key.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mykey = new Ovh.Me.SshKey("mykey", new()
+    ///     {
+    ///         Key = "ssh-ed25519 AAAAC3...",
+    ///         KeyName = "mykey",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Me/sshKey:SshKey")]
     public partial class SshKey : global::Pulumi.CustomResource

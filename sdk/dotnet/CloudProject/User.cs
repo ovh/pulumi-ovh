@@ -13,6 +13,22 @@ namespace Pulumi.Ovh.CloudProject
     /// Creates a user in a public cloud project.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var user1 = new Ovh.CloudProject.User("user1", new()
+    ///     {
+    ///         ServiceName = "XXX",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/user:User")]
     public partial class User : global::Pulumi.CustomResource

@@ -247,8 +247,6 @@ class VrackNetwork(pulumi.CustomResource):
         """
         Manage a vrack network for your IP Loadbalancing service.
 
-        ## Example Usage
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human readable name for your vrack network
@@ -266,8 +264,6 @@ class VrackNetwork(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manage a vrack network for your IP Loadbalancing service.
-
-        ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param VrackNetworkArgs args: The arguments to use to populate this resource's properties.

@@ -454,6 +454,36 @@ class LoadBalancer(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+        iplb = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="ipLoadbalancing",
+            plan_code="iplb-lb1")
+        bhs = ovh.Order.get_cart_product_options_plan(cart_id=iplb.cart_id,
+            price_capacity=iplb.price_capacity,
+            product=iplb.product,
+            plan_code=iplb.plan_code,
+            options_plan_code="iplb-zone-lb1-rbx")
+        iplb_lb1 = ovh.ip_load_balancing.LoadBalancer("iplb-lb1",
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            display_name="my ip loadbalancing",
+            plan=ovh.ip_load_balancing.LoadBalancerPlanArgs(
+                duration=iplb.selected_prices[0].duration,
+                plan_code=iplb.plan_code,
+                pricing_mode=iplb.selected_prices[0].pricing_mode,
+            ),
+            plan_options=[ovh.ip_load_balancing.LoadBalancerPlanOptionArgs(
+                duration=bhs.selected_prices[0].duration,
+                plan_code=bhs.plan_code,
+                pricing_mode=bhs.selected_prices[0].pricing_mode,
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Set the name displayed in ManagerV6 for your iplb (max 50 chars)
@@ -471,6 +501,36 @@ class LoadBalancer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+        iplb = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="ipLoadbalancing",
+            plan_code="iplb-lb1")
+        bhs = ovh.Order.get_cart_product_options_plan(cart_id=iplb.cart_id,
+            price_capacity=iplb.price_capacity,
+            product=iplb.product,
+            plan_code=iplb.plan_code,
+            options_plan_code="iplb-zone-lb1-rbx")
+        iplb_lb1 = ovh.ip_load_balancing.LoadBalancer("iplb-lb1",
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            display_name="my ip loadbalancing",
+            plan=ovh.ip_load_balancing.LoadBalancerPlanArgs(
+                duration=iplb.selected_prices[0].duration,
+                plan_code=iplb.plan_code,
+                pricing_mode=iplb.selected_prices[0].pricing_mode,
+            ),
+            plan_options=[ovh.ip_load_balancing.LoadBalancerPlanOptionArgs(
+                duration=bhs.selected_prices[0].duration,
+                plan_code=bhs.plan_code,
+                pricing_mode=bhs.selected_prices[0].pricing_mode,
+            )])
+        ```
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.

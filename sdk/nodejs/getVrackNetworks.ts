@@ -8,6 +8,16 @@ import * as utilities from "./utilities";
  * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lbNetworks = ovh.getVrackNetworks({
+ *     serviceName: "XXXXXX",
+ *     subnet: "10.0.0.0/24",
+ * });
+ * ```
  */
 export function getVrackNetworks(args: GetVrackNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetVrackNetworksResult> {
 
@@ -57,6 +67,16 @@ export interface GetVrackNetworksResult {
  * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lbNetworks = ovh.getVrackNetworks({
+ *     serviceName: "XXXXXX",
+ *     subnet: "10.0.0.0/24",
+ * });
+ * ```
  */
 export function getVrackNetworksOutput(args: GetVrackNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVrackNetworksResult> {
     return pulumi.output(args).apply((a: any) => getVrackNetworks(a, opts))

@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * Attaches a failover IP address to a compute instance
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const myfailoverip = new ovh.cloudproject.FailoverIpAttach("myfailoverip", {
+ *     ip: "XXXXXX",
+ *     routedTo: "XXXXXX",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export class FailoverIpAttach extends pulumi.CustomResource {
     /**

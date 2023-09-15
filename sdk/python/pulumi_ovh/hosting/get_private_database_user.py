@@ -95,6 +95,14 @@ def get_private_database_user(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    user = ovh.Hosting.get_private_database_user(service_name="XXXXXX",
+        user_name="XXXXXX")
+    ```
+
 
     :param str service_name: The internal name of your private database
     :param str user_name: User name
@@ -121,6 +129,14 @@ def get_private_database_user_output(service_name: Optional[pulumi.Input[str]] =
     Use this data source to retrieve information about an hosting privatedatabase user.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    user = ovh.Hosting.get_private_database_user(service_name="XXXXXX",
+        user_name="XXXXXX")
+    ```
 
 
     :param str service_name: The internal name of your private database

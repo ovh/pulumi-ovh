@@ -14,11 +14,24 @@ namespace Pulumi.Ovh.Vrack
         /// <summary>
         /// Use this data source to get the list of Vrack IDs available for your OVHcloud account.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data ovh_vracks vracks {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vracks = Ovh.Vrack.GetVracks.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVracksResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVracksResult>("ovh:Vrack/getVracks:getVracks", InvokeArgs.Empty, options.WithDefaults());
@@ -26,11 +39,24 @@ namespace Pulumi.Ovh.Vrack
         /// <summary>
         /// Use this data source to get the list of Vrack IDs available for your OVHcloud account.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data ovh_vracks vracks {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vracks = Ovh.Vrack.GetVracks.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetVracksResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVracksResult>("ovh:Vrack/getVracks:getVracks", InvokeArgs.Empty, options.WithDefaults());

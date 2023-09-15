@@ -15,6 +15,31 @@ import (
 // Use this data source to retrieve information about a DBaas logs output graylog stream.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Dbaas.GetLogsOutputGraylogStream(ctx, &dbaas.GetLogsOutputGraylogStreamArgs{
+//				ServiceName: "ldp-xx-xxxxx",
+//				Title:       "my stream",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupLogsOutputGraylogStream(ctx *pulumi.Context, args *LookupLogsOutputGraylogStreamArgs, opts ...pulumi.InvokeOption) (*LookupLogsOutputGraylogStreamResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogsOutputGraylogStreamResult

@@ -269,6 +269,15 @@ def get_kube(customization_apiservers: Optional[Sequence[pulumi.InputType['GetKu
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_kube_cluster = ovh.CloudProject.get_kube(service_name="XXXXXX",
+        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+    pulumi.export("version", my_kube_cluster.version)
+    ```
+
 
     :param Sequence[pulumi.InputType['GetKubeCustomizationApiserverArgs']] customization_apiservers: Kubernetes API server customization
     :param pulumi.InputType['GetKubeCustomizationKubeProxyArgs'] customization_kube_proxy: Kubernetes kube-proxy customization
@@ -332,6 +341,15 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
     Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_kube_cluster = ovh.CloudProject.get_kube(service_name="XXXXXX",
+        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+    pulumi.export("version", my_kube_cluster.version)
+    ```
 
 
     :param Sequence[pulumi.InputType['GetKubeCustomizationApiserverArgs']] customization_apiservers: Kubernetes API server customization

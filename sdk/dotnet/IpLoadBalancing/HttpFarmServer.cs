@@ -14,9 +14,44 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// ## Example Usage
     /// 
-    /// ## Import
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
     /// 
-    /// HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
+    ///     {
+    ///         ServiceName = "ip-1.2.3.4",
+    ///         State = "ok",
+    ///     });
+    /// 
+    ///     var farmname = new Ovh.IpLoadBalancing.HttpFarm("farmname", new()
+    ///     {
+    ///         Port = 8080,
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         Zone = "all",
+    ///     });
+    /// 
+    ///     var backend = new Ovh.IpLoadBalancing.HttpFarmServer("backend", new()
+    ///     {
+    ///         Address = "4.5.6.7",
+    ///         Backup = true,
+    ///         DisplayName = "mybackend",
+    ///         FarmId = farmname.Id,
+    ///         Port = 80,
+    ///         Probe = true,
+    ///         ProxyProtocolVersion = "v2",
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         Ssl = false,
+    ///         Status = "active",
+    ///         Weight = 2,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/httpFarmServer:HttpFarmServer")]
     public partial class HttpFarmServer : global::Pulumi.CustomResource

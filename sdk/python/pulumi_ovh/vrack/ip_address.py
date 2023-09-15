@@ -150,6 +150,45 @@ class IpAddress(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="vrack",
+            plan_code="vrack")
+        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
+            description=mycart.description,
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            plan=ovh.vrack.VrackPlanArgs(
+                duration=vrack_cart_product_plan.selected_prices[0].duration,
+                plan_code=vrack_cart_product_plan.plan_code,
+                pricing_mode=vrack_cart_product_plan.selected_prices[0].pricing_mode,
+            ))
+        ipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="ip",
+            plan_code="ip-v4-s30-ripe")
+        ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            description=mycart.description,
+            plan=ovh.ip.IpServicePlanArgs(
+                duration=ipblock_cart_product_plan.selected_prices[0].duration,
+                plan_code=ipblock_cart_product_plan.plan_code,
+                pricing_mode=ipblock_cart_product_plan.selected_prices[0].pricing_mode,
+                configurations=[ovh.ip.IpServicePlanConfigurationArgs(
+                    label="country",
+                    value="FR",
+                )],
+            ))
+        vrackblock = ovh.vrack.IpAddress("vrackblock",
+            service_name=vrack_vrack.service_name,
+            block=ipblock_ip_service.ip)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] block: Your IP block.
@@ -165,6 +204,45 @@ class IpAddress(pulumi.CustomResource):
         Attach an IP block to a VRack.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="vrack",
+            plan_code="vrack")
+        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
+            description=mycart.description,
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            plan=ovh.vrack.VrackPlanArgs(
+                duration=vrack_cart_product_plan.selected_prices[0].duration,
+                plan_code=vrack_cart_product_plan.plan_code,
+                pricing_mode=vrack_cart_product_plan.selected_prices[0].pricing_mode,
+            ))
+        ipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="ip",
+            plan_code="ip-v4-s30-ripe")
+        ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            description=mycart.description,
+            plan=ovh.ip.IpServicePlanArgs(
+                duration=ipblock_cart_product_plan.selected_prices[0].duration,
+                plan_code=ipblock_cart_product_plan.plan_code,
+                pricing_mode=ipblock_cart_product_plan.selected_prices[0].pricing_mode,
+                configurations=[ovh.ip.IpServicePlanConfigurationArgs(
+                    label="country",
+                    value="FR",
+                )],
+            ))
+        vrackblock = ovh.vrack.IpAddress("vrackblock",
+            service_name=vrack_vrack.service_name,
+            block=ipblock_ip_service.ip)
+        ```
 
         :param str resource_name: The name of the resource.
         :param IpAddressArgs args: The arguments to use to populate this resource's properties.

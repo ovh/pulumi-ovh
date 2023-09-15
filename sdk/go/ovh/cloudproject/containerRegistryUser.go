@@ -16,6 +16,40 @@ import (
 // Creates a user for a container registry associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := CloudProject.GetContainerRegistry(ctx, &cloudproject.GetContainerRegistryArgs{
+//				ServiceName: "XXXXXX",
+//				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = CloudProject.NewContainerRegistryUser(ctx, "user", &CloudProject.ContainerRegistryUserArgs{
+//				ServiceName: pulumi.Any(ovh_cloud_project_containerregistry.Registry.Service_name),
+//				RegistryId:  pulumi.Any(ovh_cloud_project_containerregistry.Registry.Id),
+//				Email:       pulumi.String("foo@bar.com"),
+//				Login:       pulumi.String("foobar"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ContainerRegistryUser struct {
 	pulumi.CustomResourceState
 

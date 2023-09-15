@@ -14,19 +14,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get the list of databases of a database cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_databases" "databases" {
-        ///   service_name  = "XXXX"
-        ///   engine        = "YYYY"
-        ///   cluster_id    = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "database_ids" {
-        ///   value = data.ovh_cloud_project_database_databases.databases.database_ids
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var databases = Ovh.CloudProjectDatabase.GetDatabaseInstances.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXX",
+        ///         Engine = "YYYY",
+        ///         ClusterId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseIds"] = databases.Apply(getDatabaseInstancesResult =&gt; getDatabaseInstancesResult.DatabaseIds),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseInstancesResult> InvokeAsync(GetDatabaseInstancesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstancesResult>("ovh:CloudProjectDatabase/getDatabaseInstances:getDatabaseInstances", args ?? new GetDatabaseInstancesArgs(), options.WithDefaults());
@@ -34,19 +48,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get the list of databases of a database cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_databases" "databases" {
-        ///   service_name  = "XXXX"
-        ///   engine        = "YYYY"
-        ///   cluster_id    = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "database_ids" {
-        ///   value = data.ovh_cloud_project_database_databases.databases.database_ids
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var databases = Ovh.CloudProjectDatabase.GetDatabaseInstances.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXX",
+        ///         Engine = "YYYY",
+        ///         ClusterId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseIds"] = databases.Apply(getDatabaseInstancesResult =&gt; getDatabaseInstancesResult.DatabaseIds),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseInstancesResult> Invoke(GetDatabaseInstancesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstancesResult>("ovh:CloudProjectDatabase/getDatabaseInstances:getDatabaseInstances", args ?? new GetDatabaseInstancesInvokeArgs(), options.WithDefaults());

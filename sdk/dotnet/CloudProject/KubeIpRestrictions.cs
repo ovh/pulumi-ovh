@@ -14,9 +14,34 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vrackOnly = new Ovh.CloudProject.KubeIpRestrictions("vrackOnly", new()
+    ///     {
+    ///         Ips = new[]
+    ///         {
+    ///             "10.42.0.0/16",
+    ///         },
+    ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions")]
     public partial class KubeIpRestrictions : global::Pulumi.CustomResource

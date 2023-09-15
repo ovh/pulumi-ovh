@@ -253,7 +253,11 @@ class OpensearchUser(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed OpenSearch clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/opensearchUser:OpensearchUser my_user service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed OpenSearch clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/opensearchUser:OpensearchUser my_user service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -273,7 +277,11 @@ class OpensearchUser(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed OpenSearch clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/opensearchUser:OpensearchUser my_user service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed OpenSearch clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/opensearchUser:OpensearchUser my_user service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param OpensearchUserArgs args: The arguments to use to populate this resource's properties.

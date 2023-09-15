@@ -18,6 +18,35 @@ import (
 // > __NOTE__ This resource is only compatible with the `High Performance - S3` solution for object storage.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			presignedUrlRegionStoragePresign, err := CloudProject.NewRegionStoragePresign(ctx, "presignedUrlRegionStoragePresign", &CloudProject.RegionStoragePresignArgs{
+//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxx"),
+//				RegionName:  pulumi.String("GRA"),
+//				Expire:      pulumi.Int(3600),
+//				Method:      pulumi.String("GET"),
+//				Object:      pulumi.String("an-object-in-the-bucket"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("presignedUrl", presignedUrlRegionStoragePresign.Url)
+//			return nil
+//		})
+//	}
+//
+// ```
 type RegionStoragePresign struct {
 	pulumi.CustomResourceState
 

@@ -280,6 +280,18 @@ class IdentityUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_user = ovh.me.IdentityUser("myUser",
+            description="Some custom description",
+            email="my_login@example.com",
+            group="DEFAULT",
+            login="my_login",
+            password="super-s3cr3t!password")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User description.
@@ -298,6 +310,18 @@ class IdentityUser(pulumi.CustomResource):
         Creates an identity user.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_user = ovh.me.IdentityUser("myUser",
+            description="Some custom description",
+            email="my_login@example.com",
+            group="DEFAULT",
+            login="my_login",
+            password="super-s3cr3t!password")
+        ```
 
         :param str resource_name: The name of the resource.
         :param IdentityUserArgs args: The arguments to use to populate this resource's properties.

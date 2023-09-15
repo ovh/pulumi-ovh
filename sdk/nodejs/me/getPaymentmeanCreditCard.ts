@@ -9,6 +9,15 @@ import * as utilities from "../utilities";
  * payment mean associated with an OVHcloud account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const cc = ovh.Me.getPaymentmeanCreditCard({
+ *     useDefault: true,
+ * });
+ * ```
  */
 export function getPaymentmeanCreditCard(args?: GetPaymentmeanCreditCardArgs, opts?: pulumi.InvokeOptions): Promise<GetPaymentmeanCreditCardResult> {
     args = args || {};
@@ -78,6 +87,15 @@ export interface GetPaymentmeanCreditCardResult {
  * payment mean associated with an OVHcloud account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const cc = ovh.Me.getPaymentmeanCreditCard({
+ *     useDefault: true,
+ * });
+ * ```
  */
 export function getPaymentmeanCreditCardOutput(args?: GetPaymentmeanCreditCardOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPaymentmeanCreditCardResult> {
     return pulumi.output(args).apply((a: any) => getPaymentmeanCreditCard(a, opts))

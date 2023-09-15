@@ -8,6 +8,28 @@ import * as utilities from "../utilities";
  * Creates an IAM policy.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const account = ovh.Me.getMe({});
+ * const myGroup = new ovh.me.IdentityGroup("myGroup", {description: "my_group created in Terraform"});
+ * const manager = new ovh.iam.Policy("manager", {
+ *     description: "Users are allowed to use the OVH manager",
+ *     identities: [myGroup.urn],
+ *     resources: [account.then(account => account.urn)],
+ *     allows: [
+ *         "account:apiovh:me/get",
+ *         "account:apiovh:me/supportLevel/get",
+ *         "account:apiovh:me/certificates/get",
+ *         "account:apiovh:me/tag/get",
+ *         "account:apiovh:services/get",
+ *         "account:apiovh:*",
+ *     ],
+ * });
+ * ```
  */
 export class Policy extends pulumi.CustomResource {
     /**

@@ -14,6 +14,50 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			rescue, err := Dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
+//				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+//				BootType:    pulumi.StringRef("rescue"),
+//				Kernel:      pulumi.StringRef("rescue64-pro"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			serverOnRescue, err := Dedicated.NewServerUpdate(ctx, "serverOnRescue", &Dedicated.ServerUpdateArgs{
+//				ServiceName: pulumi.String("nsxxxxxxx.ip-xx-xx-xx.eu"),
+//				BootId:      *pulumi.Int(rescue.Results[0]),
+//				Monitoring:  pulumi.Bool(true),
+//				State:       pulumi.String("ok"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Dedicated.NewServerRebootTask(ctx, "serverReboot", &Dedicated.ServerRebootTaskArgs{
+//				ServiceName: *pulumi.String(rescue.ServiceName),
+//				Keepers: pulumi.StringArray{
+//					serverOnRescue.BootId,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ServerRebootTask struct {
 	pulumi.CustomResourceState
 

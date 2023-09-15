@@ -15,6 +15,33 @@ import (
 // Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			access, err := CloudProjectDatabase.GetKafkaUserAccess(ctx, &cloudprojectdatabase.GetKafkaUserAccessArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				UserId:      "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("accessCert", access.Cert)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetKafkaUserAccess(ctx *pulumi.Context, args *GetKafkaUserAccessArgs, opts ...pulumi.InvokeOption) (*GetKafkaUserAccessResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKafkaUserAccessResult

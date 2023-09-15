@@ -82,6 +82,17 @@ def get_user_s3_policy(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    project_users = ovh.CloudProject.get_users(service_name="XXX")
+    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
+    s3_user_id = users[0]
+    policy = ovh.CloudProject.get_user_s3_policy(service_name=project_users.service_name,
+        user_id=s3_user_id)
+    ```
+
 
     :param str service_name: The ID of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -108,6 +119,17 @@ def get_user_s3_policy_output(service_name: Optional[pulumi.Input[str]] = None,
     Get the S3 Policy of a public cloud project user. The policy can be set by using the `CloudProject.S3Policy` resource.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    project_users = ovh.CloudProject.get_users(service_name="XXX")
+    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
+    s3_user_id = users[0]
+    policy = ovh.CloudProject.get_user_s3_policy(service_name=project_users.service_name,
+        user_id=s3_user_id)
+    ```
 
 
     :param str service_name: The ID of the public cloud project. If omitted,

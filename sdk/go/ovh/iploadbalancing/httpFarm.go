@@ -17,9 +17,38 @@ import (
 //
 // ## Example Usage
 //
-// ## Import
+// ```go
+// package main
 //
-// HTTP farm can be imported using the following format `serviceName` and the `id` of the farm, separated by "/" e.g.
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			lb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
+//				State:       pulumi.StringRef("ok"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = IpLoadBalancing.NewHttpFarm(ctx, "farmname", &IpLoadBalancing.HttpFarmArgs{
+//				DisplayName: pulumi.String("ingress-8080-gra"),
+//				ServiceName: *pulumi.String(lb.ServiceName),
+//				Zone:        pulumi.String("GRA"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type HttpFarm struct {
 	pulumi.CustomResourceState
 

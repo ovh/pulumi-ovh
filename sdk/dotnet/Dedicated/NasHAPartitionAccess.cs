@@ -14,9 +14,32 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_partition = new Ovh.Dedicated.NasHAPartitionAccess("my-partition", new()
+    ///     {
+    ///         Ip = "123.123.123.123/32",
+    ///         PartitionName = "my-partition",
+    ///         ServiceName = "zpool-12345",
+    ///         Type = "readwrite",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.   &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32` &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess")]
     public partial class NasHAPartitionAccess : global::Pulumi.CustomResource

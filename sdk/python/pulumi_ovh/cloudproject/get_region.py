@@ -112,6 +112,14 @@ def get_region(name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    g_ra1 = ovh.CloudProject.get_region(name="GRA1",
+        service_name="XXXXXX")
+    ```
+
 
     :param str name: The name of the region associated with the public cloud
            project.
@@ -141,6 +149,14 @@ def get_region_output(name: Optional[pulumi.Input[str]] = None,
     Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    g_ra1 = ovh.CloudProject.get_region(name="GRA1",
+        service_name="XXXXXX")
+    ```
 
 
     :param str name: The name of the region associated with the public cloud

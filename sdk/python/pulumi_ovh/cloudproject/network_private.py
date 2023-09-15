@@ -263,9 +263,25 @@ class NetworkPrivate(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        net = ovh.cloud_project.NetworkPrivate("net",
+            regions=[
+                "GRA1",
+                "BHS1",
+            ],
+            service_name="XXXXXX")
+        ```
+
         ## Import
 
-        Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678 <break>```<break><break>
+        Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -288,9 +304,25 @@ class NetworkPrivate(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        net = ovh.cloud_project.NetworkPrivate("net",
+            regions=[
+                "GRA1",
+                "BHS1",
+            ],
+            service_name="XXXXXX")
+        ```
+
         ## Import
 
-        Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678 <break>```<break><break>
+        Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678
+        ```
 
         :param str resource_name: The name of the resource.
         :param NetworkPrivateArgs args: The arguments to use to populate this resource's properties.

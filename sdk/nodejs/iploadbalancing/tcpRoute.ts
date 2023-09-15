@@ -11,9 +11,18 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ## Import
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
  *
- * TCP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
+ * const tcpreject = new ovh.iploadbalancing.TcpRoute("tcpreject", {
+ *     action: {
+ *         type: "reject",
+ *     },
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ *     weight: 1,
+ * });
+ * ```
  */
 export class TcpRoute extends pulumi.CustomResource {
     /**

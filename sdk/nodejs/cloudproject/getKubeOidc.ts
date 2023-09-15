@@ -8,6 +8,21 @@ import * as utilities from "../utilities";
  * Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * export = async () => {
+ *     const oidc = await ovh.CloudProject.getKubeOidc({
+ *         serviceName: "XXXXXX",
+ *         kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ *     });
+ *     return {
+ *         "oidc-val": oidc.clientId,
+ *     };
+ * }
+ * ```
  */
 export function getKubeOidc(args: GetKubeOidcArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeOidcResult> {
 
@@ -93,6 +108,21 @@ export interface GetKubeOidcResult {
  * Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * export = async () => {
+ *     const oidc = await ovh.CloudProject.getKubeOidc({
+ *         serviceName: "XXXXXX",
+ *         kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ *     });
+ *     return {
+ *         "oidc-val": oidc.clientId,
+ *     };
+ * }
+ * ```
  */
 export function getKubeOidcOutput(args: GetKubeOidcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeOidcResult> {
     return pulumi.output(args).apply((a: any) => getKubeOidc(a, opts))

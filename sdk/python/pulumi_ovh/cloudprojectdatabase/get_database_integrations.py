@@ -101,6 +101,16 @@ def get_database_integrations(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    integrations = ovh.CloudProjectDatabase.get_database_integrations(service_name="XXX",
+        engine="YYY",
+        cluster_id="ZZZ")
+    pulumi.export("integrationIds", integrations.integration_ids)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str engine: The engine of the database cluster you want to list integrations. To get a full list of available engine visit:
@@ -133,6 +143,16 @@ def get_database_integrations_output(cluster_id: Optional[pulumi.Input[str]] = N
     Use this data source to get the list of integrations of a database cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    integrations = ovh.CloudProjectDatabase.get_database_integrations(service_name="XXX",
+        engine="YYY",
+        cluster_id="ZZZ")
+    pulumi.export("integrationIds", integrations.integration_ids)
+    ```
 
 
     :param str cluster_id: Cluster ID

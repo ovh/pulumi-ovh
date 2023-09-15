@@ -17,9 +17,42 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Hosting"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Hosting.NewPrivateDatabaseAllowlist(ctx, "ip", &Hosting.PrivateDatabaseAllowlistArgs{
+//				Ip:          pulumi.String("1.2.3.4"),
+//				Service:     pulumi.Bool(true),
+//				ServiceName: pulumi.String("XXXXXX"),
+//				Sftp:        pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
+//
+// ```sh
+//
+//	$ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
+//
+// ```
 type PrivateDatabaseAllowlist struct {
 	pulumi.CustomResourceState
 

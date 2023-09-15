@@ -14,9 +14,32 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var userGrant = new Ovh.Hosting.PrivateDatabaseUserGrant("userGrant", new()
+    ///     {
+    ///         DatabaseName = "ovhcloud",
+    ///         Grant = "admin",
+    ///         ServiceName = "XXXXXX",
+    ///         UserName = "terraform",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant")]
     public partial class PrivateDatabaseUserGrant : global::Pulumi.CustomResource

@@ -198,6 +198,14 @@ def get_ip_load_balancing(display_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="XXXXXX",
+        state="ok")
+    ```
+
 
     :param str display_name: the name displayed in ManagerV6 for your iplb (max 50 chars)
     :param str ip_loadbalancing: Your IP load balancing
@@ -267,6 +275,14 @@ def get_ip_load_balancing_output(display_name: Optional[pulumi.Input[Optional[st
     Use this data source to retrieve information about an IP Load Balancing product
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="XXXXXX",
+        state="ok")
+    ```
 
 
     :param str display_name: the name displayed in ManagerV6 for your iplb (max 50 chars)

@@ -13,6 +13,29 @@ namespace Pulumi.Ovh.Dedicated
     /// Add a new access ACL for the given network/mask.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_ceph = Ovh.Dedicated.GetCeph.Invoke(new()
+    ///     {
+    ///         ServiceName = "94d423da-0e55-45f2-9812-836460a19939",
+    ///     });
+    /// 
+    ///     var my_acl = new Ovh.Dedicated.CephAcl("my-acl", new()
+    ///     {
+    ///         ServiceName = my_ceph.Apply(my_ceph =&gt; my_ceph.Apply(getCephResult =&gt; getCephResult.Id)),
+    ///         Network = "1.2.3.4",
+    ///         Netmask = "255.255.255.255",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dedicated/cephAcl:CephAcl")]
     public partial class CephAcl : global::Pulumi.CustomResource

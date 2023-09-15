@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const topics = ovh.CloudProjectDatabase.getKafkaTopics({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ * });
+ * export const topicIds = topics.then(topics => topics.topicIds);
+ * ```
  */
 export function getKafkaTopics(args: GetKafkaTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicsResult> {
 
@@ -58,6 +69,17 @@ export interface GetKafkaTopicsResult {
  * Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const topics = ovh.CloudProjectDatabase.getKafkaTopics({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ * });
+ * export const topicIds = topics.then(topics => topics.topicIds);
+ * ```
  */
 export function getKafkaTopicsOutput(args: GetKafkaTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaTopicsResult> {
     return pulumi.output(args).apply((a: any) => getKafkaTopics(a, opts))

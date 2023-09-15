@@ -101,6 +101,16 @@ def get_open_search_pattern(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    pattern = ovh.CloudProject.get_open_search_pattern(service_name="XXX",
+        cluster_id="YYY",
+        id="ZZZ")
+    pulumi.export("patternPattern", pattern.pattern)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str id: Pattern ID.
@@ -131,6 +141,16 @@ def get_open_search_pattern_output(cluster_id: Optional[pulumi.Input[str]] = Non
     Use this data source to get information about a pattern of a opensearch cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    pattern = ovh.CloudProject.get_open_search_pattern(service_name="XXX",
+        cluster_id="YYY",
+        id="ZZZ")
+    pulumi.export("patternPattern", pattern.pattern)
+    ```
 
 
     :param str cluster_id: Cluster ID

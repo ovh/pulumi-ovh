@@ -13,20 +13,52 @@ var _ = internal.GetEnvOrDefault
 
 // The OVH API Application Key.
 func GetApplicationKey(ctx *pulumi.Context) string {
-	return config.Get(ctx, "ovh:applicationKey")
+	v, err := config.Try(ctx, "ovh:applicationKey")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "OVH_APPLICATION_KEY"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The OVH API Application Secret.
 func GetApplicationSecret(ctx *pulumi.Context) string {
-	return config.Get(ctx, "ovh:applicationSecret")
+	v, err := config.Try(ctx, "ovh:applicationSecret")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "OVH_APPLICATION_SECRET"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The OVH API Consumer key.
 func GetConsumerKey(ctx *pulumi.Context) string {
-	return config.Get(ctx, "ovh:consumerKey")
+	v, err := config.Try(ctx, "ovh:consumerKey")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "OVH_CONSUMER_KEY"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The OVH API endpoint to target (ex: "ovh-eu").
 func GetEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "ovh:endpoint")
+	v, err := config.Try(ctx, "ovh:endpoint")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "OVH_ENDPOINT"); d != nil {
+		value = d.(string)
+	}
+	return value
 }

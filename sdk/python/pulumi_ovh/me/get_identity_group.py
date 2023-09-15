@@ -120,6 +120,13 @@ def get_identity_group(name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_group = ovh.Me.get_identity_group(name="my_group_name")
+    ```
+
 
     :param str name: Group name.
     """
@@ -145,6 +152,13 @@ def get_identity_group_output(name: Optional[pulumi.Input[str]] = None,
     Use this data source to retrieve information about an identity group.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_group = ovh.Me.get_identity_group(name="my_group_name")
+    ```
 
 
     :param str name: Group name.

@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
  * Creates an identity user.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const myUser = new ovh.me.IdentityUser("myUser", {
+ *     description: "Some custom description",
+ *     email: "my_login@example.com",
+ *     group: "DEFAULT",
+ *     login: "my_login",
+ *     password: "super-s3cr3t!password",
+ * });
+ * ```
  */
 export class IdentityUser extends pulumi.CustomResource {
     /**

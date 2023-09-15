@@ -14,16 +14,30 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve information about a DBaas logs input engine.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_dbaas_logs_input_engine" "logstash" {
-        ///   service_name = "ldp-xx-xxxxx"
-        ///   name          = "logstash"
-        ///   version       = "6.8"
-        ///   is_deprecated = true
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var logstash = Ovh.Dbaas.GetLogsInputEngine.Invoke(new()
+        ///     {
+        ///         IsDeprecated = true,
+        ///         Name = "logstash",
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Version = "6.8",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLogsInputEngineResult> InvokeAsync(GetLogsInputEngineArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogsInputEngineResult>("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", args ?? new GetLogsInputEngineArgs(), options.WithDefaults());
@@ -31,16 +45,30 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve information about a DBaas logs input engine.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_dbaas_logs_input_engine" "logstash" {
-        ///   service_name = "ldp-xx-xxxxx"
-        ///   name          = "logstash"
-        ///   version       = "6.8"
-        ///   is_deprecated = true
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var logstash = Ovh.Dbaas.GetLogsInputEngine.Invoke(new()
+        ///     {
+        ///         IsDeprecated = true,
+        ///         Name = "logstash",
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Version = "6.8",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetLogsInputEngineResult> Invoke(GetLogsInputEngineInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsInputEngineResult>("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", args ?? new GetLogsInputEngineInvokeArgs(), options.WithDefaults());

@@ -15,6 +15,33 @@ import (
 // Use this data source to retrieve information about a DBaas logs input engine.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Dbaas.GetLogsInputEngine(ctx, &dbaas.GetLogsInputEngineArgs{
+//				IsDeprecated: pulumi.BoolRef(true),
+//				Name:         pulumi.StringRef("logstash"),
+//				ServiceName:  "ldp-xx-xxxxx",
+//				Version:      pulumi.StringRef("6.8"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetLogsInputEngine(ctx *pulumi.Context, args *GetLogsInputEngineArgs, opts ...pulumi.InvokeOption) (*GetLogsInputEngineResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogsInputEngineResult

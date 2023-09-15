@@ -14,9 +14,74 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var user = new Ovh.CloudProject.User("user", new()
+    ///     {
+    ///         ServiceName = "XXX",
+    ///         Description = "my user",
+    ///         RoleNames = new[]
+    ///         {
+    ///             "objectstore_operator",
+    ///         },
+    ///     });
+    /// 
+    ///     var myS3Credentials = new Ovh.CloudProject.S3Credential("myS3Credentials", new()
+    ///     {
+    ///         ServiceName = user.ServiceName,
+    ///         UserId = user.Id,
+    ///     });
+    /// 
+    ///     var policy = new Ovh.CloudProject.S3Policy("policy", new()
+    ///     {
+    ///         ServiceName = user.ServiceName,
+    ///         UserId = user.Id,
+    ///         Policy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Statement"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Sid"] = "RWContainer",
+    ///                     ["Effect"] = "Allow",
+    ///                     ["Action"] = new[]
+    ///                     {
+    ///                         "s3:GetObject",
+    ///                         "s3:PutObject",
+    ///                         "s3:DeleteObject",
+    ///                         "s3:ListBucket",
+    ///                         "s3:ListMultipartUploadParts",
+    ///                         "s3:ListBucketMultipartUploads",
+    ///                         "s3:AbortMultipartUpload",
+    ///                         "s3:GetBucketLocation",
+    ///                     },
+    ///                     ["Resource"] = new[]
+    ///                     {
+    ///                         "arn:aws:s3:::hp-bucket",
+    ///                         "arn:aws:s3:::hp-bucket/*",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/s3Policy:S3Policy")]
     public partial class S3Policy : global::Pulumi.CustomResource

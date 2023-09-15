@@ -14,22 +14,37 @@ namespace Pulumi.Ovh.Order
         /// <summary>
         /// Use this data source to retrieve information of order cart product plan.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me" "myaccount" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// data "ovh_order_cart" "mycart" {
-        ///   ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myaccount = Ovh.Me.GetMe.Invoke();
         /// 
-        /// data "ovh_order_cart_product_plan" "plan" {
-        ///   cart_id           = data.ovh_order_cart.mycart.id
-        ///   price_capacity    = "renew"
-        ///   product           = "cloud"
-        ///   plan_code         = "project"
-        /// }
+        ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+        ///     {
+        ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///     });
+        /// 
+        ///     var plan = Ovh.Order.GetCartProductPlan.Invoke(new()
+        ///     {
+        ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+        ///         PriceCapacity = "renew",
+        ///         Product = "cloud",
+        ///         PlanCode = "project",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCartProductPlanResult> InvokeAsync(GetCartProductPlanArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCartProductPlanResult>("ovh:Order/getCartProductPlan:getCartProductPlan", args ?? new GetCartProductPlanArgs(), options.WithDefaults());
@@ -37,22 +52,37 @@ namespace Pulumi.Ovh.Order
         /// <summary>
         /// Use this data source to retrieve information of order cart product plan.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me" "myaccount" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// data "ovh_order_cart" "mycart" {
-        ///   ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myaccount = Ovh.Me.GetMe.Invoke();
         /// 
-        /// data "ovh_order_cart_product_plan" "plan" {
-        ///   cart_id           = data.ovh_order_cart.mycart.id
-        ///   price_capacity    = "renew"
-        ///   product           = "cloud"
-        ///   plan_code         = "project"
-        /// }
+        ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+        ///     {
+        ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///     });
+        /// 
+        ///     var plan = Ovh.Order.GetCartProductPlan.Invoke(new()
+        ///     {
+        ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+        ///         PriceCapacity = "renew",
+        ///         Product = "cloud",
+        ///         PlanCode = "project",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCartProductPlanResult> Invoke(GetCartProductPlanInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCartProductPlanResult>("ovh:Order/getCartProductPlan:getCartProductPlan", args ?? new GetCartProductPlanInvokeArgs(), options.WithDefaults());

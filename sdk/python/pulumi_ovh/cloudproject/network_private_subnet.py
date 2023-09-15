@@ -392,9 +392,28 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        subnet = ovh.cloud_project.NetworkPrivateSubnet("subnet",
+            dhcp=True,
+            end="192.168.168.200",
+            network="192.168.168.0/24",
+            network_id="0234543",
+            no_gateway=False,
+            region="GRA1",
+            service_name="xxxxx",
+            start="192.168.168.100")
+        ```
+
         ## Import
 
-        Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909 <break>```<break><break>
+        Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -427,9 +446,28 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        subnet = ovh.cloud_project.NetworkPrivateSubnet("subnet",
+            dhcp=True,
+            end="192.168.168.200",
+            network="192.168.168.0/24",
+            network_id="0234543",
+            no_gateway=False,
+            region="GRA1",
+            service_name="xxxxx",
+            start="192.168.168.100")
+        ```
+
         ## Import
 
-        Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909 <break>```<break><break>
+        Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909
+        ```
 
         :param str resource_name: The name of the resource.
         :param NetworkPrivateSubnetArgs args: The arguments to use to populate this resource's properties.

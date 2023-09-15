@@ -15,6 +15,33 @@ import (
 // Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			nodesKubeNodePoolNodes, err := CloudProject.GetKubeNodePoolNodes(ctx, &cloudproject.GetKubeNodePoolNodesArgs{
+//				ServiceName: "XXXXXX",
+//				KubeId:      "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+//				Name:        "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("nodes", nodesKubeNodePoolNodes)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetKubeNodePoolNodes(ctx *pulumi.Context, args *GetKubeNodePoolNodesArgs, opts ...pulumi.InvokeOption) (*GetKubeNodePoolNodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubeNodePoolNodesResult

@@ -142,6 +142,14 @@ def get_private_database_allowlist(ip: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    whitelist = ovh.Hosting.get_private_database_allowlist(ip="XXXXXX",
+        service_name="XXXXXX")
+    ```
+
 
     :param str ip: The whitelisted IP in your instance
     :param str service_name: The internal name of your private database
@@ -172,6 +180,14 @@ def get_private_database_allowlist_output(ip: Optional[pulumi.Input[Optional[str
     Use this data source to retrieve information about an hosting privatedatabase whitelist.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    whitelist = ovh.Hosting.get_private_database_allowlist(ip="XXXXXX",
+        service_name="XXXXXX")
+    ```
 
 
     :param str ip: The whitelisted IP in your instance

@@ -14,9 +14,39 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var m3db = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXX",
+    ///         Engine = "m3db",
+    ///         Id = "ZZZ",
+    ///     });
+    /// 
+    ///     var @namespace = new Ovh.CloudProjectDatabase.M3DbNamespace("namespace", new()
+    ///     {
+    ///         ServiceName = m3db.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         ClusterId = m3db.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         Resolution = "P2D",
+    ///         RetentionPeriodDuration = "PT48H",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace")]
     public partial class M3DbNamespace : global::Pulumi.CustomResource

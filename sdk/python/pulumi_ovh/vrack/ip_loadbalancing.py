@@ -102,6 +102,15 @@ class IpLoadbalancing(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        viplb = ovh.vrack.IpLoadbalancing("viplb",
+            loadbalancing_id="yyy",
+            service_name="xxx")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] loadbalancing_id: The id of the IP Load Balancing.
@@ -117,6 +126,15 @@ class IpLoadbalancing(pulumi.CustomResource):
         Attach an IP Load Balancing to a VRack.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        viplb = ovh.vrack.IpLoadbalancing("viplb",
+            loadbalancing_id="yyy",
+            service_name="xxx")
+        ```
 
         :param str resource_name: The name of the resource.
         :param IpLoadbalancingArgs args: The arguments to use to populate this resource's properties.

@@ -471,9 +471,29 @@ class HttpFarmServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
 
-        HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farmname = ovh.ip_load_balancing.HttpFarm("farmname",
+            port=8080,
+            service_name=lb.service_name,
+            zone="all")
+        backend = ovh.ip_load_balancing.HttpFarmServer("backend",
+            address="4.5.6.7",
+            backup=True,
+            display_name="mybackend",
+            farm_id=farmname.id,
+            port=80,
+            probe=True,
+            proxy_protocol_version="v2",
+            service_name=lb.service_name,
+            ssl=False,
+            status="active",
+            weight=2)
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -501,9 +521,29 @@ class HttpFarmServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
 
-        HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farmname = ovh.ip_load_balancing.HttpFarm("farmname",
+            port=8080,
+            service_name=lb.service_name,
+            zone="all")
+        backend = ovh.ip_load_balancing.HttpFarmServer("backend",
+            address="4.5.6.7",
+            backup=True,
+            display_name="mybackend",
+            farm_id=farmname.id,
+            port=80,
+            probe=True,
+            proxy_protocol_version="v2",
+            service_name=lb.service_name,
+            ssl=False,
+            status="active",
+            weight=2)
+        ```
 
         :param str resource_name: The name of the resource.
         :param HttpFarmServerArgs args: The arguments to use to populate this resource's properties.

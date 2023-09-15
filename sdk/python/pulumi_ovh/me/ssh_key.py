@@ -135,6 +135,15 @@ class SshKey(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mykey = ovh.me.SshKey("mykey",
+            key="ssh-ed25519 AAAAC3...",
+            key_name="mykey")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] default: True when this public SSH key is used for rescue mode and reinstallations.
@@ -151,6 +160,15 @@ class SshKey(pulumi.CustomResource):
         Creates an SSH Key.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mykey = ovh.me.SshKey("mykey",
+            key="ssh-ed25519 AAAAC3...",
+            key_name="mykey")
+        ```
 
         :param str resource_name: The name of the resource.
         :param SshKeyArgs args: The arguments to use to populate this resource's properties.

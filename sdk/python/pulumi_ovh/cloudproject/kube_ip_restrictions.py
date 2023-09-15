@@ -134,9 +134,23 @@ class KubeIpRestrictions(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        vrack_only = ovh.cloud_project.KubeIpRestrictions("vrackOnly",
+            ips=["10.42.0.0/16"],
+            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        ```
+
         ## Import
 
-        OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id <break>```<break><break>
+        OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -155,9 +169,23 @@ class KubeIpRestrictions(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        vrack_only = ovh.cloud_project.KubeIpRestrictions("vrackOnly",
+            ips=["10.42.0.0/16"],
+            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        ```
+
         ## Import
 
-        OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id <break>```<break><break>
+        OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param KubeIpRestrictionsArgs args: The arguments to use to populate this resource's properties.

@@ -12,9 +12,41 @@ namespace Pulumi.Ovh.Dbaas
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ldp = new Ovh.Dbaas.LogsCluster("ldp", new()
+    ///     {
+    ///         ArchiveAllowedNetworks = new[]
+    ///         {
+    ///             "10.0.0.0/16",
+    ///         },
+    ///         DirectInputAllowedNetworks = new[]
+    ///         {
+    ///             "10.0.0.0/16",
+    ///         },
+    ///         QueryAllowedNetworks = new[]
+    ///         {
+    ///             "10.0.0.0/16",
+    ///         },
+    ///         ServiceName = "ldp-xx-xxxxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dbaas/logsCluster:LogsCluster")]
     public partial class LogsCluster : global::Pulumi.CustomResource

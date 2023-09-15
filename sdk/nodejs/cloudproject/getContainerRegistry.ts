@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * Use this data source to get information about a container registry associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const my-registry = ovh.CloudProject.getContainerRegistry({
+ *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getContainerRegistry(args: GetContainerRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryResult> {
 
@@ -84,6 +94,16 @@ export interface GetContainerRegistryResult {
  * Use this data source to get information about a container registry associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const my-registry = ovh.CloudProject.getContainerRegistry({
+ *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getContainerRegistryOutput(args: GetContainerRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryResult> {
     return pulumi.output(args).apply((a: any) => getContainerRegistry(a, opts))

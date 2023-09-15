@@ -13,6 +13,31 @@ namespace Pulumi.Ovh.CloudProject
     /// Creates a user for a container registry associated with a public cloud project.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var registry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXXXXX",
+    ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+    ///     });
+    /// 
+    ///     var user = new Ovh.CloudProject.ContainerRegistryUser("user", new()
+    ///     {
+    ///         ServiceName = ovh_cloud_project_containerregistry.Registry.Service_name,
+    ///         RegistryId = ovh_cloud_project_containerregistry.Registry.Id,
+    ///         Email = "foo@bar.com",
+    ///         Login = "foobar",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/containerRegistryUser:ContainerRegistryUser")]
     public partial class ContainerRegistryUser : global::Pulumi.CustomResource

@@ -14,14 +14,31 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the regions of a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_regions" "regions" {
-        ///   service_name    = "XXXXXX"
-        ///   has_services_up = ["network"]
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var regions = Ovh.CloudProject.GetRegions.Invoke(new()
+        ///     {
+        ///         HasServicesUps = new[]
+        ///         {
+        ///             "network",
+        ///         },
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("ovh:CloudProject/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
@@ -29,14 +46,31 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the regions of a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_regions" "regions" {
-        ///   service_name    = "XXXXXX"
-        ///   has_services_up = ["network"]
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var regions = Ovh.CloudProject.GetRegions.Invoke(new()
+        ///     {
+        ///         HasServicesUps = new[]
+        ///         {
+        ///             "network",
+        ///         },
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("ovh:CloudProject/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());

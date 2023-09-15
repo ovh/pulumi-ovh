@@ -125,6 +125,16 @@ def get_m3db_user(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    m3dbuser = ovh.CloudProject.get_m3db_user(service_name="XXX",
+        cluster_id="YYY",
+        name="ZZZ")
+    pulumi.export("m3dbuserGroup", m3dbuser.group)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str name: Name of the user.
@@ -157,6 +167,16 @@ def get_m3db_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    m3dbuser = ovh.CloudProject.get_m3db_user(service_name="XXX",
+        cluster_id="YYY",
+        name="ZZZ")
+    pulumi.export("m3dbuserGroup", m3dbuser.group)
+    ```
 
 
     :param str cluster_id: Cluster ID

@@ -9,6 +9,20 @@ import * as utilities from "../utilities";
  * Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const myBackup = new ovh.cloudproject.WorkflowBackup("myBackup", {
+ *     cron: "50 4 * * *",
+ *     instanceId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+ *     maxExecutionCount: 0,
+ *     regionName: "GRA11",
+ *     rotation: 7,
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ * });
+ * ```
  */
 export class WorkflowBackup extends pulumi.CustomResource {
     /**

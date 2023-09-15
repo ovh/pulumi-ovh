@@ -110,8 +110,6 @@ def get_capabilities(service_name: Optional[str] = None,
     """
     Use this data source to get information about capabilities of a public cloud project.
 
-    ## Example Usage
-
 
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -135,8 +133,6 @@ def get_capabilities_output(service_name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCapabilitiesResult]:
     """
     Use this data source to get information about capabilities of a public cloud project.
-
-    ## Example Usage
 
 
     :param str service_name: The id of the public cloud project. If omitted,

@@ -8,6 +8,44 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * }));
+ * const iplb = mycart.then(mycart => ovh.Order.getCartProductPlan({
+ *     cartId: mycart.id,
+ *     priceCapacity: "renew",
+ *     product: "ipLoadbalancing",
+ *     planCode: "iplb-lb1",
+ * }));
+ * const bhs = Promise.all([iplb, iplb, iplb, iplb]).then(([iplb, iplb1, iplb2, iplb3]) => ovh.Order.getCartProductOptionsPlan({
+ *     cartId: iplb.cartId,
+ *     priceCapacity: iplb1.priceCapacity,
+ *     product: iplb2.product,
+ *     planCode: iplb3.planCode,
+ *     optionsPlanCode: "iplb-zone-lb1-rbx",
+ * }));
+ * const iplb_lb1 = new ovh.iploadbalancing.LoadBalancer("iplb-lb1", {
+ *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
+ *     displayName: "my ip loadbalancing",
+ *     plan: {
+ *         duration: iplb.then(iplb => iplb.selectedPrices?.[0]?.duration),
+ *         planCode: iplb.then(iplb => iplb.planCode),
+ *         pricingMode: iplb.then(iplb => iplb.selectedPrices?.[0]?.pricingMode),
+ *     },
+ *     planOptions: [{
+ *         duration: bhs.then(bhs => bhs.selectedPrices?.[0]?.duration),
+ *         planCode: bhs.then(bhs => bhs.planCode),
+ *         pricingMode: bhs.then(bhs => bhs.selectedPrices?.[0]?.pricingMode),
+ *     }],
+ * });
+ * ```
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**

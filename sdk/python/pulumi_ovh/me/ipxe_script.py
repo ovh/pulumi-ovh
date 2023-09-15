@@ -136,6 +136,13 @@ class IpxeScript(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        script = ovh.me.IpxeScript("script", script=(lambda path: open(path).read())(f"{path['module']}/boot.ipxe"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: For documentation purpose only. This attribute is not passed to the OVHcloud API as it cannot be retrieved back. Instead a fake description ('$name auto description') is passed at creation time.
@@ -152,6 +159,13 @@ class IpxeScript(pulumi.CustomResource):
         Creates an IPXE Script.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        script = ovh.me.IpxeScript("script", script=(lambda path: open(path).read())(f"{path['module']}/boot.ipxe"))
+        ```
 
         :param str resource_name: The name of the resource.
         :param IpxeScriptArgs args: The arguments to use to populate this resource's properties.

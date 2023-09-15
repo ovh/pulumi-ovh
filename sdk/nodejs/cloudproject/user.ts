@@ -10,6 +10,13 @@ import * as utilities from "../utilities";
  * Creates a user in a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const user1 = new ovh.cloudproject.User("user1", {serviceName: "XXX"});
+ * ```
  */
 export class User extends pulumi.CustomResource {
     /**

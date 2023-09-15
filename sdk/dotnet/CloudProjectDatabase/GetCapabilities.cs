@@ -13,36 +13,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     {
         /// <summary>
         /// Use this data source to get information about capabilities of a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_capabilities" "capabilities" {
-        ///   service_name  = "XXX"
-        /// }
-        /// 
-        /// output "capabilities_engine_name" {
-        ///   value = tolist(data.ovh_cloud_project_database_capabilities.capabilities[*].engines)[0]
-        /// }
-        /// ```
         /// </summary>
         public static Task<GetCapabilitiesResult> InvokeAsync(GetCapabilitiesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCapabilitiesResult>("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", args ?? new GetCapabilitiesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about capabilities of a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_capabilities" "capabilities" {
-        ///   service_name  = "XXX"
-        /// }
-        /// 
-        /// output "capabilities_engine_name" {
-        ///   value = tolist(data.ovh_cloud_project_database_capabilities.capabilities[*].engines)[0]
-        /// }
-        /// ```
         /// </summary>
         public static Output<GetCapabilitiesResult> Invoke(GetCapabilitiesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesResult>("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", args ?? new GetCapabilitiesInvokeArgs(), options.WithDefaults());

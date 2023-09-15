@@ -150,6 +150,17 @@ class CephAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_ceph = ovh.Dedicated.get_ceph(service_name="94d423da-0e55-45f2-9812-836460a19939")
+        my_acl = ovh.dedicated.CephAcl("my-acl",
+            service_name=my_ceph.id,
+            network="1.2.3.4",
+            netmask="255.255.255.255")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] netmask: The network mask to apply
@@ -166,6 +177,17 @@ class CephAcl(pulumi.CustomResource):
         Add a new access ACL for the given network/mask.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_ceph = ovh.Dedicated.get_ceph(service_name="94d423da-0e55-45f2-9812-836460a19939")
+        my_acl = ovh.dedicated.CephAcl("my-acl",
+            service_name=my_ceph.id,
+            network="1.2.3.4",
+            netmask="255.255.255.255")
+        ```
 
         :param str resource_name: The name of the resource.
         :param CephAclArgs args: The arguments to use to populate this resource's properties.

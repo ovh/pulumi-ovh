@@ -171,6 +171,13 @@ def get_policy(allows: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_policy = ovh.Iam.get_policy(id="my_policy_id")
+    ```
+
 
     :param Sequence[str] allows: List of actions allowed by the policy.
     :param str description: Group description.
@@ -209,6 +216,13 @@ def get_policy_output(allows: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     Use this data source to retrieve am IAM policy.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_policy = ovh.Iam.get_policy(id="my_policy_id")
+    ```
 
 
     :param Sequence[str] allows: List of actions allowed by the policy.

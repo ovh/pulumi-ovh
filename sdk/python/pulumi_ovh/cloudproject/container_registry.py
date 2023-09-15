@@ -302,6 +302,19 @@ class ContainerRegistry(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        regcap = ovh.CloudProject.get_capabilities_container_filter(service_name="XXXXXX",
+            plan_name="SMALL",
+            region="GRA")
+        my_registry = ovh.cloud_project.ContainerRegistry("my-registry",
+            service_name=regcap.service_name,
+            plan_id=regcap.id,
+            region=regcap.region)
+        ```
+
         > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
 
         :param str resource_name: The name of the resource.
@@ -322,6 +335,19 @@ class ContainerRegistry(pulumi.CustomResource):
         Creates a container registry associated with a public cloud project.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        regcap = ovh.CloudProject.get_capabilities_container_filter(service_name="XXXXXX",
+            plan_name="SMALL",
+            region="GRA")
+        my_registry = ovh.cloud_project.ContainerRegistry("my-registry",
+            service_name=regcap.service_name,
+            plan_id=regcap.id,
+            region=regcap.region)
+        ```
 
         > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
 

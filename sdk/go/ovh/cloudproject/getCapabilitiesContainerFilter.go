@@ -15,6 +15,32 @@ import (
 // Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := CloudProject.GetCapabilitiesContainerFilter(ctx, &cloudproject.GetCapabilitiesContainerFilterArgs{
+//				PlanName:    "SMALL",
+//				Region:      "GRA",
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCapabilitiesContainerFilter(ctx *pulumi.Context, args *GetCapabilitiesContainerFilterArgs, opts ...pulumi.InvokeOption) (*GetCapabilitiesContainerFilterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCapabilitiesContainerFilterResult

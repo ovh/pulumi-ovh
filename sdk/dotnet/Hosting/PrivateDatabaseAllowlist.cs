@@ -14,9 +14,32 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ip = new Ovh.Hosting.PrivateDatabaseAllowlist("ip", new()
+    ///     {
+    ///         Ip = "1.2.3.4",
+    ///         Service = true,
+    ///         ServiceName = "XXXXXX",
+    ///         Sftp = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist")]
     public partial class PrivateDatabaseAllowlist : global::Pulumi.CustomResource

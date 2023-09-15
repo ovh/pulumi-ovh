@@ -15,6 +15,32 @@ import (
 // Use this data source to get the list of pattern of a opensearch cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			patterns, err := CloudProject.GetOpenSearchPatterns(ctx, &cloudproject.GetOpenSearchPatternsArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("patternIds", patterns.PatternIds)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOpenSearchPatterns(ctx *pulumi.Context, args *GetOpenSearchPatternsArgs, opts ...pulumi.InvokeOption) (*GetOpenSearchPatternsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenSearchPatternsResult

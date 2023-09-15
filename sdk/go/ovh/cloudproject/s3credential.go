@@ -15,11 +15,15 @@ import (
 
 // Creates an S3 Credential for a user in a public cloud project.
 //
-// ## Example Usage
-//
 // ## Import
 //
-// OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/s3Credential:S3Credential s3_credential service_name/user_id/access_key_id <break>```<break><break>
+// OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProject/s3Credential:S3Credential s3_credential service_name/user_id/access_key_id
+//
+// ```
 type S3Credential struct {
 	pulumi.CustomResourceState
 

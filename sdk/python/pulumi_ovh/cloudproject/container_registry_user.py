@@ -202,6 +202,19 @@ class ContainerRegistryUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
+            registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+        user = ovh.cloud_project.ContainerRegistryUser("user",
+            service_name=ovh_cloud_project_containerregistry["registry"]["service_name"],
+            registry_id=ovh_cloud_project_containerregistry["registry"]["id"],
+            email="foo@bar.com",
+            login="foobar")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] email: User email
@@ -220,6 +233,19 @@ class ContainerRegistryUser(pulumi.CustomResource):
         Creates a user for a container registry associated with a public cloud project.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
+            registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+        user = ovh.cloud_project.ContainerRegistryUser("user",
+            service_name=ovh_cloud_project_containerregistry["registry"]["service_name"],
+            registry_id=ovh_cloud_project_containerregistry["registry"]["id"],
+            email="foo@bar.com",
+            login="foobar")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ContainerRegistryUserArgs args: The arguments to use to populate this resource's properties.

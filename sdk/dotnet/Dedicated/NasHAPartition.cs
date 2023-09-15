@@ -14,9 +14,31 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_partition = new Ovh.Dedicated.NasHAPartition("my-partition", new()
+    ///     {
+    ///         Protocol = "NFS",
+    ///         ServiceName = "zpool-12345",
+    ///         Size = 20,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// HA-NAS can be imported using the `{service_name}/{name}`, e.g.   &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition` &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// HA-NAS can be imported using the `{service_name}/{name}`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dedicated/nasHAPartition:NasHAPartition")]
     public partial class NasHAPartition : global::Pulumi.CustomResource

@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * Attach an IP Load Balancing to a VRack.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const viplb = new ovh.vrack.IpLoadbalancing("viplb", {
+ *     LoadbalancingId: "yyy",
+ *     serviceName: "xxx",
+ * });
+ * ```
  */
 export class IpLoadbalancing extends pulumi.CustomResource {
     /**

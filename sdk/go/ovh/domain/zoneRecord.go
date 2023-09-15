@@ -15,9 +15,43 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Domain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Domain.NewZoneRecord(ctx, "test", &Domain.ZoneRecordArgs{
+//				Fieldtype: pulumi.String("A"),
+//				Subdomain: pulumi.String("test"),
+//				Target:    pulumi.String("0.0.0.0"),
+//				Ttl:       pulumi.Int(3600),
+//				Zone:      pulumi.String("testdemo.ovh"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g., bash <break><break>```sh<break> $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone <break>```<break><break>
+// OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone
+//
+// ```
 type ZoneRecord struct {
 	pulumi.CustomResourceState
 

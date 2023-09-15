@@ -15,6 +15,32 @@ import (
 // Use this data source to get a OVHcloud Managed Private Registry OIDC.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_oidc, err := CloudProject.GetContainerRegistryOIDC(ctx, &cloudproject.GetContainerRegistryOIDCArgs{
+//				ServiceName: "XXXXXX",
+//				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("oidc-client-id", my_oidc.OidcClientId)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupContainerRegistryOIDC(ctx *pulumi.Context, args *LookupContainerRegistryOIDCArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryOIDCResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryOIDCResult

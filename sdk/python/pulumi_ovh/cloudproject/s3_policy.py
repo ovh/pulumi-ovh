@@ -138,9 +138,50 @@ class S3Policy(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import json
+        import pulumi_ovh as ovh
+
+        user = ovh.cloud_project.User("user",
+            service_name="XXX",
+            description="my user",
+            role_names=["objectstore_operator"])
+        my_s3_credentials = ovh.cloud_project.S3Credential("myS3Credentials",
+            service_name=user.service_name,
+            user_id=user.id)
+        policy = ovh.cloud_project.S3Policy("policy",
+            service_name=user.service_name,
+            user_id=user.id,
+            policy=json.dumps({
+                "Statement": [{
+                    "Sid": "RWContainer",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:GetObject",
+                        "s3:PutObject",
+                        "s3:DeleteObject",
+                        "s3:ListBucket",
+                        "s3:ListMultipartUploadParts",
+                        "s3:ListBucketMultipartUploads",
+                        "s3:AbortMultipartUpload",
+                        "s3:GetBucketLocation",
+                    ],
+                    "Resource": [
+                        "arn:aws:s3:::hp-bucket",
+                        "arn:aws:s3:::hp-bucket/*",
+                    ],
+                }],
+            }))
+        ```
+
         ## Import
 
-        OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id <break>```<break><break>
+        OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -160,9 +201,50 @@ class S3Policy(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import json
+        import pulumi_ovh as ovh
+
+        user = ovh.cloud_project.User("user",
+            service_name="XXX",
+            description="my user",
+            role_names=["objectstore_operator"])
+        my_s3_credentials = ovh.cloud_project.S3Credential("myS3Credentials",
+            service_name=user.service_name,
+            user_id=user.id)
+        policy = ovh.cloud_project.S3Policy("policy",
+            service_name=user.service_name,
+            user_id=user.id,
+            policy=json.dumps({
+                "Statement": [{
+                    "Sid": "RWContainer",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:GetObject",
+                        "s3:PutObject",
+                        "s3:DeleteObject",
+                        "s3:ListBucket",
+                        "s3:ListMultipartUploadParts",
+                        "s3:ListBucketMultipartUploads",
+                        "s3:AbortMultipartUpload",
+                        "s3:GetBucketLocation",
+                    ],
+                    "Resource": [
+                        "arn:aws:s3:::hp-bucket",
+                        "arn:aws:s3:::hp-bucket/*",
+                    ],
+                }],
+            }))
+        ```
+
         ## Import
 
-        OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id <break>```<break><break>
+        OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param S3PolicyArgs args: The arguments to use to populate this resource's properties.

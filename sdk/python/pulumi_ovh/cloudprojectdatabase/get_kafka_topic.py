@@ -149,6 +149,16 @@ def get_kafka_topic(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    topic = ovh.CloudProjectDatabase.get_kafka_topic(service_name="XXX",
+        cluster_id="YYY",
+        id="ZZZ")
+    pulumi.export("topicName", topic.name)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str id: Topic ID
@@ -183,6 +193,16 @@ def get_kafka_topic_output(cluster_id: Optional[pulumi.Input[str]] = None,
     Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    topic = ovh.CloudProjectDatabase.get_kafka_topic(service_name="XXX",
+        cluster_id="YYY",
+        id="ZZZ")
+    pulumi.export("topicName", topic.name)
+    ```
 
 
     :param str cluster_id: Cluster ID

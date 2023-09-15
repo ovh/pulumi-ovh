@@ -178,6 +178,14 @@ def get_container_registry(registry_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_registry = ovh.CloudProject.get_container_registry(registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        service_name="XXXXXX")
+    ```
+
 
     :param str registry_id: Registry ID
     :param str service_name: The id of the public cloud project. If omitted,
@@ -212,6 +220,14 @@ def get_container_registry_output(registry_id: Optional[pulumi.Input[str]] = Non
     Use this data source to get information about a container registry associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_registry = ovh.CloudProject.get_container_registry(registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        service_name="XXXXXX")
+    ```
 
 
     :param str registry_id: Registry ID

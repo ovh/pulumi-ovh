@@ -171,6 +171,13 @@ def get_nas_ha(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_nas_ha = ovh.Dedicated.get_nas_ha(service_name="zpool-12345")
+    ```
+
 
     :param str service_name: The service_name of your dedicated HA-NAS.
     """
@@ -200,6 +207,13 @@ def get_nas_ha_output(service_name: Optional[pulumi.Input[str]] = None,
     Use this data source to retrieve information about a dedicated HA-NAS.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_nas_ha = ovh.Dedicated.get_nas_ha(service_name="zpool-12345")
+    ```
 
 
     :param str service_name: The service_name of your dedicated HA-NAS.

@@ -15,6 +15,35 @@ import (
 // Use this data source to create a temporary order cart to retrieve information order cart products.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myaccount, err := Me.GetMe(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: myaccount.OvhSubsidiary,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCart(ctx *pulumi.Context, args *GetCartArgs, opts ...pulumi.InvokeOption) (*GetCartResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCartResult

@@ -14,13 +14,27 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information about an IPXE Script.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_ipxe_script" "script" {
-        ///   name = "myscript"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var script = Ovh.Me.GetIpxeScript.Invoke(new()
+        ///     {
+        ///         Name = "myscript",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpxeScriptResult> InvokeAsync(GetIpxeScriptArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpxeScriptResult>("ovh:Me/getIpxeScript:getIpxeScript", args ?? new GetIpxeScriptArgs(), options.WithDefaults());
@@ -28,13 +42,27 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information about an IPXE Script.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_ipxe_script" "script" {
-        ///   name = "myscript"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var script = Ovh.Me.GetIpxeScript.Invoke(new()
+        ///     {
+        ///         Name = "myscript",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpxeScriptResult> Invoke(GetIpxeScriptInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpxeScriptResult>("ovh:Me/getIpxeScript:getIpxeScript", args ?? new GetIpxeScriptInvokeArgs(), options.WithDefaults());

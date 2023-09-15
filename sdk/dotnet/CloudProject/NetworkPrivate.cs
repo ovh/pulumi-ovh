@@ -14,9 +14,34 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net = new Ovh.CloudProject.NetworkPrivate("net", new()
+    ///     {
+    ///         Regions = new[]
+    ///         {
+    ///             "GRA1",
+    ///             "BHS1",
+    ///         },
+    ///         ServiceName = "XXXXXX",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678 &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/networkPrivate:NetworkPrivate")]
     public partial class NetworkPrivate : global::Pulumi.CustomResource

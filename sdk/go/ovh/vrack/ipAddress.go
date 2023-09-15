@@ -16,6 +16,92 @@ import (
 // Attach an IP block to a VRack.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Ip"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myaccount, err := Me.GetMe(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: myaccount.OvhSubsidiary,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vrackCartProductPlan, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//				CartId:        mycart.Id,
+//				PriceCapacity: "renew",
+//				Product:       "vrack",
+//				PlanCode:      "vrack",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vrackVrack, err := Vrack.NewVrack(ctx, "vrackVrack", &Vrack.VrackArgs{
+//				Description:   *pulumi.String(mycart.Description),
+//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				Plan: &vrack.VrackPlanArgs{
+//					Duration:    *pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),
+//					PlanCode:    *pulumi.String(vrackCartProductPlan.PlanCode),
+//					PricingMode: *pulumi.String(vrackCartProductPlan.SelectedPrices[0].PricingMode),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ipblockCartProductPlan, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//				CartId:        mycart.Id,
+//				PriceCapacity: "renew",
+//				Product:       "ip",
+//				PlanCode:      "ip-v4-s30-ripe",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ipblockIpService, err := Ip.NewIpService(ctx, "ipblockIpService", &Ip.IpServiceArgs{
+//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				Description:   *pulumi.String(mycart.Description),
+//				Plan: &ip.IpServicePlanArgs{
+//					Duration:    *pulumi.String(ipblockCartProductPlan.SelectedPrices[0].Duration),
+//					PlanCode:    *pulumi.String(ipblockCartProductPlan.PlanCode),
+//					PricingMode: *pulumi.String(ipblockCartProductPlan.SelectedPrices[0].PricingMode),
+//					Configurations: ip.IpServicePlanConfigurationArray{
+//						&ip.IpServicePlanConfigurationArgs{
+//							Label: pulumi.String("country"),
+//							Value: pulumi.String("FR"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Vrack.NewIpAddress(ctx, "vrackblock", &Vrack.IpAddressArgs{
+//				ServiceName: vrackVrack.ServiceName,
+//				Block:       ipblockIpService.Ip,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type IpAddress struct {
 	pulumi.CustomResourceState
 

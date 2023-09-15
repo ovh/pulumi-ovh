@@ -297,9 +297,40 @@ class ServerInstallTask(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_type="rescue")
+        key = ovh.me.SshKey("key",
+            key_name="mykey",
+            key="ssh-ed25519 AAAAC3...")
+        debian = ovh.me.InstallationTemplate("debian",
+            base_template_name="debian11_64",
+            template_name="mydebian11",
+            default_language="en",
+            customization=ovh.me.InstallationTemplateCustomizationArgs(
+                ssh_key_name=key.key_name,
+            ))
+        server_install = ovh.dedicated.ServerInstallTask("serverInstall",
+            service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            template_name=debian.template_name,
+            bootid_on_destroy=rescue.results[0],
+            details=ovh.dedicated.ServerInstallTaskDetailsArgs(
+                custom_hostname="mytest",
+            ))
+        ```
+
         ## Import
 
-        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used  and ths `task_id`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345 <break>```<break><break>
+        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used
+
+        and ths `task_id`, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -318,9 +349,40 @@ class ServerInstallTask(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_type="rescue")
+        key = ovh.me.SshKey("key",
+            key_name="mykey",
+            key="ssh-ed25519 AAAAC3...")
+        debian = ovh.me.InstallationTemplate("debian",
+            base_template_name="debian11_64",
+            template_name="mydebian11",
+            default_language="en",
+            customization=ovh.me.InstallationTemplateCustomizationArgs(
+                ssh_key_name=key.key_name,
+            ))
+        server_install = ovh.dedicated.ServerInstallTask("serverInstall",
+            service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            template_name=debian.template_name,
+            bootid_on_destroy=rescue.results[0],
+            details=ovh.dedicated.ServerInstallTaskDetailsArgs(
+                custom_hostname="mytest",
+            ))
+        ```
+
         ## Import
 
-        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used  and ths `task_id`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345 <break>```<break><break>
+        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used
+
+        and ths `task_id`, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345
+        ```
 
         :param str resource_name: The name of the resource.
         :param ServerInstallTaskArgs args: The arguments to use to populate this resource's properties.

@@ -11,8 +11,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
 {
     /// <summary>
     /// Manage a vrack network for your IP Loadbalancing service.
-    /// 
-    /// ## Example Usage
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/vrackNetwork:VrackNetwork")]
     public partial class VrackNetwork : global::Pulumi.CustomResource

@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const namespaces = ovh.CloudProject.getM3dbNamespaces({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ * });
+ * export const namespaceIds = namespaces.then(namespaces => namespaces.namespaceIds);
+ * ```
  */
 export function getM3dbNamespaces(args: GetM3dbNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetM3dbNamespacesResult> {
 
@@ -58,6 +69,17 @@ export interface GetM3dbNamespacesResult {
  * Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const namespaces = ovh.CloudProject.getM3dbNamespaces({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ * });
+ * export const namespaceIds = namespaces.then(namespaces => namespaces.namespaceIds);
+ * ```
  */
 export function getM3dbNamespacesOutput(args: GetM3dbNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbNamespacesResult> {
     return pulumi.output(args).apply((a: any) => getM3dbNamespaces(a, opts))

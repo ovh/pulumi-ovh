@@ -11,11 +11,49 @@ import * as utilities from "../utilities";
  *
  * Route which redirect all URL to HTTPs for example.com (Vhost).
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const httpsredirect = new ovh.iploadbalancing.HttpRoute("httpsredirect", {
+ *     action: {
+ *         status: 302,
+ *         target: "https://${host}${path}${arguments}",
+ *         type: "redirect",
+ *     },
+ *     displayName: "Redirect to HTTPS",
+ *     frontendId: 11111,
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ *     weight: 1,
+ * });
+ * const examplerule = new ovh.iploadbalancing.HttpRouteRule("examplerule", {
+ *     displayName: "Match example.com host",
+ *     field: "host",
+ *     match: "is",
+ *     negate: false,
+ *     pattern: "example.com",
+ *     routeId: httpsredirect.id,
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ * });
+ * ```
+ *
  * Rule which match a specific header (same effect as the host match above).
  *
- * ## Import
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
  *
- * HTTP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+ * const examplerule = new ovh.iploadbalancing.HttpRouteRule("examplerule", {
+ *     displayName: "Match example.com Host header",
+ *     field: "headers",
+ *     match: "is",
+ *     negate: false,
+ *     pattern: "example.com",
+ *     routeId: ovh_iploadbalancing_http_route.httpsredirect.id,
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ *     subField: "Host",
+ * });
+ * ```
  */
 export class HttpRouteRule extends pulumi.CustomResource {
     /**

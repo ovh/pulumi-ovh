@@ -14,36 +14,33 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 endpoint: pulumi.Input[str],
                  application_key: Optional[pulumi.Input[str]] = None,
                  application_secret: Optional[pulumi.Input[str]] = None,
-                 consumer_key: Optional[pulumi.Input[str]] = None):
+                 consumer_key: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] endpoint: The OVH API endpoint to target (ex: "ovh-eu").
         :param pulumi.Input[str] application_key: The OVH API Application Key.
         :param pulumi.Input[str] application_secret: The OVH API Application Secret.
         :param pulumi.Input[str] consumer_key: The OVH API Consumer key.
+        :param pulumi.Input[str] endpoint: The OVH API endpoint to target (ex: "ovh-eu").
         """
-        pulumi.set(__self__, "endpoint", endpoint)
+        if application_key is None:
+            application_key = _utilities.get_env('OVH_APPLICATION_KEY')
         if application_key is not None:
             pulumi.set(__self__, "application_key", application_key)
+        if application_secret is None:
+            application_secret = _utilities.get_env('OVH_APPLICATION_SECRET')
         if application_secret is not None:
             pulumi.set(__self__, "application_secret", application_secret)
+        if consumer_key is None:
+            consumer_key = _utilities.get_env('OVH_CONSUMER_KEY')
         if consumer_key is not None:
             pulumi.set(__self__, "consumer_key", consumer_key)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Input[str]:
-        """
-        The OVH API endpoint to target (ex: "ovh-eu").
-        """
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoint", value)
+        if endpoint is None:
+            endpoint = _utilities.get_env('OVH_ENDPOINT')
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
 
     @property
     @pulumi.getter(name="applicationKey")
@@ -81,6 +78,18 @@ class ProviderArgs:
     def consumer_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "consumer_key", value)
 
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OVH API endpoint to target (ex: "ovh-eu").
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
 
 class Provider(pulumi.ProviderResource):
     @overload
@@ -109,7 +118,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the ovh package. By default, resources use package-wide configuration
@@ -145,12 +154,20 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            if application_key is None:
+                application_key = _utilities.get_env('OVH_APPLICATION_KEY')
             __props__.__dict__["application_key"] = application_key
-            __props__.__dict__["application_secret"] = application_secret
+            if application_secret is None:
+                application_secret = _utilities.get_env('OVH_APPLICATION_SECRET')
+            __props__.__dict__["application_secret"] = None if application_secret is None else pulumi.Output.secret(application_secret)
+            if consumer_key is None:
+                consumer_key = _utilities.get_env('OVH_CONSUMER_KEY')
             __props__.__dict__["consumer_key"] = consumer_key
-            if endpoint is None and not opts.urn:
-                raise TypeError("Missing required property 'endpoint'")
+            if endpoint is None:
+                endpoint = _utilities.get_env('OVH_ENDPOINT')
             __props__.__dict__["endpoint"] = endpoint
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["applicationSecret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'ovh',
             resource_name,
@@ -183,7 +200,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def endpoint(self) -> pulumi.Output[str]:
+    def endpoint(self) -> pulumi.Output[Optional[str]]:
         """
         The OVH API endpoint to target (ex: "ovh-eu").
         """

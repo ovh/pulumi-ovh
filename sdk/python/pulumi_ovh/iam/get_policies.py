@@ -60,6 +60,13 @@ def get_policies(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPol
     Use this data source to list the existing IAM policies of an account.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_policies = ovh.Iam.get_policies()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

@@ -14,6 +14,66 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Domain"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myaccount, err := Me.GetMe(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: myaccount.OvhSubsidiary,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			zoneCartProductPlan, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//				CartId:        mycart.Id,
+//				PriceCapacity: "renew",
+//				Product:       "dns",
+//				PlanCode:      "zone",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Domain.NewZone(ctx, "zoneZone", &Domain.ZoneArgs{
+//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				Plan: &domain.ZonePlanArgs{
+//					Duration:    *pulumi.String(zoneCartProductPlan.SelectedPrices[0].Duration),
+//					PlanCode:    *pulumi.String(zoneCartProductPlan.PlanCode),
+//					PricingMode: *pulumi.String(zoneCartProductPlan.SelectedPrices[0].PricingMode),
+//					Configurations: domain.ZonePlanConfigurationArray{
+//						&domain.ZonePlanConfigurationArgs{
+//							Label: pulumi.String("zone"),
+//							Value: pulumi.String("myzone.mydomain.com"),
+//						},
+//						&domain.ZonePlanConfigurationArgs{
+//							Label: pulumi.String("template"),
+//							Value: pulumi.String("minimized"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Zone struct {
 	pulumi.CustomResourceState
 

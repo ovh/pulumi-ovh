@@ -161,6 +161,16 @@ def get_redis_user(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    redisuser = ovh.CloudProject.get_redis_user(service_name="XXX",
+        cluster_id="YYY",
+        name="ZZZ")
+    pulumi.export("redisuserCommands", redisuser.commands)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str name: Name of the user
@@ -196,6 +206,16 @@ def get_redis_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     Use this data source to get information about a user of a redis cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    redisuser = ovh.CloudProject.get_redis_user(service_name="XXX",
+        cluster_id="YYY",
+        name="ZZZ")
+    pulumi.export("redisuserCommands", redisuser.commands)
+    ```
 
 
     :param str cluster_id: Cluster ID

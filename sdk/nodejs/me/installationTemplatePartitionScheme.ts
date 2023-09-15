@@ -9,9 +9,28 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const mytemplate = new ovh.me.InstallationTemplate("mytemplate", {
+ *     baseTemplateName: "centos7_64",
+ *     templateName: "mytemplate",
+ *     defaultLanguage: "fr",
+ * });
+ * const scheme = new ovh.me.InstallationTemplatePartitionScheme("scheme", {
+ *     templateName: mytemplate.templateName,
+ *     priority: 1,
+ * });
+ * ```
+ *
  * ## Import
  *
- * The resource can be imported using the `template_name`, `name` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name <break>```<break><break>
+ * The resource can be imported using the `template_name`, `name` of the cluster, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name
+ * ```
  */
 export class InstallationTemplatePartitionScheme extends pulumi.CustomResource {
     /**

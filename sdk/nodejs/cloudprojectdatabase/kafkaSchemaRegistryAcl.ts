@@ -9,9 +9,32 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const kafka = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXX",
+ *     engine: "kafka",
+ *     id: "ZZZ",
+ * });
+ * const schemaRegistryAcl = new ovh.cloudprojectdatabase.KafkaSchemaRegistryAcl("schemaRegistryAcl", {
+ *     serviceName: kafka.then(kafka => kafka.serviceName),
+ *     clusterId: kafka.then(kafka => kafka.id),
+ *     permission: "schema_registry_read",
+ *     resource: "Subject:myResource",
+ *     username: "johndoe",
+ * });
+ * ```
+ *
  * ## Import
  *
- * OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id <break>```<break><break>
+ * OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id
+ * ```
  */
 export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
     /**

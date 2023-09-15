@@ -116,6 +116,13 @@ def get_paymentmean_bank_account(description_regexp: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    ba = ovh.Me.get_paymentmean_bank_account(use_default=True)
+    ```
+
 
     :param str description_regexp: a regexp used to filter bank accounts 
            on their `description` attributes.
@@ -154,6 +161,13 @@ def get_paymentmean_bank_account_output(description_regexp: Optional[pulumi.Inpu
     payment mean associated with an OVHcloud account.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    ba = ovh.Me.get_paymentmean_bank_account(use_default=True)
+    ```
 
 
     :param str description_regexp: a regexp used to filter bank accounts 

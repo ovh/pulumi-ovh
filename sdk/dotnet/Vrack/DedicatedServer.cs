@@ -16,6 +16,23 @@ namespace Pulumi.Ovh.Vrack
     /// Attach a dedicated server to a VRack.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vds = new Ovh.Vrack.DedicatedServer("vds", new()
+    ///     {
+    ///         ServerId = "67890",
+    ///         ServiceName = "XXXX",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Vrack/dedicatedServer:DedicatedServer")]
     public partial class DedicatedServer : global::Pulumi.CustomResource

@@ -251,7 +251,11 @@ class M3DbUser(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed M3DB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/m3DbUser:M3DbUser my_user service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed M3DB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/m3DbUser:M3DbUser my_user service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -271,7 +275,11 @@ class M3DbUser(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed M3DB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/m3DbUser:M3DbUser my_user service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed M3DB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/m3DbUser:M3DbUser my_user service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param M3DbUserArgs args: The arguments to use to populate this resource's properties.

@@ -9,9 +9,38 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const mytemplate = new ovh.me.InstallationTemplate("mytemplate", {
+ *     baseTemplateName: "centos7_64",
+ *     templateName: "mytemplate",
+ *     defaultLanguage: "fr",
+ * });
+ * const scheme = new ovh.me.InstallationTemplatePartitionScheme("scheme", {
+ *     templateName: mytemplate.templateName,
+ *     priority: 1,
+ * });
+ * const group1 = new ovh.me.InstallationTemplatePartitionSchemeHardwareRaid("group1", {
+ *     templateName: scheme.templateName,
+ *     schemeName: scheme.name,
+ *     disks: [
+ *         "[c1:d1,c1:d2,c1:d3]",
+ *         "[c1:d10,c1:d20,c1:d30]",
+ *     ],
+ *     mode: "raid50",
+ *     step: 1,
+ * });
+ * ```
+ *
  * ## Import
  *
- * The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name <break>```<break><break>
+ * The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name
+ * ```
  */
 export class InstallationTemplatePartitionSchemeHardwareRaid extends pulumi.CustomResource {
     /**

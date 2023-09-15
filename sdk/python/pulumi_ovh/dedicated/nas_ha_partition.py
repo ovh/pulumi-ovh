@@ -232,9 +232,23 @@ class NasHAPartition(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_partition = ovh.dedicated.NasHAPartition("my-partition",
+            protocol="NFS",
+            service_name="zpool-12345",
+            size=20)
+        ```
+
         ## Import
 
-        HA-NAS can be imported using the `{service_name}/{name}`, e.g.   <break><break>```sh<break> $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition` <break>```<break><break>
+        HA-NAS can be imported using the `{service_name}/{name}`, e.g.
+
+        ```sh
+         $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -255,9 +269,23 @@ class NasHAPartition(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_partition = ovh.dedicated.NasHAPartition("my-partition",
+            protocol="NFS",
+            service_name="zpool-12345",
+            size=20)
+        ```
+
         ## Import
 
-        HA-NAS can be imported using the `{service_name}/{name}`, e.g.   <break><break>```sh<break> $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition` <break>```<break><break>
+        HA-NAS can be imported using the `{service_name}/{name}`, e.g.
+
+        ```sh
+         $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
+        ```
 
         :param str resource_name: The name of the resource.
         :param NasHAPartitionArgs args: The arguments to use to populate this resource's properties.

@@ -13,11 +13,67 @@ import * as utilities from "../utilities";
  *
  * Create a simple node pool in your Kubernetes cluster:
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const nodePool = new ovh.cloudproject.KubeNodePool("nodePool", {
+ *     desiredNodes: 3,
+ *     flavorName: "b2-7",
+ *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     maxNodes: 3,
+ *     minNodes: 3,
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ * });
+ * ```
+ *
  * Create an advanced node pool in your Kubernetes cluster:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const pool = new ovh.cloudproject.KubeNodePool("pool", {
+ *     desiredNodes: 3,
+ *     flavorName: "b2-7",
+ *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     maxNodes: 3,
+ *     minNodes: 3,
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     template: {
+ *         metadata: {
+ *             annotations: {
+ *                 k1: "v1",
+ *                 k2: "v2",
+ *             },
+ *             finalizers: [
+ *                 "ovhcloud.com/v1beta1",
+ *                 "ovhcloud.com/v1",
+ *             ],
+ *             labels: {
+ *                 k3: "v3",
+ *                 k4: "v4",
+ *             },
+ *         },
+ *         spec: {
+ *             taints: [{
+ *                 effect: "PreferNoSchedule",
+ *                 key: "k",
+ *                 value: "v",
+ *             }],
+ *             unschedulable: false,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
- * OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid <break>```<break><break>
+ * OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
+ * ```
  */
 export class KubeNodePool extends pulumi.CustomResource {
     /**

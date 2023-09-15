@@ -15,7 +15,15 @@ import (
 
 // ## Import
 //
-// Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.  bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id <break>```<break><break>
+// Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.
+//
+// bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
+//
+// ```
 type Project struct {
 	pulumi.CustomResourceState
 

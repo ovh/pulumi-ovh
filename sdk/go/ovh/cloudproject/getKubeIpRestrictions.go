@@ -15,6 +15,32 @@ import (
 // Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			iprestrictions, err := CloudProject.GetKubeIpRestrictions(ctx, &cloudproject.GetKubeIpRestrictionsArgs{
+//				ServiceName: "XXXXXX",
+//				KubeId:      "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ips", iprestrictions.Ips)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupKubeIpRestrictions(ctx *pulumi.Context, args *LookupKubeIpRestrictionsArgs, opts ...pulumi.InvokeOption) (*LookupKubeIpRestrictionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubeIpRestrictionsResult

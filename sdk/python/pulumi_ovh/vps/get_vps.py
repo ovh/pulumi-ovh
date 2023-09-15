@@ -254,6 +254,13 @@ def get_vps(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    server = ovh.Vps.get_vps(service_name="XXXXXX")
+    ```
+
 
     :param str service_name: The service_name of your dedicated server.
     """
@@ -290,6 +297,13 @@ def get_vps_output(service_name: Optional[pulumi.Input[str]] = None,
     Use this data source to retrieve information about a vps associated with your OVHcloud Account.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    server = ovh.Vps.get_vps(service_name="XXXXXX")
+    ```
 
 
     :param str service_name: The service_name of your dedicated server.

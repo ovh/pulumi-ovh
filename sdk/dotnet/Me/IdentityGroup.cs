@@ -13,6 +13,23 @@ namespace Pulumi.Ovh.Me
     /// Creates an identity group.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myGroup = new Ovh.Me.IdentityGroup("myGroup", new()
+    ///     {
+    ///         Description = "Some custom description",
+    ///         Role = "NONE",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Me/identityGroup:IdentityGroup")]
     public partial class IdentityGroup : global::Pulumi.CustomResource

@@ -287,6 +287,16 @@ class FailoverIpAttach(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myfailoverip = ovh.cloud_project.FailoverIpAttach("myfailoverip",
+            ip="XXXXXX",
+            routed_to="XXXXXX",
+            service_name="XXXXXX")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] block: The IP block
@@ -307,6 +317,16 @@ class FailoverIpAttach(pulumi.CustomResource):
         Attaches a failover IP address to a compute instance
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myfailoverip = ovh.cloud_project.FailoverIpAttach("myfailoverip",
+            ip="XXXXXX",
+            routed_to="XXXXXX",
+            service_name="XXXXXX")
+        ```
 
         :param str resource_name: The name of the resource.
         :param FailoverIpAttachArgs args: The arguments to use to populate this resource's properties.

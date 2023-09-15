@@ -14,9 +14,40 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var kafka = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXX",
+    ///         Engine = "kafka",
+    ///         Id = "ZZZ",
+    ///     });
+    /// 
+    ///     var schemaRegistryAcl = new Ovh.CloudProjectDatabase.KafkaSchemaRegistryAcl("schemaRegistryAcl", new()
+    ///     {
+    ///         ServiceName = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         ClusterId = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         Permission = "schema_registry_read",
+    ///         Resource = "Subject:myResource",
+    ///         Username = "johndoe",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl")]
     public partial class KafkaSchemaRegistryAcl : global::Pulumi.CustomResource

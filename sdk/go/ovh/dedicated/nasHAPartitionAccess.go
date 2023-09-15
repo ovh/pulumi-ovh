@@ -17,9 +17,42 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Dedicated.NewNasHAPartitionAccess(ctx, "my-partition", &Dedicated.NasHAPartitionAccessArgs{
+//				Ip:            pulumi.String("123.123.123.123/32"),
+//				PartitionName: pulumi.String("my-partition"),
+//				ServiceName:   pulumi.String("zpool-12345"),
+//				Type:          pulumi.String("readwrite"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.   <break><break>```sh<break> $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32` <break>```<break><break>
+// HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
+//
+// ```sh
+//
+//	$ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+//
+// ```
 type NasHAPartitionAccess struct {
 	pulumi.CustomResourceState
 

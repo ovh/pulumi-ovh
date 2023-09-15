@@ -11,9 +11,29 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const subnet = new ovh.cloudproject.NetworkPrivateSubnet("subnet", {
+ *     dhcp: true,
+ *     end: "192.168.168.200",
+ *     network: "192.168.168.0/24",
+ *     networkId: "0234543",
+ *     noGateway: false,
+ *     region: "GRA1",
+ *     serviceName: "xxxxx",
+ *     start: "192.168.168.100",
+ * });
+ * ```
+ *
  * ## Import
  *
- * Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909 <break>```<break><break>
+ * Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909
+ * ```
  */
 export class NetworkPrivateSubnet extends pulumi.CustomResource {
     /**

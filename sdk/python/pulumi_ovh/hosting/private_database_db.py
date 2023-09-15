@@ -102,9 +102,22 @@ class PrivateDatabaseDb(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        database = ovh.hosting.PrivateDatabaseDb("database",
+            database_name="XXXXXX",
+            service_name="XXXXXX")
+        ```
+
         ## Import
 
         OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
+
+        ```sh
+         $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -122,9 +135,22 @@ class PrivateDatabaseDb(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        database = ovh.hosting.PrivateDatabaseDb("database",
+            database_name="XXXXXX",
+            service_name="XXXXXX")
+        ```
+
         ## Import
 
         OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
+
+        ```sh
+         $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param PrivateDatabaseDbArgs args: The arguments to use to populate this resource's properties.

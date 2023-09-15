@@ -14,12 +14,24 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to list all the IAM resource types.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_iam_reference_resource_type" "types" {
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var types = Ovh.Iam.GetReferenceResourceType.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetReferenceResourceTypeResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReferenceResourceTypeResult>("ovh:Iam/getReferenceResourceType:getReferenceResourceType", InvokeArgs.Empty, options.WithDefaults());
@@ -27,12 +39,24 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to list all the IAM resource types.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_iam_reference_resource_type" "types" {
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var types = Ovh.Iam.GetReferenceResourceType.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetReferenceResourceTypeResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReferenceResourceTypeResult>("ovh:Iam/getReferenceResourceType:getReferenceResourceType", InvokeArgs.Empty, options.WithDefaults());

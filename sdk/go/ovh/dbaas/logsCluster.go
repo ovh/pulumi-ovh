@@ -15,9 +15,48 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Dbaas.NewLogsCluster(ctx, "ldp", &Dbaas.LogsClusterArgs{
+//				ArchiveAllowedNetworks: pulumi.StringArray{
+//					pulumi.String("10.0.0.0/16"),
+//				},
+//				DirectInputAllowedNetworks: pulumi.StringArray{
+//					pulumi.String("10.0.0.0/16"),
+//				},
+//				QueryAllowedNetworks: pulumi.StringArray{
+//					pulumi.String("10.0.0.0/16"),
+//				},
+//				ServiceName: pulumi.String("ldp-xx-xxxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id <break>```<break><break>
+// OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id
+//
+// ```
 type LogsCluster struct {
 	pulumi.CustomResourceState
 

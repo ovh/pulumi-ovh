@@ -11,9 +11,24 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const mytemplate = new ovh.me.InstallationTemplate("mytemplate", {
+ *     baseTemplateName: "centos7_64",
+ *     defaultLanguage: "en",
+ *     templateName: "mytemplate",
+ * });
+ * ```
+ *
  * ## Import
  *
- * Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name <break>```<break><break>
+ * Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name
+ * ```
  */
 export class InstallationTemplate extends pulumi.CustomResource {
     /**

@@ -10,6 +10,15 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about an IP service.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myip = ovh.Ip.getService({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
 
@@ -74,6 +83,15 @@ export interface GetServiceResult {
  * Use this data source to retrieve information about an IP service.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myip = ovh.Ip.getService({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
     return pulumi.output(args).apply((a: any) => getService(a, opts))

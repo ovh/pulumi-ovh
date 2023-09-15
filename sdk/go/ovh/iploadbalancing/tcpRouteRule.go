@@ -17,9 +17,46 @@ import (
 //
 // ## Example Usage
 //
-// ## Import
+// ```go
+// package main
 //
-// TCP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			reject, err := IpLoadBalancing.NewTcpRoute(ctx, "reject", &IpLoadBalancing.TcpRouteArgs{
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				Weight:      pulumi.Int(1),
+//				FrontendId:  pulumi.Int(11111),
+//				Action: &iploadbalancing.TcpRouteActionArgs{
+//					Type: pulumi.String("reject"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = IpLoadBalancing.NewTcpRouteRule(ctx, "examplerule", &IpLoadBalancing.TcpRouteRuleArgs{
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				RouteId:     reject.ID(),
+//				DisplayName: pulumi.String("Match example.com host"),
+//				Field:       pulumi.String("sni"),
+//				Match:       pulumi.String("is"),
+//				Negate:      pulumi.Bool(false),
+//				Pattern:     pulumi.String("example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type TcpRouteRule struct {
 	pulumi.CustomResourceState
 

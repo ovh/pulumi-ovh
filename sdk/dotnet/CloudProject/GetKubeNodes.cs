@@ -14,18 +14,32 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a list of OVHcloud Managed Kubernetes nodes.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_kube_nodes" "nodes" {
-        ///   service_name  = "XXXXXX"
-        ///   kube_id       = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "nodes" {
-        ///   value = data.ovh_cloud_project_kube_nodes.nodes
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nodesKubeNodes = Ovh.CloudProject.GetKubeNodes.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nodes"] = nodesKubeNodes,
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubeNodesResult> InvokeAsync(GetKubeNodesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubeNodesResult>("ovh:CloudProject/getKubeNodes:getKubeNodes", args ?? new GetKubeNodesArgs(), options.WithDefaults());
@@ -33,18 +47,32 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a list of OVHcloud Managed Kubernetes nodes.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_kube_nodes" "nodes" {
-        ///   service_name  = "XXXXXX"
-        ///   kube_id       = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "nodes" {
-        ///   value = data.ovh_cloud_project_kube_nodes.nodes
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nodesKubeNodes = Ovh.CloudProject.GetKubeNodes.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nodes"] = nodesKubeNodes,
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubeNodesResult> Invoke(GetKubeNodesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeNodesResult>("ovh:CloudProject/getKubeNodes:getKubeNodes", args ?? new GetKubeNodesInvokeArgs(), options.WithDefaults());

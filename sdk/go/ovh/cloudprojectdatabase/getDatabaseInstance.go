@@ -15,6 +15,34 @@ import (
 // Use this data source to get information about a database of a database cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := CloudProjectDatabase.GetDatabaseInstance(ctx, &cloudprojectdatabase.GetDatabaseInstanceArgs{
+//				ServiceName: "XXX",
+//				Engine:      "YYY",
+//				ClusterId:   "ZZZ",
+//				Name:        "UUU",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databaseName", database.Name)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDatabaseInstance(ctx *pulumi.Context, args *LookupDatabaseInstanceArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseInstanceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseInstanceResult

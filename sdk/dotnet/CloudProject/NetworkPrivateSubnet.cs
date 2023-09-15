@@ -14,9 +14,36 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var subnet = new Ovh.CloudProject.NetworkPrivateSubnet("subnet", new()
+    ///     {
+    ///         Dhcp = true,
+    ///         End = "192.168.168.200",
+    ///         Network = "192.168.168.0/24",
+    ///         NetworkId = "0234543",
+    ///         NoGateway = false,
+    ///         Region = "GRA1",
+    ///         ServiceName = "xxxxx",
+    ///         Start = "192.168.168.100",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909 &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet")]
     public partial class NetworkPrivateSubnet : global::Pulumi.CustomResource

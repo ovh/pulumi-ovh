@@ -8,6 +8,32 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * }));
+ * const vrackCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
+ *     cartId: mycart.id,
+ *     priceCapacity: "renew",
+ *     product: "vrack",
+ *     planCode: "vrack",
+ * }));
+ * const vrackVrack = new ovh.vrack.Vrack("vrackVrack", {
+ *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
+ *     description: "my vrack",
+ *     plan: {
+ *         duration: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.duration),
+ *         planCode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.planCode),
+ *         pricingMode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *     },
+ * });
+ * ```
  */
 export class Vrack extends pulumi.CustomResource {
     /**

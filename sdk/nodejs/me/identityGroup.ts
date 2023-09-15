@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * Creates an identity group.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const myGroup = new ovh.me.IdentityGroup("myGroup", {
+ *     description: "Some custom description",
+ *     role: "NONE",
+ * });
+ * ```
  */
 export class IdentityGroup extends pulumi.CustomResource {
     /**

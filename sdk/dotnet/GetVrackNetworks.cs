@@ -14,14 +14,28 @@ namespace Pulumi.Ovh
         /// <summary>
         /// Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data ovh_iploadbalancing_vrack_networks "lb_networks" {
-        ///   service_name = "XXXXXX"
-        ///   subnet       = "10.0.0.0/24"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var lbNetworks = Ovh.GetVrackNetworks.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         Subnet = "10.0.0.0/24",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVrackNetworksResult> InvokeAsync(GetVrackNetworksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVrackNetworksResult>("ovh:index/getVrackNetworks:getVrackNetworks", args ?? new GetVrackNetworksArgs(), options.WithDefaults());
@@ -29,14 +43,28 @@ namespace Pulumi.Ovh
         /// <summary>
         /// Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data ovh_iploadbalancing_vrack_networks "lb_networks" {
-        ///   service_name = "XXXXXX"
-        ///   subnet       = "10.0.0.0/24"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var lbNetworks = Ovh.GetVrackNetworks.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         Subnet = "10.0.0.0/24",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetVrackNetworksResult> Invoke(GetVrackNetworksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVrackNetworksResult>("ovh:index/getVrackNetworks:getVrackNetworks", args ?? new GetVrackNetworksInvokeArgs(), options.WithDefaults());

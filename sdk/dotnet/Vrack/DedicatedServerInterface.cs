@@ -13,6 +13,28 @@ namespace Pulumi.Ovh.Vrack
     /// Attach a Dedicated Server Network Interface to a VRack.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var server = Ovh.GetServer.Invoke(new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///     });
+    /// 
+    ///     var vdsi = new Ovh.Vrack.DedicatedServerInterface("vdsi", new()
+    ///     {
+    ///         ServiceName = "pn-xxxxxxx",
+    ///         InterfaceId = server.Apply(getServerResult =&gt; getServerResult.EnabledVrackVnis[0]),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface")]
     public partial class DedicatedServerInterface : global::Pulumi.CustomResource

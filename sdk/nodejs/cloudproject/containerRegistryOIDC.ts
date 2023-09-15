@@ -9,9 +9,35 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const my_oidc = new ovh.cloudproject.ContainerRegistryOIDC("my-oidc", {
+ *     serviceName: "XXXXXX",
+ *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ *     oidcName: "my-oidc-provider",
+ *     oidcEndpoint: "https://xxxx.yyy.com",
+ *     oidcClientId: "xxx",
+ *     oidcClientSecret: "xxx",
+ *     oidcScope: "openid,profile,email,offline_access",
+ *     oidcGroupsClaim: "groups",
+ *     oidcAdminGroup: "harbor-admin",
+ *     oidcVerifyCert: true,
+ *     oidcAutoOnboard: true,
+ *     oidcUserClaim: "preferred_username",
+ *     deleteUsers: false,
+ * });
+ * export const oidcClientSecret = my_oidc.oidcClientSecret;
+ * ```
+ *
  * ## Import
  *
- * OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id <break>```<break><break>
+ * OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
+ * ```
  */
 export class ContainerRegistryOIDC extends pulumi.CustomResource {
     /**

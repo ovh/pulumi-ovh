@@ -134,9 +134,24 @@ class Reverse(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        # Set the reverse of an IP
+        test = ovh.ip.Reverse("test",
+            ip="192.0.2.0/24",
+            reverse_ip="192.0.2.1",
+            reverse_value="example.com")
+        ```
+
         ## Import
 
-        The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42' <break>```<break><break>
+        The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -155,9 +170,24 @@ class Reverse(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        # Set the reverse of an IP
+        test = ovh.ip.Reverse("test",
+            ip="192.0.2.0/24",
+            reverse_ip="192.0.2.1",
+            reverse_value="example.com")
+        ```
+
         ## Import
 
-        The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42' <break>```<break><break>
+        The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42'
+        ```
 
         :param str resource_name: The name of the resource.
         :param ReverseArgs args: The arguments to use to populate this resource's properties.

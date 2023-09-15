@@ -82,6 +82,14 @@ def get_regions(has_services_ups: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    regions = ovh.CloudProject.get_regions(has_services_ups=["network"],
+        service_name="XXXXXX")
+    ```
+
 
     :param Sequence[str] has_services_ups: List of services which has to be UP in regions.
            Example: "image", "instance", "network", "storage", "volume", "workflow", ...
@@ -110,6 +118,14 @@ def get_regions_output(has_services_ups: Optional[pulumi.Input[Optional[Sequence
     Use this data source to get the regions of a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    regions = ovh.CloudProject.get_regions(has_services_ups=["network"],
+        service_name="XXXXXX")
+    ```
 
 
     :param Sequence[str] has_services_ups: List of services which has to be UP in regions.

@@ -17,9 +17,43 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := CloudProject.NewNetworkPrivate(ctx, "net", &CloudProject.NetworkPrivateArgs{
+//				Regions: pulumi.StringArray{
+//					pulumi.String("GRA1"),
+//					pulumi.String("BHS1"),
+//				},
+//				ServiceName: pulumi.String("XXXXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678 <break>```<break><break>
+// Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678
+//
+// ```
 type NetworkPrivate struct {
 	pulumi.CustomResourceState
 

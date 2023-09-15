@@ -73,6 +73,16 @@ def get_users(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    project_users = ovh.CloudProject.get_users(service_name="XXX")
+    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
+    s3_user_id = users[0]
+    pulumi.export("userId", s3_user_id)
+    ```
+
 
     :param str service_name: The ID of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -95,6 +105,16 @@ def get_users_output(service_name: Optional[pulumi.Input[str]] = None,
     Get the list of all users of a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    project_users = ovh.CloudProject.get_users(service_name="XXX")
+    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
+    s3_user_id = users[0]
+    pulumi.export("userId", s3_user_id)
+    ```
 
 
     :param str service_name: The ID of the public cloud project. If omitted,

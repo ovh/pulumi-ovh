@@ -10,6 +10,15 @@ import * as utilities from "../utilities";
  * Use this data source to get the container registries of a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const registries = ovh.CloudProject.getContainerRegistries({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getContainerRegistries(args: GetContainerRegistriesArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistriesResult> {
 
@@ -48,6 +57,15 @@ export interface GetContainerRegistriesResult {
  * Use this data source to get the container registries of a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const registries = ovh.CloudProject.getContainerRegistries({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getContainerRegistriesOutput(args: GetContainerRegistriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistriesResult> {
     return pulumi.output(args).apply((a: any) => getContainerRegistries(a, opts))

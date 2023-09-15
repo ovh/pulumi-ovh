@@ -8,6 +8,21 @@ import * as utilities from "../utilities";
  * Use this data source to get a OVHcloud Managed Private Registry OIDC.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * export = async () => {
+ *     const my-oidc = await ovh.CloudProject.getContainerRegistryOIDC({
+ *         serviceName: "XXXXXX",
+ *         registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ *     });
+ *     return {
+ *         "oidc-client-id": my_oidc.oidcClientId,
+ *     };
+ * }
+ * ```
  */
 export function getContainerRegistryOIDC(args: GetContainerRegistryOIDCArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryOIDCResult> {
 
@@ -134,6 +149,21 @@ export interface GetContainerRegistryOIDCResult {
  * Use this data source to get a OVHcloud Managed Private Registry OIDC.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * export = async () => {
+ *     const my-oidc = await ovh.CloudProject.getContainerRegistryOIDC({
+ *         serviceName: "XXXXXX",
+ *         registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ *     });
+ *     return {
+ *         "oidc-client-id": my_oidc.oidcClientId,
+ *     };
+ * }
+ * ```
  */
 export function getContainerRegistryOIDCOutput(args: GetContainerRegistryOIDCOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryOIDCResult> {
     return pulumi.output(args).apply((a: any) => getContainerRegistryOIDC(a, opts))

@@ -12,9 +12,60 @@ namespace Pulumi.Ovh.Dedicated
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rescue = Ovh.Dedicated.GetServerBoots.Invoke(new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///         BootType = "rescue",
+    ///     });
+    /// 
+    ///     var key = new Ovh.Me.SshKey("key", new()
+    ///     {
+    ///         KeyName = "mykey",
+    ///         Key = "ssh-ed25519 AAAAC3...",
+    ///     });
+    /// 
+    ///     var debian = new Ovh.Me.InstallationTemplate("debian", new()
+    ///     {
+    ///         BaseTemplateName = "debian11_64",
+    ///         TemplateName = "mydebian11",
+    ///         DefaultLanguage = "en",
+    ///         Customization = new Ovh.Me.Inputs.InstallationTemplateCustomizationArgs
+    ///         {
+    ///             SshKeyName = key.KeyName,
+    ///         },
+    ///     });
+    /// 
+    ///     var serverInstall = new Ovh.Dedicated.ServerInstallTask("serverInstall", new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///         TemplateName = debian.TemplateName,
+    ///         BootidOnDestroy = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.Results[0]),
+    ///         Details = new Ovh.Dedicated.Inputs.ServerInstallTaskDetailsArgs
+    ///         {
+    ///             CustomHostname = "mytest",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used  and ths `task_id`, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345 &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used
+    /// 
+    /// and ths `task_id`, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dedicated/serverInstallTask:ServerInstallTask")]
     public partial class ServerInstallTask : global::Pulumi.CustomResource

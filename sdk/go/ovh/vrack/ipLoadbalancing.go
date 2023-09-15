@@ -16,6 +16,31 @@ import (
 // Attach an IP Load Balancing to a VRack.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Vrack.NewIpLoadbalancing(ctx, "viplb", &Vrack.IpLoadbalancingArgs{
+//				LoadbalancingId: pulumi.String("yyy"),
+//				ServiceName:     pulumi.String("xxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type IpLoadbalancing struct {
 	pulumi.CustomResourceState
 

@@ -192,6 +192,13 @@ def get_logs_cluster(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    logstash = ovh.Dbaas.get_logs_cluster(service_name="ldp-xx-xxxxx")
+    ```
+
 
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
     """
@@ -223,6 +230,13 @@ def get_logs_cluster_output(service_name: Optional[pulumi.Input[str]] = None,
     Use this data source to retrieve informations about a DBaas logs cluster tenant.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    logstash = ovh.Dbaas.get_logs_cluster(service_name="ldp-xx-xxxxx")
+    ```
 
 
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.

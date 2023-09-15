@@ -17,9 +17,41 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Dedicated.NewNasHAPartition(ctx, "my-partition", &Dedicated.NasHAPartitionArgs{
+//				Protocol:    pulumi.String("NFS"),
+//				ServiceName: pulumi.String("zpool-12345"),
+//				Size:        pulumi.Int(20),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// HA-NAS can be imported using the `{service_name}/{name}`, e.g.   <break><break>```sh<break> $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition` <break>```<break><break>
+// HA-NAS can be imported using the `{service_name}/{name}`, e.g.
+//
+// ```sh
+//
+//	$ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
+//
+// ```
 type NasHAPartition struct {
 	pulumi.CustomResourceState
 

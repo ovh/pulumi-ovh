@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const databases = ovh.CloudProjectDatabase.getDatabaseInstances({
+ *     serviceName: "XXXX",
+ *     engine: "YYYY",
+ *     clusterId: "ZZZ",
+ * });
+ * export const databaseIds = databases.then(databases => databases.databaseIds);
+ * ```
  */
 export function getDatabaseInstances(args: GetDatabaseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstancesResult> {
 
@@ -69,6 +81,18 @@ export interface GetDatabaseInstancesResult {
  * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const databases = ovh.CloudProjectDatabase.getDatabaseInstances({
+ *     serviceName: "XXXX",
+ *     engine: "YYYY",
+ *     clusterId: "ZZZ",
+ * });
+ * export const databaseIds = databases.then(databases => databases.databaseIds);
+ * ```
  */
 export function getDatabaseInstancesOutput(args: GetDatabaseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstancesResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseInstances(a, opts))

@@ -171,9 +171,27 @@ class OpensearchPattern(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        opensearch = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="opensearch",
+            id="ZZZ")
+        pattern = ovh.cloud_project_database.OpensearchPattern("pattern",
+            service_name=opensearch.service_name,
+            cluster_id=opensearch.id,
+            max_index_count=2,
+            pattern="logs_*")
+        ```
+
         ## Import
 
-        OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -194,9 +212,27 @@ class OpensearchPattern(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        opensearch = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="opensearch",
+            id="ZZZ")
+        pattern = ovh.cloud_project_database.OpensearchPattern("pattern",
+            service_name=opensearch.service_name,
+            cluster_id=opensearch.id,
+            max_index_count=2,
+            pattern="logs_*")
+        ```
+
         ## Import
 
-        OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param OpensearchPatternArgs args: The arguments to use to populate this resource's properties.

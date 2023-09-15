@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * Use this data source to get the regions of a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const regions = ovh.CloudProject.getRegions({
+ *     hasServicesUps: ["network"],
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getRegions(args: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
 
@@ -54,6 +64,16 @@ export interface GetRegionsResult {
  * Use this data source to get the regions of a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const regions = ovh.CloudProject.getRegions({
+ *     hasServicesUps: ["network"],
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getRegionsOutput(args: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(args).apply((a: any) => getRegions(a, opts))

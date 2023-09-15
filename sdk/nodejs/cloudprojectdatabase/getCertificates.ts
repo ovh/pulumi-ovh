@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * Use this data source to get information about certificates of a cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const certificates = ovh.CloudProjectDatabase.getCertificates({
+ *     serviceName: "XXX",
+ *     engine: "YYY",
+ *     clusterId: "ZZZ",
+ * });
+ * export const certificatesCa = certificates.then(certificates => certificates.ca);
+ * ```
  */
 export function getCertificates(args: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
 
@@ -69,6 +81,18 @@ export interface GetCertificatesResult {
  * Use this data source to get information about certificates of a cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const certificates = ovh.CloudProjectDatabase.getCertificates({
+ *     serviceName: "XXX",
+ *     engine: "YYY",
+ *     clusterId: "ZZZ",
+ * });
+ * export const certificatesCa = certificates.then(certificates => certificates.ca);
+ * ```
  */
 export function getCertificatesOutput(args: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
     return pulumi.output(args).apply((a: any) => getCertificates(a, opts))

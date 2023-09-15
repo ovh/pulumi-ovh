@@ -554,11 +554,65 @@ class KubeNodePool(pulumi.CustomResource):
 
         Create a simple node pool in your Kubernetes cluster:
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        node_pool = ovh.cloud_project.KubeNodePool("nodePool",
+            desired_nodes=3,
+            flavor_name="b2-7",
+            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            max_nodes=3,
+            min_nodes=3,
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        ```
+
         Create an advanced node pool in your Kubernetes cluster:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        pool = ovh.cloud_project.KubeNodePool("pool",
+            desired_nodes=3,
+            flavor_name="b2-7",
+            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            max_nodes=3,
+            min_nodes=3,
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            template=ovh.cloud_project.KubeNodePoolTemplateArgs(
+                metadata=ovh.cloud_project.KubeNodePoolTemplateMetadataArgs(
+                    annotations={
+                        "k1": "v1",
+                        "k2": "v2",
+                    },
+                    finalizers=[
+                        "ovhcloud.com/v1beta1",
+                        "ovhcloud.com/v1",
+                    ],
+                    labels={
+                        "k3": "v3",
+                        "k4": "v4",
+                    },
+                ),
+                spec=ovh.cloud_project.KubeNodePoolTemplateSpecArgs(
+                    taints=[{
+                        "effect": "PreferNoSchedule",
+                        "key": "k",
+                        "value": "v",
+                    }],
+                    unschedulable=False,
+                ),
+            ))
+        ```
 
         ## Import
 
-        OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid <break>```<break><break>
+        OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -589,11 +643,65 @@ class KubeNodePool(pulumi.CustomResource):
 
         Create a simple node pool in your Kubernetes cluster:
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        node_pool = ovh.cloud_project.KubeNodePool("nodePool",
+            desired_nodes=3,
+            flavor_name="b2-7",
+            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            max_nodes=3,
+            min_nodes=3,
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        ```
+
         Create an advanced node pool in your Kubernetes cluster:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        pool = ovh.cloud_project.KubeNodePool("pool",
+            desired_nodes=3,
+            flavor_name="b2-7",
+            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            max_nodes=3,
+            min_nodes=3,
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            template=ovh.cloud_project.KubeNodePoolTemplateArgs(
+                metadata=ovh.cloud_project.KubeNodePoolTemplateMetadataArgs(
+                    annotations={
+                        "k1": "v1",
+                        "k2": "v2",
+                    },
+                    finalizers=[
+                        "ovhcloud.com/v1beta1",
+                        "ovhcloud.com/v1",
+                    ],
+                    labels={
+                        "k3": "v3",
+                        "k4": "v4",
+                    },
+                ),
+                spec=ovh.cloud_project.KubeNodePoolTemplateSpecArgs(
+                    taints=[{
+                        "effect": "PreferNoSchedule",
+                        "key": "k",
+                        "value": "v",
+                    }],
+                    unschedulable=False,
+                ),
+            ))
+        ```
 
         ## Import
 
-        OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid <break>```<break><break>
+        OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
+        ```
 
         :param str resource_name: The name of the resource.
         :param KubeNodePoolArgs args: The arguments to use to populate this resource's properties.

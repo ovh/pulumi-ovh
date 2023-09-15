@@ -8,6 +8,23 @@ import * as utilities from "../utilities";
  * Creates a user for a container registry associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const registry = ovh.CloudProject.getContainerRegistry({
+ *     serviceName: "XXXXXX",
+ *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ * });
+ * const user = new ovh.cloudproject.ContainerRegistryUser("user", {
+ *     serviceName: ovh_cloud_project_containerregistry.registry.service_name,
+ *     registryId: ovh_cloud_project_containerregistry.registry.id,
+ *     email: "foo@bar.com",
+ *     login: "foobar",
+ * });
+ * ```
  */
 export class ContainerRegistryUser extends pulumi.CustomResource {
     /**

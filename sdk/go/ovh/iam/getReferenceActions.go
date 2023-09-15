@@ -13,8 +13,6 @@ import (
 )
 
 // Use this data source to list the IAM action associated with a resource type.
-//
-// ## Example Usage
 func GetReferenceActions(ctx *pulumi.Context, args *GetReferenceActionsArgs, opts ...pulumi.InvokeOption) (*GetReferenceActionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReferenceActionsResult

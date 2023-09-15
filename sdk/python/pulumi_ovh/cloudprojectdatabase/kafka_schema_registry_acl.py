@@ -206,9 +206,28 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="kafka",
+            id="ZZZ")
+        schema_registry_acl = ovh.cloud_project_database.KafkaSchemaRegistryAcl("schemaRegistryAcl",
+            service_name=kafka.service_name,
+            cluster_id=kafka.id,
+            permission="schema_registry_read",
+            resource="Subject:myResource",
+            username="johndoe")
+        ```
+
         ## Import
 
-        OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -231,9 +250,28 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="kafka",
+            id="ZZZ")
+        schema_registry_acl = ovh.cloud_project_database.KafkaSchemaRegistryAcl("schemaRegistryAcl",
+            service_name=kafka.service_name,
+            cluster_id=kafka.id,
+            permission="schema_registry_read",
+            resource="Subject:myResource",
+            username="johndoe")
+        ```
+
         ## Import
 
-        OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param KafkaSchemaRegistryAclArgs args: The arguments to use to populate this resource's properties.

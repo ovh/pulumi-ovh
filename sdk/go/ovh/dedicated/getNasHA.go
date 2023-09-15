@@ -15,6 +15,30 @@ import (
 // Use this data source to retrieve information about a dedicated HA-NAS.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Dedicated.GetNasHA(ctx, &dedicated.GetNasHAArgs{
+//				ServiceName: "zpool-12345",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNasHA(ctx *pulumi.Context, args *GetNasHAArgs, opts ...pulumi.InvokeOption) (*GetNasHAResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNasHAResult

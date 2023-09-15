@@ -92,6 +92,14 @@ def get_server_boots(boot_type: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    netboots = ovh.Dedicated.get_server_boots(boot_type="harddisk",
+        service_name="myserver")
+    ```
+
 
     :param str boot_type: Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
     :param str service_name: The internal name of your dedicated server.
@@ -120,6 +128,14 @@ def get_server_boots_output(boot_type: Optional[pulumi.Input[Optional[str]]] = N
     Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    netboots = ovh.Dedicated.get_server_boots(boot_type="harddisk",
+        service_name="myserver")
+    ```
 
 
     :param str boot_type: Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)

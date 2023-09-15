@@ -60,6 +60,13 @@ def get_ssh_keys(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSsh
     Use this data source to retrieve list of names of the account's SSH keys.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mykeys = ovh.Me.get_ssh_keys()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

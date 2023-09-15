@@ -7,9 +7,27 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * // Add a record to a sub-domain
+ * const test = new ovh.domain.ZoneRecord("test", {
+ *     fieldtype: "A",
+ *     subdomain: "test",
+ *     target: "0.0.0.0",
+ *     ttl: 3600,
+ *     zone: "testdemo.ovh",
+ * });
+ * ```
+ *
  * ## Import
  *
- * OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g., bash <break><break>```sh<break> $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone <break>```<break><break>
+ * OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone
+ * ```
  */
 export class ZoneRecord extends pulumi.CustomResource {
     /**

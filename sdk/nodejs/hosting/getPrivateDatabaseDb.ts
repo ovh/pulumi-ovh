@@ -10,6 +10,16 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about an hosting privatedatabase.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const mydatabase = ovh.Hosting.getPrivateDatabaseDb({
+ *     databaseName: "XXXXXX",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getPrivateDatabaseDb(args: GetPrivateDatabaseDbArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseDbResult> {
 
@@ -65,6 +75,16 @@ export interface GetPrivateDatabaseDbResult {
  * Use this data source to retrieve information about an hosting privatedatabase.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const mydatabase = ovh.Hosting.getPrivateDatabaseDb({
+ *     databaseName: "XXXXXX",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getPrivateDatabaseDbOutput(args: GetPrivateDatabaseDbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseDbResult> {
     return pulumi.output(args).apply((a: any) => getPrivateDatabaseDb(a, opts))

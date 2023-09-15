@@ -196,9 +196,26 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        db = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+            engine="YYYY",
+            id="ZZZZ")
+        database = ovh.cloud_project_database.DatabaseInstance("database",
+            service_name=db.service_name,
+            engine=db.engine,
+            cluster_id=db.id)
+        ```
+
         ## Import
 
-        OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id <break>```<break><break>
+        OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -225,9 +242,26 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        db = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+            engine="YYYY",
+            id="ZZZZ")
+        database = ovh.cloud_project_database.DatabaseInstance("database",
+            service_name=db.service_name,
+            engine=db.engine,
+            cluster_id=db.id)
+        ```
+
         ## Import
 
-        OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id <break>```<break><break>
+        OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param DatabaseInstanceArgs args: The arguments to use to populate this resource's properties.

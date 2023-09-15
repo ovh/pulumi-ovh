@@ -8,6 +8,15 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about an identity group.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myGroup = ovh.Me.getIdentityGroup({
+ *     name: "my_group_name",
+ * });
+ * ```
  */
 export function getIdentityGroup(args: GetIdentityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentityGroupResult> {
 
@@ -61,6 +70,15 @@ export interface GetIdentityGroupResult {
  * Use this data source to retrieve information about an identity group.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myGroup = ovh.Me.getIdentityGroup({
+ *     name: "my_group_name",
+ * });
+ * ```
  */
 export function getIdentityGroupOutput(args: GetIdentityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityGroupResult> {
     return pulumi.output(args).apply((a: any) => getIdentityGroup(a, opts))

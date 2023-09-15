@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about a DBaas logs input engine.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const logstash = ovh.Dbaas.getLogsInputEngine({
+ *     isDeprecated: true,
+ *     name: "logstash",
+ *     serviceName: "ldp-xx-xxxxx",
+ *     version: "6.8",
+ * });
+ * ```
  */
 export function getLogsInputEngine(args: GetLogsInputEngineArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsInputEngineResult> {
 
@@ -59,6 +71,18 @@ export interface GetLogsInputEngineResult {
  * Use this data source to retrieve information about a DBaas logs input engine.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const logstash = ovh.Dbaas.getLogsInputEngine({
+ *     isDeprecated: true,
+ *     name: "logstash",
+ *     serviceName: "ldp-xx-xxxxx",
+ *     version: "6.8",
+ * });
+ * ```
  */
 export function getLogsInputEngineOutput(args: GetLogsInputEngineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsInputEngineResult> {
     return pulumi.output(args).apply((a: any) => getLogsInputEngine(a, opts))

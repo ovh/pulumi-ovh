@@ -134,9 +134,23 @@ class PrivateDatabaseUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        user = ovh.hosting.PrivateDatabaseUser("user",
+            password="XXXXXX",
+            service_name="XXXXXX",
+            user_name="XXXXXX")
+        ```
+
         ## Import
 
         OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
+
+        ```sh
+         $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -155,9 +169,23 @@ class PrivateDatabaseUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        user = ovh.hosting.PrivateDatabaseUser("user",
+            password="XXXXXX",
+            service_name="XXXXXX",
+            user_name="XXXXXX")
+        ```
+
         ## Import
 
         OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
+
+        ```sh
+         $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param PrivateDatabaseUserArgs args: The arguments to use to populate this resource's properties.

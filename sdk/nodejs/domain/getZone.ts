@@ -8,6 +8,15 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about a domain zone.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const rootzone = ovh.Domain.getZone({
+ *     name: "mysite.ovh",
+ * });
+ * ```
  */
 export function getZone(args: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
 
@@ -61,6 +70,15 @@ export interface GetZoneResult {
  * Use this data source to retrieve information about a domain zone.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const rootzone = ovh.Domain.getZone({
+ *     name: "mysite.ovh",
+ * });
+ * ```
  */
 export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
     return pulumi.output(args).apply((a: any) => getZone(a, opts))

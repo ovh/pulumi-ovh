@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const schemaRegistryAcl = ovh.CloudProjectDatabase.getKafkaSchemaRegistryAcl({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     id: "ZZZ",
+ * });
+ * export const aclPermission = schemaRegistryAcl.then(schemaRegistryAcl => schemaRegistryAcl.permission);
+ * ```
  */
 export function getKafkaSchemaRegistryAcl(args: GetKafkaSchemaRegistryAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaRegistryAclResult> {
 
@@ -71,6 +83,18 @@ export interface GetKafkaSchemaRegistryAclResult {
  * Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const schemaRegistryAcl = ovh.CloudProjectDatabase.getKafkaSchemaRegistryAcl({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     id: "ZZZ",
+ * });
+ * export const aclPermission = schemaRegistryAcl.then(schemaRegistryAcl => schemaRegistryAcl.permission);
+ * ```
  */
 export function getKafkaSchemaRegistryAclOutput(args: GetKafkaSchemaRegistryAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaRegistryAclResult> {
     return pulumi.output(args).apply((a: any) => getKafkaSchemaRegistryAcl(a, opts))

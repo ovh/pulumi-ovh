@@ -8,6 +8,20 @@ import * as utilities from "../utilities";
  * Attach a Dedicated Server Network Interface to a VRack.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const server = ovh.getServer({
+ *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+ * });
+ * const vdsi = new ovh.vrack.DedicatedServerInterface("vdsi", {
+ *     serviceName: "pn-xxxxxxx",
+ *     interfaceId: server.then(server => server.enabledVrackVnis?.[0]),
+ * });
+ * ```
  */
 export class DedicatedServerInterface extends pulumi.CustomResource {
     /**

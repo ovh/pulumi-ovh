@@ -14,9 +14,40 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var kafka = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXX",
+    ///         Engine = "kafka",
+    ///         Id = "ZZZ",
+    ///     });
+    /// 
+    ///     var acl = new Ovh.CloudProjectDatabase.KafkaAcl("acl", new()
+    ///     {
+    ///         ServiceName = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         ClusterId = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         Permission = "read",
+    ///         Topic = "mytopic",
+    ///         Username = "johndoe",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl")]
     public partial class KafkaAcl : global::Pulumi.CustomResource

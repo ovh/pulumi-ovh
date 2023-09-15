@@ -17,9 +17,48 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mytemplate, err := Me.NewInstallationTemplate(ctx, "mytemplate", &Me.InstallationTemplateArgs{
+//				BaseTemplateName: pulumi.String("centos7_64"),
+//				TemplateName:     pulumi.String("mytemplate"),
+//				DefaultLanguage:  pulumi.String("fr"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Me.NewInstallationTemplatePartitionScheme(ctx, "scheme", &Me.InstallationTemplatePartitionSchemeArgs{
+//				TemplateName: mytemplate.TemplateName,
+//				Priority:     pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// The resource can be imported using the `template_name`, `name` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name <break>```<break><break>
+// The resource can be imported using the `template_name`, `name` of the cluster, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name
+//
+// ```
 type InstallationTemplatePartitionScheme struct {
 	pulumi.CustomResourceState
 

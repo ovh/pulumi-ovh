@@ -13,6 +13,46 @@ namespace Pulumi.Ovh.Iam
     /// Creates an IAM policy.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var account = Ovh.Me.GetMe.Invoke();
+    /// 
+    ///     var myGroup = new Ovh.Me.IdentityGroup("myGroup", new()
+    ///     {
+    ///         Description = "my_group created in Terraform",
+    ///     });
+    /// 
+    ///     var manager = new Ovh.Iam.Policy("manager", new()
+    ///     {
+    ///         Description = "Users are allowed to use the OVH manager",
+    ///         Identities = new[]
+    ///         {
+    ///             myGroup.Urn,
+    ///         },
+    ///         Resources = new[]
+    ///         {
+    ///             account.Apply(getMeResult =&gt; getMeResult.Urn),
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             "account:apiovh:me/get",
+    ///             "account:apiovh:me/supportLevel/get",
+    ///             "account:apiovh:me/certificates/get",
+    ///             "account:apiovh:me/tag/get",
+    ///             "account:apiovh:services/get",
+    ///             "account:apiovh:*",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Iam/policy:Policy")]
     public partial class Policy : global::Pulumi.CustomResource
