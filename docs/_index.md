@@ -32,6 +32,8 @@ if err != nil {
 ctx.Export("kubeconfig", pulumi.ToSecret(myKube.Kubeconfig))
 ```
 
+{{% /choosable %}}
+
 {{% choosable language python %}}
 
 ```python
