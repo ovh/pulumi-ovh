@@ -63,19 +63,40 @@
         "variables": {
             "applicationKey": {
                 "type": "string",
-                "description": "The OVH API Application Key.\n"
+                "description": "The OVH API Application Key.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "OVH_APPLICATION_KEY"
+                    ]
+                }
             },
             "applicationSecret": {
                 "type": "string",
-                "description": "The OVH API Application Secret.\n"
+                "description": "The OVH API Application Secret.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "OVH_APPLICATION_SECRET"
+                    ]
+                },
+                "secret": true
             },
             "consumerKey": {
                 "type": "string",
-                "description": "The OVH API Consumer key.\n"
+                "description": "The OVH API Consumer key.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "OVH_CONSUMER_KEY"
+                    ]
+                }
             },
             "endpoint": {
                 "type": "string",
-                "description": "The OVH API endpoint to target (ex: \"ovh-eu\").\n"
+                "description": "The OVH API endpoint to target (ex: \"ovh-eu\").\n",
+                "defaultInfo": {
+                    "environment": [
+                        "OVH_ENDPOINT"
+                    ]
+                }
             }
         },
         "defaults": [
@@ -4068,7 +4089,8 @@
             },
             "applicationSecret": {
                 "type": "string",
-                "description": "The OVH API Application Secret.\n"
+                "description": "The OVH API Application Secret.\n",
+                "secret": true
             },
             "consumerKey": {
                 "type": "string",
@@ -4079,30 +4101,45 @@
                 "description": "The OVH API endpoint to target (ex: \"ovh-eu\").\n"
             }
         },
-        "required": [
-            "endpoint"
-        ],
         "inputProperties": {
             "applicationKey": {
                 "type": "string",
-                "description": "The OVH API Application Key.\n"
+                "description": "The OVH API Application Key.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "OVH_APPLICATION_KEY"
+                    ]
+                }
             },
             "applicationSecret": {
                 "type": "string",
-                "description": "The OVH API Application Secret.\n"
+                "description": "The OVH API Application Secret.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "OVH_APPLICATION_SECRET"
+                    ]
+                },
+                "secret": true
             },
             "consumerKey": {
                 "type": "string",
-                "description": "The OVH API Consumer key.\n"
+                "description": "The OVH API Consumer key.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "OVH_CONSUMER_KEY"
+                    ]
+                }
             },
             "endpoint": {
                 "type": "string",
-                "description": "The OVH API endpoint to target (ex: \"ovh-eu\").\n"
+                "description": "The OVH API endpoint to target (ex: \"ovh-eu\").\n",
+                "defaultInfo": {
+                    "environment": [
+                        "OVH_ENDPOINT"
+                    ]
+                }
             }
-        },
-        "requiredInputs": [
-            "endpoint"
-        ]
+        }
     },
     "resources": {
         "ovh:CloudProject/containerRegistry:ContainerRegistry": {

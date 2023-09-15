@@ -13,7 +13,7 @@ const __config = new pulumi.Config("ovh");
 export declare const applicationKey: string | undefined;
 Object.defineProperty(exports, "applicationKey", {
     get() {
-        return __config.get("applicationKey");
+        return __config.get("applicationKey") ?? utilities.getEnv("OVH_APPLICATION_KEY");
     },
     enumerable: true,
 });
@@ -24,7 +24,7 @@ Object.defineProperty(exports, "applicationKey", {
 export declare const applicationSecret: string | undefined;
 Object.defineProperty(exports, "applicationSecret", {
     get() {
-        return __config.get("applicationSecret");
+        return __config.get("applicationSecret") ?? utilities.getEnv("OVH_APPLICATION_SECRET");
     },
     enumerable: true,
 });
@@ -35,7 +35,7 @@ Object.defineProperty(exports, "applicationSecret", {
 export declare const consumerKey: string | undefined;
 Object.defineProperty(exports, "consumerKey", {
     get() {
-        return __config.get("consumerKey");
+        return __config.get("consumerKey") ?? utilities.getEnv("OVH_CONSUMER_KEY");
     },
     enumerable: true,
 });
@@ -46,7 +46,7 @@ Object.defineProperty(exports, "consumerKey", {
 export declare const endpoint: string | undefined;
 Object.defineProperty(exports, "endpoint", {
     get() {
-        return __config.get("endpoint");
+        return __config.get("endpoint") ?? utilities.getEnv("OVH_ENDPOINT");
     },
     enumerable: true,
 });

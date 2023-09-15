@@ -40,7 +40,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The OVH API endpoint to target (ex: "ovh-eu").
      */
-    public readonly endpoint!: pulumi.Output<string>;
+    public readonly endpoint!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -49,19 +49,18 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'endpoint'");
-            }
-            resourceInputs["applicationKey"] = args ? args.applicationKey : undefined;
-            resourceInputs["applicationSecret"] = args ? args.applicationSecret : undefined;
-            resourceInputs["consumerKey"] = args ? args.consumerKey : undefined;
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["applicationKey"] = (args ? args.applicationKey : undefined) ?? utilities.getEnv("OVH_APPLICATION_KEY");
+            resourceInputs["applicationSecret"] = (args?.applicationSecret ? pulumi.secret(args.applicationSecret) : undefined) ?? utilities.getEnv("OVH_APPLICATION_SECRET");
+            resourceInputs["consumerKey"] = (args ? args.consumerKey : undefined) ?? utilities.getEnv("OVH_CONSUMER_KEY");
+            resourceInputs["endpoint"] = (args ? args.endpoint : undefined) ?? utilities.getEnv("OVH_ENDPOINT");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["applicationSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -85,5 +84,5 @@ export interface ProviderArgs {
     /**
      * The OVH API endpoint to target (ex: "ovh-eu").
      */
-    endpoint: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
 }

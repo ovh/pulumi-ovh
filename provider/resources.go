@@ -21,12 +21,12 @@ import (
 
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
+	"github.com/ovh/pulumi-ovh/provider/pkg/version"
 	"github.com/ovh/terraform-provider-ovh/ovh"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/ovh/pulumi-ovh/provider/pkg/version"
 )
 
 // all of the token components used below.
@@ -50,6 +50,11 @@ const (
 	vpsMod             = "Vps"
 	iamMod             = "Iam"
 )
+
+// boolRef returns a reference to the bool argument.
+func boolRef(b bool) *bool {
+	return &b
+}
 
 // ovhMember manufactures a type token for the Ovh package and the given module and type.
 func ovhMember(mod string, mem string) tokens.ModuleMember {
@@ -123,15 +128,28 @@ func Provider() tfbridge.ProviderInfo {
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "ovh",
-		Config:    map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: tfbridge.MakeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
+		Config: map[string]*tfbridge.SchemaInfo{
+			"endpoint": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OVH_ENDPOINT"},
+				},
+			},
+			"application_key": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OVH_APPLICATION_KEY"},
+				},
+			},
+			"application_secret": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OVH_APPLICATION_SECRET"},
+				},
+				Secret: boolRef(true),
+			},
+			"consumer_key": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OVH_CONSUMER_KEY"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
