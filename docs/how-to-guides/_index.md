@@ -1,6 +1,6 @@
 ---
 title: How-to Guides
 meta_desc: |
-    Tutorials for using infrastructure as code in OVH Cloud
+    Tutorials for using Infrastructure as Code in OVHCloud
 layout: package
 ---
