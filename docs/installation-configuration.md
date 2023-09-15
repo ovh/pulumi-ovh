@@ -22,7 +22,7 @@ The Pulumi `OVH` provider is available as a package in all Pulumi languages:
 The OVH provider binary is a third party binary. It can be installed using the `pulumi plugin` command.
 
 ```bash
-pulumi plugin install resource ovh <version>
+pulumi plugin install resource ovh <version> --server api://github.com/ovh/pulumi-ovh
 ```
 
 Replace the version string with your desired version.
@@ -34,12 +34,13 @@ Your OVH credentials are never sent to pulumi.com. Pulumi uses the OVH API and t
 
 ### Get your credentials
 
-The "OVH provider" needs to be configured with a set of credentials:
+The "OVH provider" needs to be configured with a set of credentials, which can be set using
+[Pulumi stack configuration](https://www.pulumi.com/docs/concepts/config/) or environment variables:
 
-* an `endpoint` (environment variable: OVH_ENDPOINT)
-* an `applicationKey` (environment variable: OVH_APPLICATION_KEY)
-* an `applicationSecret` (environment variable: OVH_APPLICATION_SECRET)
-* a `consumerKey` (environment variable: OVH_CONSUMER_KEY)
+* `ovh:endpoint` (environment variable: `OVH_ENDPOINT`)
+* `ovh:applicationKey` (environment variable: `OVH_APPLICATION_KEY`)
+* `ovh:applicationSecret` (secret) (environment variable: `OVH_APPLICATION_SECRET`)
+* `ovh:consumerKey` (environment variable: `OVH_CONSUMER_KEY`)
 
 Why?
 
