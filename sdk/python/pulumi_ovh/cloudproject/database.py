@@ -533,13 +533,186 @@ class Database(pulumi.CustomResource):
 
         Minimum settings for each engine (region choice is up to the user):
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        cassandradb = ovh.cloud_project.Database("cassandradb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-cassandra",
+            engine="cassandra",
+            version="4.0",
+            plan="essential",
+            nodes=[
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="BHS",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="BHS",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="BHS",
+                ),
+            ],
+            flavor="db1-4")
+        kafkadb = ovh.cloud_project.Database("kafkadb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-kafka",
+            engine="kafka",
+            version="3.4",
+            plan="business",
+            kafka_rest_api=True,
+            nodes=[
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="DE",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="DE",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="DE",
+                ),
+            ],
+            flavor="db1-4")
+        m3db = ovh.cloud_project.Database("m3db",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-m3db",
+            engine="m3db",
+            version="1.2",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="BHS",
+            )],
+            flavor="db1-7")
+        mongodb = ovh.cloud_project.Database("mongodb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-mongodb",
+            engine="mongodb",
+            version="5.0",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="GRA",
+            )],
+            flavor="db1-2")
+        mysqldb = ovh.cloud_project.Database("mysqldb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-mysql",
+            engine="mysql",
+            version="8",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="SBG",
+            )],
+            flavor="db1-4",
+            advanced_configuration={
+                "mysql.sql_mode": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES",
+                "mysql.sql_require_primary_key": "true",
+            })
+        opensearchdb = ovh.cloud_project.Database("opensearchdb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-opensearch",
+            engine="opensearch",
+            version="1",
+            plan="essential",
+            opensearch_acls_enabled=True,
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="UK",
+            )],
+            flavor="db1-4")
+        pgsqldb = ovh.cloud_project.Database("pgsqldb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-postgresql",
+            engine="postgresql",
+            version="14",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="WAW",
+            )],
+            flavor="db1-4")
+        redisdb = ovh.cloud_project.Database("redisdb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-redis",
+            engine="redis",
+            version="6.2",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="BHS",
+            )],
+            flavor="db1-4")
+        grafana = ovh.cloud_project.Database("grafana",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-grafana",
+            engine="grafana",
+            version="9.1",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="GRA",
+            )],
+            flavor="db1-4")
+        ```
+
         To deploy a business PostgreSQL service with two nodes on public network:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        postgresql = ovh.cloud_project.Database("postgresql",
+            description="my-first-postgresql",
+            engine="postgresql",
+            flavor="db1-15",
+            nodes=[
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="GRA",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="GRA",
+                ),
+            ],
+            plan="business",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            version="14")
+        ```
 
         To deploy an enterprise MongoDB service with three nodes on private network:
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mongodb = ovh.cloud_project.Database("mongodb",
+            description="my-first-mongodb",
+            engine="mongodb",
+            flavor="db1-30",
+            nodes=[
+                ovh.cloud_project.DatabaseNodeArgs(
+                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    region="SBG",
+                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    region="SBG",
+                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    region="SBG",
+                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                ),
+            ],
+            plan="enterprise",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            version="5.0")
+        ```
+
         ## Import
 
-        OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id <break>```<break><break>
+        OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -572,13 +745,186 @@ class Database(pulumi.CustomResource):
 
         Minimum settings for each engine (region choice is up to the user):
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        cassandradb = ovh.cloud_project.Database("cassandradb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-cassandra",
+            engine="cassandra",
+            version="4.0",
+            plan="essential",
+            nodes=[
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="BHS",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="BHS",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="BHS",
+                ),
+            ],
+            flavor="db1-4")
+        kafkadb = ovh.cloud_project.Database("kafkadb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-kafka",
+            engine="kafka",
+            version="3.4",
+            plan="business",
+            kafka_rest_api=True,
+            nodes=[
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="DE",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="DE",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="DE",
+                ),
+            ],
+            flavor="db1-4")
+        m3db = ovh.cloud_project.Database("m3db",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-m3db",
+            engine="m3db",
+            version="1.2",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="BHS",
+            )],
+            flavor="db1-7")
+        mongodb = ovh.cloud_project.Database("mongodb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-mongodb",
+            engine="mongodb",
+            version="5.0",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="GRA",
+            )],
+            flavor="db1-2")
+        mysqldb = ovh.cloud_project.Database("mysqldb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-mysql",
+            engine="mysql",
+            version="8",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="SBG",
+            )],
+            flavor="db1-4",
+            advanced_configuration={
+                "mysql.sql_mode": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES",
+                "mysql.sql_require_primary_key": "true",
+            })
+        opensearchdb = ovh.cloud_project.Database("opensearchdb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-opensearch",
+            engine="opensearch",
+            version="1",
+            plan="essential",
+            opensearch_acls_enabled=True,
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="UK",
+            )],
+            flavor="db1-4")
+        pgsqldb = ovh.cloud_project.Database("pgsqldb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-postgresql",
+            engine="postgresql",
+            version="14",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="WAW",
+            )],
+            flavor="db1-4")
+        redisdb = ovh.cloud_project.Database("redisdb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-redis",
+            engine="redis",
+            version="6.2",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="BHS",
+            )],
+            flavor="db1-4")
+        grafana = ovh.cloud_project.Database("grafana",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-grafana",
+            engine="grafana",
+            version="9.1",
+            plan="essential",
+            nodes=[ovh.cloud_project.DatabaseNodeArgs(
+                region="GRA",
+            )],
+            flavor="db1-4")
+        ```
+
         To deploy a business PostgreSQL service with two nodes on public network:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        postgresql = ovh.cloud_project.Database("postgresql",
+            description="my-first-postgresql",
+            engine="postgresql",
+            flavor="db1-15",
+            nodes=[
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="GRA",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    region="GRA",
+                ),
+            ],
+            plan="business",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            version="14")
+        ```
 
         To deploy an enterprise MongoDB service with three nodes on private network:
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mongodb = ovh.cloud_project.Database("mongodb",
+            description="my-first-mongodb",
+            engine="mongodb",
+            flavor="db1-30",
+            nodes=[
+                ovh.cloud_project.DatabaseNodeArgs(
+                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    region="SBG",
+                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    region="SBG",
+                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                ),
+                ovh.cloud_project.DatabaseNodeArgs(
+                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    region="SBG",
+                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                ),
+            ],
+            plan="enterprise",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            version="5.0")
+        ```
+
         ## Import
 
-        OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id <break>```<break><break>
+        OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

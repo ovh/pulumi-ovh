@@ -104,6 +104,15 @@ def get_private_database_user_grant(database_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    user_grant = ovh.Hosting.get_private_database_user_grant(database_name="XXXXXX",
+        service_name="XXXXXX",
+        user_name="XXXXXX")
+    ```
+
 
     :param str database_name: The database name on which grant the user
     :param str service_name: The internal name of your private database
@@ -134,6 +143,15 @@ def get_private_database_user_grant_output(database_name: Optional[pulumi.Input[
     Use this data source to retrieve information about an hosting privatedatabase user grant.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    user_grant = ovh.Hosting.get_private_database_user_grant(database_name="XXXXXX",
+        service_name="XXXXXX",
+        user_name="XXXXXX")
+    ```
 
 
     :param str database_name: The database name on which grant the user

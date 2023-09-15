@@ -60,6 +60,13 @@ def get_ipxe_scripts(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     Use this data source to retrieve a list of the names of the account's IPXE Scripts.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    scripts = ovh.Me.get_ipxe_scripts()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

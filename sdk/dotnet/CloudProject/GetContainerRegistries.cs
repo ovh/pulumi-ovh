@@ -14,13 +14,27 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the container registries of a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_containerregistries" "registries" {
-        ///   service_name = "XXXXXX"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var registries = Ovh.CloudProject.GetContainerRegistries.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerRegistriesResult> InvokeAsync(GetContainerRegistriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistriesResult>("ovh:CloudProject/getContainerRegistries:getContainerRegistries", args ?? new GetContainerRegistriesArgs(), options.WithDefaults());
@@ -28,13 +42,27 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the container registries of a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_containerregistries" "registries" {
-        ///   service_name = "XXXXXX"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var registries = Ovh.CloudProject.GetContainerRegistries.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerRegistriesResult> Invoke(GetContainerRegistriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistriesResult>("ovh:CloudProject/getContainerRegistries:getContainerRegistries", args ?? new GetContainerRegistriesInvokeArgs(), options.WithDefaults());

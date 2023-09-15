@@ -16,6 +16,67 @@ import (
 // Creates a dbaas logs input.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			logstash, err := Dbaas.GetLogsInputEngine(ctx, &dbaas.GetLogsInputEngineArgs{
+//				Name:    pulumi.StringRef("logstash"),
+//				Version: pulumi.StringRef("7.x"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			stream, err := Dbaas.NewLogsOutputGraylogStream(ctx, "stream", &Dbaas.LogsOutputGraylogStreamArgs{
+//				ServiceName: pulumi.String("...."),
+//				Title:       pulumi.String("my stream"),
+//				Description: pulumi.String("my graylog stream"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Dbaas.NewLogsInput(ctx, "input", &Dbaas.LogsInputArgs{
+//				ServiceName: stream.ServiceName,
+//				Description: stream.Description,
+//				Title:       stream.Title,
+//				EngineId:    *pulumi.String(logstash.Id),
+//				StreamId:    stream.ID(),
+//				AllowedNetworks: pulumi.StringArray{
+//					pulumi.String("10.0.0.0/16"),
+//				},
+//				ExposedPort: pulumi.String("6154"),
+//				NbInstance:  pulumi.Int(2),
+//				Configuration: &dbaas.LogsInputConfigurationArgs{
+//					Logstash: &dbaas.LogsInputConfigurationLogstashArgs{
+//						InputSection: pulumi.String(`  beats {
+//	    port => 6514
+//	    ssl => true
+//	    ssl_certificate => "/etc/ssl/private/server.crt"
+//	    ssl_key => "/etc/ssl/private/server.key"
+//	  }
+//
+// `),
+//
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type LogsInput struct {
 	pulumi.CustomResourceState
 

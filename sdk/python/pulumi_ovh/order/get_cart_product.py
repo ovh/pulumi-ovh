@@ -83,6 +83,16 @@ def get_cart_product(cart_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myaccount = ovh.Me.get_me()
+    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+    plans = ovh.Order.get_cart_product(cart_id=mycart.id,
+        product="...")
+    ```
+
 
     :param str cart_id: Cart identifier
     :param str product: product
@@ -108,6 +118,16 @@ def get_cart_product_output(cart_id: Optional[pulumi.Input[str]] = None,
     Use this data source to retrieve information of order cart product products.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myaccount = ovh.Me.get_me()
+    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+    plans = ovh.Order.get_cart_product(cart_id=mycart.id,
+        product="...")
+    ```
 
 
     :param str cart_id: Cart identifier

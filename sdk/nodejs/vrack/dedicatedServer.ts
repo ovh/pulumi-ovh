@@ -11,6 +11,16 @@ import * as utilities from "../utilities";
  * Attach a dedicated server to a VRack.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const vds = new ovh.vrack.DedicatedServer("vds", {
+ *     serverId: "67890",
+ *     serviceName: "XXXX",
+ * });
+ * ```
  */
 export class DedicatedServer extends pulumi.CustomResource {
     /**

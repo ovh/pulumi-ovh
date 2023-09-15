@@ -16,6 +16,34 @@ import (
 // Creates an identity user.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Me.NewIdentityUser(ctx, "myUser", &Me.IdentityUserArgs{
+//				Description: pulumi.String("Some custom description"),
+//				Email:       pulumi.String("my_login@example.com"),
+//				Group:       pulumi.String("DEFAULT"),
+//				Login:       pulumi.String("my_login"),
+//				Password:    pulumi.String("super-s3cr3t!password"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type IdentityUser struct {
 	pulumi.CustomResourceState
 

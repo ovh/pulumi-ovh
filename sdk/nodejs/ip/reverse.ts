@@ -9,9 +9,25 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * // Set the reverse of an IP
+ * const test = new ovh.ip.Reverse("test", {
+ *     ip: "192.0.2.0/24",
+ *     ReverseIp: "192.0.2.1",
+ *     ReverseValue: "example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
- * The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42' <break>```<break><break>
+ * The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42'
+ * ```
  */
 export class Reverse extends pulumi.CustomResource {
     /**

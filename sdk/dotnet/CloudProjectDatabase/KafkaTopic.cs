@@ -14,9 +14,42 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var kafka = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXX",
+    ///         Engine = "kafka",
+    ///         Id = "ZZZ",
+    ///     });
+    /// 
+    ///     var topic = new Ovh.CloudProjectDatabase.KafkaTopic("topic", new()
+    ///     {
+    ///         ServiceName = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         ClusterId = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         MinInsyncReplicas = 1,
+    ///         Partitions = 3,
+    ///         Replication = 2,
+    ///         RetentionBytes = 4,
+    ///         RetentionHours = 5,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic")]
     public partial class KafkaTopic : global::Pulumi.CustomResource

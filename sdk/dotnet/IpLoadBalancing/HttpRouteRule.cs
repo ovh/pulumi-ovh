@@ -16,11 +16,66 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// Route which redirect all URL to HTTPs for example.com (Vhost).
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var httpsredirect = new Ovh.IpLoadBalancing.HttpRoute("httpsredirect", new()
+    ///     {
+    ///         Action = new Ovh.IpLoadBalancing.Inputs.HttpRouteActionArgs
+    ///         {
+    ///             Status = 302,
+    ///             Target = "https://${host}${path}${arguments}",
+    ///             Type = "redirect",
+    ///         },
+    ///         DisplayName = "Redirect to HTTPS",
+    ///         FrontendId = 11111,
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///         Weight = 1,
+    ///     });
+    /// 
+    ///     var examplerule = new Ovh.IpLoadBalancing.HttpRouteRule("examplerule", new()
+    ///     {
+    ///         DisplayName = "Match example.com host",
+    ///         Field = "host",
+    ///         Match = "is",
+    ///         Negate = false,
+    ///         Pattern = "example.com",
+    ///         RouteId = httpsredirect.Id,
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// Rule which match a specific header (same effect as the host match above).
     /// 
-    /// ## Import
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
     /// 
-    /// HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var examplerule = new Ovh.IpLoadBalancing.HttpRouteRule("examplerule", new()
+    ///     {
+    ///         DisplayName = "Match example.com Host header",
+    ///         Field = "headers",
+    ///         Match = "is",
+    ///         Negate = false,
+    ///         Pattern = "example.com",
+    ///         RouteId = ovh_iploadbalancing_http_route.Httpsredirect.Id,
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///         SubField = "Host",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule")]
     public partial class HttpRouteRule : global::Pulumi.CustomResource

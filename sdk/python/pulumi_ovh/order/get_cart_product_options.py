@@ -106,6 +106,17 @@ def get_cart_product_options(cart_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myaccount = ovh.Me.get_me()
+    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+    options = ovh.Order.get_cart_product_options(cart_id=mycart.id,
+        product="cloud",
+        plan_code="project")
+    ```
+
 
     :param str cart_id: Cart identifier
     :param str catalog_name: Catalog name
@@ -139,6 +150,17 @@ def get_cart_product_options_output(cart_id: Optional[pulumi.Input[str]] = None,
     Use this data source to retrieve information of order cart product options.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myaccount = ovh.Me.get_me()
+    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+    options = ovh.Order.get_cart_product_options(cart_id=mycart.id,
+        product="cloud",
+        plan_code="project")
+    ```
 
 
     :param str cart_id: Cart identifier

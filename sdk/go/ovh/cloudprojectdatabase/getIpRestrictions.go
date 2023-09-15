@@ -17,6 +17,33 @@ import (
 // ## Example Usage
 //
 // To get the list of IP restriction on a database cluster service:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			iprestrictions, err := CloudProjectDatabase.GetIpRestrictions(ctx, &cloudprojectdatabase.GetIpRestrictionsArgs{
+//				ServiceName: "XXXXXX",
+//				Engine:      "YYYY",
+//				ClusterId:   "ZZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ips", iprestrictions.Ips)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetIpRestrictions(ctx *pulumi.Context, args *GetIpRestrictionsArgs, opts ...pulumi.InvokeOption) (*GetIpRestrictionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpRestrictionsResult

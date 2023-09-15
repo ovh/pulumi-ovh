@@ -109,6 +109,15 @@ class DedicatedServer(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        vds = ovh.vrack.DedicatedServer("vds",
+            server_id="67890",
+            service_name="XXXX")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] server_id: The id of the dedicated server.
@@ -128,6 +137,15 @@ class DedicatedServer(pulumi.CustomResource):
         Attach a dedicated server to a VRack.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        vds = ovh.vrack.DedicatedServer("vds",
+            server_id="67890",
+            service_name="XXXX")
+        ```
 
         :param str resource_name: The name of the resource.
         :param DedicatedServerArgs args: The arguments to use to populate this resource's properties.

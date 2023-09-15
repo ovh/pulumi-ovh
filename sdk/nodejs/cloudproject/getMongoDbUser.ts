@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const mongouser = ovh.CloudProject.getMongoDbUser({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     name: "ZZZ@admin",
+ * });
+ * export const mongouserRoles = mongouser.then(mongouser => mongouser.roles);
+ * ```
  */
 export function getMongoDbUser(args: GetMongoDbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoDbUserResult> {
 
@@ -75,6 +87,18 @@ export interface GetMongoDbUserResult {
  * Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const mongouser = ovh.CloudProject.getMongoDbUser({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     name: "ZZZ@admin",
+ * });
+ * export const mongouserRoles = mongouser.then(mongouser => mongouser.roles);
+ * ```
  */
 export function getMongoDbUserOutput(args: GetMongoDbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoDbUserResult> {
     return pulumi.output(args).apply((a: any) => getMongoDbUser(a, opts))

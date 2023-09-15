@@ -14,9 +14,31 @@ namespace Pulumi.Ovh.Me
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mytemplate = new Ovh.Me.InstallationTemplate("mytemplate", new()
+    ///     {
+    ///         BaseTemplateName = "centos7_64",
+    ///         DefaultLanguage = "en",
+    ///         TemplateName = "mytemplate",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Me/installationTemplate:InstallationTemplate")]
     public partial class InstallationTemplate : global::Pulumi.CustomResource

@@ -15,6 +15,33 @@ import (
 // Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			m3dbnamespace, err := CloudProject.GetM3dbNamespace(ctx, &cloudproject.GetM3dbNamespaceArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				Name:        "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("m3dbnamespaceType", m3dbnamespace.Type)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetM3dbNamespace(ctx *pulumi.Context, args *GetM3dbNamespaceArgs, opts ...pulumi.InvokeOption) (*GetM3dbNamespaceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetM3dbNamespaceResult

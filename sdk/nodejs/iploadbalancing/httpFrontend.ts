@@ -9,11 +9,58 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "ip-1.2.3.4",
+ *     state: "ok",
+ * });
+ * const farm80 = new ovh.iploadbalancing.HttpFarm("farm80", {
+ *     displayName: "ingress-8080-gra",
+ *     port: 80,
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     zone: "all",
+ * });
+ * const testfrontend = new ovh.iploadbalancing.HttpFrontend("testfrontend", {
+ *     defaultFarmId: farm80.id,
+ *     displayName: "ingress-8080-gra",
+ *     port: "80,443",
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     zone: "all",
+ * });
+ * ```
  * ### With HTTP Header
  *
- * ## Import
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
  *
- * HTTP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
+ * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "ip-1.2.3.4",
+ *     state: "ok",
+ * });
+ * const farm80 = new ovh.iploadbalancing.HttpFarm("farm80", {
+ *     displayName: "ingress-8080-gra",
+ *     port: 80,
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     zone: "all",
+ * });
+ * const testfrontend = new ovh.iploadbalancing.HttpFrontend("testfrontend", {
+ *     defaultFarmId: farm80.id,
+ *     displayName: "ingress-8080-gra",
+ *     httpHeaders: [
+ *         "X-Ip-Header %%ci",
+ *         "X-Port-Header %%cp",
+ *     ],
+ *     port: "80,443",
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     zone: "all",
+ * });
+ * ```
  */
 export class HttpFrontend extends pulumi.CustomResource {
     /**

@@ -88,6 +88,13 @@ def get_ssh_key(key_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mykey = ovh.Me.get_ssh_key(key_name="mykey")
+    ```
+
 
     :param str key_name: The name of the SSH key.
     """
@@ -110,6 +117,13 @@ def get_ssh_key_output(key_name: Optional[pulumi.Input[str]] = None,
     Use this data source to retrieve information about an SSH key.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mykey = ovh.Me.get_ssh_key(key_name="mykey")
+    ```
 
 
     :param str key_name: The name of the SSH key.

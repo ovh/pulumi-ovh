@@ -14,6 +14,63 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Ip"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Me.GetMe(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: "fr",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ipblockCartProductPlan, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//				CartId:        mycart.Id,
+//				PriceCapacity: "renew",
+//				Product:       "ip",
+//				PlanCode:      "ip-v4-s30-ripe",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Ip.NewIpService(ctx, "ipblockIpService", &Ip.IpServiceArgs{
+//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				Description:   pulumi.String("my ip block"),
+//				Plan: &ip.IpServicePlanArgs{
+//					Duration:    *pulumi.String(ipblockCartProductPlan.SelectedPrices[0].Duration),
+//					PlanCode:    *pulumi.String(ipblockCartProductPlan.PlanCode),
+//					PricingMode: *pulumi.String(ipblockCartProductPlan.SelectedPrices[0].PricingMode),
+//					Configurations: ip.IpServicePlanConfigurationArray{
+//						&ip.IpServicePlanConfigurationArgs{
+//							Label: pulumi.String("country"),
+//							Value: pulumi.String("FR"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type IpService struct {
 	pulumi.CustomResourceState
 

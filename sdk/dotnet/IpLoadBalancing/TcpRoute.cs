@@ -14,9 +14,26 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// ## Example Usage
     /// 
-    /// ## Import
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
     /// 
-    /// TCP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tcpreject = new Ovh.IpLoadBalancing.TcpRoute("tcpreject", new()
+    ///     {
+    ///         Action = new Ovh.IpLoadBalancing.Inputs.TcpRouteActionArgs
+    ///         {
+    ///             Type = "reject",
+    ///         },
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///         Weight = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/tcpRoute:TcpRoute")]
     public partial class TcpRoute : global::Pulumi.CustomResource

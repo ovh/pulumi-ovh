@@ -14,19 +14,33 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get information about a user of a redis cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_redis_user" "redisuser" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   name          = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "redisuser_commands" {
-        ///   value = data.ovh_cloud_project_database_redis_user.redisuser.commands
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var redisuser = Ovh.CloudProject.GetRedisUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["redisuserCommands"] = redisuser.Apply(getRedisUserResult =&gt; getRedisUserResult.Commands),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRedisUserResult> InvokeAsync(GetRedisUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRedisUserResult>("ovh:CloudProject/getRedisUser:getRedisUser", args ?? new GetRedisUserArgs(), options.WithDefaults());
@@ -34,19 +48,33 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get information about a user of a redis cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_redis_user" "redisuser" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   name          = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "redisuser_commands" {
-        ///   value = data.ovh_cloud_project_database_redis_user.redisuser.commands
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var redisuser = Ovh.CloudProject.GetRedisUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["redisuserCommands"] = redisuser.Apply(getRedisUserResult =&gt; getRedisUserResult.Commands),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRedisUserResult> Invoke(GetRedisUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRedisUserResult>("ovh:CloudProject/getRedisUser:getRedisUser", args ?? new GetRedisUserInvokeArgs(), options.WithDefaults());

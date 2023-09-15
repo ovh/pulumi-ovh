@@ -14,18 +14,32 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_kafka_acls" "acls" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "acl_ids" {
-        ///   value = data.ovh_cloud_project_database_kafka_acls.acls.acl_ids
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var acls = Ovh.CloudProjectDatabase.GetKafkaAcls.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["aclIds"] = acls.Apply(getKafkaAclsResult =&gt; getKafkaAclsResult.AclIds),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaAclsResult> InvokeAsync(GetKafkaAclsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaAclsResult>("ovh:CloudProjectDatabase/getKafkaAcls:getKafkaAcls", args ?? new GetKafkaAclsArgs(), options.WithDefaults());
@@ -33,18 +47,32 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_kafka_acls" "acls" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "acl_ids" {
-        ///   value = data.ovh_cloud_project_database_kafka_acls.acls.acl_ids
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var acls = Ovh.CloudProjectDatabase.GetKafkaAcls.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["aclIds"] = acls.Apply(getKafkaAclsResult =&gt; getKafkaAclsResult.AclIds),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaAclsResult> Invoke(GetKafkaAclsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaAclsResult>("ovh:CloudProjectDatabase/getKafkaAcls:getKafkaAcls", args ?? new GetKafkaAclsInvokeArgs(), options.WithDefaults());

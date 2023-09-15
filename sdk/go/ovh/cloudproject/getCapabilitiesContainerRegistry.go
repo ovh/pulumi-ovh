@@ -15,6 +15,30 @@ import (
 // Use this data source to get the container registry capabilities of a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := CloudProject.GetCapabilitiesContainerRegistry(ctx, &cloudproject.GetCapabilitiesContainerRegistryArgs{
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupCapabilitiesContainerRegistry(ctx *pulumi.Context, args *LookupCapabilitiesContainerRegistryArgs, opts ...pulumi.InvokeOption) (*LookupCapabilitiesContainerRegistryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapabilitiesContainerRegistryResult

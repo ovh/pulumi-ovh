@@ -90,6 +90,15 @@ def get_databases(engine: Optional[str] = None,
 
     To get the list of database clusters service for a given engine:
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    dbs = ovh.CloudProjectDatabase.get_databases(service_name="XXXXXX",
+        engine="YYYY")
+    pulumi.export("clusterIds", dbs.cluster_ids)
+    ```
+
 
     :param str engine: The database engine you want to list. To get a full list of available engine visit:
            [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
@@ -119,6 +128,15 @@ def get_databases_output(engine: Optional[pulumi.Input[str]] = None,
     ## Example Usage
 
     To get the list of database clusters service for a given engine:
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    dbs = ovh.CloudProjectDatabase.get_databases(service_name="XXXXXX",
+        engine="YYYY")
+    pulumi.export("clusterIds", dbs.cluster_ids)
+    ```
 
 
     :param str engine: The database engine you want to list. To get a full list of available engine visit:

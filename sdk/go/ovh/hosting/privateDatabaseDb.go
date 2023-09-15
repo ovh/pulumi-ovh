@@ -17,9 +17,40 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Hosting"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Hosting.NewPrivateDatabaseDb(ctx, "database", &Hosting.PrivateDatabaseDbArgs{
+//				DatabaseName: pulumi.String("XXXXXX"),
+//				ServiceName:  pulumi.String("XXXXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
+//
+// ```sh
+//
+//	$ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
+//
+// ```
 type PrivateDatabaseDb struct {
 	pulumi.CustomResourceState
 

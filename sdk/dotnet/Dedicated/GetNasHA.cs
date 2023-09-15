@@ -14,13 +14,27 @@ namespace Pulumi.Ovh.Dedicated
         /// <summary>
         /// Use this data source to retrieve information about a dedicated HA-NAS.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_dedicated_nasha" "my-nas-ha" {
-        ///   service_name = "zpool-12345"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_nas_ha = Ovh.Dedicated.GetNasHA.Invoke(new()
+        ///     {
+        ///         ServiceName = "zpool-12345",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNasHAResult> InvokeAsync(GetNasHAArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNasHAResult>("ovh:Dedicated/getNasHA:getNasHA", args ?? new GetNasHAArgs(), options.WithDefaults());
@@ -28,13 +42,27 @@ namespace Pulumi.Ovh.Dedicated
         /// <summary>
         /// Use this data source to retrieve information about a dedicated HA-NAS.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_dedicated_nasha" "my-nas-ha" {
-        ///   service_name = "zpool-12345"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_nas_ha = Ovh.Dedicated.GetNasHA.Invoke(new()
+        ///     {
+        ///         ServiceName = "zpool-12345",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNasHAResult> Invoke(GetNasHAInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNasHAResult>("ovh:Dedicated/getNasHA:getNasHA", args ?? new GetNasHAInvokeArgs(), options.WithDefaults());

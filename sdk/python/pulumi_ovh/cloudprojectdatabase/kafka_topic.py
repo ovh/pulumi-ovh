@@ -304,9 +304,30 @@ class KafkaTopic(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="kafka",
+            id="ZZZ")
+        topic = ovh.cloud_project_database.KafkaTopic("topic",
+            service_name=kafka.service_name,
+            cluster_id=kafka.id,
+            min_insync_replicas=1,
+            partitions=3,
+            replication=2,
+            retention_bytes=4,
+            retention_hours=5)
+        ```
+
         ## Import
 
-        OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -331,9 +352,30 @@ class KafkaTopic(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="kafka",
+            id="ZZZ")
+        topic = ovh.cloud_project_database.KafkaTopic("topic",
+            service_name=kafka.service_name,
+            cluster_id=kafka.id,
+            min_insync_replicas=1,
+            partitions=3,
+            replication=2,
+            retention_bytes=4,
+            retention_hours=5)
+        ```
+
         ## Import
 
-        OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param KafkaTopicArgs args: The arguments to use to populate this resource's properties.

@@ -14,12 +14,24 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to list the existing IAM policies of an account.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_iam_policies" "my_policies" {
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicies = Ovh.Iam.GetPolicies.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("ovh:Iam/getPolicies:getPolicies", InvokeArgs.Empty, options.WithDefaults());
@@ -27,12 +39,24 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to list the existing IAM policies of an account.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_iam_policies" "my_policies" {
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicies = Ovh.Iam.GetPolicies.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPoliciesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("ovh:Iam/getPolicies:getPolicies", InvokeArgs.Empty, options.WithDefaults());

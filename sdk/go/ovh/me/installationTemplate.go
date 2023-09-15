@@ -17,9 +17,41 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Me.NewInstallationTemplate(ctx, "mytemplate", &Me.InstallationTemplateArgs{
+//				BaseTemplateName: pulumi.String("centos7_64"),
+//				DefaultLanguage:  pulumi.String("en"),
+//				TemplateName:     pulumi.String("mytemplate"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name <break>```<break><break>
+// Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name
+//
+// ```
 type InstallationTemplate struct {
 	pulumi.CustomResourceState
 

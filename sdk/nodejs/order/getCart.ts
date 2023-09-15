@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * Use this data source to create a temporary order cart to retrieve information order cart products.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * }));
+ * ```
  */
 export function getCart(args: GetCartArgs, opts?: pulumi.InvokeOptions): Promise<GetCartResult> {
 
@@ -71,6 +81,16 @@ export interface GetCartResult {
  * Use this data source to create a temporary order cart to retrieve information order cart products.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * }));
+ * ```
  */
 export function getCartOutput(args: GetCartOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCartResult> {
     return pulumi.output(args).apply((a: any) => getCart(a, opts))

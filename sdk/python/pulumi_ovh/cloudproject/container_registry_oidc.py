@@ -460,9 +460,34 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_oidc = ovh.cloud_project.ContainerRegistryOIDC("my-oidc",
+            service_name="XXXXXX",
+            registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+            oidc_name="my-oidc-provider",
+            oidc_endpoint="https://xxxx.yyy.com",
+            oidc_client_id="xxx",
+            oidc_client_secret="xxx",
+            oidc_scope="openid,profile,email,offline_access",
+            oidc_groups_claim="groups",
+            oidc_admin_group="harbor-admin",
+            oidc_verify_cert=True,
+            oidc_auto_onboard=True,
+            oidc_user_claim="preferred_username",
+            delete_users=False)
+        pulumi.export("oidcClientSecret", my_oidc.oidc_client_secret)
+        ```
+
         ## Import
 
-        OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id <break>```<break><break>
+        OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -491,9 +516,34 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_oidc = ovh.cloud_project.ContainerRegistryOIDC("my-oidc",
+            service_name="XXXXXX",
+            registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+            oidc_name="my-oidc-provider",
+            oidc_endpoint="https://xxxx.yyy.com",
+            oidc_client_id="xxx",
+            oidc_client_secret="xxx",
+            oidc_scope="openid,profile,email,offline_access",
+            oidc_groups_claim="groups",
+            oidc_admin_group="harbor-admin",
+            oidc_verify_cert=True,
+            oidc_auto_onboard=True,
+            oidc_user_claim="preferred_username",
+            delete_users=False)
+        pulumi.export("oidcClientSecret", my_oidc.oidc_client_secret)
+        ```
+
         ## Import
 
-        OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id <break>```<break><break>
+        OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param ContainerRegistryOIDCArgs args: The arguments to use to populate this resource's properties.

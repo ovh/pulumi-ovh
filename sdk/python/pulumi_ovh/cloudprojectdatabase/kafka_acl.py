@@ -206,9 +206,28 @@ class KafkaAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="kafka",
+            id="ZZZ")
+        acl = ovh.cloud_project_database.KafkaAcl("acl",
+            service_name=kafka.service_name,
+            cluster_id=kafka.id,
+            permission="read",
+            topic="mytopic",
+            username="johndoe")
+        ```
+
         ## Import
 
-        OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -231,9 +250,28 @@ class KafkaAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="kafka",
+            id="ZZZ")
+        acl = ovh.cloud_project_database.KafkaAcl("acl",
+            service_name=kafka.service_name,
+            cluster_id=kafka.id,
+            permission="read",
+            topic="mytopic",
+            username="johndoe")
+        ```
+
         ## Import
 
-        OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param KafkaAclArgs args: The arguments to use to populate this resource's properties.

@@ -13,6 +13,57 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
+    ///     {
+    ///         ServiceName = "ip-1.2.3.4",
+    ///         State = "ok",
+    ///     });
+    /// 
+    ///     var farmname = new Ovh.IpLoadBalancing.TcpFarm("farmname", new()
+    ///     {
+    ///         Port = 8080,
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         Zone = "all",
+    ///     });
+    /// 
+    ///     var backend = new Ovh.IpLoadBalancing.TcpFarmServer("backend", new()
+    ///     {
+    ///         Address = "4.5.6.7",
+    ///         Backup = true,
+    ///         DisplayName = "mybackend",
+    ///         FarmId = farmname.Id,
+    ///         Port = 80,
+    ///         Probe = true,
+    ///         ProxyProtocolVersion = "v2",
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         Ssl = false,
+    ///         Status = "active",
+    ///         Weight = 2,
+    ///     });
+    /// 
+    ///     var mylb = new Ovh.IpLoadBalancing.Refresh("mylb", new()
+    ///     {
+    ///         Keepers = new[]
+    ///         {
+    ///             new[]
+    ///             {
+    ///                 backend,
+    ///             }.Select(__item =&gt; __item.Address).ToList(),
+    ///         },
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/refresh:Refresh")]
     public partial class Refresh : global::Pulumi.CustomResource

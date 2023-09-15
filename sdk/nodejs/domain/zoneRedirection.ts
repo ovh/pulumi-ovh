@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
  * Provides a OVHcloud domain zone redirection.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * // Add a redirection to a sub-domain
+ * const test = new ovh.domain.ZoneRedirection("test", {
+ *     subdomain: "test",
+ *     target: "http://www.ovh",
+ *     type: "visiblePermanent",
+ *     zone: "testdemo.ovh",
+ * });
+ * ```
  */
 export class ZoneRedirection extends pulumi.CustomResource {
     /**

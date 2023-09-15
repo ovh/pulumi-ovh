@@ -17,9 +17,51 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			kafka, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//				ServiceName: "XXX",
+//				Engine:      "kafka",
+//				Id:          "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = CloudProjectDatabase.NewKafkaSchemaRegistryAcl(ctx, "schemaRegistryAcl", &CloudProjectDatabase.KafkaSchemaRegistryAclArgs{
+//				ServiceName: *pulumi.String(kafka.ServiceName),
+//				ClusterId:   *pulumi.String(kafka.Id),
+//				Permission:  pulumi.String("schema_registry_read"),
+//				Resource:    pulumi.String("Subject:myResource"),
+//				Username:    pulumi.String("johndoe"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id <break>```<break><break>
+// OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id
+//
+// ```
 type KafkaSchemaRegistryAcl struct {
 	pulumi.CustomResourceState
 

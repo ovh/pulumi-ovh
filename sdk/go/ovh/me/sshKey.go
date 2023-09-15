@@ -16,6 +16,31 @@ import (
 // Creates an SSH Key.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Me.NewSshKey(ctx, "mykey", &Me.SshKeyArgs{
+//				Key:     pulumi.String("ssh-ed25519 AAAAC3..."),
+//				KeyName: pulumi.String("mykey"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type SshKey struct {
 	pulumi.CustomResourceState
 

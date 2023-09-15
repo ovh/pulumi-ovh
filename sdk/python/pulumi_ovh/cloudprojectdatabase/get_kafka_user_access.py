@@ -113,6 +113,16 @@ def get_kafka_user_access(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    access = ovh.CloudProjectDatabase.get_kafka_user_access(service_name="XXX",
+        cluster_id="YYY",
+        user_id="ZZZ")
+    pulumi.export("accessCert", access.cert)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str service_name: The id of the public cloud project. If omitted,
@@ -144,6 +154,16 @@ def get_kafka_user_access_output(cluster_id: Optional[pulumi.Input[str]] = None,
     Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    access = ovh.CloudProjectDatabase.get_kafka_user_access(service_name="XXX",
+        cluster_id="YYY",
+        user_id="ZZZ")
+    pulumi.export("accessCert", access.cert)
+    ```
 
 
     :param str cluster_id: Cluster ID

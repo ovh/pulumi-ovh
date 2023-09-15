@@ -201,6 +201,15 @@ class IdentityGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_group = ovh.me.IdentityGroup("myGroup",
+            description="Some custom description",
+            role="NONE")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Group description.
@@ -217,6 +226,15 @@ class IdentityGroup(pulumi.CustomResource):
         Creates an identity group.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_group = ovh.me.IdentityGroup("myGroup",
+            description="Some custom description",
+            role="NONE")
+        ```
 
         :param str resource_name: The name of the resource.
         :param IdentityGroupArgs args: The arguments to use to populate this resource's properties.

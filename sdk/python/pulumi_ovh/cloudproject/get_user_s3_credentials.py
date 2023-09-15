@@ -82,6 +82,15 @@ def get_user_s3_credentials(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_s3_credentials = ovh.CloudProject.get_user_s3_credentials(service_name="XXXXXX",
+        user_id="1234")
+    pulumi.export("accessKeyIds", my_s3_credentials.access_key_ids)
+    ```
+
 
     :param str service_name: The ID of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -108,6 +117,15 @@ def get_user_s3_credentials_output(service_name: Optional[pulumi.Input[str]] = N
     Use this data source to retrieve the list of all the S3 access_key_id associated with a public cloud project's user.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_s3_credentials = ovh.CloudProject.get_user_s3_credentials(service_name="XXXXXX",
+        user_id="1234")
+    pulumi.export("accessKeyIds", my_s3_credentials.access_key_ids)
+    ```
 
 
     :param str service_name: The ID of the public cloud project. If omitted,

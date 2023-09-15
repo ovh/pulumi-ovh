@@ -547,7 +547,11 @@ class Kube(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id <break>```<break><break>
+        OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -574,7 +578,11 @@ class Kube(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id <break>```<break><break>
+        OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param KubeArgs args: The arguments to use to populate this resource's properties.

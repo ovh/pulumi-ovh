@@ -19,11 +19,101 @@ import (
 //
 // Create a simple node pool in your Kubernetes cluster:
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := CloudProject.NewKubeNodePool(ctx, "nodePool", &CloudProject.KubeNodePoolArgs{
+//				DesiredNodes: pulumi.Int(3),
+//				FlavorName:   pulumi.String("b2-7"),
+//				KubeId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				MaxNodes:     pulumi.Int(3),
+//				MinNodes:     pulumi.Int(3),
+//				ServiceName:  pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // Create an advanced node pool in your Kubernetes cluster:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := CloudProject.NewKubeNodePool(ctx, "pool", &CloudProject.KubeNodePoolArgs{
+//				DesiredNodes: pulumi.Int(3),
+//				FlavorName:   pulumi.String("b2-7"),
+//				KubeId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				MaxNodes:     pulumi.Int(3),
+//				MinNodes:     pulumi.Int(3),
+//				ServiceName:  pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				Template: &cloudproject.KubeNodePoolTemplateArgs{
+//					Metadata: &cloudproject.KubeNodePoolTemplateMetadataArgs{
+//						Annotations: pulumi.StringMap{
+//							"k1": pulumi.String("v1"),
+//							"k2": pulumi.String("v2"),
+//						},
+//						Finalizers: pulumi.StringArray{
+//							pulumi.String("ovhcloud.com/v1beta1"),
+//							pulumi.String("ovhcloud.com/v1"),
+//						},
+//						Labels: pulumi.StringMap{
+//							"k3": pulumi.String("v3"),
+//							"k4": pulumi.String("v4"),
+//						},
+//					},
+//					Spec: &cloudproject.KubeNodePoolTemplateSpecArgs{
+//						Taints: pulumi.AnyMapArray{
+//							pulumi.AnyMap{
+//								"effect": pulumi.Any("PreferNoSchedule"),
+//								"key":    pulumi.Any("k"),
+//								"value":  pulumi.Any("v"),
+//							},
+//						},
+//						Unschedulable: pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid <break>```<break><break>
+// OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
+//
+// ```
 type KubeNodePool struct {
 	pulumi.CustomResourceState
 

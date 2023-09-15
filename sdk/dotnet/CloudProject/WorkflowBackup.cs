@@ -14,6 +14,27 @@ namespace Pulumi.Ovh.CloudProject
     /// Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myBackup = new Ovh.CloudProject.WorkflowBackup("myBackup", new()
+    ///     {
+    ///         Cron = "50 4 * * *",
+    ///         InstanceId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    ///         MaxExecutionCount = 0,
+    ///         RegionName = "GRA11",
+    ///         Rotation = 7,
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/workflowBackup:WorkflowBackup")]
     public partial class WorkflowBackup : global::Pulumi.CustomResource

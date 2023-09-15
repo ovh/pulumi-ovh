@@ -14,23 +14,38 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Get the list of all users of a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_users" "project_users" {
-        ///   service_name = "XXX"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// locals {
-        ///   # Get the user ID of a previously created user with the description "S3-User"
-        ///   users      = [for user in data.ovh_cloud_project_users.project_users.users : user.user_id if user.description == "S3-User"]
-        ///   s3_user_id = local.users[0]
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectUsers = Ovh.CloudProject.GetUsers.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
         /// 
-        /// output "user_id" {
-        ///   value = local.s3_user_id
-        /// }
+        ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
+        ///     {
+        ///         return user.UserId;
+        ///     }).ToList();
+        /// 
+        ///     var s3UserId = users[0];
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["userId"] = s3UserId,
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("ovh:CloudProject/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
@@ -38,23 +53,38 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Get the list of all users of a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_users" "project_users" {
-        ///   service_name = "XXX"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// locals {
-        ///   # Get the user ID of a previously created user with the description "S3-User"
-        ///   users      = [for user in data.ovh_cloud_project_users.project_users.users : user.user_id if user.description == "S3-User"]
-        ///   s3_user_id = local.users[0]
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectUsers = Ovh.CloudProject.GetUsers.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
         /// 
-        /// output "user_id" {
-        ///   value = local.s3_user_id
-        /// }
+        ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
+        ///     {
+        ///         return user.UserId;
+        ///     }).ToList();
+        /// 
+        ///     var s3UserId = users[0];
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["userId"] = s3UserId,
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("ovh:CloudProject/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());

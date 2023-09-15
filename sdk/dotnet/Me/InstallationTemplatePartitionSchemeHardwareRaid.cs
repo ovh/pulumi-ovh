@@ -14,9 +14,50 @@ namespace Pulumi.Ovh.Me
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mytemplate = new Ovh.Me.InstallationTemplate("mytemplate", new()
+    ///     {
+    ///         BaseTemplateName = "centos7_64",
+    ///         TemplateName = "mytemplate",
+    ///         DefaultLanguage = "fr",
+    ///     });
+    /// 
+    ///     var scheme = new Ovh.Me.InstallationTemplatePartitionScheme("scheme", new()
+    ///     {
+    ///         TemplateName = mytemplate.TemplateName,
+    ///         Priority = 1,
+    ///     });
+    /// 
+    ///     var group1 = new Ovh.Me.InstallationTemplatePartitionSchemeHardwareRaid("group1", new()
+    ///     {
+    ///         TemplateName = scheme.TemplateName,
+    ///         SchemeName = scheme.Name,
+    ///         Disks = new[]
+    ///         {
+    ///             "[c1:d1,c1:d2,c1:d3]",
+    ///             "[c1:d10,c1:d20,c1:d30]",
+    ///         },
+    ///         Mode = "raid50",
+    ///         Step = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid")]
     public partial class InstallationTemplatePartitionSchemeHardwareRaid : global::Pulumi.CustomResource

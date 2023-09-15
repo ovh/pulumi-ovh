@@ -9,9 +9,52 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const user = new ovh.cloudproject.User("user", {
+ *     serviceName: "XXX",
+ *     description: "my user",
+ *     roleNames: ["objectstore_operator"],
+ * });
+ * const myS3Credentials = new ovh.cloudproject.S3Credential("myS3Credentials", {
+ *     serviceName: user.serviceName,
+ *     userId: user.id,
+ * });
+ * const policy = new ovh.cloudproject.S3Policy("policy", {
+ *     serviceName: user.serviceName,
+ *     userId: user.id,
+ *     policy: JSON.stringify({
+ *         Statement: [{
+ *             Sid: "RWContainer",
+ *             Effect: "Allow",
+ *             Action: [
+ *                 "s3:GetObject",
+ *                 "s3:PutObject",
+ *                 "s3:DeleteObject",
+ *                 "s3:ListBucket",
+ *                 "s3:ListMultipartUploadParts",
+ *                 "s3:ListBucketMultipartUploads",
+ *                 "s3:AbortMultipartUpload",
+ *                 "s3:GetBucketLocation",
+ *             ],
+ *             Resource: [
+ *                 "arn:aws:s3:::hp-bucket",
+ *                 "arn:aws:s3:::hp-bucket/*",
+ *             ],
+ *         }],
+ *     }),
+ * });
+ * ```
+ *
  * ## Import
  *
- * OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id <break>```<break><break>
+ * OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
+ * ```
  */
 export class S3Policy extends pulumi.CustomResource {
     /**

@@ -167,6 +167,20 @@ class ServerUpdate(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_type="rescue",
+            kernel="rescue64-pro")
+        server = ovh.dedicated.ServerUpdate("server",
+            service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_id=rescue.results[0],
+            monitoring=True,
+            state="ok")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] boot_id: boot id of the server
@@ -182,6 +196,20 @@ class ServerUpdate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_type="rescue",
+            kernel="rescue64-pro")
+        server = ovh.dedicated.ServerUpdate("server",
+            service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_id=rescue.results[0],
+            monitoring=True,
+            state="ok")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ServerUpdateArgs args: The arguments to use to populate this resource's properties.

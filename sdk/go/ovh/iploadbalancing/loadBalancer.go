@@ -14,6 +14,74 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myaccount, err := Me.GetMe(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: myaccount.OvhSubsidiary,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			iplb, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//				CartId:        mycart.Id,
+//				PriceCapacity: "renew",
+//				Product:       "ipLoadbalancing",
+//				PlanCode:      "iplb-lb1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			bhs, err := Order.GetCartProductOptionsPlan(ctx, &order.GetCartProductOptionsPlanArgs{
+//				CartId:          iplb.CartId,
+//				PriceCapacity:   iplb.PriceCapacity,
+//				Product:         iplb.Product,
+//				PlanCode:        iplb.PlanCode,
+//				OptionsPlanCode: "iplb-zone-lb1-rbx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = IpLoadBalancing.NewLoadBalancer(ctx, "iplb-lb1", &IpLoadBalancing.LoadBalancerArgs{
+//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				DisplayName:   pulumi.String("my ip loadbalancing"),
+//				Plan: &iploadbalancing.LoadBalancerPlanArgs{
+//					Duration:    *pulumi.String(iplb.SelectedPrices[0].Duration),
+//					PlanCode:    *pulumi.String(iplb.PlanCode),
+//					PricingMode: *pulumi.String(iplb.SelectedPrices[0].PricingMode),
+//				},
+//				PlanOptions: iploadbalancing.LoadBalancerPlanOptionArray{
+//					&iploadbalancing.LoadBalancerPlanOptionArgs{
+//						Duration:    *pulumi.String(bhs.SelectedPrices[0].Duration),
+//						PlanCode:    *pulumi.String(bhs.PlanCode),
+//						PricingMode: *pulumi.String(bhs.SelectedPrices[0].PricingMode),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 

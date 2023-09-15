@@ -16,11 +16,91 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// Create a simple node pool in your Kubernetes cluster:
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var nodePool = new Ovh.CloudProject.KubeNodePool("nodePool", new()
+    ///     {
+    ///         DesiredNodes = 3,
+    ///         FlavorName = "b2-7",
+    ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         MaxNodes = 3,
+    ///         MinNodes = 3,
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// Create an advanced node pool in your Kubernetes cluster:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Ovh.CloudProject.KubeNodePool("pool", new()
+    ///     {
+    ///         DesiredNodes = 3,
+    ///         FlavorName = "b2-7",
+    ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         MaxNodes = 3,
+    ///         MinNodes = 3,
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Template = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateArgs
+    ///         {
+    ///             Metadata = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateMetadataArgs
+    ///             {
+    ///                 Annotations = 
+    ///                 {
+    ///                     { "k1", "v1" },
+    ///                     { "k2", "v2" },
+    ///                 },
+    ///                 Finalizers = new[]
+    ///                 {
+    ///                     "ovhcloud.com/v1beta1",
+    ///                     "ovhcloud.com/v1",
+    ///                 },
+    ///                 Labels = 
+    ///                 {
+    ///                     { "k3", "v3" },
+    ///                     { "k4", "v4" },
+    ///                 },
+    ///             },
+    ///             Spec = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateSpecArgs
+    ///             {
+    ///                 Taints = new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "effect", "PreferNoSchedule" },
+    ///                         { "key", "k" },
+    ///                         { "value", "v" },
+    ///                     },
+    ///                 },
+    ///                 Unschedulable = false,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/kubeNodePool:KubeNodePool")]
     public partial class KubeNodePool : global::Pulumi.CustomResource

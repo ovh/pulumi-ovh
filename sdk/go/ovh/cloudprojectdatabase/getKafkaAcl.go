@@ -15,6 +15,33 @@ import (
 // Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			acl, err := CloudProjectDatabase.GetKafkaAcl(ctx, &cloudprojectdatabase.GetKafkaAclArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				Id:          "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("aclPermission", acl.Permission)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupKafkaAcl(ctx *pulumi.Context, args *LookupKafkaAclArgs, opts ...pulumi.InvokeOption) (*LookupKafkaAclResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaAclResult

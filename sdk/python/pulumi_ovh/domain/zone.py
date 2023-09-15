@@ -288,6 +288,35 @@ class Zone(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+        zone_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="dns",
+            plan_code="zone")
+        zone_zone = ovh.domain.Zone("zoneZone",
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            plan=ovh.domain.ZonePlanArgs(
+                duration=zone_cart_product_plan.selected_prices[0].duration,
+                plan_code=zone_cart_product_plan.plan_code,
+                pricing_mode=zone_cart_product_plan.selected_prices[0].pricing_mode,
+                configurations=[
+                    ovh.domain.ZonePlanConfigurationArgs(
+                        label="zone",
+                        value="myzone.mydomain.com",
+                    ),
+                    ovh.domain.ZonePlanConfigurationArgs(
+                        label="template",
+                        value="minimized",
+                    ),
+                ],
+            ))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
@@ -303,6 +332,35 @@ class Zone(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+        zone_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="dns",
+            plan_code="zone")
+        zone_zone = ovh.domain.Zone("zoneZone",
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            plan=ovh.domain.ZonePlanArgs(
+                duration=zone_cart_product_plan.selected_prices[0].duration,
+                plan_code=zone_cart_product_plan.plan_code,
+                pricing_mode=zone_cart_product_plan.selected_prices[0].pricing_mode,
+                configurations=[
+                    ovh.domain.ZonePlanConfigurationArgs(
+                        label="zone",
+                        value="myzone.mydomain.com",
+                    ),
+                    ovh.domain.ZonePlanConfigurationArgs(
+                        label="template",
+                        value="minimized",
+                    ),
+                ],
+            ))
+        ```
 
         :param str resource_name: The name of the resource.
         :param ZoneArgs args: The arguments to use to populate this resource's properties.

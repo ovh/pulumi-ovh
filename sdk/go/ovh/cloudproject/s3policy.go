@@ -17,9 +17,86 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			user, err := CloudProject.NewUser(ctx, "user", &CloudProject.UserArgs{
+//				ServiceName: pulumi.String("XXX"),
+//				Description: pulumi.String("my user"),
+//				RoleNames: pulumi.StringArray{
+//					pulumi.String("objectstore_operator"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = CloudProject.NewS3Credential(ctx, "myS3Credentials", &CloudProject.S3CredentialArgs{
+//				ServiceName: user.ServiceName,
+//				UserId:      user.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Statement": []map[string]interface{}{
+//					map[string]interface{}{
+//						"Sid":    "RWContainer",
+//						"Effect": "Allow",
+//						"Action": []string{
+//							"s3:GetObject",
+//							"s3:PutObject",
+//							"s3:DeleteObject",
+//							"s3:ListBucket",
+//							"s3:ListMultipartUploadParts",
+//							"s3:ListBucketMultipartUploads",
+//							"s3:AbortMultipartUpload",
+//							"s3:GetBucketLocation",
+//						},
+//						"Resource": []string{
+//							"arn:aws:s3:::hp-bucket",
+//							"arn:aws:s3:::hp-bucket/*",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = CloudProject.NewS3Policy(ctx, "policy", &CloudProject.S3PolicyArgs{
+//				ServiceName: user.ServiceName,
+//				UserId:      user.ID(),
+//				Policy:      pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id <break>```<break><break>
+// OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
+//
+// ```
 type S3Policy struct {
 	pulumi.CustomResourceState
 

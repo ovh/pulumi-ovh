@@ -15,6 +15,34 @@ import (
 // Use this data source to get information about an integration of a database cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			integration, err := CloudProjectDatabase.GetDatabaseIntegration(ctx, &cloudprojectdatabase.GetDatabaseIntegrationArgs{
+//				ServiceName: "XXX",
+//				Engine:      "YYY",
+//				ClusterId:   "ZZZ",
+//				Id:          "UUU",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("integrationType", integration.Type)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatabaseIntegration(ctx *pulumi.Context, args *GetDatabaseIntegrationArgs, opts ...pulumi.InvokeOption) (*GetDatabaseIntegrationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseIntegrationResult

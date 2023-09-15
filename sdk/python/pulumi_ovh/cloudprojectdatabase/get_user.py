@@ -126,6 +126,17 @@ def get_user(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    user = ovh.CloudProjectDatabase.get_user(service_name="XXX",
+        engine="YYY",
+        cluster_id="ZZZ",
+        name="UUU")
+    pulumi.export("userName", user.name)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str engine: The engine of the database cluster you want user information. To get a full list of available engine visit :
@@ -163,6 +174,17 @@ def get_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     Use this data source to get information about a user of a database cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    user = ovh.CloudProjectDatabase.get_user(service_name="XXX",
+        engine="YYY",
+        cluster_id="ZZZ",
+        name="UUU")
+    pulumi.export("userName", user.name)
+    ```
 
 
     :param str cluster_id: Cluster ID

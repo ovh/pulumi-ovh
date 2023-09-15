@@ -14,13 +14,27 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to retrieve am IAM policy.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_iam_policy" "my_policy" {
-        ///   id = "my_policy_id"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicy = Ovh.Iam.GetPolicy.Invoke(new()
+        ///     {
+        ///         Id = "my_policy_id",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("ovh:Iam/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithDefaults());
@@ -28,13 +42,27 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to retrieve am IAM policy.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_iam_policy" "my_policy" {
-        ///   id = "my_policy_id"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicy = Ovh.Iam.GetPolicy.Invoke(new()
+        ///     {
+        ///         Id = "my_policy_id",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("ovh:Iam/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());

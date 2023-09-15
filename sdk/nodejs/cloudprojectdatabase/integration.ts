@@ -15,9 +15,38 @@ import * as utilities from "../utilities";
  *
  * Push PostgreSQL logs in an OpenSearch DB:
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const dbpostgresql = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXXX",
+ *     engine: "postgresql",
+ *     id: "ZZZZ",
+ * });
+ * const dbopensearch = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXXX",
+ *     engine: "opensearch",
+ *     id: "ZZZZ",
+ * });
+ * const integration = new ovh.cloudprojectdatabase.Integration("integration", {
+ *     serviceName: dbpostgresql.then(dbpostgresql => dbpostgresql.serviceName),
+ *     engine: dbpostgresql.then(dbpostgresql => dbpostgresql.engine),
+ *     clusterId: dbpostgresql.then(dbpostgresql => dbpostgresql.id),
+ *     sourceServiceId: dbpostgresql.then(dbpostgresql => dbpostgresql.id),
+ *     destinationServiceId: dbopensearch.then(dbopensearch => dbopensearch.id),
+ *     type: "opensearchLogs",
+ * });
+ * ```
+ *
  * ## Import
  *
- * OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id <break>```<break><break>
+ * OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+ * ```
  */
 export class Integration extends pulumi.CustomResource {
     /**

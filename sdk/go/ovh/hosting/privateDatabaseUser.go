@@ -17,9 +17,41 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Hosting"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Hosting.NewPrivateDatabaseUser(ctx, "user", &Hosting.PrivateDatabaseUserArgs{
+//				Password:    pulumi.String("XXXXXX"),
+//				ServiceName: pulumi.String("XXXXXX"),
+//				UserName:    pulumi.String("XXXXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
+//
+// ```sh
+//
+//	$ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
+//
+// ```
 type PrivateDatabaseUser struct {
 	pulumi.CustomResourceState
 

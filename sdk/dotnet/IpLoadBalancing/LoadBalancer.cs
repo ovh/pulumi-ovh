@@ -11,6 +11,62 @@ namespace Pulumi.Ovh.IpLoadBalancing
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myaccount = Ovh.Me.GetMe.Invoke();
+    /// 
+    ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+    ///     {
+    ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+    ///     });
+    /// 
+    ///     var iplb = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     {
+    ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+    ///         PriceCapacity = "renew",
+    ///         Product = "ipLoadbalancing",
+    ///         PlanCode = "iplb-lb1",
+    ///     });
+    /// 
+    ///     var bhs = Ovh.Order.GetCartProductOptionsPlan.Invoke(new()
+    ///     {
+    ///         CartId = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.CartId),
+    ///         PriceCapacity = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PriceCapacity),
+    ///         Product = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.Product),
+    ///         PlanCode = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///         OptionsPlanCode = "iplb-zone-lb1-rbx",
+    ///     });
+    /// 
+    ///     var iplb_lb1 = new Ovh.IpLoadBalancing.LoadBalancer("iplb-lb1", new()
+    ///     {
+    ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
+    ///         DisplayName = "my ip loadbalancing",
+    ///         Plan = new Ovh.IpLoadBalancing.Inputs.LoadBalancerPlanArgs
+    ///         {
+    ///             Duration = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///         },
+    ///         PlanOptions = new[]
+    ///         {
+    ///             new Ovh.IpLoadBalancing.Inputs.LoadBalancerPlanOptionArgs
+    ///             {
+    ///                 Duration = bhs.Apply(getCartProductOptionsPlanResult =&gt; getCartProductOptionsPlanResult.SelectedPrices[0]?.Duration),
+    ///                 PlanCode = bhs.Apply(getCartProductOptionsPlanResult =&gt; getCartProductOptionsPlanResult.PlanCode),
+    ///                 PricingMode = bhs.Apply(getCartProductOptionsPlanResult =&gt; getCartProductOptionsPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : global::Pulumi.CustomResource

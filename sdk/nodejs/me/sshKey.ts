@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * Creates an SSH Key.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const mykey = new ovh.me.SshKey("mykey", {
+ *     key: "ssh-ed25519 AAAAC3...",
+ *     keyName: "mykey",
+ * });
+ * ```
  */
 export class SshKey extends pulumi.CustomResource {
     /**

@@ -103,6 +103,16 @@ def get_ip_restrictions(cluster_id: Optional[str] = None,
 
     To get the list of IP restriction on a database cluster service:
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    iprestrictions = ovh.CloudProjectDatabase.get_ip_restrictions(service_name="XXXXXX",
+        engine="YYYY",
+        cluster_id="ZZZZ")
+    pulumi.export("ips", iprestrictions.ips)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str engine: The engine of the database cluster you want to list IP restrictions. To get a full list of available engine visit:
@@ -136,6 +146,16 @@ def get_ip_restrictions_output(cluster_id: Optional[pulumi.Input[str]] = None,
     ## Example Usage
 
     To get the list of IP restriction on a database cluster service:
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    iprestrictions = ovh.CloudProjectDatabase.get_ip_restrictions(service_name="XXXXXX",
+        engine="YYYY",
+        cluster_id="ZZZZ")
+    pulumi.export("ips", iprestrictions.ips)
+    ```
 
 
     :param str cluster_id: Cluster ID

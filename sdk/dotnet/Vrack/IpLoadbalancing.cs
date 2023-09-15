@@ -13,6 +13,23 @@ namespace Pulumi.Ovh.Vrack
     /// Attach an IP Load Balancing to a VRack.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var viplb = new Ovh.Vrack.IpLoadbalancing("viplb", new()
+    ///     {
+    ///         LoadbalancingId = "yyy",
+    ///         ServiceName = "xxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Vrack/ipLoadbalancing:IpLoadbalancing")]
     public partial class IpLoadbalancing : global::Pulumi.CustomResource

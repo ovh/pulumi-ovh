@@ -8,6 +8,15 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about a dedicated CEPH.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const my-ceph = ovh.Dedicated.getCeph({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getCeph(args: GetCephArgs, opts?: pulumi.InvokeOptions): Promise<GetCephResult> {
 
@@ -95,6 +104,15 @@ export interface GetCephResult {
  * Use this data source to retrieve information about a dedicated CEPH.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const my-ceph = ovh.Dedicated.getCeph({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getCephOutput(args: GetCephOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCephResult> {
     return pulumi.output(args).apply((a: any) => getCeph(a, opts))

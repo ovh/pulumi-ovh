@@ -10,6 +10,13 @@ import * as utilities from "../utilities";
  * Use this data source to get information about the current OVHcloud account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * ```
  */
 export function getMe(opts?: pulumi.InvokeOptions): Promise<GetMeResult> {
 
@@ -148,6 +155,13 @@ export interface GetMeResult {
  * Use this data source to get information about the current OVHcloud account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * ```
  */
 export function getMeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetMeResult> {
     return pulumi.output(getMe(opts))

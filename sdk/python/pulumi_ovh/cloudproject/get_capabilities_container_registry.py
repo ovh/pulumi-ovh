@@ -73,6 +73,13 @@ def get_capabilities_container_registry(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    capabilities = ovh.CloudProject.get_capabilities_container_registry(service_name="XXXXXX")
+    ```
+
 
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -95,6 +102,13 @@ def get_capabilities_container_registry_output(service_name: Optional[pulumi.Inp
     Use this data source to get the container registry capabilities of a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    capabilities = ovh.CloudProject.get_capabilities_container_registry(service_name="XXXXXX")
+    ```
 
 
     :param str service_name: The id of the public cloud project. If omitted,

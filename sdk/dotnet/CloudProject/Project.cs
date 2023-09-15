@@ -12,7 +12,13 @@ namespace Pulumi.Ovh.CloudProject
     /// <summary>
     /// ## Import
     /// 
-    /// Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.  bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/project:Project")]
     public partial class Project : global::Pulumi.CustomResource

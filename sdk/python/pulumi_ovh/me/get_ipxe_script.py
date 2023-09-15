@@ -75,6 +75,13 @@ def get_ipxe_script(name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    script = ovh.Me.get_ipxe_script(name="myscript")
+    ```
+
 
     :param str name: The name of the IPXE Script.
     """
@@ -96,6 +103,13 @@ def get_ipxe_script_output(name: Optional[pulumi.Input[str]] = None,
     Use this data source to retrieve information about an IPXE Script.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    script = ovh.Me.get_ipxe_script(name="myscript")
+    ```
 
 
     :param str name: The name of the IPXE Script.

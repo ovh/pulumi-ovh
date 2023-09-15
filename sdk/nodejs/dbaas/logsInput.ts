@@ -10,6 +10,43 @@ import * as utilities from "../utilities";
  * Creates a dbaas logs input.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const logstash = ovh.Dbaas.getLogsInputEngine({
+ *     name: "logstash",
+ *     version: "7.x",
+ * });
+ * const stream = new ovh.dbaas.LogsOutputGraylogStream("stream", {
+ *     serviceName: "....",
+ *     title: "my stream",
+ *     description: "my graylog stream",
+ * });
+ * const input = new ovh.dbaas.LogsInput("input", {
+ *     serviceName: stream.serviceName,
+ *     description: stream.description,
+ *     title: stream.title,
+ *     engineId: logstash.then(logstash => logstash.id),
+ *     streamId: stream.id,
+ *     allowedNetworks: ["10.0.0.0/16"],
+ *     exposedPort: "6154",
+ *     nbInstance: 2,
+ *     configuration: {
+ *         logstash: {
+ *             inputSection: `  beats {
+ *     port => 6514
+ *     ssl => true
+ *     ssl_certificate => "/etc/ssl/private/server.crt"
+ *     ssl_key => "/etc/ssl/private/server.key"
+ *   }
+ * `,
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class LogsInput extends pulumi.CustomResource {
     /**

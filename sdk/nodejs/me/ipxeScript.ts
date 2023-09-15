@@ -8,6 +8,14 @@ import * as utilities from "../utilities";
  * Creates an IPXE Script.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const script = new ovh.me.IpxeScript("script", {script: fs.readFileSync(`${path.module}/boot.ipxe`)});
+ * ```
  */
 export class IpxeScript extends pulumi.CustomResource {
     /**

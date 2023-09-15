@@ -15,6 +15,31 @@ import (
 // Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ovh.GetVrackNetworks(ctx, &ovh.GetVrackNetworksArgs{
+//				ServiceName: "XXXXXX",
+//				Subnet:      pulumi.StringRef("10.0.0.0/24"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVrackNetworks(ctx *pulumi.Context, args *GetVrackNetworksArgs, opts ...pulumi.InvokeOption) (*GetVrackNetworksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVrackNetworksResult

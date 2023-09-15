@@ -8,6 +8,41 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * }));
+ * const zoneCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
+ *     cartId: mycart.id,
+ *     priceCapacity: "renew",
+ *     product: "dns",
+ *     planCode: "zone",
+ * }));
+ * const zoneZone = new ovh.domain.Zone("zoneZone", {
+ *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
+ *     plan: {
+ *         duration: zoneCartProductPlan.then(zoneCartProductPlan => zoneCartProductPlan.selectedPrices?.[0]?.duration),
+ *         planCode: zoneCartProductPlan.then(zoneCartProductPlan => zoneCartProductPlan.planCode),
+ *         pricingMode: zoneCartProductPlan.then(zoneCartProductPlan => zoneCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *         configurations: [
+ *             {
+ *                 label: "zone",
+ *                 value: "myzone.mydomain.com",
+ *             },
+ *             {
+ *                 label: "template",
+ *                 value: "minimized",
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
  */
 export class Zone extends pulumi.CustomResource {
     /**

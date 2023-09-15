@@ -9,9 +9,31 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const opensearch = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXX",
+ *     engine: "opensearch",
+ *     id: "ZZZ",
+ * });
+ * const pattern = new ovh.cloudprojectdatabase.OpensearchPattern("pattern", {
+ *     serviceName: opensearch.then(opensearch => opensearch.serviceName),
+ *     clusterId: opensearch.then(opensearch => opensearch.id),
+ *     maxIndexCount: 2,
+ *     pattern: "logs_*",
+ * });
+ * ```
+ *
  * ## Import
  *
- * OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id <break>```<break><break>
+ * OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
+ * ```
  */
 export class OpensearchPattern extends pulumi.CustomResource {
     /**

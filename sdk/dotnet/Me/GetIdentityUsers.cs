@@ -14,11 +14,24 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve list of user logins of the account's identity users.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_identity_users" "users" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var users = Ovh.Me.GetIdentityUsers.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIdentityUsersResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIdentityUsersResult>("ovh:Me/getIdentityUsers:getIdentityUsers", InvokeArgs.Empty, options.WithDefaults());
@@ -26,11 +39,24 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve list of user logins of the account's identity users.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_identity_users" "users" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var users = Ovh.Me.GetIdentityUsers.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIdentityUsersResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityUsersResult>("ovh:Me/getIdentityUsers:getIdentityUsers", InvokeArgs.Empty, options.WithDefaults());

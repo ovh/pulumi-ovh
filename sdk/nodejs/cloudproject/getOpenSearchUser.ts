@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const osuser = ovh.CloudProject.getOpenSearchUser({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     name: "ZZZ",
+ * });
+ * export const osuserAcls = osuser.then(osuser => osuser.acls);
+ * ```
  */
 export function getOpenSearchUser(args: GetOpenSearchUserArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchUserResult> {
 
@@ -77,6 +89,18 @@ export interface GetOpenSearchUserResult {
  * Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const osuser = ovh.CloudProject.getOpenSearchUser({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     name: "ZZZ",
+ * });
+ * export const osuserAcls = osuser.then(osuser => osuser.acls);
+ * ```
  */
 export function getOpenSearchUserOutput(args: GetOpenSearchUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchUserResult> {
     return pulumi.output(args).apply((a: any) => getOpenSearchUser(a, opts))

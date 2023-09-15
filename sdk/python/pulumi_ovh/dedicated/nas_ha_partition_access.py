@@ -167,9 +167,24 @@ class NasHAPartitionAccess(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_partition = ovh.dedicated.NasHAPartitionAccess("my-partition",
+            ip="123.123.123.123/32",
+            partition_name="my-partition",
+            service_name="zpool-12345",
+            type="readwrite")
+        ```
+
         ## Import
 
-        HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.   <break><break>```sh<break> $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32` <break>```<break><break>
+        HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
+
+        ```sh
+         $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -189,9 +204,24 @@ class NasHAPartitionAccess(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_partition = ovh.dedicated.NasHAPartitionAccess("my-partition",
+            ip="123.123.123.123/32",
+            partition_name="my-partition",
+            service_name="zpool-12345",
+            type="readwrite")
+        ```
+
         ## Import
 
-        HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.   <break><break>```sh<break> $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32` <break>```<break><break>
+        HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
+
+        ```sh
+         $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+        ```
 
         :param str resource_name: The name of the resource.
         :param NasHAPartitionAccessArgs args: The arguments to use to populate this resource's properties.

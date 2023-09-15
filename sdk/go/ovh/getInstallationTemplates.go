@@ -11,6 +11,28 @@ import (
 // Use this data source to get the list of installation templates available for dedicated servers.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ovh.GetInstallationTemplates(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstallationTemplates(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetInstallationTemplatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstallationTemplatesResult

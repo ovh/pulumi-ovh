@@ -17,9 +17,41 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Dedicated.NewNasHAPartitionSnapshot(ctx, "my-partition", &Dedicated.NasHAPartitionSnapshotArgs{
+//				PartitionName: pulumi.String("my-partition"),
+//				ServiceName:   pulumi.String("zpool-12345"),
+//				Type:          pulumi.String("day-3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.   <break><break>```sh<break> $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3` <break>```<break><break>
+// HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
+//
+// ```sh
+//
+//	$ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
+//
+// ```
 type NasHAPartitionSnapshot struct {
 	pulumi.CustomResourceState
 

@@ -434,9 +434,23 @@ class InstallationTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mytemplate = ovh.me.InstallationTemplate("mytemplate",
+            base_template_name="centos7_64",
+            default_language="en",
+            template_name="mytemplate")
+        ```
+
         ## Import
 
-        Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name <break>```<break><break>
+        Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -456,9 +470,23 @@ class InstallationTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mytemplate = ovh.me.InstallationTemplate("mytemplate",
+            base_template_name="centos7_64",
+            default_language="en",
+            template_name="mytemplate")
+        ```
+
         ## Import
 
-        Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name <break>```<break><break>
+        Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param InstallationTemplateArgs args: The arguments to use to populate this resource's properties.

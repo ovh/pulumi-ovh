@@ -16,6 +16,38 @@ import (
 // Add a new access ACL for the given network/mask.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_ceph, err := Dedicated.GetCeph(ctx, &dedicated.GetCephArgs{
+//				ServiceName: "94d423da-0e55-45f2-9812-836460a19939",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Dedicated.NewCephAcl(ctx, "my-acl", &Dedicated.CephAclArgs{
+//				ServiceName: *pulumi.String(my_ceph.Id),
+//				Network:     pulumi.String("1.2.3.4"),
+//				Netmask:     pulumi.String("255.255.255.255"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type CephAcl struct {
 	pulumi.CustomResourceState
 

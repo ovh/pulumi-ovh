@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * > __NOTE__ This resource is only compatible with the `High Performance - S3` solution for object storage.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const presignedUrlRegionStoragePresign = new ovh.cloudproject.RegionStoragePresign("presignedUrlRegionStoragePresign", {
+ *     serviceName: "xxxxxxxxxxxxxxxxx",
+ *     regionName: "GRA",
+ *     expire: 3600,
+ *     method: "GET",
+ *     object: "an-object-in-the-bucket",
+ * });
+ * export const presignedUrl = presignedUrlRegionStoragePresign.url;
+ * ```
  */
 export class RegionStoragePresign extends pulumi.CustomResource {
     /**

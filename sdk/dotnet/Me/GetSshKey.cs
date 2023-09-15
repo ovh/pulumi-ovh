@@ -14,13 +14,27 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information about an SSH key.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_ssh_key" "mykey" {
-        ///   key_name = "mykey"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mykey = Ovh.Me.GetSshKey.Invoke(new()
+        ///     {
+        ///         KeyName = "mykey",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("ovh:Me/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithDefaults());
@@ -28,13 +42,27 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information about an SSH key.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_ssh_key" "mykey" {
-        ///   key_name = "mykey"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mykey = Ovh.Me.GetSshKey.Invoke(new()
+        ///     {
+        ///         KeyName = "mykey",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSshKeyResult> Invoke(GetSshKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("ovh:Me/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithDefaults());

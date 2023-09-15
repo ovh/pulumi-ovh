@@ -14,19 +14,33 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes node pool.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_kube_nodepool" "nodepool" {
-        ///   service_name  = "XXXXXX"
-        ///   kube_id       = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx"
-        ///   name          = "xxxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "max_nodes" {
-        ///   value = data.ovh_cloud_project_kube_nodepool.nodepool.max_nodes
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nodepool = Ovh.CloudProject.GetKubeNodePool.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+        ///         Name = "xxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["maxNodes"] = nodepool.Apply(getKubeNodePoolResult =&gt; getKubeNodePoolResult.MaxNodes),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubeNodePoolResult> InvokeAsync(GetKubeNodePoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubeNodePoolResult>("ovh:CloudProject/getKubeNodePool:getKubeNodePool", args ?? new GetKubeNodePoolArgs(), options.WithDefaults());
@@ -34,19 +48,33 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes node pool.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_kube_nodepool" "nodepool" {
-        ///   service_name  = "XXXXXX"
-        ///   kube_id       = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx"
-        ///   name          = "xxxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "max_nodes" {
-        ///   value = data.ovh_cloud_project_kube_nodepool.nodepool.max_nodes
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nodepool = Ovh.CloudProject.GetKubeNodePool.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+        ///         Name = "xxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["maxNodes"] = nodepool.Apply(getKubeNodePoolResult =&gt; getKubeNodePoolResult.MaxNodes),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubeNodePoolResult> Invoke(GetKubeNodePoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeNodePoolResult>("ovh:CloudProject/getKubeNodePool:getKubeNodePool", args ?? new GetKubeNodePoolInvokeArgs(), options.WithDefaults());

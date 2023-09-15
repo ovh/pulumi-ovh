@@ -417,9 +417,27 @@ class M3DbNamespace(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        m3db = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="m3db",
+            id="ZZZ")
+        namespace = ovh.cloud_project_database.M3DbNamespace("namespace",
+            service_name=m3db.service_name,
+            cluster_id=m3db.id,
+            resolution="P2D",
+            retention_period_duration="PT48H")
+        ```
+
         ## Import
 
-        OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -447,9 +465,27 @@ class M3DbNamespace(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        m3db = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="m3db",
+            id="ZZZ")
+        namespace = ovh.cloud_project_database.M3DbNamespace("namespace",
+            service_name=m3db.service_name,
+            cluster_id=m3db.id,
+            resolution="P2D",
+            retention_period_duration="PT48H")
+        ```
+
         ## Import
 
-        OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id <break>```<break><break>
+        OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param M3DbNamespaceArgs args: The arguments to use to populate this resource's properties.

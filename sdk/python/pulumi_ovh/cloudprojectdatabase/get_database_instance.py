@@ -114,6 +114,17 @@ def get_database_instance(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    database = ovh.CloudProjectDatabase.get_database_instance(service_name="XXX",
+        engine="YYY",
+        cluster_id="ZZZ",
+        name="UUU")
+    pulumi.export("databaseName", database.name)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str engine: The engine of the database cluster you want database information. To get a full list of available engine visit:
@@ -150,6 +161,17 @@ def get_database_instance_output(cluster_id: Optional[pulumi.Input[str]] = None,
     Use this data source to get information about a database of a database cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    database = ovh.CloudProjectDatabase.get_database_instance(service_name="XXX",
+        engine="YYY",
+        cluster_id="ZZZ",
+        name="UUU")
+    pulumi.export("databaseName", database.name)
+    ```
 
 
     :param str cluster_id: Cluster ID

@@ -14,13 +14,27 @@ namespace Pulumi.Ovh.Dedicated
         /// <summary>
         /// Use this data source to retrieve information about a dedicated CEPH. 
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_dedicated_ceph" "my-ceph" {
-        ///   service_name = "XXXXXX"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_ceph = Ovh.Dedicated.GetCeph.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCephResult> InvokeAsync(GetCephArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCephResult>("ovh:Dedicated/getCeph:getCeph", args ?? new GetCephArgs(), options.WithDefaults());
@@ -28,13 +42,27 @@ namespace Pulumi.Ovh.Dedicated
         /// <summary>
         /// Use this data source to retrieve information about a dedicated CEPH. 
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_dedicated_ceph" "my-ceph" {
-        ///   service_name = "XXXXXX"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_ceph = Ovh.Dedicated.GetCeph.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCephResult> Invoke(GetCephInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCephResult>("ovh:Dedicated/getCeph:getCeph", args ?? new GetCephInvokeArgs(), options.WithDefaults());

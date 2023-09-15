@@ -9,9 +9,31 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const m3db = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXX",
+ *     engine: "m3db",
+ *     id: "ZZZ",
+ * });
+ * const namespace = new ovh.cloudprojectdatabase.M3DbNamespace("namespace", {
+ *     serviceName: m3db.then(m3db => m3db.serviceName),
+ *     clusterId: m3db.then(m3db => m3db.id),
+ *     resolution: "P2D",
+ *     retentionPeriodDuration: "PT48H",
+ * });
+ * ```
+ *
  * ## Import
  *
- * OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id <break>```<break><break>
+ * OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
+ * ```
  */
 export class M3DbNamespace extends pulumi.CustomResource {
     /**

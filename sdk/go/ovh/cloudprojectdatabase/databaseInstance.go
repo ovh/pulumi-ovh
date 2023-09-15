@@ -22,9 +22,49 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			db, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//				ServiceName: "XXXX",
+//				Engine:      "YYYY",
+//				Id:          "ZZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = CloudProjectDatabase.NewDatabaseInstance(ctx, "database", &CloudProjectDatabase.DatabaseInstanceArgs{
+//				ServiceName: *pulumi.String(db.ServiceName),
+//				Engine:      *pulumi.String(db.Engine),
+//				ClusterId:   *pulumi.String(db.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id <break>```<break><break>
+// OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
+//
+// ```
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 

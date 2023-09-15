@@ -12,9 +12,68 @@ namespace Pulumi.Ovh.Hosting
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myaccount = Ovh.Me.GetMe.Invoke();
+    /// 
+    ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+    ///     {
+    ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+    ///     });
+    /// 
+    ///     var databaseCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     {
+    ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+    ///         PriceCapacity = "renew",
+    ///         Product = "privateSQL",
+    ///         PlanCode = "private-sql-512-instance",
+    ///     });
+    /// 
+    ///     var databasePrivateDatabase = new Ovh.Hosting.PrivateDatabase("databasePrivateDatabase", new()
+    ///     {
+    ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
+    ///         DisplayName = "Postgresql-12",
+    ///         Plan = new Ovh.Hosting.Inputs.PrivateDatabasePlanArgs
+    ///         {
+    ///             Duration = databaseCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.Prices[3]?.Duration),
+    ///             PlanCode = databaseCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = databaseCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Configurations = new[]
+    ///             {
+    ///                 new Ovh.Hosting.Inputs.PrivateDatabasePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "dc",
+    ///                     Value = "gra3",
+    ///                 },
+    ///                 new Ovh.Hosting.Inputs.PrivateDatabasePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "engine",
+    ///                     Value = "postgresql_12",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["privatedatabaseServiceName"] = databasePrivateDatabase.ServiceName,
+    ///     };
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabase:PrivateDatabase")]
     public partial class PrivateDatabase : global::Pulumi.CustomResource

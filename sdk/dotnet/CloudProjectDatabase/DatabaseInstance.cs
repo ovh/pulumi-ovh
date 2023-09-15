@@ -19,9 +19,38 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var db = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXXX",
+    ///         Engine = "YYYY",
+    ///         Id = "ZZZZ",
+    ///     });
+    /// 
+    ///     var database = new Ovh.CloudProjectDatabase.DatabaseInstance("database", new()
+    ///     {
+    ///         ServiceName = db.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         Engine = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Engine),
+    ///         ClusterId = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance")]
     public partial class DatabaseInstance : global::Pulumi.CustomResource

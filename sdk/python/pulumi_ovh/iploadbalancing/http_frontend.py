@@ -472,11 +472,48 @@ class HttpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farm80 = ovh.ip_load_balancing.HttpFarm("farm80",
+            display_name="ingress-8080-gra",
+            port=80,
+            service_name=lb.service_name,
+            zone="all")
+        testfrontend = ovh.ip_load_balancing.HttpFrontend("testfrontend",
+            default_farm_id=farm80.id,
+            display_name="ingress-8080-gra",
+            port="80,443",
+            service_name=lb.service_name,
+            zone="all")
+        ```
         ### With HTTP Header
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
 
-        HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farm80 = ovh.ip_load_balancing.HttpFarm("farm80",
+            display_name="ingress-8080-gra",
+            port=80,
+            service_name=lb.service_name,
+            zone="all")
+        testfrontend = ovh.ip_load_balancing.HttpFrontend("testfrontend",
+            default_farm_id=farm80.id,
+            display_name="ingress-8080-gra",
+            http_headers=[
+                "X-Ip-Header %%ci",
+                "X-Port-Header %%cp",
+            ],
+            port="80,443",
+            service_name=lb.service_name,
+            zone="all")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -507,11 +544,48 @@ class HttpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farm80 = ovh.ip_load_balancing.HttpFarm("farm80",
+            display_name="ingress-8080-gra",
+            port=80,
+            service_name=lb.service_name,
+            zone="all")
+        testfrontend = ovh.ip_load_balancing.HttpFrontend("testfrontend",
+            default_farm_id=farm80.id,
+            display_name="ingress-8080-gra",
+            port="80,443",
+            service_name=lb.service_name,
+            zone="all")
+        ```
         ### With HTTP Header
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
 
-        HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farm80 = ovh.ip_load_balancing.HttpFarm("farm80",
+            display_name="ingress-8080-gra",
+            port=80,
+            service_name=lb.service_name,
+            zone="all")
+        testfrontend = ovh.ip_load_balancing.HttpFrontend("testfrontend",
+            default_farm_id=farm80.id,
+            display_name="ingress-8080-gra",
+            http_headers=[
+                "X-Ip-Header %%ci",
+                "X-Port-Header %%cp",
+            ],
+            port="80,443",
+            service_name=lb.service_name,
+            zone="all")
+        ```
 
         :param str resource_name: The name of the resource.
         :param HttpFrontendArgs args: The arguments to use to populate this resource's properties.

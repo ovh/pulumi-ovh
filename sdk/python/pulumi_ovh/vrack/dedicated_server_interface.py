@@ -106,6 +106,16 @@ class DedicatedServerInterface(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        server = ovh.get_server(service_name="nsxxxxxxx.ip-xx-xx-xx.eu")
+        vdsi = ovh.vrack.DedicatedServerInterface("vdsi",
+            service_name="pn-xxxxxxx",
+            interface_id=server.enabled_vrack_vnis[0])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] interface_id: The id of dedicated server network interface.
@@ -122,6 +132,16 @@ class DedicatedServerInterface(pulumi.CustomResource):
         Attach a Dedicated Server Network Interface to a VRack.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        server = ovh.get_server(service_name="nsxxxxxxx.ip-xx-xx-xx.eu")
+        vdsi = ovh.vrack.DedicatedServerInterface("vdsi",
+            service_name="pn-xxxxxxx",
+            interface_id=server.enabled_vrack_vnis[0])
+        ```
 
         :param str resource_name: The name of the resource.
         :param DedicatedServerInterfaceArgs args: The arguments to use to populate this resource's properties.

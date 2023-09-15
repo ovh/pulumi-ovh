@@ -14,15 +14,29 @@ namespace Pulumi.Ovh.Order
         /// <summary>
         /// Use this data source to create a temporary order cart to retrieve information order cart products.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me" "myaccount" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// data "ovh_order_cart" "mycart" {
-        ///  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myaccount = Ovh.Me.GetMe.Invoke();
+        /// 
+        ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+        ///     {
+        ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCartResult> InvokeAsync(GetCartArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCartResult>("ovh:Order/getCart:getCart", args ?? new GetCartArgs(), options.WithDefaults());
@@ -30,15 +44,29 @@ namespace Pulumi.Ovh.Order
         /// <summary>
         /// Use this data source to create a temporary order cart to retrieve information order cart products.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me" "myaccount" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// data "ovh_order_cart" "mycart" {
-        ///  ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myaccount = Ovh.Me.GetMe.Invoke();
+        /// 
+        ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+        ///     {
+        ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCartResult> Invoke(GetCartInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCartResult>("ovh:Order/getCart:getCart", args ?? new GetCartInvokeArgs(), options.WithDefaults());

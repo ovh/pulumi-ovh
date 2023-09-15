@@ -11,6 +11,41 @@ namespace Pulumi.Ovh.Dedicated
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rescue = Ovh.Dedicated.GetServerBoots.Invoke(new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///         BootType = "rescue",
+    ///         Kernel = "rescue64-pro",
+    ///     });
+    /// 
+    ///     var serverOnRescue = new Ovh.Dedicated.ServerUpdate("serverOnRescue", new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///         BootId = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.Results[0]),
+    ///         Monitoring = true,
+    ///         State = "ok",
+    ///     });
+    /// 
+    ///     var serverReboot = new Ovh.Dedicated.ServerRebootTask("serverReboot", new()
+    ///     {
+    ///         ServiceName = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.ServiceName),
+    ///         Keepers = new[]
+    ///         {
+    ///             serverOnRescue.BootId,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dedicated/serverRebootTask:ServerRebootTask")]
     public partial class ServerRebootTask : global::Pulumi.CustomResource

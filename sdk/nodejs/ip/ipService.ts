@@ -8,6 +8,36 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * const mycart = ovh.Order.getCart({
+ *     ovhSubsidiary: "fr",
+ * });
+ * const ipblockCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
+ *     cartId: mycart.id,
+ *     priceCapacity: "renew",
+ *     product: "ip",
+ *     planCode: "ip-v4-s30-ripe",
+ * }));
+ * const ipblockIpService = new ovh.ip.IpService("ipblockIpService", {
+ *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
+ *     description: "my ip block",
+ *     plan: {
+ *         duration: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.duration),
+ *         planCode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.planCode),
+ *         pricingMode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *         configurations: [{
+ *             label: "country",
+ *             value: "FR",
+ *         }],
+ *     },
+ * });
+ * ```
  */
 export class IpService extends pulumi.CustomResource {
     /**

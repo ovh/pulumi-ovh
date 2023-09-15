@@ -14,19 +14,33 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_opensearch_user" "osuser" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   name          = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "osuser_acls" {
-        ///   value = data.ovh_cloud_project_database_opensearch_user.osuser.acls
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var osuser = Ovh.CloudProject.GetOpenSearchUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["osuserAcls"] = osuser.Apply(getOpenSearchUserResult =&gt; getOpenSearchUserResult.Acls),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOpenSearchUserResult> InvokeAsync(GetOpenSearchUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchUserResult>("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", args ?? new GetOpenSearchUserArgs(), options.WithDefaults());
@@ -34,19 +48,33 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_opensearch_user" "osuser" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   name          = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "osuser_acls" {
-        ///   value = data.ovh_cloud_project_database_opensearch_user.osuser.acls
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var osuser = Ovh.CloudProject.GetOpenSearchUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["osuserAcls"] = osuser.Apply(getOpenSearchUserResult =&gt; getOpenSearchUserResult.Acls),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetOpenSearchUserResult> Invoke(GetOpenSearchUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchUserResult>("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", args ?? new GetOpenSearchUserInvokeArgs(), options.WithDefaults());

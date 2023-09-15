@@ -14,21 +14,36 @@ namespace Pulumi.Ovh.Order
         /// <summary>
         /// Use this data source to retrieve information of order cart product options.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me" "myaccount" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// data "ovh_order_cart" "mycart" {
-        ///   ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myaccount = Ovh.Me.GetMe.Invoke();
         /// 
-        /// data "ovh_order_cart_product_options" "options" {
-        ///   cart_id   = data.ovh_order_cart.mycart.id
-        ///   product   = "cloud"
-        ///   plan_code = "project"
-        /// }
+        ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+        ///     {
+        ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///     });
+        /// 
+        ///     var options = Ovh.Order.GetCartProductOptions.Invoke(new()
+        ///     {
+        ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+        ///         Product = "cloud",
+        ///         PlanCode = "project",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCartProductOptionsResult> InvokeAsync(GetCartProductOptionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCartProductOptionsResult>("ovh:Order/getCartProductOptions:getCartProductOptions", args ?? new GetCartProductOptionsArgs(), options.WithDefaults());
@@ -36,21 +51,36 @@ namespace Pulumi.Ovh.Order
         /// <summary>
         /// Use this data source to retrieve information of order cart product options.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me" "myaccount" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// data "ovh_order_cart" "mycart" {
-        ///   ovh_subsidiary = data.ovh_me.myaccount.ovh_subsidiary
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myaccount = Ovh.Me.GetMe.Invoke();
         /// 
-        /// data "ovh_order_cart_product_options" "options" {
-        ///   cart_id   = data.ovh_order_cart.mycart.id
-        ///   product   = "cloud"
-        ///   plan_code = "project"
-        /// }
+        ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+        ///     {
+        ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///     });
+        /// 
+        ///     var options = Ovh.Order.GetCartProductOptions.Invoke(new()
+        ///     {
+        ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+        ///         Product = "cloud",
+        ///         PlanCode = "project",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCartProductOptionsResult> Invoke(GetCartProductOptionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCartProductOptionsResult>("ovh:Order/getCartProductOptions:getCartProductOptions", args ?? new GetCartProductOptionsInvokeArgs(), options.WithDefaults());

@@ -16,6 +16,55 @@ import (
 // Creates an IAM policy.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Iam"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			account, err := Me.GetMe(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			myGroup, err := Me.NewIdentityGroup(ctx, "myGroup", &Me.IdentityGroupArgs{
+//				Description: pulumi.String("my_group created in Terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Iam.NewPolicy(ctx, "manager", &Iam.PolicyArgs{
+//				Description: pulumi.String("Users are allowed to use the OVH manager"),
+//				Identities: pulumi.StringArray{
+//					myGroup.Urn,
+//				},
+//				Resources: pulumi.StringArray{
+//					*pulumi.String(account.Urn),
+//				},
+//				Allows: pulumi.StringArray{
+//					pulumi.String("account:apiovh:me/get"),
+//					pulumi.String("account:apiovh:me/supportLevel/get"),
+//					pulumi.String("account:apiovh:me/certificates/get"),
+//					pulumi.String("account:apiovh:me/tag/get"),
+//					pulumi.String("account:apiovh:services/get"),
+//					pulumi.String("account:apiovh:*"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Policy struct {
 	pulumi.CustomResourceState
 

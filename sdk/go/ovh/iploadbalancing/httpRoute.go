@@ -19,9 +19,36 @@ import (
 //
 // Route which redirect all url to https.
 //
-// ## Import
+// ```go
+// package main
 //
-// HTTP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := IpLoadBalancing.NewHttpRoute(ctx, "httpsredirect", &IpLoadBalancing.HttpRouteArgs{
+//				Action: &iploadbalancing.HttpRouteActionArgs{
+//					Status: pulumi.Int(302),
+//					Target: pulumi.String("https://${host}${path}${arguments}"),
+//					Type:   pulumi.String("redirect"),
+//				},
+//				DisplayName: pulumi.String("Redirect to HTTPS"),
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				Weight:      pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type HttpRoute struct {
 	pulumi.CustomResourceState
 

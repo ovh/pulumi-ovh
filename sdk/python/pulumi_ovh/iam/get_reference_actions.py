@@ -71,8 +71,6 @@ def get_reference_actions(type: Optional[str] = None,
     """
     Use this data source to list the IAM action associated with a resource type.
 
-    ## Example Usage
-
 
     :param str type: Kind of resource we want the actions for
     """
@@ -92,8 +90,6 @@ def get_reference_actions_output(type: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReferenceActionsResult]:
     """
     Use this data source to list the IAM action associated with a resource type.
-
-    ## Example Usage
 
 
     :param str type: Kind of resource we want the actions for

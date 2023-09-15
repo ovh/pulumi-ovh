@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const access = ovh.CloudProjectDatabase.getKafkaUserAccess({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     userId: "ZZZ",
+ * });
+ * export const accessCert = access.then(access => access.cert);
+ * ```
  */
 export function getKafkaUserAccess(args: GetKafkaUserAccessArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaUserAccessResult> {
 
@@ -71,6 +83,18 @@ export interface GetKafkaUserAccessResult {
  * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const access = ovh.CloudProjectDatabase.getKafkaUserAccess({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     userId: "ZZZ",
+ * });
+ * export const accessCert = access.then(access => access.cert);
+ * ```
  */
 export function getKafkaUserAccessOutput(args: GetKafkaUserAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaUserAccessResult> {
     return pulumi.output(args).apply((a: any) => getKafkaUserAccess(a, opts))

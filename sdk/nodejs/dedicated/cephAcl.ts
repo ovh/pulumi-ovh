@@ -8,6 +8,21 @@ import * as utilities from "../utilities";
  * Add a new access ACL for the given network/mask.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const my-ceph = ovh.Dedicated.getCeph({
+ *     serviceName: "94d423da-0e55-45f2-9812-836460a19939",
+ * });
+ * const my_acl = new ovh.dedicated.CephAcl("my-acl", {
+ *     serviceName: my_ceph.then(my_ceph => my_ceph.id),
+ *     network: "1.2.3.4",
+ *     netmask: "255.255.255.255",
+ * });
+ * ```
  */
 export class CephAcl extends pulumi.CustomResource {
     /**

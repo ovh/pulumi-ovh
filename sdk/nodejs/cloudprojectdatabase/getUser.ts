@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
  * Use this data source to get information about a user of a database cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const user = ovh.CloudProjectDatabase.getUser({
+ *     serviceName: "XXX",
+ *     engine: "YYY",
+ *     clusterId: "ZZZ",
+ *     name: "UUU",
+ * });
+ * export const userName = user.then(user => user.name);
+ * ```
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
 
@@ -82,6 +95,19 @@ export interface GetUserResult {
  * Use this data source to get information about a user of a database cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const user = ovh.CloudProjectDatabase.getUser({
+ *     serviceName: "XXX",
+ *     engine: "YYY",
+ *     clusterId: "ZZZ",
+ *     name: "UUU",
+ * });
+ * export const userName = user.then(user => user.name);
+ * ```
  */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
     return pulumi.output(args).apply((a: any) => getUser(a, opts))

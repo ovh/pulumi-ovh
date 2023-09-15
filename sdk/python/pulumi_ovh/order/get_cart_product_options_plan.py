@@ -198,6 +198,19 @@ def get_cart_product_options_plan(cart_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myaccount = ovh.Me.get_me()
+    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+    plan = ovh.Order.get_cart_product_options_plan(cart_id=mycart.id,
+        price_capacity="renew",
+        product="cloud",
+        plan_code="project",
+        options_plan_code="vrack")
+    ```
+
 
     :param str cart_id: Cart identifier
     :param str catalog_name: Catalog name
@@ -245,6 +258,19 @@ def get_cart_product_options_plan_output(cart_id: Optional[pulumi.Input[str]] = 
     Use this data source to retrieve information of order cart product options plan.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myaccount = ovh.Me.get_me()
+    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+    plan = ovh.Order.get_cart_product_options_plan(cart_id=mycart.id,
+        price_capacity="renew",
+        product="cloud",
+        plan_code="project",
+        options_plan_code="vrack")
+    ```
 
 
     :param str cart_id: Cart identifier

@@ -15,7 +15,13 @@ import (
 
 // ## Import
 //
-// OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id <break>```<break><break>
+// OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
+//
+// ```
 type RedisUser struct {
 	pulumi.CustomResourceState
 

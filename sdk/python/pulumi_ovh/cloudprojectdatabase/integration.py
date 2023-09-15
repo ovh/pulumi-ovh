@@ -298,9 +298,32 @@ class Integration(pulumi.CustomResource):
 
         Push PostgreSQL logs in an OpenSearch DB:
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        dbpostgresql = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+            engine="postgresql",
+            id="ZZZZ")
+        dbopensearch = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+            engine="opensearch",
+            id="ZZZZ")
+        integration = ovh.cloud_project_database.Integration("integration",
+            service_name=dbpostgresql.service_name,
+            engine=dbpostgresql.engine,
+            cluster_id=dbpostgresql.id,
+            source_service_id=dbpostgresql.id,
+            destination_service_id=dbopensearch.id,
+            type="opensearchLogs")
+        ```
+
         ## Import
 
-        OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id <break>```<break><break>
+        OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -332,9 +355,32 @@ class Integration(pulumi.CustomResource):
 
         Push PostgreSQL logs in an OpenSearch DB:
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        dbpostgresql = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+            engine="postgresql",
+            id="ZZZZ")
+        dbopensearch = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+            engine="opensearch",
+            id="ZZZZ")
+        integration = ovh.cloud_project_database.Integration("integration",
+            service_name=dbpostgresql.service_name,
+            engine=dbpostgresql.engine,
+            cluster_id=dbpostgresql.id,
+            source_service_id=dbpostgresql.id,
+            destination_service_id=dbopensearch.id,
+            type="opensearchLogs")
+        ```
+
         ## Import
 
-        OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id <break>```<break><break>
+        OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

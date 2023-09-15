@@ -15,6 +15,32 @@ import (
 // Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			schemaRegistryAcls, err := CloudProjectDatabase.GetKafkaSchemaRegistryAcls(ctx, &cloudprojectdatabase.GetKafkaSchemaRegistryAclsArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("aclIds", schemaRegistryAcls.AclIds)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetKafkaSchemaRegistryAcls(ctx *pulumi.Context, args *GetKafkaSchemaRegistryAclsArgs, opts ...pulumi.InvokeOption) (*GetKafkaSchemaRegistryAclsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKafkaSchemaRegistryAclsResult

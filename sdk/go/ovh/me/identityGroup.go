@@ -15,6 +15,31 @@ import (
 // Creates an identity group.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Me.NewIdentityGroup(ctx, "myGroup", &Me.IdentityGroupArgs{
+//				Description: pulumi.String("Some custom description"),
+//				Role:        pulumi.String("NONE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type IdentityGroup struct {
 	pulumi.CustomResourceState
 

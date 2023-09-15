@@ -8,6 +8,13 @@ import * as utilities from "../utilities";
  * Use this data source to list the existing IAM policies of an account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myPolicies = ovh.Iam.getPolicies({});
+ * ```
  */
 export function getPolicies(opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
 
@@ -33,6 +40,13 @@ export interface GetPoliciesResult {
  * Use this data source to list the existing IAM policies of an account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myPolicies = ovh.Iam.getPolicies({});
+ * ```
  */
 export function getPoliciesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
     return pulumi.output(getPolicies(opts))

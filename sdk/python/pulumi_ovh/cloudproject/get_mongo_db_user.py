@@ -125,6 +125,16 @@ def get_mongo_db_user(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mongouser = ovh.CloudProject.get_mongo_db_user(service_name="XXX",
+        cluster_id="YYY",
+        name="ZZZ@admin")
+    pulumi.export("mongouserRoles", mongouser.roles)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str name: Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
@@ -157,6 +167,16 @@ def get_mongo_db_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mongouser = ovh.CloudProject.get_mongo_db_user(service_name="XXX",
+        cluster_id="YYY",
+        name="ZZZ@admin")
+    pulumi.export("mongouserRoles", mongouser.roles)
+    ```
 
 
     :param str cluster_id: Cluster ID

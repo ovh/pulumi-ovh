@@ -13,6 +13,23 @@ namespace Pulumi.Ovh.Me
     /// Creates an IPXE Script.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var script = new Ovh.Me.IpxeScript("script", new()
+    ///     {
+    ///         Script = File.ReadAllText($"{path.Module}/boot.ipxe"),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Me/ipxeScript:IpxeScript")]
     public partial class IpxeScript : global::Pulumi.CustomResource

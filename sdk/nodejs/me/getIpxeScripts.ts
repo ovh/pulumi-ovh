@@ -8,6 +8,13 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve a list of the names of the account's IPXE Scripts.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const scripts = ovh.Me.getIpxeScripts({});
+ * ```
  */
 export function getIpxeScripts(opts?: pulumi.InvokeOptions): Promise<GetIpxeScriptsResult> {
 
@@ -33,6 +40,13 @@ export interface GetIpxeScriptsResult {
  * Use this data source to retrieve a list of the names of the account's IPXE Scripts.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const scripts = ovh.Me.getIpxeScripts({});
+ * ```
  */
 export function getIpxeScriptsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetIpxeScriptsResult> {
     return pulumi.output(getIpxeScripts(opts))

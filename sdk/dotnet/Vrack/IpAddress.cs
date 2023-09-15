@@ -13,6 +13,78 @@ namespace Pulumi.Ovh.Vrack
     /// Attach an IP block to a VRack.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myaccount = Ovh.Me.GetMe.Invoke();
+    /// 
+    ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+    ///     {
+    ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+    ///     });
+    /// 
+    ///     var vrackCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     {
+    ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+    ///         PriceCapacity = "renew",
+    ///         Product = "vrack",
+    ///         PlanCode = "vrack",
+    ///     });
+    /// 
+    ///     var vrackVrack = new Ovh.Vrack.Vrack("vrackVrack", new()
+    ///     {
+    ///         Description = mycart.Apply(getCartResult =&gt; getCartResult.Description),
+    ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
+    ///         Plan = new Ovh.Vrack.Inputs.VrackPlanArgs
+    ///         {
+    ///             Duration = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///         },
+    ///     });
+    /// 
+    ///     var ipblockCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     {
+    ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+    ///         PriceCapacity = "renew",
+    ///         Product = "ip",
+    ///         PlanCode = "ip-v4-s30-ripe",
+    ///     });
+    /// 
+    ///     var ipblockIpService = new Ovh.Ip.IpService("ipblockIpService", new()
+    ///     {
+    ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
+    ///         Description = mycart.Apply(getCartResult =&gt; getCartResult.Description),
+    ///         Plan = new Ovh.Ip.Inputs.IpServicePlanArgs
+    ///         {
+    ///             Duration = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Configurations = new[]
+    ///             {
+    ///                 new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "country",
+    ///                     Value = "FR",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var vrackblock = new Ovh.Vrack.IpAddress("vrackblock", new()
+    ///     {
+    ///         ServiceName = vrackVrack.ServiceName,
+    ///         Block = ipblockIpService.Ip,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Vrack/ipAddress:IpAddress")]
     public partial class IpAddress : global::Pulumi.CustomResource

@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about an hosting privatedatabase user grant.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const userGrant = ovh.Hosting.getPrivateDatabaseUserGrant({
+ *     databaseName: "XXXXXX",
+ *     serviceName: "XXXXXX",
+ *     userName: "XXXXXX",
+ * });
+ * ```
  */
 export function getPrivateDatabaseUserGrant(args: GetPrivateDatabaseUserGrantArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseUserGrantResult> {
 
@@ -61,6 +72,17 @@ export interface GetPrivateDatabaseUserGrantResult {
  * Use this data source to retrieve information about an hosting privatedatabase user grant.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const userGrant = ovh.Hosting.getPrivateDatabaseUserGrant({
+ *     databaseName: "XXXXXX",
+ *     serviceName: "XXXXXX",
+ *     userName: "XXXXXX",
+ * });
+ * ```
  */
 export function getPrivateDatabaseUserGrantOutput(args: GetPrivateDatabaseUserGrantOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseUserGrantResult> {
     return pulumi.output(args).apply((a: any) => getPrivateDatabaseUserGrant(a, opts))

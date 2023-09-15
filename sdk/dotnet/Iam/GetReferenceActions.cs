@@ -13,28 +13,12 @@ namespace Pulumi.Ovh.Iam
     {
         /// <summary>
         /// Use this data source to list the IAM action associated with a resource type.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```hcl
-        /// data "ovh_iam_reference_actions" "vps_actions" {
-        ///     resource_type = "vps"
-        /// }
-        /// ```
         /// </summary>
         public static Task<GetReferenceActionsResult> InvokeAsync(GetReferenceActionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReferenceActionsResult>("ovh:Iam/getReferenceActions:getReferenceActions", args ?? new GetReferenceActionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to list the IAM action associated with a resource type.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```hcl
-        /// data "ovh_iam_reference_actions" "vps_actions" {
-        ///     resource_type = "vps"
-        /// }
-        /// ```
         /// </summary>
         public static Output<GetReferenceActionsResult> Invoke(GetReferenceActionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReferenceActionsResult>("ovh:Iam/getReferenceActions:getReferenceActions", args ?? new GetReferenceActionsInvokeArgs(), options.WithDefaults());

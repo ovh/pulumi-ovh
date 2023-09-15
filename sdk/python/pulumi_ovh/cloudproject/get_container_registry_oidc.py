@@ -193,6 +193,15 @@ def get_container_registry_oidc(oidc_admin_group: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_oidc = ovh.CloudProject.get_container_registry_oidc(service_name="XXXXXX",
+        registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+    pulumi.export("oidc-client-id", my_oidc.oidc_client_id)
+    ```
+
 
     :param str oidc_admin_group: Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
     :param bool oidc_auto_onboard: Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
@@ -253,6 +262,15 @@ def get_container_registry_oidc_output(oidc_admin_group: Optional[pulumi.Input[O
     Use this data source to get a OVHcloud Managed Private Registry OIDC.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_oidc = ovh.CloudProject.get_container_registry_oidc(service_name="XXXXXX",
+        registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+    pulumi.export("oidc-client-id", my_oidc.oidc_client_id)
+    ```
 
 
     :param str oidc_admin_group: Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.

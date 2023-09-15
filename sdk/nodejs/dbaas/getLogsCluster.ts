@@ -8,6 +8,15 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve informations about a DBaas logs cluster tenant.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const logstash = ovh.Dbaas.getLogsCluster({
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
  */
 export function getLogsCluster(args: GetLogsClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsClusterResult> {
 
@@ -85,6 +94,15 @@ export interface GetLogsClusterResult {
  * Use this data source to retrieve informations about a DBaas logs cluster tenant.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const logstash = ovh.Dbaas.getLogsCluster({
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
  */
 export function getLogsClusterOutput(args: GetLogsClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsClusterResult> {
     return pulumi.output(args).apply((a: any) => getLogsCluster(a, opts))

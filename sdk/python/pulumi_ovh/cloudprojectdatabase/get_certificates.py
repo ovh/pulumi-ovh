@@ -101,6 +101,16 @@ def get_certificates(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    certificates = ovh.CloudProjectDatabase.get_certificates(service_name="XXX",
+        engine="YYY",
+        cluster_id="ZZZ")
+    pulumi.export("certificatesCa", certificates.ca)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str engine: The engine of the database cluster you want database information. To get a full list of available engine visit:
@@ -133,6 +143,16 @@ def get_certificates_output(cluster_id: Optional[pulumi.Input[str]] = None,
     Use this data source to get information about certificates of a cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    certificates = ovh.CloudProjectDatabase.get_certificates(service_name="XXX",
+        engine="YYY",
+        cluster_id="ZZZ")
+    pulumi.export("certificatesCa", certificates.ca)
+    ```
 
 
     :param str cluster_id: Cluster ID

@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const m3dbuser = ovh.CloudProject.getM3dbUser({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     name: "ZZZ",
+ * });
+ * export const m3dbuserGroup = m3dbuser.then(m3dbuser => m3dbuser.group);
+ * ```
  */
 export function getM3dbUser(args: GetM3dbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetM3dbUserResult> {
 
@@ -75,6 +87,18 @@ export interface GetM3dbUserResult {
  * Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const m3dbuser = ovh.CloudProject.getM3dbUser({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     name: "ZZZ",
+ * });
+ * export const m3dbuserGroup = m3dbuser.then(m3dbuser => m3dbuser.group);
+ * ```
  */
 export function getM3dbUserOutput(args: GetM3dbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbUserResult> {
     return pulumi.output(args).apply((a: any) => getM3dbUser(a, opts))

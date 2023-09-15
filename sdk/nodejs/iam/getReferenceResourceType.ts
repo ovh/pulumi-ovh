@@ -8,6 +8,13 @@ import * as utilities from "../utilities";
  * Use this data source to list all the IAM resource types.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const types = ovh.Iam.getReferenceResourceType({});
+ * ```
  */
 export function getReferenceResourceType(opts?: pulumi.InvokeOptions): Promise<GetReferenceResourceTypeResult> {
 
@@ -33,6 +40,13 @@ export interface GetReferenceResourceTypeResult {
  * Use this data source to list all the IAM resource types.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const types = ovh.Iam.getReferenceResourceType({});
+ * ```
  */
 export function getReferenceResourceTypeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceResourceTypeResult> {
     return pulumi.output(getReferenceResourceType(opts))

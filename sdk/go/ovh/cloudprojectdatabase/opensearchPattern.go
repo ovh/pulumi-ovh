@@ -17,9 +17,50 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			opensearch, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//				ServiceName: "XXX",
+//				Engine:      "opensearch",
+//				Id:          "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = CloudProjectDatabase.NewOpensearchPattern(ctx, "pattern", &CloudProjectDatabase.OpensearchPatternArgs{
+//				ServiceName:   *pulumi.String(opensearch.ServiceName),
+//				ClusterId:     *pulumi.String(opensearch.Id),
+//				MaxIndexCount: pulumi.Int(2),
+//				Pattern:       pulumi.String("logs_*"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id <break>```<break><break>
+// OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
+//
+// ```
 type OpensearchPattern struct {
 	pulumi.CustomResourceState
 

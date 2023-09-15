@@ -15,6 +15,30 @@ import (
 // Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ovh.GetServer(ctx, &ovh.GetServerArgs{
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetServer(ctx *pulumi.Context, args *GetServerArgs, opts ...pulumi.InvokeOption) (*GetServerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerResult

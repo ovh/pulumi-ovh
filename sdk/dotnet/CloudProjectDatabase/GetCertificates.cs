@@ -14,19 +14,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about certificates of a cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_certificates" "certificates" {
-        ///   service_name  = "XXX"
-        ///   engine        = "YYY"
-        ///   cluster_id    = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "certificates_ca" {
-        ///   value = data.ovh_cloud_project_database_certificates.certificates.ca
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var certificates = Ovh.CloudProjectDatabase.GetCertificates.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         Engine = "YYY",
+        ///         ClusterId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificatesCa"] = certificates.Apply(getCertificatesResult =&gt; getCertificatesResult.Ca),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificatesResult> InvokeAsync(GetCertificatesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("ovh:CloudProjectDatabase/getCertificates:getCertificates", args ?? new GetCertificatesArgs(), options.WithDefaults());
@@ -34,19 +48,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about certificates of a cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_certificates" "certificates" {
-        ///   service_name  = "XXX"
-        ///   engine        = "YYY"
-        ///   cluster_id    = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "certificates_ca" {
-        ///   value = data.ovh_cloud_project_database_certificates.certificates.ca
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var certificates = Ovh.CloudProjectDatabase.GetCertificates.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         Engine = "YYY",
+        ///         ClusterId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificatesCa"] = certificates.Apply(getCertificatesResult =&gt; getCertificatesResult.Ca),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCertificatesResult> Invoke(GetCertificatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificatesResult>("ovh:CloudProjectDatabase/getCertificates:getCertificates", args ?? new GetCertificatesInvokeArgs(), options.WithDefaults());

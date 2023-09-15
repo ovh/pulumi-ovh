@@ -15,6 +15,33 @@ import (
 // Use this data source to get information about a user of a redis cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			redisuser, err := CloudProject.GetRedisUser(ctx, &cloudproject.GetRedisUserArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				Name:        "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("redisuserCommands", redisuser.Commands)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRedisUser(ctx *pulumi.Context, args *GetRedisUserArgs, opts ...pulumi.InvokeOption) (*GetRedisUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRedisUserResult

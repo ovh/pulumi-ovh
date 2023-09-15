@@ -14,13 +14,27 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve informations about a DBaas logs cluster tenant.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_dbaas_logs_cluster" "logstash" {
-        ///   service_name = "ldp-xx-xxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var logstash = Ovh.Dbaas.GetLogsCluster.Invoke(new()
+        ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLogsClusterResult> InvokeAsync(GetLogsClusterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogsClusterResult>("ovh:Dbaas/getLogsCluster:getLogsCluster", args ?? new GetLogsClusterArgs(), options.WithDefaults());
@@ -28,13 +42,27 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve informations about a DBaas logs cluster tenant.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_dbaas_logs_cluster" "logstash" {
-        ///   service_name = "ldp-xx-xxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var logstash = Ovh.Dbaas.GetLogsCluster.Invoke(new()
+        ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetLogsClusterResult> Invoke(GetLogsClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsClusterResult>("ovh:Dbaas/getLogsCluster:getLogsCluster", args ?? new GetLogsClusterInvokeArgs(), options.WithDefaults());

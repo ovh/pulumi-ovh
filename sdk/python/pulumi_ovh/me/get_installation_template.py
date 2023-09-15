@@ -268,6 +268,13 @@ def get_installation_template(template_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mytemplate = ovh.Me.get_installation_template(template_name="mytemplate")
+    ```
+
 
     :param str template_name: This template name
     """
@@ -306,6 +313,13 @@ def get_installation_template_output(template_name: Optional[pulumi.Input[str]] 
     Use this data source to get a custom installation template available for dedicated servers.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mytemplate = ovh.Me.get_installation_template(template_name="mytemplate")
+    ```
 
 
     :param str template_name: This template name

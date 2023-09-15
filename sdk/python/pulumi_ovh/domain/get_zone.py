@@ -120,6 +120,13 @@ def get_zone(name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    rootzone = ovh.Domain.get_zone(name="mysite.ovh")
+    ```
+
 
     :param str name: The name of the domain zone.
     """
@@ -145,6 +152,13 @@ def get_zone_output(name: Optional[pulumi.Input[str]] = None,
     Use this data source to retrieve information about a domain zone.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    rootzone = ovh.Domain.get_zone(name="mysite.ovh")
+    ```
 
 
     :param str name: The name of the domain zone.

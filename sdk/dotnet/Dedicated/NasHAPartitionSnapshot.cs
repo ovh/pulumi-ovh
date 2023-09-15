@@ -14,9 +14,31 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_partition = new Ovh.Dedicated.NasHAPartitionSnapshot("my-partition", new()
+    ///     {
+    ///         PartitionName = "my-partition",
+    ///         ServiceName = "zpool-12345",
+    ///         Type = "day-3",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.   &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3` &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot")]
     public partial class NasHAPartitionSnapshot : global::Pulumi.CustomResource

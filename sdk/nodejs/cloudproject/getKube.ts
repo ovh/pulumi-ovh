@@ -10,6 +10,17 @@ import * as utilities from "../utilities";
  * Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myKubeCluster = ovh.CloudProject.getKube({
+ *     serviceName: "XXXXXX",
+ *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ * });
+ * export const version = myKubeCluster.then(myKubeCluster => myKubeCluster.version);
+ * ```
  */
 export function getKube(args: GetKubeArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeResult> {
 
@@ -159,6 +170,17 @@ export interface GetKubeResult {
  * Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myKubeCluster = ovh.CloudProject.getKube({
+ *     serviceName: "XXXXXX",
+ *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ * });
+ * export const version = myKubeCluster.then(myKubeCluster => myKubeCluster.version);
+ * ```
  */
 export function getKubeOutput(args: GetKubeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeResult> {
     return pulumi.output(args).apply((a: any) => getKube(a, opts))

@@ -14,11 +14,24 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve a list of the names of the account's IPXE Scripts.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_ipxe_scripts" "scripts" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scripts = Ovh.Me.GetIpxeScripts.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpxeScriptsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpxeScriptsResult>("ovh:Me/getIpxeScripts:getIpxeScripts", InvokeArgs.Empty, options.WithDefaults());
@@ -26,11 +39,24 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve a list of the names of the account's IPXE Scripts.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_ipxe_scripts" "scripts" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scripts = Ovh.Me.GetIpxeScripts.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpxeScriptsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpxeScriptsResult>("ovh:Me/getIpxeScripts:getIpxeScripts", InvokeArgs.Empty, options.WithDefaults());

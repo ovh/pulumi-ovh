@@ -10,6 +10,16 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about an hosting privatedatabase user.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const user = ovh.Hosting.getPrivateDatabaseUser({
+ *     serviceName: "XXXXXX",
+ *     userName: "XXXXXX",
+ * });
+ * ```
  */
 export function getPrivateDatabaseUser(args: GetPrivateDatabaseUserArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseUserResult> {
 
@@ -57,6 +67,16 @@ export interface GetPrivateDatabaseUserResult {
  * Use this data source to retrieve information about an hosting privatedatabase user.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const user = ovh.Hosting.getPrivateDatabaseUser({
+ *     serviceName: "XXXXXX",
+ *     userName: "XXXXXX",
+ * });
+ * ```
  */
 export function getPrivateDatabaseUserOutput(args: GetPrivateDatabaseUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseUserResult> {
     return pulumi.output(args).apply((a: any) => getPrivateDatabaseUser(a, opts))

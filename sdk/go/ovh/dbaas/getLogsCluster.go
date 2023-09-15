@@ -15,6 +15,30 @@ import (
 // Use this data source to retrieve informations about a DBaas logs cluster tenant.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Dbaas.GetLogsCluster(ctx, &dbaas.GetLogsClusterArgs{
+//				ServiceName: "ldp-xx-xxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupLogsCluster(ctx *pulumi.Context, args *LookupLogsClusterArgs, opts ...pulumi.InvokeOption) (*LookupLogsClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogsClusterResult

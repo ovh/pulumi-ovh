@@ -15,9 +15,77 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Hosting"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myaccount, err := Me.GetMe(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: myaccount.OvhSubsidiary,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			databaseCartProductPlan, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//				CartId:        mycart.Id,
+//				PriceCapacity: "renew",
+//				Product:       "privateSQL",
+//				PlanCode:      "private-sql-512-instance",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			databasePrivateDatabase, err := Hosting.NewPrivateDatabase(ctx, "databasePrivateDatabase", &Hosting.PrivateDatabaseArgs{
+//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				DisplayName:   pulumi.String("Postgresql-12"),
+//				Plan: &hosting.PrivateDatabasePlanArgs{
+//					Duration:    *pulumi.String(databaseCartProductPlan.Prices[3].Duration),
+//					PlanCode:    *pulumi.String(databaseCartProductPlan.PlanCode),
+//					PricingMode: *pulumi.String(databaseCartProductPlan.SelectedPrices[0].PricingMode),
+//					Configurations: hosting.PrivateDatabasePlanConfigurationArray{
+//						&hosting.PrivateDatabasePlanConfigurationArgs{
+//							Label: pulumi.String("dc"),
+//							Value: pulumi.String("gra3"),
+//						},
+//						&hosting.PrivateDatabasePlanConfigurationArgs{
+//							Label: pulumi.String("engine"),
+//							Value: pulumi.String("postgresql_12"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("privatedatabaseServiceName", databasePrivateDatabase.ServiceName)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
+//
+// ```sh
+//
+//	$ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+//
+// ```
 type PrivateDatabase struct {
 	pulumi.CustomResourceState
 

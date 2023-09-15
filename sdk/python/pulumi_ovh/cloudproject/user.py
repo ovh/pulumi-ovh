@@ -342,6 +342,13 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        user1 = ovh.cloud_project.User("user1", service_name="XXX")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description associated with the user.
@@ -373,6 +380,13 @@ class User(pulumi.CustomResource):
         Creates a user in a public cloud project.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        user1 = ovh.cloud_project.User("user1", service_name="XXX")
+        ```
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

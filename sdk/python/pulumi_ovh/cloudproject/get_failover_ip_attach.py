@@ -149,6 +149,14 @@ def get_failover_ip_attach(block: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myfailoverip = ovh.CloudProject.get_failover_ip_attach(ip="XXXXXX",
+        service_name="XXXXXX")
+    ```
+
 
     :param str block: The IP block
     :param str ip: The failover ip address to query
@@ -190,6 +198,14 @@ def get_failover_ip_attach_output(block: Optional[pulumi.Input[Optional[str]]] =
     Use this data source to get the details of a failover IP address of a service in a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myfailoverip = ovh.CloudProject.get_failover_ip_attach(ip="XXXXXX",
+        service_name="XXXXXX")
+    ```
 
 
     :param str block: The IP block

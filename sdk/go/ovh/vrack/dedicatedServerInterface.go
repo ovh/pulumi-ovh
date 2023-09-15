@@ -16,6 +16,38 @@ import (
 // Attach a Dedicated Server Network Interface to a VRack.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			server, err := ovh.GetServer(ctx, &ovh.GetServerArgs{
+//				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Vrack.NewDedicatedServerInterface(ctx, "vdsi", &Vrack.DedicatedServerInterfaceArgs{
+//				ServiceName: pulumi.String("pn-xxxxxxx"),
+//				InterfaceId: *pulumi.String(server.EnabledVrackVnis[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type DedicatedServerInterface struct {
 	pulumi.CustomResourceState
 

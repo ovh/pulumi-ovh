@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * To get the list of IP restriction on a database cluster service:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const iprestrictions = ovh.CloudProjectDatabase.getIpRestrictions({
+ *     serviceName: "XXXXXX",
+ *     engine: "YYYY",
+ *     clusterId: "ZZZZ",
+ * });
+ * export const ips = iprestrictions.then(iprestrictions => iprestrictions.ips);
+ * ```
  */
 export function getIpRestrictions(args: GetIpRestrictionsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpRestrictionsResult> {
 
@@ -72,6 +84,18 @@ export interface GetIpRestrictionsResult {
  * ## Example Usage
  *
  * To get the list of IP restriction on a database cluster service:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const iprestrictions = ovh.CloudProjectDatabase.getIpRestrictions({
+ *     serviceName: "XXXXXX",
+ *     engine: "YYYY",
+ *     clusterId: "ZZZZ",
+ * });
+ * export const ips = iprestrictions.then(iprestrictions => iprestrictions.ips);
+ * ```
  */
 export function getIpRestrictionsOutput(args: GetIpRestrictionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpRestrictionsResult> {
     return pulumi.output(args).apply((a: any) => getIpRestrictions(a, opts))

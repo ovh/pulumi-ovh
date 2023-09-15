@@ -15,6 +15,33 @@ import (
 // Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mongouser, err := CloudProject.GetMongoDbUser(ctx, &cloudproject.GetMongoDbUserArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				Name:        "ZZZ@admin",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mongouserRoles", mongouser.Roles)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetMongoDbUser(ctx *pulumi.Context, args *GetMongoDbUserArgs, opts ...pulumi.InvokeOption) (*GetMongoDbUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMongoDbUserResult

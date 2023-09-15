@@ -231,9 +231,35 @@ class InstallationTemplatePartitionSchemeHardwareRaid(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mytemplate = ovh.me.InstallationTemplate("mytemplate",
+            base_template_name="centos7_64",
+            template_name="mytemplate",
+            default_language="fr")
+        scheme = ovh.me.InstallationTemplatePartitionScheme("scheme",
+            template_name=mytemplate.template_name,
+            priority=1)
+        group1 = ovh.me.InstallationTemplatePartitionSchemeHardwareRaid("group1",
+            template_name=scheme.template_name,
+            scheme_name=scheme.name,
+            disks=[
+                "[c1:d1,c1:d2,c1:d3]",
+                "[c1:d10,c1:d20,c1:d30]",
+            ],
+            mode="raid50",
+            step=1)
+        ```
+
         ## Import
 
-        The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name <break>```<break><break>
+        The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -255,9 +281,35 @@ class InstallationTemplatePartitionSchemeHardwareRaid(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mytemplate = ovh.me.InstallationTemplate("mytemplate",
+            base_template_name="centos7_64",
+            template_name="mytemplate",
+            default_language="fr")
+        scheme = ovh.me.InstallationTemplatePartitionScheme("scheme",
+            template_name=mytemplate.template_name,
+            priority=1)
+        group1 = ovh.me.InstallationTemplatePartitionSchemeHardwareRaid("group1",
+            template_name=scheme.template_name,
+            scheme_name=scheme.name,
+            disks=[
+                "[c1:d1,c1:d2,c1:d3]",
+                "[c1:d10,c1:d20,c1:d30]",
+            ],
+            mode="raid50",
+            step=1)
+        ```
+
         ## Import
 
-        The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name <break>```<break><break>
+        The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name
+        ```
 
         :param str resource_name: The name of the resource.
         :param InstallationTemplatePartitionSchemeHardwareRaidArgs args: The arguments to use to populate this resource's properties.

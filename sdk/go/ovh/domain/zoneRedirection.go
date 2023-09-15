@@ -16,6 +16,33 @@ import (
 // Provides a OVHcloud domain zone redirection.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Domain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Domain.NewZoneRedirection(ctx, "test", &Domain.ZoneRedirectionArgs{
+//				Subdomain: pulumi.String("test"),
+//				Target:    pulumi.String("http://www.ovh"),
+//				Type:      pulumi.String("visiblePermanent"),
+//				Zone:      pulumi.String("testdemo.ovh"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ZoneRedirection struct {
 	pulumi.CustomResourceState
 

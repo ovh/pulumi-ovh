@@ -10,6 +10,16 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about an IP Load Balancing product
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "XXXXXX",
+ *     state: "ok",
+ * });
+ * ```
  */
 export function getIpLoadBalancing(args?: GetIpLoadBalancingArgs, opts?: pulumi.InvokeOptions): Promise<GetIpLoadBalancingResult> {
     args = args || {};
@@ -123,6 +133,16 @@ export interface GetIpLoadBalancingResult {
  * Use this data source to retrieve information about an IP Load Balancing product
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "XXXXXX",
+ *     state: "ok",
+ * });
+ * ```
  */
 export function getIpLoadBalancingOutput(args?: GetIpLoadBalancingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpLoadBalancingResult> {
     return pulumi.output(args).apply((a: any) => getIpLoadBalancing(a, opts))

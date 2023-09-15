@@ -266,6 +266,18 @@ class ZoneRedirection(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        # Add a redirection to a sub-domain
+        test = ovh.domain.ZoneRedirection("test",
+            subdomain="test",
+            target="http://www.ovh",
+            type="visiblePermanent",
+            zone="testdemo.ovh")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of this redirection
@@ -286,6 +298,18 @@ class ZoneRedirection(pulumi.CustomResource):
         Provides a OVHcloud domain zone redirection.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        # Add a redirection to a sub-domain
+        test = ovh.domain.ZoneRedirection("test",
+            subdomain="test",
+            target="http://www.ovh",
+            type="visiblePermanent",
+            zone="testdemo.ovh")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ZoneRedirectionArgs args: The arguments to use to populate this resource's properties.

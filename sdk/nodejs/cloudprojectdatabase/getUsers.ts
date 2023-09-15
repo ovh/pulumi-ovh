@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * Use this data source to get the list of users of a database cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const users = ovh.CloudProjectDatabase.getUsers({
+ *     serviceName: "XXXX",
+ *     engine: "YYYY",
+ *     clusterId: "ZZZ",
+ * });
+ * export const userIds = users.then(users => users.userIds);
+ * ```
  */
 export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
 
@@ -68,6 +80,18 @@ export interface GetUsersResult {
  * Use this data source to get the list of users of a database cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const users = ovh.CloudProjectDatabase.getUsers({
+ *     serviceName: "XXXX",
+ *     engine: "YYYY",
+ *     clusterId: "ZZZ",
+ * });
+ * export const userIds = users.then(users => users.userIds);
+ * ```
  */
 export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))

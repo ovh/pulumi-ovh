@@ -550,9 +550,44 @@ class PrivateDatabase(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+        database_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="privateSQL",
+            plan_code="private-sql-512-instance")
+        database_private_database = ovh.hosting.PrivateDatabase("databasePrivateDatabase",
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            display_name="Postgresql-12",
+            plan=ovh.hosting.PrivateDatabasePlanArgs(
+                duration=database_cart_product_plan.prices[3].duration,
+                plan_code=database_cart_product_plan.plan_code,
+                pricing_mode=database_cart_product_plan.selected_prices[0].pricing_mode,
+                configurations=[
+                    ovh.hosting.PrivateDatabasePlanConfigurationArgs(
+                        label="dc",
+                        value="gra3",
+                    ),
+                    ovh.hosting.PrivateDatabasePlanConfigurationArgs(
+                        label="engine",
+                        value="postgresql_12",
+                    ),
+                ],
+            ))
+        pulumi.export("privatedatabaseServiceName", database_private_database.service_name)
+        ```
+
         ## Import
 
         OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
+
+        ```sh
+         $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -572,9 +607,44 @@ class PrivateDatabase(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+        database_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="privateSQL",
+            plan_code="private-sql-512-instance")
+        database_private_database = ovh.hosting.PrivateDatabase("databasePrivateDatabase",
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            display_name="Postgresql-12",
+            plan=ovh.hosting.PrivateDatabasePlanArgs(
+                duration=database_cart_product_plan.prices[3].duration,
+                plan_code=database_cart_product_plan.plan_code,
+                pricing_mode=database_cart_product_plan.selected_prices[0].pricing_mode,
+                configurations=[
+                    ovh.hosting.PrivateDatabasePlanConfigurationArgs(
+                        label="dc",
+                        value="gra3",
+                    ),
+                    ovh.hosting.PrivateDatabasePlanConfigurationArgs(
+                        label="engine",
+                        value="postgresql_12",
+                    ),
+                ],
+            ))
+        pulumi.export("privatedatabaseServiceName", database_private_database.service_name)
+        ```
+
         ## Import
 
         OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
+
+        ```sh
+         $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param PrivateDatabaseArgs args: The arguments to use to populate this resource's properties.

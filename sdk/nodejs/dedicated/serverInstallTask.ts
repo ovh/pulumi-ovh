@@ -9,9 +9,46 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const rescue = ovh.Dedicated.getServerBoots({
+ *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+ *     bootType: "rescue",
+ * });
+ * const key = new ovh.me.SshKey("key", {
+ *     keyName: "mykey",
+ *     key: "ssh-ed25519 AAAAC3...",
+ * });
+ * const debian = new ovh.me.InstallationTemplate("debian", {
+ *     baseTemplateName: "debian11_64",
+ *     templateName: "mydebian11",
+ *     defaultLanguage: "en",
+ *     customization: {
+ *         sshKeyName: key.keyName,
+ *     },
+ * });
+ * const serverInstall = new ovh.dedicated.ServerInstallTask("serverInstall", {
+ *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+ *     templateName: debian.templateName,
+ *     bootidOnDestroy: rescue.then(rescue => rescue.results?.[0]),
+ *     details: {
+ *         customHostname: "mytest",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
- * Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used  and ths `task_id`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345 <break>```<break><break>
+ * Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used
+ *
+ * and ths `task_id`, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345
+ * ```
  */
 export class ServerInstallTask extends pulumi.CustomResource {
     /**

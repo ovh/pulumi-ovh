@@ -14,9 +14,45 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_oidc = new Ovh.CloudProject.ContainerRegistryOIDC("my-oidc", new()
+    ///     {
+    ///         ServiceName = "XXXXXX",
+    ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+    ///         OidcName = "my-oidc-provider",
+    ///         OidcEndpoint = "https://xxxx.yyy.com",
+    ///         OidcClientId = "xxx",
+    ///         OidcClientSecret = "xxx",
+    ///         OidcScope = "openid,profile,email,offline_access",
+    ///         OidcGroupsClaim = "groups",
+    ///         OidcAdminGroup = "harbor-admin",
+    ///         OidcVerifyCert = true,
+    ///         OidcAutoOnboard = true,
+    ///         OidcUserClaim = "preferred_username",
+    ///         DeleteUsers = false,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["oidcClientSecret"] = my_oidc.OidcClientSecret,
+    ///     };
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC")]
     public partial class ContainerRegistryOIDC : global::Pulumi.CustomResource

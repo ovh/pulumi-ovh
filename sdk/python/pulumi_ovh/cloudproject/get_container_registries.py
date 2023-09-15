@@ -73,6 +73,13 @@ def get_container_registries(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    registries = ovh.CloudProject.get_container_registries(service_name="XXXXXX")
+    ```
+
 
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -95,6 +102,13 @@ def get_container_registries_output(service_name: Optional[pulumi.Input[str]] = 
     Use this data source to get the container registries of a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    registries = ovh.CloudProject.get_container_registries(service_name="XXXXXX")
+    ```
 
 
     :param str service_name: The id of the public cloud project. If omitted,

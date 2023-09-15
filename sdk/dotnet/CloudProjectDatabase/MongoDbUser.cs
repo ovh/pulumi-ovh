@@ -12,7 +12,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// <summary>
     /// ## Import
     /// 
-    /// OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser")]
     public partial class MongoDbUser : global::Pulumi.CustomResource

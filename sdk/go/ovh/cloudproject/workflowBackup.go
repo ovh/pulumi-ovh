@@ -17,6 +17,35 @@ import (
 // Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := CloudProject.NewWorkflowBackup(ctx, "myBackup", &CloudProject.WorkflowBackupArgs{
+//				Cron:              pulumi.String("50 4 * * *"),
+//				InstanceId:        pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+//				MaxExecutionCount: pulumi.Int(0),
+//				RegionName:        pulumi.String("GRA11"),
+//				Rotation:          pulumi.Int(7),
+//				ServiceName:       pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type WorkflowBackup struct {
 	pulumi.CustomResourceState
 

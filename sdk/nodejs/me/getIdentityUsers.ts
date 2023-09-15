@@ -8,6 +8,13 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve list of user logins of the account's identity users.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const users = ovh.Me.getIdentityUsers({});
+ * ```
  */
 export function getIdentityUsers(opts?: pulumi.InvokeOptions): Promise<GetIdentityUsersResult> {
 
@@ -33,6 +40,13 @@ export interface GetIdentityUsersResult {
  * Use this data source to retrieve list of user logins of the account's identity users.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const users = ovh.Me.getIdentityUsers({});
+ * ```
  */
 export function getIdentityUsersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityUsersResult> {
     return pulumi.output(getIdentityUsers(opts))

@@ -17,9 +17,42 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Hosting"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Hosting.NewPrivateDatabaseUserGrant(ctx, "userGrant", &Hosting.PrivateDatabaseUserGrantArgs{
+//				DatabaseName: pulumi.String("ovhcloud"),
+//				Grant:        pulumi.String("admin"),
+//				ServiceName:  pulumi.String("XXXXXX"),
+//				UserName:     pulumi.String("terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
+//
+// ```sh
+//
+//	$ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
+//
+// ```
 type PrivateDatabaseUserGrant struct {
 	pulumi.CustomResourceState
 

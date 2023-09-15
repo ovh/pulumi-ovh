@@ -15,6 +15,33 @@ import (
 // Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			m3dbuser, err := CloudProject.GetM3dbUser(ctx, &cloudproject.GetM3dbUserArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				Name:        "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("m3dbuserGroup", m3dbuser.Group)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetM3dbUser(ctx *pulumi.Context, args *GetM3dbUserArgs, opts ...pulumi.InvokeOption) (*GetM3dbUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetM3dbUserResult

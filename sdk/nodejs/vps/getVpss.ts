@@ -8,6 +8,13 @@ import * as utilities from "../utilities";
  * Use this data source to get the list of VPS associated with your OVH Account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const servers = ovh.Vps.getVpss({});
+ * ```
  */
 export function getVpss(opts?: pulumi.InvokeOptions): Promise<GetVpssResult> {
 
@@ -33,6 +40,13 @@ export interface GetVpssResult {
  * Use this data source to get the list of VPS associated with your OVH Account.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const servers = ovh.Vps.getVpss({});
+ * ```
  */
 export function getVpssOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVpssResult> {
     return pulumi.output(getVpss(opts))

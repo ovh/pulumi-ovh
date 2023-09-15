@@ -92,6 +92,14 @@ def get_vrack_networks(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    lb_networks = ovh.get_vrack_networks(service_name="XXXXXX",
+        subnet="10.0.0.0/24")
+    ```
+
 
     :param str service_name: The internal name of your IP load balancing
     :param str subnet: Filters networks on the subnet.
@@ -121,6 +129,14 @@ def get_vrack_networks_output(service_name: Optional[pulumi.Input[str]] = None,
     Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    lb_networks = ovh.get_vrack_networks(service_name="XXXXXX",
+        subnet="10.0.0.0/24")
+    ```
 
 
     :param str service_name: The internal name of your IP load balancing

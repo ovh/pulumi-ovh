@@ -14,8 +14,6 @@ import (
 )
 
 // Manage a vrack network for your IP Loadbalancing service.
-//
-// ## Example Usage
 type VrackNetwork struct {
 	pulumi.CustomResourceState
 

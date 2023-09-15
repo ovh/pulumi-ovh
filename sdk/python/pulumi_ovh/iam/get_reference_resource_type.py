@@ -60,6 +60,13 @@ def get_reference_resource_type(opts: Optional[pulumi.InvokeOptions] = None) -> 
     Use this data source to list all the IAM resource types.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    types = ovh.Iam.get_reference_resource_type()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

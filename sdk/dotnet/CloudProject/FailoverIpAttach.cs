@@ -13,6 +13,24 @@ namespace Pulumi.Ovh.CloudProject
     /// Attaches a failover IP address to a compute instance
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myfailoverip = new Ovh.CloudProject.FailoverIpAttach("myfailoverip", new()
+    ///     {
+    ///         Ip = "XXXXXX",
+    ///         RoutedTo = "XXXXXX",
+    ///         ServiceName = "XXXXXX",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/failoverIpAttach:FailoverIpAttach")]
     public partial class FailoverIpAttach : global::Pulumi.CustomResource

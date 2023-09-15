@@ -17,9 +17,41 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Ip"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Ip.NewReverse(ctx, "test", &Ip.ReverseArgs{
+//				Ip:           pulumi.String("192.0.2.0/24"),
+//				ReverseIp:    pulumi.String("192.0.2.1"),
+//				ReverseValue: pulumi.String("example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g., bash <break><break>```sh<break> $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42' <break>```<break><break>
+// The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42'
+//
+// ```
 type Reverse struct {
 	pulumi.CustomResourceState
 

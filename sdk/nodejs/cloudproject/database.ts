@@ -11,13 +11,197 @@ import * as utilities from "../utilities";
  *
  * Minimum settings for each engine (region choice is up to the user):
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const cassandradb = new ovh.cloudproject.Database("cassandradb", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-first-cassandra",
+ *     engine: "cassandra",
+ *     version: "4.0",
+ *     plan: "essential",
+ *     nodes: [
+ *         {
+ *             region: "BHS",
+ *         },
+ *         {
+ *             region: "BHS",
+ *         },
+ *         {
+ *             region: "BHS",
+ *         },
+ *     ],
+ *     flavor: "db1-4",
+ * });
+ * const kafkadb = new ovh.cloudproject.Database("kafkadb", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-first-kafka",
+ *     engine: "kafka",
+ *     version: "3.4",
+ *     plan: "business",
+ *     kafkaRestApi: true,
+ *     nodes: [
+ *         {
+ *             region: "DE",
+ *         },
+ *         {
+ *             region: "DE",
+ *         },
+ *         {
+ *             region: "DE",
+ *         },
+ *     ],
+ *     flavor: "db1-4",
+ * });
+ * const m3db = new ovh.cloudproject.Database("m3db", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-first-m3db",
+ *     engine: "m3db",
+ *     version: "1.2",
+ *     plan: "essential",
+ *     nodes: [{
+ *         region: "BHS",
+ *     }],
+ *     flavor: "db1-7",
+ * });
+ * const mongodb = new ovh.cloudproject.Database("mongodb", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-first-mongodb",
+ *     engine: "mongodb",
+ *     version: "5.0",
+ *     plan: "essential",
+ *     nodes: [{
+ *         region: "GRA",
+ *     }],
+ *     flavor: "db1-2",
+ * });
+ * const mysqldb = new ovh.cloudproject.Database("mysqldb", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-first-mysql",
+ *     engine: "mysql",
+ *     version: "8",
+ *     plan: "essential",
+ *     nodes: [{
+ *         region: "SBG",
+ *     }],
+ *     flavor: "db1-4",
+ *     advancedConfiguration: {
+ *         "mysql.sql_mode": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES",
+ *         "mysql.sql_require_primary_key": "true",
+ *     },
+ * });
+ * const opensearchdb = new ovh.cloudproject.Database("opensearchdb", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-first-opensearch",
+ *     engine: "opensearch",
+ *     version: "1",
+ *     plan: "essential",
+ *     opensearchAclsEnabled: true,
+ *     nodes: [{
+ *         region: "UK",
+ *     }],
+ *     flavor: "db1-4",
+ * });
+ * const pgsqldb = new ovh.cloudproject.Database("pgsqldb", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-first-postgresql",
+ *     engine: "postgresql",
+ *     version: "14",
+ *     plan: "essential",
+ *     nodes: [{
+ *         region: "WAW",
+ *     }],
+ *     flavor: "db1-4",
+ * });
+ * const redisdb = new ovh.cloudproject.Database("redisdb", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-first-redis",
+ *     engine: "redis",
+ *     version: "6.2",
+ *     plan: "essential",
+ *     nodes: [{
+ *         region: "BHS",
+ *     }],
+ *     flavor: "db1-4",
+ * });
+ * const grafana = new ovh.cloudproject.Database("grafana", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-first-grafana",
+ *     engine: "grafana",
+ *     version: "9.1",
+ *     plan: "essential",
+ *     nodes: [{
+ *         region: "GRA",
+ *     }],
+ *     flavor: "db1-4",
+ * });
+ * ```
+ *
  * To deploy a business PostgreSQL service with two nodes on public network:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const postgresql = new ovh.cloudproject.Database("postgresql", {
+ *     description: "my-first-postgresql",
+ *     engine: "postgresql",
+ *     flavor: "db1-15",
+ *     nodes: [
+ *         {
+ *             region: "GRA",
+ *         },
+ *         {
+ *             region: "GRA",
+ *         },
+ *     ],
+ *     plan: "business",
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     version: "14",
+ * });
+ * ```
  *
  * To deploy an enterprise MongoDB service with three nodes on private network:
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ *
+ * const mongodb = new ovh.cloudproject.Database("mongodb", {
+ *     description: "my-first-mongodb",
+ *     engine: "mongodb",
+ *     flavor: "db1-30",
+ *     nodes: [
+ *         {
+ *             networkId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+ *             region: "SBG",
+ *             subnetId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+ *         },
+ *         {
+ *             networkId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+ *             region: "SBG",
+ *             subnetId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+ *         },
+ *         {
+ *             networkId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+ *             region: "SBG",
+ *             subnetId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+ *         },
+ *     ],
+ *     plan: "enterprise",
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     version: "5.0",
+ * });
+ * ```
+ *
  * ## Import
  *
- * OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id <break>```<break><break>
+ * OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+ * ```
  */
 export class Database extends pulumi.CustomResource {
     /**

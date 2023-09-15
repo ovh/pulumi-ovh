@@ -197,6 +197,16 @@ def get_m3db_namespace(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    m3dbnamespace = ovh.CloudProject.get_m3db_namespace(service_name="XXX",
+        cluster_id="YYY",
+        name="ZZZ")
+    pulumi.export("m3dbnamespaceType", m3dbnamespace.type)
+    ```
+
 
     :param str cluster_id: Cluster ID
     :param str name: Name of the namespace.
@@ -235,6 +245,16 @@ def get_m3db_namespace_output(cluster_id: Optional[pulumi.Input[str]] = None,
     Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    m3dbnamespace = ovh.CloudProject.get_m3db_namespace(service_name="XXX",
+        cluster_id="YYY",
+        name="ZZZ")
+    pulumi.export("m3dbnamespaceType", m3dbnamespace.type)
+    ```
 
 
     :param str cluster_id: Cluster ID

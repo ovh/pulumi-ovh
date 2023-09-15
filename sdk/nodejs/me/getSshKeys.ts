@@ -8,6 +8,13 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve list of names of the account's SSH keys.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const mykeys = ovh.Me.getSshKeys({});
+ * ```
  */
 export function getSshKeys(opts?: pulumi.InvokeOptions): Promise<GetSshKeysResult> {
 
@@ -33,6 +40,13 @@ export interface GetSshKeysResult {
  * Use this data source to retrieve list of names of the account's SSH keys.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const mykeys = ovh.Me.getSshKeys({});
+ * ```
  */
 export function getSshKeysOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeysResult> {
     return pulumi.output(getSshKeys(opts))

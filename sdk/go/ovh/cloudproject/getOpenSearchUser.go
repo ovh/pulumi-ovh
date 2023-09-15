@@ -15,6 +15,33 @@ import (
 // Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			osuser, err := CloudProject.GetOpenSearchUser(ctx, &cloudproject.GetOpenSearchUserArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				Name:        "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("osuserAcls", osuser.Acls)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOpenSearchUser(ctx *pulumi.Context, args *GetOpenSearchUserArgs, opts ...pulumi.InvokeOption) (*GetOpenSearchUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenSearchUserResult

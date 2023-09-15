@@ -14,14 +14,28 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_region" "GRA1" {
-        ///   service_name = "XXXXXX"
-        ///   name         = "GRA1"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var gRA1 = Ovh.CloudProject.GetRegion.Invoke(new()
+        ///     {
+        ///         Name = "GRA1",
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("ovh:CloudProject/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithDefaults());
@@ -29,14 +43,28 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_region" "GRA1" {
-        ///   service_name = "XXXXXX"
-        ///   name         = "GRA1"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var gRA1 = Ovh.CloudProject.GetRegion.Invoke(new()
+        ///     {
+        ///         Name = "GRA1",
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionResult> Invoke(GetRegionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionResult>("ovh:CloudProject/getRegion:getRegion", args ?? new GetRegionInvokeArgs(), options.WithDefaults());

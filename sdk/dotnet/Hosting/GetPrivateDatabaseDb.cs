@@ -14,14 +14,28 @@ namespace Pulumi.Ovh.Hosting
         /// <summary>
         /// Use this data source to retrieve information about an hosting privatedatabase.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_hosting_privatedatabase_database" "mydatabase" {
-        ///   service_name  = "XXXXXX"
-        ///   database_name = "XXXXXX"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mydatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
+        ///     {
+        ///         DatabaseName = "XXXXXX",
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrivateDatabaseDbResult> InvokeAsync(GetPrivateDatabaseDbArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateDatabaseDbResult>("ovh:Hosting/getPrivateDatabaseDb:getPrivateDatabaseDb", args ?? new GetPrivateDatabaseDbArgs(), options.WithDefaults());
@@ -29,14 +43,28 @@ namespace Pulumi.Ovh.Hosting
         /// <summary>
         /// Use this data source to retrieve information about an hosting privatedatabase.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_hosting_privatedatabase_database" "mydatabase" {
-        ///   service_name  = "XXXXXX"
-        ///   database_name = "XXXXXX"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mydatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
+        ///     {
+        ///         DatabaseName = "XXXXXX",
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrivateDatabaseDbResult> Invoke(GetPrivateDatabaseDbInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseDbResult>("ovh:Hosting/getPrivateDatabaseDb:getPrivateDatabaseDb", args ?? new GetPrivateDatabaseDbInvokeArgs(), options.WithDefaults());

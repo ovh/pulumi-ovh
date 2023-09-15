@@ -16,6 +16,62 @@ import (
 // Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// lb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+// ServiceName: pulumi.StringRef("ip-1.2.3.4"),
+// State: pulumi.StringRef("ok"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// farmname, err := IpLoadBalancing.NewTcpFarm(ctx, "farmname", &IpLoadBalancing.TcpFarmArgs{
+// Port: pulumi.Int(8080),
+// ServiceName: *pulumi.String(lb.ServiceName),
+// Zone: pulumi.String("all"),
+// })
+// if err != nil {
+// return err
+// }
+// backend, err := IpLoadBalancing.NewTcpFarmServer(ctx, "backend", &IpLoadBalancing.TcpFarmServerArgs{
+// Address: pulumi.String("4.5.6.7"),
+// Backup: pulumi.Bool(true),
+// DisplayName: pulumi.String("mybackend"),
+// FarmId: farmname.ID(),
+// Port: pulumi.Int(80),
+// Probe: pulumi.Bool(true),
+// ProxyProtocolVersion: pulumi.String("v2"),
+// ServiceName: *pulumi.String(lb.ServiceName),
+// Ssl: pulumi.Bool(false),
+// Status: pulumi.String("active"),
+// Weight: pulumi.Int(2),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = IpLoadBalancing.NewRefresh(ctx, "mylb", &IpLoadBalancing.RefreshArgs{
+// Keepers: pulumi.StringArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-ovh:IpLoadBalancing-refresh:Refresh.pp:23,16-35),
+// },
+// ServiceName: *pulumi.String(lb.ServiceName),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 type Refresh struct {
 	pulumi.CustomResourceState
 

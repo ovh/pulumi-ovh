@@ -9,9 +9,31 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const db = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXXX",
+ *     engine: "YYYY",
+ *     id: "ZZZZ",
+ * });
+ * const iprestriction = new ovh.cloudprojectdatabase.IpRestriction("iprestriction", {
+ *     serviceName: db.then(db => db.serviceName),
+ *     engine: db.then(db => db.engine),
+ *     clusterId: db.then(db => db.id),
+ *     ip: "178.97.6.0/24",
+ * });
+ * ```
+ *
  * ## Import
  *
- * OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24 <break>```<break><break>
+ * OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g., bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
+ * ```
  */
 export class IpRestriction extends pulumi.CustomResource {
     /**

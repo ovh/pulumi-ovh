@@ -9,9 +9,34 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ## Import
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
  *
- * HTTP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+ * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "ip-1.2.3.4",
+ *     state: "ok",
+ * });
+ * const farmname = new ovh.iploadbalancing.HttpFarm("farmname", {
+ *     port: 8080,
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     zone: "all",
+ * });
+ * const backend = new ovh.iploadbalancing.HttpFarmServer("backend", {
+ *     address: "4.5.6.7",
+ *     backup: true,
+ *     displayName: "mybackend",
+ *     farmId: farmname.id,
+ *     port: 80,
+ *     probe: true,
+ *     proxyProtocolVersion: "v2",
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     ssl: false,
+ *     status: "active",
+ *     weight: 2,
+ * });
+ * ```
  */
 export class HttpFarmServer extends pulumi.CustomResource {
     /**

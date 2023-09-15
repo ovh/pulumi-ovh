@@ -17,9 +17,33 @@ import (
 //
 // ## Example Usage
 //
-// ## Import
+// ```go
+// package main
 //
-// TCP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := IpLoadBalancing.NewTcpRoute(ctx, "tcpreject", &IpLoadBalancing.TcpRouteArgs{
+//				Action: &iploadbalancing.TcpRouteActionArgs{
+//					Type: pulumi.String("reject"),
+//				},
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				Weight:      pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type TcpRoute struct {
 	pulumi.CustomResourceState
 

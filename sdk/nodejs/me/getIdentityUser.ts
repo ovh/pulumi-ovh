@@ -8,6 +8,15 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about an identity user.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myUser = ovh.Me.getIdentityUser({
+ *     user: "my_user_login",
+ * });
+ * ```
  */
 export function getIdentityUser(args: GetIdentityUserArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentityUserResult> {
 
@@ -77,6 +86,15 @@ export interface GetIdentityUserResult {
  * Use this data source to retrieve information about an identity user.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myUser = ovh.Me.getIdentityUser({
+ *     user: "my_user_login",
+ * });
+ * ```
  */
 export function getIdentityUserOutput(args: GetIdentityUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityUserResult> {
     return pulumi.output(args).apply((a: any) => getIdentityUser(a, opts))

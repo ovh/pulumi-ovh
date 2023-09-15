@@ -300,11 +300,46 @@ class HttpRouteRule(pulumi.CustomResource):
 
         Route which redirect all URL to HTTPs for example.com (Vhost).
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        httpsredirect = ovh.ip_load_balancing.HttpRoute("httpsredirect",
+            action=ovh.ip_load_balancing.HttpRouteActionArgs(
+                status=302,
+                target="https://${host}${path}${arguments}",
+                type="redirect",
+            ),
+            display_name="Redirect to HTTPS",
+            frontend_id=11111,
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            weight=1)
+        examplerule = ovh.ip_load_balancing.HttpRouteRule("examplerule",
+            display_name="Match example.com host",
+            field="host",
+            match="is",
+            negate=False,
+            pattern="example.com",
+            route_id=httpsredirect.id,
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
+        ```
+
         Rule which match a specific header (same effect as the host match above).
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
 
-        HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+        examplerule = ovh.ip_load_balancing.HttpRouteRule("examplerule",
+            display_name="Match example.com Host header",
+            field="headers",
+            match="is",
+            negate=False,
+            pattern="example.com",
+            route_id=ovh_iploadbalancing_http_route["httpsredirect"]["id"],
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            sub_field="Host")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -330,11 +365,46 @@ class HttpRouteRule(pulumi.CustomResource):
 
         Route which redirect all URL to HTTPs for example.com (Vhost).
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        httpsredirect = ovh.ip_load_balancing.HttpRoute("httpsredirect",
+            action=ovh.ip_load_balancing.HttpRouteActionArgs(
+                status=302,
+                target="https://${host}${path}${arguments}",
+                type="redirect",
+            ),
+            display_name="Redirect to HTTPS",
+            frontend_id=11111,
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            weight=1)
+        examplerule = ovh.ip_load_balancing.HttpRouteRule("examplerule",
+            display_name="Match example.com host",
+            field="host",
+            match="is",
+            negate=False,
+            pattern="example.com",
+            route_id=httpsredirect.id,
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
+        ```
+
         Rule which match a specific header (same effect as the host match above).
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
 
-        HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+        examplerule = ovh.ip_load_balancing.HttpRouteRule("examplerule",
+            display_name="Match example.com Host header",
+            field="headers",
+            match="is",
+            negate=False,
+            pattern="example.com",
+            route_id=ovh_iploadbalancing_http_route["httpsredirect"]["id"],
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            sub_field="Host")
+        ```
 
         :param str resource_name: The name of the resource.
         :param HttpRouteRuleInitArgs args: The arguments to use to populate this resource's properties.

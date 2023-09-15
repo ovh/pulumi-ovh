@@ -14,9 +14,39 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var db = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXXX",
+    ///         Engine = "YYYY",
+    ///         Id = "ZZZZ",
+    ///     });
+    /// 
+    ///     var iprestriction = new Ovh.CloudProjectDatabase.IpRestriction("iprestriction", new()
+    ///     {
+    ///         ServiceName = db.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         Engine = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Engine),
+    ///         ClusterId = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         Ip = "178.97.6.0/24",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24 &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/ipRestriction:IpRestriction")]
     public partial class IpRestriction : global::Pulumi.CustomResource

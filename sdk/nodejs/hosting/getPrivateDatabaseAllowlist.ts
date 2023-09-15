@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about an hosting privatedatabase whitelist.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const whitelist = ovh.Hosting.getPrivateDatabaseAllowlist({
+ *     ip: "XXXXXX",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getPrivateDatabaseAllowlist(args: GetPrivateDatabaseAllowlistArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseAllowlistResult> {
 
@@ -71,6 +81,16 @@ export interface GetPrivateDatabaseAllowlistResult {
  * Use this data source to retrieve information about an hosting privatedatabase whitelist.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const whitelist = ovh.Hosting.getPrivateDatabaseAllowlist({
+ *     ip: "XXXXXX",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getPrivateDatabaseAllowlistOutput(args: GetPrivateDatabaseAllowlistOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseAllowlistResult> {
     return pulumi.output(args).apply((a: any) => getPrivateDatabaseAllowlist(a, opts))

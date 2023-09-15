@@ -90,6 +90,16 @@ def get_logs_input_engine(is_deprecated: Optional[bool] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    logstash = ovh.Dbaas.get_logs_input_engine(is_deprecated=True,
+        name="logstash",
+        service_name="ldp-xx-xxxxx",
+        version="6.8")
+    ```
+
 
     :param bool is_deprecated: Indicates if engine will soon not be supported.
     :param str name: The name of the logs input engine.
@@ -122,6 +132,16 @@ def get_logs_input_engine_output(is_deprecated: Optional[pulumi.Input[Optional[b
     Use this data source to retrieve information about a DBaas logs input engine.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    logstash = ovh.Dbaas.get_logs_input_engine(is_deprecated=True,
+        name="logstash",
+        service_name="ldp-xx-xxxxx",
+        version="6.8")
+    ```
 
 
     :param bool is_deprecated: Indicates if engine will soon not be supported.

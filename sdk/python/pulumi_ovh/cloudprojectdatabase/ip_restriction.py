@@ -223,9 +223,27 @@ class IpRestriction(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        db = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+            engine="YYYY",
+            id="ZZZZ")
+        iprestriction = ovh.cloud_project_database.IpRestriction("iprestriction",
+            service_name=db.service_name,
+            engine=db.engine,
+            cluster_id=db.id,
+            ip="178.97.6.0/24")
+        ```
+
         ## Import
 
-        OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24 <break>```<break><break>
+        OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -248,9 +266,27 @@ class IpRestriction(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        db = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+            engine="YYYY",
+            id="ZZZZ")
+        iprestriction = ovh.cloud_project_database.IpRestriction("iprestriction",
+            service_name=db.service_name,
+            engine=db.engine,
+            cluster_id=db.id,
+            ip="178.97.6.0/24")
+        ```
+
         ## Import
 
-        OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24 <break>```<break><break>
+        OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g., bash
+
+        ```sh
+         $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
+        ```
 
         :param str resource_name: The name of the resource.
         :param IpRestrictionArgs args: The arguments to use to populate this resource's properties.

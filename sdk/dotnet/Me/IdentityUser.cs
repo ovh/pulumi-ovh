@@ -13,6 +13,26 @@ namespace Pulumi.Ovh.Me
     /// Creates an identity user.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myUser = new Ovh.Me.IdentityUser("myUser", new()
+    ///     {
+    ///         Description = "Some custom description",
+    ///         Email = "my_login@example.com",
+    ///         Group = "DEFAULT",
+    ///         Login = "my_login",
+    ///         Password = "super-s3cr3t!password",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Me/identityUser:IdentityUser")]
     public partial class IdentityUser : global::Pulumi.CustomResource

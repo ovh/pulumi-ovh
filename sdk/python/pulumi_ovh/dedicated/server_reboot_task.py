@@ -196,6 +196,23 @@ class ServerRebootTask(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_type="rescue",
+            kernel="rescue64-pro")
+        server_on_rescue = ovh.dedicated.ServerUpdate("serverOnRescue",
+            service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_id=rescue.results[0],
+            monitoring=True,
+            state="ok")
+        server_reboot = ovh.dedicated.ServerRebootTask("serverReboot",
+            service_name=rescue.service_name,
+            keepers=[server_on_rescue.boot_id])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: List of values tracked to trigger reboot, used also to form implicit dependencies.
@@ -209,6 +226,23 @@ class ServerRebootTask(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_type="rescue",
+            kernel="rescue64-pro")
+        server_on_rescue = ovh.dedicated.ServerUpdate("serverOnRescue",
+            service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_id=rescue.results[0],
+            monitoring=True,
+            state="ok")
+        server_reboot = ovh.dedicated.ServerRebootTask("serverReboot",
+            service_name=rescue.service_name,
+            keepers=[server_on_rescue.boot_id])
+        ```
 
         :param str resource_name: The name of the resource.
         :param ServerRebootTaskArgs args: The arguments to use to populate this resource's properties.

@@ -15,6 +15,30 @@ import (
 // Use this data source to retrieve information about a dedicated CEPH.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Dedicated.GetCeph(ctx, &dedicated.GetCephArgs{
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCeph(ctx *pulumi.Context, args *GetCephArgs, opts ...pulumi.InvokeOption) (*GetCephResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCephResult

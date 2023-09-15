@@ -331,6 +331,14 @@ def get_logs_output_graylog_stream(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    stream = ovh.Dbaas.get_logs_output_graylog_stream(service_name="ldp-xx-xxxxx",
+        title="my stream")
+    ```
+
 
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
     :param str title: Stream description
@@ -377,6 +385,14 @@ def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[st
     Use this data source to retrieve information about a DBaas logs output graylog stream.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    stream = ovh.Dbaas.get_logs_output_graylog_stream(service_name="ldp-xx-xxxxx",
+        title="my stream")
+    ```
 
 
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.

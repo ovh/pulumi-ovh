@@ -14,19 +14,34 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the list of users of a container registry associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_containerregistry" "my-registry" {
-        ///   service_name = "XXXXXX"
-        ///   registry_id  = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// data "ovh_cloud_project_containerregistry_users" "users" {
-        ///   service_name = ovh_cloud_project_containerregistry.registry.service_name
-        ///   registry_id  = ovh_cloud_project_containerregistry.registry.id
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_registry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     var users = Ovh.CloudProject.GetContainerRegistryUsers.Invoke(new()
+        ///     {
+        ///         ServiceName = ovh_cloud_project_containerregistry.Registry.Service_name,
+        ///         RegistryId = ovh_cloud_project_containerregistry.Registry.Id,
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerRegistryUsersResult> InvokeAsync(GetContainerRegistryUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryUsersResult>("ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers", args ?? new GetContainerRegistryUsersArgs(), options.WithDefaults());
@@ -34,19 +49,34 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the list of users of a container registry associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_containerregistry" "my-registry" {
-        ///   service_name = "XXXXXX"
-        ///   registry_id  = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// data "ovh_cloud_project_containerregistry_users" "users" {
-        ///   service_name = ovh_cloud_project_containerregistry.registry.service_name
-        ///   registry_id  = ovh_cloud_project_containerregistry.registry.id
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_registry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     var users = Ovh.CloudProject.GetContainerRegistryUsers.Invoke(new()
+        ///     {
+        ///         ServiceName = ovh_cloud_project_containerregistry.Registry.Service_name,
+        ///         RegistryId = ovh_cloud_project_containerregistry.Registry.Id,
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerRegistryUsersResult> Invoke(GetContainerRegistryUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryUsersResult>("ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers", args ?? new GetContainerRegistryUsersInvokeArgs(), options.WithDefaults());

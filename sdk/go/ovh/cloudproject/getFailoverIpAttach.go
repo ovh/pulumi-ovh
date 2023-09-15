@@ -15,6 +15,31 @@ import (
 // Use this data source to get the details of a failover IP address of a service in a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := CloudProject.GetFailoverIpAttach(ctx, &cloudproject.GetFailoverIpAttachArgs{
+//				Ip:          pulumi.StringRef("XXXXXX"),
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupFailoverIpAttach(ctx *pulumi.Context, args *LookupFailoverIpAttachArgs, opts ...pulumi.InvokeOption) (*LookupFailoverIpAttachResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFailoverIpAttachResult

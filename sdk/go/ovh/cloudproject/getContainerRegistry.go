@@ -15,6 +15,31 @@ import (
 // Use this data source to get information about a container registry associated with a public cloud project.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := CloudProject.GetContainerRegistry(ctx, &cloudproject.GetContainerRegistryArgs{
+//				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupContainerRegistry(ctx *pulumi.Context, args *LookupContainerRegistryArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryResult

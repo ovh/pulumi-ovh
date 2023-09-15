@@ -8,6 +8,15 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about a dedicated HA-NAS.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const my-nas-ha = ovh.Dedicated.getNasHA({
+ *     serviceName: "zpool-12345",
+ * });
+ * ```
  */
 export function getNasHA(args: GetNasHAArgs, opts?: pulumi.InvokeOptions): Promise<GetNasHAResult> {
 
@@ -80,6 +89,15 @@ export interface GetNasHAResult {
  * Use this data source to retrieve information about a dedicated HA-NAS.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const my-nas-ha = ovh.Dedicated.getNasHA({
+ *     serviceName: "zpool-12345",
+ * });
+ * ```
  */
 export function getNasHAOutput(args: GetNasHAOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasHAResult> {
     return pulumi.output(args).apply((a: any) => getNasHA(a, opts))

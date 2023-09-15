@@ -14,19 +14,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_kafka_user_access" "access" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   user_id       = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "access_cert" {
-        ///   value = data.ovh_cloud_project_database_kafka_user_access.access.cert
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var access = Ovh.CloudProjectDatabase.GetKafkaUserAccess.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         UserId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["accessCert"] = access.Apply(getKafkaUserAccessResult =&gt; getKafkaUserAccessResult.Cert),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaUserAccessResult> InvokeAsync(GetKafkaUserAccessArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaUserAccessResult>("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", args ?? new GetKafkaUserAccessArgs(), options.WithDefaults());
@@ -34,19 +48,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_kafka_user_access" "access" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   user_id       = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "access_cert" {
-        ///   value = data.ovh_cloud_project_database_kafka_user_access.access.cert
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var access = Ovh.CloudProjectDatabase.GetKafkaUserAccess.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         UserId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["accessCert"] = access.Apply(getKafkaUserAccessResult =&gt; getKafkaUserAccessResult.Cert),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaUserAccessResult> Invoke(GetKafkaUserAccessInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaUserAccessResult>("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", args ?? new GetKafkaUserAccessInvokeArgs(), options.WithDefaults());

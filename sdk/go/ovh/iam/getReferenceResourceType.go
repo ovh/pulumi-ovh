@@ -11,6 +11,28 @@ import (
 // Use this data source to list all the IAM resource types.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Iam.GetReferenceResourceType(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetReferenceResourceType(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetReferenceResourceTypeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReferenceResourceTypeResult

@@ -10,6 +10,16 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const gRA1 = ovh.CloudProject.getRegion({
+ *     name: "GRA1",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> {
 
@@ -68,6 +78,16 @@ export interface GetRegionResult {
  * Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const gRA1 = ovh.CloudProject.getRegion({
+ *     name: "GRA1",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionResult> {
     return pulumi.output(args).apply((a: any) => getRegion(a, opts))

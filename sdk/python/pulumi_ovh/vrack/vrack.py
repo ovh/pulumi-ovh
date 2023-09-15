@@ -294,6 +294,26 @@ class Vrack(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="vrack",
+            plan_code="vrack")
+        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            description="my vrack",
+            plan=ovh.vrack.VrackPlanArgs(
+                duration=vrack_cart_product_plan.selected_prices[0].duration,
+                plan_code=vrack_cart_product_plan.plan_code,
+                pricing_mode=vrack_cart_product_plan.selected_prices[0].pricing_mode,
+            ))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: yourvrackdescription
@@ -311,6 +331,26 @@ class Vrack(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+            price_capacity="renew",
+            product="vrack",
+            plan_code="vrack")
+        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
+            ovh_subsidiary=mycart.ovh_subsidiary,
+            description="my vrack",
+            plan=ovh.vrack.VrackPlanArgs(
+                duration=vrack_cart_product_plan.selected_prices[0].duration,
+                plan_code=vrack_cart_product_plan.plan_code,
+                pricing_mode=vrack_cart_product_plan.selected_prices[0].pricing_mode,
+            ))
+        ```
 
         :param str resource_name: The name of the resource.
         :param VrackArgs args: The arguments to use to populate this resource's properties.

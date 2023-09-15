@@ -14,19 +14,33 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_mongodb_user" "mongouser" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   name          = "ZZZ@admin"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "mongouser_roles" {
-        ///   value = data.ovh_cloud_project_database_mongodb_user.mongouser.roles
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mongouser = Ovh.CloudProject.GetMongoDbUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ@admin",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongouserRoles"] = mongouser.Apply(getMongoDbUserResult =&gt; getMongoDbUserResult.Roles),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMongoDbUserResult> InvokeAsync(GetMongoDbUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMongoDbUserResult>("ovh:CloudProject/getMongoDbUser:getMongoDbUser", args ?? new GetMongoDbUserArgs(), options.WithDefaults());
@@ -34,19 +48,33 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_mongodb_user" "mongouser" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   name          = "ZZZ@admin"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "mongouser_roles" {
-        ///   value = data.ovh_cloud_project_database_mongodb_user.mongouser.roles
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mongouser = Ovh.CloudProject.GetMongoDbUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ@admin",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongouserRoles"] = mongouser.Apply(getMongoDbUserResult =&gt; getMongoDbUserResult.Roles),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetMongoDbUserResult> Invoke(GetMongoDbUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMongoDbUserResult>("ovh:CloudProject/getMongoDbUser:getMongoDbUser", args ?? new GetMongoDbUserInvokeArgs(), options.WithDefaults());

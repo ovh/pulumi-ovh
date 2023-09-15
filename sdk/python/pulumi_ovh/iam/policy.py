@@ -298,6 +298,26 @@ class Policy(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        account = ovh.Me.get_me()
+        my_group = ovh.me.IdentityGroup("myGroup", description="my_group created in Terraform")
+        manager = ovh.iam.Policy("manager",
+            description="Users are allowed to use the OVH manager",
+            identities=[my_group.urn],
+            resources=[account.urn],
+            allows=[
+                "account:apiovh:me/get",
+                "account:apiovh:me/supportLevel/get",
+                "account:apiovh:me/certificates/get",
+                "account:apiovh:me/tag/get",
+                "account:apiovh:services/get",
+                "account:apiovh:*",
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
@@ -317,6 +337,26 @@ class Policy(pulumi.CustomResource):
         Creates an IAM policy.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        account = ovh.Me.get_me()
+        my_group = ovh.me.IdentityGroup("myGroup", description="my_group created in Terraform")
+        manager = ovh.iam.Policy("manager",
+            description="Users are allowed to use the OVH manager",
+            identities=[my_group.urn],
+            resources=[account.urn],
+            allows=[
+                "account:apiovh:me/get",
+                "account:apiovh:me/supportLevel/get",
+                "account:apiovh:me/certificates/get",
+                "account:apiovh:me/tag/get",
+                "account:apiovh:services/get",
+                "account:apiovh:*",
+            ])
+        ```
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

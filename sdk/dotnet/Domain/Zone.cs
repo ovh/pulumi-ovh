@@ -11,6 +11,56 @@ namespace Pulumi.Ovh.Domain
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myaccount = Ovh.Me.GetMe.Invoke();
+    /// 
+    ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+    ///     {
+    ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+    ///     });
+    /// 
+    ///     var zoneCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     {
+    ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+    ///         PriceCapacity = "renew",
+    ///         Product = "dns",
+    ///         PlanCode = "zone",
+    ///     });
+    /// 
+    ///     var zoneZone = new Ovh.Domain.Zone("zoneZone", new()
+    ///     {
+    ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
+    ///         Plan = new Ovh.Domain.Inputs.ZonePlanArgs
+    ///         {
+    ///             Duration = zoneCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = zoneCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = zoneCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Configurations = new[]
+    ///             {
+    ///                 new Ovh.Domain.Inputs.ZonePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "zone",
+    ///                     Value = "myzone.mydomain.com",
+    ///                 },
+    ///                 new Ovh.Domain.Inputs.ZonePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "template",
+    ///                     Value = "minimized",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Domain/zone:Zone")]
     public partial class Zone : global::Pulumi.CustomResource

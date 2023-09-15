@@ -14,18 +14,32 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_kube_oidc" "oidc" {
-        ///   service_name = "XXXXXX"
-        ///   kube_id      = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "oidc-val" {
-        ///   value = data.ovh_cloud_project_kube_oidc.oidc.client_id
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oidc = Ovh.CloudProject.GetKubeOidc.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidc-val"] = oidc.Apply(getKubeOidcResult =&gt; getKubeOidcResult.ClientId),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubeOidcResult> InvokeAsync(GetKubeOidcArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubeOidcResult>("ovh:CloudProject/getKubeOidc:getKubeOidc", args ?? new GetKubeOidcArgs(), options.WithDefaults());
@@ -33,18 +47,32 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_kube_oidc" "oidc" {
-        ///   service_name = "XXXXXX"
-        ///   kube_id      = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "oidc-val" {
-        ///   value = data.ovh_cloud_project_kube_oidc.oidc.client_id
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oidc = Ovh.CloudProject.GetKubeOidc.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidc-val"] = oidc.Apply(getKubeOidcResult =&gt; getKubeOidcResult.ClientId),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubeOidcResult> Invoke(GetKubeOidcInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeOidcResult>("ovh:CloudProject/getKubeOidc:getKubeOidc", args ?? new GetKubeOidcInvokeArgs(), options.WithDefaults());

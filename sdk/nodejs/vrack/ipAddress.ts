@@ -8,6 +8,55 @@ import * as utilities from "../utilities";
  * Attach an IP block to a VRack.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * }));
+ * const vrackCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
+ *     cartId: mycart.id,
+ *     priceCapacity: "renew",
+ *     product: "vrack",
+ *     planCode: "vrack",
+ * }));
+ * const vrackVrack = new ovh.vrack.Vrack("vrackVrack", {
+ *     description: mycart.then(mycart => mycart.description),
+ *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
+ *     plan: {
+ *         duration: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.duration),
+ *         planCode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.planCode),
+ *         pricingMode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *     },
+ * });
+ * const ipblockCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
+ *     cartId: mycart.id,
+ *     priceCapacity: "renew",
+ *     product: "ip",
+ *     planCode: "ip-v4-s30-ripe",
+ * }));
+ * const ipblockIpService = new ovh.ip.IpService("ipblockIpService", {
+ *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
+ *     description: mycart.then(mycart => mycart.description),
+ *     plan: {
+ *         duration: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.duration),
+ *         planCode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.planCode),
+ *         pricingMode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *         configurations: [{
+ *             label: "country",
+ *             value: "FR",
+ *         }],
+ *     },
+ * });
+ * const vrackblock = new ovh.vrack.IpAddress("vrackblock", {
+ *     serviceName: vrackVrack.serviceName,
+ *     block: ipblockIpService.ip,
+ * });
+ * ```
  */
 export class IpAddress extends pulumi.CustomResource {
     /**

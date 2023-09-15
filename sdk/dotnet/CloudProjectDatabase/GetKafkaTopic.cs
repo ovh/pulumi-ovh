@@ -14,19 +14,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_kafka_topic" "topic" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   id            = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "topic_name" {
-        ///   value = data.ovh_cloud_project_database_kafka_topic.topic.name
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var topic = Ovh.CloudProjectDatabase.GetKafkaTopic.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Id = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["topicName"] = topic.Apply(getKafkaTopicResult =&gt; getKafkaTopicResult.Name),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaTopicResult> InvokeAsync(GetKafkaTopicArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicResult>("ovh:CloudProjectDatabase/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicArgs(), options.WithDefaults());
@@ -34,19 +48,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_kafka_topic" "topic" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   id            = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "topic_name" {
-        ///   value = data.ovh_cloud_project_database_kafka_topic.topic.name
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var topic = Ovh.CloudProjectDatabase.GetKafkaTopic.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Id = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["topicName"] = topic.Apply(getKafkaTopicResult =&gt; getKafkaTopicResult.Name),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaTopicResult> Invoke(GetKafkaTopicInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaTopicResult>("ovh:CloudProjectDatabase/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicInvokeArgs(), options.WithDefaults());

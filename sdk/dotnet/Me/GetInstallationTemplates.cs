@@ -14,11 +14,24 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to get the list of custom installation templates available for dedicated servers.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_installation_templates" "templates" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var templates = Ovh.Me.GetInstallationTemplates.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstallationTemplatesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstallationTemplatesResult>("ovh:Me/getInstallationTemplates:getInstallationTemplates", InvokeArgs.Empty, options.WithDefaults());
@@ -26,11 +39,24 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to get the list of custom installation templates available for dedicated servers.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_installation_templates" "templates" {}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var templates = Ovh.Me.GetInstallationTemplates.Invoke();
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstallationTemplatesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstallationTemplatesResult>("ovh:Me/getInstallationTemplates:getInstallationTemplates", InvokeArgs.Empty, options.WithDefaults());

@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * Get the user details of a previously created public cloud project user.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const projectUsers = ovh.CloudProject.getUsers({
+ *     serviceName: "XXX",
+ * });
+ * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
+ * const s3UserId = users[0];
+ * const myUser = Promise.all([projectUsers, s3UserId]).then(([projectUsers, s3UserId]) => ovh.CloudProject.getUser({
+ *     serviceName: projectUsers.serviceName,
+ *     userId: s3UserId,
+ * }));
+ * ```
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
 
@@ -71,6 +86,21 @@ export interface GetUserResult {
  * Get the user details of a previously created public cloud project user.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const projectUsers = ovh.CloudProject.getUsers({
+ *     serviceName: "XXX",
+ * });
+ * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
+ * const s3UserId = users[0];
+ * const myUser = Promise.all([projectUsers, s3UserId]).then(([projectUsers, s3UserId]) => ovh.CloudProject.getUser({
+ *     serviceName: projectUsers.serviceName,
+ *     userId: s3UserId,
+ * }));
+ * ```
  */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
     return pulumi.output(args).apply((a: any) => getUser(a, opts))

@@ -14,14 +14,28 @@ namespace Pulumi.Ovh.Hosting
         /// <summary>
         /// Use this data source to retrieve information about an hosting privatedatabase user.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_hosting_privatedatabase_user" "user" {
-        ///   service_name  = "XXXXXX"
-        ///   user_name     = "XXXXXX"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var user = Ovh.Hosting.GetPrivateDatabaseUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         UserName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrivateDatabaseUserResult> InvokeAsync(GetPrivateDatabaseUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateDatabaseUserResult>("ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser", args ?? new GetPrivateDatabaseUserArgs(), options.WithDefaults());
@@ -29,14 +43,28 @@ namespace Pulumi.Ovh.Hosting
         /// <summary>
         /// Use this data source to retrieve information about an hosting privatedatabase user.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_hosting_privatedatabase_user" "user" {
-        ///   service_name  = "XXXXXX"
-        ///   user_name     = "XXXXXX"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var user = Ovh.Hosting.GetPrivateDatabaseUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         UserName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrivateDatabaseUserResult> Invoke(GetPrivateDatabaseUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseUserResult>("ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser", args ?? new GetPrivateDatabaseUserInvokeArgs(), options.WithDefaults());

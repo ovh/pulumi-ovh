@@ -8,6 +8,13 @@ import * as utilities from "../utilities";
  * Use this data source to get the list of custom installation templates available for dedicated servers.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const templates = ovh.Me.getInstallationTemplates({});
+ * ```
  */
 export function getInstallationTemplates(opts?: pulumi.InvokeOptions): Promise<GetInstallationTemplatesResult> {
 
@@ -33,6 +40,13 @@ export interface GetInstallationTemplatesResult {
  * Use this data source to get the list of custom installation templates available for dedicated servers.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const templates = ovh.Me.getInstallationTemplates({});
+ * ```
  */
 export function getInstallationTemplatesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetInstallationTemplatesResult> {
     return pulumi.output(getInstallationTemplates(opts))

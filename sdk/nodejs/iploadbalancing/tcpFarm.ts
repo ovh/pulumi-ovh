@@ -11,9 +11,21 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ## Import
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
  *
- * TCP Farm can be imported using the following format `serviceName` and the `id` of the farm, separated by "/" e.g.
+ * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "ip-1.2.3.4",
+ *     state: "ok",
+ * });
+ * const farmname = new ovh.iploadbalancing.TcpFarm("farmname", {
+ *     displayName: "ingress-8080-gra",
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     zone: "GRA",
+ * });
+ * ```
  */
 export class TcpFarm extends pulumi.CustomResource {
     /**

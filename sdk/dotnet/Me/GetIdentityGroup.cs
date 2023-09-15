@@ -14,13 +14,27 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information about an identity group.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_identity_group" "my_group" {
-        ///   name = "my_group_name"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myGroup = Ovh.Me.GetIdentityGroup.Invoke(new()
+        ///     {
+        ///         Name = "my_group_name",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIdentityGroupResult> InvokeAsync(GetIdentityGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIdentityGroupResult>("ovh:Me/getIdentityGroup:getIdentityGroup", args ?? new GetIdentityGroupArgs(), options.WithDefaults());
@@ -28,13 +42,27 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information about an identity group.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_me_identity_group" "my_group" {
-        ///   name = "my_group_name"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myGroup = Ovh.Me.GetIdentityGroup.Invoke(new()
+        ///     {
+        ///         Name = "my_group_name",
+        ///     });
+        /// 
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIdentityGroupResult> Invoke(GetIdentityGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityGroupResult>("ovh:Me/getIdentityGroup:getIdentityGroup", args ?? new GetIdentityGroupInvokeArgs(), options.WithDefaults());

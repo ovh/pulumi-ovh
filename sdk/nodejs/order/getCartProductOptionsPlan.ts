@@ -10,6 +10,23 @@ import * as utilities from "../utilities";
  * Use this data source to retrieve information of order cart product options plan.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * }));
+ * const plan = mycart.then(mycart => ovh.Order.getCartProductOptionsPlan({
+ *     cartId: mycart.id,
+ *     priceCapacity: "renew",
+ *     product: "cloud",
+ *     planCode: "project",
+ *     optionsPlanCode: "vrack",
+ * }));
+ * ```
  */
 export function getCartProductOptionsPlan(args: GetCartProductOptionsPlanArgs, opts?: pulumi.InvokeOptions): Promise<GetCartProductOptionsPlanResult> {
 
@@ -104,6 +121,23 @@ export interface GetCartProductOptionsPlanResult {
  * Use this data source to retrieve information of order cart product options plan.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * }));
+ * const plan = mycart.then(mycart => ovh.Order.getCartProductOptionsPlan({
+ *     cartId: mycart.id,
+ *     priceCapacity: "renew",
+ *     product: "cloud",
+ *     planCode: "project",
+ *     optionsPlanCode: "vrack",
+ * }));
+ * ```
  */
 export function getCartProductOptionsPlanOutput(args: GetCartProductOptionsPlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCartProductOptionsPlanResult> {
     return pulumi.output(args).apply((a: any) => getCartProductOptionsPlan(a, opts))

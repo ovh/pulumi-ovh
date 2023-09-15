@@ -60,6 +60,13 @@ def get_identity_groups(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     Use this data source to retrieve the list of the account's identity groups
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    groups = ovh.Me.get_identity_groups()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

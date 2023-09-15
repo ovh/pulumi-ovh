@@ -9,9 +9,50 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * }));
+ * const databaseCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
+ *     cartId: mycart.id,
+ *     priceCapacity: "renew",
+ *     product: "privateSQL",
+ *     planCode: "private-sql-512-instance",
+ * }));
+ * const databasePrivateDatabase = new ovh.hosting.PrivateDatabase("databasePrivateDatabase", {
+ *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
+ *     displayName: "Postgresql-12",
+ *     plan: {
+ *         duration: databaseCartProductPlan.then(databaseCartProductPlan => databaseCartProductPlan.prices?.[3]?.duration),
+ *         planCode: databaseCartProductPlan.then(databaseCartProductPlan => databaseCartProductPlan.planCode),
+ *         pricingMode: databaseCartProductPlan.then(databaseCartProductPlan => databaseCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *         configurations: [
+ *             {
+ *                 label: "dc",
+ *                 value: "gra3",
+ *             },
+ *             {
+ *                 label: "engine",
+ *                 value: "postgresql_12",
+ *             },
+ *         ],
+ *     },
+ * });
+ * export const privatedatabaseServiceName = databasePrivateDatabase.serviceName;
+ * ```
+ *
  * ## Import
  *
  * OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
+ *
+ * ```sh
+ *  $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+ * ```
  */
 export class PrivateDatabase extends pulumi.CustomResource {
     /**

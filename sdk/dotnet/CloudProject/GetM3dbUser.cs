@@ -14,19 +14,33 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_m3db_user" "m3dbuser" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   name          = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "m3dbuser_group" {
-        ///   value = data.ovh_cloud_project_database_m3db_user.m3dbuser.group
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var m3dbuser = Ovh.CloudProject.GetM3dbUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["m3dbuserGroup"] = m3dbuser.Apply(getM3dbUserResult =&gt; getM3dbUserResult.Group),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetM3dbUserResult> InvokeAsync(GetM3dbUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetM3dbUserResult>("ovh:CloudProject/getM3dbUser:getM3dbUser", args ?? new GetM3dbUserArgs(), options.WithDefaults());
@@ -34,19 +48,33 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
         /// 
+        /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// ```hcl
-        /// data "ovh_cloud_project_database_m3db_user" "m3dbuser" {
-        ///   service_name  = "XXX"
-        ///   cluster_id    = "YYY"
-        ///   name          = "ZZZ"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
         /// 
-        /// output "m3dbuser_group" {
-        ///   value = data.ovh_cloud_project_database_m3db_user.m3dbuser.group
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var m3dbuser = Ovh.CloudProject.GetM3dbUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["m3dbuserGroup"] = m3dbuser.Apply(getM3dbUserResult =&gt; getM3dbUserResult.Group),
+        ///     };
+        /// });
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetM3dbUserResult> Invoke(GetM3dbUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetM3dbUserResult>("ovh:CloudProject/getM3dbUser:getM3dbUser", args ?? new GetM3dbUserInvokeArgs(), options.WithDefaults());

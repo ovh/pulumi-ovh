@@ -6,8 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manage a vrack network for your IP Loadbalancing service.
- *
- * ## Example Usage
  */
 export class VrackNetwork extends pulumi.CustomResource {
     /**

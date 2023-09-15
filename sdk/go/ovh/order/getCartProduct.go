@@ -15,6 +15,42 @@ import (
 // Use this data source to retrieve information of order cart product products.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myaccount, err := Me.GetMe(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: myaccount.OvhSubsidiary,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Order.GetCartProduct(ctx, &order.GetCartProductArgs{
+//				CartId:  mycart.Id,
+//				Product: "...",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupCartProduct(ctx *pulumi.Context, args *LookupCartProductArgs, opts ...pulumi.InvokeOption) (*LookupCartProductResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCartProductResult

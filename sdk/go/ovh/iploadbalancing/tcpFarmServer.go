@@ -17,9 +17,54 @@ import (
 //
 // ## Example Usage
 //
-// ## Import
+// ```go
+// package main
 //
-// TCP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			lb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
+//				State:       pulumi.StringRef("ok"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			farmname, err := IpLoadBalancing.NewTcpFarm(ctx, "farmname", &IpLoadBalancing.TcpFarmArgs{
+//				Port:        pulumi.Int(8080),
+//				ServiceName: *pulumi.String(lb.ServiceName),
+//				Zone:        pulumi.String("all"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = IpLoadBalancing.NewTcpFarmServer(ctx, "backend", &IpLoadBalancing.TcpFarmServerArgs{
+//				Address:              pulumi.String("4.5.6.7"),
+//				Backup:               pulumi.Bool(true),
+//				DisplayName:          pulumi.String("mybackend"),
+//				FarmId:               farmname.ID(),
+//				Port:                 pulumi.Int(80),
+//				Probe:                pulumi.Bool(true),
+//				ProxyProtocolVersion: pulumi.String("v2"),
+//				ServiceName:          *pulumi.String(lb.ServiceName),
+//				Ssl:                  pulumi.Bool(false),
+//				Status:               pulumi.String("active"),
+//				Weight:               pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type TcpFarmServer struct {
 	pulumi.CustomResourceState
 

@@ -134,9 +134,23 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_partition = ovh.dedicated.NasHAPartitionSnapshot("my-partition",
+            partition_name="my-partition",
+            service_name="zpool-12345",
+            type="day-3")
+        ```
+
         ## Import
 
-        HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.   <break><break>```sh<break> $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3` <break>```<break><break>
+        HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
+
+        ```sh
+         $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -155,9 +169,23 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_partition = ovh.dedicated.NasHAPartitionSnapshot("my-partition",
+            partition_name="my-partition",
+            service_name="zpool-12345",
+            type="day-3")
+        ```
+
         ## Import
 
-        HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.   <break><break>```sh<break> $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3` <break>```<break><break>
+        HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
+
+        ```sh
+         $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
+        ```
 
         :param str resource_name: The name of the resource.
         :param NasHAPartitionSnapshotArgs args: The arguments to use to populate this resource's properties.

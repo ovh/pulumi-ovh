@@ -302,9 +302,17 @@ class HttpFarm(pulumi.CustomResource):
 
         ## Example Usage
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
 
-        HTTP farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farmname = ovh.ip_load_balancing.HttpFarm("farmname",
+            display_name="ingress-8080-gra",
+            service_name=lb.service_name,
+            zone="GRA")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -328,9 +336,17 @@ class HttpFarm(pulumi.CustomResource):
 
         ## Example Usage
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
 
-        HTTP farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farmname = ovh.ip_load_balancing.HttpFarm("farmname",
+            display_name="ingress-8080-gra",
+            service_name=lb.service_name,
+            zone="GRA")
+        ```
 
         :param str resource_name: The name of the resource.
         :param HttpFarmArgs args: The arguments to use to populate this resource's properties.

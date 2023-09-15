@@ -459,6 +459,38 @@ class LogsInput(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        logstash = ovh.Dbaas.get_logs_input_engine(name="logstash",
+            version="7.x")
+        stream = ovh.dbaas.LogsOutputGraylogStream("stream",
+            service_name="....",
+            title="my stream",
+            description="my graylog stream")
+        input = ovh.dbaas.LogsInput("input",
+            service_name=stream.service_name,
+            description=stream.description,
+            title=stream.title,
+            engine_id=logstash.id,
+            stream_id=stream.id,
+            allowed_networks=["10.0.0.0/16"],
+            exposed_port="6154",
+            nb_instance=2,
+            configuration=ovh.dbaas.LogsInputConfigurationArgs(
+                logstash=ovh.dbaas.LogsInputConfigurationLogstashArgs(
+                    input_section=\"\"\"  beats {
+            port => 6514
+            ssl => true
+            ssl_certificate => "/etc/ssl/private/server.crt"
+            ssl_key => "/etc/ssl/private/server.key"
+          }
+        \"\"\",
+                ),
+            ))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: List of IP blocks
@@ -481,6 +513,38 @@ class LogsInput(pulumi.CustomResource):
         Creates a dbaas logs input.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        logstash = ovh.Dbaas.get_logs_input_engine(name="logstash",
+            version="7.x")
+        stream = ovh.dbaas.LogsOutputGraylogStream("stream",
+            service_name="....",
+            title="my stream",
+            description="my graylog stream")
+        input = ovh.dbaas.LogsInput("input",
+            service_name=stream.service_name,
+            description=stream.description,
+            title=stream.title,
+            engine_id=logstash.id,
+            stream_id=stream.id,
+            allowed_networks=["10.0.0.0/16"],
+            exposed_port="6154",
+            nb_instance=2,
+            configuration=ovh.dbaas.LogsInputConfigurationArgs(
+                logstash=ovh.dbaas.LogsInputConfigurationLogstashArgs(
+                    input_section=\"\"\"  beats {
+            port => 6514
+            ssl => true
+            ssl_certificate => "/etc/ssl/private/server.crt"
+            ssl_key => "/etc/ssl/private/server.key"
+          }
+        \"\"\",
+                ),
+            ))
+        ```
 
         :param str resource_name: The name of the resource.
         :param LogsInputArgs args: The arguments to use to populate this resource's properties.

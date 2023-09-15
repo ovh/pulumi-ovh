@@ -23,9 +23,60 @@ import (
 //
 // Push PostgreSQL logs in an OpenSearch DB:
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dbpostgresql, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//				ServiceName: "XXXX",
+//				Engine:      "postgresql",
+//				Id:          "ZZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			dbopensearch, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//				ServiceName: "XXXX",
+//				Engine:      "opensearch",
+//				Id:          "ZZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = CloudProjectDatabase.NewIntegration(ctx, "integration", &CloudProjectDatabase.IntegrationArgs{
+//				ServiceName:          *pulumi.String(dbpostgresql.ServiceName),
+//				Engine:               *pulumi.String(dbpostgresql.Engine),
+//				ClusterId:            *pulumi.String(dbpostgresql.Id),
+//				SourceServiceId:      *pulumi.String(dbpostgresql.Id),
+//				DestinationServiceId: *pulumi.String(dbopensearch.Id),
+//				Type:                 pulumi.String("opensearchLogs"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id <break>```<break><break>
+// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+//
+// ```
 type Integration struct {
 	pulumi.CustomResourceState
 

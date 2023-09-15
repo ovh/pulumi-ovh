@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * Use this data source to get the details of a failover IP address of a service in a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myfailoverip = ovh.CloudProject.getFailoverIpAttach({
+ *     ip: "XXXXXX",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getFailoverIpAttach(args: GetFailoverIpAttachArgs, opts?: pulumi.InvokeOptions): Promise<GetFailoverIpAttachResult> {
 
@@ -78,6 +88,16 @@ export interface GetFailoverIpAttachResult {
  * Use this data source to get the details of a failover IP address of a service in a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myfailoverip = ovh.CloudProject.getFailoverIpAttach({
+ *     ip: "XXXXXX",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getFailoverIpAttachOutput(args: GetFailoverIpAttachOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFailoverIpAttachResult> {
     return pulumi.output(args).apply((a: any) => getFailoverIpAttach(a, opts))

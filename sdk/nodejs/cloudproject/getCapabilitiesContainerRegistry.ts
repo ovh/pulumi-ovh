@@ -10,6 +10,15 @@ import * as utilities from "../utilities";
  * Use this data source to get the container registry capabilities of a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const capabilities = ovh.CloudProject.getCapabilitiesContainerRegistry({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getCapabilitiesContainerRegistry(args: GetCapabilitiesContainerRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetCapabilitiesContainerRegistryResult> {
 
@@ -48,6 +57,15 @@ export interface GetCapabilitiesContainerRegistryResult {
  * Use this data source to get the container registry capabilities of a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const capabilities = ovh.CloudProject.getCapabilitiesContainerRegistry({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
  */
 export function getCapabilitiesContainerRegistryOutput(args: GetCapabilitiesContainerRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapabilitiesContainerRegistryResult> {
     return pulumi.output(args).apply((a: any) => getCapabilitiesContainerRegistry(a, opts))

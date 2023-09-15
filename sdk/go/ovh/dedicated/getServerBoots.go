@@ -15,6 +15,31 @@ import (
 // Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
+//				BootType:    pulumi.StringRef("harddisk"),
+//				ServiceName: "myserver",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetServerBoots(ctx *pulumi.Context, args *GetServerBootsArgs, opts ...pulumi.InvokeOption) (*GetServerBootsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerBootsResult

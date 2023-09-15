@@ -269,6 +269,16 @@ def get_database(engine: Optional[str] = None,
 
     To get information of a database cluster service:
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    db = ovh.CloudProjectDatabase.get_database(service_name="XXXXXX",
+        engine="YYYY",
+        id="ZZZZ")
+    pulumi.export("clusterId", db.id)
+    ```
+
 
     :param str engine: The database engine you want to get information. To get a full list of available engine visit:
            [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
@@ -316,6 +326,16 @@ def get_database_output(engine: Optional[pulumi.Input[str]] = None,
     ## Example Usage
 
     To get information of a database cluster service:
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    db = ovh.CloudProjectDatabase.get_database(service_name="XXXXXX",
+        engine="YYYY",
+        id="ZZZZ")
+    pulumi.export("clusterId", db.id)
+    ```
 
 
     :param str engine: The database engine you want to get information. To get a full list of available engine visit:

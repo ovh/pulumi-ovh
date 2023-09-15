@@ -17,9 +17,53 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			kafka, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//				ServiceName: "XXX",
+//				Engine:      "kafka",
+//				Id:          "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = CloudProjectDatabase.NewKafkaTopic(ctx, "topic", &CloudProjectDatabase.KafkaTopicArgs{
+//				ServiceName:       *pulumi.String(kafka.ServiceName),
+//				ClusterId:         *pulumi.String(kafka.Id),
+//				MinInsyncReplicas: pulumi.Int(1),
+//				Partitions:        pulumi.Int(3),
+//				Replication:       pulumi.Int(2),
+//				RetentionBytes:    pulumi.Int(4),
+//				RetentionHours:    pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g., bash <break><break>```sh<break> $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id <break>```<break><break>
+// OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g., bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
+//
+// ```
 type KafkaTopic struct {
 	pulumi.CustomResourceState
 

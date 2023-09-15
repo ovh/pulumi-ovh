@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * Get the list of all users of a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const projectUsers = ovh.CloudProject.getUsers({
+ *     serviceName: "XXX",
+ * });
+ * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
+ * const s3UserId = users[0];
+ * export const userId = s3UserId;
+ * ```
  */
 export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
 
@@ -48,6 +60,18 @@ export interface GetUsersResult {
  * Get the list of all users of a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const projectUsers = ovh.CloudProject.getUsers({
+ *     serviceName: "XXX",
+ * });
+ * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
+ * const s3UserId = users[0];
+ * export const userId = s3UserId;
+ * ```
  */
 export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))

@@ -126,6 +126,14 @@ def get_cart(assign: Optional[bool] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myaccount = ovh.Me.get_me()
+    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+    ```
+
 
     :param bool assign: Assign a shopping cart to a logged in client. Values can be `true` or `false`.
     :param str description: Description of your cart
@@ -161,6 +169,14 @@ def get_cart_output(assign: Optional[pulumi.Input[Optional[bool]]] = None,
     Use this data source to create a temporary order cart to retrieve information order cart products.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myaccount = ovh.Me.get_me()
+    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+    ```
 
 
     :param bool assign: Assign a shopping cart to a logged in client. Values can be `true` or `false`.

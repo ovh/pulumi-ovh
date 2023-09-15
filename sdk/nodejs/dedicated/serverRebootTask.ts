@@ -6,6 +6,28 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const rescue = ovh.Dedicated.getServerBoots({
+ *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+ *     bootType: "rescue",
+ *     kernel: "rescue64-pro",
+ * });
+ * const serverOnRescue = new ovh.dedicated.ServerUpdate("serverOnRescue", {
+ *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+ *     bootId: rescue.then(rescue => rescue.results?.[0]),
+ *     monitoring: true,
+ *     state: "ok",
+ * });
+ * const serverReboot = new ovh.dedicated.ServerRebootTask("serverReboot", {
+ *     serviceName: rescue.then(rescue => rescue.serviceName),
+ *     keepers: [serverOnRescue.bootId],
+ * });
+ * ```
  */
 export class ServerRebootTask extends pulumi.CustomResource {
     /**

@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const acl = ovh.CloudProjectDatabase.getKafkaAcl({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     id: "ZZZ",
+ * });
+ * export const aclPermission = acl.then(acl => acl.permission);
+ * ```
  */
 export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaAclResult> {
 
@@ -71,6 +83,18 @@ export interface GetKafkaAclResult {
  * Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const acl = ovh.CloudProjectDatabase.getKafkaAcl({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     id: "ZZZ",
+ * });
+ * export const aclPermission = acl.then(acl => acl.permission);
+ * ```
  */
 export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaAclResult> {
     return pulumi.output(args).apply((a: any) => getKafkaAcl(a, opts))

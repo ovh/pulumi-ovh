@@ -12,6 +12,18 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * To get information of a database cluster service:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const db = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXXXXX",
+ *     engine: "YYYY",
+ *     id: "ZZZZ",
+ * });
+ * export const clusterId = db.then(db => db.id);
+ * ```
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
 
@@ -127,6 +139,18 @@ export interface GetDatabaseResult {
  * ## Example Usage
  *
  * To get information of a database cluster service:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const db = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXXXXX",
+ *     engine: "YYYY",
+ *     id: "ZZZZ",
+ * });
+ * export const clusterId = db.then(db => db.id);
+ * ```
  */
 export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
     return pulumi.output(args).apply((a: any) => getDatabase(a, opts))

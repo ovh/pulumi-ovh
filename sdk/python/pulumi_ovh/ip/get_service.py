@@ -148,6 +148,13 @@ def get_service(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myip = ovh.Ip.get_service(service_name="XXXXXX")
+    ```
+
 
     :param str service_name: The service name
     """
@@ -175,6 +182,13 @@ def get_service_output(service_name: Optional[pulumi.Input[str]] = None,
     Use this data source to retrieve information about an IP service.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myip = ovh.Ip.get_service(service_name="XXXXXX")
+    ```
 
 
     :param str service_name: The service name

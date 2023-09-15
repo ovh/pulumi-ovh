@@ -12,7 +12,11 @@ namespace Pulumi.Ovh.CloudProject
     /// <summary>
     /// ## Import
     /// 
-    /// OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/kube:Kube")]
     public partial class Kube : global::Pulumi.CustomResource
