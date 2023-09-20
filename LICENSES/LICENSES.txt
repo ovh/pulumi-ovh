@@ -1,0 +1,128 @@
+Licences:
+Apache-2.0
+BSD-2-Clause
+BSD-3-Clause
+MIT
+MPL-2.0
+Unknown
+
+Packages:
+@ovh-devrelteam/pulumi-ovh; Apache-2.0
+github.com/Masterminds/semver; MIT
+github.com/ProtonMail/go-crypto; BSD-3-Clause
+github.com/aead/chacha20; MIT
+github.com/agext/levenshtein; Apache-2.0
+github.com/apparentlymart/go-textseg/v13; Apache-2.0
+github.com/atotto/clipboard; BSD-3-Clause
+github.com/aymanbagabas/go-osc52/v2; MIT
+github.com/blang/semver; MIT
+github.com/charmbracelet/bubbles; MIT
+github.com/charmbracelet/bubbletea; MIT
+github.com/charmbracelet/lipgloss; MIT
+github.com/cheggaaa/pb; BSD-3-Clause
+github.com/cloudflare/circl; BSD-3-Clause
+github.com/containerd/console; Apache-2.0
+github.com/djherbis/times; MIT
+github.com/edsrzf/mmap-go; BSD-3-Clause
+github.com/emirpasic/gods; BSD-2-Clause
+github.com/fatih/color; MIT
+github.com/gedex/inflector; BSD-2-Clause
+github.com/go-git/gcfg; BSD-3-Clause
+github.com/go-git/go-billy/v5; Apache-2.0
+github.com/go-git/go-git/v5; Apache-2.0
+github.com/gogo/protobuf; BSD-3-Clause
+github.com/golang/glog; Apache-2.0
+github.com/golang/go; BSD-3-Clause
+github.com/golang/protobuf; BSD-3-Clause
+github.com/google/go-cmp; BSD-3-Clause
+github.com/grpc-ecosystem/grpc-opentracing; BSD-3-Clause
+github.com/hashicorp/errwrap; MPL-2.0
+github.com/hashicorp/go-checkpoint; MPL-2.0
+github.com/hashicorp/go-cleanhttp; MPL-2.0
+github.com/hashicorp/go-cty; MIT
+github.com/hashicorp/go-hclog; MIT
+github.com/hashicorp/go-multierror; MPL-2.0
+github.com/hashicorp/go-plugin; MPL-2.0
+github.com/hashicorp/go-uuid; MPL-2.0
+github.com/hashicorp/go-version; MPL-2.0
+github.com/hashicorp/hc-install; MPL-2.0
+github.com/hashicorp/hcl/v2; MPL-2.0
+github.com/hashicorp/logutils; MPL-2.0
+github.com/hashicorp/terraform-exec; MPL-2.0
+github.com/hashicorp/terraform-json; MPL-2.0
+github.com/hashicorp/terraform-plugin-go; MPL-2.0
+github.com/hashicorp/terraform-plugin-log; MPL-2.0
+github.com/hashicorp/terraform-registry-address; MPL-2.0
+github.com/hashicorp/terraform-svchost; MPL-2.0
+github.com/hashicorp/yamux; MPL-2.0
+github.com/imdario/mergo; BSD-3-Clause
+github.com/jbenet/go-context; MIT
+github.com/kevinburke/ssh_config; MIT
+github.com/lucasb-eyer/go-colorful; MIT
+github.com/mattn/go-colorable; MIT
+github.com/mattn/go-isatty; MIT
+github.com/mattn/go-localereader; Unknown. See go/github.com/mattn/go-localereader/LICENSE file
+github.com/mattn/go-runewidth; MIT
+github.com/mitchellh/copystructure; MIT
+github.com/mitchellh/go-homedir; MIT
+github.com/mitchellh/go-testing-interface; MIT
+github.com/mitchellh/go-wordwrap; MIT
+github.com/mitchellh/mapstructure; MIT
+github.com/mitchellh/reflectwalk; MIT
+github.com/muesli/ansi; MIT
+github.com/muesli/cancelreader; MIT
+github.com/muesli/reflow; MIT
+github.com/muesli/termenv; MIT
+github.com/natefinch/atomic; MIT
+github.com/oklog/run; Apache-2.0
+github.com/opentracing/basictracer-go; Apache-2.0
+github.com/opentracing/opentracing-go; Apache-2.0
+github.com/ovh/go-ovh; BSD-3-Clause
+github.com/ovh/terraform-provider-ovh; MPL-2.0
+github.com/pgavlin/goldmark; MIT
+github.com/pjbgf/sha1cd; Apache-2.0
+github.com/pkg/errors; BSD-2-Clause
+github.com/pkg/term; BSD-2-Clause
+github.com/pulumi/pulumi-terraform-bridge/v3; Apache-2.0
+github.com/pulumi/pulumi-terraform-bridge/x/muxer; Apache-2.0
+github.com/pulumi/pulumi/pkg/v3; Apache-2.0
+github.com/pulumi/pulumi/sdk/v3; Apache-2.0
+github.com/pulumi/terraform-diff-reader; MPL-2.0
+github.com/pulumi/terraform-plugin-sdk/v2; MPL-2.0
+github.com/rivo/uniseg; MIT
+github.com/rogpeppe/go-internal; BSD-3-Clause
+github.com/sabhiram/go-gitignore; MIT
+github.com/santhosh-tekuri/jsonschema/v5; Apache-2.0
+github.com/segmentio/asm; MIT
+github.com/segmentio/encoding; MIT
+github.com/sergi/go-diff; Apache-2.0
+github.com/skeema/knownhosts; Apache-2.0
+github.com/spf13/cobra; Apache-2.0
+github.com/spf13/pflag; BSD-3-Clause
+github.com/texttheater/golang-levenshtein; MIT
+github.com/tweekmonster/luser; MIT
+github.com/uber/jaeger-client-go; Apache-2.0
+github.com/uber/jaeger-lib; Apache-2.0
+github.com/vmihailenco/msgpack/v5; BSD-2-Clause
+github.com/vmihailenco/msgpack; BSD-2-Clause
+github.com/vmihailenco/tagparser/v2; BSD-2-Clause
+github.com/xanzy/ssh-agent; Unknown. See go/github.com/xanzy/ssh-agent/LICENSE file
+github.com/ybriffa/rfc3339; Unknown. See go/github.com/ybriffa/rfc3339/LICENSE file
+github.com/zclconf/go-cty; MIT
+go.uber.org/atomic; MIT
+golang.org/x/crypto; BSD-3-Clause
+golang.org/x/exp; BSD-3-Clause
+golang.org/x/mod; BSD-3-Clause
+golang.org/x/net; BSD-3-Clause
+golang.org/x/sync; BSD-3-Clause
+golang.org/x/sys; BSD-3-Clause
+golang.org/x/term; BSD-3-Clause
+golang.org/x/text; BSD-3-Clause
+google.golang.org/genproto/googleapis/rpc; Apache-2.0
+google.golang.org/grpc; Apache-2.0
+google.golang.org/protobuf; BSD-3-Clause
+gopkg.in/ini.v1; Apache-2.0
+gopkg.in/warnings.v0; BSD-2-Clause
+gopkg.in/yaml.v3; Apache-2.0
+lukechampine.com/frand; MIT
+sourcegraph.com/sourcegraph/appdash; MIT
