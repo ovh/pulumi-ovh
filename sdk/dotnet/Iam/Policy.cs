@@ -34,11 +34,11 @@ namespace Pulumi.Ovh.Iam
     ///         Description = "Users are allowed to use the OVH manager",
     ///         Identities = new[]
     ///         {
-    ///             myGroup.Urn,
+    ///             myGroup.GroupURN,
     ///         },
     ///         Resources = new[]
     ///         {
-    ///             account.Apply(getMeResult =&gt; getMeResult.Urn),
+    ///             account.Apply(getMeResult =&gt; getMeResult.AccountURN),
     ///         },
     ///         Allows = new[]
     ///         {

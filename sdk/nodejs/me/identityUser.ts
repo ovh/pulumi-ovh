@@ -51,6 +51,10 @@ export class IdentityUser extends pulumi.CustomResource {
     }
 
     /**
+     * URN of the user, used when writing IAM policies
+     */
+    public /*out*/ readonly UserURN!: pulumi.Output<string>;
+    /**
      * Creation date of this user.
      */
     public /*out*/ readonly creation!: pulumi.Output<string>;
@@ -86,10 +90,6 @@ export class IdentityUser extends pulumi.CustomResource {
      * Current user's status.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
-    /**
-     * URN of the user, used when writing IAM policies
-     */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a IdentityUser resource with the given unique name, arguments, and options.
@@ -104,6 +104,7 @@ export class IdentityUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentityUserState | undefined;
+            resourceInputs["UserURN"] = state ? state.UserURN : undefined;
             resourceInputs["creation"] = state ? state.creation : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["email"] = state ? state.email : undefined;
@@ -113,7 +114,6 @@ export class IdentityUser extends pulumi.CustomResource {
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["passwordLastUpdate"] = state ? state.passwordLastUpdate : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as IdentityUserArgs | undefined;
             if ((!args || args.email === undefined) && !opts.urn) {
@@ -130,11 +130,11 @@ export class IdentityUser extends pulumi.CustomResource {
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["login"] = args ? args.login : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["UserURN"] = undefined /*out*/;
             resourceInputs["creation"] = undefined /*out*/;
             resourceInputs["lastUpdate"] = undefined /*out*/;
             resourceInputs["passwordLastUpdate"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["urn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
@@ -147,6 +147,10 @@ export class IdentityUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IdentityUser resources.
  */
 export interface IdentityUserState {
+    /**
+     * URN of the user, used when writing IAM policies
+     */
+    UserURN?: pulumi.Input<string>;
     /**
      * Creation date of this user.
      */
@@ -183,10 +187,6 @@ export interface IdentityUserState {
      * Current user's status.
      */
     status?: pulumi.Input<string>;
-    /**
-     * URN of the user, used when writing IAM policies
-     */
-    urn?: pulumi.Input<string>;
 }
 
 /**

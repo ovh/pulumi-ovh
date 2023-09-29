@@ -22,7 +22,10 @@ class GetServerResult:
     """
     A collection of values returned by getServer.
     """
-    def __init__(__self__, boot_id=None, commercial_range=None, datacenter=None, enabled_public_vnis=None, enabled_vrack_aggregation_vnis=None, enabled_vrack_vnis=None, id=None, ip=None, ips=None, link_speed=None, monitoring=None, name=None, os=None, professional_use=None, rack=None, rescue_mail=None, reverse=None, root_device=None, server_id=None, service_name=None, state=None, support_level=None, urn=None, vnis=None):
+    def __init__(__self__, server_urn=None, boot_id=None, commercial_range=None, datacenter=None, enabled_public_vnis=None, enabled_vrack_aggregation_vnis=None, enabled_vrack_vnis=None, id=None, ip=None, ips=None, link_speed=None, monitoring=None, name=None, os=None, professional_use=None, rack=None, rescue_mail=None, reverse=None, root_device=None, server_id=None, service_name=None, state=None, support_level=None, vnis=None):
+        if server_urn and not isinstance(server_urn, str):
+            raise TypeError("Expected argument 'server_urn' to be a str")
+        pulumi.set(__self__, "server_urn", server_urn)
         if boot_id and not isinstance(boot_id, int):
             raise TypeError("Expected argument 'boot_id' to be a int")
         pulumi.set(__self__, "boot_id", boot_id)
@@ -89,12 +92,17 @@ class GetServerResult:
         if support_level and not isinstance(support_level, str):
             raise TypeError("Expected argument 'support_level' to be a str")
         pulumi.set(__self__, "support_level", support_level)
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        pulumi.set(__self__, "urn", urn)
         if vnis and not isinstance(vnis, list):
             raise TypeError("Expected argument 'vnis' to be a list")
         pulumi.set(__self__, "vnis", vnis)
+
+    @property
+    @pulumi.getter(name="ServerURN")
+    def server_urn(self) -> str:
+        """
+        URN of the dedicated server instance
+        """
+        return pulumi.get(self, "server_urn")
 
     @property
     @pulumi.getter(name="bootId")
@@ -271,14 +279,6 @@ class GetServerResult:
 
     @property
     @pulumi.getter
-    def urn(self) -> str:
-        """
-        URN of the dedicated server instance
-        """
-        return pulumi.get(self, "urn")
-
-    @property
-    @pulumi.getter
     def vnis(self) -> Sequence['outputs.GetServerVniResult']:
         """
         the list of Virtualnetworkinterface assiociated with this server
@@ -292,6 +292,7 @@ class AwaitableGetServerResult(GetServerResult):
         if False:
             yield self
         return GetServerResult(
+            server_urn=self.server_urn,
             boot_id=self.boot_id,
             commercial_range=self.commercial_range,
             datacenter=self.datacenter,
@@ -314,7 +315,6 @@ class AwaitableGetServerResult(GetServerResult):
             service_name=self.service_name,
             state=self.state,
             support_level=self.support_level,
-            urn=self.urn,
             vnis=self.vnis)
 
 
@@ -341,6 +341,7 @@ def get_server(service_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('ovh:index/getServer:getServer', __args__, opts=opts, typ=GetServerResult).value
 
     return AwaitableGetServerResult(
+        server_urn=pulumi.get(__ret__, 'server_urn'),
         boot_id=pulumi.get(__ret__, 'boot_id'),
         commercial_range=pulumi.get(__ret__, 'commercial_range'),
         datacenter=pulumi.get(__ret__, 'datacenter'),
@@ -363,7 +364,6 @@ def get_server(service_name: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         state=pulumi.get(__ret__, 'state'),
         support_level=pulumi.get(__ret__, 'support_level'),
-        urn=pulumi.get(__ret__, 'urn'),
         vnis=pulumi.get(__ret__, 'vnis'))
 
 

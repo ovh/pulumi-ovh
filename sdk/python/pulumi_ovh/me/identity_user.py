@@ -99,6 +99,7 @@ class IdentityUserArgs:
 @pulumi.input_type
 class _IdentityUserState:
     def __init__(__self__, *,
+                 user_urn: Optional[pulumi.Input[str]] = None,
                  creation: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
@@ -107,10 +108,10 @@ class _IdentityUserState:
                  login: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_last_update: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 urn: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IdentityUser resources.
+        :param pulumi.Input[str] user_urn: URN of the user, used when writing IAM policies
         :param pulumi.Input[str] creation: Creation date of this user.
         :param pulumi.Input[str] description: User description.
         :param pulumi.Input[str] email: User's email.
@@ -120,8 +121,9 @@ class _IdentityUserState:
         :param pulumi.Input[str] password: User's password.
         :param pulumi.Input[str] password_last_update: When the user changed his password for the last time.
         :param pulumi.Input[str] status: Current user's status.
-        :param pulumi.Input[str] urn: URN of the user, used when writing IAM policies
         """
+        if user_urn is not None:
+            pulumi.set(__self__, "user_urn", user_urn)
         if creation is not None:
             pulumi.set(__self__, "creation", creation)
         if description is not None:
@@ -140,8 +142,18 @@ class _IdentityUserState:
             pulumi.set(__self__, "password_last_update", password_last_update)
         if status is not None:
             pulumi.set(__self__, "status", status)
-        if urn is not None:
-            pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="UserURN")
+    def user_urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        URN of the user, used when writing IAM policies
+        """
+        return pulumi.get(self, "user_urn")
+
+    @user_urn.setter
+    def user_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_urn", value)
 
     @property
     @pulumi.getter
@@ -251,18 +263,6 @@ class _IdentityUserState:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
-    @property
-    @pulumi.getter
-    def urn(self) -> Optional[pulumi.Input[str]]:
-        """
-        URN of the user, used when writing IAM policies
-        """
-        return pulumi.get(self, "urn")
-
-    @urn.setter
-    def urn(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "urn", value)
-
 
 class IdentityUser(pulumi.CustomResource):
     @overload
@@ -363,11 +363,11 @@ class IdentityUser(pulumi.CustomResource):
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["user_urn"] = None
             __props__.__dict__["creation"] = None
             __props__.__dict__["last_update"] = None
             __props__.__dict__["password_last_update"] = None
             __props__.__dict__["status"] = None
-            __props__.__dict__["urn"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(IdentityUser, __self__).__init__(
@@ -380,6 +380,7 @@ class IdentityUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            user_urn: Optional[pulumi.Input[str]] = None,
             creation: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             email: Optional[pulumi.Input[str]] = None,
@@ -388,8 +389,7 @@ class IdentityUser(pulumi.CustomResource):
             login: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             password_last_update: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[str]] = None,
-            urn: Optional[pulumi.Input[str]] = None) -> 'IdentityUser':
+            status: Optional[pulumi.Input[str]] = None) -> 'IdentityUser':
         """
         Get an existing IdentityUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -397,6 +397,7 @@ class IdentityUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] user_urn: URN of the user, used when writing IAM policies
         :param pulumi.Input[str] creation: Creation date of this user.
         :param pulumi.Input[str] description: User description.
         :param pulumi.Input[str] email: User's email.
@@ -406,12 +407,12 @@ class IdentityUser(pulumi.CustomResource):
         :param pulumi.Input[str] password: User's password.
         :param pulumi.Input[str] password_last_update: When the user changed his password for the last time.
         :param pulumi.Input[str] status: Current user's status.
-        :param pulumi.Input[str] urn: URN of the user, used when writing IAM policies
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _IdentityUserState.__new__(_IdentityUserState)
 
+        __props__.__dict__["user_urn"] = user_urn
         __props__.__dict__["creation"] = creation
         __props__.__dict__["description"] = description
         __props__.__dict__["email"] = email
@@ -421,8 +422,15 @@ class IdentityUser(pulumi.CustomResource):
         __props__.__dict__["password"] = password
         __props__.__dict__["password_last_update"] = password_last_update
         __props__.__dict__["status"] = status
-        __props__.__dict__["urn"] = urn
         return IdentityUser(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="UserURN")
+    def user_urn(self) -> pulumi.Output[str]:
+        """
+        URN of the user, used when writing IAM policies
+        """
+        return pulumi.get(self, "user_urn")
 
     @property
     @pulumi.getter
@@ -495,12 +503,4 @@ class IdentityUser(pulumi.CustomResource):
         Current user's status.
         """
         return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter
-    def urn(self) -> pulumi.Output[str]:
-        """
-        URN of the user, used when writing IAM policies
-        """
-        return pulumi.get(self, "urn")
 

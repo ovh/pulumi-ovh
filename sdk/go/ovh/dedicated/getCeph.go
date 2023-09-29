@@ -61,6 +61,8 @@ type GetCephArgs struct {
 
 // A collection of values returned by getCeph.
 type GetCephResult struct {
+	// URN of the CEPH instance
+	CephURN string `pulumi:"CephURN"`
 	// list of CEPH monitors IPs
 	CephMons []string `pulumi:"cephMons"`
 	// CEPH cluster version
@@ -88,8 +90,6 @@ type GetCephResult struct {
 	State string `pulumi:"state"`
 	// the status of the service
 	Status string `pulumi:"status"`
-	// URN of the CEPH instance
-	Urn string `pulumi:"urn"`
 }
 
 func GetCephOutput(ctx *pulumi.Context, args GetCephOutputArgs, opts ...pulumi.InvokeOption) GetCephResultOutput {
@@ -138,6 +138,11 @@ func (o GetCephResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCep
 	return pulumix.Output[GetCephResult]{
 		OutputState: o.OutputState,
 	}
+}
+
+// URN of the CEPH instance
+func (o GetCephResultOutput) CephURN() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCephResult) string { return v.CephURN }).(pulumi.StringOutput)
 }
 
 // list of CEPH monitors IPs
@@ -195,11 +200,6 @@ func (o GetCephResultOutput) State() pulumi.StringOutput {
 // the status of the service
 func (o GetCephResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCephResult) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// URN of the CEPH instance
-func (o GetCephResultOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCephResult) string { return v.Urn }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -102,6 +102,10 @@ namespace Pulumi.Ovh.Domain
     public sealed class GetZoneResult
     {
         /// <summary>
+        /// URN of the DNS zone
+        /// </summary>
+        public readonly string ZoneURN;
+        /// <summary>
         /// Is DNSSEC supported by this zone
         /// </summary>
         public readonly bool DnssecSupported;
@@ -122,13 +126,11 @@ namespace Pulumi.Ovh.Domain
         /// Name servers that host the DNS zone
         /// </summary>
         public readonly ImmutableArray<string> NameServers;
-        /// <summary>
-        /// URN of the DNS zone
-        /// </summary>
-        public readonly string Urn;
 
         [OutputConstructor]
         private GetZoneResult(
+            string ZoneURN,
+
             bool dnssecSupported,
 
             bool hasDnsAnycast,
@@ -139,17 +141,15 @@ namespace Pulumi.Ovh.Domain
 
             string name,
 
-            ImmutableArray<string> nameServers,
-
-            string urn)
+            ImmutableArray<string> nameServers)
         {
+            this.ZoneURN = ZoneURN;
             DnssecSupported = dnssecSupported;
             HasDnsAnycast = hasDnsAnycast;
             Id = id;
             LastUpdate = lastUpdate;
             Name = name;
             NameServers = nameServers;
-            Urn = urn;
         }
     }
 }

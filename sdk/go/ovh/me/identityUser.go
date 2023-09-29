@@ -47,6 +47,8 @@ import (
 type IdentityUser struct {
 	pulumi.CustomResourceState
 
+	// URN of the user, used when writing IAM policies
+	UserURN pulumi.StringOutput `pulumi:"UserURN"`
 	// Creation date of this user.
 	Creation pulumi.StringOutput `pulumi:"creation"`
 	// User description.
@@ -65,8 +67,6 @@ type IdentityUser struct {
 	PasswordLastUpdate pulumi.StringOutput `pulumi:"passwordLastUpdate"`
 	// Current user's status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// URN of the user, used when writing IAM policies
-	Urn pulumi.StringOutput `pulumi:"urn"`
 }
 
 // NewIdentityUser registers a new resource with the given unique name, arguments, and options.
@@ -115,6 +115,8 @@ func GetIdentityUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IdentityUser resources.
 type identityUserState struct {
+	// URN of the user, used when writing IAM policies
+	UserURN *string `pulumi:"UserURN"`
 	// Creation date of this user.
 	Creation *string `pulumi:"creation"`
 	// User description.
@@ -133,11 +135,11 @@ type identityUserState struct {
 	PasswordLastUpdate *string `pulumi:"passwordLastUpdate"`
 	// Current user's status.
 	Status *string `pulumi:"status"`
-	// URN of the user, used when writing IAM policies
-	Urn *string `pulumi:"urn"`
 }
 
 type IdentityUserState struct {
+	// URN of the user, used when writing IAM policies
+	UserURN pulumi.StringPtrInput
 	// Creation date of this user.
 	Creation pulumi.StringPtrInput
 	// User description.
@@ -156,8 +158,6 @@ type IdentityUserState struct {
 	PasswordLastUpdate pulumi.StringPtrInput
 	// Current user's status.
 	Status pulumi.StringPtrInput
-	// URN of the user, used when writing IAM policies
-	Urn pulumi.StringPtrInput
 }
 
 func (IdentityUserState) ElementType() reflect.Type {
@@ -302,6 +302,11 @@ func (o IdentityUserOutput) ToOutput(ctx context.Context) pulumix.Output[*Identi
 	}
 }
 
+// URN of the user, used when writing IAM policies
+func (o IdentityUserOutput) UserURN() pulumi.StringOutput {
+	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.UserURN }).(pulumi.StringOutput)
+}
+
 // Creation date of this user.
 func (o IdentityUserOutput) Creation() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.Creation }).(pulumi.StringOutput)
@@ -345,11 +350,6 @@ func (o IdentityUserOutput) PasswordLastUpdate() pulumi.StringOutput {
 // Current user's status.
 func (o IdentityUserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
-}
-
-// URN of the user, used when writing IAM policies
-func (o IdentityUserOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
 }
 
 type IdentityUserArrayOutput struct{ *pulumi.OutputState }

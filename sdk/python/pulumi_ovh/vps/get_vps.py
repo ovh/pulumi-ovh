@@ -21,7 +21,10 @@ class GetVpsResult:
     """
     A collection of values returned by getVps.
     """
-    def __init__(__self__, cluster=None, datacenter=None, displayname=None, id=None, ips=None, keymap=None, memory=None, model=None, name=None, netbootmode=None, offertype=None, service_name=None, slamonitoring=None, state=None, type=None, urn=None, vcore=None, zone=None):
+    def __init__(__self__, vps_urn=None, cluster=None, datacenter=None, displayname=None, id=None, ips=None, keymap=None, memory=None, model=None, name=None, netbootmode=None, offertype=None, service_name=None, slamonitoring=None, state=None, type=None, vcore=None, zone=None):
+        if vps_urn and not isinstance(vps_urn, str):
+            raise TypeError("Expected argument 'vps_urn' to be a str")
+        pulumi.set(__self__, "vps_urn", vps_urn)
         if cluster and not isinstance(cluster, str):
             raise TypeError("Expected argument 'cluster' to be a str")
         pulumi.set(__self__, "cluster", cluster)
@@ -67,15 +70,20 @@ class GetVpsResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        pulumi.set(__self__, "urn", urn)
         if vcore and not isinstance(vcore, int):
             raise TypeError("Expected argument 'vcore' to be a int")
         pulumi.set(__self__, "vcore", vcore)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="VpsURN")
+    def vps_urn(self) -> str:
+        """
+        The URN of the vps
+        """
+        return pulumi.get(self, "vps_urn")
 
     @property
     @pulumi.getter
@@ -198,14 +206,6 @@ class GetVpsResult:
 
     @property
     @pulumi.getter
-    def urn(self) -> str:
-        """
-        The URN of the vps
-        """
-        return pulumi.get(self, "urn")
-
-    @property
-    @pulumi.getter
     def vcore(self) -> int:
         """
         The number of vcore of the vps
@@ -227,6 +227,7 @@ class AwaitableGetVpsResult(GetVpsResult):
         if False:
             yield self
         return GetVpsResult(
+            vps_urn=self.vps_urn,
             cluster=self.cluster,
             datacenter=self.datacenter,
             displayname=self.displayname,
@@ -242,7 +243,6 @@ class AwaitableGetVpsResult(GetVpsResult):
             slamonitoring=self.slamonitoring,
             state=self.state,
             type=self.type,
-            urn=self.urn,
             vcore=self.vcore,
             zone=self.zone)
 
@@ -270,6 +270,7 @@ def get_vps(service_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('ovh:Vps/getVps:getVps', __args__, opts=opts, typ=GetVpsResult).value
 
     return AwaitableGetVpsResult(
+        vps_urn=pulumi.get(__ret__, 'vps_urn'),
         cluster=pulumi.get(__ret__, 'cluster'),
         datacenter=pulumi.get(__ret__, 'datacenter'),
         displayname=pulumi.get(__ret__, 'displayname'),
@@ -285,7 +286,6 @@ def get_vps(service_name: Optional[str] = None,
         slamonitoring=pulumi.get(__ret__, 'slamonitoring'),
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
-        urn=pulumi.get(__ret__, 'urn'),
         vcore=pulumi.get(__ret__, 'vcore'),
         zone=pulumi.get(__ret__, 'zone'))
 

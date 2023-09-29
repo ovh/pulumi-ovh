@@ -43,6 +43,10 @@ export interface GetServerArgs {
  */
 export interface GetServerResult {
     /**
+     * URN of the dedicated server instance
+     */
+    readonly ServerURN: string;
+    /**
      * boot id of the server
      */
     readonly bootId: number;
@@ -127,10 +131,6 @@ export interface GetServerResult {
      * Dedicated server support level (critical, fastpath, gs, pro)
      */
     readonly supportLevel: string;
-    /**
-     * URN of the dedicated server instance
-     */
-    readonly urn: string;
     /**
      * the list of Virtualnetworkinterface assiociated with this server
      */

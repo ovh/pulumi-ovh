@@ -64,6 +64,10 @@ export class Vrack extends pulumi.CustomResource {
     }
 
     /**
+     * The URN of the vrack, used with IAM permissions
+     */
+    public /*out*/ readonly VrackURN!: pulumi.Output<string>;
+    /**
      * yourvrackdescription
      */
     public readonly description!: pulumi.Output<string>;
@@ -97,10 +101,6 @@ export class Vrack extends pulumi.CustomResource {
      * The internal name of your vrack
      */
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
-    /**
-     * The URN of the vrack, used with IAM permissions
-     */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a Vrack resource with the given unique name, arguments, and options.
@@ -115,6 +115,7 @@ export class Vrack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VrackState | undefined;
+            resourceInputs["VrackURN"] = state ? state.VrackURN : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orders"] = state ? state.orders : undefined;
@@ -123,7 +124,6 @@ export class Vrack extends pulumi.CustomResource {
             resourceInputs["plan"] = state ? state.plan : undefined;
             resourceInputs["planOptions"] = state ? state.planOptions : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as VrackArgs | undefined;
             if ((!args || args.ovhSubsidiary === undefined) && !opts.urn) {
@@ -138,9 +138,9 @@ export class Vrack extends pulumi.CustomResource {
             resourceInputs["paymentMean"] = args ? args.paymentMean : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["planOptions"] = args ? args.planOptions : undefined;
+            resourceInputs["VrackURN"] = undefined /*out*/;
             resourceInputs["orders"] = undefined /*out*/;
             resourceInputs["serviceName"] = undefined /*out*/;
-            resourceInputs["urn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Vrack.__pulumiType, name, resourceInputs, opts);
@@ -151,6 +151,10 @@ export class Vrack extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Vrack resources.
  */
 export interface VrackState {
+    /**
+     * The URN of the vrack, used with IAM permissions
+     */
+    VrackURN?: pulumi.Input<string>;
     /**
      * yourvrackdescription
      */
@@ -185,10 +189,6 @@ export interface VrackState {
      * The internal name of your vrack
      */
     serviceName?: pulumi.Input<string>;
-    /**
-     * The URN of the vrack, used with IAM permissions
-     */
-    urn?: pulumi.Input<string>;
 }
 
 /**

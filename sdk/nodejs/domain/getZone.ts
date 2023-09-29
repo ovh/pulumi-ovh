@@ -41,6 +41,10 @@ export interface GetZoneArgs {
  */
 export interface GetZoneResult {
     /**
+     * URN of the DNS zone
+     */
+    readonly ZoneURN: string;
+    /**
      * Is DNSSEC supported by this zone
      */
     readonly dnssecSupported: boolean;
@@ -61,10 +65,6 @@ export interface GetZoneResult {
      * Name servers that host the DNS zone
      */
     readonly nameServers: string[];
-    /**
-     * URN of the DNS zone
-     */
-    readonly urn: string;
 }
 /**
  * Use this data source to retrieve information about a domain zone.

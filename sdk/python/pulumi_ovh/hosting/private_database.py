@@ -124,6 +124,7 @@ class PrivateDatabaseArgs:
 @pulumi.input_type
 class _PrivateDatabaseState:
     def __init__(__self__, *,
+                 database_urn: Optional[pulumi.Input[str]] = None,
                  cpu: Optional[pulumi.Input[int]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -145,12 +146,12 @@ class _PrivateDatabaseState:
                  service_name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 urn: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  version_label: Optional[pulumi.Input[str]] = None,
                  version_number: Optional[pulumi.Input[float]] = None):
         """
         Input properties used for looking up and filtering PrivateDatabase resources.
+        :param pulumi.Input[str] database_urn: URN of the private database, used when writing IAM policies
         :param pulumi.Input[int] cpu: Number of CPU on your private database
         :param pulumi.Input[str] datacenter: Datacenter where this private database is located
         :param pulumi.Input[str] display_name: Name displayed in customer panel for your private database
@@ -172,11 +173,12 @@ class _PrivateDatabaseState:
         :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[str] state: Private database state
         :param pulumi.Input[str] type: Private database type
-        :param pulumi.Input[str] urn: URN of the private database, used when writing IAM policies
         :param pulumi.Input[str] version: Private database available versions
         :param pulumi.Input[str] version_label: Private database version label
         :param pulumi.Input[float] version_number: Private database version number
         """
+        if database_urn is not None:
+            pulumi.set(__self__, "database_urn", database_urn)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if datacenter is not None:
@@ -222,14 +224,24 @@ class _PrivateDatabaseState:
             pulumi.set(__self__, "state", state)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if urn is not None:
-            pulumi.set(__self__, "urn", urn)
         if version is not None:
             pulumi.set(__self__, "version", version)
         if version_label is not None:
             pulumi.set(__self__, "version_label", version_label)
         if version_number is not None:
             pulumi.set(__self__, "version_number", version_number)
+
+    @property
+    @pulumi.getter(name="DatabaseURN")
+    def database_urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        URN of the private database, used when writing IAM policies
+        """
+        return pulumi.get(self, "database_urn")
+
+    @database_urn.setter
+    def database_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_urn", value)
 
     @property
     @pulumi.getter
@@ -488,18 +500,6 @@ class _PrivateDatabaseState:
 
     @property
     @pulumi.getter
-    def urn(self) -> Optional[pulumi.Input[str]]:
-        """
-        URN of the private database, used when writing IAM policies
-        """
-        return pulumi.get(self, "urn")
-
-    @urn.setter
-    def urn(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "urn", value)
-
-    @property
-    @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
         Private database available versions
@@ -689,6 +689,7 @@ class PrivateDatabase(pulumi.CustomResource):
             __props__.__dict__["plan"] = plan
             __props__.__dict__["plan_options"] = plan_options
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["database_urn"] = None
             __props__.__dict__["cpu"] = None
             __props__.__dict__["datacenter"] = None
             __props__.__dict__["hostname"] = None
@@ -704,7 +705,6 @@ class PrivateDatabase(pulumi.CustomResource):
             __props__.__dict__["server"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["type"] = None
-            __props__.__dict__["urn"] = None
             __props__.__dict__["version"] = None
             __props__.__dict__["version_label"] = None
             __props__.__dict__["version_number"] = None
@@ -718,6 +718,7 @@ class PrivateDatabase(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            database_urn: Optional[pulumi.Input[str]] = None,
             cpu: Optional[pulumi.Input[int]] = None,
             datacenter: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -739,7 +740,6 @@ class PrivateDatabase(pulumi.CustomResource):
             service_name: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            urn: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
             version_label: Optional[pulumi.Input[str]] = None,
             version_number: Optional[pulumi.Input[float]] = None) -> 'PrivateDatabase':
@@ -750,6 +750,7 @@ class PrivateDatabase(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] database_urn: URN of the private database, used when writing IAM policies
         :param pulumi.Input[int] cpu: Number of CPU on your private database
         :param pulumi.Input[str] datacenter: Datacenter where this private database is located
         :param pulumi.Input[str] display_name: Name displayed in customer panel for your private database
@@ -771,7 +772,6 @@ class PrivateDatabase(pulumi.CustomResource):
         :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[str] state: Private database state
         :param pulumi.Input[str] type: Private database type
-        :param pulumi.Input[str] urn: URN of the private database, used when writing IAM policies
         :param pulumi.Input[str] version: Private database available versions
         :param pulumi.Input[str] version_label: Private database version label
         :param pulumi.Input[float] version_number: Private database version number
@@ -780,6 +780,7 @@ class PrivateDatabase(pulumi.CustomResource):
 
         __props__ = _PrivateDatabaseState.__new__(_PrivateDatabaseState)
 
+        __props__.__dict__["database_urn"] = database_urn
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["datacenter"] = datacenter
         __props__.__dict__["display_name"] = display_name
@@ -801,11 +802,18 @@ class PrivateDatabase(pulumi.CustomResource):
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
-        __props__.__dict__["urn"] = urn
         __props__.__dict__["version"] = version
         __props__.__dict__["version_label"] = version_label
         __props__.__dict__["version_number"] = version_number
         return PrivateDatabase(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="DatabaseURN")
+    def database_urn(self) -> pulumi.Output[str]:
+        """
+        URN of the private database, used when writing IAM policies
+        """
+        return pulumi.get(self, "database_urn")
 
     @property
     @pulumi.getter
@@ -977,14 +985,6 @@ class PrivateDatabase(pulumi.CustomResource):
         Private database type
         """
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def urn(self) -> pulumi.Output[str]:
-        """
-        URN of the private database, used when writing IAM policies
-        """
-        return pulumi.get(self, "urn")
 
     @property
     @pulumi.getter

@@ -102,6 +102,10 @@ namespace Pulumi.Ovh
     public sealed class GetServerResult
     {
         /// <summary>
+        /// URN of the dedicated server instance
+        /// </summary>
+        public readonly string ServerURN;
+        /// <summary>
         /// boot id of the server
         /// </summary>
         public readonly int BootId;
@@ -187,16 +191,14 @@ namespace Pulumi.Ovh
         /// </summary>
         public readonly string SupportLevel;
         /// <summary>
-        /// URN of the dedicated server instance
-        /// </summary>
-        public readonly string Urn;
-        /// <summary>
         /// the list of Virtualnetworkinterface assiociated with this server
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerVniResult> Vnis;
 
         [OutputConstructor]
         private GetServerResult(
+            string ServerURN,
+
             int bootId,
 
             string commercialRange,
@@ -241,10 +243,9 @@ namespace Pulumi.Ovh
 
             string supportLevel,
 
-            string urn,
-
             ImmutableArray<Outputs.GetServerVniResult> vnis)
         {
+            this.ServerURN = ServerURN;
             BootId = bootId;
             CommercialRange = commercialRange;
             Datacenter = datacenter;
@@ -267,7 +268,6 @@ namespace Pulumi.Ovh
             ServiceName = serviceName;
             State = state;
             SupportLevel = supportLevel;
-            Urn = urn;
             Vnis = vnis;
         }
     }

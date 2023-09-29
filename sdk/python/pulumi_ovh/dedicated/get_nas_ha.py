@@ -21,7 +21,10 @@ class GetNasHAResult:
     """
     A collection of values returned by getNasHA.
     """
-    def __init__(__self__, can_create_partition=None, custom_name=None, datacenter=None, disk_type=None, id=None, ip=None, monitored=None, service_name=None, urn=None, zpool_capacity=None, zpool_size=None):
+    def __init__(__self__, nas_haurn=None, can_create_partition=None, custom_name=None, datacenter=None, disk_type=None, id=None, ip=None, monitored=None, service_name=None, zpool_capacity=None, zpool_size=None):
+        if nas_haurn and not isinstance(nas_haurn, str):
+            raise TypeError("Expected argument 'nas_haurn' to be a str")
+        pulumi.set(__self__, "nas_haurn", nas_haurn)
         if can_create_partition and not isinstance(can_create_partition, bool):
             raise TypeError("Expected argument 'can_create_partition' to be a bool")
         pulumi.set(__self__, "can_create_partition", can_create_partition)
@@ -46,15 +49,20 @@ class GetNasHAResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        pulumi.set(__self__, "urn", urn)
         if zpool_capacity and not isinstance(zpool_capacity, float):
             raise TypeError("Expected argument 'zpool_capacity' to be a float")
         pulumi.set(__self__, "zpool_capacity", zpool_capacity)
         if zpool_size and not isinstance(zpool_size, float):
             raise TypeError("Expected argument 'zpool_size' to be a float")
         pulumi.set(__self__, "zpool_size", zpool_size)
+
+    @property
+    @pulumi.getter(name="NasHAURN")
+    def nas_haurn(self) -> str:
+        """
+        the URN of the HA-NAS instance
+        """
+        return pulumi.get(self, "nas_haurn")
 
     @property
     @pulumi.getter(name="canCreatePartition")
@@ -121,14 +129,6 @@ class GetNasHAResult:
         return pulumi.get(self, "service_name")
 
     @property
-    @pulumi.getter
-    def urn(self) -> str:
-        """
-        the URN of the HA-NAS instance
-        """
-        return pulumi.get(self, "urn")
-
-    @property
     @pulumi.getter(name="zpoolCapacity")
     def zpool_capacity(self) -> float:
         """
@@ -151,6 +151,7 @@ class AwaitableGetNasHAResult(GetNasHAResult):
         if False:
             yield self
         return GetNasHAResult(
+            nas_haurn=self.nas_haurn,
             can_create_partition=self.can_create_partition,
             custom_name=self.custom_name,
             datacenter=self.datacenter,
@@ -159,7 +160,6 @@ class AwaitableGetNasHAResult(GetNasHAResult):
             ip=self.ip,
             monitored=self.monitored,
             service_name=self.service_name,
-            urn=self.urn,
             zpool_capacity=self.zpool_capacity,
             zpool_size=self.zpool_size)
 
@@ -187,6 +187,7 @@ def get_nas_ha(service_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('ovh:Dedicated/getNasHA:getNasHA', __args__, opts=opts, typ=GetNasHAResult).value
 
     return AwaitableGetNasHAResult(
+        nas_haurn=pulumi.get(__ret__, 'nas_haurn'),
         can_create_partition=pulumi.get(__ret__, 'can_create_partition'),
         custom_name=pulumi.get(__ret__, 'custom_name'),
         datacenter=pulumi.get(__ret__, 'datacenter'),
@@ -195,7 +196,6 @@ def get_nas_ha(service_name: Optional[str] = None,
         ip=pulumi.get(__ret__, 'ip'),
         monitored=pulumi.get(__ret__, 'monitored'),
         service_name=pulumi.get(__ret__, 'service_name'),
-        urn=pulumi.get(__ret__, 'urn'),
         zpool_capacity=pulumi.get(__ret__, 'zpool_capacity'),
         zpool_size=pulumi.get(__ret__, 'zpool_size'))
 

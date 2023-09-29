@@ -35,6 +35,12 @@ namespace Pulumi.Ovh.Me
     public partial class IdentityGroup : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// URN of the user group, used when writing IAM policies
+        /// </summary>
+        [Output("GroupURN")]
+        public Output<string> GroupURN { get; private set; } = null!;
+
+        /// <summary>
         /// Creation date of this group.
         /// </summary>
         [Output("creation")]
@@ -69,12 +75,6 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
-
-        /// <summary>
-        /// URN of the user group, used when writing IAM policies
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
 
         /// <summary>
@@ -150,6 +150,12 @@ namespace Pulumi.Ovh.Me
     public sealed class IdentityGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// URN of the user group, used when writing IAM policies
+        /// </summary>
+        [Input("GroupURN")]
+        public Input<string>? GroupURN { get; set; }
+
+        /// <summary>
         /// Creation date of this group.
         /// </summary>
         [Input("creation")]
@@ -184,12 +190,6 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
-
-        /// <summary>
-        /// URN of the user group, used when writing IAM policies
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         public IdentityGroupState()
         {

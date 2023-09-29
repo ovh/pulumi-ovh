@@ -45,6 +45,8 @@ func GetMe(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetMeResult, erro
 
 // A collection of values returned by getMe.
 type GetMeResult struct {
+	// The resource URN of the account, to be used when writing IAM policies
+	AccountURN string `pulumi:"AccountURN"`
 	// Postal address of the account
 	Address string `pulumi:"address"`
 	// Area of the account
@@ -100,8 +102,6 @@ type GetMeResult struct {
 	SpareEmail string `pulumi:"spareEmail"`
 	// State of the postal address
 	State string `pulumi:"state"`
-	// The resource URN of the account, to be used when writing IAM policies
-	Urn string `pulumi:"urn"`
 	// VAT number
 	Vat string `pulumi:"vat"`
 	// Zipcode of the address

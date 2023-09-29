@@ -79,6 +79,12 @@ namespace Pulumi.Ovh.Hosting
     public partial class PrivateDatabase : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// URN of the private database, used when writing IAM policies
+        /// </summary>
+        [Output("DatabaseURN")]
+        public Output<string> DatabaseURN { get; private set; } = null!;
+
+        /// <summary>
         /// Number of CPU on your private database
         /// </summary>
         [Output("cpu")]
@@ -205,12 +211,6 @@ namespace Pulumi.Ovh.Hosting
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// URN of the private database, used when writing IAM policies
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
-
-        /// <summary>
         /// Private database available versions
         /// </summary>
         [Output("version")]
@@ -325,6 +325,12 @@ namespace Pulumi.Ovh.Hosting
 
     public sealed class PrivateDatabaseState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// URN of the private database, used when writing IAM policies
+        /// </summary>
+        [Input("DatabaseURN")]
+        public Input<string>? DatabaseURN { get; set; }
+
         /// <summary>
         /// Number of CPU on your private database
         /// </summary>
@@ -462,12 +468,6 @@ namespace Pulumi.Ovh.Hosting
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
-
-        /// <summary>
-        /// URN of the private database, used when writing IAM policies
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         /// <summary>
         /// Private database available versions

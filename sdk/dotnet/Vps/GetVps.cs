@@ -102,6 +102,10 @@ namespace Pulumi.Ovh.Vps
     public sealed class GetVpsResult
     {
         /// <summary>
+        /// The URN of the vps
+        /// </summary>
+        public readonly string VpsURN;
+        /// <summary>
         /// The OVHcloud cluster the vps is in
         /// </summary>
         public readonly string Cluster;
@@ -161,10 +165,6 @@ namespace Pulumi.Ovh.Vps
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The URN of the vps
-        /// </summary>
-        public readonly string Urn;
-        /// <summary>
         /// The number of vcore of the vps
         /// </summary>
         public readonly int Vcore;
@@ -175,6 +175,8 @@ namespace Pulumi.Ovh.Vps
 
         [OutputConstructor]
         private GetVpsResult(
+            string VpsURN,
+
             string cluster,
 
             ImmutableDictionary<string, string> datacenter,
@@ -205,12 +207,11 @@ namespace Pulumi.Ovh.Vps
 
             string type,
 
-            string urn,
-
             int vcore,
 
             string zone)
         {
+            this.VpsURN = VpsURN;
             Cluster = cluster;
             Datacenter = datacenter;
             Displayname = displayname;
@@ -226,7 +227,6 @@ namespace Pulumi.Ovh.Vps
             Slamonitoring = slamonitoring;
             State = state;
             Type = type;
-            Urn = urn;
             Vcore = vcore;
             Zone = zone;
         }

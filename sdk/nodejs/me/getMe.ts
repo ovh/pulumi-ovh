@@ -30,6 +30,10 @@ export function getMe(opts?: pulumi.InvokeOptions): Promise<GetMeResult> {
  */
 export interface GetMeResult {
     /**
+     * The resource URN of the account, to be used when writing IAM policies
+     */
+    readonly AccountURN: string;
+    /**
      * Postal address of the account
      */
     readonly address: string;
@@ -138,10 +142,6 @@ export interface GetMeResult {
      * State of the postal address
      */
     readonly state: string;
-    /**
-     * The resource URN of the account, to be used when writing IAM policies
-     */
-    readonly urn: string;
     /**
      * VAT number
      */

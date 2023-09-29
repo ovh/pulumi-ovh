@@ -41,6 +41,10 @@ export interface GetIdentityUserArgs {
  */
 export interface GetIdentityUserResult {
     /**
+     * User's identity URN.
+     */
+    readonly UserURN: string;
+    /**
      * Creation date of this user.
      */
     readonly creation: string;
@@ -76,10 +80,6 @@ export interface GetIdentityUserResult {
      * Current user's status.
      */
     readonly status: string;
-    /**
-     * User's identity URN.
-     */
-    readonly urn: string;
     readonly user: string;
 }
 /**

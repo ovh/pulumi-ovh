@@ -124,6 +124,7 @@ class VrackArgs:
 @pulumi.input_type
 class _VrackState:
     def __init__(__self__, *,
+                 vrack_urn: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input['VrackOrderArgs']]]] = None,
@@ -131,10 +132,10 @@ class _VrackState:
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['VrackPlanArgs']] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['VrackPlanOptionArgs']]]] = None,
-                 service_name: Optional[pulumi.Input[str]] = None,
-                 urn: Optional[pulumi.Input[str]] = None):
+                 service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Vrack resources.
+        :param pulumi.Input[str] vrack_urn: The URN of the vrack, used with IAM permissions
         :param pulumi.Input[str] description: yourvrackdescription
         :param pulumi.Input[str] name: yourvrackname
         :param pulumi.Input[Sequence[pulumi.Input['VrackOrderArgs']]] orders: Details about an Order
@@ -143,8 +144,9 @@ class _VrackState:
         :param pulumi.Input['VrackPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['VrackPlanOptionArgs']]] plan_options: Product Plan to order
         :param pulumi.Input[str] service_name: The internal name of your vrack
-        :param pulumi.Input[str] urn: The URN of the vrack, used with IAM permissions
         """
+        if vrack_urn is not None:
+            pulumi.set(__self__, "vrack_urn", vrack_urn)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -164,8 +166,18 @@ class _VrackState:
             pulumi.set(__self__, "plan_options", plan_options)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
-        if urn is not None:
-            pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="VrackURN")
+    def vrack_urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URN of the vrack, used with IAM permissions
+        """
+        return pulumi.get(self, "vrack_urn")
+
+    @vrack_urn.setter
+    def vrack_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vrack_urn", value)
 
     @property
     @pulumi.getter
@@ -265,18 +277,6 @@ class _VrackState:
     @service_name.setter
     def service_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_name", value)
-
-    @property
-    @pulumi.getter
-    def urn(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URN of the vrack, used with IAM permissions
-        """
-        return pulumi.get(self, "urn")
-
-    @urn.setter
-    def urn(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "urn", value)
 
 
 class Vrack(pulumi.CustomResource):
@@ -395,9 +395,9 @@ class Vrack(pulumi.CustomResource):
                 raise TypeError("Missing required property 'plan'")
             __props__.__dict__["plan"] = plan
             __props__.__dict__["plan_options"] = plan_options
+            __props__.__dict__["vrack_urn"] = None
             __props__.__dict__["orders"] = None
             __props__.__dict__["service_name"] = None
-            __props__.__dict__["urn"] = None
         super(Vrack, __self__).__init__(
             'ovh:Vrack/vrack:Vrack',
             resource_name,
@@ -408,6 +408,7 @@ class Vrack(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            vrack_urn: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackOrderArgs']]]]] = None,
@@ -415,8 +416,7 @@ class Vrack(pulumi.CustomResource):
             payment_mean: Optional[pulumi.Input[str]] = None,
             plan: Optional[pulumi.Input[pulumi.InputType['VrackPlanArgs']]] = None,
             plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackPlanOptionArgs']]]]] = None,
-            service_name: Optional[pulumi.Input[str]] = None,
-            urn: Optional[pulumi.Input[str]] = None) -> 'Vrack':
+            service_name: Optional[pulumi.Input[str]] = None) -> 'Vrack':
         """
         Get an existing Vrack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -424,6 +424,7 @@ class Vrack(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] vrack_urn: The URN of the vrack, used with IAM permissions
         :param pulumi.Input[str] description: yourvrackdescription
         :param pulumi.Input[str] name: yourvrackname
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackOrderArgs']]]] orders: Details about an Order
@@ -432,12 +433,12 @@ class Vrack(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VrackPlanArgs']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackPlanOptionArgs']]]] plan_options: Product Plan to order
         :param pulumi.Input[str] service_name: The internal name of your vrack
-        :param pulumi.Input[str] urn: The URN of the vrack, used with IAM permissions
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _VrackState.__new__(_VrackState)
 
+        __props__.__dict__["vrack_urn"] = vrack_urn
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["orders"] = orders
@@ -446,8 +447,15 @@ class Vrack(pulumi.CustomResource):
         __props__.__dict__["plan"] = plan
         __props__.__dict__["plan_options"] = plan_options
         __props__.__dict__["service_name"] = service_name
-        __props__.__dict__["urn"] = urn
         return Vrack(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="VrackURN")
+    def vrack_urn(self) -> pulumi.Output[str]:
+        """
+        The URN of the vrack, used with IAM permissions
+        """
+        return pulumi.get(self, "vrack_urn")
 
     @property
     @pulumi.getter
@@ -515,12 +523,4 @@ class Vrack(pulumi.CustomResource):
         The internal name of your vrack
         """
         return pulumi.get(self, "service_name")
-
-    @property
-    @pulumi.getter
-    def urn(self) -> pulumi.Output[str]:
-        """
-        The URN of the vrack, used with IAM permissions
-        """
-        return pulumi.get(self, "urn")
 

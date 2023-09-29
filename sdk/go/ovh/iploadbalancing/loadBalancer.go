@@ -85,6 +85,8 @@ import (
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
+	// URN of the load balancer, used when writing IAM policies
+	LoadBalancerURN pulumi.StringOutput `pulumi:"LoadBalancerURN"`
 	// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Your IP load balancing
@@ -117,8 +119,6 @@ type LoadBalancer struct {
 	SslConfiguration pulumi.StringOutput `pulumi:"sslConfiguration"`
 	// Current state of your IP
 	State pulumi.StringOutput `pulumi:"state"`
-	// URN of the load balancer, used when writing IAM policies
-	Urn pulumi.StringOutput `pulumi:"urn"`
 	// Vrack eligibility
 	VrackEligibility pulumi.BoolOutput `pulumi:"vrackEligibility"`
 	// Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
@@ -167,6 +167,8 @@ func GetLoadBalancer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancer resources.
 type loadBalancerState struct {
+	// URN of the load balancer, used when writing IAM policies
+	LoadBalancerURN *string `pulumi:"LoadBalancerURN"`
 	// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
 	DisplayName *string `pulumi:"displayName"`
 	// Your IP load balancing
@@ -199,8 +201,6 @@ type loadBalancerState struct {
 	SslConfiguration *string `pulumi:"sslConfiguration"`
 	// Current state of your IP
 	State *string `pulumi:"state"`
-	// URN of the load balancer, used when writing IAM policies
-	Urn *string `pulumi:"urn"`
 	// Vrack eligibility
 	VrackEligibility *bool `pulumi:"vrackEligibility"`
 	// Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
@@ -210,6 +210,8 @@ type loadBalancerState struct {
 }
 
 type LoadBalancerState struct {
+	// URN of the load balancer, used when writing IAM policies
+	LoadBalancerURN pulumi.StringPtrInput
 	// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
 	DisplayName pulumi.StringPtrInput
 	// Your IP load balancing
@@ -242,8 +244,6 @@ type LoadBalancerState struct {
 	SslConfiguration pulumi.StringPtrInput
 	// Current state of your IP
 	State pulumi.StringPtrInput
-	// URN of the load balancer, used when writing IAM policies
-	Urn pulumi.StringPtrInput
 	// Vrack eligibility
 	VrackEligibility pulumi.BoolPtrInput
 	// Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
@@ -402,6 +402,11 @@ func (o LoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBa
 	}
 }
 
+// URN of the load balancer, used when writing IAM policies
+func (o LoadBalancerOutput) LoadBalancerURN() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerURN }).(pulumi.StringOutput)
+}
+
 // Set the name displayed in ManagerV6 for your iplb (max 50 chars)
 func (o LoadBalancerOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
@@ -477,11 +482,6 @@ func (o LoadBalancerOutput) SslConfiguration() pulumi.StringOutput {
 // Current state of your IP
 func (o LoadBalancerOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// URN of the load balancer, used when writing IAM policies
-func (o LoadBalancerOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
 }
 
 // Vrack eligibility

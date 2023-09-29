@@ -57,6 +57,8 @@ type LookupIdentityUserArgs struct {
 
 // A collection of values returned by getIdentityUser.
 type LookupIdentityUserResult struct {
+	// User's identity URN.
+	UserURN string `pulumi:"UserURN"`
 	// Creation date of this user.
 	Creation string `pulumi:"creation"`
 	// User description.
@@ -75,9 +77,7 @@ type LookupIdentityUserResult struct {
 	PasswordLastUpdate string `pulumi:"passwordLastUpdate"`
 	// Current user's status.
 	Status string `pulumi:"status"`
-	// User's identity URN.
-	Urn  string `pulumi:"urn"`
-	User string `pulumi:"user"`
+	User   string `pulumi:"user"`
 }
 
 func LookupIdentityUserOutput(ctx *pulumi.Context, args LookupIdentityUserOutputArgs, opts ...pulumi.InvokeOption) LookupIdentityUserResultOutput {
@@ -124,6 +124,11 @@ func (o LookupIdentityUserResultOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
+// User's identity URN.
+func (o LookupIdentityUserResultOutput) UserURN() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIdentityUserResult) string { return v.UserURN }).(pulumi.StringOutput)
+}
+
 // Creation date of this user.
 func (o LookupIdentityUserResultOutput) Creation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIdentityUserResult) string { return v.Creation }).(pulumi.StringOutput)
@@ -167,11 +172,6 @@ func (o LookupIdentityUserResultOutput) PasswordLastUpdate() pulumi.StringOutput
 // Current user's status.
 func (o LookupIdentityUserResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIdentityUserResult) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// User's identity URN.
-func (o LookupIdentityUserResultOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIdentityUserResult) string { return v.Urn }).(pulumi.StringOutput)
 }
 
 func (o LookupIdentityUserResultOutput) User() pulumi.StringOutput {

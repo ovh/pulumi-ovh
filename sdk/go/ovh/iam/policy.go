@@ -43,10 +43,10 @@ import (
 //			_, err = Iam.NewPolicy(ctx, "manager", &Iam.PolicyArgs{
 //				Description: pulumi.String("Users are allowed to use the OVH manager"),
 //				Identities: pulumi.StringArray{
-//					myGroup.Urn,
+//					myGroup.GroupURN,
 //				},
 //				Resources: pulumi.StringArray{
-//					*pulumi.String(account.Urn),
+//					*pulumi.String(account.AccountURN),
 //				},
 //				Allows: pulumi.StringArray{
 //					pulumi.String("account:apiovh:me/get"),

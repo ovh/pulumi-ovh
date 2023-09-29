@@ -21,7 +21,10 @@ class GetZoneResult:
     """
     A collection of values returned by getZone.
     """
-    def __init__(__self__, dnssec_supported=None, has_dns_anycast=None, id=None, last_update=None, name=None, name_servers=None, urn=None):
+    def __init__(__self__, zone_urn=None, dnssec_supported=None, has_dns_anycast=None, id=None, last_update=None, name=None, name_servers=None):
+        if zone_urn and not isinstance(zone_urn, str):
+            raise TypeError("Expected argument 'zone_urn' to be a str")
+        pulumi.set(__self__, "zone_urn", zone_urn)
         if dnssec_supported and not isinstance(dnssec_supported, bool):
             raise TypeError("Expected argument 'dnssec_supported' to be a bool")
         pulumi.set(__self__, "dnssec_supported", dnssec_supported)
@@ -40,9 +43,14 @@ class GetZoneResult:
         if name_servers and not isinstance(name_servers, list):
             raise TypeError("Expected argument 'name_servers' to be a list")
         pulumi.set(__self__, "name_servers", name_servers)
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="ZoneURN")
+    def zone_urn(self) -> str:
+        """
+        URN of the DNS zone
+        """
+        return pulumi.get(self, "zone_urn")
 
     @property
     @pulumi.getter(name="dnssecSupported")
@@ -89,14 +97,6 @@ class GetZoneResult:
         """
         return pulumi.get(self, "name_servers")
 
-    @property
-    @pulumi.getter
-    def urn(self) -> str:
-        """
-        URN of the DNS zone
-        """
-        return pulumi.get(self, "urn")
-
 
 class AwaitableGetZoneResult(GetZoneResult):
     # pylint: disable=using-constant-test
@@ -104,13 +104,13 @@ class AwaitableGetZoneResult(GetZoneResult):
         if False:
             yield self
         return GetZoneResult(
+            zone_urn=self.zone_urn,
             dnssec_supported=self.dnssec_supported,
             has_dns_anycast=self.has_dns_anycast,
             id=self.id,
             last_update=self.last_update,
             name=self.name,
-            name_servers=self.name_servers,
-            urn=self.urn)
+            name_servers=self.name_servers)
 
 
 def get_zone(name: Optional[str] = None,
@@ -136,13 +136,13 @@ def get_zone(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('ovh:Domain/getZone:getZone', __args__, opts=opts, typ=GetZoneResult).value
 
     return AwaitableGetZoneResult(
+        zone_urn=pulumi.get(__ret__, 'zone_urn'),
         dnssec_supported=pulumi.get(__ret__, 'dnssec_supported'),
         has_dns_anycast=pulumi.get(__ret__, 'has_dns_anycast'),
         id=pulumi.get(__ret__, 'id'),
         last_update=pulumi.get(__ret__, 'last_update'),
         name=pulumi.get(__ret__, 'name'),
-        name_servers=pulumi.get(__ret__, 'name_servers'),
-        urn=pulumi.get(__ret__, 'urn'))
+        name_servers=pulumi.get(__ret__, 'name_servers'))
 
 
 @_utilities.lift_output_func(get_zone)

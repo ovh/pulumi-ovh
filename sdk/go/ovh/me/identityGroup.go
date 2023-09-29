@@ -43,6 +43,8 @@ import (
 type IdentityGroup struct {
 	pulumi.CustomResourceState
 
+	// URN of the user group, used when writing IAM policies
+	GroupURN pulumi.StringOutput `pulumi:"GroupURN"`
 	// Creation date of this group.
 	Creation pulumi.StringOutput `pulumi:"creation"`
 	// Is the group a default and immutable one.
@@ -55,8 +57,6 @@ type IdentityGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
 	Role pulumi.StringPtrOutput `pulumi:"role"`
-	// URN of the user group, used when writing IAM policies
-	Urn pulumi.StringOutput `pulumi:"urn"`
 }
 
 // NewIdentityGroup registers a new resource with the given unique name, arguments, and options.
@@ -89,6 +89,8 @@ func GetIdentityGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IdentityGroup resources.
 type identityGroupState struct {
+	// URN of the user group, used when writing IAM policies
+	GroupURN *string `pulumi:"GroupURN"`
 	// Creation date of this group.
 	Creation *string `pulumi:"creation"`
 	// Is the group a default and immutable one.
@@ -101,11 +103,11 @@ type identityGroupState struct {
 	Name *string `pulumi:"name"`
 	// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
 	Role *string `pulumi:"role"`
-	// URN of the user group, used when writing IAM policies
-	Urn *string `pulumi:"urn"`
 }
 
 type IdentityGroupState struct {
+	// URN of the user group, used when writing IAM policies
+	GroupURN pulumi.StringPtrInput
 	// Creation date of this group.
 	Creation pulumi.StringPtrInput
 	// Is the group a default and immutable one.
@@ -118,8 +120,6 @@ type IdentityGroupState struct {
 	Name pulumi.StringPtrInput
 	// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
 	Role pulumi.StringPtrInput
-	// URN of the user group, used when writing IAM policies
-	Urn pulumi.StringPtrInput
 }
 
 func (IdentityGroupState) ElementType() reflect.Type {
@@ -256,6 +256,11 @@ func (o IdentityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*Ident
 	}
 }
 
+// URN of the user group, used when writing IAM policies
+func (o IdentityGroupOutput) GroupURN() pulumi.StringOutput {
+	return o.ApplyT(func(v *IdentityGroup) pulumi.StringOutput { return v.GroupURN }).(pulumi.StringOutput)
+}
+
 // Creation date of this group.
 func (o IdentityGroupOutput) Creation() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityGroup) pulumi.StringOutput { return v.Creation }).(pulumi.StringOutput)
@@ -284,11 +289,6 @@ func (o IdentityGroupOutput) Name() pulumi.StringOutput {
 // Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
 func (o IdentityGroupOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityGroup) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
-}
-
-// URN of the user group, used when writing IAM policies
-func (o IdentityGroupOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v *IdentityGroup) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
 }
 
 type IdentityGroupArrayOutput struct{ *pulumi.OutputState }

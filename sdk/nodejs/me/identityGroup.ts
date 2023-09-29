@@ -48,6 +48,10 @@ export class IdentityGroup extends pulumi.CustomResource {
     }
 
     /**
+     * URN of the user group, used when writing IAM policies
+     */
+    public /*out*/ readonly GroupURN!: pulumi.Output<string>;
+    /**
      * Creation date of this group.
      */
     public /*out*/ readonly creation!: pulumi.Output<string>;
@@ -71,10 +75,6 @@ export class IdentityGroup extends pulumi.CustomResource {
      * Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
      */
     public readonly role!: pulumi.Output<string | undefined>;
-    /**
-     * URN of the user group, used when writing IAM policies
-     */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a IdentityGroup resource with the given unique name, arguments, and options.
@@ -89,22 +89,22 @@ export class IdentityGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentityGroupState | undefined;
+            resourceInputs["GroupURN"] = state ? state.GroupURN : undefined;
             resourceInputs["creation"] = state ? state.creation : undefined;
             resourceInputs["defaultGroup"] = state ? state.defaultGroup : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["lastUpdate"] = state ? state.lastUpdate : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as IdentityGroupArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["GroupURN"] = undefined /*out*/;
             resourceInputs["creation"] = undefined /*out*/;
             resourceInputs["defaultGroup"] = undefined /*out*/;
             resourceInputs["lastUpdate"] = undefined /*out*/;
-            resourceInputs["urn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IdentityGroup.__pulumiType, name, resourceInputs, opts);
@@ -115,6 +115,10 @@ export class IdentityGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IdentityGroup resources.
  */
 export interface IdentityGroupState {
+    /**
+     * URN of the user group, used when writing IAM policies
+     */
+    GroupURN?: pulumi.Input<string>;
     /**
      * Creation date of this group.
      */
@@ -139,10 +143,6 @@ export interface IdentityGroupState {
      * Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
      */
     role?: pulumi.Input<string>;
-    /**
-     * URN of the user group, used when writing IAM policies
-     */
-    urn?: pulumi.Input<string>;
 }
 
 /**

@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  * const myGroup = new ovh.me.IdentityGroup("myGroup", {description: "my_group created in Terraform"});
  * const manager = new ovh.iam.Policy("manager", {
  *     description: "Users are allowed to use the OVH manager",
- *     identities: [myGroup.urn],
- *     resources: [account.then(account => account.urn)],
+ *     identities: [myGroup.GroupURN],
+ *     resources: [account.then(account => account.AccountURN)],
  *     allows: [
  *         "account:apiovh:me/get",
  *         "account:apiovh:me/supportLevel/get",

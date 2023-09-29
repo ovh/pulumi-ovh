@@ -67,6 +67,10 @@ namespace Pulumi.Ovh.Me
     public sealed class GetMeResult
     {
         /// <summary>
+        /// The resource URN of the account, to be used when writing IAM policies
+        /// </summary>
+        public readonly string AccountURN;
+        /// <summary>
         /// Postal address of the account
         /// </summary>
         public readonly string Address;
@@ -176,10 +180,6 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The resource URN of the account, to be used when writing IAM policies
-        /// </summary>
-        public readonly string Urn;
-        /// <summary>
         /// VAT number
         /// </summary>
         public readonly string Vat;
@@ -190,6 +190,8 @@ namespace Pulumi.Ovh.Me
 
         [OutputConstructor]
         private GetMeResult(
+            string AccountURN,
+
             string address,
 
             string area,
@@ -246,12 +248,11 @@ namespace Pulumi.Ovh.Me
 
             string state,
 
-            string urn,
-
             string vat,
 
             string zip)
         {
+            this.AccountURN = AccountURN;
             Address = address;
             Area = area;
             BirthCity = birthCity;
@@ -280,7 +281,6 @@ namespace Pulumi.Ovh.Me
             Sex = sex;
             SpareEmail = spareEmail;
             State = state;
-            Urn = urn;
             Vat = vat;
             Zip = zip;
         }

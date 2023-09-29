@@ -153,7 +153,14 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"ovh_cloud_project": {Tok: ovhResource(cloudProjectMod, "Project")},
+			"ovh_cloud_project": {
+				Tok: ovhResource(cloudProjectMod, "Project"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "ProjectURN",
+					},
+				},
+			},
 			"ovh_cloud_project_containerregistry": {
 				Tok: ovhResource(cloudProjectMod, "ContainerRegistry"),
 			},
@@ -273,6 +280,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_domain_zone": {
 				Tok: ovhResource(domainMod, "Zone"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "ZoneURN",
+					},
+				},
 			},
 			"ovh_domain_zone_record": {
 				Tok: ovhResource(domainMod, "ZoneRecord"),
@@ -282,6 +294,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_hosting_privatedatabase": {
 				Tok: ovhResource(hostingMod, "PrivateDatabase"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "DatabaseURN",
+					},
+				},
 			},
 			"ovh_hosting_privatedatabase_database": {
 				Tok: ovhResource(hostingMod, "PrivateDatabaseDb"),
@@ -311,6 +328,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_iploadbalancing": {
 				Tok: ovhResource(ipLoadBalancingMod, "LoadBalancer"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "LoadBalancerURN",
+					},
+				},
 			},
 			"ovh_iploadbalancing_http_farm": {
 				Tok: ovhResource(ipLoadBalancingMod, "HttpFarm"),
@@ -350,6 +372,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_me_identity_user": {
 				Tok: ovhResource(meMod, "IdentityUser"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "UserURN",
+					},
+				},
 			},
 			"ovh_me_installation_template": {
 				Tok: ovhResource(meMod, "InstallationTemplate"),
@@ -371,6 +398,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_vrack": {
 				Tok: ovhResource(vrackMod, "Vrack"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "VrackURN",
+					},
+				},
 			},
 			"ovh_vrack_cloudproject": {
 				Tok: ovhResource(vrackMod, "CloudProject"),
@@ -397,12 +429,22 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dbaas_logs_cluster": {
 				Tok: ovhResource(dbaasMod, "LogsCluster"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "DBaasURN",
+					},
+				},
 			},
 			"ovh_iam_policy": {
 				Tok: ovhResource(iamMod, "Policy"),
 			},
 			"ovh_me_identity_group": {
 				Tok: ovhResource(meMod, "IdentityGroup"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "GroupURN",
+					},
+				},
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
@@ -555,9 +597,19 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dedicated_ceph": {
 				Tok: ovhDataSource(dedicatedMod, "getCeph"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "CephURN",
+					},
+				},
 			},
 			"ovh_dedicated_nasha": {
 				Tok: ovhDataSource(dedicatedMod, "getNasHA"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "NasHAURN",
+					},
+				},
 			},
 			"ovh_dedicated_server_boots": {
 				Tok: ovhDataSource(dedicatedMod, "getServerBoots"),
@@ -582,12 +634,22 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dedicated_server": {
 				Tok: ovhDataSource(ovhMod, "getServer"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "ServerURN",
+					},
+				},
 			},
 			"ovh_dedicated_servers": {
 				Tok: ovhDataSource(ovhMod, "getServers"),
 			},
 			"ovh_domain_zone": {
 				Tok: ovhDataSource(domainMod, "getZone"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "ZoneURN",
+					},
+				},
 			},
 			"ovh_ip_service": {
 				Tok: ovhDataSource(ipMod, "getService"),
@@ -603,9 +665,19 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_me": {
 				Tok: ovhDataSource(meMod, "getMe"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "AccountURN",
+					},
+				},
 			},
 			"ovh_me_identity_user": {
 				Tok: ovhDataSource(meMod, "getIdentityUser"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "UserURN",
+					},
+				},
 			},
 			"ovh_me_identity_users": {
 				Tok: ovhDataSource(meMod, "getIdentityUsers"),
@@ -651,15 +723,30 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_vps": {
 				Tok: ovhDataSource(vpsMod, "getVps"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "VpsURN",
+					},
+				},
 			},
 			"ovh_vpss": {
 				Tok: ovhDataSource(vpsMod, "getVpss"),
 			},
 			"ovh_vracks": {
 				Tok: ovhDataSource(vrackMod, "getVracks"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "VrackURN",
+					},
+				},
 			},
 			"ovh_dbaas_logs_cluster": {
 				Tok: ovhDataSource(dbaasMod, "getLogsCluster"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "DBaasURN",
+					},
+				},
 			},
 			/*
 			 "" not mapped to the Pulumi provider
@@ -683,6 +770,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_me_identity_group": {
 				Tok: ovhDataSource(meMod, "getIdentityGroup"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "GroupURN",
+					},
+				},
 			},
 			"ovh_me_identity_groups": {
 				Tok: ovhDataSource(meMod, "getIdentityGroups"),

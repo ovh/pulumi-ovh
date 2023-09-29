@@ -57,6 +57,8 @@ type GetServerArgs struct {
 
 // A collection of values returned by getServer.
 type GetServerResult struct {
+	// URN of the dedicated server instance
+	ServerURN string `pulumi:"ServerURN"`
 	// boot id of the server
 	BootId int `pulumi:"bootId"`
 	// dedicated server commercial range
@@ -100,8 +102,6 @@ type GetServerResult struct {
 	State string `pulumi:"state"`
 	// Dedicated server support level (critical, fastpath, gs, pro)
 	SupportLevel string `pulumi:"supportLevel"`
-	// URN of the dedicated server instance
-	Urn string `pulumi:"urn"`
 	// the list of Virtualnetworkinterface assiociated with this server
 	Vnis []GetServerVni `pulumi:"vnis"`
 }
@@ -148,6 +148,11 @@ func (o GetServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetS
 	return pulumix.Output[GetServerResult]{
 		OutputState: o.OutputState,
 	}
+}
+
+// URN of the dedicated server instance
+func (o GetServerResultOutput) ServerURN() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.ServerURN }).(pulumi.StringOutput)
 }
 
 // boot id of the server
@@ -257,11 +262,6 @@ func (o GetServerResultOutput) State() pulumi.StringOutput {
 // Dedicated server support level (critical, fastpath, gs, pro)
 func (o GetServerResultOutput) SupportLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.SupportLevel }).(pulumi.StringOutput)
-}
-
-// URN of the dedicated server instance
-func (o GetServerResultOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerResult) string { return v.Urn }).(pulumi.StringOutput)
 }
 
 // the list of Virtualnetworkinterface assiociated with this server

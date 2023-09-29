@@ -76,6 +76,10 @@ export class LoadBalancer extends pulumi.CustomResource {
     }
 
     /**
+     * URN of the load balancer, used when writing IAM policies
+     */
+    public /*out*/ readonly LoadBalancerURN!: pulumi.Output<string>;
+    /**
      * Set the name displayed in ManagerV6 for your iplb (max 50 chars)
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -138,10 +142,6 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * URN of the load balancer, used when writing IAM policies
-     */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
-    /**
      * Vrack eligibility
      */
     public /*out*/ readonly vrackEligibility!: pulumi.Output<boolean>;
@@ -167,6 +167,7 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
+            resourceInputs["LoadBalancerURN"] = state ? state.LoadBalancerURN : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["ipLoadbalancing"] = state ? state.ipLoadbalancing : undefined;
             resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
@@ -182,7 +183,6 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["sslConfiguration"] = state ? state.sslConfiguration : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
             resourceInputs["vrackEligibility"] = state ? state.vrackEligibility : undefined;
             resourceInputs["vrackName"] = state ? state.vrackName : undefined;
             resourceInputs["zones"] = state ? state.zones : undefined;
@@ -200,6 +200,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["planOptions"] = args ? args.planOptions : undefined;
             resourceInputs["sslConfiguration"] = args ? args.sslConfiguration : undefined;
+            resourceInputs["LoadBalancerURN"] = undefined /*out*/;
             resourceInputs["ipLoadbalancing"] = undefined /*out*/;
             resourceInputs["ipv4"] = undefined /*out*/;
             resourceInputs["ipv6"] = undefined /*out*/;
@@ -209,7 +210,6 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["orders"] = undefined /*out*/;
             resourceInputs["serviceName"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["urn"] = undefined /*out*/;
             resourceInputs["vrackEligibility"] = undefined /*out*/;
             resourceInputs["vrackName"] = undefined /*out*/;
             resourceInputs["zones"] = undefined /*out*/;
@@ -225,6 +225,10 @@ export class LoadBalancer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LoadBalancer resources.
  */
 export interface LoadBalancerState {
+    /**
+     * URN of the load balancer, used when writing IAM policies
+     */
+    LoadBalancerURN?: pulumi.Input<string>;
     /**
      * Set the name displayed in ManagerV6 for your iplb (max 50 chars)
      */
@@ -287,10 +291,6 @@ export interface LoadBalancerState {
      * Current state of your IP
      */
     state?: pulumi.Input<string>;
-    /**
-     * URN of the load balancer, used when writing IAM policies
-     */
-    urn?: pulumi.Input<string>;
     /**
      * Vrack eligibility
      */

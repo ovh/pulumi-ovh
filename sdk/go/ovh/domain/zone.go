@@ -77,6 +77,7 @@ import (
 type Zone struct {
 	pulumi.CustomResourceState
 
+	ZoneURN pulumi.StringOutput `pulumi:"ZoneURN"`
 	// Is DNSSEC supported by this zone
 	DnssecSupported pulumi.BoolOutput `pulumi:"dnssecSupported"`
 	// hasDnsAnycast flag of the DNS zone
@@ -99,7 +100,6 @@ type Zone struct {
 	Plan ZonePlanOutput `pulumi:"plan"`
 	// Product Plan to order
 	PlanOptions ZonePlanOptionArrayOutput `pulumi:"planOptions"`
-	Urn         pulumi.StringOutput       `pulumi:"urn"`
 }
 
 // NewZone registers a new resource with the given unique name, arguments, and options.
@@ -138,6 +138,7 @@ func GetZone(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Zone resources.
 type zoneState struct {
+	ZoneURN *string `pulumi:"ZoneURN"`
 	// Is DNSSEC supported by this zone
 	DnssecSupported *bool `pulumi:"dnssecSupported"`
 	// hasDnsAnycast flag of the DNS zone
@@ -160,10 +161,10 @@ type zoneState struct {
 	Plan *ZonePlan `pulumi:"plan"`
 	// Product Plan to order
 	PlanOptions []ZonePlanOption `pulumi:"planOptions"`
-	Urn         *string          `pulumi:"urn"`
 }
 
 type ZoneState struct {
+	ZoneURN pulumi.StringPtrInput
 	// Is DNSSEC supported by this zone
 	DnssecSupported pulumi.BoolPtrInput
 	// hasDnsAnycast flag of the DNS zone
@@ -186,7 +187,6 @@ type ZoneState struct {
 	Plan ZonePlanPtrInput
 	// Product Plan to order
 	PlanOptions ZonePlanOptionArrayInput
-	Urn         pulumi.StringPtrInput
 }
 
 func (ZoneState) ElementType() reflect.Type {
@@ -331,6 +331,10 @@ func (o ZoneOutput) ToOutput(ctx context.Context) pulumix.Output[*Zone] {
 	}
 }
 
+func (o ZoneOutput) ZoneURN() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.ZoneURN }).(pulumi.StringOutput)
+}
+
 // Is DNSSEC supported by this zone
 func (o ZoneOutput) DnssecSupported() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Zone) pulumi.BoolOutput { return v.DnssecSupported }).(pulumi.BoolOutput)
@@ -381,10 +385,6 @@ func (o ZoneOutput) Plan() ZonePlanOutput {
 // Product Plan to order
 func (o ZoneOutput) PlanOptions() ZonePlanOptionArrayOutput {
 	return o.ApplyT(func(v *Zone) ZonePlanOptionArrayOutput { return v.PlanOptions }).(ZonePlanOptionArrayOutput)
-}
-
-func (o ZoneOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
 }
 
 type ZoneArrayOutput struct{ *pulumi.OutputState }
