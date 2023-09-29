@@ -102,6 +102,10 @@ namespace Pulumi.Ovh.Me
     public sealed class GetIdentityUserResult
     {
         /// <summary>
+        /// User's identity URN.
+        /// </summary>
+        public readonly string UserURN;
+        /// <summary>
         /// Creation date of this user.
         /// </summary>
         public readonly string Creation;
@@ -137,14 +141,12 @@ namespace Pulumi.Ovh.Me
         /// Current user's status.
         /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// User's identity URN.
-        /// </summary>
-        public readonly string Urn;
         public readonly string User;
 
         [OutputConstructor]
         private GetIdentityUserResult(
+            string UserURN,
+
             string creation,
 
             string description,
@@ -163,10 +165,9 @@ namespace Pulumi.Ovh.Me
 
             string status,
 
-            string urn,
-
             string user)
         {
+            this.UserURN = UserURN;
             Creation = creation;
             Description = description;
             Email = email;
@@ -176,7 +177,6 @@ namespace Pulumi.Ovh.Me
             Login = login;
             PasswordLastUpdate = passwordLastUpdate;
             Status = status;
-            Urn = urn;
             User = user;
         }
     }

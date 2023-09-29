@@ -57,6 +57,8 @@ type GetNasHAArgs struct {
 
 // A collection of values returned by getNasHA.
 type GetNasHAResult struct {
+	// the URN of the HA-NAS instance
+	NasHAURN string `pulumi:"NasHAURN"`
 	// True, if partition creation is allowed on this HA-NAS
 	CanCreatePartition bool `pulumi:"canCreatePartition"`
 	// The name you give to the HA-NAS
@@ -73,8 +75,6 @@ type GetNasHAResult struct {
 	Monitored bool `pulumi:"monitored"`
 	// The storage service name
 	ServiceName string `pulumi:"serviceName"`
-	// the URN of the HA-NAS instance
-	Urn string `pulumi:"urn"`
 	// percentage of HA-NAS space used in %
 	ZpoolCapacity float64 `pulumi:"zpoolCapacity"`
 	// the size of the HA-NAS in GB
@@ -125,6 +125,11 @@ func (o GetNasHAResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNa
 	}
 }
 
+// the URN of the HA-NAS instance
+func (o GetNasHAResultOutput) NasHAURN() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasHAResult) string { return v.NasHAURN }).(pulumi.StringOutput)
+}
+
 // True, if partition creation is allowed on this HA-NAS
 func (o GetNasHAResultOutput) CanCreatePartition() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNasHAResult) bool { return v.CanCreatePartition }).(pulumi.BoolOutput)
@@ -163,11 +168,6 @@ func (o GetNasHAResultOutput) Monitored() pulumi.BoolOutput {
 // The storage service name
 func (o GetNasHAResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasHAResult) string { return v.ServiceName }).(pulumi.StringOutput)
-}
-
-// the URN of the HA-NAS instance
-func (o GetNasHAResultOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNasHAResult) string { return v.Urn }).(pulumi.StringOutput)
 }
 
 // percentage of HA-NAS space used in %

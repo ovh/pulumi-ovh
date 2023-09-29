@@ -41,6 +41,10 @@ export interface GetVpsArgs {
  */
 export interface GetVpsResult {
     /**
+     * The URN of the vps
+     */
+    readonly VpsURN: string;
+    /**
      * The OVHcloud cluster the vps is in
      */
     readonly cluster: string;
@@ -99,10 +103,6 @@ export interface GetVpsResult {
      * The type of server
      */
     readonly type: string;
-    /**
-     * The URN of the vps
-     */
-    readonly urn: string;
     /**
      * The number of vcore of the vps
      */

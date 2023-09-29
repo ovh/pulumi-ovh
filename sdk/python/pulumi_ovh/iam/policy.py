@@ -306,8 +306,8 @@ class Policy(pulumi.CustomResource):
         my_group = ovh.me.IdentityGroup("myGroup", description="my_group created in Terraform")
         manager = ovh.iam.Policy("manager",
             description="Users are allowed to use the OVH manager",
-            identities=[my_group.urn],
-            resources=[account.urn],
+            identities=[my_group.group_urn],
+            resources=[account.account_urn],
             allows=[
                 "account:apiovh:me/get",
                 "account:apiovh:me/supportLevel/get",
@@ -346,8 +346,8 @@ class Policy(pulumi.CustomResource):
         my_group = ovh.me.IdentityGroup("myGroup", description="my_group created in Terraform")
         manager = ovh.iam.Policy("manager",
             description="Users are allowed to use the OVH manager",
-            identities=[my_group.urn],
-            resources=[account.urn],
+            identities=[my_group.group_urn],
+            resources=[account.account_urn],
             allows=[
                 "account:apiovh:me/get",
                 "account:apiovh:me/supportLevel/get",

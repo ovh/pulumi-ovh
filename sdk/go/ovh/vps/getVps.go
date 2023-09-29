@@ -57,6 +57,8 @@ type GetVpsArgs struct {
 
 // A collection of values returned by getVps.
 type GetVpsResult struct {
+	// The URN of the vps
+	VpsURN string `pulumi:"VpsURN"`
 	// The OVHcloud cluster the vps is in
 	Cluster string `pulumi:"cluster"`
 	// The datacenter in which the vps is located
@@ -90,8 +92,6 @@ type GetVpsResult struct {
 	State string `pulumi:"state"`
 	// The type of server
 	Type string `pulumi:"type"`
-	// The URN of the vps
-	Urn string `pulumi:"urn"`
 	// The number of vcore of the vps
 	Vcore int `pulumi:"vcore"`
 	// The OVHcloud zone where the vps is
@@ -140,6 +140,11 @@ func (o GetVpsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpsR
 	return pulumix.Output[GetVpsResult]{
 		OutputState: o.OutputState,
 	}
+}
+
+// The URN of the vps
+func (o GetVpsResultOutput) VpsURN() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpsResult) string { return v.VpsURN }).(pulumi.StringOutput)
 }
 
 // The OVHcloud cluster the vps is in
@@ -218,11 +223,6 @@ func (o GetVpsResultOutput) State() pulumi.StringOutput {
 // The type of server
 func (o GetVpsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpsResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The URN of the vps
-func (o GetVpsResultOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.Urn }).(pulumi.StringOutput)
 }
 
 // The number of vcore of the vps

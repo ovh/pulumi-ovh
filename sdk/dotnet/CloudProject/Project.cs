@@ -23,6 +23,12 @@ namespace Pulumi.Ovh.CloudProject
     [OvhResourceType("ovh:CloudProject/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The URN of the cloud project
+        /// </summary>
+        [Output("ProjectURN")]
+        public Output<string> ProjectURN { get; private set; } = null!;
+
         [Output("access")]
         public Output<string> Access { get; private set; } = null!;
 
@@ -79,12 +85,6 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
-
-        /// <summary>
-        /// The URN of the cloud project
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
 
         /// <summary>
@@ -177,6 +177,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The URN of the cloud project
+        /// </summary>
+        [Input("ProjectURN")]
+        public Input<string>? ProjectURN { get; set; }
+
         [Input("access")]
         public Input<string>? Access { get; set; }
 
@@ -245,12 +251,6 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
-
-        /// <summary>
-        /// The URN of the cloud project
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         public ProjectState()
         {

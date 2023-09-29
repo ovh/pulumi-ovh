@@ -21,7 +21,10 @@ class GetCephResult:
     """
     A collection of values returned by getCeph.
     """
-    def __init__(__self__, ceph_mons=None, ceph_version=None, crush_tunables=None, id=None, label=None, region=None, service_name=None, size=None, state=None, status=None, urn=None):
+    def __init__(__self__, ceph_urn=None, ceph_mons=None, ceph_version=None, crush_tunables=None, id=None, label=None, region=None, service_name=None, size=None, state=None, status=None):
+        if ceph_urn and not isinstance(ceph_urn, str):
+            raise TypeError("Expected argument 'ceph_urn' to be a str")
+        pulumi.set(__self__, "ceph_urn", ceph_urn)
         if ceph_mons and not isinstance(ceph_mons, list):
             raise TypeError("Expected argument 'ceph_mons' to be a list")
         pulumi.set(__self__, "ceph_mons", ceph_mons)
@@ -52,9 +55,14 @@ class GetCephResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="CephURN")
+    def ceph_urn(self) -> str:
+        """
+        URN of the CEPH instance
+        """
+        return pulumi.get(self, "ceph_urn")
 
     @property
     @pulumi.getter(name="cephMons")
@@ -141,14 +149,6 @@ class GetCephResult:
         """
         return pulumi.get(self, "status")
 
-    @property
-    @pulumi.getter
-    def urn(self) -> str:
-        """
-        URN of the CEPH instance
-        """
-        return pulumi.get(self, "urn")
-
 
 class AwaitableGetCephResult(GetCephResult):
     # pylint: disable=using-constant-test
@@ -156,6 +156,7 @@ class AwaitableGetCephResult(GetCephResult):
         if False:
             yield self
         return GetCephResult(
+            ceph_urn=self.ceph_urn,
             ceph_mons=self.ceph_mons,
             ceph_version=self.ceph_version,
             crush_tunables=self.crush_tunables,
@@ -165,8 +166,7 @@ class AwaitableGetCephResult(GetCephResult):
             service_name=self.service_name,
             size=self.size,
             state=self.state,
-            status=self.status,
-            urn=self.urn)
+            status=self.status)
 
 
 def get_ceph(ceph_version: Optional[str] = None,
@@ -198,6 +198,7 @@ def get_ceph(ceph_version: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('ovh:Dedicated/getCeph:getCeph', __args__, opts=opts, typ=GetCephResult).value
 
     return AwaitableGetCephResult(
+        ceph_urn=pulumi.get(__ret__, 'ceph_urn'),
         ceph_mons=pulumi.get(__ret__, 'ceph_mons'),
         ceph_version=pulumi.get(__ret__, 'ceph_version'),
         crush_tunables=pulumi.get(__ret__, 'crush_tunables'),
@@ -207,8 +208,7 @@ def get_ceph(ceph_version: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         size=pulumi.get(__ret__, 'size'),
         state=pulumi.get(__ret__, 'state'),
-        status=pulumi.get(__ret__, 'status'),
-        urn=pulumi.get(__ret__, 'urn'))
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_ceph)

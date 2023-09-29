@@ -72,6 +72,7 @@ export class Zone extends pulumi.CustomResource {
         return obj['__pulumiType'] === Zone.__pulumiType;
     }
 
+    public /*out*/ readonly ZoneURN!: pulumi.Output<string>;
     /**
      * Is DNSSEC supported by this zone
      */
@@ -114,7 +115,6 @@ export class Zone extends pulumi.CustomResource {
      * Product Plan to order
      */
     public readonly planOptions!: pulumi.Output<outputs.Domain.ZonePlanOption[] | undefined>;
-    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -129,6 +129,7 @@ export class Zone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
+            resourceInputs["ZoneURN"] = state ? state.ZoneURN : undefined;
             resourceInputs["dnssecSupported"] = state ? state.dnssecSupported : undefined;
             resourceInputs["hasDnsAnycast"] = state ? state.hasDnsAnycast : undefined;
             resourceInputs["lastUpdate"] = state ? state.lastUpdate : undefined;
@@ -139,7 +140,6 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["paymentMean"] = state ? state.paymentMean : undefined;
             resourceInputs["plan"] = state ? state.plan : undefined;
             resourceInputs["planOptions"] = state ? state.planOptions : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
             if ((!args || args.ovhSubsidiary === undefined) && !opts.urn) {
@@ -152,13 +152,13 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["paymentMean"] = args ? args.paymentMean : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["planOptions"] = args ? args.planOptions : undefined;
+            resourceInputs["ZoneURN"] = undefined /*out*/;
             resourceInputs["dnssecSupported"] = undefined /*out*/;
             resourceInputs["hasDnsAnycast"] = undefined /*out*/;
             resourceInputs["lastUpdate"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nameServers"] = undefined /*out*/;
             resourceInputs["orders"] = undefined /*out*/;
-            resourceInputs["urn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Zone.__pulumiType, name, resourceInputs, opts);
@@ -169,6 +169,7 @@ export class Zone extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Zone resources.
  */
 export interface ZoneState {
+    ZoneURN?: pulumi.Input<string>;
     /**
      * Is DNSSEC supported by this zone
      */
@@ -211,7 +212,6 @@ export interface ZoneState {
      * Product Plan to order
      */
     planOptions?: pulumi.Input<pulumi.Input<inputs.Domain.ZonePlanOption>[]>;
-    urn?: pulumi.Input<string>;
 }
 
 /**

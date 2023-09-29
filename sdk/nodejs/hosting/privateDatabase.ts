@@ -83,6 +83,10 @@ export class PrivateDatabase extends pulumi.CustomResource {
     }
 
     /**
+     * URN of the private database, used when writing IAM policies
+     */
+    public /*out*/ readonly DatabaseURN!: pulumi.Output<string>;
+    /**
      * Number of CPU on your private database
      */
     public /*out*/ readonly cpu!: pulumi.Output<number>;
@@ -169,10 +173,6 @@ export class PrivateDatabase extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * URN of the private database, used when writing IAM policies
-     */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
-    /**
      * Private database available versions
      */
     public /*out*/ readonly version!: pulumi.Output<string>;
@@ -198,6 +198,7 @@ export class PrivateDatabase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrivateDatabaseState | undefined;
+            resourceInputs["DatabaseURN"] = state ? state.DatabaseURN : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["datacenter"] = state ? state.datacenter : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -219,7 +220,6 @@ export class PrivateDatabase extends pulumi.CustomResource {
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
             resourceInputs["versionLabel"] = state ? state.versionLabel : undefined;
             resourceInputs["versionNumber"] = state ? state.versionNumber : undefined;
@@ -237,6 +237,7 @@ export class PrivateDatabase extends pulumi.CustomResource {
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["planOptions"] = args ? args.planOptions : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["DatabaseURN"] = undefined /*out*/;
             resourceInputs["cpu"] = undefined /*out*/;
             resourceInputs["datacenter"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
@@ -252,7 +253,6 @@ export class PrivateDatabase extends pulumi.CustomResource {
             resourceInputs["server"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
-            resourceInputs["urn"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
             resourceInputs["versionLabel"] = undefined /*out*/;
             resourceInputs["versionNumber"] = undefined /*out*/;
@@ -266,6 +266,10 @@ export class PrivateDatabase extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PrivateDatabase resources.
  */
 export interface PrivateDatabaseState {
+    /**
+     * URN of the private database, used when writing IAM policies
+     */
+    DatabaseURN?: pulumi.Input<string>;
     /**
      * Number of CPU on your private database
      */
@@ -352,10 +356,6 @@ export interface PrivateDatabaseState {
      * Private database type
      */
     type?: pulumi.Input<string>;
-    /**
-     * URN of the private database, used when writing IAM policies
-     */
-    urn?: pulumi.Input<string>;
     /**
      * Private database available versions
      */

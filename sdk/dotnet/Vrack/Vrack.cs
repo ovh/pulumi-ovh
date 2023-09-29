@@ -54,6 +54,12 @@ namespace Pulumi.Ovh.Vrack
     public partial class Vrack : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The URN of the vrack, used with IAM permissions
+        /// </summary>
+        [Output("VrackURN")]
+        public Output<string> VrackURN { get; private set; } = null!;
+
+        /// <summary>
         /// yourvrackdescription
         /// </summary>
         [Output("description")]
@@ -100,12 +106,6 @@ namespace Pulumi.Ovh.Vrack
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
-
-        /// <summary>
-        /// The URN of the vrack, used with IAM permissions
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
 
         /// <summary>
@@ -205,6 +205,12 @@ namespace Pulumi.Ovh.Vrack
     public sealed class VrackState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The URN of the vrack, used with IAM permissions
+        /// </summary>
+        [Input("VrackURN")]
+        public Input<string>? VrackURN { get; set; }
+
+        /// <summary>
         /// yourvrackdescription
         /// </summary>
         [Input("description")]
@@ -263,12 +269,6 @@ namespace Pulumi.Ovh.Vrack
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
-
-        /// <summary>
-        /// The URN of the vrack, used with IAM permissions
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         public VrackState()
         {

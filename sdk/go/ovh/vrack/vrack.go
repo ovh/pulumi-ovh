@@ -68,6 +68,8 @@ import (
 type Vrack struct {
 	pulumi.CustomResourceState
 
+	// The URN of the vrack, used with IAM permissions
+	VrackURN pulumi.StringOutput `pulumi:"VrackURN"`
 	// yourvrackdescription
 	Description pulumi.StringOutput `pulumi:"description"`
 	// yourvrackname
@@ -86,8 +88,6 @@ type Vrack struct {
 	PlanOptions VrackPlanOptionArrayOutput `pulumi:"planOptions"`
 	// The internal name of your vrack
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// The URN of the vrack, used with IAM permissions
-	Urn pulumi.StringOutput `pulumi:"urn"`
 }
 
 // NewVrack registers a new resource with the given unique name, arguments, and options.
@@ -126,6 +126,8 @@ func GetVrack(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vrack resources.
 type vrackState struct {
+	// The URN of the vrack, used with IAM permissions
+	VrackURN *string `pulumi:"VrackURN"`
 	// yourvrackdescription
 	Description *string `pulumi:"description"`
 	// yourvrackname
@@ -144,11 +146,11 @@ type vrackState struct {
 	PlanOptions []VrackPlanOption `pulumi:"planOptions"`
 	// The internal name of your vrack
 	ServiceName *string `pulumi:"serviceName"`
-	// The URN of the vrack, used with IAM permissions
-	Urn *string `pulumi:"urn"`
 }
 
 type VrackState struct {
+	// The URN of the vrack, used with IAM permissions
+	VrackURN pulumi.StringPtrInput
 	// yourvrackdescription
 	Description pulumi.StringPtrInput
 	// yourvrackname
@@ -167,8 +169,6 @@ type VrackState struct {
 	PlanOptions VrackPlanOptionArrayInput
 	// The internal name of your vrack
 	ServiceName pulumi.StringPtrInput
-	// The URN of the vrack, used with IAM permissions
-	Urn pulumi.StringPtrInput
 }
 
 func (VrackState) ElementType() reflect.Type {
@@ -321,6 +321,11 @@ func (o VrackOutput) ToOutput(ctx context.Context) pulumix.Output[*Vrack] {
 	}
 }
 
+// The URN of the vrack, used with IAM permissions
+func (o VrackOutput) VrackURN() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vrack) pulumi.StringOutput { return v.VrackURN }).(pulumi.StringOutput)
+}
+
 // yourvrackdescription
 func (o VrackOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vrack) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -361,11 +366,6 @@ func (o VrackOutput) PlanOptions() VrackPlanOptionArrayOutput {
 // The internal name of your vrack
 func (o VrackOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vrack) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
-}
-
-// The URN of the vrack, used with IAM permissions
-func (o VrackOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v *Vrack) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
 }
 
 type VrackArrayOutput struct{ *pulumi.OutputState }

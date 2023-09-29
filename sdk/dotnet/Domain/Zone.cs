@@ -65,6 +65,9 @@ namespace Pulumi.Ovh.Domain
     [OvhResourceType("ovh:Domain/zone:Zone")]
     public partial class Zone : global::Pulumi.CustomResource
     {
+        [Output("ZoneURN")]
+        public Output<string> ZoneURN { get; private set; } = null!;
+
         /// <summary>
         /// Is DNSSEC supported by this zone
         /// </summary>
@@ -124,9 +127,6 @@ namespace Pulumi.Ovh.Domain
         /// </summary>
         [Output("planOptions")]
         public Output<ImmutableArray<Outputs.ZonePlanOption>> PlanOptions { get; private set; } = null!;
-
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
 
         /// <summary>
@@ -213,6 +213,9 @@ namespace Pulumi.Ovh.Domain
 
     public sealed class ZoneState : global::Pulumi.ResourceArgs
     {
+        [Input("ZoneURN")]
+        public Input<string>? ZoneURN { get; set; }
+
         /// <summary>
         /// Is DNSSEC supported by this zone
         /// </summary>
@@ -290,9 +293,6 @@ namespace Pulumi.Ovh.Domain
             get => _planOptions ?? (_planOptions = new InputList<Inputs.ZonePlanOptionGetArgs>());
             set => _planOptions = value;
         }
-
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         public ZoneState()
         {

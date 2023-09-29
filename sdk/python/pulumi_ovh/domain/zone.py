@@ -92,6 +92,7 @@ class ZoneArgs:
 @pulumi.input_type
 class _ZoneState:
     def __init__(__self__, *,
+                 zone_urn: Optional[pulumi.Input[str]] = None,
                  dnssec_supported: Optional[pulumi.Input[bool]] = None,
                  has_dns_anycast: Optional[pulumi.Input[bool]] = None,
                  last_update: Optional[pulumi.Input[str]] = None,
@@ -101,8 +102,7 @@ class _ZoneState:
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['ZonePlanArgs']] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionArgs']]]] = None,
-                 urn: Optional[pulumi.Input[str]] = None):
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
         :param pulumi.Input[bool] dnssec_supported: Is DNSSEC supported by this zone
@@ -116,6 +116,8 @@ class _ZoneState:
         :param pulumi.Input['ZonePlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionArgs']]] plan_options: Product Plan to order
         """
+        if zone_urn is not None:
+            pulumi.set(__self__, "zone_urn", zone_urn)
         if dnssec_supported is not None:
             pulumi.set(__self__, "dnssec_supported", dnssec_supported)
         if has_dns_anycast is not None:
@@ -139,8 +141,15 @@ class _ZoneState:
             pulumi.set(__self__, "plan", plan)
         if plan_options is not None:
             pulumi.set(__self__, "plan_options", plan_options)
-        if urn is not None:
-            pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="ZoneURN")
+    def zone_urn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone_urn")
+
+    @zone_urn.setter
+    def zone_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_urn", value)
 
     @property
     @pulumi.getter(name="dnssecSupported")
@@ -264,15 +273,6 @@ class _ZoneState:
     @plan_options.setter
     def plan_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionArgs']]]]):
         pulumi.set(self, "plan_options", value)
-
-    @property
-    @pulumi.getter
-    def urn(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "urn")
-
-    @urn.setter
-    def urn(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "urn", value)
 
 
 class Zone(pulumi.CustomResource):
@@ -401,13 +401,13 @@ class Zone(pulumi.CustomResource):
                 raise TypeError("Missing required property 'plan'")
             __props__.__dict__["plan"] = plan
             __props__.__dict__["plan_options"] = plan_options
+            __props__.__dict__["zone_urn"] = None
             __props__.__dict__["dnssec_supported"] = None
             __props__.__dict__["has_dns_anycast"] = None
             __props__.__dict__["last_update"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["name_servers"] = None
             __props__.__dict__["orders"] = None
-            __props__.__dict__["urn"] = None
         super(Zone, __self__).__init__(
             'ovh:Domain/zone:Zone',
             resource_name,
@@ -418,6 +418,7 @@ class Zone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            zone_urn: Optional[pulumi.Input[str]] = None,
             dnssec_supported: Optional[pulumi.Input[bool]] = None,
             has_dns_anycast: Optional[pulumi.Input[bool]] = None,
             last_update: Optional[pulumi.Input[str]] = None,
@@ -427,8 +428,7 @@ class Zone(pulumi.CustomResource):
             ovh_subsidiary: Optional[pulumi.Input[str]] = None,
             payment_mean: Optional[pulumi.Input[str]] = None,
             plan: Optional[pulumi.Input[pulumi.InputType['ZonePlanArgs']]] = None,
-            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZonePlanOptionArgs']]]]] = None,
-            urn: Optional[pulumi.Input[str]] = None) -> 'Zone':
+            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZonePlanOptionArgs']]]]] = None) -> 'Zone':
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -451,6 +451,7 @@ class Zone(pulumi.CustomResource):
 
         __props__ = _ZoneState.__new__(_ZoneState)
 
+        __props__.__dict__["zone_urn"] = zone_urn
         __props__.__dict__["dnssec_supported"] = dnssec_supported
         __props__.__dict__["has_dns_anycast"] = has_dns_anycast
         __props__.__dict__["last_update"] = last_update
@@ -461,8 +462,12 @@ class Zone(pulumi.CustomResource):
         __props__.__dict__["payment_mean"] = payment_mean
         __props__.__dict__["plan"] = plan
         __props__.__dict__["plan_options"] = plan_options
-        __props__.__dict__["urn"] = urn
         return Zone(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="ZoneURN")
+    def zone_urn(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "zone_urn")
 
     @property
     @pulumi.getter(name="dnssecSupported")
@@ -546,9 +551,4 @@ class Zone(pulumi.CustomResource):
         Product Plan to order
         """
         return pulumi.get(self, "plan_options")
-
-    @property
-    @pulumi.getter
-    def urn(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "urn")
 

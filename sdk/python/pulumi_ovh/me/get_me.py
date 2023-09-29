@@ -21,7 +21,10 @@ class GetMeResult:
     """
     A collection of values returned by getMe.
     """
-    def __init__(__self__, address=None, area=None, birth_city=None, birth_day=None, city=None, company_national_identification_number=None, corporation_type=None, country=None, currencies=None, customer_code=None, email=None, fax=None, firstname=None, id=None, italian_sdi=None, language=None, legalform=None, name=None, national_identification_number=None, nichandle=None, organisation=None, ovh_company=None, ovh_subsidiary=None, phone=None, phone_country=None, sex=None, spare_email=None, state=None, urn=None, vat=None, zip=None):
+    def __init__(__self__, account_urn=None, address=None, area=None, birth_city=None, birth_day=None, city=None, company_national_identification_number=None, corporation_type=None, country=None, currencies=None, customer_code=None, email=None, fax=None, firstname=None, id=None, italian_sdi=None, language=None, legalform=None, name=None, national_identification_number=None, nichandle=None, organisation=None, ovh_company=None, ovh_subsidiary=None, phone=None, phone_country=None, sex=None, spare_email=None, state=None, vat=None, zip=None):
+        if account_urn and not isinstance(account_urn, str):
+            raise TypeError("Expected argument 'account_urn' to be a str")
+        pulumi.set(__self__, "account_urn", account_urn)
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -106,15 +109,20 @@ class GetMeResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        pulumi.set(__self__, "urn", urn)
         if vat and not isinstance(vat, str):
             raise TypeError("Expected argument 'vat' to be a str")
         pulumi.set(__self__, "vat", vat)
         if zip and not isinstance(zip, str):
             raise TypeError("Expected argument 'zip' to be a str")
         pulumi.set(__self__, "zip", zip)
+
+    @property
+    @pulumi.getter(name="AccountURN")
+    def account_urn(self) -> str:
+        """
+        The resource URN of the account, to be used when writing IAM policies
+        """
+        return pulumi.get(self, "account_urn")
 
     @property
     @pulumi.getter
@@ -339,14 +347,6 @@ class GetMeResult:
 
     @property
     @pulumi.getter
-    def urn(self) -> str:
-        """
-        The resource URN of the account, to be used when writing IAM policies
-        """
-        return pulumi.get(self, "urn")
-
-    @property
-    @pulumi.getter
     def vat(self) -> str:
         """
         VAT number
@@ -368,6 +368,7 @@ class AwaitableGetMeResult(GetMeResult):
         if False:
             yield self
         return GetMeResult(
+            account_urn=self.account_urn,
             address=self.address,
             area=self.area,
             birth_city=self.birth_city,
@@ -396,7 +397,6 @@ class AwaitableGetMeResult(GetMeResult):
             sex=self.sex,
             spare_email=self.spare_email,
             state=self.state,
-            urn=self.urn,
             vat=self.vat,
             zip=self.zip)
 
@@ -419,6 +419,7 @@ def get_me(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMeResult:
     __ret__ = pulumi.runtime.invoke('ovh:Me/getMe:getMe', __args__, opts=opts, typ=GetMeResult).value
 
     return AwaitableGetMeResult(
+        account_urn=pulumi.get(__ret__, 'account_urn'),
         address=pulumi.get(__ret__, 'address'),
         area=pulumi.get(__ret__, 'area'),
         birth_city=pulumi.get(__ret__, 'birth_city'),
@@ -447,6 +448,5 @@ def get_me(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMeResult:
         sex=pulumi.get(__ret__, 'sex'),
         spare_email=pulumi.get(__ret__, 'spare_email'),
         state=pulumi.get(__ret__, 'state'),
-        urn=pulumi.get(__ret__, 'urn'),
         vat=pulumi.get(__ret__, 'vat'),
         zip=pulumi.get(__ret__, 'zip'))

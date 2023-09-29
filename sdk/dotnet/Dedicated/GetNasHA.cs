@@ -102,6 +102,10 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class GetNasHAResult
     {
         /// <summary>
+        /// the URN of the HA-NAS instance
+        /// </summary>
+        public readonly string NasHAURN;
+        /// <summary>
         /// True, if partition creation is allowed on this HA-NAS
         /// </summary>
         public readonly bool CanCreatePartition;
@@ -134,10 +138,6 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// the URN of the HA-NAS instance
-        /// </summary>
-        public readonly string Urn;
-        /// <summary>
         /// percentage of HA-NAS space used in %
         /// </summary>
         public readonly double ZpoolCapacity;
@@ -148,6 +148,8 @@ namespace Pulumi.Ovh.Dedicated
 
         [OutputConstructor]
         private GetNasHAResult(
+            string NasHAURN,
+
             bool canCreatePartition,
 
             string customName,
@@ -164,12 +166,11 @@ namespace Pulumi.Ovh.Dedicated
 
             string serviceName,
 
-            string urn,
-
             double zpoolCapacity,
 
             double zpoolSize)
         {
+            this.NasHAURN = NasHAURN;
             CanCreatePartition = canCreatePartition;
             CustomName = customName;
             Datacenter = datacenter;
@@ -178,7 +179,6 @@ namespace Pulumi.Ovh.Dedicated
             Ip = ip;
             Monitored = monitored;
             ServiceName = serviceName;
-            Urn = urn;
             ZpoolCapacity = zpoolCapacity;
             ZpoolSize = zpoolSize;
         }

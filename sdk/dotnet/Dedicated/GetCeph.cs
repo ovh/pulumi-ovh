@@ -126,6 +126,10 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class GetCephResult
     {
         /// <summary>
+        /// URN of the CEPH instance
+        /// </summary>
+        public readonly string CephURN;
+        /// <summary>
         /// list of CEPH monitors IPs
         /// </summary>
         public readonly ImmutableArray<string> CephMons;
@@ -170,13 +174,11 @@ namespace Pulumi.Ovh.Dedicated
         /// the status of the service
         /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// URN of the CEPH instance
-        /// </summary>
-        public readonly string Urn;
 
         [OutputConstructor]
         private GetCephResult(
+            string CephURN,
+
             ImmutableArray<string> cephMons,
 
             string cephVersion,
@@ -195,10 +197,9 @@ namespace Pulumi.Ovh.Dedicated
 
             string state,
 
-            string status,
-
-            string urn)
+            string status)
         {
+            this.CephURN = CephURN;
             CephMons = cephMons;
             CephVersion = cephVersion;
             CrushTunables = crushTunables;
@@ -209,7 +210,6 @@ namespace Pulumi.Ovh.Dedicated
             Size = size;
             State = state;
             Status = status;
-            Urn = urn;
         }
     }
 }

@@ -124,6 +124,7 @@ class LoadBalancerArgs:
 @pulumi.input_type
 class _LoadBalancerState:
     def __init__(__self__, *,
+                 load_balancer_urn: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  ip_loadbalancing: Optional[pulumi.Input[str]] = None,
                  ipv4: Optional[pulumi.Input[str]] = None,
@@ -139,12 +140,12 @@ class _LoadBalancerState:
                  service_name: Optional[pulumi.Input[str]] = None,
                  ssl_configuration: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 urn: Optional[pulumi.Input[str]] = None,
                  vrack_eligibility: Optional[pulumi.Input[bool]] = None,
                  vrack_name: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
+        :param pulumi.Input[str] load_balancer_urn: URN of the load balancer, used when writing IAM policies
         :param pulumi.Input[str] display_name: Set the name displayed in ManagerV6 for your iplb (max 50 chars)
         :param pulumi.Input[str] ip_loadbalancing: Your IP load balancing
         :param pulumi.Input[str] ipv4: The IPV4 associated to your IP load balancing
@@ -160,11 +161,12 @@ class _LoadBalancerState:
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
         :param pulumi.Input[str] state: Current state of your IP
-        :param pulumi.Input[str] urn: URN of the load balancer, used when writing IAM policies
         :param pulumi.Input[bool] vrack_eligibility: Vrack eligibility
         :param pulumi.Input[str] vrack_name: Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Location where your service is
         """
+        if load_balancer_urn is not None:
+            pulumi.set(__self__, "load_balancer_urn", load_balancer_urn)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if ip_loadbalancing is not None:
@@ -198,14 +200,24 @@ class _LoadBalancerState:
             pulumi.set(__self__, "ssl_configuration", ssl_configuration)
         if state is not None:
             pulumi.set(__self__, "state", state)
-        if urn is not None:
-            pulumi.set(__self__, "urn", urn)
         if vrack_eligibility is not None:
             pulumi.set(__self__, "vrack_eligibility", vrack_eligibility)
         if vrack_name is not None:
             pulumi.set(__self__, "vrack_name", vrack_name)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter(name="LoadBalancerURN")
+    def load_balancer_urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        URN of the load balancer, used when writing IAM policies
+        """
+        return pulumi.get(self, "load_balancer_urn")
+
+    @load_balancer_urn.setter
+    def load_balancer_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_urn", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -391,18 +403,6 @@ class _LoadBalancerState:
         pulumi.set(self, "state", value)
 
     @property
-    @pulumi.getter
-    def urn(self) -> Optional[pulumi.Input[str]]:
-        """
-        URN of the load balancer, used when writing IAM policies
-        """
-        return pulumi.get(self, "urn")
-
-    @urn.setter
-    def urn(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "urn", value)
-
-    @property
     @pulumi.getter(name="vrackEligibility")
     def vrack_eligibility(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -575,6 +575,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["plan"] = plan
             __props__.__dict__["plan_options"] = plan_options
             __props__.__dict__["ssl_configuration"] = ssl_configuration
+            __props__.__dict__["load_balancer_urn"] = None
             __props__.__dict__["ip_loadbalancing"] = None
             __props__.__dict__["ipv4"] = None
             __props__.__dict__["ipv6"] = None
@@ -584,7 +585,6 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["orders"] = None
             __props__.__dict__["service_name"] = None
             __props__.__dict__["state"] = None
-            __props__.__dict__["urn"] = None
             __props__.__dict__["vrack_eligibility"] = None
             __props__.__dict__["vrack_name"] = None
             __props__.__dict__["zones"] = None
@@ -600,6 +600,7 @@ class LoadBalancer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            load_balancer_urn: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             ip_loadbalancing: Optional[pulumi.Input[str]] = None,
             ipv4: Optional[pulumi.Input[str]] = None,
@@ -615,7 +616,6 @@ class LoadBalancer(pulumi.CustomResource):
             service_name: Optional[pulumi.Input[str]] = None,
             ssl_configuration: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            urn: Optional[pulumi.Input[str]] = None,
             vrack_eligibility: Optional[pulumi.Input[bool]] = None,
             vrack_name: Optional[pulumi.Input[str]] = None,
             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'LoadBalancer':
@@ -626,6 +626,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] load_balancer_urn: URN of the load balancer, used when writing IAM policies
         :param pulumi.Input[str] display_name: Set the name displayed in ManagerV6 for your iplb (max 50 chars)
         :param pulumi.Input[str] ip_loadbalancing: Your IP load balancing
         :param pulumi.Input[str] ipv4: The IPV4 associated to your IP load balancing
@@ -641,7 +642,6 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
         :param pulumi.Input[str] state: Current state of your IP
-        :param pulumi.Input[str] urn: URN of the load balancer, used when writing IAM policies
         :param pulumi.Input[bool] vrack_eligibility: Vrack eligibility
         :param pulumi.Input[str] vrack_name: Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Location where your service is
@@ -650,6 +650,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         __props__ = _LoadBalancerState.__new__(_LoadBalancerState)
 
+        __props__.__dict__["load_balancer_urn"] = load_balancer_urn
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["ip_loadbalancing"] = ip_loadbalancing
         __props__.__dict__["ipv4"] = ipv4
@@ -665,11 +666,18 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["ssl_configuration"] = ssl_configuration
         __props__.__dict__["state"] = state
-        __props__.__dict__["urn"] = urn
         __props__.__dict__["vrack_eligibility"] = vrack_eligibility
         __props__.__dict__["vrack_name"] = vrack_name
         __props__.__dict__["zones"] = zones
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="LoadBalancerURN")
+    def load_balancer_urn(self) -> pulumi.Output[str]:
+        """
+        URN of the load balancer, used when writing IAM policies
+        """
+        return pulumi.get(self, "load_balancer_urn")
 
     @property
     @pulumi.getter(name="displayName")
@@ -793,14 +801,6 @@ class LoadBalancer(pulumi.CustomResource):
         Current state of your IP
         """
         return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter
-    def urn(self) -> pulumi.Output[str]:
-        """
-        URN of the load balancer, used when writing IAM policies
-        """
-        return pulumi.get(self, "urn")
 
     @property
     @pulumi.getter(name="vrackEligibility")

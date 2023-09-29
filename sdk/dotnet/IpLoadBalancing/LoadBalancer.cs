@@ -72,6 +72,12 @@ namespace Pulumi.Ovh.IpLoadBalancing
     public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// URN of the load balancer, used when writing IAM policies
+        /// </summary>
+        [Output("LoadBalancerURN")]
+        public Output<string> LoadBalancerURN { get; private set; } = null!;
+
+        /// <summary>
         /// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
         /// </summary>
         [Output("displayName")]
@@ -160,12 +166,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
-
-        /// <summary>
-        /// URN of the load balancer, used when writing IAM policies
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
         /// <summary>
         /// Vrack eligibility
@@ -287,6 +287,12 @@ namespace Pulumi.Ovh.IpLoadBalancing
     public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// URN of the load balancer, used when writing IAM policies
+        /// </summary>
+        [Input("LoadBalancerURN")]
+        public Input<string>? LoadBalancerURN { get; set; }
+
+        /// <summary>
         /// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
         /// </summary>
         [Input("displayName")]
@@ -403,12 +409,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// URN of the load balancer, used when writing IAM policies
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         /// <summary>
         /// Vrack eligibility

@@ -45,6 +45,10 @@ export class Project extends pulumi.CustomResource {
         return obj['__pulumiType'] === Project.__pulumiType;
     }
 
+    /**
+     * The URN of the cloud project
+     */
+    public /*out*/ readonly ProjectURN!: pulumi.Output<string>;
     public /*out*/ readonly access!: pulumi.Output<string>;
     /**
      * A description associated with the user.
@@ -84,10 +88,6 @@ export class Project extends pulumi.CustomResource {
      * project status
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
-    /**
-     * The URN of the cloud project
-     */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -102,6 +102,7 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
+            resourceInputs["ProjectURN"] = state ? state.ProjectURN : undefined;
             resourceInputs["access"] = state ? state.access : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["orders"] = state ? state.orders : undefined;
@@ -112,7 +113,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["projectName"] = state ? state.projectName : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             if ((!args || args.ovhSubsidiary === undefined) && !opts.urn) {
@@ -126,12 +126,12 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["paymentMean"] = args ? args.paymentMean : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["planOptions"] = args ? args.planOptions : undefined;
+            resourceInputs["ProjectURN"] = undefined /*out*/;
             resourceInputs["access"] = undefined /*out*/;
             resourceInputs["orders"] = undefined /*out*/;
             resourceInputs["projectId"] = undefined /*out*/;
             resourceInputs["projectName"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["urn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);
@@ -142,6 +142,10 @@ export class Project extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Project resources.
  */
 export interface ProjectState {
+    /**
+     * The URN of the cloud project
+     */
+    ProjectURN?: pulumi.Input<string>;
     access?: pulumi.Input<string>;
     /**
      * A description associated with the user.
@@ -181,10 +185,6 @@ export interface ProjectState {
      * project status
      */
     status?: pulumi.Input<string>;
-    /**
-     * The URN of the cloud project
-     */
-    urn?: pulumi.Input<string>;
 }
 
 /**

@@ -70,23 +70,25 @@ class IdentityGroupArgs:
 @pulumi.input_type
 class _IdentityGroupState:
     def __init__(__self__, *,
+                 group_urn: Optional[pulumi.Input[str]] = None,
                  creation: Optional[pulumi.Input[str]] = None,
                  default_group: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  last_update: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[str]] = None,
-                 urn: Optional[pulumi.Input[str]] = None):
+                 role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IdentityGroup resources.
+        :param pulumi.Input[str] group_urn: URN of the user group, used when writing IAM policies
         :param pulumi.Input[str] creation: Creation date of this group.
         :param pulumi.Input[bool] default_group: Is the group a default and immutable one.
         :param pulumi.Input[str] description: Group description.
         :param pulumi.Input[str] last_update: Date of the last update of this group.
         :param pulumi.Input[str] name: Group name.
         :param pulumi.Input[str] role: Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-        :param pulumi.Input[str] urn: URN of the user group, used when writing IAM policies
         """
+        if group_urn is not None:
+            pulumi.set(__self__, "group_urn", group_urn)
         if creation is not None:
             pulumi.set(__self__, "creation", creation)
         if default_group is not None:
@@ -99,8 +101,18 @@ class _IdentityGroupState:
             pulumi.set(__self__, "name", name)
         if role is not None:
             pulumi.set(__self__, "role", role)
-        if urn is not None:
-            pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="GroupURN")
+    def group_urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        URN of the user group, used when writing IAM policies
+        """
+        return pulumi.get(self, "group_urn")
+
+    @group_urn.setter
+    def group_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_urn", value)
 
     @property
     @pulumi.getter
@@ -173,18 +185,6 @@ class _IdentityGroupState:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
-
-    @property
-    @pulumi.getter
-    def urn(self) -> Optional[pulumi.Input[str]]:
-        """
-        URN of the user group, used when writing IAM policies
-        """
-        return pulumi.get(self, "urn")
-
-    @urn.setter
-    def urn(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "urn", value)
 
 
 class IdentityGroup(pulumi.CustomResource):
@@ -266,10 +266,10 @@ class IdentityGroup(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["role"] = role
+            __props__.__dict__["group_urn"] = None
             __props__.__dict__["creation"] = None
             __props__.__dict__["default_group"] = None
             __props__.__dict__["last_update"] = None
-            __props__.__dict__["urn"] = None
         super(IdentityGroup, __self__).__init__(
             'ovh:Me/identityGroup:IdentityGroup',
             resource_name,
@@ -280,13 +280,13 @@ class IdentityGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            group_urn: Optional[pulumi.Input[str]] = None,
             creation: Optional[pulumi.Input[str]] = None,
             default_group: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             last_update: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            role: Optional[pulumi.Input[str]] = None,
-            urn: Optional[pulumi.Input[str]] = None) -> 'IdentityGroup':
+            role: Optional[pulumi.Input[str]] = None) -> 'IdentityGroup':
         """
         Get an existing IdentityGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -294,26 +294,34 @@ class IdentityGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] group_urn: URN of the user group, used when writing IAM policies
         :param pulumi.Input[str] creation: Creation date of this group.
         :param pulumi.Input[bool] default_group: Is the group a default and immutable one.
         :param pulumi.Input[str] description: Group description.
         :param pulumi.Input[str] last_update: Date of the last update of this group.
         :param pulumi.Input[str] name: Group name.
         :param pulumi.Input[str] role: Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-        :param pulumi.Input[str] urn: URN of the user group, used when writing IAM policies
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _IdentityGroupState.__new__(_IdentityGroupState)
 
+        __props__.__dict__["group_urn"] = group_urn
         __props__.__dict__["creation"] = creation
         __props__.__dict__["default_group"] = default_group
         __props__.__dict__["description"] = description
         __props__.__dict__["last_update"] = last_update
         __props__.__dict__["name"] = name
         __props__.__dict__["role"] = role
-        __props__.__dict__["urn"] = urn
         return IdentityGroup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="GroupURN")
+    def group_urn(self) -> pulumi.Output[str]:
+        """
+        URN of the user group, used when writing IAM policies
+        """
+        return pulumi.get(self, "group_urn")
 
     @property
     @pulumi.getter
@@ -362,12 +370,4 @@ class IdentityGroup(pulumi.CustomResource):
         Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
         """
         return pulumi.get(self, "role")
-
-    @property
-    @pulumi.getter
-    def urn(self) -> pulumi.Output[str]:
-        """
-        URN of the user group, used when writing IAM policies
-        """
-        return pulumi.get(self, "urn")
 

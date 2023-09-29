@@ -41,6 +41,10 @@ export interface GetNasHAArgs {
  */
 export interface GetNasHAResult {
     /**
+     * the URN of the HA-NAS instance
+     */
+    readonly NasHAURN: string;
+    /**
      * True, if partition creation is allowed on this HA-NAS
      */
     readonly canCreatePartition: boolean;
@@ -72,10 +76,6 @@ export interface GetNasHAResult {
      * The storage service name
      */
     readonly serviceName: string;
-    /**
-     * the URN of the HA-NAS instance
-     */
-    readonly urn: string;
     /**
      * percentage of HA-NAS space used in %
      */

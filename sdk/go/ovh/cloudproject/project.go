@@ -27,7 +27,9 @@ import (
 type Project struct {
 	pulumi.CustomResourceState
 
-	Access pulumi.StringOutput `pulumi:"access"`
+	// The URN of the cloud project
+	ProjectURN pulumi.StringOutput `pulumi:"ProjectURN"`
+	Access     pulumi.StringOutput `pulumi:"access"`
 	// A description associated with the user.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Details about the order that was used to create the public cloud project
@@ -48,8 +50,6 @@ type Project struct {
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
 	// project status
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The URN of the cloud project
-	Urn pulumi.StringOutput `pulumi:"urn"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -88,7 +88,9 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	Access *string `pulumi:"access"`
+	// The URN of the cloud project
+	ProjectURN *string `pulumi:"ProjectURN"`
+	Access     *string `pulumi:"access"`
 	// A description associated with the user.
 	Description *string `pulumi:"description"`
 	// Details about the order that was used to create the public cloud project
@@ -109,12 +111,12 @@ type projectState struct {
 	ProjectName *string `pulumi:"projectName"`
 	// project status
 	Status *string `pulumi:"status"`
-	// The URN of the cloud project
-	Urn *string `pulumi:"urn"`
 }
 
 type ProjectState struct {
-	Access pulumi.StringPtrInput
+	// The URN of the cloud project
+	ProjectURN pulumi.StringPtrInput
+	Access     pulumi.StringPtrInput
 	// A description associated with the user.
 	Description pulumi.StringPtrInput
 	// Details about the order that was used to create the public cloud project
@@ -135,8 +137,6 @@ type ProjectState struct {
 	ProjectName pulumi.StringPtrInput
 	// project status
 	Status pulumi.StringPtrInput
-	// The URN of the cloud project
-	Urn pulumi.StringPtrInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -285,6 +285,11 @@ func (o ProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*Project] {
 	}
 }
 
+// The URN of the cloud project
+func (o ProjectOutput) ProjectURN() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectURN }).(pulumi.StringOutput)
+}
+
 func (o ProjectOutput) Access() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Access }).(pulumi.StringOutput)
 }
@@ -334,11 +339,6 @@ func (o ProjectOutput) ProjectName() pulumi.StringOutput {
 // project status
 func (o ProjectOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
-}
-
-// The URN of the cloud project
-func (o ProjectOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }

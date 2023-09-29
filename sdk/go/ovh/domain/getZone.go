@@ -57,6 +57,8 @@ type LookupZoneArgs struct {
 
 // A collection of values returned by getZone.
 type LookupZoneResult struct {
+	// URN of the DNS zone
+	ZoneURN string `pulumi:"ZoneURN"`
 	// Is DNSSEC supported by this zone
 	DnssecSupported bool `pulumi:"dnssecSupported"`
 	// hasDnsAnycast flag of the DNS zone
@@ -68,8 +70,6 @@ type LookupZoneResult struct {
 	Name       string `pulumi:"name"`
 	// Name servers that host the DNS zone
 	NameServers []string `pulumi:"nameServers"`
-	// URN of the DNS zone
-	Urn string `pulumi:"urn"`
 }
 
 func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pulumi.InvokeOption) LookupZoneResultOutput {
@@ -116,6 +116,11 @@ func (o LookupZoneResultOutput) ToOutput(ctx context.Context) pulumix.Output[Loo
 	}
 }
 
+// URN of the DNS zone
+func (o LookupZoneResultOutput) ZoneURN() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZoneResult) string { return v.ZoneURN }).(pulumi.StringOutput)
+}
+
 // Is DNSSEC supported by this zone
 func (o LookupZoneResultOutput) DnssecSupported() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneResult) bool { return v.DnssecSupported }).(pulumi.BoolOutput)
@@ -143,11 +148,6 @@ func (o LookupZoneResultOutput) Name() pulumi.StringOutput {
 // Name servers that host the DNS zone
 func (o LookupZoneResultOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZoneResult) []string { return v.NameServers }).(pulumi.StringArrayOutput)
-}
-
-// URN of the DNS zone
-func (o LookupZoneResultOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneResult) string { return v.Urn }).(pulumi.StringOutput)
 }
 
 func init() {
