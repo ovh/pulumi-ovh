@@ -4,8 +4,12 @@
 package ovh
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of installation templates available for dedicated servers.
@@ -49,4 +53,50 @@ type GetInstallationTemplatesResult struct {
 	Id string `pulumi:"id"`
 	// The list of installation templates IDs available for dedicated servers.
 	Results []string `pulumi:"results"`
+}
+
+func GetInstallationTemplatesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetInstallationTemplatesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetInstallationTemplatesResult, error) {
+		r, err := GetInstallationTemplates(ctx, opts...)
+		var s GetInstallationTemplatesResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetInstallationTemplatesResultOutput)
+}
+
+// A collection of values returned by getInstallationTemplates.
+type GetInstallationTemplatesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplatesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplatesResult)(nil)).Elem()
+}
+
+func (o GetInstallationTemplatesResultOutput) ToGetInstallationTemplatesResultOutput() GetInstallationTemplatesResultOutput {
+	return o
+}
+
+func (o GetInstallationTemplatesResultOutput) ToGetInstallationTemplatesResultOutputWithContext(ctx context.Context) GetInstallationTemplatesResultOutput {
+	return o
+}
+
+func (o GetInstallationTemplatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstallationTemplatesResult] {
+	return pulumix.Output[GetInstallationTemplatesResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstallationTemplatesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplatesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of installation templates IDs available for dedicated servers.
+func (o GetInstallationTemplatesResultOutput) Results() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplatesResult) []string { return v.Results }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstallationTemplatesResultOutput{})
 }

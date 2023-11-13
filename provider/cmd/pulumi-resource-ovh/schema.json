@@ -5316,7 +5316,7 @@
             }
         },
         "ovh:CloudProject/kubeNodePool:KubeNodePool": {
-            "description": "Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a simple node pool in your Kubernetes cluster:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovh-devrelteam/pulumi-ovh\";\n\nconst nodePool = new ovh.cloudproject.KubeNodePool(\"nodePool\", {\n    desiredNodes: 3,\n    flavorName: \"b2-7\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    maxNodes: 3,\n    minNodes: 3,\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnode_pool = ovh.cloud_project.KubeNodePool(\"nodePool\",\n    desired_nodes=3,\n    flavor_name=\"b2-7\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    max_nodes=3,\n    min_nodes=3,\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var nodePool = new Ovh.CloudProject.KubeNodePool(\"nodePool\", new()\n    {\n        DesiredNodes = 3,\n        FlavorName = \"b2-7\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        MaxNodes = 3,\n        MinNodes = 3,\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.NewKubeNodePool(ctx, \"nodePool\", \u0026CloudProject.KubeNodePoolArgs{\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tFlavorName:   pulumi.String(\"b2-7\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tMaxNodes:     pulumi.Int(3),\n\t\t\tMinNodes:     pulumi.Int(3),\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var nodePool = new KubeNodePool(\"nodePool\", KubeNodePoolArgs.builder()        \n            .desiredNodes(3)\n            .flavorName(\"b2-7\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .maxNodes(3)\n            .minNodes(3)\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  nodePool:\n    type: ovh:CloudProject:KubeNodePool\n    properties:\n      desiredNodes: 3\n      flavorName: b2-7\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      maxNodes: 3\n      minNodes: 3\n      # Warning: \"_\" char is not allowed!\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n```\n\nCreate an advanced node pool in your Kubernetes cluster:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovh-devrelteam/pulumi-ovh\";\n\nconst pool = new ovh.cloudproject.KubeNodePool(\"pool\", {\n    desiredNodes: 3,\n    flavorName: \"b2-7\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    maxNodes: 3,\n    minNodes: 3,\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    template: {\n        metadata: {\n            annotations: {\n                k1: \"v1\",\n                k2: \"v2\",\n            },\n            finalizers: [\n                \"ovhcloud.com/v1beta1\",\n                \"ovhcloud.com/v1\",\n            ],\n            labels: {\n                k3: \"v3\",\n                k4: \"v4\",\n            },\n        },\n        spec: {\n            taints: [{\n                effect: \"PreferNoSchedule\",\n                key: \"k\",\n                value: \"v\",\n            }],\n            unschedulable: false,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\npool = ovh.cloud_project.KubeNodePool(\"pool\",\n    desired_nodes=3,\n    flavor_name=\"b2-7\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    max_nodes=3,\n    min_nodes=3,\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    template=ovh.cloud_project.KubeNodePoolTemplateArgs(\n        metadata=ovh.cloud_project.KubeNodePoolTemplateMetadataArgs(\n            annotations={\n                \"k1\": \"v1\",\n                \"k2\": \"v2\",\n            },\n            finalizers=[\n                \"ovhcloud.com/v1beta1\",\n                \"ovhcloud.com/v1\",\n            ],\n            labels={\n                \"k3\": \"v3\",\n                \"k4\": \"v4\",\n            },\n        ),\n        spec=ovh.cloud_project.KubeNodePoolTemplateSpecArgs(\n            taints=[{\n                \"effect\": \"PreferNoSchedule\",\n                \"key\": \"k\",\n                \"value\": \"v\",\n            }],\n            unschedulable=False,\n        ),\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pool = new Ovh.CloudProject.KubeNodePool(\"pool\", new()\n    {\n        DesiredNodes = 3,\n        FlavorName = \"b2-7\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        MaxNodes = 3,\n        MinNodes = 3,\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        Template = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateArgs\n        {\n            Metadata = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateMetadataArgs\n            {\n                Annotations = \n                {\n                    { \"k1\", \"v1\" },\n                    { \"k2\", \"v2\" },\n                },\n                Finalizers = new[]\n                {\n                    \"ovhcloud.com/v1beta1\",\n                    \"ovhcloud.com/v1\",\n                },\n                Labels = \n                {\n                    { \"k3\", \"v3\" },\n                    { \"k4\", \"v4\" },\n                },\n            },\n            Spec = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateSpecArgs\n            {\n                Taints = new[]\n                {\n                    \n                    {\n                        { \"effect\", \"PreferNoSchedule\" },\n                        { \"key\", \"k\" },\n                        { \"value\", \"v\" },\n                    },\n                },\n                Unschedulable = false,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.NewKubeNodePool(ctx, \"pool\", \u0026CloudProject.KubeNodePoolArgs{\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tFlavorName:   pulumi.String(\"b2-7\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tMaxNodes:     pulumi.Int(3),\n\t\t\tMinNodes:     pulumi.Int(3),\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tTemplate: \u0026cloudproject.KubeNodePoolTemplateArgs{\n\t\t\t\tMetadata: \u0026cloudproject.KubeNodePoolTemplateMetadataArgs{\n\t\t\t\t\tAnnotations: pulumi.StringMap{\n\t\t\t\t\t\t\"k1\": pulumi.String(\"v1\"),\n\t\t\t\t\t\t\"k2\": pulumi.String(\"v2\"),\n\t\t\t\t\t},\n\t\t\t\t\tFinalizers: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"ovhcloud.com/v1beta1\"),\n\t\t\t\t\t\tpulumi.String(\"ovhcloud.com/v1\"),\n\t\t\t\t\t},\n\t\t\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\t\t\"k3\": pulumi.String(\"v3\"),\n\t\t\t\t\t\t\"k4\": pulumi.String(\"v4\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSpec: \u0026cloudproject.KubeNodePoolTemplateSpecArgs{\n\t\t\t\t\tTaints: pulumi.AnyMapArray{\n\t\t\t\t\t\tpulumi.AnyMap{\n\t\t\t\t\t\t\t\"effect\": pulumi.Any(\"PreferNoSchedule\"),\n\t\t\t\t\t\t\t\"key\":    pulumi.Any(\"k\"),\n\t\t\t\t\t\t\t\"value\":  pulumi.Any(\"v\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tUnschedulable: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateMetadataArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pool = new KubeNodePool(\"pool\", KubeNodePoolArgs.builder()        \n            .desiredNodes(3)\n            .flavorName(\"b2-7\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .maxNodes(3)\n            .minNodes(3)\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .template(KubeNodePoolTemplateArgs.builder()\n                .metadata(KubeNodePoolTemplateMetadataArgs.builder()\n                    .annotations(Map.ofEntries(\n                        Map.entry(\"k1\", \"v1\"),\n                        Map.entry(\"k2\", \"v2\")\n                    ))\n                    .finalizers(                    \n                        \"ovhcloud.com/v1beta1\",\n                        \"ovhcloud.com/v1\")\n                    .labels(Map.ofEntries(\n                        Map.entry(\"k3\", \"v3\"),\n                        Map.entry(\"k4\", \"v4\")\n                    ))\n                    .build())\n                .spec(KubeNodePoolTemplateSpecArgs.builder()\n                    .taints(Map.ofEntries(\n                        Map.entry(\"effect\", \"PreferNoSchedule\"),\n                        Map.entry(\"key\", \"k\"),\n                        Map.entry(\"value\", \"v\")\n                    ))\n                    .unschedulable(false)\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pool:\n    type: ovh:CloudProject:KubeNodePool\n    properties:\n      desiredNodes: 3\n      flavorName: b2-7\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      maxNodes: 3\n      minNodes: 3\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      template:\n        metadata:\n          annotations:\n            k1: v1\n            k2: v2\n          finalizers:\n            - ovhcloud.com/v1beta1\n            - ovhcloud.com/v1\n          labels:\n            k3: v3\n            k4: v4\n        spec:\n          taints:\n            - effect: PreferNoSchedule\n              key: k\n              value: v\n          unschedulable: false\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nOVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by \"/\" E.g., bash\n\n```sh\n $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid\n```\n\n ",
+            "description": "Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a simple node pool in your Kubernetes cluster:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovh-devrelteam/pulumi-ovh\";\n\nconst nodePool = new ovh.cloudproject.KubeNodePool(\"nodePool\", {\n    desiredNodes: 3,\n    flavorName: \"b2-7\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    maxNodes: 3,\n    minNodes: 3,\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnode_pool = ovh.cloud_project.KubeNodePool(\"nodePool\",\n    desired_nodes=3,\n    flavor_name=\"b2-7\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    max_nodes=3,\n    min_nodes=3,\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var nodePool = new Ovh.CloudProject.KubeNodePool(\"nodePool\", new()\n    {\n        DesiredNodes = 3,\n        FlavorName = \"b2-7\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        MaxNodes = 3,\n        MinNodes = 3,\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.NewKubeNodePool(ctx, \"nodePool\", \u0026CloudProject.KubeNodePoolArgs{\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tFlavorName:   pulumi.String(\"b2-7\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tMaxNodes:     pulumi.Int(3),\n\t\t\tMinNodes:     pulumi.Int(3),\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var nodePool = new KubeNodePool(\"nodePool\", KubeNodePoolArgs.builder()        \n            .desiredNodes(3)\n            .flavorName(\"b2-7\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .maxNodes(3)\n            .minNodes(3)\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  nodePool:\n    type: ovh:CloudProject:KubeNodePool\n    properties:\n      desiredNodes: 3\n      flavorName: b2-7\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      maxNodes: 3\n      minNodes: 3\n      # Warning: \"_\" char is not allowed!\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n```\n\nCreate an advanced node pool in your Kubernetes cluster:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovh-devrelteam/pulumi-ovh\";\n\nconst pool = new ovh.cloudproject.KubeNodePool(\"pool\", {\n    desiredNodes: 3,\n    flavorName: \"b2-7\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    maxNodes: 3,\n    minNodes: 3,\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    template: {\n        metadata: {\n            annotations: {\n                k1: \"v1\",\n                k2: \"v2\",\n            },\n            finalizers: [\n                \"ovhcloud.com/v1beta1\",\n                \"ovhcloud.com/v1\",\n            ],\n            labels: {\n                k3: \"v3\",\n                k4: \"v4\",\n            },\n        },\n        spec: {\n            taints: [{\n                effect: \"PreferNoSchedule\",\n                key: \"k\",\n                value: \"v\",\n            }],\n            unschedulable: false,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\npool = ovh.cloud_project.KubeNodePool(\"pool\",\n    desired_nodes=3,\n    flavor_name=\"b2-7\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    max_nodes=3,\n    min_nodes=3,\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    template=ovh.cloud_project.KubeNodePoolTemplateArgs(\n        metadata=ovh.cloud_project.KubeNodePoolTemplateMetadataArgs(\n            annotations={\n                \"k1\": \"v1\",\n                \"k2\": \"v2\",\n            },\n            finalizers=[\n                \"ovhcloud.com/v1beta1\",\n                \"ovhcloud.com/v1\",\n            ],\n            labels={\n                \"k3\": \"v3\",\n                \"k4\": \"v4\",\n            },\n        ),\n        spec=ovh.cloud_project.KubeNodePoolTemplateSpecArgs(\n            taints=[{\n                \"effect\": \"PreferNoSchedule\",\n                \"key\": \"k\",\n                \"value\": \"v\",\n            }],\n            unschedulable=False,\n        ),\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pool = new Ovh.CloudProject.KubeNodePool(\"pool\", new()\n    {\n        DesiredNodes = 3,\n        FlavorName = \"b2-7\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        MaxNodes = 3,\n        MinNodes = 3,\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        Template = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateArgs\n        {\n            Metadata = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateMetadataArgs\n            {\n                Annotations = \n                {\n                    { \"k1\", \"v1\" },\n                    { \"k2\", \"v2\" },\n                },\n                Finalizers = new[]\n                {\n                    \"ovhcloud.com/v1beta1\",\n                    \"ovhcloud.com/v1\",\n                },\n                Labels = \n                {\n                    { \"k3\", \"v3\" },\n                    { \"k4\", \"v4\" },\n                },\n            },\n            Spec = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateSpecArgs\n            {\n                Taints = new[]\n                {\n                    \n                    {\n                        { \"effect\", \"PreferNoSchedule\" },\n                        { \"key\", \"k\" },\n                        { \"value\", \"v\" },\n                    },\n                },\n                Unschedulable = false,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.NewKubeNodePool(ctx, \"pool\", \u0026CloudProject.KubeNodePoolArgs{\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tFlavorName:   pulumi.String(\"b2-7\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tMaxNodes:     pulumi.Int(3),\n\t\t\tMinNodes:     pulumi.Int(3),\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tTemplate: \u0026cloudproject.KubeNodePoolTemplateArgs{\n\t\t\t\tMetadata: \u0026cloudproject.KubeNodePoolTemplateMetadataArgs{\n\t\t\t\t\tAnnotations: pulumi.StringMap{\n\t\t\t\t\t\t\"k1\": pulumi.String(\"v1\"),\n\t\t\t\t\t\t\"k2\": pulumi.String(\"v2\"),\n\t\t\t\t\t},\n\t\t\t\t\tFinalizers: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"ovhcloud.com/v1beta1\"),\n\t\t\t\t\t\tpulumi.String(\"ovhcloud.com/v1\"),\n\t\t\t\t\t},\n\t\t\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\t\t\"k3\": pulumi.String(\"v3\"),\n\t\t\t\t\t\t\"k4\": pulumi.String(\"v4\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSpec: \u0026cloudproject.KubeNodePoolTemplateSpecArgs{\n\t\t\t\t\tTaints: pulumi.MapArray{\n\t\t\t\t\t\tpulumi.Map{\n\t\t\t\t\t\t\t\"effect\": pulumi.Any(\"PreferNoSchedule\"),\n\t\t\t\t\t\t\t\"key\":    pulumi.Any(\"k\"),\n\t\t\t\t\t\t\t\"value\":  pulumi.Any(\"v\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tUnschedulable: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateMetadataArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pool = new KubeNodePool(\"pool\", KubeNodePoolArgs.builder()        \n            .desiredNodes(3)\n            .flavorName(\"b2-7\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .maxNodes(3)\n            .minNodes(3)\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .template(KubeNodePoolTemplateArgs.builder()\n                .metadata(KubeNodePoolTemplateMetadataArgs.builder()\n                    .annotations(Map.ofEntries(\n                        Map.entry(\"k1\", \"v1\"),\n                        Map.entry(\"k2\", \"v2\")\n                    ))\n                    .finalizers(                    \n                        \"ovhcloud.com/v1beta1\",\n                        \"ovhcloud.com/v1\")\n                    .labels(Map.ofEntries(\n                        Map.entry(\"k3\", \"v3\"),\n                        Map.entry(\"k4\", \"v4\")\n                    ))\n                    .build())\n                .spec(KubeNodePoolTemplateSpecArgs.builder()\n                    .taints(Map.ofEntries(\n                        Map.entry(\"effect\", \"PreferNoSchedule\"),\n                        Map.entry(\"key\", \"k\"),\n                        Map.entry(\"value\", \"v\")\n                    ))\n                    .unschedulable(false)\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pool:\n    type: ovh:CloudProject:KubeNodePool\n    properties:\n      desiredNodes: 3\n      flavorName: b2-7\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      maxNodes: 3\n      minNodes: 3\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      template:\n        metadata:\n          annotations:\n            k1: v1\n            k2: v2\n          finalizers:\n            - ovhcloud.com/v1beta1\n            - ovhcloud.com/v1\n          labels:\n            k3: v3\n            k4: v4\n        spec:\n          taints:\n            - effect: PreferNoSchedule\n              key: k\n              value: v\n          unschedulable: false\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nOVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by \"/\" E.g., bash\n\n```sh\n $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid\n```\n\n ",
             "properties": {
                 "antiAffinity": {
                     "type": "boolean",
@@ -6497,7 +6497,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of role names. Values can be: \n- administrator,\n- ai_training_operator\n- authentication\n- backup_operator\n- compute_operator\n- image_operator\n- infrastructure_supervisor\n- network_operator\n- network_security_operator\n- objectstore_operator\n- volume_operator\n"
+                    "description": "A list of role names. Values can be: \n- administrator,\n- ai_training_operator\n- ai_training_read\n- authentication\n- backup_operator\n- compute_operator\n- image_operator\n- infrastructure_supervisor\n- network_operator\n- network_security_operator\n- objectstore_operator\n- volume_operator\n"
                 },
                 "roles": {
                     "type": "array",
@@ -6551,7 +6551,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of role names. Values can be: \n- administrator,\n- ai_training_operator\n- authentication\n- backup_operator\n- compute_operator\n- image_operator\n- infrastructure_supervisor\n- network_operator\n- network_security_operator\n- objectstore_operator\n- volume_operator\n",
+                    "description": "A list of role names. Values can be: \n- administrator,\n- ai_training_operator\n- ai_training_read\n- authentication\n- backup_operator\n- compute_operator\n- image_operator\n- infrastructure_supervisor\n- network_operator\n- network_security_operator\n- objectstore_operator\n- volume_operator\n",
                     "willReplaceOnChanges": true
                 },
                 "serviceName": {
@@ -6597,7 +6597,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of role names. Values can be: \n- administrator,\n- ai_training_operator\n- authentication\n- backup_operator\n- compute_operator\n- image_operator\n- infrastructure_supervisor\n- network_operator\n- network_security_operator\n- objectstore_operator\n- volume_operator\n",
+                        "description": "A list of role names. Values can be: \n- administrator,\n- ai_training_operator\n- ai_training_read\n- authentication\n- backup_operator\n- compute_operator\n- image_operator\n- infrastructure_supervisor\n- network_operator\n- network_security_operator\n- objectstore_operator\n- volume_operator\n",
                         "willReplaceOnChanges": true
                     },
                     "roles": {
@@ -7637,7 +7637,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "See Argument Reference above.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -7673,7 +7673,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "See Argument Reference above.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -7713,7 +7713,7 @@
                     },
                     "passwordReset": {
                         "type": "string",
-                        "description": "See Argument Reference above.\n"
+                        "description": "Arbitrary string to change to trigger a password update\n"
                     },
                     "serviceName": {
                         "type": "string",
@@ -7750,7 +7750,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "See Argument Reference above.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "roles": {
                     "type": "array",
@@ -7789,7 +7789,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "See Argument Reference above.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "roles": {
                     "type": "array",
@@ -7832,7 +7832,7 @@
                     },
                     "passwordReset": {
                         "type": "string",
-                        "description": "See Argument Reference above.\n"
+                        "description": "Arbitrary string to change to trigger a password update\n"
                     },
                     "roles": {
                         "type": "array",
@@ -7962,7 +7962,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "See Argument Reference above.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -8001,7 +8001,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "See Argument Reference above.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -8044,7 +8044,7 @@
                     },
                     "passwordReset": {
                         "type": "string",
-                        "description": "See Argument Reference above.\n"
+                        "description": "Arbitrary string to change to trigger a password update\n"
                     },
                     "serviceName": {
                         "type": "string",
@@ -8081,7 +8081,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "Arbitrary string to change to trigger a password update.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "roles": {
                     "type": "array",
@@ -8121,7 +8121,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "Arbitrary string to change to trigger a password update.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "roles": {
                     "type": "array",
@@ -8164,7 +8164,7 @@
                     },
                     "passwordReset": {
                         "type": "string",
-                        "description": "Arbitrary string to change to trigger a password update.\n"
+                        "description": "Arbitrary string to change to trigger a password update\n"
                     },
                     "roles": {
                         "type": "array",
@@ -8236,7 +8236,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "Arbitrary string to change to trigger a password update.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -8297,7 +8297,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "Arbitrary string to change to trigger a password update.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -8361,7 +8361,7 @@
                     },
                     "passwordReset": {
                         "type": "string",
-                        "description": "Arbitrary string to change to trigger a password update.\n"
+                        "description": "Arbitrary string to change to trigger a password update\n"
                     },
                     "serviceName": {
                         "type": "string",
@@ -8402,7 +8402,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "Arbitrary string to change to trigger a password update.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -8440,7 +8440,7 @@
                 },
                 "passwordReset": {
                     "type": "string",
-                    "description": "Arbitrary string to change to trigger a password update.\n"
+                    "description": "Arbitrary string to change to trigger a password update\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -8482,7 +8482,7 @@
                     },
                     "passwordReset": {
                         "type": "string",
-                        "description": "Arbitrary string to change to trigger a password update.\n"
+                        "description": "Arbitrary string to change to trigger a password update\n"
                     },
                     "serviceName": {
                         "type": "string",
@@ -14034,7 +14034,7 @@
             }
         },
         "ovh:Me/sshKey:SshKey": {
-            "description": "Creates an SSH Key.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovh-devrelteam/pulumi-ovh\";\n\nconst mykey = new ovh.me.SshKey(\"mykey\", {\n    key: \"ssh-ed25519 AAAAC3...\",\n    keyName: \"mykey\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmykey = ovh.me.SshKey(\"mykey\",\n    key=\"ssh-ed25519 AAAAC3...\",\n    key_name=\"mykey\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mykey = new Ovh.Me.SshKey(\"mykey\", new()\n    {\n        Key = \"ssh-ed25519 AAAAC3...\",\n        KeyName = \"mykey\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Me.NewSshKey(ctx, \"mykey\", \u0026Me.SshKeyArgs{\n\t\t\tKey:     pulumi.String(\"ssh-ed25519 AAAAC3...\"),\n\t\t\tKeyName: pulumi.String(\"mykey\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.SshKey;\nimport com.pulumi.ovh.Me.SshKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mykey = new SshKey(\"mykey\", SshKeyArgs.builder()        \n            .key(\"ssh-ed25519 AAAAC3...\")\n            .keyName(\"mykey\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mykey:\n    type: ovh:Me:SshKey\n    properties:\n      key: ssh-ed25519 AAAAC3...\n      keyName: mykey\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovh-devrelteam/pulumi-ovh\";\n\nconst mykey = new ovh.me.SshKey(\"mykey\", {\n    key: \"ssh-ed25519 AAAAC3...\",\n    keyName: \"mykey\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmykey = ovh.me.SshKey(\"mykey\",\n    key=\"ssh-ed25519 AAAAC3...\",\n    key_name=\"mykey\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mykey = new Ovh.Me.SshKey(\"mykey\", new()\n    {\n        Key = \"ssh-ed25519 AAAAC3...\",\n        KeyName = \"mykey\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Me.NewSshKey(ctx, \"mykey\", \u0026Me.SshKeyArgs{\n\t\t\tKey:     pulumi.String(\"ssh-ed25519 AAAAC3...\"),\n\t\t\tKeyName: pulumi.String(\"mykey\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.SshKey;\nimport com.pulumi.ovh.Me.SshKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mykey = new SshKey(\"mykey\", SshKeyArgs.builder()        \n            .key(\"ssh-ed25519 AAAAC3...\")\n            .keyName(\"mykey\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mykey:\n    type: ovh:Me:SshKey\n    properties:\n      key: ssh-ed25519 AAAAC3...\n      keyName: mykey\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "default": {
                     "type": "boolean",
@@ -18362,7 +18362,8 @@
                         "description": "Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)\n"
                     },
                     "kernel": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Filter the value of kernel property (iPXE script name)\n"
                     },
                     "serviceName": {
                         "type": "string",

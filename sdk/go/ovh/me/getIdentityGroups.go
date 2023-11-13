@@ -4,8 +4,12 @@
 package me
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve the list of the account's identity groups
@@ -49,4 +53,50 @@ type GetIdentityGroupsResult struct {
 	Groups []string `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetIdentityGroupsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetIdentityGroupsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetIdentityGroupsResult, error) {
+		r, err := GetIdentityGroups(ctx, opts...)
+		var s GetIdentityGroupsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetIdentityGroupsResultOutput)
+}
+
+// A collection of values returned by getIdentityGroups.
+type GetIdentityGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetIdentityGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdentityGroupsResult)(nil)).Elem()
+}
+
+func (o GetIdentityGroupsResultOutput) ToGetIdentityGroupsResultOutput() GetIdentityGroupsResultOutput {
+	return o
+}
+
+func (o GetIdentityGroupsResultOutput) ToGetIdentityGroupsResultOutputWithContext(ctx context.Context) GetIdentityGroupsResultOutput {
+	return o
+}
+
+func (o GetIdentityGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIdentityGroupsResult] {
+	return pulumix.Output[GetIdentityGroupsResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The list of the group names of all the identity groups.
+func (o GetIdentityGroupsResultOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdentityGroupsResult) []string { return v.Groups }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIdentityGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdentityGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIdentityGroupsResultOutput{})
 }

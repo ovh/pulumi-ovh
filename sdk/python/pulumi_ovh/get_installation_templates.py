@@ -13,6 +13,7 @@ __all__ = [
     'GetInstallationTemplatesResult',
     'AwaitableGetInstallationTemplatesResult',
     'get_installation_templates',
+    'get_installation_templates_output',
 ]
 
 @pulumi.output_type
@@ -75,3 +76,20 @@ def get_installation_templates(opts: Optional[pulumi.InvokeOptions] = None) -> A
     return AwaitableGetInstallationTemplatesResult(
         id=pulumi.get(__ret__, 'id'),
         results=pulumi.get(__ret__, 'results'))
+
+
+@_utilities.lift_output_func(get_installation_templates)
+def get_installation_templates_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstallationTemplatesResult]:
+    """
+    Use this data source to get the list of installation templates available for dedicated servers.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    templates = ovh.get_installation_templates()
+    ```
+    """
+    ...

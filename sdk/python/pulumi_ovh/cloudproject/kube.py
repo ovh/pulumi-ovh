@@ -621,9 +621,6 @@ class Kube(pulumi.CustomResource):
 
             __props__.__dict__["customization_apiservers"] = customization_apiservers
             __props__.__dict__["customization_kube_proxy"] = customization_kube_proxy
-            if customizations is not None and not opts.urn:
-                warnings.warn("""Use customization_apiserver instead""", DeprecationWarning)
-                pulumi.log.warn("""customizations is deprecated: Use customization_apiserver instead""")
             __props__.__dict__["customizations"] = customizations
             __props__.__dict__["kube_proxy_mode"] = kube_proxy_mode
             __props__.__dict__["name"] = name

@@ -36,7 +36,7 @@ type User struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -99,7 +99,7 @@ type userState struct {
 	Name *string `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -120,7 +120,7 @@ type UserState struct {
 	Name pulumi.StringPtrInput
 	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -141,7 +141,7 @@ type userArgs struct {
 	Engine string `pulumi:"engine"`
 	// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
 	Name *string `pulumi:"name"`
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -157,7 +157,7 @@ type UserArgs struct {
 	Engine pulumi.StringInput
 	// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
 	Name pulumi.StringPtrInput
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -301,7 +301,7 @@ func (o UserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Arbitrary string to change to trigger a password update.
+// Arbitrary string to change to trigger a password update
 func (o UserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }

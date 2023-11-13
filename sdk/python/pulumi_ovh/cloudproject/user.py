@@ -32,6 +32,7 @@ class UserArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be: 
                - administrator,
                - ai_training_operator
+               - ai_training_read
                - authentication
                - backup_operator
                - compute_operator
@@ -109,6 +110,7 @@ class UserArgs:
         A list of role names. Values can be: 
         - administrator,
         - ai_training_operator
+        - ai_training_read
         - authentication
         - backup_operator
         - compute_operator
@@ -152,6 +154,7 @@ class _UserState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be: 
                - administrator,
                - ai_training_operator
+               - ai_training_read
                - authentication
                - backup_operator
                - compute_operator
@@ -259,6 +262,7 @@ class _UserState:
         A list of role names. Values can be: 
         - administrator,
         - ai_training_operator
+        - ai_training_read
         - authentication
         - backup_operator
         - compute_operator
@@ -358,6 +362,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be: 
                - administrator,
                - ai_training_operator
+               - ai_training_read
                - authentication
                - backup_operator
                - compute_operator
@@ -469,6 +474,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be: 
                - administrator,
                - ai_training_operator
+               - ai_training_read
                - authentication
                - backup_operator
                - compute_operator
@@ -551,6 +557,7 @@ class User(pulumi.CustomResource):
         A list of role names. Values can be: 
         - administrator,
         - ai_training_operator
+        - ai_training_read
         - authentication
         - backup_operator
         - compute_operator

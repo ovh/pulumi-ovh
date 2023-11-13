@@ -35,7 +35,7 @@ type M3DbUser struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// See Argument Reference above.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -94,7 +94,7 @@ type m3dbUserState struct {
 	Name *string `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
-	// See Argument Reference above.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -114,7 +114,7 @@ type M3DbUserState struct {
 	Name pulumi.StringPtrInput
 	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
-	// See Argument Reference above.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -134,7 +134,7 @@ type m3dbUserArgs struct {
 	Group *string `pulumi:"group"`
 	// Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
 	Name *string `pulumi:"name"`
-	// See Argument Reference above.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -149,7 +149,7 @@ type M3DbUserArgs struct {
 	Group pulumi.StringPtrInput
 	// Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
 	Name pulumi.StringPtrInput
-	// See Argument Reference above.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -292,7 +292,7 @@ func (o M3DbUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
+// Arbitrary string to change to trigger a password update
 func (o M3DbUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }

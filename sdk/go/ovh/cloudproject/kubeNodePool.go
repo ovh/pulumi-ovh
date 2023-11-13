@@ -85,8 +85,8 @@ import (
 //						},
 //					},
 //					Spec: &cloudproject.KubeNodePoolTemplateSpecArgs{
-//						Taints: pulumi.AnyMapArray{
-//							pulumi.AnyMap{
+//						Taints: pulumi.MapArray{
+//							pulumi.Map{
 //								"effect": pulumi.Any("PreferNoSchedule"),
 //								"key":    pulumi.Any("k"),
 //								"value":  pulumi.Any("v"),

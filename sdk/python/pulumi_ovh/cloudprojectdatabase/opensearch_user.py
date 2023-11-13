@@ -28,7 +28,7 @@ class OpensearchUserArgs:
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[Sequence[pulumi.Input['OpensearchUserAclArgs']]] acls: Acls of the user.
         :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -92,7 +92,7 @@ class OpensearchUserArgs:
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> Optional[pulumi.Input[str]]:
         """
-        See Argument Reference above.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 
@@ -119,7 +119,7 @@ class _OpensearchUserState:
         :param pulumi.Input[str] created_at: Date of the creation of the user.
         :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
@@ -205,7 +205,7 @@ class _OpensearchUserState:
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> Optional[pulumi.Input[str]]:
         """
-        See Argument Reference above.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 
@@ -264,7 +264,7 @@ class OpensearchUser(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpensearchUserAclArgs']]]] acls: Acls of the user.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
@@ -356,7 +356,7 @@ class OpensearchUser(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: Date of the creation of the user.
         :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
@@ -419,7 +419,7 @@ class OpensearchUser(pulumi.CustomResource):
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> pulumi.Output[Optional[str]]:
         """
-        See Argument Reference above.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 

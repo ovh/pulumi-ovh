@@ -4,8 +4,12 @@
 package vps
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of VPS associated with your OVH Account.
@@ -49,4 +53,50 @@ type GetVpssResult struct {
 	Id string `pulumi:"id"`
 	// The list of VPS IDs associated with your OVH Account.
 	Results []string `pulumi:"results"`
+}
+
+func GetVpssOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVpssResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetVpssResult, error) {
+		r, err := GetVpss(ctx, opts...)
+		var s GetVpssResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetVpssResultOutput)
+}
+
+// A collection of values returned by getVpss.
+type GetVpssResultOutput struct{ *pulumi.OutputState }
+
+func (GetVpssResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpssResult)(nil)).Elem()
+}
+
+func (o GetVpssResultOutput) ToGetVpssResultOutput() GetVpssResultOutput {
+	return o
+}
+
+func (o GetVpssResultOutput) ToGetVpssResultOutputWithContext(ctx context.Context) GetVpssResultOutput {
+	return o
+}
+
+func (o GetVpssResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpssResult] {
+	return pulumix.Output[GetVpssResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetVpssResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpssResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of VPS IDs associated with your OVH Account.
+func (o GetVpssResultOutput) Results() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpssResult) []string { return v.Results }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetVpssResultOutput{})
 }

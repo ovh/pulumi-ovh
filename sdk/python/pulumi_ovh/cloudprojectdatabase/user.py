@@ -27,7 +27,7 @@ class UserArgs:
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
-        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "engine", engine)
@@ -91,7 +91,7 @@ class UserArgs:
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> Optional[pulumi.Input[str]]:
         """
-        Arbitrary string to change to trigger a password update.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 
@@ -119,7 +119,7 @@ class _UserState:
                Available engines:
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
-        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
@@ -206,7 +206,7 @@ class _UserState:
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> Optional[pulumi.Input[str]]:
         """
-        Arbitrary string to change to trigger a password update.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 
@@ -266,7 +266,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
                Available engines:
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
-        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
@@ -361,7 +361,7 @@ class User(pulumi.CustomResource):
                Available engines:
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
-        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
@@ -425,7 +425,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> pulumi.Output[Optional[str]]:
         """
-        Arbitrary string to change to trigger a password update.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 

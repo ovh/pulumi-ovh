@@ -33,7 +33,7 @@ type PostgresSqlUser struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
 	// Roles the user belongs to.
 	// Available roles:
@@ -93,7 +93,7 @@ type postgresSqlUserState struct {
 	Name *string `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
 	// Roles the user belongs to.
 	// Available roles:
@@ -114,7 +114,7 @@ type PostgresSqlUserState struct {
 	Name pulumi.StringPtrInput
 	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
 	// Roles the user belongs to.
 	// Available roles:
@@ -135,7 +135,7 @@ type postgresSqlUserArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
 	Name *string `pulumi:"name"`
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
 	// Roles the user belongs to.
 	// Available roles:
@@ -151,7 +151,7 @@ type PostgresSqlUserArgs struct {
 	ClusterId pulumi.StringInput
 	// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
 	Name pulumi.StringPtrInput
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
 	// Roles the user belongs to.
 	// Available roles:
@@ -292,7 +292,7 @@ func (o PostgresSqlUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresSqlUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Arbitrary string to change to trigger a password update.
+// Arbitrary string to change to trigger a password update
 func (o PostgresSqlUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgresSqlUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }

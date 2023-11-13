@@ -13,6 +13,7 @@ __all__ = [
     'GetIpxeScriptsResult',
     'AwaitableGetIpxeScriptsResult',
     'get_ipxe_scripts',
+    'get_ipxe_scripts_output',
 ]
 
 @pulumi.output_type
@@ -75,3 +76,20 @@ def get_ipxe_scripts(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     return AwaitableGetIpxeScriptsResult(
         id=pulumi.get(__ret__, 'id'),
         results=pulumi.get(__ret__, 'results'))
+
+
+@_utilities.lift_output_func(get_ipxe_scripts)
+def get_ipxe_scripts_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpxeScriptsResult]:
+    """
+    Use this data source to retrieve a list of the names of the account's IPXE Scripts.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    scripts = ovh.Me.get_ipxe_scripts()
+    ```
+    """
+    ...

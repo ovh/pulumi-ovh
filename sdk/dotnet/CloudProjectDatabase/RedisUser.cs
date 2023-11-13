@@ -70,7 +70,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Arbitrary string to change to trigger a password update.
+        /// Arbitrary string to change to trigger a password update
         /// </summary>
         [Output("passwordReset")]
         public Output<string?> PasswordReset { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Arbitrary string to change to trigger a password update.
+        /// Arbitrary string to change to trigger a password update
         /// </summary>
         [Input("passwordReset")]
         public Input<string>? PasswordReset { get; set; }
@@ -303,7 +303,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Arbitrary string to change to trigger a password update.
+        /// Arbitrary string to change to trigger a password update
         /// </summary>
         [Input("passwordReset")]
         public Input<string>? PasswordReset { get; set; }

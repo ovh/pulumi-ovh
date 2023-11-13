@@ -131,8 +131,6 @@ class SshKey(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates an SSH Key.
-
         ## Example Usage
 
         ```python
@@ -157,8 +155,6 @@ class SshKey(pulumi.CustomResource):
                  args: SshKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an SSH Key.
-
         ## Example Usage
 
         ```python

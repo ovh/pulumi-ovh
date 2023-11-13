@@ -41,7 +41,7 @@ type RedisUser struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -106,7 +106,7 @@ type redisUserState struct {
 	Name *string `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -132,7 +132,7 @@ type RedisUserState struct {
 	Name pulumi.StringPtrInput
 	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -158,7 +158,7 @@ type redisUserArgs struct {
 	Keys []string `pulumi:"keys"`
 	// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
 	Name *string `pulumi:"name"`
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -179,7 +179,7 @@ type RedisUserArgs struct {
 	Keys pulumi.StringArrayInput
 	// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
 	Name pulumi.StringPtrInput
-	// Arbitrary string to change to trigger a password update.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -337,7 +337,7 @@ func (o RedisUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Arbitrary string to change to trigger a password update.
+// Arbitrary string to change to trigger a password update
 func (o RedisUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }

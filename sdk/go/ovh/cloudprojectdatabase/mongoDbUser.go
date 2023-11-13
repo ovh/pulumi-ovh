@@ -33,7 +33,7 @@ type MongoDbUser struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// See Argument Reference above.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
 	// Roles the user belongs to.
 	// Available roles:
@@ -93,7 +93,7 @@ type mongoDbUserState struct {
 	Name *string `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
-	// See Argument Reference above.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
 	// Roles the user belongs to.
 	// Available roles:
@@ -114,7 +114,7 @@ type MongoDbUserState struct {
 	Name pulumi.StringPtrInput
 	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
-	// See Argument Reference above.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
 	// Roles the user belongs to.
 	// Available roles:
@@ -135,7 +135,7 @@ type mongoDbUserArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Name of the user.
 	Name *string `pulumi:"name"`
-	// See Argument Reference above.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
 	// Roles the user belongs to.
 	// Available roles:
@@ -151,7 +151,7 @@ type MongoDbUserArgs struct {
 	ClusterId pulumi.StringInput
 	// Name of the user.
 	Name pulumi.StringPtrInput
-	// See Argument Reference above.
+	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
 	// Roles the user belongs to.
 	// Available roles:
@@ -292,7 +292,7 @@ func (o MongoDbUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongoDbUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
+// Arbitrary string to change to trigger a password update
 func (o MongoDbUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MongoDbUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }

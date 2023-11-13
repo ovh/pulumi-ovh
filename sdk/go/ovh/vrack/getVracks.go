@@ -4,8 +4,12 @@
 package vrack
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of Vrack IDs available for your OVHcloud account.
@@ -49,4 +53,50 @@ type GetVracksResult struct {
 	Id string `pulumi:"id"`
 	// The list of vrack service name available for your OVHcloud account.
 	Results []string `pulumi:"results"`
+}
+
+func GetVracksOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVracksResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetVracksResult, error) {
+		r, err := GetVracks(ctx, opts...)
+		var s GetVracksResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetVracksResultOutput)
+}
+
+// A collection of values returned by getVracks.
+type GetVracksResultOutput struct{ *pulumi.OutputState }
+
+func (GetVracksResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVracksResult)(nil)).Elem()
+}
+
+func (o GetVracksResultOutput) ToGetVracksResultOutput() GetVracksResultOutput {
+	return o
+}
+
+func (o GetVracksResultOutput) ToGetVracksResultOutputWithContext(ctx context.Context) GetVracksResultOutput {
+	return o
+}
+
+func (o GetVracksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVracksResult] {
+	return pulumix.Output[GetVracksResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetVracksResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVracksResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of vrack service name available for your OVHcloud account.
+func (o GetVracksResultOutput) Results() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVracksResult) []string { return v.Results }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetVracksResultOutput{})
 }
