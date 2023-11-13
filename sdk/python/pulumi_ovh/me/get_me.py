@@ -14,6 +14,7 @@ __all__ = [
     'GetMeResult',
     'AwaitableGetMeResult',
     'get_me',
+    'get_me_output',
 ]
 
 @pulumi.output_type
@@ -450,3 +451,20 @@ def get_me(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMeResult:
         state=pulumi.get(__ret__, 'state'),
         vat=pulumi.get(__ret__, 'vat'),
         zip=pulumi.get(__ret__, 'zip'))
+
+
+@_utilities.lift_output_func(get_me)
+def get_me_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMeResult]:
+    """
+    Use this data source to get information about the current OVHcloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    myaccount = ovh.Me.get_me()
+    ```
+    """
+    ...

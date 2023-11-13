@@ -79,6 +79,9 @@ namespace Pulumi.Ovh.Dedicated
         [Input("bootType")]
         public string? BootType { get; set; }
 
+        /// <summary>
+        /// Filter the value of kernel property (iPXE script name)
+        /// </summary>
         [Input("kernel")]
         public string? Kernel { get; set; }
 
@@ -102,6 +105,9 @@ namespace Pulumi.Ovh.Dedicated
         [Input("bootType")]
         public Input<string>? BootType { get; set; }
 
+        /// <summary>
+        /// Filter the value of kernel property (iPXE script name)
+        /// </summary>
         [Input("kernel")]
         public Input<string>? Kernel { get; set; }
 

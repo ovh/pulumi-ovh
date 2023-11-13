@@ -25,7 +25,7 @@ class MongoDbUserArgs:
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] name: Name of the user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
                Available roles:
         """
@@ -79,7 +79,7 @@ class MongoDbUserArgs:
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> Optional[pulumi.Input[str]]:
         """
-        See Argument Reference above.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 
@@ -118,7 +118,7 @@ class _MongoDbUserState:
         :param pulumi.Input[str] created_at: Date of the creation of the user.
         :param pulumi.Input[str] name: Name of the user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
                Available roles:
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
@@ -194,7 +194,7 @@ class _MongoDbUserState:
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> Optional[pulumi.Input[str]]:
         """
-        See Argument Reference above.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 
@@ -265,7 +265,7 @@ class MongoDbUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] name: Name of the user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
                Available roles:
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
@@ -358,7 +358,7 @@ class MongoDbUser(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: Date of the creation of the user.
         :param pulumi.Input[str] name: Name of the user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
                Available roles:
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
@@ -415,7 +415,7 @@ class MongoDbUser(pulumi.CustomResource):
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> pulumi.Output[Optional[str]]:
         """
-        See Argument Reference above.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 

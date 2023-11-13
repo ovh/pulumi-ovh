@@ -26,7 +26,7 @@ class M3DbUserArgs:
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] group: Group of the user:
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -90,7 +90,7 @@ class M3DbUserArgs:
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> Optional[pulumi.Input[str]]:
         """
-        See Argument Reference above.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 
@@ -117,7 +117,7 @@ class _M3DbUserState:
         :param pulumi.Input[str] group: Group of the user:
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
@@ -203,7 +203,7 @@ class _M3DbUserState:
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> Optional[pulumi.Input[str]]:
         """
-        See Argument Reference above.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 
@@ -262,7 +262,7 @@ class M3DbUser(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] group: Group of the user:
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
@@ -354,7 +354,7 @@ class M3DbUser(pulumi.CustomResource):
         :param pulumi.Input[str] group: Group of the user:
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
-        :param pulumi.Input[str] password_reset: See Argument Reference above.
+        :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
@@ -417,7 +417,7 @@ class M3DbUser(pulumi.CustomResource):
     @pulumi.getter(name="passwordReset")
     def password_reset(self) -> pulumi.Output[Optional[str]]:
         """
-        See Argument Reference above.
+        Arbitrary string to change to trigger a password update
         """
         return pulumi.get(self, "password_reset")
 

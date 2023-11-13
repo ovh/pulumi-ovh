@@ -13,8 +13,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Creates an SSH Key.
-//
 // ## Example Usage
 //
 // ```go

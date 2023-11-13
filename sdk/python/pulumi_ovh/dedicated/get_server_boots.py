@@ -102,6 +102,7 @@ def get_server_boots(boot_type: Optional[str] = None,
 
 
     :param str boot_type: Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
+    :param str kernel: Filter the value of kernel property (iPXE script name)
     :param str service_name: The internal name of your dedicated server.
     """
     __args__ = dict()
@@ -139,6 +140,7 @@ def get_server_boots_output(boot_type: Optional[pulumi.Input[Optional[str]]] = N
 
 
     :param str boot_type: Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
+    :param str kernel: Filter the value of kernel property (iPXE script name)
     :param str service_name: The internal name of your dedicated server.
     """
     ...

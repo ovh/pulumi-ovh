@@ -37,6 +37,9 @@ export interface GetServerBootsArgs {
      * Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
      */
     bootType?: string;
+    /**
+     * Filter the value of kernel property (iPXE script name)
+     */
     kernel?: string;
     /**
      * The internal name of your dedicated server.
@@ -87,6 +90,9 @@ export interface GetServerBootsOutputArgs {
      * Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
      */
     bootType?: pulumi.Input<string>;
+    /**
+     * Filter the value of kernel property (iPXE script name)
+     */
     kernel?: pulumi.Input<string>;
     /**
      * The internal name of your dedicated server.

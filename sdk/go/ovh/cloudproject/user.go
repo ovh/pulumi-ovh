@@ -59,6 +59,7 @@ type User struct {
 	// A list of role names. Values can be:
 	// - administrator,
 	// - aiTrainingOperator
+	// - aiTrainingRead
 	// - authentication
 	// - backupOperator
 	// - computeOperator
@@ -134,6 +135,7 @@ type userState struct {
 	// A list of role names. Values can be:
 	// - administrator,
 	// - aiTrainingOperator
+	// - aiTrainingRead
 	// - authentication
 	// - backupOperator
 	// - computeOperator
@@ -173,6 +175,7 @@ type UserState struct {
 	// A list of role names. Values can be:
 	// - administrator,
 	// - aiTrainingOperator
+	// - aiTrainingRead
 	// - authentication
 	// - backupOperator
 	// - computeOperator
@@ -210,6 +213,7 @@ type userArgs struct {
 	// A list of role names. Values can be:
 	// - administrator,
 	// - aiTrainingOperator
+	// - aiTrainingRead
 	// - authentication
 	// - backupOperator
 	// - computeOperator
@@ -237,6 +241,7 @@ type UserArgs struct {
 	// A list of role names. Values can be:
 	// - administrator,
 	// - aiTrainingOperator
+	// - aiTrainingRead
 	// - authentication
 	// - backupOperator
 	// - computeOperator
@@ -394,6 +399,7 @@ func (o UserOutput) RoleName() pulumi.StringPtrOutput {
 // A list of role names. Values can be:
 // - administrator,
 // - aiTrainingOperator
+// - aiTrainingRead
 // - authentication
 // - backupOperator
 // - computeOperator

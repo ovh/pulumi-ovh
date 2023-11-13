@@ -58,7 +58,7 @@ export class PostgresSqlUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
-     * Arbitrary string to change to trigger a password update.
+     * Arbitrary string to change to trigger a password update
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
     /**
@@ -142,7 +142,7 @@ export interface PostgresSqlUserState {
      */
     password?: pulumi.Input<string>;
     /**
-     * Arbitrary string to change to trigger a password update.
+     * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
     /**
@@ -174,7 +174,7 @@ export interface PostgresSqlUserArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Arbitrary string to change to trigger a password update.
+     * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
     /**

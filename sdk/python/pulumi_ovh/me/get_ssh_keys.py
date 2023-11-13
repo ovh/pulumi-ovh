@@ -13,6 +13,7 @@ __all__ = [
     'GetSshKeysResult',
     'AwaitableGetSshKeysResult',
     'get_ssh_keys',
+    'get_ssh_keys_output',
 ]
 
 @pulumi.output_type
@@ -75,3 +76,20 @@ def get_ssh_keys(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSsh
     return AwaitableGetSshKeysResult(
         id=pulumi.get(__ret__, 'id'),
         names=pulumi.get(__ret__, 'names'))
+
+
+@_utilities.lift_output_func(get_ssh_keys)
+def get_ssh_keys_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshKeysResult]:
+    """
+    Use this data source to retrieve list of names of the account's SSH keys.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mykeys = ovh.Me.get_ssh_keys()
+    ```
+    """
+    ...

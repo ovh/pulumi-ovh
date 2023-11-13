@@ -371,9 +371,6 @@ class Project(pulumi.CustomResource):
             if ovh_subsidiary is None and not opts.urn:
                 raise TypeError("Missing required property 'ovh_subsidiary'")
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
-            if payment_mean is not None and not opts.urn:
-                warnings.warn("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""", DeprecationWarning)
-                pulumi.log.warn("""payment_mean is deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
             __props__.__dict__["payment_mean"] = payment_mean
             if plan is None and not opts.urn:
                 raise TypeError("Missing required property 'plan'")

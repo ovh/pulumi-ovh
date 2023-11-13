@@ -63,7 +63,7 @@ export class User extends pulumi.CustomResource {
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
-     * Arbitrary string to change to trigger a password update.
+     * Arbitrary string to change to trigger a password update
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
     /**
@@ -150,7 +150,7 @@ export interface UserState {
      */
     password?: pulumi.Input<string>;
     /**
-     * Arbitrary string to change to trigger a password update.
+     * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
     /**
@@ -182,7 +182,7 @@ export interface UserArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Arbitrary string to change to trigger a password update.
+     * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
     /**

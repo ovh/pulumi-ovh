@@ -73,6 +73,7 @@ export class User extends pulumi.CustomResource {
      * A list of role names. Values can be: 
      * - administrator,
      * - aiTrainingOperator
+     * - aiTrainingRead
      * - authentication
      * - backupOperator
      * - computeOperator
@@ -180,6 +181,7 @@ export interface UserState {
      * A list of role names. Values can be: 
      * - administrator,
      * - aiTrainingOperator
+     * - aiTrainingRead
      * - authentication
      * - backupOperator
      * - computeOperator
@@ -232,6 +234,7 @@ export interface UserArgs {
      * A list of role names. Values can be: 
      * - administrator,
      * - aiTrainingOperator
+     * - aiTrainingRead
      * - authentication
      * - backupOperator
      * - computeOperator

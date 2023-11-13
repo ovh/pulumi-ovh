@@ -4,8 +4,12 @@
 package me
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve list of user logins of the account's identity users.
@@ -49,4 +53,50 @@ type GetIdentityUsersResult struct {
 	Id string `pulumi:"id"`
 	// The list of the user's logins of all the identity users.
 	Users []string `pulumi:"users"`
+}
+
+func GetIdentityUsersOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetIdentityUsersResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetIdentityUsersResult, error) {
+		r, err := GetIdentityUsers(ctx, opts...)
+		var s GetIdentityUsersResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetIdentityUsersResultOutput)
+}
+
+// A collection of values returned by getIdentityUsers.
+type GetIdentityUsersResultOutput struct{ *pulumi.OutputState }
+
+func (GetIdentityUsersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdentityUsersResult)(nil)).Elem()
+}
+
+func (o GetIdentityUsersResultOutput) ToGetIdentityUsersResultOutput() GetIdentityUsersResultOutput {
+	return o
+}
+
+func (o GetIdentityUsersResultOutput) ToGetIdentityUsersResultOutputWithContext(ctx context.Context) GetIdentityUsersResultOutput {
+	return o
+}
+
+func (o GetIdentityUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIdentityUsersResult] {
+	return pulumix.Output[GetIdentityUsersResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIdentityUsersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdentityUsersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of the user's logins of all the identity users.
+func (o GetIdentityUsersResultOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdentityUsersResult) []string { return v.Users }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIdentityUsersResultOutput{})
 }

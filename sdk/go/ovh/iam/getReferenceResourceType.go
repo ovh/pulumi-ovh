@@ -4,8 +4,12 @@
 package iam
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to list all the IAM resource types.
@@ -49,4 +53,50 @@ type GetReferenceResourceTypeResult struct {
 	Id string `pulumi:"id"`
 	// List of resource types
 	Types []string `pulumi:"types"`
+}
+
+func GetReferenceResourceTypeOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetReferenceResourceTypeResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetReferenceResourceTypeResult, error) {
+		r, err := GetReferenceResourceType(ctx, opts...)
+		var s GetReferenceResourceTypeResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetReferenceResourceTypeResultOutput)
+}
+
+// A collection of values returned by getReferenceResourceType.
+type GetReferenceResourceTypeResultOutput struct{ *pulumi.OutputState }
+
+func (GetReferenceResourceTypeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReferenceResourceTypeResult)(nil)).Elem()
+}
+
+func (o GetReferenceResourceTypeResultOutput) ToGetReferenceResourceTypeResultOutput() GetReferenceResourceTypeResultOutput {
+	return o
+}
+
+func (o GetReferenceResourceTypeResultOutput) ToGetReferenceResourceTypeResultOutputWithContext(ctx context.Context) GetReferenceResourceTypeResultOutput {
+	return o
+}
+
+func (o GetReferenceResourceTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetReferenceResourceTypeResult] {
+	return pulumix.Output[GetReferenceResourceTypeResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetReferenceResourceTypeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReferenceResourceTypeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of resource types
+func (o GetReferenceResourceTypeResultOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetReferenceResourceTypeResult) []string { return v.Types }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetReferenceResourceTypeResultOutput{})
 }

@@ -4,8 +4,12 @@
 package me
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about the current OVHcloud account.
@@ -106,4 +110,194 @@ type GetMeResult struct {
 	Vat string `pulumi:"vat"`
 	// Zipcode of the address
 	Zip string `pulumi:"zip"`
+}
+
+func GetMeOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetMeResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetMeResult, error) {
+		r, err := GetMe(ctx, opts...)
+		var s GetMeResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetMeResultOutput)
+}
+
+// A collection of values returned by getMe.
+type GetMeResultOutput struct{ *pulumi.OutputState }
+
+func (GetMeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMeResult)(nil)).Elem()
+}
+
+func (o GetMeResultOutput) ToGetMeResultOutput() GetMeResultOutput {
+	return o
+}
+
+func (o GetMeResultOutput) ToGetMeResultOutputWithContext(ctx context.Context) GetMeResultOutput {
+	return o
+}
+
+func (o GetMeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMeResult] {
+	return pulumix.Output[GetMeResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The resource URN of the account, to be used when writing IAM policies
+func (o GetMeResultOutput) AccountURN() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.AccountURN }).(pulumi.StringOutput)
+}
+
+// Postal address of the account
+func (o GetMeResultOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Area of the account
+func (o GetMeResultOutput) Area() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Area }).(pulumi.StringOutput)
+}
+
+// City of birth
+func (o GetMeResultOutput) BirthCity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.BirthCity }).(pulumi.StringOutput)
+}
+
+// Birth date
+func (o GetMeResultOutput) BirthDay() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.BirthDay }).(pulumi.StringOutput)
+}
+
+// City of the account
+func (o GetMeResultOutput) City() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.City }).(pulumi.StringOutput)
+}
+
+// This is the national identification number of the company that possess this account
+func (o GetMeResultOutput) CompanyNationalIdentificationNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.CompanyNationalIdentificationNumber }).(pulumi.StringOutput)
+}
+
+// Type of corporation
+func (o GetMeResultOutput) CorporationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.CorporationType }).(pulumi.StringOutput)
+}
+
+// Country of the account
+func (o GetMeResultOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Country }).(pulumi.StringOutput)
+}
+
+func (o GetMeResultOutput) Currencies() GetMeCurrencyArrayOutput {
+	return o.ApplyT(func(v GetMeResult) []GetMeCurrency { return v.Currencies }).(GetMeCurrencyArrayOutput)
+}
+
+// The customer code of this account (a numerical value used for identification when contacting support via phone call)
+func (o GetMeResultOutput) CustomerCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.CustomerCode }).(pulumi.StringOutput)
+}
+
+// Email address
+func (o GetMeResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// Fax number
+func (o GetMeResultOutput) Fax() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Fax }).(pulumi.StringOutput)
+}
+
+// First name
+func (o GetMeResultOutput) Firstname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Firstname }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetMeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Italian SDI
+func (o GetMeResultOutput) ItalianSdi() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.ItalianSdi }).(pulumi.StringOutput)
+}
+
+// Preferred language for this account
+func (o GetMeResultOutput) Language() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Language }).(pulumi.StringOutput)
+}
+
+// Legal form of the account
+func (o GetMeResultOutput) Legalform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Legalform }).(pulumi.StringOutput)
+}
+
+// Name of the account holder
+func (o GetMeResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// National Identification Number of this account
+func (o GetMeResultOutput) NationalIdentificationNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.NationalIdentificationNumber }).(pulumi.StringOutput)
+}
+
+// Nic handle / customer identifier
+func (o GetMeResultOutput) Nichandle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Nichandle }).(pulumi.StringOutput)
+}
+
+// Name of the organisation for this account
+func (o GetMeResultOutput) Organisation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Organisation }).(pulumi.StringOutput)
+}
+
+// OVHcloud subsidiary
+func (o GetMeResultOutput) OvhCompany() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.OvhCompany }).(pulumi.StringOutput)
+}
+
+// OVHcloud subsidiary
+func (o GetMeResultOutput) OvhSubsidiary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.OvhSubsidiary }).(pulumi.StringOutput)
+}
+
+// Phone number
+func (o GetMeResultOutput) Phone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Phone }).(pulumi.StringOutput)
+}
+
+// Country code of the phone number
+func (o GetMeResultOutput) PhoneCountry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.PhoneCountry }).(pulumi.StringOutput)
+}
+
+// Gender of the account holder
+func (o GetMeResultOutput) Sex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Sex }).(pulumi.StringOutput)
+}
+
+// Backup email address
+func (o GetMeResultOutput) SpareEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.SpareEmail }).(pulumi.StringOutput)
+}
+
+// State of the postal address
+func (o GetMeResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// VAT number
+func (o GetMeResultOutput) Vat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Vat }).(pulumi.StringOutput)
+}
+
+// Zipcode of the address
+func (o GetMeResultOutput) Zip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeResult) string { return v.Zip }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMeResultOutput{})
 }

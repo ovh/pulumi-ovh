@@ -4,8 +4,12 @@
 package me
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve list of names of the account's SSH keys.
@@ -49,4 +53,50 @@ type GetSshKeysResult struct {
 	Id string `pulumi:"id"`
 	// The list of the names of all the SSH keys.
 	Names []string `pulumi:"names"`
+}
+
+func GetSshKeysOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetSshKeysResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetSshKeysResult, error) {
+		r, err := GetSshKeys(ctx, opts...)
+		var s GetSshKeysResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetSshKeysResultOutput)
+}
+
+// A collection of values returned by getSshKeys.
+type GetSshKeysResultOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysResult)(nil)).Elem()
+}
+
+func (o GetSshKeysResultOutput) ToGetSshKeysResultOutput() GetSshKeysResultOutput {
+	return o
+}
+
+func (o GetSshKeysResultOutput) ToGetSshKeysResultOutputWithContext(ctx context.Context) GetSshKeysResultOutput {
+	return o
+}
+
+func (o GetSshKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSshKeysResult] {
+	return pulumix.Output[GetSshKeysResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSshKeysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of the names of all the SSH keys.
+func (o GetSshKeysResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSshKeysResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSshKeysResultOutput{})
 }

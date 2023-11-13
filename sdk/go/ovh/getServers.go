@@ -4,8 +4,12 @@
 package ovh
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
@@ -49,4 +53,50 @@ type GetServersResult struct {
 	Id string `pulumi:"id"`
 	// The list of dedicated servers IDs associated with your OVHcloud Account.
 	Results []string `pulumi:"results"`
+}
+
+func GetServersOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetServersResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetServersResult, error) {
+		r, err := GetServers(ctx, opts...)
+		var s GetServersResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetServersResultOutput)
+}
+
+// A collection of values returned by getServers.
+type GetServersResultOutput struct{ *pulumi.OutputState }
+
+func (GetServersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServersResult)(nil)).Elem()
+}
+
+func (o GetServersResultOutput) ToGetServersResultOutput() GetServersResultOutput {
+	return o
+}
+
+func (o GetServersResultOutput) ToGetServersResultOutputWithContext(ctx context.Context) GetServersResultOutput {
+	return o
+}
+
+func (o GetServersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServersResult] {
+	return pulumix.Output[GetServersResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of dedicated servers IDs associated with your OVHcloud Account.
+func (o GetServersResultOutput) Results() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServersResult) []string { return v.Results }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServersResultOutput{})
 }

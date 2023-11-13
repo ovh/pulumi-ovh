@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates an SSH Key.
- *
  * ## Example Usage
  *
  * ```typescript

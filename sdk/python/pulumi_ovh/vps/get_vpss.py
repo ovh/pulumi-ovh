@@ -13,6 +13,7 @@ __all__ = [
     'GetVpssResult',
     'AwaitableGetVpssResult',
     'get_vpss',
+    'get_vpss_output',
 ]
 
 @pulumi.output_type
@@ -75,3 +76,20 @@ def get_vpss(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpssRes
     return AwaitableGetVpssResult(
         id=pulumi.get(__ret__, 'id'),
         results=pulumi.get(__ret__, 'results'))
+
+
+@_utilities.lift_output_func(get_vpss)
+def get_vpss_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpssResult]:
+    """
+    Use this data source to get the list of VPS associated with your OVH Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    servers = ovh.Vps.get_vpss()
+    ```
+    """
+    ...

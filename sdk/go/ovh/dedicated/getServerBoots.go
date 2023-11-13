@@ -54,7 +54,8 @@ func GetServerBoots(ctx *pulumi.Context, args *GetServerBootsArgs, opts ...pulum
 type GetServerBootsArgs struct {
 	// Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
 	BootType *string `pulumi:"bootType"`
-	Kernel   *string `pulumi:"kernel"`
+	// Filter the value of kernel property (iPXE script name)
+	Kernel *string `pulumi:"kernel"`
 	// The internal name of your dedicated server.
 	ServiceName string `pulumi:"serviceName"`
 }
@@ -87,7 +88,8 @@ func GetServerBootsOutput(ctx *pulumi.Context, args GetServerBootsOutputArgs, op
 type GetServerBootsOutputArgs struct {
 	// Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
 	BootType pulumi.StringPtrInput `pulumi:"bootType"`
-	Kernel   pulumi.StringPtrInput `pulumi:"kernel"`
+	// Filter the value of kernel property (iPXE script name)
+	Kernel pulumi.StringPtrInput `pulumi:"kernel"`
 	// The internal name of your dedicated server.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }

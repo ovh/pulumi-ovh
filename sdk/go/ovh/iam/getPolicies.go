@@ -4,8 +4,12 @@
 package iam
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to list the existing IAM policies of an account.
@@ -49,4 +53,50 @@ type GetPoliciesResult struct {
 	Id string `pulumi:"id"`
 	// List of the policies IDs.
 	Policies []string `pulumi:"policies"`
+}
+
+func GetPoliciesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPoliciesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetPoliciesResult, error) {
+		r, err := GetPolicies(ctx, opts...)
+		var s GetPoliciesResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetPoliciesResultOutput)
+}
+
+// A collection of values returned by getPolicies.
+type GetPoliciesResultOutput struct{ *pulumi.OutputState }
+
+func (GetPoliciesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoliciesResult)(nil)).Elem()
+}
+
+func (o GetPoliciesResultOutput) ToGetPoliciesResultOutput() GetPoliciesResultOutput {
+	return o
+}
+
+func (o GetPoliciesResultOutput) ToGetPoliciesResultOutputWithContext(ctx context.Context) GetPoliciesResultOutput {
+	return o
+}
+
+func (o GetPoliciesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPoliciesResult] {
+	return pulumix.Output[GetPoliciesResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPoliciesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of the policies IDs.
+func (o GetPoliciesResultOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPoliciesResult) []string { return v.Policies }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPoliciesResultOutput{})
 }

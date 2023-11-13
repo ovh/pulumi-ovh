@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.Me
 {
     /// <summary>
-    /// Creates an SSH Key.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

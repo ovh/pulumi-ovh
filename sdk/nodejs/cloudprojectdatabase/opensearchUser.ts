@@ -64,7 +64,7 @@ export class OpensearchUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
-     * See Argument Reference above.
+     * Arbitrary string to change to trigger a password update
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
     /**
@@ -147,7 +147,7 @@ export interface OpensearchUserState {
      */
     password?: pulumi.Input<string>;
     /**
-     * See Argument Reference above.
+     * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
     /**
@@ -178,7 +178,7 @@ export interface OpensearchUserArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * See Argument Reference above.
+     * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
     /**

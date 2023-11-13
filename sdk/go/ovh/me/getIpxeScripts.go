@@ -4,8 +4,12 @@
 package me
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve a list of the names of the account's IPXE Scripts.
@@ -49,4 +53,50 @@ type GetIpxeScriptsResult struct {
 	Id string `pulumi:"id"`
 	// The list of the names of all the IPXE Scripts.
 	Results []string `pulumi:"results"`
+}
+
+func GetIpxeScriptsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetIpxeScriptsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetIpxeScriptsResult, error) {
+		r, err := GetIpxeScripts(ctx, opts...)
+		var s GetIpxeScriptsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetIpxeScriptsResultOutput)
+}
+
+// A collection of values returned by getIpxeScripts.
+type GetIpxeScriptsResultOutput struct{ *pulumi.OutputState }
+
+func (GetIpxeScriptsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpxeScriptsResult)(nil)).Elem()
+}
+
+func (o GetIpxeScriptsResultOutput) ToGetIpxeScriptsResultOutput() GetIpxeScriptsResultOutput {
+	return o
+}
+
+func (o GetIpxeScriptsResultOutput) ToGetIpxeScriptsResultOutputWithContext(ctx context.Context) GetIpxeScriptsResultOutput {
+	return o
+}
+
+func (o GetIpxeScriptsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpxeScriptsResult] {
+	return pulumix.Output[GetIpxeScriptsResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIpxeScriptsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpxeScriptsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of the names of all the IPXE Scripts.
+func (o GetIpxeScriptsResultOutput) Results() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpxeScriptsResult) []string { return v.Results }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIpxeScriptsResultOutput{})
 }
