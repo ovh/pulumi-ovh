@@ -1,0 +1,5 @@
+name: ovh-db-go
+runtime: go
+description: A minimal Go Pulumi program
+config:
+ serviceName: <your-service-name>
