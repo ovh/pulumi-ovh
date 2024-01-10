@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * const ldp = new ovh.dbaas.LogsCluster("ldp", {
  *     archiveAllowedNetworks: ["10.0.0.0/16"],
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     directInputAllowedNetworks: ["10.0.0.0/16"],
  *     queryAllowedNetworks: ["10.0.0.0/16"],
  *     serviceName: "ldp-xx-xxxxx",
@@ -21,10 +22,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash
+ * OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by "/" E.g., bash
  *
  * ```sh
- *  $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id
+ *  $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id
  * ```
  */
 export class LogsCluster extends pulumi.CustomResource {
@@ -59,6 +60,10 @@ export class LogsCluster extends pulumi.CustomResource {
      * List of IP blocks
      */
     public readonly archiveAllowedNetworks!: pulumi.Output<string[] | undefined>;
+    /**
+     * Cluster ID. If not provided, the default clusterId is used
+     */
+    public readonly clusterId!: pulumi.Output<string | undefined>;
     /**
      * type of cluster (DEDICATED, PRO or TRIAL)
      */
@@ -107,6 +112,9 @@ export class LogsCluster extends pulumi.CustomResource {
      * datacenter localization
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
+    /**
+     * The service name
+     */
     public readonly serviceName!: pulumi.Output<string>;
 
     /**
@@ -123,6 +131,7 @@ export class LogsCluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as LogsClusterState | undefined;
             resourceInputs["archiveAllowedNetworks"] = state ? state.archiveAllowedNetworks : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["clusterType"] = state ? state.clusterType : undefined;
             resourceInputs["dedicatedInputPem"] = state ? state.dedicatedInputPem : undefined;
             resourceInputs["directInputAllowedNetworks"] = state ? state.directInputAllowedNetworks : undefined;
@@ -142,6 +151,7 @@ export class LogsCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["archiveAllowedNetworks"] = args ? args.archiveAllowedNetworks : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["directInputAllowedNetworks"] = args ? args.directInputAllowedNetworks : undefined;
             resourceInputs["queryAllowedNetworks"] = args ? args.queryAllowedNetworks : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
@@ -171,6 +181,10 @@ export interface LogsClusterState {
      * List of IP blocks
      */
     archiveAllowedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Cluster ID. If not provided, the default clusterId is used
+     */
+    clusterId?: pulumi.Input<string>;
     /**
      * type of cluster (DEDICATED, PRO or TRIAL)
      */
@@ -219,6 +233,9 @@ export interface LogsClusterState {
      * datacenter localization
      */
     region?: pulumi.Input<string>;
+    /**
+     * The service name
+     */
     serviceName?: pulumi.Input<string>;
 }
 
@@ -231,6 +248,10 @@ export interface LogsClusterArgs {
      */
     archiveAllowedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Cluster ID. If not provided, the default clusterId is used
+     */
+    clusterId?: pulumi.Input<string>;
+    /**
      * List of IP blocks
      */
     directInputAllowedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
@@ -238,5 +259,8 @@ export interface LogsClusterArgs {
      * List of IP blocks
      */
     queryAllowedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The service name
+     */
     serviceName: pulumi.Input<string>;
 }

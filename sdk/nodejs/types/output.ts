@@ -1108,13 +1108,7 @@ export namespace Dedicated {
     }
 
     export interface ServerNetworkingInterface {
-        /**
-         * List of mac addresses to bind together.
-         */
         macs: string[];
-        /**
-         * Type of bonding to create.
-         */
         type: string;
     }
 

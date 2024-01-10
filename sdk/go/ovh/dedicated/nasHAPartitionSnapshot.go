@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource for managing **snapshot** to partitions on HA-NAS services
@@ -165,12 +164,6 @@ func (i *NasHAPartitionSnapshot) ToNasHAPartitionSnapshotOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(NasHAPartitionSnapshotOutput)
 }
 
-func (i *NasHAPartitionSnapshot) ToOutput(ctx context.Context) pulumix.Output[*NasHAPartitionSnapshot] {
-	return pulumix.Output[*NasHAPartitionSnapshot]{
-		OutputState: i.ToNasHAPartitionSnapshotOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NasHAPartitionSnapshotArrayInput is an input type that accepts NasHAPartitionSnapshotArray and NasHAPartitionSnapshotArrayOutput values.
 // You can construct a concrete instance of `NasHAPartitionSnapshotArrayInput` via:
 //
@@ -194,12 +187,6 @@ func (i NasHAPartitionSnapshotArray) ToNasHAPartitionSnapshotArrayOutput() NasHA
 
 func (i NasHAPartitionSnapshotArray) ToNasHAPartitionSnapshotArrayOutputWithContext(ctx context.Context) NasHAPartitionSnapshotArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NasHAPartitionSnapshotArrayOutput)
-}
-
-func (i NasHAPartitionSnapshotArray) ToOutput(ctx context.Context) pulumix.Output[[]*NasHAPartitionSnapshot] {
-	return pulumix.Output[[]*NasHAPartitionSnapshot]{
-		OutputState: i.ToNasHAPartitionSnapshotArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NasHAPartitionSnapshotMapInput is an input type that accepts NasHAPartitionSnapshotMap and NasHAPartitionSnapshotMapOutput values.
@@ -227,12 +214,6 @@ func (i NasHAPartitionSnapshotMap) ToNasHAPartitionSnapshotMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(NasHAPartitionSnapshotMapOutput)
 }
 
-func (i NasHAPartitionSnapshotMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasHAPartitionSnapshot] {
-	return pulumix.Output[map[string]*NasHAPartitionSnapshot]{
-		OutputState: i.ToNasHAPartitionSnapshotMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NasHAPartitionSnapshotOutput struct{ *pulumi.OutputState }
 
 func (NasHAPartitionSnapshotOutput) ElementType() reflect.Type {
@@ -245,12 +226,6 @@ func (o NasHAPartitionSnapshotOutput) ToNasHAPartitionSnapshotOutput() NasHAPart
 
 func (o NasHAPartitionSnapshotOutput) ToNasHAPartitionSnapshotOutputWithContext(ctx context.Context) NasHAPartitionSnapshotOutput {
 	return o
-}
-
-func (o NasHAPartitionSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*NasHAPartitionSnapshot] {
-	return pulumix.Output[*NasHAPartitionSnapshot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // name of the partition
@@ -282,12 +257,6 @@ func (o NasHAPartitionSnapshotArrayOutput) ToNasHAPartitionSnapshotArrayOutputWi
 	return o
 }
 
-func (o NasHAPartitionSnapshotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NasHAPartitionSnapshot] {
-	return pulumix.Output[[]*NasHAPartitionSnapshot]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NasHAPartitionSnapshotArrayOutput) Index(i pulumi.IntInput) NasHAPartitionSnapshotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NasHAPartitionSnapshot {
 		return vs[0].([]*NasHAPartitionSnapshot)[vs[1].(int)]
@@ -306,12 +275,6 @@ func (o NasHAPartitionSnapshotMapOutput) ToNasHAPartitionSnapshotMapOutput() Nas
 
 func (o NasHAPartitionSnapshotMapOutput) ToNasHAPartitionSnapshotMapOutputWithContext(ctx context.Context) NasHAPartitionSnapshotMapOutput {
 	return o
-}
-
-func (o NasHAPartitionSnapshotMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasHAPartitionSnapshot] {
-	return pulumix.Output[map[string]*NasHAPartitionSnapshot]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NasHAPartitionSnapshotMapOutput) MapIndex(k pulumi.StringInput) NasHAPartitionSnapshotOutput {

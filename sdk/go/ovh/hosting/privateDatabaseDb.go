@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new database on your private cloud database service.
@@ -151,12 +150,6 @@ func (i *PrivateDatabaseDb) ToPrivateDatabaseDbOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseDbOutput)
 }
 
-func (i *PrivateDatabaseDb) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabaseDb] {
-	return pulumix.Output[*PrivateDatabaseDb]{
-		OutputState: i.ToPrivateDatabaseDbOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivateDatabaseDbArrayInput is an input type that accepts PrivateDatabaseDbArray and PrivateDatabaseDbArrayOutput values.
 // You can construct a concrete instance of `PrivateDatabaseDbArrayInput` via:
 //
@@ -180,12 +173,6 @@ func (i PrivateDatabaseDbArray) ToPrivateDatabaseDbArrayOutput() PrivateDatabase
 
 func (i PrivateDatabaseDbArray) ToPrivateDatabaseDbArrayOutputWithContext(ctx context.Context) PrivateDatabaseDbArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseDbArrayOutput)
-}
-
-func (i PrivateDatabaseDbArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabaseDb] {
-	return pulumix.Output[[]*PrivateDatabaseDb]{
-		OutputState: i.ToPrivateDatabaseDbArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PrivateDatabaseDbMapInput is an input type that accepts PrivateDatabaseDbMap and PrivateDatabaseDbMapOutput values.
@@ -213,12 +200,6 @@ func (i PrivateDatabaseDbMap) ToPrivateDatabaseDbMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseDbMapOutput)
 }
 
-func (i PrivateDatabaseDbMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabaseDb] {
-	return pulumix.Output[map[string]*PrivateDatabaseDb]{
-		OutputState: i.ToPrivateDatabaseDbMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateDatabaseDbOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabaseDbOutput) ElementType() reflect.Type {
@@ -231,12 +212,6 @@ func (o PrivateDatabaseDbOutput) ToPrivateDatabaseDbOutput() PrivateDatabaseDbOu
 
 func (o PrivateDatabaseDbOutput) ToPrivateDatabaseDbOutputWithContext(ctx context.Context) PrivateDatabaseDbOutput {
 	return o
-}
-
-func (o PrivateDatabaseDbOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabaseDb] {
-	return pulumix.Output[*PrivateDatabaseDb]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of your new database
@@ -263,12 +238,6 @@ func (o PrivateDatabaseDbArrayOutput) ToPrivateDatabaseDbArrayOutputWithContext(
 	return o
 }
 
-func (o PrivateDatabaseDbArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabaseDb] {
-	return pulumix.Output[[]*PrivateDatabaseDb]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateDatabaseDbArrayOutput) Index(i pulumi.IntInput) PrivateDatabaseDbOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrivateDatabaseDb {
 		return vs[0].([]*PrivateDatabaseDb)[vs[1].(int)]
@@ -287,12 +256,6 @@ func (o PrivateDatabaseDbMapOutput) ToPrivateDatabaseDbMapOutput() PrivateDataba
 
 func (o PrivateDatabaseDbMapOutput) ToPrivateDatabaseDbMapOutputWithContext(ctx context.Context) PrivateDatabaseDbMapOutput {
 	return o
-}
-
-func (o PrivateDatabaseDbMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabaseDb] {
-	return pulumix.Output[map[string]*PrivateDatabaseDb]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateDatabaseDbMapOutput) MapIndex(k pulumi.StringInput) PrivateDatabaseDbOutput {

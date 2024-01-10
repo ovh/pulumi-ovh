@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about the current OVHcloud account.
@@ -136,12 +135,6 @@ func (o GetMeResultOutput) ToGetMeResultOutput() GetMeResultOutput {
 
 func (o GetMeResultOutput) ToGetMeResultOutputWithContext(ctx context.Context) GetMeResultOutput {
 	return o
-}
-
-func (o GetMeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMeResult] {
-	return pulumix.Output[GetMeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource URN of the account, to be used when writing IAM policies

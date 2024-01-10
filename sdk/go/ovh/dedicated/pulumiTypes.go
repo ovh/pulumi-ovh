@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -103,12 +102,6 @@ func (i ServerInstallTaskDetailsArgs) ToServerInstallTaskDetailsOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskDetailsOutput)
 }
 
-func (i ServerInstallTaskDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[ServerInstallTaskDetails] {
-	return pulumix.Output[ServerInstallTaskDetails]{
-		OutputState: i.ToServerInstallTaskDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServerInstallTaskDetailsArgs) ToServerInstallTaskDetailsPtrOutput() ServerInstallTaskDetailsPtrOutput {
 	return i.ToServerInstallTaskDetailsPtrOutputWithContext(context.Background())
 }
@@ -150,12 +143,6 @@ func (i *serverInstallTaskDetailsPtrType) ToServerInstallTaskDetailsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskDetailsPtrOutput)
 }
 
-func (i *serverInstallTaskDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerInstallTaskDetails] {
-	return pulumix.Output[*ServerInstallTaskDetails]{
-		OutputState: i.ToServerInstallTaskDetailsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerInstallTaskDetailsOutput struct{ *pulumi.OutputState }
 
 func (ServerInstallTaskDetailsOutput) ElementType() reflect.Type {
@@ -178,12 +165,6 @@ func (o ServerInstallTaskDetailsOutput) ToServerInstallTaskDetailsPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerInstallTaskDetails) *ServerInstallTaskDetails {
 		return &v
 	}).(ServerInstallTaskDetailsPtrOutput)
-}
-
-func (o ServerInstallTaskDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[ServerInstallTaskDetails] {
-	return pulumix.Output[ServerInstallTaskDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Template change log details.
@@ -270,12 +251,6 @@ func (o ServerInstallTaskDetailsPtrOutput) ToServerInstallTaskDetailsPtrOutput()
 
 func (o ServerInstallTaskDetailsPtrOutput) ToServerInstallTaskDetailsPtrOutputWithContext(ctx context.Context) ServerInstallTaskDetailsPtrOutput {
 	return o
-}
-
-func (o ServerInstallTaskDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerInstallTaskDetails] {
-	return pulumix.Output[*ServerInstallTaskDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerInstallTaskDetailsPtrOutput) Elem() ServerInstallTaskDetailsOutput {
@@ -431,10 +406,8 @@ func (o ServerInstallTaskDetailsPtrOutput) UseSpla() pulumi.BoolPtrOutput {
 }
 
 type ServerNetworkingInterface struct {
-	// List of mac addresses to bind together.
 	Macs []string `pulumi:"macs"`
-	// Type of bonding to create.
-	Type string `pulumi:"type"`
+	Type string   `pulumi:"type"`
 }
 
 // ServerNetworkingInterfaceInput is an input type that accepts ServerNetworkingInterfaceArgs and ServerNetworkingInterfaceOutput values.
@@ -449,10 +422,8 @@ type ServerNetworkingInterfaceInput interface {
 }
 
 type ServerNetworkingInterfaceArgs struct {
-	// List of mac addresses to bind together.
 	Macs pulumi.StringArrayInput `pulumi:"macs"`
-	// Type of bonding to create.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type pulumi.StringInput      `pulumi:"type"`
 }
 
 func (ServerNetworkingInterfaceArgs) ElementType() reflect.Type {
@@ -465,12 +436,6 @@ func (i ServerNetworkingInterfaceArgs) ToServerNetworkingInterfaceOutput() Serve
 
 func (i ServerNetworkingInterfaceArgs) ToServerNetworkingInterfaceOutputWithContext(ctx context.Context) ServerNetworkingInterfaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerNetworkingInterfaceOutput)
-}
-
-func (i ServerNetworkingInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[ServerNetworkingInterface] {
-	return pulumix.Output[ServerNetworkingInterface]{
-		OutputState: i.ToServerNetworkingInterfaceOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServerNetworkingInterfaceArrayInput is an input type that accepts ServerNetworkingInterfaceArray and ServerNetworkingInterfaceArrayOutput values.
@@ -498,12 +463,6 @@ func (i ServerNetworkingInterfaceArray) ToServerNetworkingInterfaceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ServerNetworkingInterfaceArrayOutput)
 }
 
-func (i ServerNetworkingInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]ServerNetworkingInterface] {
-	return pulumix.Output[[]ServerNetworkingInterface]{
-		OutputState: i.ToServerNetworkingInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerNetworkingInterfaceOutput struct{ *pulumi.OutputState }
 
 func (ServerNetworkingInterfaceOutput) ElementType() reflect.Type {
@@ -518,18 +477,10 @@ func (o ServerNetworkingInterfaceOutput) ToServerNetworkingInterfaceOutputWithCo
 	return o
 }
 
-func (o ServerNetworkingInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[ServerNetworkingInterface] {
-	return pulumix.Output[ServerNetworkingInterface]{
-		OutputState: o.OutputState,
-	}
-}
-
-// List of mac addresses to bind together.
 func (o ServerNetworkingInterfaceOutput) Macs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerNetworkingInterface) []string { return v.Macs }).(pulumi.StringArrayOutput)
 }
 
-// Type of bonding to create.
 func (o ServerNetworkingInterfaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerNetworkingInterface) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -546,12 +497,6 @@ func (o ServerNetworkingInterfaceArrayOutput) ToServerNetworkingInterfaceArrayOu
 
 func (o ServerNetworkingInterfaceArrayOutput) ToServerNetworkingInterfaceArrayOutputWithContext(ctx context.Context) ServerNetworkingInterfaceArrayOutput {
 	return o
-}
-
-func (o ServerNetworkingInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServerNetworkingInterface] {
-	return pulumix.Output[[]ServerNetworkingInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerNetworkingInterfaceArrayOutput) Index(i pulumi.IntInput) ServerNetworkingInterfaceOutput {

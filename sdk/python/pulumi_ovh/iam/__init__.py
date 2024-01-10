@@ -9,5 +9,8 @@ from .get_policies import *
 from .get_policy import *
 from .get_reference_actions import *
 from .get_reference_resource_type import *
+from .get_resource_group import *
+from .get_resource_groups import *
 from .policy import *
+from .resource_group import *
 from . import outputs

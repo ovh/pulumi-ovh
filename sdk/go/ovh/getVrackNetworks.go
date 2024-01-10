@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
@@ -111,12 +110,6 @@ func (o GetVrackNetworksResultOutput) ToGetVrackNetworksResultOutput() GetVrackN
 
 func (o GetVrackNetworksResultOutput) ToGetVrackNetworksResultOutputWithContext(ctx context.Context) GetVrackNetworksResultOutput {
 	return o
-}
-
-func (o GetVrackNetworksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVrackNetworksResult] {
-	return pulumix.Output[GetVrackNetworksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

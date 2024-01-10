@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a namespace for a M3DB cluster associated with a public cloud project.
@@ -268,12 +267,6 @@ func (i *M3DbNamespace) ToM3DbNamespaceOutputWithContext(ctx context.Context) M3
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbNamespaceOutput)
 }
 
-func (i *M3DbNamespace) ToOutput(ctx context.Context) pulumix.Output[*M3DbNamespace] {
-	return pulumix.Output[*M3DbNamespace]{
-		OutputState: i.ToM3DbNamespaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // M3DbNamespaceArrayInput is an input type that accepts M3DbNamespaceArray and M3DbNamespaceArrayOutput values.
 // You can construct a concrete instance of `M3DbNamespaceArrayInput` via:
 //
@@ -297,12 +290,6 @@ func (i M3DbNamespaceArray) ToM3DbNamespaceArrayOutput() M3DbNamespaceArrayOutpu
 
 func (i M3DbNamespaceArray) ToM3DbNamespaceArrayOutputWithContext(ctx context.Context) M3DbNamespaceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbNamespaceArrayOutput)
-}
-
-func (i M3DbNamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]*M3DbNamespace] {
-	return pulumix.Output[[]*M3DbNamespace]{
-		OutputState: i.ToM3DbNamespaceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // M3DbNamespaceMapInput is an input type that accepts M3DbNamespaceMap and M3DbNamespaceMapOutput values.
@@ -330,12 +317,6 @@ func (i M3DbNamespaceMap) ToM3DbNamespaceMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbNamespaceMapOutput)
 }
 
-func (i M3DbNamespaceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*M3DbNamespace] {
-	return pulumix.Output[map[string]*M3DbNamespace]{
-		OutputState: i.ToM3DbNamespaceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type M3DbNamespaceOutput struct{ *pulumi.OutputState }
 
 func (M3DbNamespaceOutput) ElementType() reflect.Type {
@@ -348,12 +329,6 @@ func (o M3DbNamespaceOutput) ToM3DbNamespaceOutput() M3DbNamespaceOutput {
 
 func (o M3DbNamespaceOutput) ToM3DbNamespaceOutputWithContext(ctx context.Context) M3DbNamespaceOutput {
 	return o
-}
-
-func (o M3DbNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*M3DbNamespace] {
-	return pulumix.Output[*M3DbNamespace]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cluster ID.
@@ -431,12 +406,6 @@ func (o M3DbNamespaceArrayOutput) ToM3DbNamespaceArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o M3DbNamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*M3DbNamespace] {
-	return pulumix.Output[[]*M3DbNamespace]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o M3DbNamespaceArrayOutput) Index(i pulumi.IntInput) M3DbNamespaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *M3DbNamespace {
 		return vs[0].([]*M3DbNamespace)[vs[1].(int)]
@@ -455,12 +424,6 @@ func (o M3DbNamespaceMapOutput) ToM3DbNamespaceMapOutput() M3DbNamespaceMapOutpu
 
 func (o M3DbNamespaceMapOutput) ToM3DbNamespaceMapOutputWithContext(ctx context.Context) M3DbNamespaceMapOutput {
 	return o
-}
-
-func (o M3DbNamespaceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*M3DbNamespace] {
-	return pulumix.Output[map[string]*M3DbNamespace]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o M3DbNamespaceMapOutput) MapIndex(k pulumi.StringInput) M3DbNamespaceOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
@@ -122,12 +121,6 @@ func (o GetM3dbUserResultOutput) ToGetM3dbUserResultOutput() GetM3dbUserResultOu
 
 func (o GetM3dbUserResultOutput) ToGetM3dbUserResultOutputWithContext(ctx context.Context) GetM3dbUserResultOutput {
 	return o
-}
-
-func (o GetM3dbUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetM3dbUserResult] {
-	return pulumix.Output[GetM3dbUserResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // See Argument Reference above.

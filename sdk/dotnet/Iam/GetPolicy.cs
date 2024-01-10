@@ -83,6 +83,18 @@ namespace Pulumi.Ovh.Iam
             set => _allows = value;
         }
 
+        [Input("denies")]
+        private List<string>? _denies;
+
+        /// <summary>
+        /// List of actions that will be denied no matter what policy exists.
+        /// </summary>
+        public List<string> Denies
+        {
+            get => _denies ?? (_denies = new List<string>());
+            set => _denies = value;
+        }
+
         /// <summary>
         /// Group description.
         /// </summary>
@@ -93,7 +105,7 @@ namespace Pulumi.Ovh.Iam
         private List<string>? _excepts;
 
         /// <summary>
-        /// List of actions.
+        /// List of actions that will be subtracted from the `allow` list.
         /// </summary>
         public List<string> Excepts
         {
@@ -127,6 +139,18 @@ namespace Pulumi.Ovh.Iam
             set => _allows = value;
         }
 
+        [Input("denies")]
+        private InputList<string>? _denies;
+
+        /// <summary>
+        /// List of actions that will be denied no matter what policy exists.
+        /// </summary>
+        public InputList<string> Denies
+        {
+            get => _denies ?? (_denies = new InputList<string>());
+            set => _denies = value;
+        }
+
         /// <summary>
         /// Group description.
         /// </summary>
@@ -137,7 +161,7 @@ namespace Pulumi.Ovh.Iam
         private InputList<string>? _excepts;
 
         /// <summary>
-        /// List of actions.
+        /// List of actions that will be subtracted from the `allow` list.
         /// </summary>
         public InputList<string> Excepts
         {
@@ -170,11 +194,15 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
+        /// List of actions that will be denied no matter what policy exists.
+        /// </summary>
+        public readonly ImmutableArray<string> Denies;
+        /// <summary>
         /// Group description.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// List of actions.
+        /// List of actions that will be subtracted from the `allow` list.
         /// </summary>
         public readonly ImmutableArray<string> Excepts;
         public readonly string Id;
@@ -209,6 +237,8 @@ namespace Pulumi.Ovh.Iam
 
             string createdAt,
 
+            ImmutableArray<string> denies,
+
             string? description,
 
             ImmutableArray<string> excepts,
@@ -229,6 +259,7 @@ namespace Pulumi.Ovh.Iam
         {
             Allows = allows;
             CreatedAt = createdAt;
+            Denies = denies;
             Description = description;
             Excepts = excepts;
             Id = id;

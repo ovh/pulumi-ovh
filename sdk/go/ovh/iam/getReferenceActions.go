@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to list the IAM action associated with a resource type.
@@ -74,12 +73,6 @@ func (o GetReferenceActionsResultOutput) ToGetReferenceActionsResultOutput() Get
 
 func (o GetReferenceActionsResultOutput) ToGetReferenceActionsResultOutputWithContext(ctx context.Context) GetReferenceActionsResultOutput {
 	return o
-}
-
-func (o GetReferenceActionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetReferenceActionsResult] {
-	return pulumix.Output[GetReferenceActionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of actions

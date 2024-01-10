@@ -6,19 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manage dedicated server networking interface on SCALE and HIGH-GRADE range.
- *
- * !> The API route targeted by this resource are restricted to OVHCloud users (`Internal API`) with additional restrictions.
- *
- * ## Import
- *
- * A dedicated server networking configuration can be imported using the `service_name`. bash
- *
- * ```sh
- *  $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name
- * ```
- */
 export class ServerNetworking extends pulumi.CustomResource {
     /**
      * Get an existing ServerNetworking resource's state with the given name, ID, and optional extra
@@ -48,7 +35,7 @@ export class ServerNetworking extends pulumi.CustomResource {
     }
 
     /**
-     * Operation description.
+     * Operation description
      */
     public /*out*/ readonly description!: pulumi.Output<string>;
     /**
@@ -56,11 +43,11 @@ export class ServerNetworking extends pulumi.CustomResource {
      */
     public readonly interfaces!: pulumi.Output<outputs.Dedicated.ServerNetworkingInterface[]>;
     /**
-     * The serviceName of your dedicated server. The full list of available dedicated servers can be found using the `ovh.getServers` datasource.
+     * The internal name of your dedicated server.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * status of the networking configuration (should be `active`).
+     * Operation status
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -104,7 +91,7 @@ export class ServerNetworking extends pulumi.CustomResource {
  */
 export interface ServerNetworkingState {
     /**
-     * Operation description.
+     * Operation description
      */
     description?: pulumi.Input<string>;
     /**
@@ -112,11 +99,11 @@ export interface ServerNetworkingState {
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerNetworkingInterface>[]>;
     /**
-     * The serviceName of your dedicated server. The full list of available dedicated servers can be found using the `ovh.getServers` datasource.
+     * The internal name of your dedicated server.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * status of the networking configuration (should be `active`).
+     * Operation status
      */
     status?: pulumi.Input<string>;
 }
@@ -130,7 +117,7 @@ export interface ServerNetworkingArgs {
      */
     interfaces: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerNetworkingInterface>[]>;
     /**
-     * The serviceName of your dedicated server. The full list of available dedicated servers can be found using the `ovh.getServers` datasource.
+     * The internal name of your dedicated server.
      */
     serviceName: pulumi.Input<string>;
 }

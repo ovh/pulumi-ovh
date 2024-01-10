@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manage a vrack network for your IP Loadbalancing service.
@@ -163,12 +162,6 @@ func (i *VrackNetwork) ToVrackNetworkOutputWithContext(ctx context.Context) Vrac
 	return pulumi.ToOutputWithContext(ctx, i).(VrackNetworkOutput)
 }
 
-func (i *VrackNetwork) ToOutput(ctx context.Context) pulumix.Output[*VrackNetwork] {
-	return pulumix.Output[*VrackNetwork]{
-		OutputState: i.ToVrackNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VrackNetworkArrayInput is an input type that accepts VrackNetworkArray and VrackNetworkArrayOutput values.
 // You can construct a concrete instance of `VrackNetworkArrayInput` via:
 //
@@ -192,12 +185,6 @@ func (i VrackNetworkArray) ToVrackNetworkArrayOutput() VrackNetworkArrayOutput {
 
 func (i VrackNetworkArray) ToVrackNetworkArrayOutputWithContext(ctx context.Context) VrackNetworkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VrackNetworkArrayOutput)
-}
-
-func (i VrackNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]*VrackNetwork] {
-	return pulumix.Output[[]*VrackNetwork]{
-		OutputState: i.ToVrackNetworkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VrackNetworkMapInput is an input type that accepts VrackNetworkMap and VrackNetworkMapOutput values.
@@ -225,12 +212,6 @@ func (i VrackNetworkMap) ToVrackNetworkMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(VrackNetworkMapOutput)
 }
 
-func (i VrackNetworkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VrackNetwork] {
-	return pulumix.Output[map[string]*VrackNetwork]{
-		OutputState: i.ToVrackNetworkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VrackNetworkOutput struct{ *pulumi.OutputState }
 
 func (VrackNetworkOutput) ElementType() reflect.Type {
@@ -243,12 +224,6 @@ func (o VrackNetworkOutput) ToVrackNetworkOutput() VrackNetworkOutput {
 
 func (o VrackNetworkOutput) ToVrackNetworkOutputWithContext(ctx context.Context) VrackNetworkOutput {
 	return o
-}
-
-func (o VrackNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*VrackNetwork] {
-	return pulumix.Output[*VrackNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Human readable name for your vrack network
@@ -300,12 +275,6 @@ func (o VrackNetworkArrayOutput) ToVrackNetworkArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o VrackNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VrackNetwork] {
-	return pulumix.Output[[]*VrackNetwork]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VrackNetworkArrayOutput) Index(i pulumi.IntInput) VrackNetworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VrackNetwork {
 		return vs[0].([]*VrackNetwork)[vs[1].(int)]
@@ -324,12 +293,6 @@ func (o VrackNetworkMapOutput) ToVrackNetworkMapOutput() VrackNetworkMapOutput {
 
 func (o VrackNetworkMapOutput) ToVrackNetworkMapOutputWithContext(ctx context.Context) VrackNetworkMapOutput {
 	return o
-}
-
-func (o VrackNetworkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VrackNetwork] {
-	return pulumix.Output[map[string]*VrackNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VrackNetworkMapOutput) MapIndex(k pulumi.StringInput) VrackNetworkOutput {

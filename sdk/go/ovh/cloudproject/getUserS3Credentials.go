@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve the list of all the S3 accessKeyId associated with a public cloud project's user.
@@ -109,12 +108,6 @@ func (o GetUserS3CredentialsResultOutput) ToGetUserS3CredentialsResultOutput() G
 
 func (o GetUserS3CredentialsResultOutput) ToGetUserS3CredentialsResultOutputWithContext(ctx context.Context) GetUserS3CredentialsResultOutput {
 	return o
-}
-
-func (o GetUserS3CredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetUserS3CredentialsResult] {
-	return pulumix.Output[GetUserS3CredentialsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of the Access Key ID associated with this user.

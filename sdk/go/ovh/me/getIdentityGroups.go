@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve the list of the account's identity groups
@@ -79,12 +78,6 @@ func (o GetIdentityGroupsResultOutput) ToGetIdentityGroupsResultOutput() GetIden
 
 func (o GetIdentityGroupsResultOutput) ToGetIdentityGroupsResultOutputWithContext(ctx context.Context) GetIdentityGroupsResultOutput {
 	return o
-}
-
-func (o GetIdentityGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIdentityGroupsResult] {
-	return pulumix.Output[GetIdentityGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of the group names of all the identity groups.

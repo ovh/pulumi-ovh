@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the container registries of a public cloud project.
@@ -102,12 +101,6 @@ func (o LookupContainerRegistriesResultOutput) ToLookupContainerRegistriesResult
 
 func (o LookupContainerRegistriesResultOutput) ToLookupContainerRegistriesResultOutputWithContext(ctx context.Context) LookupContainerRegistriesResultOutput {
 	return o
-}
-
-func (o LookupContainerRegistriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerRegistriesResult] {
-	return pulumix.Output[LookupContainerRegistriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

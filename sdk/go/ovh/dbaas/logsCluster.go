@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -31,6 +30,7 @@ import (
 //				ArchiveAllowedNetworks: pulumi.StringArray{
 //					pulumi.String("10.0.0.0/16"),
 //				},
+//				ClusterId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				DirectInputAllowedNetworks: pulumi.StringArray{
 //					pulumi.String("10.0.0.0/16"),
 //				},
@@ -50,11 +50,11 @@ import (
 //
 // ## Import
 //
-// OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash
+// OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by "/" E.g., bash
 //
 // ```sh
 //
-//	$ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id
+//	$ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id
 //
 // ```
 type LogsCluster struct {
@@ -62,6 +62,8 @@ type LogsCluster struct {
 
 	// List of IP blocks
 	ArchiveAllowedNetworks pulumi.StringArrayOutput `pulumi:"archiveAllowedNetworks"`
+	// Cluster ID. If not provided, the default clusterId is used
+	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
 	// type of cluster (DEDICATED, PRO or TRIAL)
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
 	// PEM for dedicated inputs
@@ -85,7 +87,8 @@ type LogsCluster struct {
 	// List of IP blocks
 	QueryAllowedNetworks pulumi.StringArrayOutput `pulumi:"queryAllowedNetworks"`
 	// datacenter localization
-	Region      pulumi.StringOutput `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
+	// The service name
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -132,6 +135,8 @@ func GetLogsCluster(ctx *pulumi.Context,
 type logsClusterState struct {
 	// List of IP blocks
 	ArchiveAllowedNetworks []string `pulumi:"archiveAllowedNetworks"`
+	// Cluster ID. If not provided, the default clusterId is used
+	ClusterId *string `pulumi:"clusterId"`
 	// type of cluster (DEDICATED, PRO or TRIAL)
 	ClusterType *string `pulumi:"clusterType"`
 	// PEM for dedicated inputs
@@ -155,13 +160,16 @@ type logsClusterState struct {
 	// List of IP blocks
 	QueryAllowedNetworks []string `pulumi:"queryAllowedNetworks"`
 	// datacenter localization
-	Region      *string `pulumi:"region"`
+	Region *string `pulumi:"region"`
+	// The service name
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type LogsClusterState struct {
 	// List of IP blocks
 	ArchiveAllowedNetworks pulumi.StringArrayInput
+	// Cluster ID. If not provided, the default clusterId is used
+	ClusterId pulumi.StringPtrInput
 	// type of cluster (DEDICATED, PRO or TRIAL)
 	ClusterType pulumi.StringPtrInput
 	// PEM for dedicated inputs
@@ -185,7 +193,8 @@ type LogsClusterState struct {
 	// List of IP blocks
 	QueryAllowedNetworks pulumi.StringArrayInput
 	// datacenter localization
-	Region      pulumi.StringPtrInput
+	Region pulumi.StringPtrInput
+	// The service name
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -196,22 +205,28 @@ func (LogsClusterState) ElementType() reflect.Type {
 type logsClusterArgs struct {
 	// List of IP blocks
 	ArchiveAllowedNetworks []string `pulumi:"archiveAllowedNetworks"`
+	// Cluster ID. If not provided, the default clusterId is used
+	ClusterId *string `pulumi:"clusterId"`
 	// List of IP blocks
 	DirectInputAllowedNetworks []string `pulumi:"directInputAllowedNetworks"`
 	// List of IP blocks
 	QueryAllowedNetworks []string `pulumi:"queryAllowedNetworks"`
-	ServiceName          string   `pulumi:"serviceName"`
+	// The service name
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a LogsCluster resource.
 type LogsClusterArgs struct {
 	// List of IP blocks
 	ArchiveAllowedNetworks pulumi.StringArrayInput
+	// Cluster ID. If not provided, the default clusterId is used
+	ClusterId pulumi.StringPtrInput
 	// List of IP blocks
 	DirectInputAllowedNetworks pulumi.StringArrayInput
 	// List of IP blocks
 	QueryAllowedNetworks pulumi.StringArrayInput
-	ServiceName          pulumi.StringInput
+	// The service name
+	ServiceName pulumi.StringInput
 }
 
 func (LogsClusterArgs) ElementType() reflect.Type {
@@ -235,12 +250,6 @@ func (i *LogsCluster) ToLogsClusterOutput() LogsClusterOutput {
 
 func (i *LogsCluster) ToLogsClusterOutputWithContext(ctx context.Context) LogsClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogsClusterOutput)
-}
-
-func (i *LogsCluster) ToOutput(ctx context.Context) pulumix.Output[*LogsCluster] {
-	return pulumix.Output[*LogsCluster]{
-		OutputState: i.ToLogsClusterOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LogsClusterArrayInput is an input type that accepts LogsClusterArray and LogsClusterArrayOutput values.
@@ -268,12 +277,6 @@ func (i LogsClusterArray) ToLogsClusterArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LogsClusterArrayOutput)
 }
 
-func (i LogsClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogsCluster] {
-	return pulumix.Output[[]*LogsCluster]{
-		OutputState: i.ToLogsClusterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LogsClusterMapInput is an input type that accepts LogsClusterMap and LogsClusterMapOutput values.
 // You can construct a concrete instance of `LogsClusterMapInput` via:
 //
@@ -299,12 +302,6 @@ func (i LogsClusterMap) ToLogsClusterMapOutputWithContext(ctx context.Context) L
 	return pulumi.ToOutputWithContext(ctx, i).(LogsClusterMapOutput)
 }
 
-func (i LogsClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogsCluster] {
-	return pulumix.Output[map[string]*LogsCluster]{
-		OutputState: i.ToLogsClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LogsClusterOutput struct{ *pulumi.OutputState }
 
 func (LogsClusterOutput) ElementType() reflect.Type {
@@ -319,15 +316,14 @@ func (o LogsClusterOutput) ToLogsClusterOutputWithContext(ctx context.Context) L
 	return o
 }
 
-func (o LogsClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*LogsCluster] {
-	return pulumix.Output[*LogsCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of IP blocks
 func (o LogsClusterOutput) ArchiveAllowedNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LogsCluster) pulumi.StringArrayOutput { return v.ArchiveAllowedNetworks }).(pulumi.StringArrayOutput)
+}
+
+// Cluster ID. If not provided, the default clusterId is used
+func (o LogsClusterOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogsCluster) pulumi.StringPtrOutput { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
 
 // type of cluster (DEDICATED, PRO or TRIAL)
@@ -390,6 +386,7 @@ func (o LogsClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// The service name
 func (o LogsClusterOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsCluster) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -406,12 +403,6 @@ func (o LogsClusterArrayOutput) ToLogsClusterArrayOutput() LogsClusterArrayOutpu
 
 func (o LogsClusterArrayOutput) ToLogsClusterArrayOutputWithContext(ctx context.Context) LogsClusterArrayOutput {
 	return o
-}
-
-func (o LogsClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogsCluster] {
-	return pulumix.Output[[]*LogsCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogsClusterArrayOutput) Index(i pulumi.IntInput) LogsClusterOutput {
@@ -432,12 +423,6 @@ func (o LogsClusterMapOutput) ToLogsClusterMapOutput() LogsClusterMapOutput {
 
 func (o LogsClusterMapOutput) ToLogsClusterMapOutputWithContext(ctx context.Context) LogsClusterMapOutput {
 	return o
-}
-
-func (o LogsClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogsCluster] {
-	return pulumix.Output[map[string]*LogsCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogsClusterMapOutput) MapIndex(k pulumi.StringInput) LogsClusterOutput {

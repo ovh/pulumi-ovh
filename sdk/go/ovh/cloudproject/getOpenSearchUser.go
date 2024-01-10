@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
@@ -122,12 +121,6 @@ func (o GetOpenSearchUserResultOutput) ToGetOpenSearchUserResultOutput() GetOpen
 
 func (o GetOpenSearchUserResultOutput) ToGetOpenSearchUserResultOutputWithContext(ctx context.Context) GetOpenSearchUserResultOutput {
 	return o
-}
-
-func (o GetOpenSearchUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOpenSearchUserResult] {
-	return pulumix.Output[GetOpenSearchUserResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Acls of the user.

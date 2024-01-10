@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the S3 Policy of a public cloud project user. The policy can be set by using the `CloudProject.S3Policy` resource.
@@ -116,12 +115,6 @@ func (o GetUserS3PolicyResultOutput) ToGetUserS3PolicyResultOutput() GetUserS3Po
 
 func (o GetUserS3PolicyResultOutput) ToGetUserS3PolicyResultOutputWithContext(ctx context.Context) GetUserS3PolicyResultOutput {
 	return o
-}
-
-func (o GetUserS3PolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetUserS3PolicyResult] {
-	return pulumix.Output[GetUserS3PolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

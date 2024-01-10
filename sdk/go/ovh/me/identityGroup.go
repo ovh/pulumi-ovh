@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an identity group.
@@ -168,12 +167,6 @@ func (i *IdentityGroup) ToIdentityGroupOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityGroupOutput)
 }
 
-func (i *IdentityGroup) ToOutput(ctx context.Context) pulumix.Output[*IdentityGroup] {
-	return pulumix.Output[*IdentityGroup]{
-		OutputState: i.ToIdentityGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IdentityGroupArrayInput is an input type that accepts IdentityGroupArray and IdentityGroupArrayOutput values.
 // You can construct a concrete instance of `IdentityGroupArrayInput` via:
 //
@@ -197,12 +190,6 @@ func (i IdentityGroupArray) ToIdentityGroupArrayOutput() IdentityGroupArrayOutpu
 
 func (i IdentityGroupArray) ToIdentityGroupArrayOutputWithContext(ctx context.Context) IdentityGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityGroupArrayOutput)
-}
-
-func (i IdentityGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*IdentityGroup] {
-	return pulumix.Output[[]*IdentityGroup]{
-		OutputState: i.ToIdentityGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IdentityGroupMapInput is an input type that accepts IdentityGroupMap and IdentityGroupMapOutput values.
@@ -230,12 +217,6 @@ func (i IdentityGroupMap) ToIdentityGroupMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityGroupMapOutput)
 }
 
-func (i IdentityGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IdentityGroup] {
-	return pulumix.Output[map[string]*IdentityGroup]{
-		OutputState: i.ToIdentityGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IdentityGroupOutput struct{ *pulumi.OutputState }
 
 func (IdentityGroupOutput) ElementType() reflect.Type {
@@ -248,12 +229,6 @@ func (o IdentityGroupOutput) ToIdentityGroupOutput() IdentityGroupOutput {
 
 func (o IdentityGroupOutput) ToIdentityGroupOutputWithContext(ctx context.Context) IdentityGroupOutput {
 	return o
-}
-
-func (o IdentityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityGroup] {
-	return pulumix.Output[*IdentityGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URN of the user group, used when writing IAM policies
@@ -305,12 +280,6 @@ func (o IdentityGroupArrayOutput) ToIdentityGroupArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o IdentityGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IdentityGroup] {
-	return pulumix.Output[[]*IdentityGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IdentityGroupArrayOutput) Index(i pulumi.IntInput) IdentityGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IdentityGroup {
 		return vs[0].([]*IdentityGroup)[vs[1].(int)]
@@ -329,12 +298,6 @@ func (o IdentityGroupMapOutput) ToIdentityGroupMapOutput() IdentityGroupMapOutpu
 
 func (o IdentityGroupMapOutput) ToIdentityGroupMapOutputWithContext(ctx context.Context) IdentityGroupMapOutput {
 	return o
-}
-
-func (o IdentityGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IdentityGroup] {
-	return pulumix.Output[map[string]*IdentityGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityGroupMapOutput) MapIndex(k pulumi.StringInput) IdentityGroupOutput {

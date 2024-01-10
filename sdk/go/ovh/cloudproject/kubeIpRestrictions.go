@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Apply IP restrictions to an OVHcloud Managed Kubernetes cluster.
@@ -167,12 +166,6 @@ func (i *KubeIpRestrictions) ToKubeIpRestrictionsOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(KubeIpRestrictionsOutput)
 }
 
-func (i *KubeIpRestrictions) ToOutput(ctx context.Context) pulumix.Output[*KubeIpRestrictions] {
-	return pulumix.Output[*KubeIpRestrictions]{
-		OutputState: i.ToKubeIpRestrictionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KubeIpRestrictionsArrayInput is an input type that accepts KubeIpRestrictionsArray and KubeIpRestrictionsArrayOutput values.
 // You can construct a concrete instance of `KubeIpRestrictionsArrayInput` via:
 //
@@ -196,12 +189,6 @@ func (i KubeIpRestrictionsArray) ToKubeIpRestrictionsArrayOutput() KubeIpRestric
 
 func (i KubeIpRestrictionsArray) ToKubeIpRestrictionsArrayOutputWithContext(ctx context.Context) KubeIpRestrictionsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubeIpRestrictionsArrayOutput)
-}
-
-func (i KubeIpRestrictionsArray) ToOutput(ctx context.Context) pulumix.Output[[]*KubeIpRestrictions] {
-	return pulumix.Output[[]*KubeIpRestrictions]{
-		OutputState: i.ToKubeIpRestrictionsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KubeIpRestrictionsMapInput is an input type that accepts KubeIpRestrictionsMap and KubeIpRestrictionsMapOutput values.
@@ -229,12 +216,6 @@ func (i KubeIpRestrictionsMap) ToKubeIpRestrictionsMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(KubeIpRestrictionsMapOutput)
 }
 
-func (i KubeIpRestrictionsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubeIpRestrictions] {
-	return pulumix.Output[map[string]*KubeIpRestrictions]{
-		OutputState: i.ToKubeIpRestrictionsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KubeIpRestrictionsOutput struct{ *pulumi.OutputState }
 
 func (KubeIpRestrictionsOutput) ElementType() reflect.Type {
@@ -247,12 +228,6 @@ func (o KubeIpRestrictionsOutput) ToKubeIpRestrictionsOutput() KubeIpRestriction
 
 func (o KubeIpRestrictionsOutput) ToKubeIpRestrictionsOutputWithContext(ctx context.Context) KubeIpRestrictionsOutput {
 	return o
-}
-
-func (o KubeIpRestrictionsOutput) ToOutput(ctx context.Context) pulumix.Output[*KubeIpRestrictions] {
-	return pulumix.Output[*KubeIpRestrictions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of CIDR authorized to interact with the managed Kubernetes cluster.
@@ -284,12 +259,6 @@ func (o KubeIpRestrictionsArrayOutput) ToKubeIpRestrictionsArrayOutputWithContex
 	return o
 }
 
-func (o KubeIpRestrictionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KubeIpRestrictions] {
-	return pulumix.Output[[]*KubeIpRestrictions]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KubeIpRestrictionsArrayOutput) Index(i pulumi.IntInput) KubeIpRestrictionsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KubeIpRestrictions {
 		return vs[0].([]*KubeIpRestrictions)[vs[1].(int)]
@@ -308,12 +277,6 @@ func (o KubeIpRestrictionsMapOutput) ToKubeIpRestrictionsMapOutput() KubeIpRestr
 
 func (o KubeIpRestrictionsMapOutput) ToKubeIpRestrictionsMapOutputWithContext(ctx context.Context) KubeIpRestrictionsMapOutput {
 	return o
-}
-
-func (o KubeIpRestrictionsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubeIpRestrictions] {
-	return pulumix.Output[map[string]*KubeIpRestrictions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KubeIpRestrictionsMapOutput) MapIndex(k pulumi.StringInput) KubeIpRestrictionsOutput {

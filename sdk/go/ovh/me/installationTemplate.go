@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this resource to create a custom installation template available for dedicated servers.
@@ -270,12 +269,6 @@ func (i *InstallationTemplate) ToInstallationTemplateOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplateOutput)
 }
 
-func (i *InstallationTemplate) ToOutput(ctx context.Context) pulumix.Output[*InstallationTemplate] {
-	return pulumix.Output[*InstallationTemplate]{
-		OutputState: i.ToInstallationTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstallationTemplateArrayInput is an input type that accepts InstallationTemplateArray and InstallationTemplateArrayOutput values.
 // You can construct a concrete instance of `InstallationTemplateArrayInput` via:
 //
@@ -299,12 +292,6 @@ func (i InstallationTemplateArray) ToInstallationTemplateArrayOutput() Installat
 
 func (i InstallationTemplateArray) ToInstallationTemplateArrayOutputWithContext(ctx context.Context) InstallationTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplateArrayOutput)
-}
-
-func (i InstallationTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstallationTemplate] {
-	return pulumix.Output[[]*InstallationTemplate]{
-		OutputState: i.ToInstallationTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstallationTemplateMapInput is an input type that accepts InstallationTemplateMap and InstallationTemplateMapOutput values.
@@ -332,12 +319,6 @@ func (i InstallationTemplateMap) ToInstallationTemplateMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplateMapOutput)
 }
 
-func (i InstallationTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstallationTemplate] {
-	return pulumix.Output[map[string]*InstallationTemplate]{
-		OutputState: i.ToInstallationTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstallationTemplateOutput struct{ *pulumi.OutputState }
 
 func (InstallationTemplateOutput) ElementType() reflect.Type {
@@ -350,12 +331,6 @@ func (o InstallationTemplateOutput) ToInstallationTemplateOutput() InstallationT
 
 func (o InstallationTemplateOutput) ToInstallationTemplateOutputWithContext(ctx context.Context) InstallationTemplateOutput {
 	return o
-}
-
-func (o InstallationTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*InstallationTemplate] {
-	return pulumix.Output[*InstallationTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of all language available for this template.
@@ -471,12 +446,6 @@ func (o InstallationTemplateArrayOutput) ToInstallationTemplateArrayOutputWithCo
 	return o
 }
 
-func (o InstallationTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstallationTemplate] {
-	return pulumix.Output[[]*InstallationTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstallationTemplateArrayOutput) Index(i pulumi.IntInput) InstallationTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstallationTemplate {
 		return vs[0].([]*InstallationTemplate)[vs[1].(int)]
@@ -495,12 +464,6 @@ func (o InstallationTemplateMapOutput) ToInstallationTemplateMapOutput() Install
 
 func (o InstallationTemplateMapOutput) ToInstallationTemplateMapOutputWithContext(ctx context.Context) InstallationTemplateMapOutput {
 	return o
-}
-
-func (o InstallationTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstallationTemplate] {
-	return pulumix.Output[map[string]*InstallationTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstallationTemplateMapOutput) MapIndex(k pulumi.StringInput) InstallationTemplateOutput {

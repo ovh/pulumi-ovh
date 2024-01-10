@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to list all the IAM resource types.
@@ -79,12 +78,6 @@ func (o GetReferenceResourceTypeResultOutput) ToGetReferenceResourceTypeResultOu
 
 func (o GetReferenceResourceTypeResultOutput) ToGetReferenceResourceTypeResultOutputWithContext(ctx context.Context) GetReferenceResourceTypeResultOutput {
 	return o
-}
-
-func (o GetReferenceResourceTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetReferenceResourceTypeResult] {
-	return pulumix.Output[GetReferenceResourceTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

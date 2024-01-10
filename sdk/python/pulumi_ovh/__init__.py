@@ -471,6 +471,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Iam/resourceGroup",
+  "fqn": "pulumi_ovh.iam",
+  "classes": {
+   "ovh:Iam/resourceGroup:ResourceGroup": "ResourceGroup"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Ip/ipService",
   "fqn": "pulumi_ovh.ip",
   "classes": {
@@ -587,6 +595,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/vrackNetwork:VrackNetwork": "VrackNetwork"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Me/aPIOAuth2Client",
+  "fqn": "pulumi_ovh.me",
+  "classes": {
+   "ovh:Me/aPIOAuth2Client:APIOAuth2Client": "APIOAuth2Client"
   }
  },
  {

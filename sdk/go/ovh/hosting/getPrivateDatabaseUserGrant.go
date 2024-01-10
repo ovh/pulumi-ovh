@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about an hosting privatedatabase user grant.
@@ -114,12 +113,6 @@ func (o LookupPrivateDatabaseUserGrantResultOutput) ToLookupPrivateDatabaseUserG
 
 func (o LookupPrivateDatabaseUserGrantResultOutput) ToLookupPrivateDatabaseUserGrantResultOutputWithContext(ctx context.Context) LookupPrivateDatabaseUserGrantResultOutput {
 	return o
-}
-
-func (o LookupPrivateDatabaseUserGrantResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateDatabaseUserGrantResult] {
-	return pulumix.Output[LookupPrivateDatabaseUserGrantResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation date of the database

@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a DBaas logs input engine.
@@ -116,12 +115,6 @@ func (o GetLogsInputEngineResultOutput) ToGetLogsInputEngineResultOutput() GetLo
 
 func (o GetLogsInputEngineResultOutput) ToGetLogsInputEngineResultOutputWithContext(ctx context.Context) GetLogsInputEngineResultOutput {
 	return o
-}
-
-func (o GetLogsInputEngineResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLogsInputEngineResult] {
-	return pulumix.Output[GetLogsInputEngineResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

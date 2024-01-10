@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a OVHcloud domain zone redirection.
@@ -196,12 +195,6 @@ func (i *ZoneRedirection) ToZoneRedirectionOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneRedirectionOutput)
 }
 
-func (i *ZoneRedirection) ToOutput(ctx context.Context) pulumix.Output[*ZoneRedirection] {
-	return pulumix.Output[*ZoneRedirection]{
-		OutputState: i.ToZoneRedirectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ZoneRedirectionArrayInput is an input type that accepts ZoneRedirectionArray and ZoneRedirectionArrayOutput values.
 // You can construct a concrete instance of `ZoneRedirectionArrayInput` via:
 //
@@ -225,12 +218,6 @@ func (i ZoneRedirectionArray) ToZoneRedirectionArrayOutput() ZoneRedirectionArra
 
 func (i ZoneRedirectionArray) ToZoneRedirectionArrayOutputWithContext(ctx context.Context) ZoneRedirectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneRedirectionArrayOutput)
-}
-
-func (i ZoneRedirectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneRedirection] {
-	return pulumix.Output[[]*ZoneRedirection]{
-		OutputState: i.ToZoneRedirectionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ZoneRedirectionMapInput is an input type that accepts ZoneRedirectionMap and ZoneRedirectionMapOutput values.
@@ -258,12 +245,6 @@ func (i ZoneRedirectionMap) ToZoneRedirectionMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneRedirectionMapOutput)
 }
 
-func (i ZoneRedirectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneRedirection] {
-	return pulumix.Output[map[string]*ZoneRedirection]{
-		OutputState: i.ToZoneRedirectionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ZoneRedirectionOutput struct{ *pulumi.OutputState }
 
 func (ZoneRedirectionOutput) ElementType() reflect.Type {
@@ -276,12 +257,6 @@ func (o ZoneRedirectionOutput) ToZoneRedirectionOutput() ZoneRedirectionOutput {
 
 func (o ZoneRedirectionOutput) ToZoneRedirectionOutputWithContext(ctx context.Context) ZoneRedirectionOutput {
 	return o
-}
-
-func (o ZoneRedirectionOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneRedirection] {
-	return pulumix.Output[*ZoneRedirection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of this redirection
@@ -333,12 +308,6 @@ func (o ZoneRedirectionArrayOutput) ToZoneRedirectionArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ZoneRedirectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneRedirection] {
-	return pulumix.Output[[]*ZoneRedirection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ZoneRedirectionArrayOutput) Index(i pulumi.IntInput) ZoneRedirectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneRedirection {
 		return vs[0].([]*ZoneRedirection)[vs[1].(int)]
@@ -357,12 +326,6 @@ func (o ZoneRedirectionMapOutput) ToZoneRedirectionMapOutput() ZoneRedirectionMa
 
 func (o ZoneRedirectionMapOutput) ToZoneRedirectionMapOutputWithContext(ctx context.Context) ZoneRedirectionMapOutput {
 	return o
-}
-
-func (o ZoneRedirectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneRedirection] {
-	return pulumix.Output[map[string]*ZoneRedirection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ZoneRedirectionMapOutput) MapIndex(k pulumi.StringInput) ZoneRedirectionOutput {

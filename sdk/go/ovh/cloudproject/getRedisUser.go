@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a user of a redis cluster associated with a public cloud project.
@@ -128,12 +127,6 @@ func (o GetRedisUserResultOutput) ToGetRedisUserResultOutput() GetRedisUserResul
 
 func (o GetRedisUserResultOutput) ToGetRedisUserResultOutputWithContext(ctx context.Context) GetRedisUserResultOutput {
 	return o
-}
-
-func (o GetRedisUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRedisUserResult] {
-	return pulumix.Output[GetRedisUserResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Categories of the user.

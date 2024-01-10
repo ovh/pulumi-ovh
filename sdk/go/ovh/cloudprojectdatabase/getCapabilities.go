@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about capabilities of a public cloud project.
@@ -83,12 +82,6 @@ func (o GetCapabilitiesResultOutput) ToGetCapabilitiesResultOutput() GetCapabili
 
 func (o GetCapabilitiesResultOutput) ToGetCapabilitiesResultOutputWithContext(ctx context.Context) GetCapabilitiesResultOutput {
 	return o
-}
-
-func (o GetCapabilitiesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCapabilitiesResult] {
-	return pulumix.Output[GetCapabilitiesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database engines available.

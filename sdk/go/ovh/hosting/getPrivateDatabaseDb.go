@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about an hosting privatedatabase.
@@ -112,12 +111,6 @@ func (o LookupPrivateDatabaseDbResultOutput) ToLookupPrivateDatabaseDbResultOutp
 
 func (o LookupPrivateDatabaseDbResultOutput) ToLookupPrivateDatabaseDbResultOutputWithContext(ctx context.Context) LookupPrivateDatabaseDbResultOutput {
 	return o
-}
-
-func (o LookupPrivateDatabaseDbResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateDatabaseDbResult] {
-	return pulumix.Output[LookupPrivateDatabaseDbResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time of the next backup (every day)

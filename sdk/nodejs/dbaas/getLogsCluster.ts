@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const logstash = ovh.Dbaas.getLogsCluster({
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
@@ -22,6 +23,7 @@ export function getLogsCluster(args: GetLogsClusterArgs, opts?: pulumi.InvokeOpt
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dbaas/getLogsCluster:getLogsCluster", {
+        "clusterId": args.clusterId,
         "serviceName": args.serviceName,
     }, opts);
 }
@@ -30,6 +32,10 @@ export function getLogsCluster(args: GetLogsClusterArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getLogsCluster.
  */
 export interface GetLogsClusterArgs {
+    /**
+     * Cluster ID. If not provided, the default clusterId is returned
+     */
+    clusterId?: string;
     /**
      * The service name. It's the ID of your Logs Data Platform instance.
      */
@@ -48,6 +54,7 @@ export interface GetLogsClusterResult {
      * is allowed networks for ARCHIVE flow type
      */
     readonly archiveAllowedNetworks: string[];
+    readonly clusterId?: string;
     /**
      * is type of cluster (DEDICATED, PRO or TRIAL)
      */
@@ -100,6 +107,7 @@ export interface GetLogsClusterResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const logstash = ovh.Dbaas.getLogsCluster({
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
@@ -112,6 +120,10 @@ export function getLogsClusterOutput(args: GetLogsClusterOutputArgs, opts?: pulu
  * A collection of arguments for invoking getLogsCluster.
  */
 export interface GetLogsClusterOutputArgs {
+    /**
+     * Cluster ID. If not provided, the default clusterId is returned
+     */
+    clusterId?: pulumi.Input<string>;
     /**
      * The service name. It's the ID of your Logs Data Platform instance.
      */

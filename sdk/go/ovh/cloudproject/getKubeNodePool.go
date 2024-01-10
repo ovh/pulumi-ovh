@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a OVHcloud Managed Kubernetes node pool.
@@ -157,12 +156,6 @@ func (o LookupKubeNodePoolResultOutput) ToLookupKubeNodePoolResultOutput() Looku
 
 func (o LookupKubeNodePoolResultOutput) ToLookupKubeNodePoolResultOutputWithContext(ctx context.Context) LookupKubeNodePoolResultOutput {
 	return o
-}
-
-func (o LookupKubeNodePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKubeNodePoolResult] {
-	return pulumix.Output[LookupKubeNodePoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Optional) should the pool use the anti-affinity feature. Default to `false`.

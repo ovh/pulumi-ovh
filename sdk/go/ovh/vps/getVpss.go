@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of VPS associated with your OVH Account.
@@ -79,12 +78,6 @@ func (o GetVpssResultOutput) ToGetVpssResultOutput() GetVpssResultOutput {
 
 func (o GetVpssResultOutput) ToGetVpssResultOutputWithContext(ctx context.Context) GetVpssResultOutput {
 	return o
-}
-
-func (o GetVpssResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpssResult] {
-	return pulumix.Output[GetVpssResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -21,13 +21,16 @@ class GetPolicyResult:
     """
     A collection of values returned by getPolicy.
     """
-    def __init__(__self__, allows=None, created_at=None, description=None, excepts=None, id=None, identities=None, name=None, owner=None, read_only=None, resources=None, updated_at=None):
+    def __init__(__self__, allows=None, created_at=None, denies=None, description=None, excepts=None, id=None, identities=None, name=None, owner=None, read_only=None, resources=None, updated_at=None):
         if allows and not isinstance(allows, list):
             raise TypeError("Expected argument 'allows' to be a list")
         pulumi.set(__self__, "allows", allows)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if denies and not isinstance(denies, list):
+            raise TypeError("Expected argument 'denies' to be a list")
+        pulumi.set(__self__, "denies", denies)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -74,6 +77,14 @@ class GetPolicyResult:
 
     @property
     @pulumi.getter
+    def denies(self) -> Optional[Sequence[str]]:
+        """
+        List of actions that will be denied no matter what policy exists.
+        """
+        return pulumi.get(self, "denies")
+
+    @property
+    @pulumi.getter
     def description(self) -> Optional[str]:
         """
         Group description.
@@ -84,7 +95,7 @@ class GetPolicyResult:
     @pulumi.getter
     def excepts(self) -> Optional[Sequence[str]]:
         """
-        List of actions.
+        List of actions that will be subtracted from the `allow` list.
         """
         return pulumi.get(self, "excepts")
 
@@ -150,6 +161,7 @@ class AwaitableGetPolicyResult(GetPolicyResult):
         return GetPolicyResult(
             allows=self.allows,
             created_at=self.created_at,
+            denies=self.denies,
             description=self.description,
             excepts=self.excepts,
             id=self.id,
@@ -162,6 +174,7 @@ class AwaitableGetPolicyResult(GetPolicyResult):
 
 
 def get_policy(allows: Optional[Sequence[str]] = None,
+               denies: Optional[Sequence[str]] = None,
                description: Optional[str] = None,
                excepts: Optional[Sequence[str]] = None,
                id: Optional[str] = None,
@@ -180,12 +193,14 @@ def get_policy(allows: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] allows: List of actions allowed by the policy.
+    :param Sequence[str] denies: List of actions that will be denied no matter what policy exists.
     :param str description: Group description.
-    :param Sequence[str] excepts: List of actions.
+    :param Sequence[str] excepts: List of actions that will be subtracted from the `allow` list.
     :param str id: UUID of the policy.
     """
     __args__ = dict()
     __args__['allows'] = allows
+    __args__['denies'] = denies
     __args__['description'] = description
     __args__['excepts'] = excepts
     __args__['id'] = id
@@ -195,6 +210,7 @@ def get_policy(allows: Optional[Sequence[str]] = None,
     return AwaitableGetPolicyResult(
         allows=pulumi.get(__ret__, 'allows'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        denies=pulumi.get(__ret__, 'denies'),
         description=pulumi.get(__ret__, 'description'),
         excepts=pulumi.get(__ret__, 'excepts'),
         id=pulumi.get(__ret__, 'id'),
@@ -208,6 +224,7 @@ def get_policy(allows: Optional[Sequence[str]] = None,
 
 @_utilities.lift_output_func(get_policy)
 def get_policy_output(allows: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      denies: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       description: Optional[pulumi.Input[Optional[str]]] = None,
                       excepts: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       id: Optional[pulumi.Input[str]] = None,
@@ -226,8 +243,9 @@ def get_policy_output(allows: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
 
     :param Sequence[str] allows: List of actions allowed by the policy.
+    :param Sequence[str] denies: List of actions that will be denied no matter what policy exists.
     :param str description: Group description.
-    :param Sequence[str] excepts: List of actions.
+    :param Sequence[str] excepts: List of actions that will be subtracted from the `allow` list.
     :param str id: UUID of the policy.
     """
     ...

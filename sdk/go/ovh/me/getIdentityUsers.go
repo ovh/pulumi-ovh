@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve list of user logins of the account's identity users.
@@ -79,12 +78,6 @@ func (o GetIdentityUsersResultOutput) ToGetIdentityUsersResultOutput() GetIdenti
 
 func (o GetIdentityUsersResultOutput) ToGetIdentityUsersResultOutputWithContext(ctx context.Context) GetIdentityUsersResultOutput {
 	return o
-}
-
-func (o GetIdentityUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIdentityUsersResult] {
-	return pulumix.Output[GetIdentityUsersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

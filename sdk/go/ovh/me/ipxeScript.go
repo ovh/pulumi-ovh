@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an IPXE Script.
@@ -158,12 +157,6 @@ func (i *IpxeScript) ToIpxeScriptOutputWithContext(ctx context.Context) IpxeScri
 	return pulumi.ToOutputWithContext(ctx, i).(IpxeScriptOutput)
 }
 
-func (i *IpxeScript) ToOutput(ctx context.Context) pulumix.Output[*IpxeScript] {
-	return pulumix.Output[*IpxeScript]{
-		OutputState: i.ToIpxeScriptOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IpxeScriptArrayInput is an input type that accepts IpxeScriptArray and IpxeScriptArrayOutput values.
 // You can construct a concrete instance of `IpxeScriptArrayInput` via:
 //
@@ -187,12 +180,6 @@ func (i IpxeScriptArray) ToIpxeScriptArrayOutput() IpxeScriptArrayOutput {
 
 func (i IpxeScriptArray) ToIpxeScriptArrayOutputWithContext(ctx context.Context) IpxeScriptArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpxeScriptArrayOutput)
-}
-
-func (i IpxeScriptArray) ToOutput(ctx context.Context) pulumix.Output[[]*IpxeScript] {
-	return pulumix.Output[[]*IpxeScript]{
-		OutputState: i.ToIpxeScriptArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IpxeScriptMapInput is an input type that accepts IpxeScriptMap and IpxeScriptMapOutput values.
@@ -220,12 +207,6 @@ func (i IpxeScriptMap) ToIpxeScriptMapOutputWithContext(ctx context.Context) Ipx
 	return pulumi.ToOutputWithContext(ctx, i).(IpxeScriptMapOutput)
 }
 
-func (i IpxeScriptMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpxeScript] {
-	return pulumix.Output[map[string]*IpxeScript]{
-		OutputState: i.ToIpxeScriptMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IpxeScriptOutput struct{ *pulumi.OutputState }
 
 func (IpxeScriptOutput) ElementType() reflect.Type {
@@ -238,12 +219,6 @@ func (o IpxeScriptOutput) ToIpxeScriptOutput() IpxeScriptOutput {
 
 func (o IpxeScriptOutput) ToIpxeScriptOutputWithContext(ctx context.Context) IpxeScriptOutput {
 	return o
-}
-
-func (o IpxeScriptOutput) ToOutput(ctx context.Context) pulumix.Output[*IpxeScript] {
-	return pulumix.Output[*IpxeScript]{
-		OutputState: o.OutputState,
-	}
 }
 
 // For documentation purpose only. This attribute is not passed to the OVHcloud API as it cannot be retrieved back. Instead a fake description ('$name auto description') is passed at creation time.
@@ -275,12 +250,6 @@ func (o IpxeScriptArrayOutput) ToIpxeScriptArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o IpxeScriptArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IpxeScript] {
-	return pulumix.Output[[]*IpxeScript]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpxeScriptArrayOutput) Index(i pulumi.IntInput) IpxeScriptOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IpxeScript {
 		return vs[0].([]*IpxeScript)[vs[1].(int)]
@@ -299,12 +268,6 @@ func (o IpxeScriptMapOutput) ToIpxeScriptMapOutput() IpxeScriptMapOutput {
 
 func (o IpxeScriptMapOutput) ToIpxeScriptMapOutputWithContext(ctx context.Context) IpxeScriptMapOutput {
 	return o
-}
-
-func (o IpxeScriptMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpxeScript] {
-	return pulumix.Output[map[string]*IpxeScript]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpxeScriptMapOutput) MapIndex(k pulumi.StringInput) IpxeScriptOutput {

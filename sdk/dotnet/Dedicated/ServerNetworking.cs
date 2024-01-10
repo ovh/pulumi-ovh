@@ -9,24 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dedicated
 {
-    /// <summary>
-    /// Manage dedicated server networking interface on SCALE and HIGH-GRADE range.
-    /// 
-    /// !&gt; The API route targeted by this resource are restricted to OVHCloud users (`Internal API`) with additional restrictions.
-    /// 
-    /// ## Import
-    /// 
-    /// A dedicated server networking configuration can be imported using the `service_name`. bash
-    /// 
-    /// ```sh
-    ///  $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Dedicated/serverNetworking:ServerNetworking")]
     public partial class ServerNetworking : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Operation description.
+        /// Operation description
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -38,13 +25,13 @@ namespace Pulumi.Ovh.Dedicated
         public Output<ImmutableArray<Outputs.ServerNetworkingInterface>> Interfaces { get; private set; } = null!;
 
         /// <summary>
-        /// The service_name of your dedicated server. The full list of available dedicated servers can be found using the `ovh.getServers` datasource.
+        /// The internal name of your dedicated server.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// status of the networking configuration (should be `active`).
+        /// Operation status
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -109,7 +96,7 @@ namespace Pulumi.Ovh.Dedicated
         }
 
         /// <summary>
-        /// The service_name of your dedicated server. The full list of available dedicated servers can be found using the `ovh.getServers` datasource.
+        /// The internal name of your dedicated server.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -123,7 +110,7 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class ServerNetworkingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Operation description.
+        /// Operation description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -141,13 +128,13 @@ namespace Pulumi.Ovh.Dedicated
         }
 
         /// <summary>
-        /// The service_name of your dedicated server. The full list of available dedicated servers can be found using the `ovh.getServers` datasource.
+        /// The internal name of your dedicated server.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// status of the networking configuration (should be `active`).
+        /// Operation status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

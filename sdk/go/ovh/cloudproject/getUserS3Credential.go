@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project's user.
@@ -131,12 +130,6 @@ func (o GetUserS3CredentialResultOutput) ToGetUserS3CredentialResultOutput() Get
 
 func (o GetUserS3CredentialResultOutput) ToGetUserS3CredentialResultOutputWithContext(ctx context.Context) GetUserS3CredentialResultOutput {
 	return o
-}
-
-func (o GetUserS3CredentialResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetUserS3CredentialResult] {
-	return pulumix.Output[GetUserS3CredentialResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetUserS3CredentialResultOutput) AccessKeyId() pulumi.StringOutput {

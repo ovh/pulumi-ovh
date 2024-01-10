@@ -721,13 +721,7 @@ export namespace Dedicated {
     }
 
     export interface ServerNetworkingInterface {
-        /**
-         * List of mac addresses to bind together.
-         */
         macs: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Type of bonding to create.
-         */
         type: pulumi.Input<string>;
     }
 }

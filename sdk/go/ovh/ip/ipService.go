@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -259,12 +258,6 @@ func (i *IpService) ToIpServiceOutputWithContext(ctx context.Context) IpServiceO
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceOutput)
 }
 
-func (i *IpService) ToOutput(ctx context.Context) pulumix.Output[*IpService] {
-	return pulumix.Output[*IpService]{
-		OutputState: i.ToIpServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IpServiceArrayInput is an input type that accepts IpServiceArray and IpServiceArrayOutput values.
 // You can construct a concrete instance of `IpServiceArrayInput` via:
 //
@@ -288,12 +281,6 @@ func (i IpServiceArray) ToIpServiceArrayOutput() IpServiceArrayOutput {
 
 func (i IpServiceArray) ToIpServiceArrayOutputWithContext(ctx context.Context) IpServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceArrayOutput)
-}
-
-func (i IpServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*IpService] {
-	return pulumix.Output[[]*IpService]{
-		OutputState: i.ToIpServiceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IpServiceMapInput is an input type that accepts IpServiceMap and IpServiceMapOutput values.
@@ -321,12 +308,6 @@ func (i IpServiceMap) ToIpServiceMapOutputWithContext(ctx context.Context) IpSer
 	return pulumi.ToOutputWithContext(ctx, i).(IpServiceMapOutput)
 }
 
-func (i IpServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpService] {
-	return pulumix.Output[map[string]*IpService]{
-		OutputState: i.ToIpServiceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IpServiceOutput struct{ *pulumi.OutputState }
 
 func (IpServiceOutput) ElementType() reflect.Type {
@@ -339,12 +320,6 @@ func (o IpServiceOutput) ToIpServiceOutput() IpServiceOutput {
 
 func (o IpServiceOutput) ToIpServiceOutputWithContext(ctx context.Context) IpServiceOutput {
 	return o
-}
-
-func (o IpServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*IpService] {
-	return pulumix.Output[*IpService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // can be terminated
@@ -428,12 +403,6 @@ func (o IpServiceArrayOutput) ToIpServiceArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o IpServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IpService] {
-	return pulumix.Output[[]*IpService]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpServiceArrayOutput) Index(i pulumi.IntInput) IpServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IpService {
 		return vs[0].([]*IpService)[vs[1].(int)]
@@ -452,12 +421,6 @@ func (o IpServiceMapOutput) ToIpServiceMapOutput() IpServiceMapOutput {
 
 func (o IpServiceMapOutput) ToIpServiceMapOutputWithContext(ctx context.Context) IpServiceMapOutput {
 	return o
-}
-
-func (o IpServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpService] {
-	return pulumix.Output[map[string]*IpService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpServiceMapOutput) MapIndex(k pulumi.StringInput) IpServiceOutput {

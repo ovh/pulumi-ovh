@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "ovh:Me/aPIOAuth2Client:APIOAuth2Client":
+		r = &APIOAuth2Client{}
 	case "ovh:Me/identityGroup:IdentityGroup":
 		r = &IdentityGroup{}
 	case "ovh:Me/identityUser:IdentityUser":
@@ -50,6 +52,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Me/aPIOAuth2Client",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Me/identityGroup",

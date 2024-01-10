@@ -13,13 +13,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     [OutputType]
     public sealed class ServerNetworkingInterface
     {
-        /// <summary>
-        /// List of mac addresses to bind together.
-        /// </summary>
         public readonly ImmutableArray<string> Macs;
-        /// <summary>
-        /// Type of bonding to create.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

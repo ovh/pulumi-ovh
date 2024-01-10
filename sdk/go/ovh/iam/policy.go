@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an IAM policy.
@@ -72,6 +71,8 @@ type Policy struct {
 	Allows pulumi.StringArrayOutput `pulumi:"allows"`
 	// Creation date of this group.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// List of actions that will be denied no matter what policy exists.
+	Denies pulumi.StringArrayOutput `pulumi:"denies"`
 	// Description of the policy
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
@@ -130,6 +131,8 @@ type policyState struct {
 	Allows []string `pulumi:"allows"`
 	// Creation date of this group.
 	CreatedAt *string `pulumi:"createdAt"`
+	// List of actions that will be denied no matter what policy exists.
+	Denies []string `pulumi:"denies"`
 	// Description of the policy
 	Description *string `pulumi:"description"`
 	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
@@ -153,6 +156,8 @@ type PolicyState struct {
 	Allows pulumi.StringArrayInput
 	// Creation date of this group.
 	CreatedAt pulumi.StringPtrInput
+	// List of actions that will be denied no matter what policy exists.
+	Denies pulumi.StringArrayInput
 	// Description of the policy
 	Description pulumi.StringPtrInput
 	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
@@ -178,6 +183,8 @@ func (PolicyState) ElementType() reflect.Type {
 type policyArgs struct {
 	// List of actions allowed on resources by identities
 	Allows []string `pulumi:"allows"`
+	// List of actions that will be denied no matter what policy exists.
+	Denies []string `pulumi:"denies"`
 	// Description of the policy
 	Description *string `pulumi:"description"`
 	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
@@ -194,6 +201,8 @@ type policyArgs struct {
 type PolicyArgs struct {
 	// List of actions allowed on resources by identities
 	Allows pulumi.StringArrayInput
+	// List of actions that will be denied no matter what policy exists.
+	Denies pulumi.StringArrayInput
 	// Description of the policy
 	Description pulumi.StringPtrInput
 	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
@@ -229,12 +238,6 @@ func (i *Policy) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput)
 }
 
-func (i *Policy) ToOutput(ctx context.Context) pulumix.Output[*Policy] {
-	return pulumix.Output[*Policy]{
-		OutputState: i.ToPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicyArrayInput is an input type that accepts PolicyArray and PolicyArrayOutput values.
 // You can construct a concrete instance of `PolicyArrayInput` via:
 //
@@ -258,12 +261,6 @@ func (i PolicyArray) ToPolicyArrayOutput() PolicyArrayOutput {
 
 func (i PolicyArray) ToPolicyArrayOutputWithContext(ctx context.Context) PolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyArrayOutput)
-}
-
-func (i PolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*Policy] {
-	return pulumix.Output[[]*Policy]{
-		OutputState: i.ToPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PolicyMapInput is an input type that accepts PolicyMap and PolicyMapOutput values.
@@ -291,12 +288,6 @@ func (i PolicyMap) ToPolicyMapOutputWithContext(ctx context.Context) PolicyMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyMapOutput)
 }
 
-func (i PolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Policy] {
-	return pulumix.Output[map[string]*Policy]{
-		OutputState: i.ToPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyOutput struct{ *pulumi.OutputState }
 
 func (PolicyOutput) ElementType() reflect.Type {
@@ -311,12 +302,6 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 	return o
 }
 
-func (o PolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*Policy] {
-	return pulumix.Output[*Policy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of actions allowed on resources by identities
 func (o PolicyOutput) Allows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.Allows }).(pulumi.StringArrayOutput)
@@ -325,6 +310,11 @@ func (o PolicyOutput) Allows() pulumi.StringArrayOutput {
 // Creation date of this group.
 func (o PolicyOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// List of actions that will be denied no matter what policy exists.
+func (o PolicyOutput) Denies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.Denies }).(pulumi.StringArrayOutput)
 }
 
 // Description of the policy
@@ -381,12 +371,6 @@ func (o PolicyArrayOutput) ToPolicyArrayOutputWithContext(ctx context.Context) P
 	return o
 }
 
-func (o PolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Policy] {
-	return pulumix.Output[[]*Policy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyArrayOutput) Index(i pulumi.IntInput) PolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Policy {
 		return vs[0].([]*Policy)[vs[1].(int)]
@@ -405,12 +389,6 @@ func (o PolicyMapOutput) ToPolicyMapOutput() PolicyMapOutput {
 
 func (o PolicyMapOutput) ToPolicyMapOutputWithContext(ctx context.Context) PolicyMapOutput {
 	return o
-}
-
-func (o PolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Policy] {
-	return pulumix.Output[map[string]*Policy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyMapOutput) MapIndex(k pulumi.StringInput) PolicyOutput {

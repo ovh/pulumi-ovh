@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "ovh:Iam/policy:Policy":
 		r = &Policy{}
+	case "ovh:Iam/resourceGroup:ResourceGroup":
+		r = &ResourceGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Iam/policy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Iam/resourceGroup",
 		&module{version},
 	)
 }

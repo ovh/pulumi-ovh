@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manage TCP route for a loadbalancer service
@@ -186,12 +185,6 @@ func (i *TcpRoute) ToTcpRouteOutputWithContext(ctx context.Context) TcpRouteOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteOutput)
 }
 
-func (i *TcpRoute) ToOutput(ctx context.Context) pulumix.Output[*TcpRoute] {
-	return pulumix.Output[*TcpRoute]{
-		OutputState: i.ToTcpRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TcpRouteArrayInput is an input type that accepts TcpRouteArray and TcpRouteArrayOutput values.
 // You can construct a concrete instance of `TcpRouteArrayInput` via:
 //
@@ -215,12 +208,6 @@ func (i TcpRouteArray) ToTcpRouteArrayOutput() TcpRouteArrayOutput {
 
 func (i TcpRouteArray) ToTcpRouteArrayOutputWithContext(ctx context.Context) TcpRouteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteArrayOutput)
-}
-
-func (i TcpRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]*TcpRoute] {
-	return pulumix.Output[[]*TcpRoute]{
-		OutputState: i.ToTcpRouteArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TcpRouteMapInput is an input type that accepts TcpRouteMap and TcpRouteMapOutput values.
@@ -248,12 +235,6 @@ func (i TcpRouteMap) ToTcpRouteMapOutputWithContext(ctx context.Context) TcpRout
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteMapOutput)
 }
 
-func (i TcpRouteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TcpRoute] {
-	return pulumix.Output[map[string]*TcpRoute]{
-		OutputState: i.ToTcpRouteMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TcpRouteOutput struct{ *pulumi.OutputState }
 
 func (TcpRouteOutput) ElementType() reflect.Type {
@@ -266,12 +247,6 @@ func (o TcpRouteOutput) ToTcpRouteOutput() TcpRouteOutput {
 
 func (o TcpRouteOutput) ToTcpRouteOutputWithContext(ctx context.Context) TcpRouteOutput {
 	return o
-}
-
-func (o TcpRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*TcpRoute] {
-	return pulumix.Output[*TcpRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action triggered when all rules match
@@ -323,12 +298,6 @@ func (o TcpRouteArrayOutput) ToTcpRouteArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o TcpRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TcpRoute] {
-	return pulumix.Output[[]*TcpRoute]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TcpRouteArrayOutput) Index(i pulumi.IntInput) TcpRouteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TcpRoute {
 		return vs[0].([]*TcpRoute)[vs[1].(int)]
@@ -347,12 +316,6 @@ func (o TcpRouteMapOutput) ToTcpRouteMapOutput() TcpRouteMapOutput {
 
 func (o TcpRouteMapOutput) ToTcpRouteMapOutputWithContext(ctx context.Context) TcpRouteMapOutput {
 	return o
-}
-
-func (o TcpRouteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TcpRoute] {
-	return pulumix.Output[map[string]*TcpRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TcpRouteMapOutput) MapIndex(k pulumi.StringInput) TcpRouteOutput {

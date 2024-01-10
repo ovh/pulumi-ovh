@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about an identity group.
@@ -108,12 +107,6 @@ func (o LookupIdentityGroupResultOutput) ToLookupIdentityGroupResultOutput() Loo
 
 func (o LookupIdentityGroupResultOutput) ToLookupIdentityGroupResultOutputWithContext(ctx context.Context) LookupIdentityGroupResultOutput {
 	return o
-}
-
-func (o LookupIdentityGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIdentityGroupResult] {
-	return pulumix.Output[LookupIdentityGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation date of this group.

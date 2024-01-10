@@ -23,6 +23,7 @@ export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Pro
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getPolicy:getPolicy", {
         "allows": args.allows,
+        "denies": args.denies,
         "description": args.description,
         "excepts": args.excepts,
         "id": args.id,
@@ -38,11 +39,15 @@ export interface GetPolicyArgs {
      */
     allows?: string[];
     /**
+     * List of actions that will be denied no matter what policy exists.
+     */
+    denies?: string[];
+    /**
      * Group description.
      */
     description?: string;
     /**
-     * List of actions.
+     * List of actions that will be subtracted from the `allow` list.
      */
     excepts?: string[];
     /**
@@ -64,11 +69,15 @@ export interface GetPolicyResult {
      */
     readonly createdAt: string;
     /**
+     * List of actions that will be denied no matter what policy exists.
+     */
+    readonly denies?: string[];
+    /**
      * Group description.
      */
     readonly description?: string;
     /**
-     * List of actions.
+     * List of actions that will be subtracted from the `allow` list.
      */
     readonly excepts?: string[];
     readonly id: string;
@@ -124,11 +133,15 @@ export interface GetPolicyOutputArgs {
      */
     allows?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * List of actions that will be denied no matter what policy exists.
+     */
+    denies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Group description.
      */
     description?: pulumi.Input<string>;
     /**
-     * List of actions.
+     * List of actions that will be subtracted from the `allow` list.
      */
     excepts?: pulumi.Input<pulumi.Input<string>[]>;
     /**

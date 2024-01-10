@@ -21,7 +21,7 @@ class ServerNetworkingArgs:
         """
         The set of arguments for constructing a ServerNetworking resource.
         :param pulumi.Input[Sequence[pulumi.Input['ServerNetworkingInterfaceArgs']]] interfaces: Interface or interfaces aggregation.
-        :param pulumi.Input[str] service_name: The service_name of your dedicated server. The full list of available dedicated servers can be found using the `get_servers` datasource.
+        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
         """
         pulumi.set(__self__, "interfaces", interfaces)
         pulumi.set(__self__, "service_name", service_name)
@@ -42,7 +42,7 @@ class ServerNetworkingArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The service_name of your dedicated server. The full list of available dedicated servers can be found using the `get_servers` datasource.
+        The internal name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 
@@ -60,10 +60,10 @@ class _ServerNetworkingState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServerNetworking resources.
-        :param pulumi.Input[str] description: Operation description.
+        :param pulumi.Input[str] description: Operation description
         :param pulumi.Input[Sequence[pulumi.Input['ServerNetworkingInterfaceArgs']]] interfaces: Interface or interfaces aggregation.
-        :param pulumi.Input[str] service_name: The service_name of your dedicated server. The full list of available dedicated servers can be found using the `get_servers` datasource.
-        :param pulumi.Input[str] status: status of the networking configuration (should be `active`).
+        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
+        :param pulumi.Input[str] status: Operation status
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -78,7 +78,7 @@ class _ServerNetworkingState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Operation description.
+        Operation description
         """
         return pulumi.get(self, "description")
 
@@ -102,7 +102,7 @@ class _ServerNetworkingState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The service_name of your dedicated server. The full list of available dedicated servers can be found using the `get_servers` datasource.
+        The internal name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 
@@ -114,7 +114,7 @@ class _ServerNetworkingState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        status of the networking configuration (should be `active`).
+        Operation status
         """
         return pulumi.get(self, "status")
 
@@ -132,22 +132,11 @@ class ServerNetworking(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manage dedicated server networking interface on SCALE and HIGH-GRADE range.
-
-        !> The API route targeted by this resource are restricted to OVHCloud users (`Internal API`) with additional restrictions.
-
-        ## Import
-
-        A dedicated server networking configuration can be imported using the `service_name`. bash
-
-        ```sh
-         $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name
-        ```
-
+        Create a ServerNetworking resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerNetworkingInterfaceArgs']]]] interfaces: Interface or interfaces aggregation.
-        :param pulumi.Input[str] service_name: The service_name of your dedicated server. The full list of available dedicated servers can be found using the `get_servers` datasource.
+        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
         """
         ...
     @overload
@@ -156,18 +145,7 @@ class ServerNetworking(pulumi.CustomResource):
                  args: ServerNetworkingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manage dedicated server networking interface on SCALE and HIGH-GRADE range.
-
-        !> The API route targeted by this resource are restricted to OVHCloud users (`Internal API`) with additional restrictions.
-
-        ## Import
-
-        A dedicated server networking configuration can be imported using the `service_name`. bash
-
-        ```sh
-         $ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name
-        ```
-
+        Create a ServerNetworking resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ServerNetworkingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -223,10 +201,10 @@ class ServerNetworking(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Operation description.
+        :param pulumi.Input[str] description: Operation description
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerNetworkingInterfaceArgs']]]] interfaces: Interface or interfaces aggregation.
-        :param pulumi.Input[str] service_name: The service_name of your dedicated server. The full list of available dedicated servers can be found using the `get_servers` datasource.
-        :param pulumi.Input[str] status: status of the networking configuration (should be `active`).
+        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
+        :param pulumi.Input[str] status: Operation status
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -242,7 +220,7 @@ class ServerNetworking(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Operation description.
+        Operation description
         """
         return pulumi.get(self, "description")
 
@@ -258,7 +236,7 @@ class ServerNetworking(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The service_name of your dedicated server. The full list of available dedicated servers can be found using the `get_servers` datasource.
+        The internal name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 
@@ -266,7 +244,7 @@ class ServerNetworking(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        status of the networking configuration (should be `active`).
+        Operation status
         """
         return pulumi.get(self, "status")
 

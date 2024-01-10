@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Attach an IP block to a VRack.
@@ -220,12 +219,6 @@ func (i *IpAddress) ToIpAddressOutputWithContext(ctx context.Context) IpAddressO
 	return pulumi.ToOutputWithContext(ctx, i).(IpAddressOutput)
 }
 
-func (i *IpAddress) ToOutput(ctx context.Context) pulumix.Output[*IpAddress] {
-	return pulumix.Output[*IpAddress]{
-		OutputState: i.ToIpAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IpAddressArrayInput is an input type that accepts IpAddressArray and IpAddressArrayOutput values.
 // You can construct a concrete instance of `IpAddressArrayInput` via:
 //
@@ -249,12 +242,6 @@ func (i IpAddressArray) ToIpAddressArrayOutput() IpAddressArrayOutput {
 
 func (i IpAddressArray) ToIpAddressArrayOutputWithContext(ctx context.Context) IpAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpAddressArrayOutput)
-}
-
-func (i IpAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*IpAddress] {
-	return pulumix.Output[[]*IpAddress]{
-		OutputState: i.ToIpAddressArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IpAddressMapInput is an input type that accepts IpAddressMap and IpAddressMapOutput values.
@@ -282,12 +269,6 @@ func (i IpAddressMap) ToIpAddressMapOutputWithContext(ctx context.Context) IpAdd
 	return pulumi.ToOutputWithContext(ctx, i).(IpAddressMapOutput)
 }
 
-func (i IpAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpAddress] {
-	return pulumix.Output[map[string]*IpAddress]{
-		OutputState: i.ToIpAddressMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IpAddressOutput struct{ *pulumi.OutputState }
 
 func (IpAddressOutput) ElementType() reflect.Type {
@@ -300,12 +281,6 @@ func (o IpAddressOutput) ToIpAddressOutput() IpAddressOutput {
 
 func (o IpAddressOutput) ToIpAddressOutputWithContext(ctx context.Context) IpAddressOutput {
 	return o
-}
-
-func (o IpAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*IpAddress] {
-	return pulumix.Output[*IpAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Your IP block.
@@ -347,12 +322,6 @@ func (o IpAddressArrayOutput) ToIpAddressArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o IpAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IpAddress] {
-	return pulumix.Output[[]*IpAddress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpAddressArrayOutput) Index(i pulumi.IntInput) IpAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IpAddress {
 		return vs[0].([]*IpAddress)[vs[1].(int)]
@@ -371,12 +340,6 @@ func (o IpAddressMapOutput) ToIpAddressMapOutput() IpAddressMapOutput {
 
 func (o IpAddressMapOutput) ToIpAddressMapOutputWithContext(ctx context.Context) IpAddressMapOutput {
 	return o
-}
-
-func (o IpAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpAddress] {
-	return pulumix.Output[map[string]*IpAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpAddressMapOutput) MapIndex(k pulumi.StringInput) IpAddressOutput {

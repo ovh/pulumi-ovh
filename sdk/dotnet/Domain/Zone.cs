@@ -61,6 +61,16 @@ namespace Pulumi.Ovh.Domain
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Zone can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the zone.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import ovh:Domain/zone:Zone zone order_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Domain/zone:Zone")]
     public partial class Zone : global::Pulumi.CustomResource

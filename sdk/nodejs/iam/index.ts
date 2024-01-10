@@ -25,10 +25,25 @@ export const getReferenceResourceType: typeof import("./getReferenceResourceType
 export const getReferenceResourceTypeOutput: typeof import("./getReferenceResourceType").getReferenceResourceTypeOutput = null as any;
 utilities.lazyLoad(exports, ["getReferenceResourceType","getReferenceResourceTypeOutput"], () => require("./getReferenceResourceType"));
 
+export { GetResourceGroupArgs, GetResourceGroupResult, GetResourceGroupOutputArgs } from "./getResourceGroup";
+export const getResourceGroup: typeof import("./getResourceGroup").getResourceGroup = null as any;
+export const getResourceGroupOutput: typeof import("./getResourceGroup").getResourceGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getResourceGroup","getResourceGroupOutput"], () => require("./getResourceGroup"));
+
+export { GetResourceGroupsResult } from "./getResourceGroups";
+export const getResourceGroups: typeof import("./getResourceGroups").getResourceGroups = null as any;
+export const getResourceGroupsOutput: typeof import("./getResourceGroups").getResourceGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getResourceGroups","getResourceGroupsOutput"], () => require("./getResourceGroups"));
+
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
 utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
+
+export { ResourceGroupArgs, ResourceGroupState } from "./resourceGroup";
+export type ResourceGroup = import("./resourceGroup").ResourceGroup;
+export const ResourceGroup: typeof import("./resourceGroup").ResourceGroup = null as any;
+utilities.lazyLoad(exports, ["ResourceGroup"], () => require("./resourceGroup"));
 
 
 const _module = {
@@ -37,9 +52,12 @@ const _module = {
         switch (type) {
             case "ovh:Iam/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
+            case "ovh:Iam/resourceGroup:ResourceGroup":
+                return new ResourceGroup(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("ovh", "Iam/policy", _module)
+pulumi.runtime.registerResourceModule("ovh", "Iam/resourceGroup", _module)

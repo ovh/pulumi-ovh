@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of databases of a database cluster associated with a public cloud project.
@@ -122,12 +121,6 @@ func (o GetDatabaseInstancesResultOutput) ToGetDatabaseInstancesResultOutput() G
 
 func (o GetDatabaseInstancesResultOutput) ToGetDatabaseInstancesResultOutputWithContext(ctx context.Context) GetDatabaseInstancesResultOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesResult] {
-	return pulumix.Output[GetDatabaseInstancesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // See Argument Reference above.

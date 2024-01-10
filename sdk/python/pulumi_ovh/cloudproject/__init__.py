@@ -38,6 +38,7 @@ from .get_user_s3_credential import *
 from .get_user_s3_credentials import *
 from .get_user_s3_policy import *
 from .get_users import *
+from .get_v_rack import *
 from .kube import *
 from .kube_ip_restrictions import *
 from .kube_node_pool import *

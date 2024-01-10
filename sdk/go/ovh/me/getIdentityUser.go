@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about an identity user.
@@ -116,12 +115,6 @@ func (o LookupIdentityUserResultOutput) ToLookupIdentityUserResultOutput() Looku
 
 func (o LookupIdentityUserResultOutput) ToLookupIdentityUserResultOutputWithContext(ctx context.Context) LookupIdentityUserResultOutput {
 	return o
-}
-
-func (o LookupIdentityUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIdentityUserResult] {
-	return pulumix.Output[LookupIdentityUserResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User's identity URN.

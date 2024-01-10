@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the managed database of a public cloud project.
@@ -149,12 +148,6 @@ func (o GetDatabaseResultOutput) ToGetDatabaseResultOutput() GetDatabaseResultOu
 
 func (o GetDatabaseResultOutput) ToGetDatabaseResultOutputWithContext(ctx context.Context) GetDatabaseResultOutput {
 	return o
-}
-
-func (o GetDatabaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseResult] {
-	return pulumix.Output[GetDatabaseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Advanced configuration key / value.

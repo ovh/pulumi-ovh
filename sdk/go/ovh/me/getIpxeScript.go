@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about an IPXE Script.
@@ -101,12 +100,6 @@ func (o LookupIpxeScriptResultOutput) ToLookupIpxeScriptResultOutput() LookupIpx
 
 func (o LookupIpxeScriptResultOutput) ToLookupIpxeScriptResultOutputWithContext(ctx context.Context) LookupIpxeScriptResultOutput {
 	return o
-}
-
-func (o LookupIpxeScriptResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIpxeScriptResult] {
-	return pulumix.Output[LookupIpxeScriptResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.
