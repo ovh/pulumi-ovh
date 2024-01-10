@@ -438,6 +438,17 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_iam_policy": {
 				Tok: ovhResource(iamMod, "Policy"),
 			},
+			"ovh_iam_resource_group": {
+				Tok: ovhResource(iamMod, "ResourceGroup"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "GroupURN",
+					},
+				},
+			},
+			"ovh_me_api_oauth2_client": {
+				Tok: ovhResource(meMod, "APIOAuth2Client"),
+			},
 			"ovh_me_identity_group": {
 				Tok: ovhResource(meMod, "IdentityGroup"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -588,6 +599,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_users": {
 				Tok: ovhDataSource(cloudProjectMod, "getUsers"),
+			},
+			"ovh_cloud_project_vrack": {
+				Tok: ovhDataSource(cloudProjectMod, "getVRack"),
+			},
+			"ovh_dbaas_logs_clusters": {
+				Tok: ovhDataSource(dbaasMod, "getLogsClusters"),
 			},
 			"ovh_dbaas_logs_input_engine": {
 				Tok: ovhDataSource(dbaasMod, "getLogsInputEngine"),
@@ -748,14 +765,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			/*
-			 "" not mapped to the Pulumi provider
-			        * TF data source "" not mapped to the Pulumi provider
-			        * TF data source "" not mapped to the Pulumi provider
-			        * TF data source "" not mapped to the Pulumi provider
-			        * TF data source "" not mapped to the Pulumi provider
-			        * TF data source "
-			*/
 			"ovh_iam_policies": {
 				Tok: ovhDataSource(iamMod, "getPolicies"),
 			},
@@ -765,8 +774,22 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_iam_reference_actions": {
 				Tok: ovhDataSource(iamMod, "getReferenceActions"),
 			},
-			"ovh_iam_reference_resource_types": {
-				Tok: ovhDataSource(iamMod, "getReferenceResourceTypes"),
+			"ovh_iam_resource_group": {
+				Tok: ovhDataSource(iamMod, "getResourceGroup"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "GroupURN",
+					},
+				},
+			},
+			"ovh_iam_resource_groups": {
+				Tok: ovhDataSource(iamMod, "getResourceGroups"),
+			},
+			"ovh_me_api_oauth2_client": {
+				Tok: ovhDataSource(meMod, "getAPIOAuth2Client"),
+			},
+			"ovh_me_api_oauth2_clients": {
+				Tok: ovhDataSource(meMod, "getAPIOAuth2Clients"),
 			},
 			"ovh_me_identity_group": {
 				Tok: ovhDataSource(meMod, "getIdentityGroup"),
