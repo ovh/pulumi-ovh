@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this resource to create partition scheme for a custom installation template available for dedicated servers.
@@ -169,12 +168,6 @@ func (i *InstallationTemplatePartitionScheme) ToInstallationTemplatePartitionSch
 	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplatePartitionSchemeOutput)
 }
 
-func (i *InstallationTemplatePartitionScheme) ToOutput(ctx context.Context) pulumix.Output[*InstallationTemplatePartitionScheme] {
-	return pulumix.Output[*InstallationTemplatePartitionScheme]{
-		OutputState: i.ToInstallationTemplatePartitionSchemeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstallationTemplatePartitionSchemeArrayInput is an input type that accepts InstallationTemplatePartitionSchemeArray and InstallationTemplatePartitionSchemeArrayOutput values.
 // You can construct a concrete instance of `InstallationTemplatePartitionSchemeArrayInput` via:
 //
@@ -198,12 +191,6 @@ func (i InstallationTemplatePartitionSchemeArray) ToInstallationTemplatePartitio
 
 func (i InstallationTemplatePartitionSchemeArray) ToInstallationTemplatePartitionSchemeArrayOutputWithContext(ctx context.Context) InstallationTemplatePartitionSchemeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplatePartitionSchemeArrayOutput)
-}
-
-func (i InstallationTemplatePartitionSchemeArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstallationTemplatePartitionScheme] {
-	return pulumix.Output[[]*InstallationTemplatePartitionScheme]{
-		OutputState: i.ToInstallationTemplatePartitionSchemeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstallationTemplatePartitionSchemeMapInput is an input type that accepts InstallationTemplatePartitionSchemeMap and InstallationTemplatePartitionSchemeMapOutput values.
@@ -231,12 +218,6 @@ func (i InstallationTemplatePartitionSchemeMap) ToInstallationTemplatePartitionS
 	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplatePartitionSchemeMapOutput)
 }
 
-func (i InstallationTemplatePartitionSchemeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstallationTemplatePartitionScheme] {
-	return pulumix.Output[map[string]*InstallationTemplatePartitionScheme]{
-		OutputState: i.ToInstallationTemplatePartitionSchemeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstallationTemplatePartitionSchemeOutput struct{ *pulumi.OutputState }
 
 func (InstallationTemplatePartitionSchemeOutput) ElementType() reflect.Type {
@@ -249,12 +230,6 @@ func (o InstallationTemplatePartitionSchemeOutput) ToInstallationTemplatePartiti
 
 func (o InstallationTemplatePartitionSchemeOutput) ToInstallationTemplatePartitionSchemeOutputWithContext(ctx context.Context) InstallationTemplatePartitionSchemeOutput {
 	return o
-}
-
-func (o InstallationTemplatePartitionSchemeOutput) ToOutput(ctx context.Context) pulumix.Output[*InstallationTemplatePartitionScheme] {
-	return pulumix.Output[*InstallationTemplatePartitionScheme]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Required) This partition scheme name.
@@ -286,12 +261,6 @@ func (o InstallationTemplatePartitionSchemeArrayOutput) ToInstallationTemplatePa
 	return o
 }
 
-func (o InstallationTemplatePartitionSchemeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstallationTemplatePartitionScheme] {
-	return pulumix.Output[[]*InstallationTemplatePartitionScheme]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstallationTemplatePartitionSchemeArrayOutput) Index(i pulumi.IntInput) InstallationTemplatePartitionSchemeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstallationTemplatePartitionScheme {
 		return vs[0].([]*InstallationTemplatePartitionScheme)[vs[1].(int)]
@@ -310,12 +279,6 @@ func (o InstallationTemplatePartitionSchemeMapOutput) ToInstallationTemplatePart
 
 func (o InstallationTemplatePartitionSchemeMapOutput) ToInstallationTemplatePartitionSchemeMapOutputWithContext(ctx context.Context) InstallationTemplatePartitionSchemeMapOutput {
 	return o
-}
-
-func (o InstallationTemplatePartitionSchemeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstallationTemplatePartitionScheme] {
-	return pulumix.Output[map[string]*InstallationTemplatePartitionScheme]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstallationTemplatePartitionSchemeMapOutput) MapIndex(k pulumi.StringInput) InstallationTemplatePartitionSchemeOutput {

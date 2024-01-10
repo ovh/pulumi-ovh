@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to list the existing IAM policies of an account.
@@ -79,12 +78,6 @@ func (o GetPoliciesResultOutput) ToGetPoliciesResultOutput() GetPoliciesResultOu
 
 func (o GetPoliciesResultOutput) ToGetPoliciesResultOutputWithContext(ctx context.Context) GetPoliciesResultOutput {
 	return o
-}
-
-func (o GetPoliciesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPoliciesResult] {
-	return pulumix.Output[GetPoliciesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

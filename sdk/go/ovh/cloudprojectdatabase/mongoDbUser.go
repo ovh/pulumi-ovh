@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -184,12 +183,6 @@ func (i *MongoDbUser) ToMongoDbUserOutputWithContext(ctx context.Context) MongoD
 	return pulumi.ToOutputWithContext(ctx, i).(MongoDbUserOutput)
 }
 
-func (i *MongoDbUser) ToOutput(ctx context.Context) pulumix.Output[*MongoDbUser] {
-	return pulumix.Output[*MongoDbUser]{
-		OutputState: i.ToMongoDbUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MongoDbUserArrayInput is an input type that accepts MongoDbUserArray and MongoDbUserArrayOutput values.
 // You can construct a concrete instance of `MongoDbUserArrayInput` via:
 //
@@ -213,12 +206,6 @@ func (i MongoDbUserArray) ToMongoDbUserArrayOutput() MongoDbUserArrayOutput {
 
 func (i MongoDbUserArray) ToMongoDbUserArrayOutputWithContext(ctx context.Context) MongoDbUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MongoDbUserArrayOutput)
-}
-
-func (i MongoDbUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*MongoDbUser] {
-	return pulumix.Output[[]*MongoDbUser]{
-		OutputState: i.ToMongoDbUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MongoDbUserMapInput is an input type that accepts MongoDbUserMap and MongoDbUserMapOutput values.
@@ -246,12 +233,6 @@ func (i MongoDbUserMap) ToMongoDbUserMapOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, i).(MongoDbUserMapOutput)
 }
 
-func (i MongoDbUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MongoDbUser] {
-	return pulumix.Output[map[string]*MongoDbUser]{
-		OutputState: i.ToMongoDbUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MongoDbUserOutput struct{ *pulumi.OutputState }
 
 func (MongoDbUserOutput) ElementType() reflect.Type {
@@ -264,12 +245,6 @@ func (o MongoDbUserOutput) ToMongoDbUserOutput() MongoDbUserOutput {
 
 func (o MongoDbUserOutput) ToMongoDbUserOutputWithContext(ctx context.Context) MongoDbUserOutput {
 	return o
-}
-
-func (o MongoDbUserOutput) ToOutput(ctx context.Context) pulumix.Output[*MongoDbUser] {
-	return pulumix.Output[*MongoDbUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cluster ID.
@@ -328,12 +303,6 @@ func (o MongoDbUserArrayOutput) ToMongoDbUserArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o MongoDbUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MongoDbUser] {
-	return pulumix.Output[[]*MongoDbUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MongoDbUserArrayOutput) Index(i pulumi.IntInput) MongoDbUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MongoDbUser {
 		return vs[0].([]*MongoDbUser)[vs[1].(int)]
@@ -352,12 +321,6 @@ func (o MongoDbUserMapOutput) ToMongoDbUserMapOutput() MongoDbUserMapOutput {
 
 func (o MongoDbUserMapOutput) ToMongoDbUserMapOutputWithContext(ctx context.Context) MongoDbUserMapOutput {
 	return o
-}
-
-func (o MongoDbUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MongoDbUser] {
-	return pulumix.Output[map[string]*MongoDbUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MongoDbUserMapOutput) MapIndex(k pulumi.StringInput) MongoDbUserOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a HTTP backend server group (farm) to be used by loadbalancing frontend(s)
@@ -209,12 +208,6 @@ func (i *HttpFarm) ToHttpFarmOutputWithContext(ctx context.Context) HttpFarmOutp
 	return pulumi.ToOutputWithContext(ctx, i).(HttpFarmOutput)
 }
 
-func (i *HttpFarm) ToOutput(ctx context.Context) pulumix.Output[*HttpFarm] {
-	return pulumix.Output[*HttpFarm]{
-		OutputState: i.ToHttpFarmOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HttpFarmArrayInput is an input type that accepts HttpFarmArray and HttpFarmArrayOutput values.
 // You can construct a concrete instance of `HttpFarmArrayInput` via:
 //
@@ -238,12 +231,6 @@ func (i HttpFarmArray) ToHttpFarmArrayOutput() HttpFarmArrayOutput {
 
 func (i HttpFarmArray) ToHttpFarmArrayOutputWithContext(ctx context.Context) HttpFarmArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HttpFarmArrayOutput)
-}
-
-func (i HttpFarmArray) ToOutput(ctx context.Context) pulumix.Output[[]*HttpFarm] {
-	return pulumix.Output[[]*HttpFarm]{
-		OutputState: i.ToHttpFarmArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HttpFarmMapInput is an input type that accepts HttpFarmMap and HttpFarmMapOutput values.
@@ -271,12 +258,6 @@ func (i HttpFarmMap) ToHttpFarmMapOutputWithContext(ctx context.Context) HttpFar
 	return pulumi.ToOutputWithContext(ctx, i).(HttpFarmMapOutput)
 }
 
-func (i HttpFarmMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpFarm] {
-	return pulumix.Output[map[string]*HttpFarm]{
-		OutputState: i.ToHttpFarmMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HttpFarmOutput struct{ *pulumi.OutputState }
 
 func (HttpFarmOutput) ElementType() reflect.Type {
@@ -289,12 +270,6 @@ func (o HttpFarmOutput) ToHttpFarmOutput() HttpFarmOutput {
 
 func (o HttpFarmOutput) ToHttpFarmOutputWithContext(ctx context.Context) HttpFarmOutput {
 	return o
-}
-
-func (o HttpFarmOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpFarm] {
-	return pulumix.Output[*HttpFarm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
@@ -351,12 +326,6 @@ func (o HttpFarmArrayOutput) ToHttpFarmArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o HttpFarmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HttpFarm] {
-	return pulumix.Output[[]*HttpFarm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpFarmArrayOutput) Index(i pulumi.IntInput) HttpFarmOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HttpFarm {
 		return vs[0].([]*HttpFarm)[vs[1].(int)]
@@ -375,12 +344,6 @@ func (o HttpFarmMapOutput) ToHttpFarmMapOutput() HttpFarmMapOutput {
 
 func (o HttpFarmMapOutput) ToHttpFarmMapOutputWithContext(ctx context.Context) HttpFarmMapOutput {
 	return o
-}
-
-func (o HttpFarmMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpFarm] {
-	return pulumix.Output[map[string]*HttpFarm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpFarmMapOutput) MapIndex(k pulumi.StringInput) HttpFarmOutput {

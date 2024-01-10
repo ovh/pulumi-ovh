@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Add grant on a database in your private cloud database instance.
@@ -199,12 +198,6 @@ func (i *PrivateDatabaseUserGrant) ToPrivateDatabaseUserGrantOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseUserGrantOutput)
 }
 
-func (i *PrivateDatabaseUserGrant) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabaseUserGrant] {
-	return pulumix.Output[*PrivateDatabaseUserGrant]{
-		OutputState: i.ToPrivateDatabaseUserGrantOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivateDatabaseUserGrantArrayInput is an input type that accepts PrivateDatabaseUserGrantArray and PrivateDatabaseUserGrantArrayOutput values.
 // You can construct a concrete instance of `PrivateDatabaseUserGrantArrayInput` via:
 //
@@ -228,12 +221,6 @@ func (i PrivateDatabaseUserGrantArray) ToPrivateDatabaseUserGrantArrayOutput() P
 
 func (i PrivateDatabaseUserGrantArray) ToPrivateDatabaseUserGrantArrayOutputWithContext(ctx context.Context) PrivateDatabaseUserGrantArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseUserGrantArrayOutput)
-}
-
-func (i PrivateDatabaseUserGrantArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabaseUserGrant] {
-	return pulumix.Output[[]*PrivateDatabaseUserGrant]{
-		OutputState: i.ToPrivateDatabaseUserGrantArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PrivateDatabaseUserGrantMapInput is an input type that accepts PrivateDatabaseUserGrantMap and PrivateDatabaseUserGrantMapOutput values.
@@ -261,12 +248,6 @@ func (i PrivateDatabaseUserGrantMap) ToPrivateDatabaseUserGrantMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseUserGrantMapOutput)
 }
 
-func (i PrivateDatabaseUserGrantMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabaseUserGrant] {
-	return pulumix.Output[map[string]*PrivateDatabaseUserGrant]{
-		OutputState: i.ToPrivateDatabaseUserGrantMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateDatabaseUserGrantOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabaseUserGrantOutput) ElementType() reflect.Type {
@@ -279,12 +260,6 @@ func (o PrivateDatabaseUserGrantOutput) ToPrivateDatabaseUserGrantOutput() Priva
 
 func (o PrivateDatabaseUserGrantOutput) ToPrivateDatabaseUserGrantOutputWithContext(ctx context.Context) PrivateDatabaseUserGrantOutput {
 	return o
-}
-
-func (o PrivateDatabaseUserGrantOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabaseUserGrant] {
-	return pulumix.Output[*PrivateDatabaseUserGrant]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database name where add grant.
@@ -325,12 +300,6 @@ func (o PrivateDatabaseUserGrantArrayOutput) ToPrivateDatabaseUserGrantArrayOutp
 	return o
 }
 
-func (o PrivateDatabaseUserGrantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabaseUserGrant] {
-	return pulumix.Output[[]*PrivateDatabaseUserGrant]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateDatabaseUserGrantArrayOutput) Index(i pulumi.IntInput) PrivateDatabaseUserGrantOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrivateDatabaseUserGrant {
 		return vs[0].([]*PrivateDatabaseUserGrant)[vs[1].(int)]
@@ -349,12 +318,6 @@ func (o PrivateDatabaseUserGrantMapOutput) ToPrivateDatabaseUserGrantMapOutput()
 
 func (o PrivateDatabaseUserGrantMapOutput) ToPrivateDatabaseUserGrantMapOutputWithContext(ctx context.Context) PrivateDatabaseUserGrantMapOutput {
 	return o
-}
-
-func (o PrivateDatabaseUserGrantMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabaseUserGrant] {
-	return pulumix.Output[map[string]*PrivateDatabaseUserGrant]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateDatabaseUserGrantMapOutput) MapIndex(k pulumi.StringInput) PrivateDatabaseUserGrantOutput {

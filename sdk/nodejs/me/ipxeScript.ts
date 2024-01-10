@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
  *
- * const script = new ovh.me.IpxeScript("script", {script: fs.readFileSync(`${path.module}/boot.ipxe`)});
+ * const script = new ovh.me.IpxeScript("script", {script: fs.readFileSync(`${path.module}/boot.ipxe`, "utf8")});
  * ```
  */
 export class IpxeScript extends pulumi.CustomResource {

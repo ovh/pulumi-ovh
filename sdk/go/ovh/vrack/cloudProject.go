@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Attach a Public Cloud Project to a VRack.
@@ -161,12 +160,6 @@ func (i *CloudProject) ToCloudProjectOutputWithContext(ctx context.Context) Clou
 	return pulumi.ToOutputWithContext(ctx, i).(CloudProjectOutput)
 }
 
-func (i *CloudProject) ToOutput(ctx context.Context) pulumix.Output[*CloudProject] {
-	return pulumix.Output[*CloudProject]{
-		OutputState: i.ToCloudProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CloudProjectArrayInput is an input type that accepts CloudProjectArray and CloudProjectArrayOutput values.
 // You can construct a concrete instance of `CloudProjectArrayInput` via:
 //
@@ -190,12 +183,6 @@ func (i CloudProjectArray) ToCloudProjectArrayOutput() CloudProjectArrayOutput {
 
 func (i CloudProjectArray) ToCloudProjectArrayOutputWithContext(ctx context.Context) CloudProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudProjectArrayOutput)
-}
-
-func (i CloudProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*CloudProject] {
-	return pulumix.Output[[]*CloudProject]{
-		OutputState: i.ToCloudProjectArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CloudProjectMapInput is an input type that accepts CloudProjectMap and CloudProjectMapOutput values.
@@ -223,12 +210,6 @@ func (i CloudProjectMap) ToCloudProjectMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CloudProjectMapOutput)
 }
 
-func (i CloudProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudProject] {
-	return pulumix.Output[map[string]*CloudProject]{
-		OutputState: i.ToCloudProjectMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CloudProjectOutput struct{ *pulumi.OutputState }
 
 func (CloudProjectOutput) ElementType() reflect.Type {
@@ -241,12 +222,6 @@ func (o CloudProjectOutput) ToCloudProjectOutput() CloudProjectOutput {
 
 func (o CloudProjectOutput) ToCloudProjectOutputWithContext(ctx context.Context) CloudProjectOutput {
 	return o
-}
-
-func (o CloudProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudProject] {
-	return pulumix.Output[*CloudProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the public cloud project. If omitted,
@@ -275,12 +250,6 @@ func (o CloudProjectArrayOutput) ToCloudProjectArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o CloudProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CloudProject] {
-	return pulumix.Output[[]*CloudProject]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CloudProjectArrayOutput) Index(i pulumi.IntInput) CloudProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CloudProject {
 		return vs[0].([]*CloudProject)[vs[1].(int)]
@@ -299,12 +268,6 @@ func (o CloudProjectMapOutput) ToCloudProjectMapOutput() CloudProjectMapOutput {
 
 func (o CloudProjectMapOutput) ToCloudProjectMapOutputWithContext(ctx context.Context) CloudProjectMapOutput {
 	return o
-}
-
-func (o CloudProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudProject] {
-	return pulumix.Output[map[string]*CloudProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudProjectMapOutput) MapIndex(k pulumi.StringInput) CloudProjectOutput {

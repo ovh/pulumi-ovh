@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
@@ -117,12 +116,6 @@ func (o GetRegionResultOutput) ToGetRegionResultOutput() GetRegionResultOutput {
 
 func (o GetRegionResultOutput) ToGetRegionResultOutputWithContext(ctx context.Context) GetRegionResultOutput {
 	return o
-}
-
-func (o GetRegionResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionResult] {
-	return pulumix.Output[GetRegionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the code of the geographic continent the region is running.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Attach a Dedicated Server Network Interface to a VRack.
@@ -153,12 +152,6 @@ func (i *DedicatedServerInterface) ToDedicatedServerInterfaceOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedServerInterfaceOutput)
 }
 
-func (i *DedicatedServerInterface) ToOutput(ctx context.Context) pulumix.Output[*DedicatedServerInterface] {
-	return pulumix.Output[*DedicatedServerInterface]{
-		OutputState: i.ToDedicatedServerInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DedicatedServerInterfaceArrayInput is an input type that accepts DedicatedServerInterfaceArray and DedicatedServerInterfaceArrayOutput values.
 // You can construct a concrete instance of `DedicatedServerInterfaceArrayInput` via:
 //
@@ -182,12 +175,6 @@ func (i DedicatedServerInterfaceArray) ToDedicatedServerInterfaceArrayOutput() D
 
 func (i DedicatedServerInterfaceArray) ToDedicatedServerInterfaceArrayOutputWithContext(ctx context.Context) DedicatedServerInterfaceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedServerInterfaceArrayOutput)
-}
-
-func (i DedicatedServerInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedServerInterface] {
-	return pulumix.Output[[]*DedicatedServerInterface]{
-		OutputState: i.ToDedicatedServerInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DedicatedServerInterfaceMapInput is an input type that accepts DedicatedServerInterfaceMap and DedicatedServerInterfaceMapOutput values.
@@ -215,12 +202,6 @@ func (i DedicatedServerInterfaceMap) ToDedicatedServerInterfaceMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedServerInterfaceMapOutput)
 }
 
-func (i DedicatedServerInterfaceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedServerInterface] {
-	return pulumix.Output[map[string]*DedicatedServerInterface]{
-		OutputState: i.ToDedicatedServerInterfaceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DedicatedServerInterfaceOutput struct{ *pulumi.OutputState }
 
 func (DedicatedServerInterfaceOutput) ElementType() reflect.Type {
@@ -233,12 +214,6 @@ func (o DedicatedServerInterfaceOutput) ToDedicatedServerInterfaceOutput() Dedic
 
 func (o DedicatedServerInterfaceOutput) ToDedicatedServerInterfaceOutputWithContext(ctx context.Context) DedicatedServerInterfaceOutput {
 	return o
-}
-
-func (o DedicatedServerInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedServerInterface] {
-	return pulumix.Output[*DedicatedServerInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of dedicated server network interface.
@@ -266,12 +241,6 @@ func (o DedicatedServerInterfaceArrayOutput) ToDedicatedServerInterfaceArrayOutp
 	return o
 }
 
-func (o DedicatedServerInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedServerInterface] {
-	return pulumix.Output[[]*DedicatedServerInterface]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DedicatedServerInterfaceArrayOutput) Index(i pulumi.IntInput) DedicatedServerInterfaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DedicatedServerInterface {
 		return vs[0].([]*DedicatedServerInterface)[vs[1].(int)]
@@ -290,12 +259,6 @@ func (o DedicatedServerInterfaceMapOutput) ToDedicatedServerInterfaceMapOutput()
 
 func (o DedicatedServerInterfaceMapOutput) ToDedicatedServerInterfaceMapOutputWithContext(ctx context.Context) DedicatedServerInterfaceMapOutput {
 	return o
-}
-
-func (o DedicatedServerInterfaceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedServerInterface] {
-	return pulumix.Output[map[string]*DedicatedServerInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DedicatedServerInterfaceMapOutput) MapIndex(k pulumi.StringInput) DedicatedServerInterfaceOutput {

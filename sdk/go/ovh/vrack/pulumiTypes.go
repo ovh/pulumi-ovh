@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i VrackOrderArgs) ToVrackOrderOutputWithContext(ctx context.Context) Vrack
 	return pulumi.ToOutputWithContext(ctx, i).(VrackOrderOutput)
 }
 
-func (i VrackOrderArgs) ToOutput(ctx context.Context) pulumix.Output[VrackOrder] {
-	return pulumix.Output[VrackOrder]{
-		OutputState: i.ToVrackOrderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VrackOrderArrayInput is an input type that accepts VrackOrderArray and VrackOrderArrayOutput values.
 // You can construct a concrete instance of `VrackOrderArrayInput` via:
 //
@@ -90,12 +83,6 @@ func (i VrackOrderArray) ToVrackOrderArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(VrackOrderArrayOutput)
 }
 
-func (i VrackOrderArray) ToOutput(ctx context.Context) pulumix.Output[[]VrackOrder] {
-	return pulumix.Output[[]VrackOrder]{
-		OutputState: i.ToVrackOrderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VrackOrderOutput struct{ *pulumi.OutputState }
 
 func (VrackOrderOutput) ElementType() reflect.Type {
@@ -108,12 +95,6 @@ func (o VrackOrderOutput) ToVrackOrderOutput() VrackOrderOutput {
 
 func (o VrackOrderOutput) ToVrackOrderOutputWithContext(ctx context.Context) VrackOrderOutput {
 	return o
-}
-
-func (o VrackOrderOutput) ToOutput(ctx context.Context) pulumix.Output[VrackOrder] {
-	return pulumix.Output[VrackOrder]{
-		OutputState: o.OutputState,
-	}
 }
 
 // date
@@ -148,12 +129,6 @@ func (o VrackOrderArrayOutput) ToVrackOrderArrayOutput() VrackOrderArrayOutput {
 
 func (o VrackOrderArrayOutput) ToVrackOrderArrayOutputWithContext(ctx context.Context) VrackOrderArrayOutput {
 	return o
-}
-
-func (o VrackOrderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VrackOrder] {
-	return pulumix.Output[[]VrackOrder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VrackOrderArrayOutput) Index(i pulumi.IntInput) VrackOrderOutput {
@@ -207,12 +182,6 @@ func (i VrackOrderDetailArgs) ToVrackOrderDetailOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VrackOrderDetailOutput)
 }
 
-func (i VrackOrderDetailArgs) ToOutput(ctx context.Context) pulumix.Output[VrackOrderDetail] {
-	return pulumix.Output[VrackOrderDetail]{
-		OutputState: i.ToVrackOrderDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VrackOrderDetailArrayInput is an input type that accepts VrackOrderDetailArray and VrackOrderDetailArrayOutput values.
 // You can construct a concrete instance of `VrackOrderDetailArrayInput` via:
 //
@@ -238,12 +207,6 @@ func (i VrackOrderDetailArray) ToVrackOrderDetailArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VrackOrderDetailArrayOutput)
 }
 
-func (i VrackOrderDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]VrackOrderDetail] {
-	return pulumix.Output[[]VrackOrderDetail]{
-		OutputState: i.ToVrackOrderDetailArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VrackOrderDetailOutput struct{ *pulumi.OutputState }
 
 func (VrackOrderDetailOutput) ElementType() reflect.Type {
@@ -256,12 +219,6 @@ func (o VrackOrderDetailOutput) ToVrackOrderDetailOutput() VrackOrderDetailOutpu
 
 func (o VrackOrderDetailOutput) ToVrackOrderDetailOutputWithContext(ctx context.Context) VrackOrderDetailOutput {
 	return o
-}
-
-func (o VrackOrderDetailOutput) ToOutput(ctx context.Context) pulumix.Output[VrackOrderDetail] {
-	return pulumix.Output[VrackOrderDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // yourvrackdescription
@@ -296,12 +253,6 @@ func (o VrackOrderDetailArrayOutput) ToVrackOrderDetailArrayOutput() VrackOrderD
 
 func (o VrackOrderDetailArrayOutput) ToVrackOrderDetailArrayOutputWithContext(ctx context.Context) VrackOrderDetailArrayOutput {
 	return o
-}
-
-func (o VrackOrderDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VrackOrderDetail] {
-	return pulumix.Output[[]VrackOrderDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VrackOrderDetailArrayOutput) Index(i pulumi.IntInput) VrackOrderDetailOutput {
@@ -359,12 +310,6 @@ func (i VrackPlanArgs) ToVrackPlanOutputWithContext(ctx context.Context) VrackPl
 	return pulumi.ToOutputWithContext(ctx, i).(VrackPlanOutput)
 }
 
-func (i VrackPlanArgs) ToOutput(ctx context.Context) pulumix.Output[VrackPlan] {
-	return pulumix.Output[VrackPlan]{
-		OutputState: i.ToVrackPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VrackPlanArgs) ToVrackPlanPtrOutput() VrackPlanPtrOutput {
 	return i.ToVrackPlanPtrOutputWithContext(context.Background())
 }
@@ -406,12 +351,6 @@ func (i *vrackPlanPtrType) ToVrackPlanPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(VrackPlanPtrOutput)
 }
 
-func (i *vrackPlanPtrType) ToOutput(ctx context.Context) pulumix.Output[*VrackPlan] {
-	return pulumix.Output[*VrackPlan]{
-		OutputState: i.ToVrackPlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VrackPlanOutput struct{ *pulumi.OutputState }
 
 func (VrackPlanOutput) ElementType() reflect.Type {
@@ -434,12 +373,6 @@ func (o VrackPlanOutput) ToVrackPlanPtrOutputWithContext(ctx context.Context) Vr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VrackPlan) *VrackPlan {
 		return &v
 	}).(VrackPlanPtrOutput)
-}
-
-func (o VrackPlanOutput) ToOutput(ctx context.Context) pulumix.Output[VrackPlan] {
-	return pulumix.Output[VrackPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Catalog name
@@ -479,12 +412,6 @@ func (o VrackPlanPtrOutput) ToVrackPlanPtrOutput() VrackPlanPtrOutput {
 
 func (o VrackPlanPtrOutput) ToVrackPlanPtrOutputWithContext(ctx context.Context) VrackPlanPtrOutput {
 	return o
-}
-
-func (o VrackPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VrackPlan] {
-	return pulumix.Output[*VrackPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VrackPlanPtrOutput) Elem() VrackPlanOutput {
@@ -584,12 +511,6 @@ func (i VrackPlanConfigurationArgs) ToVrackPlanConfigurationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(VrackPlanConfigurationOutput)
 }
 
-func (i VrackPlanConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[VrackPlanConfiguration] {
-	return pulumix.Output[VrackPlanConfiguration]{
-		OutputState: i.ToVrackPlanConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VrackPlanConfigurationArrayInput is an input type that accepts VrackPlanConfigurationArray and VrackPlanConfigurationArrayOutput values.
 // You can construct a concrete instance of `VrackPlanConfigurationArrayInput` via:
 //
@@ -615,12 +536,6 @@ func (i VrackPlanConfigurationArray) ToVrackPlanConfigurationArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(VrackPlanConfigurationArrayOutput)
 }
 
-func (i VrackPlanConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]VrackPlanConfiguration] {
-	return pulumix.Output[[]VrackPlanConfiguration]{
-		OutputState: i.ToVrackPlanConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VrackPlanConfigurationOutput struct{ *pulumi.OutputState }
 
 func (VrackPlanConfigurationOutput) ElementType() reflect.Type {
@@ -633,12 +548,6 @@ func (o VrackPlanConfigurationOutput) ToVrackPlanConfigurationOutput() VrackPlan
 
 func (o VrackPlanConfigurationOutput) ToVrackPlanConfigurationOutputWithContext(ctx context.Context) VrackPlanConfigurationOutput {
 	return o
-}
-
-func (o VrackPlanConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[VrackPlanConfiguration] {
-	return pulumix.Output[VrackPlanConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier of the resource
@@ -663,12 +572,6 @@ func (o VrackPlanConfigurationArrayOutput) ToVrackPlanConfigurationArrayOutput()
 
 func (o VrackPlanConfigurationArrayOutput) ToVrackPlanConfigurationArrayOutputWithContext(ctx context.Context) VrackPlanConfigurationArrayOutput {
 	return o
-}
-
-func (o VrackPlanConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VrackPlanConfiguration] {
-	return pulumix.Output[[]VrackPlanConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VrackPlanConfigurationArrayOutput) Index(i pulumi.IntInput) VrackPlanConfigurationOutput {
@@ -726,12 +629,6 @@ func (i VrackPlanOptionArgs) ToVrackPlanOptionOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(VrackPlanOptionOutput)
 }
 
-func (i VrackPlanOptionArgs) ToOutput(ctx context.Context) pulumix.Output[VrackPlanOption] {
-	return pulumix.Output[VrackPlanOption]{
-		OutputState: i.ToVrackPlanOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VrackPlanOptionArrayInput is an input type that accepts VrackPlanOptionArray and VrackPlanOptionArrayOutput values.
 // You can construct a concrete instance of `VrackPlanOptionArrayInput` via:
 //
@@ -757,12 +654,6 @@ func (i VrackPlanOptionArray) ToVrackPlanOptionArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(VrackPlanOptionArrayOutput)
 }
 
-func (i VrackPlanOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]VrackPlanOption] {
-	return pulumix.Output[[]VrackPlanOption]{
-		OutputState: i.ToVrackPlanOptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VrackPlanOptionOutput struct{ *pulumi.OutputState }
 
 func (VrackPlanOptionOutput) ElementType() reflect.Type {
@@ -775,12 +666,6 @@ func (o VrackPlanOptionOutput) ToVrackPlanOptionOutput() VrackPlanOptionOutput {
 
 func (o VrackPlanOptionOutput) ToVrackPlanOptionOutputWithContext(ctx context.Context) VrackPlanOptionOutput {
 	return o
-}
-
-func (o VrackPlanOptionOutput) ToOutput(ctx context.Context) pulumix.Output[VrackPlanOption] {
-	return pulumix.Output[VrackPlanOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Catalog name
@@ -820,12 +705,6 @@ func (o VrackPlanOptionArrayOutput) ToVrackPlanOptionArrayOutput() VrackPlanOpti
 
 func (o VrackPlanOptionArrayOutput) ToVrackPlanOptionArrayOutputWithContext(ctx context.Context) VrackPlanOptionArrayOutput {
 	return o
-}
-
-func (o VrackPlanOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VrackPlanOption] {
-	return pulumix.Output[[]VrackPlanOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VrackPlanOptionArrayOutput) Index(i pulumi.IntInput) VrackPlanOptionOutput {
@@ -871,12 +750,6 @@ func (i VrackPlanOptionConfigurationArgs) ToVrackPlanOptionConfigurationOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(VrackPlanOptionConfigurationOutput)
 }
 
-func (i VrackPlanOptionConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[VrackPlanOptionConfiguration] {
-	return pulumix.Output[VrackPlanOptionConfiguration]{
-		OutputState: i.ToVrackPlanOptionConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VrackPlanOptionConfigurationArrayInput is an input type that accepts VrackPlanOptionConfigurationArray and VrackPlanOptionConfigurationArrayOutput values.
 // You can construct a concrete instance of `VrackPlanOptionConfigurationArrayInput` via:
 //
@@ -902,12 +775,6 @@ func (i VrackPlanOptionConfigurationArray) ToVrackPlanOptionConfigurationArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(VrackPlanOptionConfigurationArrayOutput)
 }
 
-func (i VrackPlanOptionConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]VrackPlanOptionConfiguration] {
-	return pulumix.Output[[]VrackPlanOptionConfiguration]{
-		OutputState: i.ToVrackPlanOptionConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VrackPlanOptionConfigurationOutput struct{ *pulumi.OutputState }
 
 func (VrackPlanOptionConfigurationOutput) ElementType() reflect.Type {
@@ -920,12 +787,6 @@ func (o VrackPlanOptionConfigurationOutput) ToVrackPlanOptionConfigurationOutput
 
 func (o VrackPlanOptionConfigurationOutput) ToVrackPlanOptionConfigurationOutputWithContext(ctx context.Context) VrackPlanOptionConfigurationOutput {
 	return o
-}
-
-func (o VrackPlanOptionConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[VrackPlanOptionConfiguration] {
-	return pulumix.Output[VrackPlanOptionConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier of the resource
@@ -950,12 +811,6 @@ func (o VrackPlanOptionConfigurationArrayOutput) ToVrackPlanOptionConfigurationA
 
 func (o VrackPlanOptionConfigurationArrayOutput) ToVrackPlanOptionConfigurationArrayOutputWithContext(ctx context.Context) VrackPlanOptionConfigurationArrayOutput {
 	return o
-}
-
-func (o VrackPlanOptionConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VrackPlanOptionConfiguration] {
-	return pulumix.Output[[]VrackPlanOptionConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VrackPlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) VrackPlanOptionConfigurationOutput {

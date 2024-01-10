@@ -26,6 +26,7 @@ namespace Pulumi.Ovh.Dbaas
     ///         {
     ///             "10.0.0.0/16",
     ///         },
+    ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     ///         DirectInputAllowedNetworks = new[]
     ///         {
     ///             "10.0.0.0/16",
@@ -42,10 +43,10 @@ namespace Pulumi.Ovh.Dbaas
     /// 
     /// ## Import
     /// 
-    /// OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash
+    /// OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by "/" E.g., bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id
+    ///  $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:Dbaas/logsCluster:LogsCluster")]
@@ -56,6 +57,12 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         [Output("archiveAllowedNetworks")]
         public Output<ImmutableArray<string>> ArchiveAllowedNetworks { get; private set; } = null!;
+
+        /// <summary>
+        /// Cluster ID. If not provided, the default cluster_id is used
+        /// </summary>
+        [Output("clusterId")]
+        public Output<string?> ClusterId { get; private set; } = null!;
 
         /// <summary>
         /// type of cluster (DEDICATED, PRO or TRIAL)
@@ -129,6 +136,9 @@ namespace Pulumi.Ovh.Dbaas
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// The service name
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -199,6 +209,12 @@ namespace Pulumi.Ovh.Dbaas
             set => _archiveAllowedNetworks = value;
         }
 
+        /// <summary>
+        /// Cluster ID. If not provided, the default cluster_id is used
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
         [Input("directInputAllowedNetworks")]
         private InputList<string>? _directInputAllowedNetworks;
 
@@ -223,6 +239,9 @@ namespace Pulumi.Ovh.Dbaas
             set => _queryAllowedNetworks = value;
         }
 
+        /// <summary>
+        /// The service name
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -245,6 +264,12 @@ namespace Pulumi.Ovh.Dbaas
             get => _archiveAllowedNetworks ?? (_archiveAllowedNetworks = new InputList<string>());
             set => _archiveAllowedNetworks = value;
         }
+
+        /// <summary>
+        /// Cluster ID. If not provided, the default cluster_id is used
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
 
         /// <summary>
         /// type of cluster (DEDICATED, PRO or TRIAL)
@@ -380,6 +405,9 @@ namespace Pulumi.Ovh.Dbaas
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The service name
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

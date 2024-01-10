@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about an IP Load Balancing product
@@ -168,12 +167,6 @@ func (o GetIpLoadBalancingResultOutput) ToGetIpLoadBalancingResultOutput() GetIp
 
 func (o GetIpLoadBalancingResultOutput) ToGetIpLoadBalancingResultOutputWithContext(ctx context.Context) GetIpLoadBalancingResultOutput {
 	return o
-}
-
-func (o GetIpLoadBalancingResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpLoadBalancingResult] {
-	return pulumix.Output[GetIpLoadBalancingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetIpLoadBalancingResultOutput) DisplayName() pulumi.StringOutput {

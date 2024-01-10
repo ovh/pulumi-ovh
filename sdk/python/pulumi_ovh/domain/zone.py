@@ -317,6 +317,16 @@ class Zone(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Zone can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the zone.
+
+        bash
+
+        ```sh
+         $ pulumi import ovh:Domain/zone:Zone zone order_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
@@ -360,6 +370,16 @@ class Zone(pulumi.CustomResource):
                     ),
                 ],
             ))
+        ```
+
+        ## Import
+
+        Zone can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the zone.
+
+        bash
+
+        ```sh
+         $ pulumi import ovh:Domain/zone:Zone zone order_id
         ```
 
         :param str resource_name: The name of the resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -350,12 +349,6 @@ func (i *PrivateDatabase) ToPrivateDatabaseOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseOutput)
 }
 
-func (i *PrivateDatabase) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabase] {
-	return pulumix.Output[*PrivateDatabase]{
-		OutputState: i.ToPrivateDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivateDatabaseArrayInput is an input type that accepts PrivateDatabaseArray and PrivateDatabaseArrayOutput values.
 // You can construct a concrete instance of `PrivateDatabaseArrayInput` via:
 //
@@ -379,12 +372,6 @@ func (i PrivateDatabaseArray) ToPrivateDatabaseArrayOutput() PrivateDatabaseArra
 
 func (i PrivateDatabaseArray) ToPrivateDatabaseArrayOutputWithContext(ctx context.Context) PrivateDatabaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseArrayOutput)
-}
-
-func (i PrivateDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabase] {
-	return pulumix.Output[[]*PrivateDatabase]{
-		OutputState: i.ToPrivateDatabaseArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PrivateDatabaseMapInput is an input type that accepts PrivateDatabaseMap and PrivateDatabaseMapOutput values.
@@ -412,12 +399,6 @@ func (i PrivateDatabaseMap) ToPrivateDatabaseMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateDatabaseMapOutput)
 }
 
-func (i PrivateDatabaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabase] {
-	return pulumix.Output[map[string]*PrivateDatabase]{
-		OutputState: i.ToPrivateDatabaseMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateDatabaseOutput struct{ *pulumi.OutputState }
 
 func (PrivateDatabaseOutput) ElementType() reflect.Type {
@@ -430,12 +411,6 @@ func (o PrivateDatabaseOutput) ToPrivateDatabaseOutput() PrivateDatabaseOutput {
 
 func (o PrivateDatabaseOutput) ToPrivateDatabaseOutputWithContext(ctx context.Context) PrivateDatabaseOutput {
 	return o
-}
-
-func (o PrivateDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateDatabase] {
-	return pulumix.Output[*PrivateDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URN of the private database, used when writing IAM policies
@@ -579,12 +554,6 @@ func (o PrivateDatabaseArrayOutput) ToPrivateDatabaseArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o PrivateDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateDatabase] {
-	return pulumix.Output[[]*PrivateDatabase]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateDatabaseArrayOutput) Index(i pulumi.IntInput) PrivateDatabaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrivateDatabase {
 		return vs[0].([]*PrivateDatabase)[vs[1].(int)]
@@ -603,12 +572,6 @@ func (o PrivateDatabaseMapOutput) ToPrivateDatabaseMapOutput() PrivateDatabaseMa
 
 func (o PrivateDatabaseMapOutput) ToPrivateDatabaseMapOutputWithContext(ctx context.Context) PrivateDatabaseMapOutput {
 	return o
-}
-
-func (o PrivateDatabaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateDatabase] {
-	return pulumix.Output[map[string]*PrivateDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateDatabaseMapOutput) MapIndex(k pulumi.StringInput) PrivateDatabaseOutput {

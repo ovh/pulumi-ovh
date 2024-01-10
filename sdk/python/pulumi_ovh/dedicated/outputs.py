@@ -238,27 +238,17 @@ class ServerNetworkingInterface(dict):
     def __init__(__self__, *,
                  macs: Sequence[str],
                  type: str):
-        """
-        :param Sequence[str] macs: List of mac addresses to bind together.
-        :param str type: Type of bonding to create.
-        """
         pulumi.set(__self__, "macs", macs)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def macs(self) -> Sequence[str]:
-        """
-        List of mac addresses to bind together.
-        """
         return pulumi.get(self, "macs")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Type of bonding to create.
-        """
         return pulumi.get(self, "type")
 
 

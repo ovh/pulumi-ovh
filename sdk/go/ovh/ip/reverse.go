@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a OVHcloud IP reverse.
@@ -165,12 +164,6 @@ func (i *Reverse) ToReverseOutputWithContext(ctx context.Context) ReverseOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ReverseOutput)
 }
 
-func (i *Reverse) ToOutput(ctx context.Context) pulumix.Output[*Reverse] {
-	return pulumix.Output[*Reverse]{
-		OutputState: i.ToReverseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReverseArrayInput is an input type that accepts ReverseArray and ReverseArrayOutput values.
 // You can construct a concrete instance of `ReverseArrayInput` via:
 //
@@ -194,12 +187,6 @@ func (i ReverseArray) ToReverseArrayOutput() ReverseArrayOutput {
 
 func (i ReverseArray) ToReverseArrayOutputWithContext(ctx context.Context) ReverseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReverseArrayOutput)
-}
-
-func (i ReverseArray) ToOutput(ctx context.Context) pulumix.Output[[]*Reverse] {
-	return pulumix.Output[[]*Reverse]{
-		OutputState: i.ToReverseArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ReverseMapInput is an input type that accepts ReverseMap and ReverseMapOutput values.
@@ -227,12 +214,6 @@ func (i ReverseMap) ToReverseMapOutputWithContext(ctx context.Context) ReverseMa
 	return pulumi.ToOutputWithContext(ctx, i).(ReverseMapOutput)
 }
 
-func (i ReverseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Reverse] {
-	return pulumix.Output[map[string]*Reverse]{
-		OutputState: i.ToReverseMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReverseOutput struct{ *pulumi.OutputState }
 
 func (ReverseOutput) ElementType() reflect.Type {
@@ -245,12 +226,6 @@ func (o ReverseOutput) ToReverseOutput() ReverseOutput {
 
 func (o ReverseOutput) ToReverseOutputWithContext(ctx context.Context) ReverseOutput {
 	return o
-}
-
-func (o ReverseOutput) ToOutput(ctx context.Context) pulumix.Output[*Reverse] {
-	return pulumix.Output[*Reverse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP to set the reverse of
@@ -282,12 +257,6 @@ func (o ReverseArrayOutput) ToReverseArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ReverseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Reverse] {
-	return pulumix.Output[[]*Reverse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReverseArrayOutput) Index(i pulumi.IntInput) ReverseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Reverse {
 		return vs[0].([]*Reverse)[vs[1].(int)]
@@ -306,12 +275,6 @@ func (o ReverseMapOutput) ToReverseMapOutput() ReverseMapOutput {
 
 func (o ReverseMapOutput) ToReverseMapOutputWithContext(ctx context.Context) ReverseMapOutput {
 	return o
-}
-
-func (o ReverseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Reverse] {
-	return pulumix.Output[map[string]*Reverse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReverseMapOutput) MapIndex(k pulumi.StringInput) ReverseOutput {

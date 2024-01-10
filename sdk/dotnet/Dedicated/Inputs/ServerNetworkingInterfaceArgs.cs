@@ -14,19 +14,12 @@ namespace Pulumi.Ovh.Dedicated.Inputs
     {
         [Input("macs", required: true)]
         private InputList<string>? _macs;
-
-        /// <summary>
-        /// List of mac addresses to bind together.
-        /// </summary>
         public InputList<string> Macs
         {
             get => _macs ?? (_macs = new InputList<string>());
             set => _macs = value;
         }
 
-        /// <summary>
-        /// Type of bonding to create.
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

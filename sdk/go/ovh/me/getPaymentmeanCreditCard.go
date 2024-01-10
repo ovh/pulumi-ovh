@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a credit card
@@ -127,12 +126,6 @@ func (o GetPaymentmeanCreditCardResultOutput) ToGetPaymentmeanCreditCardResultOu
 
 func (o GetPaymentmeanCreditCardResultOutput) ToGetPaymentmeanCreditCardResultOutputWithContext(ctx context.Context) GetPaymentmeanCreditCardResultOutput {
 	return o
-}
-
-func (o GetPaymentmeanCreditCardResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPaymentmeanCreditCardResult] {
-	return pulumix.Output[GetPaymentmeanCreditCardResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // a boolean which tells if the retrieved credit card

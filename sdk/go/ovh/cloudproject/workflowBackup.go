@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manage a worflow that schedules backups of public cloud instance.
@@ -213,12 +212,6 @@ func (i *WorkflowBackup) ToWorkflowBackupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowBackupOutput)
 }
 
-func (i *WorkflowBackup) ToOutput(ctx context.Context) pulumix.Output[*WorkflowBackup] {
-	return pulumix.Output[*WorkflowBackup]{
-		OutputState: i.ToWorkflowBackupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowBackupArrayInput is an input type that accepts WorkflowBackupArray and WorkflowBackupArrayOutput values.
 // You can construct a concrete instance of `WorkflowBackupArrayInput` via:
 //
@@ -242,12 +235,6 @@ func (i WorkflowBackupArray) ToWorkflowBackupArrayOutput() WorkflowBackupArrayOu
 
 func (i WorkflowBackupArray) ToWorkflowBackupArrayOutputWithContext(ctx context.Context) WorkflowBackupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowBackupArrayOutput)
-}
-
-func (i WorkflowBackupArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkflowBackup] {
-	return pulumix.Output[[]*WorkflowBackup]{
-		OutputState: i.ToWorkflowBackupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkflowBackupMapInput is an input type that accepts WorkflowBackupMap and WorkflowBackupMapOutput values.
@@ -275,12 +262,6 @@ func (i WorkflowBackupMap) ToWorkflowBackupMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowBackupMapOutput)
 }
 
-func (i WorkflowBackupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkflowBackup] {
-	return pulumix.Output[map[string]*WorkflowBackup]{
-		OutputState: i.ToWorkflowBackupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowBackupOutput struct{ *pulumi.OutputState }
 
 func (WorkflowBackupOutput) ElementType() reflect.Type {
@@ -293,12 +274,6 @@ func (o WorkflowBackupOutput) ToWorkflowBackupOutput() WorkflowBackupOutput {
 
 func (o WorkflowBackupOutput) ToWorkflowBackupOutputWithContext(ctx context.Context) WorkflowBackupOutput {
 	return o
-}
-
-func (o WorkflowBackupOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowBackup] {
-	return pulumix.Output[*WorkflowBackup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the backup files that are created. If empty, the `name` attribute is used.
@@ -358,12 +333,6 @@ func (o WorkflowBackupArrayOutput) ToWorkflowBackupArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o WorkflowBackupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkflowBackup] {
-	return pulumix.Output[[]*WorkflowBackup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkflowBackupArrayOutput) Index(i pulumi.IntInput) WorkflowBackupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkflowBackup {
 		return vs[0].([]*WorkflowBackup)[vs[1].(int)]
@@ -382,12 +351,6 @@ func (o WorkflowBackupMapOutput) ToWorkflowBackupMapOutput() WorkflowBackupMapOu
 
 func (o WorkflowBackupMapOutput) ToWorkflowBackupMapOutputWithContext(ctx context.Context) WorkflowBackupMapOutput {
 	return o
-}
-
-func (o WorkflowBackupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkflowBackup] {
-	return pulumix.Output[map[string]*WorkflowBackup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowBackupMapOutput) MapIndex(k pulumi.StringInput) WorkflowBackupOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a OVHcloud Managed Private Registry OIDC.
@@ -161,12 +160,6 @@ func (o LookupContainerRegistryOIDCResultOutput) ToLookupContainerRegistryOIDCRe
 
 func (o LookupContainerRegistryOIDCResultOutput) ToLookupContainerRegistryOIDCResultOutputWithContext(ctx context.Context) LookupContainerRegistryOIDCResultOutput {
 	return o
-}
-
-func (o LookupContainerRegistryOIDCResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerRegistryOIDCResult] {
-	return pulumix.Output[LookupContainerRegistryOIDCResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

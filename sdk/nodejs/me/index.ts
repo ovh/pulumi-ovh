@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { APIOAuth2ClientArgs, APIOAuth2ClientState } from "./apioauth2Client";
+export type APIOAuth2Client = import("./apioauth2Client").APIOAuth2Client;
+export const APIOAuth2Client: typeof import("./apioauth2Client").APIOAuth2Client = null as any;
+utilities.lazyLoad(exports, ["APIOAuth2Client"], () => require("./apioauth2Client"));
+
+export { GetAPIOAuth2ClientArgs, GetAPIOAuth2ClientResult, GetAPIOAuth2ClientOutputArgs } from "./getAPIOAuth2Client";
+export const getAPIOAuth2Client: typeof import("./getAPIOAuth2Client").getAPIOAuth2Client = null as any;
+export const getAPIOAuth2ClientOutput: typeof import("./getAPIOAuth2Client").getAPIOAuth2ClientOutput = null as any;
+utilities.lazyLoad(exports, ["getAPIOAuth2Client","getAPIOAuth2ClientOutput"], () => require("./getAPIOAuth2Client"));
+
+export { GetAPIOAuth2ClientsResult } from "./getAPIOAuth2Clients";
+export const getAPIOAuth2Clients: typeof import("./getAPIOAuth2Clients").getAPIOAuth2Clients = null as any;
+export const getAPIOAuth2ClientsOutput: typeof import("./getAPIOAuth2Clients").getAPIOAuth2ClientsOutput = null as any;
+utilities.lazyLoad(exports, ["getAPIOAuth2Clients","getAPIOAuth2ClientsOutput"], () => require("./getAPIOAuth2Clients"));
+
 export { GetIdentityGroupArgs, GetIdentityGroupResult, GetIdentityGroupOutputArgs } from "./getIdentityGroup";
 export const getIdentityGroup: typeof import("./getIdentityGroup").getIdentityGroup = null as any;
 export const getIdentityGroupOutput: typeof import("./getIdentityGroup").getIdentityGroupOutput = null as any;
@@ -115,6 +130,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "ovh:Me/aPIOAuth2Client:APIOAuth2Client":
+                return new APIOAuth2Client(name, <any>undefined, { urn })
             case "ovh:Me/identityGroup:IdentityGroup":
                 return new IdentityGroup(name, <any>undefined, { urn })
             case "ovh:Me/identityUser:IdentityUser":
@@ -136,6 +153,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("ovh", "Me/aPIOAuth2Client", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/identityGroup", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/identityUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplate", _module)

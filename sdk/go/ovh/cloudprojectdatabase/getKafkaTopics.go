@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
@@ -111,12 +110,6 @@ func (o GetKafkaTopicsResultOutput) ToGetKafkaTopicsResultOutput() GetKafkaTopic
 
 func (o GetKafkaTopicsResultOutput) ToGetKafkaTopicsResultOutputWithContext(ctx context.Context) GetKafkaTopicsResultOutput {
 	return o
-}
-
-func (o GetKafkaTopicsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKafkaTopicsResult] {
-	return pulumix.Output[GetKafkaTopicsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // See Argument Reference above.

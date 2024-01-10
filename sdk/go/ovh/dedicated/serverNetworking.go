@@ -10,32 +10,18 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Manage dedicated server networking interface on SCALE and HIGH-GRADE range.
-//
-// !> The API route targeted by this resource are restricted to OVHCloud users (`Internal API`) with additional restrictions.
-//
-// ## Import
-//
-// A dedicated server networking configuration can be imported using the `service_name`. bash
-//
-// ```sh
-//
-//	$ pulumi import ovh:Dedicated/serverNetworking:ServerNetworking server service_name
-//
-// ```
 type ServerNetworking struct {
 	pulumi.CustomResourceState
 
-	// Operation description.
+	// Operation description
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Interface or interfaces aggregation.
 	Interfaces ServerNetworkingInterfaceArrayOutput `pulumi:"interfaces"`
-	// The serviceName of your dedicated server. The full list of available dedicated servers can be found using the `getServers` datasource.
+	// The internal name of your dedicated server.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// status of the networking configuration (should be `active`).
+	// Operation status
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -75,24 +61,24 @@ func GetServerNetworking(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerNetworking resources.
 type serverNetworkingState struct {
-	// Operation description.
+	// Operation description
 	Description *string `pulumi:"description"`
 	// Interface or interfaces aggregation.
 	Interfaces []ServerNetworkingInterface `pulumi:"interfaces"`
-	// The serviceName of your dedicated server. The full list of available dedicated servers can be found using the `getServers` datasource.
+	// The internal name of your dedicated server.
 	ServiceName *string `pulumi:"serviceName"`
-	// status of the networking configuration (should be `active`).
+	// Operation status
 	Status *string `pulumi:"status"`
 }
 
 type ServerNetworkingState struct {
-	// Operation description.
+	// Operation description
 	Description pulumi.StringPtrInput
 	// Interface or interfaces aggregation.
 	Interfaces ServerNetworkingInterfaceArrayInput
-	// The serviceName of your dedicated server. The full list of available dedicated servers can be found using the `getServers` datasource.
+	// The internal name of your dedicated server.
 	ServiceName pulumi.StringPtrInput
-	// status of the networking configuration (should be `active`).
+	// Operation status
 	Status pulumi.StringPtrInput
 }
 
@@ -103,7 +89,7 @@ func (ServerNetworkingState) ElementType() reflect.Type {
 type serverNetworkingArgs struct {
 	// Interface or interfaces aggregation.
 	Interfaces []ServerNetworkingInterface `pulumi:"interfaces"`
-	// The serviceName of your dedicated server. The full list of available dedicated servers can be found using the `getServers` datasource.
+	// The internal name of your dedicated server.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -111,7 +97,7 @@ type serverNetworkingArgs struct {
 type ServerNetworkingArgs struct {
 	// Interface or interfaces aggregation.
 	Interfaces ServerNetworkingInterfaceArrayInput
-	// The serviceName of your dedicated server. The full list of available dedicated servers can be found using the `getServers` datasource.
+	// The internal name of your dedicated server.
 	ServiceName pulumi.StringInput
 }
 
@@ -136,12 +122,6 @@ func (i *ServerNetworking) ToServerNetworkingOutput() ServerNetworkingOutput {
 
 func (i *ServerNetworking) ToServerNetworkingOutputWithContext(ctx context.Context) ServerNetworkingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerNetworkingOutput)
-}
-
-func (i *ServerNetworking) ToOutput(ctx context.Context) pulumix.Output[*ServerNetworking] {
-	return pulumix.Output[*ServerNetworking]{
-		OutputState: i.ToServerNetworkingOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServerNetworkingArrayInput is an input type that accepts ServerNetworkingArray and ServerNetworkingArrayOutput values.
@@ -169,12 +149,6 @@ func (i ServerNetworkingArray) ToServerNetworkingArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServerNetworkingArrayOutput)
 }
 
-func (i ServerNetworkingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServerNetworking] {
-	return pulumix.Output[[]*ServerNetworking]{
-		OutputState: i.ToServerNetworkingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServerNetworkingMapInput is an input type that accepts ServerNetworkingMap and ServerNetworkingMapOutput values.
 // You can construct a concrete instance of `ServerNetworkingMapInput` via:
 //
@@ -200,12 +174,6 @@ func (i ServerNetworkingMap) ToServerNetworkingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServerNetworkingMapOutput)
 }
 
-func (i ServerNetworkingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerNetworking] {
-	return pulumix.Output[map[string]*ServerNetworking]{
-		OutputState: i.ToServerNetworkingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerNetworkingOutput struct{ *pulumi.OutputState }
 
 func (ServerNetworkingOutput) ElementType() reflect.Type {
@@ -220,13 +188,7 @@ func (o ServerNetworkingOutput) ToServerNetworkingOutputWithContext(ctx context.
 	return o
 }
 
-func (o ServerNetworkingOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerNetworking] {
-	return pulumix.Output[*ServerNetworking]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Operation description.
+// Operation description
 func (o ServerNetworkingOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerNetworking) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -236,12 +198,12 @@ func (o ServerNetworkingOutput) Interfaces() ServerNetworkingInterfaceArrayOutpu
 	return o.ApplyT(func(v *ServerNetworking) ServerNetworkingInterfaceArrayOutput { return v.Interfaces }).(ServerNetworkingInterfaceArrayOutput)
 }
 
-// The serviceName of your dedicated server. The full list of available dedicated servers can be found using the `getServers` datasource.
+// The internal name of your dedicated server.
 func (o ServerNetworkingOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerNetworking) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// status of the networking configuration (should be `active`).
+// Operation status
 func (o ServerNetworkingOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerNetworking) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -258,12 +220,6 @@ func (o ServerNetworkingArrayOutput) ToServerNetworkingArrayOutput() ServerNetwo
 
 func (o ServerNetworkingArrayOutput) ToServerNetworkingArrayOutputWithContext(ctx context.Context) ServerNetworkingArrayOutput {
 	return o
-}
-
-func (o ServerNetworkingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServerNetworking] {
-	return pulumix.Output[[]*ServerNetworking]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerNetworkingArrayOutput) Index(i pulumi.IntInput) ServerNetworkingOutput {
@@ -284,12 +240,6 @@ func (o ServerNetworkingMapOutput) ToServerNetworkingMapOutput() ServerNetworkin
 
 func (o ServerNetworkingMapOutput) ToServerNetworkingMapOutputWithContext(ctx context.Context) ServerNetworkingMapOutput {
 	return o
-}
-
-func (o ServerNetworkingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerNetworking] {
-	return pulumix.Output[map[string]*ServerNetworking]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerNetworkingMapOutput) MapIndex(k pulumi.StringInput) ServerNetworkingOutput {

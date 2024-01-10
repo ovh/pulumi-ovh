@@ -256,19 +256,12 @@ class ServerNetworkingInterfaceArgs:
     def __init__(__self__, *,
                  macs: pulumi.Input[Sequence[pulumi.Input[str]]],
                  type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: List of mac addresses to bind together.
-        :param pulumi.Input[str] type: Type of bonding to create.
-        """
         pulumi.set(__self__, "macs", macs)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def macs(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        List of mac addresses to bind together.
-        """
         return pulumi.get(self, "macs")
 
     @macs.setter
@@ -278,9 +271,6 @@ class ServerNetworkingInterfaceArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        Type of bonding to create.
-        """
         return pulumi.get(self, "type")
 
     @type.setter

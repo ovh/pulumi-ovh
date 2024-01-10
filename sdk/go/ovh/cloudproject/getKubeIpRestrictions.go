@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
@@ -111,12 +110,6 @@ func (o LookupKubeIpRestrictionsResultOutput) ToLookupKubeIpRestrictionsResultOu
 
 func (o LookupKubeIpRestrictionsResultOutput) ToLookupKubeIpRestrictionsResultOutputWithContext(ctx context.Context) LookupKubeIpRestrictionsResultOutput {
 	return o
-}
-
-func (o LookupKubeIpRestrictionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKubeIpRestrictionsResult] {
-	return pulumix.Output[LookupKubeIpRestrictionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

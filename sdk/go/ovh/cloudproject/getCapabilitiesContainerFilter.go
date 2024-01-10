@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
@@ -124,12 +123,6 @@ func (o GetCapabilitiesContainerFilterResultOutput) ToGetCapabilitiesContainerFi
 
 func (o GetCapabilitiesContainerFilterResultOutput) ToGetCapabilitiesContainerFilterResultOutputWithContext(ctx context.Context) GetCapabilitiesContainerFilterResultOutput {
 	return o
-}
-
-func (o GetCapabilitiesContainerFilterResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCapabilitiesContainerFilterResult] {
-	return pulumix.Output[GetCapabilitiesContainerFilterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Plan code from the catalog

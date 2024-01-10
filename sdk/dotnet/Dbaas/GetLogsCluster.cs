@@ -28,6 +28,7 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var logstash = Ovh.Dbaas.GetLogsCluster.Invoke(new()
         ///     {
+        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         ServiceName = "ldp-xx-xxxxx",
         ///     });
         /// 
@@ -56,6 +57,7 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var logstash = Ovh.Dbaas.GetLogsCluster.Invoke(new()
         ///     {
+        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         ServiceName = "ldp-xx-xxxxx",
         ///     });
         /// 
@@ -72,6 +74,12 @@ namespace Pulumi.Ovh.Dbaas
     public sealed class GetLogsClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Cluster ID. If not provided, the default cluster_id is returned
+        /// </summary>
+        [Input("clusterId")]
+        public string? ClusterId { get; set; }
+
+        /// <summary>
         /// The service name. It's the ID of your Logs Data Platform instance.
         /// </summary>
         [Input("serviceName", required: true)]
@@ -85,6 +93,12 @@ namespace Pulumi.Ovh.Dbaas
 
     public sealed class GetLogsClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID. If not provided, the default cluster_id is returned
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
         /// <summary>
         /// The service name. It's the ID of your Logs Data Platform instance.
         /// </summary>
@@ -109,6 +123,7 @@ namespace Pulumi.Ovh.Dbaas
         /// is allowed networks for ARCHIVE flow type
         /// </summary>
         public readonly ImmutableArray<string> ArchiveAllowedNetworks;
+        public readonly string? ClusterId;
         /// <summary>
         /// is type of cluster (DEDICATED, PRO or TRIAL)
         /// </summary>
@@ -157,6 +172,8 @@ namespace Pulumi.Ovh.Dbaas
 
             ImmutableArray<string> archiveAllowedNetworks,
 
+            string? clusterId,
+
             string clusterType,
 
             string dedicatedInputPem,
@@ -181,6 +198,7 @@ namespace Pulumi.Ovh.Dbaas
         {
             this.DBaasURN = DBaasURN;
             ArchiveAllowedNetworks = archiveAllowedNetworks;
+            ClusterId = clusterId;
             ClusterType = clusterType;
             DedicatedInputPem = dedicatedInputPem;
             DirectInputAllowedNetworks = directInputAllowedNetworks;

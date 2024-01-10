@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve informations about a DBaas logs cluster tenant.
@@ -29,6 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := Dbaas.GetLogsCluster(ctx, &dbaas.GetLogsClusterArgs{
+//				ClusterId:   pulumi.StringRef("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				ServiceName: "ldp-xx-xxxxx",
 //			}, nil)
 //			if err != nil {
@@ -51,6 +51,8 @@ func LookupLogsCluster(ctx *pulumi.Context, args *LookupLogsClusterArgs, opts ..
 
 // A collection of arguments for invoking getLogsCluster.
 type LookupLogsClusterArgs struct {
+	// Cluster ID. If not provided, the default clusterId is returned
+	ClusterId *string `pulumi:"clusterId"`
 	// The service name. It's the ID of your Logs Data Platform instance.
 	ServiceName string `pulumi:"serviceName"`
 }
@@ -61,6 +63,7 @@ type LookupLogsClusterResult struct {
 	DBaasURN string `pulumi:"DBaasURN"`
 	// is allowed networks for ARCHIVE flow type
 	ArchiveAllowedNetworks []string `pulumi:"archiveAllowedNetworks"`
+	ClusterId              *string  `pulumi:"clusterId"`
 	// is type of cluster (DEDICATED, PRO or TRIAL)
 	ClusterType string `pulumi:"clusterType"`
 	// is PEM for dedicated inputs
@@ -99,6 +102,8 @@ func LookupLogsClusterOutput(ctx *pulumi.Context, args LookupLogsClusterOutputAr
 
 // A collection of arguments for invoking getLogsCluster.
 type LookupLogsClusterOutputArgs struct {
+	// Cluster ID. If not provided, the default clusterId is returned
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
 	// The service name. It's the ID of your Logs Data Platform instance.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
@@ -122,12 +127,6 @@ func (o LookupLogsClusterResultOutput) ToLookupLogsClusterResultOutputWithContex
 	return o
 }
 
-func (o LookupLogsClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLogsClusterResult] {
-	return pulumix.Output[LookupLogsClusterResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 // is the URN of the DBaas logs instance
 func (o LookupLogsClusterResultOutput) DBaasURN() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsClusterResult) string { return v.DBaasURN }).(pulumi.StringOutput)
@@ -136,6 +135,10 @@ func (o LookupLogsClusterResultOutput) DBaasURN() pulumi.StringOutput {
 // is allowed networks for ARCHIVE flow type
 func (o LookupLogsClusterResultOutput) ArchiveAllowedNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLogsClusterResult) []string { return v.ArchiveAllowedNetworks }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupLogsClusterResultOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLogsClusterResult) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
 
 // is type of cluster (DEDICATED, PRO or TRIAL)

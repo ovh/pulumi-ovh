@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Generates a temporary presigned S3 URLs to download or upload an object.
@@ -212,12 +211,6 @@ func (i *RegionStoragePresign) ToRegionStoragePresignOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionStoragePresignOutput)
 }
 
-func (i *RegionStoragePresign) ToOutput(ctx context.Context) pulumix.Output[*RegionStoragePresign] {
-	return pulumix.Output[*RegionStoragePresign]{
-		OutputState: i.ToRegionStoragePresignOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionStoragePresignArrayInput is an input type that accepts RegionStoragePresignArray and RegionStoragePresignArrayOutput values.
 // You can construct a concrete instance of `RegionStoragePresignArrayInput` via:
 //
@@ -241,12 +234,6 @@ func (i RegionStoragePresignArray) ToRegionStoragePresignArrayOutput() RegionSto
 
 func (i RegionStoragePresignArray) ToRegionStoragePresignArrayOutputWithContext(ctx context.Context) RegionStoragePresignArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionStoragePresignArrayOutput)
-}
-
-func (i RegionStoragePresignArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionStoragePresign] {
-	return pulumix.Output[[]*RegionStoragePresign]{
-		OutputState: i.ToRegionStoragePresignArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionStoragePresignMapInput is an input type that accepts RegionStoragePresignMap and RegionStoragePresignMapOutput values.
@@ -274,12 +261,6 @@ func (i RegionStoragePresignMap) ToRegionStoragePresignMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RegionStoragePresignMapOutput)
 }
 
-func (i RegionStoragePresignMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionStoragePresign] {
-	return pulumix.Output[map[string]*RegionStoragePresign]{
-		OutputState: i.ToRegionStoragePresignMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionStoragePresignOutput struct{ *pulumi.OutputState }
 
 func (RegionStoragePresignOutput) ElementType() reflect.Type {
@@ -292,12 +273,6 @@ func (o RegionStoragePresignOutput) ToRegionStoragePresignOutput() RegionStorage
 
 func (o RegionStoragePresignOutput) ToRegionStoragePresignOutputWithContext(ctx context.Context) RegionStoragePresignOutput {
 	return o
-}
-
-func (o RegionStoragePresignOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionStoragePresign] {
-	return pulumix.Output[*RegionStoragePresign]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Define, in seconds, for how long your URL will be valid.
@@ -351,12 +326,6 @@ func (o RegionStoragePresignArrayOutput) ToRegionStoragePresignArrayOutputWithCo
 	return o
 }
 
-func (o RegionStoragePresignArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionStoragePresign] {
-	return pulumix.Output[[]*RegionStoragePresign]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionStoragePresignArrayOutput) Index(i pulumi.IntInput) RegionStoragePresignOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionStoragePresign {
 		return vs[0].([]*RegionStoragePresign)[vs[1].(int)]
@@ -375,12 +344,6 @@ func (o RegionStoragePresignMapOutput) ToRegionStoragePresignMapOutput() RegionS
 
 func (o RegionStoragePresignMapOutput) ToRegionStoragePresignMapOutputWithContext(ctx context.Context) RegionStoragePresignMapOutput {
 	return o
-}
-
-func (o RegionStoragePresignMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionStoragePresign] {
-	return pulumix.Output[map[string]*RegionStoragePresign]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionStoragePresignMapOutput) MapIndex(k pulumi.StringInput) RegionStoragePresignOutput {

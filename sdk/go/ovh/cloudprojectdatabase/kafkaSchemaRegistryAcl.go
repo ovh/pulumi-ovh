@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a schema registry ACL for a Kafka cluster associated with a public cloud project.
@@ -211,12 +210,6 @@ func (i *KafkaSchemaRegistryAcl) ToKafkaSchemaRegistryAclOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaRegistryAclOutput)
 }
 
-func (i *KafkaSchemaRegistryAcl) ToOutput(ctx context.Context) pulumix.Output[*KafkaSchemaRegistryAcl] {
-	return pulumix.Output[*KafkaSchemaRegistryAcl]{
-		OutputState: i.ToKafkaSchemaRegistryAclOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KafkaSchemaRegistryAclArrayInput is an input type that accepts KafkaSchemaRegistryAclArray and KafkaSchemaRegistryAclArrayOutput values.
 // You can construct a concrete instance of `KafkaSchemaRegistryAclArrayInput` via:
 //
@@ -240,12 +233,6 @@ func (i KafkaSchemaRegistryAclArray) ToKafkaSchemaRegistryAclArrayOutput() Kafka
 
 func (i KafkaSchemaRegistryAclArray) ToKafkaSchemaRegistryAclArrayOutputWithContext(ctx context.Context) KafkaSchemaRegistryAclArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaRegistryAclArrayOutput)
-}
-
-func (i KafkaSchemaRegistryAclArray) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaSchemaRegistryAcl] {
-	return pulumix.Output[[]*KafkaSchemaRegistryAcl]{
-		OutputState: i.ToKafkaSchemaRegistryAclArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KafkaSchemaRegistryAclMapInput is an input type that accepts KafkaSchemaRegistryAclMap and KafkaSchemaRegistryAclMapOutput values.
@@ -273,12 +260,6 @@ func (i KafkaSchemaRegistryAclMap) ToKafkaSchemaRegistryAclMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaRegistryAclMapOutput)
 }
 
-func (i KafkaSchemaRegistryAclMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaSchemaRegistryAcl] {
-	return pulumix.Output[map[string]*KafkaSchemaRegistryAcl]{
-		OutputState: i.ToKafkaSchemaRegistryAclMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KafkaSchemaRegistryAclOutput struct{ *pulumi.OutputState }
 
 func (KafkaSchemaRegistryAclOutput) ElementType() reflect.Type {
@@ -291,12 +272,6 @@ func (o KafkaSchemaRegistryAclOutput) ToKafkaSchemaRegistryAclOutput() KafkaSche
 
 func (o KafkaSchemaRegistryAclOutput) ToKafkaSchemaRegistryAclOutputWithContext(ctx context.Context) KafkaSchemaRegistryAclOutput {
 	return o
-}
-
-func (o KafkaSchemaRegistryAclOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaSchemaRegistryAcl] {
-	return pulumix.Output[*KafkaSchemaRegistryAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cluster ID.
@@ -340,12 +315,6 @@ func (o KafkaSchemaRegistryAclArrayOutput) ToKafkaSchemaRegistryAclArrayOutputWi
 	return o
 }
 
-func (o KafkaSchemaRegistryAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaSchemaRegistryAcl] {
-	return pulumix.Output[[]*KafkaSchemaRegistryAcl]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KafkaSchemaRegistryAclArrayOutput) Index(i pulumi.IntInput) KafkaSchemaRegistryAclOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KafkaSchemaRegistryAcl {
 		return vs[0].([]*KafkaSchemaRegistryAcl)[vs[1].(int)]
@@ -364,12 +333,6 @@ func (o KafkaSchemaRegistryAclMapOutput) ToKafkaSchemaRegistryAclMapOutput() Kaf
 
 func (o KafkaSchemaRegistryAclMapOutput) ToKafkaSchemaRegistryAclMapOutputWithContext(ctx context.Context) KafkaSchemaRegistryAclMapOutput {
 	return o
-}
-
-func (o KafkaSchemaRegistryAclMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaSchemaRegistryAcl] {
-	return pulumix.Output[map[string]*KafkaSchemaRegistryAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaSchemaRegistryAclMapOutput) MapIndex(k pulumi.StringInput) KafkaSchemaRegistryAclOutput {

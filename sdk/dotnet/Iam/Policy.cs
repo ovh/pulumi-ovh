@@ -70,6 +70,12 @@ namespace Pulumi.Ovh.Iam
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// List of actions that will be denied no matter what policy exists.
+        /// </summary>
+        [Output("denies")]
+        public Output<ImmutableArray<string>> Denies { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the policy
         /// </summary>
         [Output("description")]
@@ -176,6 +182,18 @@ namespace Pulumi.Ovh.Iam
             set => _allows = value;
         }
 
+        [Input("denies")]
+        private InputList<string>? _denies;
+
+        /// <summary>
+        /// List of actions that will be denied no matter what policy exists.
+        /// </summary>
+        public InputList<string> Denies
+        {
+            get => _denies ?? (_denies = new InputList<string>());
+            set => _denies = value;
+        }
+
         /// <summary>
         /// Description of the policy
         /// </summary>
@@ -249,6 +267,18 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        [Input("denies")]
+        private InputList<string>? _denies;
+
+        /// <summary>
+        /// List of actions that will be denied no matter what policy exists.
+        /// </summary>
+        public InputList<string> Denies
+        {
+            get => _denies ?? (_denies = new InputList<string>());
+            set => _denies = value;
+        }
 
         /// <summary>
         /// Description of the policy

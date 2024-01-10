@@ -17,6 +17,7 @@ class PolicyArgs:
                  identities: pulumi.Input[Sequence[pulumi.Input[str]]],
                  resources: pulumi.Input[Sequence[pulumi.Input[str]]],
                  allows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 denies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  excepts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -25,6 +26,7 @@ class PolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources affected by the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will be denied no matter what policy exists.
         :param pulumi.Input[str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
         :param pulumi.Input[str] name: Name of the policy, must be unique
@@ -33,6 +35,8 @@ class PolicyArgs:
         pulumi.set(__self__, "resources", resources)
         if allows is not None:
             pulumi.set(__self__, "allows", allows)
+        if denies is not None:
+            pulumi.set(__self__, "denies", denies)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if excepts is not None:
@@ -78,6 +82,18 @@ class PolicyArgs:
 
     @property
     @pulumi.getter
+    def denies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of actions that will be denied no matter what policy exists.
+        """
+        return pulumi.get(self, "denies")
+
+    @denies.setter
+    def denies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "denies", value)
+
+    @property
+    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Description of the policy
@@ -118,6 +134,7 @@ class _PolicyState:
     def __init__(__self__, *,
                  allows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 denies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  excepts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -130,6 +147,7 @@ class _PolicyState:
         Input properties used for looking up and filtering Policy resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
         :param pulumi.Input[str] created_at: Creation date of this group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will be denied no matter what policy exists.
         :param pulumi.Input[str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
@@ -143,6 +161,8 @@ class _PolicyState:
             pulumi.set(__self__, "allows", allows)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if denies is not None:
+            pulumi.set(__self__, "denies", denies)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if excepts is not None:
@@ -183,6 +203,18 @@ class _PolicyState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def denies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of actions that will be denied no matter what policy exists.
+        """
+        return pulumi.get(self, "denies")
+
+    @denies.setter
+    def denies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "denies", value)
 
     @property
     @pulumi.getter
@@ -287,6 +319,7 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 denies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  excepts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -321,6 +354,7 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will be denied no matter what policy exists.
         :param pulumi.Input[str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
@@ -374,6 +408,7 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 denies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  excepts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -389,6 +424,7 @@ class Policy(pulumi.CustomResource):
             __props__ = PolicyArgs.__new__(PolicyArgs)
 
             __props__.__dict__["allows"] = allows
+            __props__.__dict__["denies"] = denies
             __props__.__dict__["description"] = description
             __props__.__dict__["excepts"] = excepts
             if identities is None and not opts.urn:
@@ -414,6 +450,7 @@ class Policy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            denies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             excepts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -431,6 +468,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
         :param pulumi.Input[str] created_at: Creation date of this group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will be denied no matter what policy exists.
         :param pulumi.Input[str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
@@ -446,6 +484,7 @@ class Policy(pulumi.CustomResource):
 
         __props__.__dict__["allows"] = allows
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["denies"] = denies
         __props__.__dict__["description"] = description
         __props__.__dict__["excepts"] = excepts
         __props__.__dict__["identities"] = identities
@@ -471,6 +510,14 @@ class Policy(pulumi.CustomResource):
         Creation date of this group.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def denies(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of actions that will be denied no matter what policy exists.
+        """
+        return pulumi.get(self, "denies")
 
     @property
     @pulumi.getter

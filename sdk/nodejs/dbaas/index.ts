@@ -10,6 +10,11 @@ export const getLogsCluster: typeof import("./getLogsCluster").getLogsCluster = 
 export const getLogsClusterOutput: typeof import("./getLogsCluster").getLogsClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getLogsCluster","getLogsClusterOutput"], () => require("./getLogsCluster"));
 
+export { GetLogsClustersArgs, GetLogsClustersResult, GetLogsClustersOutputArgs } from "./getLogsClusters";
+export const getLogsClusters: typeof import("./getLogsClusters").getLogsClusters = null as any;
+export const getLogsClustersOutput: typeof import("./getLogsClusters").getLogsClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getLogsClusters","getLogsClustersOutput"], () => require("./getLogsClusters"));
+
 export { GetLogsInputEngineArgs, GetLogsInputEngineResult, GetLogsInputEngineOutputArgs } from "./getLogsInputEngine";
 export const getLogsInputEngine: typeof import("./getLogsInputEngine").getLogsInputEngine = null as any;
 export const getLogsInputEngineOutput: typeof import("./getLogsInputEngine").getLogsInputEngineOutput = null as any;

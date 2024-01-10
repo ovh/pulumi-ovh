@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an OIDC configuration in an OVHcloud Managed Private Registry.
@@ -295,12 +294,6 @@ func (i *ContainerRegistryOIDC) ToContainerRegistryOIDCOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryOIDCOutput)
 }
 
-func (i *ContainerRegistryOIDC) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryOIDC] {
-	return pulumix.Output[*ContainerRegistryOIDC]{
-		OutputState: i.ToContainerRegistryOIDCOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContainerRegistryOIDCArrayInput is an input type that accepts ContainerRegistryOIDCArray and ContainerRegistryOIDCArrayOutput values.
 // You can construct a concrete instance of `ContainerRegistryOIDCArrayInput` via:
 //
@@ -324,12 +317,6 @@ func (i ContainerRegistryOIDCArray) ToContainerRegistryOIDCArrayOutput() Contain
 
 func (i ContainerRegistryOIDCArray) ToContainerRegistryOIDCArrayOutputWithContext(ctx context.Context) ContainerRegistryOIDCArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryOIDCArrayOutput)
-}
-
-func (i ContainerRegistryOIDCArray) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerRegistryOIDC] {
-	return pulumix.Output[[]*ContainerRegistryOIDC]{
-		OutputState: i.ToContainerRegistryOIDCArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ContainerRegistryOIDCMapInput is an input type that accepts ContainerRegistryOIDCMap and ContainerRegistryOIDCMapOutput values.
@@ -357,12 +344,6 @@ func (i ContainerRegistryOIDCMap) ToContainerRegistryOIDCMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryOIDCMapOutput)
 }
 
-func (i ContainerRegistryOIDCMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerRegistryOIDC] {
-	return pulumix.Output[map[string]*ContainerRegistryOIDC]{
-		OutputState: i.ToContainerRegistryOIDCMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerRegistryOIDCOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryOIDCOutput) ElementType() reflect.Type {
@@ -375,12 +356,6 @@ func (o ContainerRegistryOIDCOutput) ToContainerRegistryOIDCOutput() ContainerRe
 
 func (o ContainerRegistryOIDCOutput) ToContainerRegistryOIDCOutputWithContext(ctx context.Context) ContainerRegistryOIDCOutput {
 	return o
-}
-
-func (o ContainerRegistryOIDCOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryOIDC] {
-	return pulumix.Output[*ContainerRegistryOIDC]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**
@@ -462,12 +437,6 @@ func (o ContainerRegistryOIDCArrayOutput) ToContainerRegistryOIDCArrayOutputWith
 	return o
 }
 
-func (o ContainerRegistryOIDCArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerRegistryOIDC] {
-	return pulumix.Output[[]*ContainerRegistryOIDC]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContainerRegistryOIDCArrayOutput) Index(i pulumi.IntInput) ContainerRegistryOIDCOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContainerRegistryOIDC {
 		return vs[0].([]*ContainerRegistryOIDC)[vs[1].(int)]
@@ -486,12 +455,6 @@ func (o ContainerRegistryOIDCMapOutput) ToContainerRegistryOIDCMapOutput() Conta
 
 func (o ContainerRegistryOIDCMapOutput) ToContainerRegistryOIDCMapOutputWithContext(ctx context.Context) ContainerRegistryOIDCMapOutput {
 	return o
-}
-
-func (o ContainerRegistryOIDCMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerRegistryOIDC] {
-	return pulumix.Output[map[string]*ContainerRegistryOIDC]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerRegistryOIDCMapOutput) MapIndex(k pulumi.StringInput) ContainerRegistryOIDCOutput {

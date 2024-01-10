@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a pattern for a opensearch cluster associated with a public cloud project.
@@ -189,12 +188,6 @@ func (i *OpensearchPattern) ToOpensearchPatternOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(OpensearchPatternOutput)
 }
 
-func (i *OpensearchPattern) ToOutput(ctx context.Context) pulumix.Output[*OpensearchPattern] {
-	return pulumix.Output[*OpensearchPattern]{
-		OutputState: i.ToOpensearchPatternOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OpensearchPatternArrayInput is an input type that accepts OpensearchPatternArray and OpensearchPatternArrayOutput values.
 // You can construct a concrete instance of `OpensearchPatternArrayInput` via:
 //
@@ -218,12 +211,6 @@ func (i OpensearchPatternArray) ToOpensearchPatternArrayOutput() OpensearchPatte
 
 func (i OpensearchPatternArray) ToOpensearchPatternArrayOutputWithContext(ctx context.Context) OpensearchPatternArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OpensearchPatternArrayOutput)
-}
-
-func (i OpensearchPatternArray) ToOutput(ctx context.Context) pulumix.Output[[]*OpensearchPattern] {
-	return pulumix.Output[[]*OpensearchPattern]{
-		OutputState: i.ToOpensearchPatternArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OpensearchPatternMapInput is an input type that accepts OpensearchPatternMap and OpensearchPatternMapOutput values.
@@ -251,12 +238,6 @@ func (i OpensearchPatternMap) ToOpensearchPatternMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(OpensearchPatternMapOutput)
 }
 
-func (i OpensearchPatternMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpensearchPattern] {
-	return pulumix.Output[map[string]*OpensearchPattern]{
-		OutputState: i.ToOpensearchPatternMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OpensearchPatternOutput struct{ *pulumi.OutputState }
 
 func (OpensearchPatternOutput) ElementType() reflect.Type {
@@ -269,12 +250,6 @@ func (o OpensearchPatternOutput) ToOpensearchPatternOutput() OpensearchPatternOu
 
 func (o OpensearchPatternOutput) ToOpensearchPatternOutputWithContext(ctx context.Context) OpensearchPatternOutput {
 	return o
-}
-
-func (o OpensearchPatternOutput) ToOutput(ctx context.Context) pulumix.Output[*OpensearchPattern] {
-	return pulumix.Output[*OpensearchPattern]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cluster ID.
@@ -312,12 +287,6 @@ func (o OpensearchPatternArrayOutput) ToOpensearchPatternArrayOutputWithContext(
 	return o
 }
 
-func (o OpensearchPatternArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OpensearchPattern] {
-	return pulumix.Output[[]*OpensearchPattern]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OpensearchPatternArrayOutput) Index(i pulumi.IntInput) OpensearchPatternOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OpensearchPattern {
 		return vs[0].([]*OpensearchPattern)[vs[1].(int)]
@@ -336,12 +305,6 @@ func (o OpensearchPatternMapOutput) ToOpensearchPatternMapOutput() OpensearchPat
 
 func (o OpensearchPatternMapOutput) ToOpensearchPatternMapOutputWithContext(ctx context.Context) OpensearchPatternMapOutput {
 	return o
-}
-
-func (o OpensearchPatternMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpensearchPattern] {
-	return pulumix.Output[map[string]*OpensearchPattern]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpensearchPatternMapOutput) MapIndex(k pulumi.StringInput) OpensearchPatternOutput {

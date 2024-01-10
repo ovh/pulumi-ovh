@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to create a temporary order cart to retrieve information order cart products.
@@ -124,12 +123,6 @@ func (o GetCartResultOutput) ToGetCartResultOutput() GetCartResultOutput {
 
 func (o GetCartResultOutput) ToGetCartResultOutputWithContext(ctx context.Context) GetCartResultOutput {
 	return o
-}
-
-func (o GetCartResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCartResult] {
-	return pulumix.Output[GetCartResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCartResultOutput) Assign() pulumi.BoolPtrOutput {

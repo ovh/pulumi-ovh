@@ -16,17 +16,22 @@ class LogsClusterArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[str],
                  archive_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  direct_input_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  query_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a LogsCluster resource.
+        :param pulumi.Input[str] service_name: The service name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_allowed_networks: List of IP blocks
+        :param pulumi.Input[str] cluster_id: Cluster ID. If not provided, the default cluster_id is used
         :param pulumi.Input[Sequence[pulumi.Input[str]]] direct_input_allowed_networks: List of IP blocks
         :param pulumi.Input[Sequence[pulumi.Input[str]]] query_allowed_networks: List of IP blocks
         """
         pulumi.set(__self__, "service_name", service_name)
         if archive_allowed_networks is not None:
             pulumi.set(__self__, "archive_allowed_networks", archive_allowed_networks)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if direct_input_allowed_networks is not None:
             pulumi.set(__self__, "direct_input_allowed_networks", direct_input_allowed_networks)
         if query_allowed_networks is not None:
@@ -35,6 +40,9 @@ class LogsClusterArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
+        """
+        The service name
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -52,6 +60,18 @@ class LogsClusterArgs:
     @archive_allowed_networks.setter
     def archive_allowed_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "archive_allowed_networks", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster ID. If not provided, the default cluster_id is used
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
 
     @property
     @pulumi.getter(name="directInputAllowedNetworks")
@@ -82,6 +102,7 @@ class LogsClusterArgs:
 class _LogsClusterState:
     def __init__(__self__, *,
                  archive_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  dedicated_input_pem: Optional[pulumi.Input[str]] = None,
                  direct_input_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -98,6 +119,7 @@ class _LogsClusterState:
         """
         Input properties used for looking up and filtering LogsCluster resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_allowed_networks: List of IP blocks
+        :param pulumi.Input[str] cluster_id: Cluster ID. If not provided, the default cluster_id is used
         :param pulumi.Input[str] cluster_type: type of cluster (DEDICATED, PRO or TRIAL)
         :param pulumi.Input[str] dedicated_input_pem: PEM for dedicated inputs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] direct_input_allowed_networks: List of IP blocks
@@ -110,9 +132,12 @@ class _LogsClusterState:
         :param pulumi.Input[bool] is_unlocked: true if given service can perform advanced operations on cluster
         :param pulumi.Input[Sequence[pulumi.Input[str]]] query_allowed_networks: List of IP blocks
         :param pulumi.Input[str] region: datacenter localization
+        :param pulumi.Input[str] service_name: The service name
         """
         if archive_allowed_networks is not None:
             pulumi.set(__self__, "archive_allowed_networks", archive_allowed_networks)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_type is not None:
             pulumi.set(__self__, "cluster_type", cluster_type)
         if dedicated_input_pem is not None:
@@ -151,6 +176,18 @@ class _LogsClusterState:
     @archive_allowed_networks.setter
     def archive_allowed_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "archive_allowed_networks", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster ID. If not provided, the default cluster_id is used
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
 
     @property
     @pulumi.getter(name="clusterType")
@@ -299,6 +336,9 @@ class _LogsClusterState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service name
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -312,6 +352,7 @@ class LogsCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  archive_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  direct_input_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  query_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -325,6 +366,7 @@ class LogsCluster(pulumi.CustomResource):
 
         ldp = ovh.dbaas.LogsCluster("ldp",
             archive_allowed_networks=["10.0.0.0/16"],
+            cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             direct_input_allowed_networks=["10.0.0.0/16"],
             query_allowed_networks=["10.0.0.0/16"],
             service_name="ldp-xx-xxxxx")
@@ -332,17 +374,19 @@ class LogsCluster(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash
+        OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by "/" E.g., bash
 
         ```sh
-         $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id
+         $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_allowed_networks: List of IP blocks
+        :param pulumi.Input[str] cluster_id: Cluster ID. If not provided, the default cluster_id is used
         :param pulumi.Input[Sequence[pulumi.Input[str]]] direct_input_allowed_networks: List of IP blocks
         :param pulumi.Input[Sequence[pulumi.Input[str]]] query_allowed_networks: List of IP blocks
+        :param pulumi.Input[str] service_name: The service name
         """
         ...
     @overload
@@ -359,6 +403,7 @@ class LogsCluster(pulumi.CustomResource):
 
         ldp = ovh.dbaas.LogsCluster("ldp",
             archive_allowed_networks=["10.0.0.0/16"],
+            cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             direct_input_allowed_networks=["10.0.0.0/16"],
             query_allowed_networks=["10.0.0.0/16"],
             service_name="ldp-xx-xxxxx")
@@ -366,10 +411,10 @@ class LogsCluster(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `id` of the cluster, separated by "/" E.g., bash
+        OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by "/" E.g., bash
 
         ```sh
-         $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/id
+         $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -388,6 +433,7 @@ class LogsCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  archive_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  direct_input_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  query_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -401,6 +447,7 @@ class LogsCluster(pulumi.CustomResource):
             __props__ = LogsClusterArgs.__new__(LogsClusterArgs)
 
             __props__.__dict__["archive_allowed_networks"] = archive_allowed_networks
+            __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["direct_input_allowed_networks"] = direct_input_allowed_networks
             __props__.__dict__["query_allowed_networks"] = query_allowed_networks
             if service_name is None and not opts.urn:
@@ -429,6 +476,7 @@ class LogsCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             archive_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_type: Optional[pulumi.Input[str]] = None,
             dedicated_input_pem: Optional[pulumi.Input[str]] = None,
             direct_input_allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -450,6 +498,7 @@ class LogsCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_allowed_networks: List of IP blocks
+        :param pulumi.Input[str] cluster_id: Cluster ID. If not provided, the default cluster_id is used
         :param pulumi.Input[str] cluster_type: type of cluster (DEDICATED, PRO or TRIAL)
         :param pulumi.Input[str] dedicated_input_pem: PEM for dedicated inputs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] direct_input_allowed_networks: List of IP blocks
@@ -462,12 +511,14 @@ class LogsCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] is_unlocked: true if given service can perform advanced operations on cluster
         :param pulumi.Input[Sequence[pulumi.Input[str]]] query_allowed_networks: List of IP blocks
         :param pulumi.Input[str] region: datacenter localization
+        :param pulumi.Input[str] service_name: The service name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _LogsClusterState.__new__(_LogsClusterState)
 
         __props__.__dict__["archive_allowed_networks"] = archive_allowed_networks
+        __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_type"] = cluster_type
         __props__.__dict__["dedicated_input_pem"] = dedicated_input_pem
         __props__.__dict__["direct_input_allowed_networks"] = direct_input_allowed_networks
@@ -490,6 +541,14 @@ class LogsCluster(pulumi.CustomResource):
         List of IP blocks
         """
         return pulumi.get(self, "archive_allowed_networks")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Cluster ID. If not provided, the default cluster_id is used
+        """
+        return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="clusterType")
@@ -590,5 +649,8 @@ class LogsCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        The service name
+        """
         return pulumi.get(self, "service_name")
 

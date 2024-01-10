@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a dbaas logs input.
@@ -311,12 +310,6 @@ func (i *LogsInput) ToLogsInputOutputWithContext(ctx context.Context) LogsInputO
 	return pulumi.ToOutputWithContext(ctx, i).(LogsInputOutput)
 }
 
-func (i *LogsInput) ToOutput(ctx context.Context) pulumix.Output[*LogsInput] {
-	return pulumix.Output[*LogsInput]{
-		OutputState: i.ToLogsInputOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LogsInputArrayInput is an input type that accepts LogsInputArray and LogsInputArrayOutput values.
 // You can construct a concrete instance of `LogsInputArrayInput` via:
 //
@@ -340,12 +333,6 @@ func (i LogsInputArray) ToLogsInputArrayOutput() LogsInputArrayOutput {
 
 func (i LogsInputArray) ToLogsInputArrayOutputWithContext(ctx context.Context) LogsInputArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogsInputArrayOutput)
-}
-
-func (i LogsInputArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogsInput] {
-	return pulumix.Output[[]*LogsInput]{
-		OutputState: i.ToLogsInputArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LogsInputMapInput is an input type that accepts LogsInputMap and LogsInputMapOutput values.
@@ -373,12 +360,6 @@ func (i LogsInputMap) ToLogsInputMapOutputWithContext(ctx context.Context) LogsI
 	return pulumi.ToOutputWithContext(ctx, i).(LogsInputMapOutput)
 }
 
-func (i LogsInputMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogsInput] {
-	return pulumix.Output[map[string]*LogsInput]{
-		OutputState: i.ToLogsInputMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LogsInputOutput struct{ *pulumi.OutputState }
 
 func (LogsInputOutput) ElementType() reflect.Type {
@@ -391,12 +372,6 @@ func (o LogsInputOutput) ToLogsInputOutput() LogsInputOutput {
 
 func (o LogsInputOutput) ToLogsInputOutputWithContext(ctx context.Context) LogsInputOutput {
 	return o
-}
-
-func (o LogsInputOutput) ToOutput(ctx context.Context) pulumix.Output[*LogsInput] {
-	return pulumix.Output[*LogsInput]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of IP blocks
@@ -498,12 +473,6 @@ func (o LogsInputArrayOutput) ToLogsInputArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o LogsInputArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogsInput] {
-	return pulumix.Output[[]*LogsInput]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LogsInputArrayOutput) Index(i pulumi.IntInput) LogsInputOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogsInput {
 		return vs[0].([]*LogsInput)[vs[1].(int)]
@@ -522,12 +491,6 @@ func (o LogsInputMapOutput) ToLogsInputMapOutput() LogsInputMapOutput {
 
 func (o LogsInputMapOutput) ToLogsInputMapOutputWithContext(ctx context.Context) LogsInputMapOutput {
 	return o
-}
-
-func (o LogsInputMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogsInput] {
-	return pulumix.Output[map[string]*LogsInput]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogsInputMapOutput) MapIndex(k pulumi.StringInput) LogsInputOutput {

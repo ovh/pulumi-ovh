@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of custom installation templates available for dedicated servers.
@@ -79,12 +78,6 @@ func (o GetInstallationTemplatesResultOutput) ToGetInstallationTemplatesResultOu
 
 func (o GetInstallationTemplatesResultOutput) ToGetInstallationTemplatesResultOutputWithContext(ctx context.Context) GetInstallationTemplatesResultOutput {
 	return o
-}
-
-func (o GetInstallationTemplatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstallationTemplatesResult] {
-	return pulumix.Output[GetInstallationTemplatesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

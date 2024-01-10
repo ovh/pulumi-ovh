@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.
@@ -371,12 +370,6 @@ func (i *KubeNodePool) ToKubeNodePoolOutputWithContext(ctx context.Context) Kube
 	return pulumi.ToOutputWithContext(ctx, i).(KubeNodePoolOutput)
 }
 
-func (i *KubeNodePool) ToOutput(ctx context.Context) pulumix.Output[*KubeNodePool] {
-	return pulumix.Output[*KubeNodePool]{
-		OutputState: i.ToKubeNodePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KubeNodePoolArrayInput is an input type that accepts KubeNodePoolArray and KubeNodePoolArrayOutput values.
 // You can construct a concrete instance of `KubeNodePoolArrayInput` via:
 //
@@ -400,12 +393,6 @@ func (i KubeNodePoolArray) ToKubeNodePoolArrayOutput() KubeNodePoolArrayOutput {
 
 func (i KubeNodePoolArray) ToKubeNodePoolArrayOutputWithContext(ctx context.Context) KubeNodePoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubeNodePoolArrayOutput)
-}
-
-func (i KubeNodePoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*KubeNodePool] {
-	return pulumix.Output[[]*KubeNodePool]{
-		OutputState: i.ToKubeNodePoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KubeNodePoolMapInput is an input type that accepts KubeNodePoolMap and KubeNodePoolMapOutput values.
@@ -433,12 +420,6 @@ func (i KubeNodePoolMap) ToKubeNodePoolMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(KubeNodePoolMapOutput)
 }
 
-func (i KubeNodePoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubeNodePool] {
-	return pulumix.Output[map[string]*KubeNodePool]{
-		OutputState: i.ToKubeNodePoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KubeNodePoolOutput struct{ *pulumi.OutputState }
 
 func (KubeNodePoolOutput) ElementType() reflect.Type {
@@ -451,12 +432,6 @@ func (o KubeNodePoolOutput) ToKubeNodePoolOutput() KubeNodePoolOutput {
 
 func (o KubeNodePoolOutput) ToKubeNodePoolOutputWithContext(ctx context.Context) KubeNodePoolOutput {
 	return o
-}
-
-func (o KubeNodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*KubeNodePool] {
-	return pulumix.Output[*KubeNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
@@ -575,12 +550,6 @@ func (o KubeNodePoolArrayOutput) ToKubeNodePoolArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o KubeNodePoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KubeNodePool] {
-	return pulumix.Output[[]*KubeNodePool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KubeNodePoolArrayOutput) Index(i pulumi.IntInput) KubeNodePoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KubeNodePool {
 		return vs[0].([]*KubeNodePool)[vs[1].(int)]
@@ -599,12 +568,6 @@ func (o KubeNodePoolMapOutput) ToKubeNodePoolMapOutput() KubeNodePoolMapOutput {
 
 func (o KubeNodePoolMapOutput) ToKubeNodePoolMapOutputWithContext(ctx context.Context) KubeNodePoolMapOutput {
 	return o
-}
-
-func (o KubeNodePoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubeNodePool] {
-	return pulumix.Output[map[string]*KubeNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KubeNodePoolMapOutput) MapIndex(k pulumi.StringInput) KubeNodePoolOutput {

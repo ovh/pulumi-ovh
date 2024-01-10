@@ -34,6 +34,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * vRack can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders).
+ *
+ * bash
+ *
+ * ```sh
+ *  $ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
+ * ```
  */
 export class Vrack extends pulumi.CustomResource {
     /**

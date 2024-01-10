@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a subnet in a private network of a public cloud project.
@@ -307,12 +306,6 @@ func (i *NetworkPrivateSubnet) ToNetworkPrivateSubnetOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPrivateSubnetOutput)
 }
 
-func (i *NetworkPrivateSubnet) ToOutput(ctx context.Context) pulumix.Output[*NetworkPrivateSubnet] {
-	return pulumix.Output[*NetworkPrivateSubnet]{
-		OutputState: i.ToNetworkPrivateSubnetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkPrivateSubnetArrayInput is an input type that accepts NetworkPrivateSubnetArray and NetworkPrivateSubnetArrayOutput values.
 // You can construct a concrete instance of `NetworkPrivateSubnetArrayInput` via:
 //
@@ -336,12 +329,6 @@ func (i NetworkPrivateSubnetArray) ToNetworkPrivateSubnetArrayOutput() NetworkPr
 
 func (i NetworkPrivateSubnetArray) ToNetworkPrivateSubnetArrayOutputWithContext(ctx context.Context) NetworkPrivateSubnetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPrivateSubnetArrayOutput)
-}
-
-func (i NetworkPrivateSubnetArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkPrivateSubnet] {
-	return pulumix.Output[[]*NetworkPrivateSubnet]{
-		OutputState: i.ToNetworkPrivateSubnetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkPrivateSubnetMapInput is an input type that accepts NetworkPrivateSubnetMap and NetworkPrivateSubnetMapOutput values.
@@ -369,12 +356,6 @@ func (i NetworkPrivateSubnetMap) ToNetworkPrivateSubnetMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPrivateSubnetMapOutput)
 }
 
-func (i NetworkPrivateSubnetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkPrivateSubnet] {
-	return pulumix.Output[map[string]*NetworkPrivateSubnet]{
-		OutputState: i.ToNetworkPrivateSubnetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkPrivateSubnetOutput struct{ *pulumi.OutputState }
 
 func (NetworkPrivateSubnetOutput) ElementType() reflect.Type {
@@ -387,12 +368,6 @@ func (o NetworkPrivateSubnetOutput) ToNetworkPrivateSubnetOutput() NetworkPrivat
 
 func (o NetworkPrivateSubnetOutput) ToNetworkPrivateSubnetOutputWithContext(ctx context.Context) NetworkPrivateSubnetOutput {
 	return o
-}
-
-func (o NetworkPrivateSubnetOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkPrivateSubnet] {
-	return pulumix.Output[*NetworkPrivateSubnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Ip Block representing the subnet cidr.
@@ -478,12 +453,6 @@ func (o NetworkPrivateSubnetArrayOutput) ToNetworkPrivateSubnetArrayOutputWithCo
 	return o
 }
 
-func (o NetworkPrivateSubnetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkPrivateSubnet] {
-	return pulumix.Output[[]*NetworkPrivateSubnet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkPrivateSubnetArrayOutput) Index(i pulumi.IntInput) NetworkPrivateSubnetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkPrivateSubnet {
 		return vs[0].([]*NetworkPrivateSubnet)[vs[1].(int)]
@@ -502,12 +471,6 @@ func (o NetworkPrivateSubnetMapOutput) ToNetworkPrivateSubnetMapOutput() Network
 
 func (o NetworkPrivateSubnetMapOutput) ToNetworkPrivateSubnetMapOutputWithContext(ctx context.Context) NetworkPrivateSubnetMapOutput {
 	return o
-}
-
-func (o NetworkPrivateSubnetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkPrivateSubnet] {
-	return pulumix.Output[map[string]*NetworkPrivateSubnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkPrivateSubnetMapOutput) MapIndex(k pulumi.StringInput) NetworkPrivateSubnetOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a backend server entry linked to loadbalancing group (farm)
@@ -276,12 +275,6 @@ func (i *TcpFarmServer) ToTcpFarmServerOutputWithContext(ctx context.Context) Tc
 	return pulumi.ToOutputWithContext(ctx, i).(TcpFarmServerOutput)
 }
 
-func (i *TcpFarmServer) ToOutput(ctx context.Context) pulumix.Output[*TcpFarmServer] {
-	return pulumix.Output[*TcpFarmServer]{
-		OutputState: i.ToTcpFarmServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TcpFarmServerArrayInput is an input type that accepts TcpFarmServerArray and TcpFarmServerArrayOutput values.
 // You can construct a concrete instance of `TcpFarmServerArrayInput` via:
 //
@@ -305,12 +298,6 @@ func (i TcpFarmServerArray) ToTcpFarmServerArrayOutput() TcpFarmServerArrayOutpu
 
 func (i TcpFarmServerArray) ToTcpFarmServerArrayOutputWithContext(ctx context.Context) TcpFarmServerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TcpFarmServerArrayOutput)
-}
-
-func (i TcpFarmServerArray) ToOutput(ctx context.Context) pulumix.Output[[]*TcpFarmServer] {
-	return pulumix.Output[[]*TcpFarmServer]{
-		OutputState: i.ToTcpFarmServerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TcpFarmServerMapInput is an input type that accepts TcpFarmServerMap and TcpFarmServerMapOutput values.
@@ -338,12 +325,6 @@ func (i TcpFarmServerMap) ToTcpFarmServerMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TcpFarmServerMapOutput)
 }
 
-func (i TcpFarmServerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TcpFarmServer] {
-	return pulumix.Output[map[string]*TcpFarmServer]{
-		OutputState: i.ToTcpFarmServerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TcpFarmServerOutput struct{ *pulumi.OutputState }
 
 func (TcpFarmServerOutput) ElementType() reflect.Type {
@@ -356,12 +337,6 @@ func (o TcpFarmServerOutput) ToTcpFarmServerOutput() TcpFarmServerOutput {
 
 func (o TcpFarmServerOutput) ToTcpFarmServerOutputWithContext(ctx context.Context) TcpFarmServerOutput {
 	return o
-}
-
-func (o TcpFarmServerOutput) ToOutput(ctx context.Context) pulumix.Output[*TcpFarmServer] {
-	return pulumix.Output[*TcpFarmServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Address of the backend server (IP from either internal or OVHcloud network)
@@ -442,12 +417,6 @@ func (o TcpFarmServerArrayOutput) ToTcpFarmServerArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o TcpFarmServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TcpFarmServer] {
-	return pulumix.Output[[]*TcpFarmServer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TcpFarmServerArrayOutput) Index(i pulumi.IntInput) TcpFarmServerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TcpFarmServer {
 		return vs[0].([]*TcpFarmServer)[vs[1].(int)]
@@ -466,12 +435,6 @@ func (o TcpFarmServerMapOutput) ToTcpFarmServerMapOutput() TcpFarmServerMapOutpu
 
 func (o TcpFarmServerMapOutput) ToTcpFarmServerMapOutputWithContext(ctx context.Context) TcpFarmServerMapOutput {
 	return o
-}
-
-func (o TcpFarmServerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TcpFarmServer] {
-	return pulumix.Output[map[string]*TcpFarmServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TcpFarmServerMapOutput) MapIndex(k pulumi.StringInput) TcpFarmServerOutput {

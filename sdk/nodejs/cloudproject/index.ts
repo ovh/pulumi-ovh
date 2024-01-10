@@ -170,6 +170,11 @@ export const getUsers: typeof import("./getUsers").getUsers = null as any;
 export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
 utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
 
+export { GetVRackArgs, GetVRackResult, GetVRackOutputArgs } from "./getVRack";
+export const getVRack: typeof import("./getVRack").getVRack = null as any;
+export const getVRackOutput: typeof import("./getVRack").getVRackOutput = null as any;
+utilities.lazyLoad(exports, ["getVRack","getVRackOutput"], () => require("./getVRack"));
+
 export { KubeArgs, KubeState } from "./kube";
 export type Kube = import("./kube").Kube;
 export const Kube: typeof import("./kube").Kube = null as any;

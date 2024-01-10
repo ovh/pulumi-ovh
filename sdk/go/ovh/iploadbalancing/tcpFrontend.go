@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a backend server group (frontend) to be used by loadbalancing frontend(s)
@@ -253,12 +252,6 @@ func (i *TcpFrontend) ToTcpFrontendOutputWithContext(ctx context.Context) TcpFro
 	return pulumi.ToOutputWithContext(ctx, i).(TcpFrontendOutput)
 }
 
-func (i *TcpFrontend) ToOutput(ctx context.Context) pulumix.Output[*TcpFrontend] {
-	return pulumix.Output[*TcpFrontend]{
-		OutputState: i.ToTcpFrontendOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TcpFrontendArrayInput is an input type that accepts TcpFrontendArray and TcpFrontendArrayOutput values.
 // You can construct a concrete instance of `TcpFrontendArrayInput` via:
 //
@@ -282,12 +275,6 @@ func (i TcpFrontendArray) ToTcpFrontendArrayOutput() TcpFrontendArrayOutput {
 
 func (i TcpFrontendArray) ToTcpFrontendArrayOutputWithContext(ctx context.Context) TcpFrontendArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TcpFrontendArrayOutput)
-}
-
-func (i TcpFrontendArray) ToOutput(ctx context.Context) pulumix.Output[[]*TcpFrontend] {
-	return pulumix.Output[[]*TcpFrontend]{
-		OutputState: i.ToTcpFrontendArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TcpFrontendMapInput is an input type that accepts TcpFrontendMap and TcpFrontendMapOutput values.
@@ -315,12 +302,6 @@ func (i TcpFrontendMap) ToTcpFrontendMapOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TcpFrontendMapOutput)
 }
 
-func (i TcpFrontendMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TcpFrontend] {
-	return pulumix.Output[map[string]*TcpFrontend]{
-		OutputState: i.ToTcpFrontendMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TcpFrontendOutput struct{ *pulumi.OutputState }
 
 func (TcpFrontendOutput) ElementType() reflect.Type {
@@ -333,12 +314,6 @@ func (o TcpFrontendOutput) ToTcpFrontendOutput() TcpFrontendOutput {
 
 func (o TcpFrontendOutput) ToTcpFrontendOutputWithContext(ctx context.Context) TcpFrontendOutput {
 	return o
-}
-
-func (o TcpFrontendOutput) ToOutput(ctx context.Context) pulumix.Output[*TcpFrontend] {
-	return pulumix.Output[*TcpFrontend]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
@@ -407,12 +382,6 @@ func (o TcpFrontendArrayOutput) ToTcpFrontendArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o TcpFrontendArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TcpFrontend] {
-	return pulumix.Output[[]*TcpFrontend]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TcpFrontendArrayOutput) Index(i pulumi.IntInput) TcpFrontendOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TcpFrontend {
 		return vs[0].([]*TcpFrontend)[vs[1].(int)]
@@ -431,12 +400,6 @@ func (o TcpFrontendMapOutput) ToTcpFrontendMapOutput() TcpFrontendMapOutput {
 
 func (o TcpFrontendMapOutput) ToTcpFrontendMapOutputWithContext(ctx context.Context) TcpFrontendMapOutput {
 	return o
-}
-
-func (o TcpFrontendMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TcpFrontend] {
-	return pulumix.Output[map[string]*TcpFrontend]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TcpFrontendMapOutput) MapIndex(k pulumi.StringInput) TcpFrontendOutput {

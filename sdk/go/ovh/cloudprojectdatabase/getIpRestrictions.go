@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use the list of IP restrictions associated with a public cloud project.
@@ -122,12 +121,6 @@ func (o GetIpRestrictionsResultOutput) ToGetIpRestrictionsResultOutput() GetIpRe
 
 func (o GetIpRestrictionsResultOutput) ToGetIpRestrictionsResultOutputWithContext(ctx context.Context) GetIpRestrictionsResultOutput {
 	return o
-}
-
-func (o GetIpRestrictionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpRestrictionsResult] {
-	return pulumix.Output[GetIpRestrictionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // See Argument Reference above.

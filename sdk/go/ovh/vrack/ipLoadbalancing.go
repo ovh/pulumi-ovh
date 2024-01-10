@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Attach an IP Load Balancing to a VRack.
@@ -141,12 +140,6 @@ func (i *IpLoadbalancing) ToIpLoadbalancingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(IpLoadbalancingOutput)
 }
 
-func (i *IpLoadbalancing) ToOutput(ctx context.Context) pulumix.Output[*IpLoadbalancing] {
-	return pulumix.Output[*IpLoadbalancing]{
-		OutputState: i.ToIpLoadbalancingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IpLoadbalancingArrayInput is an input type that accepts IpLoadbalancingArray and IpLoadbalancingArrayOutput values.
 // You can construct a concrete instance of `IpLoadbalancingArrayInput` via:
 //
@@ -170,12 +163,6 @@ func (i IpLoadbalancingArray) ToIpLoadbalancingArrayOutput() IpLoadbalancingArra
 
 func (i IpLoadbalancingArray) ToIpLoadbalancingArrayOutputWithContext(ctx context.Context) IpLoadbalancingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpLoadbalancingArrayOutput)
-}
-
-func (i IpLoadbalancingArray) ToOutput(ctx context.Context) pulumix.Output[[]*IpLoadbalancing] {
-	return pulumix.Output[[]*IpLoadbalancing]{
-		OutputState: i.ToIpLoadbalancingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IpLoadbalancingMapInput is an input type that accepts IpLoadbalancingMap and IpLoadbalancingMapOutput values.
@@ -203,12 +190,6 @@ func (i IpLoadbalancingMap) ToIpLoadbalancingMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(IpLoadbalancingMapOutput)
 }
 
-func (i IpLoadbalancingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpLoadbalancing] {
-	return pulumix.Output[map[string]*IpLoadbalancing]{
-		OutputState: i.ToIpLoadbalancingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IpLoadbalancingOutput struct{ *pulumi.OutputState }
 
 func (IpLoadbalancingOutput) ElementType() reflect.Type {
@@ -221,12 +202,6 @@ func (o IpLoadbalancingOutput) ToIpLoadbalancingOutput() IpLoadbalancingOutput {
 
 func (o IpLoadbalancingOutput) ToIpLoadbalancingOutputWithContext(ctx context.Context) IpLoadbalancingOutput {
 	return o
-}
-
-func (o IpLoadbalancingOutput) ToOutput(ctx context.Context) pulumix.Output[*IpLoadbalancing] {
-	return pulumix.Output[*IpLoadbalancing]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the IP Load Balancing.
@@ -253,12 +228,6 @@ func (o IpLoadbalancingArrayOutput) ToIpLoadbalancingArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o IpLoadbalancingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IpLoadbalancing] {
-	return pulumix.Output[[]*IpLoadbalancing]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpLoadbalancingArrayOutput) Index(i pulumi.IntInput) IpLoadbalancingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IpLoadbalancing {
 		return vs[0].([]*IpLoadbalancing)[vs[1].(int)]
@@ -277,12 +246,6 @@ func (o IpLoadbalancingMapOutput) ToIpLoadbalancingMapOutput() IpLoadbalancingMa
 
 func (o IpLoadbalancingMapOutput) ToIpLoadbalancingMapOutputWithContext(ctx context.Context) IpLoadbalancingMapOutput {
 	return o
-}
-
-func (o IpLoadbalancingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpLoadbalancing] {
-	return pulumix.Output[map[string]*IpLoadbalancing]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpLoadbalancingMapOutput) MapIndex(k pulumi.StringInput) IpLoadbalancingOutput {

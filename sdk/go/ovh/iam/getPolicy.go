@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve am IAM policy.
@@ -53,9 +52,11 @@ func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.In
 type LookupPolicyArgs struct {
 	// List of actions allowed by the policy.
 	Allows []string `pulumi:"allows"`
+	// List of actions that will be denied no matter what policy exists.
+	Denies []string `pulumi:"denies"`
 	// Group description.
 	Description *string `pulumi:"description"`
-	// List of actions.
+	// List of actions that will be subtracted from the `allow` list.
 	Excepts []string `pulumi:"excepts"`
 	// UUID of the policy.
 	Id string `pulumi:"id"`
@@ -67,9 +68,11 @@ type LookupPolicyResult struct {
 	Allows []string `pulumi:"allows"`
 	// Creation date of this group.
 	CreatedAt string `pulumi:"createdAt"`
+	// List of actions that will be denied no matter what policy exists.
+	Denies []string `pulumi:"denies"`
 	// Group description.
 	Description *string `pulumi:"description"`
-	// List of actions.
+	// List of actions that will be subtracted from the `allow` list.
 	Excepts []string `pulumi:"excepts"`
 	Id      string   `pulumi:"id"`
 	// List of identities affected by the policy.
@@ -103,9 +106,11 @@ func LookupPolicyOutput(ctx *pulumi.Context, args LookupPolicyOutputArgs, opts .
 type LookupPolicyOutputArgs struct {
 	// List of actions allowed by the policy.
 	Allows pulumi.StringArrayInput `pulumi:"allows"`
+	// List of actions that will be denied no matter what policy exists.
+	Denies pulumi.StringArrayInput `pulumi:"denies"`
 	// Group description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// List of actions.
+	// List of actions that will be subtracted from the `allow` list.
 	Excepts pulumi.StringArrayInput `pulumi:"excepts"`
 	// UUID of the policy.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -130,12 +135,6 @@ func (o LookupPolicyResultOutput) ToLookupPolicyResultOutputWithContext(ctx cont
 	return o
 }
 
-func (o LookupPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPolicyResult] {
-	return pulumix.Output[LookupPolicyResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of actions allowed by the policy.
 func (o LookupPolicyResultOutput) Allows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyResult) []string { return v.Allows }).(pulumi.StringArrayOutput)
@@ -146,12 +145,17 @@ func (o LookupPolicyResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// List of actions that will be denied no matter what policy exists.
+func (o LookupPolicyResultOutput) Denies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPolicyResult) []string { return v.Denies }).(pulumi.StringArrayOutput)
+}
+
 // Group description.
 func (o LookupPolicyResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// List of actions.
+// List of actions that will be subtracted from the `allow` list.
 func (o LookupPolicyResultOutput) Excepts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyResult) []string { return v.Excepts }).(pulumi.StringArrayOutput)
 }

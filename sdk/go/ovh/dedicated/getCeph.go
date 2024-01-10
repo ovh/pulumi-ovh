@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a dedicated CEPH.
@@ -132,12 +131,6 @@ func (o GetCephResultOutput) ToGetCephResultOutput() GetCephResultOutput {
 
 func (o GetCephResultOutput) ToGetCephResultOutputWithContext(ctx context.Context) GetCephResultOutput {
 	return o
-}
-
-func (o GetCephResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCephResult] {
-	return pulumix.Output[GetCephResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URN of the CEPH instance

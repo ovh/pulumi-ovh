@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource for managing partitions on HA-NAS services
@@ -197,12 +196,6 @@ func (i *NasHAPartition) ToNasHAPartitionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(NasHAPartitionOutput)
 }
 
-func (i *NasHAPartition) ToOutput(ctx context.Context) pulumix.Output[*NasHAPartition] {
-	return pulumix.Output[*NasHAPartition]{
-		OutputState: i.ToNasHAPartitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NasHAPartitionArrayInput is an input type that accepts NasHAPartitionArray and NasHAPartitionArrayOutput values.
 // You can construct a concrete instance of `NasHAPartitionArrayInput` via:
 //
@@ -226,12 +219,6 @@ func (i NasHAPartitionArray) ToNasHAPartitionArrayOutput() NasHAPartitionArrayOu
 
 func (i NasHAPartitionArray) ToNasHAPartitionArrayOutputWithContext(ctx context.Context) NasHAPartitionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NasHAPartitionArrayOutput)
-}
-
-func (i NasHAPartitionArray) ToOutput(ctx context.Context) pulumix.Output[[]*NasHAPartition] {
-	return pulumix.Output[[]*NasHAPartition]{
-		OutputState: i.ToNasHAPartitionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NasHAPartitionMapInput is an input type that accepts NasHAPartitionMap and NasHAPartitionMapOutput values.
@@ -259,12 +246,6 @@ func (i NasHAPartitionMap) ToNasHAPartitionMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NasHAPartitionMapOutput)
 }
 
-func (i NasHAPartitionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasHAPartition] {
-	return pulumix.Output[map[string]*NasHAPartition]{
-		OutputState: i.ToNasHAPartitionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NasHAPartitionOutput struct{ *pulumi.OutputState }
 
 func (NasHAPartitionOutput) ElementType() reflect.Type {
@@ -277,12 +258,6 @@ func (o NasHAPartitionOutput) ToNasHAPartitionOutput() NasHAPartitionOutput {
 
 func (o NasHAPartitionOutput) ToNasHAPartitionOutputWithContext(ctx context.Context) NasHAPartitionOutput {
 	return o
-}
-
-func (o NasHAPartitionOutput) ToOutput(ctx context.Context) pulumix.Output[*NasHAPartition] {
-	return pulumix.Output[*NasHAPartition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Percentage of partition space used in %
@@ -334,12 +309,6 @@ func (o NasHAPartitionArrayOutput) ToNasHAPartitionArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o NasHAPartitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NasHAPartition] {
-	return pulumix.Output[[]*NasHAPartition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NasHAPartitionArrayOutput) Index(i pulumi.IntInput) NasHAPartitionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NasHAPartition {
 		return vs[0].([]*NasHAPartition)[vs[1].(int)]
@@ -358,12 +327,6 @@ func (o NasHAPartitionMapOutput) ToNasHAPartitionMapOutput() NasHAPartitionMapOu
 
 func (o NasHAPartitionMapOutput) ToNasHAPartitionMapOutputWithContext(ctx context.Context) NasHAPartitionMapOutput {
 	return o
-}
-
-func (o NasHAPartitionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasHAPartition] {
-	return pulumix.Output[map[string]*NasHAPartition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NasHAPartitionMapOutput) MapIndex(k pulumi.StringInput) NasHAPartitionOutput {

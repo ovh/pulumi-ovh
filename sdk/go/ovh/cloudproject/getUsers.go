@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the list of all users of a public cloud project.
@@ -105,12 +104,6 @@ func (o GetUsersResultOutput) ToGetUsersResultOutput() GetUsersResultOutput {
 
 func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Context) GetUsersResultOutput {
 	return o
-}
-
-func (o GetUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetUsersResult] {
-	return pulumix.Output[GetUsersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

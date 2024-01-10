@@ -68,6 +68,10 @@ export class Policy extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * List of actions that will be denied no matter what policy exists.
+     */
+    public readonly denies!: pulumi.Output<string[] | undefined>;
+    /**
      * Description of the policy
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -115,6 +119,7 @@ export class Policy extends pulumi.CustomResource {
             const state = argsOrState as PolicyState | undefined;
             resourceInputs["allows"] = state ? state.allows : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["denies"] = state ? state.denies : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["excepts"] = state ? state.excepts : undefined;
             resourceInputs["identities"] = state ? state.identities : undefined;
@@ -132,6 +137,7 @@ export class Policy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resources'");
             }
             resourceInputs["allows"] = args ? args.allows : undefined;
+            resourceInputs["denies"] = args ? args.denies : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["excepts"] = args ? args.excepts : undefined;
             resourceInputs["identities"] = args ? args.identities : undefined;
@@ -159,6 +165,10 @@ export interface PolicyState {
      * Creation date of this group.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * List of actions that will be denied no matter what policy exists.
+     */
+    denies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of the policy
      */
@@ -201,6 +211,10 @@ export interface PolicyArgs {
      * List of actions allowed on resources by identities
      */
     allows?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of actions that will be denied no matter what policy exists.
+     */
+    denies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of the policy
      */

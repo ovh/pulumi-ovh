@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of Vrack IDs available for your OVHcloud account.
@@ -79,12 +78,6 @@ func (o GetVracksResultOutput) ToGetVracksResultOutput() GetVracksResultOutput {
 
 func (o GetVracksResultOutput) ToGetVracksResultOutputWithContext(ctx context.Context) GetVracksResultOutput {
 	return o
-}
-
-func (o GetVracksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVracksResult] {
-	return pulumix.Output[GetVracksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

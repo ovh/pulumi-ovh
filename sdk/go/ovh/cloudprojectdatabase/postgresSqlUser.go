@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -184,12 +183,6 @@ func (i *PostgresSqlUser) ToPostgresSqlUserOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresSqlUserOutput)
 }
 
-func (i *PostgresSqlUser) ToOutput(ctx context.Context) pulumix.Output[*PostgresSqlUser] {
-	return pulumix.Output[*PostgresSqlUser]{
-		OutputState: i.ToPostgresSqlUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PostgresSqlUserArrayInput is an input type that accepts PostgresSqlUserArray and PostgresSqlUserArrayOutput values.
 // You can construct a concrete instance of `PostgresSqlUserArrayInput` via:
 //
@@ -213,12 +206,6 @@ func (i PostgresSqlUserArray) ToPostgresSqlUserArrayOutput() PostgresSqlUserArra
 
 func (i PostgresSqlUserArray) ToPostgresSqlUserArrayOutputWithContext(ctx context.Context) PostgresSqlUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresSqlUserArrayOutput)
-}
-
-func (i PostgresSqlUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*PostgresSqlUser] {
-	return pulumix.Output[[]*PostgresSqlUser]{
-		OutputState: i.ToPostgresSqlUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PostgresSqlUserMapInput is an input type that accepts PostgresSqlUserMap and PostgresSqlUserMapOutput values.
@@ -246,12 +233,6 @@ func (i PostgresSqlUserMap) ToPostgresSqlUserMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresSqlUserMapOutput)
 }
 
-func (i PostgresSqlUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PostgresSqlUser] {
-	return pulumix.Output[map[string]*PostgresSqlUser]{
-		OutputState: i.ToPostgresSqlUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PostgresSqlUserOutput struct{ *pulumi.OutputState }
 
 func (PostgresSqlUserOutput) ElementType() reflect.Type {
@@ -264,12 +245,6 @@ func (o PostgresSqlUserOutput) ToPostgresSqlUserOutput() PostgresSqlUserOutput {
 
 func (o PostgresSqlUserOutput) ToPostgresSqlUserOutputWithContext(ctx context.Context) PostgresSqlUserOutput {
 	return o
-}
-
-func (o PostgresSqlUserOutput) ToOutput(ctx context.Context) pulumix.Output[*PostgresSqlUser] {
-	return pulumix.Output[*PostgresSqlUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cluster ID.
@@ -328,12 +303,6 @@ func (o PostgresSqlUserArrayOutput) ToPostgresSqlUserArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o PostgresSqlUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PostgresSqlUser] {
-	return pulumix.Output[[]*PostgresSqlUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PostgresSqlUserArrayOutput) Index(i pulumi.IntInput) PostgresSqlUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PostgresSqlUser {
 		return vs[0].([]*PostgresSqlUser)[vs[1].(int)]
@@ -352,12 +321,6 @@ func (o PostgresSqlUserMapOutput) ToPostgresSqlUserMapOutput() PostgresSqlUserMa
 
 func (o PostgresSqlUserMapOutput) ToPostgresSqlUserMapOutputWithContext(ctx context.Context) PostgresSqlUserMapOutput {
 	return o
-}
-
-func (o PostgresSqlUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PostgresSqlUser] {
-	return pulumix.Output[map[string]*PostgresSqlUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PostgresSqlUserMapOutput) MapIndex(k pulumi.StringInput) PostgresSqlUserOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -63,6 +62,18 @@ import (
 //			return nil
 //		})
 //	}
+//
+// ```
+//
+// ## Import
+//
+// vRack can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders).
+//
+// bash
+//
+// ```sh
+//
+//	$ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
 //
 // ```
 type Vrack struct {
@@ -233,12 +244,6 @@ func (i *Vrack) ToVrackOutputWithContext(ctx context.Context) VrackOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VrackOutput)
 }
 
-func (i *Vrack) ToOutput(ctx context.Context) pulumix.Output[*Vrack] {
-	return pulumix.Output[*Vrack]{
-		OutputState: i.ToVrackOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VrackArrayInput is an input type that accepts VrackArray and VrackArrayOutput values.
 // You can construct a concrete instance of `VrackArrayInput` via:
 //
@@ -262,12 +267,6 @@ func (i VrackArray) ToVrackArrayOutput() VrackArrayOutput {
 
 func (i VrackArray) ToVrackArrayOutputWithContext(ctx context.Context) VrackArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VrackArrayOutput)
-}
-
-func (i VrackArray) ToOutput(ctx context.Context) pulumix.Output[[]*Vrack] {
-	return pulumix.Output[[]*Vrack]{
-		OutputState: i.ToVrackArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VrackMapInput is an input type that accepts VrackMap and VrackMapOutput values.
@@ -295,12 +294,6 @@ func (i VrackMap) ToVrackMapOutputWithContext(ctx context.Context) VrackMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(VrackMapOutput)
 }
 
-func (i VrackMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vrack] {
-	return pulumix.Output[map[string]*Vrack]{
-		OutputState: i.ToVrackMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VrackOutput struct{ *pulumi.OutputState }
 
 func (VrackOutput) ElementType() reflect.Type {
@@ -313,12 +306,6 @@ func (o VrackOutput) ToVrackOutput() VrackOutput {
 
 func (o VrackOutput) ToVrackOutputWithContext(ctx context.Context) VrackOutput {
 	return o
-}
-
-func (o VrackOutput) ToOutput(ctx context.Context) pulumix.Output[*Vrack] {
-	return pulumix.Output[*Vrack]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URN of the vrack, used with IAM permissions
@@ -382,12 +369,6 @@ func (o VrackArrayOutput) ToVrackArrayOutputWithContext(ctx context.Context) Vra
 	return o
 }
 
-func (o VrackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Vrack] {
-	return pulumix.Output[[]*Vrack]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VrackArrayOutput) Index(i pulumi.IntInput) VrackOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Vrack {
 		return vs[0].([]*Vrack)[vs[1].(int)]
@@ -406,12 +387,6 @@ func (o VrackMapOutput) ToVrackMapOutput() VrackMapOutput {
 
 func (o VrackMapOutput) ToVrackMapOutputWithContext(ctx context.Context) VrackMapOutput {
 	return o
-}
-
-func (o VrackMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vrack] {
-	return pulumix.Output[map[string]*Vrack]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VrackMapOutput) MapIndex(k pulumi.StringInput) VrackOutput {

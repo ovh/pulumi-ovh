@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
@@ -120,12 +119,6 @@ func (o GetKafkaUserAccessResultOutput) ToGetKafkaUserAccessResultOutput() GetKa
 
 func (o GetKafkaUserAccessResultOutput) ToGetKafkaUserAccessResultOutputWithContext(ctx context.Context) GetKafkaUserAccessResultOutput {
 	return o
-}
-
-func (o GetKafkaUserAccessResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKafkaUserAccessResult] {
-	return pulumix.Output[GetKafkaUserAccessResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User cert.

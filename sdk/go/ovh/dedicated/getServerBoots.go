@@ -9,7 +9,6 @@ import (
 
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
@@ -111,12 +110,6 @@ func (o GetServerBootsResultOutput) ToGetServerBootsResultOutput() GetServerBoot
 
 func (o GetServerBootsResultOutput) ToGetServerBootsResultOutputWithContext(ctx context.Context) GetServerBootsResultOutput {
 	return o
-}
-
-func (o GetServerBootsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerBootsResult] {
-	return pulumix.Output[GetServerBootsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetServerBootsResultOutput) BootType() pulumi.StringPtrOutput {
