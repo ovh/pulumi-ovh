@@ -102,5 +102,8 @@ or visit https://pulumi.com/docs/install/ for manual instructions and release no
   - Assign Issues
 ```
 
-Add new TF resources in `provider/resources.go` file and execute the command again and again.
-A new Pull Request will be created at this step.
+* Add new TF resources in `provider/resources.go` file and execute the command again and again.
+
+* A new Pull Request will be created at this step.
+  
+* After approving and merging the PR, create a new tag and push it. A GH action will run and push the packages.
