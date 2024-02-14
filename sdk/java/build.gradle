@@ -77,8 +77,8 @@ jar.configure {
 publishing {
     publications {
         mainPublication(MavenPublication) {
-            groupId = ""
-            artifactId = ""
+            groupId = "com.ovh"
+            artifactId = "pulumi"
             version = resolvedVersion
             from components.java
             artifact sourcesJar
