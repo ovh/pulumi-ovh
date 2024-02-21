@@ -150,6 +150,10 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public readonly ImmutableDictionary<string, string> AdvancedConfiguration;
         /// <summary>
+        /// List of region where backups are pushed.
+        /// </summary>
+        public readonly ImmutableArray<string> BackupRegions;
+        /// <summary>
         /// Time on which backups start every day.
         /// </summary>
         public readonly string BackupTime;
@@ -223,6 +227,8 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private GetDatabaseResult(
             ImmutableDictionary<string, string> advancedConfiguration,
 
+            ImmutableArray<string> backupRegions,
+
             string backupTime,
 
             string createdAt,
@@ -260,6 +266,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             string version)
         {
             AdvancedConfiguration = advancedConfiguration;
+            BackupRegions = backupRegions;
             BackupTime = backupTime;
             CreatedAt = createdAt;
             Description = description;

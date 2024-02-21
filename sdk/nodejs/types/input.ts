@@ -259,34 +259,76 @@ export namespace CloudProject {
     }
 
     export interface GetKubeNodePoolTemplate {
+        /**
+         * metadata
+         */
         metadata?: inputs.CloudProject.GetKubeNodePoolTemplateMetadata;
+        /**
+         * spec
+         */
         spec?: inputs.CloudProject.GetKubeNodePoolTemplateSpec;
     }
 
     export interface GetKubeNodePoolTemplateArgs {
+        /**
+         * metadata
+         */
         metadata?: pulumi.Input<inputs.CloudProject.GetKubeNodePoolTemplateMetadataArgs>;
+        /**
+         * spec
+         */
         spec?: pulumi.Input<inputs.CloudProject.GetKubeNodePoolTemplateSpecArgs>;
     }
 
     export interface GetKubeNodePoolTemplateMetadata {
+        /**
+         * annotations
+         */
         annotations?: {[key: string]: string};
+        /**
+         * finalizers
+         */
         finalizers?: string[];
+        /**
+         * labels
+         */
         labels?: {[key: string]: string};
     }
 
     export interface GetKubeNodePoolTemplateMetadataArgs {
+        /**
+         * annotations
+         */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * finalizers
+         */
         finalizers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * labels
+         */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface GetKubeNodePoolTemplateSpec {
+        /**
+         * taints
+         */
         taints?: {[key: string]: any}[];
+        /**
+         * unschedulable
+         */
         unschedulable?: boolean;
     }
 
     export interface GetKubeNodePoolTemplateSpecArgs {
+        /**
+         * taints
+         */
         taints?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        /**
+         * unschedulable
+         */
         unschedulable?: pulumi.Input<boolean>;
     }
 
@@ -413,7 +455,7 @@ export namespace CloudProject {
 
     export interface KubeNodePoolTemplateSpec {
         /**
-         * Taints to apply to each node
+         * Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
          */
         taints: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
         /**
@@ -721,7 +763,13 @@ export namespace Dedicated {
     }
 
     export interface ServerNetworkingInterface {
+        /**
+         * Interface Mac address
+         */
         macs: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Interface type
+         */
         type: pulumi.Input<string>;
     }
 }

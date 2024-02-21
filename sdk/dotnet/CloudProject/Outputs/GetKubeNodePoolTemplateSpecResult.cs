@@ -13,7 +13,13 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class GetKubeNodePoolTemplateSpecResult
     {
+        /// <summary>
+        /// taints
+        /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, object>> Taints;
+        /// <summary>
+        /// unschedulable
+        /// </summary>
         public readonly bool? Unschedulable;
 
         [OutputConstructor]

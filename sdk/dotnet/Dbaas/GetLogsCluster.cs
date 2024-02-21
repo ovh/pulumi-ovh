@@ -116,10 +116,6 @@ namespace Pulumi.Ovh.Dbaas
     public sealed class GetLogsClusterResult
     {
         /// <summary>
-        /// is the URN of the DBaas logs instance
-        /// </summary>
-        public readonly string DBaasURN;
-        /// <summary>
         /// is allowed networks for ARCHIVE flow type
         /// </summary>
         public readonly ImmutableArray<string> ArchiveAllowedNetworks;
@@ -165,11 +161,13 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         public readonly string Region;
         public readonly string ServiceName;
+        /// <summary>
+        /// is the URN of the DBaas logs instance
+        /// </summary>
+        public readonly string Urn;
 
         [OutputConstructor]
         private GetLogsClusterResult(
-            string DBaasURN,
-
             ImmutableArray<string> archiveAllowedNetworks,
 
             string? clusterId,
@@ -194,9 +192,10 @@ namespace Pulumi.Ovh.Dbaas
 
             string region,
 
-            string serviceName)
+            string serviceName,
+
+            string urn)
         {
-            this.DBaasURN = DBaasURN;
             ArchiveAllowedNetworks = archiveAllowedNetworks;
             ClusterId = clusterId;
             ClusterType = clusterType;
@@ -210,6 +209,7 @@ namespace Pulumi.Ovh.Dbaas
             QueryAllowedNetworks = queryAllowedNetworks;
             Region = region;
             ServiceName = serviceName;
+            Urn = urn;
         }
     }
 }

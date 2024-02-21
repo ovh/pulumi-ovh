@@ -53,6 +53,8 @@ type ServerUpdate struct {
 
 	// boot id of the server
 	BootId pulumi.IntOutput `pulumi:"bootId"`
+	// boot script of the server
+	BootScript pulumi.StringPtrOutput `pulumi:"bootScript"`
 	// Icmp monitoring state
 	Monitoring pulumi.BoolOutput `pulumi:"monitoring"`
 	// The serviceName of your dedicated server.
@@ -96,6 +98,8 @@ func GetServerUpdate(ctx *pulumi.Context,
 type serverUpdateState struct {
 	// boot id of the server
 	BootId *int `pulumi:"bootId"`
+	// boot script of the server
+	BootScript *string `pulumi:"bootScript"`
 	// Icmp monitoring state
 	Monitoring *bool `pulumi:"monitoring"`
 	// The serviceName of your dedicated server.
@@ -107,6 +111,8 @@ type serverUpdateState struct {
 type ServerUpdateState struct {
 	// boot id of the server
 	BootId pulumi.IntPtrInput
+	// boot script of the server
+	BootScript pulumi.StringPtrInput
 	// Icmp monitoring state
 	Monitoring pulumi.BoolPtrInput
 	// The serviceName of your dedicated server.
@@ -122,6 +128,8 @@ func (ServerUpdateState) ElementType() reflect.Type {
 type serverUpdateArgs struct {
 	// boot id of the server
 	BootId *int `pulumi:"bootId"`
+	// boot script of the server
+	BootScript *string `pulumi:"bootScript"`
 	// Icmp monitoring state
 	Monitoring *bool `pulumi:"monitoring"`
 	// The serviceName of your dedicated server.
@@ -134,6 +142,8 @@ type serverUpdateArgs struct {
 type ServerUpdateArgs struct {
 	// boot id of the server
 	BootId pulumi.IntPtrInput
+	// boot script of the server
+	BootScript pulumi.StringPtrInput
 	// Icmp monitoring state
 	Monitoring pulumi.BoolPtrInput
 	// The serviceName of your dedicated server.
@@ -232,6 +242,11 @@ func (o ServerUpdateOutput) ToServerUpdateOutputWithContext(ctx context.Context)
 // boot id of the server
 func (o ServerUpdateOutput) BootId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServerUpdate) pulumi.IntOutput { return v.BootId }).(pulumi.IntOutput)
+}
+
+// boot script of the server
+func (o ServerUpdateOutput) BootScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerUpdate) pulumi.StringPtrOutput { return v.BootScript }).(pulumi.StringPtrOutput)
 }
 
 // Icmp monitoring state

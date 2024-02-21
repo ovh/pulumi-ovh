@@ -6,6 +6,8 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .container_registry import *
+from .container_registry_ip_restrictions_management import *
+from .container_registry_ip_restrictions_registry import *
 from .container_registry_oidc import *
 from .container_registry_user import *
 from .database import *
@@ -14,6 +16,8 @@ from .get_capabilities_container_filter import *
 from .get_capabilities_container_registry import *
 from .get_container_registries import *
 from .get_container_registry import *
+from .get_container_registry_ip_restrictions_management import *
+from .get_container_registry_ip_restrictions_registry import *
 from .get_container_registry_oidc import *
 from .get_container_registry_users import *
 from .get_failover_ip_attach import *

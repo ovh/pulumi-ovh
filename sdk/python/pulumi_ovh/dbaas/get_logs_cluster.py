@@ -21,10 +21,7 @@ class GetLogsClusterResult:
     """
     A collection of values returned by getLogsCluster.
     """
-    def __init__(__self__, d_baas_urn=None, archive_allowed_networks=None, cluster_id=None, cluster_type=None, dedicated_input_pem=None, direct_input_allowed_networks=None, direct_input_pem=None, hostname=None, id=None, is_default=None, is_unlocked=None, query_allowed_networks=None, region=None, service_name=None):
-        if d_baas_urn and not isinstance(d_baas_urn, str):
-            raise TypeError("Expected argument 'd_baas_urn' to be a str")
-        pulumi.set(__self__, "d_baas_urn", d_baas_urn)
+    def __init__(__self__, archive_allowed_networks=None, cluster_id=None, cluster_type=None, dedicated_input_pem=None, direct_input_allowed_networks=None, direct_input_pem=None, hostname=None, id=None, is_default=None, is_unlocked=None, query_allowed_networks=None, region=None, service_name=None, urn=None):
         if archive_allowed_networks and not isinstance(archive_allowed_networks, list):
             raise TypeError("Expected argument 'archive_allowed_networks' to be a list")
         pulumi.set(__self__, "archive_allowed_networks", archive_allowed_networks)
@@ -64,14 +61,9 @@ class GetLogsClusterResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
-
-    @property
-    @pulumi.getter(name="DBaasURN")
-    def d_baas_urn(self) -> str:
-        """
-        is the URN of the DBaas logs instance
-        """
-        return pulumi.get(self, "d_baas_urn")
+        if urn and not isinstance(urn, str):
+            raise TypeError("Expected argument 'urn' to be a str")
+        pulumi.set(__self__, "urn", urn)
 
     @property
     @pulumi.getter(name="archiveAllowedNetworks")
@@ -171,6 +163,14 @@ class GetLogsClusterResult:
     def service_name(self) -> str:
         return pulumi.get(self, "service_name")
 
+    @property
+    @pulumi.getter
+    def urn(self) -> str:
+        """
+        is the URN of the DBaas logs instance
+        """
+        return pulumi.get(self, "urn")
+
 
 class AwaitableGetLogsClusterResult(GetLogsClusterResult):
     # pylint: disable=using-constant-test
@@ -178,7 +178,6 @@ class AwaitableGetLogsClusterResult(GetLogsClusterResult):
         if False:
             yield self
         return GetLogsClusterResult(
-            d_baas_urn=self.d_baas_urn,
             archive_allowed_networks=self.archive_allowed_networks,
             cluster_id=self.cluster_id,
             cluster_type=self.cluster_type,
@@ -191,7 +190,8 @@ class AwaitableGetLogsClusterResult(GetLogsClusterResult):
             is_unlocked=self.is_unlocked,
             query_allowed_networks=self.query_allowed_networks,
             region=self.region,
-            service_name=self.service_name)
+            service_name=self.service_name,
+            urn=self.urn)
 
 
 def get_logs_cluster(cluster_id: Optional[str] = None,
@@ -221,7 +221,6 @@ def get_logs_cluster(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('ovh:Dbaas/getLogsCluster:getLogsCluster', __args__, opts=opts, typ=GetLogsClusterResult).value
 
     return AwaitableGetLogsClusterResult(
-        d_baas_urn=pulumi.get(__ret__, 'd_baas_urn'),
         archive_allowed_networks=pulumi.get(__ret__, 'archive_allowed_networks'),
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         cluster_type=pulumi.get(__ret__, 'cluster_type'),
@@ -234,7 +233,8 @@ def get_logs_cluster(cluster_id: Optional[str] = None,
         is_unlocked=pulumi.get(__ret__, 'is_unlocked'),
         query_allowed_networks=pulumi.get(__ret__, 'query_allowed_networks'),
         region=pulumi.get(__ret__, 'region'),
-        service_name=pulumi.get(__ret__, 'service_name'))
+        service_name=pulumi.get(__ret__, 'service_name'),
+        urn=pulumi.get(__ret__, 'urn'))
 
 
 @_utilities.lift_output_func(get_logs_cluster)

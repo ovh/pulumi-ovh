@@ -14,12 +14,19 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     {
         [Input("taints")]
         private List<ImmutableDictionary<string, object>>? _taints;
+
+        /// <summary>
+        /// taints
+        /// </summary>
         public List<ImmutableDictionary<string, object>> Taints
         {
             get => _taints ?? (_taints = new List<ImmutableDictionary<string, object>>());
             set => _taints = value;
         }
 
+        /// <summary>
+        /// unschedulable
+        /// </summary>
         [Input("unschedulable")]
         public bool? Unschedulable { get; set; }
 

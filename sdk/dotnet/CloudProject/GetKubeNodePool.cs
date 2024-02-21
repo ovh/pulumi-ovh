@@ -154,6 +154,21 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly bool Autoscale;
         /// <summary>
+        /// (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
+        /// How long a node should be unneeded before it is eligible for scale down
+        /// </summary>
+        public readonly int AutoscalingScaleDownUnneededTimeSeconds;
+        /// <summary>
+        /// (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
+        /// How long an unready node should be unneeded before it is eligible for scale down
+        /// </summary>
+        public readonly int AutoscalingScaleDownUnreadyTimeSeconds;
+        /// <summary>
+        /// (Optional) scaleDownUtilizationThreshold autoscaling parameter
+        /// Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        /// </summary>
+        public readonly double AutoscalingScaleDownUtilizationThreshold;
+        /// <summary>
         /// Number of nodes which are actually ready in the pool
         /// </summary>
         public readonly int AvailableNodes;
@@ -239,6 +254,12 @@ namespace Pulumi.Ovh.CloudProject
 
             bool autoscale,
 
+            int autoscalingScaleDownUnneededTimeSeconds,
+
+            int autoscalingScaleDownUnreadyTimeSeconds,
+
+            double autoscalingScaleDownUtilizationThreshold,
+
             int availableNodes,
 
             string createdAt,
@@ -279,6 +300,9 @@ namespace Pulumi.Ovh.CloudProject
         {
             AntiAffinity = antiAffinity;
             Autoscale = autoscale;
+            AutoscalingScaleDownUnneededTimeSeconds = autoscalingScaleDownUnneededTimeSeconds;
+            AutoscalingScaleDownUnreadyTimeSeconds = autoscalingScaleDownUnreadyTimeSeconds;
+            AutoscalingScaleDownUtilizationThreshold = autoscalingScaleDownUtilizationThreshold;
             AvailableNodes = availableNodes;
             CreatedAt = createdAt;
             CurrentNodes = currentNodes;

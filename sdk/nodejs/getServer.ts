@@ -51,6 +51,10 @@ export interface GetServerResult {
      */
     readonly bootId: number;
     /**
+     * boot script of the server
+     */
+    readonly bootScript: string;
+    /**
      * dedicated server commercial range
      */
     readonly commercialRange: string;

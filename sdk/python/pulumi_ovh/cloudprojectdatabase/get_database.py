@@ -22,10 +22,13 @@ class GetDatabaseResult:
     """
     A collection of values returned by getDatabase.
     """
-    def __init__(__self__, advanced_configuration=None, backup_time=None, created_at=None, description=None, disk_size=None, disk_type=None, endpoints=None, engine=None, flavor=None, id=None, kafka_rest_api=None, maintenance_time=None, network_type=None, nodes=None, opensearch_acls_enabled=None, plan=None, service_name=None, status=None, version=None):
+    def __init__(__self__, advanced_configuration=None, backup_regions=None, backup_time=None, created_at=None, description=None, disk_size=None, disk_type=None, endpoints=None, engine=None, flavor=None, id=None, kafka_rest_api=None, maintenance_time=None, network_type=None, nodes=None, opensearch_acls_enabled=None, plan=None, service_name=None, status=None, version=None):
         if advanced_configuration and not isinstance(advanced_configuration, dict):
             raise TypeError("Expected argument 'advanced_configuration' to be a dict")
         pulumi.set(__self__, "advanced_configuration", advanced_configuration)
+        if backup_regions and not isinstance(backup_regions, list):
+            raise TypeError("Expected argument 'backup_regions' to be a list")
+        pulumi.set(__self__, "backup_regions", backup_regions)
         if backup_time and not isinstance(backup_time, str):
             raise TypeError("Expected argument 'backup_time' to be a str")
         pulumi.set(__self__, "backup_time", backup_time)
@@ -88,6 +91,14 @@ class GetDatabaseResult:
         Advanced configuration key / value.
         """
         return pulumi.get(self, "advanced_configuration")
+
+    @property
+    @pulumi.getter(name="backupRegions")
+    def backup_regions(self) -> Sequence[str]:
+        """
+        List of region where backups are pushed.
+        """
+        return pulumi.get(self, "backup_regions")
 
     @property
     @pulumi.getter(name="backupTime")
@@ -238,6 +249,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             yield self
         return GetDatabaseResult(
             advanced_configuration=self.advanced_configuration,
+            backup_regions=self.backup_regions,
             backup_time=self.backup_time,
             created_at=self.created_at,
             description=self.description,
@@ -295,6 +307,7 @@ def get_database(engine: Optional[str] = None,
 
     return AwaitableGetDatabaseResult(
         advanced_configuration=pulumi.get(__ret__, 'advanced_configuration'),
+        backup_regions=pulumi.get(__ret__, 'backup_regions'),
         backup_time=pulumi.get(__ret__, 'backup_time'),
         created_at=pulumi.get(__ret__, 'created_at'),
         description=pulumi.get(__ret__, 'description'),

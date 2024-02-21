@@ -247,7 +247,7 @@ class NasHAPartition(pulumi.CustomResource):
         HA-NAS can be imported using the `{service_name}/{name}`, e.g.
 
         ```sh
-         $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
+        $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
         ```
 
         :param str resource_name: The name of the resource.
@@ -284,7 +284,7 @@ class NasHAPartition(pulumi.CustomResource):
         HA-NAS can be imported using the `{service_name}/{name}`, e.g.
 
         ```sh
-         $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
+        $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
         ```
 
         :param str resource_name: The name of the resource.

@@ -14,12 +14,19 @@ namespace Pulumi.Ovh.Dedicated.Inputs
     {
         [Input("macs", required: true)]
         private InputList<string>? _macs;
+
+        /// <summary>
+        /// Interface Mac address
+        /// </summary>
         public InputList<string> Macs
         {
             get => _macs ?? (_macs = new InputList<string>());
             set => _macs = value;
         }
 
+        /// <summary>
+        /// Interface type
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

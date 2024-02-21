@@ -59,8 +59,6 @@ type LookupLogsClusterArgs struct {
 
 // A collection of values returned by getLogsCluster.
 type LookupLogsClusterResult struct {
-	// is the URN of the DBaas logs instance
-	DBaasURN string `pulumi:"DBaasURN"`
 	// is allowed networks for ARCHIVE flow type
 	ArchiveAllowedNetworks []string `pulumi:"archiveAllowedNetworks"`
 	ClusterId              *string  `pulumi:"clusterId"`
@@ -85,6 +83,8 @@ type LookupLogsClusterResult struct {
 	// is datacenter localization
 	Region      string `pulumi:"region"`
 	ServiceName string `pulumi:"serviceName"`
+	// is the URN of the DBaas logs instance
+	Urn string `pulumi:"urn"`
 }
 
 func LookupLogsClusterOutput(ctx *pulumi.Context, args LookupLogsClusterOutputArgs, opts ...pulumi.InvokeOption) LookupLogsClusterResultOutput {
@@ -125,11 +125,6 @@ func (o LookupLogsClusterResultOutput) ToLookupLogsClusterResultOutput() LookupL
 
 func (o LookupLogsClusterResultOutput) ToLookupLogsClusterResultOutputWithContext(ctx context.Context) LookupLogsClusterResultOutput {
 	return o
-}
-
-// is the URN of the DBaas logs instance
-func (o LookupLogsClusterResultOutput) DBaasURN() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLogsClusterResult) string { return v.DBaasURN }).(pulumi.StringOutput)
 }
 
 // is allowed networks for ARCHIVE flow type
@@ -193,6 +188,11 @@ func (o LookupLogsClusterResultOutput) Region() pulumi.StringOutput {
 
 func (o LookupLogsClusterResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsClusterResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// is the URN of the DBaas logs instance
+func (o LookupLogsClusterResultOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLogsClusterResult) string { return v.Urn }).(pulumi.StringOutput)
 }
 
 func init() {

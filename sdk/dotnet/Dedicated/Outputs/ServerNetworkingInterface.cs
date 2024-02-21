@@ -13,7 +13,13 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     [OutputType]
     public sealed class ServerNetworkingInterface
     {
+        /// <summary>
+        /// Interface Mac address
+        /// </summary>
         public readonly ImmutableArray<string> Macs;
+        /// <summary>
+        /// Interface type
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -64,6 +64,10 @@ export interface GetDatabaseResult {
      */
     readonly advancedConfiguration: {[key: string]: string};
     /**
+     * List of region where backups are pushed.
+     */
+    readonly backupRegions: string[];
+    /**
      * Time on which backups start every day.
      */
     readonly backupTime: string;

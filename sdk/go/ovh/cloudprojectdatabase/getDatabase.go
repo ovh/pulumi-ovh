@@ -69,6 +69,8 @@ type GetDatabaseArgs struct {
 type GetDatabaseResult struct {
 	// Advanced configuration key / value.
 	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
+	// List of region where backups are pushed.
+	BackupRegions []string `pulumi:"backupRegions"`
 	// Time on which backups start every day.
 	BackupTime string `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
@@ -153,6 +155,11 @@ func (o GetDatabaseResultOutput) ToGetDatabaseResultOutputWithContext(ctx contex
 // Advanced configuration key / value.
 func (o GetDatabaseResultOutput) AdvancedConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetDatabaseResult) map[string]string { return v.AdvancedConfiguration }).(pulumi.StringMapOutput)
+}
+
+// List of region where backups are pushed.
+func (o GetDatabaseResultOutput) BackupRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseResult) []string { return v.BackupRegions }).(pulumi.StringArrayOutput)
 }
 
 // Time on which backups start every day.

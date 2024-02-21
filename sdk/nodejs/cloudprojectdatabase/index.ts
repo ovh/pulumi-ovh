@@ -90,6 +90,11 @@ export const getKafkaUserAccess: typeof import("./getKafkaUserAccess").getKafkaU
 export const getKafkaUserAccessOutput: typeof import("./getKafkaUserAccess").getKafkaUserAccessOutput = null as any;
 utilities.lazyLoad(exports, ["getKafkaUserAccess","getKafkaUserAccessOutput"], () => require("./getKafkaUserAccess"));
 
+export { GetPostgresSqlConnectionPoolArgs, GetPostgresSqlConnectionPoolResult, GetPostgresSqlConnectionPoolOutputArgs } from "./getPostgresSqlConnectionPool";
+export const getPostgresSqlConnectionPool: typeof import("./getPostgresSqlConnectionPool").getPostgresSqlConnectionPool = null as any;
+export const getPostgresSqlConnectionPoolOutput: typeof import("./getPostgresSqlConnectionPool").getPostgresSqlConnectionPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresSqlConnectionPool","getPostgresSqlConnectionPoolOutput"], () => require("./getPostgresSqlConnectionPool"));
+
 export { GetPostgresSqlUserArgs, GetPostgresSqlUserResult, GetPostgresSqlUserOutputArgs } from "./getPostgresSqlUser";
 export const getPostgresSqlUser: typeof import("./getPostgresSqlUser").getPostgresSqlUser = null as any;
 export const getPostgresSqlUserOutput: typeof import("./getPostgresSqlUser").getPostgresSqlUserOutput = null as any;
@@ -155,6 +160,11 @@ export type OpensearchUser = import("./opensearchUser").OpensearchUser;
 export const OpensearchUser: typeof import("./opensearchUser").OpensearchUser = null as any;
 utilities.lazyLoad(exports, ["OpensearchUser"], () => require("./opensearchUser"));
 
+export { PostgresSqlConnectionPoolArgs, PostgresSqlConnectionPoolState } from "./postgresSqlConnectionPool";
+export type PostgresSqlConnectionPool = import("./postgresSqlConnectionPool").PostgresSqlConnectionPool;
+export const PostgresSqlConnectionPool: typeof import("./postgresSqlConnectionPool").PostgresSqlConnectionPool = null as any;
+utilities.lazyLoad(exports, ["PostgresSqlConnectionPool"], () => require("./postgresSqlConnectionPool"));
+
 export { PostgresSqlUserArgs, PostgresSqlUserState } from "./postgresSqlUser";
 export type PostgresSqlUser = import("./postgresSqlUser").PostgresSqlUser;
 export const PostgresSqlUser: typeof import("./postgresSqlUser").PostgresSqlUser = null as any;
@@ -197,6 +207,8 @@ const _module = {
                 return new OpensearchPattern(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/opensearchUser:OpensearchUser":
                 return new OpensearchUser(name, <any>undefined, { urn })
+            case "ovh:CloudProjectDatabase/postgresSqlConnectionPool:PostgresSqlConnectionPool":
+                return new PostgresSqlConnectionPool(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser":
                 return new PostgresSqlUser(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/redisUser:RedisUser":
@@ -219,6 +231,7 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/m3DbUser", _m
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/mongoDbUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/opensearchPattern", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/opensearchUser", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/postgresSqlConnectionPool", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/postgresSqlUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/redisUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/user", _module)

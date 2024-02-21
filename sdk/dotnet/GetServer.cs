@@ -110,6 +110,10 @@ namespace Pulumi.Ovh
         /// </summary>
         public readonly int BootId;
         /// <summary>
+        /// boot script of the server
+        /// </summary>
+        public readonly string BootScript;
+        /// <summary>
         /// dedicated server commercial range
         /// </summary>
         public readonly string CommercialRange;
@@ -201,6 +205,8 @@ namespace Pulumi.Ovh
 
             int bootId,
 
+            string bootScript,
+
             string commercialRange,
 
             string datacenter,
@@ -247,6 +253,7 @@ namespace Pulumi.Ovh
         {
             this.ServerURN = ServerURN;
             BootId = bootId;
+            BootScript = bootScript;
             CommercialRange = commercialRange;
             Datacenter = datacenter;
             EnabledPublicVnis = enabledPublicVnis;

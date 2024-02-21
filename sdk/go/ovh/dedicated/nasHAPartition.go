@@ -47,9 +47,7 @@ import (
 // HA-NAS can be imported using the `{service_name}/{name}`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
-//
+// $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
 // ```
 type NasHAPartition struct {
 	pulumi.CustomResourceState

@@ -22,6 +22,7 @@ from .get_kafka_schema_registry_acls import *
 from .get_kafka_topic import *
 from .get_kafka_topics import *
 from .get_kafka_user_access import *
+from .get_postgres_sql_connection_pool import *
 from .get_postgres_sql_user import *
 from .get_user import *
 from .get_users import *
@@ -35,6 +36,7 @@ from .m3_db_user import *
 from .mongo_db_user import *
 from .opensearch_pattern import *
 from .opensearch_user import *
+from .postgres_sql_connection_pool import *
 from .postgres_sql_user import *
 from .redis_user import *
 from .user import *

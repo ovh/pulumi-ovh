@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OpensearchPattern{}
 	case "ovh:CloudProjectDatabase/opensearchUser:OpensearchUser":
 		r = &OpensearchUser{}
+	case "ovh:CloudProjectDatabase/postgresSqlConnectionPool:PostgresSqlConnectionPool":
+		r = &PostgresSqlConnectionPool{}
 	case "ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser":
 		r = &PostgresSqlUser{}
 	case "ovh:CloudProjectDatabase/redisUser:RedisUser":
@@ -115,6 +117,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProjectDatabase/opensearchUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProjectDatabase/postgresSqlConnectionPool",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

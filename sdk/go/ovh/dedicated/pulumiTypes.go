@@ -406,8 +406,10 @@ func (o ServerInstallTaskDetailsPtrOutput) UseSpla() pulumi.BoolPtrOutput {
 }
 
 type ServerNetworkingInterface struct {
+	// Interface Mac address
 	Macs []string `pulumi:"macs"`
-	Type string   `pulumi:"type"`
+	// Interface type
+	Type string `pulumi:"type"`
 }
 
 // ServerNetworkingInterfaceInput is an input type that accepts ServerNetworkingInterfaceArgs and ServerNetworkingInterfaceOutput values.
@@ -422,8 +424,10 @@ type ServerNetworkingInterfaceInput interface {
 }
 
 type ServerNetworkingInterfaceArgs struct {
+	// Interface Mac address
 	Macs pulumi.StringArrayInput `pulumi:"macs"`
-	Type pulumi.StringInput      `pulumi:"type"`
+	// Interface type
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (ServerNetworkingInterfaceArgs) ElementType() reflect.Type {
@@ -477,10 +481,12 @@ func (o ServerNetworkingInterfaceOutput) ToServerNetworkingInterfaceOutputWithCo
 	return o
 }
 
+// Interface Mac address
 func (o ServerNetworkingInterfaceOutput) Macs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerNetworkingInterface) []string { return v.Macs }).(pulumi.StringArrayOutput)
 }
 
+// Interface type
 func (o ServerNetworkingInterfaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerNetworkingInterface) string { return v.Type }).(pulumi.StringOutput)
 }

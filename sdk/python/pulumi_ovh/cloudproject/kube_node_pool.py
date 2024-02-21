@@ -21,6 +21,9 @@ class KubeNodePoolArgs:
                  service_name: pulumi.Input[str],
                  anti_affinity: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input[bool]] = None,
+                 autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[int]] = None,
+                 autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[int]] = None,
+                 autoscaling_scale_down_utilization_threshold: Optional[pulumi.Input[float]] = None,
                  desired_nodes: Optional[pulumi.Input[int]] = None,
                  max_nodes: Optional[pulumi.Input[int]] = None,
                  min_nodes: Optional[pulumi.Input[int]] = None,
@@ -35,6 +38,12 @@ class KubeNodePoolArgs:
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
         :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
+               How long a node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
+               How long an unready node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
+               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[int] desired_nodes: number of nodes to start.
         :param pulumi.Input[int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
@@ -50,6 +59,12 @@ class KubeNodePoolArgs:
             pulumi.set(__self__, "anti_affinity", anti_affinity)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
+        if autoscaling_scale_down_unneeded_time_seconds is not None:
+            pulumi.set(__self__, "autoscaling_scale_down_unneeded_time_seconds", autoscaling_scale_down_unneeded_time_seconds)
+        if autoscaling_scale_down_unready_time_seconds is not None:
+            pulumi.set(__self__, "autoscaling_scale_down_unready_time_seconds", autoscaling_scale_down_unready_time_seconds)
+        if autoscaling_scale_down_utilization_threshold is not None:
+            pulumi.set(__self__, "autoscaling_scale_down_utilization_threshold", autoscaling_scale_down_utilization_threshold)
         if desired_nodes is not None:
             pulumi.set(__self__, "desired_nodes", desired_nodes)
         if max_nodes is not None:
@@ -117,13 +132,52 @@ class KubeNodePoolArgs:
     def autoscale(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable auto-scaling for the pool. Default to `false`.
-        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         """
         return pulumi.get(self, "autoscale")
 
     @autoscale.setter
     def autoscale(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "autoscale", value)
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
+    def autoscaling_scale_down_unneeded_time_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        scaleDownUnneededTimeSeconds autoscaling parameter
+        How long a node should be unneeded before it is eligible for scale down
+        """
+        return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
+
+    @autoscaling_scale_down_unneeded_time_seconds.setter
+    def autoscaling_scale_down_unneeded_time_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "autoscaling_scale_down_unneeded_time_seconds", value)
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
+    def autoscaling_scale_down_unready_time_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        scaleDownUnreadyTimeSeconds autoscaling parameter
+        How long an unready node should be unneeded before it is eligible for scale down
+        """
+        return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
+
+    @autoscaling_scale_down_unready_time_seconds.setter
+    def autoscaling_scale_down_unready_time_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "autoscaling_scale_down_unready_time_seconds", value)
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
+    def autoscaling_scale_down_utilization_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        scaleDownUtilizationThreshold autoscaling parameter
+        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        """
+        return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
+
+    @autoscaling_scale_down_utilization_threshold.setter
+    def autoscaling_scale_down_utilization_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "autoscaling_scale_down_utilization_threshold", value)
 
     @property
     @pulumi.getter(name="desiredNodes")
@@ -203,6 +257,9 @@ class _KubeNodePoolState:
     def __init__(__self__, *,
                  anti_affinity: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input[bool]] = None,
+                 autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[int]] = None,
+                 autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[int]] = None,
+                 autoscaling_scale_down_utilization_threshold: Optional[pulumi.Input[float]] = None,
                  available_nodes: Optional[pulumi.Input[int]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  current_nodes: Optional[pulumi.Input[int]] = None,
@@ -225,6 +282,12 @@ class _KubeNodePoolState:
         Input properties used for looking up and filtering KubeNodePool resources.
         :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
         :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
+               How long a node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
+               How long an unready node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
+               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[int] available_nodes: Number of nodes which are actually ready in the pool
         :param pulumi.Input[str] created_at: Creation date
@@ -250,6 +313,12 @@ class _KubeNodePoolState:
             pulumi.set(__self__, "anti_affinity", anti_affinity)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
+        if autoscaling_scale_down_unneeded_time_seconds is not None:
+            pulumi.set(__self__, "autoscaling_scale_down_unneeded_time_seconds", autoscaling_scale_down_unneeded_time_seconds)
+        if autoscaling_scale_down_unready_time_seconds is not None:
+            pulumi.set(__self__, "autoscaling_scale_down_unready_time_seconds", autoscaling_scale_down_unready_time_seconds)
+        if autoscaling_scale_down_utilization_threshold is not None:
+            pulumi.set(__self__, "autoscaling_scale_down_utilization_threshold", autoscaling_scale_down_utilization_threshold)
         if available_nodes is not None:
             pulumi.set(__self__, "available_nodes", available_nodes)
         if created_at is not None:
@@ -304,13 +373,52 @@ class _KubeNodePoolState:
     def autoscale(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable auto-scaling for the pool. Default to `false`.
-        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         """
         return pulumi.get(self, "autoscale")
 
     @autoscale.setter
     def autoscale(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "autoscale", value)
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
+    def autoscaling_scale_down_unneeded_time_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        scaleDownUnneededTimeSeconds autoscaling parameter
+        How long a node should be unneeded before it is eligible for scale down
+        """
+        return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
+
+    @autoscaling_scale_down_unneeded_time_seconds.setter
+    def autoscaling_scale_down_unneeded_time_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "autoscaling_scale_down_unneeded_time_seconds", value)
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
+    def autoscaling_scale_down_unready_time_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        scaleDownUnreadyTimeSeconds autoscaling parameter
+        How long an unready node should be unneeded before it is eligible for scale down
+        """
+        return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
+
+    @autoscaling_scale_down_unready_time_seconds.setter
+    def autoscaling_scale_down_unready_time_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "autoscaling_scale_down_unready_time_seconds", value)
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
+    def autoscaling_scale_down_utilization_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        scaleDownUtilizationThreshold autoscaling parameter
+        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        """
+        return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
+
+    @autoscaling_scale_down_utilization_threshold.setter
+    def autoscaling_scale_down_utilization_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "autoscaling_scale_down_utilization_threshold", value)
 
     @property
     @pulumi.getter(name="availableNodes")
@@ -537,6 +645,9 @@ class KubeNodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  anti_affinity: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input[bool]] = None,
+                 autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[int]] = None,
+                 autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[int]] = None,
+                 autoscaling_scale_down_utilization_threshold: Optional[pulumi.Input[float]] = None,
                  desired_nodes: Optional[pulumi.Input[int]] = None,
                  flavor_name: Optional[pulumi.Input[str]] = None,
                  kube_id: Optional[pulumi.Input[str]] = None,
@@ -608,16 +719,24 @@ class KubeNodePool(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash
+        OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g.,
+
+         bash
 
         ```sh
-         $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
+        $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
         :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
+               How long a node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
+               How long an unready node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
+               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[int] desired_nodes: number of nodes to start.
         :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
@@ -697,10 +816,12 @@ class KubeNodePool(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash
+        OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g.,
+
+         bash
 
         ```sh
-         $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
+        $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
         ```
 
         :param str resource_name: The name of the resource.
@@ -720,6 +841,9 @@ class KubeNodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  anti_affinity: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input[bool]] = None,
+                 autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[int]] = None,
+                 autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[int]] = None,
+                 autoscaling_scale_down_utilization_threshold: Optional[pulumi.Input[float]] = None,
                  desired_nodes: Optional[pulumi.Input[int]] = None,
                  flavor_name: Optional[pulumi.Input[str]] = None,
                  kube_id: Optional[pulumi.Input[str]] = None,
@@ -740,6 +864,9 @@ class KubeNodePool(pulumi.CustomResource):
 
             __props__.__dict__["anti_affinity"] = anti_affinity
             __props__.__dict__["autoscale"] = autoscale
+            __props__.__dict__["autoscaling_scale_down_unneeded_time_seconds"] = autoscaling_scale_down_unneeded_time_seconds
+            __props__.__dict__["autoscaling_scale_down_unready_time_seconds"] = autoscaling_scale_down_unready_time_seconds
+            __props__.__dict__["autoscaling_scale_down_utilization_threshold"] = autoscaling_scale_down_utilization_threshold
             __props__.__dict__["desired_nodes"] = desired_nodes
             if flavor_name is None and not opts.urn:
                 raise TypeError("Missing required property 'flavor_name'")
@@ -776,6 +903,9 @@ class KubeNodePool(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             anti_affinity: Optional[pulumi.Input[bool]] = None,
             autoscale: Optional[pulumi.Input[bool]] = None,
+            autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[int]] = None,
+            autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[int]] = None,
+            autoscaling_scale_down_utilization_threshold: Optional[pulumi.Input[float]] = None,
             available_nodes: Optional[pulumi.Input[int]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             current_nodes: Optional[pulumi.Input[int]] = None,
@@ -803,6 +933,12 @@ class KubeNodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
         :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
+               How long a node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
+               How long an unready node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
+               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[int] available_nodes: Number of nodes which are actually ready in the pool
         :param pulumi.Input[str] created_at: Creation date
@@ -830,6 +966,9 @@ class KubeNodePool(pulumi.CustomResource):
 
         __props__.__dict__["anti_affinity"] = anti_affinity
         __props__.__dict__["autoscale"] = autoscale
+        __props__.__dict__["autoscaling_scale_down_unneeded_time_seconds"] = autoscaling_scale_down_unneeded_time_seconds
+        __props__.__dict__["autoscaling_scale_down_unready_time_seconds"] = autoscaling_scale_down_unready_time_seconds
+        __props__.__dict__["autoscaling_scale_down_utilization_threshold"] = autoscaling_scale_down_utilization_threshold
         __props__.__dict__["available_nodes"] = available_nodes
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["current_nodes"] = current_nodes
@@ -863,9 +1002,36 @@ class KubeNodePool(pulumi.CustomResource):
     def autoscale(self) -> pulumi.Output[bool]:
         """
         Enable auto-scaling for the pool. Default to `false`.
-        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         """
         return pulumi.get(self, "autoscale")
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
+    def autoscaling_scale_down_unneeded_time_seconds(self) -> pulumi.Output[int]:
+        """
+        scaleDownUnneededTimeSeconds autoscaling parameter
+        How long a node should be unneeded before it is eligible for scale down
+        """
+        return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
+    def autoscaling_scale_down_unready_time_seconds(self) -> pulumi.Output[int]:
+        """
+        scaleDownUnreadyTimeSeconds autoscaling parameter
+        How long an unready node should be unneeded before it is eligible for scale down
+        """
+        return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
+    def autoscaling_scale_down_utilization_threshold(self) -> pulumi.Output[float]:
+        """
+        scaleDownUtilizationThreshold autoscaling parameter
+        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        """
+        return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
 
     @property
     @pulumi.getter(name="availableNodes")

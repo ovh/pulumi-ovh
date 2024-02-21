@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "ovh:Iam/permissionsGroup:PermissionsGroup":
+		r = &PermissionsGroup{}
 	case "ovh:Iam/policy:Policy":
 		r = &Policy{}
 	case "ovh:Iam/resourceGroup:ResourceGroup":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Iam/permissionsGroup",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Iam/policy",

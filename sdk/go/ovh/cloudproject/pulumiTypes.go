@@ -1953,7 +1953,7 @@ func (o KubeNodePoolTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
 }
 
 type KubeNodePoolTemplateSpec struct {
-	// Taints to apply to each node
+	// Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
 	Taints []map[string]interface{} `pulumi:"taints"`
 	// If true, set nodes as un-schedulable
 	Unschedulable bool `pulumi:"unschedulable"`
@@ -1971,7 +1971,7 @@ type KubeNodePoolTemplateSpecInput interface {
 }
 
 type KubeNodePoolTemplateSpecArgs struct {
-	// Taints to apply to each node
+	// Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
 	Taints pulumi.MapArrayInput `pulumi:"taints"`
 	// If true, set nodes as un-schedulable
 	Unschedulable pulumi.BoolInput `pulumi:"unschedulable"`
@@ -2054,7 +2054,7 @@ func (o KubeNodePoolTemplateSpecOutput) ToKubeNodePoolTemplateSpecPtrOutputWithC
 	}).(KubeNodePoolTemplateSpecPtrOutput)
 }
 
-// Taints to apply to each node
+// Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
 func (o KubeNodePoolTemplateSpecOutput) Taints() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v KubeNodePoolTemplateSpec) []map[string]interface{} { return v.Taints }).(pulumi.MapArrayOutput)
 }
@@ -2088,7 +2088,7 @@ func (o KubeNodePoolTemplateSpecPtrOutput) Elem() KubeNodePoolTemplateSpecOutput
 	}).(KubeNodePoolTemplateSpecOutput)
 }
 
-// Taints to apply to each node
+// Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
 func (o KubeNodePoolTemplateSpecPtrOutput) Taints() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v *KubeNodePoolTemplateSpec) []map[string]interface{} {
 		if v == nil {
@@ -5568,8 +5568,10 @@ func (o GetKubeNodePoolNodesNodeArrayOutput) Index(i pulumi.IntInput) GetKubeNod
 }
 
 type GetKubeNodePoolTemplate struct {
+	// metadata
 	Metadata *GetKubeNodePoolTemplateMetadata `pulumi:"metadata"`
-	Spec     *GetKubeNodePoolTemplateSpec     `pulumi:"spec"`
+	// spec
+	Spec *GetKubeNodePoolTemplateSpec `pulumi:"spec"`
 }
 
 // GetKubeNodePoolTemplateInput is an input type that accepts GetKubeNodePoolTemplateArgs and GetKubeNodePoolTemplateOutput values.
@@ -5584,8 +5586,10 @@ type GetKubeNodePoolTemplateInput interface {
 }
 
 type GetKubeNodePoolTemplateArgs struct {
+	// metadata
 	Metadata GetKubeNodePoolTemplateMetadataPtrInput `pulumi:"metadata"`
-	Spec     GetKubeNodePoolTemplateSpecPtrInput     `pulumi:"spec"`
+	// spec
+	Spec GetKubeNodePoolTemplateSpecPtrInput `pulumi:"spec"`
 }
 
 func (GetKubeNodePoolTemplateArgs) ElementType() reflect.Type {
@@ -5665,10 +5669,12 @@ func (o GetKubeNodePoolTemplateOutput) ToGetKubeNodePoolTemplatePtrOutputWithCon
 	}).(GetKubeNodePoolTemplatePtrOutput)
 }
 
+// metadata
 func (o GetKubeNodePoolTemplateOutput) Metadata() GetKubeNodePoolTemplateMetadataPtrOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplate) *GetKubeNodePoolTemplateMetadata { return v.Metadata }).(GetKubeNodePoolTemplateMetadataPtrOutput)
 }
 
+// spec
 func (o GetKubeNodePoolTemplateOutput) Spec() GetKubeNodePoolTemplateSpecPtrOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplate) *GetKubeNodePoolTemplateSpec { return v.Spec }).(GetKubeNodePoolTemplateSpecPtrOutput)
 }
@@ -5697,6 +5703,7 @@ func (o GetKubeNodePoolTemplatePtrOutput) Elem() GetKubeNodePoolTemplateOutput {
 	}).(GetKubeNodePoolTemplateOutput)
 }
 
+// metadata
 func (o GetKubeNodePoolTemplatePtrOutput) Metadata() GetKubeNodePoolTemplateMetadataPtrOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplate) *GetKubeNodePoolTemplateMetadata {
 		if v == nil {
@@ -5706,6 +5713,7 @@ func (o GetKubeNodePoolTemplatePtrOutput) Metadata() GetKubeNodePoolTemplateMeta
 	}).(GetKubeNodePoolTemplateMetadataPtrOutput)
 }
 
+// spec
 func (o GetKubeNodePoolTemplatePtrOutput) Spec() GetKubeNodePoolTemplateSpecPtrOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplate) *GetKubeNodePoolTemplateSpec {
 		if v == nil {
@@ -5716,9 +5724,12 @@ func (o GetKubeNodePoolTemplatePtrOutput) Spec() GetKubeNodePoolTemplateSpecPtrO
 }
 
 type GetKubeNodePoolTemplateMetadata struct {
+	// annotations
 	Annotations map[string]string `pulumi:"annotations"`
-	Finalizers  []string          `pulumi:"finalizers"`
-	Labels      map[string]string `pulumi:"labels"`
+	// finalizers
+	Finalizers []string `pulumi:"finalizers"`
+	// labels
+	Labels map[string]string `pulumi:"labels"`
 }
 
 // GetKubeNodePoolTemplateMetadataInput is an input type that accepts GetKubeNodePoolTemplateMetadataArgs and GetKubeNodePoolTemplateMetadataOutput values.
@@ -5733,9 +5744,12 @@ type GetKubeNodePoolTemplateMetadataInput interface {
 }
 
 type GetKubeNodePoolTemplateMetadataArgs struct {
-	Annotations pulumi.StringMapInput   `pulumi:"annotations"`
-	Finalizers  pulumi.StringArrayInput `pulumi:"finalizers"`
-	Labels      pulumi.StringMapInput   `pulumi:"labels"`
+	// annotations
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// finalizers
+	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
+	// labels
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
 
 func (GetKubeNodePoolTemplateMetadataArgs) ElementType() reflect.Type {
@@ -5815,14 +5829,17 @@ func (o GetKubeNodePoolTemplateMetadataOutput) ToGetKubeNodePoolTemplateMetadata
 	}).(GetKubeNodePoolTemplateMetadataPtrOutput)
 }
 
+// annotations
 func (o GetKubeNodePoolTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// finalizers
 func (o GetKubeNodePoolTemplateMetadataOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplateMetadata) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
 }
 
+// labels
 func (o GetKubeNodePoolTemplateMetadataOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -5851,6 +5868,7 @@ func (o GetKubeNodePoolTemplateMetadataPtrOutput) Elem() GetKubeNodePoolTemplate
 	}).(GetKubeNodePoolTemplateMetadataOutput)
 }
 
+// annotations
 func (o GetKubeNodePoolTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplateMetadata) map[string]string {
 		if v == nil {
@@ -5860,6 +5878,7 @@ func (o GetKubeNodePoolTemplateMetadataPtrOutput) Annotations() pulumi.StringMap
 	}).(pulumi.StringMapOutput)
 }
 
+// finalizers
 func (o GetKubeNodePoolTemplateMetadataPtrOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplateMetadata) []string {
 		if v == nil {
@@ -5869,6 +5888,7 @@ func (o GetKubeNodePoolTemplateMetadataPtrOutput) Finalizers() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+// labels
 func (o GetKubeNodePoolTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplateMetadata) map[string]string {
 		if v == nil {
@@ -5879,8 +5899,10 @@ func (o GetKubeNodePoolTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutpu
 }
 
 type GetKubeNodePoolTemplateSpec struct {
-	Taints        []map[string]interface{} `pulumi:"taints"`
-	Unschedulable *bool                    `pulumi:"unschedulable"`
+	// taints
+	Taints []map[string]interface{} `pulumi:"taints"`
+	// unschedulable
+	Unschedulable *bool `pulumi:"unschedulable"`
 }
 
 // GetKubeNodePoolTemplateSpecInput is an input type that accepts GetKubeNodePoolTemplateSpecArgs and GetKubeNodePoolTemplateSpecOutput values.
@@ -5895,8 +5917,10 @@ type GetKubeNodePoolTemplateSpecInput interface {
 }
 
 type GetKubeNodePoolTemplateSpecArgs struct {
-	Taints        pulumi.MapArrayInput `pulumi:"taints"`
-	Unschedulable pulumi.BoolPtrInput  `pulumi:"unschedulable"`
+	// taints
+	Taints pulumi.MapArrayInput `pulumi:"taints"`
+	// unschedulable
+	Unschedulable pulumi.BoolPtrInput `pulumi:"unschedulable"`
 }
 
 func (GetKubeNodePoolTemplateSpecArgs) ElementType() reflect.Type {
@@ -5976,10 +6000,12 @@ func (o GetKubeNodePoolTemplateSpecOutput) ToGetKubeNodePoolTemplateSpecPtrOutpu
 	}).(GetKubeNodePoolTemplateSpecPtrOutput)
 }
 
+// taints
 func (o GetKubeNodePoolTemplateSpecOutput) Taints() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplateSpec) []map[string]interface{} { return v.Taints }).(pulumi.MapArrayOutput)
 }
 
+// unschedulable
 func (o GetKubeNodePoolTemplateSpecOutput) Unschedulable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplateSpec) *bool { return v.Unschedulable }).(pulumi.BoolPtrOutput)
 }
@@ -6008,6 +6034,7 @@ func (o GetKubeNodePoolTemplateSpecPtrOutput) Elem() GetKubeNodePoolTemplateSpec
 	}).(GetKubeNodePoolTemplateSpecOutput)
 }
 
+// taints
 func (o GetKubeNodePoolTemplateSpecPtrOutput) Taints() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplateSpec) []map[string]interface{} {
 		if v == nil {
@@ -6017,6 +6044,7 @@ func (o GetKubeNodePoolTemplateSpecPtrOutput) Taints() pulumi.MapArrayOutput {
 	}).(pulumi.MapArrayOutput)
 }
 
+// unschedulable
 func (o GetKubeNodePoolTemplateSpecPtrOutput) Unschedulable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplateSpec) *bool {
 		if v == nil {

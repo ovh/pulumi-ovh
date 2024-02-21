@@ -14,10 +14,12 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// ## Import
     /// 
-    /// OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g., bash
+    /// OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g.,
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:CloudProject/s3Credential:S3Credential s3_credential service_name/user_id/access_key_id
+    /// $ pulumi import ovh:CloudProject/s3Credential:S3Credential s3_credential service_name/user_id/access_key_id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/s3Credential:S3Credential")]

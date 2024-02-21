@@ -14,6 +14,10 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// annotations
+        /// </summary>
         public InputMap<string> Annotations
         {
             get => _annotations ?? (_annotations = new InputMap<string>());
@@ -22,6 +26,10 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
         [Input("finalizers")]
         private InputList<string>? _finalizers;
+
+        /// <summary>
+        /// finalizers
+        /// </summary>
         public InputList<string> Finalizers
         {
             get => _finalizers ?? (_finalizers = new InputList<string>());
@@ -30,6 +38,10 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// labels
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());

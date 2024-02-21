@@ -281,10 +281,12 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash
+    /// OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+    /// $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/database:Database")]
@@ -295,6 +297,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Output("advancedConfiguration")]
         public Output<ImmutableDictionary<string, string>> AdvancedConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        /// </summary>
+        [Output("backupRegions")]
+        public Output<ImmutableArray<string>> BackupRegions { get; private set; } = null!;
 
         /// <summary>
         /// Time on which backups start every day.
@@ -463,6 +471,24 @@ namespace Pulumi.Ovh.CloudProject
             set => _advancedConfiguration = value;
         }
 
+        [Input("backupRegions")]
+        private InputList<string>? _backupRegions;
+
+        /// <summary>
+        /// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        /// </summary>
+        public InputList<string> BackupRegions
+        {
+            get => _backupRegions ?? (_backupRegions = new InputList<string>());
+            set => _backupRegions = value;
+        }
+
+        /// <summary>
+        /// Time on which backups start every day.
+        /// </summary>
+        [Input("backupTime")]
+        public Input<string>? BackupTime { get; set; }
+
         /// <summary>
         /// Small description of the database service.
         /// </summary>
@@ -553,6 +579,18 @@ namespace Pulumi.Ovh.CloudProject
         {
             get => _advancedConfiguration ?? (_advancedConfiguration = new InputMap<string>());
             set => _advancedConfiguration = value;
+        }
+
+        [Input("backupRegions")]
+        private InputList<string>? _backupRegions;
+
+        /// <summary>
+        /// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        /// </summary>
+        public InputList<string> BackupRegions
+        {
+            get => _backupRegions ?? (_backupRegions = new InputList<string>());
+            set => _backupRegions = value;
         }
 
         /// <summary>

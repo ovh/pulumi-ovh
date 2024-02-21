@@ -47,10 +47,6 @@ export interface GetLogsClusterArgs {
  */
 export interface GetLogsClusterResult {
     /**
-     * is the URN of the DBaas logs instance
-     */
-    readonly DBaasURN: string;
-    /**
      * is allowed networks for ARCHIVE flow type
      */
     readonly archiveAllowedNetworks: string[];
@@ -96,6 +92,10 @@ export interface GetLogsClusterResult {
      */
     readonly region: string;
     readonly serviceName: string;
+    /**
+     * is the URN of the DBaas logs instance
+     */
+    readonly urn: string;
 }
 /**
  * Use this data source to retrieve informations about a DBaas logs cluster tenant.

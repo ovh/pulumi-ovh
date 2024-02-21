@@ -44,10 +44,12 @@ import * as utilities from "../utilities";
  *
  * Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used
  *
- * and ths `task_id`, separated by "/" E.g., bash
+ * and ths `task_id`, separated by "/" E.g.,
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345
+ * $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345
  * ```
  */
 export class ServerInstallTask extends pulumi.CustomResource {

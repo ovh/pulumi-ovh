@@ -23,6 +23,8 @@ class DatabaseArgs:
                  service_name: pulumi.Input[str],
                  version: pulumi.Input[str],
                  advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 backup_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
@@ -42,6 +44,8 @@ class DatabaseArgs:
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        :param pulumi.Input[str] backup_time: Time on which backups start every day.
         :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
@@ -55,6 +59,10 @@ class DatabaseArgs:
         pulumi.set(__self__, "version", version)
         if advanced_configuration is not None:
             pulumi.set(__self__, "advanced_configuration", advanced_configuration)
+        if backup_regions is not None:
+            pulumi.set(__self__, "backup_regions", backup_regions)
+        if backup_time is not None:
+            pulumi.set(__self__, "backup_time", backup_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_size is not None:
@@ -155,6 +163,30 @@ class DatabaseArgs:
         pulumi.set(self, "advanced_configuration", value)
 
     @property
+    @pulumi.getter(name="backupRegions")
+    def backup_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        """
+        return pulumi.get(self, "backup_regions")
+
+    @backup_regions.setter
+    def backup_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "backup_regions", value)
+
+    @property
+    @pulumi.getter(name="backupTime")
+    def backup_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time on which backups start every day.
+        """
+        return pulumi.get(self, "backup_time")
+
+    @backup_time.setter
+    def backup_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_time", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -207,6 +239,7 @@ class DatabaseArgs:
 class _DatabaseState:
     def __init__(__self__, *,
                  advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 backup_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -227,6 +260,7 @@ class _DatabaseState:
         """
         Input properties used for looking up and filtering Database resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[str] backup_time: Time on which backups start every day.
         :param pulumi.Input[str] created_at: Date of the creation of the cluster.
         :param pulumi.Input[str] description: Small description of the database service.
@@ -253,6 +287,8 @@ class _DatabaseState:
         """
         if advanced_configuration is not None:
             pulumi.set(__self__, "advanced_configuration", advanced_configuration)
+        if backup_regions is not None:
+            pulumi.set(__self__, "backup_regions", backup_regions)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
         if created_at is not None:
@@ -299,6 +335,18 @@ class _DatabaseState:
     @advanced_configuration.setter
     def advanced_configuration(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "advanced_configuration", value)
+
+    @property
+    @pulumi.getter(name="backupRegions")
+    def backup_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        """
+        return pulumi.get(self, "backup_regions")
+
+    @backup_regions.setter
+    def backup_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "backup_regions", value)
 
     @property
     @pulumi.getter(name="backupTime")
@@ -517,6 +565,8 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 backup_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
@@ -708,15 +758,19 @@ class Database(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash
+        OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
+
+         bash
 
         ```sh
-         $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+        $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        :param pulumi.Input[str] backup_time: Time on which backups start every day.
         :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
@@ -920,10 +974,12 @@ class Database(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash
+        OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
+
+         bash
 
         ```sh
-         $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+        $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
         ```
 
         :param str resource_name: The name of the resource.
@@ -942,6 +998,8 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 backup_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
@@ -962,6 +1020,8 @@ class Database(pulumi.CustomResource):
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
             __props__.__dict__["advanced_configuration"] = advanced_configuration
+            __props__.__dict__["backup_regions"] = backup_regions
+            __props__.__dict__["backup_time"] = backup_time
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_size"] = disk_size
             if engine is None and not opts.urn:
@@ -984,7 +1044,6 @@ class Database(pulumi.CustomResource):
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
-            __props__.__dict__["backup_time"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["disk_type"] = None
             __props__.__dict__["endpoints"] = None
@@ -1002,6 +1061,7 @@ class Database(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            backup_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             backup_time: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1027,6 +1087,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[str] backup_time: Time on which backups start every day.
         :param pulumi.Input[str] created_at: Date of the creation of the cluster.
         :param pulumi.Input[str] description: Small description of the database service.
@@ -1056,6 +1117,7 @@ class Database(pulumi.CustomResource):
         __props__ = _DatabaseState.__new__(_DatabaseState)
 
         __props__.__dict__["advanced_configuration"] = advanced_configuration
+        __props__.__dict__["backup_regions"] = backup_regions
         __props__.__dict__["backup_time"] = backup_time
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
@@ -1082,6 +1144,14 @@ class Database(pulumi.CustomResource):
         Advanced configuration key / value.
         """
         return pulumi.get(self, "advanced_configuration")
+
+    @property
+    @pulumi.getter(name="backupRegions")
+    def backup_regions(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        """
+        return pulumi.get(self, "backup_regions")
 
     @property
     @pulumi.getter(name="backupTime")

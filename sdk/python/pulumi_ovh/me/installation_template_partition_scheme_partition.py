@@ -419,10 +419,12 @@ class InstallationTemplatePartitionSchemePartition(pulumi.CustomResource):
 
         ## Import
 
-        The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g., bash
+        The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g.,
+
+         bash
 
         ```sh
-         $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
+        $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
         ```
 
         :param str resource_name: The name of the resource.
@@ -488,10 +490,12 @@ class InstallationTemplatePartitionSchemePartition(pulumi.CustomResource):
 
         ## Import
 
-        The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g., bash
+        The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g.,
+
+         bash
 
         ```sh
-         $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
+        $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
         ```
 
         :param str resource_name: The name of the resource.
