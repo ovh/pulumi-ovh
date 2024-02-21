@@ -42,10 +42,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g., bash
+    /// OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g.,
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
+    /// $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/ipRestriction:IpRestriction")]

@@ -50,40 +50,44 @@ func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getPolicy.
 type LookupPolicyArgs struct {
-	// List of actions allowed by the policy.
+	// Set of actions allowed by the policy.
 	Allows []string `pulumi:"allows"`
-	// List of actions that will be denied no matter what policy exists.
+	// Set of actions that will be denied no matter what policy exists.
 	Denies []string `pulumi:"denies"`
 	// Group description.
 	Description *string `pulumi:"description"`
-	// List of actions that will be subtracted from the `allow` list.
+	// Set of actions that will be subtracted from the `allow` list.
 	Excepts []string `pulumi:"excepts"`
 	// UUID of the policy.
 	Id string `pulumi:"id"`
+	// Set of permissions groups that apply to the policy.
+	PermissionsGroups []string `pulumi:"permissionsGroups"`
 }
 
 // A collection of values returned by getPolicy.
 type LookupPolicyResult struct {
-	// List of actions allowed by the policy.
+	// Set of actions allowed by the policy.
 	Allows []string `pulumi:"allows"`
 	// Creation date of this group.
 	CreatedAt string `pulumi:"createdAt"`
-	// List of actions that will be denied no matter what policy exists.
+	// Set of actions that will be denied no matter what policy exists.
 	Denies []string `pulumi:"denies"`
 	// Group description.
 	Description *string `pulumi:"description"`
-	// List of actions that will be subtracted from the `allow` list.
+	// Set of actions that will be subtracted from the `allow` list.
 	Excepts []string `pulumi:"excepts"`
 	Id      string   `pulumi:"id"`
-	// List of identities affected by the policy.
+	// Set of identities affected by the policy.
 	Identities []string `pulumi:"identities"`
 	// Name of the policy.
 	Name string `pulumi:"name"`
 	// Owner of the policy.
 	Owner string `pulumi:"owner"`
+	// Set of permissions groups that apply to the policy.
+	PermissionsGroups []string `pulumi:"permissionsGroups"`
 	// Indicates that the policy is a default one.
 	ReadOnly bool `pulumi:"readOnly"`
-	// List of resources affected by the policy.
+	// Set of resources affected by the policy.
 	Resources []string `pulumi:"resources"`
 	// Date of the last update of this group.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -104,16 +108,18 @@ func LookupPolicyOutput(ctx *pulumi.Context, args LookupPolicyOutputArgs, opts .
 
 // A collection of arguments for invoking getPolicy.
 type LookupPolicyOutputArgs struct {
-	// List of actions allowed by the policy.
+	// Set of actions allowed by the policy.
 	Allows pulumi.StringArrayInput `pulumi:"allows"`
-	// List of actions that will be denied no matter what policy exists.
+	// Set of actions that will be denied no matter what policy exists.
 	Denies pulumi.StringArrayInput `pulumi:"denies"`
 	// Group description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// List of actions that will be subtracted from the `allow` list.
+	// Set of actions that will be subtracted from the `allow` list.
 	Excepts pulumi.StringArrayInput `pulumi:"excepts"`
 	// UUID of the policy.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Set of permissions groups that apply to the policy.
+	PermissionsGroups pulumi.StringArrayInput `pulumi:"permissionsGroups"`
 }
 
 func (LookupPolicyOutputArgs) ElementType() reflect.Type {
@@ -135,7 +141,7 @@ func (o LookupPolicyResultOutput) ToLookupPolicyResultOutputWithContext(ctx cont
 	return o
 }
 
-// List of actions allowed by the policy.
+// Set of actions allowed by the policy.
 func (o LookupPolicyResultOutput) Allows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyResult) []string { return v.Allows }).(pulumi.StringArrayOutput)
 }
@@ -145,7 +151,7 @@ func (o LookupPolicyResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// List of actions that will be denied no matter what policy exists.
+// Set of actions that will be denied no matter what policy exists.
 func (o LookupPolicyResultOutput) Denies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyResult) []string { return v.Denies }).(pulumi.StringArrayOutput)
 }
@@ -155,7 +161,7 @@ func (o LookupPolicyResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// List of actions that will be subtracted from the `allow` list.
+// Set of actions that will be subtracted from the `allow` list.
 func (o LookupPolicyResultOutput) Excepts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyResult) []string { return v.Excepts }).(pulumi.StringArrayOutput)
 }
@@ -164,7 +170,7 @@ func (o LookupPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of identities affected by the policy.
+// Set of identities affected by the policy.
 func (o LookupPolicyResultOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyResult) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -179,12 +185,17 @@ func (o LookupPolicyResultOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Owner }).(pulumi.StringOutput)
 }
 
+// Set of permissions groups that apply to the policy.
+func (o LookupPolicyResultOutput) PermissionsGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPolicyResult) []string { return v.PermissionsGroups }).(pulumi.StringArrayOutput)
+}
+
 // Indicates that the policy is a default one.
 func (o LookupPolicyResultOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPolicyResult) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
-// List of resources affected by the policy.
+// Set of resources affected by the policy.
 func (o LookupPolicyResultOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyResult) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }

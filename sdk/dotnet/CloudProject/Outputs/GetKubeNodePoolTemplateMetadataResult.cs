@@ -13,8 +13,17 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class GetKubeNodePoolTemplateMetadataResult
     {
+        /// <summary>
+        /// annotations
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Annotations;
+        /// <summary>
+        /// finalizers
+        /// </summary>
         public readonly ImmutableArray<string> Finalizers;
+        /// <summary>
+        /// labels
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
 
         [OutputConstructor]

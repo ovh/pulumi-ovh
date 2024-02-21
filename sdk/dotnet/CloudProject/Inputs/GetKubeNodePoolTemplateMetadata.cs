@@ -14,6 +14,10 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     {
         [Input("annotations")]
         private Dictionary<string, string>? _annotations;
+
+        /// <summary>
+        /// annotations
+        /// </summary>
         public Dictionary<string, string> Annotations
         {
             get => _annotations ?? (_annotations = new Dictionary<string, string>());
@@ -22,6 +26,10 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
         [Input("finalizers")]
         private List<string>? _finalizers;
+
+        /// <summary>
+        /// finalizers
+        /// </summary>
         public List<string> Finalizers
         {
             get => _finalizers ?? (_finalizers = new List<string>());
@@ -30,6 +38,10 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
         [Input("labels")]
         private Dictionary<string, string>? _labels;
+
+        /// <summary>
+        /// labels
+        /// </summary>
         public Dictionary<string, string> Labels
         {
             get => _labels ?? (_labels = new Dictionary<string, string>());

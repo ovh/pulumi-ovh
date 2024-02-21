@@ -22,13 +22,16 @@ class GetServerResult:
     """
     A collection of values returned by getServer.
     """
-    def __init__(__self__, server_urn=None, boot_id=None, commercial_range=None, datacenter=None, enabled_public_vnis=None, enabled_vrack_aggregation_vnis=None, enabled_vrack_vnis=None, id=None, ip=None, ips=None, link_speed=None, monitoring=None, name=None, os=None, professional_use=None, rack=None, rescue_mail=None, reverse=None, root_device=None, server_id=None, service_name=None, state=None, support_level=None, vnis=None):
+    def __init__(__self__, server_urn=None, boot_id=None, boot_script=None, commercial_range=None, datacenter=None, enabled_public_vnis=None, enabled_vrack_aggregation_vnis=None, enabled_vrack_vnis=None, id=None, ip=None, ips=None, link_speed=None, monitoring=None, name=None, os=None, professional_use=None, rack=None, rescue_mail=None, reverse=None, root_device=None, server_id=None, service_name=None, state=None, support_level=None, vnis=None):
         if server_urn and not isinstance(server_urn, str):
             raise TypeError("Expected argument 'server_urn' to be a str")
         pulumi.set(__self__, "server_urn", server_urn)
         if boot_id and not isinstance(boot_id, int):
             raise TypeError("Expected argument 'boot_id' to be a int")
         pulumi.set(__self__, "boot_id", boot_id)
+        if boot_script and not isinstance(boot_script, str):
+            raise TypeError("Expected argument 'boot_script' to be a str")
+        pulumi.set(__self__, "boot_script", boot_script)
         if commercial_range and not isinstance(commercial_range, str):
             raise TypeError("Expected argument 'commercial_range' to be a str")
         pulumi.set(__self__, "commercial_range", commercial_range)
@@ -111,6 +114,14 @@ class GetServerResult:
         boot id of the server
         """
         return pulumi.get(self, "boot_id")
+
+    @property
+    @pulumi.getter(name="bootScript")
+    def boot_script(self) -> str:
+        """
+        boot script of the server
+        """
+        return pulumi.get(self, "boot_script")
 
     @property
     @pulumi.getter(name="commercialRange")
@@ -294,6 +305,7 @@ class AwaitableGetServerResult(GetServerResult):
         return GetServerResult(
             server_urn=self.server_urn,
             boot_id=self.boot_id,
+            boot_script=self.boot_script,
             commercial_range=self.commercial_range,
             datacenter=self.datacenter,
             enabled_public_vnis=self.enabled_public_vnis,
@@ -343,6 +355,7 @@ def get_server(service_name: Optional[str] = None,
     return AwaitableGetServerResult(
         server_urn=pulumi.get(__ret__, 'server_urn'),
         boot_id=pulumi.get(__ret__, 'boot_id'),
+        boot_script=pulumi.get(__ret__, 'boot_script'),
         commercial_range=pulumi.get(__ret__, 'commercial_range'),
         datacenter=pulumi.get(__ret__, 'datacenter'),
         enabled_public_vnis=pulumi.get(__ret__, 'enabled_public_vnis'),

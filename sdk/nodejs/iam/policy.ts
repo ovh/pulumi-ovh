@@ -68,7 +68,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * List of actions that will be denied no matter what policy exists.
+     * List of actions that will always be denied even if also allowed by this policy or another one.
      */
     public readonly denies!: pulumi.Output<string[] | undefined>;
     /**
@@ -91,6 +91,10 @@ export class Policy extends pulumi.CustomResource {
      * Owner of the policy.
      */
     public /*out*/ readonly owner!: pulumi.Output<string>;
+    /**
+     * Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+     */
+    public readonly permissionsGroups!: pulumi.Output<string[] | undefined>;
     /**
      * Indicates that the policy is a default one.
      */
@@ -125,6 +129,7 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["identities"] = state ? state.identities : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["permissionsGroups"] = state ? state.permissionsGroups : undefined;
             resourceInputs["readOnly"] = state ? state.readOnly : undefined;
             resourceInputs["resources"] = state ? state.resources : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
@@ -142,6 +147,7 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["excepts"] = args ? args.excepts : undefined;
             resourceInputs["identities"] = args ? args.identities : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["permissionsGroups"] = args ? args.permissionsGroups : undefined;
             resourceInputs["resources"] = args ? args.resources : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
@@ -166,7 +172,7 @@ export interface PolicyState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * List of actions that will be denied no matter what policy exists.
+     * List of actions that will always be denied even if also allowed by this policy or another one.
      */
     denies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -190,6 +196,10 @@ export interface PolicyState {
      */
     owner?: pulumi.Input<string>;
     /**
+     * Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+     */
+    permissionsGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Indicates that the policy is a default one.
      */
     readOnly?: pulumi.Input<boolean>;
@@ -212,7 +222,7 @@ export interface PolicyArgs {
      */
     allows?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of actions that will be denied no matter what policy exists.
+     * List of actions that will always be denied even if also allowed by this policy or another one.
      */
     denies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -231,6 +241,10 @@ export interface PolicyArgs {
      * Name of the policy, must be unique
      */
     name?: pulumi.Input<string>;
+    /**
+     * Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+     */
+    permissionsGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of resources affected by the policy
      */

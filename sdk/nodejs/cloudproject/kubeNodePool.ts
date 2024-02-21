@@ -69,10 +69,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g., bash
+ * OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g.,
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
+ * $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
  * ```
  */
 export class KubeNodePool extends pulumi.CustomResource {
@@ -109,9 +111,24 @@ export class KubeNodePool extends pulumi.CustomResource {
     public readonly antiAffinity!: pulumi.Output<boolean>;
     /**
      * Enable auto-scaling for the pool. Default to `false`.
-     * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     public readonly autoscale!: pulumi.Output<boolean>;
+    /**
+     * scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
+     */
+    public readonly autoscalingScaleDownUnneededTimeSeconds!: pulumi.Output<number>;
+    /**
+     * scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
+     */
+    public readonly autoscalingScaleDownUnreadyTimeSeconds!: pulumi.Output<number>;
+    /**
+     * scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+     */
+    public readonly autoscalingScaleDownUtilizationThreshold!: pulumi.Output<number>;
     /**
      * Number of nodes which are actually ready in the pool
      */
@@ -201,6 +218,9 @@ export class KubeNodePool extends pulumi.CustomResource {
             const state = argsOrState as KubeNodePoolState | undefined;
             resourceInputs["antiAffinity"] = state ? state.antiAffinity : undefined;
             resourceInputs["autoscale"] = state ? state.autoscale : undefined;
+            resourceInputs["autoscalingScaleDownUnneededTimeSeconds"] = state ? state.autoscalingScaleDownUnneededTimeSeconds : undefined;
+            resourceInputs["autoscalingScaleDownUnreadyTimeSeconds"] = state ? state.autoscalingScaleDownUnreadyTimeSeconds : undefined;
+            resourceInputs["autoscalingScaleDownUtilizationThreshold"] = state ? state.autoscalingScaleDownUtilizationThreshold : undefined;
             resourceInputs["availableNodes"] = state ? state.availableNodes : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["currentNodes"] = state ? state.currentNodes : undefined;
@@ -232,6 +252,9 @@ export class KubeNodePool extends pulumi.CustomResource {
             }
             resourceInputs["antiAffinity"] = args ? args.antiAffinity : undefined;
             resourceInputs["autoscale"] = args ? args.autoscale : undefined;
+            resourceInputs["autoscalingScaleDownUnneededTimeSeconds"] = args ? args.autoscalingScaleDownUnneededTimeSeconds : undefined;
+            resourceInputs["autoscalingScaleDownUnreadyTimeSeconds"] = args ? args.autoscalingScaleDownUnreadyTimeSeconds : undefined;
+            resourceInputs["autoscalingScaleDownUtilizationThreshold"] = args ? args.autoscalingScaleDownUtilizationThreshold : undefined;
             resourceInputs["desiredNodes"] = args ? args.desiredNodes : undefined;
             resourceInputs["flavorName"] = args ? args.flavorName : undefined;
             resourceInputs["kubeId"] = args ? args.kubeId : undefined;
@@ -266,9 +289,24 @@ export interface KubeNodePoolState {
     antiAffinity?: pulumi.Input<boolean>;
     /**
      * Enable auto-scaling for the pool. Default to `false`.
-     * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     autoscale?: pulumi.Input<boolean>;
+    /**
+     * scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
+     */
+    autoscalingScaleDownUnneededTimeSeconds?: pulumi.Input<number>;
+    /**
+     * scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
+     */
+    autoscalingScaleDownUnreadyTimeSeconds?: pulumi.Input<number>;
+    /**
+     * scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+     */
+    autoscalingScaleDownUtilizationThreshold?: pulumi.Input<number>;
     /**
      * Number of nodes which are actually ready in the pool
      */
@@ -354,9 +392,24 @@ export interface KubeNodePoolArgs {
     antiAffinity?: pulumi.Input<boolean>;
     /**
      * Enable auto-scaling for the pool. Default to `false`.
-     * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     autoscale?: pulumi.Input<boolean>;
+    /**
+     * scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
+     */
+    autoscalingScaleDownUnneededTimeSeconds?: pulumi.Input<number>;
+    /**
+     * scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
+     */
+    autoscalingScaleDownUnreadyTimeSeconds?: pulumi.Input<number>;
+    /**
+     * scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+     */
+    autoscalingScaleDownUtilizationThreshold?: pulumi.Input<number>;
     /**
      * number of nodes to start.
      */

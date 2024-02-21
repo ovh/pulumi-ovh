@@ -22,10 +22,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash
+ * OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
+ * $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
  * ```
  */
 export class KubeIpRestrictions extends pulumi.CustomResource {

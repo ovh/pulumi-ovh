@@ -15,12 +15,13 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	ovh "github.com/ovh/pulumi-ovh/provider"
-	"github.com/ovh/pulumi-ovh/provider/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("ovh", version.Version, ovh.Provider())
+	//tfgen.Main("ovh", version.Version, ovh.Provider())
+
+	tfgen.MainWithMuxer("ovh", ovh.Provider())
 }

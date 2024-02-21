@@ -75,7 +75,7 @@ namespace Pulumi.Ovh.Iam
         private List<string>? _allows;
 
         /// <summary>
-        /// List of actions allowed by the policy.
+        /// Set of actions allowed by the policy.
         /// </summary>
         public List<string> Allows
         {
@@ -87,7 +87,7 @@ namespace Pulumi.Ovh.Iam
         private List<string>? _denies;
 
         /// <summary>
-        /// List of actions that will be denied no matter what policy exists.
+        /// Set of actions that will be denied no matter what policy exists.
         /// </summary>
         public List<string> Denies
         {
@@ -105,7 +105,7 @@ namespace Pulumi.Ovh.Iam
         private List<string>? _excepts;
 
         /// <summary>
-        /// List of actions that will be subtracted from the `allow` list.
+        /// Set of actions that will be subtracted from the `allow` list.
         /// </summary>
         public List<string> Excepts
         {
@@ -119,6 +119,18 @@ namespace Pulumi.Ovh.Iam
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
+        [Input("permissionsGroups")]
+        private List<string>? _permissionsGroups;
+
+        /// <summary>
+        /// Set of permissions groups that apply to the policy.
+        /// </summary>
+        public List<string> PermissionsGroups
+        {
+            get => _permissionsGroups ?? (_permissionsGroups = new List<string>());
+            set => _permissionsGroups = value;
+        }
+
         public GetPolicyArgs()
         {
         }
@@ -131,7 +143,7 @@ namespace Pulumi.Ovh.Iam
         private InputList<string>? _allows;
 
         /// <summary>
-        /// List of actions allowed by the policy.
+        /// Set of actions allowed by the policy.
         /// </summary>
         public InputList<string> Allows
         {
@@ -143,7 +155,7 @@ namespace Pulumi.Ovh.Iam
         private InputList<string>? _denies;
 
         /// <summary>
-        /// List of actions that will be denied no matter what policy exists.
+        /// Set of actions that will be denied no matter what policy exists.
         /// </summary>
         public InputList<string> Denies
         {
@@ -161,7 +173,7 @@ namespace Pulumi.Ovh.Iam
         private InputList<string>? _excepts;
 
         /// <summary>
-        /// List of actions that will be subtracted from the `allow` list.
+        /// Set of actions that will be subtracted from the `allow` list.
         /// </summary>
         public InputList<string> Excepts
         {
@@ -175,6 +187,18 @@ namespace Pulumi.Ovh.Iam
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        [Input("permissionsGroups")]
+        private InputList<string>? _permissionsGroups;
+
+        /// <summary>
+        /// Set of permissions groups that apply to the policy.
+        /// </summary>
+        public InputList<string> PermissionsGroups
+        {
+            get => _permissionsGroups ?? (_permissionsGroups = new InputList<string>());
+            set => _permissionsGroups = value;
+        }
+
         public GetPolicyInvokeArgs()
         {
         }
@@ -186,7 +210,7 @@ namespace Pulumi.Ovh.Iam
     public sealed class GetPolicyResult
     {
         /// <summary>
-        /// List of actions allowed by the policy.
+        /// Set of actions allowed by the policy.
         /// </summary>
         public readonly ImmutableArray<string> Allows;
         /// <summary>
@@ -194,7 +218,7 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// List of actions that will be denied no matter what policy exists.
+        /// Set of actions that will be denied no matter what policy exists.
         /// </summary>
         public readonly ImmutableArray<string> Denies;
         /// <summary>
@@ -202,12 +226,12 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// List of actions that will be subtracted from the `allow` list.
+        /// Set of actions that will be subtracted from the `allow` list.
         /// </summary>
         public readonly ImmutableArray<string> Excepts;
         public readonly string Id;
         /// <summary>
-        /// List of identities affected by the policy.
+        /// Set of identities affected by the policy.
         /// </summary>
         public readonly ImmutableArray<string> Identities;
         /// <summary>
@@ -219,11 +243,15 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         public readonly string Owner;
         /// <summary>
+        /// Set of permissions groups that apply to the policy.
+        /// </summary>
+        public readonly ImmutableArray<string> PermissionsGroups;
+        /// <summary>
         /// Indicates that the policy is a default one.
         /// </summary>
         public readonly bool ReadOnly;
         /// <summary>
-        /// List of resources affected by the policy.
+        /// Set of resources affected by the policy.
         /// </summary>
         public readonly ImmutableArray<string> Resources;
         /// <summary>
@@ -251,6 +279,8 @@ namespace Pulumi.Ovh.Iam
 
             string owner,
 
+            ImmutableArray<string> permissionsGroups,
+
             bool readOnly,
 
             ImmutableArray<string> resources,
@@ -266,6 +296,7 @@ namespace Pulumi.Ovh.Iam
             Identities = identities;
             Name = name;
             Owner = owner;
+            PermissionsGroups = permissionsGroups;
             ReadOnly = readOnly;
             Resources = resources;
             UpdatedAt = updatedAt;

@@ -7,10 +7,12 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+ * OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
  * ```
  */
 export class MongoDbUser extends pulumi.CustomResource {
@@ -62,8 +64,25 @@ export class MongoDbUser extends pulumi.CustomResource {
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
     /**
-     * Roles the user belongs to.
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
      * Available roles:
+     * * `backup@admin`
+     * * `clusterAdmin@admin`
+     * * `clusterManager@admin`
+     * * `clusterMonitor@admin`
+     * * `dbAdmin@(defined db)`
+     * * `dbAdminAnyDatabase@admin`
+     * * `dbOwner@(defined db)`
+     * * `enableSharding@(defined db)`
+     * * `hostManager@admin`
+     * * `read@(defined db)`
+     * * `readAnyDatabase@admin`
+     * * `readWrite@(defined db)`
+     * * `readWriteAnyDatabase@admin`
+     * * `restore@admin`
+     * * `root@admin`
+     * * `userAdmin@(defined db)`
+     * * `userAdminAnyDatabase@admin`
      */
     public readonly roles!: pulumi.Output<string[] | undefined>;
     /**
@@ -146,8 +165,25 @@ export interface MongoDbUserState {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to.
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
      * Available roles:
+     * * `backup@admin`
+     * * `clusterAdmin@admin`
+     * * `clusterManager@admin`
+     * * `clusterMonitor@admin`
+     * * `dbAdmin@(defined db)`
+     * * `dbAdminAnyDatabase@admin`
+     * * `dbOwner@(defined db)`
+     * * `enableSharding@(defined db)`
+     * * `hostManager@admin`
+     * * `read@(defined db)`
+     * * `readAnyDatabase@admin`
+     * * `readWrite@(defined db)`
+     * * `readWriteAnyDatabase@admin`
+     * * `restore@admin`
+     * * `root@admin`
+     * * `userAdmin@(defined db)`
+     * * `userAdminAnyDatabase@admin`
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -178,8 +214,25 @@ export interface MongoDbUserArgs {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to.
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
      * Available roles:
+     * * `backup@admin`
+     * * `clusterAdmin@admin`
+     * * `clusterManager@admin`
+     * * `clusterMonitor@admin`
+     * * `dbAdmin@(defined db)`
+     * * `dbAdminAnyDatabase@admin`
+     * * `dbOwner@(defined db)`
+     * * `enableSharding@(defined db)`
+     * * `hostManager@admin`
+     * * `read@(defined db)`
+     * * `readAnyDatabase@admin`
+     * * `readWrite@(defined db)`
+     * * `readWriteAnyDatabase@admin`
+     * * `restore@admin`
+     * * `root@admin`
+     * * `userAdmin@(defined db)`
+     * * `userAdminAnyDatabase@admin`
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**

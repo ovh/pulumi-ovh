@@ -857,7 +857,7 @@ class KubeNodePoolTemplateSpecArgs:
                  taints: pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]],
                  unschedulable: pulumi.Input[bool]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] taints: Taints to apply to each node
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] taints: Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
         :param pulumi.Input[bool] unschedulable: If true, set nodes as un-schedulable
         """
         pulumi.set(__self__, "taints", taints)
@@ -867,7 +867,7 @@ class KubeNodePoolTemplateSpecArgs:
     @pulumi.getter
     def taints(self) -> pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]:
         """
-        Taints to apply to each node
+        Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
         """
         return pulumi.get(self, "taints")
 
@@ -1832,6 +1832,10 @@ class GetKubeNodePoolTemplateArgs:
     def __init__(__self__, *,
                  metadata: Optional['GetKubeNodePoolTemplateMetadataArgs'] = None,
                  spec: Optional['GetKubeNodePoolTemplateSpecArgs'] = None):
+        """
+        :param 'GetKubeNodePoolTemplateMetadataArgs' metadata: metadata
+        :param 'GetKubeNodePoolTemplateSpecArgs' spec: spec
+        """
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if spec is not None:
@@ -1840,6 +1844,9 @@ class GetKubeNodePoolTemplateArgs:
     @property
     @pulumi.getter
     def metadata(self) -> Optional['GetKubeNodePoolTemplateMetadataArgs']:
+        """
+        metadata
+        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -1849,6 +1856,9 @@ class GetKubeNodePoolTemplateArgs:
     @property
     @pulumi.getter
     def spec(self) -> Optional['GetKubeNodePoolTemplateSpecArgs']:
+        """
+        spec
+        """
         return pulumi.get(self, "spec")
 
     @spec.setter
@@ -1862,6 +1872,11 @@ class GetKubeNodePoolTemplateMetadataArgs:
                  annotations: Optional[Mapping[str, str]] = None,
                  finalizers: Optional[Sequence[str]] = None,
                  labels: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] annotations: annotations
+        :param Sequence[str] finalizers: finalizers
+        :param Mapping[str, str] labels: labels
+        """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if finalizers is not None:
@@ -1872,6 +1887,9 @@ class GetKubeNodePoolTemplateMetadataArgs:
     @property
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, str]]:
+        """
+        annotations
+        """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
@@ -1881,6 +1899,9 @@ class GetKubeNodePoolTemplateMetadataArgs:
     @property
     @pulumi.getter
     def finalizers(self) -> Optional[Sequence[str]]:
+        """
+        finalizers
+        """
         return pulumi.get(self, "finalizers")
 
     @finalizers.setter
@@ -1890,6 +1911,9 @@ class GetKubeNodePoolTemplateMetadataArgs:
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        labels
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -1902,6 +1926,10 @@ class GetKubeNodePoolTemplateSpecArgs:
     def __init__(__self__, *,
                  taints: Optional[Sequence[Mapping[str, Any]]] = None,
                  unschedulable: Optional[bool] = None):
+        """
+        :param Sequence[Mapping[str, Any]] taints: taints
+        :param bool unschedulable: unschedulable
+        """
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if unschedulable is not None:
@@ -1910,6 +1938,9 @@ class GetKubeNodePoolTemplateSpecArgs:
     @property
     @pulumi.getter
     def taints(self) -> Optional[Sequence[Mapping[str, Any]]]:
+        """
+        taints
+        """
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -1919,6 +1950,9 @@ class GetKubeNodePoolTemplateSpecArgs:
     @property
     @pulumi.getter
     def unschedulable(self) -> Optional[bool]:
+        """
+        unschedulable
+        """
         return pulumi.get(self, "unschedulable")
 
     @unschedulable.setter

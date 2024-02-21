@@ -47,9 +47,7 @@ import (
 // HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
-//
+// $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
 // ```
 type NasHAPartitionSnapshot struct {
 	pulumi.CustomResourceState

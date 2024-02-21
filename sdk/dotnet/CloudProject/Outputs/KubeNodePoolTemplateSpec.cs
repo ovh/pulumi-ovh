@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class KubeNodePoolTemplateSpec
     {
         /// <summary>
-        /// Taints to apply to each node
+        /// Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
         /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, object>> Taints;
         /// <summary>

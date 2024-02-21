@@ -350,10 +350,12 @@ class RedisUser(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+        OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+
+         bash
 
         ```sh
-         $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
+        $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
         ```
 
         :param str resource_name: The name of the resource.
@@ -377,10 +379,12 @@ class RedisUser(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+        OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+
+         bash
 
         ```sh
-         $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
+        $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
         ```
 
         :param str resource_name: The name of the resource.

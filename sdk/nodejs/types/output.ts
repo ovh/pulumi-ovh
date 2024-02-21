@@ -401,18 +401,39 @@ export namespace CloudProject {
     }
 
     export interface GetKubeNodePoolTemplate {
+        /**
+         * metadata
+         */
         metadata?: outputs.CloudProject.GetKubeNodePoolTemplateMetadata;
+        /**
+         * spec
+         */
         spec?: outputs.CloudProject.GetKubeNodePoolTemplateSpec;
     }
 
     export interface GetKubeNodePoolTemplateMetadata {
+        /**
+         * annotations
+         */
         annotations?: {[key: string]: string};
+        /**
+         * finalizers
+         */
         finalizers?: string[];
+        /**
+         * labels
+         */
         labels?: {[key: string]: string};
     }
 
     export interface GetKubeNodePoolTemplateSpec {
+        /**
+         * taints
+         */
         taints?: {[key: string]: any}[];
+        /**
+         * unschedulable
+         */
         unschedulable?: boolean;
     }
 
@@ -679,7 +700,7 @@ export namespace CloudProject {
 
     export interface KubeNodePoolTemplateSpec {
         /**
-         * Taints to apply to each node
+         * Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
          */
         taints: {[key: string]: any}[];
         /**
@@ -1108,7 +1129,13 @@ export namespace Dedicated {
     }
 
     export interface ServerNetworkingInterface {
+        /**
+         * Interface Mac address
+         */
         macs: string[];
+        /**
+         * Interface type
+         */
         type: string;
     }
 

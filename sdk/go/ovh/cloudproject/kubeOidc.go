@@ -58,12 +58,12 @@ import (
 //
 // ## Import
 //
-// OVHcloud Managed Kubernetes Service cluster OIDC can be imported using the tenant `service_name` and cluster id `kube_id` separated by "/" E.g., bash
+// OVHcloud Managed Kubernetes Service cluster OIDC can be imported using the tenant `service_name` and cluster id `kube_id` separated by "/" E.g.,
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProject/kubeOidc:KubeOidc my-oidc service_name/kube_id
-//
+// $ pulumi import ovh:CloudProject/kubeOidc:KubeOidc my-oidc service_name/kube_id
 // ```
 type KubeOidc struct {
 	pulumi.CustomResourceState

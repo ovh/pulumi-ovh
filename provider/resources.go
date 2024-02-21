@@ -15,6 +15,8 @@
 package ovh
 
 import (
+	"context"
+	_ "embed"
 	"fmt"
 	"path/filepath"
 	"unicode"
@@ -23,6 +25,7 @@ import (
 
 	"github.com/ovh/pulumi-ovh/provider/pkg/version"
 	"github.com/ovh/terraform-provider-ovh/ovh"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -90,10 +93,20 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 	return nil
 }
 
+//go:embed cmd/pulumi-resource-ovh/bridge-metadata.json
+var bridgeMetadata []byte
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(ovh.Provider())
+	//p := shimv2.NewProvider(ovh.Provider())
+
+	p := pfbridge.MuxShimWithPF(
+		context.Background(),
+		shimv2.NewProvider(ovh.Provider()),
+		&ovh.OvhProvider{},
+		//shimv2.NewProvider(ovh.Provider()),
+	)
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -107,6 +120,10 @@ func Provider() tfbridge.ProviderInfo {
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
 		Publisher: "OVHcloud",
+
+		// This is now required.
+		MetadataInfo: tfbridge.NewProviderMetadata(bridgeMetadata),
+
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -170,6 +187,12 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_containerregistry_oidc": {
 				Tok: ovhResource(cloudProjectMod, "ContainerRegistryOIDC"),
 			},
+			"ovh_cloud_project_containerregistry_ip_restrictions_management": {
+				Tok: ovhResource(cloudProjectMod, "ContainerRegistryIPRestrictionsManagement"),
+			},
+			"ovh_cloud_project_containerregistry_ip_restrictions_registry": {
+				Tok: ovhResource(cloudProjectMod, "ContainerRegistryIPRestrictionsRegistry"),
+			},
 			"ovh_cloud_project_database": {
 				Tok: ovhResource(cloudProjectMod, "Database"),
 			},
@@ -193,6 +216,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_database_postgresql_user": {
 				Tok: ovhResource(cloudProjectDbMod, "PostgresSqlUser"),
+			},
+			"ovh_cloud_project_database_postgresql_connection_pool": {
+				Tok: ovhResource(cloudProjectDbMod, "PostgresSqlConnectionPool"),
 			},
 			"ovh_cloud_project_database_m3db_namespace": {
 				Tok: ovhResource(cloudProjectDbMod, "M3DbNamespace"),
@@ -429,11 +455,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dbaas_logs_cluster": {
 				Tok: ovhResource(dbaasMod, "LogsCluster"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {
-						Name: "DBaasURN",
-					},
-				},
+			},
+			"ovh_iam_permissions_group": {
+				Tok: ovhResource(iamMod, "PermissionsGroup"),
 			},
 			"ovh_iam_policy": {
 				Tok: ovhResource(iamMod, "Policy"),
@@ -476,6 +500,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_containerregistry_oidc": {
 				Tok: ovhDataSource(cloudProjectMod, "getContainerRegistryOIDC"),
+			},
+			"ovh_cloud_project_containerregistry_ip_restrictions_management": {
+				Tok: ovhDataSource(cloudProjectMod, "getContainerRegistryIPRestrictionsManagement"),
+			},
+			"ovh_cloud_project_containerregistry_ip_restrictions_registry": {
+				Tok: ovhDataSource(cloudProjectMod, "getContainerRegistryIPRestrictionsRegistry"),
 			},
 			"ovh_cloud_project_database": {
 				Tok: ovhDataSource(cloudProjectDbMod, "getDatabase"),
@@ -524,6 +554,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_database_postgresql_user": {
 				Tok: ovhDataSource(cloudProjectDbMod, "getPostgresSqlUser"),
+			},
+			"ovh_cloud_project_database_postgresql_connection_pool": {
+				Tok: ovhDataSource(cloudProjectDbMod, "getPostgresSqlConnectionPool"),
 			},
 			"ovh_cloud_project_database_user": {
 				Tok: ovhDataSource(cloudProjectDbMod, "getUser"),
@@ -759,11 +792,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dbaas_logs_cluster": {
 				Tok: ovhDataSource(dbaasMod, "getLogsCluster"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {
-						Name: "DBaasURN",
-					},
-				},
+			},
+			"ovh_iam_permissions_group": {
+				Tok: ovhDataSource(iamMod, "getPermissionsGroup"),
+			},
+			"ovh_iam_permissions_groups": {
+				Tok: ovhDataSource(iamMod, "getPermissionsGroups"),
 			},
 			"ovh_iam_policies": {
 				Tok: ovhDataSource(iamMod, "getPolicies"),

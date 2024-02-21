@@ -238,17 +238,27 @@ class ServerNetworkingInterface(dict):
     def __init__(__self__, *,
                  macs: Sequence[str],
                  type: str):
+        """
+        :param Sequence[str] macs: Interface Mac address
+        :param str type: Interface type
+        """
         pulumi.set(__self__, "macs", macs)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def macs(self) -> Sequence[str]:
+        """
+        Interface Mac address
+        """
         return pulumi.get(self, "macs")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Interface type
+        """
         return pulumi.get(self, "type")
 
 

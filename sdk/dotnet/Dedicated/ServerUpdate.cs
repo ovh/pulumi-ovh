@@ -48,6 +48,12 @@ namespace Pulumi.Ovh.Dedicated
         public Output<int> BootId { get; private set; } = null!;
 
         /// <summary>
+        /// boot script of the server
+        /// </summary>
+        [Output("bootScript")]
+        public Output<string?> BootScript { get; private set; } = null!;
+
+        /// <summary>
         /// Icmp monitoring state
         /// </summary>
         [Output("monitoring")]
@@ -119,6 +125,12 @@ namespace Pulumi.Ovh.Dedicated
         public Input<int>? BootId { get; set; }
 
         /// <summary>
+        /// boot script of the server
+        /// </summary>
+        [Input("bootScript")]
+        public Input<string>? BootScript { get; set; }
+
+        /// <summary>
         /// Icmp monitoring state
         /// </summary>
         [Input("monitoring")]
@@ -149,6 +161,12 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         [Input("bootId")]
         public Input<int>? BootId { get; set; }
+
+        /// <summary>
+        /// boot script of the server
+        /// </summary>
+        [Input("bootScript")]
+        public Input<string>? BootScript { get; set; }
 
         /// <summary>
         /// Icmp monitoring state

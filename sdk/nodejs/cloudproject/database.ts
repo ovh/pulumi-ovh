@@ -197,10 +197,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash
+ * OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+ * $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
  * ```
  */
 export class Database extends pulumi.CustomResource {
@@ -236,9 +238,13 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly advancedConfiguration!: pulumi.Output<{[key: string]: string}>;
     /**
+     * List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+     */
+    public readonly backupRegions!: pulumi.Output<string[]>;
+    /**
      * Time on which backups start every day.
      */
-    public /*out*/ readonly backupTime!: pulumi.Output<string>;
+    public readonly backupTime!: pulumi.Output<string>;
     /**
      * Date of the creation of the cluster.
      */
@@ -324,6 +330,7 @@ export class Database extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
             resourceInputs["advancedConfiguration"] = state ? state.advancedConfiguration : undefined;
+            resourceInputs["backupRegions"] = state ? state.backupRegions : undefined;
             resourceInputs["backupTime"] = state ? state.backupTime : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -362,6 +369,8 @@ export class Database extends pulumi.CustomResource {
                 throw new Error("Missing required property 'version'");
             }
             resourceInputs["advancedConfiguration"] = args ? args.advancedConfiguration : undefined;
+            resourceInputs["backupRegions"] = args ? args.backupRegions : undefined;
+            resourceInputs["backupTime"] = args ? args.backupTime : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
@@ -372,7 +381,6 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["backupTime"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["diskType"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
@@ -393,6 +401,10 @@ export interface DatabaseState {
      * Advanced configuration key / value.
      */
     advancedConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+     */
+    backupRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Time on which backups start every day.
      */
@@ -477,6 +489,14 @@ export interface DatabaseArgs {
      * Advanced configuration key / value.
      */
     advancedConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+     */
+    backupRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Time on which backups start every day.
+     */
+    backupTime?: pulumi.Input<string>;
     /**
      * Small description of the database service.
      */

@@ -318,10 +318,10 @@ class Vrack(pulumi.CustomResource):
 
         vRack can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders).
 
-        bash
+         bash
 
         ```sh
-         $ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
+        $ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -366,10 +366,10 @@ class Vrack(pulumi.CustomResource):
 
         vRack can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders).
 
-        bash
+         bash
 
         ```sh
-         $ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
+        $ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
         ```
 
         :param str resource_name: The name of the resource.

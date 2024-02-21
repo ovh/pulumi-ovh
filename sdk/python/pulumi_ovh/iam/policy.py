@@ -20,16 +20,18 @@ class PolicyArgs:
                  denies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  excepts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 permissions_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Policy resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources affected by the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will be denied no matter what policy exists.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
         :param pulumi.Input[str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
         :param pulumi.Input[str] name: Name of the policy, must be unique
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions_groups: Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
         """
         pulumi.set(__self__, "identities", identities)
         pulumi.set(__self__, "resources", resources)
@@ -43,6 +45,8 @@ class PolicyArgs:
             pulumi.set(__self__, "excepts", excepts)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if permissions_groups is not None:
+            pulumi.set(__self__, "permissions_groups", permissions_groups)
 
     @property
     @pulumi.getter
@@ -84,7 +88,7 @@ class PolicyArgs:
     @pulumi.getter
     def denies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of actions that will be denied no matter what policy exists.
+        List of actions that will always be denied even if also allowed by this policy or another one.
         """
         return pulumi.get(self, "denies")
 
@@ -128,6 +132,18 @@ class PolicyArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="permissionsGroups")
+    def permissions_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        """
+        return pulumi.get(self, "permissions_groups")
+
+    @permissions_groups.setter
+    def permissions_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permissions_groups", value)
+
 
 @pulumi.input_type
 class _PolicyState:
@@ -140,6 +156,7 @@ class _PolicyState:
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
+                 permissions_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None):
@@ -147,12 +164,13 @@ class _PolicyState:
         Input properties used for looking up and filtering Policy resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
         :param pulumi.Input[str] created_at: Creation date of this group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will be denied no matter what policy exists.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
         :param pulumi.Input[str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
         :param pulumi.Input[str] name: Name of the policy, must be unique
         :param pulumi.Input[str] owner: Owner of the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions_groups: Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
         :param pulumi.Input[bool] read_only: Indicates that the policy is a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources affected by the policy
         :param pulumi.Input[str] updated_at: Date of the last update of this group.
@@ -173,6 +191,8 @@ class _PolicyState:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if permissions_groups is not None:
+            pulumi.set(__self__, "permissions_groups", permissions_groups)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
         if resources is not None:
@@ -208,7 +228,7 @@ class _PolicyState:
     @pulumi.getter
     def denies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of actions that will be denied no matter what policy exists.
+        List of actions that will always be denied even if also allowed by this policy or another one.
         """
         return pulumi.get(self, "denies")
 
@@ -277,6 +297,18 @@ class _PolicyState:
         pulumi.set(self, "owner", value)
 
     @property
+    @pulumi.getter(name="permissionsGroups")
+    def permissions_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        """
+        return pulumi.get(self, "permissions_groups")
+
+    @permissions_groups.setter
+    def permissions_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permissions_groups", value)
+
+    @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -324,6 +356,7 @@ class Policy(pulumi.CustomResource):
                  excepts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 permissions_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -354,11 +387,12 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will be denied no matter what policy exists.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
         :param pulumi.Input[str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
         :param pulumi.Input[str] name: Name of the policy, must be unique
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions_groups: Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources affected by the policy
         """
         ...
@@ -413,6 +447,7 @@ class Policy(pulumi.CustomResource):
                  excepts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 permissions_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -431,6 +466,7 @@ class Policy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'identities'")
             __props__.__dict__["identities"] = identities
             __props__.__dict__["name"] = name
+            __props__.__dict__["permissions_groups"] = permissions_groups
             if resources is None and not opts.urn:
                 raise TypeError("Missing required property 'resources'")
             __props__.__dict__["resources"] = resources
@@ -456,6 +492,7 @@ class Policy(pulumi.CustomResource):
             identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
+            permissions_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             read_only: Optional[pulumi.Input[bool]] = None,
             resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             updated_at: Optional[pulumi.Input[str]] = None) -> 'Policy':
@@ -468,12 +505,13 @@ class Policy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
         :param pulumi.Input[str] created_at: Creation date of this group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will be denied no matter what policy exists.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
         :param pulumi.Input[str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
         :param pulumi.Input[str] name: Name of the policy, must be unique
         :param pulumi.Input[str] owner: Owner of the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions_groups: Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
         :param pulumi.Input[bool] read_only: Indicates that the policy is a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources affected by the policy
         :param pulumi.Input[str] updated_at: Date of the last update of this group.
@@ -490,6 +528,7 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["identities"] = identities
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
+        __props__.__dict__["permissions_groups"] = permissions_groups
         __props__.__dict__["read_only"] = read_only
         __props__.__dict__["resources"] = resources
         __props__.__dict__["updated_at"] = updated_at
@@ -515,7 +554,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def denies(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of actions that will be denied no matter what policy exists.
+        List of actions that will always be denied even if also allowed by this policy or another one.
         """
         return pulumi.get(self, "denies")
 
@@ -558,6 +597,14 @@ class Policy(pulumi.CustomResource):
         Owner of the policy.
         """
         return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="permissionsGroups")
+    def permissions_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        """
+        return pulumi.get(self, "permissions_groups")
 
     @property
     @pulumi.getter(name="readOnly")

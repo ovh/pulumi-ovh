@@ -60,6 +60,8 @@ type GetServerResult struct {
 	ServerURN string `pulumi:"ServerURN"`
 	// boot id of the server
 	BootId int `pulumi:"bootId"`
+	// boot script of the server
+	BootScript string `pulumi:"bootScript"`
 	// dedicated server commercial range
 	CommercialRange string `pulumi:"commercialRange"`
 	// dedicated datacenter localisation (bhs1,bhs2,...)
@@ -151,6 +153,11 @@ func (o GetServerResultOutput) ServerURN() pulumi.StringOutput {
 // boot id of the server
 func (o GetServerResultOutput) BootId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerResult) int { return v.BootId }).(pulumi.IntOutput)
+}
+
+// boot script of the server
+func (o GetServerResultOutput) BootScript() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.BootScript }).(pulumi.StringOutput)
 }
 
 // dedicated server commercial range

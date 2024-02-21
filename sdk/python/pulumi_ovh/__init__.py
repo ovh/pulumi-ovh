@@ -71,6 +71,22 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProject/containerRegistryIPRestrictionsManagement",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement": "ContainerRegistryIPRestrictionsManagement"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProject/containerRegistryIPRestrictionsRegistry",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/containerRegistryIPRestrictionsRegistry:ContainerRegistryIPRestrictionsRegistry": "ContainerRegistryIPRestrictionsRegistry"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProject/containerRegistryOIDC",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
@@ -287,6 +303,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProjectDatabase/postgresSqlConnectionPool",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
+  "classes": {
+   "ovh:CloudProjectDatabase/postgresSqlConnectionPool:PostgresSqlConnectionPool": "PostgresSqlConnectionPool"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProjectDatabase/postgresSqlUser",
   "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
@@ -459,6 +483,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.hosting",
   "classes": {
    "ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant": "PrivateDatabaseUserGrant"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Iam/permissionsGroup",
+  "fqn": "pulumi_ovh.iam",
+  "classes": {
+   "ovh:Iam/permissionsGroup:PermissionsGroup": "PermissionsGroup"
   }
  },
  {

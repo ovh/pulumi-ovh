@@ -256,12 +256,19 @@ class ServerNetworkingInterfaceArgs:
     def __init__(__self__, *,
                  macs: pulumi.Input[Sequence[pulumi.Input[str]]],
                  type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: Interface Mac address
+        :param pulumi.Input[str] type: Interface type
+        """
         pulumi.set(__self__, "macs", macs)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def macs(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Interface Mac address
+        """
         return pulumi.get(self, "macs")
 
     @macs.setter
@@ -271,6 +278,9 @@ class ServerNetworkingInterfaceArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        Interface type
+        """
         return pulumi.get(self, "type")
 
     @type.setter

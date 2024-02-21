@@ -70,7 +70,7 @@ namespace Pulumi.Ovh.Iam
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// List of actions that will be denied no matter what policy exists.
+        /// List of actions that will always be denied even if also allowed by this policy or another one.
         /// </summary>
         [Output("denies")]
         public Output<ImmutableArray<string>> Denies { get; private set; } = null!;
@@ -104,6 +104,12 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
+
+        /// <summary>
+        /// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        /// </summary>
+        [Output("permissionsGroups")]
+        public Output<ImmutableArray<string>> PermissionsGroups { get; private set; } = null!;
 
         /// <summary>
         /// Indicates that the policy is a default one.
@@ -186,7 +192,7 @@ namespace Pulumi.Ovh.Iam
         private InputList<string>? _denies;
 
         /// <summary>
-        /// List of actions that will be denied no matter what policy exists.
+        /// List of actions that will always be denied even if also allowed by this policy or another one.
         /// </summary>
         public InputList<string> Denies
         {
@@ -230,6 +236,18 @@ namespace Pulumi.Ovh.Iam
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("permissionsGroups")]
+        private InputList<string>? _permissionsGroups;
+
+        /// <summary>
+        /// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        /// </summary>
+        public InputList<string> PermissionsGroups
+        {
+            get => _permissionsGroups ?? (_permissionsGroups = new InputList<string>());
+            set => _permissionsGroups = value;
+        }
+
         [Input("resources", required: true)]
         private InputList<string>? _resources;
 
@@ -272,7 +290,7 @@ namespace Pulumi.Ovh.Iam
         private InputList<string>? _denies;
 
         /// <summary>
-        /// List of actions that will be denied no matter what policy exists.
+        /// List of actions that will always be denied even if also allowed by this policy or another one.
         /// </summary>
         public InputList<string> Denies
         {
@@ -321,6 +339,18 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        [Input("permissionsGroups")]
+        private InputList<string>? _permissionsGroups;
+
+        /// <summary>
+        /// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        /// </summary>
+        public InputList<string> PermissionsGroups
+        {
+            get => _permissionsGroups ?? (_permissionsGroups = new InputList<string>());
+            set => _permissionsGroups = value;
+        }
 
         /// <summary>
         /// Indicates that the policy is a default one.

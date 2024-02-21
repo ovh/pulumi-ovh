@@ -71,7 +71,7 @@ type Policy struct {
 	Allows pulumi.StringArrayOutput `pulumi:"allows"`
 	// Creation date of this group.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// List of actions that will be denied no matter what policy exists.
+	// List of actions that will always be denied even if also allowed by this policy or another one.
 	Denies pulumi.StringArrayOutput `pulumi:"denies"`
 	// Description of the policy
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -83,6 +83,8 @@ type Policy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Owner of the policy.
 	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+	PermissionsGroups pulumi.StringArrayOutput `pulumi:"permissionsGroups"`
 	// Indicates that the policy is a default one.
 	ReadOnly pulumi.BoolOutput `pulumi:"readOnly"`
 	// List of resources affected by the policy
@@ -131,7 +133,7 @@ type policyState struct {
 	Allows []string `pulumi:"allows"`
 	// Creation date of this group.
 	CreatedAt *string `pulumi:"createdAt"`
-	// List of actions that will be denied no matter what policy exists.
+	// List of actions that will always be denied even if also allowed by this policy or another one.
 	Denies []string `pulumi:"denies"`
 	// Description of the policy
 	Description *string `pulumi:"description"`
@@ -143,6 +145,8 @@ type policyState struct {
 	Name *string `pulumi:"name"`
 	// Owner of the policy.
 	Owner *string `pulumi:"owner"`
+	// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+	PermissionsGroups []string `pulumi:"permissionsGroups"`
 	// Indicates that the policy is a default one.
 	ReadOnly *bool `pulumi:"readOnly"`
 	// List of resources affected by the policy
@@ -156,7 +160,7 @@ type PolicyState struct {
 	Allows pulumi.StringArrayInput
 	// Creation date of this group.
 	CreatedAt pulumi.StringPtrInput
-	// List of actions that will be denied no matter what policy exists.
+	// List of actions that will always be denied even if also allowed by this policy or another one.
 	Denies pulumi.StringArrayInput
 	// Description of the policy
 	Description pulumi.StringPtrInput
@@ -168,6 +172,8 @@ type PolicyState struct {
 	Name pulumi.StringPtrInput
 	// Owner of the policy.
 	Owner pulumi.StringPtrInput
+	// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+	PermissionsGroups pulumi.StringArrayInput
 	// Indicates that the policy is a default one.
 	ReadOnly pulumi.BoolPtrInput
 	// List of resources affected by the policy
@@ -183,7 +189,7 @@ func (PolicyState) ElementType() reflect.Type {
 type policyArgs struct {
 	// List of actions allowed on resources by identities
 	Allows []string `pulumi:"allows"`
-	// List of actions that will be denied no matter what policy exists.
+	// List of actions that will always be denied even if also allowed by this policy or another one.
 	Denies []string `pulumi:"denies"`
 	// Description of the policy
 	Description *string `pulumi:"description"`
@@ -193,6 +199,8 @@ type policyArgs struct {
 	Identities []string `pulumi:"identities"`
 	// Name of the policy, must be unique
 	Name *string `pulumi:"name"`
+	// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+	PermissionsGroups []string `pulumi:"permissionsGroups"`
 	// List of resources affected by the policy
 	Resources []string `pulumi:"resources"`
 }
@@ -201,7 +209,7 @@ type policyArgs struct {
 type PolicyArgs struct {
 	// List of actions allowed on resources by identities
 	Allows pulumi.StringArrayInput
-	// List of actions that will be denied no matter what policy exists.
+	// List of actions that will always be denied even if also allowed by this policy or another one.
 	Denies pulumi.StringArrayInput
 	// Description of the policy
 	Description pulumi.StringPtrInput
@@ -211,6 +219,8 @@ type PolicyArgs struct {
 	Identities pulumi.StringArrayInput
 	// Name of the policy, must be unique
 	Name pulumi.StringPtrInput
+	// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+	PermissionsGroups pulumi.StringArrayInput
 	// List of resources affected by the policy
 	Resources pulumi.StringArrayInput
 }
@@ -312,7 +322,7 @@ func (o PolicyOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// List of actions that will be denied no matter what policy exists.
+// List of actions that will always be denied even if also allowed by this policy or another one.
 func (o PolicyOutput) Denies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.Denies }).(pulumi.StringArrayOutput)
 }
@@ -340,6 +350,11 @@ func (o PolicyOutput) Name() pulumi.StringOutput {
 // Owner of the policy.
 func (o PolicyOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+func (o PolicyOutput) PermissionsGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.PermissionsGroups }).(pulumi.StringArrayOutput)
 }
 
 // Indicates that the policy is a default one.

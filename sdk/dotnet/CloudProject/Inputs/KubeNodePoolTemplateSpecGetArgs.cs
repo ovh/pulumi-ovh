@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         private InputList<ImmutableDictionary<string, object>>? _taints;
 
         /// <summary>
-        /// Taints to apply to each node
+        /// Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
         /// </summary>
         public InputList<ImmutableDictionary<string, object>> Taints
         {

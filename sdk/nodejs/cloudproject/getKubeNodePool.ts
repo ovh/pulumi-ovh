@@ -67,6 +67,21 @@ export interface GetKubeNodePoolResult {
      */
     readonly autoscale: boolean;
     /**
+     * (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
+     */
+    readonly autoscalingScaleDownUnneededTimeSeconds: number;
+    /**
+     * (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
+     */
+    readonly autoscalingScaleDownUnreadyTimeSeconds: number;
+    /**
+     * (Optional) scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     */
+    readonly autoscalingScaleDownUtilizationThreshold: number;
+    /**
      * Number of nodes which are actually ready in the pool
      */
     readonly availableNodes: number;

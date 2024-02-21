@@ -51,12 +51,12 @@ import (
 //
 // ## Import
 //
-// The resource can be imported using the `template_name`, `name` of the cluster, separated by "/" E.g., bash
+// The resource can be imported using the `template_name`, `name` of the cluster, separated by "/" E.g.,
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name
-//
+// $ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name
 // ```
 type InstallationTemplatePartitionScheme struct {
 	pulumi.CustomResourceState

@@ -285,18 +285,20 @@ import (
 //
 // ## Import
 //
-// OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash
+// OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
-//
+// $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
 // ```
 type Database struct {
 	pulumi.CustomResourceState
 
 	// Advanced configuration key / value.
 	AdvancedConfiguration pulumi.StringMapOutput `pulumi:"advancedConfiguration"`
+	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+	BackupRegions pulumi.StringArrayOutput `pulumi:"backupRegions"`
 	// Time on which backups start every day.
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
@@ -389,6 +391,8 @@ func GetDatabase(ctx *pulumi.Context,
 type databaseState struct {
 	// Advanced configuration key / value.
 	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
+	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+	BackupRegions []string `pulumi:"backupRegions"`
 	// Time on which backups start every day.
 	BackupTime *string `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
@@ -434,6 +438,8 @@ type databaseState struct {
 type DatabaseState struct {
 	// Advanced configuration key / value.
 	AdvancedConfiguration pulumi.StringMapInput
+	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+	BackupRegions pulumi.StringArrayInput
 	// Time on which backups start every day.
 	BackupTime pulumi.StringPtrInput
 	// Date of the creation of the cluster.
@@ -483,6 +489,10 @@ func (DatabaseState) ElementType() reflect.Type {
 type databaseArgs struct {
 	// Advanced configuration key / value.
 	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
+	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+	BackupRegions []string `pulumi:"backupRegions"`
+	// Time on which backups start every day.
+	BackupTime *string `pulumi:"backupTime"`
 	// Small description of the database service.
 	Description *string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
@@ -515,6 +525,10 @@ type databaseArgs struct {
 type DatabaseArgs struct {
 	// Advanced configuration key / value.
 	AdvancedConfiguration pulumi.StringMapInput
+	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+	BackupRegions pulumi.StringArrayInput
+	// Time on which backups start every day.
+	BackupTime pulumi.StringPtrInput
 	// Small description of the database service.
 	Description pulumi.StringPtrInput
 	// The disk size (in GB) of the database service.
@@ -633,6 +647,11 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 // Advanced configuration key / value.
 func (o DatabaseOutput) AdvancedConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringMapOutput { return v.AdvancedConfiguration }).(pulumi.StringMapOutput)
+}
+
+// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+func (o DatabaseOutput) BackupRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringArrayOutput { return v.BackupRegions }).(pulumi.StringArrayOutput)
 }
 
 // Time on which backups start every day.

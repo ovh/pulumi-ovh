@@ -75,20 +75,20 @@ import (
 //
 // ## Import
 //
-// OAuth2 clients can be imported using their `client_id`bash
+// OAuth2 clients can be imported using their `client_id`:
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id
-//
+// $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id
 // ```
 //
-//	Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separatorbash
+//	Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separator:
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
-//
+// $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
 // ```
 type APIOAuth2Client struct {
 	pulumi.CustomResourceState

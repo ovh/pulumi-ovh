@@ -835,7 +835,7 @@ class KubeNodePoolTemplateSpec(dict):
                  taints: Sequence[Mapping[str, Any]],
                  unschedulable: bool):
         """
-        :param Sequence[Mapping[str, Any]] taints: Taints to apply to each node
+        :param Sequence[Mapping[str, Any]] taints: Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
         :param bool unschedulable: If true, set nodes as un-schedulable
         """
         pulumi.set(__self__, "taints", taints)
@@ -845,7 +845,7 @@ class KubeNodePoolTemplateSpec(dict):
     @pulumi.getter
     def taints(self) -> Sequence[Mapping[str, Any]]:
         """
-        Taints to apply to each node
+        Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
         """
         return pulumi.get(self, "taints")
 
@@ -2191,6 +2191,10 @@ class GetKubeNodePoolTemplateResult(dict):
     def __init__(__self__, *,
                  metadata: Optional['outputs.GetKubeNodePoolTemplateMetadataResult'] = None,
                  spec: Optional['outputs.GetKubeNodePoolTemplateSpecResult'] = None):
+        """
+        :param 'GetKubeNodePoolTemplateMetadataArgs' metadata: metadata
+        :param 'GetKubeNodePoolTemplateSpecArgs' spec: spec
+        """
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if spec is not None:
@@ -2199,11 +2203,17 @@ class GetKubeNodePoolTemplateResult(dict):
     @property
     @pulumi.getter
     def metadata(self) -> Optional['outputs.GetKubeNodePoolTemplateMetadataResult']:
+        """
+        metadata
+        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def spec(self) -> Optional['outputs.GetKubeNodePoolTemplateSpecResult']:
+        """
+        spec
+        """
         return pulumi.get(self, "spec")
 
 
@@ -2213,6 +2223,11 @@ class GetKubeNodePoolTemplateMetadataResult(dict):
                  annotations: Optional[Mapping[str, str]] = None,
                  finalizers: Optional[Sequence[str]] = None,
                  labels: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] annotations: annotations
+        :param Sequence[str] finalizers: finalizers
+        :param Mapping[str, str] labels: labels
+        """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if finalizers is not None:
@@ -2223,16 +2238,25 @@ class GetKubeNodePoolTemplateMetadataResult(dict):
     @property
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, str]]:
+        """
+        annotations
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def finalizers(self) -> Optional[Sequence[str]]:
+        """
+        finalizers
+        """
         return pulumi.get(self, "finalizers")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        labels
+        """
         return pulumi.get(self, "labels")
 
 
@@ -2241,6 +2265,10 @@ class GetKubeNodePoolTemplateSpecResult(dict):
     def __init__(__self__, *,
                  taints: Optional[Sequence[Mapping[str, Any]]] = None,
                  unschedulable: Optional[bool] = None):
+        """
+        :param Sequence[Mapping[str, Any]] taints: taints
+        :param bool unschedulable: unschedulable
+        """
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if unschedulable is not None:
@@ -2249,11 +2277,17 @@ class GetKubeNodePoolTemplateSpecResult(dict):
     @property
     @pulumi.getter
     def taints(self) -> Optional[Sequence[Mapping[str, Any]]]:
+        """
+        taints
+        """
         return pulumi.get(self, "taints")
 
     @property
     @pulumi.getter
     def unschedulable(self) -> Optional[bool]:
+        """
+        unschedulable
+        """
         return pulumi.get(self, "unschedulable")
 
 
