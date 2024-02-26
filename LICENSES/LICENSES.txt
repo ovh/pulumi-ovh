@@ -56,6 +56,7 @@ github.com/hashicorp/terraform-json; MPL-2.0
 github.com/hashicorp/terraform-plugin-framework; MPL-2.0
 github.com/hashicorp/terraform-plugin-go; MPL-2.0
 github.com/hashicorp/terraform-plugin-log; MPL-2.0
+github.com/hashicorp/terraform-plugin-testing; MPL-2.0
 github.com/hashicorp/terraform-registry-address; MPL-2.0
 github.com/hashicorp/terraform-svchost; MPL-2.0
 github.com/hashicorp/yamux; MPL-2.0
@@ -89,6 +90,7 @@ github.com/pkg/errors; BSD-2-Clause
 github.com/pkg/term; BSD-2-Clause
 github.com/pulumi/appdash; MIT
 github.com/pulumi/esc; Apache-2.0
+github.com/pulumi/pulumi-terraform-bridge/pf; Apache-2.0
 github.com/pulumi/pulumi-terraform-bridge/v3; Apache-2.0
 github.com/pulumi/pulumi-terraform-bridge/x/muxer; Apache-2.0
 github.com/pulumi/pulumi/pkg/v3; Apache-2.0
