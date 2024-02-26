@@ -1,13 +1,15 @@
 == github.com/ovh/terraform-provider-ovh ==
 
+Copyright (c) 2009 The Go Authors. All rights reserved.
 Copyright 2016 ALRUX Inc.
 Copyright [yyyy] [name of copyright owner]
 Copyright (c) 2017 Martin Atkins
 Copyright (c) 2014 Couchbase, Inc.
 Copyright © 1991-2017 Unicode, Inc. All rights reserved.
+Copyright (c) 2019 Cloudflare. All rights reserved.
+Copyright (c) 2018, Brendan McMillion. All rights reserved.
 Copyright (c) 2012-2016 Dave Collins <dave@davec.name>
 Copyright (c) 2013 Fatih Arslan
-Copyright (c) 2009 The Go Authors. All rights reserved.
 Copyright 2010 The Go Authors.  All rights reserved.
 Copyright (c) 2017 The Go Authors. All rights reserved.
 Copyright (c) 2014 HashiCorp, Inc.
