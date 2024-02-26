@@ -18,18 +18,15 @@ import (
 	"context"
 	_ "embed"
 	"fmt"
-	"path/filepath"
-	"unicode"
+	"path"
 
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/ovh/pulumi-ovh/provider/pkg/version"
 	"github.com/ovh/terraform-provider-ovh/ovh"
-	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
 // all of the token components used below.
@@ -54,43 +51,18 @@ const (
 	iamMod             = "Iam"
 )
 
-// boolRef returns a reference to the bool argument.
-func boolRef(b bool) *bool {
-	return &b
-}
-
-// ovhMember manufactures a type token for the Ovh package and the given module and type.
-func ovhMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(ovhPkg + ":" + mod + ":" + mem)
-}
-
-// ovhType manufactures a type token for the Ovh package and the given module and type.
-func ovhType(mod string, typ string) tokens.Type {
-	return tokens.Type(ovhMember(mod, typ))
-}
-
 // ovhDataSource manufactures a standard resource token given a module and resource name.
 // It automatically uses the Ovh package and names the file by simply lower casing the data
 // source's first character.
 func ovhDataSource(mod string, res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return ovhMember(mod+"/"+fn, res)
+	return tfbridge.MakeDataSource(ovhPkg, mod, res)
 }
 
 // ovhResource manufactures a standard resource token given a module and resource name.
 // It automatically uses the ovh package and names the file by simply lower casing the resource's
 // first character.
 func ovhResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return ovhType(mod+"/"+fn, res)
-}
-
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
+	return tfbridge.MakeResource(ovhPkg, mod, res)
 }
 
 //go:embed cmd/pulumi-resource-ovh/bridge-metadata.json
@@ -99,13 +71,10 @@ var bridgeMetadata []byte
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	//p := shimv2.NewProvider(ovh.Provider())
-
 	p := pfbridge.MuxShimWithPF(
 		context.Background(),
 		shimv2.NewProvider(ovh.Provider()),
 		&ovh.OvhProvider{},
-		//shimv2.NewProvider(ovh.Provider()),
 	)
 
 	// Create a Pulumi provider mapping
@@ -161,7 +130,7 @@ func Provider() tfbridge.ProviderInfo {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OVH_APPLICATION_SECRET"},
 				},
-				Secret: boolRef(true),
+				Secret: tfbridge.True(),
 			},
 			"consumer_key": {
 				Default: &tfbridge.DefaultInfo{
@@ -169,7 +138,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"ovh_cloud_project": {
 				Tok: ovhResource(cloudProjectMod, "Project"),
@@ -851,10 +819,6 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
 			PackageName: "pulumi_ovh",
@@ -864,7 +828,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/ovh/pulumi-%[1]s/sdk/", ovhPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
