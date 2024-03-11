@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const cassandradb = new ovh.cloudproject.Database("cassandradb", {
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -142,7 +142,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const postgresql = new ovh.cloudproject.Database("postgresql", {
  *     description: "my-first-postgresql",
@@ -166,7 +166,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const mongodb = new ovh.cloudproject.Database("mongodb", {
  *     description: "my-first-mongodb",

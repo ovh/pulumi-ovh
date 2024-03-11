@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * // Set the reverse of an IP
  * const test = new ovh.ip.Reverse("test", {

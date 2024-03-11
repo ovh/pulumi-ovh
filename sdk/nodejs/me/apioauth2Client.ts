@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const myOauth2ClientAuthCode = new ovh.me.APIOAuth2Client("myOauth2ClientAuthCode", {
  *     callbackUrls: ["https://my-app.com/callback"],
@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const myOauth2ClientClientCreds = new ovh.me.APIOAuth2Client("myOauth2ClientClientCreds", {
  *     description: "An OAuth2 client using the client credentials flow for my app",
