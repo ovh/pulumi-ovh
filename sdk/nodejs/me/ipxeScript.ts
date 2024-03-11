@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const script = new ovh.me.IpxeScript("script", {script: fs.readFileSync(`${path.module}/boot.ipxe`, "utf8")});
  * ```
