@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  *     interfaceId: server.then(server => server.enabledVrackVnis?.[0]),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class DedicatedServerInterface extends pulumi.CustomResource {
     /**

@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  *     useDefault: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPaymentmeanCreditCard(args?: GetPaymentmeanCreditCardArgs, opts?: pulumi.InvokeOptions): Promise<GetPaymentmeanCreditCardResult> {
     args = args || {};
@@ -88,6 +90,7 @@ export interface GetPaymentmeanCreditCardResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -96,6 +99,7 @@ export interface GetPaymentmeanCreditCardResult {
  *     useDefault: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPaymentmeanCreditCardOutput(args?: GetPaymentmeanCreditCardOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPaymentmeanCreditCardResult> {
     return pulumi.output(args).apply((a: any) => getPaymentmeanCreditCard(a, opts))

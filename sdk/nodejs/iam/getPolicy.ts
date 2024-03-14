@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     id: "my_policy_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
 
@@ -120,6 +122,7 @@ export interface GetPolicyResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -128,6 +131,7 @@ export interface GetPolicyResult {
  *     id: "my_policy_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
     return pulumi.output(args).apply((a: any) => getPolicy(a, opts))

@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,6 +65,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// TCP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
 type TcpFarmServer struct {
 	pulumi.CustomResourceState
 

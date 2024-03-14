@@ -22,6 +22,7 @@ import (
 //
 // Push PostgreSQL logs in an OpenSearch DB:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,12 +67,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id

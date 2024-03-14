@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     userName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPrivateDatabaseUserGrant(args: GetPrivateDatabaseUserGrantArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseUserGrantResult> {
 
@@ -73,6 +75,7 @@ export interface GetPrivateDatabaseUserGrantResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -83,6 +86,7 @@ export interface GetPrivateDatabaseUserGrantResult {
  *     userName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPrivateDatabaseUserGrantOutput(args: GetPrivateDatabaseUserGrantOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseUserGrantResult> {
     return pulumi.output(args).apply((a: any) => getPrivateDatabaseUserGrant(a, opts))

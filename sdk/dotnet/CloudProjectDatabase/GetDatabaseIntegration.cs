@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about an integration of a database cluster associated with a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabaseIntegrationResult> InvokeAsync(GetDatabaseIntegrationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseIntegrationResult>("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", args ?? new GetDatabaseIntegrationArgs(), options.WithDefaults());
@@ -49,10 +47,9 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about an integration of a database cluster associated with a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +72,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabaseIntegrationResult> Invoke(GetDatabaseIntegrationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseIntegrationResult>("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", args ?? new GetDatabaseIntegrationInvokeArgs(), options.WithDefaults());

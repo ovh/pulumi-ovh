@@ -19,6 +19,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,12 +44,13 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g.,
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id

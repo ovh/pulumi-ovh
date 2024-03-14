@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCapabilitiesContainerFilter(args: GetCapabilitiesContainerFilterArgs, opts?: pulumi.InvokeOptions): Promise<GetCapabilitiesContainerFilterResult> {
 
@@ -92,6 +94,7 @@ export interface GetCapabilitiesContainerFilterResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -102,6 +105,7 @@ export interface GetCapabilitiesContainerFilterResult {
  *     serviceName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCapabilitiesContainerFilterOutput(args: GetCapabilitiesContainerFilterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapabilitiesContainerFilterResult> {
     return pulumi.output(args).apply((a: any) => getCapabilitiesContainerFilter(a, opts))

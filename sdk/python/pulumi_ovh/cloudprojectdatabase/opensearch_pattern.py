@@ -171,6 +171,7 @@ class OpensearchPattern(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -184,12 +185,13 @@ class OpensearchPattern(pulumi.CustomResource):
             max_index_count=2,
             pattern="logs_*")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
@@ -214,6 +216,7 @@ class OpensearchPattern(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -227,12 +230,13 @@ class OpensearchPattern(pulumi.CustomResource):
             max_index_count=2,
             pattern="logs_*")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id

@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information about an SSH key.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("ovh:Me/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information about an SSH key.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSshKeyResult> Invoke(GetSshKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("ovh:Me/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithDefaults());

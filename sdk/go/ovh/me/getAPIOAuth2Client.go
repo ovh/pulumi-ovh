@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupAPIOAuth2Client(ctx *pulumi.Context, args *LookupAPIOAuth2ClientArgs, opts ...pulumi.InvokeOption) (*LookupAPIOAuth2ClientResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAPIOAuth2ClientResult

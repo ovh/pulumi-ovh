@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     templateName: "mytemplate",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstallationTemplate(args: GetInstallationTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstallationTemplateResult> {
 
@@ -116,6 +118,7 @@ export interface GetInstallationTemplateResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -124,6 +127,7 @@ export interface GetInstallationTemplateResult {
  *     templateName: "mytemplate",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstallationTemplateOutput(args: GetInstallationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstallationTemplateResult> {
     return pulumi.output(args).apply((a: any) => getInstallationTemplate(a, opts))

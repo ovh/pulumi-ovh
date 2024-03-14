@@ -14,6 +14,7 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -30,13 +31,14 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
+    /// $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
     /// ```
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb")]

@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     serviceName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServer(args: GetServerArgs, opts?: pulumi.InvokeOptions): Promise<GetServerResult> {
 
@@ -145,6 +147,7 @@ export interface GetServerResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -153,6 +156,7 @@ export interface GetServerResult {
  *     serviceName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServerOutput(args: GetServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerResult> {
     return pulumi.output(args).apply((a: any) => getServer(a, opts))

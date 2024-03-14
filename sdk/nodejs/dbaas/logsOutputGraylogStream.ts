@@ -77,7 +77,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public readonly indexingMaxSize!: pulumi.Output<number>;
     /**
-     * If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+     * If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
      */
     public readonly indexingNotifyEnabled!: pulumi.Output<boolean>;
     /**
@@ -256,7 +256,7 @@ export interface LogsOutputGraylogStreamState {
      */
     indexingMaxSize?: pulumi.Input<number>;
     /**
-     * If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+     * If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
      */
     indexingNotifyEnabled?: pulumi.Input<boolean>;
     /**
@@ -350,7 +350,7 @@ export interface LogsOutputGraylogStreamArgs {
      */
     indexingMaxSize?: pulumi.Input<number>;
     /**
-     * If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+     * If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
      */
     indexingNotifyEnabled?: pulumi.Input<boolean>;
     /**

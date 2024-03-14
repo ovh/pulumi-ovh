@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKubeOidcResult> InvokeAsync(GetKubeOidcArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubeOidcResult>("ovh:CloudProject/getKubeOidc:getKubeOidc", args ?? new GetKubeOidcArgs(), options.WithDefaults());
@@ -47,10 +45,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKubeOidcResult> Invoke(GetKubeOidcInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeOidcResult>("ovh:CloudProject/getKubeOidc:getKubeOidc", args ?? new GetKubeOidcInvokeArgs(), options.WithDefaults());

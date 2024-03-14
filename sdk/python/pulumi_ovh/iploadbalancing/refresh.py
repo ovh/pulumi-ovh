@@ -102,6 +102,7 @@ class Refresh(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -128,6 +129,7 @@ class Refresh(pulumi.CustomResource):
             keepers=[[__item.address for __item in [backend]]],
             service_name=lb.service_name)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -145,6 +147,7 @@ class Refresh(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -171,6 +174,7 @@ class Refresh(pulumi.CustomResource):
             keepers=[[__item.address for __item in [backend]]],
             service_name=lb.service_name)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param RefreshArgs args: The arguments to use to populate this resource's properties.

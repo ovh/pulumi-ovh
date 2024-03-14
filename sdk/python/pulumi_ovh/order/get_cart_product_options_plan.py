@@ -198,6 +198,7 @@ def get_cart_product_options_plan(cart_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -210,6 +211,7 @@ def get_cart_product_options_plan(cart_id: Optional[str] = None,
         plan_code="project",
         options_plan_code="vrack")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cart_id: Cart identifier
@@ -259,6 +261,7 @@ def get_cart_product_options_plan_output(cart_id: Optional[pulumi.Input[str]] = 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -271,6 +274,7 @@ def get_cart_product_options_plan_output(cart_id: Optional[pulumi.Input[str]] = 
         plan_code="project",
         options_plan_code="vrack")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cart_id: Cart identifier

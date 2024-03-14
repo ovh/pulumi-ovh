@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupKubeIpRestrictions(ctx *pulumi.Context, args *LookupKubeIpRestrictionsArgs, opts ...pulumi.InvokeOption) (*LookupKubeIpRestrictionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubeIpRestrictionsResult

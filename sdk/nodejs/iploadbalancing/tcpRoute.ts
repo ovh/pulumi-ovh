@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -23,6 +24,11 @@ import * as utilities from "../utilities";
  *     weight: 1,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Import
+ *
+ * TCP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
  */
 export class TcpRoute extends pulumi.CustomResource {
     /**

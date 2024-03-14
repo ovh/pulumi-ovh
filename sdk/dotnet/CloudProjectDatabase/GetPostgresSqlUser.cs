@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,8 +38,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPostgresSqlUserResult> InvokeAsync(GetPostgresSqlUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresSqlUserResult>("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", args ?? new GetPostgresSqlUserArgs(), options.WithDefaults());
@@ -48,10 +46,9 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,8 +70,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPostgresSqlUserResult> Invoke(GetPostgresSqlUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresSqlUserResult>("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", args ?? new GetPostgresSqlUserInvokeArgs(), options.WithDefaults());

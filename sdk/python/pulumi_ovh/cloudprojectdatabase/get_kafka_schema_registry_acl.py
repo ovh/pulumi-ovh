@@ -113,6 +113,7 @@ def get_kafka_schema_registry_acl(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -122,6 +123,7 @@ def get_kafka_schema_registry_acl(cluster_id: Optional[str] = None,
         id="ZZZ")
     pulumi.export("aclPermission", schema_registry_acl.permission)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID
@@ -155,6 +157,7 @@ def get_kafka_schema_registry_acl_output(cluster_id: Optional[pulumi.Input[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -164,6 +167,7 @@ def get_kafka_schema_registry_acl_output(cluster_id: Optional[pulumi.Input[str]]
         id="ZZZ")
     pulumi.export("aclPermission", schema_registry_acl.permission)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID

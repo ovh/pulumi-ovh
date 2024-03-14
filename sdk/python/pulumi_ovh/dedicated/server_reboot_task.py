@@ -196,6 +196,7 @@ class ServerRebootTask(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -212,6 +213,7 @@ class ServerRebootTask(pulumi.CustomResource):
             service_name=rescue.service_name,
             keepers=[server_on_rescue.boot_id])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -227,6 +229,7 @@ class ServerRebootTask(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -243,6 +246,7 @@ class ServerRebootTask(pulumi.CustomResource):
             service_name=rescue.service_name,
             keepers=[server_on_rescue.boot_id])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ServerRebootTaskArgs args: The arguments to use to populate this resource's properties.

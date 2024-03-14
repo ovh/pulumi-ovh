@@ -16,6 +16,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// Create a simple node pool in your Kubernetes cluster:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,9 +37,11 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Create an advanced node pool in your Kubernetes cluster:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -93,12 +96,13 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g.,
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid

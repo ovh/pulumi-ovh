@@ -14,8 +14,6 @@ from .get_identity_user import *
 from .get_identity_users import *
 from .get_installation_template import *
 from .get_installation_templates import *
-from .get_ipxe_script import *
-from .get_ipxe_scripts import *
 from .get_me import *
 from .get_paymentmean_bank_account import *
 from .get_paymentmean_credit_card import *
@@ -27,7 +25,6 @@ from .installation_template import *
 from .installation_template_partition_scheme import *
 from .installation_template_partition_scheme_hardware_raid import *
 from .installation_template_partition_scheme_partition import *
-from .ipxe_script import *
 from .ssh_key import *
 from ._inputs import *
 from . import outputs

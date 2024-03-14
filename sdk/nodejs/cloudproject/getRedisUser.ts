@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  * });
  * export const redisuserCommands = redisuser.then(redisuser => redisuser.commands);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRedisUser(args: GetRedisUserArgs, opts?: pulumi.InvokeOptions): Promise<GetRedisUserResult> {
 
@@ -100,6 +102,7 @@ export interface GetRedisUserResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -111,6 +114,7 @@ export interface GetRedisUserResult {
  * });
  * export const redisuserCommands = redisuser.then(redisuser => redisuser.commands);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRedisUserResult> {
     return pulumi.output(args).apply((a: any) => getRedisUser(a, opts))

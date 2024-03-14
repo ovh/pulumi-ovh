@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetCapabilitiesContainerFilter(ctx *pulumi.Context, args *GetCapabilitiesContainerFilterArgs, opts ...pulumi.InvokeOption) (*GetCapabilitiesContainerFilterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCapabilitiesContainerFilterResult

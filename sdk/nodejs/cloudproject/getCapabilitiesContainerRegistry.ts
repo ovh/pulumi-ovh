@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCapabilitiesContainerRegistry(args: GetCapabilitiesContainerRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetCapabilitiesContainerRegistryResult> {
 
@@ -58,6 +60,7 @@ export interface GetCapabilitiesContainerRegistryResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -66,6 +69,7 @@ export interface GetCapabilitiesContainerRegistryResult {
  *     serviceName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCapabilitiesContainerRegistryOutput(args: GetCapabilitiesContainerRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapabilitiesContainerRegistryResult> {
     return pulumi.output(args).apply((a: any) => getCapabilitiesContainerRegistry(a, opts))

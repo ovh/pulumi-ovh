@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetVps(ctx *pulumi.Context, args *GetVpsArgs, opts ...pulumi.InvokeOption) (*GetVpsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpsResult

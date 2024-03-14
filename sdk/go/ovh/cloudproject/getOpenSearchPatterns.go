@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetOpenSearchPatterns(ctx *pulumi.Context, args *GetOpenSearchPatternsArgs, opts ...pulumi.InvokeOption) (*GetOpenSearchPatternsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenSearchPatternsResult

@@ -360,6 +360,7 @@ class LogsCluster(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -371,12 +372,13 @@ class LogsCluster(pulumi.CustomResource):
             query_allowed_networks=["10.0.0.0/16"],
             service_name="ldp-xx-xxxxx")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id
@@ -399,6 +401,7 @@ class LogsCluster(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -410,12 +413,13 @@ class LogsCluster(pulumi.CustomResource):
             query_allowed_networks=["10.0.0.0/16"],
             service_name="ldp-xx-xxxxx")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id

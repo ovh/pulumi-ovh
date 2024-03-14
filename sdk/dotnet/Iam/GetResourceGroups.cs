@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to list the existing IAM policies of an account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,8 +29,7 @@ namespace Pulumi.Ovh.Iam
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetResourceGroupsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupsResult>("ovh:Iam/getResourceGroups:getResourceGroups", InvokeArgs.Empty, options.WithDefaults());
@@ -39,10 +37,9 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to list the existing IAM policies of an account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,8 +52,7 @@ namespace Pulumi.Ovh.Iam
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetResourceGroupsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceGroupsResult>("ovh:Iam/getResourceGroups:getResourceGroups", InvokeArgs.Empty, options.WithDefaults());

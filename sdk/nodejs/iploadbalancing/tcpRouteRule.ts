@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -31,6 +32,11 @@ import * as utilities from "../utilities";
  *     pattern: "example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Import
+ *
+ * TCP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
  */
 export class TcpRouteRule extends pulumi.CustomResource {
     /**

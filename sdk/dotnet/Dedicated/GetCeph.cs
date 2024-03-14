@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.Dedicated
         /// <summary>
         /// Use this data source to retrieve information about a dedicated CEPH. 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCephResult> InvokeAsync(GetCephArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCephResult>("ovh:Dedicated/getCeph:getCeph", args ?? new GetCephArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Ovh.Dedicated
         /// <summary>
         /// Use this data source to retrieve information about a dedicated CEPH. 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCephResult> Invoke(GetCephInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCephResult>("ovh:Dedicated/getCeph:getCeph", args ?? new GetCephInvokeArgs(), options.WithDefaults());

@@ -14,6 +14,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -26,6 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Add a record to a sub-domain
 //			_, err := Domain.NewZoneRecord(ctx, "test", &Domain.ZoneRecordArgs{
 //				Fieldtype: pulumi.String("A"),
 //				Subdomain: pulumi.String("test"),
@@ -41,12 +43,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g.,
+// OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](<https://api.ovh.com/console/#/domain/zone/%!B(MISSING)zoneName%!D(MISSING)/record~GET>), and the `zone`, separated by "." E.g.,
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone

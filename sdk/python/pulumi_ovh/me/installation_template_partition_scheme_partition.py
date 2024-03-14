@@ -396,6 +396,7 @@ class InstallationTemplatePartitionSchemePartition(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -416,12 +417,13 @@ class InstallationTemplatePartitionSchemePartition(pulumi.CustomResource):
             order=1,
             type="primary")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
@@ -467,6 +469,7 @@ class InstallationTemplatePartitionSchemePartition(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -487,12 +490,13 @@ class InstallationTemplatePartitionSchemePartition(pulumi.CustomResource):
             order=1,
             type="primary")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint

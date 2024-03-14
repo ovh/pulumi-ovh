@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetM3dbNamespacesResult> InvokeAsync(GetM3dbNamespacesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetM3dbNamespacesResult>("ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces", args ?? new GetM3dbNamespacesArgs(), options.WithDefaults());
@@ -47,10 +45,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetM3dbNamespacesResult> Invoke(GetM3dbNamespacesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetM3dbNamespacesResult>("ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces", args ?? new GetM3dbNamespacesInvokeArgs(), options.WithDefaults());

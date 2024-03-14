@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,10 +19,12 @@ import * as utilities from "../utilities";
  * const projectUsers = ovh.CloudProject.getUsers({
  *     serviceName: "XXX",
  * });
+ * // Get the user ID of a previously created user with the description "S3-User"
  * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
  * const s3UserId = users[0];
  * export const userId = s3UserId;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
 
@@ -61,6 +64,7 @@ export interface GetUsersResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -68,10 +72,12 @@ export interface GetUsersResult {
  * const projectUsers = ovh.CloudProject.getUsers({
  *     serviceName: "XXX",
  * });
+ * // Get the user ID of a previously created user with the description "S3-User"
  * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
  * const s3UserId = users[0];
  * export const userId = s3UserId;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))

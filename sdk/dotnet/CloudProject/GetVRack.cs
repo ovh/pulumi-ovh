@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the linked vrack on your public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVRackResult> InvokeAsync(GetVRackArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVRackResult>("ovh:CloudProject/getVRack:getVRack", args ?? new GetVRackArgs(), options.WithDefaults());
@@ -46,10 +44,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the linked vrack on your public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVRackResult> Invoke(GetVRackInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVRackResult>("ovh:CloudProject/getVRack:getVRack", args ?? new GetVRackInvokeArgs(), options.WithDefaults());

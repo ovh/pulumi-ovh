@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Get the list of all users of a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,6 +30,7 @@ namespace Pulumi.Ovh.CloudProject
         ///         ServiceName = "XXX",
         ///     });
         /// 
+        ///     // Get the user ID of a previously created user with the description "S3-User"
         ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
         ///     {
         ///         return user.UserId;
@@ -44,8 +44,7 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("ovh:CloudProject/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
@@ -53,10 +52,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Get the list of all users of a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,6 +68,7 @@ namespace Pulumi.Ovh.CloudProject
         ///         ServiceName = "XXX",
         ///     });
         /// 
+        ///     // Get the user ID of a previously created user with the description "S3-User"
         ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
         ///     {
         ///         return user.UserId;
@@ -83,8 +82,7 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("ovh:CloudProject/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());

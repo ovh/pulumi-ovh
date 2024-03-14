@@ -134,6 +134,7 @@ class PrivateDatabaseUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -143,13 +144,14 @@ class PrivateDatabaseUser(pulumi.CustomResource):
             service_name="XXXXXX",
             user_name="XXXXXX")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
 
         ```sh
-         $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
+        $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -169,6 +171,7 @@ class PrivateDatabaseUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -178,13 +181,14 @@ class PrivateDatabaseUser(pulumi.CustomResource):
             service_name="XXXXXX",
             user_name="XXXXXX")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
 
         ```sh
-         $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
+        $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
         ```
 
         :param str resource_name: The name of the resource.

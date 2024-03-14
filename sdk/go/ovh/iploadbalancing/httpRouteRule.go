@@ -18,6 +18,7 @@ import (
 //
 // Route which redirect all URL to HTTPs for example.com (Vhost).
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,9 +62,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Rule which match a specific header (same effect as the host match above).
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,6 +97,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// HTTP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
 type HttpRouteRule struct {
 	pulumi.CustomResourceState
 

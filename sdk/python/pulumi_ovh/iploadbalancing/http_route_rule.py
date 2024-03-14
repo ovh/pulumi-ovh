@@ -300,6 +300,7 @@ class HttpRouteRule(pulumi.CustomResource):
 
         Route which redirect all URL to HTTPs for example.com (Vhost).
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -323,9 +324,11 @@ class HttpRouteRule(pulumi.CustomResource):
             route_id=httpsredirect.id,
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
         ```
+        <!--End PulumiCodeChooser -->
 
         Rule which match a specific header (same effect as the host match above).
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -340,6 +343,11 @@ class HttpRouteRule(pulumi.CustomResource):
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             sub_field="Host")
         ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -365,6 +373,7 @@ class HttpRouteRule(pulumi.CustomResource):
 
         Route which redirect all URL to HTTPs for example.com (Vhost).
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -388,9 +397,11 @@ class HttpRouteRule(pulumi.CustomResource):
             route_id=httpsredirect.id,
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
         ```
+        <!--End PulumiCodeChooser -->
 
         Rule which match a specific header (same effect as the host match above).
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -405,6 +416,11 @@ class HttpRouteRule(pulumi.CustomResource):
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             sub_field="Host")
         ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param HttpRouteRuleInitArgs args: The arguments to use to populate this resource's properties.

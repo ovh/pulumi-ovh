@@ -202,6 +202,7 @@ class ContainerRegistryUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -214,6 +215,7 @@ class ContainerRegistryUser(pulumi.CustomResource):
             email="foo@bar.com",
             login="foobar")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -234,6 +236,7 @@ class ContainerRegistryUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -246,6 +249,7 @@ class ContainerRegistryUser(pulumi.CustomResource):
             email="foo@bar.com",
             login="foobar")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ContainerRegistryUserArgs args: The arguments to use to populate this resource's properties.

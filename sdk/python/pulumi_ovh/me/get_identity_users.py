@@ -62,12 +62,14 @@ def get_identity_users(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     users = ovh.Me.get_identity_users()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -85,11 +87,13 @@ def get_identity_users_output(opts: Optional[pulumi.InvokeOptions] = None) -> pu
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     users = ovh.Me.get_identity_users()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

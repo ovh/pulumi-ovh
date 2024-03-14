@@ -193,6 +193,7 @@ def get_container_registry_oidc(oidc_admin_group: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -201,6 +202,7 @@ def get_container_registry_oidc(oidc_admin_group: Optional[str] = None,
         registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     pulumi.export("oidc-client-id", my_oidc.oidc_client_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str oidc_admin_group: Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
@@ -263,6 +265,7 @@ def get_container_registry_oidc_output(oidc_admin_group: Optional[pulumi.Input[O
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -271,6 +274,7 @@ def get_container_registry_oidc_output(oidc_admin_group: Optional[pulumi.Input[O
         registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     pulumi.export("oidc-client-id", my_oidc.oidc_client_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str oidc_admin_group: Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.

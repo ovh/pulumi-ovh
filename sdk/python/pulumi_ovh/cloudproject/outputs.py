@@ -11,6 +11,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AlertingFormattedMonthlyThreshold',
     'ContainerRegistryPlan',
     'ContainerRegistryPlanFeature',
     'ContainerRegistryPlanRegistryLimit',
@@ -62,6 +63,66 @@ __all__ = [
     'GetUsersUserResult',
     'GetUsersUserRoleResult',
 ]
+
+@pulumi.output_type
+class AlertingFormattedMonthlyThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currencyCode":
+            suggest = "currency_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertingFormattedMonthlyThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertingFormattedMonthlyThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertingFormattedMonthlyThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 currency_code: Optional[str] = None,
+                 text: Optional[str] = None,
+                 value: Optional[float] = None):
+        """
+        :param str currency_code: Currency of the monthly threshold
+        :param str text: Text representation of the monthly threshold
+        :param float value: Value of the monthly threshold
+        """
+        if currency_code is not None:
+            pulumi.set(__self__, "currency_code", currency_code)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> Optional[str]:
+        """
+        Currency of the monthly threshold
+        """
+        return pulumi.get(self, "currency_code")
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[str]:
+        """
+        Text representation of the monthly threshold
+        """
+        return pulumi.get(self, "text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[float]:
+        """
+        Value of the monthly threshold
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class ContainerRegistryPlan(dict):

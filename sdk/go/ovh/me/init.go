@@ -35,8 +35,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstallationTemplatePartitionSchemeHardwareRaid{}
 	case "ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition":
 		r = &InstallationTemplatePartitionSchemePartition{}
-	case "ovh:Me/ipxeScript:IpxeScript":
-		r = &IpxeScript{}
 	case "ovh:Me/sshKey:SshKey":
 		r = &SshKey{}
 	default:
@@ -85,11 +83,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Me/installationTemplatePartitionSchemePartition",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"ovh",
-		"Me/ipxeScript",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

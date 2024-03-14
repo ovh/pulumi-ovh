@@ -84,6 +84,7 @@ def get_v_rack(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -91,6 +92,7 @@ def get_v_rack(service_name: Optional[str] = None,
     vrack_v_rack = ovh.CloudProject.get_v_rack(service_name="XXXXXX")
     pulumi.export("vrack", vrack_v_rack)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The id of the public cloud project. If omitted,
@@ -116,6 +118,7 @@ def get_v_rack_output(service_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -123,6 +126,7 @@ def get_v_rack_output(service_name: Optional[pulumi.Input[str]] = None,
     vrack_v_rack = ovh.CloudProject.get_v_rack(service_name="XXXXXX")
     pulumi.export("vrack", vrack_v_rack)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The id of the public cloud project. If omitted,

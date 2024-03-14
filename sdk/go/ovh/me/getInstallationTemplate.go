@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupInstallationTemplate(ctx *pulumi.Context, args *LookupInstallationTemplateArgs, opts ...pulumi.InvokeOption) (*LookupInstallationTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstallationTemplateResult

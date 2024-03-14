@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupContainerRegistryUsers(ctx *pulumi.Context, args *LookupContainerRegistryUsersArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryUsersResult

@@ -118,6 +118,7 @@ def get_vrack_network(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -125,6 +126,7 @@ def get_vrack_network(service_name: Optional[str] = None,
     lb_network = ovh.IpLoadBalancing.get_vrack_network(service_name="XXXXXX",
         vrack_network_id="yyy")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The internal name of your IP load balancing
@@ -155,6 +157,7 @@ def get_vrack_network_output(service_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -162,6 +165,7 @@ def get_vrack_network_output(service_name: Optional[pulumi.Input[str]] = None,
     lb_network = ovh.IpLoadBalancing.get_vrack_network(service_name="XXXXXX",
         vrack_network_id="yyy")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The internal name of your IP load balancing

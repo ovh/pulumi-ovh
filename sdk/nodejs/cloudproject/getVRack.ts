@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  * });
  * export const vrack = vrackVRack;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVRack(args: GetVRackArgs, opts?: pulumi.InvokeOptions): Promise<GetVRackResult> {
 
@@ -61,6 +63,7 @@ export interface GetVRackResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -70,6 +73,7 @@ export interface GetVRackResult {
  * });
  * export const vrack = vrackVRack;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVRackOutput(args: GetVRackOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVRackResult> {
     return pulumi.output(args).apply((a: any) => getVRack(a, opts))

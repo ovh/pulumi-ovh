@@ -14,6 +14,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,6 +45,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement")]
     public partial class ContainerRegistryIPRestrictionsManagement : global::Pulumi.CustomResource

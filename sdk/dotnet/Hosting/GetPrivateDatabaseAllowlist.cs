@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.Hosting
         /// <summary>
         /// Use this data source to retrieve information about an hosting privatedatabase whitelist.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPrivateDatabaseAllowlistResult> InvokeAsync(GetPrivateDatabaseAllowlistArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateDatabaseAllowlistResult>("ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist", args ?? new GetPrivateDatabaseAllowlistArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.Ovh.Hosting
         /// <summary>
         /// Use this data source to retrieve information about an hosting privatedatabase whitelist.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPrivateDatabaseAllowlistResult> Invoke(GetPrivateDatabaseAllowlistInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseAllowlistResult>("ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist", args ?? new GetPrivateDatabaseAllowlistInvokeArgs(), options.WithDefaults());

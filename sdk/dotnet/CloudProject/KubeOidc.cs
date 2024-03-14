@@ -14,6 +14,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,12 +49,13 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// OVHcloud Managed Kubernetes Service cluster OIDC can be imported using the tenant `service_name` and cluster id `kube_id` separated by "/" E.g.,
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import ovh:CloudProject/kubeOidc:KubeOidc my-oidc service_name/kube_id

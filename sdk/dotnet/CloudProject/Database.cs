@@ -14,6 +14,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// Minimum settings for each engine (region choice is up to the user):
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,7 +97,7 @@ namespace Pulumi.Ovh.CloudProject
     ///         Description = "my-first-mongodb",
     ///         Engine = "mongodb",
     ///         Version = "5.0",
-    ///         Plan = "essential",
+    ///         Plan = "discovery",
     ///         Nodes = new[]
     ///         {
     ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
@@ -200,9 +201,11 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// To deploy a business PostgreSQL service with two nodes on public network:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -234,9 +237,11 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// To deploy an enterprise MongoDB service with three nodes on private network:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -271,19 +276,20 @@ namespace Pulumi.Ovh.CloudProject
     ///                 SubnetId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     ///             },
     ///         },
-    ///         Plan = "enterprise",
+    ///         Plan = "production",
     ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         Version = "5.0",
     ///     });
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
@@ -388,7 +394,10 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// Plan of the cluster.
-        /// Enum: "essential", "business", "enterprise".
+        /// * MongoDB: Enum: "discovery", "production", "advanced".
+        /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+        /// * M3 Aggregator: "business", "enterprise".
+        /// * Redis: "essential", "business"
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -543,7 +552,10 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// Plan of the cluster.
-        /// Enum: "essential", "business", "enterprise".
+        /// * MongoDB: Enum: "discovery", "production", "advanced".
+        /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+        /// * M3 Aggregator: "business", "enterprise".
+        /// * Redis: "essential", "business"
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -689,7 +701,10 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// Plan of the cluster.
-        /// Enum: "essential", "business", "enterprise".
+        /// * MongoDB: Enum: "discovery", "production", "advanced".
+        /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+        /// * M3 Aggregator: "business", "enterprise".
+        /// * Redis: "essential", "business"
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }

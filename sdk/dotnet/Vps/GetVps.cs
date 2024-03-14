@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.Vps
         /// <summary>
         /// Use this data source to retrieve information about a vps associated with your OVHcloud Account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Ovh.Vps
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVpsResult> InvokeAsync(GetVpsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpsResult>("ovh:Vps/getVps:getVps", args ?? new GetVpsArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Ovh.Vps
         /// <summary>
         /// Use this data source to retrieve information about a vps associated with your OVHcloud Account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Ovh.Vps
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVpsResult> Invoke(GetVpsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpsResult>("ovh:Vps/getVps:getVps", args ?? new GetVpsInvokeArgs(), options.WithDefaults());

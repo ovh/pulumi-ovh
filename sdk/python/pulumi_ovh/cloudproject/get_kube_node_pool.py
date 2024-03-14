@@ -338,6 +338,7 @@ def get_kube_node_pool(kube_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -347,6 +348,7 @@ def get_kube_node_pool(kube_id: Optional[str] = None,
         name="xxxxxx")
     pulumi.export("maxNodes", nodepool.max_nodes)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str kube_id: The id of the managed kubernetes cluster.
@@ -400,6 +402,7 @@ def get_kube_node_pool_output(kube_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -409,6 +412,7 @@ def get_kube_node_pool_output(kube_id: Optional[pulumi.Input[str]] = None,
         name="xxxxxx")
     pulumi.export("maxNodes", nodepool.max_nodes)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str kube_id: The id of the managed kubernetes cluster.

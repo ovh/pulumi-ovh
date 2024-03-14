@@ -13,6 +13,7 @@
         "strict": true
     },
     "files": [
+        "cloudproject/alerting.ts",
         "cloudproject/containerRegistry.ts",
         "cloudproject/containerRegistryIPRestrictionsManagement.ts",
         "cloudproject/containerRegistryIPRestrictionsRegistry.ts",
@@ -184,8 +185,6 @@
         "me/getIdentityUsers.ts",
         "me/getInstallationTemplate.ts",
         "me/getInstallationTemplates.ts",
-        "me/getIpxeScript.ts",
-        "me/getIpxeScripts.ts",
         "me/getMe.ts",
         "me/getPaymentmeanBankAccount.ts",
         "me/getPaymentmeanCreditCard.ts",
@@ -198,7 +197,6 @@
         "me/installationTemplatePartitionScheme.ts",
         "me/installationTemplatePartitionSchemeHardwareRaid.ts",
         "me/installationTemplatePartitionSchemePartition.ts",
-        "me/ipxeScript.ts",
         "me/sshKey.ts",
         "order/getCart.ts",
         "order/getCartProduct.ts",

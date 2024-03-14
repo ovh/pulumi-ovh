@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  * });
  * export const accessKeyIds = myS3Credentials.then(myS3Credentials => myS3Credentials.accessKeyIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUserS3Credentials(args: GetUserS3CredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserS3CredentialsResult> {
 
@@ -64,6 +66,7 @@ export interface GetUserS3CredentialsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -74,6 +77,7 @@ export interface GetUserS3CredentialsResult {
  * });
  * export const accessKeyIds = myS3Credentials.then(myS3Credentials => myS3Credentials.accessKeyIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUserS3CredentialsOutput(args: GetUserS3CredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserS3CredentialsResult> {
     return pulumi.output(args).apply((a: any) => getUserS3Credentials(a, opts))

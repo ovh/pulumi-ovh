@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AlertingFormattedMonthlyThresholdArgs',
     'ContainerRegistryPlanArgs',
     'ContainerRegistryPlanFeatureArgs',
     'ContainerRegistryPlanRegistryLimitArgs',
@@ -46,6 +47,61 @@ __all__ = [
     'GetKubeNodePoolTemplateMetadataArgs',
     'GetKubeNodePoolTemplateSpecArgs',
 ]
+
+@pulumi.input_type
+class AlertingFormattedMonthlyThresholdArgs:
+    def __init__(__self__, *,
+                 currency_code: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[str] currency_code: Currency of the monthly threshold
+        :param pulumi.Input[str] text: Text representation of the monthly threshold
+        :param pulumi.Input[float] value: Value of the monthly threshold
+        """
+        if currency_code is not None:
+            pulumi.set(__self__, "currency_code", currency_code)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Currency of the monthly threshold
+        """
+        return pulumi.get(self, "currency_code")
+
+    @currency_code.setter
+    def currency_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "currency_code", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Text representation of the monthly threshold
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[float]]:
+        """
+        Value of the monthly threshold
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "value", value)
+
 
 @pulumi.input_type
 class ContainerRegistryPlanArgs:

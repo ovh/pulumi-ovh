@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     name: "my_group_name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIdentityGroup(args: GetIdentityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentityGroupResult> {
 
@@ -71,6 +73,7 @@ export interface GetIdentityGroupResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -79,6 +82,7 @@ export interface GetIdentityGroupResult {
  *     name: "my_group_name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIdentityGroupOutput(args: GetIdentityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityGroupResult> {
     return pulumi.output(args).apply((a: any) => getIdentityGroup(a, opts))

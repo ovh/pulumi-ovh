@@ -90,6 +90,7 @@ def get_databases(engine: Optional[str] = None,
 
     To get the list of database clusters service for a given engine:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -98,6 +99,7 @@ def get_databases(engine: Optional[str] = None,
         engine="YYYY")
     pulumi.export("clusterIds", dbs.cluster_ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str engine: The database engine you want to list. To get a full list of available engine visit:
@@ -129,6 +131,7 @@ def get_databases_output(engine: Optional[pulumi.Input[str]] = None,
 
     To get the list of database clusters service for a given engine:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -137,6 +140,7 @@ def get_databases_output(engine: Optional[pulumi.Input[str]] = None,
         engine="YYYY")
     pulumi.export("clusterIds", dbs.cluster_ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str engine: The database engine you want to list. To get a full list of available engine visit:

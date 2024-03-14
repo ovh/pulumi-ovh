@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve information about a DBaas logs input engine.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.Ovh.Dbaas
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetLogsInputEngineResult> InvokeAsync(GetLogsInputEngineArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogsInputEngineResult>("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", args ?? new GetLogsInputEngineArgs(), options.WithDefaults());
@@ -45,10 +43,9 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve information about a DBaas logs input engine.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.Ovh.Dbaas
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetLogsInputEngineResult> Invoke(GetLogsInputEngineInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsInputEngineResult>("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", args ?? new GetLogsInputEngineInvokeArgs(), options.WithDefaults());

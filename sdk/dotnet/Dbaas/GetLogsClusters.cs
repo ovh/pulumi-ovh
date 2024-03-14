@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve UUIDs of DBaas logs clusters.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Ovh.Dbaas
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetLogsClustersResult> InvokeAsync(GetLogsClustersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogsClustersResult>("ovh:Dbaas/getLogsClusters:getLogsClusters", args ?? new GetLogsClustersArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve UUIDs of DBaas logs clusters.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Ovh.Dbaas
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetLogsClustersResult> Invoke(GetLogsClustersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsClustersResult>("ovh:Dbaas/getLogsClusters:getLogsClusters", args ?? new GetLogsClustersInvokeArgs(), options.WithDefaults());

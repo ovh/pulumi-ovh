@@ -110,6 +110,7 @@ class CloudProject(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -118,12 +119,13 @@ class CloudProject(pulumi.CustomResource):
             project_id="67890",
             service_name="12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Attachment of a public cloud project and a VRack can be imported using the `project_id`, the `service_name` (vRackID) and the `attach_id`, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Vrack/cloudProject:CloudProject myattach ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/vrack_pn-12345678-cloudproject_ookie9mee8Shaeghaeleeju7Xeghohv6e-attach
@@ -147,6 +149,7 @@ class CloudProject(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -155,12 +158,13 @@ class CloudProject(pulumi.CustomResource):
             project_id="67890",
             service_name="12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Attachment of a public cloud project and a VRack can be imported using the `project_id`, the `service_name` (vRackID) and the `attach_id`, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Vrack/cloudProject:CloudProject myattach ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/vrack_pn-12345678-cloudproject_ookie9mee8Shaeghaeleeju7Xeghohv6e-attach

@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -16,6 +17,7 @@ import * as utilities from "../utilities";
  * const projectUsers = ovh.CloudProject.getUsers({
  *     serviceName: "XXX",
  * });
+ * // Get the user ID of a previously created user with the description "S3-User"
  * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
  * const s3UserId = users[0];
  * const myS3Credentials = Promise.all([projectUsers, s3UserId]).then(([projectUsers, s3UserId]) => ovh.CloudProject.getUserS3Credentials({
@@ -30,6 +32,7 @@ import * as utilities from "../utilities";
  * export const myAccessKeyId = myS3Credential.then(myS3Credential => myS3Credential.accessKeyId);
  * export const mySecretAccessKey = myS3Credential.then(myS3Credential => myS3Credential.secretAccessKey);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUserS3Credential(args: GetUserS3CredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetUserS3CredentialResult> {
 
@@ -81,6 +84,7 @@ export interface GetUserS3CredentialResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -88,6 +92,7 @@ export interface GetUserS3CredentialResult {
  * const projectUsers = ovh.CloudProject.getUsers({
  *     serviceName: "XXX",
  * });
+ * // Get the user ID of a previously created user with the description "S3-User"
  * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
  * const s3UserId = users[0];
  * const myS3Credentials = Promise.all([projectUsers, s3UserId]).then(([projectUsers, s3UserId]) => ovh.CloudProject.getUserS3Credentials({
@@ -102,6 +107,7 @@ export interface GetUserS3CredentialResult {
  * export const myAccessKeyId = myS3Credential.then(myS3Credential => myS3Credential.accessKeyId);
  * export const mySecretAccessKey = myS3Credential.then(myS3Credential => myS3Credential.secretAccessKey);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUserS3CredentialOutput(args: GetUserS3CredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserS3CredentialResult> {
     return pulumi.output(args).apply((a: any) => getUserS3Credential(a, opts))

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// Resource groups can be imported by using their id.
+//
+// > Read only resource groups cannot be imported
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 

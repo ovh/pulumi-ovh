@@ -471,6 +471,7 @@ class HttpFarmServer(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -494,6 +495,11 @@ class HttpFarmServer(pulumi.CustomResource):
             status="active",
             weight=2)
         ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -521,6 +527,7 @@ class HttpFarmServer(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -544,6 +551,11 @@ class HttpFarmServer(pulumi.CustomResource):
             status="active",
             weight=2)
         ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param HttpFarmServerArgs args: The arguments to use to populate this resource's properties.

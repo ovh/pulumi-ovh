@@ -14,6 +14,7 @@ namespace Pulumi.Ovh.Me
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Pulumi.Ovh.Me
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Me/identityUser:IdentityUser")]
     public partial class IdentityUser : global::Pulumi.CustomResource

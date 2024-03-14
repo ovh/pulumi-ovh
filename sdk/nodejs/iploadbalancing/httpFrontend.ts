@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -32,8 +33,11 @@ import * as utilities from "../utilities";
  *     zone: "all",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### With HTTP Header
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -61,6 +65,11 @@ import * as utilities from "../utilities";
  *     zone: "all",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Import
+ *
+ * HTTP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
  */
 export class HttpFrontend extends pulumi.CustomResource {
     /**

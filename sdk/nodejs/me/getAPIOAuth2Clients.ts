@@ -9,12 +9,14 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myOauth2Clients = ovh.Me.getAPIOAuth2Client({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAPIOAuth2Clients(opts?: pulumi.InvokeOptions): Promise<GetAPIOAuth2ClientsResult> {
 
@@ -41,12 +43,14 @@ export interface GetAPIOAuth2ClientsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myOauth2Clients = ovh.Me.getAPIOAuth2Client({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAPIOAuth2ClientsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAPIOAuth2ClientsResult> {
     return pulumi.output(getAPIOAuth2Clients(opts))

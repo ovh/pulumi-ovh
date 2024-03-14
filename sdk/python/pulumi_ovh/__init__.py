@@ -63,6 +63,14 @@ _utilities.register(
 [
  {
   "pkg": "ovh",
+  "mod": "CloudProject/alerting",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/alerting:Alerting": "Alerting"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProject/containerRegistry",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
@@ -683,14 +691,6 @@ _utilities.register(
   "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition": "InstallationTemplatePartitionSchemePartition"
-  }
- },
- {
-  "pkg": "ovh",
-  "mod": "Me/ipxeScript",
-  "fqn": "pulumi_ovh.me",
-  "classes": {
-   "ovh:Me/ipxeScript:IpxeScript": "IpxeScript"
   }
  },
  {

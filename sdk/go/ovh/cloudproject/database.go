@@ -16,6 +16,7 @@ import (
 //
 // Minimum settings for each engine (region choice is up to the user):
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,7 +95,7 @@ import (
 //				Description: pulumi.String("my-first-mongodb"),
 //				Engine:      pulumi.String("mongodb"),
 //				Version:     pulumi.String("5.0"),
-//				Plan:        pulumi.String("essential"),
+//				Plan:        pulumi.String("discovery"),
 //				Nodes: cloudproject.DatabaseNodeArray{
 //					&cloudproject.DatabaseNodeArgs{
 //						Region: pulumi.String("GRA"),
@@ -195,9 +196,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // To deploy a business PostgreSQL service with two nodes on public network:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -234,9 +237,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // To deploy an enterprise MongoDB service with three nodes on private network:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -270,7 +275,7 @@ import (
 //						SubnetId:  pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
 //					},
 //				},
-//				Plan:        pulumi.String("enterprise"),
+//				Plan:        pulumi.String("production"),
 //				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Version:     pulumi.String("5.0"),
 //			})
@@ -282,12 +287,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
@@ -330,7 +336,10 @@ type Database struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrOutput `pulumi:"opensearchAclsEnabled"`
 	// Plan of the cluster.
-	// Enum: "essential", "business", "enterprise".
+	// * MongoDB: Enum: "discovery", "production", "advanced".
+	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+	// * M3 Aggregator: "business", "enterprise".
+	// * Redis: "essential", "business"
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -424,7 +433,10 @@ type databaseState struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled *bool `pulumi:"opensearchAclsEnabled"`
 	// Plan of the cluster.
-	// Enum: "essential", "business", "enterprise".
+	// * MongoDB: Enum: "discovery", "production", "advanced".
+	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+	// * M3 Aggregator: "business", "enterprise".
+	// * Redis: "essential", "business"
 	Plan *string `pulumi:"plan"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -471,7 +483,10 @@ type DatabaseState struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrInput
 	// Plan of the cluster.
-	// Enum: "essential", "business", "enterprise".
+	// * MongoDB: Enum: "discovery", "production", "advanced".
+	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+	// * M3 Aggregator: "business", "enterprise".
+	// * Redis: "essential", "business"
 	Plan pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -512,7 +527,10 @@ type databaseArgs struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled *bool `pulumi:"opensearchAclsEnabled"`
 	// Plan of the cluster.
-	// Enum: "essential", "business", "enterprise".
+	// * MongoDB: Enum: "discovery", "production", "advanced".
+	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+	// * M3 Aggregator: "business", "enterprise".
+	// * Redis: "essential", "business"
 	Plan string `pulumi:"plan"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -548,7 +566,10 @@ type DatabaseArgs struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrInput
 	// Plan of the cluster.
-	// Enum: "essential", "business", "enterprise".
+	// * MongoDB: Enum: "discovery", "production", "advanced".
+	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+	// * M3 Aggregator: "business", "enterprise".
+	// * Redis: "essential", "business"
 	Plan pulumi.StringInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -724,7 +745,10 @@ func (o DatabaseOutput) OpensearchAclsEnabled() pulumi.BoolPtrOutput {
 }
 
 // Plan of the cluster.
-// Enum: "essential", "business", "enterprise".
+// * MongoDB: Enum: "discovery", "production", "advanced".
+// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+// * M3 Aggregator: "business", "enterprise".
+// * Redis: "essential", "business"
 func (o DatabaseOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }

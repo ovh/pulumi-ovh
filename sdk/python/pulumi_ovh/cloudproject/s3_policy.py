@@ -138,6 +138,7 @@ class S3Policy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -174,12 +175,13 @@ class S3Policy(pulumi.CustomResource):
                 }],
             }))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
@@ -203,6 +205,7 @@ class S3Policy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -239,12 +242,13 @@ class S3Policy(pulumi.CustomResource):
                 }],
             }))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id

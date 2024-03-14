@@ -14,6 +14,7 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -85,6 +86,7 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Vrack/ipAddress:IpAddress")]
     public partial class IpAddress : global::Pulumi.CustomResource

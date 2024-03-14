@@ -285,12 +285,14 @@ def get_private_database(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     database = ovh.Hosting.get_private_database(service_name="XXXXXX")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The internal name of your private database
@@ -332,12 +334,14 @@ def get_private_database_output(service_name: Optional[pulumi.Input[str]] = None
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     database = ovh.Hosting.get_private_database(service_name="XXXXXX")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The internal name of your private database

@@ -147,6 +147,9 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"ovh_cloud_project_alerting": {
+				Tok: ovhResource(cloudProjectMod, "Alerting"),
+			},
 			"ovh_cloud_project_containerregistry": {
 				Tok: ovhResource(cloudProjectMod, "ContainerRegistry"),
 			},
@@ -384,9 +387,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_me_installation_template_partition_scheme_partition": {
 				Tok: ovhResource(meMod, "InstallationTemplatePartitionSchemePartition"),
-			},
-			"ovh_me_ipxe_script": {
-				Tok: ovhResource(meMod, "IpxeScript"),
 			},
 			"ovh_me_ssh_key": {
 				Tok: ovhResource(meMod, "SshKey"),
@@ -706,12 +706,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_me_installation_templates": {
 				Tok: ovhDataSource(meMod, "getInstallationTemplates"),
-			},
-			"ovh_me_ipxe_script": {
-				Tok: ovhDataSource(meMod, "getIpxeScript"),
-			},
-			"ovh_me_ipxe_scripts": {
-				Tok: ovhDataSource(meMod, "getIpxeScripts"),
 			},
 			"ovh_me_paymentmean_bankaccount": {
 				Tok: ovhDataSource(meMod, "getPaymentmeanBankAccount"),

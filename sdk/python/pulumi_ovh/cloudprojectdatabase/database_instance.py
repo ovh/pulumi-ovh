@@ -196,6 +196,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -208,12 +209,13 @@ class DatabaseInstance(pulumi.CustomResource):
             engine=db.engine,
             cluster_id=db.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
@@ -244,6 +246,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -256,12 +259,13 @@ class DatabaseInstance(pulumi.CustomResource):
             engine=db.engine,
             cluster_id=db.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id

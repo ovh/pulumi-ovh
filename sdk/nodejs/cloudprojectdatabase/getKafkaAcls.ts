@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  * });
  * export const aclIds = acls.then(acls => acls.aclIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaAcls(args: GetKafkaAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaAclsResult> {
 
@@ -70,6 +72,7 @@ export interface GetKafkaAclsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -80,6 +83,7 @@ export interface GetKafkaAclsResult {
  * });
  * export const aclIds = acls.then(acls => acls.aclIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaAclsOutput(args: GetKafkaAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaAclsResult> {
     return pulumi.output(args).apply((a: any) => getKafkaAcls(a, opts))

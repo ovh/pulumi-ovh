@@ -82,6 +82,7 @@ def get_user_s3_credentials(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -90,6 +91,7 @@ def get_user_s3_credentials(service_name: Optional[str] = None,
         user_id="1234")
     pulumi.export("accessKeyIds", my_s3_credentials.access_key_ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The ID of the public cloud project. If omitted,
@@ -118,6 +120,7 @@ def get_user_s3_credentials_output(service_name: Optional[pulumi.Input[str]] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -126,6 +129,7 @@ def get_user_s3_credentials_output(service_name: Optional[pulumi.Input[str]] = N
         user_id="1234")
     pulumi.export("accessKeyIds", my_s3_credentials.access_key_ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The ID of the public cloud project. If omitted,

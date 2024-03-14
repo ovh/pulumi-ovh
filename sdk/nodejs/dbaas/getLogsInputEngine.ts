@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  *     version: "6.8",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLogsInputEngine(args: GetLogsInputEngineArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsInputEngineResult> {
 
@@ -72,6 +74,7 @@ export interface GetLogsInputEngineResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -83,6 +86,7 @@ export interface GetLogsInputEngineResult {
  *     version: "6.8",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLogsInputEngineOutput(args: GetLogsInputEngineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsInputEngineResult> {
     return pulumi.output(args).apply((a: any) => getLogsInputEngine(a, opts))

@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -20,13 +21,14 @@ import * as utilities from "../utilities";
  *     type: "readwrite",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
  *
  * ```sh
- * $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+ * $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%!F(MISSING)32`
  * ```
  */
 export class NasHAPartitionAccess extends pulumi.CustomResource {

@@ -302,6 +302,7 @@ class ContainerRegistry(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -314,6 +315,7 @@ class ContainerRegistry(pulumi.CustomResource):
             plan_id=regcap.id,
             region=regcap.region)
         ```
+        <!--End PulumiCodeChooser -->
 
         > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
 
@@ -336,6 +338,7 @@ class ContainerRegistry(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -348,6 +351,7 @@ class ContainerRegistry(pulumi.CustomResource):
             plan_id=regcap.id,
             region=regcap.region)
         ```
+        <!--End PulumiCodeChooser -->
 
         > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
 

@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to retrieve an IAM permissions group.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Ovh.Iam
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPermissionsGroupsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPermissionsGroupsResult>("ovh:Iam/getPermissionsGroups:getPermissionsGroups", InvokeArgs.Empty, options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to retrieve an IAM permissions group.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Ovh.Iam
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPermissionsGroupsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPermissionsGroupsResult>("ovh:Iam/getPermissionsGroups:getPermissionsGroups", InvokeArgs.Empty, options.WithDefaults());

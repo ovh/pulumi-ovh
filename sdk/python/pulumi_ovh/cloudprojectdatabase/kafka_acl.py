@@ -206,6 +206,7 @@ class KafkaAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -220,12 +221,13 @@ class KafkaAcl(pulumi.CustomResource):
             topic="mytopic",
             username="johndoe")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id
@@ -252,6 +254,7 @@ class KafkaAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -266,12 +269,13 @@ class KafkaAcl(pulumi.CustomResource):
             topic="mytopic",
             username="johndoe")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id

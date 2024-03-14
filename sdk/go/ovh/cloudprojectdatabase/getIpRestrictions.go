@@ -17,6 +17,7 @@ import (
 //
 // To get the list of IP restriction on a database cluster service:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetIpRestrictions(ctx *pulumi.Context, args *GetIpRestrictionsArgs, opts ...pulumi.InvokeOption) (*GetIpRestrictionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpRestrictionsResult

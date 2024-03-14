@@ -120,12 +120,14 @@ def get_identity_group(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_group = ovh.Me.get_identity_group(name="my_group_name")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Group name.
@@ -153,12 +155,14 @@ def get_identity_group_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_group = ovh.Me.get_identity_group(name="my_group_name")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Group name.

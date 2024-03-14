@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// TCP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
 type TcpRoute struct {
 	pulumi.CustomResourceState
 

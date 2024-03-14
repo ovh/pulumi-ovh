@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetKafkaUserAccess(ctx *pulumi.Context, args *GetKafkaUserAccessArgs, opts ...pulumi.InvokeOption) (*GetKafkaUserAccessResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKafkaUserAccessResult

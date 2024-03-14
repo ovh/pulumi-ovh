@@ -150,6 +150,7 @@ class CephAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -160,6 +161,7 @@ class CephAcl(pulumi.CustomResource):
             network="1.2.3.4",
             netmask="255.255.255.255")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -178,6 +180,7 @@ class CephAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -188,6 +191,7 @@ class CephAcl(pulumi.CustomResource):
             network="1.2.3.4",
             netmask="255.255.255.255")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param CephAclArgs args: The arguments to use to populate this resource's properties.

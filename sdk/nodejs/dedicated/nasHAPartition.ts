@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     size: 20,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -57,7 +59,8 @@ export class NasHAPartition extends pulumi.CustomResource {
     }
 
     /**
-     * Percentage of partition space used in %
+     * Percentage of partition space used in %!
+     * (MISSING)
      */
     public /*out*/ readonly capacity!: pulumi.Output<number>;
     /**
@@ -81,7 +84,8 @@ export class NasHAPartition extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<number>;
     /**
-     * Percentage of partition space used by snapshots in %
+     * Percentage of partition space used by snapshots in %!
+     * (MISSING)
      */
     public /*out*/ readonly usedBySnapshots!: pulumi.Output<number>;
 
@@ -134,7 +138,8 @@ export class NasHAPartition extends pulumi.CustomResource {
  */
 export interface NasHAPartitionState {
     /**
-     * Percentage of partition space used in %
+     * Percentage of partition space used in %!
+     * (MISSING)
      */
     capacity?: pulumi.Input<number>;
     /**
@@ -158,7 +163,8 @@ export interface NasHAPartitionState {
      */
     size?: pulumi.Input<number>;
     /**
-     * Percentage of partition space used by snapshots in %
+     * Percentage of partition space used by snapshots in %!
+     * (MISSING)
      */
     usedBySnapshots?: pulumi.Input<number>;
 }

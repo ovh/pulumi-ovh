@@ -113,6 +113,7 @@ def get_kafka_user_access(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -122,6 +123,7 @@ def get_kafka_user_access(cluster_id: Optional[str] = None,
         user_id="ZZZ")
     pulumi.export("accessCert", access.cert)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID
@@ -155,6 +157,7 @@ def get_kafka_user_access_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -164,6 +167,7 @@ def get_kafka_user_access_output(cluster_id: Optional[pulumi.Input[str]] = None,
         user_id="ZZZ")
     pulumi.export("accessCert", access.cert)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID

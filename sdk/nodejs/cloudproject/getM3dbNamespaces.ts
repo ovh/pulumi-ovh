@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  * });
  * export const namespaceIds = namespaces.then(namespaces => namespaces.namespaceIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getM3dbNamespaces(args: GetM3dbNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetM3dbNamespacesResult> {
 
@@ -70,6 +72,7 @@ export interface GetM3dbNamespacesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -80,6 +83,7 @@ export interface GetM3dbNamespacesResult {
  * });
  * export const namespaceIds = namespaces.then(namespaces => namespaces.namespaceIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getM3dbNamespacesOutput(args: GetM3dbNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbNamespacesResult> {
     return pulumi.output(args).apply((a: any) => getM3dbNamespaces(a, opts))

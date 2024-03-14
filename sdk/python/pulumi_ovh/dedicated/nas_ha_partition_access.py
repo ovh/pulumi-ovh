@@ -167,6 +167,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -177,13 +178,14 @@ class NasHAPartitionAccess(pulumi.CustomResource):
             service_name="zpool-12345",
             type="readwrite")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
 
         ```sh
-        $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+        $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%!F(MISSING)32`
         ```
 
         :param str resource_name: The name of the resource.
@@ -204,6 +206,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -214,13 +217,14 @@ class NasHAPartitionAccess(pulumi.CustomResource):
             service_name="zpool-12345",
             type="readwrite")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
 
         ```sh
-        $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+        $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%!F(MISSING)32`
         ```
 
         :param str resource_name: The name of the resource.

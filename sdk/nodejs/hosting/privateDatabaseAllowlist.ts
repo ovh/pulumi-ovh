@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -20,13 +21,14 @@ import * as utilities from "../utilities";
  *     sftp: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
  *
  * ```sh
- *  $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
+ * $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
  * ```
  */
 export class PrivateDatabaseAllowlist extends pulumi.CustomResource {

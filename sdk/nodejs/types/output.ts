@@ -37,6 +37,21 @@ export interface GetServerVni {
 }
 
 export namespace CloudProject {
+    export interface AlertingFormattedMonthlyThreshold {
+        /**
+         * Currency of the monthly threshold
+         */
+        currencyCode: string;
+        /**
+         * Text representation of the monthly threshold
+         */
+        text: string;
+        /**
+         * Value of the monthly threshold
+         */
+        value: number;
+    }
+
     export interface ContainerRegistryPlan {
         /**
          * Plan code from the catalog

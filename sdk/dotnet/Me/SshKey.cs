@@ -12,6 +12,7 @@ namespace Pulumi.Ovh.Me
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,6 +29,7 @@ namespace Pulumi.Ovh.Me
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Me/sshKey:SshKey")]
     public partial class SshKey : global::Pulumi.CustomResource

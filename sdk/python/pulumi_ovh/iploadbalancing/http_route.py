@@ -237,6 +237,7 @@ class HttpRoute(pulumi.CustomResource):
 
         Route which redirect all url to https.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -251,6 +252,11 @@ class HttpRoute(pulumi.CustomResource):
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             weight=1)
         ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        HTTP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -273,6 +279,7 @@ class HttpRoute(pulumi.CustomResource):
 
         Route which redirect all url to https.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -287,6 +294,11 @@ class HttpRoute(pulumi.CustomResource):
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             weight=1)
         ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        HTTP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param HttpRouteArgs args: The arguments to use to populate this resource's properties.

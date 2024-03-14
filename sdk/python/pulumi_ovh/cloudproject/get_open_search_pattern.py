@@ -101,6 +101,7 @@ def get_open_search_pattern(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -110,6 +111,7 @@ def get_open_search_pattern(cluster_id: Optional[str] = None,
         id="ZZZ")
     pulumi.export("patternPattern", pattern.pattern)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID
@@ -142,6 +144,7 @@ def get_open_search_pattern_output(cluster_id: Optional[pulumi.Input[str]] = Non
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -151,6 +154,7 @@ def get_open_search_pattern_output(cluster_id: Optional[pulumi.Input[str]] = Non
         id="ZZZ")
     pulumi.export("patternPattern", pattern.pattern)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID

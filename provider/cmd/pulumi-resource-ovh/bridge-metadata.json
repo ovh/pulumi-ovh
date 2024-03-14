@@ -1,6 +1,7 @@
 {
     "mux": {
         "resources": {
+            "ovh:CloudProject/alerting:Alerting": 1,
             "ovh:CloudProject/containerRegistry:ContainerRegistry": 0,
             "ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement": 0,
             "ovh:CloudProject/containerRegistryIPRestrictionsRegistry:ContainerRegistryIPRestrictionsRegistry": 0,
@@ -79,7 +80,6 @@
             "ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme": 0,
             "ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid": 0,
             "ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition": 0,
-            "ovh:Me/ipxeScript:IpxeScript": 0,
             "ovh:Me/sshKey:SshKey": 0,
             "ovh:Vrack/cloudProject:CloudProject": 0,
             "ovh:Vrack/dedicatedServer:DedicatedServer": 0,
@@ -172,8 +172,6 @@
             "ovh:Me/getIdentityUsers:getIdentityUsers": 0,
             "ovh:Me/getInstallationTemplate:getInstallationTemplate": 0,
             "ovh:Me/getInstallationTemplates:getInstallationTemplates": 0,
-            "ovh:Me/getIpxeScript:getIpxeScript": 0,
-            "ovh:Me/getIpxeScripts:getIpxeScripts": 0,
             "ovh:Me/getMe:getMe": 0,
             "ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount": 0,
             "ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard": 0,

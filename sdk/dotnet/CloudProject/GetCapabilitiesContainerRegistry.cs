@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the container registry capabilities of a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCapabilitiesContainerRegistryResult> InvokeAsync(GetCapabilitiesContainerRegistryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCapabilitiesContainerRegistryResult>("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", args ?? new GetCapabilitiesContainerRegistryArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the container registry capabilities of a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCapabilitiesContainerRegistryResult> Invoke(GetCapabilitiesContainerRegistryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesContainerRegistryResult>("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", args ?? new GetCapabilitiesContainerRegistryInvokeArgs(), options.WithDefaults());

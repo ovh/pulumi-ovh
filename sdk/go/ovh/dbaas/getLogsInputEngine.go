@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetLogsInputEngine(ctx *pulumi.Context, args *GetLogsInputEngineArgs, opts ...pulumi.InvokeOption) (*GetLogsInputEngineResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogsInputEngineResult
