@@ -134,6 +134,7 @@ class KubeIpRestrictions(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -143,12 +144,13 @@ class KubeIpRestrictions(pulumi.CustomResource):
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
@@ -171,6 +173,7 @@ class KubeIpRestrictions(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -180,12 +183,13 @@ class KubeIpRestrictions(pulumi.CustomResource):
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id

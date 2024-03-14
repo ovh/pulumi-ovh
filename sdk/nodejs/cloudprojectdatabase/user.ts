@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import ovh:CloudProjectDatabase/user:User my_user service_name/engine/cluster_id/id

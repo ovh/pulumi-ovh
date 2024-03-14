@@ -6,6 +6,21 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export namespace CloudProject {
+    export interface AlertingFormattedMonthlyThreshold {
+        /**
+         * Currency of the monthly threshold
+         */
+        currencyCode?: pulumi.Input<string>;
+        /**
+         * Text representation of the monthly threshold
+         */
+        text?: pulumi.Input<string>;
+        /**
+         * Value of the monthly threshold
+         */
+        value?: pulumi.Input<number>;
+    }
+
     export interface ContainerRegistryPlan {
         /**
          * Plan code from the catalog

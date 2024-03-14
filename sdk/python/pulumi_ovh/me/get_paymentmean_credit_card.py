@@ -128,12 +128,14 @@ def get_paymentmean_credit_card(description_regexp: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     cc = ovh.Me.get_paymentmean_credit_card(use_default=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description_regexp: a regexp used to filter credit cards 
@@ -175,12 +177,14 @@ def get_paymentmean_credit_card_output(description_regexp: Optional[pulumi.Input
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     cc = ovh.Me.get_paymentmean_credit_card(use_default=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description_regexp: a regexp used to filter credit cards 

@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.Order
         /// <summary>
         /// Use this data source to create a temporary order cart to retrieve information order cart products.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Ovh.Order
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCartResult> InvokeAsync(GetCartArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCartResult>("ovh:Order/getCart:getCart", args ?? new GetCartArgs(), options.WithDefaults());
@@ -44,10 +42,9 @@ namespace Pulumi.Ovh.Order
         /// <summary>
         /// Use this data source to create a temporary order cart to retrieve information order cart products.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.Ovh.Order
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCartResult> Invoke(GetCartInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCartResult>("ovh:Order/getCart:getCart", args ?? new GetCartInvokeArgs(), options.WithDefaults());

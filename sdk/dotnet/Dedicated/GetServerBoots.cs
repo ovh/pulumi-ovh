@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.Dedicated
         /// <summary>
         /// Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerBootsResult> InvokeAsync(GetServerBootsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerBootsResult>("ovh:Dedicated/getServerBoots:getServerBoots", args ?? new GetServerBootsArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.Ovh.Dedicated
         /// <summary>
         /// Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerBootsResult> Invoke(GetServerBootsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerBootsResult>("ovh:Dedicated/getServerBoots:getServerBoots", args ?? new GetServerBootsInvokeArgs(), options.WithDefaults());

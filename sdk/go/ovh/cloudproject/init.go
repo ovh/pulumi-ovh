@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "ovh:CloudProject/alerting:Alerting":
+		r = &Alerting{}
 	case "ovh:CloudProject/containerRegistry:ContainerRegistry":
 		r = &ContainerRegistry{}
 	case "ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement":
@@ -72,6 +74,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/alerting",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProject/containerRegistry",

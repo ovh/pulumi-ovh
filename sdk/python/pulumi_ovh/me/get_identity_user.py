@@ -168,12 +168,14 @@ def get_identity_user(user: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_user = ovh.Me.get_identity_user(user="my_user_login")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str user: User's login.
@@ -205,12 +207,14 @@ def get_identity_user_output(user: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_user = ovh.Me.get_identity_user(user="my_user_login")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str user: User's login.

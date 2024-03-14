@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// <summary>
         /// Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVrackNetworkResult> InvokeAsync(GetVrackNetworkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVrackNetworkResult>("ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork", args ?? new GetVrackNetworkArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// <summary>
         /// Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVrackNetworkResult> Invoke(GetVrackNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVrackNetworkResult>("ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork", args ?? new GetVrackNetworkInvokeArgs(), options.WithDefaults());

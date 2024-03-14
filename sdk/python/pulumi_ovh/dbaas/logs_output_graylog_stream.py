@@ -43,7 +43,7 @@ class LogsOutputGraylogStreamArgs:
         :param pulumi.Input[str] cold_storage_target: ColdStorage destination
         :param pulumi.Input[bool] indexing_enabled: Enable ES indexing
         :param pulumi.Input[int] indexing_max_size: Maximum indexing size (in GB)
-        :param pulumi.Input[bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        :param pulumi.Input[bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
         :param pulumi.Input[str] parent_stream_id: Parent stream ID
         :param pulumi.Input[bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reach
         :param pulumi.Input[str] retention_id: Retention ID
@@ -215,7 +215,7 @@ class LogsOutputGraylogStreamArgs:
     @pulumi.getter(name="indexingNotifyEnabled")
     def indexing_notify_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
         """
         return pulumi.get(self, "indexing_notify_enabled")
 
@@ -312,7 +312,7 @@ class _LogsOutputGraylogStreamState:
         :param pulumi.Input[str] description: Stream description
         :param pulumi.Input[bool] indexing_enabled: Enable ES indexing
         :param pulumi.Input[int] indexing_max_size: Maximum indexing size (in GB)
-        :param pulumi.Input[bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        :param pulumi.Input[bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
         :param pulumi.Input[bool] is_editable: Indicates if you are allowed to edit entry
         :param pulumi.Input[bool] is_shareable: Indicates if you are allowed to share entry
         :param pulumi.Input[int] nb_alert_condition: Number of alert condition
@@ -511,7 +511,7 @@ class _LogsOutputGraylogStreamState:
     @pulumi.getter(name="indexingNotifyEnabled")
     def indexing_notify_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
         """
         return pulumi.get(self, "indexing_notify_enabled")
 
@@ -699,7 +699,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         :param pulumi.Input[str] description: Stream description
         :param pulumi.Input[bool] indexing_enabled: Enable ES indexing
         :param pulumi.Input[int] indexing_max_size: Maximum indexing size (in GB)
-        :param pulumi.Input[bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        :param pulumi.Input[bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
         :param pulumi.Input[str] parent_stream_id: Parent stream ID
         :param pulumi.Input[bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reach
         :param pulumi.Input[str] retention_id: Retention ID
@@ -837,7 +837,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         :param pulumi.Input[str] description: Stream description
         :param pulumi.Input[bool] indexing_enabled: Enable ES indexing
         :param pulumi.Input[int] indexing_max_size: Maximum indexing size (in GB)
-        :param pulumi.Input[bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        :param pulumi.Input[bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
         :param pulumi.Input[bool] is_editable: Indicates if you are allowed to edit entry
         :param pulumi.Input[bool] is_shareable: Indicates if you are allowed to share entry
         :param pulumi.Input[int] nb_alert_condition: Number of alert condition
@@ -973,7 +973,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
     @pulumi.getter(name="indexingNotifyEnabled")
     def indexing_notify_enabled(self) -> pulumi.Output[bool]:
         """
-        If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
         """
         return pulumi.get(self, "indexing_notify_enabled")
 

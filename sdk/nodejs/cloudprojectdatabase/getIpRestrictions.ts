@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * To get the list of IP restriction on a database cluster service:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const ips = iprestrictions.then(iprestrictions => iprestrictions.ips);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIpRestrictions(args: GetIpRestrictionsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpRestrictionsResult> {
 
@@ -85,6 +87,7 @@ export interface GetIpRestrictionsResult {
  *
  * To get the list of IP restriction on a database cluster service:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -96,6 +99,7 @@ export interface GetIpRestrictionsResult {
  * });
  * export const ips = iprestrictions.then(iprestrictions => iprestrictions.ips);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIpRestrictionsOutput(args: GetIpRestrictionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpRestrictionsResult> {
     return pulumi.output(args).apply((a: any) => getIpRestrictions(a, opts))

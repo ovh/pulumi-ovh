@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupLogsOutputGraylogStream(ctx *pulumi.Context, args *LookupLogsOutputGraylogStreamArgs, opts ...pulumi.InvokeOption) (*LookupLogsOutputGraylogStreamResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogsOutputGraylogStreamResult
@@ -82,7 +84,7 @@ type LookupLogsOutputGraylogStreamResult struct {
 	IndexingEnabled bool `pulumi:"indexingEnabled"`
 	// Maximum indexing size (in GB)
 	IndexingMaxSize int `pulumi:"indexingMaxSize"`
-	// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+	// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
 	IndexingNotifyEnabled bool `pulumi:"indexingNotifyEnabled"`
 	// Indicates if you are allowed to edit entry
 	IsEditable bool `pulumi:"isEditable"`
@@ -207,7 +209,7 @@ func (o LookupLogsOutputGraylogStreamResultOutput) IndexingMaxSize() pulumi.IntO
 	return o.ApplyT(func(v LookupLogsOutputGraylogStreamResult) int { return v.IndexingMaxSize }).(pulumi.IntOutput)
 }
 
-// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
 func (o LookupLogsOutputGraylogStreamResultOutput) IndexingNotifyEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLogsOutputGraylogStreamResult) bool { return v.IndexingNotifyEnabled }).(pulumi.BoolOutput)
 }

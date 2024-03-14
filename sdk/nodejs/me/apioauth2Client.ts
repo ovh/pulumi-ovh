@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -21,9 +22,11 @@ import * as utilities from "../utilities";
  *     flow: "AUTHORIZATION_CODE",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -33,20 +36,21 @@ import * as utilities from "../utilities";
  *     flow: "CLIENT_CREDENTIALS",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * OAuth2 clients can be imported using their `client_id`:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id
  * ```
  *
- *  Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separator:
+ * Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separator:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'

@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPrivateDatabaseDb(args: GetPrivateDatabaseDbArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseDbResult> {
 
@@ -76,6 +78,7 @@ export interface GetPrivateDatabaseDbResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -85,6 +88,7 @@ export interface GetPrivateDatabaseDbResult {
  *     serviceName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPrivateDatabaseDbOutput(args: GetPrivateDatabaseDbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseDbResult> {
     return pulumi.output(args).apply((a: any) => getPrivateDatabaseDb(a, opts))

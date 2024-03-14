@@ -13,6 +13,181 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AlertingFormattedMonthlyThreshold struct {
+	// Currency of the monthly threshold
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// Text representation of the monthly threshold
+	Text *string `pulumi:"text"`
+	// Value of the monthly threshold
+	Value *float64 `pulumi:"value"`
+}
+
+// AlertingFormattedMonthlyThresholdInput is an input type that accepts AlertingFormattedMonthlyThresholdArgs and AlertingFormattedMonthlyThresholdOutput values.
+// You can construct a concrete instance of `AlertingFormattedMonthlyThresholdInput` via:
+//
+//	AlertingFormattedMonthlyThresholdArgs{...}
+type AlertingFormattedMonthlyThresholdInput interface {
+	pulumi.Input
+
+	ToAlertingFormattedMonthlyThresholdOutput() AlertingFormattedMonthlyThresholdOutput
+	ToAlertingFormattedMonthlyThresholdOutputWithContext(context.Context) AlertingFormattedMonthlyThresholdOutput
+}
+
+type AlertingFormattedMonthlyThresholdArgs struct {
+	// Currency of the monthly threshold
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// Text representation of the monthly threshold
+	Text pulumi.StringPtrInput `pulumi:"text"`
+	// Value of the monthly threshold
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (AlertingFormattedMonthlyThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertingFormattedMonthlyThreshold)(nil)).Elem()
+}
+
+func (i AlertingFormattedMonthlyThresholdArgs) ToAlertingFormattedMonthlyThresholdOutput() AlertingFormattedMonthlyThresholdOutput {
+	return i.ToAlertingFormattedMonthlyThresholdOutputWithContext(context.Background())
+}
+
+func (i AlertingFormattedMonthlyThresholdArgs) ToAlertingFormattedMonthlyThresholdOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertingFormattedMonthlyThresholdOutput)
+}
+
+func (i AlertingFormattedMonthlyThresholdArgs) ToAlertingFormattedMonthlyThresholdPtrOutput() AlertingFormattedMonthlyThresholdPtrOutput {
+	return i.ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i AlertingFormattedMonthlyThresholdArgs) ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertingFormattedMonthlyThresholdOutput).ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(ctx)
+}
+
+// AlertingFormattedMonthlyThresholdPtrInput is an input type that accepts AlertingFormattedMonthlyThresholdArgs, AlertingFormattedMonthlyThresholdPtr and AlertingFormattedMonthlyThresholdPtrOutput values.
+// You can construct a concrete instance of `AlertingFormattedMonthlyThresholdPtrInput` via:
+//
+//	        AlertingFormattedMonthlyThresholdArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertingFormattedMonthlyThresholdPtrInput interface {
+	pulumi.Input
+
+	ToAlertingFormattedMonthlyThresholdPtrOutput() AlertingFormattedMonthlyThresholdPtrOutput
+	ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(context.Context) AlertingFormattedMonthlyThresholdPtrOutput
+}
+
+type alertingFormattedMonthlyThresholdPtrType AlertingFormattedMonthlyThresholdArgs
+
+func AlertingFormattedMonthlyThresholdPtr(v *AlertingFormattedMonthlyThresholdArgs) AlertingFormattedMonthlyThresholdPtrInput {
+	return (*alertingFormattedMonthlyThresholdPtrType)(v)
+}
+
+func (*alertingFormattedMonthlyThresholdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertingFormattedMonthlyThreshold)(nil)).Elem()
+}
+
+func (i *alertingFormattedMonthlyThresholdPtrType) ToAlertingFormattedMonthlyThresholdPtrOutput() AlertingFormattedMonthlyThresholdPtrOutput {
+	return i.ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i *alertingFormattedMonthlyThresholdPtrType) ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertingFormattedMonthlyThresholdPtrOutput)
+}
+
+type AlertingFormattedMonthlyThresholdOutput struct{ *pulumi.OutputState }
+
+func (AlertingFormattedMonthlyThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertingFormattedMonthlyThreshold)(nil)).Elem()
+}
+
+func (o AlertingFormattedMonthlyThresholdOutput) ToAlertingFormattedMonthlyThresholdOutput() AlertingFormattedMonthlyThresholdOutput {
+	return o
+}
+
+func (o AlertingFormattedMonthlyThresholdOutput) ToAlertingFormattedMonthlyThresholdOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdOutput {
+	return o
+}
+
+func (o AlertingFormattedMonthlyThresholdOutput) ToAlertingFormattedMonthlyThresholdPtrOutput() AlertingFormattedMonthlyThresholdPtrOutput {
+	return o.ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(context.Background())
+}
+
+func (o AlertingFormattedMonthlyThresholdOutput) ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertingFormattedMonthlyThreshold) *AlertingFormattedMonthlyThreshold {
+		return &v
+	}).(AlertingFormattedMonthlyThresholdPtrOutput)
+}
+
+// Currency of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// Text representation of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+// Value of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
+type AlertingFormattedMonthlyThresholdPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertingFormattedMonthlyThresholdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertingFormattedMonthlyThreshold)(nil)).Elem()
+}
+
+func (o AlertingFormattedMonthlyThresholdPtrOutput) ToAlertingFormattedMonthlyThresholdPtrOutput() AlertingFormattedMonthlyThresholdPtrOutput {
+	return o
+}
+
+func (o AlertingFormattedMonthlyThresholdPtrOutput) ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdPtrOutput {
+	return o
+}
+
+func (o AlertingFormattedMonthlyThresholdPtrOutput) Elem() AlertingFormattedMonthlyThresholdOutput {
+	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) AlertingFormattedMonthlyThreshold {
+		if v != nil {
+			return *v
+		}
+		var ret AlertingFormattedMonthlyThreshold
+		return ret
+	}).(AlertingFormattedMonthlyThresholdOutput)
+}
+
+// Currency of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdPtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Text representation of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
 type ContainerRegistryPlan struct {
 	// Plan code from the catalog
 	Code *string `pulumi:"code"`
@@ -6859,6 +7034,8 @@ func (o GetUsersUserRoleArrayOutput) Index(i pulumi.IntInput) GetUsersUserRoleOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertingFormattedMonthlyThresholdInput)(nil)).Elem(), AlertingFormattedMonthlyThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertingFormattedMonthlyThresholdPtrInput)(nil)).Elem(), AlertingFormattedMonthlyThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRegistryPlanInput)(nil)).Elem(), ContainerRegistryPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRegistryPlanArrayInput)(nil)).Elem(), ContainerRegistryPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRegistryPlanFeatureInput)(nil)).Elem(), ContainerRegistryPlanFeatureArgs{})
@@ -6959,6 +7136,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserRoleInput)(nil)).Elem(), GetUsersUserRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserRoleArrayInput)(nil)).Elem(), GetUsersUserRoleArray{})
+	pulumi.RegisterOutputType(AlertingFormattedMonthlyThresholdOutput{})
+	pulumi.RegisterOutputType(AlertingFormattedMonthlyThresholdPtrOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryPlanOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryPlanArrayOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryPlanFeatureOutput{})

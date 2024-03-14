@@ -161,6 +161,7 @@ def get_redis_user(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -170,6 +171,7 @@ def get_redis_user(cluster_id: Optional[str] = None,
         name="ZZZ")
     pulumi.export("redisuserCommands", redisuser.commands)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID
@@ -207,6 +209,7 @@ def get_redis_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -216,6 +219,7 @@ def get_redis_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
         name="ZZZ")
     pulumi.export("redisuserCommands", redisuser.commands)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID

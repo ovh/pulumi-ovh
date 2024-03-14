@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -30,12 +31,13 @@ import * as utilities from "../utilities";
  * });
  * export const oidcClientSecret = my_oidc.oidcClientSecret;
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g.,
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id

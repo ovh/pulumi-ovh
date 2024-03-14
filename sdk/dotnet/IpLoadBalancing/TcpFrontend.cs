@@ -14,6 +14,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,6 +48,11 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Import
+    /// 
+    /// TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/tcpFrontend:TcpFrontend")]
     public partial class TcpFrontend : global::Pulumi.CustomResource

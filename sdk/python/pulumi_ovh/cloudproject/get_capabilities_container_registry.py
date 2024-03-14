@@ -73,12 +73,14 @@ def get_capabilities_container_registry(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     capabilities = ovh.CloudProject.get_capabilities_container_registry(service_name="XXXXXX")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The id of the public cloud project. If omitted,
@@ -103,12 +105,14 @@ def get_capabilities_container_registry_output(service_name: Optional[pulumi.Inp
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     capabilities = ovh.CloudProject.get_capabilities_container_registry(service_name="XXXXXX")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The id of the public cloud project. If omitted,

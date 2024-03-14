@@ -16,6 +16,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// Route which redirect all url to https.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,6 +40,11 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Import
+    /// 
+    /// HTTP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/httpRoute:HttpRoute")]
     public partial class HttpRoute : global::Pulumi.CustomResource

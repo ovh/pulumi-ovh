@@ -116,12 +116,14 @@ def get_paymentmean_bank_account(description_regexp: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     ba = ovh.Me.get_paymentmean_bank_account(use_default=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description_regexp: a regexp used to filter bank accounts 
@@ -162,12 +164,14 @@ def get_paymentmean_bank_account_output(description_regexp: Optional[pulumi.Inpu
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     ba = ovh.Me.get_paymentmean_bank_account(use_default=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description_regexp: a regexp used to filter bank accounts 

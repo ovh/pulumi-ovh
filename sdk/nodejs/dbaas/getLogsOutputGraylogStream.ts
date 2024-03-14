@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  *     title: "my stream",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLogsOutputGraylogStream(args: GetLogsOutputGraylogStreamArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsOutputGraylogStreamResult> {
 
@@ -92,7 +94,7 @@ export interface GetLogsOutputGraylogStreamResult {
      */
     readonly indexingMaxSize: number;
     /**
-     * If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+     * If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
      */
     readonly indexingNotifyEnabled: boolean;
     /**
@@ -143,6 +145,7 @@ export interface GetLogsOutputGraylogStreamResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -152,6 +155,7 @@ export interface GetLogsOutputGraylogStreamResult {
  *     title: "my stream",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLogsOutputGraylogStreamOutput(args: GetLogsOutputGraylogStreamOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsOutputGraylogStreamResult> {
     return pulumi.output(args).apply((a: any) => getLogsOutputGraylogStream(a, opts))

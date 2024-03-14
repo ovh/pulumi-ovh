@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -19,12 +20,13 @@ import * as utilities from "../utilities";
  *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by "/" E.g.,
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id

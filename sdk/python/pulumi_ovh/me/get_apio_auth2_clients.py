@@ -62,12 +62,14 @@ def get_apio_auth2_clients(opts: Optional[pulumi.InvokeOptions] = None) -> Await
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_oauth2_clients = ovh.Me.get_apio_auth2_client()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -85,11 +87,13 @@ def get_apio_auth2_clients_output(opts: Optional[pulumi.InvokeOptions] = None) -
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_oauth2_clients = ovh.Me.get_apio_auth2_client()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

@@ -14,10 +14,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project's user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,6 +30,7 @@ namespace Pulumi.Ovh.CloudProject
         ///         ServiceName = "XXX",
         ///     });
         /// 
+        ///     // Get the user ID of a previously created user with the description "S3-User"
         ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
         ///     {
         ///         return user.UserId;
@@ -58,8 +58,7 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetUserS3CredentialResult> InvokeAsync(GetUserS3CredentialArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserS3CredentialResult>("ovh:CloudProject/getUserS3Credential:getUserS3Credential", args ?? new GetUserS3CredentialArgs(), options.WithDefaults());
@@ -67,10 +66,9 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project's user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,6 +82,7 @@ namespace Pulumi.Ovh.CloudProject
         ///         ServiceName = "XXX",
         ///     });
         /// 
+        ///     // Get the user ID of a previously created user with the description "S3-User"
         ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
         ///     {
         ///         return user.UserId;
@@ -111,8 +110,7 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetUserS3CredentialResult> Invoke(GetUserS3CredentialInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserS3CredentialResult>("ovh:CloudProject/getUserS3Credential:getUserS3Credential", args ?? new GetUserS3CredentialInvokeArgs(), options.WithDefaults());

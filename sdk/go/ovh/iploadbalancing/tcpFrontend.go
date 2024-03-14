@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,6 +60,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// TCP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
 type TcpFrontend struct {
 	pulumi.CustomResourceState
 

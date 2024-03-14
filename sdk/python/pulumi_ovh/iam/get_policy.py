@@ -197,12 +197,14 @@ def get_policy(allows: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_policy = ovh.Iam.get_policy(id="my_policy_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] allows: Set of actions allowed by the policy.
@@ -251,12 +253,14 @@ def get_policy_output(allows: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_policy = ovh.Iam.get_policy(id="my_policy_id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] allows: Set of actions allowed by the policy.

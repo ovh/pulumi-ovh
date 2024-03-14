@@ -17,6 +17,7 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Vrack/dedicatedServer:DedicatedServer")]
     public partial class DedicatedServer : global::Pulumi.CustomResource

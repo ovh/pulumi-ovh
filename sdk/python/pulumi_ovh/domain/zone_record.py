@@ -198,6 +198,7 @@ class ZoneRecord(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -210,12 +211,13 @@ class ZoneRecord(pulumi.CustomResource):
             ttl=3600,
             zone="testdemo.ovh")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g.,
+        OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](<https://api.ovh.com/console/#/domain/zone/%!B(MISSING)zoneName%!D(MISSING)/record~GET>), and the `zone`, separated by "." E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone
@@ -238,6 +240,7 @@ class ZoneRecord(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -250,12 +253,13 @@ class ZoneRecord(pulumi.CustomResource):
             ttl=3600,
             zone="testdemo.ovh")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g.,
+        OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](<https://api.ovh.com/console/#/domain/zone/%!B(MISSING)zoneName%!D(MISSING)/record~GET>), and the `zone`, separated by "." E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone

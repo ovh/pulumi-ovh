@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  * });
  * export const m3dbuserGroup = m3dbuser.then(m3dbuser => m3dbuser.group);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getM3dbUser(args: GetM3dbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetM3dbUserResult> {
 
@@ -88,6 +90,7 @@ export interface GetM3dbUserResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -99,6 +102,7 @@ export interface GetM3dbUserResult {
  * });
  * export const m3dbuserGroup = m3dbuser.then(m3dbuser => m3dbuser.group);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getM3dbUserOutput(args: GetM3dbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbUserResult> {
     return pulumi.output(args).apply((a: any) => getM3dbUser(a, opts))

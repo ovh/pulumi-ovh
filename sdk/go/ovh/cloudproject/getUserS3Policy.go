@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -33,6 +34,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Get the user ID of a previously created user with the description "S3-User"
 //			users := "TODO: For expression"
 //			s3UserId := users[0]
 //			_, err = CloudProject.GetUserS3Policy(ctx, &cloudproject.GetUserS3PolicyArgs{
@@ -47,6 +49,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetUserS3Policy(ctx *pulumi.Context, args *GetUserS3PolicyArgs, opts ...pulumi.InvokeOption) (*GetUserS3PolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUserS3PolicyResult

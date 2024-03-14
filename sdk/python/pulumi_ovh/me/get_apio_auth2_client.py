@@ -120,12 +120,14 @@ def get_apio_auth2_client(client_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_oauth2_client = ovh.Me.get_apio_auth2_client(client_id="5f8969a993ec8b4b")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str client_id: Client ID of an existing OAuth2 service account.
@@ -153,12 +155,14 @@ def get_apio_auth2_client_output(client_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_oauth2_client = ovh.Me.get_apio_auth2_client(client_id="5f8969a993ec8b4b")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str client_id: Client ID of an existing OAuth2 service account.

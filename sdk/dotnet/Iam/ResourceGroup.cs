@@ -14,6 +14,7 @@ namespace Pulumi.Ovh.Iam
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,6 +34,13 @@ namespace Pulumi.Ovh.Iam
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Import
+    /// 
+    /// Resource groups can be imported by using their id.
+    /// 
+    /// &gt; Read only resource groups cannot be imported
     /// </summary>
     [OvhResourceType("ovh:Iam/resourceGroup:ResourceGroup")]
     public partial class ResourceGroup : global::Pulumi.CustomResource

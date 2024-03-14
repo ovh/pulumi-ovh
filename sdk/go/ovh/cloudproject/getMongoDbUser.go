@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetMongoDbUser(ctx *pulumi.Context, args *GetMongoDbUserArgs, opts ...pulumi.InvokeOption) (*GetMongoDbUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMongoDbUserResult

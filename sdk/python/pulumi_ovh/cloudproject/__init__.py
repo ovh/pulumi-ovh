@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .alerting import *
 from .container_registry import *
 from .container_registry_ip_restrictions_management import *
 from .container_registry_ip_restrictions_registry import *

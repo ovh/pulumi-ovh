@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// HTTP farm can be imported using the following format `serviceName` and the `id` of the farm, separated by "/" e.g.
 type HttpFarm struct {
 	pulumi.CustomResourceState
 

@@ -182,6 +182,7 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -192,13 +193,14 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
             service_name="XXXXXX",
             user_name="terraform")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
 
         ```sh
-         $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
+        $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
         ```
 
         :param str resource_name: The name of the resource.
@@ -223,6 +225,7 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -233,13 +236,14 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
             service_name="XXXXXX",
             user_name="terraform")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
 
         ```sh
-         $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
+        $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
         ```
 
         :param str resource_name: The name of the resource.

@@ -460,6 +460,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -480,12 +481,13 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
             delete_users=False)
         pulumi.export("oidcClientSecret", my_oidc.oidc_client_secret)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
@@ -518,6 +520,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -538,12 +541,13 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
             delete_users=False)
         pulumi.export("oidcClientSecret", my_oidc.oidc_client_secret)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id

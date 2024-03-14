@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupFailoverIpAttach(ctx *pulumi.Context, args *LookupFailoverIpAttachArgs, opts ...pulumi.InvokeOption) (*LookupFailoverIpAttachResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFailoverIpAttachResult

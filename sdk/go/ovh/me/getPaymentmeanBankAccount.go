@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetPaymentmeanBankAccount(ctx *pulumi.Context, args *GetPaymentmeanBankAccountArgs, opts ...pulumi.InvokeOption) (*GetPaymentmeanBankAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPaymentmeanBankAccountResult

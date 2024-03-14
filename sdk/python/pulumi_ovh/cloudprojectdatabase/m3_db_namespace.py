@@ -417,6 +417,7 @@ class M3DbNamespace(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -430,12 +431,13 @@ class M3DbNamespace(pulumi.CustomResource):
             resolution="P2D",
             retention_period_duration="PT48H")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
@@ -467,6 +469,7 @@ class M3DbNamespace(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -480,12 +483,13 @@ class M3DbNamespace(pulumi.CustomResource):
             resolution="P2D",
             retention_period_duration="PT48H")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id

@@ -82,6 +82,7 @@ def get_regions(has_services_ups: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -89,6 +90,7 @@ def get_regions(has_services_ups: Optional[Sequence[str]] = None,
     regions = ovh.CloudProject.get_regions(has_services_ups=["network"],
         service_name="XXXXXX")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] has_services_ups: List of services which has to be UP in regions.
@@ -119,6 +121,7 @@ def get_regions_output(has_services_ups: Optional[pulumi.Input[Optional[Sequence
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -126,6 +129,7 @@ def get_regions_output(has_services_ups: Optional[pulumi.Input[Optional[Sequence
     regions = ovh.CloudProject.get_regions(has_services_ups=["network"],
         service_name="XXXXXX")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] has_services_ups: List of services which has to be UP in regions.

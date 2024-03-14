@@ -88,6 +88,7 @@ def get_m3db_namespaces(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -96,6 +97,7 @@ def get_m3db_namespaces(cluster_id: Optional[str] = None,
         cluster_id="YYY")
     pulumi.export("namespaceIds", namespaces.namespace_ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID
@@ -124,6 +126,7 @@ def get_m3db_namespaces_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -132,6 +135,7 @@ def get_m3db_namespaces_output(cluster_id: Optional[pulumi.Input[str]] = None,
         cluster_id="YYY")
     pulumi.export("namespaceIds", namespaces.namespace_ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID

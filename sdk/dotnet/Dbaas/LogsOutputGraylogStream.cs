@@ -79,7 +79,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<int> IndexingMaxSize { get; private set; } = null!;
 
         /// <summary>
-        /// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        /// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
         /// </summary>
         [Output("indexingNotifyEnabled")]
         public Output<bool> IndexingNotifyEnabled { get; private set; } = null!;
@@ -258,7 +258,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<int>? IndexingMaxSize { get; set; }
 
         /// <summary>
-        /// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        /// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
         /// </summary>
         [Input("indexingNotifyEnabled")]
         public Input<bool>? IndexingNotifyEnabled { get; set; }
@@ -374,7 +374,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<int>? IndexingMaxSize { get; set; }
 
         /// <summary>
-        /// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        /// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
         /// </summary>
         [Input("indexingNotifyEnabled")]
         public Input<bool>? IndexingNotifyEnabled { get; set; }

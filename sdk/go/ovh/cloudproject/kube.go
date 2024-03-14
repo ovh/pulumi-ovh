@@ -16,7 +16,7 @@ import (
 //
 // OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id

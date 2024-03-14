@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -45,13 +46,14 @@ import * as utilities from "../utilities";
  * });
  * export const privatedatabaseServiceName = databasePrivateDatabase.serviceName;
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
  *
  * ```sh
- *  $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+ * $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
  * ```
  */
 export class PrivateDatabase extends pulumi.CustomResource {

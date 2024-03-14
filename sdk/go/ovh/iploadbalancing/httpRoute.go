@@ -18,6 +18,7 @@ import (
 //
 // Route which redirect all url to https.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// HTTP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
 type HttpRoute struct {
 	pulumi.CustomResourceState
 

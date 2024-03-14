@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * Minimum settings for each engine (region choice is up to the user):
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -70,7 +71,7 @@ import * as utilities from "../utilities";
  *     description: "my-first-mongodb",
  *     engine: "mongodb",
  *     version: "5.0",
- *     plan: "essential",
+ *     plan: "discovery",
  *     nodes: [{
  *         region: "GRA",
  *     }],
@@ -137,9 +138,11 @@ import * as utilities from "../utilities";
  *     flavor: "db1-4",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * To deploy a business PostgreSQL service with two nodes on public network:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -161,9 +164,11 @@ import * as utilities from "../utilities";
  *     version: "14",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * To deploy an enterprise MongoDB service with three nodes on private network:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -189,17 +194,18 @@ import * as utilities from "../utilities";
  *             subnetId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
  *         },
  *     ],
- *     plan: "enterprise",
+ *     plan: "production",
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     version: "5.0",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
@@ -299,7 +305,10 @@ export class Database extends pulumi.CustomResource {
     public readonly opensearchAclsEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Plan of the cluster.
-     * Enum: "essential", "business", "enterprise".
+     * * MongoDB: Enum: "discovery", "production", "advanced".
+     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+     * * M3 Aggregator: "business", "enterprise".
+     * * Redis: "essential", "business"
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -463,7 +472,10 @@ export interface DatabaseState {
     opensearchAclsEnabled?: pulumi.Input<boolean>;
     /**
      * Plan of the cluster.
-     * Enum: "essential", "business", "enterprise".
+     * * MongoDB: Enum: "discovery", "production", "advanced".
+     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+     * * M3 Aggregator: "business", "enterprise".
+     * * Redis: "essential", "business"
      */
     plan?: pulumi.Input<string>;
     /**
@@ -531,7 +543,10 @@ export interface DatabaseArgs {
     opensearchAclsEnabled?: pulumi.Input<boolean>;
     /**
      * Plan of the cluster.
-     * Enum: "essential", "business", "enterprise".
+     * * MongoDB: Enum: "discovery", "production", "advanced".
+     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+     * * M3 Aggregator: "business", "enterprise".
+     * * Redis: "essential", "business"
      */
     plan: pulumi.Input<string>;
     /**

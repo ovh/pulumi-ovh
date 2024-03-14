@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * To get information of a database cluster service:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const clusterId = db.then(db => db.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
 
@@ -144,6 +146,7 @@ export interface GetDatabaseResult {
  *
  * To get information of a database cluster service:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -155,6 +158,7 @@ export interface GetDatabaseResult {
  * });
  * export const clusterId = db.then(db => db.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
     return pulumi.output(args).apply((a: any) => getDatabase(a, opts))

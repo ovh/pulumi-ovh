@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  * });
  * export const aclPermission = schemaRegistryAcl.then(schemaRegistryAcl => schemaRegistryAcl.permission);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaSchemaRegistryAcl(args: GetKafkaSchemaRegistryAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaRegistryAclResult> {
 
@@ -84,6 +86,7 @@ export interface GetKafkaSchemaRegistryAclResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -95,6 +98,7 @@ export interface GetKafkaSchemaRegistryAclResult {
  * });
  * export const aclPermission = schemaRegistryAcl.then(schemaRegistryAcl => schemaRegistryAcl.permission);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaSchemaRegistryAclOutput(args: GetKafkaSchemaRegistryAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaRegistryAclResult> {
     return pulumi.output(args).apply((a: any) => getKafkaSchemaRegistryAcl(a, opts))

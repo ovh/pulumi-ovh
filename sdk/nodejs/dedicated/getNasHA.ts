@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     serviceName: "zpool-12345",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNasHA(args: GetNasHAArgs, opts?: pulumi.InvokeOptions): Promise<GetNasHAResult> {
 
@@ -77,7 +79,8 @@ export interface GetNasHAResult {
      */
     readonly serviceName: string;
     /**
-     * percentage of HA-NAS space used in %
+     * percentage of HA-NAS space used in %!
+     * (MISSING)
      */
     readonly zpoolCapacity: number;
     /**
@@ -90,6 +93,7 @@ export interface GetNasHAResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -98,6 +102,7 @@ export interface GetNasHAResult {
  *     serviceName: "zpool-12345",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNasHAOutput(args: GetNasHAOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasHAResult> {
     return pulumi.output(args).apply((a: any) => getNasHA(a, opts))

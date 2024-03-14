@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -16,6 +17,7 @@ import * as utilities from "../utilities";
  * const projectUsers = ovh.CloudProject.getUsers({
  *     serviceName: "XXX",
  * });
+ * // Get the user ID of a previously created user with the description "S3-User"
  * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
  * const s3UserId = users[0];
  * const policy = Promise.all([projectUsers, s3UserId]).then(([projectUsers, s3UserId]) => ovh.CloudProject.getUserS3Policy({
@@ -23,6 +25,7 @@ import * as utilities from "../utilities";
  *     userId: s3UserId,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUserS3Policy(args: GetUserS3PolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetUserS3PolicyResult> {
 
@@ -68,6 +71,7 @@ export interface GetUserS3PolicyResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -75,6 +79,7 @@ export interface GetUserS3PolicyResult {
  * const projectUsers = ovh.CloudProject.getUsers({
  *     serviceName: "XXX",
  * });
+ * // Get the user ID of a previously created user with the description "S3-User"
  * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
  * const s3UserId = users[0];
  * const policy = Promise.all([projectUsers, s3UserId]).then(([projectUsers, s3UserId]) => ovh.CloudProject.getUserS3Policy({
@@ -82,6 +87,7 @@ export interface GetUserS3PolicyResult {
  *     userId: s3UserId,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUserS3PolicyOutput(args: GetUserS3PolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserS3PolicyResult> {
     return pulumi.output(args).apply((a: any) => getUserS3Policy(a, opts))

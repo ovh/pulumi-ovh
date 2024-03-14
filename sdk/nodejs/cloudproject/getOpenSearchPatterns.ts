@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  * });
  * export const patternIds = patterns.then(patterns => patterns.patternIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOpenSearchPatterns(args: GetOpenSearchPatternsArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchPatternsResult> {
 
@@ -70,6 +72,7 @@ export interface GetOpenSearchPatternsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -80,6 +83,7 @@ export interface GetOpenSearchPatternsResult {
  * });
  * export const patternIds = patterns.then(patterns => patterns.patternIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOpenSearchPatternsOutput(args: GetOpenSearchPatternsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchPatternsResult> {
     return pulumi.output(args).apply((a: any) => getOpenSearchPatterns(a, opts))

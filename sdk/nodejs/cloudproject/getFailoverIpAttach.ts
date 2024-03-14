@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFailoverIpAttach(args: GetFailoverIpAttachArgs, opts?: pulumi.InvokeOptions): Promise<GetFailoverIpAttachResult> {
 
@@ -89,6 +91,7 @@ export interface GetFailoverIpAttachResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -98,6 +101,7 @@ export interface GetFailoverIpAttachResult {
  *     serviceName: "XXXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFailoverIpAttachOutput(args: GetFailoverIpAttachOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFailoverIpAttachResult> {
     return pulumi.output(args).apply((a: any) => getFailoverIpAttach(a, opts))

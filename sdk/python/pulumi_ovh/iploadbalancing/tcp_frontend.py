@@ -373,6 +373,7 @@ class TcpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -391,6 +392,11 @@ class TcpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -418,6 +424,7 @@ class TcpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -436,6 +443,11 @@ class TcpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param TcpFrontendArgs args: The arguments to use to populate this resource's properties.

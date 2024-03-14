@@ -195,7 +195,7 @@ class GetLogsOutputGraylogStreamResult:
     @pulumi.getter(name="indexingNotifyEnabled")
     def indexing_notify_enabled(self) -> bool:
         """
-        If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
         """
         return pulumi.get(self, "indexing_notify_enabled")
 
@@ -331,6 +331,7 @@ def get_logs_output_graylog_stream(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -338,6 +339,7 @@ def get_logs_output_graylog_stream(service_name: Optional[str] = None,
     stream = ovh.Dbaas.get_logs_output_graylog_stream(service_name="ldp-xx-xxxxx",
         title="my stream")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
@@ -386,6 +388,7 @@ def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[st
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -393,6 +396,7 @@ def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[st
     stream = ovh.Dbaas.get_logs_output_graylog_stream(service_name="ldp-xx-xxxxx",
         title="my stream")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.

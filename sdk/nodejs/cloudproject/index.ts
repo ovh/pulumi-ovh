@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AlertingArgs, AlertingState } from "./alerting";
+export type Alerting = import("./alerting").Alerting;
+export const Alerting: typeof import("./alerting").Alerting = null as any;
+utilities.lazyLoad(exports, ["Alerting"], () => require("./alerting"));
+
 export { ContainerRegistryArgs, ContainerRegistryState } from "./containerRegistry";
 export type ContainerRegistry = import("./containerRegistry").ContainerRegistry;
 export const ContainerRegistry: typeof import("./containerRegistry").ContainerRegistry = null as any;
@@ -260,6 +265,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "ovh:CloudProject/alerting:Alerting":
+                return new Alerting(name, <any>undefined, { urn })
             case "ovh:CloudProject/containerRegistry:ContainerRegistry":
                 return new ContainerRegistry(name, <any>undefined, { urn })
             case "ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement":
@@ -303,6 +310,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/alerting", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistry", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistryIPRestrictionsManagement", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistryIPRestrictionsRegistry", _module)

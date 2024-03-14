@@ -202,6 +202,7 @@ def get_logs_cluster(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -209,6 +210,7 @@ def get_logs_cluster(cluster_id: Optional[str] = None,
     logstash = ovh.Dbaas.get_logs_cluster(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         service_name="ldp-xx-xxxxx")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID. If not provided, the default cluster_id is returned
@@ -246,6 +248,7 @@ def get_logs_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -253,6 +256,7 @@ def get_logs_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = 
     logstash = ovh.Dbaas.get_logs_cluster(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         service_name="ldp-xx-xxxxx")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID. If not provided, the default cluster_id is returned

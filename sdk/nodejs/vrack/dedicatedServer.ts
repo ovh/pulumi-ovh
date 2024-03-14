@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class DedicatedServer extends pulumi.CustomResource {
     /**

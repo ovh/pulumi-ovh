@@ -92,11 +92,13 @@ def get_user_s3_credential(access_key_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     project_users = ovh.CloudProject.get_users(service_name="XXX")
+    # Get the user ID of a previously created user with the description "S3-User"
     users = [user.user_id for user in project_users.users if user.description == "S3-User"]
     s3_user_id = users[0]
     my_s3_credentials = ovh.CloudProject.get_user_s3_credentials(service_name=project_users.service_name,
@@ -107,6 +109,7 @@ def get_user_s3_credential(access_key_id: Optional[str] = None,
     pulumi.export("myAccessKeyId", my_s3_credential.access_key_id)
     pulumi.export("mySecretAccessKey", my_s3_credential.secret_access_key)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str access_key_id: the Access Key ID
@@ -139,11 +142,13 @@ def get_user_s3_credential_output(access_key_id: Optional[pulumi.Input[str]] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     project_users = ovh.CloudProject.get_users(service_name="XXX")
+    # Get the user ID of a previously created user with the description "S3-User"
     users = [user.user_id for user in project_users.users if user.description == "S3-User"]
     s3_user_id = users[0]
     my_s3_credentials = ovh.CloudProject.get_user_s3_credentials(service_name=project_users.service_name,
@@ -154,6 +159,7 @@ def get_user_s3_credential_output(access_key_id: Optional[pulumi.Input[str]] = N
     pulumi.export("myAccessKeyId", my_s3_credential.access_key_id)
     pulumi.export("mySecretAccessKey", my_s3_credential.secret_access_key)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str access_key_id: the Access Key ID

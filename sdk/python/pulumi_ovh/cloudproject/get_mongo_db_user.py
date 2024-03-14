@@ -125,6 +125,7 @@ def get_mongo_db_user(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -134,6 +135,7 @@ def get_mongo_db_user(cluster_id: Optional[str] = None,
         name="ZZZ@admin")
     pulumi.export("mongouserRoles", mongouser.roles)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID
@@ -168,6 +170,7 @@ def get_mongo_db_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -177,6 +180,7 @@ def get_mongo_db_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
         name="ZZZ@admin")
     pulumi.export("mongouserRoles", mongouser.roles)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID

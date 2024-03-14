@@ -206,6 +206,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -220,12 +221,13 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
             resource="Subject:myResource",
             username="johndoe")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id
@@ -252,6 +254,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -266,12 +269,13 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
             resource="Subject:myResource",
             username="johndoe")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id

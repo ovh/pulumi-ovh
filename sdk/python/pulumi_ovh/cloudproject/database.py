@@ -39,7 +39,10 @@ class DatabaseArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes object.
                Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[str] plan: Plan of the cluster.
-               Enum: "essential", "business", "enterprise".
+               * MongoDB: Enum: "discovery", "production", "advanced".
+               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+               * M3 Aggregator: "business", "enterprise".
+               * Redis: "essential", "business"
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
@@ -117,7 +120,10 @@ class DatabaseArgs:
     def plan(self) -> pulumi.Input[str]:
         """
         Plan of the cluster.
-        Enum: "essential", "business", "enterprise".
+        * MongoDB: Enum: "discovery", "production", "advanced".
+        * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+        * M3 Aggregator: "business", "enterprise".
+        * Redis: "essential", "business"
         """
         return pulumi.get(self, "plan")
 
@@ -279,7 +285,10 @@ class _DatabaseState:
                Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[str] plan: Plan of the cluster.
-               Enum: "essential", "business", "enterprise".
+               * MongoDB: Enum: "discovery", "production", "advanced".
+               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+               * M3 Aggregator: "business", "enterprise".
+               * Redis: "essential", "business"
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the cluster.
@@ -513,7 +522,10 @@ class _DatabaseState:
     def plan(self) -> Optional[pulumi.Input[str]]:
         """
         Plan of the cluster.
-        Enum: "essential", "business", "enterprise".
+        * MongoDB: Enum: "discovery", "production", "advanced".
+        * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+        * M3 Aggregator: "business", "enterprise".
+        * Redis: "essential", "business"
         """
         return pulumi.get(self, "plan")
 
@@ -583,6 +595,7 @@ class Database(pulumi.CustomResource):
 
         Minimum settings for each engine (region choice is up to the user):
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -639,7 +652,7 @@ class Database(pulumi.CustomResource):
             description="my-first-mongodb",
             engine="mongodb",
             version="5.0",
-            plan="essential",
+            plan="discovery",
             nodes=[ovh.cloud_project.DatabaseNodeArgs(
                 region="GRA",
             )],
@@ -700,9 +713,11 @@ class Database(pulumi.CustomResource):
             )],
             flavor="db1-4")
         ```
+        <!--End PulumiCodeChooser -->
 
         To deploy a business PostgreSQL service with two nodes on public network:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -723,9 +738,11 @@ class Database(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version="14")
         ```
+        <!--End PulumiCodeChooser -->
 
         To deploy an enterprise MongoDB service with three nodes on private network:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -751,16 +768,17 @@ class Database(pulumi.CustomResource):
                     subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                 ),
             ],
-            plan="enterprise",
+            plan="production",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version="5.0")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
@@ -783,7 +801,10 @@ class Database(pulumi.CustomResource):
                Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[str] plan: Plan of the cluster.
-               Enum: "essential", "business", "enterprise".
+               * MongoDB: Enum: "discovery", "production", "advanced".
+               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+               * M3 Aggregator: "business", "enterprise".
+               * Redis: "essential", "business"
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
@@ -799,6 +820,7 @@ class Database(pulumi.CustomResource):
 
         Minimum settings for each engine (region choice is up to the user):
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -855,7 +877,7 @@ class Database(pulumi.CustomResource):
             description="my-first-mongodb",
             engine="mongodb",
             version="5.0",
-            plan="essential",
+            plan="discovery",
             nodes=[ovh.cloud_project.DatabaseNodeArgs(
                 region="GRA",
             )],
@@ -916,9 +938,11 @@ class Database(pulumi.CustomResource):
             )],
             flavor="db1-4")
         ```
+        <!--End PulumiCodeChooser -->
 
         To deploy a business PostgreSQL service with two nodes on public network:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -939,9 +963,11 @@ class Database(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version="14")
         ```
+        <!--End PulumiCodeChooser -->
 
         To deploy an enterprise MongoDB service with three nodes on private network:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -967,16 +993,17 @@ class Database(pulumi.CustomResource):
                     subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                 ),
             ],
-            plan="enterprise",
+            plan="production",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version="5.0")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
@@ -1106,7 +1133,10 @@ class Database(pulumi.CustomResource):
                Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[str] plan: Plan of the cluster.
-               Enum: "essential", "business", "enterprise".
+               * MongoDB: Enum: "discovery", "production", "advanced".
+               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+               * M3 Aggregator: "business", "enterprise".
+               * Redis: "essential", "business"
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the cluster.
@@ -1266,7 +1296,10 @@ class Database(pulumi.CustomResource):
     def plan(self) -> pulumi.Output[str]:
         """
         Plan of the cluster.
-        Enum: "essential", "business", "enterprise".
+        * MongoDB: Enum: "discovery", "production", "advanced".
+        * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+        * M3 Aggregator: "business", "enterprise".
+        * Redis: "essential", "business"
         """
         return pulumi.get(self, "plan")
 

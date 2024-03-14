@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const maxNodes = nodepool.then(nodepool => nodepool.maxNodes);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubeNodePool(args: GetKubeNodePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeNodePoolResult> {
 
@@ -166,6 +168,7 @@ export interface GetKubeNodePoolResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -177,6 +180,7 @@ export interface GetKubeNodePoolResult {
  * });
  * export const maxNodes = nodepool.then(nodepool => nodepool.maxNodes);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubeNodePoolOutput(args: GetKubeNodePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeNodePoolResult> {
     return pulumi.output(args).apply((a: any) => getKubeNodePool(a, opts))

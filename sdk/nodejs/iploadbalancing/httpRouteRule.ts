@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * Route which redirect all URL to HTTPs for example.com (Vhost).
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -36,9 +37,11 @@ import * as utilities from "../utilities";
  *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Rule which match a specific header (same effect as the host match above).
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -54,6 +57,11 @@ import * as utilities from "../utilities";
  *     subField: "Host",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Import
+ *
+ * HTTP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
  */
 export class HttpRouteRule extends pulumi.CustomResource {
     /**

@@ -142,6 +142,7 @@ def get_private_database_allowlist(ip: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -149,6 +150,7 @@ def get_private_database_allowlist(ip: Optional[str] = None,
     whitelist = ovh.Hosting.get_private_database_allowlist(ip="XXXXXX",
         service_name="XXXXXX")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str ip: The whitelisted IP in your instance
@@ -181,6 +183,7 @@ def get_private_database_allowlist_output(ip: Optional[pulumi.Input[Optional[str
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -188,6 +191,7 @@ def get_private_database_allowlist_output(ip: Optional[pulumi.Input[Optional[str
     whitelist = ovh.Hosting.get_private_database_allowlist(ip="XXXXXX",
         service_name="XXXXXX")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str ip: The whitelisted IP in your instance

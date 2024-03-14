@@ -172,6 +172,7 @@ def get_kube_oidc(client_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -180,6 +181,7 @@ def get_kube_oidc(client_id: Optional[str] = None,
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     pulumi.export("oidc-val", oidc.client_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str client_id: The OIDC client ID.
@@ -236,6 +238,7 @@ def get_kube_oidc_output(client_id: Optional[pulumi.Input[Optional[str]]] = None
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -244,6 +247,7 @@ def get_kube_oidc_output(client_id: Optional[pulumi.Input[Optional[str]]] = None
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     pulumi.export("oidc-val", oidc.client_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str client_id: The OIDC client ID.

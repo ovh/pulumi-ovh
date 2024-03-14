@@ -472,6 +472,7 @@ class HttpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -490,8 +491,11 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### With HTTP Header
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -514,6 +518,11 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -544,6 +553,7 @@ class HttpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -562,8 +572,11 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### With HTTP Header
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -586,6 +599,11 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param HttpFrontendArgs args: The arguments to use to populate this resource's properties.

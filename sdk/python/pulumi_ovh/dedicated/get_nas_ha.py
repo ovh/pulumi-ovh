@@ -132,7 +132,8 @@ class GetNasHAResult:
     @pulumi.getter(name="zpoolCapacity")
     def zpool_capacity(self) -> float:
         """
-        percentage of HA-NAS space used in %
+        percentage of HA-NAS space used in %!
+        (MISSING)
         """
         return pulumi.get(self, "zpool_capacity")
 
@@ -171,12 +172,14 @@ def get_nas_ha(service_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_nas_ha = ovh.Dedicated.get_nas_ha(service_name="zpool-12345")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service_name of your dedicated HA-NAS.
@@ -208,12 +211,14 @@ def get_nas_ha_output(service_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_nas_ha = ovh.Dedicated.get_nas_ha(service_name="zpool-12345")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service_name of your dedicated HA-NAS.

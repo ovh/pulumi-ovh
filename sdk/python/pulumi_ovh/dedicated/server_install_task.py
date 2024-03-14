@@ -297,6 +297,7 @@ class ServerInstallTask(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -321,14 +322,13 @@ class ServerInstallTask(pulumi.CustomResource):
                 custom_hostname="mytest",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used
+        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used  and ths `task_id`, separated by "/" E.g.,
 
-        and ths `task_id`, separated by "/" E.g.,
-
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345
@@ -351,6 +351,7 @@ class ServerInstallTask(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -375,14 +376,13 @@ class ServerInstallTask(pulumi.CustomResource):
                 custom_hostname="mytest",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used
+        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used  and ths `task_id`, separated by "/" E.g.,
 
-        and ths `task_id`, separated by "/" E.g.,
-
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345

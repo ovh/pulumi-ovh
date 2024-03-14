@@ -257,6 +257,7 @@ class RegionStoragePresign(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -269,6 +270,7 @@ class RegionStoragePresign(pulumi.CustomResource):
             object="an-object-in-the-bucket")
         pulumi.export("presignedUrl", presigned_url_region_storage_presign.url)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -294,6 +296,7 @@ class RegionStoragePresign(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -306,6 +309,7 @@ class RegionStoragePresign(pulumi.CustomResource):
             object="an-object-in-the-bucket")
         pulumi.export("presignedUrl", presigned_url_region_storage_presign.url)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param RegionStoragePresignArgs args: The arguments to use to populate this resource's properties.

@@ -231,6 +231,7 @@ class InstallationTemplatePartitionSchemeHardwareRaid(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -252,12 +253,13 @@ class InstallationTemplatePartitionSchemeHardwareRaid(pulumi.CustomResource):
             mode="raid50",
             step=1)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name
@@ -283,6 +285,7 @@ class InstallationTemplatePartitionSchemeHardwareRaid(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -304,12 +307,13 @@ class InstallationTemplatePartitionSchemeHardwareRaid(pulumi.CustomResource):
             mode="raid50",
             step=1)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         The resource can be imported using the `template_name`, `scheme_name`, `name` of the cluster, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid group1 template_name/scheme_name/name

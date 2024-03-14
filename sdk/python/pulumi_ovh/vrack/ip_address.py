@@ -150,6 +150,7 @@ class IpAddress(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -188,6 +189,7 @@ class IpAddress(pulumi.CustomResource):
             service_name=vrack_vrack.service_name,
             block=ipblock_ip_service.ip)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -205,6 +207,7 @@ class IpAddress(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -243,6 +246,7 @@ class IpAddress(pulumi.CustomResource):
             service_name=vrack_vrack.service_name,
             block=ipblock_ip_service.ip)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param IpAddressArgs args: The arguments to use to populate this resource's properties.

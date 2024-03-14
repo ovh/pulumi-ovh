@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetNasHA(ctx *pulumi.Context, args *GetNasHAArgs, opts ...pulumi.InvokeOption) (*GetNasHAResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNasHAResult
@@ -74,7 +76,8 @@ type GetNasHAResult struct {
 	Monitored bool `pulumi:"monitored"`
 	// The storage service name
 	ServiceName string `pulumi:"serviceName"`
-	// percentage of HA-NAS space used in %
+	// percentage of HA-NAS space used in %!
+	// (MISSING)
 	ZpoolCapacity float64 `pulumi:"zpoolCapacity"`
 	// the size of the HA-NAS in GB
 	ZpoolSize float64 `pulumi:"zpoolSize"`
@@ -163,7 +166,8 @@ func (o GetNasHAResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasHAResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// percentage of HA-NAS space used in %
+// percentage of HA-NAS space used in %!
+// (MISSING)
 func (o GetNasHAResultOutput) ZpoolCapacity() pulumi.Float64Output {
 	return o.ApplyT(func(v GetNasHAResult) float64 { return v.ZpoolCapacity }).(pulumi.Float64Output)
 }

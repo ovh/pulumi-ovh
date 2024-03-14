@@ -83,6 +83,7 @@ def get_cart_product(cart_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -92,6 +93,7 @@ def get_cart_product(cart_id: Optional[str] = None,
     plans = ovh.Order.get_cart_product(cart_id=mycart.id,
         product="...")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cart_id: Cart identifier
@@ -119,6 +121,7 @@ def get_cart_product_output(cart_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -128,6 +131,7 @@ def get_cart_product_output(cart_id: Optional[pulumi.Input[str]] = None,
     plans = ovh.Order.get_cart_product(cart_id=mycart.id,
         product="...")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cart_id: Cart identifier

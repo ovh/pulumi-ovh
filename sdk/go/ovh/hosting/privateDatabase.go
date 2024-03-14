@@ -14,6 +14,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,15 +76,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
 //
 // ```sh
-//
-//	$ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
-//
+// $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
 // ```
 type PrivateDatabase struct {
 	pulumi.CustomResourceState

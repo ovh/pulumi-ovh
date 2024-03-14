@@ -550,6 +550,7 @@ class PrivateDatabase(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -580,13 +581,14 @@ class PrivateDatabase(pulumi.CustomResource):
             ))
         pulumi.export("privatedatabaseServiceName", database_private_database.service_name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
 
         ```sh
-         $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+        $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -607,6 +609,7 @@ class PrivateDatabase(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -637,13 +640,14 @@ class PrivateDatabase(pulumi.CustomResource):
             ))
         pulumi.export("privatedatabaseServiceName", database_private_database.service_name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
 
         ```sh
-         $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+        $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
         ```
 
         :param str resource_name: The name of the resource.

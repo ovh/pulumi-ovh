@@ -62,12 +62,14 @@ def get_resource_groups(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_groups = ovh.Iam.get_resource_groups()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -85,11 +87,13 @@ def get_resource_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_groups = ovh.Iam.get_resource_groups()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

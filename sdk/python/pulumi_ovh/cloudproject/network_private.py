@@ -263,6 +263,7 @@ class NetworkPrivate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -274,12 +275,13 @@ class NetworkPrivate(pulumi.CustomResource):
             ],
             service_name="XXXXXX")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678
@@ -306,6 +308,7 @@ class NetworkPrivate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -317,12 +320,13 @@ class NetworkPrivate(pulumi.CustomResource):
             ],
             service_name="XXXXXX")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g.,
 
-         bash
+        bash
 
         ```sh
         $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678

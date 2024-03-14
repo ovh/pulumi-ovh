@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetPaymentmeanCreditCard(ctx *pulumi.Context, args *GetPaymentmeanCreditCardArgs, opts ...pulumi.InvokeOption) (*GetPaymentmeanCreditCardResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPaymentmeanCreditCardResult
