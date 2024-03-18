@@ -7,7 +7,7 @@ MPL-2.0
 Unknown
 
 Packages:
-@ovh-devrelteam/pulumi-ovh; Apache-2.0
+@ovhcloud/pulumi-ovh; Apache-2.0
 dario.cat/mergo; BSD-3-Clause
 github.com/Masterminds/semver; MIT
 github.com/ProtonMail/go-crypto; BSD-3-Clause
@@ -38,6 +38,7 @@ github.com/golang/go; BSD-3-Clause
 github.com/golang/groupcache; Apache-2.0
 github.com/golang/protobuf; BSD-3-Clause
 github.com/google/go-cmp; BSD-3-Clause
+github.com/google/uuid; BSD-3-Clause
 github.com/grpc-ecosystem/grpc-opentracing; BSD-3-Clause
 github.com/hashicorp/errwrap; MPL-2.0
 github.com/hashicorp/go-checkpoint; MPL-2.0
@@ -53,6 +54,7 @@ github.com/hashicorp/hcl/v2; MPL-2.0
 github.com/hashicorp/logutils; MPL-2.0
 github.com/hashicorp/terraform-exec; MPL-2.0
 github.com/hashicorp/terraform-json; MPL-2.0
+github.com/hashicorp/terraform-plugin-framework-validators; MPL-2.0
 github.com/hashicorp/terraform-plugin-framework; MPL-2.0
 github.com/hashicorp/terraform-plugin-go; MPL-2.0
 github.com/hashicorp/terraform-plugin-log; MPL-2.0
