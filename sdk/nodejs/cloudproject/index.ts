@@ -45,6 +45,11 @@ export type FailoverIpAttach = import("./failoverIpAttach").FailoverIpAttach;
 export const FailoverIpAttach: typeof import("./failoverIpAttach").FailoverIpAttach = null as any;
 utilities.lazyLoad(exports, ["FailoverIpAttach"], () => require("./failoverIpAttach"));
 
+export { GatewayArgs, GatewayState } from "./gateway";
+export type Gateway = import("./gateway").Gateway;
+export const Gateway: typeof import("./gateway").Gateway = null as any;
+utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+
 export { GetCapabilitiesContainerFilterArgs, GetCapabilitiesContainerFilterResult, GetCapabilitiesContainerFilterOutputArgs } from "./getCapabilitiesContainerFilter";
 export const getCapabilitiesContainerFilter: typeof import("./getCapabilitiesContainerFilter").getCapabilitiesContainerFilter = null as any;
 export const getCapabilitiesContainerFilterOutput: typeof import("./getCapabilitiesContainerFilter").getCapabilitiesContainerFilterOutput = null as any;
@@ -281,6 +286,8 @@ const _module = {
                 return new Database(name, <any>undefined, { urn })
             case "ovh:CloudProject/failoverIpAttach:FailoverIpAttach":
                 return new FailoverIpAttach(name, <any>undefined, { urn })
+            case "ovh:CloudProject/gateway:Gateway":
+                return new Gateway(name, <any>undefined, { urn })
             case "ovh:CloudProject/kube:Kube":
                 return new Kube(name, <any>undefined, { urn })
             case "ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions":
@@ -318,6 +325,7 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistryOIDC
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistryUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/database", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/failoverIpAttach", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/gateway", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kube", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeIpRestrictions", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeNodePool", _module)

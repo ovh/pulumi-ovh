@@ -22,7 +22,7 @@ class GetServerResult:
     """
     A collection of values returned by getServer.
     """
-    def __init__(__self__, server_urn=None, boot_id=None, boot_script=None, commercial_range=None, datacenter=None, enabled_public_vnis=None, enabled_vrack_aggregation_vnis=None, enabled_vrack_vnis=None, id=None, ip=None, ips=None, link_speed=None, monitoring=None, name=None, os=None, professional_use=None, rack=None, rescue_mail=None, reverse=None, root_device=None, server_id=None, service_name=None, state=None, support_level=None, vnis=None):
+    def __init__(__self__, server_urn=None, boot_id=None, boot_script=None, commercial_range=None, datacenter=None, display_name=None, enabled_public_vnis=None, enabled_vrack_aggregation_vnis=None, enabled_vrack_vnis=None, id=None, ip=None, ips=None, link_speed=None, monitoring=None, name=None, os=None, professional_use=None, rack=None, rescue_mail=None, reverse=None, root_device=None, server_id=None, service_name=None, state=None, support_level=None, vnis=None):
         if server_urn and not isinstance(server_urn, str):
             raise TypeError("Expected argument 'server_urn' to be a str")
         pulumi.set(__self__, "server_urn", server_urn)
@@ -38,6 +38,9 @@ class GetServerResult:
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         pulumi.set(__self__, "datacenter", datacenter)
+        if display_name and not isinstance(display_name, str):
+            raise TypeError("Expected argument 'display_name' to be a str")
+        pulumi.set(__self__, "display_name", display_name)
         if enabled_public_vnis and not isinstance(enabled_public_vnis, list):
             raise TypeError("Expected argument 'enabled_public_vnis' to be a list")
         pulumi.set(__self__, "enabled_public_vnis", enabled_public_vnis)
@@ -111,7 +114,7 @@ class GetServerResult:
     @pulumi.getter(name="bootId")
     def boot_id(self) -> int:
         """
-        boot id of the server
+        Boot id of the server
         """
         return pulumi.get(self, "boot_id")
 
@@ -119,7 +122,7 @@ class GetServerResult:
     @pulumi.getter(name="bootScript")
     def boot_script(self) -> str:
         """
-        boot script of the server
+        Boot script of the server
         """
         return pulumi.get(self, "boot_script")
 
@@ -127,7 +130,7 @@ class GetServerResult:
     @pulumi.getter(name="commercialRange")
     def commercial_range(self) -> str:
         """
-        dedicated server commercial range
+        Dedicated server commercial range
         """
         return pulumi.get(self, "commercial_range")
 
@@ -135,9 +138,17 @@ class GetServerResult:
     @pulumi.getter
     def datacenter(self) -> str:
         """
-        dedicated datacenter localisation (bhs1,bhs2,...)
+        Dedicated datacenter localisation (bhs1,bhs2,...)
         """
         return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Dedicated server display name
+        """
+        return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="enabledPublicVnis")
@@ -175,7 +186,7 @@ class GetServerResult:
     @pulumi.getter
     def ip(self) -> str:
         """
-        dedicated server ip (IPv4)
+        Dedicated server ip (IPv4)
         """
         return pulumi.get(self, "ip")
 
@@ -183,7 +194,7 @@ class GetServerResult:
     @pulumi.getter
     def ips(self) -> Sequence[str]:
         """
-        dedicated server ip blocks
+        Dedicated server ip blocks
         """
         return pulumi.get(self, "ips")
 
@@ -191,7 +202,7 @@ class GetServerResult:
     @pulumi.getter(name="linkSpeed")
     def link_speed(self) -> int:
         """
-        link speed of the server
+        Link speed of the server
         """
         return pulumi.get(self, "link_speed")
 
@@ -231,7 +242,7 @@ class GetServerResult:
     @pulumi.getter
     def rack(self) -> str:
         """
-        rack id of the server
+        Rack id of the server
         """
         return pulumi.get(self, "rack")
 
@@ -239,7 +250,7 @@ class GetServerResult:
     @pulumi.getter(name="rescueMail")
     def rescue_mail(self) -> str:
         """
-        rescue mail of the server
+        Rescue mail of the server
         """
         return pulumi.get(self, "rescue_mail")
 
@@ -247,7 +258,7 @@ class GetServerResult:
     @pulumi.getter
     def reverse(self) -> str:
         """
-        dedicated server reverse
+        Dedicated server reverse
         """
         return pulumi.get(self, "reverse")
 
@@ -255,7 +266,7 @@ class GetServerResult:
     @pulumi.getter(name="rootDevice")
     def root_device(self) -> str:
         """
-        root device of the server
+        Root device of the server
         """
         return pulumi.get(self, "root_device")
 
@@ -263,7 +274,7 @@ class GetServerResult:
     @pulumi.getter(name="serverId")
     def server_id(self) -> int:
         """
-        your server id
+        Server id
         """
         return pulumi.get(self, "server_id")
 
@@ -276,7 +287,7 @@ class GetServerResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        error, hacked, hackedBlocked, ok
+        Error, hacked, hackedBlocked, ok
         """
         return pulumi.get(self, "state")
 
@@ -292,7 +303,7 @@ class GetServerResult:
     @pulumi.getter
     def vnis(self) -> Sequence['outputs.GetServerVniResult']:
         """
-        the list of Virtualnetworkinterface assiociated with this server
+        The list of Virtualnetworkinterface associated with this server
         """
         return pulumi.get(self, "vnis")
 
@@ -308,6 +319,7 @@ class AwaitableGetServerResult(GetServerResult):
             boot_script=self.boot_script,
             commercial_range=self.commercial_range,
             datacenter=self.datacenter,
+            display_name=self.display_name,
             enabled_public_vnis=self.enabled_public_vnis,
             enabled_vrack_aggregation_vnis=self.enabled_vrack_aggregation_vnis,
             enabled_vrack_vnis=self.enabled_vrack_vnis,
@@ -360,6 +372,7 @@ def get_server(service_name: Optional[str] = None,
         boot_script=pulumi.get(__ret__, 'boot_script'),
         commercial_range=pulumi.get(__ret__, 'commercial_range'),
         datacenter=pulumi.get(__ret__, 'datacenter'),
+        display_name=pulumi.get(__ret__, 'display_name'),
         enabled_public_vnis=pulumi.get(__ret__, 'enabled_public_vnis'),
         enabled_vrack_aggregation_vnis=pulumi.get(__ret__, 'enabled_vrack_aggregation_vnis'),
         enabled_vrack_vnis=pulumi.get(__ret__, 'enabled_vrack_vnis'),

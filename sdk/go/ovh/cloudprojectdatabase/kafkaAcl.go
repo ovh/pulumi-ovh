@@ -38,8 +38,8 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewKafkaAcl(ctx, "acl", &CloudProjectDatabase.KafkaAclArgs{
-//				ServiceName: *pulumi.String(kafka.ServiceName),
-//				ClusterId:   *pulumi.String(kafka.Id),
+//				ServiceName: pulumi.String(kafka.ServiceName),
+//				ClusterId:   pulumi.String(kafka.Id),
 //				Permission:  pulumi.String("read"),
 //				Topic:       pulumi.String("mytopic"),
 //				Username:    pulumi.String("johndoe"),

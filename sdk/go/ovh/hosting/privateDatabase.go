@@ -49,12 +49,12 @@ import (
 //				return err
 //			}
 //			databasePrivateDatabase, err := Hosting.NewPrivateDatabase(ctx, "databasePrivateDatabase", &Hosting.PrivateDatabaseArgs{
-//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				DisplayName:   pulumi.String("Postgresql-12"),
 //				Plan: &hosting.PrivateDatabasePlanArgs{
-//					Duration:    *pulumi.String(databaseCartProductPlan.Prices[3].Duration),
-//					PlanCode:    *pulumi.String(databaseCartProductPlan.PlanCode),
-//					PricingMode: *pulumi.String(databaseCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(databaseCartProductPlan.Prices[3].Duration),
+//					PlanCode:    pulumi.String(databaseCartProductPlan.PlanCode),
+//					PricingMode: pulumi.String(databaseCartProductPlan.SelectedPrices[0].PricingMode),
 //					Configurations: hosting.PrivateDatabasePlanConfigurationArray{
 //						&hosting.PrivateDatabasePlanConfigurationArgs{
 //							Label: pulumi.String("dc"),

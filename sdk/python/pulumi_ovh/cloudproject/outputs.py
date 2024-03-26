@@ -946,6 +946,13 @@ class KubePrivateNetworkConfiguration(dict):
         """
         :param str default_vrack_gateway: If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
         :param bool private_network_routing_as_default: Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+               
+               In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+               <!--Start PulumiCodeChooser -->
+               ```python
+               import pulumi
+               ```
+               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "default_vrack_gateway", default_vrack_gateway)
         pulumi.set(__self__, "private_network_routing_as_default", private_network_routing_as_default)
@@ -963,6 +970,13 @@ class KubePrivateNetworkConfiguration(dict):
     def private_network_routing_as_default(self) -> bool:
         """
         Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+
+        In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "private_network_routing_as_default")
 

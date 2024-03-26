@@ -49,12 +49,12 @@ import (
 //				return err
 //			}
 //			_, err = Ip.NewIpService(ctx, "ipblockIpService", &Ip.IpServiceArgs{
-//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				Description:   pulumi.String("my ip block"),
 //				Plan: &ip.IpServicePlanArgs{
-//					Duration:    *pulumi.String(ipblockCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    *pulumi.String(ipblockCartProductPlan.PlanCode),
-//					PricingMode: *pulumi.String(ipblockCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(ipblockCartProductPlan.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(ipblockCartProductPlan.PlanCode),
+//					PricingMode: pulumi.String(ipblockCartProductPlan.SelectedPrices[0].PricingMode),
 //					Configurations: ip.IpServicePlanConfigurationArray{
 //						&ip.IpServicePlanConfigurationArgs{
 //							Label: pulumi.String("country"),

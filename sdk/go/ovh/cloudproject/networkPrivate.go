@@ -72,7 +72,7 @@ type NetworkPrivate struct {
 	// * `regions_status/region` - (Deprecated) The id of the region.
 	// * `regions_status/status` - (Deprecated) The status of the network in the region.
 	//
-	// Deprecated: use the regions_attributes field instead
+	// Deprecated: use the regionsAttributes field instead
 	RegionsStatuses NetworkPrivateRegionsStatusArrayOutput `pulumi:"regionsStatuses"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -133,7 +133,7 @@ type networkPrivateState struct {
 	// * `regions_status/region` - (Deprecated) The id of the region.
 	// * `regions_status/status` - (Deprecated) The status of the network in the region.
 	//
-	// Deprecated: use the regions_attributes field instead
+	// Deprecated: use the regionsAttributes field instead
 	RegionsStatuses []NetworkPrivateRegionsStatus `pulumi:"regionsStatuses"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -162,7 +162,7 @@ type NetworkPrivateState struct {
 	// * `regions_status/region` - (Deprecated) The id of the region.
 	// * `regions_status/status` - (Deprecated) The status of the network in the region.
 	//
-	// Deprecated: use the regions_attributes field instead
+	// Deprecated: use the regionsAttributes field instead
 	RegionsStatuses NetworkPrivateRegionsStatusArrayInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -319,7 +319,7 @@ func (o NetworkPrivateOutput) RegionsAttributes() NetworkPrivateRegionsAttribute
 // * `regions_status/region` - (Deprecated) The id of the region.
 // * `regions_status/status` - (Deprecated) The status of the network in the region.
 //
-// Deprecated: use the regions_attributes field instead
+// Deprecated: use the regionsAttributes field instead
 func (o NetworkPrivateOutput) RegionsStatuses() NetworkPrivateRegionsStatusArrayOutput {
 	return o.ApplyT(func(v *NetworkPrivate) NetworkPrivateRegionsStatusArrayOutput { return v.RegionsStatuses }).(NetworkPrivateRegionsStatusArrayOutput)
 }

@@ -56,7 +56,7 @@ import (
 //			_, err = Dedicated.NewServerInstallTask(ctx, "serverInstall", &Dedicated.ServerInstallTaskArgs{
 //				ServiceName:     pulumi.String("nsxxxxxxx.ip-xx-xx-xx.eu"),
 //				TemplateName:    debian.TemplateName,
-//				BootidOnDestroy: *pulumi.Int(rescue.Results[0]),
+//				BootidOnDestroy: pulumi.Int(rescue.Results[0]),
 //				Details: &dedicated.ServerInstallTaskDetailsArgs{
 //					CustomHostname: pulumi.String("mytest"),
 //				},

@@ -85,7 +85,7 @@ export class NetworkPrivate extends pulumi.CustomResource {
      * * `regions_status/region` - (Deprecated) The id of the region.
      * * `regions_status/status` - (Deprecated) The status of the network in the region.
      *
-     * @deprecated use the regions_attributes field instead
+     * @deprecated use the regionsAttributes field instead
      */
     public /*out*/ readonly regionsStatuses!: pulumi.Output<outputs.CloudProject.NetworkPrivateRegionsStatus[]>;
     /**
@@ -172,7 +172,7 @@ export interface NetworkPrivateState {
      * * `regions_status/region` - (Deprecated) The id of the region.
      * * `regions_status/status` - (Deprecated) The status of the network in the region.
      *
-     * @deprecated use the regions_attributes field instead
+     * @deprecated use the regionsAttributes field instead
      */
     regionsStatuses?: pulumi.Input<pulumi.Input<inputs.CloudProject.NetworkPrivateRegionsStatus>[]>;
     /**

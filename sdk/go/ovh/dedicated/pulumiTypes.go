@@ -511,13 +511,623 @@ func (o ServerNetworkingInterfaceArrayOutput) Index(i pulumi.IntInput) ServerNet
 	}).(ServerNetworkingInterfaceOutput)
 }
 
+type GetServerSpecificationsHardwareDefaultHardwareRaidSize struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsHardwareDefaultHardwareRaidSizeInput is an input type that accepts GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs and GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareDefaultHardwareRaidSizeInput` via:
+//
+//	GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs{...}
+type GetServerSpecificationsHardwareDefaultHardwareRaidSizeInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput
+	ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutputWithContext(context.Context) GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput
+}
+
+type GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDefaultHardwareRaidSize)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs) ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput {
+	return i.ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs) ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput)
+}
+
+type GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDefaultHardwareRaidSize)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDefaultHardwareRaidSize) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDefaultHardwareRaidSize) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsHardwareDiskGroup struct {
+	// Default hardware raid size for this disk group
+	DefaultHardwareRaidSize GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize `pulumi:"defaultHardwareRaidSize"`
+	// Default hardware raid type for this disk group
+	DefaultHardwareRaidType string `pulumi:"defaultHardwareRaidType"`
+	// Expansion card description
+	Description string `pulumi:"description"`
+	// Identifier of this disk group
+	DiskGroupId float64 `pulumi:"diskGroupId"`
+	// Disk capacity
+	DiskSize GetServerSpecificationsHardwareDiskGroupDiskSize `pulumi:"diskSize"`
+	// Type of the disk (SSD, SATA, SAS, ...)
+	DiskType string `pulumi:"diskType"`
+	// Number of disks in this group
+	NumberOfDisks float64 `pulumi:"numberOfDisks"`
+	// Raid controller, if any, managing this group of disks
+	RaidController string `pulumi:"raidController"`
+}
+
+// GetServerSpecificationsHardwareDiskGroupInput is an input type that accepts GetServerSpecificationsHardwareDiskGroupArgs and GetServerSpecificationsHardwareDiskGroupOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareDiskGroupInput` via:
+//
+//	GetServerSpecificationsHardwareDiskGroupArgs{...}
+type GetServerSpecificationsHardwareDiskGroupInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareDiskGroupOutput() GetServerSpecificationsHardwareDiskGroupOutput
+	ToGetServerSpecificationsHardwareDiskGroupOutputWithContext(context.Context) GetServerSpecificationsHardwareDiskGroupOutput
+}
+
+type GetServerSpecificationsHardwareDiskGroupArgs struct {
+	// Default hardware raid size for this disk group
+	DefaultHardwareRaidSize GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput `pulumi:"defaultHardwareRaidSize"`
+	// Default hardware raid type for this disk group
+	DefaultHardwareRaidType pulumi.StringInput `pulumi:"defaultHardwareRaidType"`
+	// Expansion card description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Identifier of this disk group
+	DiskGroupId pulumi.Float64Input `pulumi:"diskGroupId"`
+	// Disk capacity
+	DiskSize GetServerSpecificationsHardwareDiskGroupDiskSizeInput `pulumi:"diskSize"`
+	// Type of the disk (SSD, SATA, SAS, ...)
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// Number of disks in this group
+	NumberOfDisks pulumi.Float64Input `pulumi:"numberOfDisks"`
+	// Raid controller, if any, managing this group of disks
+	RaidController pulumi.StringInput `pulumi:"raidController"`
+}
+
+func (GetServerSpecificationsHardwareDiskGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroup)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupArgs) ToGetServerSpecificationsHardwareDiskGroupOutput() GetServerSpecificationsHardwareDiskGroupOutput {
+	return i.ToGetServerSpecificationsHardwareDiskGroupOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupArgs) ToGetServerSpecificationsHardwareDiskGroupOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareDiskGroupOutput)
+}
+
+// GetServerSpecificationsHardwareDiskGroupArrayInput is an input type that accepts GetServerSpecificationsHardwareDiskGroupArray and GetServerSpecificationsHardwareDiskGroupArrayOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareDiskGroupArrayInput` via:
+//
+//	GetServerSpecificationsHardwareDiskGroupArray{ GetServerSpecificationsHardwareDiskGroupArgs{...} }
+type GetServerSpecificationsHardwareDiskGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareDiskGroupArrayOutput() GetServerSpecificationsHardwareDiskGroupArrayOutput
+	ToGetServerSpecificationsHardwareDiskGroupArrayOutputWithContext(context.Context) GetServerSpecificationsHardwareDiskGroupArrayOutput
+}
+
+type GetServerSpecificationsHardwareDiskGroupArray []GetServerSpecificationsHardwareDiskGroupInput
+
+func (GetServerSpecificationsHardwareDiskGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareDiskGroup)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupArray) ToGetServerSpecificationsHardwareDiskGroupArrayOutput() GetServerSpecificationsHardwareDiskGroupArrayOutput {
+	return i.ToGetServerSpecificationsHardwareDiskGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupArray) ToGetServerSpecificationsHardwareDiskGroupArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareDiskGroupArrayOutput)
+}
+
+type GetServerSpecificationsHardwareDiskGroupOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareDiskGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroup)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupOutput) ToGetServerSpecificationsHardwareDiskGroupOutput() GetServerSpecificationsHardwareDiskGroupOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupOutput) ToGetServerSpecificationsHardwareDiskGroupOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupOutput {
+	return o
+}
+
+// Default hardware raid size for this disk group
+func (o GetServerSpecificationsHardwareDiskGroupOutput) DefaultHardwareRaidSize() GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize {
+		return v.DefaultHardwareRaidSize
+	}).(GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput)
+}
+
+// Default hardware raid type for this disk group
+func (o GetServerSpecificationsHardwareDiskGroupOutput) DefaultHardwareRaidType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.DefaultHardwareRaidType }).(pulumi.StringOutput)
+}
+
+// Expansion card description
+func (o GetServerSpecificationsHardwareDiskGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Identifier of this disk group
+func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskGroupId() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) float64 { return v.DiskGroupId }).(pulumi.Float64Output)
+}
+
+// Disk capacity
+func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskSize() GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) GetServerSpecificationsHardwareDiskGroupDiskSize {
+		return v.DiskSize
+	}).(GetServerSpecificationsHardwareDiskGroupDiskSizeOutput)
+}
+
+// Type of the disk (SSD, SATA, SAS, ...)
+func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Number of disks in this group
+func (o GetServerSpecificationsHardwareDiskGroupOutput) NumberOfDisks() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) float64 { return v.NumberOfDisks }).(pulumi.Float64Output)
+}
+
+// Raid controller, if any, managing this group of disks
+func (o GetServerSpecificationsHardwareDiskGroupOutput) RaidController() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.RaidController }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsHardwareDiskGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareDiskGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareDiskGroup)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupArrayOutput) ToGetServerSpecificationsHardwareDiskGroupArrayOutput() GetServerSpecificationsHardwareDiskGroupArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupArrayOutput) ToGetServerSpecificationsHardwareDiskGroupArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupArrayOutput) Index(i pulumi.IntInput) GetServerSpecificationsHardwareDiskGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerSpecificationsHardwareDiskGroup {
+		return vs[0].([]GetServerSpecificationsHardwareDiskGroup)[vs[1].(int)]
+	}).(GetServerSpecificationsHardwareDiskGroupOutput)
+}
+
+type GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput is an input type that accepts GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs and GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput` via:
+//
+//	GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs{...}
+type GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput
+	ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutputWithContext(context.Context) GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput
+}
+
+type GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs) ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
+	return i.ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs) ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput)
+}
+
+type GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput) ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput) ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsHardwareDiskGroupDiskSize struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsHardwareDiskGroupDiskSizeInput is an input type that accepts GetServerSpecificationsHardwareDiskGroupDiskSizeArgs and GetServerSpecificationsHardwareDiskGroupDiskSizeOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareDiskGroupDiskSizeInput` via:
+//
+//	GetServerSpecificationsHardwareDiskGroupDiskSizeArgs{...}
+type GetServerSpecificationsHardwareDiskGroupDiskSizeInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutput() GetServerSpecificationsHardwareDiskGroupDiskSizeOutput
+	ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutputWithContext(context.Context) GetServerSpecificationsHardwareDiskGroupDiskSizeOutput
+}
+
+type GetServerSpecificationsHardwareDiskGroupDiskSizeArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsHardwareDiskGroupDiskSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDiskSize)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupDiskSizeArgs) ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutput() GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
+	return i.ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupDiskSizeArgs) ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareDiskGroupDiskSizeOutput)
+}
+
+type GetServerSpecificationsHardwareDiskGroupDiskSizeOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDiskSize)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutput() GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroupDiskSize) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroupDiskSize) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsHardwareExpansionCard struct {
+	// Expansion card description
+	Description string `pulumi:"description"`
+	// Expansion card type enum
+	Type string `pulumi:"type"`
+}
+
+// GetServerSpecificationsHardwareExpansionCardInput is an input type that accepts GetServerSpecificationsHardwareExpansionCardArgs and GetServerSpecificationsHardwareExpansionCardOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareExpansionCardInput` via:
+//
+//	GetServerSpecificationsHardwareExpansionCardArgs{...}
+type GetServerSpecificationsHardwareExpansionCardInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareExpansionCardOutput() GetServerSpecificationsHardwareExpansionCardOutput
+	ToGetServerSpecificationsHardwareExpansionCardOutputWithContext(context.Context) GetServerSpecificationsHardwareExpansionCardOutput
+}
+
+type GetServerSpecificationsHardwareExpansionCardArgs struct {
+	// Expansion card description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Expansion card type enum
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServerSpecificationsHardwareExpansionCardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareExpansionCard)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareExpansionCardArgs) ToGetServerSpecificationsHardwareExpansionCardOutput() GetServerSpecificationsHardwareExpansionCardOutput {
+	return i.ToGetServerSpecificationsHardwareExpansionCardOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareExpansionCardArgs) ToGetServerSpecificationsHardwareExpansionCardOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareExpansionCardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareExpansionCardOutput)
+}
+
+// GetServerSpecificationsHardwareExpansionCardArrayInput is an input type that accepts GetServerSpecificationsHardwareExpansionCardArray and GetServerSpecificationsHardwareExpansionCardArrayOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareExpansionCardArrayInput` via:
+//
+//	GetServerSpecificationsHardwareExpansionCardArray{ GetServerSpecificationsHardwareExpansionCardArgs{...} }
+type GetServerSpecificationsHardwareExpansionCardArrayInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareExpansionCardArrayOutput() GetServerSpecificationsHardwareExpansionCardArrayOutput
+	ToGetServerSpecificationsHardwareExpansionCardArrayOutputWithContext(context.Context) GetServerSpecificationsHardwareExpansionCardArrayOutput
+}
+
+type GetServerSpecificationsHardwareExpansionCardArray []GetServerSpecificationsHardwareExpansionCardInput
+
+func (GetServerSpecificationsHardwareExpansionCardArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareExpansionCard)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareExpansionCardArray) ToGetServerSpecificationsHardwareExpansionCardArrayOutput() GetServerSpecificationsHardwareExpansionCardArrayOutput {
+	return i.ToGetServerSpecificationsHardwareExpansionCardArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareExpansionCardArray) ToGetServerSpecificationsHardwareExpansionCardArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareExpansionCardArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareExpansionCardArrayOutput)
+}
+
+type GetServerSpecificationsHardwareExpansionCardOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareExpansionCardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareExpansionCard)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareExpansionCardOutput) ToGetServerSpecificationsHardwareExpansionCardOutput() GetServerSpecificationsHardwareExpansionCardOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareExpansionCardOutput) ToGetServerSpecificationsHardwareExpansionCardOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareExpansionCardOutput {
+	return o
+}
+
+// Expansion card description
+func (o GetServerSpecificationsHardwareExpansionCardOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareExpansionCard) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Expansion card type enum
+func (o GetServerSpecificationsHardwareExpansionCardOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareExpansionCard) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsHardwareExpansionCardArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareExpansionCardArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareExpansionCard)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareExpansionCardArrayOutput) ToGetServerSpecificationsHardwareExpansionCardArrayOutput() GetServerSpecificationsHardwareExpansionCardArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareExpansionCardArrayOutput) ToGetServerSpecificationsHardwareExpansionCardArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareExpansionCardArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareExpansionCardArrayOutput) Index(i pulumi.IntInput) GetServerSpecificationsHardwareExpansionCardOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerSpecificationsHardwareExpansionCard {
+		return vs[0].([]GetServerSpecificationsHardwareExpansionCard)[vs[1].(int)]
+	}).(GetServerSpecificationsHardwareExpansionCardOutput)
+}
+
+type GetServerSpecificationsHardwareMemorySize struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsHardwareMemorySizeInput is an input type that accepts GetServerSpecificationsHardwareMemorySizeArgs and GetServerSpecificationsHardwareMemorySizeOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareMemorySizeInput` via:
+//
+//	GetServerSpecificationsHardwareMemorySizeArgs{...}
+type GetServerSpecificationsHardwareMemorySizeInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareMemorySizeOutput() GetServerSpecificationsHardwareMemorySizeOutput
+	ToGetServerSpecificationsHardwareMemorySizeOutputWithContext(context.Context) GetServerSpecificationsHardwareMemorySizeOutput
+}
+
+type GetServerSpecificationsHardwareMemorySizeArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsHardwareMemorySizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareMemorySize)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareMemorySizeArgs) ToGetServerSpecificationsHardwareMemorySizeOutput() GetServerSpecificationsHardwareMemorySizeOutput {
+	return i.ToGetServerSpecificationsHardwareMemorySizeOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareMemorySizeArgs) ToGetServerSpecificationsHardwareMemorySizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareMemorySizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareMemorySizeOutput)
+}
+
+type GetServerSpecificationsHardwareMemorySizeOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareMemorySizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareMemorySize)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareMemorySizeOutput) ToGetServerSpecificationsHardwareMemorySizeOutput() GetServerSpecificationsHardwareMemorySizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareMemorySizeOutput) ToGetServerSpecificationsHardwareMemorySizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareMemorySizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareMemorySizeOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareMemorySize) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsHardwareMemorySizeOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareMemorySize) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsHardwareUsbKey struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsHardwareUsbKeyInput is an input type that accepts GetServerSpecificationsHardwareUsbKeyArgs and GetServerSpecificationsHardwareUsbKeyOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareUsbKeyInput` via:
+//
+//	GetServerSpecificationsHardwareUsbKeyArgs{...}
+type GetServerSpecificationsHardwareUsbKeyInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareUsbKeyOutput() GetServerSpecificationsHardwareUsbKeyOutput
+	ToGetServerSpecificationsHardwareUsbKeyOutputWithContext(context.Context) GetServerSpecificationsHardwareUsbKeyOutput
+}
+
+type GetServerSpecificationsHardwareUsbKeyArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsHardwareUsbKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareUsbKey)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareUsbKeyArgs) ToGetServerSpecificationsHardwareUsbKeyOutput() GetServerSpecificationsHardwareUsbKeyOutput {
+	return i.ToGetServerSpecificationsHardwareUsbKeyOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareUsbKeyArgs) ToGetServerSpecificationsHardwareUsbKeyOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareUsbKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareUsbKeyOutput)
+}
+
+// GetServerSpecificationsHardwareUsbKeyArrayInput is an input type that accepts GetServerSpecificationsHardwareUsbKeyArray and GetServerSpecificationsHardwareUsbKeyArrayOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareUsbKeyArrayInput` via:
+//
+//	GetServerSpecificationsHardwareUsbKeyArray{ GetServerSpecificationsHardwareUsbKeyArgs{...} }
+type GetServerSpecificationsHardwareUsbKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareUsbKeyArrayOutput() GetServerSpecificationsHardwareUsbKeyArrayOutput
+	ToGetServerSpecificationsHardwareUsbKeyArrayOutputWithContext(context.Context) GetServerSpecificationsHardwareUsbKeyArrayOutput
+}
+
+type GetServerSpecificationsHardwareUsbKeyArray []GetServerSpecificationsHardwareUsbKeyInput
+
+func (GetServerSpecificationsHardwareUsbKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareUsbKey)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareUsbKeyArray) ToGetServerSpecificationsHardwareUsbKeyArrayOutput() GetServerSpecificationsHardwareUsbKeyArrayOutput {
+	return i.ToGetServerSpecificationsHardwareUsbKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareUsbKeyArray) ToGetServerSpecificationsHardwareUsbKeyArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareUsbKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareUsbKeyArrayOutput)
+}
+
+type GetServerSpecificationsHardwareUsbKeyOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareUsbKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareUsbKey)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyOutput) ToGetServerSpecificationsHardwareUsbKeyOutput() GetServerSpecificationsHardwareUsbKeyOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyOutput) ToGetServerSpecificationsHardwareUsbKeyOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareUsbKeyOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareUsbKey) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareUsbKey) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsHardwareUsbKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareUsbKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareUsbKey)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyArrayOutput) ToGetServerSpecificationsHardwareUsbKeyArrayOutput() GetServerSpecificationsHardwareUsbKeyArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyArrayOutput) ToGetServerSpecificationsHardwareUsbKeyArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareUsbKeyArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyArrayOutput) Index(i pulumi.IntInput) GetServerSpecificationsHardwareUsbKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerSpecificationsHardwareUsbKey {
+		return vs[0].([]GetServerSpecificationsHardwareUsbKey)[vs[1].(int)]
+	}).(GetServerSpecificationsHardwareUsbKeyOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskDetailsInput)(nil)).Elem(), ServerInstallTaskDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskDetailsPtrInput)(nil)).Elem(), ServerInstallTaskDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerNetworkingInterfaceInput)(nil)).Elem(), ServerNetworkingInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerNetworkingInterfaceArrayInput)(nil)).Elem(), ServerNetworkingInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDefaultHardwareRaidSizeInput)(nil)).Elem(), GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupArrayInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDiskSizeInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupDiskSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareExpansionCardInput)(nil)).Elem(), GetServerSpecificationsHardwareExpansionCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareExpansionCardArrayInput)(nil)).Elem(), GetServerSpecificationsHardwareExpansionCardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareMemorySizeInput)(nil)).Elem(), GetServerSpecificationsHardwareMemorySizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareUsbKeyInput)(nil)).Elem(), GetServerSpecificationsHardwareUsbKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareUsbKeyArrayInput)(nil)).Elem(), GetServerSpecificationsHardwareUsbKeyArray{})
 	pulumi.RegisterOutputType(ServerInstallTaskDetailsOutput{})
 	pulumi.RegisterOutputType(ServerInstallTaskDetailsPtrOutput{})
 	pulumi.RegisterOutputType(ServerNetworkingInterfaceOutput{})
 	pulumi.RegisterOutputType(ServerNetworkingInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupDiskSizeOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareExpansionCardOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareExpansionCardArrayOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareMemorySizeOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareUsbKeyOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareUsbKeyArrayOutput{})
 }

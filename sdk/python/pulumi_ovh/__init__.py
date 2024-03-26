@@ -127,6 +127,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProject/gateway",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/gateway:Gateway": "Gateway"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProject/kube",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
@@ -523,6 +531,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.ip",
   "classes": {
    "ovh:Ip/ipService:IpService": "IpService"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Ip/move",
+  "fqn": "pulumi_ovh.ip",
+  "classes": {
+   "ovh:Ip/move:Move": "Move"
   }
  },
  {

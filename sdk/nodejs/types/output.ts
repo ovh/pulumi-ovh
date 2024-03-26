@@ -292,7 +292,7 @@ export namespace CloudProject {
         /**
          * Kubernetes API server customization
          *
-         * @deprecated Use customization_apiserver instead
+         * @deprecated Use customizationApiserver instead
          */
         apiservers: outputs.CloudProject.GetKubeCustomizationApiserver[];
     }
@@ -596,7 +596,7 @@ export namespace CloudProject {
         /**
          * Kubernetes API server customization
          *
-         * @deprecated Use customization_apiserver instead
+         * @deprecated Use customizationApiserver instead
          */
         apiservers: outputs.CloudProject.KubeCustomizationApiserver[];
     }
@@ -731,6 +731,13 @@ export namespace CloudProject {
         defaultVrackGateway: string;
         /**
          * Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+         *
+         * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+         * <!--Start PulumiCodeChooser -->
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         * <!--End PulumiCodeChooser -->
          */
         privateNetworkRoutingAsDefault: boolean;
     }
@@ -1082,6 +1089,77 @@ export namespace Dbaas {
 }
 
 export namespace Dedicated {
+    export interface GetServerSpecificationsHardwareDefaultHardwareRaidSize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsHardwareDiskGroup {
+        /**
+         * Default hardware raid size for this disk group
+         */
+        defaultHardwareRaidSize: outputs.Dedicated.GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize;
+        /**
+         * Default hardware raid type for this disk group
+         */
+        defaultHardwareRaidType: string;
+        /**
+         * Expansion card description
+         */
+        description: string;
+        /**
+         * Identifier of this disk group
+         */
+        diskGroupId: number;
+        /**
+         * Disk capacity
+         */
+        diskSize: outputs.Dedicated.GetServerSpecificationsHardwareDiskGroupDiskSize;
+        /**
+         * Type of the disk (SSD, SATA, SAS, ...)
+         */
+        diskType: string;
+        /**
+         * Number of disks in this group
+         */
+        numberOfDisks: number;
+        /**
+         * Raid controller, if any, managing this group of disks
+         */
+        raidController: string;
+    }
+
+    export interface GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsHardwareDiskGroupDiskSize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsHardwareExpansionCard {
+        /**
+         * Expansion card description
+         */
+        description: string;
+        /**
+         * Expansion card type enum
+         */
+        type: string;
+    }
+
+    export interface GetServerSpecificationsHardwareMemorySize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsHardwareUsbKey {
+        unit: string;
+        value: number;
+    }
+
     export interface ServerInstallTaskDetails {
         /**
          * Template change log details.
@@ -1539,6 +1617,13 @@ export namespace Ip {
     export interface IpServiceRoutedTo {
         /**
          * service name
+         */
+        serviceName: string;
+    }
+
+    export interface MoveRoutedTo {
+        /**
+         * Name of the service to route the IP to. IP will be parked if this value is an empty string
          */
         serviceName: string;
     }

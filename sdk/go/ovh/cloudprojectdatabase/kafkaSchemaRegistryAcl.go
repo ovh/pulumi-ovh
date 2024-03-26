@@ -38,8 +38,8 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewKafkaSchemaRegistryAcl(ctx, "schemaRegistryAcl", &CloudProjectDatabase.KafkaSchemaRegistryAclArgs{
-//				ServiceName: *pulumi.String(kafka.ServiceName),
-//				ClusterId:   *pulumi.String(kafka.Id),
+//				ServiceName: pulumi.String(kafka.ServiceName),
+//				ClusterId:   pulumi.String(kafka.Id),
 //				Permission:  pulumi.String("schema_registry_read"),
 //				Resource:    pulumi.String("Subject:myResource"),
 //				Username:    pulumi.String("johndoe"),

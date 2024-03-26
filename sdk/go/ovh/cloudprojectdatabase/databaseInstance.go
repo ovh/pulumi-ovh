@@ -43,9 +43,9 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewDatabaseInstance(ctx, "database", &CloudProjectDatabase.DatabaseInstanceArgs{
-//				ServiceName: *pulumi.String(db.ServiceName),
-//				Engine:      *pulumi.String(db.Engine),
-//				ClusterId:   *pulumi.String(db.Id),
+//				ServiceName: pulumi.String(db.ServiceName),
+//				Engine:      pulumi.String(db.Engine),
+//				ClusterId:   pulumi.String(db.Id),
 //			})
 //			if err != nil {
 //				return err

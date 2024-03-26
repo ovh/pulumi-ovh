@@ -38,8 +38,8 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewM3DbNamespace(ctx, "namespace", &CloudProjectDatabase.M3DbNamespaceArgs{
-//				ServiceName:             *pulumi.String(m3db.ServiceName),
-//				ClusterId:               *pulumi.String(m3db.Id),
+//				ServiceName:             pulumi.String(m3db.ServiceName),
+//				ClusterId:               pulumi.String(m3db.Id),
 //				Resolution:              pulumi.String("P2D"),
 //				RetentionPeriodDuration: pulumi.String("PT48H"),
 //			})

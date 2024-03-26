@@ -38,7 +38,7 @@ import (
 //			}
 //			_, err = IpLoadBalancing.NewTcpFarm(ctx, "farmname", &IpLoadBalancing.TcpFarmArgs{
 //				DisplayName: pulumi.String("ingress-8080-gra"),
-//				ServiceName: *pulumi.String(lb.ServiceName),
+//				ServiceName: pulumi.String(lb.ServiceName),
 //				Zone:        pulumi.String("GRA"),
 //			})
 //			if err != nil {

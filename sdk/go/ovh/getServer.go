@@ -60,14 +60,16 @@ type GetServerArgs struct {
 type GetServerResult struct {
 	// URN of the dedicated server instance
 	ServerURN string `pulumi:"ServerURN"`
-	// boot id of the server
+	// Boot id of the server
 	BootId int `pulumi:"bootId"`
-	// boot script of the server
+	// Boot script of the server
 	BootScript string `pulumi:"bootScript"`
-	// dedicated server commercial range
+	// Dedicated server commercial range
 	CommercialRange string `pulumi:"commercialRange"`
-	// dedicated datacenter localisation (bhs1,bhs2,...)
+	// Dedicated datacenter localisation (bhs1,bhs2,...)
 	Datacenter string `pulumi:"datacenter"`
+	// Dedicated server display name
+	DisplayName string `pulumi:"displayName"`
 	// List of enabled public VNI uuids
 	EnabledPublicVnis []string `pulumi:"enabledPublicVnis"`
 	// List of enabled vrackAggregation VNI uuids
@@ -76,11 +78,11 @@ type GetServerResult struct {
 	EnabledVrackVnis []string `pulumi:"enabledVrackVnis"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// dedicated server ip (IPv4)
+	// Dedicated server ip (IPv4)
 	Ip string `pulumi:"ip"`
-	// dedicated server ip blocks
+	// Dedicated server ip blocks
 	Ips []string `pulumi:"ips"`
-	// link speed of the server
+	// Link speed of the server
 	LinkSpeed int `pulumi:"linkSpeed"`
 	// Icmp monitoring state
 	Monitoring bool `pulumi:"monitoring"`
@@ -90,22 +92,22 @@ type GetServerResult struct {
 	Os string `pulumi:"os"`
 	// Does this server have professional use option
 	ProfessionalUse bool `pulumi:"professionalUse"`
-	// rack id of the server
+	// Rack id of the server
 	Rack string `pulumi:"rack"`
-	// rescue mail of the server
+	// Rescue mail of the server
 	RescueMail string `pulumi:"rescueMail"`
-	// dedicated server reverse
+	// Dedicated server reverse
 	Reverse string `pulumi:"reverse"`
-	// root device of the server
+	// Root device of the server
 	RootDevice string `pulumi:"rootDevice"`
-	// your server id
+	// Server id
 	ServerId    int    `pulumi:"serverId"`
 	ServiceName string `pulumi:"serviceName"`
-	// error, hacked, hackedBlocked, ok
+	// Error, hacked, hackedBlocked, ok
 	State string `pulumi:"state"`
 	// Dedicated server support level (critical, fastpath, gs, pro)
 	SupportLevel string `pulumi:"supportLevel"`
-	// the list of Virtualnetworkinterface assiociated with this server
+	// The list of Virtualnetworkinterface associated with this server
 	Vnis []GetServerVni `pulumi:"vnis"`
 }
 
@@ -152,24 +154,29 @@ func (o GetServerResultOutput) ServerURN() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.ServerURN }).(pulumi.StringOutput)
 }
 
-// boot id of the server
+// Boot id of the server
 func (o GetServerResultOutput) BootId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerResult) int { return v.BootId }).(pulumi.IntOutput)
 }
 
-// boot script of the server
+// Boot script of the server
 func (o GetServerResultOutput) BootScript() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.BootScript }).(pulumi.StringOutput)
 }
 
-// dedicated server commercial range
+// Dedicated server commercial range
 func (o GetServerResultOutput) CommercialRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.CommercialRange }).(pulumi.StringOutput)
 }
 
-// dedicated datacenter localisation (bhs1,bhs2,...)
+// Dedicated datacenter localisation (bhs1,bhs2,...)
 func (o GetServerResultOutput) Datacenter() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// Dedicated server display name
+func (o GetServerResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // List of enabled public VNI uuids
@@ -192,17 +199,17 @@ func (o GetServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// dedicated server ip (IPv4)
+// Dedicated server ip (IPv4)
 func (o GetServerResultOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// dedicated server ip blocks
+// Dedicated server ip blocks
 func (o GetServerResultOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerResult) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
-// link speed of the server
+// Link speed of the server
 func (o GetServerResultOutput) LinkSpeed() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerResult) int { return v.LinkSpeed }).(pulumi.IntOutput)
 }
@@ -227,27 +234,27 @@ func (o GetServerResultOutput) ProfessionalUse() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerResult) bool { return v.ProfessionalUse }).(pulumi.BoolOutput)
 }
 
-// rack id of the server
+// Rack id of the server
 func (o GetServerResultOutput) Rack() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.Rack }).(pulumi.StringOutput)
 }
 
-// rescue mail of the server
+// Rescue mail of the server
 func (o GetServerResultOutput) RescueMail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.RescueMail }).(pulumi.StringOutput)
 }
 
-// dedicated server reverse
+// Dedicated server reverse
 func (o GetServerResultOutput) Reverse() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.Reverse }).(pulumi.StringOutput)
 }
 
-// root device of the server
+// Root device of the server
 func (o GetServerResultOutput) RootDevice() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.RootDevice }).(pulumi.StringOutput)
 }
 
-// your server id
+// Server id
 func (o GetServerResultOutput) ServerId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerResult) int { return v.ServerId }).(pulumi.IntOutput)
 }
@@ -256,7 +263,7 @@ func (o GetServerResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// error, hacked, hackedBlocked, ok
+// Error, hacked, hackedBlocked, ok
 func (o GetServerResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.State }).(pulumi.StringOutput)
 }
@@ -266,7 +273,7 @@ func (o GetServerResultOutput) SupportLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.SupportLevel }).(pulumi.StringOutput)
 }
 
-// the list of Virtualnetworkinterface assiociated with this server
+// The list of Virtualnetworkinterface associated with this server
 func (o GetServerResultOutput) Vnis() GetServerVniArrayOutput {
 	return o.ApplyT(func(v GetServerResult) []GetServerVni { return v.Vnis }).(GetServerVniArrayOutput)
 }

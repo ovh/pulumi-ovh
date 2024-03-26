@@ -13,6 +13,7 @@ from .container_registry_oidc import *
 from .container_registry_user import *
 from .database import *
 from .failover_ip_attach import *
+from .gateway import *
 from .get_capabilities_container_filter import *
 from .get_capabilities_container_registry import *
 from .get_container_registries import *
