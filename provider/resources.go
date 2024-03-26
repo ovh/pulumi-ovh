@@ -216,6 +216,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_failover_ip_attach": {
 				Tok: ovhResource(cloudProjectMod, "FailoverIpAttach"),
 			},
+			"ovh_cloud_project_gateway": {
+				Tok: ovhResource(cloudProjectMod, "Gateway"),
+			},
 			"ovh_cloud_project_kube": {
 				Tok: ovhResource(cloudProjectMod, "Kube"),
 			},
@@ -309,6 +312,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_hosting_privatedatabase_whitelist": {
 				Tok: ovhResource(hostingMod, "PrivateDatabaseAllowlist"),
+			},
+			"ovh_ip_move": {
+				Tok: ovhResource(ipMod, "Move"),
 			},
 			"ovh_ip_reverse": {
 				Tok: ovhResource(ipMod, "Reverse"),
@@ -632,6 +638,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dedicated_server_boots": {
 				Tok: ovhDataSource(dedicatedMod, "getServerBoots"),
+			},
+			"ovh_dedicated_server_specifications_hardware": {
+				Tok: ovhDataSource(dedicatedMod, "getServerSpecificationsHardware"),
 			},
 			"ovh_hosting_privatedatabase": {
 				Tok: ovhDataSource(hostingMod, "getPrivateDatabase"),
