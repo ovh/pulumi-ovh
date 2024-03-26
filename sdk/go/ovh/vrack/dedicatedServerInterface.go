@@ -38,7 +38,7 @@ import (
 //			}
 //			_, err = Vrack.NewDedicatedServerInterface(ctx, "vdsi", &Vrack.DedicatedServerInterfaceArgs{
 //				ServiceName: pulumi.String("pn-xxxxxxx"),
-//				InterfaceId: *pulumi.String(server.EnabledVrackVnis[0]),
+//				InterfaceId: pulumi.String(server.EnabledVrackVnis[0]),
 //			})
 //			if err != nil {
 //				return err

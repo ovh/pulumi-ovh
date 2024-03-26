@@ -39,7 +39,7 @@ import (
 //			farm80, err := IpLoadBalancing.NewTcpFarm(ctx, "farm80", &IpLoadBalancing.TcpFarmArgs{
 //				DisplayName: pulumi.String("ingress-8080-gra"),
 //				Port:        pulumi.Int(80),
-//				ServiceName: *pulumi.String(lb.ServiceName),
+//				ServiceName: pulumi.String(lb.ServiceName),
 //				Zone:        pulumi.String("all"),
 //			})
 //			if err != nil {
@@ -49,7 +49,7 @@ import (
 //				DefaultFarmId: farm80.ID(),
 //				DisplayName:   pulumi.String("ingress-8080-gra"),
 //				Port:          pulumi.String("80,443"),
-//				ServiceName:   *pulumi.String(lb.ServiceName),
+//				ServiceName:   pulumi.String(lb.ServiceName),
 //				Zone:          pulumi.String("all"),
 //			})
 //			if err != nil {

@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Database{}
 	case "ovh:CloudProject/failoverIpAttach:FailoverIpAttach":
 		r = &FailoverIpAttach{}
+	case "ovh:CloudProject/gateway:Gateway":
+		r = &Gateway{}
 	case "ovh:CloudProject/kube:Kube":
 		r = &Kube{}
 	case "ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions":
@@ -112,6 +114,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProject/failoverIpAttach",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/gateway",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

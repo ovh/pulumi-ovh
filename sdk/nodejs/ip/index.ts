@@ -15,6 +15,11 @@ export type IpService = import("./ipService").IpService;
 export const IpService: typeof import("./ipService").IpService = null as any;
 utilities.lazyLoad(exports, ["IpService"], () => require("./ipService"));
 
+export { MoveArgs, MoveState } from "./move";
+export type Move = import("./move").Move;
+export const Move: typeof import("./move").Move = null as any;
+utilities.lazyLoad(exports, ["Move"], () => require("./move"));
+
 export { ReverseArgs, ReverseState } from "./reverse";
 export type Reverse = import("./reverse").Reverse;
 export const Reverse: typeof import("./reverse").Reverse = null as any;
@@ -27,6 +32,8 @@ const _module = {
         switch (type) {
             case "ovh:Ip/ipService:IpService":
                 return new IpService(name, <any>undefined, { urn })
+            case "ovh:Ip/move:Move":
+                return new Move(name, <any>undefined, { urn })
             case "ovh:Ip/reverse:Reverse":
                 return new Reverse(name, <any>undefined, { urn })
             default:
@@ -35,4 +42,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("ovh", "Ip/ipService", _module)
+pulumi.runtime.registerResourceModule("ovh", "Ip/move", _module)
 pulumi.runtime.registerResourceModule("ovh", "Ip/reverse", _module)

@@ -37,7 +37,7 @@ import (
 //			}
 //			_, err = Dedicated.NewServerUpdate(ctx, "server", &Dedicated.ServerUpdateArgs{
 //				ServiceName: pulumi.String("nsxxxxxxx.ip-xx-xx-xx.eu"),
-//				BootId:      *pulumi.Int(rescue.Results[0]),
+//				BootId:      pulumi.Int(rescue.Results[0]),
 //				Monitoring:  pulumi.Bool(true),
 //				State:       pulumi.String("ok"),
 //			})

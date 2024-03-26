@@ -90,7 +90,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> NodesUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The private network configuration
+        /// The private network configuration. If this is set then the 2 parameters below shall be defined.
         /// </summary>
         [Output("privateNetworkConfiguration")]
         public Output<Outputs.KubePrivateNetworkConfiguration?> PrivateNetworkConfiguration { get; private set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The private network configuration
+        /// The private network configuration. If this is set then the 2 parameters below shall be defined.
         /// </summary>
         [Input("privateNetworkConfiguration")]
         public Input<Inputs.KubePrivateNetworkConfigurationArgs>? PrivateNetworkConfiguration { get; set; }
@@ -386,7 +386,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? NodesUrl { get; set; }
 
         /// <summary>
-        /// The private network configuration
+        /// The private network configuration. If this is set then the 2 parameters below shall be defined.
         /// </summary>
         [Input("privateNetworkConfiguration")]
         public Input<Inputs.KubePrivateNetworkConfigurationGetArgs>? PrivateNetworkConfiguration { get; set; }

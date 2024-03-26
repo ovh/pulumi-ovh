@@ -38,8 +38,8 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewOpensearchPattern(ctx, "pattern", &CloudProjectDatabase.OpensearchPatternArgs{
-//				ServiceName:   *pulumi.String(opensearch.ServiceName),
-//				ClusterId:     *pulumi.String(opensearch.Id),
+//				ServiceName:   pulumi.String(opensearch.ServiceName),
+//				ClusterId:     pulumi.String(opensearch.Id),
 //				MaxIndexCount: pulumi.Int(2),
 //				Pattern:       pulumi.String("logs_*"),
 //			})

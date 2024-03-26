@@ -125,7 +125,7 @@ export namespace CloudProject {
         /**
          * Kubernetes API server customization
          *
-         * @deprecated Use customization_apiserver instead
+         * @deprecated Use customizationApiserver instead
          */
         apiservers?: inputs.CloudProject.GetKubeCustomizationApiserver[];
     }
@@ -134,7 +134,7 @@ export namespace CloudProject {
         /**
          * Kubernetes API server customization
          *
-         * @deprecated Use customization_apiserver instead
+         * @deprecated Use customizationApiserver instead
          */
         apiservers?: pulumi.Input<pulumi.Input<inputs.CloudProject.GetKubeCustomizationApiserverArgs>[]>;
     }
@@ -351,7 +351,7 @@ export namespace CloudProject {
         /**
          * Kubernetes API server customization
          *
-         * @deprecated Use customization_apiserver instead
+         * @deprecated Use customizationApiserver instead
          */
         apiservers?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomizationApiserver>[]>;
     }
@@ -486,6 +486,13 @@ export namespace CloudProject {
         defaultVrackGateway: pulumi.Input<string>;
         /**
          * Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+         *
+         * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+         * <!--Start PulumiCodeChooser -->
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         * <!--End PulumiCodeChooser -->
          */
         privateNetworkRoutingAsDefault: pulumi.Input<boolean>;
     }
@@ -1124,6 +1131,13 @@ export namespace Ip {
          * service name
          */
         serviceName?: pulumi.Input<string>;
+    }
+
+    export interface MoveRoutedTo {
+        /**
+         * Name of the service to route the IP to. IP will be parked if this value is an empty string
+         */
+        serviceName: pulumi.Input<string>;
     }
 }
 

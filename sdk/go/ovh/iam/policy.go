@@ -46,7 +46,7 @@ import (
 //					myGroup.GroupURN,
 //				},
 //				Resources: pulumi.StringArray{
-//					*pulumi.String(account.AccountURN),
+//					pulumi.String(account.AccountURN),
 //				},
 //				Allows: pulumi.StringArray{
 //					pulumi.String("account:apiovh:me/get"),

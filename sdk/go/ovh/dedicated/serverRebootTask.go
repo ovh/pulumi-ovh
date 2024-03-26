@@ -37,7 +37,7 @@ import (
 //			}
 //			serverOnRescue, err := Dedicated.NewServerUpdate(ctx, "serverOnRescue", &Dedicated.ServerUpdateArgs{
 //				ServiceName: pulumi.String("nsxxxxxxx.ip-xx-xx-xx.eu"),
-//				BootId:      *pulumi.Int(rescue.Results[0]),
+//				BootId:      pulumi.Int(rescue.Results[0]),
 //				Monitoring:  pulumi.Bool(true),
 //				State:       pulumi.String("ok"),
 //			})
@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = Dedicated.NewServerRebootTask(ctx, "serverReboot", &Dedicated.ServerRebootTaskArgs{
-//				ServiceName: *pulumi.String(rescue.ServiceName),
+//				ServiceName: pulumi.String(rescue.ServiceName),
 //				Keepers: pulumi.StringArray{
 //					serverOnRescue.BootId,
 //				},

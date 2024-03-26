@@ -32,7 +32,7 @@ type Kube struct {
 	CustomizationKubeProxy KubeCustomizationKubeProxyPtrOutput `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Customizations KubeCustomizationArrayOutput `pulumi:"customizations"`
 	// True if all nodes and control-plane are up-to-date.
 	IsUpToDate pulumi.BoolOutput `pulumi:"isUpToDate"`
@@ -48,7 +48,7 @@ type Kube struct {
 	NextUpgradeVersions pulumi.StringArrayOutput `pulumi:"nextUpgradeVersions"`
 	// Cluster nodes URL.
 	NodesUrl pulumi.StringOutput `pulumi:"nodesUrl"`
-	// The private network configuration
+	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrOutput `pulumi:"privateNetworkConfiguration"`
 	// OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 	//
@@ -117,7 +117,7 @@ type kubeState struct {
 	CustomizationKubeProxy *KubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Customizations []KubeCustomization `pulumi:"customizations"`
 	// True if all nodes and control-plane are up-to-date.
 	IsUpToDate *bool `pulumi:"isUpToDate"`
@@ -133,7 +133,7 @@ type kubeState struct {
 	NextUpgradeVersions []string `pulumi:"nextUpgradeVersions"`
 	// Cluster nodes URL.
 	NodesUrl *string `pulumi:"nodesUrl"`
-	// The private network configuration
+	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration *KubePrivateNetworkConfiguration `pulumi:"privateNetworkConfiguration"`
 	// OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 	//
@@ -162,7 +162,7 @@ type KubeState struct {
 	CustomizationKubeProxy KubeCustomizationKubeProxyPtrInput
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Customizations KubeCustomizationArrayInput
 	// True if all nodes and control-plane are up-to-date.
 	IsUpToDate pulumi.BoolPtrInput
@@ -178,7 +178,7 @@ type KubeState struct {
 	NextUpgradeVersions pulumi.StringArrayInput
 	// Cluster nodes URL.
 	NodesUrl pulumi.StringPtrInput
-	// The private network configuration
+	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrInput
 	// OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 	//
@@ -209,13 +209,13 @@ type kubeArgs struct {
 	CustomizationKubeProxy *KubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Customizations []KubeCustomization `pulumi:"customizations"`
 	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
 	KubeProxyMode *string `pulumi:"kubeProxyMode"`
 	// The name of the kubernetes cluster.
 	Name *string `pulumi:"name"`
-	// The private network configuration
+	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration *KubePrivateNetworkConfiguration `pulumi:"privateNetworkConfiguration"`
 	// OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 	//
@@ -239,13 +239,13 @@ type KubeArgs struct {
 	CustomizationKubeProxy KubeCustomizationKubeProxyPtrInput
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Customizations KubeCustomizationArrayInput
 	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
 	KubeProxyMode pulumi.StringPtrInput
 	// The name of the kubernetes cluster.
 	Name pulumi.StringPtrInput
-	// The private network configuration
+	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrInput
 	// OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 	//
@@ -365,7 +365,7 @@ func (o KubeOutput) CustomizationKubeProxy() KubeCustomizationKubeProxyPtrOutput
 
 // **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 //
-// Deprecated: Use customization_apiserver instead
+// Deprecated: Use customizationApiserver instead
 func (o KubeOutput) Customizations() KubeCustomizationArrayOutput {
 	return o.ApplyT(func(v *Kube) KubeCustomizationArrayOutput { return v.Customizations }).(KubeCustomizationArrayOutput)
 }
@@ -405,7 +405,7 @@ func (o KubeOutput) NodesUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.NodesUrl }).(pulumi.StringOutput)
 }
 
-// The private network configuration
+// The private network configuration. If this is set then the 2 parameters below shall be defined.
 func (o KubeOutput) PrivateNetworkConfiguration() KubePrivateNetworkConfigurationPtrOutput {
 	return o.ApplyT(func(v *Kube) KubePrivateNetworkConfigurationPtrOutput { return v.PrivateNetworkConfiguration }).(KubePrivateNetworkConfigurationPtrOutput)
 }

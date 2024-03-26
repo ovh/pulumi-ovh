@@ -49,12 +49,12 @@ import (
 //				return err
 //			}
 //			_, err = Vrack.NewVrack(ctx, "vrackVrack", &Vrack.VrackArgs{
-//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				Description:   pulumi.String("my vrack"),
 //				Plan: &vrack.VrackPlanArgs{
-//					Duration:    *pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    *pulumi.String(vrackCartProductPlan.PlanCode),
-//					PricingMode: *pulumi.String(vrackCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(vrackCartProductPlan.PlanCode),
+//					PricingMode: pulumi.String(vrackCartProductPlan.SelectedPrices[0].PricingMode),
 //				},
 //			})
 //			if err != nil {

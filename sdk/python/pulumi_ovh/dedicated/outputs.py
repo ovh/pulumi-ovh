@@ -8,10 +8,18 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'ServerInstallTaskDetails',
     'ServerNetworkingInterface',
+    'GetServerSpecificationsHardwareDefaultHardwareRaidSizeResult',
+    'GetServerSpecificationsHardwareDiskGroupResult',
+    'GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeResult',
+    'GetServerSpecificationsHardwareDiskGroupDiskSizeResult',
+    'GetServerSpecificationsHardwareExpansionCardResult',
+    'GetServerSpecificationsHardwareMemorySizeResult',
+    'GetServerSpecificationsHardwareUsbKeyResult',
 ]
 
 @pulumi.output_type
@@ -260,5 +268,224 @@ class ServerNetworkingInterface(dict):
         Interface type
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetServerSpecificationsHardwareDefaultHardwareRaidSizeResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsHardwareDiskGroupResult(dict):
+    def __init__(__self__, *,
+                 default_hardware_raid_size: 'outputs.GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeResult',
+                 default_hardware_raid_type: str,
+                 description: str,
+                 disk_group_id: float,
+                 disk_size: 'outputs.GetServerSpecificationsHardwareDiskGroupDiskSizeResult',
+                 disk_type: str,
+                 number_of_disks: float,
+                 raid_controller: str):
+        """
+        :param 'GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs' default_hardware_raid_size: Default hardware raid size for this disk group
+        :param str default_hardware_raid_type: Default hardware raid type for this disk group
+        :param str description: Expansion card description
+        :param float disk_group_id: Identifier of this disk group
+        :param 'GetServerSpecificationsHardwareDiskGroupDiskSizeArgs' disk_size: Disk capacity
+        :param str disk_type: Type of the disk (SSD, SATA, SAS, ...)
+        :param float number_of_disks: Number of disks in this group
+        :param str raid_controller: Raid controller, if any, managing this group of disks
+        """
+        pulumi.set(__self__, "default_hardware_raid_size", default_hardware_raid_size)
+        pulumi.set(__self__, "default_hardware_raid_type", default_hardware_raid_type)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_group_id", disk_group_id)
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "number_of_disks", number_of_disks)
+        pulumi.set(__self__, "raid_controller", raid_controller)
+
+    @property
+    @pulumi.getter(name="defaultHardwareRaidSize")
+    def default_hardware_raid_size(self) -> 'outputs.GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeResult':
+        """
+        Default hardware raid size for this disk group
+        """
+        return pulumi.get(self, "default_hardware_raid_size")
+
+    @property
+    @pulumi.getter(name="defaultHardwareRaidType")
+    def default_hardware_raid_type(self) -> str:
+        """
+        Default hardware raid type for this disk group
+        """
+        return pulumi.get(self, "default_hardware_raid_type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Expansion card description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskGroupId")
+    def disk_group_id(self) -> float:
+        """
+        Identifier of this disk group
+        """
+        return pulumi.get(self, "disk_group_id")
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> 'outputs.GetServerSpecificationsHardwareDiskGroupDiskSizeResult':
+        """
+        Disk capacity
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        Type of the disk (SSD, SATA, SAS, ...)
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="numberOfDisks")
+    def number_of_disks(self) -> float:
+        """
+        Number of disks in this group
+        """
+        return pulumi.get(self, "number_of_disks")
+
+    @property
+    @pulumi.getter(name="raidController")
+    def raid_controller(self) -> str:
+        """
+        Raid controller, if any, managing this group of disks
+        """
+        return pulumi.get(self, "raid_controller")
+
+
+@pulumi.output_type
+class GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsHardwareDiskGroupDiskSizeResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsHardwareExpansionCardResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 type: str):
+        """
+        :param str description: Expansion card description
+        :param str type: Expansion card type enum
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Expansion card description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Expansion card type enum
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetServerSpecificationsHardwareMemorySizeResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsHardwareUsbKeyResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
 
 

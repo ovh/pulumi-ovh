@@ -823,7 +823,7 @@ func (o DatabaseNodeArrayOutput) Index(i pulumi.IntInput) DatabaseNodeOutput {
 type KubeCustomization struct {
 	// Kubernetes API server customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Apiservers []KubeCustomizationApiserver `pulumi:"apiservers"`
 }
 
@@ -841,7 +841,7 @@ type KubeCustomizationInput interface {
 type KubeCustomizationArgs struct {
 	// Kubernetes API server customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Apiservers KubeCustomizationApiserverArrayInput `pulumi:"apiservers"`
 }
 
@@ -898,7 +898,7 @@ func (o KubeCustomizationOutput) ToKubeCustomizationOutputWithContext(ctx contex
 
 // Kubernetes API server customization
 //
-// Deprecated: Use customization_apiserver instead
+// Deprecated: Use customizationApiserver instead
 func (o KubeCustomizationOutput) Apiservers() KubeCustomizationApiserverArrayOutput {
 	return o.ApplyT(func(v KubeCustomization) []KubeCustomizationApiserver { return v.Apiservers }).(KubeCustomizationApiserverArrayOutput)
 }
@@ -2287,6 +2287,23 @@ type KubePrivateNetworkConfiguration struct {
 	// If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
 	DefaultVrackGateway string `pulumi:"defaultVrackGateway"`
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+	//
+	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+	// <!--Start PulumiCodeChooser -->
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// <!--End PulumiCodeChooser -->
 	PrivateNetworkRoutingAsDefault bool `pulumi:"privateNetworkRoutingAsDefault"`
 }
 
@@ -2305,6 +2322,23 @@ type KubePrivateNetworkConfigurationArgs struct {
 	// If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
 	DefaultVrackGateway pulumi.StringInput `pulumi:"defaultVrackGateway"`
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+	//
+	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+	// <!--Start PulumiCodeChooser -->
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// <!--End PulumiCodeChooser -->
 	PrivateNetworkRoutingAsDefault pulumi.BoolInput `pulumi:"privateNetworkRoutingAsDefault"`
 }
 
@@ -2391,6 +2425,26 @@ func (o KubePrivateNetworkConfigurationOutput) DefaultVrackGateway() pulumi.Stri
 }
 
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+//
+// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func (o KubePrivateNetworkConfigurationOutput) PrivateNetworkRoutingAsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubePrivateNetworkConfiguration) bool { return v.PrivateNetworkRoutingAsDefault }).(pulumi.BoolOutput)
 }
@@ -2430,6 +2484,26 @@ func (o KubePrivateNetworkConfigurationPtrOutput) DefaultVrackGateway() pulumi.S
 }
 
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+//
+// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func (o KubePrivateNetworkConfigurationPtrOutput) PrivateNetworkRoutingAsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubePrivateNetworkConfiguration) *bool {
 		if v == nil {
@@ -4697,7 +4771,7 @@ func (o GetContainerRegistryUsersResultArrayOutput) Index(i pulumi.IntInput) Get
 type GetKubeCustomization struct {
 	// Kubernetes API server customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Apiservers []GetKubeCustomizationApiserver `pulumi:"apiservers"`
 }
 
@@ -4715,7 +4789,7 @@ type GetKubeCustomizationInput interface {
 type GetKubeCustomizationArgs struct {
 	// Kubernetes API server customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Apiservers GetKubeCustomizationApiserverArrayInput `pulumi:"apiservers"`
 }
 
@@ -4772,7 +4846,7 @@ func (o GetKubeCustomizationOutput) ToGetKubeCustomizationOutputWithContext(ctx 
 
 // Kubernetes API server customization
 //
-// Deprecated: Use customization_apiserver instead
+// Deprecated: Use customizationApiserver instead
 func (o GetKubeCustomizationOutput) Apiservers() GetKubeCustomizationApiserverArrayOutput {
 	return o.ApplyT(func(v GetKubeCustomization) []GetKubeCustomizationApiserver { return v.Apiservers }).(GetKubeCustomizationApiserverArrayOutput)
 }

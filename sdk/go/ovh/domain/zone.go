@@ -49,11 +49,11 @@ import (
 //				return err
 //			}
 //			_, err = Domain.NewZone(ctx, "zoneZone", &Domain.ZoneArgs{
-//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				Plan: &domain.ZonePlanArgs{
-//					Duration:    *pulumi.String(zoneCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    *pulumi.String(zoneCartProductPlan.PlanCode),
-//					PricingMode: *pulumi.String(zoneCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(zoneCartProductPlan.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(zoneCartProductPlan.PlanCode),
+//					PricingMode: pulumi.String(zoneCartProductPlan.SelectedPrices[0].PricingMode),
 //					Configurations: domain.ZonePlanConfigurationArray{
 //						&domain.ZonePlanConfigurationArgs{
 //							Label: pulumi.String("zone"),

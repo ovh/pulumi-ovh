@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "ovh:Ip/ipService:IpService":
 		r = &IpService{}
+	case "ovh:Ip/move:Move":
+		r = &Move{}
 	case "ovh:Ip/reverse:Reverse":
 		r = &Reverse{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Ip/ipService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Ip/move",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -52,11 +52,11 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewIntegration(ctx, "integration", &CloudProjectDatabase.IntegrationArgs{
-//				ServiceName:          *pulumi.String(dbpostgresql.ServiceName),
-//				Engine:               *pulumi.String(dbpostgresql.Engine),
-//				ClusterId:            *pulumi.String(dbpostgresql.Id),
-//				SourceServiceId:      *pulumi.String(dbpostgresql.Id),
-//				DestinationServiceId: *pulumi.String(dbopensearch.Id),
+//				ServiceName:          pulumi.String(dbpostgresql.ServiceName),
+//				Engine:               pulumi.String(dbpostgresql.Engine),
+//				ClusterId:            pulumi.String(dbpostgresql.Id),
+//				SourceServiceId:      pulumi.String(dbpostgresql.Id),
+//				DestinationServiceId: pulumi.String(dbopensearch.Id),
 //				Type:                 pulumi.String("opensearchLogs"),
 //			})
 //			if err != nil {

@@ -25,6 +25,11 @@ export const getServerBoots: typeof import("./getServerBoots").getServerBoots = 
 export const getServerBootsOutput: typeof import("./getServerBoots").getServerBootsOutput = null as any;
 utilities.lazyLoad(exports, ["getServerBoots","getServerBootsOutput"], () => require("./getServerBoots"));
 
+export { GetServerSpecificationsHardwareArgs, GetServerSpecificationsHardwareResult, GetServerSpecificationsHardwareOutputArgs } from "./getServerSpecificationsHardware";
+export const getServerSpecificationsHardware: typeof import("./getServerSpecificationsHardware").getServerSpecificationsHardware = null as any;
+export const getServerSpecificationsHardwareOutput: typeof import("./getServerSpecificationsHardware").getServerSpecificationsHardwareOutput = null as any;
+utilities.lazyLoad(exports, ["getServerSpecificationsHardware","getServerSpecificationsHardwareOutput"], () => require("./getServerSpecificationsHardware"));
+
 export { NasHAPartitionArgs, NasHAPartitionState } from "./nasHAPartition";
 export type NasHAPartition = import("./nasHAPartition").NasHAPartition;
 export const NasHAPartition: typeof import("./nasHAPartition").NasHAPartition = null as any;

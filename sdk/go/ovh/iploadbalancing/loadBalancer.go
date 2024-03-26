@@ -59,18 +59,18 @@ import (
 //				return err
 //			}
 //			_, err = IpLoadBalancing.NewLoadBalancer(ctx, "iplb-lb1", &IpLoadBalancing.LoadBalancerArgs{
-//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				DisplayName:   pulumi.String("my ip loadbalancing"),
 //				Plan: &iploadbalancing.LoadBalancerPlanArgs{
-//					Duration:    *pulumi.String(iplb.SelectedPrices[0].Duration),
-//					PlanCode:    *pulumi.String(iplb.PlanCode),
-//					PricingMode: *pulumi.String(iplb.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(iplb.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(iplb.PlanCode),
+//					PricingMode: pulumi.String(iplb.SelectedPrices[0].PricingMode),
 //				},
 //				PlanOptions: iploadbalancing.LoadBalancerPlanOptionArray{
 //					&iploadbalancing.LoadBalancerPlanOptionArgs{
-//						Duration:    *pulumi.String(bhs.SelectedPrices[0].Duration),
-//						PlanCode:    *pulumi.String(bhs.PlanCode),
-//						PricingMode: *pulumi.String(bhs.SelectedPrices[0].PricingMode),
+//						Duration:    pulumi.String(bhs.SelectedPrices[0].Duration),
+//						PlanCode:    pulumi.String(bhs.PlanCode),
+//						PricingMode: pulumi.String(bhs.SelectedPrices[0].PricingMode),
 //					},
 //				},
 //			})

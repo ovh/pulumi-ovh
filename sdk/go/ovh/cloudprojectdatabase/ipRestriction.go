@@ -38,9 +38,9 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewIpRestriction(ctx, "iprestriction", &CloudProjectDatabase.IpRestrictionArgs{
-//				ServiceName: *pulumi.String(db.ServiceName),
-//				Engine:      *pulumi.String(db.Engine),
-//				ClusterId:   *pulumi.String(db.Id),
+//				ServiceName: pulumi.String(db.ServiceName),
+//				Engine:      pulumi.String(db.Engine),
+//				ClusterId:   pulumi.String(db.Id),
 //				Ip:          pulumi.String("178.97.6.0/24"),
 //			})
 //			if err != nil {

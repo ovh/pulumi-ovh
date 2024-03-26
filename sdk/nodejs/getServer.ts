@@ -49,21 +49,25 @@ export interface GetServerResult {
      */
     readonly ServerURN: string;
     /**
-     * boot id of the server
+     * Boot id of the server
      */
     readonly bootId: number;
     /**
-     * boot script of the server
+     * Boot script of the server
      */
     readonly bootScript: string;
     /**
-     * dedicated server commercial range
+     * Dedicated server commercial range
      */
     readonly commercialRange: string;
     /**
-     * dedicated datacenter localisation (bhs1,bhs2,...)
+     * Dedicated datacenter localisation (bhs1,bhs2,...)
      */
     readonly datacenter: string;
+    /**
+     * Dedicated server display name
+     */
+    readonly displayName: string;
     /**
      * List of enabled public VNI uuids
      */
@@ -81,15 +85,15 @@ export interface GetServerResult {
      */
     readonly id: string;
     /**
-     * dedicated server ip (IPv4)
+     * Dedicated server ip (IPv4)
      */
     readonly ip: string;
     /**
-     * dedicated server ip blocks
+     * Dedicated server ip blocks
      */
     readonly ips: string[];
     /**
-     * link speed of the server
+     * Link speed of the server
      */
     readonly linkSpeed: number;
     /**
@@ -109,28 +113,28 @@ export interface GetServerResult {
      */
     readonly professionalUse: boolean;
     /**
-     * rack id of the server
+     * Rack id of the server
      */
     readonly rack: string;
     /**
-     * rescue mail of the server
+     * Rescue mail of the server
      */
     readonly rescueMail: string;
     /**
-     * dedicated server reverse
+     * Dedicated server reverse
      */
     readonly reverse: string;
     /**
-     * root device of the server
+     * Root device of the server
      */
     readonly rootDevice: string;
     /**
-     * your server id
+     * Server id
      */
     readonly serverId: number;
     readonly serviceName: string;
     /**
-     * error, hacked, hackedBlocked, ok
+     * Error, hacked, hackedBlocked, ok
      */
     readonly state: string;
     /**
@@ -138,7 +142,7 @@ export interface GetServerResult {
      */
     readonly supportLevel: string;
     /**
-     * the list of Virtualnetworkinterface assiociated with this server
+     * The list of Virtualnetworkinterface associated with this server
      */
     readonly vnis: outputs.GetServerVni[];
 }

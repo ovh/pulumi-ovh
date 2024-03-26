@@ -56,7 +56,7 @@ export interface GetKubeArgs {
     /**
      * **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
      *
-     * @deprecated Use customization_apiserver instead
+     * @deprecated Use customizationApiserver instead
      */
     customizations?: inputs.CloudProject.GetKubeCustomization[];
     /**
@@ -108,7 +108,7 @@ export interface GetKubeResult {
     /**
      * **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
      *
-     * @deprecated Use customization_apiserver instead
+     * @deprecated Use customizationApiserver instead
      */
     readonly customizations: outputs.CloudProject.GetKubeCustomization[];
     /**
@@ -205,7 +205,7 @@ export interface GetKubeOutputArgs {
     /**
      * **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
      *
-     * @deprecated Use customization_apiserver instead
+     * @deprecated Use customizationApiserver instead
      */
     customizations?: pulumi.Input<pulumi.Input<inputs.CloudProject.GetKubeCustomizationArgs>[]>;
     /**
