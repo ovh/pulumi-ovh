@@ -40,9 +40,9 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
-func GetVps(ctx *pulumi.Context, args *GetVpsArgs, opts ...pulumi.InvokeOption) (*GetVpsResult, error) {
+func LookupVps(ctx *pulumi.Context, args *LookupVpsArgs, opts ...pulumi.InvokeOption) (*LookupVpsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetVpsResult
+	var rv LookupVpsResult
 	err := ctx.Invoke("ovh:Vps/getVps:getVps", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -51,20 +51,18 @@ func GetVps(ctx *pulumi.Context, args *GetVpsArgs, opts ...pulumi.InvokeOption) 
 }
 
 // A collection of arguments for invoking getVps.
-type GetVpsArgs struct {
+type LookupVpsArgs struct {
 	// The serviceName of your dedicated server.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getVps.
-type GetVpsResult struct {
+type LookupVpsResult struct {
 	// The URN of the vps
 	VpsURN string `pulumi:"VpsURN"`
 	// The OVHcloud cluster the vps is in
 	Cluster string `pulumi:"cluster"`
 	// The datacenter in which the vps is located
-	// * `datacenter.longname` - The fullname of the datacenter (ex: "Strasbourg SBG1")
-	// * `datacenter.name` - The short name of the datacenter (ex: "sbg1)
 	Datacenter map[string]string `pulumi:"datacenter"`
 	// The displayed name in the OVHcloud web admin
 	Displayname string `pulumi:"displayname"`
@@ -77,9 +75,6 @@ type GetVpsResult struct {
 	// The amount of memory in MB of the vps.
 	Memory int `pulumi:"memory"`
 	// A dict describing the type of vps.
-	// * `model.name` - The model name (ex: model1)
-	// * `model.offer` - The model human description (ex: "VPS 2016 SSD 1")
-	// * `model.version` - The model version (ex: "2017v2")
 	Model map[string]string `pulumi:"model"`
 	Name  string            `pulumi:"name"`
 	// The source of the boot kernel
@@ -99,137 +94,132 @@ type GetVpsResult struct {
 	Zone string `pulumi:"zone"`
 }
 
-func GetVpsOutput(ctx *pulumi.Context, args GetVpsOutputArgs, opts ...pulumi.InvokeOption) GetVpsResultOutput {
+func LookupVpsOutput(ctx *pulumi.Context, args LookupVpsOutputArgs, opts ...pulumi.InvokeOption) LookupVpsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVpsResult, error) {
-			args := v.(GetVpsArgs)
-			r, err := GetVps(ctx, &args, opts...)
-			var s GetVpsResult
+		ApplyT(func(v interface{}) (LookupVpsResult, error) {
+			args := v.(LookupVpsArgs)
+			r, err := LookupVps(ctx, &args, opts...)
+			var s LookupVpsResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetVpsResultOutput)
+		}).(LookupVpsResultOutput)
 }
 
 // A collection of arguments for invoking getVps.
-type GetVpsOutputArgs struct {
+type LookupVpsOutputArgs struct {
 	// The serviceName of your dedicated server.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
-func (GetVpsOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVpsArgs)(nil)).Elem()
+func (LookupVpsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getVps.
-type GetVpsResultOutput struct{ *pulumi.OutputState }
+type LookupVpsResultOutput struct{ *pulumi.OutputState }
 
-func (GetVpsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVpsResult)(nil)).Elem()
+func (LookupVpsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpsResult)(nil)).Elem()
 }
 
-func (o GetVpsResultOutput) ToGetVpsResultOutput() GetVpsResultOutput {
+func (o LookupVpsResultOutput) ToLookupVpsResultOutput() LookupVpsResultOutput {
 	return o
 }
 
-func (o GetVpsResultOutput) ToGetVpsResultOutputWithContext(ctx context.Context) GetVpsResultOutput {
+func (o LookupVpsResultOutput) ToLookupVpsResultOutputWithContext(ctx context.Context) LookupVpsResultOutput {
 	return o
 }
 
 // The URN of the vps
-func (o GetVpsResultOutput) VpsURN() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.VpsURN }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) VpsURN() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.VpsURN }).(pulumi.StringOutput)
 }
 
 // The OVHcloud cluster the vps is in
-func (o GetVpsResultOutput) Cluster() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.Cluster }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
 // The datacenter in which the vps is located
-// * `datacenter.longname` - The fullname of the datacenter (ex: "Strasbourg SBG1")
-// * `datacenter.name` - The short name of the datacenter (ex: "sbg1)
-func (o GetVpsResultOutput) Datacenter() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetVpsResult) map[string]string { return v.Datacenter }).(pulumi.StringMapOutput)
+func (o LookupVpsResultOutput) Datacenter() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVpsResult) map[string]string { return v.Datacenter }).(pulumi.StringMapOutput)
 }
 
 // The displayed name in the OVHcloud web admin
-func (o GetVpsResultOutput) Displayname() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.Displayname }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) Displayname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.Displayname }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetVpsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The list of IPs addresses attached to the vps
-func (o GetVpsResultOutput) Ips() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetVpsResult) []string { return v.Ips }).(pulumi.StringArrayOutput)
+func (o LookupVpsResultOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVpsResult) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
 // The keymap for the ip kvm, valid values "", "fr", "us"
-func (o GetVpsResultOutput) Keymap() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.Keymap }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) Keymap() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.Keymap }).(pulumi.StringOutput)
 }
 
 // The amount of memory in MB of the vps.
-func (o GetVpsResultOutput) Memory() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVpsResult) int { return v.Memory }).(pulumi.IntOutput)
+func (o LookupVpsResultOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupVpsResult) int { return v.Memory }).(pulumi.IntOutput)
 }
 
 // A dict describing the type of vps.
-// * `model.name` - The model name (ex: model1)
-// * `model.offer` - The model human description (ex: "VPS 2016 SSD 1")
-// * `model.version` - The model version (ex: "2017v2")
-func (o GetVpsResultOutput) Model() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetVpsResult) map[string]string { return v.Model }).(pulumi.StringMapOutput)
+func (o LookupVpsResultOutput) Model() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVpsResult) map[string]string { return v.Model }).(pulumi.StringMapOutput)
 }
 
-func (o GetVpsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The source of the boot kernel
-func (o GetVpsResultOutput) Netbootmode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.Netbootmode }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) Netbootmode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.Netbootmode }).(pulumi.StringOutput)
 }
 
 // The type of offer (ssd, cloud, classic)
-func (o GetVpsResultOutput) Offertype() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.Offertype }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) Offertype() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.Offertype }).(pulumi.StringOutput)
 }
 
-func (o GetVpsResultOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.ServiceName }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 // A boolean to indicate if OVHcloud SLA monitoring is active.
-func (o GetVpsResultOutput) Slamonitoring() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetVpsResult) bool { return v.Slamonitoring }).(pulumi.BoolOutput)
+func (o LookupVpsResultOutput) Slamonitoring() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVpsResult) bool { return v.Slamonitoring }).(pulumi.BoolOutput)
 }
 
 // The state of the vps
-func (o GetVpsResultOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.State }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 // The type of server
-func (o GetVpsResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.Type }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The number of vcore of the vps
-func (o GetVpsResultOutput) Vcore() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVpsResult) int { return v.Vcore }).(pulumi.IntOutput)
+func (o LookupVpsResultOutput) Vcore() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupVpsResult) int { return v.Vcore }).(pulumi.IntOutput)
 }
 
 // The OVHcloud zone where the vps is
-func (o GetVpsResultOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpsResult) string { return v.Zone }).(pulumi.StringOutput)
+func (o LookupVpsResultOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpsResult) string { return v.Zone }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetVpsResultOutput{})
+	pulumi.RegisterOutputType(LookupVpsResultOutput{})
 }

@@ -12,7 +12,9 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public static class GetIpRestrictions
     {
         /// <summary>
-        /// Use the list of IP restrictions associated with a public cloud project.
+        /// Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+        /// 
+        /// Use this data source to get the list of IP restrictions associated with a public cloud project.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +48,9 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpRestrictionsResult>("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args ?? new GetIpRestrictionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use the list of IP restrictions associated with a public cloud project.
+        /// Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+        /// 
+        /// Use this data source to get the list of IP restrictions associated with a public cloud project.
         /// 
         /// ## Example Usage
         /// 

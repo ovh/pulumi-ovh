@@ -98,8 +98,6 @@ class GetVpsResult:
     def datacenter(self) -> Mapping[str, str]:
         """
         The datacenter in which the vps is located
-        * `datacenter.longname` - The fullname of the datacenter (ex: "Strasbourg SBG1")
-        * `datacenter.name` - The short name of the datacenter (ex: "sbg1)
         """
         return pulumi.get(self, "datacenter")
 
@@ -148,9 +146,6 @@ class GetVpsResult:
     def model(self) -> Mapping[str, str]:
         """
         A dict describing the type of vps.
-        * `model.name` - The model name (ex: model1)
-        * `model.offer` - The model human description (ex: "VPS 2016 SSD 1")
-        * `model.version` - The model version (ex: "2017v2")
         """
         return pulumi.get(self, "model")
 

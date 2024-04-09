@@ -538,7 +538,7 @@ class PostgresSqlConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> pulumi.Output[Optional[str]]:
+    def user_id(self) -> pulumi.Output[str]:
         """
         Database user authorized to connect to the pool, if none all the users are allowed.
         """

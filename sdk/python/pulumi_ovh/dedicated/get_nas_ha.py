@@ -132,8 +132,7 @@ class GetNasHAResult:
     @pulumi.getter(name="zpoolCapacity")
     def zpool_capacity(self) -> float:
         """
-        percentage of HA-NAS space used in %!
-        (MISSING)
+        percentage of HA-NAS space used in %
         """
         return pulumi.get(self, "zpool_capacity")
 

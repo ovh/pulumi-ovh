@@ -114,6 +114,16 @@ import * as utilities from "../utilities";
  *         region: "WAW",
  *     }],
  *     flavor: "db1-4",
+ *     ipRestrictions: [
+ *         {
+ *             description: "ip 1",
+ *             ip: "178.97.6.0/24",
+ *         },
+ *         {
+ *             description: "ip 2",
+ *             ip: "178.97.7.0/24",
+ *         },
+ *     ],
  * });
  * const redisdb = new ovh.cloudproject.Database("redisdb", {
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -256,7 +266,7 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Small description of the database service.
+     * Description of the IP restriction
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -282,6 +292,10 @@ export class Database extends pulumi.CustomResource {
      * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
      */
     public readonly flavor!: pulumi.Output<string>;
+    /**
+     * IP Blocks authorized to access to the cluster.
+     */
+    public readonly ipRestrictions!: pulumi.Output<outputs.CloudProject.DatabaseIpRestriction[] | undefined>;
     /**
      * Defines whether the REST API is enabled on a kafka cluster
      */
@@ -348,6 +362,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["endpoints"] = state ? state.endpoints : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["flavor"] = state ? state.flavor : undefined;
+            resourceInputs["ipRestrictions"] = state ? state.ipRestrictions : undefined;
             resourceInputs["kafkaRestApi"] = state ? state.kafkaRestApi : undefined;
             resourceInputs["maintenanceTime"] = state ? state.maintenanceTime : undefined;
             resourceInputs["networkType"] = state ? state.networkType : undefined;
@@ -384,6 +399,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
             resourceInputs["flavor"] = args ? args.flavor : undefined;
+            resourceInputs["ipRestrictions"] = args ? args.ipRestrictions : undefined;
             resourceInputs["kafkaRestApi"] = args ? args.kafkaRestApi : undefined;
             resourceInputs["nodes"] = args ? args.nodes : undefined;
             resourceInputs["opensearchAclsEnabled"] = args ? args.opensearchAclsEnabled : undefined;
@@ -423,7 +439,7 @@ export interface DatabaseState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Small description of the database service.
+     * Description of the IP restriction
      */
     description?: pulumi.Input<string>;
     /**
@@ -449,6 +465,10 @@ export interface DatabaseState {
      * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
      */
     flavor?: pulumi.Input<string>;
+    /**
+     * IP Blocks authorized to access to the cluster.
+     */
+    ipRestrictions?: pulumi.Input<pulumi.Input<inputs.CloudProject.DatabaseIpRestriction>[]>;
     /**
      * Defines whether the REST API is enabled on a kafka cluster
      */
@@ -510,7 +530,7 @@ export interface DatabaseArgs {
      */
     backupTime?: pulumi.Input<string>;
     /**
-     * Small description of the database service.
+     * Description of the IP restriction
      */
     description?: pulumi.Input<string>;
     /**
@@ -528,6 +548,10 @@ export interface DatabaseArgs {
      * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
      */
     flavor: pulumi.Input<string>;
+    /**
+     * IP Blocks authorized to access to the cluster.
+     */
+    ipRestrictions?: pulumi.Input<pulumi.Input<inputs.CloudProject.DatabaseIpRestriction>[]>;
     /**
      * Defines whether the REST API is enabled on a kafka cluster
      */

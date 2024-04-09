@@ -6,7 +6,9 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .get_zone import *
+from .get_zone_dns_sec import *
 from .zone import *
+from .zone_dns_sec import *
 from .zone_record import *
 from .zone_redirection import *
 from ._inputs import *

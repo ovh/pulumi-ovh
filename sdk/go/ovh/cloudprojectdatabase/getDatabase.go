@@ -77,7 +77,7 @@ type GetDatabaseResult struct {
 	BackupTime string `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt string `pulumi:"createdAt"`
-	// Small description of the database service.
+	// Description of the IP restriction
 	Description string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
 	DiskSize int `pulumi:"diskSize"`
@@ -91,6 +91,8 @@ type GetDatabaseResult struct {
 	Flavor string `pulumi:"flavor"`
 	// See Argument Reference above.
 	Id string `pulumi:"id"`
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions []GetDatabaseIpRestriction `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster.
 	KafkaRestApi bool `pulumi:"kafkaRestApi"`
 	// Time on which maintenances can start every day.
@@ -174,7 +176,7 @@ func (o GetDatabaseResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Small description of the database service.
+// Description of the IP restriction
 func (o GetDatabaseResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -207,6 +209,11 @@ func (o GetDatabaseResultOutput) Flavor() pulumi.StringOutput {
 // See Argument Reference above.
 func (o GetDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IP Blocks authorized to access to the cluster.
+func (o GetDatabaseResultOutput) IpRestrictions() GetDatabaseIpRestrictionArrayOutput {
+	return o.ApplyT(func(v GetDatabaseResult) []GetDatabaseIpRestriction { return v.IpRestrictions }).(GetDatabaseIpRestrictionArrayOutput)
 }
 
 // Defines whether the REST API is enabled on a kafka cluster.

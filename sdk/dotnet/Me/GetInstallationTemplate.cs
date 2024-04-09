@@ -153,14 +153,6 @@ namespace Pulumi.Ovh.Me
         public readonly bool LvmReady;
         public readonly ImmutableArray<Outputs.GetInstallationTemplatePartitionSchemeResult> PartitionSchemes;
         /// <summary>
-        /// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-        /// </summary>
-        public readonly bool SupportsDistributionKernel;
-        /// <summary>
-        /// This distribution supports RTM software.
-        /// </summary>
-        public readonly bool SupportsRtm;
-        /// <summary>
         /// This distribution supports the microsoft SQL server.
         /// </summary>
         public readonly bool SupportsSqlServer;
@@ -200,10 +192,6 @@ namespace Pulumi.Ovh.Me
 
             ImmutableArray<Outputs.GetInstallationTemplatePartitionSchemeResult> partitionSchemes,
 
-            bool supportsDistributionKernel,
-
-            bool supportsRtm,
-
             bool supportsSqlServer,
 
             string templateName)
@@ -224,8 +212,6 @@ namespace Pulumi.Ovh.Me
             LastModification = lastModification;
             LvmReady = lvmReady;
             PartitionSchemes = partitionSchemes;
-            SupportsDistributionKernel = supportsDistributionKernel;
-            SupportsRtm = supportsRtm;
             SupportsSqlServer = supportsSqlServer;
             TemplateName = templateName;
         }

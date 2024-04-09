@@ -124,14 +124,6 @@ export class InstallationTemplate extends pulumi.CustomResource {
      */
     public readonly removeDefaultPartitionSchemes!: pulumi.Output<boolean>;
     /**
-     * This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-     */
-    public /*out*/ readonly supportsDistributionKernel!: pulumi.Output<boolean>;
-    /**
-     * This distribution supports RTM software.
-     */
-    public /*out*/ readonly supportsRtm!: pulumi.Output<boolean>;
-    /**
      * This distribution supports the microsoft SQL server.
      */
     public /*out*/ readonly supportsSqlServer!: pulumi.Output<boolean>;
@@ -169,8 +161,6 @@ export class InstallationTemplate extends pulumi.CustomResource {
             resourceInputs["lastModification"] = state ? state.lastModification : undefined;
             resourceInputs["lvmReady"] = state ? state.lvmReady : undefined;
             resourceInputs["removeDefaultPartitionSchemes"] = state ? state.removeDefaultPartitionSchemes : undefined;
-            resourceInputs["supportsDistributionKernel"] = state ? state.supportsDistributionKernel : undefined;
-            resourceInputs["supportsRtm"] = state ? state.supportsRtm : undefined;
             resourceInputs["supportsSqlServer"] = state ? state.supportsSqlServer : undefined;
             resourceInputs["templateName"] = state ? state.templateName : undefined;
         } else {
@@ -201,8 +191,6 @@ export class InstallationTemplate extends pulumi.CustomResource {
             resourceInputs["hardRaidConfiguration"] = undefined /*out*/;
             resourceInputs["lastModification"] = undefined /*out*/;
             resourceInputs["lvmReady"] = undefined /*out*/;
-            resourceInputs["supportsDistributionKernel"] = undefined /*out*/;
-            resourceInputs["supportsRtm"] = undefined /*out*/;
             resourceInputs["supportsSqlServer"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -275,14 +263,6 @@ export interface InstallationTemplateState {
      * Remove default partition schemes at creation.
      */
     removeDefaultPartitionSchemes?: pulumi.Input<boolean>;
-    /**
-     * This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-     */
-    supportsDistributionKernel?: pulumi.Input<boolean>;
-    /**
-     * This distribution supports RTM software.
-     */
-    supportsRtm?: pulumi.Input<boolean>;
     /**
      * This distribution supports the microsoft SQL server.
      */

@@ -14,6 +14,8 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_ovh.cloud as __cloud
+    cloud = __cloud
     import pulumi_ovh.cloudproject as __cloudproject
     cloudproject = __cloudproject
     import pulumi_ovh.cloudprojectdatabase as __cloudprojectdatabase
@@ -43,6 +45,7 @@ if typing.TYPE_CHECKING:
     import pulumi_ovh.vrack as __vrack
     vrack = __vrack
 else:
+    cloud = _utilities.lazy_import('pulumi_ovh.cloud')
     cloudproject = _utilities.lazy_import('pulumi_ovh.cloudproject')
     cloudprojectdatabase = _utilities.lazy_import('pulumi_ovh.cloudprojectdatabase')
     config = _utilities.lazy_import('pulumi_ovh.config')
@@ -279,6 +282,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProjectDatabase/logSubscription",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
+  "classes": {
+   "ovh:CloudProjectDatabase/logSubscription:LogSubscription": "LogSubscription"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProjectDatabase/m3DbNamespace",
   "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
@@ -447,6 +458,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Domain/zoneDNSSec",
+  "fqn": "pulumi_ovh.domain",
+  "classes": {
+   "ovh:Domain/zoneDNSSec:ZoneDNSSec": "ZoneDNSSec"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Domain/zoneRecord",
   "fqn": "pulumi_ovh.domain",
   "classes": {
@@ -527,10 +546,34 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Ip/firewall",
+  "fqn": "pulumi_ovh.ip",
+  "classes": {
+   "ovh:Ip/firewall:Firewall": "Firewall"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Ip/firewallRule",
+  "fqn": "pulumi_ovh.ip",
+  "classes": {
+   "ovh:Ip/firewallRule:FirewallRule": "FirewallRule"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Ip/ipService",
   "fqn": "pulumi_ovh.ip",
   "classes": {
    "ovh:Ip/ipService:IpService": "IpService"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Ip/mitigation",
+  "fqn": "pulumi_ovh.ip",
+  "classes": {
+   "ovh:Ip/mitigation:Mitigation": "Mitigation"
   }
  },
  {
@@ -647,6 +690,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "IpLoadBalancing/udpFrontend",
+  "fqn": "pulumi_ovh.iploadbalancing",
+  "classes": {
+   "ovh:IpLoadBalancing/udpFrontend:UdpFrontend": "UdpFrontend"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "IpLoadBalancing/vrackNetwork",
   "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
@@ -715,6 +766,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/sshKey:SshKey": "SshKey"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Vps/vps",
+  "fqn": "pulumi_ovh.vps",
+  "classes": {
+   "ovh:Vps/vps:Vps": "Vps"
   }
  },
  {

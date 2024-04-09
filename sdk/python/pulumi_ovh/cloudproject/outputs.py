@@ -16,6 +16,7 @@ __all__ = [
     'ContainerRegistryPlanFeature',
     'ContainerRegistryPlanRegistryLimit',
     'DatabaseEndpoint',
+    'DatabaseIpRestriction',
     'DatabaseNode',
     'KubeCustomization',
     'KubeCustomizationApiserver',
@@ -423,6 +424,49 @@ class DatabaseEndpoint(dict):
         URI of the endpoint.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class DatabaseIpRestriction(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 ip: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        :param str description: Description of the IP restriction
+        :param str ip: Authorized IP
+        :param str status: Current status of the cluster.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the IP restriction
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        Authorized IP
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Current status of the cluster.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

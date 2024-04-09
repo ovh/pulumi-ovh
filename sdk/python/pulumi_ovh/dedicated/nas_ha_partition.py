@@ -108,15 +108,13 @@ class _NasHAPartitionState:
                  used_by_snapshots: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering NasHAPartition resources.
-        :param pulumi.Input[int] capacity: Percentage of partition space used in %!
-               (MISSING)
+        :param pulumi.Input[int] capacity: Percentage of partition space used in %
         :param pulumi.Input[str] description: A brief description of the partition
         :param pulumi.Input[str] name: name of the partition
         :param pulumi.Input[str] protocol: one of "NFS", "CIFS" or "NFS_CIFS"
         :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
         :param pulumi.Input[int] size: size of the partition in GB
-        :param pulumi.Input[int] used_by_snapshots: Percentage of partition space used by snapshots in %!
-               (MISSING)
+        :param pulumi.Input[int] used_by_snapshots: Percentage of partition space used by snapshots in %
         """
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
@@ -137,8 +135,7 @@ class _NasHAPartitionState:
     @pulumi.getter
     def capacity(self) -> Optional[pulumi.Input[int]]:
         """
-        Percentage of partition space used in %!
-        (MISSING)
+        Percentage of partition space used in %
         """
         return pulumi.get(self, "capacity")
 
@@ -210,8 +207,7 @@ class _NasHAPartitionState:
     @pulumi.getter(name="usedBySnapshots")
     def used_by_snapshots(self) -> Optional[pulumi.Input[int]]:
         """
-        Percentage of partition space used by snapshots in %!
-        (MISSING)
+        Percentage of partition space used by snapshots in %
         """
         return pulumi.get(self, "used_by_snapshots")
 
@@ -361,15 +357,13 @@ class NasHAPartition(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] capacity: Percentage of partition space used in %!
-               (MISSING)
+        :param pulumi.Input[int] capacity: Percentage of partition space used in %
         :param pulumi.Input[str] description: A brief description of the partition
         :param pulumi.Input[str] name: name of the partition
         :param pulumi.Input[str] protocol: one of "NFS", "CIFS" or "NFS_CIFS"
         :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
         :param pulumi.Input[int] size: size of the partition in GB
-        :param pulumi.Input[int] used_by_snapshots: Percentage of partition space used by snapshots in %!
-               (MISSING)
+        :param pulumi.Input[int] used_by_snapshots: Percentage of partition space used by snapshots in %
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -388,8 +382,7 @@ class NasHAPartition(pulumi.CustomResource):
     @pulumi.getter
     def capacity(self) -> pulumi.Output[int]:
         """
-        Percentage of partition space used in %!
-        (MISSING)
+        Percentage of partition space used in %
         """
         return pulumi.get(self, "capacity")
 
@@ -437,8 +430,7 @@ class NasHAPartition(pulumi.CustomResource):
     @pulumi.getter(name="usedBySnapshots")
     def used_by_snapshots(self) -> pulumi.Output[int]:
         """
-        Percentage of partition space used by snapshots in %!
-        (MISSING)
+        Percentage of partition space used by snapshots in %
         """
         return pulumi.get(self, "used_by_snapshots")
 

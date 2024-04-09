@@ -84,7 +84,7 @@ export class PostgresSqlConnectionPool extends pulumi.CustomResource {
     /**
      * Database user authorized to connect to the pool, if none all the users are allowed.
      */
-    public readonly userId!: pulumi.Output<string | undefined>;
+    public readonly userId!: pulumi.Output<string>;
 
     /**
      * Create a PostgresSqlConnectionPool resource with the given unique name, arguments, and options.

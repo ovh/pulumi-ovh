@@ -32,6 +32,7 @@ utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
 
 // Export sub-modules:
+import * as cloud from "./cloud";
 import * as cloudproject from "./cloudproject";
 import * as cloudprojectdatabase from "./cloudprojectdatabase";
 import * as config from "./config";
@@ -49,6 +50,7 @@ import * as vps from "./vps";
 import * as vrack from "./vrack";
 
 export {
+    cloud,
     cloudproject,
     cloudprojectdatabase,
     config,

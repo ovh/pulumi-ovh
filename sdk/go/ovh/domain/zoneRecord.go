@@ -47,7 +47,7 @@ import (
 //
 // ## Import
 //
-// OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](<https://api.ovh.com/console/#/domain/zone/%!B(MISSING)zoneName%!D(MISSING)/record~GET>), and the `zone`, separated by "." E.g.,
+// OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g.,
 //
 // bash
 //

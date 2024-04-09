@@ -14,10 +14,6 @@ namespace Pulumi.Ovh.Me.Outputs
     public sealed class InstallationTemplateCustomization
     {
         /// <summary>
-        /// Template change log details.
-        /// </summary>
-        public readonly string? ChangeLog;
-        /// <summary>
         /// Set up the server using the provided hostname instead of the default hostname.
         /// </summary>
         public readonly string? CustomHostname;
@@ -37,15 +33,9 @@ namespace Pulumi.Ovh.Me.Outputs
         /// Name of the ssh key that should be installed. Password login will be disabled.
         /// </summary>
         public readonly string? SshKeyName;
-        /// <summary>
-        /// Use the distribution's native kernel instead of the recommended OV
-        /// </summary>
-        public readonly bool? UseDistributionKernel;
 
         [OutputConstructor]
         private InstallationTemplateCustomization(
-            string? changeLog,
-
             string? customHostname,
 
             string? postInstallationScriptLink,
@@ -54,17 +44,13 @@ namespace Pulumi.Ovh.Me.Outputs
 
             int? rating,
 
-            string? sshKeyName,
-
-            bool? useDistributionKernel)
+            string? sshKeyName)
         {
-            ChangeLog = changeLog;
             CustomHostname = customHostname;
             PostInstallationScriptLink = postInstallationScriptLink;
             PostInstallationScriptReturn = postInstallationScriptReturn;
             Rating = rating;
             SshKeyName = sshKeyName;
-            UseDistributionKernel = useDistributionKernel;
         }
     }
 }

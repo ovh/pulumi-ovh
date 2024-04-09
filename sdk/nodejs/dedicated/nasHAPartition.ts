@@ -59,8 +59,7 @@ export class NasHAPartition extends pulumi.CustomResource {
     }
 
     /**
-     * Percentage of partition space used in %!
-     * (MISSING)
+     * Percentage of partition space used in %
      */
     public /*out*/ readonly capacity!: pulumi.Output<number>;
     /**
@@ -84,8 +83,7 @@ export class NasHAPartition extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<number>;
     /**
-     * Percentage of partition space used by snapshots in %!
-     * (MISSING)
+     * Percentage of partition space used by snapshots in %
      */
     public /*out*/ readonly usedBySnapshots!: pulumi.Output<number>;
 
@@ -138,8 +136,7 @@ export class NasHAPartition extends pulumi.CustomResource {
  */
 export interface NasHAPartitionState {
     /**
-     * Percentage of partition space used in %!
-     * (MISSING)
+     * Percentage of partition space used in %
      */
     capacity?: pulumi.Input<number>;
     /**
@@ -163,8 +160,7 @@ export interface NasHAPartitionState {
      */
     size?: pulumi.Input<number>;
     /**
-     * Percentage of partition space used by snapshots in %!
-     * (MISSING)
+     * Percentage of partition space used by snapshots in %
      */
     usedBySnapshots?: pulumi.Input<number>;
 }

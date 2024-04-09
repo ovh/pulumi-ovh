@@ -195,7 +195,7 @@ class GetLogsOutputGraylogStreamResult:
     @pulumi.getter(name="indexingNotifyEnabled")
     def indexing_notify_enabled(self) -> bool:
         """
-        If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
+        If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
         """
         return pulumi.get(self, "indexing_notify_enabled")
 

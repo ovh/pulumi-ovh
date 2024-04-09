@@ -14,10 +14,6 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class ServerInstallTaskDetails
     {
         /// <summary>
-        /// Template change log details.
-        /// </summary>
-        public readonly string? ChangeLog;
-        /// <summary>
         /// Set up the server using the provided hostname instead of the default hostname.
         /// </summary>
         public readonly string? CustomHostname;
@@ -25,10 +21,6 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// Disk group id.
         /// </summary>
         public readonly int? DiskGroupId;
-        /// <summary>
-        /// set to true to install RTM.
-        /// </summary>
-        public readonly bool? InstallRtm;
         /// <summary>
         /// set to true to install sql server (Windows template only).
         /// </summary>
@@ -50,10 +42,6 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly string? PostInstallationScriptReturn;
         /// <summary>
-        /// set to true to make a hardware raid reset.
-        /// </summary>
-        public readonly bool? ResetHwRaid;
-        /// <summary>
         /// soft raid devices.
         /// </summary>
         public readonly int? SoftRaidDevices;
@@ -62,23 +50,15 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly string? SshKeyName;
         /// <summary>
-        /// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-        /// </summary>
-        public readonly bool? UseDistribKernel;
-        /// <summary>
         /// set to true to use SPLA.
         /// </summary>
         public readonly bool? UseSpla;
 
         [OutputConstructor]
         private ServerInstallTaskDetails(
-            string? changeLog,
-
             string? customHostname,
 
             int? diskGroupId,
-
-            bool? installRtm,
 
             bool? installSqlServer,
 
@@ -90,29 +70,21 @@ namespace Pulumi.Ovh.Dedicated.Outputs
 
             string? postInstallationScriptReturn,
 
-            bool? resetHwRaid,
-
             int? softRaidDevices,
 
             string? sshKeyName,
 
-            bool? useDistribKernel,
-
             bool? useSpla)
         {
-            ChangeLog = changeLog;
             CustomHostname = customHostname;
             DiskGroupId = diskGroupId;
-            InstallRtm = installRtm;
             InstallSqlServer = installSqlServer;
             Language = language;
             NoRaid = noRaid;
             PostInstallationScriptLink = postInstallationScriptLink;
             PostInstallationScriptReturn = postInstallationScriptReturn;
-            ResetHwRaid = resetHwRaid;
             SoftRaidDevices = softRaidDevices;
             SshKeyName = sshKeyName;
-            UseDistribKernel = useDistribKernel;
             UseSpla = useSpla;
         }
     }

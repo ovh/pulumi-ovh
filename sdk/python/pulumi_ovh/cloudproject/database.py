@@ -27,6 +27,7 @@ class DatabaseArgs:
                  backup_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
+                 ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -49,8 +50,9 @@ class DatabaseArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[str] backup_time: Time on which backups start every day.
-        :param pulumi.Input[str] description: Small description of the database service.
+        :param pulumi.Input[str] description: Description of the IP restriction
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         """
@@ -70,6 +72,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "description", description)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
+        if ip_restrictions is not None:
+            pulumi.set(__self__, "ip_restrictions", ip_restrictions)
         if kafka_rest_api is not None:
             pulumi.set(__self__, "kafka_rest_api", kafka_rest_api)
         if opensearch_acls_enabled is not None:
@@ -196,7 +200,7 @@ class DatabaseArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Small description of the database service.
+        Description of the IP restriction
         """
         return pulumi.get(self, "description")
 
@@ -215,6 +219,18 @@ class DatabaseArgs:
     @disk_size.setter
     def disk_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="ipRestrictions")
+    def ip_restrictions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]]:
+        """
+        IP Blocks authorized to access to the cluster.
+        """
+        return pulumi.get(self, "ip_restrictions")
+
+    @ip_restrictions.setter
+    def ip_restrictions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]]):
+        pulumi.set(self, "ip_restrictions", value)
 
     @property
     @pulumi.getter(name="kafkaRestApi")
@@ -254,6 +270,7 @@ class _DatabaseState:
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseEndpointArgs']]]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  flavor: Optional[pulumi.Input[str]] = None,
+                 ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
                  maintenance_time: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
@@ -269,7 +286,7 @@ class _DatabaseState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[str] backup_time: Time on which backups start every day.
         :param pulumi.Input[str] created_at: Date of the creation of the cluster.
-        :param pulumi.Input[str] description: Small description of the database service.
+        :param pulumi.Input[str] description: Description of the IP restriction
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[str] disk_type: Defines the disk type of the database service.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseEndpointArgs']]] endpoints: List of all endpoints objects of the service.
@@ -278,6 +295,7 @@ class _DatabaseState:
         :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
                Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
                You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
         :param pulumi.Input[str] network_type: Type of network of the cluster.
@@ -314,6 +332,8 @@ class _DatabaseState:
             pulumi.set(__self__, "engine", engine)
         if flavor is not None:
             pulumi.set(__self__, "flavor", flavor)
+        if ip_restrictions is not None:
+            pulumi.set(__self__, "ip_restrictions", ip_restrictions)
         if kafka_rest_api is not None:
             pulumi.set(__self__, "kafka_rest_api", kafka_rest_api)
         if maintenance_time is not None:
@@ -385,7 +405,7 @@ class _DatabaseState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Small description of the database service.
+        Description of the IP restriction
         """
         return pulumi.get(self, "description")
 
@@ -455,6 +475,18 @@ class _DatabaseState:
     @flavor.setter
     def flavor(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "flavor", value)
+
+    @property
+    @pulumi.getter(name="ipRestrictions")
+    def ip_restrictions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]]:
+        """
+        IP Blocks authorized to access to the cluster.
+        """
+        return pulumi.get(self, "ip_restrictions")
+
+    @ip_restrictions.setter
+    def ip_restrictions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]]):
+        pulumi.set(self, "ip_restrictions", value)
 
     @property
     @pulumi.getter(name="kafkaRestApi")
@@ -583,6 +615,7 @@ class Database(pulumi.CustomResource):
                  disk_size: Optional[pulumi.Input[int]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  flavor: Optional[pulumi.Input[str]] = None,
+                 ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]]] = None,
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None,
@@ -691,7 +724,17 @@ class Database(pulumi.CustomResource):
             nodes=[ovh.cloud_project.DatabaseNodeArgs(
                 region="WAW",
             )],
-            flavor="db1-4")
+            flavor="db1-4",
+            ip_restrictions=[
+                ovh.cloud_project.DatabaseIpRestrictionArgs(
+                    description="ip 1",
+                    ip="178.97.6.0/24",
+                ),
+                ovh.cloud_project.DatabaseIpRestrictionArgs(
+                    description="ip 2",
+                    ip="178.97.7.0/24",
+                ),
+            ])
         redisdb = ovh.cloud_project.Database("redisdb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-redis",
@@ -789,13 +832,14 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[str] backup_time: Time on which backups start every day.
-        :param pulumi.Input[str] description: Small description of the database service.
+        :param pulumi.Input[str] description: Description of the IP restriction
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
                [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
                Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
                You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]] nodes: List of nodes object.
                Multi region cluster are not yet available, all node should be identical.
@@ -916,7 +960,17 @@ class Database(pulumi.CustomResource):
             nodes=[ovh.cloud_project.DatabaseNodeArgs(
                 region="WAW",
             )],
-            flavor="db1-4")
+            flavor="db1-4",
+            ip_restrictions=[
+                ovh.cloud_project.DatabaseIpRestrictionArgs(
+                    description="ip 1",
+                    ip="178.97.6.0/24",
+                ),
+                ovh.cloud_project.DatabaseIpRestrictionArgs(
+                    description="ip 2",
+                    ip="178.97.7.0/24",
+                ),
+            ])
         redisdb = ovh.cloud_project.Database("redisdb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-redis",
@@ -1031,6 +1085,7 @@ class Database(pulumi.CustomResource):
                  disk_size: Optional[pulumi.Input[int]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  flavor: Optional[pulumi.Input[str]] = None,
+                 ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]]] = None,
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1057,6 +1112,7 @@ class Database(pulumi.CustomResource):
             if flavor is None and not opts.urn:
                 raise TypeError("Missing required property 'flavor'")
             __props__.__dict__["flavor"] = flavor
+            __props__.__dict__["ip_restrictions"] = ip_restrictions
             __props__.__dict__["kafka_rest_api"] = kafka_rest_api
             if nodes is None and not opts.urn:
                 raise TypeError("Missing required property 'nodes'")
@@ -1097,6 +1153,7 @@ class Database(pulumi.CustomResource):
             endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseEndpointArgs']]]]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             flavor: Optional[pulumi.Input[str]] = None,
+            ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]]] = None,
             kafka_rest_api: Optional[pulumi.Input[bool]] = None,
             maintenance_time: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
@@ -1117,7 +1174,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[str] backup_time: Time on which backups start every day.
         :param pulumi.Input[str] created_at: Date of the creation of the cluster.
-        :param pulumi.Input[str] description: Small description of the database service.
+        :param pulumi.Input[str] description: Description of the IP restriction
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[str] disk_type: Defines the disk type of the database service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseEndpointArgs']]]] endpoints: List of all endpoints objects of the service.
@@ -1126,6 +1183,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
                Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
                You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
         :param pulumi.Input[str] network_type: Type of network of the cluster.
@@ -1156,6 +1214,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["endpoints"] = endpoints
         __props__.__dict__["engine"] = engine
         __props__.__dict__["flavor"] = flavor
+        __props__.__dict__["ip_restrictions"] = ip_restrictions
         __props__.__dict__["kafka_rest_api"] = kafka_rest_api
         __props__.__dict__["maintenance_time"] = maintenance_time
         __props__.__dict__["network_type"] = network_type
@@ -1203,7 +1262,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Small description of the database service.
+        Description of the IP restriction
         """
         return pulumi.get(self, "description")
 
@@ -1249,6 +1308,14 @@ class Database(pulumi.CustomResource):
         You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         """
         return pulumi.get(self, "flavor")
+
+    @property
+    @pulumi.getter(name="ipRestrictions")
+    def ip_restrictions(self) -> pulumi.Output[Optional[Sequence['outputs.DatabaseIpRestriction']]]:
+        """
+        IP Blocks authorized to access to the cluster.
+        """
+        return pulumi.get(self, "ip_restrictions")
 
     @property
     @pulumi.getter(name="kafkaRestApi")

@@ -83,7 +83,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// Database user authorized to connect to the pool, if none all the users are allowed.
         /// </summary>
         [Output("userId")]
-        public Output<string?> UserId { get; private set; } = null!;
+        public Output<string> UserId { get; private set; } = null!;
 
 
         /// <summary>

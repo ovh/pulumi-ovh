@@ -14,16 +14,10 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ServerInstallTaskDetails struct {
-	// Template change log details.
-	//
-	// Deprecated: field is not used anymore
-	ChangeLog *string `pulumi:"changeLog"`
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname *string `pulumi:"customHostname"`
 	// Disk group id.
 	DiskGroupId *int `pulumi:"diskGroupId"`
-	// set to true to install RTM.
-	InstallRtm *bool `pulumi:"installRtm"`
 	// set to true to install sql server (Windows template only).
 	InstallSqlServer *bool `pulumi:"installSqlServer"`
 	// language.
@@ -34,14 +28,10 @@ type ServerInstallTaskDetails struct {
 	PostInstallationScriptLink *string `pulumi:"postInstallationScriptLink"`
 	// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn *string `pulumi:"postInstallationScriptReturn"`
-	// set to true to make a hardware raid reset.
-	ResetHwRaid *bool `pulumi:"resetHwRaid"`
 	// soft raid devices.
 	SoftRaidDevices *int `pulumi:"softRaidDevices"`
 	// Name of the ssh key that should be installed. Password login will be disabled.
 	SshKeyName *string `pulumi:"sshKeyName"`
-	// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-	UseDistribKernel *bool `pulumi:"useDistribKernel"`
 	// set to true to use SPLA.
 	UseSpla *bool `pulumi:"useSpla"`
 }
@@ -58,16 +48,10 @@ type ServerInstallTaskDetailsInput interface {
 }
 
 type ServerInstallTaskDetailsArgs struct {
-	// Template change log details.
-	//
-	// Deprecated: field is not used anymore
-	ChangeLog pulumi.StringPtrInput `pulumi:"changeLog"`
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname pulumi.StringPtrInput `pulumi:"customHostname"`
 	// Disk group id.
 	DiskGroupId pulumi.IntPtrInput `pulumi:"diskGroupId"`
-	// set to true to install RTM.
-	InstallRtm pulumi.BoolPtrInput `pulumi:"installRtm"`
 	// set to true to install sql server (Windows template only).
 	InstallSqlServer pulumi.BoolPtrInput `pulumi:"installSqlServer"`
 	// language.
@@ -78,14 +62,10 @@ type ServerInstallTaskDetailsArgs struct {
 	PostInstallationScriptLink pulumi.StringPtrInput `pulumi:"postInstallationScriptLink"`
 	// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn pulumi.StringPtrInput `pulumi:"postInstallationScriptReturn"`
-	// set to true to make a hardware raid reset.
-	ResetHwRaid pulumi.BoolPtrInput `pulumi:"resetHwRaid"`
 	// soft raid devices.
 	SoftRaidDevices pulumi.IntPtrInput `pulumi:"softRaidDevices"`
 	// Name of the ssh key that should be installed. Password login will be disabled.
 	SshKeyName pulumi.StringPtrInput `pulumi:"sshKeyName"`
-	// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-	UseDistribKernel pulumi.BoolPtrInput `pulumi:"useDistribKernel"`
 	// set to true to use SPLA.
 	UseSpla pulumi.BoolPtrInput `pulumi:"useSpla"`
 }
@@ -167,13 +147,6 @@ func (o ServerInstallTaskDetailsOutput) ToServerInstallTaskDetailsPtrOutputWithC
 	}).(ServerInstallTaskDetailsPtrOutput)
 }
 
-// Template change log details.
-//
-// Deprecated: field is not used anymore
-func (o ServerInstallTaskDetailsOutput) ChangeLog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.ChangeLog }).(pulumi.StringPtrOutput)
-}
-
 // Set up the server using the provided hostname instead of the default hostname.
 func (o ServerInstallTaskDetailsOutput) CustomHostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.CustomHostname }).(pulumi.StringPtrOutput)
@@ -182,11 +155,6 @@ func (o ServerInstallTaskDetailsOutput) CustomHostname() pulumi.StringPtrOutput 
 // Disk group id.
 func (o ServerInstallTaskDetailsOutput) DiskGroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *int { return v.DiskGroupId }).(pulumi.IntPtrOutput)
-}
-
-// set to true to install RTM.
-func (o ServerInstallTaskDetailsOutput) InstallRtm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.InstallRtm }).(pulumi.BoolPtrOutput)
 }
 
 // set to true to install sql server (Windows template only).
@@ -214,11 +182,6 @@ func (o ServerInstallTaskDetailsOutput) PostInstallationScriptReturn() pulumi.St
 	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.PostInstallationScriptReturn }).(pulumi.StringPtrOutput)
 }
 
-// set to true to make a hardware raid reset.
-func (o ServerInstallTaskDetailsOutput) ResetHwRaid() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.ResetHwRaid }).(pulumi.BoolPtrOutput)
-}
-
 // soft raid devices.
 func (o ServerInstallTaskDetailsOutput) SoftRaidDevices() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *int { return v.SoftRaidDevices }).(pulumi.IntPtrOutput)
@@ -227,11 +190,6 @@ func (o ServerInstallTaskDetailsOutput) SoftRaidDevices() pulumi.IntPtrOutput {
 // Name of the ssh key that should be installed. Password login will be disabled.
 func (o ServerInstallTaskDetailsOutput) SshKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.SshKeyName }).(pulumi.StringPtrOutput)
-}
-
-// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-func (o ServerInstallTaskDetailsOutput) UseDistribKernel() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.UseDistribKernel }).(pulumi.BoolPtrOutput)
 }
 
 // set to true to use SPLA.
@@ -263,18 +221,6 @@ func (o ServerInstallTaskDetailsPtrOutput) Elem() ServerInstallTaskDetailsOutput
 	}).(ServerInstallTaskDetailsOutput)
 }
 
-// Template change log details.
-//
-// Deprecated: field is not used anymore
-func (o ServerInstallTaskDetailsPtrOutput) ChangeLog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ChangeLog
-	}).(pulumi.StringPtrOutput)
-}
-
 // Set up the server using the provided hostname instead of the default hostname.
 func (o ServerInstallTaskDetailsPtrOutput) CustomHostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerInstallTaskDetails) *string {
@@ -293,16 +239,6 @@ func (o ServerInstallTaskDetailsPtrOutput) DiskGroupId() pulumi.IntPtrOutput {
 		}
 		return v.DiskGroupId
 	}).(pulumi.IntPtrOutput)
-}
-
-// set to true to install RTM.
-func (o ServerInstallTaskDetailsPtrOutput) InstallRtm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.InstallRtm
-	}).(pulumi.BoolPtrOutput)
 }
 
 // set to true to install sql server (Windows template only).
@@ -355,16 +291,6 @@ func (o ServerInstallTaskDetailsPtrOutput) PostInstallationScriptReturn() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// set to true to make a hardware raid reset.
-func (o ServerInstallTaskDetailsPtrOutput) ResetHwRaid() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ResetHwRaid
-	}).(pulumi.BoolPtrOutput)
-}
-
 // soft raid devices.
 func (o ServerInstallTaskDetailsPtrOutput) SoftRaidDevices() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerInstallTaskDetails) *int {
@@ -383,16 +309,6 @@ func (o ServerInstallTaskDetailsPtrOutput) SshKeyName() pulumi.StringPtrOutput {
 		}
 		return v.SshKeyName
 	}).(pulumi.StringPtrOutput)
-}
-
-// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-func (o ServerInstallTaskDetailsPtrOutput) UseDistribKernel() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UseDistribKernel
-	}).(pulumi.BoolPtrOutput)
 }
 
 // set to true to use SPLA.

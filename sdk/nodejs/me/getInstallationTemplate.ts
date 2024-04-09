@@ -100,14 +100,6 @@ export interface GetInstallationTemplateResult {
     readonly lvmReady: boolean;
     readonly partitionSchemes: outputs.Me.GetInstallationTemplatePartitionScheme[];
     /**
-     * This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-     */
-    readonly supportsDistributionKernel: boolean;
-    /**
-     * This distribution supports RTM software.
-     */
-    readonly supportsRtm: boolean;
-    /**
      * This distribution supports the microsoft SQL server.
      */
     readonly supportsSqlServer: boolean;
