@@ -22,7 +22,7 @@ class GetInstallationTemplateResult:
     """
     A collection of values returned by getInstallationTemplate.
     """
-    def __init__(__self__, available_languages=None, beta=None, bit_format=None, category=None, customizations=None, default_language=None, deprecated=None, description=None, distribution=None, family=None, filesystems=None, hard_raid_configuration=None, id=None, last_modification=None, lvm_ready=None, partition_schemes=None, supports_distribution_kernel=None, supports_rtm=None, supports_sql_server=None, template_name=None):
+    def __init__(__self__, available_languages=None, beta=None, bit_format=None, category=None, customizations=None, default_language=None, deprecated=None, description=None, distribution=None, family=None, filesystems=None, hard_raid_configuration=None, id=None, last_modification=None, lvm_ready=None, partition_schemes=None, supports_sql_server=None, template_name=None):
         if available_languages and not isinstance(available_languages, list):
             raise TypeError("Expected argument 'available_languages' to be a list")
         pulumi.set(__self__, "available_languages", available_languages)
@@ -71,12 +71,6 @@ class GetInstallationTemplateResult:
         if partition_schemes and not isinstance(partition_schemes, list):
             raise TypeError("Expected argument 'partition_schemes' to be a list")
         pulumi.set(__self__, "partition_schemes", partition_schemes)
-        if supports_distribution_kernel and not isinstance(supports_distribution_kernel, bool):
-            raise TypeError("Expected argument 'supports_distribution_kernel' to be a bool")
-        pulumi.set(__self__, "supports_distribution_kernel", supports_distribution_kernel)
-        if supports_rtm and not isinstance(supports_rtm, bool):
-            raise TypeError("Expected argument 'supports_rtm' to be a bool")
-        pulumi.set(__self__, "supports_rtm", supports_rtm)
         if supports_sql_server and not isinstance(supports_sql_server, bool):
             raise TypeError("Expected argument 'supports_sql_server' to be a bool")
         pulumi.set(__self__, "supports_sql_server", supports_sql_server)
@@ -204,22 +198,6 @@ class GetInstallationTemplateResult:
         return pulumi.get(self, "partition_schemes")
 
     @property
-    @pulumi.getter(name="supportsDistributionKernel")
-    def supports_distribution_kernel(self) -> bool:
-        """
-        This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-        """
-        return pulumi.get(self, "supports_distribution_kernel")
-
-    @property
-    @pulumi.getter(name="supportsRtm")
-    def supports_rtm(self) -> bool:
-        """
-        This distribution supports RTM software.
-        """
-        return pulumi.get(self, "supports_rtm")
-
-    @property
     @pulumi.getter(name="supportsSqlServer")
     def supports_sql_server(self) -> bool:
         """
@@ -255,8 +233,6 @@ class AwaitableGetInstallationTemplateResult(GetInstallationTemplateResult):
             last_modification=self.last_modification,
             lvm_ready=self.lvm_ready,
             partition_schemes=self.partition_schemes,
-            supports_distribution_kernel=self.supports_distribution_kernel,
-            supports_rtm=self.supports_rtm,
             supports_sql_server=self.supports_sql_server,
             template_name=self.template_name)
 
@@ -302,8 +278,6 @@ def get_installation_template(template_name: Optional[str] = None,
         last_modification=pulumi.get(__ret__, 'last_modification'),
         lvm_ready=pulumi.get(__ret__, 'lvm_ready'),
         partition_schemes=pulumi.get(__ret__, 'partition_schemes'),
-        supports_distribution_kernel=pulumi.get(__ret__, 'supports_distribution_kernel'),
-        supports_rtm=pulumi.get(__ret__, 'supports_rtm'),
         supports_sql_server=pulumi.get(__ret__, 'supports_sql_server'),
         template_name=pulumi.get(__ret__, 'template_name'))
 

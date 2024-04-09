@@ -13,12 +13,6 @@ namespace Pulumi.Ovh.Me.Inputs
     public sealed class InstallationTemplateCustomizationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Template change log details.
-        /// </summary>
-        [Input("changeLog")]
-        public Input<string>? ChangeLog { get; set; }
-
-        /// <summary>
         /// Set up the server using the provided hostname instead of the default hostname.
         /// </summary>
         [Input("customHostname")]
@@ -47,12 +41,6 @@ namespace Pulumi.Ovh.Me.Inputs
         /// </summary>
         [Input("sshKeyName")]
         public Input<string>? SshKeyName { get; set; }
-
-        /// <summary>
-        /// Use the distribution's native kernel instead of the recommended OV
-        /// </summary>
-        [Input("useDistributionKernel")]
-        public Input<bool>? UseDistributionKernel { get; set; }
 
         public InstallationTemplateCustomizationGetArgs()
         {

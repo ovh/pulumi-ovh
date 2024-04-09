@@ -24,9 +24,7 @@ class InstallationTemplateCustomization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "changeLog":
-            suggest = "change_log"
-        elif key == "customHostname":
+        if key == "customHostname":
             suggest = "custom_hostname"
         elif key == "postInstallationScriptLink":
             suggest = "post_installation_script_link"
@@ -34,8 +32,6 @@ class InstallationTemplateCustomization(dict):
             suggest = "post_installation_script_return"
         elif key == "sshKeyName":
             suggest = "ssh_key_name"
-        elif key == "useDistributionKernel":
-            suggest = "use_distribution_kernel"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstallationTemplateCustomization. Access the value via the '{suggest}' property getter instead.")
@@ -49,24 +45,18 @@ class InstallationTemplateCustomization(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 change_log: Optional[str] = None,
                  custom_hostname: Optional[str] = None,
                  post_installation_script_link: Optional[str] = None,
                  post_installation_script_return: Optional[str] = None,
                  rating: Optional[int] = None,
-                 ssh_key_name: Optional[str] = None,
-                 use_distribution_kernel: Optional[bool] = None):
+                 ssh_key_name: Optional[str] = None):
         """
-        :param str change_log: Template change log details.
         :param str custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param str post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
         :param str post_installation_script_return: indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         :param int rating: Rating.
         :param str ssh_key_name: Name of the ssh key that should be installed. Password login will be disabled.
-        :param bool use_distribution_kernel: Use the distribution's native kernel instead of the recommended OV
         """
-        if change_log is not None:
-            pulumi.set(__self__, "change_log", change_log)
         if custom_hostname is not None:
             pulumi.set(__self__, "custom_hostname", custom_hostname)
         if post_installation_script_link is not None:
@@ -77,19 +67,6 @@ class InstallationTemplateCustomization(dict):
             pulumi.set(__self__, "rating", rating)
         if ssh_key_name is not None:
             pulumi.set(__self__, "ssh_key_name", ssh_key_name)
-        if use_distribution_kernel is not None:
-            pulumi.set(__self__, "use_distribution_kernel", use_distribution_kernel)
-
-    @property
-    @pulumi.getter(name="changeLog")
-    def change_log(self) -> Optional[str]:
-        """
-        Template change log details.
-        """
-        warnings.warn("""field is not used anymore""", DeprecationWarning)
-        pulumi.log.warn("""change_log is deprecated: field is not used anymore""")
-
-        return pulumi.get(self, "change_log")
 
     @property
     @pulumi.getter(name="customHostname")
@@ -134,52 +111,27 @@ class InstallationTemplateCustomization(dict):
         """
         return pulumi.get(self, "ssh_key_name")
 
-    @property
-    @pulumi.getter(name="useDistributionKernel")
-    def use_distribution_kernel(self) -> Optional[bool]:
-        """
-        Use the distribution's native kernel instead of the recommended OV
-        """
-        return pulumi.get(self, "use_distribution_kernel")
-
 
 @pulumi.output_type
 class GetInstallationTemplateCustomizationResult(dict):
     def __init__(__self__, *,
-                 change_log: str,
                  custom_hostname: str,
                  post_installation_script_link: str,
                  post_installation_script_return: str,
                  rating: int,
-                 ssh_key_name: str,
-                 use_distribution_kernel: bool):
+                 ssh_key_name: str):
         """
-        :param str change_log: (DEPRECATED) Template change log details.
         :param str custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param str post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
         :param str post_installation_script_return: indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         :param int rating: (DEPRECATED) Rating.
         :param str ssh_key_name: Name of the ssh key that should be installed. Password login will be disabled.
-        :param bool use_distribution_kernel: Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
         """
-        pulumi.set(__self__, "change_log", change_log)
         pulumi.set(__self__, "custom_hostname", custom_hostname)
         pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
         pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
         pulumi.set(__self__, "rating", rating)
         pulumi.set(__self__, "ssh_key_name", ssh_key_name)
-        pulumi.set(__self__, "use_distribution_kernel", use_distribution_kernel)
-
-    @property
-    @pulumi.getter(name="changeLog")
-    def change_log(self) -> str:
-        """
-        (DEPRECATED) Template change log details.
-        """
-        warnings.warn("""field is not used anymore""", DeprecationWarning)
-        pulumi.log.warn("""change_log is deprecated: field is not used anymore""")
-
-        return pulumi.get(self, "change_log")
 
     @property
     @pulumi.getter(name="customHostname")
@@ -223,14 +175,6 @@ class GetInstallationTemplateCustomizationResult(dict):
         Name of the ssh key that should be installed. Password login will be disabled.
         """
         return pulumi.get(self, "ssh_key_name")
-
-    @property
-    @pulumi.getter(name="useDistributionKernel")
-    def use_distribution_kernel(self) -> bool:
-        """
-        Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-        """
-        return pulumi.get(self, "use_distribution_kernel")
 
 
 @pulumi.output_type

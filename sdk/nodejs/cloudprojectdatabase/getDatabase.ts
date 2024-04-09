@@ -78,7 +78,7 @@ export interface GetDatabaseResult {
      */
     readonly createdAt: string;
     /**
-     * Small description of the database service.
+     * Description of the IP restriction
      */
     readonly description: string;
     /**
@@ -105,6 +105,10 @@ export interface GetDatabaseResult {
      * See Argument Reference above.
      */
     readonly id: string;
+    /**
+     * IP Blocks authorized to access to the cluster.
+     */
+    readonly ipRestrictions: outputs.CloudProjectDatabase.GetDatabaseIpRestriction[];
     /**
      * Defines whether the REST API is enabled on a kafka cluster.
      */

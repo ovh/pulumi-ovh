@@ -87,10 +87,6 @@ type LookupInstallationTemplateResult struct {
 	LastModification string                                       `pulumi:"lastModification"`
 	LvmReady         bool                                         `pulumi:"lvmReady"`
 	PartitionSchemes []GetInstallationTemplatePartitionSchemeType `pulumi:"partitionSchemes"`
-	// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-	SupportsDistributionKernel bool `pulumi:"supportsDistributionKernel"`
-	// This distribution supports RTM software.
-	SupportsRtm bool `pulumi:"supportsRtm"`
 	// This distribution supports the microsoft SQL server.
 	SupportsSqlServer bool   `pulumi:"supportsSqlServer"`
 	TemplateName      string `pulumi:"templateName"`
@@ -213,16 +209,6 @@ func (o LookupInstallationTemplateResultOutput) PartitionSchemes() GetInstallati
 	return o.ApplyT(func(v LookupInstallationTemplateResult) []GetInstallationTemplatePartitionSchemeType {
 		return v.PartitionSchemes
 	}).(GetInstallationTemplatePartitionSchemeTypeArrayOutput)
-}
-
-// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-func (o LookupInstallationTemplateResultOutput) SupportsDistributionKernel() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.SupportsDistributionKernel }).(pulumi.BoolOutput)
-}
-
-// This distribution supports RTM software.
-func (o LookupInstallationTemplateResultOutput) SupportsRtm() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.SupportsRtm }).(pulumi.BoolOutput)
 }
 
 // This distribution supports the microsoft SQL server.

@@ -13,12 +13,6 @@ namespace Pulumi.Ovh.Dedicated.Inputs
     public sealed class ServerInstallTaskDetailsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Template change log details.
-        /// </summary>
-        [Input("changeLog")]
-        public Input<string>? ChangeLog { get; set; }
-
-        /// <summary>
         /// Set up the server using the provided hostname instead of the default hostname.
         /// </summary>
         [Input("customHostname")]
@@ -29,12 +23,6 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         /// </summary>
         [Input("diskGroupId")]
         public Input<int>? DiskGroupId { get; set; }
-
-        /// <summary>
-        /// set to true to install RTM.
-        /// </summary>
-        [Input("installRtm")]
-        public Input<bool>? InstallRtm { get; set; }
 
         /// <summary>
         /// set to true to install sql server (Windows template only).
@@ -67,12 +55,6 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         public Input<string>? PostInstallationScriptReturn { get; set; }
 
         /// <summary>
-        /// set to true to make a hardware raid reset.
-        /// </summary>
-        [Input("resetHwRaid")]
-        public Input<bool>? ResetHwRaid { get; set; }
-
-        /// <summary>
         /// soft raid devices.
         /// </summary>
         [Input("softRaidDevices")]
@@ -83,12 +65,6 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         /// </summary>
         [Input("sshKeyName")]
         public Input<string>? SshKeyName { get; set; }
-
-        /// <summary>
-        /// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-        /// </summary>
-        [Input("useDistribKernel")]
-        public Input<bool>? UseDistribKernel { get; set; }
 
         /// <summary>
         /// set to true to use SPLA.

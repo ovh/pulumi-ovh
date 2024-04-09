@@ -157,7 +157,7 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         public readonly int IndexingMaxSize;
         /// <summary>
-        /// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
+        /// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
         /// </summary>
         public readonly bool IndexingNotifyEnabled;
         /// <summary>

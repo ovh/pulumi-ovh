@@ -14,10 +14,6 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type InstallationTemplateCustomization struct {
-	// Template change log details.
-	//
-	// Deprecated: field is not used anymore
-	ChangeLog *string `pulumi:"changeLog"`
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname *string `pulumi:"customHostname"`
 	// Indicate the URL where your postinstall customisation script is located.
@@ -30,8 +26,6 @@ type InstallationTemplateCustomization struct {
 	Rating *int `pulumi:"rating"`
 	// Name of the ssh key that should be installed. Password login will be disabled.
 	SshKeyName *string `pulumi:"sshKeyName"`
-	// Use the distribution's native kernel instead of the recommended OV
-	UseDistributionKernel *bool `pulumi:"useDistributionKernel"`
 }
 
 // InstallationTemplateCustomizationInput is an input type that accepts InstallationTemplateCustomizationArgs and InstallationTemplateCustomizationOutput values.
@@ -46,10 +40,6 @@ type InstallationTemplateCustomizationInput interface {
 }
 
 type InstallationTemplateCustomizationArgs struct {
-	// Template change log details.
-	//
-	// Deprecated: field is not used anymore
-	ChangeLog pulumi.StringPtrInput `pulumi:"changeLog"`
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname pulumi.StringPtrInput `pulumi:"customHostname"`
 	// Indicate the URL where your postinstall customisation script is located.
@@ -62,8 +52,6 @@ type InstallationTemplateCustomizationArgs struct {
 	Rating pulumi.IntPtrInput `pulumi:"rating"`
 	// Name of the ssh key that should be installed. Password login will be disabled.
 	SshKeyName pulumi.StringPtrInput `pulumi:"sshKeyName"`
-	// Use the distribution's native kernel instead of the recommended OV
-	UseDistributionKernel pulumi.BoolPtrInput `pulumi:"useDistributionKernel"`
 }
 
 func (InstallationTemplateCustomizationArgs) ElementType() reflect.Type {
@@ -143,13 +131,6 @@ func (o InstallationTemplateCustomizationOutput) ToInstallationTemplateCustomiza
 	}).(InstallationTemplateCustomizationPtrOutput)
 }
 
-// Template change log details.
-//
-// Deprecated: field is not used anymore
-func (o InstallationTemplateCustomizationOutput) ChangeLog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstallationTemplateCustomization) *string { return v.ChangeLog }).(pulumi.StringPtrOutput)
-}
-
 // Set up the server using the provided hostname instead of the default hostname.
 func (o InstallationTemplateCustomizationOutput) CustomHostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstallationTemplateCustomization) *string { return v.CustomHostname }).(pulumi.StringPtrOutput)
@@ -177,11 +158,6 @@ func (o InstallationTemplateCustomizationOutput) SshKeyName() pulumi.StringPtrOu
 	return o.ApplyT(func(v InstallationTemplateCustomization) *string { return v.SshKeyName }).(pulumi.StringPtrOutput)
 }
 
-// Use the distribution's native kernel instead of the recommended OV
-func (o InstallationTemplateCustomizationOutput) UseDistributionKernel() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstallationTemplateCustomization) *bool { return v.UseDistributionKernel }).(pulumi.BoolPtrOutput)
-}
-
 type InstallationTemplateCustomizationPtrOutput struct{ *pulumi.OutputState }
 
 func (InstallationTemplateCustomizationPtrOutput) ElementType() reflect.Type {
@@ -204,18 +180,6 @@ func (o InstallationTemplateCustomizationPtrOutput) Elem() InstallationTemplateC
 		var ret InstallationTemplateCustomization
 		return ret
 	}).(InstallationTemplateCustomizationOutput)
-}
-
-// Template change log details.
-//
-// Deprecated: field is not used anymore
-func (o InstallationTemplateCustomizationPtrOutput) ChangeLog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstallationTemplateCustomization) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ChangeLog
-	}).(pulumi.StringPtrOutput)
 }
 
 // Set up the server using the provided hostname instead of the default hostname.
@@ -270,21 +234,7 @@ func (o InstallationTemplateCustomizationPtrOutput) SshKeyName() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Use the distribution's native kernel instead of the recommended OV
-func (o InstallationTemplateCustomizationPtrOutput) UseDistributionKernel() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstallationTemplateCustomization) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UseDistributionKernel
-	}).(pulumi.BoolPtrOutput)
-}
-
 type GetInstallationTemplateCustomization struct {
-	// (DEPRECATED) Template change log details.
-	//
-	// Deprecated: field is not used anymore
-	ChangeLog string `pulumi:"changeLog"`
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname string `pulumi:"customHostname"`
 	// Indicate the URL where your postinstall customisation script is located.
@@ -297,8 +247,6 @@ type GetInstallationTemplateCustomization struct {
 	Rating int `pulumi:"rating"`
 	// Name of the ssh key that should be installed. Password login will be disabled.
 	SshKeyName string `pulumi:"sshKeyName"`
-	// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-	UseDistributionKernel bool `pulumi:"useDistributionKernel"`
 }
 
 // GetInstallationTemplateCustomizationInput is an input type that accepts GetInstallationTemplateCustomizationArgs and GetInstallationTemplateCustomizationOutput values.
@@ -313,10 +261,6 @@ type GetInstallationTemplateCustomizationInput interface {
 }
 
 type GetInstallationTemplateCustomizationArgs struct {
-	// (DEPRECATED) Template change log details.
-	//
-	// Deprecated: field is not used anymore
-	ChangeLog pulumi.StringInput `pulumi:"changeLog"`
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname pulumi.StringInput `pulumi:"customHostname"`
 	// Indicate the URL where your postinstall customisation script is located.
@@ -329,8 +273,6 @@ type GetInstallationTemplateCustomizationArgs struct {
 	Rating pulumi.IntInput `pulumi:"rating"`
 	// Name of the ssh key that should be installed. Password login will be disabled.
 	SshKeyName pulumi.StringInput `pulumi:"sshKeyName"`
-	// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-	UseDistributionKernel pulumi.BoolInput `pulumi:"useDistributionKernel"`
 }
 
 func (GetInstallationTemplateCustomizationArgs) ElementType() reflect.Type {
@@ -384,13 +326,6 @@ func (o GetInstallationTemplateCustomizationOutput) ToGetInstallationTemplateCus
 	return o
 }
 
-// (DEPRECATED) Template change log details.
-//
-// Deprecated: field is not used anymore
-func (o GetInstallationTemplateCustomizationOutput) ChangeLog() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateCustomization) string { return v.ChangeLog }).(pulumi.StringOutput)
-}
-
 // Set up the server using the provided hostname instead of the default hostname.
 func (o GetInstallationTemplateCustomizationOutput) CustomHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateCustomization) string { return v.CustomHostname }).(pulumi.StringOutput)
@@ -416,11 +351,6 @@ func (o GetInstallationTemplateCustomizationOutput) Rating() pulumi.IntOutput {
 // Name of the ssh key that should be installed. Password login will be disabled.
 func (o GetInstallationTemplateCustomizationOutput) SshKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateCustomization) string { return v.SshKeyName }).(pulumi.StringOutput)
-}
-
-// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-func (o GetInstallationTemplateCustomizationOutput) UseDistributionKernel() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetInstallationTemplateCustomization) bool { return v.UseDistributionKernel }).(pulumi.BoolOutput)
 }
 
 type GetInstallationTemplateCustomizationArrayOutput struct{ *pulumi.OutputState }

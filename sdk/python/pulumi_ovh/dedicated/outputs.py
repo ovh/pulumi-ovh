@@ -27,14 +27,10 @@ class ServerInstallTaskDetails(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "changeLog":
-            suggest = "change_log"
-        elif key == "customHostname":
+        if key == "customHostname":
             suggest = "custom_hostname"
         elif key == "diskGroupId":
             suggest = "disk_group_id"
-        elif key == "installRtm":
-            suggest = "install_rtm"
         elif key == "installSqlServer":
             suggest = "install_sql_server"
         elif key == "noRaid":
@@ -43,14 +39,10 @@ class ServerInstallTaskDetails(dict):
             suggest = "post_installation_script_link"
         elif key == "postInstallationScriptReturn":
             suggest = "post_installation_script_return"
-        elif key == "resetHwRaid":
-            suggest = "reset_hw_raid"
         elif key == "softRaidDevices":
             suggest = "soft_raid_devices"
         elif key == "sshKeyName":
             suggest = "ssh_key_name"
-        elif key == "useDistribKernel":
-            suggest = "use_distrib_kernel"
         elif key == "useSpla":
             suggest = "use_spla"
 
@@ -66,44 +58,32 @@ class ServerInstallTaskDetails(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 change_log: Optional[str] = None,
                  custom_hostname: Optional[str] = None,
                  disk_group_id: Optional[int] = None,
-                 install_rtm: Optional[bool] = None,
                  install_sql_server: Optional[bool] = None,
                  language: Optional[str] = None,
                  no_raid: Optional[bool] = None,
                  post_installation_script_link: Optional[str] = None,
                  post_installation_script_return: Optional[str] = None,
-                 reset_hw_raid: Optional[bool] = None,
                  soft_raid_devices: Optional[int] = None,
                  ssh_key_name: Optional[str] = None,
-                 use_distrib_kernel: Optional[bool] = None,
                  use_spla: Optional[bool] = None):
         """
-        :param str change_log: Template change log details.
         :param str custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param int disk_group_id: Disk group id.
-        :param bool install_rtm: set to true to install RTM.
         :param bool install_sql_server: set to true to install sql server (Windows template only).
         :param str language: language.
         :param bool no_raid: set to true to disable RAID.
         :param str post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
         :param str post_installation_script_return: Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        :param bool reset_hw_raid: set to true to make a hardware raid reset.
         :param int soft_raid_devices: soft raid devices.
         :param str ssh_key_name: Name of the ssh key that should be installed. Password login will be disabled.
-        :param bool use_distrib_kernel: Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
         :param bool use_spla: set to true to use SPLA.
         """
-        if change_log is not None:
-            pulumi.set(__self__, "change_log", change_log)
         if custom_hostname is not None:
             pulumi.set(__self__, "custom_hostname", custom_hostname)
         if disk_group_id is not None:
             pulumi.set(__self__, "disk_group_id", disk_group_id)
-        if install_rtm is not None:
-            pulumi.set(__self__, "install_rtm", install_rtm)
         if install_sql_server is not None:
             pulumi.set(__self__, "install_sql_server", install_sql_server)
         if language is not None:
@@ -114,27 +94,12 @@ class ServerInstallTaskDetails(dict):
             pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
         if post_installation_script_return is not None:
             pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
-        if reset_hw_raid is not None:
-            pulumi.set(__self__, "reset_hw_raid", reset_hw_raid)
         if soft_raid_devices is not None:
             pulumi.set(__self__, "soft_raid_devices", soft_raid_devices)
         if ssh_key_name is not None:
             pulumi.set(__self__, "ssh_key_name", ssh_key_name)
-        if use_distrib_kernel is not None:
-            pulumi.set(__self__, "use_distrib_kernel", use_distrib_kernel)
         if use_spla is not None:
             pulumi.set(__self__, "use_spla", use_spla)
-
-    @property
-    @pulumi.getter(name="changeLog")
-    def change_log(self) -> Optional[str]:
-        """
-        Template change log details.
-        """
-        warnings.warn("""field is not used anymore""", DeprecationWarning)
-        pulumi.log.warn("""change_log is deprecated: field is not used anymore""")
-
-        return pulumi.get(self, "change_log")
 
     @property
     @pulumi.getter(name="customHostname")
@@ -151,14 +116,6 @@ class ServerInstallTaskDetails(dict):
         Disk group id.
         """
         return pulumi.get(self, "disk_group_id")
-
-    @property
-    @pulumi.getter(name="installRtm")
-    def install_rtm(self) -> Optional[bool]:
-        """
-        set to true to install RTM.
-        """
-        return pulumi.get(self, "install_rtm")
 
     @property
     @pulumi.getter(name="installSqlServer")
@@ -201,14 +158,6 @@ class ServerInstallTaskDetails(dict):
         return pulumi.get(self, "post_installation_script_return")
 
     @property
-    @pulumi.getter(name="resetHwRaid")
-    def reset_hw_raid(self) -> Optional[bool]:
-        """
-        set to true to make a hardware raid reset.
-        """
-        return pulumi.get(self, "reset_hw_raid")
-
-    @property
     @pulumi.getter(name="softRaidDevices")
     def soft_raid_devices(self) -> Optional[int]:
         """
@@ -223,14 +172,6 @@ class ServerInstallTaskDetails(dict):
         Name of the ssh key that should be installed. Password login will be disabled.
         """
         return pulumi.get(self, "ssh_key_name")
-
-    @property
-    @pulumi.getter(name="useDistribKernel")
-    def use_distrib_kernel(self) -> Optional[bool]:
-        """
-        Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-        """
-        return pulumi.get(self, "use_distrib_kernel")
 
     @property
     @pulumi.getter(name="useSpla")

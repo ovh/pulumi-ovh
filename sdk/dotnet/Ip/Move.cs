@@ -94,8 +94,8 @@ namespace Pulumi.Ovh.Ip
         public Output<string> OrganisationId { get; private set; } = null!;
 
         /// <summary>
-        /// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/park~POST)
-        /// instead of [moved](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/move~POST)
+        /// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        /// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         /// </summary>
         [Output("routedTo")]
         public Output<Outputs.MoveRoutedTo> RoutedTo { get; private set; } = null!;
@@ -184,8 +184,8 @@ namespace Pulumi.Ovh.Ip
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/park~POST)
-        /// instead of [moved](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/move~POST)
+        /// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        /// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         /// </summary>
         [Input("routedTo", required: true)]
         public Input<Inputs.MoveRoutedToArgs> RoutedTo { get; set; } = null!;
@@ -229,8 +229,8 @@ namespace Pulumi.Ovh.Ip
         public Input<string>? OrganisationId { get; set; }
 
         /// <summary>
-        /// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/park~POST)
-        /// instead of [moved](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/move~POST)
+        /// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        /// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         /// </summary>
         [Input("routedTo")]
         public Input<Inputs.MoveRoutedToGetArgs>? RoutedTo { get; set; }

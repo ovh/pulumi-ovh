@@ -13,6 +13,9 @@ from .get_database_instance import *
 from .get_database_instances import *
 from .get_database_integration import *
 from .get_database_integrations import *
+from .get_database_log_subscription import *
+from .get_database_log_subscriptions import *
+from .get_database_postgre_sql_connection_pools import *
 from .get_databases import *
 from .get_ip_restrictions import *
 from .get_kafka_acl import *
@@ -31,6 +34,7 @@ from .ip_restriction import *
 from .kafka_acl import *
 from .kafka_schema_registry_acl import *
 from .kafka_topic import *
+from .log_subscription import *
 from .m3_db_namespace import *
 from .m3_db_user import *
 from .mongo_db_user import *

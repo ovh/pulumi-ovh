@@ -141,18 +141,6 @@ namespace Pulumi.Ovh.Me
         public Output<bool> RemoveDefaultPartitionSchemes { get; private set; } = null!;
 
         /// <summary>
-        /// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-        /// </summary>
-        [Output("supportsDistributionKernel")]
-        public Output<bool> SupportsDistributionKernel { get; private set; } = null!;
-
-        /// <summary>
-        /// This distribution supports RTM software.
-        /// </summary>
-        [Output("supportsRtm")]
-        public Output<bool> SupportsRtm { get; private set; } = null!;
-
-        /// <summary>
         /// This distribution supports the microsoft SQL server.
         /// </summary>
         [Output("supportsSqlServer")]
@@ -350,18 +338,6 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         [Input("removeDefaultPartitionSchemes")]
         public Input<bool>? RemoveDefaultPartitionSchemes { get; set; }
-
-        /// <summary>
-        /// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-        /// </summary>
-        [Input("supportsDistributionKernel")]
-        public Input<bool>? SupportsDistributionKernel { get; set; }
-
-        /// <summary>
-        /// This distribution supports RTM software.
-        /// </summary>
-        [Input("supportsRtm")]
-        public Input<bool>? SupportsRtm { get; set; }
 
         /// <summary>
         /// This distribution supports the microsoft SQL server.

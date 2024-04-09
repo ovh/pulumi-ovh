@@ -36,6 +36,102 @@ export interface GetServerVni {
     vrack: string;
 }
 
+export namespace Cloud {
+    export interface GetProjectIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags: {[key: string]: string};
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn: string;
+    }
+
+    export interface GetProjectsProject {
+        /**
+         * Project access
+         */
+        access: string;
+        /**
+         * Project creation date
+         */
+        creationDate: string;
+        /**
+         * Description of your project
+         */
+        description: string;
+        /**
+         * Expiration date of your project. After this date, your project will be deleted
+         */
+        expiration: string;
+        /**
+         * IAM resource information
+         */
+        iam: outputs.Cloud.GetProjectsProjectIam;
+        /**
+         * Manual quota prevent automatic quota upgrade
+         */
+        manualQuota: boolean;
+        /**
+         * Project order ID
+         */
+        orderId: number;
+        /**
+         * Order plan code
+         */
+        planCode: string;
+        /**
+         * Project ID
+         */
+        projectId: string;
+        /**
+         * Project name
+         */
+        projectName: string;
+        /**
+         * ID of the public cloud project
+         */
+        serviceName: string;
+        /**
+         * Current status
+         */
+        status: string;
+        /**
+         * Project unleashed
+         */
+        unleash: boolean;
+    }
+
+    export interface GetProjectsProjectIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags: {[key: string]: string};
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn: string;
+    }
+
+}
+
 export namespace CloudProject {
     export interface AlertingFormattedMonthlyThreshold {
         /**
@@ -134,6 +230,21 @@ export namespace CloudProject {
          * URI of the endpoint.
          */
         uri: string;
+    }
+
+    export interface DatabaseIpRestriction {
+        /**
+         * Description of the IP restriction
+         */
+        description?: string;
+        /**
+         * Authorized IP
+         */
+        ip?: string;
+        /**
+         * Current status of the cluster.
+         */
+        status: string;
     }
 
     export interface DatabaseNode {
@@ -1019,6 +1130,21 @@ export namespace CloudProjectDatabase {
         uri: string;
     }
 
+    export interface GetDatabaseIpRestriction {
+        /**
+         * Description of the IP restriction
+         */
+        description: string;
+        /**
+         * Authorized IP
+         */
+        ip: string;
+        /**
+         * Current status of the cluster.
+         */
+        status: string;
+    }
+
     export interface GetDatabaseNode {
         /**
          * Private network id in which the node should be deployed. It's the regional openstackId of the private network
@@ -1162,12 +1288,6 @@ export namespace Dedicated {
 
     export interface ServerInstallTaskDetails {
         /**
-         * Template change log details.
-         *
-         * @deprecated field is not used anymore
-         */
-        changeLog?: string;
-        /**
          * Set up the server using the provided hostname instead of the default hostname.
          */
         customHostname?: string;
@@ -1175,10 +1295,6 @@ export namespace Dedicated {
          * Disk group id.
          */
         diskGroupId?: number;
-        /**
-         * set to true to install RTM.
-         */
-        installRtm?: boolean;
         /**
          * set to true to install sql server (Windows template only).
          */
@@ -1200,10 +1316,6 @@ export namespace Dedicated {
          */
         postInstallationScriptReturn?: string;
         /**
-         * set to true to make a hardware raid reset.
-         */
-        resetHwRaid?: boolean;
-        /**
          * soft raid devices.
          */
         softRaidDevices?: number;
@@ -1211,10 +1323,6 @@ export namespace Dedicated {
          * Name of the ssh key that should be installed. Password login will be disabled.
          */
         sshKeyName?: string;
-        /**
-         * Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-         */
-        useDistribKernel?: boolean;
         /**
          * set to true to use SPLA.
          */
@@ -1922,12 +2030,6 @@ export namespace IpLoadBalancing {
 export namespace Me {
     export interface GetInstallationTemplateCustomization {
         /**
-         * (DEPRECATED) Template change log details.
-         *
-         * @deprecated field is not used anymore
-         */
-        changeLog: string;
-        /**
          * Set up the server using the provided hostname instead of the default hostname.
          */
         customHostname: string;
@@ -1949,10 +2051,6 @@ export namespace Me {
          * Name of the ssh key that should be installed. Password login will be disabled.
          */
         sshKeyName: string;
-        /**
-         * Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-         */
-        useDistributionKernel: boolean;
     }
 
     export interface GetInstallationTemplatePartitionScheme {
@@ -2031,12 +2129,6 @@ export namespace Me {
 
     export interface InstallationTemplateCustomization {
         /**
-         * Template change log details.
-         *
-         * @deprecated field is not used anymore
-         */
-        changeLog?: string;
-        /**
          * Set up the server using the provided hostname instead of the default hostname.
          */
         customHostname?: string;
@@ -2058,10 +2150,6 @@ export namespace Me {
          * Name of the ssh key that should be installed. Password login will be disabled.
          */
         sshKeyName?: string;
-        /**
-         * Use the distribution's native kernel instead of the recommended OV
-         */
-        useDistributionKernel?: boolean;
     }
 
 }
@@ -2511,6 +2599,161 @@ export namespace Order {
          * The effective price
          */
         value: number;
+    }
+
+}
+
+export namespace Vps {
+    export interface VpsIam {
+        /**
+         * Custom display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags: {[key: string]: string};
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn: string;
+    }
+
+    export interface VpsModel {
+        /**
+         * All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
+         */
+        availableOptions: string[];
+        /**
+         * Datacenters where this model is available
+         */
+        datacenters: string[];
+        /**
+         * Disk capacity of this VPS
+         */
+        disk: number;
+        /**
+         * Maximum number of additional IPs
+         */
+        maximumAdditionnalIp: number;
+        /**
+         * RAM of the VPS
+         */
+        memory: number;
+        /**
+         * Name of the VPS
+         */
+        name: string;
+        /**
+         * Description of this VPS offer
+         */
+        offer: string;
+        /**
+         * Number of vcores
+         */
+        vcore: number;
+        /**
+         * All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+         */
+        version: string;
+    }
+
+    export interface VpsOrder {
+        date: string;
+        details: outputs.Vps.VpsOrderDetail[];
+        expirationDate: string;
+        orderId: number;
+    }
+
+    export interface VpsOrderDetail {
+        description: string;
+        /**
+         * Product type of item in order
+         */
+        detailType: string;
+        domain: string;
+        orderDetailId: number;
+        quantity: string;
+    }
+
+    export interface VpsPlan {
+        /**
+         * Representation of a configuration item for personalizing product
+         */
+        configurations: outputs.Vps.VpsPlanConfiguration[];
+        /**
+         * duration
+         */
+        duration: string;
+        /**
+         * Cart item to be linked
+         */
+        itemId?: number;
+        /**
+         * Plan code
+         */
+        planCode: string;
+        /**
+         * Pricing model identifier
+         */
+        pricingMode: string;
+        /**
+         * Quantity of product desired
+         */
+        quantity?: number;
+    }
+
+    export interface VpsPlanConfiguration {
+        /**
+         * Identifier of the resource
+         */
+        label: string;
+        /**
+         * Path to the resource in api.ovh.com
+         */
+        value: string;
+    }
+
+    export interface VpsPlanOption {
+        /**
+         * Representation of a configuration item for personalizing product
+         */
+        configurations: outputs.Vps.VpsPlanOptionConfiguration[];
+        /**
+         * duration
+         */
+        duration: string;
+        /**
+         * Cart item to be linked
+         */
+        itemId: number;
+        /**
+         * Plan code
+         */
+        planCode: string;
+        /**
+         * Pricing model identifier
+         */
+        pricingMode: string;
+        /**
+         * Quantity of product desired
+         */
+        quantity: number;
+    }
+
+    export interface VpsPlanOptionConfiguration {
+        /**
+         * Identifier of the resource
+         */
+        label: string;
+        /**
+         * Path to the resource in api.ovh.com
+         */
+        value: string;
     }
 
 }

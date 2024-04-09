@@ -163,6 +163,19 @@ namespace Pulumi.Ovh.CloudProject
     ///             },
     ///         },
     ///         Flavor = "db1-4",
+    ///         IpRestrictions = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseIpRestrictionArgs
+    ///             {
+    ///                 Description = "ip 1",
+    ///                 Ip = "178.97.6.0/24",
+    ///             },
+    ///             new Ovh.CloudProject.Inputs.DatabaseIpRestrictionArgs
+    ///             {
+    ///                 Description = "ip 2",
+    ///                 Ip = "178.97.7.0/24",
+    ///             },
+    ///         },
     ///     });
     /// 
     ///     var redisdb = new Ovh.CloudProject.Database("redisdb", new()
@@ -323,7 +336,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Small description of the database service.
+        /// Description of the IP restriction
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -360,6 +373,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Output("flavor")]
         public Output<string> Flavor { get; private set; } = null!;
+
+        /// <summary>
+        /// IP Blocks authorized to access to the cluster.
+        /// </summary>
+        [Output("ipRestrictions")]
+        public Output<ImmutableArray<Outputs.DatabaseIpRestriction>> IpRestrictions { get; private set; } = null!;
 
         /// <summary>
         /// Defines whether the REST API is enabled on a kafka cluster
@@ -499,7 +518,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
-        /// Small description of the database service.
+        /// Description of the IP restriction
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -524,6 +543,18 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("flavor", required: true)]
         public Input<string> Flavor { get; set; } = null!;
+
+        [Input("ipRestrictions")]
+        private InputList<Inputs.DatabaseIpRestrictionArgs>? _ipRestrictions;
+
+        /// <summary>
+        /// IP Blocks authorized to access to the cluster.
+        /// </summary>
+        public InputList<Inputs.DatabaseIpRestrictionArgs> IpRestrictions
+        {
+            get => _ipRestrictions ?? (_ipRestrictions = new InputList<Inputs.DatabaseIpRestrictionArgs>());
+            set => _ipRestrictions = value;
+        }
 
         /// <summary>
         /// Defines whether the REST API is enabled on a kafka cluster
@@ -618,7 +649,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Small description of the database service.
+        /// Description of the IP restriction
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -661,6 +692,18 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }
+
+        [Input("ipRestrictions")]
+        private InputList<Inputs.DatabaseIpRestrictionGetArgs>? _ipRestrictions;
+
+        /// <summary>
+        /// IP Blocks authorized to access to the cluster.
+        /// </summary>
+        public InputList<Inputs.DatabaseIpRestrictionGetArgs> IpRestrictions
+        {
+            get => _ipRestrictions ?? (_ipRestrictions = new InputList<Inputs.DatabaseIpRestrictionGetArgs>());
+            set => _ipRestrictions = value;
+        }
 
         /// <summary>
         /// Defines whether the REST API is enabled on a kafka cluster

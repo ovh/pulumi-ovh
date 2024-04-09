@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Deprecated: Use ipRestriction field in cloudProjectDatabase resource instead.
+ * Continuing to use the ovh.CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloudProjectDatabase resource will cause the cloudProjectDatabase resource to be updated on every apply
+ *
  * Apply IP restrictions to an OVHcloud Managed Database cluster.
  *
  * ## Example Usage

@@ -158,7 +158,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Small description of the database service.
+        /// Description of the IP restriction
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -185,6 +185,10 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// See Argument Reference above.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// IP Blocks authorized to access to the cluster.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseIpRestrictionResult> IpRestrictions;
         /// <summary>
         /// Defines whether the REST API is enabled on a kafka cluster.
         /// </summary>
@@ -243,6 +247,8 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
             string id,
 
+            ImmutableArray<Outputs.GetDatabaseIpRestrictionResult> ipRestrictions,
+
             bool kafkaRestApi,
 
             string maintenanceTime,
@@ -272,6 +278,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             Engine = engine;
             Flavor = flavor;
             Id = id;
+            IpRestrictions = ipRestrictions;
             KafkaRestApi = kafkaRestApi;
             MaintenanceTime = maintenanceTime;
             NetworkType = networkType;

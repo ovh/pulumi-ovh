@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
     /// <summary>
+    /// Deprecated: Use ip_restriction field in cloud_project_database resource instead.
+    /// Continuing to use the ovh.CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply
+    /// 
     /// Apply IP restrictions to an OVHcloud Managed Database cluster.
     /// 
     /// ## Example Usage

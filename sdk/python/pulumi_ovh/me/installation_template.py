@@ -113,8 +113,6 @@ class _InstallationTemplateState:
                  last_modification: Optional[pulumi.Input[str]] = None,
                  lvm_ready: Optional[pulumi.Input[bool]] = None,
                  remove_default_partition_schemes: Optional[pulumi.Input[bool]] = None,
-                 supports_distribution_kernel: Optional[pulumi.Input[bool]] = None,
-                 supports_rtm: Optional[pulumi.Input[bool]] = None,
                  supports_sql_server: Optional[pulumi.Input[bool]] = None,
                  template_name: Optional[pulumi.Input[str]] = None):
         """
@@ -134,8 +132,6 @@ class _InstallationTemplateState:
         :param pulumi.Input[str] last_modification: Date of last modification of the base image.
         :param pulumi.Input[bool] lvm_ready: This distribution supports Logical Volumes (Linux LVM)
         :param pulumi.Input[bool] remove_default_partition_schemes: Remove default partition schemes at creation.
-        :param pulumi.Input[bool] supports_distribution_kernel: This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-        :param pulumi.Input[bool] supports_rtm: This distribution supports RTM software.
         :param pulumi.Input[bool] supports_sql_server: This distribution supports the microsoft SQL server.
         :param pulumi.Input[str] template_name: This template name.
         """
@@ -171,10 +167,6 @@ class _InstallationTemplateState:
             pulumi.set(__self__, "lvm_ready", lvm_ready)
         if remove_default_partition_schemes is not None:
             pulumi.set(__self__, "remove_default_partition_schemes", remove_default_partition_schemes)
-        if supports_distribution_kernel is not None:
-            pulumi.set(__self__, "supports_distribution_kernel", supports_distribution_kernel)
-        if supports_rtm is not None:
-            pulumi.set(__self__, "supports_rtm", supports_rtm)
         if supports_sql_server is not None:
             pulumi.set(__self__, "supports_sql_server", supports_sql_server)
         if template_name is not None:
@@ -370,30 +362,6 @@ class _InstallationTemplateState:
         pulumi.set(self, "remove_default_partition_schemes", value)
 
     @property
-    @pulumi.getter(name="supportsDistributionKernel")
-    def supports_distribution_kernel(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-        """
-        return pulumi.get(self, "supports_distribution_kernel")
-
-    @supports_distribution_kernel.setter
-    def supports_distribution_kernel(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "supports_distribution_kernel", value)
-
-    @property
-    @pulumi.getter(name="supportsRtm")
-    def supports_rtm(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This distribution supports RTM software.
-        """
-        return pulumi.get(self, "supports_rtm")
-
-    @supports_rtm.setter
-    def supports_rtm(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "supports_rtm", value)
-
-    @property
     @pulumi.getter(name="supportsSqlServer")
     def supports_sql_server(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -548,8 +516,6 @@ class InstallationTemplate(pulumi.CustomResource):
             __props__.__dict__["hard_raid_configuration"] = None
             __props__.__dict__["last_modification"] = None
             __props__.__dict__["lvm_ready"] = None
-            __props__.__dict__["supports_distribution_kernel"] = None
-            __props__.__dict__["supports_rtm"] = None
             __props__.__dict__["supports_sql_server"] = None
         super(InstallationTemplate, __self__).__init__(
             'ovh:Me/installationTemplate:InstallationTemplate',
@@ -577,8 +543,6 @@ class InstallationTemplate(pulumi.CustomResource):
             last_modification: Optional[pulumi.Input[str]] = None,
             lvm_ready: Optional[pulumi.Input[bool]] = None,
             remove_default_partition_schemes: Optional[pulumi.Input[bool]] = None,
-            supports_distribution_kernel: Optional[pulumi.Input[bool]] = None,
-            supports_rtm: Optional[pulumi.Input[bool]] = None,
             supports_sql_server: Optional[pulumi.Input[bool]] = None,
             template_name: Optional[pulumi.Input[str]] = None) -> 'InstallationTemplate':
         """
@@ -603,8 +567,6 @@ class InstallationTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] last_modification: Date of last modification of the base image.
         :param pulumi.Input[bool] lvm_ready: This distribution supports Logical Volumes (Linux LVM)
         :param pulumi.Input[bool] remove_default_partition_schemes: Remove default partition schemes at creation.
-        :param pulumi.Input[bool] supports_distribution_kernel: This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-        :param pulumi.Input[bool] supports_rtm: This distribution supports RTM software.
         :param pulumi.Input[bool] supports_sql_server: This distribution supports the microsoft SQL server.
         :param pulumi.Input[str] template_name: This template name.
         """
@@ -628,8 +590,6 @@ class InstallationTemplate(pulumi.CustomResource):
         __props__.__dict__["last_modification"] = last_modification
         __props__.__dict__["lvm_ready"] = lvm_ready
         __props__.__dict__["remove_default_partition_schemes"] = remove_default_partition_schemes
-        __props__.__dict__["supports_distribution_kernel"] = supports_distribution_kernel
-        __props__.__dict__["supports_rtm"] = supports_rtm
         __props__.__dict__["supports_sql_server"] = supports_sql_server
         __props__.__dict__["template_name"] = template_name
         return InstallationTemplate(resource_name, opts=opts, __props__=__props__)
@@ -758,22 +718,6 @@ class InstallationTemplate(pulumi.CustomResource):
         Remove default partition schemes at creation.
         """
         return pulumi.get(self, "remove_default_partition_schemes")
-
-    @property
-    @pulumi.getter(name="supportsDistributionKernel")
-    def supports_distribution_kernel(self) -> pulumi.Output[bool]:
-        """
-        This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-        """
-        return pulumi.get(self, "supports_distribution_kernel")
-
-    @property
-    @pulumi.getter(name="supportsRtm")
-    def supports_rtm(self) -> pulumi.Output[bool]:
-        """
-        This distribution supports RTM software.
-        """
-        return pulumi.get(self, "supports_rtm")
 
     @property
     @pulumi.getter(name="supportsSqlServer")

@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KafkaSchemaRegistryAcl{}
 	case "ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic":
 		r = &KafkaTopic{}
+	case "ovh:CloudProjectDatabase/logSubscription:LogSubscription":
+		r = &LogSubscription{}
 	case "ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace":
 		r = &M3DbNamespace{}
 	case "ovh:CloudProjectDatabase/m3DbUser:M3DbUser":
@@ -92,6 +94,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProjectDatabase/kafkaTopic",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProjectDatabase/logSubscription",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

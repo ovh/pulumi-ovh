@@ -22,7 +22,7 @@ class GetDatabaseResult:
     """
     A collection of values returned by getDatabase.
     """
-    def __init__(__self__, advanced_configuration=None, backup_regions=None, backup_time=None, created_at=None, description=None, disk_size=None, disk_type=None, endpoints=None, engine=None, flavor=None, id=None, kafka_rest_api=None, maintenance_time=None, network_type=None, nodes=None, opensearch_acls_enabled=None, plan=None, service_name=None, status=None, version=None):
+    def __init__(__self__, advanced_configuration=None, backup_regions=None, backup_time=None, created_at=None, description=None, disk_size=None, disk_type=None, endpoints=None, engine=None, flavor=None, id=None, ip_restrictions=None, kafka_rest_api=None, maintenance_time=None, network_type=None, nodes=None, opensearch_acls_enabled=None, plan=None, service_name=None, status=None, version=None):
         if advanced_configuration and not isinstance(advanced_configuration, dict):
             raise TypeError("Expected argument 'advanced_configuration' to be a dict")
         pulumi.set(__self__, "advanced_configuration", advanced_configuration)
@@ -56,6 +56,9 @@ class GetDatabaseResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ip_restrictions and not isinstance(ip_restrictions, list):
+            raise TypeError("Expected argument 'ip_restrictions' to be a list")
+        pulumi.set(__self__, "ip_restrictions", ip_restrictions)
         if kafka_rest_api and not isinstance(kafka_rest_api, bool):
             raise TypeError("Expected argument 'kafka_rest_api' to be a bool")
         pulumi.set(__self__, "kafka_rest_api", kafka_rest_api)
@@ -120,7 +123,7 @@ class GetDatabaseResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        Small description of the database service.
+        Description of the IP restriction
         """
         return pulumi.get(self, "description")
 
@@ -171,6 +174,14 @@ class GetDatabaseResult:
         See Argument Reference above.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipRestrictions")
+    def ip_restrictions(self) -> Sequence['outputs.GetDatabaseIpRestrictionResult']:
+        """
+        IP Blocks authorized to access to the cluster.
+        """
+        return pulumi.get(self, "ip_restrictions")
 
     @property
     @pulumi.getter(name="kafkaRestApi")
@@ -259,6 +270,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             engine=self.engine,
             flavor=self.flavor,
             id=self.id,
+            ip_restrictions=self.ip_restrictions,
             kafka_rest_api=self.kafka_rest_api,
             maintenance_time=self.maintenance_time,
             network_type=self.network_type,
@@ -319,6 +331,7 @@ def get_database(engine: Optional[str] = None,
         engine=pulumi.get(__ret__, 'engine'),
         flavor=pulumi.get(__ret__, 'flavor'),
         id=pulumi.get(__ret__, 'id'),
+        ip_restrictions=pulumi.get(__ret__, 'ip_restrictions'),
         kafka_rest_api=pulumi.get(__ret__, 'kafka_rest_api'),
         maintenance_time=pulumi.get(__ret__, 'maintenance_time'),
         network_type=pulumi.get(__ret__, 'network_type'),

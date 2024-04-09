@@ -22,8 +22,8 @@ class MoveArgs:
         """
         The set of arguments for constructing a Move resource.
         :param pulumi.Input[str] ip: IP block that we want to attach to a different service
-        :param pulumi.Input['MoveRoutedToArgs'] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/park~POST)
-               instead of [moved](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/move~POST)
+        :param pulumi.Input['MoveRoutedToArgs'] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+               instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         :param pulumi.Input[str] description: Description attached to the IP
         """
         pulumi.set(__self__, "ip", ip)
@@ -47,8 +47,8 @@ class MoveArgs:
     @pulumi.getter(name="routedTo")
     def routed_to(self) -> pulumi.Input['MoveRoutedToArgs']:
         """
-        Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/park~POST)
-        instead of [moved](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/move~POST)
+        Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         """
         return pulumi.get(self, "routed_to")
 
@@ -89,8 +89,8 @@ class _MoveState:
         :param pulumi.Input[str] description: Description attached to the IP
         :param pulumi.Input[str] ip: IP block that we want to attach to a different service
         :param pulumi.Input[str] organisation_id: IP block organisation Id
-        :param pulumi.Input['MoveRoutedToArgs'] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/park~POST)
-               instead of [moved](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/move~POST)
+        :param pulumi.Input['MoveRoutedToArgs'] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+               instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         :param pulumi.Input[str] service_name: Name of the service to route the IP to. IP will be parked if this value is an empty string
         :param pulumi.Input[str] task_start_date: Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
         :param pulumi.Input[str] task_status: Status field of the current IP task that is in charge of changing the service the IP is attached to
@@ -181,8 +181,8 @@ class _MoveState:
     @pulumi.getter(name="routedTo")
     def routed_to(self) -> Optional[pulumi.Input['MoveRoutedToArgs']]:
         """
-        Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/park~POST)
-        instead of [moved](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/move~POST)
+        Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         """
         return pulumi.get(self, "routed_to")
 
@@ -285,8 +285,8 @@ class Move(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description attached to the IP
         :param pulumi.Input[str] ip: IP block that we want to attach to a different service
-        :param pulumi.Input[pulumi.InputType['MoveRoutedToArgs']] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/park~POST)
-               instead of [moved](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/move~POST)
+        :param pulumi.Input[pulumi.InputType['MoveRoutedToArgs']] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+               instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         """
         ...
     @overload
@@ -400,8 +400,8 @@ class Move(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description attached to the IP
         :param pulumi.Input[str] ip: IP block that we want to attach to a different service
         :param pulumi.Input[str] organisation_id: IP block organisation Id
-        :param pulumi.Input[pulumi.InputType['MoveRoutedToArgs']] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/park~POST)
-               instead of [moved](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/move~POST)
+        :param pulumi.Input[pulumi.InputType['MoveRoutedToArgs']] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+               instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         :param pulumi.Input[str] service_name: Name of the service to route the IP to. IP will be parked if this value is an empty string
         :param pulumi.Input[str] task_start_date: Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
         :param pulumi.Input[str] task_status: Status field of the current IP task that is in charge of changing the service the IP is attached to
@@ -467,8 +467,8 @@ class Move(pulumi.CustomResource):
     @pulumi.getter(name="routedTo")
     def routed_to(self) -> pulumi.Output['outputs.MoveRoutedTo']:
         """
-        Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/park~POST)
-        instead of [moved](https://api.ovh.com/console/#/ip/%!B(MISSING)ip%!D(MISSING)/move~POST)
+        Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         """
         return pulumi.get(self, "routed_to")
 

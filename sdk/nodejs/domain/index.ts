@@ -10,10 +10,20 @@ export const getZone: typeof import("./getZone").getZone = null as any;
 export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
 utilities.lazyLoad(exports, ["getZone","getZoneOutput"], () => require("./getZone"));
 
+export { GetZoneDNSSecArgs, GetZoneDNSSecResult, GetZoneDNSSecOutputArgs } from "./getZoneDNSSec";
+export const getZoneDNSSec: typeof import("./getZoneDNSSec").getZoneDNSSec = null as any;
+export const getZoneDNSSecOutput: typeof import("./getZoneDNSSec").getZoneDNSSecOutput = null as any;
+utilities.lazyLoad(exports, ["getZoneDNSSec","getZoneDNSSecOutput"], () => require("./getZoneDNSSec"));
+
 export { ZoneArgs, ZoneState } from "./zone";
 export type Zone = import("./zone").Zone;
 export const Zone: typeof import("./zone").Zone = null as any;
 utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
+
+export { ZoneDNSSecArgs, ZoneDNSSecState } from "./zoneDNSSec";
+export type ZoneDNSSec = import("./zoneDNSSec").ZoneDNSSec;
+export const ZoneDNSSec: typeof import("./zoneDNSSec").ZoneDNSSec = null as any;
+utilities.lazyLoad(exports, ["ZoneDNSSec"], () => require("./zoneDNSSec"));
 
 export { ZoneRecordArgs, ZoneRecordState } from "./zoneRecord";
 export type ZoneRecord = import("./zoneRecord").ZoneRecord;
@@ -32,6 +42,8 @@ const _module = {
         switch (type) {
             case "ovh:Domain/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
+            case "ovh:Domain/zoneDNSSec:ZoneDNSSec":
+                return new ZoneDNSSec(name, <any>undefined, { urn })
             case "ovh:Domain/zoneRecord:ZoneRecord":
                 return new ZoneRecord(name, <any>undefined, { urn })
             case "ovh:Domain/zoneRedirection:ZoneRedirection":
@@ -42,5 +54,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("ovh", "Domain/zone", _module)
+pulumi.runtime.registerResourceModule("ovh", "Domain/zoneDNSSec", _module)
 pulumi.runtime.registerResourceModule("ovh", "Domain/zoneRecord", _module)
 pulumi.runtime.registerResourceModule("ovh", "Domain/zoneRedirection", _module)

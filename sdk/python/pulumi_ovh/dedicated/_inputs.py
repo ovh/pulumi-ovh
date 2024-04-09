@@ -17,47 +17,32 @@ __all__ = [
 @pulumi.input_type
 class ServerInstallTaskDetailsArgs:
     def __init__(__self__, *,
-                 change_log: Optional[pulumi.Input[str]] = None,
                  custom_hostname: Optional[pulumi.Input[str]] = None,
                  disk_group_id: Optional[pulumi.Input[int]] = None,
-                 install_rtm: Optional[pulumi.Input[bool]] = None,
                  install_sql_server: Optional[pulumi.Input[bool]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  no_raid: Optional[pulumi.Input[bool]] = None,
                  post_installation_script_link: Optional[pulumi.Input[str]] = None,
                  post_installation_script_return: Optional[pulumi.Input[str]] = None,
-                 reset_hw_raid: Optional[pulumi.Input[bool]] = None,
                  soft_raid_devices: Optional[pulumi.Input[int]] = None,
                  ssh_key_name: Optional[pulumi.Input[str]] = None,
-                 use_distrib_kernel: Optional[pulumi.Input[bool]] = None,
                  use_spla: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] change_log: Template change log details.
         :param pulumi.Input[str] custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param pulumi.Input[int] disk_group_id: Disk group id.
-        :param pulumi.Input[bool] install_rtm: set to true to install RTM.
         :param pulumi.Input[bool] install_sql_server: set to true to install sql server (Windows template only).
         :param pulumi.Input[str] language: language.
         :param pulumi.Input[bool] no_raid: set to true to disable RAID.
         :param pulumi.Input[str] post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
         :param pulumi.Input[str] post_installation_script_return: Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        :param pulumi.Input[bool] reset_hw_raid: set to true to make a hardware raid reset.
         :param pulumi.Input[int] soft_raid_devices: soft raid devices.
         :param pulumi.Input[str] ssh_key_name: Name of the ssh key that should be installed. Password login will be disabled.
-        :param pulumi.Input[bool] use_distrib_kernel: Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
         :param pulumi.Input[bool] use_spla: set to true to use SPLA.
         """
-        if change_log is not None:
-            warnings.warn("""field is not used anymore""", DeprecationWarning)
-            pulumi.log.warn("""change_log is deprecated: field is not used anymore""")
-        if change_log is not None:
-            pulumi.set(__self__, "change_log", change_log)
         if custom_hostname is not None:
             pulumi.set(__self__, "custom_hostname", custom_hostname)
         if disk_group_id is not None:
             pulumi.set(__self__, "disk_group_id", disk_group_id)
-        if install_rtm is not None:
-            pulumi.set(__self__, "install_rtm", install_rtm)
         if install_sql_server is not None:
             pulumi.set(__self__, "install_sql_server", install_sql_server)
         if language is not None:
@@ -68,31 +53,12 @@ class ServerInstallTaskDetailsArgs:
             pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
         if post_installation_script_return is not None:
             pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
-        if reset_hw_raid is not None:
-            pulumi.set(__self__, "reset_hw_raid", reset_hw_raid)
         if soft_raid_devices is not None:
             pulumi.set(__self__, "soft_raid_devices", soft_raid_devices)
         if ssh_key_name is not None:
             pulumi.set(__self__, "ssh_key_name", ssh_key_name)
-        if use_distrib_kernel is not None:
-            pulumi.set(__self__, "use_distrib_kernel", use_distrib_kernel)
         if use_spla is not None:
             pulumi.set(__self__, "use_spla", use_spla)
-
-    @property
-    @pulumi.getter(name="changeLog")
-    def change_log(self) -> Optional[pulumi.Input[str]]:
-        """
-        Template change log details.
-        """
-        warnings.warn("""field is not used anymore""", DeprecationWarning)
-        pulumi.log.warn("""change_log is deprecated: field is not used anymore""")
-
-        return pulumi.get(self, "change_log")
-
-    @change_log.setter
-    def change_log(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "change_log", value)
 
     @property
     @pulumi.getter(name="customHostname")
@@ -117,18 +83,6 @@ class ServerInstallTaskDetailsArgs:
     @disk_group_id.setter
     def disk_group_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_group_id", value)
-
-    @property
-    @pulumi.getter(name="installRtm")
-    def install_rtm(self) -> Optional[pulumi.Input[bool]]:
-        """
-        set to true to install RTM.
-        """
-        return pulumi.get(self, "install_rtm")
-
-    @install_rtm.setter
-    def install_rtm(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "install_rtm", value)
 
     @property
     @pulumi.getter(name="installSqlServer")
@@ -191,18 +145,6 @@ class ServerInstallTaskDetailsArgs:
         pulumi.set(self, "post_installation_script_return", value)
 
     @property
-    @pulumi.getter(name="resetHwRaid")
-    def reset_hw_raid(self) -> Optional[pulumi.Input[bool]]:
-        """
-        set to true to make a hardware raid reset.
-        """
-        return pulumi.get(self, "reset_hw_raid")
-
-    @reset_hw_raid.setter
-    def reset_hw_raid(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "reset_hw_raid", value)
-
-    @property
     @pulumi.getter(name="softRaidDevices")
     def soft_raid_devices(self) -> Optional[pulumi.Input[int]]:
         """
@@ -225,18 +167,6 @@ class ServerInstallTaskDetailsArgs:
     @ssh_key_name.setter
     def ssh_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssh_key_name", value)
-
-    @property
-    @pulumi.getter(name="useDistribKernel")
-    def use_distrib_kernel(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-        """
-        return pulumi.get(self, "use_distrib_kernel")
-
-    @use_distrib_kernel.setter
-    def use_distrib_kernel(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "use_distrib_kernel", value)
 
     @property
     @pulumi.getter(name="useSpla")

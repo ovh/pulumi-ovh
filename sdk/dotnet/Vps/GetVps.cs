@@ -107,8 +107,6 @@ namespace Pulumi.Ovh.Vps
         public readonly string Cluster;
         /// <summary>
         /// The datacenter in which the vps is located
-        /// * `datacenter.longname` - The fullname of the datacenter (ex: "Strasbourg SBG1")
-        /// * `datacenter.name` - The short name of the datacenter (ex: "sbg1)
         /// </summary>
         public readonly ImmutableDictionary<string, string> Datacenter;
         /// <summary>
@@ -133,9 +131,6 @@ namespace Pulumi.Ovh.Vps
         public readonly int Memory;
         /// <summary>
         /// A dict describing the type of vps.
-        /// * `model.name` - The model name (ex: model1)
-        /// * `model.offer` - The model human description (ex: "VPS 2016 SSD 1")
-        /// * `model.version` - The model version (ex: "2017v2")
         /// </summary>
         public readonly ImmutableDictionary<string, string> Model;
         public readonly string Name;

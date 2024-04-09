@@ -46,8 +46,7 @@ namespace Pulumi.Ovh.Dedicated
     public partial class NasHAPartition : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Percentage of partition space used in %!
-        /// (MISSING)
+        /// Percentage of partition space used in %
         /// </summary>
         [Output("capacity")]
         public Output<int> Capacity { get; private set; } = null!;
@@ -83,8 +82,7 @@ namespace Pulumi.Ovh.Dedicated
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// Percentage of partition space used by snapshots in %!
-        /// (MISSING)
+        /// Percentage of partition space used by snapshots in %
         /// </summary>
         [Output("usedBySnapshots")]
         public Output<int> UsedBySnapshots { get; private set; } = null!;
@@ -175,8 +173,7 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class NasHAPartitionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Percentage of partition space used in %!
-        /// (MISSING)
+        /// Percentage of partition space used in %
         /// </summary>
         [Input("capacity")]
         public Input<int>? Capacity { get; set; }
@@ -212,8 +209,7 @@ namespace Pulumi.Ovh.Dedicated
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// Percentage of partition space used by snapshots in %!
-        /// (MISSING)
+        /// Percentage of partition space used by snapshots in %
         /// </summary>
         [Input("usedBySnapshots")]
         public Input<int>? UsedBySnapshots { get; set; }

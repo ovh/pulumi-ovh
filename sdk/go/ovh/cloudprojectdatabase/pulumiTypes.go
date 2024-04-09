@@ -760,6 +760,121 @@ func (o GetDatabaseEndpointArrayOutput) Index(i pulumi.IntInput) GetDatabaseEndp
 	}).(GetDatabaseEndpointOutput)
 }
 
+type GetDatabaseIpRestriction struct {
+	// Description of the IP restriction
+	Description string `pulumi:"description"`
+	// Authorized IP
+	Ip string `pulumi:"ip"`
+	// Current status of the cluster.
+	Status string `pulumi:"status"`
+}
+
+// GetDatabaseIpRestrictionInput is an input type that accepts GetDatabaseIpRestrictionArgs and GetDatabaseIpRestrictionOutput values.
+// You can construct a concrete instance of `GetDatabaseIpRestrictionInput` via:
+//
+//	GetDatabaseIpRestrictionArgs{...}
+type GetDatabaseIpRestrictionInput interface {
+	pulumi.Input
+
+	ToGetDatabaseIpRestrictionOutput() GetDatabaseIpRestrictionOutput
+	ToGetDatabaseIpRestrictionOutputWithContext(context.Context) GetDatabaseIpRestrictionOutput
+}
+
+type GetDatabaseIpRestrictionArgs struct {
+	// Description of the IP restriction
+	Description pulumi.StringInput `pulumi:"description"`
+	// Authorized IP
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Current status of the cluster.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetDatabaseIpRestrictionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseIpRestriction)(nil)).Elem()
+}
+
+func (i GetDatabaseIpRestrictionArgs) ToGetDatabaseIpRestrictionOutput() GetDatabaseIpRestrictionOutput {
+	return i.ToGetDatabaseIpRestrictionOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseIpRestrictionArgs) ToGetDatabaseIpRestrictionOutputWithContext(ctx context.Context) GetDatabaseIpRestrictionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseIpRestrictionOutput)
+}
+
+// GetDatabaseIpRestrictionArrayInput is an input type that accepts GetDatabaseIpRestrictionArray and GetDatabaseIpRestrictionArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseIpRestrictionArrayInput` via:
+//
+//	GetDatabaseIpRestrictionArray{ GetDatabaseIpRestrictionArgs{...} }
+type GetDatabaseIpRestrictionArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseIpRestrictionArrayOutput() GetDatabaseIpRestrictionArrayOutput
+	ToGetDatabaseIpRestrictionArrayOutputWithContext(context.Context) GetDatabaseIpRestrictionArrayOutput
+}
+
+type GetDatabaseIpRestrictionArray []GetDatabaseIpRestrictionInput
+
+func (GetDatabaseIpRestrictionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseIpRestriction)(nil)).Elem()
+}
+
+func (i GetDatabaseIpRestrictionArray) ToGetDatabaseIpRestrictionArrayOutput() GetDatabaseIpRestrictionArrayOutput {
+	return i.ToGetDatabaseIpRestrictionArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseIpRestrictionArray) ToGetDatabaseIpRestrictionArrayOutputWithContext(ctx context.Context) GetDatabaseIpRestrictionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseIpRestrictionArrayOutput)
+}
+
+type GetDatabaseIpRestrictionOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseIpRestrictionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseIpRestriction)(nil)).Elem()
+}
+
+func (o GetDatabaseIpRestrictionOutput) ToGetDatabaseIpRestrictionOutput() GetDatabaseIpRestrictionOutput {
+	return o
+}
+
+func (o GetDatabaseIpRestrictionOutput) ToGetDatabaseIpRestrictionOutputWithContext(ctx context.Context) GetDatabaseIpRestrictionOutput {
+	return o
+}
+
+// Description of the IP restriction
+func (o GetDatabaseIpRestrictionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseIpRestriction) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Authorized IP
+func (o GetDatabaseIpRestrictionOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseIpRestriction) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Current status of the cluster.
+func (o GetDatabaseIpRestrictionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseIpRestriction) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDatabaseIpRestrictionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseIpRestrictionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseIpRestriction)(nil)).Elem()
+}
+
+func (o GetDatabaseIpRestrictionArrayOutput) ToGetDatabaseIpRestrictionArrayOutput() GetDatabaseIpRestrictionArrayOutput {
+	return o
+}
+
+func (o GetDatabaseIpRestrictionArrayOutput) ToGetDatabaseIpRestrictionArrayOutputWithContext(ctx context.Context) GetDatabaseIpRestrictionArrayOutput {
+	return o
+}
+
+func (o GetDatabaseIpRestrictionArrayOutput) Index(i pulumi.IntInput) GetDatabaseIpRestrictionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseIpRestriction {
+		return vs[0].([]GetDatabaseIpRestriction)[vs[1].(int)]
+	}).(GetDatabaseIpRestrictionOutput)
+}
+
 type GetDatabaseNode struct {
 	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
 	NetworkId string `pulumi:"networkId"`
@@ -888,6 +1003,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCapabilitiesPlanArrayInput)(nil)).Elem(), GetCapabilitiesPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEndpointInput)(nil)).Elem(), GetDatabaseEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEndpointArrayInput)(nil)).Elem(), GetDatabaseEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseIpRestrictionInput)(nil)).Elem(), GetDatabaseIpRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseIpRestrictionArrayInput)(nil)).Elem(), GetDatabaseIpRestrictionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseNodeInput)(nil)).Elem(), GetDatabaseNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseNodeArrayInput)(nil)).Elem(), GetDatabaseNodeArray{})
 	pulumi.RegisterOutputType(OpensearchUserAclOutput{})
@@ -902,6 +1019,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCapabilitiesPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEndpointOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseIpRestrictionOutput{})
+	pulumi.RegisterOutputType(GetDatabaseIpRestrictionArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseNodeOutput{})
 	pulumi.RegisterOutputType(GetDatabaseNodeArrayOutput{})
 }

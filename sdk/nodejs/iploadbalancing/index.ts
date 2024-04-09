@@ -75,6 +75,11 @@ export type TcpRouteRule = import("./tcpRouteRule").TcpRouteRule;
 export const TcpRouteRule: typeof import("./tcpRouteRule").TcpRouteRule = null as any;
 utilities.lazyLoad(exports, ["TcpRouteRule"], () => require("./tcpRouteRule"));
 
+export { UdpFrontendArgs, UdpFrontendState } from "./udpFrontend";
+export type UdpFrontend = import("./udpFrontend").UdpFrontend;
+export const UdpFrontend: typeof import("./udpFrontend").UdpFrontend = null as any;
+utilities.lazyLoad(exports, ["UdpFrontend"], () => require("./udpFrontend"));
+
 export { VrackNetworkArgs, VrackNetworkState } from "./vrackNetwork";
 export type VrackNetwork = import("./vrackNetwork").VrackNetwork;
 export const VrackNetwork: typeof import("./vrackNetwork").VrackNetwork = null as any;
@@ -109,6 +114,8 @@ const _module = {
                 return new TcpRoute(name, <any>undefined, { urn })
             case "ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule":
                 return new TcpRouteRule(name, <any>undefined, { urn })
+            case "ovh:IpLoadBalancing/udpFrontend:UdpFrontend":
+                return new UdpFrontend(name, <any>undefined, { urn })
             case "ovh:IpLoadBalancing/vrackNetwork:VrackNetwork":
                 return new VrackNetwork(name, <any>undefined, { urn })
             default:
@@ -128,4 +135,5 @@ pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/tcpFarmServer", _m
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/tcpFrontend", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/tcpRoute", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/tcpRouteRule", _module)
+pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/udpFrontend", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/vrackNetwork", _module)

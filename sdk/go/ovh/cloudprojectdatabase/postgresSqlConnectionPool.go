@@ -45,7 +45,7 @@ type PostgresSqlConnectionPool struct {
 	// Connection URI to the pool.
 	Uri pulumi.StringOutput `pulumi:"uri"`
 	// Database user authorized to connect to the pool, if none all the users are allowed.
-	UserId pulumi.StringPtrOutput `pulumi:"userId"`
+	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
 // NewPostgresSqlConnectionPool registers a new resource with the given unique name, arguments, and options.
@@ -320,8 +320,8 @@ func (o PostgresSqlConnectionPoolOutput) Uri() pulumi.StringOutput {
 }
 
 // Database user authorized to connect to the pool, if none all the users are allowed.
-func (o PostgresSqlConnectionPoolOutput) UserId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PostgresSqlConnectionPool) pulumi.StringPtrOutput { return v.UserId }).(pulumi.StringPtrOutput)
+func (o PostgresSqlConnectionPoolOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PostgresSqlConnectionPool) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }
 
 type PostgresSqlConnectionPoolArrayOutput struct{ *pulumi.OutputState }

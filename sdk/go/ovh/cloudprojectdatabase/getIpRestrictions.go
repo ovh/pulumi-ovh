@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use the list of IP restrictions associated with a public cloud project.
+// Deprecated: Use ipRestrictions field in cloudProjectDatabase datasource instead.
+//
+// Use this data source to get the list of IP restrictions associated with a public cloud project.
 //
 // ## Example Usage
 //

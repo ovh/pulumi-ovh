@@ -79,8 +79,7 @@ export interface GetNasHAResult {
      */
     readonly serviceName: string;
     /**
-     * percentage of HA-NAS space used in %!
-     * (MISSING)
+     * percentage of HA-NAS space used in %
      */
     readonly zpoolCapacity: number;
     /**

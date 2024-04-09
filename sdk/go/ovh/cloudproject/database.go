@@ -155,6 +155,16 @@ import (
 //					},
 //				},
 //				Flavor: pulumi.String("db1-4"),
+//				IpRestrictions: cloudproject.DatabaseIpRestrictionArray{
+//					&cloudproject.DatabaseIpRestrictionArgs{
+//						Description: pulumi.String("ip 1"),
+//						Ip:          pulumi.String("178.97.6.0/24"),
+//					},
+//					&cloudproject.DatabaseIpRestrictionArgs{
+//						Description: pulumi.String("ip 2"),
+//						Ip:          pulumi.String("178.97.7.0/24"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -309,7 +319,7 @@ type Database struct {
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Small description of the database service.
+	// Description of the IP restriction
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The disk size (in GB) of the database service.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
@@ -324,6 +334,8 @@ type Database struct {
 	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
 	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor pulumi.StringOutput `pulumi:"flavor"`
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions DatabaseIpRestrictionArrayOutput `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi pulumi.BoolPtrOutput `pulumi:"kafkaRestApi"`
 	// Time on which maintenances can start every day.
@@ -406,7 +418,7 @@ type databaseState struct {
 	BackupTime *string `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Small description of the database service.
+	// Description of the IP restriction
 	Description *string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
 	DiskSize *int `pulumi:"diskSize"`
@@ -421,6 +433,8 @@ type databaseState struct {
 	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
 	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor *string `pulumi:"flavor"`
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions []DatabaseIpRestriction `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi *bool `pulumi:"kafkaRestApi"`
 	// Time on which maintenances can start every day.
@@ -456,7 +470,7 @@ type DatabaseState struct {
 	BackupTime pulumi.StringPtrInput
 	// Date of the creation of the cluster.
 	CreatedAt pulumi.StringPtrInput
-	// Small description of the database service.
+	// Description of the IP restriction
 	Description pulumi.StringPtrInput
 	// The disk size (in GB) of the database service.
 	DiskSize pulumi.IntPtrInput
@@ -471,6 +485,8 @@ type DatabaseState struct {
 	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
 	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor pulumi.StringPtrInput
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions DatabaseIpRestrictionArrayInput
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi pulumi.BoolPtrInput
 	// Time on which maintenances can start every day.
@@ -508,7 +524,7 @@ type databaseArgs struct {
 	BackupRegions []string `pulumi:"backupRegions"`
 	// Time on which backups start every day.
 	BackupTime *string `pulumi:"backupTime"`
-	// Small description of the database service.
+	// Description of the IP restriction
 	Description *string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
 	DiskSize *int `pulumi:"diskSize"`
@@ -519,6 +535,8 @@ type databaseArgs struct {
 	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
 	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor string `pulumi:"flavor"`
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions []DatabaseIpRestriction `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi *bool `pulumi:"kafkaRestApi"`
 	// List of nodes object.
@@ -547,7 +565,7 @@ type DatabaseArgs struct {
 	BackupRegions pulumi.StringArrayInput
 	// Time on which backups start every day.
 	BackupTime pulumi.StringPtrInput
-	// Small description of the database service.
+	// Description of the IP restriction
 	Description pulumi.StringPtrInput
 	// The disk size (in GB) of the database service.
 	DiskSize pulumi.IntPtrInput
@@ -558,6 +576,8 @@ type DatabaseArgs struct {
 	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
 	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor pulumi.StringInput
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions DatabaseIpRestrictionArrayInput
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi pulumi.BoolPtrInput
 	// List of nodes object.
@@ -685,7 +705,7 @@ func (o DatabaseOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Small description of the database service.
+// Description of the IP restriction
 func (o DatabaseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -716,6 +736,11 @@ func (o DatabaseOutput) Engine() pulumi.StringOutput {
 // You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 func (o DatabaseOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Flavor }).(pulumi.StringOutput)
+}
+
+// IP Blocks authorized to access to the cluster.
+func (o DatabaseOutput) IpRestrictions() DatabaseIpRestrictionArrayOutput {
+	return o.ApplyT(func(v *Database) DatabaseIpRestrictionArrayOutput { return v.IpRestrictions }).(DatabaseIpRestrictionArrayOutput)
 }
 
 // Defines whether the REST API is enabled on a kafka cluster

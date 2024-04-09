@@ -76,8 +76,7 @@ type GetNasHAResult struct {
 	Monitored bool `pulumi:"monitored"`
 	// The storage service name
 	ServiceName string `pulumi:"serviceName"`
-	// percentage of HA-NAS space used in %!
-	// (MISSING)
+	// percentage of HA-NAS space used in %
 	ZpoolCapacity float64 `pulumi:"zpoolCapacity"`
 	// the size of the HA-NAS in GB
 	ZpoolSize float64 `pulumi:"zpoolSize"`
@@ -166,8 +165,7 @@ func (o GetNasHAResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasHAResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// percentage of HA-NAS space used in %!
-// (MISSING)
+// percentage of HA-NAS space used in %
 func (o GetNasHAResultOutput) ZpoolCapacity() pulumi.Float64Output {
 	return o.ApplyT(func(v GetNasHAResult) float64 { return v.ZpoolCapacity }).(pulumi.Float64Output)
 }

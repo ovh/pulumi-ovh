@@ -54,8 +54,7 @@ import (
 type NasHAPartition struct {
 	pulumi.CustomResourceState
 
-	// Percentage of partition space used in %!
-	// (MISSING)
+	// Percentage of partition space used in %
 	Capacity pulumi.IntOutput `pulumi:"capacity"`
 	// A brief description of the partition
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -67,8 +66,7 @@ type NasHAPartition struct {
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// size of the partition in GB
 	Size pulumi.IntOutput `pulumi:"size"`
-	// Percentage of partition space used by snapshots in %!
-	// (MISSING)
+	// Percentage of partition space used by snapshots in %
 	UsedBySnapshots pulumi.IntOutput `pulumi:"usedBySnapshots"`
 }
 
@@ -111,8 +109,7 @@ func GetNasHAPartition(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NasHAPartition resources.
 type nasHAPartitionState struct {
-	// Percentage of partition space used in %!
-	// (MISSING)
+	// Percentage of partition space used in %
 	Capacity *int `pulumi:"capacity"`
 	// A brief description of the partition
 	Description *string `pulumi:"description"`
@@ -124,14 +121,12 @@ type nasHAPartitionState struct {
 	ServiceName *string `pulumi:"serviceName"`
 	// size of the partition in GB
 	Size *int `pulumi:"size"`
-	// Percentage of partition space used by snapshots in %!
-	// (MISSING)
+	// Percentage of partition space used by snapshots in %
 	UsedBySnapshots *int `pulumi:"usedBySnapshots"`
 }
 
 type NasHAPartitionState struct {
-	// Percentage of partition space used in %!
-	// (MISSING)
+	// Percentage of partition space used in %
 	Capacity pulumi.IntPtrInput
 	// A brief description of the partition
 	Description pulumi.StringPtrInput
@@ -143,8 +138,7 @@ type NasHAPartitionState struct {
 	ServiceName pulumi.StringPtrInput
 	// size of the partition in GB
 	Size pulumi.IntPtrInput
-	// Percentage of partition space used by snapshots in %!
-	// (MISSING)
+	// Percentage of partition space used by snapshots in %
 	UsedBySnapshots pulumi.IntPtrInput
 }
 
@@ -266,8 +260,7 @@ func (o NasHAPartitionOutput) ToNasHAPartitionOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Percentage of partition space used in %!
-// (MISSING)
+// Percentage of partition space used in %
 func (o NasHAPartitionOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v *NasHAPartition) pulumi.IntOutput { return v.Capacity }).(pulumi.IntOutput)
 }
@@ -297,8 +290,7 @@ func (o NasHAPartitionOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *NasHAPartition) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// Percentage of partition space used by snapshots in %!
-// (MISSING)
+// Percentage of partition space used by snapshots in %
 func (o NasHAPartitionOutput) UsedBySnapshots() pulumi.IntOutput {
 	return o.ApplyT(func(v *NasHAPartition) pulumi.IntOutput { return v.UsedBySnapshots }).(pulumi.IntOutput)
 }

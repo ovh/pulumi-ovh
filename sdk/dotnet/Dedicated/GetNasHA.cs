@@ -134,8 +134,7 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// percentage of HA-NAS space used in %!
-        /// (MISSING)
+        /// percentage of HA-NAS space used in %
         /// </summary>
         public readonly double ZpoolCapacity;
         /// <summary>

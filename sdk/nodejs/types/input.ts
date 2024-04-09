@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export namespace Cloud {
+}
+
 export namespace CloudProject {
     export interface AlertingFormattedMonthlyThreshold {
         /**
@@ -103,6 +106,21 @@ export namespace CloudProject {
          * URI of the endpoint.
          */
         uri?: pulumi.Input<string>;
+    }
+
+    export interface DatabaseIpRestriction {
+        /**
+         * Description of the IP restriction
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Authorized IP
+         */
+        ip?: pulumi.Input<string>;
+        /**
+         * Current status of the cluster.
+         */
+        status?: pulumi.Input<string>;
     }
 
     export interface DatabaseNode {
@@ -725,12 +743,6 @@ export namespace Dbaas {
 export namespace Dedicated {
     export interface ServerInstallTaskDetails {
         /**
-         * Template change log details.
-         *
-         * @deprecated field is not used anymore
-         */
-        changeLog?: pulumi.Input<string>;
-        /**
          * Set up the server using the provided hostname instead of the default hostname.
          */
         customHostname?: pulumi.Input<string>;
@@ -738,10 +750,6 @@ export namespace Dedicated {
          * Disk group id.
          */
         diskGroupId?: pulumi.Input<number>;
-        /**
-         * set to true to install RTM.
-         */
-        installRtm?: pulumi.Input<boolean>;
         /**
          * set to true to install sql server (Windows template only).
          */
@@ -763,10 +771,6 @@ export namespace Dedicated {
          */
         postInstallationScriptReturn?: pulumi.Input<string>;
         /**
-         * set to true to make a hardware raid reset.
-         */
-        resetHwRaid?: pulumi.Input<boolean>;
-        /**
          * soft raid devices.
          */
         softRaidDevices?: pulumi.Input<number>;
@@ -774,10 +778,6 @@ export namespace Dedicated {
          * Name of the ssh key that should be installed. Password login will be disabled.
          */
         sshKeyName?: pulumi.Input<string>;
-        /**
-         * Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-         */
-        useDistribKernel?: pulumi.Input<boolean>;
         /**
          * set to true to use SPLA.
          */
@@ -1421,12 +1421,6 @@ export namespace IpLoadBalancing {
 export namespace Me {
     export interface InstallationTemplateCustomization {
         /**
-         * Template change log details.
-         *
-         * @deprecated field is not used anymore
-         */
-        changeLog?: pulumi.Input<string>;
-        /**
          * Set up the server using the provided hostname instead of the default hostname.
          */
         customHostname?: pulumi.Input<string>;
@@ -1448,14 +1442,164 @@ export namespace Me {
          * Name of the ssh key that should be installed. Password login will be disabled.
          */
         sshKeyName?: pulumi.Input<string>;
-        /**
-         * Use the distribution's native kernel instead of the recommended OV
-         */
-        useDistributionKernel?: pulumi.Input<boolean>;
     }
 }
 
 export namespace Order {
+}
+
+export namespace Vps {
+    export interface VpsIam {
+        /**
+         * Custom display name
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn?: pulumi.Input<string>;
+    }
+
+    export interface VpsModel {
+        /**
+         * All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
+         */
+        availableOptions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Datacenters where this model is available
+         */
+        datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Disk capacity of this VPS
+         */
+        disk?: pulumi.Input<number>;
+        /**
+         * Maximum number of additional IPs
+         */
+        maximumAdditionnalIp?: pulumi.Input<number>;
+        /**
+         * RAM of the VPS
+         */
+        memory?: pulumi.Input<number>;
+        /**
+         * Name of the VPS
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Description of this VPS offer
+         */
+        offer?: pulumi.Input<string>;
+        /**
+         * Number of vcores
+         */
+        vcore?: pulumi.Input<number>;
+        /**
+         * All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface VpsOrder {
+        date?: pulumi.Input<string>;
+        details?: pulumi.Input<pulumi.Input<inputs.Vps.VpsOrderDetail>[]>;
+        expirationDate?: pulumi.Input<string>;
+        orderId?: pulumi.Input<number>;
+    }
+
+    export interface VpsOrderDetail {
+        description?: pulumi.Input<string>;
+        /**
+         * Product type of item in order
+         */
+        detailType?: pulumi.Input<string>;
+        domain?: pulumi.Input<string>;
+        orderDetailId?: pulumi.Input<number>;
+        quantity?: pulumi.Input<string>;
+    }
+
+    export interface VpsPlan {
+        /**
+         * Representation of a configuration item for personalizing product
+         */
+        configurations?: pulumi.Input<pulumi.Input<inputs.Vps.VpsPlanConfiguration>[]>;
+        /**
+         * duration
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Cart item to be linked
+         */
+        itemId?: pulumi.Input<number>;
+        /**
+         * Plan code
+         */
+        planCode: pulumi.Input<string>;
+        /**
+         * Pricing model identifier
+         */
+        pricingMode: pulumi.Input<string>;
+        /**
+         * Quantity of product desired
+         */
+        quantity?: pulumi.Input<number>;
+    }
+
+    export interface VpsPlanConfiguration {
+        /**
+         * Identifier of the resource
+         */
+        label: pulumi.Input<string>;
+        /**
+         * Path to the resource in api.ovh.com
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface VpsPlanOption {
+        /**
+         * Representation of a configuration item for personalizing product
+         */
+        configurations?: pulumi.Input<pulumi.Input<inputs.Vps.VpsPlanOptionConfiguration>[]>;
+        /**
+         * duration
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Cart item to be linked
+         */
+        itemId: pulumi.Input<number>;
+        /**
+         * Plan code
+         */
+        planCode: pulumi.Input<string>;
+        /**
+         * Pricing model identifier
+         */
+        pricingMode: pulumi.Input<string>;
+        /**
+         * Quantity of product desired
+         */
+        quantity: pulumi.Input<number>;
+    }
+
+    export interface VpsPlanOptionConfiguration {
+        /**
+         * Identifier of the resource
+         */
+        label: pulumi.Input<string>;
+        /**
+         * Path to the resource in api.ovh.com
+         */
+        value: pulumi.Input<string>;
+    }
 }
 
 export namespace Vrack {

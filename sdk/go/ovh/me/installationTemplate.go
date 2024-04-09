@@ -87,10 +87,6 @@ type InstallationTemplate struct {
 	LvmReady pulumi.BoolOutput `pulumi:"lvmReady"`
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes pulumi.BoolOutput `pulumi:"removeDefaultPartitionSchemes"`
-	// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-	SupportsDistributionKernel pulumi.BoolOutput `pulumi:"supportsDistributionKernel"`
-	// This distribution supports RTM software.
-	SupportsRtm pulumi.BoolOutput `pulumi:"supportsRtm"`
 	// This distribution supports the microsoft SQL server.
 	SupportsSqlServer pulumi.BoolOutput `pulumi:"supportsSqlServer"`
 	// This template name.
@@ -167,10 +163,6 @@ type installationTemplateState struct {
 	LvmReady *bool `pulumi:"lvmReady"`
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes *bool `pulumi:"removeDefaultPartitionSchemes"`
-	// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-	SupportsDistributionKernel *bool `pulumi:"supportsDistributionKernel"`
-	// This distribution supports RTM software.
-	SupportsRtm *bool `pulumi:"supportsRtm"`
 	// This distribution supports the microsoft SQL server.
 	SupportsSqlServer *bool `pulumi:"supportsSqlServer"`
 	// This template name.
@@ -209,10 +201,6 @@ type InstallationTemplateState struct {
 	LvmReady pulumi.BoolPtrInput
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes pulumi.BoolPtrInput
-	// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-	SupportsDistributionKernel pulumi.BoolPtrInput
-	// This distribution supports RTM software.
-	SupportsRtm pulumi.BoolPtrInput
 	// This distribution supports the microsoft SQL server.
 	SupportsSqlServer pulumi.BoolPtrInput
 	// This template name.
@@ -412,16 +400,6 @@ func (o InstallationTemplateOutput) LvmReady() pulumi.BoolOutput {
 // Remove default partition schemes at creation.
 func (o InstallationTemplateOutput) RemoveDefaultPartitionSchemes() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.RemoveDefaultPartitionSchemes }).(pulumi.BoolOutput)
-}
-
-// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-func (o InstallationTemplateOutput) SupportsDistributionKernel() pulumi.BoolOutput {
-	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.SupportsDistributionKernel }).(pulumi.BoolOutput)
-}
-
-// This distribution supports RTM software.
-func (o InstallationTemplateOutput) SupportsRtm() pulumi.BoolOutput {
-	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.SupportsRtm }).(pulumi.BoolOutput)
 }
 
 // This distribution supports the microsoft SQL server.

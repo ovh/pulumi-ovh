@@ -37,7 +37,7 @@ type LogsOutputGraylogStream struct {
 	IndexingEnabled pulumi.BoolOutput `pulumi:"indexingEnabled"`
 	// Maximum indexing size (in GB)
 	IndexingMaxSize pulumi.IntOutput `pulumi:"indexingMaxSize"`
-	// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
+	// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
 	IndexingNotifyEnabled pulumi.BoolOutput `pulumi:"indexingNotifyEnabled"`
 	// Indicates if you are allowed to edit entry
 	IsEditable pulumi.BoolOutput `pulumi:"isEditable"`
@@ -126,7 +126,7 @@ type logsOutputGraylogStreamState struct {
 	IndexingEnabled *bool `pulumi:"indexingEnabled"`
 	// Maximum indexing size (in GB)
 	IndexingMaxSize *int `pulumi:"indexingMaxSize"`
-	// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
+	// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
 	IndexingNotifyEnabled *bool `pulumi:"indexingNotifyEnabled"`
 	// Indicates if you are allowed to edit entry
 	IsEditable *bool `pulumi:"isEditable"`
@@ -177,7 +177,7 @@ type LogsOutputGraylogStreamState struct {
 	IndexingEnabled pulumi.BoolPtrInput
 	// Maximum indexing size (in GB)
 	IndexingMaxSize pulumi.IntPtrInput
-	// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
+	// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
 	IndexingNotifyEnabled pulumi.BoolPtrInput
 	// Indicates if you are allowed to edit entry
 	IsEditable pulumi.BoolPtrInput
@@ -228,7 +228,7 @@ type logsOutputGraylogStreamArgs struct {
 	IndexingEnabled *bool `pulumi:"indexingEnabled"`
 	// Maximum indexing size (in GB)
 	IndexingMaxSize *int `pulumi:"indexingMaxSize"`
-	// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
+	// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
 	IndexingNotifyEnabled *bool `pulumi:"indexingNotifyEnabled"`
 	// Parent stream ID
 	ParentStreamId *string `pulumi:"parentStreamId"`
@@ -264,7 +264,7 @@ type LogsOutputGraylogStreamArgs struct {
 	IndexingEnabled pulumi.BoolPtrInput
 	// Maximum indexing size (in GB)
 	IndexingMaxSize pulumi.IntPtrInput
-	// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
+	// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
 	IndexingNotifyEnabled pulumi.BoolPtrInput
 	// Parent stream ID
 	ParentStreamId pulumi.StringPtrInput
@@ -422,7 +422,7 @@ func (o LogsOutputGraylogStreamOutput) IndexingMaxSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.IntOutput { return v.IndexingMaxSize }).(pulumi.IntOutput)
 }
 
-// If set, notify when size is near 80, 90 or 100 %!o(MISSING)f the maximum configured setting
+// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
 func (o LogsOutputGraylogStreamOutput) IndexingNotifyEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.BoolOutput { return v.IndexingNotifyEnabled }).(pulumi.BoolOutput)
 }

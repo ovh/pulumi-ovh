@@ -50,7 +50,7 @@ import (
 // HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
 //
 // ```sh
-// $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%!F(MISSING)32`
+// $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
 // ```
 type NasHAPartitionAccess struct {
 	pulumi.CustomResourceState

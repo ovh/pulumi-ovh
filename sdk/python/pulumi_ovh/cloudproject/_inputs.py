@@ -15,6 +15,7 @@ __all__ = [
     'ContainerRegistryPlanFeatureArgs',
     'ContainerRegistryPlanRegistryLimitArgs',
     'DatabaseEndpointArgs',
+    'DatabaseIpRestrictionArgs',
     'DatabaseNodeArgs',
     'KubeCustomizationArgs',
     'KubeCustomizationApiserverArgs',
@@ -417,6 +418,61 @@ class DatabaseEndpointArgs:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class DatabaseIpRestrictionArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ip: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: Description of the IP restriction
+        :param pulumi.Input[str] ip: Authorized IP
+        :param pulumi.Input[str] status: Current status of the cluster.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the IP restriction
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authorized IP
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current status of the cluster.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type

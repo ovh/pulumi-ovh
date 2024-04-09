@@ -36,6 +36,7 @@ const (
 	ovhPkg = "ovh"
 	// modules:
 	ovhMod             = "index"
+	cloudMod           = "Cloud"
 	cloudProjectMod    = "CloudProject"
 	cloudProjectDbMod  = "CloudProjectDatabase"
 	dbaasMod           = "Dbaas"
@@ -177,6 +178,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_database_integration": {
 				Tok: ovhResource(cloudProjectDbMod, "Integration"),
 			},
+			"ovh_cloud_project_database_log_subscription": {
+				Tok: ovhResource(cloudProjectDbMod, "LogSubscription"),
+			},
 			"ovh_cloud_project_database_kafka_acl": {
 				Tok: ovhResource(cloudProjectDbMod, "KafkaAcl"),
 			},
@@ -287,6 +291,9 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"ovh_domain_zone_dnssec": {
+				Tok: ovhResource(domainMod, "ZoneDNSSec"),
+			},
 			"ovh_domain_zone_record": {
 				Tok: ovhResource(domainMod, "ZoneRecord"),
 			},
@@ -312,6 +319,15 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_hosting_privatedatabase_whitelist": {
 				Tok: ovhResource(hostingMod, "PrivateDatabaseAllowlist"),
+			},
+			"ovh_ip_firewall": {
+				Tok: ovhResource(ipMod, "Firewall"),
+			},
+			"ovh_ip_firewall_rule": {
+				Tok: ovhResource(ipMod, "FirewallRule"),
+			},
+			"ovh_ip_mitigation": {
+				Tok: ovhResource(ipMod, "Mitigation"),
 			},
 			"ovh_ip_move": {
 				Tok: ovhResource(ipMod, "Move"),
@@ -370,6 +386,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_iploadbalancing_tcp_route_rule": {
 				Tok: ovhResource(ipLoadBalancingMod, "TcpRouteRule"),
+			},
+			"ovh_iploadbalancing_udp_frontend": {
+				Tok: ovhResource(ipLoadBalancingMod, "UdpFrontend"),
 			},
 			"ovh_iploadbalancing_vrack_network": {
 				Tok: ovhResource(ipLoadBalancingMod, "VrackNetwork"),
@@ -456,8 +475,14 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"ovh_vps": {
+				Tok: ovhResource(vpsMod, "Vps"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
+			"ovh_cloud_project": {
+				Tok: ovhDataSource(cloudMod, "getProject"),
+			},
 			"ovh_cloud_project_capabilities_containerregistry": {
 				Tok: ovhDataSource(cloudProjectMod, "getCapabilitiesContainerRegistry"),
 			},
@@ -499,6 +524,15 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_database_integrations": {
 				Tok: ovhDataSource(cloudProjectDbMod, "getDatabaseIntegrations"),
+			},
+			"ovh_cloud_project_database_log_subscription": {
+				Tok: ovhDataSource(cloudProjectDbMod, "getDatabaseLogSubscription"),
+			},
+			"ovh_cloud_project_database_log_subscriptions": {
+				Tok: ovhDataSource(cloudProjectDbMod, "getDatabaseLogSubscriptions"),
+			},
+			"ovh_cloud_project_database_postgresql_connection_pools": {
+				Tok: ovhDataSource(cloudProjectDbMod, "getDatabasePostgreSQLConnectionPools"),
 			},
 			"ovh_cloud_project_database_certificates": {
 				Tok: ovhDataSource(cloudProjectDbMod, "getCertificates"),
@@ -611,6 +645,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_vrack": {
 				Tok: ovhDataSource(cloudProjectMod, "getVRack"),
 			},
+			"ovh_cloud_projects": {
+				Tok: ovhDataSource(cloudMod, "getProjects"),
+			},
 			"ovh_dbaas_logs_clusters": {
 				Tok: ovhDataSource(dbaasMod, "getLogsClusters"),
 			},
@@ -678,6 +715,18 @@ func Provider() tfbridge.ProviderInfo {
 						Name: "ZoneURN",
 					},
 				},
+			},
+			"ovh_domain_zone_dnssec": {
+				Tok: ovhDataSource(domainMod, "getZoneDNSSec"),
+			},
+			"ovh_ip_firewall": {
+				Tok: ovhDataSource(ipMod, "getFirewall"),
+			},
+			"ovh_ip_firewall_rule": {
+				Tok: ovhDataSource(ipMod, "getFirewallRule"),
+			},
+			"ovh_ip_mitigation": {
+				Tok: ovhDataSource(ipMod, "getMitigation"),
 			},
 			"ovh_ip_service": {
 				Tok: ovhDataSource(ipMod, "getService"),
