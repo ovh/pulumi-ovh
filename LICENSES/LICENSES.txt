@@ -70,7 +70,6 @@ github.com/mattn/go-isatty; MIT
 github.com/mattn/go-localereader; Unknown. See go/github.com/mattn/go-localereader/LICENSE file
 github.com/mattn/go-runewidth; MIT
 github.com/mitchellh/copystructure; MIT
-github.com/mitchellh/go-homedir; MIT
 github.com/mitchellh/go-testing-interface; MIT
 github.com/mitchellh/go-wordwrap; MIT
 github.com/mitchellh/mapstructure; MIT
@@ -84,6 +83,7 @@ github.com/oklog/run; Apache-2.0
 github.com/opentracing/basictracer-go; Apache-2.0
 github.com/opentracing/opentracing-go; Apache-2.0
 github.com/ovh/go-ovh; BSD-3-Clause
+github.com/ovh/pulumi-ovh/provider; Apache-2.0
 github.com/ovh/terraform-provider-ovh; MPL-2.0
 github.com/pgavlin/fx; MIT
 github.com/pgavlin/goldmark; MIT
@@ -123,7 +123,7 @@ go.uber.org/atomic; MIT
 golang.org/x/crypto; BSD-3-Clause
 golang.org/x/exp; BSD-3-Clause
 golang.org/x/mod; BSD-3-Clause
-golang.org/x/net; BSD-2-Clause
+golang.org/x/net; BSD-3-Clause
 golang.org/x/sync; BSD-3-Clause
 golang.org/x/sys; BSD-3-Clause
 golang.org/x/term; BSD-3-Clause
