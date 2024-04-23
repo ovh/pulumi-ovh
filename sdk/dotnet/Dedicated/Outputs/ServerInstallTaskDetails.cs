@@ -22,15 +22,11 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly int? DiskGroupId;
         /// <summary>
-        /// set to true to install sql server (Windows template only).
-        /// </summary>
-        public readonly bool? InstallSqlServer;
-        /// <summary>
-        /// language.
+        /// Deprecated, will be removed in next release.
         /// </summary>
         public readonly string? Language;
         /// <summary>
-        /// set to true to disable RAID.
+        /// Set to true to disable RAID.
         /// </summary>
         public readonly bool? NoRaid;
         /// <summary>
@@ -46,11 +42,15 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly int? SoftRaidDevices;
         /// <summary>
-        /// Name of the ssh key that should be installed. Password login will be disabled.
-        /// </summary>
-        public readonly string? SshKeyName;
-        /// <summary>
-        /// set to true to use SPLA.
+        /// Deprecated, will be removed in next release.
+        /// 
+        /// The `user_metadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
+        /// 
+        /// -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-questions)
+        /// 
+        /// -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&amp;branch=v1#get-/dedicated/installationTemplate/-templateName-)
+        /// 
+        /// -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061950#create-an-os-installation-task) to get more information
         /// </summary>
         public readonly bool? UseSpla;
 
@@ -59,8 +59,6 @@ namespace Pulumi.Ovh.Dedicated.Outputs
             string? customHostname,
 
             int? diskGroupId,
-
-            bool? installSqlServer,
 
             string? language,
 
@@ -72,19 +70,15 @@ namespace Pulumi.Ovh.Dedicated.Outputs
 
             int? softRaidDevices,
 
-            string? sshKeyName,
-
             bool? useSpla)
         {
             CustomHostname = customHostname;
             DiskGroupId = diskGroupId;
-            InstallSqlServer = installSqlServer;
             Language = language;
             NoRaid = noRaid;
             PostInstallationScriptLink = postInstallationScriptLink;
             PostInstallationScriptReturn = postInstallationScriptReturn;
             SoftRaidDevices = softRaidDevices;
-            SshKeyName = sshKeyName;
             UseSpla = useSpla;
         }
     }

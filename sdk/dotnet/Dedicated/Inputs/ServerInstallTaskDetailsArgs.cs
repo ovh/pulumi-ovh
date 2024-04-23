@@ -25,19 +25,13 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         public Input<int>? DiskGroupId { get; set; }
 
         /// <summary>
-        /// set to true to install sql server (Windows template only).
-        /// </summary>
-        [Input("installSqlServer")]
-        public Input<bool>? InstallSqlServer { get; set; }
-
-        /// <summary>
-        /// language.
+        /// Deprecated, will be removed in next release.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// set to true to disable RAID.
+        /// Set to true to disable RAID.
         /// </summary>
         [Input("noRaid")]
         public Input<bool>? NoRaid { get; set; }
@@ -61,13 +55,15 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         public Input<int>? SoftRaidDevices { get; set; }
 
         /// <summary>
-        /// Name of the ssh key that should be installed. Password login will be disabled.
-        /// </summary>
-        [Input("sshKeyName")]
-        public Input<string>? SshKeyName { get; set; }
-
-        /// <summary>
-        /// set to true to use SPLA.
+        /// Deprecated, will be removed in next release.
+        /// 
+        /// The `user_metadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
+        /// 
+        /// -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-questions)
+        /// 
+        /// -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&amp;branch=v1#get-/dedicated/installationTemplate/-templateName-)
+        /// 
+        /// -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061950#create-an-os-installation-task) to get more information
         /// </summary>
         [Input("useSpla")]
         public Input<bool>? UseSpla { get; set; }

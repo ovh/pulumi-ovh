@@ -98,13 +98,9 @@ namespace Pulumi.Ovh.Me
     public sealed class GetInstallationTemplateResult
     {
         /// <summary>
-        /// List of all language available for this template.
+        /// List of all language available for this template. Deprecated, will be removed in next release.
         /// </summary>
         public readonly ImmutableArray<string> AvailableLanguages;
-        /// <summary>
-        /// This distribution is new and, although tested and functional, may still display odd behaviour.
-        /// </summary>
-        public readonly bool Beta;
         /// <summary>
         /// This template bit format (32 or 64).
         /// </summary>
@@ -115,13 +111,9 @@ namespace Pulumi.Ovh.Me
         public readonly string Category;
         public readonly ImmutableArray<Outputs.GetInstallationTemplateCustomizationResult> Customizations;
         /// <summary>
-        /// The default language of this template.
+        /// The default language of this template. Deprecated, will be removed in next release.
         /// </summary>
         public readonly string DefaultLanguage;
-        /// <summary>
-        /// is this distribution deprecated.
-        /// </summary>
-        public readonly bool Deprecated;
         /// <summary>
         /// information about this template.
         /// </summary>
@@ -146,23 +138,13 @@ namespace Pulumi.Ovh.Me
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Date of last modification of the base image.
-        /// </summary>
-        public readonly string LastModification;
         public readonly bool LvmReady;
         public readonly ImmutableArray<Outputs.GetInstallationTemplatePartitionSchemeResult> PartitionSchemes;
-        /// <summary>
-        /// This distribution supports the microsoft SQL server.
-        /// </summary>
-        public readonly bool SupportsSqlServer;
         public readonly string TemplateName;
 
         [OutputConstructor]
         private GetInstallationTemplateResult(
             ImmutableArray<string> availableLanguages,
-
-            bool beta,
 
             int bitFormat,
 
@@ -171,8 +153,6 @@ namespace Pulumi.Ovh.Me
             ImmutableArray<Outputs.GetInstallationTemplateCustomizationResult> customizations,
 
             string defaultLanguage,
-
-            bool deprecated,
 
             string description,
 
@@ -186,33 +166,25 @@ namespace Pulumi.Ovh.Me
 
             string id,
 
-            string lastModification,
-
             bool lvmReady,
 
             ImmutableArray<Outputs.GetInstallationTemplatePartitionSchemeResult> partitionSchemes,
 
-            bool supportsSqlServer,
-
             string templateName)
         {
             AvailableLanguages = availableLanguages;
-            Beta = beta;
             BitFormat = bitFormat;
             Category = category;
             Customizations = customizations;
             DefaultLanguage = defaultLanguage;
-            Deprecated = deprecated;
             Description = description;
             Distribution = distribution;
             Family = family;
             Filesystems = filesystems;
             HardRaidConfiguration = hardRaidConfiguration;
             Id = id;
-            LastModification = lastModification;
             LvmReady = lvmReady;
             PartitionSchemes = partitionSchemes;
-            SupportsSqlServer = supportsSqlServer;
             TemplateName = templateName;
         }
     }

@@ -30,7 +30,7 @@ type OpensearchUser struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Date of the creation of the user.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+	// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
@@ -89,7 +89,7 @@ type opensearchUserState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Date of the creation of the user.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+	// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
 	Name *string `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
@@ -109,7 +109,7 @@ type OpensearchUserState struct {
 	ClusterId pulumi.StringPtrInput
 	// Date of the creation of the user.
 	CreatedAt pulumi.StringPtrInput
-	// Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+	// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
 	Name pulumi.StringPtrInput
 	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
@@ -131,7 +131,7 @@ type opensearchUserArgs struct {
 	Acls []OpensearchUserAcl `pulumi:"acls"`
 	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+	// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
@@ -146,7 +146,7 @@ type OpensearchUserArgs struct {
 	Acls OpensearchUserAclArrayInput
 	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+	// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
@@ -257,7 +257,7 @@ func (o OpensearchUserOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
 func (o OpensearchUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

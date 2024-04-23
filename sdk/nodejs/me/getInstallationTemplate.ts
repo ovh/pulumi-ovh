@@ -45,13 +45,9 @@ export interface GetInstallationTemplateArgs {
  */
 export interface GetInstallationTemplateResult {
     /**
-     * List of all language available for this template.
+     * List of all language available for this template. Deprecated, will be removed in next release.
      */
     readonly availableLanguages: string[];
-    /**
-     * This distribution is new and, although tested and functional, may still display odd behaviour.
-     */
-    readonly beta: boolean;
     /**
      * This template bit format (32 or 64).
      */
@@ -62,13 +58,11 @@ export interface GetInstallationTemplateResult {
     readonly category: string;
     readonly customizations: outputs.Me.GetInstallationTemplateCustomization[];
     /**
-     * The default language of this template.
+     * The default language of this template. Deprecated, will be removed in next release.
+     *
+     * @deprecated This field will be removed from the API, please use `userMetadata` instead.
      */
     readonly defaultLanguage: string;
-    /**
-     * is this distribution deprecated.
-     */
-    readonly deprecated: boolean;
     /**
      * information about this template.
      */
@@ -93,16 +87,8 @@ export interface GetInstallationTemplateResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Date of last modification of the base image.
-     */
-    readonly lastModification: string;
     readonly lvmReady: boolean;
     readonly partitionSchemes: outputs.Me.GetInstallationTemplatePartitionScheme[];
-    /**
-     * This distribution supports the microsoft SQL server.
-     */
-    readonly supportsSqlServer: boolean;
     readonly templateName: string;
 }
 /**

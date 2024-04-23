@@ -31,13 +31,7 @@ namespace Pulumi.Ovh.Me.Inputs
         public Input<string>? PostInstallationScriptReturn { get; set; }
 
         /// <summary>
-        /// Rating.
-        /// </summary>
-        [Input("rating")]
-        public Input<int>? Rating { get; set; }
-
-        /// <summary>
-        /// Name of the ssh key that should be installed. Password login will be disabled.
+        /// Deprecated.
         /// </summary>
         [Input("sshKeyName")]
         public Input<string>? SshKeyName { get; set; }

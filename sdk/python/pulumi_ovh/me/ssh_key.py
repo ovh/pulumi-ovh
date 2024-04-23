@@ -23,8 +23,17 @@ class SshKeyArgs:
         :param pulumi.Input[str] key_name: The friendly name of this SSH key.
         :param pulumi.Input[bool] default: True when this public SSH key is used for rescue mode and reinstallations.
         """
+        if key is not None:
+            warnings.warn("""use userMetada instead""", DeprecationWarning)
+            pulumi.log.warn("""key is deprecated: use userMetada instead""")
         pulumi.set(__self__, "key", key)
+        if key_name is not None:
+            warnings.warn("""use userMetada instead""", DeprecationWarning)
+            pulumi.log.warn("""key_name is deprecated: use userMetada instead""")
         pulumi.set(__self__, "key_name", key_name)
+        if default is not None:
+            warnings.warn("""use userMetada instead""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: use userMetada instead""")
         if default is not None:
             pulumi.set(__self__, "default", default)
 
@@ -34,6 +43,9 @@ class SshKeyArgs:
         """
         The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
         """
+        warnings.warn("""use userMetada instead""", DeprecationWarning)
+        pulumi.log.warn("""key is deprecated: use userMetada instead""")
+
         return pulumi.get(self, "key")
 
     @key.setter
@@ -46,6 +58,9 @@ class SshKeyArgs:
         """
         The friendly name of this SSH key.
         """
+        warnings.warn("""use userMetada instead""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: use userMetada instead""")
+
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -58,6 +73,9 @@ class SshKeyArgs:
         """
         True when this public SSH key is used for rescue mode and reinstallations.
         """
+        warnings.warn("""use userMetada instead""", DeprecationWarning)
+        pulumi.log.warn("""default is deprecated: use userMetada instead""")
+
         return pulumi.get(self, "default")
 
     @default.setter
@@ -78,9 +96,18 @@ class _SshKeyState:
         :param pulumi.Input[str] key_name: The friendly name of this SSH key.
         """
         if default is not None:
+            warnings.warn("""use userMetada instead""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: use userMetada instead""")
+        if default is not None:
             pulumi.set(__self__, "default", default)
         if key is not None:
+            warnings.warn("""use userMetada instead""", DeprecationWarning)
+            pulumi.log.warn("""key is deprecated: use userMetada instead""")
+        if key is not None:
             pulumi.set(__self__, "key", key)
+        if key_name is not None:
+            warnings.warn("""use userMetada instead""", DeprecationWarning)
+            pulumi.log.warn("""key_name is deprecated: use userMetada instead""")
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
 
@@ -90,6 +117,9 @@ class _SshKeyState:
         """
         True when this public SSH key is used for rescue mode and reinstallations.
         """
+        warnings.warn("""use userMetada instead""", DeprecationWarning)
+        pulumi.log.warn("""default is deprecated: use userMetada instead""")
+
         return pulumi.get(self, "default")
 
     @default.setter
@@ -102,6 +132,9 @@ class _SshKeyState:
         """
         The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
         """
+        warnings.warn("""use userMetada instead""", DeprecationWarning)
+        pulumi.log.warn("""key is deprecated: use userMetada instead""")
+
         return pulumi.get(self, "key")
 
     @key.setter
@@ -114,6 +147,9 @@ class _SshKeyState:
         """
         The friendly name of this SSH key.
         """
+        warnings.warn("""use userMetada instead""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: use userMetada instead""")
+
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -132,6 +168,8 @@ class SshKey(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
+        > __NOTE__ This resource will be removed in next release, please use userMetada instead.
 
         <!--Start PulumiCodeChooser -->
         ```python
@@ -158,6 +196,8 @@ class SshKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        > __NOTE__ This resource will be removed in next release, please use userMetada instead.
 
         <!--Start PulumiCodeChooser -->
         ```python
@@ -243,6 +283,9 @@ class SshKey(pulumi.CustomResource):
         """
         True when this public SSH key is used for rescue mode and reinstallations.
         """
+        warnings.warn("""use userMetada instead""", DeprecationWarning)
+        pulumi.log.warn("""default is deprecated: use userMetada instead""")
+
         return pulumi.get(self, "default")
 
     @property
@@ -251,6 +294,9 @@ class SshKey(pulumi.CustomResource):
         """
         The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
         """
+        warnings.warn("""use userMetada instead""", DeprecationWarning)
+        pulumi.log.warn("""key is deprecated: use userMetada instead""")
+
         return pulumi.get(self, "key")
 
     @property
@@ -259,5 +305,8 @@ class SshKey(pulumi.CustomResource):
         """
         The friendly name of this SSH key.
         """
+        warnings.warn("""use userMetada instead""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: use userMetada instead""")
+
         return pulumi.get(self, "key_name")
 

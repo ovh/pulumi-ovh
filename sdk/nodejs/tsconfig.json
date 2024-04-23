@@ -124,6 +124,7 @@
         "dedicated/getNasHA.ts",
         "dedicated/getServerBoots.ts",
         "dedicated/getServerSpecificationsHardware.ts",
+        "dedicated/getServerSpecificationsNetwork.ts",
         "dedicated/index.ts",
         "dedicated/nasHAPartition.ts",
         "dedicated/nasHAPartitionAccess.ts",

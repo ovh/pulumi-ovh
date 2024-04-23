@@ -26,19 +26,27 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * The OVH API Application Key.
+     * The OVH API Application Key
      */
     public readonly applicationKey!: pulumi.Output<string | undefined>;
     /**
-     * The OVH API Application Secret.
+     * The OVH API Application Secret
      */
     public readonly applicationSecret!: pulumi.Output<string | undefined>;
     /**
-     * The OVH API Consumer key.
+     * OAuth 2.0 application's ID
+     */
+    public readonly clientId!: pulumi.Output<string | undefined>;
+    /**
+     * OAuth 2.0 application's secret
+     */
+    public readonly clientSecret!: pulumi.Output<string | undefined>;
+    /**
+     * The OVH API Consumer Key
      */
     public readonly consumerKey!: pulumi.Output<string | undefined>;
     /**
-     * The OVH API endpoint to target (ex: "ovh-eu").
+     * The OVH API endpoint to target (ex: "ovh-eu")
      */
     public readonly endpoint!: pulumi.Output<string | undefined>;
 
@@ -55,6 +63,8 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["applicationKey"] = (args ? args.applicationKey : undefined) ?? utilities.getEnv("OVH_APPLICATION_KEY");
             resourceInputs["applicationSecret"] = (args?.applicationSecret ? pulumi.secret(args.applicationSecret) : undefined) ?? utilities.getEnv("OVH_APPLICATION_SECRET");
+            resourceInputs["clientId"] = args ? args.clientId : undefined;
+            resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
             resourceInputs["consumerKey"] = (args ? args.consumerKey : undefined) ?? utilities.getEnv("OVH_CONSUMER_KEY");
             resourceInputs["endpoint"] = (args ? args.endpoint : undefined) ?? utilities.getEnv("OVH_ENDPOINT");
         }
@@ -70,19 +80,27 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * The OVH API Application Key.
+     * The OVH API Application Key
      */
     applicationKey?: pulumi.Input<string>;
     /**
-     * The OVH API Application Secret.
+     * The OVH API Application Secret
      */
     applicationSecret?: pulumi.Input<string>;
     /**
-     * The OVH API Consumer key.
+     * OAuth 2.0 application's ID
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * OAuth 2.0 application's secret
+     */
+    clientSecret?: pulumi.Input<string>;
+    /**
+     * The OVH API Consumer Key
      */
     consumerKey?: pulumi.Input<string>;
     /**
-     * The OVH API endpoint to target (ex: "ovh-eu").
+     * The OVH API endpoint to target (ex: "ovh-eu")
      */
     endpoint?: pulumi.Input<string>;
 }

@@ -52,7 +52,7 @@ export class MongoDbUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Name of the user.
+     * Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -153,7 +153,7 @@ export interface MongoDbUserState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Name of the user.
+     * Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**
@@ -206,7 +206,7 @@ export interface MongoDbUserArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Name of the user.
+     * Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**

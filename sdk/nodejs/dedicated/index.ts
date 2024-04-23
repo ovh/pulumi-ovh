@@ -30,6 +30,11 @@ export const getServerSpecificationsHardware: typeof import("./getServerSpecific
 export const getServerSpecificationsHardwareOutput: typeof import("./getServerSpecificationsHardware").getServerSpecificationsHardwareOutput = null as any;
 utilities.lazyLoad(exports, ["getServerSpecificationsHardware","getServerSpecificationsHardwareOutput"], () => require("./getServerSpecificationsHardware"));
 
+export { GetServerSpecificationsNetworkArgs, GetServerSpecificationsNetworkResult, GetServerSpecificationsNetworkOutputArgs } from "./getServerSpecificationsNetwork";
+export const getServerSpecificationsNetwork: typeof import("./getServerSpecificationsNetwork").getServerSpecificationsNetwork = null as any;
+export const getServerSpecificationsNetworkOutput: typeof import("./getServerSpecificationsNetwork").getServerSpecificationsNetworkOutput = null as any;
+utilities.lazyLoad(exports, ["getServerSpecificationsNetwork","getServerSpecificationsNetworkOutput"], () => require("./getServerSpecificationsNetwork"));
+
 export { NasHAPartitionArgs, NasHAPartitionState } from "./nasHAPartition";
 export type NasHAPartition = import("./nasHAPartition").NasHAPartition;
 export const NasHAPartition: typeof import("./nasHAPartition").NasHAPartition = null as any;

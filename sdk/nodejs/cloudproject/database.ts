@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     version: "3.4",
  *     plan: "business",
  *     kafkaRestApi: true,
+ *     kafkaSchemaRegistry: true,
  *     nodes: [
  *         {
  *             region: "DE",
@@ -301,6 +302,10 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly kafkaRestApi!: pulumi.Output<boolean | undefined>;
     /**
+     * Defines whether the schema registry is enabled on a Kafka cluster
+     */
+    public readonly kafkaSchemaRegistry!: pulumi.Output<boolean | undefined>;
+    /**
      * Time on which maintenances can start every day.
      */
     public /*out*/ readonly maintenanceTime!: pulumi.Output<string>;
@@ -364,6 +369,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["flavor"] = state ? state.flavor : undefined;
             resourceInputs["ipRestrictions"] = state ? state.ipRestrictions : undefined;
             resourceInputs["kafkaRestApi"] = state ? state.kafkaRestApi : undefined;
+            resourceInputs["kafkaSchemaRegistry"] = state ? state.kafkaSchemaRegistry : undefined;
             resourceInputs["maintenanceTime"] = state ? state.maintenanceTime : undefined;
             resourceInputs["networkType"] = state ? state.networkType : undefined;
             resourceInputs["nodes"] = state ? state.nodes : undefined;
@@ -401,6 +407,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["flavor"] = args ? args.flavor : undefined;
             resourceInputs["ipRestrictions"] = args ? args.ipRestrictions : undefined;
             resourceInputs["kafkaRestApi"] = args ? args.kafkaRestApi : undefined;
+            resourceInputs["kafkaSchemaRegistry"] = args ? args.kafkaSchemaRegistry : undefined;
             resourceInputs["nodes"] = args ? args.nodes : undefined;
             resourceInputs["opensearchAclsEnabled"] = args ? args.opensearchAclsEnabled : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
@@ -473,6 +480,10 @@ export interface DatabaseState {
      * Defines whether the REST API is enabled on a kafka cluster
      */
     kafkaRestApi?: pulumi.Input<boolean>;
+    /**
+     * Defines whether the schema registry is enabled on a Kafka cluster
+     */
+    kafkaSchemaRegistry?: pulumi.Input<boolean>;
     /**
      * Time on which maintenances can start every day.
      */
@@ -556,6 +567,10 @@ export interface DatabaseArgs {
      * Defines whether the REST API is enabled on a kafka cluster
      */
     kafkaRestApi?: pulumi.Input<boolean>;
+    /**
+     * Defines whether the schema registry is enabled on a Kafka cluster
+     */
+    kafkaSchemaRegistry?: pulumi.Input<boolean>;
     /**
      * List of nodes object.
      * Multi region cluster are not yet available, all node should be identical.

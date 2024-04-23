@@ -52,12 +52,13 @@ import (
 //				return err
 //			}
 //			_, err = CloudProject.NewDatabase(ctx, "kafkadb", &CloudProject.DatabaseArgs{
-//				ServiceName:  pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
-//				Description:  pulumi.String("my-first-kafka"),
-//				Engine:       pulumi.String("kafka"),
-//				Version:      pulumi.String("3.4"),
-//				Plan:         pulumi.String("business"),
-//				KafkaRestApi: pulumi.Bool(true),
+//				ServiceName:         pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				Description:         pulumi.String("my-first-kafka"),
+//				Engine:              pulumi.String("kafka"),
+//				Version:             pulumi.String("3.4"),
+//				Plan:                pulumi.String("business"),
+//				KafkaRestApi:        pulumi.Bool(true),
+//				KafkaSchemaRegistry: pulumi.Bool(true),
 //				Nodes: cloudproject.DatabaseNodeArray{
 //					&cloudproject.DatabaseNodeArgs{
 //						Region: pulumi.String("DE"),
@@ -338,6 +339,8 @@ type Database struct {
 	IpRestrictions DatabaseIpRestrictionArrayOutput `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi pulumi.BoolPtrOutput `pulumi:"kafkaRestApi"`
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry pulumi.BoolPtrOutput `pulumi:"kafkaSchemaRegistry"`
 	// Time on which maintenances can start every day.
 	MaintenanceTime pulumi.StringOutput `pulumi:"maintenanceTime"`
 	// Type of network of the cluster.
@@ -437,6 +440,8 @@ type databaseState struct {
 	IpRestrictions []DatabaseIpRestriction `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi *bool `pulumi:"kafkaRestApi"`
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry *bool `pulumi:"kafkaSchemaRegistry"`
 	// Time on which maintenances can start every day.
 	MaintenanceTime *string `pulumi:"maintenanceTime"`
 	// Type of network of the cluster.
@@ -489,6 +494,8 @@ type DatabaseState struct {
 	IpRestrictions DatabaseIpRestrictionArrayInput
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi pulumi.BoolPtrInput
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry pulumi.BoolPtrInput
 	// Time on which maintenances can start every day.
 	MaintenanceTime pulumi.StringPtrInput
 	// Type of network of the cluster.
@@ -539,6 +546,8 @@ type databaseArgs struct {
 	IpRestrictions []DatabaseIpRestriction `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi *bool `pulumi:"kafkaRestApi"`
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry *bool `pulumi:"kafkaSchemaRegistry"`
 	// List of nodes object.
 	// Multi region cluster are not yet available, all node should be identical.
 	Nodes []DatabaseNode `pulumi:"nodes"`
@@ -580,6 +589,8 @@ type DatabaseArgs struct {
 	IpRestrictions DatabaseIpRestrictionArrayInput
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi pulumi.BoolPtrInput
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry pulumi.BoolPtrInput
 	// List of nodes object.
 	// Multi region cluster are not yet available, all node should be identical.
 	Nodes DatabaseNodeArrayInput
@@ -746,6 +757,11 @@ func (o DatabaseOutput) IpRestrictions() DatabaseIpRestrictionArrayOutput {
 // Defines whether the REST API is enabled on a kafka cluster
 func (o DatabaseOutput) KafkaRestApi() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.KafkaRestApi }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the schema registry is enabled on a Kafka cluster
+func (o DatabaseOutput) KafkaSchemaRegistry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.KafkaSchemaRegistry }).(pulumi.BoolPtrOutput)
 }
 
 // Time on which maintenances can start every day.

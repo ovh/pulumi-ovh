@@ -34,7 +34,7 @@ namespace Pulumi.Ovh
 
         private static readonly __Value<string?> _applicationKey = new __Value<string?>(() => __config.Get("applicationKey") ?? Utilities.GetEnv("OVH_APPLICATION_KEY"));
         /// <summary>
-        /// The OVH API Application Key.
+        /// The OVH API Application Key
         /// </summary>
         public static string? ApplicationKey
         {
@@ -44,7 +44,7 @@ namespace Pulumi.Ovh
 
         private static readonly __Value<string?> _applicationSecret = new __Value<string?>(() => __config.Get("applicationSecret") ?? Utilities.GetEnv("OVH_APPLICATION_SECRET"));
         /// <summary>
-        /// The OVH API Application Secret.
+        /// The OVH API Application Secret
         /// </summary>
         public static string? ApplicationSecret
         {
@@ -52,9 +52,29 @@ namespace Pulumi.Ovh
             set => _applicationSecret.Set(value);
         }
 
+        private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
+        /// <summary>
+        /// OAuth 2.0 application's ID
+        /// </summary>
+        public static string? ClientId
+        {
+            get => _clientId.Get();
+            set => _clientId.Set(value);
+        }
+
+        private static readonly __Value<string?> _clientSecret = new __Value<string?>(() => __config.Get("clientSecret"));
+        /// <summary>
+        /// OAuth 2.0 application's secret
+        /// </summary>
+        public static string? ClientSecret
+        {
+            get => _clientSecret.Get();
+            set => _clientSecret.Set(value);
+        }
+
         private static readonly __Value<string?> _consumerKey = new __Value<string?>(() => __config.Get("consumerKey") ?? Utilities.GetEnv("OVH_CONSUMER_KEY"));
         /// <summary>
-        /// The OVH API Consumer key.
+        /// The OVH API Consumer Key
         /// </summary>
         public static string? ConsumerKey
         {
@@ -64,7 +84,7 @@ namespace Pulumi.Ovh
 
         private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint") ?? Utilities.GetEnv("OVH_ENDPOINT"));
         /// <summary>
-        /// The OVH API endpoint to target (ex: "ovh-eu").
+        /// The OVH API endpoint to target (ex: "ovh-eu")
         /// </summary>
         public static string? Endpoint
         {

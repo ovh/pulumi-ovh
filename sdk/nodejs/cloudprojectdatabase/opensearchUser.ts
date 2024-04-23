@@ -58,7 +58,7 @@ export class OpensearchUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+     * Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -141,7 +141,7 @@ export interface OpensearchUserState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+     * Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**
@@ -176,7 +176,7 @@ export interface OpensearchUserArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+     * Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**

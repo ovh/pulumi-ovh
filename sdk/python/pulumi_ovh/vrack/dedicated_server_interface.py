@@ -102,7 +102,10 @@ class DedicatedServerInterface(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Attach a Dedicated Server Network Interface to a VRack.
+        Attach a Dedicated Server Network Interface to a vRack.
+
+        > **NOTE:** The resource `Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.<br />
+        Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `Vrack.DedicatedServer` instead.
 
         ## Example Usage
 
@@ -131,7 +134,10 @@ class DedicatedServerInterface(pulumi.CustomResource):
                  args: DedicatedServerInterfaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Attach a Dedicated Server Network Interface to a VRack.
+        Attach a Dedicated Server Network Interface to a vRack.
+
+        > **NOTE:** The resource `Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.<br />
+        Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `Vrack.DedicatedServer` instead.
 
         ## Example Usage
 

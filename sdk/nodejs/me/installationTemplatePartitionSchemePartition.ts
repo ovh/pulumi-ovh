@@ -15,9 +15,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const mytemplate = new ovh.me.InstallationTemplate("mytemplate", {
- *     baseTemplateName: "centos7_64",
+ *     baseTemplateName: "debian12_64",
  *     templateName: "mytemplate",
- *     defaultLanguage: "fr",
  * });
  * const scheme = new ovh.me.InstallationTemplatePartitionScheme("scheme", {
  *     templateName: mytemplate.templateName,

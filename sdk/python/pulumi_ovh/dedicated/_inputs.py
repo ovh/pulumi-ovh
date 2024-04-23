@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'ServerInstallTaskDetailsArgs',
+    'ServerInstallTaskUserMetadataArgs',
     'ServerNetworkingInterfaceArgs',
 ]
 
@@ -19,32 +20,37 @@ class ServerInstallTaskDetailsArgs:
     def __init__(__self__, *,
                  custom_hostname: Optional[pulumi.Input[str]] = None,
                  disk_group_id: Optional[pulumi.Input[int]] = None,
-                 install_sql_server: Optional[pulumi.Input[bool]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  no_raid: Optional[pulumi.Input[bool]] = None,
                  post_installation_script_link: Optional[pulumi.Input[str]] = None,
                  post_installation_script_return: Optional[pulumi.Input[str]] = None,
                  soft_raid_devices: Optional[pulumi.Input[int]] = None,
-                 ssh_key_name: Optional[pulumi.Input[str]] = None,
                  use_spla: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param pulumi.Input[int] disk_group_id: Disk group id.
-        :param pulumi.Input[bool] install_sql_server: set to true to install sql server (Windows template only).
-        :param pulumi.Input[str] language: language.
-        :param pulumi.Input[bool] no_raid: set to true to disable RAID.
+        :param pulumi.Input[str] language: Deprecated, will be removed in next release.
+        :param pulumi.Input[bool] no_raid: Set to true to disable RAID.
         :param pulumi.Input[str] post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
         :param pulumi.Input[str] post_installation_script_return: Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         :param pulumi.Input[int] soft_raid_devices: soft raid devices.
-        :param pulumi.Input[str] ssh_key_name: Name of the ssh key that should be installed. Password login will be disabled.
-        :param pulumi.Input[bool] use_spla: set to true to use SPLA.
+        :param pulumi.Input[bool] use_spla: Deprecated, will be removed in next release.
+               
+               The `user_metadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
+               
+               -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
+               
+               -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
+               
+               -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
         """
         if custom_hostname is not None:
             pulumi.set(__self__, "custom_hostname", custom_hostname)
         if disk_group_id is not None:
             pulumi.set(__self__, "disk_group_id", disk_group_id)
-        if install_sql_server is not None:
-            pulumi.set(__self__, "install_sql_server", install_sql_server)
+        if language is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release""", DeprecationWarning)
+            pulumi.log.warn("""language is deprecated: This field is deprecated and will be removed in a future release""")
         if language is not None:
             pulumi.set(__self__, "language", language)
         if no_raid is not None:
@@ -55,8 +61,9 @@ class ServerInstallTaskDetailsArgs:
             pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
         if soft_raid_devices is not None:
             pulumi.set(__self__, "soft_raid_devices", soft_raid_devices)
-        if ssh_key_name is not None:
-            pulumi.set(__self__, "ssh_key_name", ssh_key_name)
+        if use_spla is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release""", DeprecationWarning)
+            pulumi.log.warn("""use_spla is deprecated: This field is deprecated and will be removed in a future release""")
         if use_spla is not None:
             pulumi.set(__self__, "use_spla", use_spla)
 
@@ -85,23 +92,14 @@ class ServerInstallTaskDetailsArgs:
         pulumi.set(self, "disk_group_id", value)
 
     @property
-    @pulumi.getter(name="installSqlServer")
-    def install_sql_server(self) -> Optional[pulumi.Input[bool]]:
-        """
-        set to true to install sql server (Windows template only).
-        """
-        return pulumi.get(self, "install_sql_server")
-
-    @install_sql_server.setter
-    def install_sql_server(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "install_sql_server", value)
-
-    @property
     @pulumi.getter
     def language(self) -> Optional[pulumi.Input[str]]:
         """
-        language.
+        Deprecated, will be removed in next release.
         """
+        warnings.warn("""This field is deprecated and will be removed in a future release""", DeprecationWarning)
+        pulumi.log.warn("""language is deprecated: This field is deprecated and will be removed in a future release""")
+
         return pulumi.get(self, "language")
 
     @language.setter
@@ -112,7 +110,7 @@ class ServerInstallTaskDetailsArgs:
     @pulumi.getter(name="noRaid")
     def no_raid(self) -> Optional[pulumi.Input[bool]]:
         """
-        set to true to disable RAID.
+        Set to true to disable RAID.
         """
         return pulumi.get(self, "no_raid")
 
@@ -157,28 +155,64 @@ class ServerInstallTaskDetailsArgs:
         pulumi.set(self, "soft_raid_devices", value)
 
     @property
-    @pulumi.getter(name="sshKeyName")
-    def ssh_key_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the ssh key that should be installed. Password login will be disabled.
-        """
-        return pulumi.get(self, "ssh_key_name")
-
-    @ssh_key_name.setter
-    def ssh_key_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ssh_key_name", value)
-
-    @property
     @pulumi.getter(name="useSpla")
     def use_spla(self) -> Optional[pulumi.Input[bool]]:
         """
-        set to true to use SPLA.
+        Deprecated, will be removed in next release.
+
+        The `user_metadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
+
+        -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
+
+        -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
+
+        -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
         """
+        warnings.warn("""This field is deprecated and will be removed in a future release""", DeprecationWarning)
+        pulumi.log.warn("""use_spla is deprecated: This field is deprecated and will be removed in a future release""")
+
         return pulumi.get(self, "use_spla")
 
     @use_spla.setter
     def use_spla(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_spla", value)
+
+
+@pulumi.input_type
+class ServerInstallTaskUserMetadataArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: The key for the user_metadata
+        :param pulumi.Input[str] value: The value for the user_metadata
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The key for the user_metadata
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value for the user_metadata
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

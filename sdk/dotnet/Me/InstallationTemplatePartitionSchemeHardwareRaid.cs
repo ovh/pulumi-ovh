@@ -25,9 +25,8 @@ namespace Pulumi.Ovh.Me
     /// {
     ///     var mytemplate = new Ovh.Me.InstallationTemplate("mytemplate", new()
     ///     {
-    ///         BaseTemplateName = "centos7_64",
+    ///         BaseTemplateName = "debian12_64",
     ///         TemplateName = "mytemplate",
-    ///         DefaultLanguage = "fr",
     ///     });
     /// 
     ///     var scheme = new Ovh.Me.InstallationTemplatePartitionScheme("scheme", new()

@@ -19,14 +19,12 @@ class InstallationTemplateCustomizationArgs:
                  custom_hostname: Optional[pulumi.Input[str]] = None,
                  post_installation_script_link: Optional[pulumi.Input[str]] = None,
                  post_installation_script_return: Optional[pulumi.Input[str]] = None,
-                 rating: Optional[pulumi.Input[int]] = None,
                  ssh_key_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param pulumi.Input[str] post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
         :param pulumi.Input[str] post_installation_script_return: indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        :param pulumi.Input[int] rating: Rating.
-        :param pulumi.Input[str] ssh_key_name: Name of the ssh key that should be installed. Password login will be disabled.
+        :param pulumi.Input[str] ssh_key_name: Deprecated.
         """
         if custom_hostname is not None:
             pulumi.set(__self__, "custom_hostname", custom_hostname)
@@ -34,11 +32,9 @@ class InstallationTemplateCustomizationArgs:
             pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
         if post_installation_script_return is not None:
             pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
-        if rating is not None:
-            warnings.warn("""field is not used anymore""", DeprecationWarning)
-            pulumi.log.warn("""rating is deprecated: field is not used anymore""")
-        if rating is not None:
-            pulumi.set(__self__, "rating", rating)
+        if ssh_key_name is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""ssh_key_name is deprecated: This field is deprecated and will be removed in a future release.""")
         if ssh_key_name is not None:
             pulumi.set(__self__, "ssh_key_name", ssh_key_name)
 
@@ -79,26 +75,14 @@ class InstallationTemplateCustomizationArgs:
         pulumi.set(self, "post_installation_script_return", value)
 
     @property
-    @pulumi.getter
-    def rating(self) -> Optional[pulumi.Input[int]]:
-        """
-        Rating.
-        """
-        warnings.warn("""field is not used anymore""", DeprecationWarning)
-        pulumi.log.warn("""rating is deprecated: field is not used anymore""")
-
-        return pulumi.get(self, "rating")
-
-    @rating.setter
-    def rating(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "rating", value)
-
-    @property
     @pulumi.getter(name="sshKeyName")
     def ssh_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the ssh key that should be installed. Password login will be disabled.
+        Deprecated.
         """
+        warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""ssh_key_name is deprecated: This field is deprecated and will be removed in a future release.""")
+
         return pulumi.get(self, "ssh_key_name")
 
     @ssh_key_name.setter

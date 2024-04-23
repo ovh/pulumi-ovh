@@ -52,7 +52,7 @@ export class PostgresSqlUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -136,7 +136,7 @@ export interface PostgresSqlUserState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**
@@ -172,7 +172,7 @@ export interface PostgresSqlUserArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**

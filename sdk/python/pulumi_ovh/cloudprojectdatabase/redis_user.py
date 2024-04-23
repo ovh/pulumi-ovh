@@ -31,7 +31,7 @@ class RedisUserArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] channels: Channels of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user.
-        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Name of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -126,7 +126,7 @@ class RedisUserArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        Name of the user.
         """
         return pulumi.get(self, "name")
 
@@ -169,7 +169,7 @@ class _RedisUserState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user.
-        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Name of the user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
@@ -275,7 +275,7 @@ class _RedisUserState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        Name of the user.
         """
         return pulumi.get(self, "name")
 
@@ -365,7 +365,7 @@ class RedisUser(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user.
-        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Name of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -470,7 +470,7 @@ class RedisUser(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user.
-        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Name of the user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
@@ -546,7 +546,7 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        Name of the user.
         """
         return pulumi.get(self, "name")
 

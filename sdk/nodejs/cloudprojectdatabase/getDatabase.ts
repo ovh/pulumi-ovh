@@ -114,6 +114,10 @@ export interface GetDatabaseResult {
      */
     readonly kafkaRestApi: boolean;
     /**
+     * Defines whether the schema registry is enabled on a Kafka cluster
+     */
+    readonly kafkaSchemaRegistry: boolean;
+    /**
      * Time on which maintenances can start every day.
      */
     readonly maintenanceTime: string;

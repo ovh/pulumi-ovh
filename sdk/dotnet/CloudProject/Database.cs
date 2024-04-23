@@ -56,6 +56,7 @@ namespace Pulumi.Ovh.CloudProject
     ///         Version = "3.4",
     ///         Plan = "business",
     ///         KafkaRestApi = true,
+    ///         KafkaSchemaRegistry = true,
     ///         Nodes = new[]
     ///         {
     ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
@@ -387,6 +388,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<bool?> KafkaRestApi { get; private set; } = null!;
 
         /// <summary>
+        /// Defines whether the schema registry is enabled on a Kafka cluster
+        /// </summary>
+        [Output("kafkaSchemaRegistry")]
+        public Output<bool?> KafkaSchemaRegistry { get; private set; } = null!;
+
+        /// <summary>
         /// Time on which maintenances can start every day.
         /// </summary>
         [Output("maintenanceTime")]
@@ -562,6 +569,12 @@ namespace Pulumi.Ovh.CloudProject
         [Input("kafkaRestApi")]
         public Input<bool>? KafkaRestApi { get; set; }
 
+        /// <summary>
+        /// Defines whether the schema registry is enabled on a Kafka cluster
+        /// </summary>
+        [Input("kafkaSchemaRegistry")]
+        public Input<bool>? KafkaSchemaRegistry { get; set; }
+
         [Input("nodes", required: true)]
         private InputList<Inputs.DatabaseNodeArgs>? _nodes;
 
@@ -710,6 +723,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("kafkaRestApi")]
         public Input<bool>? KafkaRestApi { get; set; }
+
+        /// <summary>
+        /// Defines whether the schema registry is enabled on a Kafka cluster
+        /// </summary>
+        [Input("kafkaSchemaRegistry")]
+        public Input<bool>? KafkaSchemaRegistry { get; set; }
 
         /// <summary>
         /// Time on which maintenances can start every day.

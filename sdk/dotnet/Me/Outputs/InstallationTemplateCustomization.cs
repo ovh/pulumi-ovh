@@ -26,11 +26,7 @@ namespace Pulumi.Ovh.Me.Outputs
         /// </summary>
         public readonly string? PostInstallationScriptReturn;
         /// <summary>
-        /// Rating.
-        /// </summary>
-        public readonly int? Rating;
-        /// <summary>
-        /// Name of the ssh key that should be installed. Password login will be disabled.
+        /// Deprecated.
         /// </summary>
         public readonly string? SshKeyName;
 
@@ -42,14 +38,11 @@ namespace Pulumi.Ovh.Me.Outputs
 
             string? postInstallationScriptReturn,
 
-            int? rating,
-
             string? sshKeyName)
         {
             CustomHostname = customHostname;
             PostInstallationScriptLink = postInstallationScriptLink;
             PostInstallationScriptReturn = postInstallationScriptReturn;
-            Rating = rating;
             SshKeyName = sshKeyName;
         }
     }

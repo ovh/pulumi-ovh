@@ -30,9 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			mytemplate, err := Me.NewInstallationTemplate(ctx, "mytemplate", &Me.InstallationTemplateArgs{
-//				BaseTemplateName: pulumi.String("centos7_64"),
+//				BaseTemplateName: pulumi.String("debian12_64"),
 //				TemplateName:     pulumi.String("mytemplate"),
-//				DefaultLanguage:  pulumi.String("fr"),
 //			})
 //			if err != nil {
 //				return err

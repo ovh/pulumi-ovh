@@ -24,7 +24,7 @@ class MongoDbUserArgs:
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] name: Name of the user.
+        :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
                Available roles:
@@ -84,7 +84,7 @@ class MongoDbUserArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user.
+        Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
@@ -150,7 +150,7 @@ class _MongoDbUserState:
         Input properties used for looking up and filtering MongoDbUser resources.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
-        :param pulumi.Input[str] name: Name of the user.
+        :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
@@ -221,7 +221,7 @@ class _MongoDbUserState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user.
+        Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
@@ -334,7 +334,7 @@ class MongoDbUser(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] name: Name of the user.
+        :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
                Available roles:
@@ -445,7 +445,7 @@ class MongoDbUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
-        :param pulumi.Input[str] name: Name of the user.
+        :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
@@ -505,7 +505,7 @@ class MongoDbUser(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the user.
+        Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         """
         return pulumi.get(self, "name")
 

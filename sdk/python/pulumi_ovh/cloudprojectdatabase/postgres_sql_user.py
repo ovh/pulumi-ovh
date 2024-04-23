@@ -24,7 +24,7 @@ class PostgresSqlUserArgs:
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
                Available roles:
@@ -67,7 +67,7 @@ class PostgresSqlUserArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
@@ -116,7 +116,7 @@ class _PostgresSqlUserState:
         Input properties used for looking up and filtering PostgresSqlUser resources.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
-        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
@@ -170,7 +170,7 @@ class _PostgresSqlUserState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
@@ -266,7 +266,7 @@ class PostgresSqlUser(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
                Available roles:
@@ -360,7 +360,7 @@ class PostgresSqlUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
-        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
@@ -403,7 +403,7 @@ class PostgresSqlUser(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
