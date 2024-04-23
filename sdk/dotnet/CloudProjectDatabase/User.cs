@@ -43,7 +43,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> Engine { get; set; } = null!;
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

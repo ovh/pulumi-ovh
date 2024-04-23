@@ -95,6 +95,8 @@ type GetDatabaseResult struct {
 	IpRestrictions []GetDatabaseIpRestriction `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster.
 	KafkaRestApi bool `pulumi:"kafkaRestApi"`
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry bool `pulumi:"kafkaSchemaRegistry"`
 	// Time on which maintenances can start every day.
 	MaintenanceTime string `pulumi:"maintenanceTime"`
 	// Type of network of the cluster.
@@ -219,6 +221,11 @@ func (o GetDatabaseResultOutput) IpRestrictions() GetDatabaseIpRestrictionArrayO
 // Defines whether the REST API is enabled on a kafka cluster.
 func (o GetDatabaseResultOutput) KafkaRestApi() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseResult) bool { return v.KafkaRestApi }).(pulumi.BoolOutput)
+}
+
+// Defines whether the schema registry is enabled on a Kafka cluster
+func (o GetDatabaseResultOutput) KafkaSchemaRegistry() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseResult) bool { return v.KafkaSchemaRegistry }).(pulumi.BoolOutput)
 }
 
 // Time on which maintenances can start every day.

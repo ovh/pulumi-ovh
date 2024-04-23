@@ -57,7 +57,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly engine!: pulumi.Output<string>;
     /**
-     * Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -144,7 +144,7 @@ export interface UserState {
      */
     engine?: pulumi.Input<string>;
     /**
-     * Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
      */
     name?: pulumi.Input<string>;
     /**
@@ -180,7 +180,7 @@ export interface UserArgs {
      */
     engine: pulumi.Input<string>;
     /**
-     * Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
      */
     name?: pulumi.Input<string>;
     /**

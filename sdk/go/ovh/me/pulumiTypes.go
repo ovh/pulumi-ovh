@@ -20,11 +20,9 @@ type InstallationTemplateCustomization struct {
 	PostInstallationScriptLink *string `pulumi:"postInstallationScriptLink"`
 	// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn *string `pulumi:"postInstallationScriptReturn"`
-	// Rating.
+	// Deprecated.
 	//
-	// Deprecated: field is not used anymore
-	Rating *int `pulumi:"rating"`
-	// Name of the ssh key that should be installed. Password login will be disabled.
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	SshKeyName *string `pulumi:"sshKeyName"`
 }
 
@@ -46,11 +44,9 @@ type InstallationTemplateCustomizationArgs struct {
 	PostInstallationScriptLink pulumi.StringPtrInput `pulumi:"postInstallationScriptLink"`
 	// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn pulumi.StringPtrInput `pulumi:"postInstallationScriptReturn"`
-	// Rating.
+	// Deprecated.
 	//
-	// Deprecated: field is not used anymore
-	Rating pulumi.IntPtrInput `pulumi:"rating"`
-	// Name of the ssh key that should be installed. Password login will be disabled.
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	SshKeyName pulumi.StringPtrInput `pulumi:"sshKeyName"`
 }
 
@@ -146,14 +142,9 @@ func (o InstallationTemplateCustomizationOutput) PostInstallationScriptReturn() 
 	return o.ApplyT(func(v InstallationTemplateCustomization) *string { return v.PostInstallationScriptReturn }).(pulumi.StringPtrOutput)
 }
 
-// Rating.
+// Deprecated.
 //
-// Deprecated: field is not used anymore
-func (o InstallationTemplateCustomizationOutput) Rating() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstallationTemplateCustomization) *int { return v.Rating }).(pulumi.IntPtrOutput)
-}
-
-// Name of the ssh key that should be installed. Password login will be disabled.
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o InstallationTemplateCustomizationOutput) SshKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstallationTemplateCustomization) *string { return v.SshKeyName }).(pulumi.StringPtrOutput)
 }
@@ -212,19 +203,9 @@ func (o InstallationTemplateCustomizationPtrOutput) PostInstallationScriptReturn
 	}).(pulumi.StringPtrOutput)
 }
 
-// Rating.
+// Deprecated.
 //
-// Deprecated: field is not used anymore
-func (o InstallationTemplateCustomizationPtrOutput) Rating() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstallationTemplateCustomization) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Rating
-	}).(pulumi.IntPtrOutput)
-}
-
-// Name of the ssh key that should be installed. Password login will be disabled.
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o InstallationTemplateCustomizationPtrOutput) SshKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstallationTemplateCustomization) *string {
 		if v == nil {
@@ -241,11 +222,9 @@ type GetInstallationTemplateCustomization struct {
 	PostInstallationScriptLink string `pulumi:"postInstallationScriptLink"`
 	// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn string `pulumi:"postInstallationScriptReturn"`
-	// (DEPRECATED) Rating.
+	// Name of the ssh key that should be installed. Password login will be disabled. Deprecated, will be removed in next release, use userMetada instead.
 	//
-	// Deprecated: field is not used anymore
-	Rating int `pulumi:"rating"`
-	// Name of the ssh key that should be installed. Password login will be disabled.
+	// Deprecated: This field will be removed from the API, please use `userMetadata` instead.
 	SshKeyName string `pulumi:"sshKeyName"`
 }
 
@@ -267,11 +246,9 @@ type GetInstallationTemplateCustomizationArgs struct {
 	PostInstallationScriptLink pulumi.StringInput `pulumi:"postInstallationScriptLink"`
 	// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn pulumi.StringInput `pulumi:"postInstallationScriptReturn"`
-	// (DEPRECATED) Rating.
+	// Name of the ssh key that should be installed. Password login will be disabled. Deprecated, will be removed in next release, use userMetada instead.
 	//
-	// Deprecated: field is not used anymore
-	Rating pulumi.IntInput `pulumi:"rating"`
-	// Name of the ssh key that should be installed. Password login will be disabled.
+	// Deprecated: This field will be removed from the API, please use `userMetadata` instead.
 	SshKeyName pulumi.StringInput `pulumi:"sshKeyName"`
 }
 
@@ -341,14 +318,9 @@ func (o GetInstallationTemplateCustomizationOutput) PostInstallationScriptReturn
 	return o.ApplyT(func(v GetInstallationTemplateCustomization) string { return v.PostInstallationScriptReturn }).(pulumi.StringOutput)
 }
 
-// (DEPRECATED) Rating.
+// Name of the ssh key that should be installed. Password login will be disabled. Deprecated, will be removed in next release, use userMetada instead.
 //
-// Deprecated: field is not used anymore
-func (o GetInstallationTemplateCustomizationOutput) Rating() pulumi.IntOutput {
-	return o.ApplyT(func(v GetInstallationTemplateCustomization) int { return v.Rating }).(pulumi.IntOutput)
-}
-
-// Name of the ssh key that should be installed. Password login will be disabled.
+// Deprecated: This field will be removed from the API, please use `userMetadata` instead.
 func (o GetInstallationTemplateCustomizationOutput) SshKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateCustomization) string { return v.SshKeyName }).(pulumi.StringOutput)
 }

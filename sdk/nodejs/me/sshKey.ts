@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * > __NOTE__ This resource will be removed in next release, please use userMetada instead.
+ *
  * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,14 +51,20 @@ export class SshKey extends pulumi.CustomResource {
 
     /**
      * True when this public SSH key is used for rescue mode and reinstallations.
+     *
+     * @deprecated use userMetada instead
      */
     public readonly default!: pulumi.Output<boolean>;
     /**
      * The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
+     *
+     * @deprecated use userMetada instead
      */
     public readonly key!: pulumi.Output<string>;
     /**
      * The friendly name of this SSH key.
+     *
+     * @deprecated use userMetada instead
      */
     public readonly keyName!: pulumi.Output<string>;
 
@@ -99,14 +107,20 @@ export class SshKey extends pulumi.CustomResource {
 export interface SshKeyState {
     /**
      * True when this public SSH key is used for rescue mode and reinstallations.
+     *
+     * @deprecated use userMetada instead
      */
     default?: pulumi.Input<boolean>;
     /**
      * The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
+     *
+     * @deprecated use userMetada instead
      */
     key?: pulumi.Input<string>;
     /**
      * The friendly name of this SSH key.
+     *
+     * @deprecated use userMetada instead
      */
     keyName?: pulumi.Input<string>;
 }
@@ -117,14 +131,20 @@ export interface SshKeyState {
 export interface SshKeyArgs {
     /**
      * True when this public SSH key is used for rescue mode and reinstallations.
+     *
+     * @deprecated use userMetada instead
      */
     default?: pulumi.Input<boolean>;
     /**
      * The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
+     *
+     * @deprecated use userMetada instead
      */
     key: pulumi.Input<string>;
     /**
      * The friendly name of this SSH key.
+     *
+     * @deprecated use userMetada instead
      */
     keyName: pulumi.Input<string>;
 }

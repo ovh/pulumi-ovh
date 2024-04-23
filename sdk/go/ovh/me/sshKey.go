@@ -14,6 +14,8 @@ import (
 
 // ## Example Usage
 //
+// > __NOTE__ This resource will be removed in next release, please use userMetada instead.
+//
 // <!--Start PulumiCodeChooser -->
 // ```go
 // package main
@@ -44,10 +46,16 @@ type SshKey struct {
 	pulumi.CustomResourceState
 
 	// True when this public SSH key is used for rescue mode and reinstallations.
+	//
+	// Deprecated: use userMetada instead
 	Default pulumi.BoolOutput `pulumi:"default"`
 	// The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
+	//
+	// Deprecated: use userMetada instead
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The friendly name of this SSH key.
+	//
+	// Deprecated: use userMetada instead
 	KeyName pulumi.StringOutput `pulumi:"keyName"`
 }
 
@@ -88,19 +96,31 @@ func GetSshKey(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SshKey resources.
 type sshKeyState struct {
 	// True when this public SSH key is used for rescue mode and reinstallations.
+	//
+	// Deprecated: use userMetada instead
 	Default *bool `pulumi:"default"`
 	// The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
+	//
+	// Deprecated: use userMetada instead
 	Key *string `pulumi:"key"`
 	// The friendly name of this SSH key.
+	//
+	// Deprecated: use userMetada instead
 	KeyName *string `pulumi:"keyName"`
 }
 
 type SshKeyState struct {
 	// True when this public SSH key is used for rescue mode and reinstallations.
+	//
+	// Deprecated: use userMetada instead
 	Default pulumi.BoolPtrInput
 	// The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
+	//
+	// Deprecated: use userMetada instead
 	Key pulumi.StringPtrInput
 	// The friendly name of this SSH key.
+	//
+	// Deprecated: use userMetada instead
 	KeyName pulumi.StringPtrInput
 }
 
@@ -110,20 +130,32 @@ func (SshKeyState) ElementType() reflect.Type {
 
 type sshKeyArgs struct {
 	// True when this public SSH key is used for rescue mode and reinstallations.
+	//
+	// Deprecated: use userMetada instead
 	Default *bool `pulumi:"default"`
 	// The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
+	//
+	// Deprecated: use userMetada instead
 	Key string `pulumi:"key"`
 	// The friendly name of this SSH key.
+	//
+	// Deprecated: use userMetada instead
 	KeyName string `pulumi:"keyName"`
 }
 
 // The set of arguments for constructing a SshKey resource.
 type SshKeyArgs struct {
 	// True when this public SSH key is used for rescue mode and reinstallations.
+	//
+	// Deprecated: use userMetada instead
 	Default pulumi.BoolPtrInput
 	// The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
+	//
+	// Deprecated: use userMetada instead
 	Key pulumi.StringInput
 	// The friendly name of this SSH key.
+	//
+	// Deprecated: use userMetada instead
 	KeyName pulumi.StringInput
 }
 
@@ -215,16 +247,22 @@ func (o SshKeyOutput) ToSshKeyOutputWithContext(ctx context.Context) SshKeyOutpu
 }
 
 // True when this public SSH key is used for rescue mode and reinstallations.
+//
+// Deprecated: use userMetada instead
 func (o SshKeyOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SshKey) pulumi.BoolOutput { return v.Default }).(pulumi.BoolOutput)
 }
 
 // The content of the public key in the form "ssh-algo content", e.g. "ssh-ed25519 AAAAC3...".
+//
+// Deprecated: use userMetada instead
 func (o SshKeyOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
 // The friendly name of this SSH key.
+//
+// Deprecated: use userMetada instead
 func (o SshKeyOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }

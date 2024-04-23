@@ -84,6 +84,8 @@ class AwaitableGetSshKeyResult(GetSshKeyResult):
 def get_ssh_key(key_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshKeyResult:
     """
+    > __NOTE__ This data source will be removed in next release.
+
     Use this data source to retrieve information about an SSH key.
 
     ## Example Usage
@@ -116,6 +118,8 @@ def get_ssh_key(key_name: Optional[str] = None,
 def get_ssh_key_output(key_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshKeyResult]:
     """
+    > __NOTE__ This data source will be removed in next release.
+
     Use this data source to retrieve information about an SSH key.
 
     ## Example Usage

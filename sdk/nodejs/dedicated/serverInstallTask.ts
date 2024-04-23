@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * Using a custom template based on an OVHCloud template
  * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,16 +20,12 @@ import * as utilities from "../utilities";
  *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
  *     bootType: "rescue",
  * });
- * const key = new ovh.me.SshKey("key", {
- *     keyName: "mykey",
- *     key: "ssh-ed25519 AAAAC3...",
- * });
  * const debian = new ovh.me.InstallationTemplate("debian", {
- *     baseTemplateName: "debian11_64",
- *     templateName: "mydebian11",
- *     defaultLanguage: "en",
+ *     baseTemplateName: "debian12_64",
+ *     templateName: "mydebian12",
  *     customization: {
- *         sshKeyName: key.keyName,
+ *         postInstallationScriptLink: "http://test",
+ *         postInstallationScriptReturn: "ok",
  *     },
  * });
  * const serverInstall = new ovh.dedicated.ServerInstallTask("serverInstall", {
@@ -38,6 +35,113 @@ import * as utilities from "../utilities";
  *     details: {
  *         customHostname: "mytest",
  *     },
+ *     userMetadatas: [{
+ *         key: "sshKey",
+ *         value: "ssh-ed25519 AAAAC3...",
+ *     }],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Using a BringYourOwnLinux (BYOLinux) template (with userMetadata)
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const server = ovh.getServer({
+ *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+ * });
+ * const rescue = ovh.Dedicated.getServerBoots({
+ *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+ *     bootType: "rescue",
+ * });
+ * const serverInstall = new ovh.dedicated.ServerInstallTask("serverInstall", {
+ *     serviceName: server.then(server => server.serviceName),
+ *     templateName: "byolinux_64",
+ *     bootidOnDestroy: rescue.then(rescue => rescue.results?.[0]),
+ *     details: {
+ *         customHostname: "mytest",
+ *     },
+ *     userMetadatas: [
+ *         {
+ *             key: "imageURL",
+ *             value: "https://myimage.qcow2",
+ *         },
+ *         {
+ *             key: "imageType",
+ *             value: "qcow2",
+ *         },
+ *         {
+ *             key: "httpHeaders0Key",
+ *             value: "Authorization",
+ *         },
+ *         {
+ *             key: "httpHeaders0Value",
+ *             value: "Basic bG9naW46xxxxxxx=",
+ *         },
+ *         {
+ *             key: "imageChecksumType",
+ *             value: "sha512",
+ *         },
+ *         {
+ *             key: "imageCheckSum",
+ *             value: "047122c9ff4d2a69512212104b06c678f5a9cdb22b75467353613ff87ccd03b57b38967e56d810e61366f9d22d6bd39ac0addf4e00a4c6445112a2416af8f225",
+ *         },
+ *         {
+ *             key: "configDriveUserData",
+ *             value: `#cloud-config
+ * ssh_authorized_keys:
+ *   - ${data.ovh_me_ssh_key.mykey.key}
+ *
+ * users:
+ *   - name: patient0
+ *     sudo: ALL=(ALL) NOPASSWD:ALL
+ *     groups: users, sudo
+ *     shell: /bin/bash
+ *     lock_passwd: false
+ *     ssh_authorized_keys:
+ *       - ${data.ovh_me_ssh_key.mykey.key}
+ * disable_root: false
+ * packages:
+ *   - vim
+ *   - tree
+ * final_message: The system is finally up, after $UPTIME seconds
+ * `,
+ *         },
+ *     ],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Using a Microsoft Windows server OVHcloud template with a specific language
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const server = ovh.getServer({
+ *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+ * });
+ * const rescue = ovh.Dedicated.getServerBoots({
+ *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+ *     bootType: "rescue",
+ * });
+ * const serverInstall = new ovh.dedicated.ServerInstallTask("serverInstall", {
+ *     serviceName: server.then(server => server.serviceName),
+ *     templateName: "win2019-std_64",
+ *     bootidOnDestroy: rescue.then(rescue => rescue.results?.[0]),
+ *     details: {
+ *         customHostname: "mytest",
+ *     },
+ *     userMetadatas: [{
+ *         key: "language",
+ *         value: "fr-fr",
+ *     }],
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -124,6 +228,10 @@ export class ServerInstallTask extends pulumi.CustomResource {
      * Template name.
      */
     public readonly templateName!: pulumi.Output<string>;
+    /**
+     * see `userMetadata` block below.
+     */
+    public readonly userMetadatas!: pulumi.Output<outputs.Dedicated.ServerInstallTaskUserMetadata[] | undefined>;
 
     /**
      * Create a ServerInstallTask resource with the given unique name, arguments, and options.
@@ -149,6 +257,7 @@ export class ServerInstallTask extends pulumi.CustomResource {
             resourceInputs["startDate"] = state ? state.startDate : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["templateName"] = state ? state.templateName : undefined;
+            resourceInputs["userMetadatas"] = state ? state.userMetadatas : undefined;
         } else {
             const args = argsOrState as ServerInstallTaskArgs | undefined;
             if ((!args || args.serviceName === undefined) && !opts.urn) {
@@ -162,6 +271,7 @@ export class ServerInstallTask extends pulumi.CustomResource {
             resourceInputs["partitionSchemeName"] = args ? args.partitionSchemeName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["templateName"] = args ? args.templateName : undefined;
+            resourceInputs["userMetadatas"] = args ? args.userMetadatas : undefined;
             resourceInputs["comment"] = undefined /*out*/;
             resourceInputs["doneDate"] = undefined /*out*/;
             resourceInputs["function"] = undefined /*out*/;
@@ -222,6 +332,10 @@ export interface ServerInstallTaskState {
      * Template name.
      */
     templateName?: pulumi.Input<string>;
+    /**
+     * see `userMetadata` block below.
+     */
+    userMetadatas?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerInstallTaskUserMetadata>[]>;
 }
 
 /**
@@ -248,4 +362,8 @@ export interface ServerInstallTaskArgs {
      * Template name.
      */
     templateName: pulumi.Input<string>;
+    /**
+     * see `userMetadata` block below.
+     */
+    userMetadatas?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerInstallTaskUserMetadata>[]>;
 }

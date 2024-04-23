@@ -11,7 +11,7 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// The OVH API Application Key.
+// The OVH API Application Key
 func GetApplicationKey(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "ovh:applicationKey")
 	if err == nil {
@@ -24,7 +24,7 @@ func GetApplicationKey(ctx *pulumi.Context) string {
 	return value
 }
 
-// The OVH API Application Secret.
+// The OVH API Application Secret
 func GetApplicationSecret(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "ovh:applicationSecret")
 	if err == nil {
@@ -37,7 +37,17 @@ func GetApplicationSecret(ctx *pulumi.Context) string {
 	return value
 }
 
-// The OVH API Consumer key.
+// OAuth 2.0 application's ID
+func GetClientId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "ovh:clientId")
+}
+
+// OAuth 2.0 application's secret
+func GetClientSecret(ctx *pulumi.Context) string {
+	return config.Get(ctx, "ovh:clientSecret")
+}
+
+// The OVH API Consumer Key
 func GetConsumerKey(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "ovh:consumerKey")
 	if err == nil {
@@ -50,7 +60,7 @@ func GetConsumerKey(ctx *pulumi.Context) string {
 	return value
 }
 
-// The OVH API endpoint to target (ex: "ovh-eu").
+// The OVH API endpoint to target (ex: "ovh-eu")
 func GetEndpoint(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "ovh:endpoint")
 	if err == nil {

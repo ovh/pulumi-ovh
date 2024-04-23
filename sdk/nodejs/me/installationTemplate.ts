@@ -9,21 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Use this resource to create a custom installation template available for dedicated servers.
  *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const mytemplate = new ovh.me.InstallationTemplate("mytemplate", {
- *     baseTemplateName: "centos7_64",
- *     defaultLanguage: "en",
- *     templateName: "mytemplate",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Import
  *
  * Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g.,
@@ -63,7 +48,7 @@ export class InstallationTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * List of all language available for this template.
+     * Deprecated.
      */
     public /*out*/ readonly availableLanguages!: pulumi.Output<string[]>;
     /**
@@ -71,26 +56,22 @@ export class InstallationTemplate extends pulumi.CustomResource {
      */
     public readonly baseTemplateName!: pulumi.Output<string>;
     /**
-     * This distribution is new and, although tested and functional, may still display odd behaviour.
-     */
-    public /*out*/ readonly beta!: pulumi.Output<boolean>;
-    /**
      * This template bit format (32 or 64).
      */
     public /*out*/ readonly bitFormat!: pulumi.Output<number>;
     /**
      * Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     public /*out*/ readonly category!: pulumi.Output<string>;
     public readonly customization!: pulumi.Output<outputs.Me.InstallationTemplateCustomization | undefined>;
     /**
-     * The default language of this template.
+     * Deprecated, use language in userMetadata instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    public readonly defaultLanguage!: pulumi.Output<string>;
-    /**
-     * is this distribution deprecated.
-     */
-    public /*out*/ readonly deprecated!: pulumi.Output<boolean>;
+    public readonly defaultLanguage!: pulumi.Output<string | undefined>;
     /**
      * information about this template.
      */
@@ -112,10 +93,6 @@ export class InstallationTemplate extends pulumi.CustomResource {
      */
     public /*out*/ readonly hardRaidConfiguration!: pulumi.Output<boolean>;
     /**
-     * Date of last modification of the base image.
-     */
-    public /*out*/ readonly lastModification!: pulumi.Output<string>;
-    /**
      * This distribution supports Logical Volumes (Linux LVM)
      */
     public /*out*/ readonly lvmReady!: pulumi.Output<boolean>;
@@ -123,10 +100,6 @@ export class InstallationTemplate extends pulumi.CustomResource {
      * Remove default partition schemes at creation.
      */
     public readonly removeDefaultPartitionSchemes!: pulumi.Output<boolean>;
-    /**
-     * This distribution supports the microsoft SQL server.
-     */
-    public /*out*/ readonly supportsSqlServer!: pulumi.Output<boolean>;
     /**
      * This template name.
      */
@@ -147,29 +120,22 @@ export class InstallationTemplate extends pulumi.CustomResource {
             const state = argsOrState as InstallationTemplateState | undefined;
             resourceInputs["availableLanguages"] = state ? state.availableLanguages : undefined;
             resourceInputs["baseTemplateName"] = state ? state.baseTemplateName : undefined;
-            resourceInputs["beta"] = state ? state.beta : undefined;
             resourceInputs["bitFormat"] = state ? state.bitFormat : undefined;
             resourceInputs["category"] = state ? state.category : undefined;
             resourceInputs["customization"] = state ? state.customization : undefined;
             resourceInputs["defaultLanguage"] = state ? state.defaultLanguage : undefined;
-            resourceInputs["deprecated"] = state ? state.deprecated : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["distribution"] = state ? state.distribution : undefined;
             resourceInputs["family"] = state ? state.family : undefined;
             resourceInputs["filesystems"] = state ? state.filesystems : undefined;
             resourceInputs["hardRaidConfiguration"] = state ? state.hardRaidConfiguration : undefined;
-            resourceInputs["lastModification"] = state ? state.lastModification : undefined;
             resourceInputs["lvmReady"] = state ? state.lvmReady : undefined;
             resourceInputs["removeDefaultPartitionSchemes"] = state ? state.removeDefaultPartitionSchemes : undefined;
-            resourceInputs["supportsSqlServer"] = state ? state.supportsSqlServer : undefined;
             resourceInputs["templateName"] = state ? state.templateName : undefined;
         } else {
             const args = argsOrState as InstallationTemplateArgs | undefined;
             if ((!args || args.baseTemplateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'baseTemplateName'");
-            }
-            if ((!args || args.defaultLanguage === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'defaultLanguage'");
             }
             if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
@@ -180,18 +146,14 @@ export class InstallationTemplate extends pulumi.CustomResource {
             resourceInputs["removeDefaultPartitionSchemes"] = args ? args.removeDefaultPartitionSchemes : undefined;
             resourceInputs["templateName"] = args ? args.templateName : undefined;
             resourceInputs["availableLanguages"] = undefined /*out*/;
-            resourceInputs["beta"] = undefined /*out*/;
             resourceInputs["bitFormat"] = undefined /*out*/;
             resourceInputs["category"] = undefined /*out*/;
-            resourceInputs["deprecated"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["distribution"] = undefined /*out*/;
             resourceInputs["family"] = undefined /*out*/;
             resourceInputs["filesystems"] = undefined /*out*/;
             resourceInputs["hardRaidConfiguration"] = undefined /*out*/;
-            resourceInputs["lastModification"] = undefined /*out*/;
             resourceInputs["lvmReady"] = undefined /*out*/;
-            resourceInputs["supportsSqlServer"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstallationTemplate.__pulumiType, name, resourceInputs, opts);
@@ -203,7 +165,7 @@ export class InstallationTemplate extends pulumi.CustomResource {
  */
 export interface InstallationTemplateState {
     /**
-     * List of all language available for this template.
+     * Deprecated.
      */
     availableLanguages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -211,26 +173,22 @@ export interface InstallationTemplateState {
      */
     baseTemplateName?: pulumi.Input<string>;
     /**
-     * This distribution is new and, although tested and functional, may still display odd behaviour.
-     */
-    beta?: pulumi.Input<boolean>;
-    /**
      * This template bit format (32 or 64).
      */
     bitFormat?: pulumi.Input<number>;
     /**
      * Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     category?: pulumi.Input<string>;
     customization?: pulumi.Input<inputs.Me.InstallationTemplateCustomization>;
     /**
-     * The default language of this template.
+     * Deprecated, use language in userMetadata instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     defaultLanguage?: pulumi.Input<string>;
-    /**
-     * is this distribution deprecated.
-     */
-    deprecated?: pulumi.Input<boolean>;
     /**
      * information about this template.
      */
@@ -252,10 +210,6 @@ export interface InstallationTemplateState {
      */
     hardRaidConfiguration?: pulumi.Input<boolean>;
     /**
-     * Date of last modification of the base image.
-     */
-    lastModification?: pulumi.Input<string>;
-    /**
      * This distribution supports Logical Volumes (Linux LVM)
      */
     lvmReady?: pulumi.Input<boolean>;
@@ -263,10 +217,6 @@ export interface InstallationTemplateState {
      * Remove default partition schemes at creation.
      */
     removeDefaultPartitionSchemes?: pulumi.Input<boolean>;
-    /**
-     * This distribution supports the microsoft SQL server.
-     */
-    supportsSqlServer?: pulumi.Input<boolean>;
     /**
      * This template name.
      */
@@ -283,9 +233,11 @@ export interface InstallationTemplateArgs {
     baseTemplateName: pulumi.Input<string>;
     customization?: pulumi.Input<inputs.Me.InstallationTemplateCustomization>;
     /**
-     * The default language of this template.
+     * Deprecated, use language in userMetadata instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    defaultLanguage: pulumi.Input<string>;
+    defaultLanguage?: pulumi.Input<string>;
     /**
      * Remove default partition schemes at creation.
      */

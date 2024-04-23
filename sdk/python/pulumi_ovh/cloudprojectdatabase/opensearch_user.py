@@ -27,7 +27,7 @@ class OpensearchUserArgs:
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[Sequence[pulumi.Input['OpensearchUserAclArgs']]] acls: Acls of the user.
-        :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -80,7 +80,7 @@ class OpensearchUserArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
@@ -117,7 +117,7 @@ class _OpensearchUserState:
         :param pulumi.Input[Sequence[pulumi.Input['OpensearchUserAclArgs']]] acls: Acls of the user.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
-        :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
@@ -181,7 +181,7 @@ class _OpensearchUserState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
@@ -265,7 +265,7 @@ class OpensearchUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpensearchUserAclArgs']]]] acls: Acls of the user.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -358,7 +358,7 @@ class OpensearchUser(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpensearchUserAclArgs']]]] acls: Acls of the user.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
-        :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
@@ -407,7 +407,7 @@ class OpensearchUser(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Username affected by this acl. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         """
         return pulumi.get(self, "name")
 

@@ -12,6 +12,7 @@ namespace Pulumi.Ovh.Dedicated
     /// <summary>
     /// ## Example Usage
     /// 
+    /// Using a custom template based on an OVHCloud template
     /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
@@ -27,20 +28,14 @@ namespace Pulumi.Ovh.Dedicated
     ///         BootType = "rescue",
     ///     });
     /// 
-    ///     var key = new Ovh.Me.SshKey("key", new()
-    ///     {
-    ///         KeyName = "mykey",
-    ///         Key = "ssh-ed25519 AAAAC3...",
-    ///     });
-    /// 
     ///     var debian = new Ovh.Me.InstallationTemplate("debian", new()
     ///     {
-    ///         BaseTemplateName = "debian11_64",
-    ///         TemplateName = "mydebian11",
-    ///         DefaultLanguage = "en",
+    ///         BaseTemplateName = "debian12_64",
+    ///         TemplateName = "mydebian12",
     ///         Customization = new Ovh.Me.Inputs.InstallationTemplateCustomizationArgs
     ///         {
-    ///             SshKeyName = key.KeyName,
+    ///             PostInstallationScriptLink = "http://test",
+    ///             PostInstallationScriptReturn = "ok",
     ///         },
     ///     });
     /// 
@@ -52,6 +47,151 @@ namespace Pulumi.Ovh.Dedicated
     ///         Details = new Ovh.Dedicated.Inputs.ServerInstallTaskDetailsArgs
     ///         {
     ///             CustomHostname = "mytest",
+    ///         },
+    ///         UserMetadatas = new[]
+    ///         {
+    ///             new Ovh.Dedicated.Inputs.ServerInstallTaskUserMetadataArgs
+    ///             {
+    ///                 Key = "sshKey",
+    ///                 Value = "ssh-ed25519 AAAAC3...",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Using a BringYourOwnLinux (BYOLinux) template (with userMetadata)
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var server = Ovh.GetServer.Invoke(new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///     });
+    /// 
+    ///     var rescue = Ovh.Dedicated.GetServerBoots.Invoke(new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///         BootType = "rescue",
+    ///     });
+    /// 
+    ///     var serverInstall = new Ovh.Dedicated.ServerInstallTask("serverInstall", new()
+    ///     {
+    ///         ServiceName = server.Apply(getServerResult =&gt; getServerResult.ServiceName),
+    ///         TemplateName = "byolinux_64",
+    ///         BootidOnDestroy = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.Results[0]),
+    ///         Details = new Ovh.Dedicated.Inputs.ServerInstallTaskDetailsArgs
+    ///         {
+    ///             CustomHostname = "mytest",
+    ///         },
+    ///         UserMetadatas = new[]
+    ///         {
+    ///             new Ovh.Dedicated.Inputs.ServerInstallTaskUserMetadataArgs
+    ///             {
+    ///                 Key = "imageURL",
+    ///                 Value = "https://myimage.qcow2",
+    ///             },
+    ///             new Ovh.Dedicated.Inputs.ServerInstallTaskUserMetadataArgs
+    ///             {
+    ///                 Key = "imageType",
+    ///                 Value = "qcow2",
+    ///             },
+    ///             new Ovh.Dedicated.Inputs.ServerInstallTaskUserMetadataArgs
+    ///             {
+    ///                 Key = "httpHeaders0Key",
+    ///                 Value = "Authorization",
+    ///             },
+    ///             new Ovh.Dedicated.Inputs.ServerInstallTaskUserMetadataArgs
+    ///             {
+    ///                 Key = "httpHeaders0Value",
+    ///                 Value = "Basic bG9naW46xxxxxxx=",
+    ///             },
+    ///             new Ovh.Dedicated.Inputs.ServerInstallTaskUserMetadataArgs
+    ///             {
+    ///                 Key = "imageChecksumType",
+    ///                 Value = "sha512",
+    ///             },
+    ///             new Ovh.Dedicated.Inputs.ServerInstallTaskUserMetadataArgs
+    ///             {
+    ///                 Key = "imageCheckSum",
+    ///                 Value = "047122c9ff4d2a69512212104b06c678f5a9cdb22b75467353613ff87ccd03b57b38967e56d810e61366f9d22d6bd39ac0addf4e00a4c6445112a2416af8f225",
+    ///             },
+    ///             new Ovh.Dedicated.Inputs.ServerInstallTaskUserMetadataArgs
+    ///             {
+    ///                 Key = "configDriveUserData",
+    ///                 Value = @$"#cloud-config
+    /// ssh_authorized_keys:
+    ///   - {data.Ovh_me_ssh_key.Mykey.Key}
+    /// 
+    /// users:
+    ///   - name: patient0
+    ///     sudo: ALL=(ALL) NOPASSWD:ALL
+    ///     groups: users, sudo
+    ///     shell: /bin/bash
+    ///     lock_passwd: false
+    ///     ssh_authorized_keys:
+    ///       - {data.Ovh_me_ssh_key.Mykey.Key}
+    /// disable_root: false
+    /// packages:
+    ///   - vim
+    ///   - tree
+    /// final_message: The system is finally up, after $UPTIME seconds
+    /// ",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Using a Microsoft Windows server OVHcloud template with a specific language
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var server = Ovh.GetServer.Invoke(new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///     });
+    /// 
+    ///     var rescue = Ovh.Dedicated.GetServerBoots.Invoke(new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///         BootType = "rescue",
+    ///     });
+    /// 
+    ///     var serverInstall = new Ovh.Dedicated.ServerInstallTask("serverInstall", new()
+    ///     {
+    ///         ServiceName = server.Apply(getServerResult =&gt; getServerResult.ServiceName),
+    ///         TemplateName = "win2019-std_64",
+    ///         BootidOnDestroy = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.Results[0]),
+    ///         Details = new Ovh.Dedicated.Inputs.ServerInstallTaskDetailsArgs
+    ///         {
+    ///             CustomHostname = "mytest",
+    ///         },
+    ///         UserMetadatas = new[]
+    ///         {
+    ///             new Ovh.Dedicated.Inputs.ServerInstallTaskUserMetadataArgs
+    ///             {
+    ///                 Key = "language",
+    ///                 Value = "fr-fr",
+    ///             },
     ///         },
     ///     });
     /// 
@@ -138,6 +278,12 @@ namespace Pulumi.Ovh.Dedicated
         [Output("templateName")]
         public Output<string> TemplateName { get; private set; } = null!;
 
+        /// <summary>
+        /// see `user_metadata` block below.
+        /// </summary>
+        [Output("userMetadatas")]
+        public Output<ImmutableArray<Outputs.ServerInstallTaskUserMetadata>> UserMetadatas { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ServerInstallTask resource with the given unique name, arguments, and options.
@@ -215,6 +361,18 @@ namespace Pulumi.Ovh.Dedicated
         [Input("templateName", required: true)]
         public Input<string> TemplateName { get; set; } = null!;
 
+        [Input("userMetadatas")]
+        private InputList<Inputs.ServerInstallTaskUserMetadataArgs>? _userMetadatas;
+
+        /// <summary>
+        /// see `user_metadata` block below.
+        /// </summary>
+        public InputList<Inputs.ServerInstallTaskUserMetadataArgs> UserMetadatas
+        {
+            get => _userMetadatas ?? (_userMetadatas = new InputList<Inputs.ServerInstallTaskUserMetadataArgs>());
+            set => _userMetadatas = value;
+        }
+
         public ServerInstallTaskArgs()
         {
         }
@@ -288,6 +446,18 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         [Input("templateName")]
         public Input<string>? TemplateName { get; set; }
+
+        [Input("userMetadatas")]
+        private InputList<Inputs.ServerInstallTaskUserMetadataGetArgs>? _userMetadatas;
+
+        /// <summary>
+        /// see `user_metadata` block below.
+        /// </summary>
+        public InputList<Inputs.ServerInstallTaskUserMetadataGetArgs> UserMetadatas
+        {
+            get => _userMetadatas ?? (_userMetadatas = new InputList<Inputs.ServerInstallTaskUserMetadataGetArgs>());
+            set => _userMetadatas = value;
+        }
 
         public ServerInstallTaskState()
         {

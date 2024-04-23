@@ -1286,6 +1286,208 @@ export namespace Dedicated {
         value: number;
     }
 
+    export interface GetServerSpecificationsNetworkBandwidth {
+        /**
+         * Bandwidth limitation Internet to OVH
+         */
+        internetToOvh: outputs.Dedicated.GetServerSpecificationsNetworkBandwidthInternetToOvh;
+        /**
+         * Bandwidth limitation OVH to Internet
+         */
+        ovhToInternet: outputs.Dedicated.GetServerSpecificationsNetworkBandwidthOvhToInternet;
+        /**
+         * Bandwidth limitation OVH to OVH
+         */
+        ovhToOvh: outputs.Dedicated.GetServerSpecificationsNetworkBandwidthOvhToOvh;
+        /**
+         * Bandwidth offer type (included┃standard)
+         */
+        type: string;
+    }
+
+    export interface GetServerSpecificationsNetworkBandwidthInternetToOvh {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkBandwidthOvhToInternet {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkBandwidthOvhToOvh {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkConnectionVal {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkOla {
+        /**
+         * Is the OLA feature available
+         */
+        available: boolean;
+        /**
+         * Supported modes
+         */
+        availableModes: outputs.Dedicated.GetServerSpecificationsNetworkOlaAvailableMode[];
+        /**
+         * Supported modes (DEPRECATED)
+         */
+        supportedModes: string[];
+    }
+
+    export interface GetServerSpecificationsNetworkOlaAvailableMode {
+        /**
+         * Whether it is the default configuration of the server
+         */
+        default: boolean;
+        /**
+         * Interface layout
+         */
+        interfaces: outputs.Dedicated.GetServerSpecificationsNetworkOlaAvailableModeInterface[];
+        /**
+         * Switch name
+         */
+        name: string;
+    }
+
+    export interface GetServerSpecificationsNetworkOlaAvailableModeInterface {
+        /**
+         * Interface aggregation status
+         */
+        aggregation: boolean;
+        /**
+         * Interface count
+         */
+        count: number;
+        /**
+         * Bandwidth offer type (included┃standard)
+         */
+        type: string;
+    }
+
+    export interface GetServerSpecificationsNetworkRouting {
+        /**
+         * Ipv4 routing details
+         */
+        ipv4: outputs.Dedicated.GetServerSpecificationsNetworkRoutingIpv4;
+        /**
+         * Ipv6 routing details
+         */
+        ipv6: outputs.Dedicated.GetServerSpecificationsNetworkRoutingIpv6;
+    }
+
+    export interface GetServerSpecificationsNetworkRoutingIpv4 {
+        /**
+         * Server gateway
+         */
+        gateway: string;
+        /**
+         * Server main IP
+         */
+        ip: string;
+        /**
+         * Server network
+         */
+        network: string;
+    }
+
+    export interface GetServerSpecificationsNetworkRoutingIpv6 {
+        /**
+         * Server gateway
+         */
+        gateway: string;
+        /**
+         * Server main IP
+         */
+        ip: string;
+        /**
+         * Server network
+         */
+        network: string;
+    }
+
+    export interface GetServerSpecificationsNetworkSwitching {
+        /**
+         * Switch name
+         */
+        name: string;
+    }
+
+    export interface GetServerSpecificationsNetworkTraffic {
+        /**
+         * Monthly input traffic quota allowed
+         */
+        inputQuotaSize: outputs.Dedicated.GetServerSpecificationsNetworkTrafficInputQuotaSize;
+        /**
+         * Monthly input traffic consumed this month
+         */
+        inputQuotaUsed: outputs.Dedicated.GetServerSpecificationsNetworkTrafficInputQuotaUsed;
+        /**
+         * Whether bandwidth is throttleted for being over quota
+         */
+        isThrottled: boolean;
+        /**
+         * Monthly output traffic quota allowed
+         */
+        outputQuotaSize: outputs.Dedicated.GetServerSpecificationsNetworkTrafficOutputQuotaSize;
+        /**
+         * Monthly output traffic consumed this month
+         */
+        outputQuotaUsed: outputs.Dedicated.GetServerSpecificationsNetworkTrafficOutputQuotaUsed;
+        /**
+         * Next reset quota date for traffic counter
+         */
+        resetQuotaDate: string;
+    }
+
+    export interface GetServerSpecificationsNetworkTrafficInputQuotaSize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkTrafficInputQuotaUsed {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkTrafficOutputQuotaSize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkTrafficOutputQuotaUsed {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkVmac {
+        /**
+         * Whether server is compatible vmac
+         */
+        supported: boolean;
+    }
+
+    export interface GetServerSpecificationsNetworkVrack {
+        /**
+         * vrack bandwidth limitation
+         */
+        bandwidth: outputs.Dedicated.GetServerSpecificationsNetworkVrackBandwidth;
+        /**
+         * Bandwidth offer type (included┃standard)
+         */
+        type: string;
+    }
+
+    export interface GetServerSpecificationsNetworkVrackBandwidth {
+        unit: string;
+        value: number;
+    }
+
     export interface ServerInstallTaskDetails {
         /**
          * Set up the server using the provided hostname instead of the default hostname.
@@ -1296,15 +1498,13 @@ export namespace Dedicated {
          */
         diskGroupId?: number;
         /**
-         * set to true to install sql server (Windows template only).
-         */
-        installSqlServer?: boolean;
-        /**
-         * language.
+         * Deprecated, will be removed in next release.
+         *
+         * @deprecated This field is deprecated and will be removed in a future release
          */
         language?: string;
         /**
-         * set to true to disable RAID.
+         * Set to true to disable RAID.
          */
         noRaid?: boolean;
         /**
@@ -1320,13 +1520,30 @@ export namespace Dedicated {
          */
         softRaidDevices?: number;
         /**
-         * Name of the ssh key that should be installed. Password login will be disabled.
-         */
-        sshKeyName?: string;
-        /**
-         * set to true to use SPLA.
+         * Deprecated, will be removed in next release.
+         *
+         * The `userMetadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
+         *
+         * -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
+         *
+         * -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
+         *
+         * -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
+         *
+         * @deprecated This field is deprecated and will be removed in a future release
          */
         useSpla?: boolean;
+    }
+
+    export interface ServerInstallTaskUserMetadata {
+        /**
+         * The key for the user_metadata
+         */
+        key: string;
+        /**
+         * The value for the user_metadata
+         */
+        value: string;
     }
 
     export interface ServerNetworkingInterface {
@@ -2042,13 +2259,9 @@ export namespace Me {
          */
         postInstallationScriptReturn: string;
         /**
-         * (DEPRECATED) Rating.
+         * Name of the ssh key that should be installed. Password login will be disabled. Deprecated, will be removed in next release, use userMetada instead.
          *
-         * @deprecated field is not used anymore
-         */
-        rating: number;
-        /**
-         * Name of the ssh key that should be installed. Password login will be disabled.
+         * @deprecated This field will be removed from the API, please use `userMetadata` instead.
          */
         sshKeyName: string;
     }
@@ -2141,13 +2354,9 @@ export namespace Me {
          */
         postInstallationScriptReturn?: string;
         /**
-         * Rating.
+         * Deprecated.
          *
-         * @deprecated field is not used anymore
-         */
-        rating?: number;
-        /**
-         * Name of the ssh key that should be installed. Password login will be disabled.
+         * @deprecated This field is deprecated and will be removed in a future release.
          */
         sshKeyName?: string;
     }

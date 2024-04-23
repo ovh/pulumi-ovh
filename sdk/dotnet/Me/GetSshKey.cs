@@ -12,6 +12,8 @@ namespace Pulumi.Ovh.Me
     public static class GetSshKey
     {
         /// <summary>
+        /// &gt; __NOTE__ This data source will be removed in next release.
+        /// 
         /// Use this data source to retrieve information about an SSH key.
         /// 
         /// ## Example Usage
@@ -38,6 +40,8 @@ namespace Pulumi.Ovh.Me
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("ovh:Me/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; __NOTE__ This data source will be removed in next release.
+        /// 
         /// Use this data source to retrieve information about an SSH key.
         /// 
         /// ## Example Usage

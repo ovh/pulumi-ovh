@@ -751,15 +751,13 @@ export namespace Dedicated {
          */
         diskGroupId?: pulumi.Input<number>;
         /**
-         * set to true to install sql server (Windows template only).
-         */
-        installSqlServer?: pulumi.Input<boolean>;
-        /**
-         * language.
+         * Deprecated, will be removed in next release.
+         *
+         * @deprecated This field is deprecated and will be removed in a future release
          */
         language?: pulumi.Input<string>;
         /**
-         * set to true to disable RAID.
+         * Set to true to disable RAID.
          */
         noRaid?: pulumi.Input<boolean>;
         /**
@@ -775,13 +773,30 @@ export namespace Dedicated {
          */
         softRaidDevices?: pulumi.Input<number>;
         /**
-         * Name of the ssh key that should be installed. Password login will be disabled.
-         */
-        sshKeyName?: pulumi.Input<string>;
-        /**
-         * set to true to use SPLA.
+         * Deprecated, will be removed in next release.
+         *
+         * The `userMetadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
+         *
+         * -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
+         *
+         * -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
+         *
+         * -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
+         *
+         * @deprecated This field is deprecated and will be removed in a future release
          */
         useSpla?: pulumi.Input<boolean>;
+    }
+
+    export interface ServerInstallTaskUserMetadata {
+        /**
+         * The key for the user_metadata
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The value for the user_metadata
+         */
+        value: pulumi.Input<string>;
     }
 
     export interface ServerNetworkingInterface {
@@ -1433,13 +1448,9 @@ export namespace Me {
          */
         postInstallationScriptReturn?: pulumi.Input<string>;
         /**
-         * Rating.
+         * Deprecated.
          *
-         * @deprecated field is not used anymore
-         */
-        rating?: pulumi.Input<number>;
-        /**
-         * Name of the ssh key that should be installed. Password login will be disabled.
+         * @deprecated This field is deprecated and will be removed in a future release.
          */
         sshKeyName?: pulumi.Input<string>;
     }

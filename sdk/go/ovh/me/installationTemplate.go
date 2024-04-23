@@ -14,36 +14,6 @@ import (
 
 // Use this resource to create a custom installation template available for dedicated servers.
 //
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Me.NewInstallationTemplate(ctx, "mytemplate", &Me.InstallationTemplateArgs{
-//				BaseTemplateName: pulumi.String("centos7_64"),
-//				DefaultLanguage:  pulumi.String("en"),
-//				TemplateName:     pulumi.String("mytemplate"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Import
 //
 // Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g.,
@@ -56,21 +26,21 @@ import (
 type InstallationTemplate struct {
 	pulumi.CustomResourceState
 
-	// List of all language available for this template.
+	// Deprecated.
 	AvailableLanguages pulumi.StringArrayOutput `pulumi:"availableLanguages"`
 	// The name of an existing installation template, choose one among the list given by `getInstallationTemplates` datasource.
 	BaseTemplateName pulumi.StringOutput `pulumi:"baseTemplateName"`
-	// This distribution is new and, although tested and functional, may still display odd behaviour.
-	Beta pulumi.BoolOutput `pulumi:"beta"`
 	// This template bit format (32 or 64).
 	BitFormat pulumi.IntOutput `pulumi:"bitFormat"`
 	// Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	Category      pulumi.StringOutput                        `pulumi:"category"`
 	Customization InstallationTemplateCustomizationPtrOutput `pulumi:"customization"`
-	// The default language of this template.
-	DefaultLanguage pulumi.StringOutput `pulumi:"defaultLanguage"`
-	// is this distribution deprecated.
-	Deprecated pulumi.BoolOutput `pulumi:"deprecated"`
+	// Deprecated, use language in userMetadata instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	DefaultLanguage pulumi.StringPtrOutput `pulumi:"defaultLanguage"`
 	// information about this template.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// the distribution this template is based on.
@@ -81,14 +51,10 @@ type InstallationTemplate struct {
 	Filesystems pulumi.StringArrayOutput `pulumi:"filesystems"`
 	// This distribution supports hardware raid configuration through the OVHcloud API.
 	HardRaidConfiguration pulumi.BoolOutput `pulumi:"hardRaidConfiguration"`
-	// Date of last modification of the base image.
-	LastModification pulumi.StringOutput `pulumi:"lastModification"`
 	// This distribution supports Logical Volumes (Linux LVM)
 	LvmReady pulumi.BoolOutput `pulumi:"lvmReady"`
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes pulumi.BoolOutput `pulumi:"removeDefaultPartitionSchemes"`
-	// This distribution supports the microsoft SQL server.
-	SupportsSqlServer pulumi.BoolOutput `pulumi:"supportsSqlServer"`
 	// This template name.
 	TemplateName pulumi.StringOutput `pulumi:"templateName"`
 }
@@ -102,9 +68,6 @@ func NewInstallationTemplate(ctx *pulumi.Context,
 
 	if args.BaseTemplateName == nil {
 		return nil, errors.New("invalid value for required argument 'BaseTemplateName'")
-	}
-	if args.DefaultLanguage == nil {
-		return nil, errors.New("invalid value for required argument 'DefaultLanguage'")
 	}
 	if args.TemplateName == nil {
 		return nil, errors.New("invalid value for required argument 'TemplateName'")
@@ -132,21 +95,21 @@ func GetInstallationTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstallationTemplate resources.
 type installationTemplateState struct {
-	// List of all language available for this template.
+	// Deprecated.
 	AvailableLanguages []string `pulumi:"availableLanguages"`
 	// The name of an existing installation template, choose one among the list given by `getInstallationTemplates` datasource.
 	BaseTemplateName *string `pulumi:"baseTemplateName"`
-	// This distribution is new and, although tested and functional, may still display odd behaviour.
-	Beta *bool `pulumi:"beta"`
 	// This template bit format (32 or 64).
 	BitFormat *int `pulumi:"bitFormat"`
 	// Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	Category      *string                            `pulumi:"category"`
 	Customization *InstallationTemplateCustomization `pulumi:"customization"`
-	// The default language of this template.
+	// Deprecated, use language in userMetadata instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	DefaultLanguage *string `pulumi:"defaultLanguage"`
-	// is this distribution deprecated.
-	Deprecated *bool `pulumi:"deprecated"`
 	// information about this template.
 	Description *string `pulumi:"description"`
 	// the distribution this template is based on.
@@ -157,34 +120,30 @@ type installationTemplateState struct {
 	Filesystems []string `pulumi:"filesystems"`
 	// This distribution supports hardware raid configuration through the OVHcloud API.
 	HardRaidConfiguration *bool `pulumi:"hardRaidConfiguration"`
-	// Date of last modification of the base image.
-	LastModification *string `pulumi:"lastModification"`
 	// This distribution supports Logical Volumes (Linux LVM)
 	LvmReady *bool `pulumi:"lvmReady"`
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes *bool `pulumi:"removeDefaultPartitionSchemes"`
-	// This distribution supports the microsoft SQL server.
-	SupportsSqlServer *bool `pulumi:"supportsSqlServer"`
 	// This template name.
 	TemplateName *string `pulumi:"templateName"`
 }
 
 type InstallationTemplateState struct {
-	// List of all language available for this template.
+	// Deprecated.
 	AvailableLanguages pulumi.StringArrayInput
 	// The name of an existing installation template, choose one among the list given by `getInstallationTemplates` datasource.
 	BaseTemplateName pulumi.StringPtrInput
-	// This distribution is new and, although tested and functional, may still display odd behaviour.
-	Beta pulumi.BoolPtrInput
 	// This template bit format (32 or 64).
 	BitFormat pulumi.IntPtrInput
 	// Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	Category      pulumi.StringPtrInput
 	Customization InstallationTemplateCustomizationPtrInput
-	// The default language of this template.
+	// Deprecated, use language in userMetadata instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	DefaultLanguage pulumi.StringPtrInput
-	// is this distribution deprecated.
-	Deprecated pulumi.BoolPtrInput
 	// information about this template.
 	Description pulumi.StringPtrInput
 	// the distribution this template is based on.
@@ -195,14 +154,10 @@ type InstallationTemplateState struct {
 	Filesystems pulumi.StringArrayInput
 	// This distribution supports hardware raid configuration through the OVHcloud API.
 	HardRaidConfiguration pulumi.BoolPtrInput
-	// Date of last modification of the base image.
-	LastModification pulumi.StringPtrInput
 	// This distribution supports Logical Volumes (Linux LVM)
 	LvmReady pulumi.BoolPtrInput
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes pulumi.BoolPtrInput
-	// This distribution supports the microsoft SQL server.
-	SupportsSqlServer pulumi.BoolPtrInput
 	// This template name.
 	TemplateName pulumi.StringPtrInput
 }
@@ -215,8 +170,10 @@ type installationTemplateArgs struct {
 	// The name of an existing installation template, choose one among the list given by `getInstallationTemplates` datasource.
 	BaseTemplateName string                             `pulumi:"baseTemplateName"`
 	Customization    *InstallationTemplateCustomization `pulumi:"customization"`
-	// The default language of this template.
-	DefaultLanguage string `pulumi:"defaultLanguage"`
+	// Deprecated, use language in userMetadata instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	DefaultLanguage *string `pulumi:"defaultLanguage"`
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes *bool `pulumi:"removeDefaultPartitionSchemes"`
 	// This template name.
@@ -228,8 +185,10 @@ type InstallationTemplateArgs struct {
 	// The name of an existing installation template, choose one among the list given by `getInstallationTemplates` datasource.
 	BaseTemplateName pulumi.StringInput
 	Customization    InstallationTemplateCustomizationPtrInput
-	// The default language of this template.
-	DefaultLanguage pulumi.StringInput
+	// Deprecated, use language in userMetadata instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	DefaultLanguage pulumi.StringPtrInput
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes pulumi.BoolPtrInput
 	// This template name.
@@ -323,7 +282,7 @@ func (o InstallationTemplateOutput) ToInstallationTemplateOutputWithContext(ctx 
 	return o
 }
 
-// List of all language available for this template.
+// Deprecated.
 func (o InstallationTemplateOutput) AvailableLanguages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringArrayOutput { return v.AvailableLanguages }).(pulumi.StringArrayOutput)
 }
@@ -333,17 +292,14 @@ func (o InstallationTemplateOutput) BaseTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringOutput { return v.BaseTemplateName }).(pulumi.StringOutput)
 }
 
-// This distribution is new and, although tested and functional, may still display odd behaviour.
-func (o InstallationTemplateOutput) Beta() pulumi.BoolOutput {
-	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.Beta }).(pulumi.BoolOutput)
-}
-
 // This template bit format (32 or 64).
 func (o InstallationTemplateOutput) BitFormat() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.IntOutput { return v.BitFormat }).(pulumi.IntOutput)
 }
 
 // Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o InstallationTemplateOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
@@ -352,14 +308,11 @@ func (o InstallationTemplateOutput) Customization() InstallationTemplateCustomiz
 	return o.ApplyT(func(v *InstallationTemplate) InstallationTemplateCustomizationPtrOutput { return v.Customization }).(InstallationTemplateCustomizationPtrOutput)
 }
 
-// The default language of this template.
-func (o InstallationTemplateOutput) DefaultLanguage() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringOutput { return v.DefaultLanguage }).(pulumi.StringOutput)
-}
-
-// is this distribution deprecated.
-func (o InstallationTemplateOutput) Deprecated() pulumi.BoolOutput {
-	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.Deprecated }).(pulumi.BoolOutput)
+// Deprecated, use language in userMetadata instead.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
+func (o InstallationTemplateOutput) DefaultLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringPtrOutput { return v.DefaultLanguage }).(pulumi.StringPtrOutput)
 }
 
 // information about this template.
@@ -387,11 +340,6 @@ func (o InstallationTemplateOutput) HardRaidConfiguration() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.HardRaidConfiguration }).(pulumi.BoolOutput)
 }
 
-// Date of last modification of the base image.
-func (o InstallationTemplateOutput) LastModification() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringOutput { return v.LastModification }).(pulumi.StringOutput)
-}
-
 // This distribution supports Logical Volumes (Linux LVM)
 func (o InstallationTemplateOutput) LvmReady() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.LvmReady }).(pulumi.BoolOutput)
@@ -400,11 +348,6 @@ func (o InstallationTemplateOutput) LvmReady() pulumi.BoolOutput {
 // Remove default partition schemes at creation.
 func (o InstallationTemplateOutput) RemoveDefaultPartitionSchemes() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.RemoveDefaultPartitionSchemes }).(pulumi.BoolOutput)
-}
-
-// This distribution supports the microsoft SQL server.
-func (o InstallationTemplateOutput) SupportsSqlServer() pulumi.BoolOutput {
-	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.SupportsSqlServer }).(pulumi.BoolOutput)
 }
 
 // This template name.

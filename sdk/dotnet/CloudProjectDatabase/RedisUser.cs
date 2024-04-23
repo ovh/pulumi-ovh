@@ -60,7 +60,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<ImmutableArray<string>> Keys { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        /// Name of the user.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        /// Name of the user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -283,7 +283,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        /// Name of the user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -22,13 +22,10 @@ class GetInstallationTemplateResult:
     """
     A collection of values returned by getInstallationTemplate.
     """
-    def __init__(__self__, available_languages=None, beta=None, bit_format=None, category=None, customizations=None, default_language=None, deprecated=None, description=None, distribution=None, family=None, filesystems=None, hard_raid_configuration=None, id=None, last_modification=None, lvm_ready=None, partition_schemes=None, supports_sql_server=None, template_name=None):
+    def __init__(__self__, available_languages=None, bit_format=None, category=None, customizations=None, default_language=None, description=None, distribution=None, family=None, filesystems=None, hard_raid_configuration=None, id=None, lvm_ready=None, partition_schemes=None, template_name=None):
         if available_languages and not isinstance(available_languages, list):
             raise TypeError("Expected argument 'available_languages' to be a list")
         pulumi.set(__self__, "available_languages", available_languages)
-        if beta and not isinstance(beta, bool):
-            raise TypeError("Expected argument 'beta' to be a bool")
-        pulumi.set(__self__, "beta", beta)
         if bit_format and not isinstance(bit_format, int):
             raise TypeError("Expected argument 'bit_format' to be a int")
         pulumi.set(__self__, "bit_format", bit_format)
@@ -41,9 +38,6 @@ class GetInstallationTemplateResult:
         if default_language and not isinstance(default_language, str):
             raise TypeError("Expected argument 'default_language' to be a str")
         pulumi.set(__self__, "default_language", default_language)
-        if deprecated and not isinstance(deprecated, bool):
-            raise TypeError("Expected argument 'deprecated' to be a bool")
-        pulumi.set(__self__, "deprecated", deprecated)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -62,18 +56,12 @@ class GetInstallationTemplateResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if last_modification and not isinstance(last_modification, str):
-            raise TypeError("Expected argument 'last_modification' to be a str")
-        pulumi.set(__self__, "last_modification", last_modification)
         if lvm_ready and not isinstance(lvm_ready, bool):
             raise TypeError("Expected argument 'lvm_ready' to be a bool")
         pulumi.set(__self__, "lvm_ready", lvm_ready)
         if partition_schemes and not isinstance(partition_schemes, list):
             raise TypeError("Expected argument 'partition_schemes' to be a list")
         pulumi.set(__self__, "partition_schemes", partition_schemes)
-        if supports_sql_server and not isinstance(supports_sql_server, bool):
-            raise TypeError("Expected argument 'supports_sql_server' to be a bool")
-        pulumi.set(__self__, "supports_sql_server", supports_sql_server)
         if template_name and not isinstance(template_name, str):
             raise TypeError("Expected argument 'template_name' to be a str")
         pulumi.set(__self__, "template_name", template_name)
@@ -82,17 +70,9 @@ class GetInstallationTemplateResult:
     @pulumi.getter(name="availableLanguages")
     def available_languages(self) -> Sequence[str]:
         """
-        List of all language available for this template.
+        List of all language available for this template. Deprecated, will be removed in next release.
         """
         return pulumi.get(self, "available_languages")
-
-    @property
-    @pulumi.getter
-    def beta(self) -> bool:
-        """
-        This distribution is new and, although tested and functional, may still display odd behaviour.
-        """
-        return pulumi.get(self, "beta")
 
     @property
     @pulumi.getter(name="bitFormat")
@@ -119,17 +99,12 @@ class GetInstallationTemplateResult:
     @pulumi.getter(name="defaultLanguage")
     def default_language(self) -> str:
         """
-        The default language of this template.
+        The default language of this template. Deprecated, will be removed in next release.
         """
-        return pulumi.get(self, "default_language")
+        warnings.warn("""This field will be removed from the API, please use `userMetadata` instead.""", DeprecationWarning)
+        pulumi.log.warn("""default_language is deprecated: This field will be removed from the API, please use `userMetadata` instead.""")
 
-    @property
-    @pulumi.getter
-    def deprecated(self) -> bool:
-        """
-        is this distribution deprecated.
-        """
-        return pulumi.get(self, "deprecated")
+        return pulumi.get(self, "default_language")
 
     @property
     @pulumi.getter
@@ -180,14 +155,6 @@ class GetInstallationTemplateResult:
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="lastModification")
-    def last_modification(self) -> str:
-        """
-        Date of last modification of the base image.
-        """
-        return pulumi.get(self, "last_modification")
-
-    @property
     @pulumi.getter(name="lvmReady")
     def lvm_ready(self) -> bool:
         return pulumi.get(self, "lvm_ready")
@@ -196,14 +163,6 @@ class GetInstallationTemplateResult:
     @pulumi.getter(name="partitionSchemes")
     def partition_schemes(self) -> Sequence['outputs.GetInstallationTemplatePartitionSchemeResult']:
         return pulumi.get(self, "partition_schemes")
-
-    @property
-    @pulumi.getter(name="supportsSqlServer")
-    def supports_sql_server(self) -> bool:
-        """
-        This distribution supports the microsoft SQL server.
-        """
-        return pulumi.get(self, "supports_sql_server")
 
     @property
     @pulumi.getter(name="templateName")
@@ -218,22 +177,18 @@ class AwaitableGetInstallationTemplateResult(GetInstallationTemplateResult):
             yield self
         return GetInstallationTemplateResult(
             available_languages=self.available_languages,
-            beta=self.beta,
             bit_format=self.bit_format,
             category=self.category,
             customizations=self.customizations,
             default_language=self.default_language,
-            deprecated=self.deprecated,
             description=self.description,
             distribution=self.distribution,
             family=self.family,
             filesystems=self.filesystems,
             hard_raid_configuration=self.hard_raid_configuration,
             id=self.id,
-            last_modification=self.last_modification,
             lvm_ready=self.lvm_ready,
             partition_schemes=self.partition_schemes,
-            supports_sql_server=self.supports_sql_server,
             template_name=self.template_name)
 
 
@@ -263,22 +218,18 @@ def get_installation_template(template_name: Optional[str] = None,
 
     return AwaitableGetInstallationTemplateResult(
         available_languages=pulumi.get(__ret__, 'available_languages'),
-        beta=pulumi.get(__ret__, 'beta'),
         bit_format=pulumi.get(__ret__, 'bit_format'),
         category=pulumi.get(__ret__, 'category'),
         customizations=pulumi.get(__ret__, 'customizations'),
         default_language=pulumi.get(__ret__, 'default_language'),
-        deprecated=pulumi.get(__ret__, 'deprecated'),
         description=pulumi.get(__ret__, 'description'),
         distribution=pulumi.get(__ret__, 'distribution'),
         family=pulumi.get(__ret__, 'family'),
         filesystems=pulumi.get(__ret__, 'filesystems'),
         hard_raid_configuration=pulumi.get(__ret__, 'hard_raid_configuration'),
         id=pulumi.get(__ret__, 'id'),
-        last_modification=pulumi.get(__ret__, 'last_modification'),
         lvm_ready=pulumi.get(__ret__, 'lvm_ready'),
         partition_schemes=pulumi.get(__ret__, 'partition_schemes'),
-        supports_sql_server=pulumi.get(__ret__, 'supports_sql_server'),
         template_name=pulumi.get(__ret__, 'template_name'))
 
 

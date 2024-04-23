@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > __NOTE__ This data source will be removed in next release.
+//
 // Use this data source to retrieve information about an SSH key.
 //
 // ## Example Usage

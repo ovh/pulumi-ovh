@@ -194,6 +194,10 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public readonly bool KafkaRestApi;
         /// <summary>
+        /// Defines whether the schema registry is enabled on a Kafka cluster
+        /// </summary>
+        public readonly bool KafkaSchemaRegistry;
+        /// <summary>
         /// Time on which maintenances can start every day.
         /// </summary>
         public readonly string MaintenanceTime;
@@ -251,6 +255,8 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
             bool kafkaRestApi,
 
+            bool kafkaSchemaRegistry,
+
             string maintenanceTime,
 
             string networkType,
@@ -280,6 +286,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             Id = id;
             IpRestrictions = ipRestrictions;
             KafkaRestApi = kafkaRestApi;
+            KafkaSchemaRegistry = kafkaSchemaRegistry;
             MaintenanceTime = maintenanceTime;
             NetworkType = networkType;
             Nodes = nodes;

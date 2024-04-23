@@ -12,28 +12,6 @@ namespace Pulumi.Ovh.Me
     /// <summary>
     /// Use this resource to create a custom installation template available for dedicated servers.
     /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mytemplate = new Ovh.Me.InstallationTemplate("mytemplate", new()
-    ///     {
-    ///         BaseTemplateName = "centos7_64",
-    ///         DefaultLanguage = "en",
-    ///         TemplateName = "mytemplate",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Import
     /// 
     /// Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g.,
@@ -48,7 +26,7 @@ namespace Pulumi.Ovh.Me
     public partial class InstallationTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of all language available for this template.
+        /// Deprecated.
         /// </summary>
         [Output("availableLanguages")]
         public Output<ImmutableArray<string>> AvailableLanguages { get; private set; } = null!;
@@ -58,12 +36,6 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         [Output("baseTemplateName")]
         public Output<string> BaseTemplateName { get; private set; } = null!;
-
-        /// <summary>
-        /// This distribution is new and, although tested and functional, may still display odd behaviour.
-        /// </summary>
-        [Output("beta")]
-        public Output<bool> Beta { get; private set; } = null!;
 
         /// <summary>
         /// This template bit format (32 or 64).
@@ -81,16 +53,10 @@ namespace Pulumi.Ovh.Me
         public Output<Outputs.InstallationTemplateCustomization?> Customization { get; private set; } = null!;
 
         /// <summary>
-        /// The default language of this template.
+        /// Deprecated, use language in userMetadata instead.
         /// </summary>
         [Output("defaultLanguage")]
-        public Output<string> DefaultLanguage { get; private set; } = null!;
-
-        /// <summary>
-        /// is this distribution deprecated.
-        /// </summary>
-        [Output("deprecated")]
-        public Output<bool> Deprecated { get; private set; } = null!;
+        public Output<string?> DefaultLanguage { get; private set; } = null!;
 
         /// <summary>
         /// information about this template.
@@ -123,12 +89,6 @@ namespace Pulumi.Ovh.Me
         public Output<bool> HardRaidConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// Date of last modification of the base image.
-        /// </summary>
-        [Output("lastModification")]
-        public Output<string> LastModification { get; private set; } = null!;
-
-        /// <summary>
         /// This distribution supports Logical Volumes (Linux LVM)
         /// </summary>
         [Output("lvmReady")]
@@ -139,12 +99,6 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         [Output("removeDefaultPartitionSchemes")]
         public Output<bool> RemoveDefaultPartitionSchemes { get; private set; } = null!;
-
-        /// <summary>
-        /// This distribution supports the microsoft SQL server.
-        /// </summary>
-        [Output("supportsSqlServer")]
-        public Output<bool> SupportsSqlServer { get; private set; } = null!;
 
         /// <summary>
         /// This template name.
@@ -209,10 +163,10 @@ namespace Pulumi.Ovh.Me
         public Input<Inputs.InstallationTemplateCustomizationArgs>? Customization { get; set; }
 
         /// <summary>
-        /// The default language of this template.
+        /// Deprecated, use language in userMetadata instead.
         /// </summary>
-        [Input("defaultLanguage", required: true)]
-        public Input<string> DefaultLanguage { get; set; } = null!;
+        [Input("defaultLanguage")]
+        public Input<string>? DefaultLanguage { get; set; }
 
         /// <summary>
         /// Remove default partition schemes at creation.
@@ -238,7 +192,7 @@ namespace Pulumi.Ovh.Me
         private InputList<string>? _availableLanguages;
 
         /// <summary>
-        /// List of all language available for this template.
+        /// Deprecated.
         /// </summary>
         public InputList<string> AvailableLanguages
         {
@@ -251,12 +205,6 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         [Input("baseTemplateName")]
         public Input<string>? BaseTemplateName { get; set; }
-
-        /// <summary>
-        /// This distribution is new and, although tested and functional, may still display odd behaviour.
-        /// </summary>
-        [Input("beta")]
-        public Input<bool>? Beta { get; set; }
 
         /// <summary>
         /// This template bit format (32 or 64).
@@ -274,16 +222,10 @@ namespace Pulumi.Ovh.Me
         public Input<Inputs.InstallationTemplateCustomizationGetArgs>? Customization { get; set; }
 
         /// <summary>
-        /// The default language of this template.
+        /// Deprecated, use language in userMetadata instead.
         /// </summary>
         [Input("defaultLanguage")]
         public Input<string>? DefaultLanguage { get; set; }
-
-        /// <summary>
-        /// is this distribution deprecated.
-        /// </summary>
-        [Input("deprecated")]
-        public Input<bool>? Deprecated { get; set; }
 
         /// <summary>
         /// information about this template.
@@ -322,12 +264,6 @@ namespace Pulumi.Ovh.Me
         public Input<bool>? HardRaidConfiguration { get; set; }
 
         /// <summary>
-        /// Date of last modification of the base image.
-        /// </summary>
-        [Input("lastModification")]
-        public Input<string>? LastModification { get; set; }
-
-        /// <summary>
         /// This distribution supports Logical Volumes (Linux LVM)
         /// </summary>
         [Input("lvmReady")]
@@ -338,12 +274,6 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         [Input("removeDefaultPartitionSchemes")]
         public Input<bool>? RemoveDefaultPartitionSchemes { get; set; }
-
-        /// <summary>
-        /// This distribution supports the microsoft SQL server.
-        /// </summary>
-        [Input("supportsSqlServer")]
-        public Input<bool>? SupportsSqlServer { get; set; }
 
         /// <summary>
         /// This template name.

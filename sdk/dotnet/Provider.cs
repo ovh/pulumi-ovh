@@ -19,25 +19,37 @@ namespace Pulumi.Ovh
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// The OVH API Application Key.
+        /// The OVH API Application Key
         /// </summary>
         [Output("applicationKey")]
         public Output<string?> ApplicationKey { get; private set; } = null!;
 
         /// <summary>
-        /// The OVH API Application Secret.
+        /// The OVH API Application Secret
         /// </summary>
         [Output("applicationSecret")]
         public Output<string?> ApplicationSecret { get; private set; } = null!;
 
         /// <summary>
-        /// The OVH API Consumer key.
+        /// OAuth 2.0 application's ID
+        /// </summary>
+        [Output("clientId")]
+        public Output<string?> ClientId { get; private set; } = null!;
+
+        /// <summary>
+        /// OAuth 2.0 application's secret
+        /// </summary>
+        [Output("clientSecret")]
+        public Output<string?> ClientSecret { get; private set; } = null!;
+
+        /// <summary>
+        /// The OVH API Consumer Key
         /// </summary>
         [Output("consumerKey")]
         public Output<string?> ConsumerKey { get; private set; } = null!;
 
         /// <summary>
-        /// The OVH API endpoint to target (ex: "ovh-eu").
+        /// The OVH API endpoint to target (ex: "ovh-eu")
         /// </summary>
         [Output("endpoint")]
         public Output<string?> Endpoint { get; private set; } = null!;
@@ -76,7 +88,7 @@ namespace Pulumi.Ovh
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The OVH API Application Key.
+        /// The OVH API Application Key
         /// </summary>
         [Input("applicationKey")]
         public Input<string>? ApplicationKey { get; set; }
@@ -85,7 +97,7 @@ namespace Pulumi.Ovh
         private Input<string>? _applicationSecret;
 
         /// <summary>
-        /// The OVH API Application Secret.
+        /// The OVH API Application Secret
         /// </summary>
         public Input<string>? ApplicationSecret
         {
@@ -98,13 +110,25 @@ namespace Pulumi.Ovh
         }
 
         /// <summary>
-        /// The OVH API Consumer key.
+        /// OAuth 2.0 application's ID
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        /// <summary>
+        /// OAuth 2.0 application's secret
+        /// </summary>
+        [Input("clientSecret")]
+        public Input<string>? ClientSecret { get; set; }
+
+        /// <summary>
+        /// The OVH API Consumer Key
         /// </summary>
         [Input("consumerKey")]
         public Input<string>? ConsumerKey { get; set; }
 
         /// <summary>
-        /// The OVH API endpoint to target (ex: "ovh-eu").
+        /// The OVH API endpoint to target (ex: "ovh-eu")
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }

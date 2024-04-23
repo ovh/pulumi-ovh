@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > __NOTE__ This data source will be removed in next release.
+ *
  * Use this data source to retrieve information about an SSH key.
  *
  * ## Example Usage
@@ -61,6 +63,8 @@ export interface GetSshKeyResult {
     readonly keyName: string;
 }
 /**
+ * > __NOTE__ This data source will be removed in next release.
+ *
  * Use this data source to retrieve information about an SSH key.
  *
  * ## Example Usage

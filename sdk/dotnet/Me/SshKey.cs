@@ -12,6 +12,8 @@ namespace Pulumi.Ovh.Me
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &gt; __NOTE__ This resource will be removed in next release, please use userMetada instead.
+    /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;

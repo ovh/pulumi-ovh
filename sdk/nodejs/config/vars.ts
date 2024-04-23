@@ -8,7 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("ovh");
 
 /**
- * The OVH API Application Key.
+ * The OVH API Application Key
  */
 export declare const applicationKey: string | undefined;
 Object.defineProperty(exports, "applicationKey", {
@@ -19,7 +19,7 @@ Object.defineProperty(exports, "applicationKey", {
 });
 
 /**
- * The OVH API Application Secret.
+ * The OVH API Application Secret
  */
 export declare const applicationSecret: string | undefined;
 Object.defineProperty(exports, "applicationSecret", {
@@ -30,7 +30,29 @@ Object.defineProperty(exports, "applicationSecret", {
 });
 
 /**
- * The OVH API Consumer key.
+ * OAuth 2.0 application's ID
+ */
+export declare const clientId: string | undefined;
+Object.defineProperty(exports, "clientId", {
+    get() {
+        return __config.get("clientId");
+    },
+    enumerable: true,
+});
+
+/**
+ * OAuth 2.0 application's secret
+ */
+export declare const clientSecret: string | undefined;
+Object.defineProperty(exports, "clientSecret", {
+    get() {
+        return __config.get("clientSecret");
+    },
+    enumerable: true,
+});
+
+/**
+ * The OVH API Consumer Key
  */
 export declare const consumerKey: string | undefined;
 Object.defineProperty(exports, "consumerKey", {
@@ -41,7 +63,7 @@ Object.defineProperty(exports, "consumerKey", {
 });
 
 /**
- * The OVH API endpoint to target (ex: "ovh-eu").
+ * The OVH API endpoint to target (ex: "ovh-eu")
  */
 export declare const endpoint: string | undefined;
 Object.defineProperty(exports, "endpoint", {

@@ -58,19 +58,17 @@ type LookupInstallationTemplateArgs struct {
 
 // A collection of values returned by getInstallationTemplate.
 type LookupInstallationTemplateResult struct {
-	// List of all language available for this template.
+	// List of all language available for this template. Deprecated, will be removed in next release.
 	AvailableLanguages []string `pulumi:"availableLanguages"`
-	// This distribution is new and, although tested and functional, may still display odd behaviour.
-	Beta bool `pulumi:"beta"`
 	// This template bit format (32 or 64).
 	BitFormat int `pulumi:"bitFormat"`
 	// Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
 	Category       string                                 `pulumi:"category"`
 	Customizations []GetInstallationTemplateCustomization `pulumi:"customizations"`
-	// The default language of this template.
+	// The default language of this template. Deprecated, will be removed in next release.
+	//
+	// Deprecated: This field will be removed from the API, please use `userMetadata` instead.
 	DefaultLanguage string `pulumi:"defaultLanguage"`
-	// is this distribution deprecated.
-	Deprecated bool `pulumi:"deprecated"`
 	// information about this template.
 	Description string `pulumi:"description"`
 	// the distribution this template is based on.
@@ -82,14 +80,10 @@ type LookupInstallationTemplateResult struct {
 	// This distribution supports hardware raid configuration through the OVHcloud API.
 	HardRaidConfiguration bool `pulumi:"hardRaidConfiguration"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Date of last modification of the base image.
-	LastModification string                                       `pulumi:"lastModification"`
+	Id               string                                       `pulumi:"id"`
 	LvmReady         bool                                         `pulumi:"lvmReady"`
 	PartitionSchemes []GetInstallationTemplatePartitionSchemeType `pulumi:"partitionSchemes"`
-	// This distribution supports the microsoft SQL server.
-	SupportsSqlServer bool   `pulumi:"supportsSqlServer"`
-	TemplateName      string `pulumi:"templateName"`
+	TemplateName     string                                       `pulumi:"templateName"`
 }
 
 func LookupInstallationTemplateOutput(ctx *pulumi.Context, args LookupInstallationTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupInstallationTemplateResultOutput {
@@ -130,14 +124,9 @@ func (o LookupInstallationTemplateResultOutput) ToLookupInstallationTemplateResu
 	return o
 }
 
-// List of all language available for this template.
+// List of all language available for this template. Deprecated, will be removed in next release.
 func (o LookupInstallationTemplateResultOutput) AvailableLanguages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) []string { return v.AvailableLanguages }).(pulumi.StringArrayOutput)
-}
-
-// This distribution is new and, although tested and functional, may still display odd behaviour.
-func (o LookupInstallationTemplateResultOutput) Beta() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.Beta }).(pulumi.BoolOutput)
 }
 
 // This template bit format (32 or 64).
@@ -156,14 +145,11 @@ func (o LookupInstallationTemplateResultOutput) Customizations() GetInstallation
 	}).(GetInstallationTemplateCustomizationArrayOutput)
 }
 
-// The default language of this template.
+// The default language of this template. Deprecated, will be removed in next release.
+//
+// Deprecated: This field will be removed from the API, please use `userMetadata` instead.
 func (o LookupInstallationTemplateResultOutput) DefaultLanguage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.DefaultLanguage }).(pulumi.StringOutput)
-}
-
-// is this distribution deprecated.
-func (o LookupInstallationTemplateResultOutput) Deprecated() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.Deprecated }).(pulumi.BoolOutput)
 }
 
 // information about this template.
@@ -196,11 +182,6 @@ func (o LookupInstallationTemplateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Date of last modification of the base image.
-func (o LookupInstallationTemplateResultOutput) LastModification() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.LastModification }).(pulumi.StringOutput)
-}
-
 func (o LookupInstallationTemplateResultOutput) LvmReady() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.LvmReady }).(pulumi.BoolOutput)
 }
@@ -209,11 +190,6 @@ func (o LookupInstallationTemplateResultOutput) PartitionSchemes() GetInstallati
 	return o.ApplyT(func(v LookupInstallationTemplateResult) []GetInstallationTemplatePartitionSchemeType {
 		return v.PartitionSchemes
 	}).(GetInstallationTemplatePartitionSchemeTypeArrayOutput)
-}
-
-// This distribution supports the microsoft SQL server.
-func (o LookupInstallationTemplateResultOutput) SupportsSqlServer() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.SupportsSqlServer }).(pulumi.BoolOutput)
 }
 
 func (o LookupInstallationTemplateResultOutput) TemplateName() pulumi.StringOutput {

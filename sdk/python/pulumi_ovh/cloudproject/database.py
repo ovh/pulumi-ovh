@@ -29,6 +29,7 @@ class DatabaseArgs:
                  disk_size: Optional[pulumi.Input[int]] = None,
                  ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
+                 kafka_schema_registry: Optional[pulumi.Input[bool]] = None,
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Database resource.
@@ -54,6 +55,7 @@ class DatabaseArgs:
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
+        :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         """
         pulumi.set(__self__, "engine", engine)
@@ -76,6 +78,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "ip_restrictions", ip_restrictions)
         if kafka_rest_api is not None:
             pulumi.set(__self__, "kafka_rest_api", kafka_rest_api)
+        if kafka_schema_registry is not None:
+            pulumi.set(__self__, "kafka_schema_registry", kafka_schema_registry)
         if opensearch_acls_enabled is not None:
             pulumi.set(__self__, "opensearch_acls_enabled", opensearch_acls_enabled)
 
@@ -245,6 +249,18 @@ class DatabaseArgs:
         pulumi.set(self, "kafka_rest_api", value)
 
     @property
+    @pulumi.getter(name="kafkaSchemaRegistry")
+    def kafka_schema_registry(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the schema registry is enabled on a Kafka cluster
+        """
+        return pulumi.get(self, "kafka_schema_registry")
+
+    @kafka_schema_registry.setter
+    def kafka_schema_registry(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "kafka_schema_registry", value)
+
+    @property
     @pulumi.getter(name="opensearchAclsEnabled")
     def opensearch_acls_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -272,6 +288,7 @@ class _DatabaseState:
                  flavor: Optional[pulumi.Input[str]] = None,
                  ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
+                 kafka_schema_registry: Optional[pulumi.Input[bool]] = None,
                  maintenance_time: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]]] = None,
@@ -297,6 +314,7 @@ class _DatabaseState:
                You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
+        :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
         :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
         :param pulumi.Input[str] network_type: Type of network of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes object.
@@ -336,6 +354,8 @@ class _DatabaseState:
             pulumi.set(__self__, "ip_restrictions", ip_restrictions)
         if kafka_rest_api is not None:
             pulumi.set(__self__, "kafka_rest_api", kafka_rest_api)
+        if kafka_schema_registry is not None:
+            pulumi.set(__self__, "kafka_schema_registry", kafka_schema_registry)
         if maintenance_time is not None:
             pulumi.set(__self__, "maintenance_time", maintenance_time)
         if network_type is not None:
@@ -501,6 +521,18 @@ class _DatabaseState:
         pulumi.set(self, "kafka_rest_api", value)
 
     @property
+    @pulumi.getter(name="kafkaSchemaRegistry")
+    def kafka_schema_registry(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the schema registry is enabled on a Kafka cluster
+        """
+        return pulumi.get(self, "kafka_schema_registry")
+
+    @kafka_schema_registry.setter
+    def kafka_schema_registry(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "kafka_schema_registry", value)
+
+    @property
     @pulumi.getter(name="maintenanceTime")
     def maintenance_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -617,6 +649,7 @@ class Database(pulumi.CustomResource):
                  flavor: Optional[pulumi.Input[str]] = None,
                  ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
+                 kafka_schema_registry: Optional[pulumi.Input[bool]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]]] = None,
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -658,6 +691,7 @@ class Database(pulumi.CustomResource):
             version="3.4",
             plan="business",
             kafka_rest_api=True,
+            kafka_schema_registry=True,
             nodes=[
                 ovh.cloud_project.DatabaseNodeArgs(
                     region="DE",
@@ -841,6 +875,7 @@ class Database(pulumi.CustomResource):
                You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
+        :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]] nodes: List of nodes object.
                Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
@@ -894,6 +929,7 @@ class Database(pulumi.CustomResource):
             version="3.4",
             plan="business",
             kafka_rest_api=True,
+            kafka_schema_registry=True,
             nodes=[
                 ovh.cloud_project.DatabaseNodeArgs(
                     region="DE",
@@ -1087,6 +1123,7 @@ class Database(pulumi.CustomResource):
                  flavor: Optional[pulumi.Input[str]] = None,
                  ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
+                 kafka_schema_registry: Optional[pulumi.Input[bool]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]]] = None,
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -1114,6 +1151,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["flavor"] = flavor
             __props__.__dict__["ip_restrictions"] = ip_restrictions
             __props__.__dict__["kafka_rest_api"] = kafka_rest_api
+            __props__.__dict__["kafka_schema_registry"] = kafka_schema_registry
             if nodes is None and not opts.urn:
                 raise TypeError("Missing required property 'nodes'")
             __props__.__dict__["nodes"] = nodes
@@ -1155,6 +1193,7 @@ class Database(pulumi.CustomResource):
             flavor: Optional[pulumi.Input[str]] = None,
             ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]]] = None,
             kafka_rest_api: Optional[pulumi.Input[bool]] = None,
+            kafka_schema_registry: Optional[pulumi.Input[bool]] = None,
             maintenance_time: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]]] = None,
@@ -1185,6 +1224,7 @@ class Database(pulumi.CustomResource):
                You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
+        :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
         :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
         :param pulumi.Input[str] network_type: Type of network of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]] nodes: List of nodes object.
@@ -1216,6 +1256,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["flavor"] = flavor
         __props__.__dict__["ip_restrictions"] = ip_restrictions
         __props__.__dict__["kafka_rest_api"] = kafka_rest_api
+        __props__.__dict__["kafka_schema_registry"] = kafka_schema_registry
         __props__.__dict__["maintenance_time"] = maintenance_time
         __props__.__dict__["network_type"] = network_type
         __props__.__dict__["nodes"] = nodes
@@ -1324,6 +1365,14 @@ class Database(pulumi.CustomResource):
         Defines whether the REST API is enabled on a kafka cluster
         """
         return pulumi.get(self, "kafka_rest_api")
+
+    @property
+    @pulumi.getter(name="kafkaSchemaRegistry")
+    def kafka_schema_registry(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Defines whether the schema registry is enabled on a Kafka cluster
+        """
+        return pulumi.get(self, "kafka_schema_registry")
 
     @property
     @pulumi.getter(name="maintenanceTime")

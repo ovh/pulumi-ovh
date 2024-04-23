@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'ServerInstallTaskDetails',
+    'ServerInstallTaskUserMetadata',
     'ServerNetworkingInterface',
     'GetServerSpecificationsHardwareDefaultHardwareRaidSizeResult',
     'GetServerSpecificationsHardwareDiskGroupResult',
@@ -20,6 +21,26 @@ __all__ = [
     'GetServerSpecificationsHardwareExpansionCardResult',
     'GetServerSpecificationsHardwareMemorySizeResult',
     'GetServerSpecificationsHardwareUsbKeyResult',
+    'GetServerSpecificationsNetworkBandwidthResult',
+    'GetServerSpecificationsNetworkBandwidthInternetToOvhResult',
+    'GetServerSpecificationsNetworkBandwidthOvhToInternetResult',
+    'GetServerSpecificationsNetworkBandwidthOvhToOvhResult',
+    'GetServerSpecificationsNetworkConnectionValResult',
+    'GetServerSpecificationsNetworkOlaResult',
+    'GetServerSpecificationsNetworkOlaAvailableModeResult',
+    'GetServerSpecificationsNetworkOlaAvailableModeInterfaceResult',
+    'GetServerSpecificationsNetworkRoutingResult',
+    'GetServerSpecificationsNetworkRoutingIpv4Result',
+    'GetServerSpecificationsNetworkRoutingIpv6Result',
+    'GetServerSpecificationsNetworkSwitchingResult',
+    'GetServerSpecificationsNetworkTrafficResult',
+    'GetServerSpecificationsNetworkTrafficInputQuotaSizeResult',
+    'GetServerSpecificationsNetworkTrafficInputQuotaUsedResult',
+    'GetServerSpecificationsNetworkTrafficOutputQuotaSizeResult',
+    'GetServerSpecificationsNetworkTrafficOutputQuotaUsedResult',
+    'GetServerSpecificationsNetworkVmacResult',
+    'GetServerSpecificationsNetworkVrackResult',
+    'GetServerSpecificationsNetworkVrackBandwidthResult',
 ]
 
 @pulumi.output_type
@@ -31,8 +52,6 @@ class ServerInstallTaskDetails(dict):
             suggest = "custom_hostname"
         elif key == "diskGroupId":
             suggest = "disk_group_id"
-        elif key == "installSqlServer":
-            suggest = "install_sql_server"
         elif key == "noRaid":
             suggest = "no_raid"
         elif key == "postInstallationScriptLink":
@@ -41,8 +60,6 @@ class ServerInstallTaskDetails(dict):
             suggest = "post_installation_script_return"
         elif key == "softRaidDevices":
             suggest = "soft_raid_devices"
-        elif key == "sshKeyName":
-            suggest = "ssh_key_name"
         elif key == "useSpla":
             suggest = "use_spla"
 
@@ -60,32 +77,34 @@ class ServerInstallTaskDetails(dict):
     def __init__(__self__, *,
                  custom_hostname: Optional[str] = None,
                  disk_group_id: Optional[int] = None,
-                 install_sql_server: Optional[bool] = None,
                  language: Optional[str] = None,
                  no_raid: Optional[bool] = None,
                  post_installation_script_link: Optional[str] = None,
                  post_installation_script_return: Optional[str] = None,
                  soft_raid_devices: Optional[int] = None,
-                 ssh_key_name: Optional[str] = None,
                  use_spla: Optional[bool] = None):
         """
         :param str custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param int disk_group_id: Disk group id.
-        :param bool install_sql_server: set to true to install sql server (Windows template only).
-        :param str language: language.
-        :param bool no_raid: set to true to disable RAID.
+        :param str language: Deprecated, will be removed in next release.
+        :param bool no_raid: Set to true to disable RAID.
         :param str post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
         :param str post_installation_script_return: Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         :param int soft_raid_devices: soft raid devices.
-        :param str ssh_key_name: Name of the ssh key that should be installed. Password login will be disabled.
-        :param bool use_spla: set to true to use SPLA.
+        :param bool use_spla: Deprecated, will be removed in next release.
+               
+               The `user_metadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
+               
+               -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
+               
+               -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
+               
+               -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
         """
         if custom_hostname is not None:
             pulumi.set(__self__, "custom_hostname", custom_hostname)
         if disk_group_id is not None:
             pulumi.set(__self__, "disk_group_id", disk_group_id)
-        if install_sql_server is not None:
-            pulumi.set(__self__, "install_sql_server", install_sql_server)
         if language is not None:
             pulumi.set(__self__, "language", language)
         if no_raid is not None:
@@ -96,8 +115,6 @@ class ServerInstallTaskDetails(dict):
             pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
         if soft_raid_devices is not None:
             pulumi.set(__self__, "soft_raid_devices", soft_raid_devices)
-        if ssh_key_name is not None:
-            pulumi.set(__self__, "ssh_key_name", ssh_key_name)
         if use_spla is not None:
             pulumi.set(__self__, "use_spla", use_spla)
 
@@ -118,26 +135,21 @@ class ServerInstallTaskDetails(dict):
         return pulumi.get(self, "disk_group_id")
 
     @property
-    @pulumi.getter(name="installSqlServer")
-    def install_sql_server(self) -> Optional[bool]:
-        """
-        set to true to install sql server (Windows template only).
-        """
-        return pulumi.get(self, "install_sql_server")
-
-    @property
     @pulumi.getter
     def language(self) -> Optional[str]:
         """
-        language.
+        Deprecated, will be removed in next release.
         """
+        warnings.warn("""This field is deprecated and will be removed in a future release""", DeprecationWarning)
+        pulumi.log.warn("""language is deprecated: This field is deprecated and will be removed in a future release""")
+
         return pulumi.get(self, "language")
 
     @property
     @pulumi.getter(name="noRaid")
     def no_raid(self) -> Optional[bool]:
         """
-        set to true to disable RAID.
+        Set to true to disable RAID.
         """
         return pulumi.get(self, "no_raid")
 
@@ -166,20 +178,52 @@ class ServerInstallTaskDetails(dict):
         return pulumi.get(self, "soft_raid_devices")
 
     @property
-    @pulumi.getter(name="sshKeyName")
-    def ssh_key_name(self) -> Optional[str]:
-        """
-        Name of the ssh key that should be installed. Password login will be disabled.
-        """
-        return pulumi.get(self, "ssh_key_name")
-
-    @property
     @pulumi.getter(name="useSpla")
     def use_spla(self) -> Optional[bool]:
         """
-        set to true to use SPLA.
+        Deprecated, will be removed in next release.
+
+        The `user_metadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
+
+        -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
+
+        -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
+
+        -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
         """
+        warnings.warn("""This field is deprecated and will be removed in a future release""", DeprecationWarning)
+        pulumi.log.warn("""use_spla is deprecated: This field is deprecated and will be removed in a future release""")
+
         return pulumi.get(self, "use_spla")
+
+
+@pulumi.output_type
+class ServerInstallTaskUserMetadata(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: The key for the user_metadata
+        :param str value: The value for the user_metadata
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key for the user_metadata
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value for the user_metadata
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -413,6 +457,595 @@ class GetServerSpecificationsHardwareMemorySizeResult(dict):
 
 @pulumi.output_type
 class GetServerSpecificationsHardwareUsbKeyResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkBandwidthResult(dict):
+    def __init__(__self__, *,
+                 internet_to_ovh: 'outputs.GetServerSpecificationsNetworkBandwidthInternetToOvhResult',
+                 ovh_to_internet: 'outputs.GetServerSpecificationsNetworkBandwidthOvhToInternetResult',
+                 ovh_to_ovh: 'outputs.GetServerSpecificationsNetworkBandwidthOvhToOvhResult',
+                 type: str):
+        """
+        :param 'GetServerSpecificationsNetworkBandwidthInternetToOvhArgs' internet_to_ovh: Bandwidth limitation Internet to OVH
+        :param 'GetServerSpecificationsNetworkBandwidthOvhToInternetArgs' ovh_to_internet: Bandwidth limitation OVH to Internet
+        :param 'GetServerSpecificationsNetworkBandwidthOvhToOvhArgs' ovh_to_ovh: Bandwidth limitation OVH to OVH
+        :param str type: Bandwidth offer type (included┃standard)
+        """
+        pulumi.set(__self__, "internet_to_ovh", internet_to_ovh)
+        pulumi.set(__self__, "ovh_to_internet", ovh_to_internet)
+        pulumi.set(__self__, "ovh_to_ovh", ovh_to_ovh)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="internetToOvh")
+    def internet_to_ovh(self) -> 'outputs.GetServerSpecificationsNetworkBandwidthInternetToOvhResult':
+        """
+        Bandwidth limitation Internet to OVH
+        """
+        return pulumi.get(self, "internet_to_ovh")
+
+    @property
+    @pulumi.getter(name="ovhToInternet")
+    def ovh_to_internet(self) -> 'outputs.GetServerSpecificationsNetworkBandwidthOvhToInternetResult':
+        """
+        Bandwidth limitation OVH to Internet
+        """
+        return pulumi.get(self, "ovh_to_internet")
+
+    @property
+    @pulumi.getter(name="ovhToOvh")
+    def ovh_to_ovh(self) -> 'outputs.GetServerSpecificationsNetworkBandwidthOvhToOvhResult':
+        """
+        Bandwidth limitation OVH to OVH
+        """
+        return pulumi.get(self, "ovh_to_ovh")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Bandwidth offer type (included┃standard)
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkBandwidthInternetToOvhResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkBandwidthOvhToInternetResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkBandwidthOvhToOvhResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkConnectionValResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkOlaResult(dict):
+    def __init__(__self__, *,
+                 available: bool,
+                 available_modes: Sequence['outputs.GetServerSpecificationsNetworkOlaAvailableModeResult'],
+                 supported_modes: Sequence[str]):
+        """
+        :param bool available: Is the OLA feature available
+        :param Sequence['GetServerSpecificationsNetworkOlaAvailableModeArgs'] available_modes: Supported modes
+        :param Sequence[str] supported_modes: Supported modes (DEPRECATED)
+        """
+        pulumi.set(__self__, "available", available)
+        pulumi.set(__self__, "available_modes", available_modes)
+        pulumi.set(__self__, "supported_modes", supported_modes)
+
+    @property
+    @pulumi.getter
+    def available(self) -> bool:
+        """
+        Is the OLA feature available
+        """
+        return pulumi.get(self, "available")
+
+    @property
+    @pulumi.getter(name="availableModes")
+    def available_modes(self) -> Sequence['outputs.GetServerSpecificationsNetworkOlaAvailableModeResult']:
+        """
+        Supported modes
+        """
+        return pulumi.get(self, "available_modes")
+
+    @property
+    @pulumi.getter(name="supportedModes")
+    def supported_modes(self) -> Sequence[str]:
+        """
+        Supported modes (DEPRECATED)
+        """
+        return pulumi.get(self, "supported_modes")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkOlaAvailableModeResult(dict):
+    def __init__(__self__, *,
+                 default: bool,
+                 interfaces: Sequence['outputs.GetServerSpecificationsNetworkOlaAvailableModeInterfaceResult'],
+                 name: str):
+        """
+        :param bool default: Whether it is the default configuration of the server
+        :param Sequence['GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs'] interfaces: Interface layout
+        :param str name: Switch name
+        """
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "interfaces", interfaces)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def default(self) -> bool:
+        """
+        Whether it is the default configuration of the server
+        """
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def interfaces(self) -> Sequence['outputs.GetServerSpecificationsNetworkOlaAvailableModeInterfaceResult']:
+        """
+        Interface layout
+        """
+        return pulumi.get(self, "interfaces")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Switch name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkOlaAvailableModeInterfaceResult(dict):
+    def __init__(__self__, *,
+                 aggregation: bool,
+                 count: float,
+                 type: str):
+        """
+        :param bool aggregation: Interface aggregation status
+        :param float count: Interface count
+        :param str type: Bandwidth offer type (included┃standard)
+        """
+        pulumi.set(__self__, "aggregation", aggregation)
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def aggregation(self) -> bool:
+        """
+        Interface aggregation status
+        """
+        return pulumi.get(self, "aggregation")
+
+    @property
+    @pulumi.getter
+    def count(self) -> float:
+        """
+        Interface count
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Bandwidth offer type (included┃standard)
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkRoutingResult(dict):
+    def __init__(__self__, *,
+                 ipv4: 'outputs.GetServerSpecificationsNetworkRoutingIpv4Result',
+                 ipv6: 'outputs.GetServerSpecificationsNetworkRoutingIpv6Result'):
+        """
+        :param 'GetServerSpecificationsNetworkRoutingIpv4Args' ipv4: Ipv4 routing details
+        :param 'GetServerSpecificationsNetworkRoutingIpv6Args' ipv6: Ipv6 routing details
+        """
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> 'outputs.GetServerSpecificationsNetworkRoutingIpv4Result':
+        """
+        Ipv4 routing details
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> 'outputs.GetServerSpecificationsNetworkRoutingIpv6Result':
+        """
+        Ipv6 routing details
+        """
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkRoutingIpv4Result(dict):
+    def __init__(__self__, *,
+                 gateway: str,
+                 ip: str,
+                 network: str):
+        """
+        :param str gateway: Server gateway
+        :param str ip: Server main IP
+        :param str network: Server network
+        """
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        Server gateway
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        Server main IP
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Server network
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkRoutingIpv6Result(dict):
+    def __init__(__self__, *,
+                 gateway: str,
+                 ip: str,
+                 network: str):
+        """
+        :param str gateway: Server gateway
+        :param str ip: Server main IP
+        :param str network: Server network
+        """
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        Server gateway
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        Server main IP
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Server network
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkSwitchingResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: Switch name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Switch name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkTrafficResult(dict):
+    def __init__(__self__, *,
+                 input_quota_size: 'outputs.GetServerSpecificationsNetworkTrafficInputQuotaSizeResult',
+                 input_quota_used: 'outputs.GetServerSpecificationsNetworkTrafficInputQuotaUsedResult',
+                 is_throttled: bool,
+                 output_quota_size: 'outputs.GetServerSpecificationsNetworkTrafficOutputQuotaSizeResult',
+                 output_quota_used: 'outputs.GetServerSpecificationsNetworkTrafficOutputQuotaUsedResult',
+                 reset_quota_date: str):
+        """
+        :param 'GetServerSpecificationsNetworkTrafficInputQuotaSizeArgs' input_quota_size: Monthly input traffic quota allowed
+        :param 'GetServerSpecificationsNetworkTrafficInputQuotaUsedArgs' input_quota_used: Monthly input traffic consumed this month
+        :param bool is_throttled: Whether bandwidth is throttleted for being over quota
+        :param 'GetServerSpecificationsNetworkTrafficOutputQuotaSizeArgs' output_quota_size: Monthly output traffic quota allowed
+        :param 'GetServerSpecificationsNetworkTrafficOutputQuotaUsedArgs' output_quota_used: Monthly output traffic consumed this month
+        :param str reset_quota_date: Next reset quota date for traffic counter
+        """
+        pulumi.set(__self__, "input_quota_size", input_quota_size)
+        pulumi.set(__self__, "input_quota_used", input_quota_used)
+        pulumi.set(__self__, "is_throttled", is_throttled)
+        pulumi.set(__self__, "output_quota_size", output_quota_size)
+        pulumi.set(__self__, "output_quota_used", output_quota_used)
+        pulumi.set(__self__, "reset_quota_date", reset_quota_date)
+
+    @property
+    @pulumi.getter(name="inputQuotaSize")
+    def input_quota_size(self) -> 'outputs.GetServerSpecificationsNetworkTrafficInputQuotaSizeResult':
+        """
+        Monthly input traffic quota allowed
+        """
+        return pulumi.get(self, "input_quota_size")
+
+    @property
+    @pulumi.getter(name="inputQuotaUsed")
+    def input_quota_used(self) -> 'outputs.GetServerSpecificationsNetworkTrafficInputQuotaUsedResult':
+        """
+        Monthly input traffic consumed this month
+        """
+        return pulumi.get(self, "input_quota_used")
+
+    @property
+    @pulumi.getter(name="isThrottled")
+    def is_throttled(self) -> bool:
+        """
+        Whether bandwidth is throttleted for being over quota
+        """
+        return pulumi.get(self, "is_throttled")
+
+    @property
+    @pulumi.getter(name="outputQuotaSize")
+    def output_quota_size(self) -> 'outputs.GetServerSpecificationsNetworkTrafficOutputQuotaSizeResult':
+        """
+        Monthly output traffic quota allowed
+        """
+        return pulumi.get(self, "output_quota_size")
+
+    @property
+    @pulumi.getter(name="outputQuotaUsed")
+    def output_quota_used(self) -> 'outputs.GetServerSpecificationsNetworkTrafficOutputQuotaUsedResult':
+        """
+        Monthly output traffic consumed this month
+        """
+        return pulumi.get(self, "output_quota_used")
+
+    @property
+    @pulumi.getter(name="resetQuotaDate")
+    def reset_quota_date(self) -> str:
+        """
+        Next reset quota date for traffic counter
+        """
+        return pulumi.get(self, "reset_quota_date")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkTrafficInputQuotaSizeResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkTrafficInputQuotaUsedResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkTrafficOutputQuotaSizeResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkTrafficOutputQuotaUsedResult(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: float):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkVmacResult(dict):
+    def __init__(__self__, *,
+                 supported: bool):
+        """
+        :param bool supported: Whether server is compatible vmac
+        """
+        pulumi.set(__self__, "supported", supported)
+
+    @property
+    @pulumi.getter
+    def supported(self) -> bool:
+        """
+        Whether server is compatible vmac
+        """
+        return pulumi.get(self, "supported")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkVrackResult(dict):
+    def __init__(__self__, *,
+                 bandwidth: 'outputs.GetServerSpecificationsNetworkVrackBandwidthResult',
+                 type: str):
+        """
+        :param 'GetServerSpecificationsNetworkVrackBandwidthArgs' bandwidth: vrack bandwidth limitation
+        :param str type: Bandwidth offer type (included┃standard)
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> 'outputs.GetServerSpecificationsNetworkVrackBandwidthResult':
+        """
+        vrack bandwidth limitation
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Bandwidth offer type (included┃standard)
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetServerSpecificationsNetworkVrackBandwidthResult(dict):
     def __init__(__self__, *,
                  unit: str,
                  value: float):
