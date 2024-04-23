@@ -679,6 +679,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_dedicated_server_specifications_hardware": {
 				Tok: ovhDataSource(dedicatedMod, "getServerSpecificationsHardware"),
 			},
+			"ovh_dedicated_server_specifications_network": {
+				Tok: ovhDataSource(dedicatedMod, "getServerSpecificationsNetwork"),
+			},
 			"ovh_hosting_privatedatabase": {
 				Tok: ovhDataSource(hostingMod, "getPrivateDatabase"),
 			},

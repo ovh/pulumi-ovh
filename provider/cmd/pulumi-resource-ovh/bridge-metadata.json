@@ -162,6 +162,7 @@
             "ovh:Dedicated/getNasHA:getNasHA": 0,
             "ovh:Dedicated/getServerBoots:getServerBoots": 0,
             "ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware": 1,
+            "ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork": 1,
             "ovh:Domain/getZone:getZone": 0,
             "ovh:Domain/getZoneDNSSec:getZoneDNSSec": 1,
             "ovh:Hosting/getPrivateDatabase:getPrivateDatabase": 0,
