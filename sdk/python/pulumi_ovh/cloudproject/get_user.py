@@ -132,7 +132,6 @@ def get_user(service_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -144,7 +143,6 @@ def get_user(service_name: Optional[str] = None,
     my_user = ovh.CloudProject.get_user(service_name=project_users.service_name,
         user_id=s3_user_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The ID of the public cloud project. If omitted,
@@ -177,7 +175,6 @@ def get_user_output(service_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -189,7 +186,6 @@ def get_user_output(service_name: Optional[pulumi.Input[str]] = None,
     my_user = ovh.CloudProject.get_user(service_name=project_users.service_name,
         user_id=s3_user_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The ID of the public cloud project. If omitted,

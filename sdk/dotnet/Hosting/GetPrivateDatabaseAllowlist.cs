@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPrivateDatabaseAllowlistResult> InvokeAsync(GetPrivateDatabaseAllowlistArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateDatabaseAllowlistResult>("ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist", args ?? new GetPrivateDatabaseAllowlistArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPrivateDatabaseAllowlistResult> Invoke(GetPrivateDatabaseAllowlistInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseAllowlistResult>("ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist", args ?? new GetPrivateDatabaseAllowlistInvokeArgs(), options.WithDefaults());

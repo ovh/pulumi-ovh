@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  *     zone: "GRA",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -70,7 +68,7 @@ export class HttpFarm extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Port for backends to receive traffic on.
+     * Port attached to your farm ([1..49151]). Inherited from frontend if null
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
@@ -150,7 +148,7 @@ export interface HttpFarmState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Port for backends to receive traffic on.
+     * Port attached to your farm ([1..49151]). Inherited from frontend if null
      */
     port?: pulumi.Input<number>;
     /**
@@ -188,7 +186,7 @@ export interface HttpFarmArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Port for backends to receive traffic on.
+     * Port attached to your farm ([1..49151]). Inherited from frontend if null
      */
     port?: pulumi.Input<number>;
     /**

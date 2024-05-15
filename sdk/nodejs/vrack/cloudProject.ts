@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -19,16 +18,15 @@ import * as utilities from "../utilities";
  *     serviceName: "12345",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * Attachment of a public cloud project and a VRack can be imported using the `project_id`, the `service_name` (vRackID) and the `attach_id`, separated by "/" E.g.,
+ * Attachment of a public cloud project and a VRack can be imported using the `service_name` (vRack identifier) and the `project_id` (Cloud Project identifier), separated by "/" E.g.,
  *
  * bash
  *
  * ```sh
- * $ pulumi import ovh:Vrack/cloudProject:CloudProject myattach ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/vrack_pn-12345678-cloudproject_ookie9mee8Shaeghaeleeju7Xeghohv6e-attach
+ * $ pulumi import ovh:Vrack/cloudProject:CloudProject myattach service_name/project_id
  * ```
  */
 export class CloudProject extends pulumi.CustomResource {

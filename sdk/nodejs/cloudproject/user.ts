@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const user1 = new ovh.cloudproject.User("user1", {serviceName: "XXX"});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class User extends pulumi.CustomResource {
     /**

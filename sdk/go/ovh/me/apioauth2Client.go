@@ -18,7 +18,6 @@ import (
 //
 // An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,11 +45,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,7 +72,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

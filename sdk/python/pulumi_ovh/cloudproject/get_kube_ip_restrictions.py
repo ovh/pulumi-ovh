@@ -88,7 +88,6 @@ def get_kube_ip_restrictions(kube_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -97,7 +96,6 @@ def get_kube_ip_restrictions(kube_id: Optional[str] = None,
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     pulumi.export("ips", iprestrictions.ips)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str kube_id: The id of the managed kubernetes cluster.
@@ -126,7 +124,6 @@ def get_kube_ip_restrictions_output(kube_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -135,7 +132,6 @@ def get_kube_ip_restrictions_output(kube_id: Optional[pulumi.Input[str]] = None,
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     pulumi.export("ips", iprestrictions.ips)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str kube_id: The id of the managed kubernetes cluster.

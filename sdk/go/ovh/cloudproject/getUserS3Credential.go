@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,7 +58,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetUserS3Credential(ctx *pulumi.Context, args *GetUserS3CredentialArgs, opts ...pulumi.InvokeOption) (*GetUserS3CredentialResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUserS3CredentialResult

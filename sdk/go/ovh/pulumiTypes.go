@@ -13,6 +13,802 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetInstallationTemplateInput struct {
+	Default string `pulumi:"default"`
+	// Information about this template.
+	Description string   `pulumi:"description"`
+	Enums       []string `pulumi:"enums"`
+	Mandatory   bool     `pulumi:"mandatory"`
+	Name        string   `pulumi:"name"`
+	Type        string   `pulumi:"type"`
+}
+
+// GetInstallationTemplateInputInput is an input type that accepts GetInstallationTemplateInputArgs and GetInstallationTemplateInputOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateInputInput` via:
+//
+//	GetInstallationTemplateInputArgs{...}
+type GetInstallationTemplateInputInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput
+	ToGetInstallationTemplateInputOutputWithContext(context.Context) GetInstallationTemplateInputOutput
+}
+
+type GetInstallationTemplateInputArgs struct {
+	Default pulumi.StringInput `pulumi:"default"`
+	// Information about this template.
+	Description pulumi.StringInput      `pulumi:"description"`
+	Enums       pulumi.StringArrayInput `pulumi:"enums"`
+	Mandatory   pulumi.BoolInput        `pulumi:"mandatory"`
+	Name        pulumi.StringInput      `pulumi:"name"`
+	Type        pulumi.StringInput      `pulumi:"type"`
+}
+
+func (GetInstallationTemplateInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateInputArgs) ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput {
+	return i.ToGetInstallationTemplateInputOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateInputArgs) ToGetInstallationTemplateInputOutputWithContext(ctx context.Context) GetInstallationTemplateInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateInputOutput)
+}
+
+// GetInstallationTemplateInputArrayInput is an input type that accepts GetInstallationTemplateInputArray and GetInstallationTemplateInputArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateInputArrayInput` via:
+//
+//	GetInstallationTemplateInputArray{ GetInstallationTemplateInputArgs{...} }
+type GetInstallationTemplateInputArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput
+	ToGetInstallationTemplateInputArrayOutputWithContext(context.Context) GetInstallationTemplateInputArrayOutput
+}
+
+type GetInstallationTemplateInputArray []GetInstallationTemplateInputInput
+
+func (GetInstallationTemplateInputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateInputArray) ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput {
+	return i.ToGetInstallationTemplateInputArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateInputArray) ToGetInstallationTemplateInputArrayOutputWithContext(ctx context.Context) GetInstallationTemplateInputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateInputArrayOutput)
+}
+
+type GetInstallationTemplateInputOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateInputOutput) ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputOutput) ToGetInstallationTemplateInputOutputWithContext(ctx context.Context) GetInstallationTemplateInputOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Default }).(pulumi.StringOutput)
+}
+
+// Information about this template.
+func (o GetInstallationTemplateInputOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetInstallationTemplateInputOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstallationTemplateInputOutput) Mandatory() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) bool { return v.Mandatory }).(pulumi.BoolOutput)
+}
+
+func (o GetInstallationTemplateInputOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetInstallationTemplateInputOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstallationTemplateInputArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateInputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateInputArrayOutput) ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputArrayOutput) ToGetInstallationTemplateInputArrayOutputWithContext(ctx context.Context) GetInstallationTemplateInputArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateInputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateInput {
+		return vs[0].([]GetInstallationTemplateInput)[vs[1].(int)]
+	}).(GetInstallationTemplateInputOutput)
+}
+
+type GetInstallationTemplateLicense struct {
+	Os     []GetInstallationTemplateLicenseO     `pulumi:"os"`
+	Usages []GetInstallationTemplateLicenseUsage `pulumi:"usages"`
+}
+
+// GetInstallationTemplateLicenseInput is an input type that accepts GetInstallationTemplateLicenseArgs and GetInstallationTemplateLicenseOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseInput` via:
+//
+//	GetInstallationTemplateLicenseArgs{...}
+type GetInstallationTemplateLicenseInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseOutput() GetInstallationTemplateLicenseOutput
+	ToGetInstallationTemplateLicenseOutputWithContext(context.Context) GetInstallationTemplateLicenseOutput
+}
+
+type GetInstallationTemplateLicenseArgs struct {
+	Os     GetInstallationTemplateLicenseOArrayInput     `pulumi:"os"`
+	Usages GetInstallationTemplateLicenseUsageArrayInput `pulumi:"usages"`
+}
+
+func (GetInstallationTemplateLicenseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicense)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseArgs) ToGetInstallationTemplateLicenseOutput() GetInstallationTemplateLicenseOutput {
+	return i.ToGetInstallationTemplateLicenseOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseArgs) ToGetInstallationTemplateLicenseOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseOutput)
+}
+
+// GetInstallationTemplateLicenseArrayInput is an input type that accepts GetInstallationTemplateLicenseArray and GetInstallationTemplateLicenseArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseArrayInput` via:
+//
+//	GetInstallationTemplateLicenseArray{ GetInstallationTemplateLicenseArgs{...} }
+type GetInstallationTemplateLicenseArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseArrayOutput() GetInstallationTemplateLicenseArrayOutput
+	ToGetInstallationTemplateLicenseArrayOutputWithContext(context.Context) GetInstallationTemplateLicenseArrayOutput
+}
+
+type GetInstallationTemplateLicenseArray []GetInstallationTemplateLicenseInput
+
+func (GetInstallationTemplateLicenseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicense)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseArray) ToGetInstallationTemplateLicenseArrayOutput() GetInstallationTemplateLicenseArrayOutput {
+	return i.ToGetInstallationTemplateLicenseArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseArray) ToGetInstallationTemplateLicenseArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseArrayOutput)
+}
+
+type GetInstallationTemplateLicenseOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicense)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseOutput) ToGetInstallationTemplateLicenseOutput() GetInstallationTemplateLicenseOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOutput) ToGetInstallationTemplateLicenseOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOutput) Os() GetInstallationTemplateLicenseOArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicense) []GetInstallationTemplateLicenseO { return v.Os }).(GetInstallationTemplateLicenseOArrayOutput)
+}
+
+func (o GetInstallationTemplateLicenseOutput) Usages() GetInstallationTemplateLicenseUsageArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicense) []GetInstallationTemplateLicenseUsage { return v.Usages }).(GetInstallationTemplateLicenseUsageArrayOutput)
+}
+
+type GetInstallationTemplateLicenseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicense)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseArrayOutput) ToGetInstallationTemplateLicenseArrayOutput() GetInstallationTemplateLicenseArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseArrayOutput) ToGetInstallationTemplateLicenseArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateLicenseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateLicense {
+		return vs[0].([]GetInstallationTemplateLicense)[vs[1].(int)]
+	}).(GetInstallationTemplateLicenseOutput)
+}
+
+type GetInstallationTemplateLicenseO struct {
+	Names []string `pulumi:"names"`
+	Url   string   `pulumi:"url"`
+}
+
+// GetInstallationTemplateLicenseOInput is an input type that accepts GetInstallationTemplateLicenseOArgs and GetInstallationTemplateLicenseOOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseOInput` via:
+//
+//	GetInstallationTemplateLicenseOArgs{...}
+type GetInstallationTemplateLicenseOInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseOOutput() GetInstallationTemplateLicenseOOutput
+	ToGetInstallationTemplateLicenseOOutputWithContext(context.Context) GetInstallationTemplateLicenseOOutput
+}
+
+type GetInstallationTemplateLicenseOArgs struct {
+	Names pulumi.StringArrayInput `pulumi:"names"`
+	Url   pulumi.StringInput      `pulumi:"url"`
+}
+
+func (GetInstallationTemplateLicenseOArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicenseO)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseOArgs) ToGetInstallationTemplateLicenseOOutput() GetInstallationTemplateLicenseOOutput {
+	return i.ToGetInstallationTemplateLicenseOOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseOArgs) ToGetInstallationTemplateLicenseOOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseOOutput)
+}
+
+// GetInstallationTemplateLicenseOArrayInput is an input type that accepts GetInstallationTemplateLicenseOArray and GetInstallationTemplateLicenseOArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseOArrayInput` via:
+//
+//	GetInstallationTemplateLicenseOArray{ GetInstallationTemplateLicenseOArgs{...} }
+type GetInstallationTemplateLicenseOArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseOArrayOutput() GetInstallationTemplateLicenseOArrayOutput
+	ToGetInstallationTemplateLicenseOArrayOutputWithContext(context.Context) GetInstallationTemplateLicenseOArrayOutput
+}
+
+type GetInstallationTemplateLicenseOArray []GetInstallationTemplateLicenseOInput
+
+func (GetInstallationTemplateLicenseOArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicenseO)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseOArray) ToGetInstallationTemplateLicenseOArrayOutput() GetInstallationTemplateLicenseOArrayOutput {
+	return i.ToGetInstallationTemplateLicenseOArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseOArray) ToGetInstallationTemplateLicenseOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseOArrayOutput)
+}
+
+type GetInstallationTemplateLicenseOOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseOOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicenseO)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseOOutput) ToGetInstallationTemplateLicenseOOutput() GetInstallationTemplateLicenseOOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOOutput) ToGetInstallationTemplateLicenseOOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicenseO) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstallationTemplateLicenseOOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicenseO) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetInstallationTemplateLicenseOArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseOArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicenseO)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseOArrayOutput) ToGetInstallationTemplateLicenseOArrayOutput() GetInstallationTemplateLicenseOArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOArrayOutput) ToGetInstallationTemplateLicenseOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateLicenseOOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateLicenseO {
+		return vs[0].([]GetInstallationTemplateLicenseO)[vs[1].(int)]
+	}).(GetInstallationTemplateLicenseOOutput)
+}
+
+type GetInstallationTemplateLicenseUsage struct {
+	Names []string `pulumi:"names"`
+	Url   string   `pulumi:"url"`
+}
+
+// GetInstallationTemplateLicenseUsageInput is an input type that accepts GetInstallationTemplateLicenseUsageArgs and GetInstallationTemplateLicenseUsageOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseUsageInput` via:
+//
+//	GetInstallationTemplateLicenseUsageArgs{...}
+type GetInstallationTemplateLicenseUsageInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseUsageOutput() GetInstallationTemplateLicenseUsageOutput
+	ToGetInstallationTemplateLicenseUsageOutputWithContext(context.Context) GetInstallationTemplateLicenseUsageOutput
+}
+
+type GetInstallationTemplateLicenseUsageArgs struct {
+	Names pulumi.StringArrayInput `pulumi:"names"`
+	Url   pulumi.StringInput      `pulumi:"url"`
+}
+
+func (GetInstallationTemplateLicenseUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicenseUsage)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseUsageArgs) ToGetInstallationTemplateLicenseUsageOutput() GetInstallationTemplateLicenseUsageOutput {
+	return i.ToGetInstallationTemplateLicenseUsageOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseUsageArgs) ToGetInstallationTemplateLicenseUsageOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseUsageOutput)
+}
+
+// GetInstallationTemplateLicenseUsageArrayInput is an input type that accepts GetInstallationTemplateLicenseUsageArray and GetInstallationTemplateLicenseUsageArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseUsageArrayInput` via:
+//
+//	GetInstallationTemplateLicenseUsageArray{ GetInstallationTemplateLicenseUsageArgs{...} }
+type GetInstallationTemplateLicenseUsageArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseUsageArrayOutput() GetInstallationTemplateLicenseUsageArrayOutput
+	ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(context.Context) GetInstallationTemplateLicenseUsageArrayOutput
+}
+
+type GetInstallationTemplateLicenseUsageArray []GetInstallationTemplateLicenseUsageInput
+
+func (GetInstallationTemplateLicenseUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicenseUsage)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseUsageArray) ToGetInstallationTemplateLicenseUsageArrayOutput() GetInstallationTemplateLicenseUsageArrayOutput {
+	return i.ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseUsageArray) ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseUsageArrayOutput)
+}
+
+type GetInstallationTemplateLicenseUsageOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicenseUsage)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseUsageOutput) ToGetInstallationTemplateLicenseUsageOutput() GetInstallationTemplateLicenseUsageOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseUsageOutput) ToGetInstallationTemplateLicenseUsageOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseUsageOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicenseUsage) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstallationTemplateLicenseUsageOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicenseUsage) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetInstallationTemplateLicenseUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicenseUsage)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseUsageArrayOutput) ToGetInstallationTemplateLicenseUsageArrayOutput() GetInstallationTemplateLicenseUsageArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseUsageArrayOutput) ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseUsageArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateLicenseUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateLicenseUsage {
+		return vs[0].([]GetInstallationTemplateLicenseUsage)[vs[1].(int)]
+	}).(GetInstallationTemplateLicenseUsageOutput)
+}
+
+type GetInstallationTemplateProject struct {
+	// OS template project OS details
+	Os     []GetInstallationTemplateProjectO     `pulumi:"os"`
+	Usages []GetInstallationTemplateProjectUsage `pulumi:"usages"`
+}
+
+// GetInstallationTemplateProjectInput is an input type that accepts GetInstallationTemplateProjectArgs and GetInstallationTemplateProjectOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectInput` via:
+//
+//	GetInstallationTemplateProjectArgs{...}
+type GetInstallationTemplateProjectInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectOutput() GetInstallationTemplateProjectOutput
+	ToGetInstallationTemplateProjectOutputWithContext(context.Context) GetInstallationTemplateProjectOutput
+}
+
+type GetInstallationTemplateProjectArgs struct {
+	// OS template project OS details
+	Os     GetInstallationTemplateProjectOArrayInput     `pulumi:"os"`
+	Usages GetInstallationTemplateProjectUsageArrayInput `pulumi:"usages"`
+}
+
+func (GetInstallationTemplateProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProject)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectArgs) ToGetInstallationTemplateProjectOutput() GetInstallationTemplateProjectOutput {
+	return i.ToGetInstallationTemplateProjectOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectArgs) ToGetInstallationTemplateProjectOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectOutput)
+}
+
+// GetInstallationTemplateProjectArrayInput is an input type that accepts GetInstallationTemplateProjectArray and GetInstallationTemplateProjectArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectArrayInput` via:
+//
+//	GetInstallationTemplateProjectArray{ GetInstallationTemplateProjectArgs{...} }
+type GetInstallationTemplateProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectArrayOutput() GetInstallationTemplateProjectArrayOutput
+	ToGetInstallationTemplateProjectArrayOutputWithContext(context.Context) GetInstallationTemplateProjectArrayOutput
+}
+
+type GetInstallationTemplateProjectArray []GetInstallationTemplateProjectInput
+
+func (GetInstallationTemplateProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProject)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectArray) ToGetInstallationTemplateProjectArrayOutput() GetInstallationTemplateProjectArrayOutput {
+	return i.ToGetInstallationTemplateProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectArray) ToGetInstallationTemplateProjectArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectArrayOutput)
+}
+
+type GetInstallationTemplateProjectOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProject)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectOutput) ToGetInstallationTemplateProjectOutput() GetInstallationTemplateProjectOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectOutput) ToGetInstallationTemplateProjectOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOutput {
+	return o
+}
+
+// OS template project OS details
+func (o GetInstallationTemplateProjectOutput) Os() GetInstallationTemplateProjectOArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProject) []GetInstallationTemplateProjectO { return v.Os }).(GetInstallationTemplateProjectOArrayOutput)
+}
+
+func (o GetInstallationTemplateProjectOutput) Usages() GetInstallationTemplateProjectUsageArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProject) []GetInstallationTemplateProjectUsage { return v.Usages }).(GetInstallationTemplateProjectUsageArrayOutput)
+}
+
+type GetInstallationTemplateProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProject)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectArrayOutput) ToGetInstallationTemplateProjectArrayOutput() GetInstallationTemplateProjectArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectArrayOutput) ToGetInstallationTemplateProjectArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateProject {
+		return vs[0].([]GetInstallationTemplateProject)[vs[1].(int)]
+	}).(GetInstallationTemplateProjectOutput)
+}
+
+type GetInstallationTemplateProjectO struct {
+	// OS template project item governance
+	Governances []string `pulumi:"governances"`
+	// OS template project item name
+	Name string `pulumi:"name"`
+	// OS template project item release notes
+	ReleaseNotes string `pulumi:"releaseNotes"`
+	// OS template project item url
+	Url string `pulumi:"url"`
+	// OS template project item version
+	Version string `pulumi:"version"`
+}
+
+// GetInstallationTemplateProjectOInput is an input type that accepts GetInstallationTemplateProjectOArgs and GetInstallationTemplateProjectOOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectOInput` via:
+//
+//	GetInstallationTemplateProjectOArgs{...}
+type GetInstallationTemplateProjectOInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectOOutput() GetInstallationTemplateProjectOOutput
+	ToGetInstallationTemplateProjectOOutputWithContext(context.Context) GetInstallationTemplateProjectOOutput
+}
+
+type GetInstallationTemplateProjectOArgs struct {
+	// OS template project item governance
+	Governances pulumi.StringArrayInput `pulumi:"governances"`
+	// OS template project item name
+	Name pulumi.StringInput `pulumi:"name"`
+	// OS template project item release notes
+	ReleaseNotes pulumi.StringInput `pulumi:"releaseNotes"`
+	// OS template project item url
+	Url pulumi.StringInput `pulumi:"url"`
+	// OS template project item version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetInstallationTemplateProjectOArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProjectO)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectOArgs) ToGetInstallationTemplateProjectOOutput() GetInstallationTemplateProjectOOutput {
+	return i.ToGetInstallationTemplateProjectOOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectOArgs) ToGetInstallationTemplateProjectOOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectOOutput)
+}
+
+// GetInstallationTemplateProjectOArrayInput is an input type that accepts GetInstallationTemplateProjectOArray and GetInstallationTemplateProjectOArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectOArrayInput` via:
+//
+//	GetInstallationTemplateProjectOArray{ GetInstallationTemplateProjectOArgs{...} }
+type GetInstallationTemplateProjectOArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectOArrayOutput() GetInstallationTemplateProjectOArrayOutput
+	ToGetInstallationTemplateProjectOArrayOutputWithContext(context.Context) GetInstallationTemplateProjectOArrayOutput
+}
+
+type GetInstallationTemplateProjectOArray []GetInstallationTemplateProjectOInput
+
+func (GetInstallationTemplateProjectOArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProjectO)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectOArray) ToGetInstallationTemplateProjectOArrayOutput() GetInstallationTemplateProjectOArrayOutput {
+	return i.ToGetInstallationTemplateProjectOArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectOArray) ToGetInstallationTemplateProjectOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectOArrayOutput)
+}
+
+type GetInstallationTemplateProjectOOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectOOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProjectO)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectOOutput) ToGetInstallationTemplateProjectOOutput() GetInstallationTemplateProjectOOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectOOutput) ToGetInstallationTemplateProjectOOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOOutput {
+	return o
+}
+
+// OS template project item governance
+func (o GetInstallationTemplateProjectOOutput) Governances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectO) []string { return v.Governances }).(pulumi.StringArrayOutput)
+}
+
+// OS template project item name
+func (o GetInstallationTemplateProjectOOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OS template project item release notes
+func (o GetInstallationTemplateProjectOOutput) ReleaseNotes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.ReleaseNotes }).(pulumi.StringOutput)
+}
+
+// OS template project item url
+func (o GetInstallationTemplateProjectOOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// OS template project item version
+func (o GetInstallationTemplateProjectOOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetInstallationTemplateProjectOArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectOArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProjectO)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectOArrayOutput) ToGetInstallationTemplateProjectOArrayOutput() GetInstallationTemplateProjectOArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectOArrayOutput) ToGetInstallationTemplateProjectOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectOArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateProjectOOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateProjectO {
+		return vs[0].([]GetInstallationTemplateProjectO)[vs[1].(int)]
+	}).(GetInstallationTemplateProjectOOutput)
+}
+
+type GetInstallationTemplateProjectUsage struct {
+	// OS template project item governance
+	Governances []string `pulumi:"governances"`
+	// OS template project item name
+	Name string `pulumi:"name"`
+	// OS template project item release notes
+	ReleaseNotes string `pulumi:"releaseNotes"`
+	// OS template project item url
+	Url string `pulumi:"url"`
+	// OS template project item version
+	Version string `pulumi:"version"`
+}
+
+// GetInstallationTemplateProjectUsageInput is an input type that accepts GetInstallationTemplateProjectUsageArgs and GetInstallationTemplateProjectUsageOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectUsageInput` via:
+//
+//	GetInstallationTemplateProjectUsageArgs{...}
+type GetInstallationTemplateProjectUsageInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectUsageOutput() GetInstallationTemplateProjectUsageOutput
+	ToGetInstallationTemplateProjectUsageOutputWithContext(context.Context) GetInstallationTemplateProjectUsageOutput
+}
+
+type GetInstallationTemplateProjectUsageArgs struct {
+	// OS template project item governance
+	Governances pulumi.StringArrayInput `pulumi:"governances"`
+	// OS template project item name
+	Name pulumi.StringInput `pulumi:"name"`
+	// OS template project item release notes
+	ReleaseNotes pulumi.StringInput `pulumi:"releaseNotes"`
+	// OS template project item url
+	Url pulumi.StringInput `pulumi:"url"`
+	// OS template project item version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetInstallationTemplateProjectUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProjectUsage)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectUsageArgs) ToGetInstallationTemplateProjectUsageOutput() GetInstallationTemplateProjectUsageOutput {
+	return i.ToGetInstallationTemplateProjectUsageOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectUsageArgs) ToGetInstallationTemplateProjectUsageOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectUsageOutput)
+}
+
+// GetInstallationTemplateProjectUsageArrayInput is an input type that accepts GetInstallationTemplateProjectUsageArray and GetInstallationTemplateProjectUsageArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectUsageArrayInput` via:
+//
+//	GetInstallationTemplateProjectUsageArray{ GetInstallationTemplateProjectUsageArgs{...} }
+type GetInstallationTemplateProjectUsageArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectUsageArrayOutput() GetInstallationTemplateProjectUsageArrayOutput
+	ToGetInstallationTemplateProjectUsageArrayOutputWithContext(context.Context) GetInstallationTemplateProjectUsageArrayOutput
+}
+
+type GetInstallationTemplateProjectUsageArray []GetInstallationTemplateProjectUsageInput
+
+func (GetInstallationTemplateProjectUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProjectUsage)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectUsageArray) ToGetInstallationTemplateProjectUsageArrayOutput() GetInstallationTemplateProjectUsageArrayOutput {
+	return i.ToGetInstallationTemplateProjectUsageArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectUsageArray) ToGetInstallationTemplateProjectUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectUsageArrayOutput)
+}
+
+type GetInstallationTemplateProjectUsageOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProjectUsage)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectUsageOutput) ToGetInstallationTemplateProjectUsageOutput() GetInstallationTemplateProjectUsageOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectUsageOutput) ToGetInstallationTemplateProjectUsageOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageOutput {
+	return o
+}
+
+// OS template project item governance
+func (o GetInstallationTemplateProjectUsageOutput) Governances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) []string { return v.Governances }).(pulumi.StringArrayOutput)
+}
+
+// OS template project item name
+func (o GetInstallationTemplateProjectUsageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OS template project item release notes
+func (o GetInstallationTemplateProjectUsageOutput) ReleaseNotes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.ReleaseNotes }).(pulumi.StringOutput)
+}
+
+// OS template project item url
+func (o GetInstallationTemplateProjectUsageOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// OS template project item version
+func (o GetInstallationTemplateProjectUsageOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetInstallationTemplateProjectUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProjectUsage)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectUsageArrayOutput) ToGetInstallationTemplateProjectUsageArrayOutput() GetInstallationTemplateProjectUsageArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectUsageArrayOutput) ToGetInstallationTemplateProjectUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectUsageArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateProjectUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateProjectUsage {
+		return vs[0].([]GetInstallationTemplateProjectUsage)[vs[1].(int)]
+	}).(GetInstallationTemplateProjectUsageOutput)
+}
+
 type GetServerVni struct {
 	// VirtualNetworkInterface activation state
 	Enabled bool `pulumi:"enabled"`
@@ -165,8 +961,36 @@ func (o GetServerVniArrayOutput) Index(i pulumi.IntInput) GetServerVniOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputInput)(nil)).Elem(), GetInstallationTemplateInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputArrayInput)(nil)).Elem(), GetInstallationTemplateInputArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseInput)(nil)).Elem(), GetInstallationTemplateLicenseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseArrayInput)(nil)).Elem(), GetInstallationTemplateLicenseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseOInput)(nil)).Elem(), GetInstallationTemplateLicenseOArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseOArrayInput)(nil)).Elem(), GetInstallationTemplateLicenseOArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseUsageInput)(nil)).Elem(), GetInstallationTemplateLicenseUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseUsageArrayInput)(nil)).Elem(), GetInstallationTemplateLicenseUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectInput)(nil)).Elem(), GetInstallationTemplateProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectArrayInput)(nil)).Elem(), GetInstallationTemplateProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectOInput)(nil)).Elem(), GetInstallationTemplateProjectOArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectOArrayInput)(nil)).Elem(), GetInstallationTemplateProjectOArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageArrayInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerVniInput)(nil)).Elem(), GetServerVniArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerVniArrayInput)(nil)).Elem(), GetServerVniArray{})
+	pulumi.RegisterOutputType(GetInstallationTemplateInputOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateInputArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseOOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseOArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseUsageOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectOOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectOArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageArrayOutput{})
 	pulumi.RegisterOutputType(GetServerVniOutput{})
 	pulumi.RegisterOutputType(GetServerVniArrayOutput{})
 }

@@ -204,7 +204,6 @@ class Alerting(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -215,7 +214,6 @@ class Alerting(pulumi.CustomResource):
             monthly_threshold=1000,
             service_name="XXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -236,7 +234,6 @@ class Alerting(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -247,7 +244,6 @@ class Alerting(pulumi.CustomResource):
             monthly_threshold=1000,
             service_name="XXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param AlertingArgs args: The arguments to use to populate this resource's properties.

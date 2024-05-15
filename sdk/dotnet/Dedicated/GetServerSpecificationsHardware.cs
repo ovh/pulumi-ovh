@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerSpecificationsHardwareResult> InvokeAsync(GetServerSpecificationsHardwareArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerSpecificationsHardwareResult>("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", args ?? new GetServerSpecificationsHardwareArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerSpecificationsHardwareResult> Invoke(GetServerSpecificationsHardwareInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerSpecificationsHardwareResult>("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", args ?? new GetServerSpecificationsHardwareInvokeArgs(), options.WithDefaults());

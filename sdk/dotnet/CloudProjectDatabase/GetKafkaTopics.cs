@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKafkaTopicsResult> InvokeAsync(GetKafkaTopicsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicsResult>("ovh:CloudProjectDatabase/getKafkaTopics:getKafkaTopics", args ?? new GetKafkaTopicsArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKafkaTopicsResult> Invoke(GetKafkaTopicsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaTopicsResult>("ovh:CloudProjectDatabase/getKafkaTopics:getKafkaTopics", args ?? new GetKafkaTopicsInvokeArgs(), options.WithDefaults());

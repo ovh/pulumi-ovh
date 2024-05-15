@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetRedisUser(ctx *pulumi.Context, args *GetRedisUserArgs, opts ...pulumi.InvokeOption) (*GetRedisUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRedisUserResult

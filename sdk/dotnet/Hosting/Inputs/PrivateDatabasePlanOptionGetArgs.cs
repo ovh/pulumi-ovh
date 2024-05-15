@@ -31,13 +31,13 @@ namespace Pulumi.Ovh.Hosting.Inputs
         }
 
         /// <summary>
-        /// duration.
+        /// Service duration
         /// </summary>
         [Input("duration", required: true)]
         public Input<string> Duration { get; set; } = null!;
 
         /// <summary>
-        /// Plan code.
+        /// Plan code
         /// </summary>
         [Input("planCode", required: true)]
         public Input<string> PlanCode { get; set; } = null!;

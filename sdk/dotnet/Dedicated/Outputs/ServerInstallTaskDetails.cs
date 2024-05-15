@@ -22,10 +22,6 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly int? DiskGroupId;
         /// <summary>
-        /// Deprecated, will be removed in next release.
-        /// </summary>
-        public readonly string? Language;
-        /// <summary>
         /// Set to true to disable RAID.
         /// </summary>
         public readonly bool? NoRaid;
@@ -41,18 +37,6 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// soft raid devices.
         /// </summary>
         public readonly int? SoftRaidDevices;
-        /// <summary>
-        /// Deprecated, will be removed in next release.
-        /// 
-        /// The `user_metadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
-        /// 
-        /// -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-questions)
-        /// 
-        /// -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&amp;branch=v1#get-/dedicated/installationTemplate/-templateName-)
-        /// 
-        /// -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061950#create-an-os-installation-task) to get more information
-        /// </summary>
-        public readonly bool? UseSpla;
 
         [OutputConstructor]
         private ServerInstallTaskDetails(
@@ -60,26 +44,20 @@ namespace Pulumi.Ovh.Dedicated.Outputs
 
             int? diskGroupId,
 
-            string? language,
-
             bool? noRaid,
 
             string? postInstallationScriptLink,
 
             string? postInstallationScriptReturn,
 
-            int? softRaidDevices,
-
-            bool? useSpla)
+            int? softRaidDevices)
         {
             CustomHostname = customHostname;
             DiskGroupId = diskGroupId;
-            Language = language;
             NoRaid = noRaid;
             PostInstallationScriptLink = postInstallationScriptLink;
             PostInstallationScriptReturn = postInstallationScriptReturn;
             SoftRaidDevices = softRaidDevices;
-            UseSpla = useSpla;
         }
     }
 }

@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Ip
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Ovh.Ip
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMitigationResult> InvokeAsync(GetMitigationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMitigationResult>("ovh:Ip/getMitigation:getMitigation", args ?? new GetMitigationArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Ovh.Ip
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Ovh.Ip
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMitigationResult> Invoke(GetMitigationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMitigationResult>("ovh:Ip/getMitigation:getMitigation", args ?? new GetMitigationInvokeArgs(), options.WithDefaults());

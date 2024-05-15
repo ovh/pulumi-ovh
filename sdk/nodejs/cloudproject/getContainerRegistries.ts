@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getContainerRegistries(args: GetContainerRegistriesArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistriesResult> {
 
@@ -60,7 +58,6 @@ export interface GetContainerRegistriesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -69,7 +66,6 @@ export interface GetContainerRegistriesResult {
  *     serviceName: "XXXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getContainerRegistriesOutput(args: GetContainerRegistriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistriesResult> {
     return pulumi.output(args).apply((a: any) => getContainerRegistries(a, opts))

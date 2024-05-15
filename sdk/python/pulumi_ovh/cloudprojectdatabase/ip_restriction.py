@@ -226,7 +226,6 @@ class IpRestriction(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -240,7 +239,6 @@ class IpRestriction(pulumi.CustomResource):
             cluster_id=db.id,
             ip="178.97.6.0/24")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -276,7 +274,6 @@ class IpRestriction(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -290,7 +287,6 @@ class IpRestriction(pulumi.CustomResource):
             cluster_id=db.id,
             ip="178.97.6.0/24")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

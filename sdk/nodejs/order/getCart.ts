@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     ovhSubsidiary: myaccount.ovhSubsidiary,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCart(args: GetCartArgs, opts?: pulumi.InvokeOptions): Promise<GetCartResult> {
 
@@ -84,7 +82,6 @@ export interface GetCartResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -94,7 +91,6 @@ export interface GetCartResult {
  *     ovhSubsidiary: myaccount.ovhSubsidiary,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCartOutput(args: GetCartOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCartResult> {
     return pulumi.output(args).apply((a: any) => getCart(a, opts))

@@ -13,7 +13,6 @@ namespace Pulumi.Ovh.Dedicated
     /// ## Example Usage
     /// 
     /// Using a custom template based on an OVHCloud template
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -60,11 +59,9 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Using a BringYourOwnLinux (BYOLinux) template (with userMetadata)
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -152,11 +149,9 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Using a Microsoft Windows server OVHcloud template with a specific language
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -197,7 +192,6 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

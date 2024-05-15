@@ -132,14 +132,12 @@ def get_resource_group(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_resource_group = ovh.Iam.get_resource_group(id="my_resource_group_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: Id of the resource group
@@ -168,14 +166,12 @@ def get_resource_group_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_resource_group = ovh.Iam.get_resource_group(id="my_resource_group_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: Id of the resource group

@@ -455,7 +455,6 @@ class TcpFarmServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -479,7 +478,6 @@ class TcpFarmServer(pulumi.CustomResource):
             status="active",
             weight=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -511,7 +509,6 @@ class TcpFarmServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -535,7 +532,6 @@ class TcpFarmServer(pulumi.CustomResource):
             status="active",
             weight=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

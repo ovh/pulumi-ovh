@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  * });
  * export const version = myKubeCluster.then(myKubeCluster => myKubeCluster.version);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKube(args: GetKubeArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeResult> {
 
@@ -173,7 +171,6 @@ export interface GetKubeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -184,7 +181,6 @@ export interface GetKubeResult {
  * });
  * export const version = myKubeCluster.then(myKubeCluster => myKubeCluster.version);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKubeOutput(args: GetKubeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeResult> {
     return pulumi.output(args).apply((a: any) => getKube(a, opts))

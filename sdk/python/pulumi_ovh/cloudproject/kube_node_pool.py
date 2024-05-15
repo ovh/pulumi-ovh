@@ -665,7 +665,6 @@ class KubeNodePool(pulumi.CustomResource):
 
         Create a simple node pool in your Kubernetes cluster:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -678,11 +677,9 @@ class KubeNodePool(pulumi.CustomResource):
             min_nodes=3,
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create an advanced node pool in your Kubernetes cluster:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -719,7 +716,6 @@ class KubeNodePool(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -766,7 +762,6 @@ class KubeNodePool(pulumi.CustomResource):
 
         Create a simple node pool in your Kubernetes cluster:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -779,11 +774,9 @@ class KubeNodePool(pulumi.CustomResource):
             min_nodes=3,
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create an advanced node pool in your Kubernetes cluster:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -820,7 +813,6 @@ class KubeNodePool(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

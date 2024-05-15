@@ -149,7 +149,6 @@ def get_failover_ip_attach(block: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -157,7 +156,6 @@ def get_failover_ip_attach(block: Optional[str] = None,
     myfailoverip = ovh.CloudProject.get_failover_ip_attach(ip="XXXXXX",
         service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str block: The IP block
@@ -201,7 +199,6 @@ def get_failover_ip_attach_output(block: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -209,7 +206,6 @@ def get_failover_ip_attach_output(block: Optional[pulumi.Input[Optional[str]]] =
     myfailoverip = ovh.CloudProject.get_failover_ip_attach(ip="XXXXXX",
         service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str block: The IP block

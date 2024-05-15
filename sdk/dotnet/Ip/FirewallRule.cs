@@ -14,7 +14,6 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Ip/firewallRule:FirewallRule")]
     public partial class FirewallRule : global::Pulumi.CustomResource

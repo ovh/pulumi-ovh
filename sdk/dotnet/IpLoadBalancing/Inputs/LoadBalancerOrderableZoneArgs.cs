@@ -19,7 +19,7 @@ namespace Pulumi.Ovh.IpLoadBalancing.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Plan code
+        /// The billing planCode for this zone
         /// </summary>
         [Input("planCode")]
         public Input<string>? PlanCode { get; set; }

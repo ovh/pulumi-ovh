@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  * });
  * export const subscriptionIds = subscriptions.then(subscriptions => subscriptions.subscriptionIds);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseLogSubscriptions(args: GetDatabaseLogSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseLogSubscriptionsResult> {
 
@@ -83,7 +81,6 @@ export interface GetDatabaseLogSubscriptionsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -95,7 +92,6 @@ export interface GetDatabaseLogSubscriptionsResult {
  * });
  * export const subscriptionIds = subscriptions.then(subscriptions => subscriptions.subscriptionIds);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseLogSubscriptionsOutput(args: GetDatabaseLogSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseLogSubscriptionsResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseLogSubscriptions(a, opts))

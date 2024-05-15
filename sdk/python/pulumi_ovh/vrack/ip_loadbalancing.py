@@ -102,7 +102,6 @@ class IpLoadbalancing(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -111,7 +110,6 @@ class IpLoadbalancing(pulumi.CustomResource):
             loadbalancing_id="yyy",
             service_name="xxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -129,7 +127,6 @@ class IpLoadbalancing(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -138,7 +135,6 @@ class IpLoadbalancing(pulumi.CustomResource):
             loadbalancing_id="yyy",
             service_name="xxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param IpLoadbalancingArgs args: The arguments to use to populate this resource's properties.

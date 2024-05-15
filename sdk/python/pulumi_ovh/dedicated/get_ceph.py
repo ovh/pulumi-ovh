@@ -178,14 +178,12 @@ def get_ceph(ceph_version: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_ceph = ovh.Dedicated.get_ceph(service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ceph_version: CEPH cluster version
@@ -223,14 +221,12 @@ def get_ceph_output(ceph_version: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_ceph = ovh.Dedicated.get_ceph(service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ceph_version: CEPH cluster version

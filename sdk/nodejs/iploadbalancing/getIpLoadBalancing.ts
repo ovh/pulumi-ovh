@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     state: "ok",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIpLoadBalancing(args?: GetIpLoadBalancingArgs, opts?: pulumi.InvokeOptions): Promise<GetIpLoadBalancingResult> {
     args = args || {};
@@ -136,7 +134,6 @@ export interface GetIpLoadBalancingResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -146,7 +143,6 @@ export interface GetIpLoadBalancingResult {
  *     state: "ok",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIpLoadBalancingOutput(args?: GetIpLoadBalancingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpLoadBalancingResult> {
     return pulumi.output(args).apply((a: any) => getIpLoadBalancing(a, opts))

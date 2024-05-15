@@ -16,7 +16,6 @@ import (
 //
 // ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,11 +42,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Park IP/Detach IP `1.2.3.4` from any service
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,7 +71,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type Move struct {
 	pulumi.CustomResourceState
 
@@ -91,7 +87,7 @@ type Move struct {
 	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
 	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
 	RoutedTo MoveRoutedToOutput `pulumi:"routedTo"`
-	// Name of the service to route the IP to. IP will be parked if this value is an empty string
+	// Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
 	TaskStartDate pulumi.StringOutput `pulumi:"taskStartDate"`
@@ -150,7 +146,7 @@ type moveState struct {
 	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
 	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
 	RoutedTo *MoveRoutedTo `pulumi:"routedTo"`
-	// Name of the service to route the IP to. IP will be parked if this value is an empty string
+	// Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
 	ServiceName *string `pulumi:"serviceName"`
 	// Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
 	TaskStartDate *string `pulumi:"taskStartDate"`
@@ -174,7 +170,7 @@ type MoveState struct {
 	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
 	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
 	RoutedTo MoveRoutedToPtrInput
-	// Name of the service to route the IP to. IP will be parked if this value is an empty string
+	// Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
 	ServiceName pulumi.StringPtrInput
 	// Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
 	TaskStartDate pulumi.StringPtrInput
@@ -327,7 +323,7 @@ func (o MoveOutput) RoutedTo() MoveRoutedToOutput {
 	return o.ApplyT(func(v *Move) MoveRoutedToOutput { return v.RoutedTo }).(MoveRoutedToOutput)
 }
 
-// Name of the service to route the IP to. IP will be parked if this value is an empty string
+// Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
 func (o MoveOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Move) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

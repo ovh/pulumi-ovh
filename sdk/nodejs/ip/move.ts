@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -23,11 +22,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Park IP/Detach IP `1.2.3.4` from any service
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -39,7 +36,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Move extends pulumi.CustomResource {
     /**
@@ -95,7 +91,7 @@ export class Move extends pulumi.CustomResource {
      */
     public readonly routedTo!: pulumi.Output<outputs.Ip.MoveRoutedTo>;
     /**
-     * Name of the service to route the IP to. IP will be parked if this value is an empty string
+     * Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
      */
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
     /**
@@ -188,7 +184,7 @@ export interface MoveState {
      */
     routedTo?: pulumi.Input<inputs.Ip.MoveRoutedTo>;
     /**
-     * Name of the service to route the IP to. IP will be parked if this value is an empty string
+     * Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
      */
     serviceName?: pulumi.Input<string>;
     /**

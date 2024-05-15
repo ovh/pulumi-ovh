@@ -12,7 +12,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -68,7 +67,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : global::Pulumi.CustomResource
@@ -243,6 +241,18 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("orders")]
+        private InputList<Inputs.LoadBalancerOrderArgs>? _orders;
+
+        /// <summary>
+        /// Details about an Order
+        /// </summary>
+        public InputList<Inputs.LoadBalancerOrderArgs> Orders
+        {
+            get => _orders ?? (_orders = new InputList<Inputs.LoadBalancerOrderArgs>());
+            set => _orders = value;
+        }
 
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)

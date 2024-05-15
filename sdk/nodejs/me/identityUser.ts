@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  *     password: "super-s3cr3t!password",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class IdentityUser extends pulumi.CustomResource {
     /**

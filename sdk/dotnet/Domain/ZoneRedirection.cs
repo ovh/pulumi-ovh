@@ -14,7 +14,6 @@ namespace Pulumi.Ovh.Domain
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Ovh.Domain
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Domain/zoneRedirection:ZoneRedirection")]
     public partial class ZoneRedirection : global::Pulumi.CustomResource

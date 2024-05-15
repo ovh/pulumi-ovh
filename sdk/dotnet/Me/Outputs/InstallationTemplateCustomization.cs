@@ -25,10 +25,6 @@ namespace Pulumi.Ovh.Me.Outputs
         /// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         /// </summary>
         public readonly string? PostInstallationScriptReturn;
-        /// <summary>
-        /// Deprecated.
-        /// </summary>
-        public readonly string? SshKeyName;
 
         [OutputConstructor]
         private InstallationTemplateCustomization(
@@ -36,14 +32,11 @@ namespace Pulumi.Ovh.Me.Outputs
 
             string? postInstallationScriptLink,
 
-            string? postInstallationScriptReturn,
-
-            string? sshKeyName)
+            string? postInstallationScriptReturn)
         {
             CustomHostname = customHostname;
             PostInstallationScriptLink = postInstallationScriptLink;
             PostInstallationScriptReturn = postInstallationScriptReturn;
-            SshKeyName = sshKeyName;
         }
     }
 }

@@ -16,7 +16,6 @@ namespace Pulumi.Ovh
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Ovh
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVrackNetworksResult> InvokeAsync(GetVrackNetworksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVrackNetworksResult>("ovh:index/getVrackNetworks:getVrackNetworks", args ?? new GetVrackNetworksArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Ovh
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Ovh
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVrackNetworksResult> Invoke(GetVrackNetworksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVrackNetworksResult>("ovh:index/getVrackNetworks:getVrackNetworks", args ?? new GetVrackNetworksInvokeArgs(), options.WithDefaults());

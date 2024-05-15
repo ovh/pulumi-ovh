@@ -16,7 +16,6 @@ import (
 //
 // Minimum settings for each engine (region choice is up to the user):
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -207,11 +206,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // To deploy a business PostgreSQL service with two nodes on public network:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -248,11 +245,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // To deploy an enterprise MongoDB service with three nodes on private network:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -298,7 +293,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -320,7 +314,7 @@ type Database struct {
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Description of the IP restriction
+	// Small description of the database service.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The disk size (in GB) of the database service.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
@@ -421,7 +415,7 @@ type databaseState struct {
 	BackupTime *string `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Description of the IP restriction
+	// Small description of the database service.
 	Description *string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
 	DiskSize *int `pulumi:"diskSize"`
@@ -475,7 +469,7 @@ type DatabaseState struct {
 	BackupTime pulumi.StringPtrInput
 	// Date of the creation of the cluster.
 	CreatedAt pulumi.StringPtrInput
-	// Description of the IP restriction
+	// Small description of the database service.
 	Description pulumi.StringPtrInput
 	// The disk size (in GB) of the database service.
 	DiskSize pulumi.IntPtrInput
@@ -531,7 +525,7 @@ type databaseArgs struct {
 	BackupRegions []string `pulumi:"backupRegions"`
 	// Time on which backups start every day.
 	BackupTime *string `pulumi:"backupTime"`
-	// Description of the IP restriction
+	// Small description of the database service.
 	Description *string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
 	DiskSize *int `pulumi:"diskSize"`
@@ -574,7 +568,7 @@ type DatabaseArgs struct {
 	BackupRegions pulumi.StringArrayInput
 	// Time on which backups start every day.
 	BackupTime pulumi.StringPtrInput
-	// Description of the IP restriction
+	// Small description of the database service.
 	Description pulumi.StringPtrInput
 	// The disk size (in GB) of the database service.
 	DiskSize pulumi.IntPtrInput
@@ -716,7 +710,7 @@ func (o DatabaseOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Description of the IP restriction
+// Small description of the database service.
 func (o DatabaseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

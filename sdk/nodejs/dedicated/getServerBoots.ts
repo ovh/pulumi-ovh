@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     serviceName: "myserver",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerBoots(args: GetServerBootsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerBootsResult> {
 
@@ -70,7 +68,6 @@ export interface GetServerBootsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -80,7 +77,6 @@ export interface GetServerBootsResult {
  *     serviceName: "myserver",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerBootsOutput(args: GetServerBootsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerBootsResult> {
     return pulumi.output(args).apply((a: any) => getServerBoots(a, opts))

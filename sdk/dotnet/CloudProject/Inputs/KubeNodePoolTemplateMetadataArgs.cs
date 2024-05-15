@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations to apply to each node
+        /// annotations
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         private InputList<string>? _finalizers;
 
         /// <summary>
-        /// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+        /// finalizers
         /// </summary>
         public InputList<string> Finalizers
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels to apply to each node
+        /// labels
         /// </summary>
         public InputMap<string> Labels
         {

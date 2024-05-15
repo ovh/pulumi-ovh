@@ -143,6 +143,8 @@ func (ProjectState) ElementType() reflect.Type {
 type projectArgs struct {
 	// A description associated with the user.
 	Description *string `pulumi:"description"`
+	// Details about the order that was used to create the public cloud project
+	Orders []ProjectOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
@@ -159,6 +161,8 @@ type projectArgs struct {
 type ProjectArgs struct {
 	// A description associated with the user.
 	Description pulumi.StringPtrInput
+	// Details about the order that was used to create the public cloud project
+	Orders ProjectOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode

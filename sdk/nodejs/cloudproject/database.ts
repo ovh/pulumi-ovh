@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * Minimum settings for each engine (region choice is up to the user):
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -149,11 +148,9 @@ import * as utilities from "../utilities";
  *     flavor: "db1-4",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * To deploy a business PostgreSQL service with two nodes on public network:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -175,11 +172,9 @@ import * as utilities from "../utilities";
  *     version: "14",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * To deploy an enterprise MongoDB service with three nodes on private network:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -210,7 +205,6 @@ import * as utilities from "../utilities";
  *     version: "5.0",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -267,7 +261,7 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Description of the IP restriction
+     * Small description of the database service.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -446,7 +440,7 @@ export interface DatabaseState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Description of the IP restriction
+     * Small description of the database service.
      */
     description?: pulumi.Input<string>;
     /**
@@ -541,7 +535,7 @@ export interface DatabaseArgs {
      */
     backupTime?: pulumi.Input<string>;
     /**
-     * Description of the IP restriction
+     * Small description of the database service.
      */
     description?: pulumi.Input<string>;
     /**

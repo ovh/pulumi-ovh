@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     clientId: "5f8969a993ec8b4b",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAPIOAuth2Client(args: GetAPIOAuth2ClientArgs, opts?: pulumi.InvokeOptions): Promise<GetAPIOAuth2ClientResult> {
 
@@ -73,7 +71,6 @@ export interface GetAPIOAuth2ClientResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -82,7 +79,6 @@ export interface GetAPIOAuth2ClientResult {
  *     clientId: "5f8969a993ec8b4b",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAPIOAuth2ClientOutput(args: GetAPIOAuth2ClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAPIOAuth2ClientResult> {
     return pulumi.output(args).apply((a: any) => getAPIOAuth2Client(a, opts))

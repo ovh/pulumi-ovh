@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     netmask: "255.255.255.255",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class CephAcl extends pulumi.CustomResource {
     /**

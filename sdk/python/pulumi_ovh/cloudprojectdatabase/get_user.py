@@ -126,7 +126,6 @@ def get_user(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -137,7 +136,6 @@ def get_user(cluster_id: Optional[str] = None,
         name="UUU")
     pulumi.export("userName", user.name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID
@@ -177,7 +175,6 @@ def get_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -188,7 +185,6 @@ def get_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
         name="UUU")
     pulumi.export("userName", user.name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID

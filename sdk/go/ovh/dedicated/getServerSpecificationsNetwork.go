@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetServerSpecificationsNetwork(ctx *pulumi.Context, args *GetServerSpecificationsNetworkArgs, opts ...pulumi.InvokeOption) (*GetServerSpecificationsNetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerSpecificationsNetworkResult

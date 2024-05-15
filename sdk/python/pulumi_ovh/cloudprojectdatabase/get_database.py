@@ -305,7 +305,6 @@ def get_database(engine: Optional[str] = None,
 
     To get information of a database cluster service:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -315,7 +314,6 @@ def get_database(engine: Optional[str] = None,
         id="ZZZZ")
     pulumi.export("clusterId", db.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str engine: The database engine you want to get information. To get a full list of available engine visit:
@@ -368,7 +366,6 @@ def get_database_output(engine: Optional[pulumi.Input[str]] = None,
 
     To get information of a database cluster service:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -378,7 +375,6 @@ def get_database_output(engine: Optional[pulumi.Input[str]] = None,
         id="ZZZZ")
     pulumi.export("clusterId", db.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str engine: The database engine you want to get information. To get a full list of available engine visit:

@@ -62,14 +62,12 @@ def get_installation_templates(opts: Optional[pulumi.InvokeOptions] = None) -> A
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     templates = ovh.get_installation_templates()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -87,13 +85,11 @@ def get_installation_templates_output(opts: Optional[pulumi.InvokeOptions] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     templates = ovh.get_installation_templates()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

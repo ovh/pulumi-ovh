@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Order
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.Ovh.Order
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCartProductPlanResult> InvokeAsync(GetCartProductPlanArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCartProductPlanResult>("ovh:Order/getCartProductPlan:getCartProductPlan", args ?? new GetCartProductPlanArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace Pulumi.Ovh.Order
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.Ovh.Order
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCartProductPlanResult> Invoke(GetCartProductPlanInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCartProductPlanResult>("ovh:Order/getCartProductPlan:getCartProductPlan", args ?? new GetCartProductPlanInvokeArgs(), options.WithDefaults());

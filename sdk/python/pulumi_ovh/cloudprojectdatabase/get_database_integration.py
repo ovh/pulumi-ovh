@@ -150,7 +150,6 @@ def get_database_integration(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -161,7 +160,6 @@ def get_database_integration(cluster_id: Optional[str] = None,
         id="UUU")
     pulumi.export("integrationType", integration.type)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID.
@@ -202,7 +200,6 @@ def get_database_integration_output(cluster_id: Optional[pulumi.Input[str]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -213,7 +210,6 @@ def get_database_integration_output(cluster_id: Optional[pulumi.Input[str]] = No
         id="UUU")
     pulumi.export("integrationType", integration.type)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID.

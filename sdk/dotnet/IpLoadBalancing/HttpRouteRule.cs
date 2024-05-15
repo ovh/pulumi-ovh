@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// Route which redirect all URL to HTTPs for example.com (Vhost).
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,11 +51,9 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Rule which match a specific header (same effect as the host match above).
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -79,7 +76,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

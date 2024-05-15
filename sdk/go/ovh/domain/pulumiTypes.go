@@ -264,7 +264,7 @@ func (o ZoneOrderDetailArrayOutput) Index(i pulumi.IntInput) ZoneOrderDetailOutp
 type ZonePlan struct {
 	// Catalog name
 	CatalogName *string `pulumi:"catalogName"`
-	// Representation of a configuration item for personalizing product
+	// Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
 	Configurations []ZonePlanConfiguration `pulumi:"configurations"`
 	// duration
 	Duration string `pulumi:"duration"`
@@ -288,7 +288,7 @@ type ZonePlanInput interface {
 type ZonePlanArgs struct {
 	// Catalog name
 	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
-	// Representation of a configuration item for personalizing product
+	// Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
 	Configurations ZonePlanConfigurationArrayInput `pulumi:"configurations"`
 	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
@@ -380,7 +380,7 @@ func (o ZonePlanOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZonePlan) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
-// Representation of a configuration item for personalizing product
+// Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
 func (o ZonePlanOutput) Configurations() ZonePlanConfigurationArrayOutput {
 	return o.ApplyT(func(v ZonePlan) []ZonePlanConfiguration { return v.Configurations }).(ZonePlanConfigurationArrayOutput)
 }
@@ -434,7 +434,7 @@ func (o ZonePlanPtrOutput) CatalogName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Representation of a configuration item for personalizing product
+// Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
 func (o ZonePlanPtrOutput) Configurations() ZonePlanConfigurationArrayOutput {
 	return o.ApplyT(func(v *ZonePlan) []ZonePlanConfiguration {
 		if v == nil {

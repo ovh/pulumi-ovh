@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  *     login: "foobar",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class ContainerRegistryUser extends pulumi.CustomResource {
     /**

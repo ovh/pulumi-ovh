@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * Create a log subscription for a database.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -33,7 +32,6 @@ import * as utilities from "../utilities";
  *     streamId: stream.then(stream => stream.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

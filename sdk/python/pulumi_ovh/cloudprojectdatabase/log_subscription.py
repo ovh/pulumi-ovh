@@ -288,7 +288,6 @@ class LogSubscription(pulumi.CustomResource):
 
         Create a log subscription for a database.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -304,7 +303,6 @@ class LogSubscription(pulumi.CustomResource):
             cluster_id=db.id,
             stream_id=stream.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -338,7 +336,6 @@ class LogSubscription(pulumi.CustomResource):
 
         Create a log subscription for a database.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -354,7 +351,6 @@ class LogSubscription(pulumi.CustomResource):
             cluster_id=db.id,
             stream_id=stream.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  * });
  * export const databaseName = database.then(database => database.name);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstanceResult> {
 
@@ -94,7 +92,6 @@ export interface GetDatabaseInstanceResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -107,7 +104,6 @@ export interface GetDatabaseInstanceResult {
  * });
  * export const databaseName = database.then(database => database.name);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstanceResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseInstance(a, opts))

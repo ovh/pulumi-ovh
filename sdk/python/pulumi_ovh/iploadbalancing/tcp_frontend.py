@@ -373,7 +373,6 @@ class TcpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -392,7 +391,6 @@ class TcpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -424,7 +422,6 @@ class TcpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -443,7 +440,6 @@ class TcpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

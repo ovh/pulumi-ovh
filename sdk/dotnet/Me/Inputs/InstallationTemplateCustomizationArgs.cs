@@ -30,12 +30,6 @@ namespace Pulumi.Ovh.Me.Inputs
         [Input("postInstallationScriptReturn")]
         public Input<string>? PostInstallationScriptReturn { get; set; }
 
-        /// <summary>
-        /// Deprecated.
-        /// </summary>
-        [Input("sshKeyName")]
-        public Input<string>? SshKeyName { get; set; }
-
         public InstallationTemplateCustomizationArgs()
         {
         }

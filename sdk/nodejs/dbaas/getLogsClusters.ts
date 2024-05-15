@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLogsClusters(args: GetLogsClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsClustersResult> {
 
@@ -58,7 +56,6 @@ export interface GetLogsClustersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -67,7 +64,6 @@ export interface GetLogsClustersResult {
  *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLogsClustersOutput(args: GetLogsClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsClustersResult> {
     return pulumi.output(args).apply((a: any) => getLogsClusters(a, opts))

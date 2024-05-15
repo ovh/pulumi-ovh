@@ -22,11 +22,11 @@ namespace Pulumi.Ovh.Hosting.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.PrivateDatabasePlanOptionConfiguration> Configurations;
         /// <summary>
-        /// duration.
+        /// Service duration
         /// </summary>
         public readonly string Duration;
         /// <summary>
-        /// Plan code.
+        /// Plan code
         /// </summary>
         public readonly string PlanCode;
         /// <summary>

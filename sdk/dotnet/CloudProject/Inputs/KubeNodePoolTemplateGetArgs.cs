@@ -13,13 +13,13 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class KubeNodePoolTemplateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Metadata of each node in the pool
+        /// metadata
         /// </summary>
         [Input("metadata", required: true)]
         public Input<Inputs.KubeNodePoolTemplateMetadataGetArgs> Metadata { get; set; } = null!;
 
         /// <summary>
-        /// Spec of each node in the pool
+        /// spec
         /// </summary>
         [Input("spec", required: true)]
         public Input<Inputs.KubeNodePoolTemplateSpecGetArgs> Spec { get; set; } = null!;

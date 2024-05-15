@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -35,16 +34,15 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * vRack can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders).
+ * vRack can be imported using the `service_name`.
  *
  * bash
  *
  * ```sh
- * $ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
+ * $ pulumi import ovh:Vrack/vrack:Vrack vrack service_name
  * ```
  */
 export class Vrack extends pulumi.CustomResource {
@@ -90,7 +88,7 @@ export class Vrack extends pulumi.CustomResource {
     /**
      * Details about an Order
      */
-    public /*out*/ readonly orders!: pulumi.Output<outputs.Vrack.VrackOrder[]>;
+    public readonly orders!: pulumi.Output<outputs.Vrack.VrackOrder[]>;
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
@@ -146,12 +144,12 @@ export class Vrack extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
             resourceInputs["paymentMean"] = args ? args.paymentMean : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["planOptions"] = args ? args.planOptions : undefined;
             resourceInputs["VrackURN"] = undefined /*out*/;
-            resourceInputs["orders"] = undefined /*out*/;
             resourceInputs["serviceName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -215,6 +213,10 @@ export interface VrackArgs {
      * yourvrackname
      */
     name?: pulumi.Input<string>;
+    /**
+     * Details about an Order
+     */
+    orders?: pulumi.Input<pulumi.Input<inputs.Vrack.VrackOrder>[]>;
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */

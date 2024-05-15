@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Me
     /// 
     /// An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,11 +36,9 @@ namespace Pulumi.Ovh.Me
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Ovh.Me
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

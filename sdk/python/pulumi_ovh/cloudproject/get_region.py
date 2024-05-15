@@ -112,7 +112,6 @@ def get_region(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -120,7 +119,6 @@ def get_region(name: Optional[str] = None,
     g_ra1 = ovh.CloudProject.get_region(name="GRA1",
         service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the region associated with the public cloud
@@ -152,7 +150,6 @@ def get_region_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -160,7 +157,6 @@ def get_region_output(name: Optional[pulumi.Input[str]] = None,
     g_ra1 = ovh.CloudProject.get_region(name="GRA1",
         service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the region associated with the public cloud

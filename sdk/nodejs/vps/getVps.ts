@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVps(args: GetVpsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpsResult> {
 
@@ -114,7 +112,6 @@ export interface GetVpsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -123,7 +120,6 @@ export interface GetVpsResult {
  *     serviceName: "XXXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpsOutput(args: GetVpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpsResult> {
     return pulumi.output(args).apply((a: any) => getVps(a, opts))

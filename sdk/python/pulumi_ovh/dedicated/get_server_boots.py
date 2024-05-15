@@ -92,7 +92,6 @@ def get_server_boots(boot_type: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -100,7 +99,6 @@ def get_server_boots(boot_type: Optional[str] = None,
     netboots = ovh.Dedicated.get_server_boots(boot_type="harddisk",
         service_name="myserver")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str boot_type: Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
@@ -132,7 +130,6 @@ def get_server_boots_output(boot_type: Optional[pulumi.Input[Optional[str]]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -140,7 +137,6 @@ def get_server_boots_output(boot_type: Optional[pulumi.Input[Optional[str]]] = N
     netboots = ovh.Dedicated.get_server_boots(boot_type="harddisk",
         service_name="myserver")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str boot_type: Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)

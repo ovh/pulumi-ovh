@@ -62,14 +62,12 @@ def get_reference_resource_type(opts: Optional[pulumi.InvokeOptions] = None) -> 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     types = ovh.Iam.get_reference_resource_type()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -87,13 +85,11 @@ def get_reference_resource_type_output(opts: Optional[pulumi.InvokeOptions] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     types = ovh.Iam.get_reference_resource_type()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

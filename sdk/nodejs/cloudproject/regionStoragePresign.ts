@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const presignedUrl = presignedUrlRegionStoragePresign.url;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class RegionStoragePresign extends pulumi.CustomResource {
     /**

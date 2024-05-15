@@ -134,7 +134,6 @@ class KubeIpRestrictions(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -144,7 +143,6 @@ class KubeIpRestrictions(pulumi.CustomResource):
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -173,7 +171,6 @@ class KubeIpRestrictions(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -183,7 +180,6 @@ class KubeIpRestrictions(pulumi.CustomResource):
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

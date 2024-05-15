@@ -134,7 +134,6 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -144,7 +143,6 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
             service_name="zpool-12345",
             type="day-3")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -171,7 +169,6 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -181,7 +178,6 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
             service_name="zpool-12345",
             type="day-3")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

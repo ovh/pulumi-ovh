@@ -126,7 +126,6 @@ def get_open_search_user(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -136,7 +135,6 @@ def get_open_search_user(cluster_id: Optional[str] = None,
         name="ZZZ")
     pulumi.export("osuserAcls", osuser.acls)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID
@@ -171,7 +169,6 @@ def get_open_search_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -181,7 +178,6 @@ def get_open_search_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
         name="ZZZ")
     pulumi.export("osuserAcls", osuser.acls)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID

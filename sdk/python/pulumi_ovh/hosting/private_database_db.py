@@ -102,7 +102,6 @@ class PrivateDatabaseDb(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -111,7 +110,6 @@ class PrivateDatabaseDb(pulumi.CustomResource):
             database_name="XXXXXX",
             service_name="XXXXXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -137,7 +135,6 @@ class PrivateDatabaseDb(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -146,7 +143,6 @@ class PrivateDatabaseDb(pulumi.CustomResource):
             database_name="XXXXXX",
             service_name="XXXXXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

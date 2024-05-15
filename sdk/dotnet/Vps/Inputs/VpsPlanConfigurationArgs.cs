@@ -13,13 +13,13 @@ namespace Pulumi.Ovh.Vps.Inputs
     public sealed class VpsPlanConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier of the resource
+        /// Label for your configuration item
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// Path to the resource in api.ovh.com
+        /// Value or resource URL on API.OVH.COM of your configuration item
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

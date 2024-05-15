@@ -157,14 +157,12 @@ def get_server_specifications_network(service_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     spec = ovh.Dedicated.get_server_specifications_network(service_name="myserver")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The internal name of your dedicated server.
@@ -195,14 +193,12 @@ def get_server_specifications_network_output(service_name: Optional[pulumi.Input
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     spec = ovh.Dedicated.get_server_specifications_network(service_name="myserver")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The internal name of your dedicated server.

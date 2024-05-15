@@ -9,14 +9,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myGroups = ovh.Iam.getResourceGroups({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getResourceGroups(opts?: pulumi.InvokeOptions): Promise<GetResourceGroupsResult> {
 
@@ -43,14 +41,12 @@ export interface GetResourceGroupsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myGroups = ovh.Iam.getResourceGroups({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getResourceGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupsResult> {
     return pulumi.output(getResourceGroups(opts))

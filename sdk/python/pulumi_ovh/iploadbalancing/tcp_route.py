@@ -235,7 +235,6 @@ class TcpRoute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -247,7 +246,6 @@ class TcpRoute(pulumi.CustomResource):
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             weight=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -272,7 +270,6 @@ class TcpRoute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -284,7 +281,6 @@ class TcpRoute(pulumi.CustomResource):
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             weight=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -269,7 +269,6 @@ def get_kube(customization_apiservers: Optional[Sequence[pulumi.InputType['GetKu
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -278,7 +277,6 @@ def get_kube(customization_apiservers: Optional[Sequence[pulumi.InputType['GetKu
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     pulumi.export("version", my_kube_cluster.version)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetKubeCustomizationApiserverArgs']] customization_apiservers: Kubernetes API server customization
@@ -344,7 +342,6 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -353,7 +350,6 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     pulumi.export("version", my_kube_cluster.version)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetKubeCustomizationApiserverArgs']] customization_apiservers: Kubernetes API server customization

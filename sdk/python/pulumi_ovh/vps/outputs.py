@@ -456,8 +456,8 @@ class VpsPlanConfiguration(dict):
                  label: str,
                  value: str):
         """
-        :param str label: Identifier of the resource
-        :param str value: Path to the resource in api.ovh.com
+        :param str label: Label for your configuration item
+        :param str value: Value or resource URL on API.OVH.COM of your configuration item
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -466,7 +466,7 @@ class VpsPlanConfiguration(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        Identifier of the resource
+        Label for your configuration item
         """
         return pulumi.get(self, "label")
 
@@ -474,7 +474,7 @@ class VpsPlanConfiguration(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Path to the resource in api.ovh.com
+        Value or resource URL on API.OVH.COM of your configuration item
         """
         return pulumi.get(self, "value")
 
@@ -580,8 +580,8 @@ class VpsPlanOptionConfiguration(dict):
                  label: str,
                  value: str):
         """
-        :param str label: Identifier of the resource
-        :param str value: Path to the resource in api.ovh.com
+        :param str label: Label for your configuration item
+        :param str value: Value or resource URL on API.OVH.COM of your configuration item
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -590,7 +590,7 @@ class VpsPlanOptionConfiguration(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        Identifier of the resource
+        Label for your configuration item
         """
         return pulumi.get(self, "label")
 
@@ -598,7 +598,7 @@ class VpsPlanOptionConfiguration(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Path to the resource in api.ovh.com
+        Value or resource URL on API.OVH.COM of your configuration item
         """
         return pulumi.get(self, "value")
 

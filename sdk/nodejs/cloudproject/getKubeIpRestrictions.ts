@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  * });
  * export const ips = iprestrictions.then(iprestrictions => iprestrictions.ips);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKubeIpRestrictions(args: GetKubeIpRestrictionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeIpRestrictionsResult> {
 
@@ -72,7 +70,6 @@ export interface GetKubeIpRestrictionsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -83,7 +80,6 @@ export interface GetKubeIpRestrictionsResult {
  * });
  * export const ips = iprestrictions.then(iprestrictions => iprestrictions.ips);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKubeIpRestrictionsOutput(args: GetKubeIpRestrictionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeIpRestrictionsResult> {
     return pulumi.output(args).apply((a: any) => getKubeIpRestrictions(a, opts))

@@ -101,7 +101,6 @@ def get_database_instances(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -111,7 +110,6 @@ def get_database_instances(cluster_id: Optional[str] = None,
         cluster_id="ZZZ")
     pulumi.export("databaseIds", databases.database_ids)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID
@@ -146,7 +144,6 @@ def get_database_instances_output(cluster_id: Optional[pulumi.Input[str]] = None
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -156,7 +153,6 @@ def get_database_instances_output(cluster_id: Optional[pulumi.Input[str]] = None
         cluster_id="ZZZ")
     pulumi.export("databaseIds", databases.database_ids)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID

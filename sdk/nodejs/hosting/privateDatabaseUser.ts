@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     userName: "XXXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

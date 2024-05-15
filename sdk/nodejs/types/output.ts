@@ -5,6 +5,87 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetInstallationTemplateInput {
+    default: string;
+    /**
+     * Information about this template.
+     */
+    description: string;
+    enums: string[];
+    mandatory: boolean;
+    name: string;
+    type: string;
+}
+
+export interface GetInstallationTemplateLicense {
+    os: outputs.GetInstallationTemplateLicenseO[];
+    usages: outputs.GetInstallationTemplateLicenseUsage[];
+}
+
+export interface GetInstallationTemplateLicenseO {
+    names: string[];
+    url: string;
+}
+
+export interface GetInstallationTemplateLicenseUsage {
+    names: string[];
+    url: string;
+}
+
+export interface GetInstallationTemplateProject {
+    /**
+     * OS template project OS details
+     */
+    os: outputs.GetInstallationTemplateProjectO[];
+    usages: outputs.GetInstallationTemplateProjectUsage[];
+}
+
+export interface GetInstallationTemplateProjectO {
+    /**
+     * OS template project item governance
+     */
+    governances: string[];
+    /**
+     * OS template project item name
+     */
+    name: string;
+    /**
+     * OS template project item release notes
+     */
+    releaseNotes: string;
+    /**
+     * OS template project item url
+     */
+    url: string;
+    /**
+     * OS template project item version
+     */
+    version: string;
+}
+
+export interface GetInstallationTemplateProjectUsage {
+    /**
+     * OS template project item governance
+     */
+    governances: string[];
+    /**
+     * OS template project item name
+     */
+    name: string;
+    /**
+     * OS template project item release notes
+     */
+    releaseNotes: string;
+    /**
+     * OS template project item url
+     */
+    url: string;
+    /**
+     * OS template project item version
+     */
+    version: string;
+}
+
 export interface GetServerVni {
     /**
      * VirtualNetworkInterface activation state
@@ -261,6 +342,47 @@ export namespace CloudProject {
          * Private subnet ID in which the node is.
          */
         subnetId?: string;
+    }
+
+    export interface GatewayExternalInformation {
+        /**
+         * List of external ips of the gateway.
+         */
+        ips: outputs.CloudProject.GatewayExternalInformationIp[];
+        /**
+         * ID of the private network.
+         */
+        networkId: string;
+    }
+
+    export interface GatewayExternalInformationIp {
+        /**
+         * IP of the interface.
+         */
+        ip: string;
+        /**
+         * ID of the subnet.
+         */
+        subnetId: string;
+    }
+
+    export interface GatewayInterface {
+        /**
+         * ID of the interface.
+         */
+        id: string;
+        /**
+         * IP of the interface.
+         */
+        ip: string;
+        /**
+         * ID of the private network.
+         */
+        networkId: string;
+        /**
+         * ID of the subnet.
+         */
+        subnetId: string;
     }
 
     export interface GetCapabilitiesContainerFilterFeature {
@@ -720,13 +842,7 @@ export namespace CloudProject {
     }
 
     export interface KubeCustomizationApiserverAdmissionplugin {
-        /**
-         * Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
-         */
         disableds: string[];
-        /**
-         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-         */
         enableds: string[];
     }
 
@@ -742,40 +858,16 @@ export namespace CloudProject {
     }
 
     export interface KubeCustomizationKubeProxyIptables {
-        /**
-         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
-         */
         minSyncPeriod?: string;
-        /**
-         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-         */
         syncPeriod?: string;
     }
 
     export interface KubeCustomizationKubeProxyIpvs {
-        /**
-         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
-         */
         minSyncPeriod?: string;
-        /**
-         * IPVS scheduler.
-         */
         scheduler?: string;
-        /**
-         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-         */
         syncPeriod?: string;
-        /**
-         * Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-         */
         tcpFinTimeout?: string;
-        /**
-         * Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-         */
         tcpTimeout?: string;
-        /**
-         * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-         */
         udpTimeout?: string;
     }
 
@@ -800,37 +892,37 @@ export namespace CloudProject {
 
     export interface KubeNodePoolTemplate {
         /**
-         * Metadata of each node in the pool
+         * metadata
          */
         metadata: outputs.CloudProject.KubeNodePoolTemplateMetadata;
         /**
-         * Spec of each node in the pool
+         * spec
          */
         spec: outputs.CloudProject.KubeNodePoolTemplateSpec;
     }
 
     export interface KubeNodePoolTemplateMetadata {
         /**
-         * Annotations to apply to each node
+         * annotations
          */
         annotations: {[key: string]: string};
         /**
-         * Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+         * finalizers
          */
         finalizers: string[];
         /**
-         * Labels to apply to each node
+         * labels
          */
         labels: {[key: string]: string};
     }
 
     export interface KubeNodePoolTemplateSpec {
         /**
-         * Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
+         * taints
          */
         taints: {[key: string]: any}[];
         /**
-         * If true, set nodes as un-schedulable
+         * unschedulable
          */
         unschedulable: boolean;
     }
@@ -844,11 +936,9 @@ export namespace CloudProject {
          * Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
          *
          * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         privateNetworkRoutingAsDefault: boolean;
     }
@@ -951,7 +1041,7 @@ export namespace CloudProject {
          */
         duration: string;
         /**
-         * Plan code
+         * Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
          */
         planCode: string;
         /**
@@ -1188,11 +1278,11 @@ export namespace Dbaas {
 
     export interface LogsInputConfigurationFlowgger {
         /**
-         * Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
+         * Type of format to decode
          */
         logFormat: string;
         /**
-         * Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
+         * Indicates how messages are delimited
          */
         logFraming: string;
     }
@@ -1498,12 +1588,6 @@ export namespace Dedicated {
          */
         diskGroupId?: number;
         /**
-         * Deprecated, will be removed in next release.
-         *
-         * @deprecated This field is deprecated and will be removed in a future release
-         */
-        language?: string;
-        /**
          * Set to true to disable RAID.
          */
         noRaid?: boolean;
@@ -1519,20 +1603,6 @@ export namespace Dedicated {
          * soft raid devices.
          */
         softRaidDevices?: number;
-        /**
-         * Deprecated, will be removed in next release.
-         *
-         * The `userMetadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
-         *
-         * -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
-         *
-         * -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
-         *
-         * -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
-         *
-         * @deprecated This field is deprecated and will be removed in a future release
-         */
-        useSpla?: boolean;
     }
 
     export interface ServerInstallTaskUserMetadata {
@@ -1604,7 +1674,7 @@ export namespace Domain {
          */
         catalogName?: string;
         /**
-         * Representation of a configuration item for personalizing product
+         * Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
          */
         configurations?: outputs.Domain.ZonePlanConfiguration[];
         /**
@@ -1759,8 +1829,6 @@ export namespace Hosting {
         label: string;
         /**
          * Path to the resource in API.OVH.COM
-         *
-         * Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
          */
         value: string;
     }
@@ -1775,11 +1843,11 @@ export namespace Hosting {
          */
         configurations?: outputs.Hosting.PrivateDatabasePlanOptionConfiguration[];
         /**
-         * duration.
+         * Service duration
          */
         duration: string;
         /**
-         * Plan code.
+         * Plan code
          */
         planCode: string;
         /**
@@ -1795,8 +1863,6 @@ export namespace Hosting {
         label: string;
         /**
          * Path to the resource in API.OVH.COM
-         *
-         * Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
          */
         value: string;
     }
@@ -2092,7 +2158,7 @@ export namespace IpLoadBalancing {
          */
         name: string;
         /**
-         * Plan code
+         * The billing planCode for this zone
          */
         planCode: string;
     }
@@ -2255,15 +2321,27 @@ export namespace Me {
          */
         postInstallationScriptLink: string;
         /**
-         * indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
+         * Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
          */
         postInstallationScriptReturn: string;
+    }
+
+    export interface GetInstallationTemplateInput {
+        default: string;
         /**
-         * Name of the ssh key that should be installed. Password login will be disabled. Deprecated, will be removed in next release, use userMetada instead.
-         *
-         * @deprecated This field will be removed from the API, please use `userMetadata` instead.
+         * Information about this template.
          */
-        sshKeyName: string;
+        description: string;
+        enums: string[];
+        mandatory: boolean;
+        /**
+         * Hardware RAID name.
+         */
+        name: string;
+        /**
+         * Partition type.
+         */
+        type: string;
     }
 
     export interface GetInstallationTemplatePartitionScheme {
@@ -2274,7 +2352,7 @@ export namespace Me {
         name: string;
         partitions: outputs.Me.GetInstallationTemplatePartitionSchemePartition[];
         /**
-         * on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
+         * On a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
          */
         priority: number;
     }
@@ -2304,27 +2382,27 @@ export namespace Me {
          */
         filesystem: string;
         /**
-         * partition mount point.
+         * Partition mount point.
          */
         mountpoint: string;
         /**
-         * step or order. specifies the creation order of the partition on the disk
+         * Step or order. Specifies the creation order of the partition on the disk.
          */
         order: number;
         /**
-         * raid partition type.
+         * Raid partition type.
          */
         raid: string;
         /**
-         * size of partition in MB, 0 => rest of the space.
+         * Size of partition in MB, 0 => rest of the space.
          */
         size: number;
         /**
-         * partition type.
+         * Partition type.
          */
         type: string;
         /**
-         * The volume name needed for proxmox distribution
+         * Volume name needed for proxmox distribution.
          */
         volumeName: string;
     }
@@ -2353,12 +2431,18 @@ export namespace Me {
          * indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
          */
         postInstallationScriptReturn?: string;
+    }
+
+    export interface InstallationTemplateInput {
+        default: string;
         /**
-         * Deprecated.
-         *
-         * @deprecated This field is deprecated and will be removed in a future release.
+         * information about this template.
          */
-        sshKeyName?: string;
+        description: string;
+        enums: string[];
+        mandatory: boolean;
+        name: string;
+        type: string;
     }
 
 }
@@ -2918,11 +3002,11 @@ export namespace Vps {
 
     export interface VpsPlanConfiguration {
         /**
-         * Identifier of the resource
+         * Label for your configuration item
          */
         label: string;
         /**
-         * Path to the resource in api.ovh.com
+         * Value or resource URL on API.OVH.COM of your configuration item
          */
         value: string;
     }
@@ -2956,11 +3040,11 @@ export namespace Vps {
 
     export interface VpsPlanOptionConfiguration {
         /**
-         * Identifier of the resource
+         * Label for your configuration item
          */
         label: string;
         /**
-         * Path to the resource in api.ovh.com
+         * Value or resource URL on API.OVH.COM of your configuration item
          */
         value: string;
     }

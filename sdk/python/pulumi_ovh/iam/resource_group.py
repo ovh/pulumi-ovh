@@ -184,7 +184,6 @@ class ResourceGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -194,7 +193,6 @@ class ResourceGroup(pulumi.CustomResource):
             "urn:v1:eu:resource:service2:service2-id",
         ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -218,7 +216,6 @@ class ResourceGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -228,7 +225,6 @@ class ResourceGroup(pulumi.CustomResource):
             "urn:v1:eu:resource:service2:service2-id",
         ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

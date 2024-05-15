@@ -392,7 +392,6 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -407,7 +406,6 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
             service_name="xxxxx",
             start="192.168.168.100")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -450,7 +448,6 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -465,7 +462,6 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
             service_name="xxxxx",
             start="192.168.168.100")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

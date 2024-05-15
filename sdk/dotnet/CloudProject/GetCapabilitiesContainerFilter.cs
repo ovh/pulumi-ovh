@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCapabilitiesContainerFilterResult> InvokeAsync(GetCapabilitiesContainerFilterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCapabilitiesContainerFilterResult>("ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter", args ?? new GetCapabilitiesContainerFilterArgs(), options.WithDefaults());
@@ -44,7 +42,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCapabilitiesContainerFilterResult> Invoke(GetCapabilitiesContainerFilterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesContainerFilterResult>("ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter", args ?? new GetCapabilitiesContainerFilterInvokeArgs(), options.WithDefaults());

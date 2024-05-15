@@ -298,7 +298,6 @@ class Integration(pulumi.CustomResource):
 
         Push PostgreSQL logs in an OpenSearch DB:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -317,7 +316,6 @@ class Integration(pulumi.CustomResource):
             destination_service_id=dbopensearch.id,
             type="opensearchLogs")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -359,7 +357,6 @@ class Integration(pulumi.CustomResource):
 
         Push PostgreSQL logs in an OpenSearch DB:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -378,7 +375,6 @@ class Integration(pulumi.CustomResource):
             destination_service_id=dbopensearch.id,
             type="opensearchLogs")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

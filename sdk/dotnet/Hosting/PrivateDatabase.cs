@@ -12,7 +12,6 @@ namespace Pulumi.Ovh.Hosting
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,7 +66,6 @@ namespace Pulumi.Ovh.Hosting
     ///     };
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -282,6 +280,18 @@ namespace Pulumi.Ovh.Hosting
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("orders")]
+        private InputList<Inputs.PrivateDatabaseOrderArgs>? _orders;
+
+        /// <summary>
+        /// Details about your Order
+        /// </summary>
+        public InputList<Inputs.PrivateDatabaseOrderArgs> Orders
+        {
+            get => _orders ?? (_orders = new InputList<Inputs.PrivateDatabaseOrderArgs>());
+            set => _orders = value;
+        }
 
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)

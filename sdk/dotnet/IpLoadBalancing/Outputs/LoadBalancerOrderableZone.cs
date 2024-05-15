@@ -18,7 +18,7 @@ namespace Pulumi.Ovh.IpLoadBalancing.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Plan code
+        /// The billing planCode for this zone
         /// </summary>
         public readonly string? PlanCode;
 

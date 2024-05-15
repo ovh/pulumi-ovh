@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  *     planCode: "project",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCartProductPlan(args: GetCartProductPlanArgs, opts?: pulumi.InvokeOptions): Promise<GetCartProductPlanResult> {
 
@@ -105,7 +103,6 @@ export interface GetCartProductPlanResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -121,7 +118,6 @@ export interface GetCartProductPlanResult {
  *     planCode: "project",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCartProductPlanOutput(args: GetCartProductPlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCartProductPlanResult> {
     return pulumi.output(args).apply((a: any) => getCartProductPlan(a, opts))

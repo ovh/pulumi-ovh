@@ -12,7 +12,6 @@ namespace Pulumi.Ovh.Vrack
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,16 +49,15 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// vRack can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders).
+    /// vRack can be imported using the `service_name`.
     /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
+    /// $ pulumi import ovh:Vrack/vrack:Vrack vrack service_name
     /// ```
     /// </summary>
     [OvhResourceType("ovh:Vrack/vrack:Vrack")]
@@ -177,6 +175,18 @@ namespace Pulumi.Ovh.Vrack
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("orders")]
+        private InputList<Inputs.VrackOrderArgs>? _orders;
+
+        /// <summary>
+        /// Details about an Order
+        /// </summary>
+        public InputList<Inputs.VrackOrderArgs> Orders
+        {
+            get => _orders ?? (_orders = new InputList<Inputs.VrackOrderArgs>());
+            set => _orders = value;
+        }
 
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)

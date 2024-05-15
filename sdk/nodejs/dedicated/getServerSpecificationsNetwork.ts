@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     serviceName: "myserver",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerSpecificationsNetwork(args: GetServerSpecificationsNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetServerSpecificationsNetworkResult> {
 
@@ -87,7 +85,6 @@ export interface GetServerSpecificationsNetworkResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -96,7 +93,6 @@ export interface GetServerSpecificationsNetworkResult {
  *     serviceName: "myserver",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerSpecificationsNetworkOutput(args: GetServerSpecificationsNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerSpecificationsNetworkResult> {
     return pulumi.output(args).apply((a: any) => getServerSpecificationsNetwork(a, opts))

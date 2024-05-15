@@ -60,14 +60,12 @@ def get_projects(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPro
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     projects = ovh.Cloud.get_projects()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -85,13 +83,11 @@ def get_projects_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     projects = ovh.Cloud.get_projects()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

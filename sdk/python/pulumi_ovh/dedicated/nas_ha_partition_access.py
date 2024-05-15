@@ -167,7 +167,6 @@ class NasHAPartitionAccess(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -178,7 +177,6 @@ class NasHAPartitionAccess(pulumi.CustomResource):
             service_name="zpool-12345",
             type="readwrite")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -206,7 +204,6 @@ class NasHAPartitionAccess(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -217,7 +214,6 @@ class NasHAPartitionAccess(pulumi.CustomResource):
             service_name="zpool-12345",
             type="readwrite")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

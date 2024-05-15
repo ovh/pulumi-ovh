@@ -938,9 +938,9 @@ func (o VpsPlanArrayOutput) Index(i pulumi.IntInput) VpsPlanOutput {
 }
 
 type VpsPlanConfiguration struct {
-	// Identifier of the resource
+	// Label for your configuration item
 	Label string `pulumi:"label"`
-	// Path to the resource in api.ovh.com
+	// Value or resource URL on API.OVH.COM of your configuration item
 	Value string `pulumi:"value"`
 }
 
@@ -956,9 +956,9 @@ type VpsPlanConfigurationInput interface {
 }
 
 type VpsPlanConfigurationArgs struct {
-	// Identifier of the resource
+	// Label for your configuration item
 	Label pulumi.StringInput `pulumi:"label"`
-	// Path to the resource in api.ovh.com
+	// Value or resource URL on API.OVH.COM of your configuration item
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1013,12 +1013,12 @@ func (o VpsPlanConfigurationOutput) ToVpsPlanConfigurationOutputWithContext(ctx 
 	return o
 }
 
-// Identifier of the resource
+// Label for your configuration item
 func (o VpsPlanConfigurationOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanConfiguration) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// Path to the resource in api.ovh.com
+// Value or resource URL on API.OVH.COM of your configuration item
 func (o VpsPlanConfigurationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1186,9 +1186,9 @@ func (o VpsPlanOptionArrayOutput) Index(i pulumi.IntInput) VpsPlanOptionOutput {
 }
 
 type VpsPlanOptionConfiguration struct {
-	// Identifier of the resource
+	// Label for your configuration item
 	Label string `pulumi:"label"`
-	// Path to the resource in api.ovh.com
+	// Value or resource URL on API.OVH.COM of your configuration item
 	Value string `pulumi:"value"`
 }
 
@@ -1204,9 +1204,9 @@ type VpsPlanOptionConfigurationInput interface {
 }
 
 type VpsPlanOptionConfigurationArgs struct {
-	// Identifier of the resource
+	// Label for your configuration item
 	Label pulumi.StringInput `pulumi:"label"`
-	// Path to the resource in api.ovh.com
+	// Value or resource URL on API.OVH.COM of your configuration item
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1261,12 +1261,12 @@ func (o VpsPlanOptionConfigurationOutput) ToVpsPlanOptionConfigurationOutputWith
 	return o
 }
 
-// Identifier of the resource
+// Label for your configuration item
 func (o VpsPlanOptionConfigurationOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanOptionConfiguration) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// Path to the resource in api.ovh.com
+// Value or resource URL on API.OVH.COM of your configuration item
 func (o VpsPlanOptionConfigurationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanOptionConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }

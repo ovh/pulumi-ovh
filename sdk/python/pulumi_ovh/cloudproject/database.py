@@ -51,7 +51,7 @@ class DatabaseArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[str] backup_time: Time on which backups start every day.
-        :param pulumi.Input[str] description: Description of the IP restriction
+        :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
@@ -204,7 +204,7 @@ class DatabaseArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the IP restriction
+        Small description of the database service.
         """
         return pulumi.get(self, "description")
 
@@ -303,7 +303,7 @@ class _DatabaseState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[str] backup_time: Time on which backups start every day.
         :param pulumi.Input[str] created_at: Date of the creation of the cluster.
-        :param pulumi.Input[str] description: Description of the IP restriction
+        :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[str] disk_type: Defines the disk type of the database service.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseEndpointArgs']]] endpoints: List of all endpoints objects of the service.
@@ -425,7 +425,7 @@ class _DatabaseState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the IP restriction
+        Small description of the database service.
         """
         return pulumi.get(self, "description")
 
@@ -661,7 +661,6 @@ class Database(pulumi.CustomResource):
 
         Minimum settings for each engine (region choice is up to the user):
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -790,11 +789,9 @@ class Database(pulumi.CustomResource):
             )],
             flavor="db1-4")
         ```
-        <!--End PulumiCodeChooser -->
 
         To deploy a business PostgreSQL service with two nodes on public network:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -815,11 +812,9 @@ class Database(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version="14")
         ```
-        <!--End PulumiCodeChooser -->
 
         To deploy an enterprise MongoDB service with three nodes on private network:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -849,7 +844,6 @@ class Database(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version="5.0")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -866,7 +860,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[str] backup_time: Time on which backups start every day.
-        :param pulumi.Input[str] description: Description of the IP restriction
+        :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
                [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
@@ -899,7 +893,6 @@ class Database(pulumi.CustomResource):
 
         Minimum settings for each engine (region choice is up to the user):
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -1028,11 +1021,9 @@ class Database(pulumi.CustomResource):
             )],
             flavor="db1-4")
         ```
-        <!--End PulumiCodeChooser -->
 
         To deploy a business PostgreSQL service with two nodes on public network:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -1053,11 +1044,9 @@ class Database(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version="14")
         ```
-        <!--End PulumiCodeChooser -->
 
         To deploy an enterprise MongoDB service with three nodes on private network:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -1087,7 +1076,6 @@ class Database(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version="5.0")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1213,7 +1201,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[str] backup_time: Time on which backups start every day.
         :param pulumi.Input[str] created_at: Date of the creation of the cluster.
-        :param pulumi.Input[str] description: Description of the IP restriction
+        :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[str] disk_type: Defines the disk type of the database service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseEndpointArgs']]]] endpoints: List of all endpoints objects of the service.
@@ -1303,7 +1291,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the IP restriction
+        Small description of the database service.
         """
         return pulumi.get(self, "description")
 

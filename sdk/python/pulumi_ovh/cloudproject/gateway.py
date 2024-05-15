@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GatewayArgs', 'Gateway']
 
@@ -22,12 +24,12 @@ class GatewayArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
-        :param pulumi.Input[str] model: The model of the gateway.
-        :param pulumi.Input[str] network_id: The ID of the private network.
-        :param pulumi.Input[str] region: The region of the gateway.
-        :param pulumi.Input[str] service_name: The ID of the private network.
-        :param pulumi.Input[str] subnet_id: The ID of the subnet.
-        :param pulumi.Input[str] name: The name of the gateway.
+        :param pulumi.Input[str] model: Model of the gateway.
+        :param pulumi.Input[str] network_id: ID of the private network.
+        :param pulumi.Input[str] region: Region of the gateway.
+        :param pulumi.Input[str] service_name: ID of the private network.
+        :param pulumi.Input[str] subnet_id: ID of the subnet.
+        :param pulumi.Input[str] name: Name of the gateway.
         """
         pulumi.set(__self__, "model", model)
         pulumi.set(__self__, "network_id", network_id)
@@ -41,7 +43,7 @@ class GatewayArgs:
     @pulumi.getter
     def model(self) -> pulumi.Input[str]:
         """
-        The model of the gateway.
+        Model of the gateway.
         """
         return pulumi.get(self, "model")
 
@@ -53,7 +55,7 @@ class GatewayArgs:
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Input[str]:
         """
-        The ID of the private network.
+        ID of the private network.
         """
         return pulumi.get(self, "network_id")
 
@@ -65,7 +67,7 @@ class GatewayArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        The region of the gateway.
+        Region of the gateway.
         """
         return pulumi.get(self, "region")
 
@@ -77,7 +79,7 @@ class GatewayArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The ID of the private network.
+        ID of the private network.
         """
         return pulumi.get(self, "service_name")
 
@@ -89,7 +91,7 @@ class GatewayArgs:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[str]:
         """
-        The ID of the subnet.
+        ID of the subnet.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -101,7 +103,7 @@ class GatewayArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the gateway.
+        Name of the gateway.
         """
         return pulumi.get(self, "name")
 
@@ -113,6 +115,8 @@ class GatewayArgs:
 @pulumi.input_type
 class _GatewayState:
     def __init__(__self__, *,
+                 external_informations: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayExternalInformationArgs']]]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayInterfaceArgs']]]] = None,
                  model: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
@@ -122,14 +126,20 @@ class _GatewayState:
                  subnet_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
-        :param pulumi.Input[str] model: The model of the gateway.
-        :param pulumi.Input[str] name: The name of the gateway.
-        :param pulumi.Input[str] network_id: The ID of the private network.
-        :param pulumi.Input[str] region: The region of the gateway.
-        :param pulumi.Input[str] service_name: The ID of the private network.
-        :param pulumi.Input[str] status: The status of the gateway.
-        :param pulumi.Input[str] subnet_id: The ID of the subnet.
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayExternalInformationArgs']]] external_informations: List of External Information of the gateway.
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayInterfaceArgs']]] interfaces: Interfaces list of the gateway.
+        :param pulumi.Input[str] model: Model of the gateway.
+        :param pulumi.Input[str] name: Name of the gateway.
+        :param pulumi.Input[str] network_id: ID of the private network.
+        :param pulumi.Input[str] region: Region of the gateway.
+        :param pulumi.Input[str] service_name: ID of the private network.
+        :param pulumi.Input[str] status: Status of the gateway.
+        :param pulumi.Input[str] subnet_id: ID of the subnet.
         """
+        if external_informations is not None:
+            pulumi.set(__self__, "external_informations", external_informations)
+        if interfaces is not None:
+            pulumi.set(__self__, "interfaces", interfaces)
         if model is not None:
             pulumi.set(__self__, "model", model)
         if name is not None:
@@ -146,10 +156,34 @@ class _GatewayState:
             pulumi.set(__self__, "subnet_id", subnet_id)
 
     @property
+    @pulumi.getter(name="externalInformations")
+    def external_informations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GatewayExternalInformationArgs']]]]:
+        """
+        List of External Information of the gateway.
+        """
+        return pulumi.get(self, "external_informations")
+
+    @external_informations.setter
+    def external_informations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayExternalInformationArgs']]]]):
+        pulumi.set(self, "external_informations", value)
+
+    @property
+    @pulumi.getter
+    def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GatewayInterfaceArgs']]]]:
+        """
+        Interfaces list of the gateway.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @interfaces.setter
+    def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayInterfaceArgs']]]]):
+        pulumi.set(self, "interfaces", value)
+
+    @property
     @pulumi.getter
     def model(self) -> Optional[pulumi.Input[str]]:
         """
-        The model of the gateway.
+        Model of the gateway.
         """
         return pulumi.get(self, "model")
 
@@ -161,7 +195,7 @@ class _GatewayState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the gateway.
+        Name of the gateway.
         """
         return pulumi.get(self, "name")
 
@@ -173,7 +207,7 @@ class _GatewayState:
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the private network.
+        ID of the private network.
         """
         return pulumi.get(self, "network_id")
 
@@ -185,7 +219,7 @@ class _GatewayState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region of the gateway.
+        Region of the gateway.
         """
         return pulumi.get(self, "region")
 
@@ -197,7 +231,7 @@ class _GatewayState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the private network.
+        ID of the private network.
         """
         return pulumi.get(self, "service_name")
 
@@ -209,7 +243,7 @@ class _GatewayState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the gateway.
+        Status of the gateway.
         """
         return pulumi.get(self, "status")
 
@@ -221,7 +255,7 @@ class _GatewayState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the subnet.
+        ID of the subnet.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -245,14 +279,24 @@ class Gateway(pulumi.CustomResource):
         """
         Create a new Gateway for existing subnet in the specified public cloud project.
 
+        ## Import
+
+        A gateway can be imported using the `service_name`, `region` and `id` (identifier of the gateway) properties, separated by a `/`.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/gateway:Gateway gateway service_name/region/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] model: The model of the gateway.
-        :param pulumi.Input[str] name: The name of the gateway.
-        :param pulumi.Input[str] network_id: The ID of the private network.
-        :param pulumi.Input[str] region: The region of the gateway.
-        :param pulumi.Input[str] service_name: The ID of the private network.
-        :param pulumi.Input[str] subnet_id: The ID of the subnet.
+        :param pulumi.Input[str] model: Model of the gateway.
+        :param pulumi.Input[str] name: Name of the gateway.
+        :param pulumi.Input[str] network_id: ID of the private network.
+        :param pulumi.Input[str] region: Region of the gateway.
+        :param pulumi.Input[str] service_name: ID of the private network.
+        :param pulumi.Input[str] subnet_id: ID of the subnet.
         """
         ...
     @overload
@@ -262,6 +306,16 @@ class Gateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a new Gateway for existing subnet in the specified public cloud project.
+
+        ## Import
+
+        A gateway can be imported using the `service_name`, `region` and `id` (identifier of the gateway) properties, separated by a `/`.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/gateway:Gateway gateway service_name/region/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param GatewayArgs args: The arguments to use to populate this resource's properties.
@@ -309,6 +363,8 @@ class Gateway(pulumi.CustomResource):
             if subnet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_id'")
             __props__.__dict__["subnet_id"] = subnet_id
+            __props__.__dict__["external_informations"] = None
+            __props__.__dict__["interfaces"] = None
             __props__.__dict__["status"] = None
         super(Gateway, __self__).__init__(
             'ovh:CloudProject/gateway:Gateway',
@@ -320,6 +376,8 @@ class Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            external_informations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GatewayExternalInformationArgs']]]]] = None,
+            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GatewayInterfaceArgs']]]]] = None,
             model: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
@@ -334,18 +392,22 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] model: The model of the gateway.
-        :param pulumi.Input[str] name: The name of the gateway.
-        :param pulumi.Input[str] network_id: The ID of the private network.
-        :param pulumi.Input[str] region: The region of the gateway.
-        :param pulumi.Input[str] service_name: The ID of the private network.
-        :param pulumi.Input[str] status: The status of the gateway.
-        :param pulumi.Input[str] subnet_id: The ID of the subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GatewayExternalInformationArgs']]]] external_informations: List of External Information of the gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GatewayInterfaceArgs']]]] interfaces: Interfaces list of the gateway.
+        :param pulumi.Input[str] model: Model of the gateway.
+        :param pulumi.Input[str] name: Name of the gateway.
+        :param pulumi.Input[str] network_id: ID of the private network.
+        :param pulumi.Input[str] region: Region of the gateway.
+        :param pulumi.Input[str] service_name: ID of the private network.
+        :param pulumi.Input[str] status: Status of the gateway.
+        :param pulumi.Input[str] subnet_id: ID of the subnet.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _GatewayState.__new__(_GatewayState)
 
+        __props__.__dict__["external_informations"] = external_informations
+        __props__.__dict__["interfaces"] = interfaces
         __props__.__dict__["model"] = model
         __props__.__dict__["name"] = name
         __props__.__dict__["network_id"] = network_id
@@ -356,10 +418,26 @@ class Gateway(pulumi.CustomResource):
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="externalInformations")
+    def external_informations(self) -> pulumi.Output[Sequence['outputs.GatewayExternalInformation']]:
+        """
+        List of External Information of the gateway.
+        """
+        return pulumi.get(self, "external_informations")
+
+    @property
+    @pulumi.getter
+    def interfaces(self) -> pulumi.Output[Sequence['outputs.GatewayInterface']]:
+        """
+        Interfaces list of the gateway.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @property
     @pulumi.getter
     def model(self) -> pulumi.Output[str]:
         """
-        The model of the gateway.
+        Model of the gateway.
         """
         return pulumi.get(self, "model")
 
@@ -367,7 +445,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the gateway.
+        Name of the gateway.
         """
         return pulumi.get(self, "name")
 
@@ -375,7 +453,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[str]:
         """
-        The ID of the private network.
+        ID of the private network.
         """
         return pulumi.get(self, "network_id")
 
@@ -383,7 +461,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region of the gateway.
+        Region of the gateway.
         """
         return pulumi.get(self, "region")
 
@@ -391,7 +469,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The ID of the private network.
+        ID of the private network.
         """
         return pulumi.get(self, "service_name")
 
@@ -399,7 +477,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the gateway.
+        Status of the gateway.
         """
         return pulumi.get(self, "status")
 
@@ -407,7 +485,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
         """
-        The ID of the subnet.
+        ID of the subnet.
         """
         return pulumi.get(self, "subnet_id")
 

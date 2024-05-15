@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupPrivateDatabaseUserGrant(ctx *pulumi.Context, args *LookupPrivateDatabaseUserGrantArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDatabaseUserGrantResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateDatabaseUserGrantResult

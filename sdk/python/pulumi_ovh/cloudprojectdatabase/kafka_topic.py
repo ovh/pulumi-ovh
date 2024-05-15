@@ -304,7 +304,6 @@ class KafkaTopic(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -321,7 +320,6 @@ class KafkaTopic(pulumi.CustomResource):
             retention_bytes=4,
             retention_hours=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -356,7 +354,6 @@ class KafkaTopic(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -373,7 +370,6 @@ class KafkaTopic(pulumi.CustomResource):
             retention_bytes=4,
             retention_hours=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

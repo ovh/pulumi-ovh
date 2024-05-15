@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     userId: s3UserId,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUserS3Policy(args: GetUserS3PolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetUserS3PolicyResult> {
 
@@ -71,7 +69,6 @@ export interface GetUserS3PolicyResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -87,7 +84,6 @@ export interface GetUserS3PolicyResult {
  *     userId: s3UserId,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUserS3PolicyOutput(args: GetUserS3PolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserS3PolicyResult> {
     return pulumi.output(args).apply((a: any) => getUserS3Policy(a, opts))

@@ -9,14 +9,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const types = ovh.Iam.getReferenceResourceType({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getReferenceResourceType(opts?: pulumi.InvokeOptions): Promise<GetReferenceResourceTypeResult> {
 
@@ -43,14 +41,12 @@ export interface GetReferenceResourceTypeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const types = ovh.Iam.getReferenceResourceType({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getReferenceResourceTypeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceResourceTypeResult> {
     return pulumi.output(getReferenceResourceType(opts))

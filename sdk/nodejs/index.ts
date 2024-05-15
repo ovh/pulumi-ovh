@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { GetInstallationTemplateArgs, GetInstallationTemplateResult, GetInstallationTemplateOutputArgs } from "./getInstallationTemplate";
+export const getInstallationTemplate: typeof import("./getInstallationTemplate").getInstallationTemplate = null as any;
+export const getInstallationTemplateOutput: typeof import("./getInstallationTemplate").getInstallationTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getInstallationTemplate","getInstallationTemplateOutput"], () => require("./getInstallationTemplate"));
+
 export { GetInstallationTemplatesResult } from "./getInstallationTemplates";
 export const getInstallationTemplates: typeof import("./getInstallationTemplates").getInstallationTemplates = null as any;
 export const getInstallationTemplatesOutput: typeof import("./getInstallationTemplates").getInstallationTemplatesOutput = null as any;

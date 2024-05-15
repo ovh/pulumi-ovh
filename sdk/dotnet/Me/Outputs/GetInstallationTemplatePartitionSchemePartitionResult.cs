@@ -18,27 +18,27 @@ namespace Pulumi.Ovh.Me.Outputs
         /// </summary>
         public readonly string Filesystem;
         /// <summary>
-        /// partition mount point.
+        /// Partition mount point.
         /// </summary>
         public readonly string Mountpoint;
         /// <summary>
-        /// step or order. specifies the creation order of the partition on the disk
+        /// Step or order. Specifies the creation order of the partition on the disk.
         /// </summary>
         public readonly int Order;
         /// <summary>
-        /// raid partition type.
+        /// Raid partition type.
         /// </summary>
         public readonly string Raid;
         /// <summary>
-        /// size of partition in MB, 0 =&gt; rest of the space.
+        /// Size of partition in MB, 0 =&gt; rest of the space.
         /// </summary>
         public readonly int Size;
         /// <summary>
-        /// partition type.
+        /// Partition type.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The volume name needed for proxmox distribution
+        /// Volume name needed for proxmox distribution.
         /// </summary>
         public readonly string VolumeName;
 

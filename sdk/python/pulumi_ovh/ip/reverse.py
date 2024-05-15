@@ -134,7 +134,6 @@ class Reverse(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -145,7 +144,6 @@ class Reverse(pulumi.CustomResource):
             reverse_ip="192.0.2.1",
             reverse_value="example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -174,7 +172,6 @@ class Reverse(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -185,7 +182,6 @@ class Reverse(pulumi.CustomResource):
             reverse_ip="192.0.2.1",
             reverse_value="example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

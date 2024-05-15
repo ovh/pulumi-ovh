@@ -9,14 +9,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const vracks = ovh.Vrack.getVracks({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVracks(opts?: pulumi.InvokeOptions): Promise<GetVracksResult> {
 
@@ -43,14 +41,12 @@ export interface GetVracksResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const vracks = ovh.Vrack.getVracks({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVracksOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVracksResult> {
     return pulumi.output(getVracks(opts))

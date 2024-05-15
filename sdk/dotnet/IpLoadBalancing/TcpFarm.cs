@@ -14,7 +14,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -60,7 +58,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Port for backends to receive traffic on.
+        /// Port attached to your farm ([1..49151]). Inherited from frontend if null
         /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
@@ -155,7 +153,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Port for backends to receive traffic on.
+        /// Port attached to your farm ([1..49151]). Inherited from frontend if null
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -211,7 +209,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Port for backends to receive traffic on.
+        /// Port attached to your farm ([1..49151]). Inherited from frontend if null
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

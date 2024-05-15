@@ -15,7 +15,6 @@ import (
 // ## Example Usage
 //
 // Using a custom template based on an OVHCloud template
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -69,11 +68,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Using a BringYourOwnLinux (BYOLinux) template (with userMetadata)
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -169,11 +166,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Using a Microsoft Windows server OVHcloud template with a specific language
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -222,7 +217,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

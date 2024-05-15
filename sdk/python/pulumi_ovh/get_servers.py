@@ -62,14 +62,12 @@ def get_servers(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServ
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     servers = ovh.get_servers()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -87,13 +85,11 @@ def get_servers_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     servers = ovh.get_servers()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

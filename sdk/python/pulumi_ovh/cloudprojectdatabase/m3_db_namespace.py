@@ -417,7 +417,6 @@ class M3DbNamespace(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -431,7 +430,6 @@ class M3DbNamespace(pulumi.CustomResource):
             resolution="P2D",
             retention_period_duration="PT48H")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -469,7 +467,6 @@ class M3DbNamespace(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -483,7 +480,6 @@ class M3DbNamespace(pulumi.CustomResource):
             resolution="P2D",
             retention_period_duration="PT48H")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

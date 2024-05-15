@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerSpecificationsNetworkResult> InvokeAsync(GetServerSpecificationsNetworkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerSpecificationsNetworkResult>("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", args ?? new GetServerSpecificationsNetworkArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerSpecificationsNetworkResult> Invoke(GetServerSpecificationsNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerSpecificationsNetworkResult>("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", args ?? new GetServerSpecificationsNetworkInvokeArgs(), options.WithDefaults());

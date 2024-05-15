@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -61,7 +59,7 @@ type TcpFarm struct {
 	Balance pulumi.StringPtrOutput `pulumi:"balance"`
 	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Port for backends to receive traffic on.
+	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// define a backend healthcheck probe
 	Probe TcpFarmProbePtrOutput `pulumi:"probe"`
@@ -115,7 +113,7 @@ type tcpFarmState struct {
 	Balance *string `pulumi:"balance"`
 	// Readable label for loadbalancer farm
 	DisplayName *string `pulumi:"displayName"`
-	// Port for backends to receive traffic on.
+	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port *int `pulumi:"port"`
 	// define a backend healthcheck probe
 	Probe *TcpFarmProbe `pulumi:"probe"`
@@ -134,7 +132,7 @@ type TcpFarmState struct {
 	Balance pulumi.StringPtrInput
 	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrInput
-	// Port for backends to receive traffic on.
+	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port pulumi.IntPtrInput
 	// define a backend healthcheck probe
 	Probe TcpFarmProbePtrInput
@@ -157,7 +155,7 @@ type tcpFarmArgs struct {
 	Balance *string `pulumi:"balance"`
 	// Readable label for loadbalancer farm
 	DisplayName *string `pulumi:"displayName"`
-	// Port for backends to receive traffic on.
+	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port *int `pulumi:"port"`
 	// define a backend healthcheck probe
 	Probe *TcpFarmProbe `pulumi:"probe"`
@@ -177,7 +175,7 @@ type TcpFarmArgs struct {
 	Balance pulumi.StringPtrInput
 	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrInput
-	// Port for backends to receive traffic on.
+	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port pulumi.IntPtrInput
 	// define a backend healthcheck probe
 	Probe TcpFarmProbePtrInput
@@ -288,7 +286,7 @@ func (o TcpFarmOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarm) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Port for backends to receive traffic on.
+// Port attached to your farm ([1..49151]). Inherited from frontend if null
 func (o TcpFarmOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TcpFarm) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }

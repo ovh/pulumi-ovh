@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'InstallationTemplateCustomizationArgs',
+    'InstallationTemplateInputArgs',
 ]
 
 @pulumi.input_type
@@ -18,13 +19,11 @@ class InstallationTemplateCustomizationArgs:
     def __init__(__self__, *,
                  custom_hostname: Optional[pulumi.Input[str]] = None,
                  post_installation_script_link: Optional[pulumi.Input[str]] = None,
-                 post_installation_script_return: Optional[pulumi.Input[str]] = None,
-                 ssh_key_name: Optional[pulumi.Input[str]] = None):
+                 post_installation_script_return: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param pulumi.Input[str] post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
         :param pulumi.Input[str] post_installation_script_return: indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        :param pulumi.Input[str] ssh_key_name: Deprecated.
         """
         if custom_hostname is not None:
             pulumi.set(__self__, "custom_hostname", custom_hostname)
@@ -32,11 +31,6 @@ class InstallationTemplateCustomizationArgs:
             pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
         if post_installation_script_return is not None:
             pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
-        if ssh_key_name is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""ssh_key_name is deprecated: This field is deprecated and will be removed in a future release.""")
-        if ssh_key_name is not None:
-            pulumi.set(__self__, "ssh_key_name", ssh_key_name)
 
     @property
     @pulumi.getter(name="customHostname")
@@ -74,19 +68,87 @@ class InstallationTemplateCustomizationArgs:
     def post_installation_script_return(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "post_installation_script_return", value)
 
+
+@pulumi.input_type
+class InstallationTemplateInputArgs:
+    def __init__(__self__, *,
+                 default: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 mandatory: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: information about this template.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if mandatory is not None:
+            pulumi.set(__self__, "mandatory", mandatory)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
     @property
-    @pulumi.getter(name="sshKeyName")
-    def ssh_key_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Deprecated.
-        """
-        warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""ssh_key_name is deprecated: This field is deprecated and will be removed in a future release.""")
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "default")
 
-        return pulumi.get(self, "ssh_key_name")
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default", value)
 
-    @ssh_key_name.setter
-    def ssh_key_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ssh_key_name", value)
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        information about this template.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enums", value)
+
+    @property
+    @pulumi.getter
+    def mandatory(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "mandatory")
+
+    @mandatory.setter
+    def mandatory(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mandatory", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 

@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const projects = ovh.Cloud.getProjects({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjects(opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
 
@@ -42,14 +40,12 @@ export interface GetProjectsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const projects = ovh.Cloud.getProjects({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
     return pulumi.output(getProjects(opts))

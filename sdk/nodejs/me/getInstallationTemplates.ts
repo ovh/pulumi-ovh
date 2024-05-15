@@ -9,14 +9,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const templates = ovh.Me.getInstallationTemplates({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstallationTemplates(opts?: pulumi.InvokeOptions): Promise<GetInstallationTemplatesResult> {
 
@@ -43,14 +41,12 @@ export interface GetInstallationTemplatesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const templates = ovh.Me.getInstallationTemplates({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstallationTemplatesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetInstallationTemplatesResult> {
     return pulumi.output(getInstallationTemplates(opts))
