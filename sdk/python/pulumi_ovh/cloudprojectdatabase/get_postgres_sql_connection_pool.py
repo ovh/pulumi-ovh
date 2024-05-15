@@ -174,7 +174,6 @@ def get_postgres_sql_connection_pool(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -195,7 +194,6 @@ def get_postgres_sql_connection_pool(cluster_id: Optional[str] = None,
         "user_id": test_pool_postgres_sql_connection_pool.user_id,
     })
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID.
@@ -234,7 +232,6 @@ def get_postgres_sql_connection_pool_output(cluster_id: Optional[pulumi.Input[st
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -255,7 +252,6 @@ def get_postgres_sql_connection_pool_output(cluster_id: Optional[pulumi.Input[st
         "user_id": test_pool_postgres_sql_connection_pool.user_id,
     })
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID.

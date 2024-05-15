@@ -14,7 +14,6 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// Minimum settings for each engine (region choice is up to the user):
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -215,11 +214,9 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// To deploy a business PostgreSQL service with two nodes on public network:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -251,11 +248,9 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// To deploy an enterprise MongoDB service with three nodes on private network:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -297,7 +292,6 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -337,7 +331,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the IP restriction
+        /// Small description of the database service.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -525,7 +519,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
-        /// Description of the IP restriction
+        /// Small description of the database service.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -662,7 +656,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Description of the IP restriction
+        /// Small description of the database service.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

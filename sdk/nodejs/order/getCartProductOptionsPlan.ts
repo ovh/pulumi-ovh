@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     optionsPlanCode: "vrack",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCartProductOptionsPlan(args: GetCartProductOptionsPlanArgs, opts?: pulumi.InvokeOptions): Promise<GetCartProductOptionsPlanResult> {
 
@@ -124,7 +122,6 @@ export interface GetCartProductOptionsPlanResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -141,7 +138,6 @@ export interface GetCartProductOptionsPlanResult {
  *     optionsPlanCode: "vrack",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCartProductOptionsPlanOutput(args: GetCartProductOptionsPlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCartProductOptionsPlanResult> {
     return pulumi.output(args).apply((a: any) => getCartProductOptionsPlan(a, opts))

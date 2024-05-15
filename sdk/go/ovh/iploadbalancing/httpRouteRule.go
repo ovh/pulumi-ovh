@@ -18,7 +18,6 @@ import (
 //
 // Route which redirect all URL to HTTPs for example.com (Vhost).
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,11 +61,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Rule which match a specific header (same effect as the host match above).
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,7 +94,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

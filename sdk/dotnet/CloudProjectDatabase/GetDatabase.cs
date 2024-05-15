@@ -18,7 +18,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// To get information of a database cluster service:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabaseResult> InvokeAsync(GetDatabaseArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseResult>("ovh:CloudProjectDatabase/getDatabase:getDatabase", args ?? new GetDatabaseArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// To get information of a database cluster service:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabaseResult> Invoke(GetDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseResult>("ovh:CloudProjectDatabase/getDatabase:getDatabase", args ?? new GetDatabaseInvokeArgs(), options.WithDefaults());

@@ -126,7 +126,6 @@ def get_cart(assign: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -134,7 +133,6 @@ def get_cart(assign: Optional[bool] = None,
     myaccount = ovh.Me.get_me()
     mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool assign: Assign a shopping cart to a logged in client. Values can be `true` or `false`.
@@ -172,7 +170,6 @@ def get_cart_output(assign: Optional[pulumi.Input[Optional[bool]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -180,7 +177,6 @@ def get_cart_output(assign: Optional[pulumi.Input[Optional[bool]]] = None,
     myaccount = ovh.Me.get_me()
     mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool assign: Assign a shopping cart to a logged in client. Values can be `true` or `false`.

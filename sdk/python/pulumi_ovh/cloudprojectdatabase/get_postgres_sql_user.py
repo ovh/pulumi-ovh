@@ -125,7 +125,6 @@ def get_postgres_sql_user(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -135,7 +134,6 @@ def get_postgres_sql_user(cluster_id: Optional[str] = None,
         name="ZZZ")
     pulumi.export("pguserRoles", pguser.roles)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID
@@ -170,7 +168,6 @@ def get_postgres_sql_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -180,7 +177,6 @@ def get_postgres_sql_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
         name="ZZZ")
     pulumi.export("pguserRoles", pguser.roles)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID

@@ -65,16 +65,6 @@ export const getPaymentmeanCreditCard: typeof import("./getPaymentmeanCreditCard
 export const getPaymentmeanCreditCardOutput: typeof import("./getPaymentmeanCreditCard").getPaymentmeanCreditCardOutput = null as any;
 utilities.lazyLoad(exports, ["getPaymentmeanCreditCard","getPaymentmeanCreditCardOutput"], () => require("./getPaymentmeanCreditCard"));
 
-export { GetSshKeyArgs, GetSshKeyResult, GetSshKeyOutputArgs } from "./getSshKey";
-export const getSshKey: typeof import("./getSshKey").getSshKey = null as any;
-export const getSshKeyOutput: typeof import("./getSshKey").getSshKeyOutput = null as any;
-utilities.lazyLoad(exports, ["getSshKey","getSshKeyOutput"], () => require("./getSshKey"));
-
-export { GetSshKeysResult } from "./getSshKeys";
-export const getSshKeys: typeof import("./getSshKeys").getSshKeys = null as any;
-export const getSshKeysOutput: typeof import("./getSshKeys").getSshKeysOutput = null as any;
-utilities.lazyLoad(exports, ["getSshKeys","getSshKeysOutput"], () => require("./getSshKeys"));
-
 export { IdentityGroupArgs, IdentityGroupState } from "./identityGroup";
 export type IdentityGroup = import("./identityGroup").IdentityGroup;
 export const IdentityGroup: typeof import("./identityGroup").IdentityGroup = null as any;
@@ -105,11 +95,6 @@ export type InstallationTemplatePartitionSchemePartition = import("./installatio
 export const InstallationTemplatePartitionSchemePartition: typeof import("./installationTemplatePartitionSchemePartition").InstallationTemplatePartitionSchemePartition = null as any;
 utilities.lazyLoad(exports, ["InstallationTemplatePartitionSchemePartition"], () => require("./installationTemplatePartitionSchemePartition"));
 
-export { SshKeyArgs, SshKeyState } from "./sshKey";
-export type SshKey = import("./sshKey").SshKey;
-export const SshKey: typeof import("./sshKey").SshKey = null as any;
-utilities.lazyLoad(exports, ["SshKey"], () => require("./sshKey"));
-
 
 const _module = {
     version: utilities.getVersion(),
@@ -129,8 +114,6 @@ const _module = {
                 return new InstallationTemplatePartitionSchemeHardwareRaid(name, <any>undefined, { urn })
             case "ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition":
                 return new InstallationTemplatePartitionSchemePartition(name, <any>undefined, { urn })
-            case "ovh:Me/sshKey:SshKey":
-                return new SshKey(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -143,4 +126,3 @@ pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplate", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplatePartitionScheme", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplatePartitionSchemeHardwareRaid", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplatePartitionSchemePartition", _module)
-pulumi.runtime.registerResourceModule("ovh", "Me/sshKey", _module)

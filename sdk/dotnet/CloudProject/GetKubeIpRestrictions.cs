@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKubeIpRestrictionsResult> InvokeAsync(GetKubeIpRestrictionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubeIpRestrictionsResult>("ovh:CloudProject/getKubeIpRestrictions:getKubeIpRestrictions", args ?? new GetKubeIpRestrictionsArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKubeIpRestrictionsResult> Invoke(GetKubeIpRestrictionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeIpRestrictionsResult>("ovh:CloudProject/getKubeIpRestrictions:getKubeIpRestrictions", args ?? new GetKubeIpRestrictionsInvokeArgs(), options.WithDefaults());

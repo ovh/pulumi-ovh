@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     region: regcap.then(regcap => regcap.region),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
  */

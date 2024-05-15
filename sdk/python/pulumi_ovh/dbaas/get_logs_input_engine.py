@@ -90,7 +90,6 @@ def get_logs_input_engine(is_deprecated: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -100,7 +99,6 @@ def get_logs_input_engine(is_deprecated: Optional[bool] = None,
         service_name="ldp-xx-xxxxx",
         version="6.8")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool is_deprecated: Indicates if engine will soon not be supported.
@@ -135,7 +133,6 @@ def get_logs_input_engine_output(is_deprecated: Optional[pulumi.Input[Optional[b
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -145,7 +142,6 @@ def get_logs_input_engine_output(is_deprecated: Optional[pulumi.Input[Optional[b
         service_name="ldp-xx-xxxxx",
         version="6.8")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool is_deprecated: Indicates if engine will soon not be supported.

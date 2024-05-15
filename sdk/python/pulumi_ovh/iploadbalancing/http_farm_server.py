@@ -471,7 +471,6 @@ class HttpFarmServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -495,7 +494,6 @@ class HttpFarmServer(pulumi.CustomResource):
             status="active",
             weight=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -527,7 +525,6 @@ class HttpFarmServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -551,7 +548,6 @@ class HttpFarmServer(pulumi.CustomResource):
             status="active",
             weight=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

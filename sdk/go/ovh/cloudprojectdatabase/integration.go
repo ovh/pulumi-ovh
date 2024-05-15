@@ -22,7 +22,6 @@ import (
 //
 // Push PostgreSQL logs in an OpenSearch DB:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,7 +66,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

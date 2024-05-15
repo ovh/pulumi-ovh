@@ -9,14 +9,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const dnssec = new ovh.domain.ZoneDNSSec("dnssec", {zoneName: "mysite.ovh"});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class ZoneDNSSec extends pulumi.CustomResource {
     /**

@@ -109,7 +109,6 @@ class DedicatedServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -118,7 +117,6 @@ class DedicatedServer(pulumi.CustomResource):
             server_id="67890",
             service_name="XXXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -140,7 +138,6 @@ class DedicatedServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -149,7 +146,6 @@ class DedicatedServer(pulumi.CustomResource):
             server_id="67890",
             service_name="XXXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param DedicatedServerArgs args: The arguments to use to populate this resource's properties.

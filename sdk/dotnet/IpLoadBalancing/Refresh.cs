@@ -14,7 +14,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,7 +64,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/refresh:Refresh")]
     public partial class Refresh : global::Pulumi.CustomResource

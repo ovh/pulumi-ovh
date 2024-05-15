@@ -20,39 +20,22 @@ class ServerInstallTaskDetailsArgs:
     def __init__(__self__, *,
                  custom_hostname: Optional[pulumi.Input[str]] = None,
                  disk_group_id: Optional[pulumi.Input[int]] = None,
-                 language: Optional[pulumi.Input[str]] = None,
                  no_raid: Optional[pulumi.Input[bool]] = None,
                  post_installation_script_link: Optional[pulumi.Input[str]] = None,
                  post_installation_script_return: Optional[pulumi.Input[str]] = None,
-                 soft_raid_devices: Optional[pulumi.Input[int]] = None,
-                 use_spla: Optional[pulumi.Input[bool]] = None):
+                 soft_raid_devices: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param pulumi.Input[int] disk_group_id: Disk group id.
-        :param pulumi.Input[str] language: Deprecated, will be removed in next release.
         :param pulumi.Input[bool] no_raid: Set to true to disable RAID.
         :param pulumi.Input[str] post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
         :param pulumi.Input[str] post_installation_script_return: Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         :param pulumi.Input[int] soft_raid_devices: soft raid devices.
-        :param pulumi.Input[bool] use_spla: Deprecated, will be removed in next release.
-               
-               The `user_metadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
-               
-               -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
-               
-               -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
-               
-               -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
         """
         if custom_hostname is not None:
             pulumi.set(__self__, "custom_hostname", custom_hostname)
         if disk_group_id is not None:
             pulumi.set(__self__, "disk_group_id", disk_group_id)
-        if language is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future release""", DeprecationWarning)
-            pulumi.log.warn("""language is deprecated: This field is deprecated and will be removed in a future release""")
-        if language is not None:
-            pulumi.set(__self__, "language", language)
         if no_raid is not None:
             pulumi.set(__self__, "no_raid", no_raid)
         if post_installation_script_link is not None:
@@ -61,11 +44,6 @@ class ServerInstallTaskDetailsArgs:
             pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
         if soft_raid_devices is not None:
             pulumi.set(__self__, "soft_raid_devices", soft_raid_devices)
-        if use_spla is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future release""", DeprecationWarning)
-            pulumi.log.warn("""use_spla is deprecated: This field is deprecated and will be removed in a future release""")
-        if use_spla is not None:
-            pulumi.set(__self__, "use_spla", use_spla)
 
     @property
     @pulumi.getter(name="customHostname")
@@ -90,21 +68,6 @@ class ServerInstallTaskDetailsArgs:
     @disk_group_id.setter
     def disk_group_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_group_id", value)
-
-    @property
-    @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[str]]:
-        """
-        Deprecated, will be removed in next release.
-        """
-        warnings.warn("""This field is deprecated and will be removed in a future release""", DeprecationWarning)
-        pulumi.log.warn("""language is deprecated: This field is deprecated and will be removed in a future release""")
-
-        return pulumi.get(self, "language")
-
-    @language.setter
-    def language(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "language", value)
 
     @property
     @pulumi.getter(name="noRaid")
@@ -153,29 +116,6 @@ class ServerInstallTaskDetailsArgs:
     @soft_raid_devices.setter
     def soft_raid_devices(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "soft_raid_devices", value)
-
-    @property
-    @pulumi.getter(name="useSpla")
-    def use_spla(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Deprecated, will be removed in next release.
-
-        The `user_metadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
-
-        -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
-
-        -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
-
-        -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
-        """
-        warnings.warn("""This field is deprecated and will be removed in a future release""", DeprecationWarning)
-        pulumi.log.warn("""use_spla is deprecated: This field is deprecated and will be removed in a future release""")
-
-        return pulumi.get(self, "use_spla")
-
-    @use_spla.setter
-    def use_spla(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "use_spla", value)
 
 
 @pulumi.input_type

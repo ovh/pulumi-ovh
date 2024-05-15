@@ -460,7 +460,6 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -481,7 +480,6 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
             delete_users=False)
         pulumi.export("oidcClientSecret", my_oidc.oidc_client_secret)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -520,7 +518,6 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -541,7 +538,6 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
             delete_users=False)
         pulumi.export("oidcClientSecret", my_oidc.oidc_client_secret)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

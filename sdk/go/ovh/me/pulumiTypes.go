@@ -20,10 +20,6 @@ type InstallationTemplateCustomization struct {
 	PostInstallationScriptLink *string `pulumi:"postInstallationScriptLink"`
 	// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn *string `pulumi:"postInstallationScriptReturn"`
-	// Deprecated.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release.
-	SshKeyName *string `pulumi:"sshKeyName"`
 }
 
 // InstallationTemplateCustomizationInput is an input type that accepts InstallationTemplateCustomizationArgs and InstallationTemplateCustomizationOutput values.
@@ -44,10 +40,6 @@ type InstallationTemplateCustomizationArgs struct {
 	PostInstallationScriptLink pulumi.StringPtrInput `pulumi:"postInstallationScriptLink"`
 	// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn pulumi.StringPtrInput `pulumi:"postInstallationScriptReturn"`
-	// Deprecated.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release.
-	SshKeyName pulumi.StringPtrInput `pulumi:"sshKeyName"`
 }
 
 func (InstallationTemplateCustomizationArgs) ElementType() reflect.Type {
@@ -142,13 +134,6 @@ func (o InstallationTemplateCustomizationOutput) PostInstallationScriptReturn() 
 	return o.ApplyT(func(v InstallationTemplateCustomization) *string { return v.PostInstallationScriptReturn }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated.
-//
-// Deprecated: This field is deprecated and will be removed in a future release.
-func (o InstallationTemplateCustomizationOutput) SshKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstallationTemplateCustomization) *string { return v.SshKeyName }).(pulumi.StringPtrOutput)
-}
-
 type InstallationTemplateCustomizationPtrOutput struct{ *pulumi.OutputState }
 
 func (InstallationTemplateCustomizationPtrOutput) ElementType() reflect.Type {
@@ -203,16 +188,131 @@ func (o InstallationTemplateCustomizationPtrOutput) PostInstallationScriptReturn
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated.
+type InstallationTemplateInputType struct {
+	Default *string `pulumi:"default"`
+	// information about this template.
+	Description *string  `pulumi:"description"`
+	Enums       []string `pulumi:"enums"`
+	Mandatory   *bool    `pulumi:"mandatory"`
+	Name        *string  `pulumi:"name"`
+	Type        *string  `pulumi:"type"`
+}
+
+// InstallationTemplateInputTypeInput is an input type that accepts InstallationTemplateInputTypeArgs and InstallationTemplateInputTypeOutput values.
+// You can construct a concrete instance of `InstallationTemplateInputTypeInput` via:
 //
-// Deprecated: This field is deprecated and will be removed in a future release.
-func (o InstallationTemplateCustomizationPtrOutput) SshKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstallationTemplateCustomization) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SshKeyName
-	}).(pulumi.StringPtrOutput)
+//	InstallationTemplateInputTypeArgs{...}
+type InstallationTemplateInputTypeInput interface {
+	pulumi.Input
+
+	ToInstallationTemplateInputTypeOutput() InstallationTemplateInputTypeOutput
+	ToInstallationTemplateInputTypeOutputWithContext(context.Context) InstallationTemplateInputTypeOutput
+}
+
+type InstallationTemplateInputTypeArgs struct {
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// information about this template.
+	Description pulumi.StringPtrInput   `pulumi:"description"`
+	Enums       pulumi.StringArrayInput `pulumi:"enums"`
+	Mandatory   pulumi.BoolPtrInput     `pulumi:"mandatory"`
+	Name        pulumi.StringPtrInput   `pulumi:"name"`
+	Type        pulumi.StringPtrInput   `pulumi:"type"`
+}
+
+func (InstallationTemplateInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstallationTemplateInputType)(nil)).Elem()
+}
+
+func (i InstallationTemplateInputTypeArgs) ToInstallationTemplateInputTypeOutput() InstallationTemplateInputTypeOutput {
+	return i.ToInstallationTemplateInputTypeOutputWithContext(context.Background())
+}
+
+func (i InstallationTemplateInputTypeArgs) ToInstallationTemplateInputTypeOutputWithContext(ctx context.Context) InstallationTemplateInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplateInputTypeOutput)
+}
+
+// InstallationTemplateInputTypeArrayInput is an input type that accepts InstallationTemplateInputTypeArray and InstallationTemplateInputTypeArrayOutput values.
+// You can construct a concrete instance of `InstallationTemplateInputTypeArrayInput` via:
+//
+//	InstallationTemplateInputTypeArray{ InstallationTemplateInputTypeArgs{...} }
+type InstallationTemplateInputTypeArrayInput interface {
+	pulumi.Input
+
+	ToInstallationTemplateInputTypeArrayOutput() InstallationTemplateInputTypeArrayOutput
+	ToInstallationTemplateInputTypeArrayOutputWithContext(context.Context) InstallationTemplateInputTypeArrayOutput
+}
+
+type InstallationTemplateInputTypeArray []InstallationTemplateInputTypeInput
+
+func (InstallationTemplateInputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstallationTemplateInputType)(nil)).Elem()
+}
+
+func (i InstallationTemplateInputTypeArray) ToInstallationTemplateInputTypeArrayOutput() InstallationTemplateInputTypeArrayOutput {
+	return i.ToInstallationTemplateInputTypeArrayOutputWithContext(context.Background())
+}
+
+func (i InstallationTemplateInputTypeArray) ToInstallationTemplateInputTypeArrayOutputWithContext(ctx context.Context) InstallationTemplateInputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstallationTemplateInputTypeArrayOutput)
+}
+
+type InstallationTemplateInputTypeOutput struct{ *pulumi.OutputState }
+
+func (InstallationTemplateInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstallationTemplateInputType)(nil)).Elem()
+}
+
+func (o InstallationTemplateInputTypeOutput) ToInstallationTemplateInputTypeOutput() InstallationTemplateInputTypeOutput {
+	return o
+}
+
+func (o InstallationTemplateInputTypeOutput) ToInstallationTemplateInputTypeOutputWithContext(ctx context.Context) InstallationTemplateInputTypeOutput {
+	return o
+}
+
+func (o InstallationTemplateInputTypeOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstallationTemplateInputType) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// information about this template.
+func (o InstallationTemplateInputTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstallationTemplateInputType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o InstallationTemplateInputTypeOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstallationTemplateInputType) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
+func (o InstallationTemplateInputTypeOutput) Mandatory() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstallationTemplateInputType) *bool { return v.Mandatory }).(pulumi.BoolPtrOutput)
+}
+
+func (o InstallationTemplateInputTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstallationTemplateInputType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o InstallationTemplateInputTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstallationTemplateInputType) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type InstallationTemplateInputTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (InstallationTemplateInputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstallationTemplateInputType)(nil)).Elem()
+}
+
+func (o InstallationTemplateInputTypeArrayOutput) ToInstallationTemplateInputTypeArrayOutput() InstallationTemplateInputTypeArrayOutput {
+	return o
+}
+
+func (o InstallationTemplateInputTypeArrayOutput) ToInstallationTemplateInputTypeArrayOutputWithContext(ctx context.Context) InstallationTemplateInputTypeArrayOutput {
+	return o
+}
+
+func (o InstallationTemplateInputTypeArrayOutput) Index(i pulumi.IntInput) InstallationTemplateInputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstallationTemplateInputType {
+		return vs[0].([]InstallationTemplateInputType)[vs[1].(int)]
+	}).(InstallationTemplateInputTypeOutput)
 }
 
 type GetInstallationTemplateCustomization struct {
@@ -220,12 +320,8 @@ type GetInstallationTemplateCustomization struct {
 	CustomHostname string `pulumi:"customHostname"`
 	// Indicate the URL where your postinstall customisation script is located.
 	PostInstallationScriptLink string `pulumi:"postInstallationScriptLink"`
-	// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
+	// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn string `pulumi:"postInstallationScriptReturn"`
-	// Name of the ssh key that should be installed. Password login will be disabled. Deprecated, will be removed in next release, use userMetada instead.
-	//
-	// Deprecated: This field will be removed from the API, please use `userMetadata` instead.
-	SshKeyName string `pulumi:"sshKeyName"`
 }
 
 // GetInstallationTemplateCustomizationInput is an input type that accepts GetInstallationTemplateCustomizationArgs and GetInstallationTemplateCustomizationOutput values.
@@ -244,12 +340,8 @@ type GetInstallationTemplateCustomizationArgs struct {
 	CustomHostname pulumi.StringInput `pulumi:"customHostname"`
 	// Indicate the URL where your postinstall customisation script is located.
 	PostInstallationScriptLink pulumi.StringInput `pulumi:"postInstallationScriptLink"`
-	// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
+	// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn pulumi.StringInput `pulumi:"postInstallationScriptReturn"`
-	// Name of the ssh key that should be installed. Password login will be disabled. Deprecated, will be removed in next release, use userMetada instead.
-	//
-	// Deprecated: This field will be removed from the API, please use `userMetadata` instead.
-	SshKeyName pulumi.StringInput `pulumi:"sshKeyName"`
 }
 
 func (GetInstallationTemplateCustomizationArgs) ElementType() reflect.Type {
@@ -313,16 +405,9 @@ func (o GetInstallationTemplateCustomizationOutput) PostInstallationScriptLink()
 	return o.ApplyT(func(v GetInstallationTemplateCustomization) string { return v.PostInstallationScriptLink }).(pulumi.StringOutput)
 }
 
-// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
+// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 func (o GetInstallationTemplateCustomizationOutput) PostInstallationScriptReturn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateCustomization) string { return v.PostInstallationScriptReturn }).(pulumi.StringOutput)
-}
-
-// Name of the ssh key that should be installed. Password login will be disabled. Deprecated, will be removed in next release, use userMetada instead.
-//
-// Deprecated: This field will be removed from the API, please use `userMetadata` instead.
-func (o GetInstallationTemplateCustomizationOutput) SshKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateCustomization) string { return v.SshKeyName }).(pulumi.StringOutput)
 }
 
 type GetInstallationTemplateCustomizationArrayOutput struct{ *pulumi.OutputState }
@@ -345,12 +430,145 @@ func (o GetInstallationTemplateCustomizationArrayOutput) Index(i pulumi.IntInput
 	}).(GetInstallationTemplateCustomizationOutput)
 }
 
+type GetInstallationTemplateInput struct {
+	Default string `pulumi:"default"`
+	// Information about this template.
+	Description string   `pulumi:"description"`
+	Enums       []string `pulumi:"enums"`
+	Mandatory   bool     `pulumi:"mandatory"`
+	// Hardware RAID name.
+	Name string `pulumi:"name"`
+	// Partition type.
+	Type string `pulumi:"type"`
+}
+
+// GetInstallationTemplateInputInput is an input type that accepts GetInstallationTemplateInputArgs and GetInstallationTemplateInputOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateInputInput` via:
+//
+//	GetInstallationTemplateInputArgs{...}
+type GetInstallationTemplateInputInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput
+	ToGetInstallationTemplateInputOutputWithContext(context.Context) GetInstallationTemplateInputOutput
+}
+
+type GetInstallationTemplateInputArgs struct {
+	Default pulumi.StringInput `pulumi:"default"`
+	// Information about this template.
+	Description pulumi.StringInput      `pulumi:"description"`
+	Enums       pulumi.StringArrayInput `pulumi:"enums"`
+	Mandatory   pulumi.BoolInput        `pulumi:"mandatory"`
+	// Hardware RAID name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Partition type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstallationTemplateInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateInputArgs) ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput {
+	return i.ToGetInstallationTemplateInputOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateInputArgs) ToGetInstallationTemplateInputOutputWithContext(ctx context.Context) GetInstallationTemplateInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateInputOutput)
+}
+
+// GetInstallationTemplateInputArrayInput is an input type that accepts GetInstallationTemplateInputArray and GetInstallationTemplateInputArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateInputArrayInput` via:
+//
+//	GetInstallationTemplateInputArray{ GetInstallationTemplateInputArgs{...} }
+type GetInstallationTemplateInputArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput
+	ToGetInstallationTemplateInputArrayOutputWithContext(context.Context) GetInstallationTemplateInputArrayOutput
+}
+
+type GetInstallationTemplateInputArray []GetInstallationTemplateInputInput
+
+func (GetInstallationTemplateInputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateInputArray) ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput {
+	return i.ToGetInstallationTemplateInputArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateInputArray) ToGetInstallationTemplateInputArrayOutputWithContext(ctx context.Context) GetInstallationTemplateInputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateInputArrayOutput)
+}
+
+type GetInstallationTemplateInputOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateInputOutput) ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputOutput) ToGetInstallationTemplateInputOutputWithContext(ctx context.Context) GetInstallationTemplateInputOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Default }).(pulumi.StringOutput)
+}
+
+// Information about this template.
+func (o GetInstallationTemplateInputOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetInstallationTemplateInputOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstallationTemplateInputOutput) Mandatory() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) bool { return v.Mandatory }).(pulumi.BoolOutput)
+}
+
+// Hardware RAID name.
+func (o GetInstallationTemplateInputOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Partition type.
+func (o GetInstallationTemplateInputOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstallationTemplateInputArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateInputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateInputArrayOutput) ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputArrayOutput) ToGetInstallationTemplateInputArrayOutputWithContext(ctx context.Context) GetInstallationTemplateInputArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateInputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateInput {
+		return vs[0].([]GetInstallationTemplateInput)[vs[1].(int)]
+	}).(GetInstallationTemplateInputOutput)
+}
+
 type GetInstallationTemplatePartitionSchemeType struct {
 	HardwareRaids []GetInstallationTemplatePartitionSchemeHardwareRaidType `pulumi:"hardwareRaids"`
 	// Hardware RAID name.
 	Name       string                                                `pulumi:"name"`
 	Partitions []GetInstallationTemplatePartitionSchemePartitionType `pulumi:"partitions"`
-	// on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
+	// On a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
 	Priority int `pulumi:"priority"`
 }
 
@@ -370,7 +588,7 @@ type GetInstallationTemplatePartitionSchemeTypeArgs struct {
 	// Hardware RAID name.
 	Name       pulumi.StringInput                                            `pulumi:"name"`
 	Partitions GetInstallationTemplatePartitionSchemePartitionTypeArrayInput `pulumi:"partitions"`
-	// on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
+	// On a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
 	Priority pulumi.IntInput `pulumi:"priority"`
 }
 
@@ -442,7 +660,7 @@ func (o GetInstallationTemplatePartitionSchemeTypeOutput) Partitions() GetInstal
 	}).(GetInstallationTemplatePartitionSchemePartitionTypeArrayOutput)
 }
 
-// on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
+// On a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
 func (o GetInstallationTemplatePartitionSchemeTypeOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstallationTemplatePartitionSchemeType) int { return v.Priority }).(pulumi.IntOutput)
 }
@@ -594,17 +812,17 @@ func (o GetInstallationTemplatePartitionSchemeHardwareRaidTypeArrayOutput) Index
 type GetInstallationTemplatePartitionSchemePartitionType struct {
 	// Partition filesystem.
 	Filesystem string `pulumi:"filesystem"`
-	// partition mount point.
+	// Partition mount point.
 	Mountpoint string `pulumi:"mountpoint"`
-	// step or order. specifies the creation order of the partition on the disk
+	// Step or order. Specifies the creation order of the partition on the disk.
 	Order int `pulumi:"order"`
-	// raid partition type.
+	// Raid partition type.
 	Raid string `pulumi:"raid"`
-	// size of partition in MB, 0 => rest of the space.
+	// Size of partition in MB, 0 => rest of the space.
 	Size int `pulumi:"size"`
-	// partition type.
+	// Partition type.
 	Type string `pulumi:"type"`
-	// The volume name needed for proxmox distribution
+	// Volume name needed for proxmox distribution.
 	VolumeName string `pulumi:"volumeName"`
 }
 
@@ -622,17 +840,17 @@ type GetInstallationTemplatePartitionSchemePartitionTypeInput interface {
 type GetInstallationTemplatePartitionSchemePartitionTypeArgs struct {
 	// Partition filesystem.
 	Filesystem pulumi.StringInput `pulumi:"filesystem"`
-	// partition mount point.
+	// Partition mount point.
 	Mountpoint pulumi.StringInput `pulumi:"mountpoint"`
-	// step or order. specifies the creation order of the partition on the disk
+	// Step or order. Specifies the creation order of the partition on the disk.
 	Order pulumi.IntInput `pulumi:"order"`
-	// raid partition type.
+	// Raid partition type.
 	Raid pulumi.StringInput `pulumi:"raid"`
-	// size of partition in MB, 0 => rest of the space.
+	// Size of partition in MB, 0 => rest of the space.
 	Size pulumi.IntInput `pulumi:"size"`
-	// partition type.
+	// Partition type.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The volume name needed for proxmox distribution
+	// Volume name needed for proxmox distribution.
 	VolumeName pulumi.StringInput `pulumi:"volumeName"`
 }
 
@@ -692,32 +910,32 @@ func (o GetInstallationTemplatePartitionSchemePartitionTypeOutput) Filesystem() 
 	return o.ApplyT(func(v GetInstallationTemplatePartitionSchemePartitionType) string { return v.Filesystem }).(pulumi.StringOutput)
 }
 
-// partition mount point.
+// Partition mount point.
 func (o GetInstallationTemplatePartitionSchemePartitionTypeOutput) Mountpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplatePartitionSchemePartitionType) string { return v.Mountpoint }).(pulumi.StringOutput)
 }
 
-// step or order. specifies the creation order of the partition on the disk
+// Step or order. Specifies the creation order of the partition on the disk.
 func (o GetInstallationTemplatePartitionSchemePartitionTypeOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstallationTemplatePartitionSchemePartitionType) int { return v.Order }).(pulumi.IntOutput)
 }
 
-// raid partition type.
+// Raid partition type.
 func (o GetInstallationTemplatePartitionSchemePartitionTypeOutput) Raid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplatePartitionSchemePartitionType) string { return v.Raid }).(pulumi.StringOutput)
 }
 
-// size of partition in MB, 0 => rest of the space.
+// Size of partition in MB, 0 => rest of the space.
 func (o GetInstallationTemplatePartitionSchemePartitionTypeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstallationTemplatePartitionSchemePartitionType) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// partition type.
+// Partition type.
 func (o GetInstallationTemplatePartitionSchemePartitionTypeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplatePartitionSchemePartitionType) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The volume name needed for proxmox distribution
+// Volume name needed for proxmox distribution.
 func (o GetInstallationTemplatePartitionSchemePartitionTypeOutput) VolumeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplatePartitionSchemePartitionType) string { return v.VolumeName }).(pulumi.StringOutput)
 }
@@ -851,8 +1069,12 @@ func (o GetMeCurrencyArrayOutput) Index(i pulumi.IntInput) GetMeCurrencyOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstallationTemplateCustomizationInput)(nil)).Elem(), InstallationTemplateCustomizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstallationTemplateCustomizationPtrInput)(nil)).Elem(), InstallationTemplateCustomizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstallationTemplateInputTypeInput)(nil)).Elem(), InstallationTemplateInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstallationTemplateInputTypeArrayInput)(nil)).Elem(), InstallationTemplateInputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateCustomizationInput)(nil)).Elem(), GetInstallationTemplateCustomizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateCustomizationArrayInput)(nil)).Elem(), GetInstallationTemplateCustomizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputInput)(nil)).Elem(), GetInstallationTemplateInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputArrayInput)(nil)).Elem(), GetInstallationTemplateInputArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplatePartitionSchemeTypeInput)(nil)).Elem(), GetInstallationTemplatePartitionSchemeTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplatePartitionSchemeTypeArrayInput)(nil)).Elem(), GetInstallationTemplatePartitionSchemeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplatePartitionSchemeHardwareRaidTypeInput)(nil)).Elem(), GetInstallationTemplatePartitionSchemeHardwareRaidTypeArgs{})
@@ -863,8 +1085,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMeCurrencyArrayInput)(nil)).Elem(), GetMeCurrencyArray{})
 	pulumi.RegisterOutputType(InstallationTemplateCustomizationOutput{})
 	pulumi.RegisterOutputType(InstallationTemplateCustomizationPtrOutput{})
+	pulumi.RegisterOutputType(InstallationTemplateInputTypeOutput{})
+	pulumi.RegisterOutputType(InstallationTemplateInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateCustomizationOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateCustomizationArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateInputOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateInputArrayOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplatePartitionSchemeTypeOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplatePartitionSchemeTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplatePartitionSchemeHardwareRaidTypeOutput{})

@@ -62,14 +62,12 @@ def get_vracks(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVrack
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     vracks = ovh.Vrack.get_vracks()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -87,13 +85,11 @@ def get_vracks_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Out
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     vracks = ovh.Vrack.get_vracks()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

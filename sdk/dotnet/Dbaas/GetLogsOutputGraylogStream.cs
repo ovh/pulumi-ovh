@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Dbaas
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Ovh.Dbaas
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetLogsOutputGraylogStreamResult> InvokeAsync(GetLogsOutputGraylogStreamArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogsOutputGraylogStreamResult>("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args ?? new GetLogsOutputGraylogStreamArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Ovh.Dbaas
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Ovh.Dbaas
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetLogsOutputGraylogStreamResult> Invoke(GetLogsOutputGraylogStreamInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsOutputGraylogStreamResult>("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args ?? new GetLogsOutputGraylogStreamInvokeArgs(), options.WithDefaults());

@@ -221,7 +221,6 @@ def get_firewall_rule(ip: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -230,7 +229,6 @@ def get_firewall_rule(ip: Optional[str] = None,
         ip_on_firewall="XXXXXX",
         sequence=0)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ip: The IP or the CIDR
@@ -272,7 +270,6 @@ def get_firewall_rule_output(ip: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -281,7 +278,6 @@ def get_firewall_rule_output(ip: Optional[pulumi.Input[str]] = None,
         ip_on_firewall="XXXXXX",
         sequence=0)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ip: The IP or the CIDR

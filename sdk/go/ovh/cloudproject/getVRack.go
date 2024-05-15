@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetVRack(ctx *pulumi.Context, args *GetVRackArgs, opts ...pulumi.InvokeOption) (*GetVRackResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVRackResult

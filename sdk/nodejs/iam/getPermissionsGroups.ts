@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     urn: "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPermissionsGroups(opts?: pulumi.InvokeOptions): Promise<GetPermissionsGroupsResult> {
 
@@ -42,7 +40,6 @@ export interface GetPermissionsGroupsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -51,7 +48,6 @@ export interface GetPermissionsGroupsResult {
  *     urn: "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPermissionsGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionsGroupsResult> {
     return pulumi.output(getPermissionsGroups(opts))

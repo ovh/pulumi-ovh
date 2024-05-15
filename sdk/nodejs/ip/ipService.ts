@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -39,7 +38,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class IpService extends pulumi.CustomResource {
     /**
@@ -88,7 +86,7 @@ export class IpService extends pulumi.CustomResource {
     /**
      * Details about an Order
      */
-    public /*out*/ readonly orders!: pulumi.Output<outputs.Ip.IpServiceOrder[]>;
+    public readonly orders!: pulumi.Output<outputs.Ip.IpServiceOrder[]>;
     /**
      * IP block organisation Id
      */
@@ -159,6 +157,7 @@ export class IpService extends pulumi.CustomResource {
                 throw new Error("Missing required property 'plan'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
             resourceInputs["paymentMean"] = args ? args.paymentMean : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
@@ -166,7 +165,6 @@ export class IpService extends pulumi.CustomResource {
             resourceInputs["canBeTerminated"] = undefined /*out*/;
             resourceInputs["country"] = undefined /*out*/;
             resourceInputs["ip"] = undefined /*out*/;
-            resourceInputs["orders"] = undefined /*out*/;
             resourceInputs["organisationId"] = undefined /*out*/;
             resourceInputs["routedTos"] = undefined /*out*/;
             resourceInputs["serviceName"] = undefined /*out*/;
@@ -245,6 +243,10 @@ export interface IpServiceArgs {
      * Custom description on your ip.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Details about an Order
+     */
+    orders?: pulumi.Input<pulumi.Input<inputs.Ip.IpServiceOrder>[]>;
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */

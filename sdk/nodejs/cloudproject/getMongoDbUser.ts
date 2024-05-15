@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  * });
  * export const mongouserRoles = mongouser.then(mongouser => mongouser.roles);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMongoDbUser(args: GetMongoDbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoDbUserResult> {
 
@@ -90,7 +88,6 @@ export interface GetMongoDbUserResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -102,7 +99,6 @@ export interface GetMongoDbUserResult {
  * });
  * export const mongouserRoles = mongouser.then(mongouser => mongouser.roles);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMongoDbUserOutput(args: GetMongoDbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoDbUserResult> {
     return pulumi.output(args).apply((a: any) => getMongoDbUser(a, opts))

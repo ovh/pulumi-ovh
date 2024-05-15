@@ -12,7 +12,6 @@ namespace Pulumi.Ovh.Dedicated
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Dedicated/serverUpdate:ServerUpdate")]
     public partial class ServerUpdate : global::Pulumi.CustomResource

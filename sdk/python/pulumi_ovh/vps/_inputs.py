@@ -472,8 +472,8 @@ class VpsPlanConfigurationArgs:
                  label: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] label: Identifier of the resource
-        :param pulumi.Input[str] value: Path to the resource in api.ovh.com
+        :param pulumi.Input[str] label: Label for your configuration item
+        :param pulumi.Input[str] value: Value or resource URL on API.OVH.COM of your configuration item
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -482,7 +482,7 @@ class VpsPlanConfigurationArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        Identifier of the resource
+        Label for your configuration item
         """
         return pulumi.get(self, "label")
 
@@ -494,7 +494,7 @@ class VpsPlanConfigurationArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Path to the resource in api.ovh.com
+        Value or resource URL on API.OVH.COM of your configuration item
         """
         return pulumi.get(self, "value")
 
@@ -607,8 +607,8 @@ class VpsPlanOptionConfigurationArgs:
                  label: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] label: Identifier of the resource
-        :param pulumi.Input[str] value: Path to the resource in api.ovh.com
+        :param pulumi.Input[str] label: Label for your configuration item
+        :param pulumi.Input[str] value: Value or resource URL on API.OVH.COM of your configuration item
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -617,7 +617,7 @@ class VpsPlanOptionConfigurationArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        Identifier of the resource
+        Label for your configuration item
         """
         return pulumi.get(self, "label")
 
@@ -629,7 +629,7 @@ class VpsPlanOptionConfigurationArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Path to the resource in api.ovh.com
+        Value or resource URL on API.OVH.COM of your configuration item
         """
         return pulumi.get(self, "value")
 

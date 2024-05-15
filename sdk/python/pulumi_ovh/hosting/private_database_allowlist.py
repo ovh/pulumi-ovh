@@ -199,7 +199,6 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -210,7 +209,6 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
             service_name="XXXXXX",
             sftp=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -239,7 +237,6 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -250,7 +247,6 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
             service_name="XXXXXX",
             sftp=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

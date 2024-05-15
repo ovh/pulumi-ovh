@@ -14,7 +14,6 @@ import (
 
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,7 +73,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -205,6 +203,8 @@ func (ZoneState) ElementType() reflect.Type {
 }
 
 type zoneArgs struct {
+	// Details about an Order
+	Orders []ZoneOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
@@ -219,6 +219,8 @@ type zoneArgs struct {
 
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
+	// Details about an Order
+	Orders ZoneOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode

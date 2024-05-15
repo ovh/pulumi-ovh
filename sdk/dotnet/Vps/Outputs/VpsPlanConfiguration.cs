@@ -14,11 +14,11 @@ namespace Pulumi.Ovh.Vps.Outputs
     public sealed class VpsPlanConfiguration
     {
         /// <summary>
-        /// Identifier of the resource
+        /// Label for your configuration item
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// Path to the resource in api.ovh.com
+        /// Value or resource URL on API.OVH.COM of your configuration item
         /// </summary>
         public readonly string Value;
 

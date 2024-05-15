@@ -22,13 +22,9 @@ namespace Pulumi.Ovh.Me.Outputs
         /// </summary>
         public readonly string PostInstallationScriptLink;
         /// <summary>
-        /// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
+        /// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         /// </summary>
         public readonly string PostInstallationScriptReturn;
-        /// <summary>
-        /// Name of the ssh key that should be installed. Password login will be disabled. Deprecated, will be removed in next release, use userMetada instead.
-        /// </summary>
-        public readonly string SshKeyName;
 
         [OutputConstructor]
         private GetInstallationTemplateCustomizationResult(
@@ -36,14 +32,11 @@ namespace Pulumi.Ovh.Me.Outputs
 
             string postInstallationScriptLink,
 
-            string postInstallationScriptReturn,
-
-            string sshKeyName)
+            string postInstallationScriptReturn)
         {
             CustomHostname = customHostname;
             PostInstallationScriptLink = postInstallationScriptLink;
             PostInstallationScriptReturn = postInstallationScriptReturn;
-            SshKeyName = sshKeyName;
         }
     }
 }

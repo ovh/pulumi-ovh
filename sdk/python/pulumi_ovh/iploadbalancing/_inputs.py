@@ -481,7 +481,7 @@ class LoadBalancerOrderableZoneArgs:
                  plan_code: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The zone three letter code
-        :param pulumi.Input[str] plan_code: Plan code
+        :param pulumi.Input[str] plan_code: The billing planCode for this zone
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -504,7 +504,7 @@ class LoadBalancerOrderableZoneArgs:
     @pulumi.getter(name="planCode")
     def plan_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Plan code
+        The billing planCode for this zone
         """
         return pulumi.get(self, "plan_code")
 

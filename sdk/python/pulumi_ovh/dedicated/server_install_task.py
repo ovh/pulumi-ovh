@@ -331,7 +331,6 @@ class ServerInstallTask(pulumi.CustomResource):
         ## Example Usage
 
         Using a custom template based on an OVHCloud template
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -357,11 +356,9 @@ class ServerInstallTask(pulumi.CustomResource):
                 value="ssh-ed25519 AAAAC3...",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Using a BringYourOwnLinux (BYOLinux) template (with userMetadata)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -424,11 +421,9 @@ class ServerInstallTask(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         Using a Microsoft Windows server OVHcloud template with a specific language
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -448,7 +443,6 @@ class ServerInstallTask(pulumi.CustomResource):
                 value="fr-fr",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -479,7 +473,6 @@ class ServerInstallTask(pulumi.CustomResource):
         ## Example Usage
 
         Using a custom template based on an OVHCloud template
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -505,11 +498,9 @@ class ServerInstallTask(pulumi.CustomResource):
                 value="ssh-ed25519 AAAAC3...",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Using a BringYourOwnLinux (BYOLinux) template (with userMetadata)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -572,11 +563,9 @@ class ServerInstallTask(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         Using a Microsoft Windows server OVHcloud template with a specific language
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -596,7 +585,6 @@ class ServerInstallTask(pulumi.CustomResource):
                 value="fr-fr",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

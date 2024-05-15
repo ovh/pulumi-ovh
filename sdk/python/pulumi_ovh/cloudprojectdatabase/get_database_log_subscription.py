@@ -174,7 +174,6 @@ def get_database_log_subscription(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -185,7 +184,6 @@ def get_database_log_subscription(cluster_id: Optional[str] = None,
         id="ZZZ")
     pulumi.export("subscriptionLdpName", subscription.ldp_service_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID.
@@ -228,7 +226,6 @@ def get_database_log_subscription_output(cluster_id: Optional[pulumi.Input[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -239,7 +236,6 @@ def get_database_log_subscription_output(cluster_id: Optional[pulumi.Input[str]]
         id="ZZZ")
     pulumi.export("subscriptionLdpName", subscription.ldp_service_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID.

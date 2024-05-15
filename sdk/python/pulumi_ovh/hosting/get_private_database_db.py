@@ -119,7 +119,6 @@ def get_private_database_db(database_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -127,7 +126,6 @@ def get_private_database_db(database_name: Optional[str] = None,
     mydatabase = ovh.Hosting.get_private_database_db(database_name="XXXXXX",
         service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str database_name: Database name
@@ -158,7 +156,6 @@ def get_private_database_db_output(database_name: Optional[pulumi.Input[str]] = 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -166,7 +163,6 @@ def get_private_database_db_output(database_name: Optional[pulumi.Input[str]] = 
     mydatabase = ovh.Hosting.get_private_database_db(database_name="XXXXXX",
         service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str database_name: Database name

@@ -22,10 +22,7 @@ class GetInstallationTemplateResult:
     """
     A collection of values returned by getInstallationTemplate.
     """
-    def __init__(__self__, available_languages=None, bit_format=None, category=None, customizations=None, default_language=None, description=None, distribution=None, family=None, filesystems=None, hard_raid_configuration=None, id=None, lvm_ready=None, partition_schemes=None, template_name=None):
-        if available_languages and not isinstance(available_languages, list):
-            raise TypeError("Expected argument 'available_languages' to be a list")
-        pulumi.set(__self__, "available_languages", available_languages)
+    def __init__(__self__, bit_format=None, category=None, customizations=None, description=None, distribution=None, end_of_install=None, family=None, filesystems=None, hard_raid_configuration=None, id=None, inputs=None, lvm_ready=None, no_partitioning=None, partition_schemes=None, soft_raid_only_mirroring=None, subfamily=None, template_name=None):
         if bit_format and not isinstance(bit_format, int):
             raise TypeError("Expected argument 'bit_format' to be a int")
         pulumi.set(__self__, "bit_format", bit_format)
@@ -35,15 +32,15 @@ class GetInstallationTemplateResult:
         if customizations and not isinstance(customizations, list):
             raise TypeError("Expected argument 'customizations' to be a list")
         pulumi.set(__self__, "customizations", customizations)
-        if default_language and not isinstance(default_language, str):
-            raise TypeError("Expected argument 'default_language' to be a str")
-        pulumi.set(__self__, "default_language", default_language)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
         if distribution and not isinstance(distribution, str):
             raise TypeError("Expected argument 'distribution' to be a str")
         pulumi.set(__self__, "distribution", distribution)
+        if end_of_install and not isinstance(end_of_install, str):
+            raise TypeError("Expected argument 'end_of_install' to be a str")
+        pulumi.set(__self__, "end_of_install", end_of_install)
         if family and not isinstance(family, str):
             raise TypeError("Expected argument 'family' to be a str")
         pulumi.set(__self__, "family", family)
@@ -56,29 +53,33 @@ class GetInstallationTemplateResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if inputs and not isinstance(inputs, list):
+            raise TypeError("Expected argument 'inputs' to be a list")
+        pulumi.set(__self__, "inputs", inputs)
         if lvm_ready and not isinstance(lvm_ready, bool):
             raise TypeError("Expected argument 'lvm_ready' to be a bool")
         pulumi.set(__self__, "lvm_ready", lvm_ready)
+        if no_partitioning and not isinstance(no_partitioning, bool):
+            raise TypeError("Expected argument 'no_partitioning' to be a bool")
+        pulumi.set(__self__, "no_partitioning", no_partitioning)
         if partition_schemes and not isinstance(partition_schemes, list):
             raise TypeError("Expected argument 'partition_schemes' to be a list")
         pulumi.set(__self__, "partition_schemes", partition_schemes)
+        if soft_raid_only_mirroring and not isinstance(soft_raid_only_mirroring, bool):
+            raise TypeError("Expected argument 'soft_raid_only_mirroring' to be a bool")
+        pulumi.set(__self__, "soft_raid_only_mirroring", soft_raid_only_mirroring)
+        if subfamily and not isinstance(subfamily, str):
+            raise TypeError("Expected argument 'subfamily' to be a str")
+        pulumi.set(__self__, "subfamily", subfamily)
         if template_name and not isinstance(template_name, str):
             raise TypeError("Expected argument 'template_name' to be a str")
         pulumi.set(__self__, "template_name", template_name)
 
     @property
-    @pulumi.getter(name="availableLanguages")
-    def available_languages(self) -> Sequence[str]:
-        """
-        List of all language available for this template. Deprecated, will be removed in next release.
-        """
-        return pulumi.get(self, "available_languages")
-
-    @property
     @pulumi.getter(name="bitFormat")
     def bit_format(self) -> int:
         """
-        This template bit format (32 or 64).
+        Template bit format (32 or 64).
         """
         return pulumi.get(self, "bit_format")
 
@@ -86,7 +87,7 @@ class GetInstallationTemplateResult:
     @pulumi.getter
     def category(self) -> str:
         """
-        Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+        Category of this template (informative only).
         """
         return pulumi.get(self, "category")
 
@@ -96,21 +97,10 @@ class GetInstallationTemplateResult:
         return pulumi.get(self, "customizations")
 
     @property
-    @pulumi.getter(name="defaultLanguage")
-    def default_language(self) -> str:
-        """
-        The default language of this template. Deprecated, will be removed in next release.
-        """
-        warnings.warn("""This field will be removed from the API, please use `userMetadata` instead.""", DeprecationWarning)
-        pulumi.log.warn("""default_language is deprecated: This field will be removed from the API, please use `userMetadata` instead.""")
-
-        return pulumi.get(self, "default_language")
-
-    @property
     @pulumi.getter
     def description(self) -> str:
         """
-        information about this template.
+        Information about this template.
         """
         return pulumi.get(self, "description")
 
@@ -118,15 +108,23 @@ class GetInstallationTemplateResult:
     @pulumi.getter
     def distribution(self) -> str:
         """
-        the distribution this template is based on.
+        Distribution this template is based on.
         """
         return pulumi.get(self, "distribution")
+
+    @property
+    @pulumi.getter(name="endOfInstall")
+    def end_of_install(self) -> str:
+        """
+        End of install date of the template.
+        """
+        return pulumi.get(self, "end_of_install")
 
     @property
     @pulumi.getter
     def family(self) -> str:
         """
-        this template family type (bsd,linux,solaris,windows).
+        Template family type (bsd,linux,solaris,windows).
         """
         return pulumi.get(self, "family")
 
@@ -134,7 +132,7 @@ class GetInstallationTemplateResult:
     @pulumi.getter
     def filesystems(self) -> Sequence[str]:
         """
-        Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+        Filesystems available.
         """
         return pulumi.get(self, "filesystems")
 
@@ -142,8 +140,11 @@ class GetInstallationTemplateResult:
     @pulumi.getter(name="hardRaidConfiguration")
     def hard_raid_configuration(self) -> bool:
         """
-        This distribution supports hardware raid configuration through the OVHcloud API.
+        Distribution supports hardware raid configuration through the OVHcloud API.
         """
+        warnings.warn("""This will be deprecated in the next release""", DeprecationWarning)
+        pulumi.log.warn("""hard_raid_configuration is deprecated: This will be deprecated in the next release""")
+
         return pulumi.get(self, "hard_raid_configuration")
 
     @property
@@ -155,14 +156,49 @@ class GetInstallationTemplateResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter
+    def inputs(self) -> Sequence['outputs.GetInstallationTemplateInputResult']:
+        """
+        Represents the questions of the expected answers in the userMetadata field.
+        """
+        return pulumi.get(self, "inputs")
+
+    @property
     @pulumi.getter(name="lvmReady")
     def lvm_ready(self) -> bool:
+        """
+        Whether this template supports LVM.
+        """
         return pulumi.get(self, "lvm_ready")
+
+    @property
+    @pulumi.getter(name="noPartitioning")
+    def no_partitioning(self) -> bool:
+        """
+        Partitioning customization is not available for this OS template.
+        """
+        return pulumi.get(self, "no_partitioning")
 
     @property
     @pulumi.getter(name="partitionSchemes")
     def partition_schemes(self) -> Sequence['outputs.GetInstallationTemplatePartitionSchemeResult']:
         return pulumi.get(self, "partition_schemes")
+
+    @property
+    @pulumi.getter(name="softRaidOnlyMirroring")
+    def soft_raid_only_mirroring(self) -> bool:
+        """
+        Template supports RAID0 and RAID1 on 2 disks.
+        """
+        return pulumi.get(self, "soft_raid_only_mirroring")
+
+    @property
+    @pulumi.getter
+    def subfamily(self) -> str:
+        """
+        Subfamily of the template.
+        """
+        return pulumi.get(self, "subfamily")
 
     @property
     @pulumi.getter(name="templateName")
@@ -176,19 +212,22 @@ class AwaitableGetInstallationTemplateResult(GetInstallationTemplateResult):
         if False:
             yield self
         return GetInstallationTemplateResult(
-            available_languages=self.available_languages,
             bit_format=self.bit_format,
             category=self.category,
             customizations=self.customizations,
-            default_language=self.default_language,
             description=self.description,
             distribution=self.distribution,
+            end_of_install=self.end_of_install,
             family=self.family,
             filesystems=self.filesystems,
             hard_raid_configuration=self.hard_raid_configuration,
             id=self.id,
+            inputs=self.inputs,
             lvm_ready=self.lvm_ready,
+            no_partitioning=self.no_partitioning,
             partition_schemes=self.partition_schemes,
+            soft_raid_only_mirroring=self.soft_raid_only_mirroring,
+            subfamily=self.subfamily,
             template_name=self.template_name)
 
 
@@ -199,17 +238,15 @@ def get_installation_template(template_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     mytemplate = ovh.Me.get_installation_template(template_name="mytemplate")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str template_name: This template name
+    :param str template_name: Template name.
     """
     __args__ = dict()
     __args__['templateName'] = template_name
@@ -217,19 +254,22 @@ def get_installation_template(template_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('ovh:Me/getInstallationTemplate:getInstallationTemplate', __args__, opts=opts, typ=GetInstallationTemplateResult).value
 
     return AwaitableGetInstallationTemplateResult(
-        available_languages=pulumi.get(__ret__, 'available_languages'),
         bit_format=pulumi.get(__ret__, 'bit_format'),
         category=pulumi.get(__ret__, 'category'),
         customizations=pulumi.get(__ret__, 'customizations'),
-        default_language=pulumi.get(__ret__, 'default_language'),
         description=pulumi.get(__ret__, 'description'),
         distribution=pulumi.get(__ret__, 'distribution'),
+        end_of_install=pulumi.get(__ret__, 'end_of_install'),
         family=pulumi.get(__ret__, 'family'),
         filesystems=pulumi.get(__ret__, 'filesystems'),
         hard_raid_configuration=pulumi.get(__ret__, 'hard_raid_configuration'),
         id=pulumi.get(__ret__, 'id'),
+        inputs=pulumi.get(__ret__, 'inputs'),
         lvm_ready=pulumi.get(__ret__, 'lvm_ready'),
+        no_partitioning=pulumi.get(__ret__, 'no_partitioning'),
         partition_schemes=pulumi.get(__ret__, 'partition_schemes'),
+        soft_raid_only_mirroring=pulumi.get(__ret__, 'soft_raid_only_mirroring'),
+        subfamily=pulumi.get(__ret__, 'subfamily'),
         template_name=pulumi.get(__ret__, 'template_name'))
 
 
@@ -241,16 +281,14 @@ def get_installation_template_output(template_name: Optional[pulumi.Input[str]] 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     mytemplate = ovh.Me.get_installation_template(template_name="mytemplate")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str template_name: This template name
+    :param str template_name: Template name.
     """
     ...

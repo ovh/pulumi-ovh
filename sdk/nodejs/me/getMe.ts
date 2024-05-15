@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myaccount = ovh.Me.getMe({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMe(opts?: pulumi.InvokeOptions): Promise<GetMeResult> {
 
@@ -158,14 +156,12 @@ export interface GetMeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myaccount = ovh.Me.getMe({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetMeResult> {
     return pulumi.output(getMe(opts))

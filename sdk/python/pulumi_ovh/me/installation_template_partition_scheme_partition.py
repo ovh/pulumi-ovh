@@ -396,7 +396,6 @@ class InstallationTemplatePartitionSchemePartition(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -416,7 +415,6 @@ class InstallationTemplatePartitionSchemePartition(pulumi.CustomResource):
             order=1,
             type="primary")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -468,7 +466,6 @@ class InstallationTemplatePartitionSchemePartition(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -488,7 +485,6 @@ class InstallationTemplatePartitionSchemePartition(pulumi.CustomResource):
             order=1,
             type="primary")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIdentityGroupResult> InvokeAsync(GetIdentityGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIdentityGroupResult>("ovh:Me/getIdentityGroup:getIdentityGroup", args ?? new GetIdentityGroupArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIdentityGroupResult> Invoke(GetIdentityGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityGroupResult>("ovh:Me/getIdentityGroup:getIdentityGroup", args ?? new GetIdentityGroupInvokeArgs(), options.WithDefaults());
@@ -98,6 +94,10 @@ namespace Pulumi.Ovh.Me
     public sealed class GetIdentityGroupResult
     {
         /// <summary>
+        /// Identity URN of the group.
+        /// </summary>
+        public readonly string GroupURN;
+        /// <summary>
         /// Creation date of this group.
         /// </summary>
         public readonly string Creation;
@@ -125,6 +125,8 @@ namespace Pulumi.Ovh.Me
 
         [OutputConstructor]
         private GetIdentityGroupResult(
+            string GroupURN,
+
             string creation,
 
             bool defaultGroup,
@@ -139,6 +141,7 @@ namespace Pulumi.Ovh.Me
 
             string role)
         {
+            this.GroupURN = GroupURN;
             Creation = creation;
             DefaultGroup = defaultGroup;
             Description = description;

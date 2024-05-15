@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     name: "mysite.ovh",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getZone(args: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
 
@@ -73,7 +71,6 @@ export interface GetZoneResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -82,7 +79,6 @@ export interface GetZoneResult {
  *     name: "mysite.ovh",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
     return pulumi.output(args).apply((a: any) => getZone(a, opts))

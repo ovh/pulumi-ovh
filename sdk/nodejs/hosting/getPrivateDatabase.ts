@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPrivateDatabase(args: GetPrivateDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseResult> {
 
@@ -126,7 +124,6 @@ export interface GetPrivateDatabaseResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -135,7 +132,6 @@ export interface GetPrivateDatabaseResult {
  *     serviceName: "XXXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPrivateDatabaseOutput(args: GetPrivateDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseResult> {
     return pulumi.output(args).apply((a: any) => getPrivateDatabase(a, opts))

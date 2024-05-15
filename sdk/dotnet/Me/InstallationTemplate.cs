@@ -26,12 +26,6 @@ namespace Pulumi.Ovh.Me
     public partial class InstallationTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Deprecated.
-        /// </summary>
-        [Output("availableLanguages")]
-        public Output<ImmutableArray<string>> AvailableLanguages { get; private set; } = null!;
-
-        /// <summary>
         /// The name of an existing installation template, choose one among the list given by `ovh.getInstallationTemplates` datasource.
         /// </summary>
         [Output("baseTemplateName")]
@@ -53,12 +47,6 @@ namespace Pulumi.Ovh.Me
         public Output<Outputs.InstallationTemplateCustomization?> Customization { get; private set; } = null!;
 
         /// <summary>
-        /// Deprecated, use language in userMetadata instead.
-        /// </summary>
-        [Output("defaultLanguage")]
-        public Output<string?> DefaultLanguage { get; private set; } = null!;
-
-        /// <summary>
         /// information about this template.
         /// </summary>
         [Output("description")]
@@ -71,34 +59,61 @@ namespace Pulumi.Ovh.Me
         public Output<string> Distribution { get; private set; } = null!;
 
         /// <summary>
-        /// this template family type (bsd,linux,solaris,windows).
+        /// after this date, install of this template will not be possible at OVH
+        /// </summary>
+        [Output("endOfInstall")]
+        public Output<string> EndOfInstall { get; private set; } = null!;
+
+        /// <summary>
+        /// this template family type.
         /// </summary>
         [Output("family")]
         public Output<string> Family { get; private set; } = null!;
 
         /// <summary>
-        /// Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+        /// Filesystems available.
         /// </summary>
         [Output("filesystems")]
         public Output<ImmutableArray<string>> Filesystems { get; private set; } = null!;
 
         /// <summary>
-        /// This distribution supports hardware raid configuration through the OVHcloud API.
+        /// This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
         /// </summary>
         [Output("hardRaidConfiguration")]
         public Output<bool> HardRaidConfiguration { get; private set; } = null!;
 
+        [Output("inputs")]
+        public Output<ImmutableArray<Outputs.InstallationTemplateInput>> Inputs { get; private set; } = null!;
+
         /// <summary>
-        /// This distribution supports Logical Volumes (Linux LVM)
+        /// Whether this distribution supports Logical Volumes (Linux LVM)
         /// </summary>
         [Output("lvmReady")]
         public Output<bool> LvmReady { get; private set; } = null!;
+
+        /// <summary>
+        /// Partitioning customization is not available for this OS template
+        /// </summary>
+        [Output("noPartitioning")]
+        public Output<bool> NoPartitioning { get; private set; } = null!;
 
         /// <summary>
         /// Remove default partition schemes at creation.
         /// </summary>
         [Output("removeDefaultPartitionSchemes")]
         public Output<bool> RemoveDefaultPartitionSchemes { get; private set; } = null!;
+
+        /// <summary>
+        /// Partitioning customization is available but limited to mirroring for this OS template
+        /// </summary>
+        [Output("softRaidOnlyMirroring")]
+        public Output<bool> SoftRaidOnlyMirroring { get; private set; } = null!;
+
+        /// <summary>
+        /// this template subfamily type
+        /// </summary>
+        [Output("subfamily")]
+        public Output<string> Subfamily { get; private set; } = null!;
 
         /// <summary>
         /// This template name.
@@ -163,12 +178,6 @@ namespace Pulumi.Ovh.Me
         public Input<Inputs.InstallationTemplateCustomizationArgs>? Customization { get; set; }
 
         /// <summary>
-        /// Deprecated, use language in userMetadata instead.
-        /// </summary>
-        [Input("defaultLanguage")]
-        public Input<string>? DefaultLanguage { get; set; }
-
-        /// <summary>
         /// Remove default partition schemes at creation.
         /// </summary>
         [Input("removeDefaultPartitionSchemes")]
@@ -188,18 +197,6 @@ namespace Pulumi.Ovh.Me
 
     public sealed class InstallationTemplateState : global::Pulumi.ResourceArgs
     {
-        [Input("availableLanguages")]
-        private InputList<string>? _availableLanguages;
-
-        /// <summary>
-        /// Deprecated.
-        /// </summary>
-        public InputList<string> AvailableLanguages
-        {
-            get => _availableLanguages ?? (_availableLanguages = new InputList<string>());
-            set => _availableLanguages = value;
-        }
-
         /// <summary>
         /// The name of an existing installation template, choose one among the list given by `ovh.getInstallationTemplates` datasource.
         /// </summary>
@@ -222,12 +219,6 @@ namespace Pulumi.Ovh.Me
         public Input<Inputs.InstallationTemplateCustomizationGetArgs>? Customization { get; set; }
 
         /// <summary>
-        /// Deprecated, use language in userMetadata instead.
-        /// </summary>
-        [Input("defaultLanguage")]
-        public Input<string>? DefaultLanguage { get; set; }
-
-        /// <summary>
         /// information about this template.
         /// </summary>
         [Input("description")]
@@ -240,7 +231,13 @@ namespace Pulumi.Ovh.Me
         public Input<string>? Distribution { get; set; }
 
         /// <summary>
-        /// this template family type (bsd,linux,solaris,windows).
+        /// after this date, install of this template will not be possible at OVH
+        /// </summary>
+        [Input("endOfInstall")]
+        public Input<string>? EndOfInstall { get; set; }
+
+        /// <summary>
+        /// this template family type.
         /// </summary>
         [Input("family")]
         public Input<string>? Family { get; set; }
@@ -249,7 +246,7 @@ namespace Pulumi.Ovh.Me
         private InputList<string>? _filesystems;
 
         /// <summary>
-        /// Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+        /// Filesystems available.
         /// </summary>
         public InputList<string> Filesystems
         {
@@ -258,22 +255,48 @@ namespace Pulumi.Ovh.Me
         }
 
         /// <summary>
-        /// This distribution supports hardware raid configuration through the OVHcloud API.
+        /// This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
         /// </summary>
         [Input("hardRaidConfiguration")]
         public Input<bool>? HardRaidConfiguration { get; set; }
 
+        [Input("inputs")]
+        private InputList<Inputs.InstallationTemplateInputGetArgs>? _inputs;
+        public InputList<Inputs.InstallationTemplateInputGetArgs> Inputs
+        {
+            get => _inputs ?? (_inputs = new InputList<Inputs.InstallationTemplateInputGetArgs>());
+            set => _inputs = value;
+        }
+
         /// <summary>
-        /// This distribution supports Logical Volumes (Linux LVM)
+        /// Whether this distribution supports Logical Volumes (Linux LVM)
         /// </summary>
         [Input("lvmReady")]
         public Input<bool>? LvmReady { get; set; }
+
+        /// <summary>
+        /// Partitioning customization is not available for this OS template
+        /// </summary>
+        [Input("noPartitioning")]
+        public Input<bool>? NoPartitioning { get; set; }
 
         /// <summary>
         /// Remove default partition schemes at creation.
         /// </summary>
         [Input("removeDefaultPartitionSchemes")]
         public Input<bool>? RemoveDefaultPartitionSchemes { get; set; }
+
+        /// <summary>
+        /// Partitioning customization is available but limited to mirroring for this OS template
+        /// </summary>
+        [Input("softRaidOnlyMirroring")]
+        public Input<bool>? SoftRaidOnlyMirroring { get; set; }
+
+        /// <summary>
+        /// this template subfamily type
+        /// </summary>
+        [Input("subfamily")]
+        public Input<string>? Subfamily { get; set; }
 
         /// <summary>
         /// This template name.

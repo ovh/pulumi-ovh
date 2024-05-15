@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const osuserAcls = osuser.then(osuser => osuser.acls);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOpenSearchUser(args: GetOpenSearchUserArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchUserResult> {
 
@@ -92,7 +90,6 @@ export interface GetOpenSearchUserResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -104,7 +101,6 @@ export interface GetOpenSearchUserResult {
  * });
  * export const osuserAcls = osuser.then(osuser => osuser.acls);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOpenSearchUserOutput(args: GetOpenSearchUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchUserResult> {
     return pulumi.output(args).apply((a: any) => getOpenSearchUser(a, opts))

@@ -171,7 +171,6 @@ class OpensearchPattern(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -185,7 +184,6 @@ class OpensearchPattern(pulumi.CustomResource):
             max_index_count=2,
             pattern="logs_*")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -216,7 +214,6 @@ class OpensearchPattern(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -230,7 +227,6 @@ class OpensearchPattern(pulumi.CustomResource):
             max_index_count=2,
             pattern="logs_*")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

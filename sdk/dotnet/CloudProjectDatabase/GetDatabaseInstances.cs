@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabaseInstancesResult> InvokeAsync(GetDatabaseInstancesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstancesResult>("ovh:CloudProjectDatabase/getDatabaseInstances:getDatabaseInstances", args ?? new GetDatabaseInstancesArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabaseInstancesResult> Invoke(GetDatabaseInstancesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstancesResult>("ovh:CloudProjectDatabase/getDatabaseInstances:getDatabaseInstances", args ?? new GetDatabaseInstancesInvokeArgs(), options.WithDefaults());

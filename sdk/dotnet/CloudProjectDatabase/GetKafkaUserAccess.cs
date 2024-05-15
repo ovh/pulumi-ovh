@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKafkaUserAccessResult> InvokeAsync(GetKafkaUserAccessArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaUserAccessResult>("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", args ?? new GetKafkaUserAccessArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKafkaUserAccessResult> Invoke(GetKafkaUserAccessInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaUserAccessResult>("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", args ?? new GetKafkaUserAccessInvokeArgs(), options.WithDefaults());

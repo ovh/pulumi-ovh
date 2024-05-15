@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     title: "my stream",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLogsOutputGraylogStream(args: GetLogsOutputGraylogStreamArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsOutputGraylogStreamResult> {
 
@@ -145,7 +143,6 @@ export interface GetLogsOutputGraylogStreamResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -155,7 +152,6 @@ export interface GetLogsOutputGraylogStreamResult {
  *     title: "my stream",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLogsOutputGraylogStreamOutput(args: GetLogsOutputGraylogStreamOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsOutputGraylogStreamResult> {
     return pulumi.output(args).apply((a: any) => getLogsOutputGraylogStream(a, opts))

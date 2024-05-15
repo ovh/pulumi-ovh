@@ -300,7 +300,6 @@ class HttpRouteRule(pulumi.CustomResource):
 
         Route which redirect all URL to HTTPs for example.com (Vhost).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -324,11 +323,9 @@ class HttpRouteRule(pulumi.CustomResource):
             route_id=httpsredirect.id,
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         Rule which match a specific header (same effect as the host match above).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -343,7 +340,6 @@ class HttpRouteRule(pulumi.CustomResource):
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             sub_field="Host")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -373,7 +369,6 @@ class HttpRouteRule(pulumi.CustomResource):
 
         Route which redirect all URL to HTTPs for example.com (Vhost).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -397,11 +392,9 @@ class HttpRouteRule(pulumi.CustomResource):
             route_id=httpsredirect.id,
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         Rule which match a specific header (same effect as the host match above).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -416,7 +409,6 @@ class HttpRouteRule(pulumi.CustomResource):
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             sub_field="Host")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

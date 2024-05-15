@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMongoDbUserResult> InvokeAsync(GetMongoDbUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMongoDbUserResult>("ovh:CloudProject/getMongoDbUser:getMongoDbUser", args ?? new GetMongoDbUserArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMongoDbUserResult> Invoke(GetMongoDbUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMongoDbUserResult>("ovh:CloudProject/getMongoDbUser:getMongoDbUser", args ?? new GetMongoDbUserInvokeArgs(), options.WithDefaults());

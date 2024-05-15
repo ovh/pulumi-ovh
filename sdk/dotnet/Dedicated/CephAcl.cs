@@ -14,7 +14,6 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Dedicated/cephAcl:CephAcl")]
     public partial class CephAcl : global::Pulumi.CustomResource

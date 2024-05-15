@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupIdentityGroup(ctx *pulumi.Context, args *LookupIdentityGroupArgs, opts ...pulumi.InvokeOption) (*LookupIdentityGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIdentityGroupResult
@@ -58,6 +56,8 @@ type LookupIdentityGroupArgs struct {
 
 // A collection of values returned by getIdentityGroup.
 type LookupIdentityGroupResult struct {
+	// Identity URN of the group.
+	GroupURN string `pulumi:"GroupURN"`
 	// Creation date of this group.
 	Creation string `pulumi:"creation"`
 	// Is the group a default and immutable one.
@@ -109,6 +109,11 @@ func (o LookupIdentityGroupResultOutput) ToLookupIdentityGroupResultOutput() Loo
 
 func (o LookupIdentityGroupResultOutput) ToLookupIdentityGroupResultOutputWithContext(ctx context.Context) LookupIdentityGroupResultOutput {
 	return o
+}
+
+// Identity URN of the group.
+func (o LookupIdentityGroupResultOutput) GroupURN() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIdentityGroupResult) string { return v.GroupURN }).(pulumi.StringOutput)
 }
 
 // Creation date of this group.

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     user: "my_user_login",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIdentityUser(args: GetIdentityUserArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentityUserResult> {
 
@@ -89,7 +87,6 @@ export interface GetIdentityUserResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -98,7 +95,6 @@ export interface GetIdentityUserResult {
  *     user: "my_user_login",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIdentityUserOutput(args: GetIdentityUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityUserResult> {
     return pulumi.output(args).apply((a: any) => getIdentityUser(a, opts))

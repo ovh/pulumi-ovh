@@ -14,7 +14,6 @@ import (
 
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -82,7 +81,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
@@ -260,6 +258,8 @@ func (LoadBalancerState) ElementType() reflect.Type {
 type loadBalancerArgs struct {
 	// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
 	DisplayName *string `pulumi:"displayName"`
+	// Details about an Order
+	Orders []LoadBalancerOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
@@ -278,6 +278,8 @@ type loadBalancerArgs struct {
 type LoadBalancerArgs struct {
 	// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
 	DisplayName pulumi.StringPtrInput
+	// Details about an Order
+	Orders LoadBalancerOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode

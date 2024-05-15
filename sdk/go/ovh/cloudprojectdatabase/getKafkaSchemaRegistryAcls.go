@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetKafkaSchemaRegistryAcls(ctx *pulumi.Context, args *GetKafkaSchemaRegistryAclsArgs, opts ...pulumi.InvokeOption) (*GetKafkaSchemaRegistryAclsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKafkaSchemaRegistryAclsResult

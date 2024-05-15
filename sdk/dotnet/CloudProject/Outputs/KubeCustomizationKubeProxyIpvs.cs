@@ -13,29 +13,11 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class KubeCustomizationKubeProxyIpvs
     {
-        /// <summary>
-        /// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
-        /// </summary>
         public readonly string? MinSyncPeriod;
-        /// <summary>
-        /// IPVS scheduler.
-        /// </summary>
         public readonly string? Scheduler;
-        /// <summary>
-        /// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-        /// </summary>
         public readonly string? SyncPeriod;
-        /// <summary>
-        /// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        /// </summary>
         public readonly string? TcpFinTimeout;
-        /// <summary>
-        /// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        /// </summary>
         public readonly string? TcpTimeout;
-        /// <summary>
-        /// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        /// </summary>
         public readonly string? UdpTimeout;
 
         [OutputConstructor]

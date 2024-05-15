@@ -468,6 +468,82 @@
                 "region"
             ]
         },
+        "ovh:CloudProject/GatewayExternalInformation:GatewayExternalInformation": {
+            "properties": {
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:CloudProject/GatewayExternalInformationIp:GatewayExternalInformationIp"
+                    },
+                    "description": "List of external ips of the gateway.\n"
+                },
+                "networkId": {
+                    "type": "string",
+                    "description": "ID of the private network.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ips",
+                        "networkId"
+                    ]
+                }
+            }
+        },
+        "ovh:CloudProject/GatewayExternalInformationIp:GatewayExternalInformationIp": {
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "description": "IP of the interface.\n"
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "ID of the subnet.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ip",
+                        "subnetId"
+                    ]
+                }
+            }
+        },
+        "ovh:CloudProject/GatewayInterface:GatewayInterface": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of the interface.\n"
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "IP of the interface.\n"
+                },
+                "networkId": {
+                    "type": "string",
+                    "description": "ID of the private network.\n"
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "ID of the subnet.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "ip",
+                        "networkId",
+                        "subnetId"
+                    ]
+                }
+            }
+        },
         "ovh:CloudProject/KubeCustomization:KubeCustomization": {
             "properties": {
                 "apiservers": {
@@ -513,15 +589,13 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.\n"
+                    }
                 },
                 "enableds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "Array of admission plugins enabled, default is [\"NodeRestriction\",\"AlwaysPulImages\"] and only these admission plugins can be enabled at this time.\n"
+                    }
                 }
             },
             "type": "object",
@@ -550,12 +624,10 @@
         "ovh:CloudProject/KubeCustomizationKubeProxyIptables:KubeCustomizationKubeProxyIptables": {
             "properties": {
                 "minSyncPeriod": {
-                    "type": "string",
-                    "description": "Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).\n"
+                    "type": "string"
                 },
                 "syncPeriod": {
-                    "type": "string",
-                    "description": "Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -563,28 +635,22 @@
         "ovh:CloudProject/KubeCustomizationKubeProxyIpvs:KubeCustomizationKubeProxyIpvs": {
             "properties": {
                 "minSyncPeriod": {
-                    "type": "string",
-                    "description": "Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).\n"
+                    "type": "string"
                 },
                 "scheduler": {
-                    "type": "string",
-                    "description": "IPVS scheduler.\n"
+                    "type": "string"
                 },
                 "syncPeriod": {
-                    "type": "string",
-                    "description": "Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).\n"
+                    "type": "string"
                 },
                 "tcpFinTimeout": {
-                    "type": "string",
-                    "description": "Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.\n"
+                    "type": "string"
                 },
                 "tcpTimeout": {
-                    "type": "string",
-                    "description": "Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.\n"
+                    "type": "string"
                 },
                 "udpTimeout": {
-                    "type": "string",
-                    "description": "timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -627,11 +693,11 @@
             "properties": {
                 "metadata": {
                     "$ref": "#/types/ovh:CloudProject/KubeNodePoolTemplateMetadata:KubeNodePoolTemplateMetadata",
-                    "description": "Metadata of each node in the pool\n"
+                    "description": "metadata\n"
                 },
                 "spec": {
                     "$ref": "#/types/ovh:CloudProject/KubeNodePoolTemplateSpec:KubeNodePoolTemplateSpec",
-                    "description": "Spec of each node in the pool\n"
+                    "description": "spec\n"
                 }
             },
             "type": "object",
@@ -647,21 +713,21 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Annotations to apply to each node\n"
+                    "description": "annotations\n"
                 },
                 "finalizers": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.\n"
+                    "description": "finalizers\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Labels to apply to each node\n"
+                    "description": "labels\n"
                 }
             },
             "type": "object",
@@ -681,11 +747,11 @@
                             "$ref": "pulumi.json#/Any"
                         }
                     },
-                    "description": "Taints to apply to each node [NodeSpec kubernetes documentation](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)\n"
+                    "description": "taints\n"
                 },
                 "unschedulable": {
                     "type": "boolean",
-                    "description": "If true, set nodes as un-schedulable\n"
+                    "description": "unschedulable\n"
                 }
             },
             "type": "object",
@@ -881,7 +947,7 @@
                 },
                 "planCode": {
                     "type": "string",
-                    "description": "Plan code\n"
+                    "description": "Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.\n"
                 },
                 "pricingMode": {
                     "type": "string",
@@ -1990,11 +2056,11 @@
             "properties": {
                 "logFormat": {
                     "type": "string",
-                    "description": "Type of format to decode. One of \"RFC5424\", \"LTSV\", \"GELF\", \"CAPNP\"\n"
+                    "description": "Type of format to decode\n"
                 },
                 "logFraming": {
                     "type": "string",
-                    "description": "Indicates how messages are delimited. One of \"LINE\", \"NUL\", \"SYSLEN\", \"CAPNP\"\n"
+                    "description": "Indicates how messages are delimited\n"
                 }
             },
             "type": "object",
@@ -2035,12 +2101,6 @@
                     "description": "Disk group id.\n",
                     "willReplaceOnChanges": true
                 },
-                "language": {
-                    "type": "string",
-                    "description": "Deprecated, will be removed in next release.\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in a future release",
-                    "willReplaceOnChanges": true
-                },
                 "noRaid": {
                     "type": "boolean",
                     "description": "Set to true to disable RAID.\n",
@@ -2059,12 +2119,6 @@
                 "softRaidDevices": {
                     "type": "integer",
                     "description": "soft raid devices.\n",
-                    "willReplaceOnChanges": true
-                },
-                "useSpla": {
-                    "type": "boolean",
-                    "description": "Deprecated, will be removed in next release.\n\nThe `user_metadata` block supports many arguments, here is a non-exhaustive list depending on the OS:\n\n-[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view\u0026sysparm_article=KB0061951#os-questions)\n\n-[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate\u0026branch=v1#get-/dedicated/installationTemplate/-templateName-)\n\n-[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view\u0026sysparm_article=KB0061950#create-an-os-installation-task) to get more information\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in a future release",
                     "willReplaceOnChanges": true
                 }
             },
@@ -2835,7 +2889,7 @@
                     "items": {
                         "$ref": "#/types/ovh:Domain/ZonePlanConfiguration:ZonePlanConfiguration"
                     },
-                    "description": "Representation of a configuration item for personalizing product\n"
+                    "description": "Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`\n"
                 },
                 "duration": {
                     "type": "string",
@@ -3030,7 +3084,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Path to the resource in API.OVH.COM\n\nPlan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)\n"
+                    "description": "Path to the resource in API.OVH.COM\n"
                 }
             },
             "type": "object",
@@ -3054,11 +3108,11 @@
                 },
                 "duration": {
                     "type": "string",
-                    "description": "duration.\n"
+                    "description": "Service duration\n"
                 },
                 "planCode": {
                     "type": "string",
-                    "description": "Plan code.\n"
+                    "description": "Plan code\n"
                 },
                 "pricingMode": {
                     "type": "string",
@@ -3080,7 +3134,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Path to the resource in API.OVH.COM\n\nPlan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)\n"
+                    "description": "Path to the resource in API.OVH.COM\n"
                 }
             },
             "type": "object",
@@ -3568,7 +3622,7 @@
                 },
                 "planCode": {
                     "type": "string",
-                    "description": "Plan code\n"
+                    "description": "The billing planCode for this zone\n"
                 }
             },
             "type": "object",
@@ -3825,14 +3879,48 @@
                 "postInstallationScriptReturn": {
                     "type": "string",
                     "description": "indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.\n"
-                },
-                "sshKeyName": {
-                    "type": "string",
-                    "description": "Deprecated.\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 }
             },
             "type": "object"
+        },
+        "ovh:Me/InstallationTemplateInput:InstallationTemplateInput": {
+            "properties": {
+                "default": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "information about this template.\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "mandatory": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "default",
+                        "description",
+                        "enums",
+                        "mandatory",
+                        "name",
+                        "type"
+                    ]
+                }
+            }
         },
         "ovh:Me/getInstallationTemplateCustomization:getInstallationTemplateCustomization": {
             "properties": {
@@ -3846,20 +3934,56 @@
                 },
                 "postInstallationScriptReturn": {
                     "type": "string",
-                    "description": "indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.\n"
-                },
-                "sshKeyName": {
-                    "type": "string",
-                    "description": "Name of the ssh key that should be installed. Password login will be disabled. Deprecated, will be removed in next release, use userMetada instead.\n",
-                    "deprecationMessage": "This field will be removed from the API, please use `userMetadata` instead."
+                    "description": "Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.\n"
                 }
             },
             "type": "object",
             "required": [
                 "customHostname",
                 "postInstallationScriptLink",
-                "postInstallationScriptReturn",
-                "sshKeyName"
+                "postInstallationScriptReturn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:Me/getInstallationTemplateInput:getInstallationTemplateInput": {
+            "properties": {
+                "default": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Information about this template.\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "mandatory": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Hardware RAID name.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Partition type.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "default",
+                "description",
+                "enums",
+                "mandatory",
+                "name",
+                "type"
             ],
             "language": {
                 "nodejs": {
@@ -3887,7 +4011,7 @@
                 },
                 "priority": {
                     "type": "integer",
-                    "description": "on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).\n"
+                    "description": "On a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).\n"
                 }
             },
             "type": "object",
@@ -3946,27 +4070,27 @@
                 },
                 "mountpoint": {
                     "type": "string",
-                    "description": "partition mount point.\n"
+                    "description": "Partition mount point.\n"
                 },
                 "order": {
                     "type": "integer",
-                    "description": "step or order. specifies the creation order of the partition on the disk\n"
+                    "description": "Step or order. Specifies the creation order of the partition on the disk.\n"
                 },
                 "raid": {
                     "type": "string",
-                    "description": "raid partition type.\n"
+                    "description": "Raid partition type.\n"
                 },
                 "size": {
                     "type": "integer",
-                    "description": "size of partition in MB, 0 =\u003e rest of the space.\n"
+                    "description": "Size of partition in MB, 0 =\u003e rest of the space.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "partition type.\n"
+                    "description": "Partition type.\n"
                 },
                 "volumeName": {
                     "type": "string",
-                    "description": "The volume name needed for proxmox distribution\n"
+                    "description": "Volume name needed for proxmox distribution.\n"
                 }
             },
             "type": "object",
@@ -4931,11 +5055,11 @@
             "properties": {
                 "label": {
                     "type": "string",
-                    "description": "Identifier of the resource\n"
+                    "description": "Label for your configuration item\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "Path to the resource in api.ovh.com\n"
+                    "description": "Value or resource URL on API.OVH.COM of your configuration item\n"
                 }
             },
             "type": "object",
@@ -4999,11 +5123,11 @@
             "properties": {
                 "label": {
                     "type": "string",
-                    "description": "Identifier of the resource\n"
+                    "description": "Label for your configuration item\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "Path to the resource in api.ovh.com\n"
+                    "description": "Value or resource URL on API.OVH.COM of your configuration item\n"
                 }
             },
             "type": "object",
@@ -5176,6 +5300,225 @@
                 "label",
                 "value"
             ]
+        },
+        "ovh:index/getInstallationTemplateInput:getInstallationTemplateInput": {
+            "properties": {
+                "default": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Information about this template.\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "mandatory": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "default",
+                "description",
+                "enums",
+                "mandatory",
+                "name",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getInstallationTemplateLicense:getInstallationTemplateLicense": {
+            "properties": {
+                "os": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getInstallationTemplateLicenseO:getInstallationTemplateLicenseO"
+                    }
+                },
+                "usages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getInstallationTemplateLicenseUsage:getInstallationTemplateLicenseUsage"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "os",
+                "usages"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getInstallationTemplateLicenseO:getInstallationTemplateLicenseO": {
+            "properties": {
+                "names": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "names",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getInstallationTemplateLicenseUsage:getInstallationTemplateLicenseUsage": {
+            "properties": {
+                "names": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "names",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getInstallationTemplateProject:getInstallationTemplateProject": {
+            "properties": {
+                "os": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getInstallationTemplateProjectO:getInstallationTemplateProjectO"
+                    },
+                    "description": "OS template project OS details\n"
+                },
+                "usages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getInstallationTemplateProjectUsage:getInstallationTemplateProjectUsage"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "os",
+                "usages"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getInstallationTemplateProjectO:getInstallationTemplateProjectO": {
+            "properties": {
+                "governances": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "OS template project item governance\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "OS template project item name\n"
+                },
+                "releaseNotes": {
+                    "type": "string",
+                    "description": "OS template project item release notes\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "OS template project item url\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "OS template project item version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "governances",
+                "name",
+                "releaseNotes",
+                "url",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getInstallationTemplateProjectUsage:getInstallationTemplateProjectUsage": {
+            "properties": {
+                "governances": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "OS template project item governance\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "OS template project item name\n"
+                },
+                "releaseNotes": {
+                    "type": "string",
+                    "description": "OS template project item release notes\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "OS template project item url\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "OS template project item version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "governances",
+                "name",
+                "releaseNotes",
+                "url",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "ovh:index/getServerVni:getServerVni": {
             "properties": {
@@ -6032,7 +6375,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Description of the IP restriction\n"
+                    "description": "Small description of the database service.\n"
                 },
                 "diskSize": {
                     "type": "integer",
@@ -6147,7 +6490,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Description of the IP restriction\n"
+                    "description": "Small description of the database service.\n"
                 },
                 "diskSize": {
                     "type": "integer",
@@ -6237,7 +6580,7 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "Description of the IP restriction\n"
+                        "description": "Small description of the database service.\n"
                     },
                     "diskSize": {
                         "type": "integer",
@@ -6446,38 +6789,54 @@
             }
         },
         "ovh:CloudProject/gateway:Gateway": {
-            "description": "Create a new Gateway for existing subnet in the specified public cloud project.\n\n",
+            "description": "Create a new Gateway for existing subnet in the specified public cloud project.\n\n## Import\n\nA gateway can be imported using the `service_name`, `region` and `id` (identifier of the gateway) properties, separated by a `/`.\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/gateway:Gateway gateway service_name/region/id\n```\n\n",
             "properties": {
+                "externalInformations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:CloudProject/GatewayExternalInformation:GatewayExternalInformation"
+                    },
+                    "description": "List of External Information of the gateway.\n"
+                },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:CloudProject/GatewayInterface:GatewayInterface"
+                    },
+                    "description": "Interfaces list of the gateway.\n"
+                },
                 "model": {
                     "type": "string",
-                    "description": "The model of the gateway.\n"
+                    "description": "Model of the gateway.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the gateway.\n"
+                    "description": "Name of the gateway.\n"
                 },
                 "networkId": {
                     "type": "string",
-                    "description": "The ID of the private network.\n"
+                    "description": "ID of the private network.\n"
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region of the gateway.\n"
+                    "description": "Region of the gateway.\n"
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The ID of the private network.\n"
+                    "description": "ID of the private network.\n"
                 },
                 "status": {
                     "type": "string",
-                    "description": "The status of the gateway.\n"
+                    "description": "Status of the gateway.\n"
                 },
                 "subnetId": {
                     "type": "string",
-                    "description": "The ID of the subnet.\n"
+                    "description": "ID of the subnet.\n"
                 }
             },
             "required": [
+                "externalInformations",
+                "interfaces",
                 "model",
                 "name",
                 "networkId",
@@ -6489,30 +6848,30 @@
             "inputProperties": {
                 "model": {
                     "type": "string",
-                    "description": "The model of the gateway.\n"
+                    "description": "Model of the gateway.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the gateway.\n"
+                    "description": "Name of the gateway.\n"
                 },
                 "networkId": {
                     "type": "string",
-                    "description": "The ID of the private network.\n",
+                    "description": "ID of the private network.\n",
                     "willReplaceOnChanges": true
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region of the gateway.\n",
+                    "description": "Region of the gateway.\n",
                     "willReplaceOnChanges": true
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The ID of the private network.\n",
+                    "description": "ID of the private network.\n",
                     "willReplaceOnChanges": true
                 },
                 "subnetId": {
                     "type": "string",
-                    "description": "The ID of the subnet.\n",
+                    "description": "ID of the subnet.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -6526,36 +6885,50 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Gateway resources.\n",
                 "properties": {
+                    "externalInformations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:CloudProject/GatewayExternalInformation:GatewayExternalInformation"
+                        },
+                        "description": "List of External Information of the gateway.\n"
+                    },
+                    "interfaces": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:CloudProject/GatewayInterface:GatewayInterface"
+                        },
+                        "description": "Interfaces list of the gateway.\n"
+                    },
                     "model": {
                         "type": "string",
-                        "description": "The model of the gateway.\n"
+                        "description": "Model of the gateway.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the gateway.\n"
+                        "description": "Name of the gateway.\n"
                     },
                     "networkId": {
                         "type": "string",
-                        "description": "The ID of the private network.\n",
+                        "description": "ID of the private network.\n",
                         "willReplaceOnChanges": true
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region of the gateway.\n",
+                        "description": "Region of the gateway.\n",
                         "willReplaceOnChanges": true
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The ID of the private network.\n",
+                        "description": "ID of the private network.\n",
                         "willReplaceOnChanges": true
                     },
                     "status": {
                         "type": "string",
-                        "description": "The status of the gateway.\n"
+                        "description": "Status of the gateway.\n"
                     },
                     "subnetId": {
                         "type": "string",
-                        "description": "The ID of the subnet.\n",
+                        "description": "ID of the subnet.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -7457,8 +7830,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "an array of valid OVHcloud public cloud region ID in which the network\nwill be available. Ex.: \"GRA1\". Defaults to all public cloud regions.\n",
-                    "willReplaceOnChanges": true
+                    "description": "an array of valid OVHcloud public cloud region ID in which the network\nwill be available. Ex.: \"GRA1\". Defaults to all public cloud regions.\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -7486,8 +7858,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "an array of valid OVHcloud public cloud region ID in which the network\nwill be available. Ex.: \"GRA1\". Defaults to all public cloud regions.\n",
-                        "willReplaceOnChanges": true
+                        "description": "an array of valid OVHcloud public cloud region ID in which the network\nwill be available. Ex.: \"GRA1\". Defaults to all public cloud regions.\n"
                     },
                     "regionsAttributes": {
                         "type": "array",
@@ -7769,6 +8140,13 @@
                 "description": {
                     "type": "string",
                     "description": "A description associated with the user.\n"
+                },
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:CloudProject/ProjectOrder:ProjectOrder"
+                    },
+                    "description": "Details about the order that was used to create the public cloud project\n"
                 },
                 "ovhSubsidiary": {
                     "type": "string",
@@ -12025,6 +12403,13 @@
                 "ZoneURN"
             ],
             "inputProperties": {
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:Domain/ZoneOrder:ZoneOrder"
+                    },
+                    "description": "Details about an Order\n"
+                },
                 "ovhSubsidiary": {
                     "type": "string",
                     "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
@@ -12494,6 +12879,13 @@
                 "displayName": {
                     "type": "string",
                     "description": "Name displayed in customer panel for your private database\n"
+                },
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:Hosting/PrivateDatabaseOrder:PrivateDatabaseOrder"
+                    },
+                    "description": "Details about your Order\n"
                 },
                 "ovhSubsidiary": {
                     "type": "string",
@@ -13735,6 +14127,13 @@
                     "type": "string",
                     "description": "Custom description on your ip.\n"
                 },
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:Ip/IpServiceOrder:IpServiceOrder"
+                    },
+                    "description": "Details about an Order\n"
+                },
                 "ovhSubsidiary": {
                     "type": "string",
                     "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
@@ -13942,7 +14341,7 @@
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "Name of the service to route the IP to. IP will be parked if this value is an empty string\n"
+                    "description": "Service name in the form of `ip-\u003cpart-1\u003e.\u003cpart-2\u003e.\u003cpart-3\u003e.\u003cpart-4\u003e`\n"
                 },
                 "taskStartDate": {
                     "type": "string",
@@ -14016,7 +14415,7 @@
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "Name of the service to route the IP to. IP will be parked if this value is an empty string\n"
+                        "description": "Service name in the form of `ip-\u003cpart-1\u003e.\u003cpart-2\u003e.\u003cpart-3\u003e.\u003cpart-4\u003e`\n"
                     },
                     "taskStartDate": {
                         "type": "string",
@@ -14112,7 +14511,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "Port for backends to receive traffic on.\n"
+                    "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null\n"
                 },
                 "probe": {
                     "$ref": "#/types/ovh:IpLoadBalancing/HttpFarmProbe:HttpFarmProbe",
@@ -14150,7 +14549,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "Port for backends to receive traffic on.\n"
+                    "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null\n"
                 },
                 "probe": {
                     "$ref": "#/types/ovh:IpLoadBalancing/HttpFarmProbe:HttpFarmProbe",
@@ -14192,7 +14591,7 @@
                     },
                     "port": {
                         "type": "integer",
-                        "description": "Port for backends to receive traffic on.\n"
+                        "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null\n"
                     },
                     "probe": {
                         "$ref": "#/types/ovh:IpLoadBalancing/HttpFarmProbe:HttpFarmProbe",
@@ -14651,7 +15050,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "HTTP status code for \"redirect\" and \"reject\" actions\n"
+                    "description": "Route status. Routes in \"ok\" state are ready to operate\n"
                 },
                 "weight": {
                     "type": "integer",
@@ -14722,7 +15121,7 @@
                     },
                     "status": {
                         "type": "string",
-                        "description": "HTTP status code for \"redirect\" and \"reject\" actions\n"
+                        "description": "Route status. Routes in \"ok\" state are ready to operate\n"
                     },
                     "weight": {
                         "type": "integer",
@@ -14976,6 +15375,13 @@
                     "type": "string",
                     "description": "Set the name displayed in ManagerV6 for your iplb (max 50 chars)\n"
                 },
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:IpLoadBalancing/LoadBalancerOrder:LoadBalancerOrder"
+                    },
+                    "description": "Details about an Order\n"
+                },
                 "ovhSubsidiary": {
                     "type": "string",
                     "description": "OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)\n",
@@ -15181,7 +15587,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "Port for backends to receive traffic on.\n"
+                    "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null\n"
                 },
                 "probe": {
                     "$ref": "#/types/ovh:IpLoadBalancing/TcpFarmProbe:TcpFarmProbe",
@@ -15219,7 +15625,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "Port for backends to receive traffic on.\n"
+                    "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null\n"
                 },
                 "probe": {
                     "$ref": "#/types/ovh:IpLoadBalancing/TcpFarmProbe:TcpFarmProbe",
@@ -15261,7 +15667,7 @@
                     },
                     "port": {
                         "type": "integer",
-                        "description": "Port for backends to receive traffic on.\n"
+                        "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null\n"
                     },
                     "probe": {
                         "$ref": "#/types/ovh:IpLoadBalancing/TcpFarmProbe:TcpFarmProbe",
@@ -16452,13 +16858,6 @@
         "ovh:Me/installationTemplate:InstallationTemplate": {
             "description": "Use this resource to create a custom installation template available for dedicated servers.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.InstallationTemplate;\nimport com.pulumi.ovh.Me.InstallationTemplateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mytemplate = new InstallationTemplate(\"mytemplate\", InstallationTemplateArgs.builder()        \n            .baseTemplateName(\"debian12_64\")\n            .customHostname(\"mytest\")\n            .templateName(\"mytemplate\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mytemplate:\n    type: ovh:Me:InstallationTemplate\n    properties:\n      baseTemplateName: debian12_64\n      customHostname: mytest\n      templateName: mytemplate\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nCustom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name\n```\n\n",
             "properties": {
-                "availableLanguages": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Deprecated.\n"
-                },
                 "baseTemplateName": {
                     "type": "string",
                     "description": "The name of an existing installation template, choose one among the list given by `ovh.getInstallationTemplates` datasource.\n"
@@ -16469,16 +16868,10 @@
                 },
                 "category": {
                     "type": "string",
-                    "description": "Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
+                    "description": "Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).\n"
                 },
                 "customization": {
                     "$ref": "#/types/ovh:Me/InstallationTemplateCustomization:InstallationTemplateCustomization"
-                },
-                "defaultLanguage": {
-                    "type": "string",
-                    "description": "Deprecated, use language in userMetadata instead.\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "description": {
                     "type": "string",
@@ -16488,28 +16881,51 @@
                     "type": "string",
                     "description": "the distribution this template is based on.\n"
                 },
+                "endOfInstall": {
+                    "type": "string",
+                    "description": "after this date, install of this template will not be possible at OVH\n"
+                },
                 "family": {
                     "type": "string",
-                    "description": "this template family type (bsd,linux,solaris,windows).\n"
+                    "description": "this template family type.\n"
                 },
                 "filesystems": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).\n"
+                    "description": "Filesystems available.\n"
                 },
                 "hardRaidConfiguration": {
                     "type": "boolean",
-                    "description": "This distribution supports hardware raid configuration through the OVHcloud API.\n"
+                    "description": "This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.\n",
+                    "deprecationMessage": "This will be deprecated in the next release"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:Me/InstallationTemplateInput:InstallationTemplateInput"
+                    }
                 },
                 "lvmReady": {
                     "type": "boolean",
-                    "description": "This distribution supports Logical Volumes (Linux LVM)\n"
+                    "description": "Whether this distribution supports Logical Volumes (Linux LVM)\n"
+                },
+                "noPartitioning": {
+                    "type": "boolean",
+                    "description": "Partitioning customization is not available for this OS template\n"
                 },
                 "removeDefaultPartitionSchemes": {
                     "type": "boolean",
                     "description": "Remove default partition schemes at creation.\n"
+                },
+                "softRaidOnlyMirroring": {
+                    "type": "boolean",
+                    "description": "Partitioning customization is available but limited to mirroring for this OS template\n"
+                },
+                "subfamily": {
+                    "type": "string",
+                    "description": "this template subfamily type\n"
                 },
                 "templateName": {
                     "type": "string",
@@ -16517,17 +16933,21 @@
                 }
             },
             "required": [
-                "availableLanguages",
                 "baseTemplateName",
                 "bitFormat",
                 "category",
                 "description",
                 "distribution",
+                "endOfInstall",
                 "family",
                 "filesystems",
                 "hardRaidConfiguration",
+                "inputs",
                 "lvmReady",
+                "noPartitioning",
                 "removeDefaultPartitionSchemes",
+                "softRaidOnlyMirroring",
+                "subfamily",
                 "templateName"
             ],
             "inputProperties": {
@@ -16538,12 +16958,6 @@
                 },
                 "customization": {
                     "$ref": "#/types/ovh:Me/InstallationTemplateCustomization:InstallationTemplateCustomization"
-                },
-                "defaultLanguage": {
-                    "type": "string",
-                    "description": "Deprecated, use language in userMetadata instead.\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in a future release.",
-                    "willReplaceOnChanges": true
                 },
                 "removeDefaultPartitionSchemes": {
                     "type": "boolean",
@@ -16561,13 +16975,6 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering InstallationTemplate resources.\n",
                 "properties": {
-                    "availableLanguages": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "Deprecated.\n"
-                    },
                     "baseTemplateName": {
                         "type": "string",
                         "description": "The name of an existing installation template, choose one among the list given by `ovh.getInstallationTemplates` datasource.\n",
@@ -16579,17 +16986,10 @@
                     },
                     "category": {
                         "type": "string",
-                        "description": "Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).\n",
-                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
+                        "description": "Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).\n"
                     },
                     "customization": {
                         "$ref": "#/types/ovh:Me/InstallationTemplateCustomization:InstallationTemplateCustomization"
-                    },
-                    "defaultLanguage": {
-                        "type": "string",
-                        "description": "Deprecated, use language in userMetadata instead.\n",
-                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
-                        "willReplaceOnChanges": true
                     },
                     "description": {
                         "type": "string",
@@ -16599,28 +16999,51 @@
                         "type": "string",
                         "description": "the distribution this template is based on.\n"
                     },
+                    "endOfInstall": {
+                        "type": "string",
+                        "description": "after this date, install of this template will not be possible at OVH\n"
+                    },
                     "family": {
                         "type": "string",
-                        "description": "this template family type (bsd,linux,solaris,windows).\n"
+                        "description": "this template family type.\n"
                     },
                     "filesystems": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).\n"
+                        "description": "Filesystems available.\n"
                     },
                     "hardRaidConfiguration": {
                         "type": "boolean",
-                        "description": "This distribution supports hardware raid configuration through the OVHcloud API.\n"
+                        "description": "This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.\n",
+                        "deprecationMessage": "This will be deprecated in the next release"
+                    },
+                    "inputs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:Me/InstallationTemplateInput:InstallationTemplateInput"
+                        }
                     },
                     "lvmReady": {
                         "type": "boolean",
-                        "description": "This distribution supports Logical Volumes (Linux LVM)\n"
+                        "description": "Whether this distribution supports Logical Volumes (Linux LVM)\n"
+                    },
+                    "noPartitioning": {
+                        "type": "boolean",
+                        "description": "Partitioning customization is not available for this OS template\n"
                     },
                     "removeDefaultPartitionSchemes": {
                         "type": "boolean",
                         "description": "Remove default partition schemes at creation.\n"
+                    },
+                    "softRaidOnlyMirroring": {
+                        "type": "boolean",
+                        "description": "Partitioning customization is available but limited to mirroring for this OS template\n"
+                    },
+                    "subfamily": {
+                        "type": "string",
+                        "description": "this template subfamily type\n"
                     },
                     "templateName": {
                         "type": "string",
@@ -16944,77 +17367,6 @@
                 "type": "object"
             }
         },
-        "ovh:Me/sshKey:SshKey": {
-            "description": "## Example Usage\n\n\u003e __NOTE__ This resource will be removed in next release, please use userMetada instead.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst mykey = new ovh.me.SshKey(\"mykey\", {\n    key: \"ssh-ed25519 AAAAC3...\",\n    keyName: \"mykey\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmykey = ovh.me.SshKey(\"mykey\",\n    key=\"ssh-ed25519 AAAAC3...\",\n    key_name=\"mykey\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mykey = new Ovh.Me.SshKey(\"mykey\", new()\n    {\n        Key = \"ssh-ed25519 AAAAC3...\",\n        KeyName = \"mykey\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Me.NewSshKey(ctx, \"mykey\", \u0026Me.SshKeyArgs{\n\t\t\tKey:     pulumi.String(\"ssh-ed25519 AAAAC3...\"),\n\t\t\tKeyName: pulumi.String(\"mykey\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.SshKey;\nimport com.pulumi.ovh.Me.SshKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mykey = new SshKey(\"mykey\", SshKeyArgs.builder()        \n            .key(\"ssh-ed25519 AAAAC3...\")\n            .keyName(\"mykey\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mykey:\n    type: ovh:Me:SshKey\n    properties:\n      key: ssh-ed25519 AAAAC3...\n      keyName: mykey\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
-            "properties": {
-                "default": {
-                    "type": "boolean",
-                    "description": "True when this public SSH key is used for rescue mode and reinstallations.\n",
-                    "deprecationMessage": "use userMetada instead"
-                },
-                "key": {
-                    "type": "string",
-                    "description": "The content of the public key in the form \"ssh-algo content\", e.g. \"ssh-ed25519 AAAAC3...\".\n",
-                    "deprecationMessage": "use userMetada instead"
-                },
-                "keyName": {
-                    "type": "string",
-                    "description": "The friendly name of this SSH key.\n",
-                    "deprecationMessage": "use userMetada instead"
-                }
-            },
-            "required": [
-                "default",
-                "key",
-                "keyName"
-            ],
-            "inputProperties": {
-                "default": {
-                    "type": "boolean",
-                    "description": "True when this public SSH key is used for rescue mode and reinstallations.\n",
-                    "deprecationMessage": "use userMetada instead"
-                },
-                "key": {
-                    "type": "string",
-                    "description": "The content of the public key in the form \"ssh-algo content\", e.g. \"ssh-ed25519 AAAAC3...\".\n",
-                    "deprecationMessage": "use userMetada instead",
-                    "willReplaceOnChanges": true
-                },
-                "keyName": {
-                    "type": "string",
-                    "description": "The friendly name of this SSH key.\n",
-                    "deprecationMessage": "use userMetada instead",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "requiredInputs": [
-                "key",
-                "keyName"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering SshKey resources.\n",
-                "properties": {
-                    "default": {
-                        "type": "boolean",
-                        "description": "True when this public SSH key is used for rescue mode and reinstallations.\n",
-                        "deprecationMessage": "use userMetada instead"
-                    },
-                    "key": {
-                        "type": "string",
-                        "description": "The content of the public key in the form \"ssh-algo content\", e.g. \"ssh-ed25519 AAAAC3...\".\n",
-                        "deprecationMessage": "use userMetada instead",
-                        "willReplaceOnChanges": true
-                    },
-                    "keyName": {
-                        "type": "string",
-                        "description": "The friendly name of this SSH key.\n",
-                        "deprecationMessage": "use userMetada instead",
-                        "willReplaceOnChanges": true
-                    }
-                },
-                "type": "object"
-            }
-        },
         "ovh:Vps/vps:Vps": {
             "description": "## Example Usage\n\n",
             "properties": {
@@ -17289,7 +17641,7 @@
             }
         },
         "ovh:Vrack/cloudProject:CloudProject": {
-            "description": "Attach a Public Cloud Project to a VRack.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst vcp = new ovh.vrack.CloudProject(\"vcp\", {\n    projectId: \"67890\",\n    serviceName: \"12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nvcp = ovh.vrack.CloudProject(\"vcp\",\n    project_id=\"67890\",\n    service_name=\"12345\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vcp = new Ovh.Vrack.CloudProject(\"vcp\", new()\n    {\n        ProjectId = \"67890\",\n        ServiceName = \"12345\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Vrack.NewCloudProject(ctx, \"vcp\", \u0026Vrack.CloudProjectArgs{\n\t\t\tProjectId:   pulumi.String(\"67890\"),\n\t\t\tServiceName: pulumi.String(\"12345\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Vrack.CloudProject;\nimport com.pulumi.ovh.Vrack.CloudProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vcp = new CloudProject(\"vcp\", CloudProjectArgs.builder()        \n            .projectId(\"67890\")\n            .serviceName(\"12345\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vcp:\n    type: ovh:Vrack:CloudProject\n    properties:\n      projectId: '67890'\n      serviceName: '12345'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAttachment of a public cloud project and a VRack can be imported using the `project_id`, the `service_name` (vRackID) and the `attach_id`, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:Vrack/cloudProject:CloudProject myattach ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/vrack_pn-12345678-cloudproject_ookie9mee8Shaeghaeleeju7Xeghohv6e-attach\n```\n\n",
+            "description": "Attach a Public Cloud Project to a VRack.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst vcp = new ovh.vrack.CloudProject(\"vcp\", {\n    projectId: \"67890\",\n    serviceName: \"12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nvcp = ovh.vrack.CloudProject(\"vcp\",\n    project_id=\"67890\",\n    service_name=\"12345\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vcp = new Ovh.Vrack.CloudProject(\"vcp\", new()\n    {\n        ProjectId = \"67890\",\n        ServiceName = \"12345\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Vrack.NewCloudProject(ctx, \"vcp\", \u0026Vrack.CloudProjectArgs{\n\t\t\tProjectId:   pulumi.String(\"67890\"),\n\t\t\tServiceName: pulumi.String(\"12345\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Vrack.CloudProject;\nimport com.pulumi.ovh.Vrack.CloudProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vcp = new CloudProject(\"vcp\", CloudProjectArgs.builder()        \n            .projectId(\"67890\")\n            .serviceName(\"12345\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vcp:\n    type: ovh:Vrack:CloudProject\n    properties:\n      projectId: '67890'\n      serviceName: '12345'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAttachment of a public cloud project and a VRack can be imported using the `service_name` (vRack identifier) and the `project_id` (Cloud Project identifier), separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:Vrack/cloudProject:CloudProject myattach service_name/project_id\n```\n\n",
             "properties": {
                 "projectId": {
                     "type": "string",
@@ -17561,7 +17913,7 @@
             }
         },
         "ovh:Vrack/vrack:Vrack": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst myaccount = ovh.Me.getMe({});\nconst mycart = myaccount.then(myaccount =\u003e ovh.Order.getCart({\n    ovhSubsidiary: myaccount.ovhSubsidiary,\n}));\nconst vrackCartProductPlan = mycart.then(mycart =\u003e ovh.Order.getCartProductPlan({\n    cartId: mycart.id,\n    priceCapacity: \"renew\",\n    product: \"vrack\",\n    planCode: \"vrack\",\n}));\nconst vrackVrack = new ovh.vrack.Vrack(\"vrackVrack\", {\n    ovhSubsidiary: mycart.then(mycart =\u003e mycart.ovhSubsidiary),\n    description: \"my vrack\",\n    plan: {\n        duration: vrackCartProductPlan.then(vrackCartProductPlan =\u003e vrackCartProductPlan.selectedPrices?.[0]?.duration),\n        planCode: vrackCartProductPlan.then(vrackCartProductPlan =\u003e vrackCartProductPlan.planCode),\n        pricingMode: vrackCartProductPlan.then(vrackCartProductPlan =\u003e vrackCartProductPlan.selectedPrices?.[0]?.pricingMode),\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmyaccount = ovh.Me.get_me()\nmycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)\nvrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,\n    price_capacity=\"renew\",\n    product=\"vrack\",\n    plan_code=\"vrack\")\nvrack_vrack = ovh.vrack.Vrack(\"vrackVrack\",\n    ovh_subsidiary=mycart.ovh_subsidiary,\n    description=\"my vrack\",\n    plan=ovh.vrack.VrackPlanArgs(\n        duration=vrack_cart_product_plan.selected_prices[0].duration,\n        plan_code=vrack_cart_product_plan.plan_code,\n        pricing_mode=vrack_cart_product_plan.selected_prices[0].pricing_mode,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myaccount = Ovh.Me.GetMe.Invoke();\n\n    var mycart = Ovh.Order.GetCart.Invoke(new()\n    {\n        OvhSubsidiary = myaccount.Apply(getMeResult =\u003e getMeResult.OvhSubsidiary),\n    });\n\n    var vrackCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()\n    {\n        CartId = mycart.Apply(getCartResult =\u003e getCartResult.Id),\n        PriceCapacity = \"renew\",\n        Product = \"vrack\",\n        PlanCode = \"vrack\",\n    });\n\n    var vrackVrack = new Ovh.Vrack.Vrack(\"vrackVrack\", new()\n    {\n        OvhSubsidiary = mycart.Apply(getCartResult =\u003e getCartResult.OvhSubsidiary),\n        Description = \"my vrack\",\n        Plan = new Ovh.Vrack.Inputs.VrackPlanArgs\n        {\n            Duration = vrackCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.SelectedPrices[0]?.Duration),\n            PlanCode = vrackCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.PlanCode),\n            PricingMode = vrackCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.SelectedPrices[0]?.PricingMode),\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me\"\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order\"\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyaccount, err := Me.GetMe(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmycart, err := Order.GetCart(ctx, \u0026order.GetCartArgs{\n\t\t\tOvhSubsidiary: myaccount.OvhSubsidiary,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvrackCartProductPlan, err := Order.GetCartProductPlan(ctx, \u0026order.GetCartProductPlanArgs{\n\t\t\tCartId:        mycart.Id,\n\t\t\tPriceCapacity: \"renew\",\n\t\t\tProduct:       \"vrack\",\n\t\t\tPlanCode:      \"vrack\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Vrack.NewVrack(ctx, \"vrackVrack\", \u0026Vrack.VrackArgs{\n\t\t\tOvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),\n\t\t\tDescription:   pulumi.String(\"my vrack\"),\n\t\t\tPlan: \u0026vrack.VrackPlanArgs{\n\t\t\t\tDuration:    pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),\n\t\t\t\tPlanCode:    pulumi.String(vrackCartProductPlan.PlanCode),\n\t\t\t\tPricingMode: pulumi.String(vrackCartProductPlan.SelectedPrices[0].PricingMode),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.MeFunctions;\nimport com.pulumi.ovh.Order.OrderFunctions;\nimport com.pulumi.ovh.Order.inputs.GetCartArgs;\nimport com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;\nimport com.pulumi.ovh.Vrack.Vrack;\nimport com.pulumi.ovh.Vrack.VrackArgs;\nimport com.pulumi.ovh.Vrack.inputs.VrackPlanArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myaccount = MeFunctions.getMe();\n\n        final var mycart = OrderFunctions.getCart(GetCartArgs.builder()\n            .ovhSubsidiary(myaccount.applyValue(getMeResult -\u003e getMeResult.ovhSubsidiary()))\n            .build());\n\n        final var vrackCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()\n            .cartId(mycart.applyValue(getCartResult -\u003e getCartResult.id()))\n            .priceCapacity(\"renew\")\n            .product(\"vrack\")\n            .planCode(\"vrack\")\n            .build());\n\n        var vrackVrack = new Vrack(\"vrackVrack\", VrackArgs.builder()        \n            .ovhSubsidiary(mycart.applyValue(getCartResult -\u003e getCartResult.ovhSubsidiary()))\n            .description(\"my vrack\")\n            .plan(VrackPlanArgs.builder()\n                .duration(vrackCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.selectedPrices()[0].duration()))\n                .planCode(vrackCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.planCode()))\n                .pricingMode(vrackCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.selectedPrices()[0].pricingMode()))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vrackVrack:\n    type: ovh:Vrack:Vrack\n    properties:\n      ovhSubsidiary: ${mycart.ovhSubsidiary}\n      description: my vrack\n      plan:\n        duration: ${vrackCartProductPlan.selectedPrices[0].duration}\n        planCode: ${vrackCartProductPlan.planCode}\n        pricingMode: ${vrackCartProductPlan.selectedPrices[0].pricingMode}\nvariables:\n  myaccount:\n    fn::invoke:\n      Function: ovh:Me:getMe\n      Arguments: {}\n  mycart:\n    fn::invoke:\n      Function: ovh:Order:getCart\n      Arguments:\n        ovhSubsidiary: ${myaccount.ovhSubsidiary}\n  vrackCartProductPlan:\n    fn::invoke:\n      Function: ovh:Order:getCartProductPlan\n      Arguments:\n        cartId: ${mycart.id}\n        priceCapacity: renew\n        product: vrack\n        planCode: vrack\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nvRack can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders). \n\nbash\n\n```sh\n$ pulumi import ovh:Vrack/vrack:Vrack vrack order_id\n```\n\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst myaccount = ovh.Me.getMe({});\nconst mycart = myaccount.then(myaccount =\u003e ovh.Order.getCart({\n    ovhSubsidiary: myaccount.ovhSubsidiary,\n}));\nconst vrackCartProductPlan = mycart.then(mycart =\u003e ovh.Order.getCartProductPlan({\n    cartId: mycart.id,\n    priceCapacity: \"renew\",\n    product: \"vrack\",\n    planCode: \"vrack\",\n}));\nconst vrackVrack = new ovh.vrack.Vrack(\"vrackVrack\", {\n    ovhSubsidiary: mycart.then(mycart =\u003e mycart.ovhSubsidiary),\n    description: \"my vrack\",\n    plan: {\n        duration: vrackCartProductPlan.then(vrackCartProductPlan =\u003e vrackCartProductPlan.selectedPrices?.[0]?.duration),\n        planCode: vrackCartProductPlan.then(vrackCartProductPlan =\u003e vrackCartProductPlan.planCode),\n        pricingMode: vrackCartProductPlan.then(vrackCartProductPlan =\u003e vrackCartProductPlan.selectedPrices?.[0]?.pricingMode),\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmyaccount = ovh.Me.get_me()\nmycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)\nvrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,\n    price_capacity=\"renew\",\n    product=\"vrack\",\n    plan_code=\"vrack\")\nvrack_vrack = ovh.vrack.Vrack(\"vrackVrack\",\n    ovh_subsidiary=mycart.ovh_subsidiary,\n    description=\"my vrack\",\n    plan=ovh.vrack.VrackPlanArgs(\n        duration=vrack_cart_product_plan.selected_prices[0].duration,\n        plan_code=vrack_cart_product_plan.plan_code,\n        pricing_mode=vrack_cart_product_plan.selected_prices[0].pricing_mode,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myaccount = Ovh.Me.GetMe.Invoke();\n\n    var mycart = Ovh.Order.GetCart.Invoke(new()\n    {\n        OvhSubsidiary = myaccount.Apply(getMeResult =\u003e getMeResult.OvhSubsidiary),\n    });\n\n    var vrackCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()\n    {\n        CartId = mycart.Apply(getCartResult =\u003e getCartResult.Id),\n        PriceCapacity = \"renew\",\n        Product = \"vrack\",\n        PlanCode = \"vrack\",\n    });\n\n    var vrackVrack = new Ovh.Vrack.Vrack(\"vrackVrack\", new()\n    {\n        OvhSubsidiary = mycart.Apply(getCartResult =\u003e getCartResult.OvhSubsidiary),\n        Description = \"my vrack\",\n        Plan = new Ovh.Vrack.Inputs.VrackPlanArgs\n        {\n            Duration = vrackCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.SelectedPrices[0]?.Duration),\n            PlanCode = vrackCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.PlanCode),\n            PricingMode = vrackCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.SelectedPrices[0]?.PricingMode),\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me\"\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order\"\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyaccount, err := Me.GetMe(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmycart, err := Order.GetCart(ctx, \u0026order.GetCartArgs{\n\t\t\tOvhSubsidiary: myaccount.OvhSubsidiary,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvrackCartProductPlan, err := Order.GetCartProductPlan(ctx, \u0026order.GetCartProductPlanArgs{\n\t\t\tCartId:        mycart.Id,\n\t\t\tPriceCapacity: \"renew\",\n\t\t\tProduct:       \"vrack\",\n\t\t\tPlanCode:      \"vrack\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Vrack.NewVrack(ctx, \"vrackVrack\", \u0026Vrack.VrackArgs{\n\t\t\tOvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),\n\t\t\tDescription:   pulumi.String(\"my vrack\"),\n\t\t\tPlan: \u0026vrack.VrackPlanArgs{\n\t\t\t\tDuration:    pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),\n\t\t\t\tPlanCode:    pulumi.String(vrackCartProductPlan.PlanCode),\n\t\t\t\tPricingMode: pulumi.String(vrackCartProductPlan.SelectedPrices[0].PricingMode),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.MeFunctions;\nimport com.pulumi.ovh.Order.OrderFunctions;\nimport com.pulumi.ovh.Order.inputs.GetCartArgs;\nimport com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;\nimport com.pulumi.ovh.Vrack.Vrack;\nimport com.pulumi.ovh.Vrack.VrackArgs;\nimport com.pulumi.ovh.Vrack.inputs.VrackPlanArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myaccount = MeFunctions.getMe();\n\n        final var mycart = OrderFunctions.getCart(GetCartArgs.builder()\n            .ovhSubsidiary(myaccount.applyValue(getMeResult -\u003e getMeResult.ovhSubsidiary()))\n            .build());\n\n        final var vrackCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()\n            .cartId(mycart.applyValue(getCartResult -\u003e getCartResult.id()))\n            .priceCapacity(\"renew\")\n            .product(\"vrack\")\n            .planCode(\"vrack\")\n            .build());\n\n        var vrackVrack = new Vrack(\"vrackVrack\", VrackArgs.builder()        \n            .ovhSubsidiary(mycart.applyValue(getCartResult -\u003e getCartResult.ovhSubsidiary()))\n            .description(\"my vrack\")\n            .plan(VrackPlanArgs.builder()\n                .duration(vrackCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.selectedPrices()[0].duration()))\n                .planCode(vrackCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.planCode()))\n                .pricingMode(vrackCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.selectedPrices()[0].pricingMode()))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vrackVrack:\n    type: ovh:Vrack:Vrack\n    properties:\n      ovhSubsidiary: ${mycart.ovhSubsidiary}\n      description: my vrack\n      plan:\n        duration: ${vrackCartProductPlan.selectedPrices[0].duration}\n        planCode: ${vrackCartProductPlan.planCode}\n        pricingMode: ${vrackCartProductPlan.selectedPrices[0].pricingMode}\nvariables:\n  myaccount:\n    fn::invoke:\n      Function: ovh:Me:getMe\n      Arguments: {}\n  mycart:\n    fn::invoke:\n      Function: ovh:Order:getCart\n      Arguments:\n        ovhSubsidiary: ${myaccount.ovhSubsidiary}\n  vrackCartProductPlan:\n    fn::invoke:\n      Function: ovh:Order:getCartProductPlan\n      Arguments:\n        cartId: ${mycart.id}\n        priceCapacity: renew\n        product: vrack\n        planCode: vrack\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nvRack can be imported using the `service_name`.\n\nbash\n\n```sh\n$ pulumi import ovh:Vrack/vrack:Vrack vrack service_name\n```\n\n",
             "properties": {
                 "VrackURN": {
                     "type": "string",
@@ -17624,6 +17976,13 @@
                 "name": {
                     "type": "string",
                     "description": "yourvrackname\n"
+                },
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:Vrack/VrackOrder:VrackOrder"
+                    },
+                    "description": "Details about an Order\n"
                 },
                 "ovhSubsidiary": {
                     "type": "string",
@@ -23957,6 +24316,10 @@
             "outputs": {
                 "description": "A collection of values returned by getIdentityGroup.\n",
                 "properties": {
+                    "GroupURN": {
+                        "type": "string",
+                        "description": "Identity URN of the group.\n"
+                    },
                     "creation": {
                         "type": "string",
                         "description": "Creation date of this group.\n"
@@ -23993,6 +24356,7 @@
                     "lastUpdate",
                     "name",
                     "role",
+                    "GroupURN",
                     "id"
                 ]
             }
@@ -24130,7 +24494,7 @@
                 "properties": {
                     "templateName": {
                         "type": "string",
-                        "description": "This template name\n"
+                        "description": "Template name.\n"
                     }
                 },
                 "type": "object",
@@ -24141,20 +24505,13 @@
             "outputs": {
                 "description": "A collection of values returned by getInstallationTemplate.\n",
                 "properties": {
-                    "availableLanguages": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "List of all language available for this template. Deprecated, will be removed in next release.\n"
-                    },
                     "bitFormat": {
                         "type": "integer",
-                        "description": "This template bit format (32 or 64).\n"
+                        "description": "Template bit format (32 or 64).\n"
                     },
                     "category": {
                         "type": "string",
-                        "description": "Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).\n"
+                        "description": "Category of this template (informative only).\n"
                     },
                     "customizations": {
                         "type": "array",
@@ -24162,40 +24519,52 @@
                             "$ref": "#/types/ovh:Me/getInstallationTemplateCustomization:getInstallationTemplateCustomization"
                         }
                     },
-                    "defaultLanguage": {
-                        "type": "string",
-                        "description": "The default language of this template. Deprecated, will be removed in next release.\n",
-                        "deprecationMessage": "This field will be removed from the API, please use `userMetadata` instead."
-                    },
                     "description": {
                         "type": "string",
-                        "description": "information about this template.\n"
+                        "description": "Information about this template.\n"
                     },
                     "distribution": {
                         "type": "string",
-                        "description": "the distribution this template is based on.\n"
+                        "description": "Distribution this template is based on.\n"
+                    },
+                    "endOfInstall": {
+                        "type": "string",
+                        "description": "End of install date of the template.\n"
                     },
                     "family": {
                         "type": "string",
-                        "description": "this template family type (bsd,linux,solaris,windows).\n"
+                        "description": "Template family type (bsd,linux,solaris,windows).\n"
                     },
                     "filesystems": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).\n"
+                        "description": "Filesystems available.\n"
                     },
                     "hardRaidConfiguration": {
                         "type": "boolean",
-                        "description": "This distribution supports hardware raid configuration through the OVHcloud API.\n"
+                        "description": "Distribution supports hardware raid configuration through the OVHcloud API.\n",
+                        "deprecationMessage": "This will be deprecated in the next release"
                     },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
+                    "inputs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:Me/getInstallationTemplateInput:getInstallationTemplateInput"
+                        },
+                        "description": "Represents the questions of the expected answers in the userMetadata field.\n"
+                    },
                     "lvmReady": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether this template supports LVM.\n"
+                    },
+                    "noPartitioning": {
+                        "type": "boolean",
+                        "description": "Partitioning customization is not available for this OS template.\n"
                     },
                     "partitionSchemes": {
                         "type": "array",
@@ -24203,24 +24572,35 @@
                             "$ref": "#/types/ovh:Me/getInstallationTemplatePartitionScheme:getInstallationTemplatePartitionScheme"
                         }
                     },
+                    "softRaidOnlyMirroring": {
+                        "type": "boolean",
+                        "description": "Template supports RAID0 and RAID1 on 2 disks.\n"
+                    },
+                    "subfamily": {
+                        "type": "string",
+                        "description": "Subfamily of the template.\n"
+                    },
                     "templateName": {
                         "type": "string"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "availableLanguages",
                     "bitFormat",
                     "category",
                     "customizations",
-                    "defaultLanguage",
                     "description",
                     "distribution",
+                    "endOfInstall",
                     "family",
                     "filesystems",
                     "hardRaidConfiguration",
+                    "inputs",
                     "lvmReady",
+                    "noPartitioning",
                     "partitionSchemes",
+                    "softRaidOnlyMirroring",
+                    "subfamily",
                     "templateName",
                     "id"
                 ]
@@ -24552,74 +24932,6 @@
                     "default",
                     "description",
                     "state",
-                    "id"
-                ]
-            }
-        },
-        "ovh:Me/getSshKey:getSshKey": {
-            "description": "\u003e __NOTE__ This data source will be removed in next release.\n\nUse this data source to retrieve information about an SSH key.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst mykey = ovh.Me.getSshKey({\n    keyName: \"mykey\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmykey = ovh.Me.get_ssh_key(key_name=\"mykey\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mykey = Ovh.Me.GetSshKey.Invoke(new()\n    {\n        KeyName = \"mykey\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Me.GetSshKey(ctx, \u0026me.GetSshKeyArgs{\n\t\t\tKeyName: \"mykey\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.MeFunctions;\nimport com.pulumi.ovh.Me.inputs.GetSshKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var mykey = MeFunctions.getSshKey(GetSshKeyArgs.builder()\n            .keyName(\"mykey\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  mykey:\n    fn::invoke:\n      Function: ovh:Me:getSshKey\n      Arguments:\n        keyName: mykey\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
-            "inputs": {
-                "description": "A collection of arguments for invoking getSshKey.\n",
-                "properties": {
-                    "keyName": {
-                        "type": "string",
-                        "description": "The name of the SSH key.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "keyName"
-                ]
-            },
-            "outputs": {
-                "description": "A collection of values returned by getSshKey.\n",
-                "properties": {
-                    "default": {
-                        "type": "boolean",
-                        "description": "True when this public SSH key is used for rescue mode and reinstallations.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
-                    },
-                    "key": {
-                        "type": "string",
-                        "description": "The content of the public key.\nE.g.: \"ssh-ed25519 AAAAC3...\"\n"
-                    },
-                    "keyName": {
-                        "type": "string",
-                        "description": "See Argument Reference above.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "default",
-                    "key",
-                    "keyName",
-                    "id"
-                ]
-            }
-        },
-        "ovh:Me/getSshKeys:getSshKeys": {
-            "description": "Use this data source to retrieve list of names of the account's SSH keys.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst mykeys = ovh.Me.getSshKeys({});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmykeys = ovh.Me.get_ssh_keys()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mykeys = Ovh.Me.GetSshKeys.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Me.GetSshKeys(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.MeFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var mykeys = MeFunctions.getSshKeys();\n\n    }\n}\n```\n```yaml\nvariables:\n  mykeys:\n    fn::invoke:\n      Function: ovh:Me:getSshKeys\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
-            "outputs": {
-                "description": "A collection of values returned by getSshKeys.\n",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
-                    },
-                    "names": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The list of the names of all the SSH keys.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "names",
                     "id"
                 ]
             }
@@ -25193,6 +25505,125 @@
                 "type": "object",
                 "required": [
                     "results",
+                    "id"
+                ]
+            }
+        },
+        "ovh:index/getInstallationTemplate:getInstallationTemplate": {
+            "description": "Use this data source to retrieve information about a specific OVH dedicated server installation template.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst ovhtemplate = ovh.getInstallationTemplate({\n    templateName: \"debian12_64\",\n});\nexport const template = ovhtemplate;\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\novhtemplate = ovh.get_installation_template(template_name=\"debian12_64\")\npulumi.export(\"template\", ovhtemplate)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ovhtemplate = Ovh.GetInstallationTemplate.Invoke(new()\n    {\n        TemplateName = \"debian12_64\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"template\"] = ovhtemplate,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tovhtemplate, err := ovh.GetInstallationTemplate(ctx, \u0026ovh.GetInstallationTemplateArgs{\n\t\t\tTemplateName: \"debian12_64\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"template\", ovhtemplate)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetInstallationTemplateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var ovhtemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()\n            .templateName(\"debian12_64\")\n            .build());\n\n        ctx.export(\"template\", ovhtemplate.applyValue(getInstallationTemplateResult -\u003e getInstallationTemplateResult));\n    }\n}\n```\n```yaml\nvariables:\n  ovhtemplate:\n    fn::invoke:\n      Function: ovh:getInstallationTemplate\n      Arguments:\n        templateName: debian12_64\noutputs:\n  template: ${ovhtemplate}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getInstallationTemplate.\n",
+                "properties": {
+                    "templateName": {
+                        "type": "string",
+                        "description": "The name of the template.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "templateName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getInstallationTemplate.\n",
+                "properties": {
+                    "bitFormat": {
+                        "type": "integer",
+                        "description": "Template bit format (32 or 64).\n"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Category of this template (informative only).\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Information about this template.\n"
+                    },
+                    "distribution": {
+                        "type": "string",
+                        "description": "Distribution this template is based on.\n"
+                    },
+                    "endOfInstall": {
+                        "type": "string",
+                        "description": "End of install date of the template.\n"
+                    },
+                    "family": {
+                        "type": "string",
+                        "description": "Template family type.\n"
+                    },
+                    "filesystems": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Filesystems available.\n"
+                    },
+                    "hardRaidConfiguration": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "inputs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:index/getInstallationTemplateInput:getInstallationTemplateInput"
+                        },
+                        "description": "Represents the questions of the expected answers in the userMetadata field.\n"
+                    },
+                    "licenses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:index/getInstallationTemplateLicense:getInstallationTemplateLicense"
+                        },
+                        "description": "License available for this template.\n"
+                    },
+                    "lvmReady": {
+                        "type": "boolean",
+                        "description": "Whether this template supports LVM.\n"
+                    },
+                    "noPartitioning": {
+                        "type": "boolean",
+                        "description": "Partitioning customization is not available for this OS template.\n"
+                    },
+                    "projects": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:index/getInstallationTemplateProject:getInstallationTemplateProject"
+                        },
+                        "description": "Distribution project details.\n"
+                    },
+                    "softRaidOnlyMirroring": {
+                        "type": "boolean",
+                        "description": "Template supports RAID0 and RAID1 on 2 disks.\n"
+                    },
+                    "subfamily": {
+                        "type": "string",
+                        "description": "Subfamily of the template.\n"
+                    },
+                    "templateName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "bitFormat",
+                    "category",
+                    "description",
+                    "distribution",
+                    "endOfInstall",
+                    "family",
+                    "filesystems",
+                    "hardRaidConfiguration",
+                    "inputs",
+                    "licenses",
+                    "lvmReady",
+                    "noPartitioning",
+                    "projects",
+                    "softRaidOnlyMirroring",
+                    "subfamily",
+                    "templateName",
                     "id"
                 ]
             }

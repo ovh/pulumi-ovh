@@ -153,7 +153,6 @@ def get_capabilities_container_filter(plan_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -162,7 +161,6 @@ def get_capabilities_container_filter(plan_name: Optional[str] = None,
         region="GRA",
         service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str plan_name: The plan name. It can be 'SMALL', 'MEDIUM' or 'LARGE'.
@@ -200,7 +198,6 @@ def get_capabilities_container_filter_output(plan_name: Optional[pulumi.Input[st
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -209,7 +206,6 @@ def get_capabilities_container_filter_output(plan_name: Optional[pulumi.Input[st
         region="GRA",
         service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str plan_name: The plan name. It can be 'SMALL', 'MEDIUM' or 'LARGE'.

@@ -302,7 +302,6 @@ class WorkflowBackup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -315,7 +314,6 @@ class WorkflowBackup(pulumi.CustomResource):
             rotation=7,
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -339,7 +337,6 @@ class WorkflowBackup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -352,7 +349,6 @@ class WorkflowBackup(pulumi.CustomResource):
             rotation=7,
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param WorkflowBackupArgs args: The arguments to use to populate this resource's properties.

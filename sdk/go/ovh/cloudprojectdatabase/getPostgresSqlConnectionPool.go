@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupPostgresSqlConnectionPool(ctx *pulumi.Context, args *LookupPostgresSqlConnectionPoolArgs, opts ...pulumi.InvokeOption) (*LookupPostgresSqlConnectionPoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresSqlConnectionPoolResult

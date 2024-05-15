@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  * });
  * export const pguserRoles = pguser.then(pguser => pguser.roles);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPostgresSqlUser(args: GetPostgresSqlUserArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresSqlUserResult> {
 
@@ -90,7 +88,6 @@ export interface GetPostgresSqlUserResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -102,7 +99,6 @@ export interface GetPostgresSqlUserResult {
  * });
  * export const pguserRoles = pguser.then(pguser => pguser.roles);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPostgresSqlUserOutput(args: GetPostgresSqlUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPostgresSqlUserResult> {
     return pulumi.output(args).apply((a: any) => getPostgresSqlUser(a, opts))

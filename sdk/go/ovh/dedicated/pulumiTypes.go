@@ -18,10 +18,6 @@ type ServerInstallTaskDetails struct {
 	CustomHostname *string `pulumi:"customHostname"`
 	// Disk group id.
 	DiskGroupId *int `pulumi:"diskGroupId"`
-	// Deprecated, will be removed in next release.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release
-	Language *string `pulumi:"language"`
 	// Set to true to disable RAID.
 	NoRaid *bool `pulumi:"noRaid"`
 	// Indicate the URL where your postinstall customisation script is located.
@@ -30,18 +26,6 @@ type ServerInstallTaskDetails struct {
 	PostInstallationScriptReturn *string `pulumi:"postInstallationScriptReturn"`
 	// soft raid devices.
 	SoftRaidDevices *int `pulumi:"softRaidDevices"`
-	// Deprecated, will be removed in next release.
-	//
-	// The `userMetadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
-	//
-	// -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
-	//
-	// -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
-	//
-	// -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release
-	UseSpla *bool `pulumi:"useSpla"`
 }
 
 // ServerInstallTaskDetailsInput is an input type that accepts ServerInstallTaskDetailsArgs and ServerInstallTaskDetailsOutput values.
@@ -60,10 +44,6 @@ type ServerInstallTaskDetailsArgs struct {
 	CustomHostname pulumi.StringPtrInput `pulumi:"customHostname"`
 	// Disk group id.
 	DiskGroupId pulumi.IntPtrInput `pulumi:"diskGroupId"`
-	// Deprecated, will be removed in next release.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release
-	Language pulumi.StringPtrInput `pulumi:"language"`
 	// Set to true to disable RAID.
 	NoRaid pulumi.BoolPtrInput `pulumi:"noRaid"`
 	// Indicate the URL where your postinstall customisation script is located.
@@ -72,18 +52,6 @@ type ServerInstallTaskDetailsArgs struct {
 	PostInstallationScriptReturn pulumi.StringPtrInput `pulumi:"postInstallationScriptReturn"`
 	// soft raid devices.
 	SoftRaidDevices pulumi.IntPtrInput `pulumi:"softRaidDevices"`
-	// Deprecated, will be removed in next release.
-	//
-	// The `userMetadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
-	//
-	// -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
-	//
-	// -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
-	//
-	// -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release
-	UseSpla pulumi.BoolPtrInput `pulumi:"useSpla"`
 }
 
 func (ServerInstallTaskDetailsArgs) ElementType() reflect.Type {
@@ -173,13 +141,6 @@ func (o ServerInstallTaskDetailsOutput) DiskGroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *int { return v.DiskGroupId }).(pulumi.IntPtrOutput)
 }
 
-// Deprecated, will be removed in next release.
-//
-// Deprecated: This field is deprecated and will be removed in a future release
-func (o ServerInstallTaskDetailsOutput) Language() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.Language }).(pulumi.StringPtrOutput)
-}
-
 // Set to true to disable RAID.
 func (o ServerInstallTaskDetailsOutput) NoRaid() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.NoRaid }).(pulumi.BoolPtrOutput)
@@ -198,21 +159,6 @@ func (o ServerInstallTaskDetailsOutput) PostInstallationScriptReturn() pulumi.St
 // soft raid devices.
 func (o ServerInstallTaskDetailsOutput) SoftRaidDevices() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *int { return v.SoftRaidDevices }).(pulumi.IntPtrOutput)
-}
-
-// Deprecated, will be removed in next release.
-//
-// The `userMetadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
-//
-// -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
-//
-// -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
-//
-// -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
-//
-// Deprecated: This field is deprecated and will be removed in a future release
-func (o ServerInstallTaskDetailsOutput) UseSpla() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.UseSpla }).(pulumi.BoolPtrOutput)
 }
 
 type ServerInstallTaskDetailsPtrOutput struct{ *pulumi.OutputState }
@@ -259,18 +205,6 @@ func (o ServerInstallTaskDetailsPtrOutput) DiskGroupId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Deprecated, will be removed in next release.
-//
-// Deprecated: This field is deprecated and will be removed in a future release
-func (o ServerInstallTaskDetailsPtrOutput) Language() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Language
-	}).(pulumi.StringPtrOutput)
-}
-
 // Set to true to disable RAID.
 func (o ServerInstallTaskDetailsPtrOutput) NoRaid() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
@@ -309,26 +243,6 @@ func (o ServerInstallTaskDetailsPtrOutput) SoftRaidDevices() pulumi.IntPtrOutput
 		}
 		return v.SoftRaidDevices
 	}).(pulumi.IntPtrOutput)
-}
-
-// Deprecated, will be removed in next release.
-//
-// The `userMetadata` block supports many arguments, here is a non-exhaustive list depending on the OS:
-//
-// -[see OS questions](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-questions)
-//
-// -[see api](https://eu.api.ovh.com/console-preview/?section=%2Fdedicated%2FinstallationTemplate&branch=v1#get-/dedicated/installationTemplate/-templateName-)
-//
-// -[see documentation](https://help.ovhcloud.com/csm/en-ie-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061950#create-an-os-installation-task) to get more information
-//
-// Deprecated: This field is deprecated and will be removed in a future release
-func (o ServerInstallTaskDetailsPtrOutput) UseSpla() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UseSpla
-	}).(pulumi.BoolPtrOutput)
 }
 
 type ServerInstallTaskUserMetadata struct {

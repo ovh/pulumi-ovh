@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOpenSearchPatternResult> InvokeAsync(GetOpenSearchPatternArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchPatternResult>("ovh:CloudProject/getOpenSearchPattern:getOpenSearchPattern", args ?? new GetOpenSearchPatternArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOpenSearchPatternResult> Invoke(GetOpenSearchPatternInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchPatternResult>("ovh:CloudProject/getOpenSearchPattern:getOpenSearchPattern", args ?? new GetOpenSearchPatternInvokeArgs(), options.WithDefaults());

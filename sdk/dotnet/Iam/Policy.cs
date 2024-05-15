@@ -14,7 +14,6 @@ namespace Pulumi.Ovh.Iam
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -54,7 +53,6 @@ namespace Pulumi.Ovh.Iam
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Iam/policy:Policy")]
     public partial class Policy : global::Pulumi.CustomResource

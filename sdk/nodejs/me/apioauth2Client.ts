@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -22,11 +21,9 @@ import * as utilities from "../utilities";
  *     flow: "AUTHORIZATION_CODE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -36,7 +33,6 @@ import * as utilities from "../utilities";
  *     flow: "CLIENT_CREDENTIALS",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

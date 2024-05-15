@@ -9,14 +9,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const servers = ovh.Vps.getVpss({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpss(opts?: pulumi.InvokeOptions): Promise<GetVpssResult> {
 
@@ -43,14 +41,12 @@ export interface GetVpssResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const servers = ovh.Vps.getVpss({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpssOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVpssResult> {
     return pulumi.output(getVpss(opts))

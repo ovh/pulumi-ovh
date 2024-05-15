@@ -298,7 +298,6 @@ class TcpRouteRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -319,7 +318,6 @@ class TcpRouteRule(pulumi.CustomResource):
             negate=False,
             pattern="example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -347,7 +345,6 @@ class TcpRouteRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -368,7 +365,6 @@ class TcpRouteRule(pulumi.CustomResource):
             negate=False,
             pattern="example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

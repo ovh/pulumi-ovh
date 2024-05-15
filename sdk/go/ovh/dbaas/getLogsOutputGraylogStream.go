@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupLogsOutputGraylogStream(ctx *pulumi.Context, args *LookupLogsOutputGraylogStreamArgs, opts ...pulumi.InvokeOption) (*LookupLogsOutputGraylogStreamResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogsOutputGraylogStreamResult

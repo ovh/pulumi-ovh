@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * Create a simple node pool in your Kubernetes cluster:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -27,11 +26,9 @@ import * as utilities from "../utilities";
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create an advanced node pool in your Kubernetes cluster:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -69,7 +66,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

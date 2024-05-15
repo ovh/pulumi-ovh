@@ -218,7 +218,6 @@ class APIOAuth2Client(pulumi.CustomResource):
 
         An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -228,11 +227,9 @@ class APIOAuth2Client(pulumi.CustomResource):
             description="An OAuth2 client using the authorization code flow for my-app.com",
             flow="AUTHORIZATION_CODE")
         ```
-        <!--End PulumiCodeChooser -->
 
         An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -241,7 +238,6 @@ class APIOAuth2Client(pulumi.CustomResource):
             description="An OAuth2 client using the client credentials flow for my app",
             flow="CLIENT_CREDENTIALS")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -281,7 +277,6 @@ class APIOAuth2Client(pulumi.CustomResource):
 
         An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -291,11 +286,9 @@ class APIOAuth2Client(pulumi.CustomResource):
             description="An OAuth2 client using the authorization code flow for my-app.com",
             flow="AUTHORIZATION_CODE")
         ```
-        <!--End PulumiCodeChooser -->
 
         An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -304,7 +297,6 @@ class APIOAuth2Client(pulumi.CustomResource):
             description="An OAuth2 client using the client credentials flow for my app",
             flow="CLIENT_CREDENTIALS")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

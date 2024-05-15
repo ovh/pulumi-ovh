@@ -178,7 +178,6 @@ def get_container_registry(registry_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -186,7 +185,6 @@ def get_container_registry(registry_id: Optional[str] = None,
     my_registry = ovh.CloudProject.get_container_registry(registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str registry_id: Registry ID
@@ -223,7 +221,6 @@ def get_container_registry_output(registry_id: Optional[pulumi.Input[str]] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -231,7 +228,6 @@ def get_container_registry_output(registry_id: Optional[pulumi.Input[str]] = Non
     my_registry = ovh.CloudProject.get_container_registry(registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str registry_id: Registry ID

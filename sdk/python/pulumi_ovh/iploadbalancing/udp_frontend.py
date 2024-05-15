@@ -290,7 +290,6 @@ class UdpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -303,7 +302,6 @@ class UdpFrontend(pulumi.CustomResource):
             zone="all",
             port="10,11")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -328,7 +326,6 @@ class UdpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -341,7 +338,6 @@ class UdpFrontend(pulumi.CustomResource):
             zone="all",
             port="10,11")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param UdpFrontendArgs args: The arguments to use to populate this resource's properties.

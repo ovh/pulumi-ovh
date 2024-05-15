@@ -72,14 +72,12 @@ def get_zone_dns_sec(zone_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     dnssec = ovh.Domain.get_zone_dns_sec(zone_name="mysite.ovh")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str zone_name: The name of the domain zone
@@ -103,14 +101,12 @@ def get_zone_dns_sec_output(zone_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     dnssec = ovh.Domain.get_zone_dns_sec(zone_name="mysite.ovh")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str zone_name: The name of the domain zone

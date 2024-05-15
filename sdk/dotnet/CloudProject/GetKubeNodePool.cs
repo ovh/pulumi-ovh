@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKubeNodePoolResult> InvokeAsync(GetKubeNodePoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubeNodePoolResult>("ovh:CloudProject/getKubeNodePool:getKubeNodePool", args ?? new GetKubeNodePoolArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKubeNodePoolResult> Invoke(GetKubeNodePoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeNodePoolResult>("ovh:CloudProject/getKubeNodePool:getKubeNodePool", args ?? new GetKubeNodePoolInvokeArgs(), options.WithDefaults());

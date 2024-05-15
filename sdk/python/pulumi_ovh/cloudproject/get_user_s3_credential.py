@@ -92,7 +92,6 @@ def get_user_s3_credential(access_key_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -109,7 +108,6 @@ def get_user_s3_credential(access_key_id: Optional[str] = None,
     pulumi.export("myAccessKeyId", my_s3_credential.access_key_id)
     pulumi.export("mySecretAccessKey", my_s3_credential.secret_access_key)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_key_id: the Access Key ID
@@ -142,7 +140,6 @@ def get_user_s3_credential_output(access_key_id: Optional[pulumi.Input[str]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -159,7 +156,6 @@ def get_user_s3_credential_output(access_key_id: Optional[pulumi.Input[str]] = N
     pulumi.export("myAccessKeyId", my_s3_credential.access_key_id)
     pulumi.export("mySecretAccessKey", my_s3_credential.secret_access_key)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_key_id: the Access Key ID

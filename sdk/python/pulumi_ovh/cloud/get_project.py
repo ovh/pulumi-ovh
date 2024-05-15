@@ -208,14 +208,12 @@ def get_project(service_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     project = ovh.Cloud.get_project(service_name="XXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The ID of the public cloud project. If omitted,
@@ -251,14 +249,12 @@ def get_project_output(service_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     project = ovh.Cloud.get_project(service_name="XXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The ID of the public cloud project. If omitted,

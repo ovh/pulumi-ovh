@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     serviceName: "myserver",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerSpecificationsHardware(args: GetServerSpecificationsHardwareArgs, opts?: pulumi.InvokeOptions): Promise<GetServerSpecificationsHardwareResult> {
 
@@ -115,7 +113,6 @@ export interface GetServerSpecificationsHardwareResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -124,7 +121,6 @@ export interface GetServerSpecificationsHardwareResult {
  *     serviceName: "myserver",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerSpecificationsHardwareOutput(args: GetServerSpecificationsHardwareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerSpecificationsHardwareResult> {
     return pulumi.output(args).apply((a: any) => getServerSpecificationsHardware(a, opts))

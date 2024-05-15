@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Vps
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Ovh.Vps
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVpsResult> InvokeAsync(GetVpsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpsResult>("ovh:Vps/getVps:getVps", args ?? new GetVpsArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Ovh.Vps
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Ovh.Vps
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVpsResult> Invoke(GetVpsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpsResult>("ovh:Vps/getVps:getVps", args ?? new GetVpsInvokeArgs(), options.WithDefaults());

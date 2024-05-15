@@ -14,7 +14,6 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,11 +33,9 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Park IP/Detach IP `1.2.3.4` from any service
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Ip/move:Move")]
     public partial class Move : global::Pulumi.CustomResource
@@ -101,7 +97,7 @@ namespace Pulumi.Ovh.Ip
         public Output<Outputs.MoveRoutedTo> RoutedTo { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the service to route the IP to. IP will be parked if this value is an empty string
+        /// Service name in the form of `ip-&lt;part-1&gt;.&lt;part-2&gt;.&lt;part-3&gt;.&lt;part-4&gt;`
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -236,7 +232,7 @@ namespace Pulumi.Ovh.Ip
         public Input<Inputs.MoveRoutedToGetArgs>? RoutedTo { get; set; }
 
         /// <summary>
-        /// Name of the service to route the IP to. IP will be parked if this value is an empty string
+        /// Service name in the form of `ip-&lt;part-1&gt;.&lt;part-2&gt;.&lt;part-3&gt;.&lt;part-4&gt;`
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

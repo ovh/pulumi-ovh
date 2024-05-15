@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCeph(args: GetCephArgs, opts?: pulumi.InvokeOptions): Promise<GetCephResult> {
 
@@ -107,7 +105,6 @@ export interface GetCephResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -116,7 +113,6 @@ export interface GetCephResult {
  *     serviceName: "XXXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCephOutput(args: GetCephOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCephResult> {
     return pulumi.output(args).apply((a: any) => getCeph(a, opts))

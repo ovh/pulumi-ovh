@@ -17,7 +17,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPaymentmeanCreditCardResult> InvokeAsync(GetPaymentmeanCreditCardArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPaymentmeanCreditCardResult>("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", args ?? new GetPaymentmeanCreditCardArgs(), options.WithDefaults());
@@ -44,7 +42,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPaymentmeanCreditCardResult> Invoke(GetPaymentmeanCreditCardInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPaymentmeanCreditCardResult>("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", args ?? new GetPaymentmeanCreditCardInvokeArgs(), options.WithDefaults());

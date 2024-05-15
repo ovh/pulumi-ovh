@@ -81,14 +81,12 @@ def get_logs_clusters(service_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     logstash = ovh.Dbaas.get_logs_clusters(service_name="ldp-xx-xxxxx")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
@@ -113,14 +111,12 @@ def get_logs_clusters_output(service_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     logstash = ovh.Dbaas.get_logs_clusters(service_name="ldp-xx-xxxxx")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.

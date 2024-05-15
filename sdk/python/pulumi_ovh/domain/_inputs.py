@@ -173,7 +173,7 @@ class ZonePlanArgs:
         :param pulumi.Input[str] plan_code: Plan code
         :param pulumi.Input[str] pricing_mode: Pricing model identifier
         :param pulumi.Input[str] catalog_name: Catalog name
-        :param pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product
+        :param pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -235,7 +235,7 @@ class ZonePlanArgs:
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgs']]]]:
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
         """
         return pulumi.get(self, "configurations")
 

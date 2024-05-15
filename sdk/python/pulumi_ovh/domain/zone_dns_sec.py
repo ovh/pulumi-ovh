@@ -86,14 +86,12 @@ class ZoneDNSSec(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
 
         dnssec = ovh.domain.ZoneDNSSec("dnssec", zone_name="mysite.ovh")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -110,14 +108,12 @@ class ZoneDNSSec(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
 
         dnssec = ovh.domain.ZoneDNSSec("dnssec", zone_name="mysite.ovh")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ZoneDNSSecArgs args: The arguments to use to populate this resource's properties.

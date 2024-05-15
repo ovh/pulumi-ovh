@@ -148,14 +148,12 @@ def get_service(service_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     myip = ovh.Ip.get_service(service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service name
@@ -185,14 +183,12 @@ def get_service_output(service_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     myip = ovh.Ip.get_service(service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service name

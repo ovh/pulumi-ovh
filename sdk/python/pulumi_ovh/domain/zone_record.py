@@ -198,7 +198,6 @@ class ZoneRecord(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -211,7 +210,6 @@ class ZoneRecord(pulumi.CustomResource):
             ttl=3600,
             zone="testdemo.ovh")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -240,7 +238,6 @@ class ZoneRecord(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -253,7 +250,6 @@ class ZoneRecord(pulumi.CustomResource):
             ttl=3600,
             zone="testdemo.ovh")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

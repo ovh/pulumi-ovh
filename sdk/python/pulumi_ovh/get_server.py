@@ -349,14 +349,12 @@ def get_server(service_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     server = ovh.get_server(service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service_name of your dedicated server.
@@ -403,14 +401,12 @@ def get_server_output(service_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     server = ovh.get_server(service_name="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service_name of your dedicated server.

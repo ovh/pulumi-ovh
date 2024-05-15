@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPrivateDatabaseUserGrantResult> InvokeAsync(GetPrivateDatabaseUserGrantArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateDatabaseUserGrantResult>("ovh:Hosting/getPrivateDatabaseUserGrant:getPrivateDatabaseUserGrant", args ?? new GetPrivateDatabaseUserGrantArgs(), options.WithDefaults());
@@ -44,7 +42,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPrivateDatabaseUserGrantResult> Invoke(GetPrivateDatabaseUserGrantInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseUserGrantResult>("ovh:Hosting/getPrivateDatabaseUserGrant:getPrivateDatabaseUserGrant", args ?? new GetPrivateDatabaseUserGrantInvokeArgs(), options.WithDefaults());

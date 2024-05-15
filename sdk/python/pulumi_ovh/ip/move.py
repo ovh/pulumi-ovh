@@ -91,7 +91,7 @@ class _MoveState:
         :param pulumi.Input[str] organisation_id: IP block organisation Id
         :param pulumi.Input['MoveRoutedToArgs'] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
                instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
-        :param pulumi.Input[str] service_name: Name of the service to route the IP to. IP will be parked if this value is an empty string
+        :param pulumi.Input[str] service_name: Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
         :param pulumi.Input[str] task_start_date: Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
         :param pulumi.Input[str] task_status: Status field of the current IP task that is in charge of changing the service the IP is attached to
         :param pulumi.Input[str] type: Possible values for ip type
@@ -194,7 +194,7 @@ class _MoveState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the service to route the IP to. IP will be parked if this value is an empty string
+        Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
         """
         return pulumi.get(self, "service_name")
 
@@ -253,7 +253,6 @@ class Move(pulumi.CustomResource):
 
         ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -264,11 +263,9 @@ class Move(pulumi.CustomResource):
                 service_name="loadbalancer-XXXXX",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Park IP/Detach IP `1.2.3.4` from any service
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -279,7 +276,6 @@ class Move(pulumi.CustomResource):
                 service_name="",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -299,7 +295,6 @@ class Move(pulumi.CustomResource):
 
         ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -310,11 +305,9 @@ class Move(pulumi.CustomResource):
                 service_name="loadbalancer-XXXXX",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Park IP/Detach IP `1.2.3.4` from any service
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -325,7 +318,6 @@ class Move(pulumi.CustomResource):
                 service_name="",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param MoveArgs args: The arguments to use to populate this resource's properties.
@@ -402,7 +394,7 @@ class Move(pulumi.CustomResource):
         :param pulumi.Input[str] organisation_id: IP block organisation Id
         :param pulumi.Input[pulumi.InputType['MoveRoutedToArgs']] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
                instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
-        :param pulumi.Input[str] service_name: Name of the service to route the IP to. IP will be parked if this value is an empty string
+        :param pulumi.Input[str] service_name: Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
         :param pulumi.Input[str] task_start_date: Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
         :param pulumi.Input[str] task_status: Status field of the current IP task that is in charge of changing the service the IP is attached to
         :param pulumi.Input[str] type: Possible values for ip type
@@ -476,7 +468,7 @@ class Move(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Name of the service to route the IP to. IP will be parked if this value is an empty string
+        Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
         """
         return pulumi.get(self, "service_name")
 

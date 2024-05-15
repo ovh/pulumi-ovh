@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -32,7 +31,6 @@ import * as utilities from "../utilities";
  *     user_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.userId),
  * };
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPostgresSqlConnectionPool(args: GetPostgresSqlConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresSqlConnectionPoolResult> {
 
@@ -118,7 +116,6 @@ export interface GetPostgresSqlConnectionPoolResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -141,7 +138,6 @@ export interface GetPostgresSqlConnectionPoolResult {
  *     user_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.userId),
  * };
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPostgresSqlConnectionPoolOutput(args: GetPostgresSqlConnectionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPostgresSqlConnectionPoolResult> {
     return pulumi.output(args).apply((a: any) => getPostgresSqlConnectionPool(a, opts))

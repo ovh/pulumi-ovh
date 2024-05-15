@@ -82,7 +82,6 @@ def get_user_s3_policy(service_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -94,7 +93,6 @@ def get_user_s3_policy(service_name: Optional[str] = None,
     policy = ovh.CloudProject.get_user_s3_policy(service_name=project_users.service_name,
         user_id=s3_user_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The ID of the public cloud project. If omitted,
@@ -123,7 +121,6 @@ def get_user_s3_policy_output(service_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -135,7 +132,6 @@ def get_user_s3_policy_output(service_name: Optional[pulumi.Input[str]] = None,
     policy = ovh.CloudProject.get_user_s3_policy(service_name=project_users.service_name,
         user_id=s3_user_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The ID of the public cloud project. If omitted,

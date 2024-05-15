@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Push PostgreSQL logs in an OpenSearch DB:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -40,7 +39,6 @@ import * as utilities from "../utilities";
  *     type: "opensearchLogs",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPrivateDatabaseAllowlist(args: GetPrivateDatabaseAllowlistArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseAllowlistResult> {
 
@@ -84,7 +82,6 @@ export interface GetPrivateDatabaseAllowlistResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -94,7 +91,6 @@ export interface GetPrivateDatabaseAllowlistResult {
  *     serviceName: "XXXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPrivateDatabaseAllowlistOutput(args: GetPrivateDatabaseAllowlistOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseAllowlistResult> {
     return pulumi.output(args).apply((a: any) => getPrivateDatabaseAllowlist(a, opts))

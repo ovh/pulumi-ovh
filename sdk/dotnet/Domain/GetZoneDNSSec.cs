@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Domain
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Ovh.Domain
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetZoneDNSSecResult> InvokeAsync(GetZoneDNSSecArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneDNSSecResult>("ovh:Domain/getZoneDNSSec:getZoneDNSSec", args ?? new GetZoneDNSSecArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Ovh.Domain
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Ovh.Domain
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetZoneDNSSecResult> Invoke(GetZoneDNSSecInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneDNSSecResult>("ovh:Domain/getZoneDNSSec:getZoneDNSSec", args ?? new GetZoneDNSSecInvokeArgs(), options.WithDefaults());

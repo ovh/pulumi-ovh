@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     registryId: ovh_cloud_project_containerregistry.registry.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getContainerRegistryUsers(args: GetContainerRegistryUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryUsersResult> {
 
@@ -71,7 +69,6 @@ export interface GetContainerRegistryUsersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -85,7 +82,6 @@ export interface GetContainerRegistryUsersResult {
  *     registryId: ovh_cloud_project_containerregistry.registry.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getContainerRegistryUsersOutput(args: GetContainerRegistryUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryUsersResult> {
     return pulumi.output(args).apply((a: any) => getContainerRegistryUsers(a, opts))

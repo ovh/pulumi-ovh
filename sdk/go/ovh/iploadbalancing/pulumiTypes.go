@@ -870,7 +870,7 @@ func (o LoadBalancerOrderDetailArrayOutput) Index(i pulumi.IntInput) LoadBalance
 type LoadBalancerOrderableZone struct {
 	// The zone three letter code
 	Name *string `pulumi:"name"`
-	// Plan code
+	// The billing planCode for this zone
 	PlanCode *string `pulumi:"planCode"`
 }
 
@@ -888,7 +888,7 @@ type LoadBalancerOrderableZoneInput interface {
 type LoadBalancerOrderableZoneArgs struct {
 	// The zone three letter code
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Plan code
+	// The billing planCode for this zone
 	PlanCode pulumi.StringPtrInput `pulumi:"planCode"`
 }
 
@@ -948,7 +948,7 @@ func (o LoadBalancerOrderableZoneOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerOrderableZone) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Plan code
+// The billing planCode for this zone
 func (o LoadBalancerOrderableZoneOutput) PlanCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerOrderableZone) *string { return v.PlanCode }).(pulumi.StringPtrOutput)
 }

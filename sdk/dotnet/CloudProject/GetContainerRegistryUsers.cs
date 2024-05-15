@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetContainerRegistryUsersResult> InvokeAsync(GetContainerRegistryUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryUsersResult>("ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers", args ?? new GetContainerRegistryUsersArgs(), options.WithDefaults());
@@ -49,7 +47,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +69,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetContainerRegistryUsersResult> Invoke(GetContainerRegistryUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryUsersResult>("ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers", args ?? new GetContainerRegistryUsersInvokeArgs(), options.WithDefaults());

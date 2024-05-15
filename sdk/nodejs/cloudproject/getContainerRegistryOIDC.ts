@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getContainerRegistryOIDC(args: GetContainerRegistryOIDCArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryOIDCResult> {
 
@@ -152,7 +150,6 @@ export interface GetContainerRegistryOIDCResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -167,7 +164,6 @@ export interface GetContainerRegistryOIDCResult {
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getContainerRegistryOIDCOutput(args: GetContainerRegistryOIDCOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryOIDCResult> {
     return pulumi.output(args).apply((a: any) => getContainerRegistryOIDC(a, opts))

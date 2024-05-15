@@ -413,9 +413,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_me_installation_template_partition_scheme_partition": {
 				Tok: ovhResource(meMod, "InstallationTemplatePartitionSchemePartition"),
 			},
-			"ovh_me_ssh_key": {
-				Tok: ovhResource(meMod, "SshKey"),
-			},
 			"ovh_vrack": {
 				Tok: ovhResource(vrackMod, "Vrack"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -697,6 +694,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_hosting_privatedatabase_whitelist": {
 				Tok: ovhDataSource(hostingMod, "getPrivateDatabaseAllowlist"),
 			},
+			"ovh_dedicated_installation_template": {
+				Tok: ovhDataSource(ovhMod, "getInstallationTemplate"),
+			},
 			"ovh_dedicated_installation_templates": {
 				Tok: ovhDataSource(ovhMod, "getInstallationTemplates"),
 			},
@@ -773,12 +773,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_me_paymentmean_creditcard": {
 				Tok: ovhDataSource(meMod, "getPaymentmeanCreditCard"),
-			},
-			"ovh_me_ssh_key": {
-				Tok: ovhDataSource(meMod, "getSshKey"),
-			},
-			"ovh_me_ssh_keys": {
-				Tok: ovhDataSource(meMod, "getSshKeys"),
 			},
 			"ovh_order_cart": {
 				Tok: ovhDataSource(orderMod, "getCart"),

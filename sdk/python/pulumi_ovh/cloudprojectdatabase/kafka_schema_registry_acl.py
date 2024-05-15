@@ -206,7 +206,6 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -221,7 +220,6 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
             resource="Subject:myResource",
             username="johndoe")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -254,7 +252,6 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -269,7 +266,6 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
             resource="Subject:myResource",
             username="johndoe")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

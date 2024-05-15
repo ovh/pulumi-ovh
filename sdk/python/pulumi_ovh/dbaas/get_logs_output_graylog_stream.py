@@ -331,7 +331,6 @@ def get_logs_output_graylog_stream(service_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -339,7 +338,6 @@ def get_logs_output_graylog_stream(service_name: Optional[str] = None,
     stream = ovh.Dbaas.get_logs_output_graylog_stream(service_name="ldp-xx-xxxxx",
         title="my stream")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
@@ -388,7 +386,6 @@ def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[st
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -396,7 +393,6 @@ def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[st
     stream = ovh.Dbaas.get_logs_output_graylog_stream(service_name="ldp-xx-xxxxx",
         title="my stream")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.

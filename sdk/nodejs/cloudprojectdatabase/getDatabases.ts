@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * To get the list of database clusters service for a given engine:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  * });
  * export const clusterIds = dbs.then(dbs => dbs.clusterIds);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabases(args: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
 
@@ -77,7 +75,6 @@ export interface GetDatabasesResult {
  *
  * To get the list of database clusters service for a given engine:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -88,7 +85,6 @@ export interface GetDatabasesResult {
  * });
  * export const clusterIds = dbs.then(dbs => dbs.clusterIds);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabasesOutput(args: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
     return pulumi.output(args).apply((a: any) => getDatabases(a, opts))

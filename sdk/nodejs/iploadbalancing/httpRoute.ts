@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * Route which redirect all url to https.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  *     weight: 1,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -84,7 +82,7 @@ export class HttpRoute extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * HTTP status code for "redirect" and "reject" actions
+     * Route status. Routes in "ok" state are ready to operate
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -158,7 +156,7 @@ export interface HttpRouteState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * HTTP status code for "redirect" and "reject" actions
+     * Route status. Routes in "ok" state are ready to operate
      */
     status?: pulumi.Input<string>;
     /**

@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPrivateDatabaseResult> InvokeAsync(GetPrivateDatabaseArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateDatabaseResult>("ovh:Hosting/getPrivateDatabase:getPrivateDatabase", args ?? new GetPrivateDatabaseArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPrivateDatabaseResult> Invoke(GetPrivateDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseResult>("ovh:Hosting/getPrivateDatabase:getPrivateDatabase", args ?? new GetPrivateDatabaseInvokeArgs(), options.WithDefaults());

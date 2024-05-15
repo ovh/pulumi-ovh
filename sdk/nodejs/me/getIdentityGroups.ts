@@ -9,14 +9,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const groups = ovh.Me.getIdentityGroups({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIdentityGroups(opts?: pulumi.InvokeOptions): Promise<GetIdentityGroupsResult> {
 
@@ -43,14 +41,12 @@ export interface GetIdentityGroupsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
  * const groups = ovh.Me.getIdentityGroups({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIdentityGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityGroupsResult> {
     return pulumi.output(getIdentityGroups(opts))

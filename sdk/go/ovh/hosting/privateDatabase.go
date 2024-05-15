@@ -14,7 +14,6 @@ import (
 
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,7 +75,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -294,6 +292,8 @@ func (PrivateDatabaseState) ElementType() reflect.Type {
 type privateDatabaseArgs struct {
 	// Name displayed in customer panel for your private database
 	DisplayName *string `pulumi:"displayName"`
+	// Details about your Order
+	Orders []PrivateDatabaseOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
@@ -312,6 +312,8 @@ type privateDatabaseArgs struct {
 type PrivateDatabaseArgs struct {
 	// Name displayed in customer panel for your private database
 	DisplayName pulumi.StringPtrInput
+	// Details about your Order
+	Orders PrivateDatabaseOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode

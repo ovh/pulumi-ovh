@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  * });
  * export const integrationType = integration.then(integration => integration.type);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseIntegration(args: GetDatabaseIntegrationArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseIntegrationResult> {
 
@@ -105,7 +103,6 @@ export interface GetDatabaseIntegrationResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -118,7 +115,6 @@ export interface GetDatabaseIntegrationResult {
  * });
  * export const integrationType = integration.then(integration => integration.type);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseIntegrationOutput(args: GetDatabaseIntegrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseIntegrationResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseIntegration(a, opts))

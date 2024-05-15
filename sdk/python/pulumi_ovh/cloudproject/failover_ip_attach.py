@@ -287,7 +287,6 @@ class FailoverIpAttach(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -297,7 +296,6 @@ class FailoverIpAttach(pulumi.CustomResource):
             routed_to="XXXXXX",
             service_name="XXXXXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -320,7 +318,6 @@ class FailoverIpAttach(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -330,7 +327,6 @@ class FailoverIpAttach(pulumi.CustomResource):
             routed_to="XXXXXX",
             service_name="XXXXXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param FailoverIpAttachArgs args: The arguments to use to populate this resource's properties.

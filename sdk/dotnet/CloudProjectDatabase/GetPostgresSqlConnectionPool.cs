@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,7 +49,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPostgresSqlConnectionPoolResult> InvokeAsync(GetPostgresSqlConnectionPoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresSqlConnectionPoolResult>("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", args ?? new GetPostgresSqlConnectionPoolArgs(), options.WithDefaults());
@@ -60,7 +58,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -94,7 +91,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPostgresSqlConnectionPoolResult> Invoke(GetPostgresSqlConnectionPoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresSqlConnectionPoolResult>("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", args ?? new GetPostgresSqlConnectionPoolInvokeArgs(), options.WithDefaults());

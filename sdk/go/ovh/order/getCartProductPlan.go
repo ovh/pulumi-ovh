@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetCartProductPlan(ctx *pulumi.Context, args *GetCartProductPlanArgs, opts ...pulumi.InvokeOption) (*GetCartProductPlanResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCartProductPlanResult

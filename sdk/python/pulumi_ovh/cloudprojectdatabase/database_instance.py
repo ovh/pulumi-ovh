@@ -196,7 +196,6 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -209,7 +208,6 @@ class DatabaseInstance(pulumi.CustomResource):
             engine=db.engine,
             cluster_id=db.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -246,7 +244,6 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -259,7 +256,6 @@ class DatabaseInstance(pulumi.CustomResource):
             engine=db.engine,
             cluster_id=db.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

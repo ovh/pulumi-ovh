@@ -26,35 +26,38 @@ import (
 type InstallationTemplate struct {
 	pulumi.CustomResourceState
 
-	// Deprecated.
-	AvailableLanguages pulumi.StringArrayOutput `pulumi:"availableLanguages"`
 	// The name of an existing installation template, choose one among the list given by `getInstallationTemplates` datasource.
 	BaseTemplateName pulumi.StringOutput `pulumi:"baseTemplateName"`
 	// This template bit format (32 or 64).
 	BitFormat pulumi.IntOutput `pulumi:"bitFormat"`
 	// Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release.
 	Category      pulumi.StringOutput                        `pulumi:"category"`
 	Customization InstallationTemplateCustomizationPtrOutput `pulumi:"customization"`
-	// Deprecated, use language in userMetadata instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release.
-	DefaultLanguage pulumi.StringPtrOutput `pulumi:"defaultLanguage"`
 	// information about this template.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// the distribution this template is based on.
 	Distribution pulumi.StringOutput `pulumi:"distribution"`
-	// this template family type (bsd,linux,solaris,windows).
+	// after this date, install of this template will not be possible at OVH
+	EndOfInstall pulumi.StringOutput `pulumi:"endOfInstall"`
+	// this template family type.
 	Family pulumi.StringOutput `pulumi:"family"`
-	// Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+	// Filesystems available.
 	Filesystems pulumi.StringArrayOutput `pulumi:"filesystems"`
-	// This distribution supports hardware raid configuration through the OVHcloud API.
-	HardRaidConfiguration pulumi.BoolOutput `pulumi:"hardRaidConfiguration"`
-	// This distribution supports Logical Volumes (Linux LVM)
+	// This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
+	//
+	// Deprecated: This will be deprecated in the next release
+	HardRaidConfiguration pulumi.BoolOutput                        `pulumi:"hardRaidConfiguration"`
+	Inputs                InstallationTemplateInputTypeArrayOutput `pulumi:"inputs"`
+	// Whether this distribution supports Logical Volumes (Linux LVM)
 	LvmReady pulumi.BoolOutput `pulumi:"lvmReady"`
+	// Partitioning customization is not available for this OS template
+	NoPartitioning pulumi.BoolOutput `pulumi:"noPartitioning"`
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes pulumi.BoolOutput `pulumi:"removeDefaultPartitionSchemes"`
+	// Partitioning customization is available but limited to mirroring for this OS template
+	SoftRaidOnlyMirroring pulumi.BoolOutput `pulumi:"softRaidOnlyMirroring"`
+	// this template subfamily type
+	Subfamily pulumi.StringOutput `pulumi:"subfamily"`
 	// This template name.
 	TemplateName pulumi.StringOutput `pulumi:"templateName"`
 }
@@ -95,69 +98,75 @@ func GetInstallationTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstallationTemplate resources.
 type installationTemplateState struct {
-	// Deprecated.
-	AvailableLanguages []string `pulumi:"availableLanguages"`
 	// The name of an existing installation template, choose one among the list given by `getInstallationTemplates` datasource.
 	BaseTemplateName *string `pulumi:"baseTemplateName"`
 	// This template bit format (32 or 64).
 	BitFormat *int `pulumi:"bitFormat"`
 	// Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release.
 	Category      *string                            `pulumi:"category"`
 	Customization *InstallationTemplateCustomization `pulumi:"customization"`
-	// Deprecated, use language in userMetadata instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release.
-	DefaultLanguage *string `pulumi:"defaultLanguage"`
 	// information about this template.
 	Description *string `pulumi:"description"`
 	// the distribution this template is based on.
 	Distribution *string `pulumi:"distribution"`
-	// this template family type (bsd,linux,solaris,windows).
+	// after this date, install of this template will not be possible at OVH
+	EndOfInstall *string `pulumi:"endOfInstall"`
+	// this template family type.
 	Family *string `pulumi:"family"`
-	// Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+	// Filesystems available.
 	Filesystems []string `pulumi:"filesystems"`
-	// This distribution supports hardware raid configuration through the OVHcloud API.
-	HardRaidConfiguration *bool `pulumi:"hardRaidConfiguration"`
-	// This distribution supports Logical Volumes (Linux LVM)
+	// This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
+	//
+	// Deprecated: This will be deprecated in the next release
+	HardRaidConfiguration *bool                           `pulumi:"hardRaidConfiguration"`
+	Inputs                []InstallationTemplateInputType `pulumi:"inputs"`
+	// Whether this distribution supports Logical Volumes (Linux LVM)
 	LvmReady *bool `pulumi:"lvmReady"`
+	// Partitioning customization is not available for this OS template
+	NoPartitioning *bool `pulumi:"noPartitioning"`
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes *bool `pulumi:"removeDefaultPartitionSchemes"`
+	// Partitioning customization is available but limited to mirroring for this OS template
+	SoftRaidOnlyMirroring *bool `pulumi:"softRaidOnlyMirroring"`
+	// this template subfamily type
+	Subfamily *string `pulumi:"subfamily"`
 	// This template name.
 	TemplateName *string `pulumi:"templateName"`
 }
 
 type InstallationTemplateState struct {
-	// Deprecated.
-	AvailableLanguages pulumi.StringArrayInput
 	// The name of an existing installation template, choose one among the list given by `getInstallationTemplates` datasource.
 	BaseTemplateName pulumi.StringPtrInput
 	// This template bit format (32 or 64).
 	BitFormat pulumi.IntPtrInput
 	// Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release.
 	Category      pulumi.StringPtrInput
 	Customization InstallationTemplateCustomizationPtrInput
-	// Deprecated, use language in userMetadata instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release.
-	DefaultLanguage pulumi.StringPtrInput
 	// information about this template.
 	Description pulumi.StringPtrInput
 	// the distribution this template is based on.
 	Distribution pulumi.StringPtrInput
-	// this template family type (bsd,linux,solaris,windows).
+	// after this date, install of this template will not be possible at OVH
+	EndOfInstall pulumi.StringPtrInput
+	// this template family type.
 	Family pulumi.StringPtrInput
-	// Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+	// Filesystems available.
 	Filesystems pulumi.StringArrayInput
-	// This distribution supports hardware raid configuration through the OVHcloud API.
+	// This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
+	//
+	// Deprecated: This will be deprecated in the next release
 	HardRaidConfiguration pulumi.BoolPtrInput
-	// This distribution supports Logical Volumes (Linux LVM)
+	Inputs                InstallationTemplateInputTypeArrayInput
+	// Whether this distribution supports Logical Volumes (Linux LVM)
 	LvmReady pulumi.BoolPtrInput
+	// Partitioning customization is not available for this OS template
+	NoPartitioning pulumi.BoolPtrInput
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes pulumi.BoolPtrInput
+	// Partitioning customization is available but limited to mirroring for this OS template
+	SoftRaidOnlyMirroring pulumi.BoolPtrInput
+	// this template subfamily type
+	Subfamily pulumi.StringPtrInput
 	// This template name.
 	TemplateName pulumi.StringPtrInput
 }
@@ -170,10 +179,6 @@ type installationTemplateArgs struct {
 	// The name of an existing installation template, choose one among the list given by `getInstallationTemplates` datasource.
 	BaseTemplateName string                             `pulumi:"baseTemplateName"`
 	Customization    *InstallationTemplateCustomization `pulumi:"customization"`
-	// Deprecated, use language in userMetadata instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release.
-	DefaultLanguage *string `pulumi:"defaultLanguage"`
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes *bool `pulumi:"removeDefaultPartitionSchemes"`
 	// This template name.
@@ -185,10 +190,6 @@ type InstallationTemplateArgs struct {
 	// The name of an existing installation template, choose one among the list given by `getInstallationTemplates` datasource.
 	BaseTemplateName pulumi.StringInput
 	Customization    InstallationTemplateCustomizationPtrInput
-	// Deprecated, use language in userMetadata instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release.
-	DefaultLanguage pulumi.StringPtrInput
 	// Remove default partition schemes at creation.
 	RemoveDefaultPartitionSchemes pulumi.BoolPtrInput
 	// This template name.
@@ -282,11 +283,6 @@ func (o InstallationTemplateOutput) ToInstallationTemplateOutputWithContext(ctx 
 	return o
 }
 
-// Deprecated.
-func (o InstallationTemplateOutput) AvailableLanguages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringArrayOutput { return v.AvailableLanguages }).(pulumi.StringArrayOutput)
-}
-
 // The name of an existing installation template, choose one among the list given by `getInstallationTemplates` datasource.
 func (o InstallationTemplateOutput) BaseTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringOutput { return v.BaseTemplateName }).(pulumi.StringOutput)
@@ -298,21 +294,12 @@ func (o InstallationTemplateOutput) BitFormat() pulumi.IntOutput {
 }
 
 // Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
-//
-// Deprecated: This field is deprecated and will be removed in a future release.
 func (o InstallationTemplateOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
 
 func (o InstallationTemplateOutput) Customization() InstallationTemplateCustomizationPtrOutput {
 	return o.ApplyT(func(v *InstallationTemplate) InstallationTemplateCustomizationPtrOutput { return v.Customization }).(InstallationTemplateCustomizationPtrOutput)
-}
-
-// Deprecated, use language in userMetadata instead.
-//
-// Deprecated: This field is deprecated and will be removed in a future release.
-func (o InstallationTemplateOutput) DefaultLanguage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringPtrOutput { return v.DefaultLanguage }).(pulumi.StringPtrOutput)
 }
 
 // information about this template.
@@ -325,29 +312,55 @@ func (o InstallationTemplateOutput) Distribution() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringOutput { return v.Distribution }).(pulumi.StringOutput)
 }
 
-// this template family type (bsd,linux,solaris,windows).
+// after this date, install of this template will not be possible at OVH
+func (o InstallationTemplateOutput) EndOfInstall() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringOutput { return v.EndOfInstall }).(pulumi.StringOutput)
+}
+
+// this template family type.
 func (o InstallationTemplateOutput) Family() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringOutput { return v.Family }).(pulumi.StringOutput)
 }
 
-// Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+// Filesystems available.
 func (o InstallationTemplateOutput) Filesystems() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringArrayOutput { return v.Filesystems }).(pulumi.StringArrayOutput)
 }
 
-// This distribution supports hardware raid configuration through the OVHcloud API.
+// This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
+//
+// Deprecated: This will be deprecated in the next release
 func (o InstallationTemplateOutput) HardRaidConfiguration() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.HardRaidConfiguration }).(pulumi.BoolOutput)
 }
 
-// This distribution supports Logical Volumes (Linux LVM)
+func (o InstallationTemplateOutput) Inputs() InstallationTemplateInputTypeArrayOutput {
+	return o.ApplyT(func(v *InstallationTemplate) InstallationTemplateInputTypeArrayOutput { return v.Inputs }).(InstallationTemplateInputTypeArrayOutput)
+}
+
+// Whether this distribution supports Logical Volumes (Linux LVM)
 func (o InstallationTemplateOutput) LvmReady() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.LvmReady }).(pulumi.BoolOutput)
+}
+
+// Partitioning customization is not available for this OS template
+func (o InstallationTemplateOutput) NoPartitioning() pulumi.BoolOutput {
+	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.NoPartitioning }).(pulumi.BoolOutput)
 }
 
 // Remove default partition schemes at creation.
 func (o InstallationTemplateOutput) RemoveDefaultPartitionSchemes() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.RemoveDefaultPartitionSchemes }).(pulumi.BoolOutput)
+}
+
+// Partitioning customization is available but limited to mirroring for this OS template
+func (o InstallationTemplateOutput) SoftRaidOnlyMirroring() pulumi.BoolOutput {
+	return o.ApplyT(func(v *InstallationTemplate) pulumi.BoolOutput { return v.SoftRaidOnlyMirroring }).(pulumi.BoolOutput)
+}
+
+// this template subfamily type
+func (o InstallationTemplateOutput) Subfamily() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstallationTemplate) pulumi.StringOutput { return v.Subfamily }).(pulumi.StringOutput)
 }
 
 // This template name.

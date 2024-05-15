@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetLogsClusters(ctx *pulumi.Context, args *GetLogsClustersArgs, opts ...pulumi.InvokeOption) (*GetLogsClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogsClustersResult

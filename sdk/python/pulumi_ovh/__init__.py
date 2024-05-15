@@ -5,6 +5,7 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .get_installation_template import *
 from .get_installation_templates import *
 from .get_server import *
 from .get_servers import *
@@ -758,14 +759,6 @@ _utilities.register(
   "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition": "InstallationTemplatePartitionSchemePartition"
-  }
- },
- {
-  "pkg": "ovh",
-  "mod": "Me/sshKey",
-  "fqn": "pulumi_ovh.me",
-  "classes": {
-   "ovh:Me/sshKey:SshKey": "SshKey"
   }
  },
  {

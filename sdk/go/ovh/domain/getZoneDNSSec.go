@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupZoneDNSSec(ctx *pulumi.Context, args *LookupZoneDNSSecArgs, opts ...pulumi.InvokeOption) (*LookupZoneDNSSecResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneDNSSecResult

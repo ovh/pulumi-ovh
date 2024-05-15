@@ -12,7 +12,6 @@ namespace Pulumi.Ovh.Ip
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,7 +57,6 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Ip/ipService:IpService")]
     public partial class IpService : global::Pulumi.CustomResource
@@ -193,6 +191,18 @@ namespace Pulumi.Ovh.Ip
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("orders")]
+        private InputList<Inputs.IpServiceOrderArgs>? _orders;
+
+        /// <summary>
+        /// Details about an Order
+        /// </summary>
+        public InputList<Inputs.IpServiceOrderArgs> Orders
+        {
+            get => _orders ?? (_orders = new InputList<Inputs.IpServiceOrderArgs>());
+            set => _orders = value;
+        }
 
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)

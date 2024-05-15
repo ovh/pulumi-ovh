@@ -110,7 +110,6 @@ def get_mitigation(ip: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -118,7 +117,6 @@ def get_mitigation(ip: Optional[str] = None,
     mitigation_data = ovh.Ip.get_mitigation(ip="XXXXXX",
         ip_on_mitigation="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ip: The IP or the CIDR
@@ -148,7 +146,6 @@ def get_mitigation_output(ip: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -156,7 +153,6 @@ def get_mitigation_output(ip: Optional[pulumi.Input[str]] = None,
     mitigation_data = ovh.Ip.get_mitigation(ip="XXXXXX",
         ip_on_mitigation="XXXXXX")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ip: The IP or the CIDR

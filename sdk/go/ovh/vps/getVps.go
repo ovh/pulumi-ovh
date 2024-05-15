@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupVps(ctx *pulumi.Context, args *LookupVpsArgs, opts ...pulumi.InvokeOption) (*LookupVpsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpsResult

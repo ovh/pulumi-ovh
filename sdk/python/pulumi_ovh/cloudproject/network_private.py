@@ -263,7 +263,6 @@ class NetworkPrivate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -275,7 +274,6 @@ class NetworkPrivate(pulumi.CustomResource):
             ],
             service_name="XXXXXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -308,7 +306,6 @@ class NetworkPrivate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -320,7 +317,6 @@ class NetworkPrivate(pulumi.CustomResource):
             ],
             service_name="XXXXXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

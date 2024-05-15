@@ -22,7 +22,6 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         /// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
         /// 
         /// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         /// {
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("privateNetworkRoutingAsDefault", required: true)]
         public Input<bool> PrivateNetworkRoutingAsDefault { get; set; } = null!;

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKubeOidc(args: GetKubeOidcArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeOidcResult> {
 
@@ -153,7 +151,6 @@ export interface GetKubeOidcResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -168,7 +165,6 @@ export interface GetKubeOidcResult {
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKubeOidcOutput(args: GetKubeOidcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeOidcResult> {
     return pulumi.output(args).apply((a: any) => getKubeOidc(a, opts))

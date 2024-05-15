@@ -14,11 +14,11 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class KubeNodePoolTemplate
     {
         /// <summary>
-        /// Metadata of each node in the pool
+        /// metadata
         /// </summary>
         public readonly Outputs.KubeNodePoolTemplateMetadata Metadata;
         /// <summary>
-        /// Spec of each node in the pool
+        /// spec
         /// </summary>
         public readonly Outputs.KubeNodePoolTemplateSpec Spec;
 

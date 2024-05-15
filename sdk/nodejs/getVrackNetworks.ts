@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     subnet: "10.0.0.0/24",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVrackNetworks(args: GetVrackNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetVrackNetworksResult> {
 
@@ -70,7 +68,6 @@ export interface GetVrackNetworksResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -80,7 +77,6 @@ export interface GetVrackNetworksResult {
  *     subnet: "10.0.0.0/24",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVrackNetworksOutput(args: GetVrackNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVrackNetworksResult> {
     return pulumi.output(args).apply((a: any) => getVrackNetworks(a, opts))

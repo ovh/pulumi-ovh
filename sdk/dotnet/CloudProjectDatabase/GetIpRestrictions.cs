@@ -20,7 +20,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// To get the list of IP restriction on a database cluster service:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIpRestrictionsResult> InvokeAsync(GetIpRestrictionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpRestrictionsResult>("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args ?? new GetIpRestrictionsArgs(), options.WithDefaults());
@@ -56,7 +54,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// To get the list of IP restriction on a database cluster service:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIpRestrictionsResult> Invoke(GetIpRestrictionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpRestrictionsResult>("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args ?? new GetIpRestrictionsInvokeArgs(), options.WithDefaults());

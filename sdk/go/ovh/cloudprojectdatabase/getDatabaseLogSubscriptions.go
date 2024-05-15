@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDatabaseLogSubscriptions(ctx *pulumi.Context, args *GetDatabaseLogSubscriptionsArgs, opts ...pulumi.InvokeOption) (*GetDatabaseLogSubscriptionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseLogSubscriptionsResult

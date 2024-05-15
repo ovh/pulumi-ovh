@@ -20,7 +20,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// Push PostgreSQL logs in an OpenSearch DB:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

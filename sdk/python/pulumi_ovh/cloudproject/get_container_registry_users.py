@@ -83,7 +83,6 @@ def get_container_registry_users(registry_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -93,7 +92,6 @@ def get_container_registry_users(registry_id: Optional[str] = None,
     users = ovh.CloudProject.get_container_registry_users(service_name=ovh_cloud_project_containerregistry["registry"]["service_name"],
         registry_id=ovh_cloud_project_containerregistry["registry"]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str registry_id: Registry ID
@@ -122,7 +120,6 @@ def get_container_registry_users_output(registry_id: Optional[pulumi.Input[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -132,7 +129,6 @@ def get_container_registry_users_output(registry_id: Optional[pulumi.Input[str]]
     users = ovh.CloudProject.get_container_registry_users(service_name=ovh_cloud_project_containerregistry["registry"]["service_name"],
         registry_id=ovh_cloud_project_containerregistry["registry"]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str registry_id: Registry ID

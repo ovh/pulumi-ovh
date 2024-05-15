@@ -26,7 +26,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string Duration;
         /// <summary>
-        /// Plan code
+        /// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
         /// </summary>
         public readonly string PlanCode;
         /// <summary>

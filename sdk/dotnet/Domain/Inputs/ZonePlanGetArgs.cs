@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Domain.Inputs
         private InputList<Inputs.ZonePlanConfigurationGetArgs>? _configurations;
 
         /// <summary>
-        /// Representation of a configuration item for personalizing product
+        /// Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
         /// </summary>
         public InputList<Inputs.ZonePlanConfigurationGetArgs> Configurations
         {

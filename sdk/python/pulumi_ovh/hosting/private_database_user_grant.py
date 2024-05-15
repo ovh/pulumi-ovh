@@ -182,7 +182,6 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -193,7 +192,6 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
             service_name="XXXXXX",
             user_name="terraform")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -225,7 +223,6 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -236,7 +233,6 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
             service_name="XXXXXX",
             user_name="terraform")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

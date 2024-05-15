@@ -88,7 +88,6 @@ def get_database_postgre_sql_connection_pools(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -97,7 +96,6 @@ def get_database_postgre_sql_connection_pools(cluster_id: Optional[str] = None,
         cluster_id="YYY")
     pulumi.export("connectionPoolIds", test_pools.connection_pool_ids)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID.
@@ -126,7 +124,6 @@ def get_database_postgre_sql_connection_pools_output(cluster_id: Optional[pulumi
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
@@ -135,7 +132,6 @@ def get_database_postgre_sql_connection_pools_output(cluster_id: Optional[pulumi
         cluster_id="YYY")
     pulumi.export("connectionPoolIds", test_pools.connection_pool_ids)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID.

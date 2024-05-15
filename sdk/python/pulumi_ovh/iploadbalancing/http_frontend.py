@@ -472,7 +472,6 @@ class HttpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -491,11 +490,9 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### With HTTP Header
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -518,7 +515,6 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -553,7 +549,6 @@ class HttpFrontend(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -572,11 +567,9 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### With HTTP Header
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -599,7 +592,6 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

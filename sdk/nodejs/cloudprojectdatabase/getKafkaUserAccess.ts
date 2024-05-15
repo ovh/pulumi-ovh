@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  * });
  * export const accessCert = access.then(access => access.cert);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKafkaUserAccess(args: GetKafkaUserAccessArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaUserAccessResult> {
 
@@ -86,7 +84,6 @@ export interface GetKafkaUserAccessResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
@@ -98,7 +95,6 @@ export interface GetKafkaUserAccessResult {
  * });
  * export const accessCert = access.then(access => access.cert);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKafkaUserAccessOutput(args: GetKafkaUserAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaUserAccessResult> {
     return pulumi.output(args).apply((a: any) => getKafkaUserAccess(a, opts))

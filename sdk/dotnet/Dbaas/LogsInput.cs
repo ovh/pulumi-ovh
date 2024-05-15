@@ -14,7 +14,6 @@ namespace Pulumi.Ovh.Dbaas
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -66,7 +65,6 @@ namespace Pulumi.Ovh.Dbaas
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Dbaas/logsInput:LogsInput")]
     public partial class LogsInput : global::Pulumi.CustomResource

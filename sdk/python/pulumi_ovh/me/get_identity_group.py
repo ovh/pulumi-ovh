@@ -21,7 +21,10 @@ class GetIdentityGroupResult:
     """
     A collection of values returned by getIdentityGroup.
     """
-    def __init__(__self__, creation=None, default_group=None, description=None, id=None, last_update=None, name=None, role=None):
+    def __init__(__self__, group_urn=None, creation=None, default_group=None, description=None, id=None, last_update=None, name=None, role=None):
+        if group_urn and not isinstance(group_urn, str):
+            raise TypeError("Expected argument 'group_urn' to be a str")
+        pulumi.set(__self__, "group_urn", group_urn)
         if creation and not isinstance(creation, str):
             raise TypeError("Expected argument 'creation' to be a str")
         pulumi.set(__self__, "creation", creation)
@@ -43,6 +46,14 @@ class GetIdentityGroupResult:
         if role and not isinstance(role, str):
             raise TypeError("Expected argument 'role' to be a str")
         pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="GroupURN")
+    def group_urn(self) -> str:
+        """
+        Identity URN of the group.
+        """
+        return pulumi.get(self, "group_urn")
 
     @property
     @pulumi.getter
@@ -104,6 +115,7 @@ class AwaitableGetIdentityGroupResult(GetIdentityGroupResult):
         if False:
             yield self
         return GetIdentityGroupResult(
+            group_urn=self.group_urn,
             creation=self.creation,
             default_group=self.default_group,
             description=self.description,
@@ -120,14 +132,12 @@ def get_identity_group(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_group = ovh.Me.get_identity_group(name="my_group_name")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Group name.
@@ -138,6 +148,7 @@ def get_identity_group(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('ovh:Me/getIdentityGroup:getIdentityGroup', __args__, opts=opts, typ=GetIdentityGroupResult).value
 
     return AwaitableGetIdentityGroupResult(
+        group_urn=pulumi.get(__ret__, 'group_urn'),
         creation=pulumi.get(__ret__, 'creation'),
         default_group=pulumi.get(__ret__, 'default_group'),
         description=pulumi.get(__ret__, 'description'),
@@ -155,14 +166,12 @@ def get_identity_group_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_ovh as ovh
 
     my_group = ovh.Me.get_identity_group(name="my_group_name")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Group name.

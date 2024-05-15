@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIpLoadBalancingResult> InvokeAsync(GetIpLoadBalancingArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpLoadBalancingResult>("ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing", args ?? new GetIpLoadBalancingArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIpLoadBalancingResult> Invoke(GetIpLoadBalancingInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpLoadBalancingResult>("ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing", args ?? new GetIpLoadBalancingInvokeArgs(), options.WithDefaults());

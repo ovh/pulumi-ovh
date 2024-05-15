@@ -14,7 +14,6 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,7 +30,6 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OvhResourceType("ovh:Ip/mitigation:Mitigation")]
     public partial class Mitigation : global::Pulumi.CustomResource
