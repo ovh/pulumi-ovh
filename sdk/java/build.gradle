@@ -21,7 +21,7 @@ def publishRepoPassword = System.getenv("PUBLISH_REPO_PASSWORD")
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -77,8 +77,8 @@ jar.configure {
 publishing {
     publications {
         mainPublication(MavenPublication) {
-            groupId = "com.ovh"
-            artifactId = "pulumi"
+            groupId = "fr.wilda"
+            artifactId = "pulumi-ovh"
             version = resolvedVersion
             from components.java
             artifact sourcesJar
