@@ -4,6 +4,7 @@
 package com.ovh.ovh.Hosting.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,7 +93,9 @@ public final class GetPrivateDatabaseAllowlistPlainArgs extends com.pulumi.resou
         }
 
         public GetPrivateDatabaseAllowlistPlainArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetPrivateDatabaseAllowlistPlainArgs", "serviceName");
+            }
             return $;
         }
     }

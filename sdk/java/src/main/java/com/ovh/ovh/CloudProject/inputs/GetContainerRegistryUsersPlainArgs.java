@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -93,8 +94,12 @@ public final class GetContainerRegistryUsersPlainArgs extends com.pulumi.resourc
         }
 
         public GetContainerRegistryUsersPlainArgs build() {
-            $.registryId = Objects.requireNonNull($.registryId, "expected parameter 'registryId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.registryId == null) {
+                throw new MissingRequiredPropertyException("GetContainerRegistryUsersPlainArgs", "registryId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetContainerRegistryUsersPlainArgs", "serviceName");
+            }
             return $;
         }
     }

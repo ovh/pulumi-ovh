@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class GetAPIOAuth2ClientsResult {
 
         @CustomType.Setter
         public Builder clientIds(List<String> clientIds) {
-            this.clientIds = Objects.requireNonNull(clientIds);
+            if (clientIds == null) {
+              throw new MissingRequiredPropertyException("GetAPIOAuth2ClientsResult", "clientIds");
+            }
+            this.clientIds = clientIds;
             return this;
         }
         public Builder clientIds(String... clientIds) {
@@ -65,14 +69,17 @@ public final class GetAPIOAuth2ClientsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAPIOAuth2ClientsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetAPIOAuth2ClientsResult build() {
-            final var o = new GetAPIOAuth2ClientsResult();
-            o.clientIds = clientIds;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetAPIOAuth2ClientsResult();
+            _resultValue.clientIds = clientIds;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

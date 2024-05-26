@@ -87,21 +87,25 @@ public final class UserRole {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder permissions(@Nullable List<String> permissions) {
+
             this.permissions = permissions;
             return this;
         }
@@ -109,12 +113,12 @@ public final class UserRole {
             return permissions(List.of(permissions));
         }
         public UserRole build() {
-            final var o = new UserRole();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new UserRole();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

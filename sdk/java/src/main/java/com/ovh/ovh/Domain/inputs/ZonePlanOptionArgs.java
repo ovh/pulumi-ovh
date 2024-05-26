@@ -6,6 +6,7 @@ package com.ovh.ovh.Domain.inputs;
 import com.ovh.ovh.Domain.inputs.ZonePlanOptionConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -236,9 +237,15 @@ public final class ZonePlanOptionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ZonePlanOptionArgs build() {
-            $.duration = Objects.requireNonNull($.duration, "expected parameter 'duration' to be non-null");
-            $.planCode = Objects.requireNonNull($.planCode, "expected parameter 'planCode' to be non-null");
-            $.pricingMode = Objects.requireNonNull($.pricingMode, "expected parameter 'pricingMode' to be non-null");
+            if ($.duration == null) {
+                throw new MissingRequiredPropertyException("ZonePlanOptionArgs", "duration");
+            }
+            if ($.planCode == null) {
+                throw new MissingRequiredPropertyException("ZonePlanOptionArgs", "planCode");
+            }
+            if ($.pricingMode == null) {
+                throw new MissingRequiredPropertyException("ZonePlanOptionArgs", "pricingMode");
+            }
             return $;
         }
     }

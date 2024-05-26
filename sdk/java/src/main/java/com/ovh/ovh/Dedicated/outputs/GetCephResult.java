@@ -4,6 +4,7 @@
 package com.ovh.ovh.Dedicated.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -192,12 +193,18 @@ public final class GetCephResult {
 
         @CustomType.Setter
         public Builder CephURN(String CephURN) {
-            this.CephURN = Objects.requireNonNull(CephURN);
+            if (CephURN == null) {
+              throw new MissingRequiredPropertyException("GetCephResult", "CephURN");
+            }
+            this.CephURN = CephURN;
             return this;
         }
         @CustomType.Setter
         public Builder cephMons(List<String> cephMons) {
-            this.cephMons = Objects.requireNonNull(cephMons);
+            if (cephMons == null) {
+              throw new MissingRequiredPropertyException("GetCephResult", "cephMons");
+            }
+            this.cephMons = cephMons;
             return this;
         }
         public Builder cephMons(String... cephMons) {
@@ -205,63 +212,90 @@ public final class GetCephResult {
         }
         @CustomType.Setter
         public Builder cephVersion(String cephVersion) {
-            this.cephVersion = Objects.requireNonNull(cephVersion);
+            if (cephVersion == null) {
+              throw new MissingRequiredPropertyException("GetCephResult", "cephVersion");
+            }
+            this.cephVersion = cephVersion;
             return this;
         }
         @CustomType.Setter
         public Builder crushTunables(String crushTunables) {
-            this.crushTunables = Objects.requireNonNull(crushTunables);
+            if (crushTunables == null) {
+              throw new MissingRequiredPropertyException("GetCephResult", "crushTunables");
+            }
+            this.crushTunables = crushTunables;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCephResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetCephResult", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetCephResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetCephResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder size(Double size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetCephResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetCephResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetCephResult", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetCephResult build() {
-            final var o = new GetCephResult();
-            o.CephURN = CephURN;
-            o.cephMons = cephMons;
-            o.cephVersion = cephVersion;
-            o.crushTunables = crushTunables;
-            o.id = id;
-            o.label = label;
-            o.region = region;
-            o.serviceName = serviceName;
-            o.size = size;
-            o.state = state;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetCephResult();
+            _resultValue.CephURN = CephURN;
+            _resultValue.cephMons = cephMons;
+            _resultValue.cephVersion = cephVersion;
+            _resultValue.crushTunables = crushTunables;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.region = region;
+            _resultValue.serviceName = serviceName;
+            _resultValue.size = size;
+            _resultValue.state = state;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

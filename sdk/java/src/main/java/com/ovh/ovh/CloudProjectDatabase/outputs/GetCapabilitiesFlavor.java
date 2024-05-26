@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -85,31 +86,43 @@ public final class GetCapabilitiesFlavor {
 
         @CustomType.Setter
         public Builder core(Integer core) {
-            this.core = Objects.requireNonNull(core);
+            if (core == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesFlavor", "core");
+            }
+            this.core = core;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesFlavor", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesFlavor", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder storage(Integer storage) {
-            this.storage = Objects.requireNonNull(storage);
+            if (storage == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesFlavor", "storage");
+            }
+            this.storage = storage;
             return this;
         }
         public GetCapabilitiesFlavor build() {
-            final var o = new GetCapabilitiesFlavor();
-            o.core = core;
-            o.memory = memory;
-            o.name = name;
-            o.storage = storage;
-            return o;
+            final var _resultValue = new GetCapabilitiesFlavor();
+            _resultValue.core = core;
+            _resultValue.memory = memory;
+            _resultValue.name = name;
+            _resultValue.storage = storage;
+            return _resultValue;
         }
     }
 }

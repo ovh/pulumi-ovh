@@ -4,6 +4,7 @@
 package com.ovh.ovh.Ip.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,19 +57,25 @@ public final class IpServicePlanOptionConfiguration {
 
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("IpServicePlanOptionConfiguration", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("IpServicePlanOptionConfiguration", "value");
+            }
+            this.value = value;
             return this;
         }
         public IpServicePlanOptionConfiguration build() {
-            final var o = new IpServicePlanOptionConfiguration();
-            o.label = label;
-            o.value = value;
-            return o;
+            final var _resultValue = new IpServicePlanOptionConfiguration();
+            _resultValue.label = label;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

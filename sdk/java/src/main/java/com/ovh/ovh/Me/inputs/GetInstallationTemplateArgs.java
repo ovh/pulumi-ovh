@@ -5,6 +5,7 @@ package com.ovh.ovh.Me.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetInstallationTemplateArgs extends com.pulumi.resources.Invo
         }
 
         public GetInstallationTemplateArgs build() {
-            $.templateName = Objects.requireNonNull($.templateName, "expected parameter 'templateName' to be non-null");
+            if ($.templateName == null) {
+                throw new MissingRequiredPropertyException("GetInstallationTemplateArgs", "templateName");
+            }
             return $;
         }
     }

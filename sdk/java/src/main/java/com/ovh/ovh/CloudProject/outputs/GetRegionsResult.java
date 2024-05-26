@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -70,6 +71,7 @@ public final class GetRegionsResult {
 
         @CustomType.Setter
         public Builder hasServicesUps(@Nullable List<String> hasServicesUps) {
+
             this.hasServicesUps = hasServicesUps;
             return this;
         }
@@ -78,12 +80,18 @@ public final class GetRegionsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetRegionsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -91,16 +99,19 @@ public final class GetRegionsResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetRegionsResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetRegionsResult build() {
-            final var o = new GetRegionsResult();
-            o.hasServicesUps = hasServicesUps;
-            o.id = id;
-            o.names = names;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetRegionsResult();
+            _resultValue.hasServicesUps = hasServicesUps;
+            _resultValue.id = id;
+            _resultValue.names = names;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

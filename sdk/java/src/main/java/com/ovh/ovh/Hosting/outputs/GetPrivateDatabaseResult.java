@@ -4,6 +4,7 @@
 package com.ovh.ovh.Hosting.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -308,133 +309,196 @@ public final class GetPrivateDatabaseResult {
 
         @CustomType.Setter
         public Builder cpu(Integer cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder hostnameFtp(String hostnameFtp) {
-            this.hostnameFtp = Objects.requireNonNull(hostnameFtp);
+            if (hostnameFtp == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "hostnameFtp");
+            }
+            this.hostnameFtp = hostnameFtp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder infrastructure(String infrastructure) {
-            this.infrastructure = Objects.requireNonNull(infrastructure);
+            if (infrastructure == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "infrastructure");
+            }
+            this.infrastructure = infrastructure;
             return this;
         }
         @CustomType.Setter
         public Builder offer(String offer) {
-            this.offer = Objects.requireNonNull(offer);
+            if (offer == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "offer");
+            }
+            this.offer = offer;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder portFtp(Integer portFtp) {
-            this.portFtp = Objects.requireNonNull(portFtp);
+            if (portFtp == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "portFtp");
+            }
+            this.portFtp = portFtp;
             return this;
         }
         @CustomType.Setter
         public Builder quotaSize(Integer quotaSize) {
-            this.quotaSize = Objects.requireNonNull(quotaSize);
+            if (quotaSize == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "quotaSize");
+            }
+            this.quotaSize = quotaSize;
             return this;
         }
         @CustomType.Setter
         public Builder quotaUsed(Integer quotaUsed) {
-            this.quotaUsed = Objects.requireNonNull(quotaUsed);
+            if (quotaUsed == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "quotaUsed");
+            }
+            this.quotaUsed = quotaUsed;
             return this;
         }
         @CustomType.Setter
         public Builder ram(Integer ram) {
-            this.ram = Objects.requireNonNull(ram);
+            if (ram == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "ram");
+            }
+            this.ram = ram;
             return this;
         }
         @CustomType.Setter
         public Builder server(String server) {
-            this.server = Objects.requireNonNull(server);
+            if (server == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "server");
+            }
+            this.server = server;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder urn(String urn) {
-            this.urn = Objects.requireNonNull(urn);
+            if (urn == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "urn");
+            }
+            this.urn = urn;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "version");
+            }
+            this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder versionLabel(String versionLabel) {
-            this.versionLabel = Objects.requireNonNull(versionLabel);
+            if (versionLabel == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "versionLabel");
+            }
+            this.versionLabel = versionLabel;
             return this;
         }
         @CustomType.Setter
         public Builder versionNumber(Double versionNumber) {
-            this.versionNumber = Objects.requireNonNull(versionNumber);
+            if (versionNumber == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseResult", "versionNumber");
+            }
+            this.versionNumber = versionNumber;
             return this;
         }
         public GetPrivateDatabaseResult build() {
-            final var o = new GetPrivateDatabaseResult();
-            o.cpu = cpu;
-            o.datacenter = datacenter;
-            o.displayName = displayName;
-            o.hostname = hostname;
-            o.hostnameFtp = hostnameFtp;
-            o.id = id;
-            o.infrastructure = infrastructure;
-            o.offer = offer;
-            o.port = port;
-            o.portFtp = portFtp;
-            o.quotaSize = quotaSize;
-            o.quotaUsed = quotaUsed;
-            o.ram = ram;
-            o.server = server;
-            o.serviceName = serviceName;
-            o.state = state;
-            o.type = type;
-            o.urn = urn;
-            o.version = version;
-            o.versionLabel = versionLabel;
-            o.versionNumber = versionNumber;
-            return o;
+            final var _resultValue = new GetPrivateDatabaseResult();
+            _resultValue.cpu = cpu;
+            _resultValue.datacenter = datacenter;
+            _resultValue.displayName = displayName;
+            _resultValue.hostname = hostname;
+            _resultValue.hostnameFtp = hostnameFtp;
+            _resultValue.id = id;
+            _resultValue.infrastructure = infrastructure;
+            _resultValue.offer = offer;
+            _resultValue.port = port;
+            _resultValue.portFtp = portFtp;
+            _resultValue.quotaSize = quotaSize;
+            _resultValue.quotaUsed = quotaUsed;
+            _resultValue.ram = ram;
+            _resultValue.server = server;
+            _resultValue.serviceName = serviceName;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.urn = urn;
+            _resultValue.version = version;
+            _resultValue.versionLabel = versionLabel;
+            _resultValue.versionNumber = versionNumber;
+            return _resultValue;
         }
     }
 }

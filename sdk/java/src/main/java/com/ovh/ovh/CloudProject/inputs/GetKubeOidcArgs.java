@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -323,8 +324,12 @@ public final class GetKubeOidcArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetKubeOidcArgs build() {
-            $.kubeId = Objects.requireNonNull($.kubeId, "expected parameter 'kubeId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.kubeId == null) {
+                throw new MissingRequiredPropertyException("GetKubeOidcArgs", "kubeId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetKubeOidcArgs", "serviceName");
+            }
             return $;
         }
     }

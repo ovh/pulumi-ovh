@@ -6,6 +6,7 @@ package com.ovh.ovh.IpLoadBalancing;
 import com.ovh.ovh.IpLoadBalancing.inputs.HttpFarmProbeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -337,8 +338,12 @@ public final class HttpFarmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HttpFarmArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.zone = Objects.requireNonNull($.zone, "expected parameter 'zone' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("HttpFarmArgs", "serviceName");
+            }
+            if ($.zone == null) {
+                throw new MissingRequiredPropertyException("HttpFarmArgs", "zone");
+            }
             return $;
         }
     }

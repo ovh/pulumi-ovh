@@ -6,6 +6,7 @@ package com.ovh.ovh.CloudProject;
 import com.ovh.ovh.CloudProject.inputs.KubeNodePoolTemplateArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -457,9 +458,15 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public KubeNodePoolArgs build() {
-            $.flavorName = Objects.requireNonNull($.flavorName, "expected parameter 'flavorName' to be non-null");
-            $.kubeId = Objects.requireNonNull($.kubeId, "expected parameter 'kubeId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.flavorName == null) {
+                throw new MissingRequiredPropertyException("KubeNodePoolArgs", "flavorName");
+            }
+            if ($.kubeId == null) {
+                throw new MissingRequiredPropertyException("KubeNodePoolArgs", "kubeId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("KubeNodePoolArgs", "serviceName");
+            }
             return $;
         }
     }

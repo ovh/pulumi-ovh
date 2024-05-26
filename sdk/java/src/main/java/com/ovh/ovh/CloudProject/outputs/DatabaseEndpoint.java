@@ -144,55 +144,63 @@ public final class DatabaseEndpoint {
 
         @CustomType.Setter
         public Builder component(@Nullable String component) {
+
             this.component = component;
             return this;
         }
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder scheme(@Nullable String scheme) {
+
             this.scheme = scheme;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(@Nullable Boolean ssl) {
+
             this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder sslMode(@Nullable String sslMode) {
+
             this.sslMode = sslMode;
             return this;
         }
         @CustomType.Setter
         public Builder uri(@Nullable String uri) {
+
             this.uri = uri;
             return this;
         }
         public DatabaseEndpoint build() {
-            final var o = new DatabaseEndpoint();
-            o.component = component;
-            o.domain = domain;
-            o.path = path;
-            o.port = port;
-            o.scheme = scheme;
-            o.ssl = ssl;
-            o.sslMode = sslMode;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new DatabaseEndpoint();
+            _resultValue.component = component;
+            _resultValue.domain = domain;
+            _resultValue.path = path;
+            _resultValue.port = port;
+            _resultValue.scheme = scheme;
+            _resultValue.ssl = ssl;
+            _resultValue.sslMode = sslMode;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -56,19 +57,25 @@ public final class GetCapabilitiesContainerFilterRegistryLimit {
 
         @CustomType.Setter
         public Builder imageStorage(Integer imageStorage) {
-            this.imageStorage = Objects.requireNonNull(imageStorage);
+            if (imageStorage == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterRegistryLimit", "imageStorage");
+            }
+            this.imageStorage = imageStorage;
             return this;
         }
         @CustomType.Setter
         public Builder parallelRequest(Integer parallelRequest) {
-            this.parallelRequest = Objects.requireNonNull(parallelRequest);
+            if (parallelRequest == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterRegistryLimit", "parallelRequest");
+            }
+            this.parallelRequest = parallelRequest;
             return this;
         }
         public GetCapabilitiesContainerFilterRegistryLimit build() {
-            final var o = new GetCapabilitiesContainerFilterRegistryLimit();
-            o.imageStorage = imageStorage;
-            o.parallelRequest = parallelRequest;
-            return o;
+            final var _resultValue = new GetCapabilitiesContainerFilterRegistryLimit();
+            _resultValue.imageStorage = imageStorage;
+            _resultValue.parallelRequest = parallelRequest;
+            return _resultValue;
         }
     }
 }

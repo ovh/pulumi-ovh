@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -142,55 +143,79 @@ public final class GetDatabaseEndpoint {
 
         @CustomType.Setter
         public Builder component(String component) {
-            this.component = Objects.requireNonNull(component);
+            if (component == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseEndpoint", "component");
+            }
+            this.component = component;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseEndpoint", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseEndpoint", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseEndpoint", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder scheme(String scheme) {
-            this.scheme = Objects.requireNonNull(scheme);
+            if (scheme == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseEndpoint", "scheme");
+            }
+            this.scheme = scheme;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(Boolean ssl) {
-            this.ssl = Objects.requireNonNull(ssl);
+            if (ssl == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseEndpoint", "ssl");
+            }
+            this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder sslMode(String sslMode) {
-            this.sslMode = Objects.requireNonNull(sslMode);
+            if (sslMode == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseEndpoint", "sslMode");
+            }
+            this.sslMode = sslMode;
             return this;
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseEndpoint", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         public GetDatabaseEndpoint build() {
-            final var o = new GetDatabaseEndpoint();
-            o.component = component;
-            o.domain = domain;
-            o.path = path;
-            o.port = port;
-            o.scheme = scheme;
-            o.ssl = ssl;
-            o.sslMode = sslMode;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new GetDatabaseEndpoint();
+            _resultValue.component = component;
+            _resultValue.domain = domain;
+            _resultValue.path = path;
+            _resultValue.port = port;
+            _resultValue.scheme = scheme;
+            _resultValue.ssl = ssl;
+            _resultValue.sslMode = sslMode;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

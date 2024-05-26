@@ -21,7 +21,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -43,13 +44,14 @@ public final class IpLoadBalancingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .state(&#34;ok&#34;)
+     *             .serviceName("XXXXXX")
+     *             .state("ok")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetIpLoadBalancingResult> getIpLoadBalancing() {
@@ -59,7 +61,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -81,13 +84,14 @@ public final class IpLoadBalancingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .state(&#34;ok&#34;)
+     *             .serviceName("XXXXXX")
+     *             .state("ok")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetIpLoadBalancingResult> getIpLoadBalancingPlain() {
@@ -97,7 +101,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -119,13 +124,14 @@ public final class IpLoadBalancingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .state(&#34;ok&#34;)
+     *             .serviceName("XXXXXX")
+     *             .state("ok")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetIpLoadBalancingResult> getIpLoadBalancing(GetIpLoadBalancingArgs args) {
@@ -135,7 +141,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -157,13 +164,14 @@ public final class IpLoadBalancingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .state(&#34;ok&#34;)
+     *             .serviceName("XXXXXX")
+     *             .state("ok")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetIpLoadBalancingResult> getIpLoadBalancingPlain(GetIpLoadBalancingPlainArgs args) {
@@ -173,7 +181,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -195,13 +204,14 @@ public final class IpLoadBalancingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .state(&#34;ok&#34;)
+     *             .serviceName("XXXXXX")
+     *             .state("ok")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetIpLoadBalancingResult> getIpLoadBalancing(GetIpLoadBalancingArgs args, InvokeOptions options) {
@@ -211,7 +221,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -233,13 +244,14 @@ public final class IpLoadBalancingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .state(&#34;ok&#34;)
+     *             .serviceName("XXXXXX")
+     *             .state("ok")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetIpLoadBalancingResult> getIpLoadBalancingPlain(GetIpLoadBalancingPlainArgs args, InvokeOptions options) {
@@ -249,7 +261,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -271,13 +284,14 @@ public final class IpLoadBalancingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lbNetwork = IpLoadBalancingFunctions.getVrackNetwork(GetVrackNetworkArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .vrackNetworkId(&#34;yyy&#34;)
+     *             .serviceName("XXXXXX")
+     *             .vrackNetworkId("yyy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetVrackNetworkResult> getVrackNetwork(GetVrackNetworkArgs args) {
@@ -287,7 +301,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -309,13 +324,14 @@ public final class IpLoadBalancingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lbNetwork = IpLoadBalancingFunctions.getVrackNetwork(GetVrackNetworkArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .vrackNetworkId(&#34;yyy&#34;)
+     *             .serviceName("XXXXXX")
+     *             .vrackNetworkId("yyy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVrackNetworkResult> getVrackNetworkPlain(GetVrackNetworkPlainArgs args) {
@@ -325,7 +341,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -347,13 +364,14 @@ public final class IpLoadBalancingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lbNetwork = IpLoadBalancingFunctions.getVrackNetwork(GetVrackNetworkArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .vrackNetworkId(&#34;yyy&#34;)
+     *             .serviceName("XXXXXX")
+     *             .vrackNetworkId("yyy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetVrackNetworkResult> getVrackNetwork(GetVrackNetworkArgs args, InvokeOptions options) {
@@ -363,7 +381,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -385,13 +404,14 @@ public final class IpLoadBalancingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lbNetwork = IpLoadBalancingFunctions.getVrackNetwork(GetVrackNetworkArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .vrackNetworkId(&#34;yyy&#34;)
+     *             .serviceName("XXXXXX")
+     *             .vrackNetworkId("yyy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVrackNetworkResult> getVrackNetworkPlain(GetVrackNetworkPlainArgs args, InvokeOptions options) {

@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.ovh.ovh.CloudProject.outputs.GetCapabilitiesContainerRegistryResultPlan;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,7 +59,10 @@ public final class GetCapabilitiesContainerRegistryResult {
 
         @CustomType.Setter
         public Builder plans(List<GetCapabilitiesContainerRegistryResultPlan> plans) {
-            this.plans = Objects.requireNonNull(plans);
+            if (plans == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryResult", "plans");
+            }
+            this.plans = plans;
             return this;
         }
         public Builder plans(GetCapabilitiesContainerRegistryResultPlan... plans) {
@@ -66,14 +70,17 @@ public final class GetCapabilitiesContainerRegistryResult {
         }
         @CustomType.Setter
         public Builder regionName(String regionName) {
-            this.regionName = Objects.requireNonNull(regionName);
+            if (regionName == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryResult", "regionName");
+            }
+            this.regionName = regionName;
             return this;
         }
         public GetCapabilitiesContainerRegistryResult build() {
-            final var o = new GetCapabilitiesContainerRegistryResult();
-            o.plans = plans;
-            o.regionName = regionName;
-            return o;
+            final var _resultValue = new GetCapabilitiesContainerRegistryResult();
+            _resultValue.plans = plans;
+            _resultValue.regionName = regionName;
+            return _resultValue;
         }
     }
 }

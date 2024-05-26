@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * &gt; __NOTE__ This resource is only compatible with the `High Performance - S3` solution for object storage.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,18 +42,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var presignedUrlRegionStoragePresign = new RegionStoragePresign(&#34;presignedUrlRegionStoragePresign&#34;, RegionStoragePresignArgs.builder()        
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxx&#34;)
- *             .regionName(&#34;GRA&#34;)
+ *         var presignedUrlRegionStoragePresign = new RegionStoragePresign("presignedUrlRegionStoragePresign", RegionStoragePresignArgs.builder()        
+ *             .serviceName("xxxxxxxxxxxxxxxxx")
+ *             .regionName("GRA")
  *             .expire(3600)
- *             .method(&#34;GET&#34;)
- *             .object(&#34;an-object-in-the-bucket&#34;)
+ *             .method("GET")
+ *             .object("an-object-in-the-bucket")
  *             .build());
  * 
- *         ctx.export(&#34;presignedUrl&#34;, presignedUrlRegionStoragePresign.url());
+ *         ctx.export("presignedUrl", presignedUrlRegionStoragePresign.url());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:CloudProject/regionStoragePresign:RegionStoragePresign")

@@ -7,6 +7,7 @@ import com.ovh.ovh.Ip.inputs.IpServicePlanArgs;
 import com.ovh.ovh.Ip.inputs.IpServicePlanOptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -253,8 +254,12 @@ public final class IpServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IpServiceArgs build() {
-            $.ovhSubsidiary = Objects.requireNonNull($.ovhSubsidiary, "expected parameter 'ovhSubsidiary' to be non-null");
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
+            if ($.ovhSubsidiary == null) {
+                throw new MissingRequiredPropertyException("IpServiceArgs", "ovhSubsidiary");
+            }
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("IpServiceArgs", "plan");
+            }
             return $;
         }
     }

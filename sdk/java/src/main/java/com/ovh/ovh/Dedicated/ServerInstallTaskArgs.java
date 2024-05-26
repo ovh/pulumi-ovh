@@ -6,6 +6,7 @@ package com.ovh.ovh.Dedicated;
 import com.ovh.ovh.Dedicated.inputs.ServerInstallTaskDetailsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -226,8 +227,12 @@ public final class ServerInstallTaskArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ServerInstallTaskArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.templateName = Objects.requireNonNull($.templateName, "expected parameter 'templateName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ServerInstallTaskArgs", "serviceName");
+            }
+            if ($.templateName == null) {
+                throw new MissingRequiredPropertyException("ServerInstallTaskArgs", "templateName");
+            }
             return $;
         }
     }

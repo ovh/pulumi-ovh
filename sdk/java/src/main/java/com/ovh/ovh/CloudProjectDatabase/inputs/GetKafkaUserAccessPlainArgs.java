@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -120,9 +121,15 @@ public final class GetKafkaUserAccessPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetKafkaUserAccessPlainArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetKafkaUserAccessPlainArgs", "clusterId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetKafkaUserAccessPlainArgs", "serviceName");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("GetKafkaUserAccessPlainArgs", "userId");
+            }
             return $;
         }
     }

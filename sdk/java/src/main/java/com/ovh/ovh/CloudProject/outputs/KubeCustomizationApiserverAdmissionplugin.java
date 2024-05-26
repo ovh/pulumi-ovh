@@ -58,6 +58,7 @@ public final class KubeCustomizationApiserverAdmissionplugin {
 
         @CustomType.Setter
         public Builder disableds(@Nullable List<String> disableds) {
+
             this.disableds = disableds;
             return this;
         }
@@ -66,6 +67,7 @@ public final class KubeCustomizationApiserverAdmissionplugin {
         }
         @CustomType.Setter
         public Builder enableds(@Nullable List<String> enableds) {
+
             this.enableds = enableds;
             return this;
         }
@@ -73,10 +75,10 @@ public final class KubeCustomizationApiserverAdmissionplugin {
             return enableds(List.of(enableds));
         }
         public KubeCustomizationApiserverAdmissionplugin build() {
-            final var o = new KubeCustomizationApiserverAdmissionplugin();
-            o.disableds = disableds;
-            o.enableds = enableds;
-            return o;
+            final var _resultValue = new KubeCustomizationApiserverAdmissionplugin();
+            _resultValue.disableds = disableds;
+            _resultValue.enableds = enableds;
+            return _resultValue;
         }
     }
 }

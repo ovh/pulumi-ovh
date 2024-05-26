@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,17 +86,26 @@ public final class GetOpenSearchPatternsResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchPatternsResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchPatternsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder patternIds(List<String> patternIds) {
-            this.patternIds = Objects.requireNonNull(patternIds);
+            if (patternIds == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchPatternsResult", "patternIds");
+            }
+            this.patternIds = patternIds;
             return this;
         }
         public Builder patternIds(String... patternIds) {
@@ -103,16 +113,19 @@ public final class GetOpenSearchPatternsResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchPatternsResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetOpenSearchPatternsResult build() {
-            final var o = new GetOpenSearchPatternsResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.patternIds = patternIds;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetOpenSearchPatternsResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.patternIds = patternIds;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

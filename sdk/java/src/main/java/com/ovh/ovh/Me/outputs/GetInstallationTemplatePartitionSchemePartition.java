@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,49 +128,70 @@ public final class GetInstallationTemplatePartitionSchemePartition {
 
         @CustomType.Setter
         public Builder filesystem(String filesystem) {
-            this.filesystem = Objects.requireNonNull(filesystem);
+            if (filesystem == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionSchemePartition", "filesystem");
+            }
+            this.filesystem = filesystem;
             return this;
         }
         @CustomType.Setter
         public Builder mountpoint(String mountpoint) {
-            this.mountpoint = Objects.requireNonNull(mountpoint);
+            if (mountpoint == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionSchemePartition", "mountpoint");
+            }
+            this.mountpoint = mountpoint;
             return this;
         }
         @CustomType.Setter
         public Builder order(Integer order) {
-            this.order = Objects.requireNonNull(order);
+            if (order == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionSchemePartition", "order");
+            }
+            this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder raid(String raid) {
-            this.raid = Objects.requireNonNull(raid);
+            if (raid == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionSchemePartition", "raid");
+            }
+            this.raid = raid;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionSchemePartition", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionSchemePartition", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder volumeName(String volumeName) {
-            this.volumeName = Objects.requireNonNull(volumeName);
+            if (volumeName == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionSchemePartition", "volumeName");
+            }
+            this.volumeName = volumeName;
             return this;
         }
         public GetInstallationTemplatePartitionSchemePartition build() {
-            final var o = new GetInstallationTemplatePartitionSchemePartition();
-            o.filesystem = filesystem;
-            o.mountpoint = mountpoint;
-            o.order = order;
-            o.raid = raid;
-            o.size = size;
-            o.type = type;
-            o.volumeName = volumeName;
-            return o;
+            final var _resultValue = new GetInstallationTemplatePartitionSchemePartition();
+            _resultValue.filesystem = filesystem;
+            _resultValue.mountpoint = mountpoint;
+            _resultValue.order = order;
+            _resultValue.raid = raid;
+            _resultValue.size = size;
+            _resultValue.type = type;
+            _resultValue.volumeName = volumeName;
+            return _resultValue;
         }
     }
 }

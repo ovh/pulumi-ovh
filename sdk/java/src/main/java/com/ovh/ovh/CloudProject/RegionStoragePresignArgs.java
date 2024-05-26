@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -270,11 +271,21 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         public RegionStoragePresignArgs build() {
-            $.expire = Objects.requireNonNull($.expire, "expected parameter 'expire' to be non-null");
-            $.method = Objects.requireNonNull($.method, "expected parameter 'method' to be non-null");
-            $.object = Objects.requireNonNull($.object, "expected parameter 'object' to be non-null");
-            $.regionName = Objects.requireNonNull($.regionName, "expected parameter 'regionName' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.expire == null) {
+                throw new MissingRequiredPropertyException("RegionStoragePresignArgs", "expire");
+            }
+            if ($.method == null) {
+                throw new MissingRequiredPropertyException("RegionStoragePresignArgs", "method");
+            }
+            if ($.object == null) {
+                throw new MissingRequiredPropertyException("RegionStoragePresignArgs", "object");
+            }
+            if ($.regionName == null) {
+                throw new MissingRequiredPropertyException("RegionStoragePresignArgs", "regionName");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("RegionStoragePresignArgs", "serviceName");
+            }
             return $;
         }
     }

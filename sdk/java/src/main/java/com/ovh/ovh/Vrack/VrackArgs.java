@@ -7,6 +7,7 @@ import com.ovh.ovh.Vrack.inputs.VrackPlanArgs;
 import com.ovh.ovh.Vrack.inputs.VrackPlanOptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -290,8 +291,12 @@ public final class VrackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VrackArgs build() {
-            $.ovhSubsidiary = Objects.requireNonNull($.ovhSubsidiary, "expected parameter 'ovhSubsidiary' to be non-null");
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
+            if ($.ovhSubsidiary == null) {
+                throw new MissingRequiredPropertyException("VrackArgs", "ovhSubsidiary");
+            }
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("VrackArgs", "plan");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -72,12 +73,18 @@ public final class KubeNodePoolTemplateMetadata {
 
         @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("KubeNodePoolTemplateMetadata", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder finalizers(List<String> finalizers) {
-            this.finalizers = Objects.requireNonNull(finalizers);
+            if (finalizers == null) {
+              throw new MissingRequiredPropertyException("KubeNodePoolTemplateMetadata", "finalizers");
+            }
+            this.finalizers = finalizers;
             return this;
         }
         public Builder finalizers(String... finalizers) {
@@ -85,15 +92,18 @@ public final class KubeNodePoolTemplateMetadata {
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("KubeNodePoolTemplateMetadata", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         public KubeNodePoolTemplateMetadata build() {
-            final var o = new KubeNodePoolTemplateMetadata();
-            o.annotations = annotations;
-            o.finalizers = finalizers;
-            o.labels = labels;
-            return o;
+            final var _resultValue = new KubeNodePoolTemplateMetadata();
+            _resultValue.annotations = annotations;
+            _resultValue.finalizers = finalizers;
+            _resultValue.labels = labels;
+            return _resultValue;
         }
     }
 }

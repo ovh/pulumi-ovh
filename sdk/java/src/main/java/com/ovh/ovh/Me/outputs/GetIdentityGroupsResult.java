@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class GetIdentityGroupsResult {
 
         @CustomType.Setter
         public Builder groups(List<String> groups) {
-            this.groups = Objects.requireNonNull(groups);
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetIdentityGroupsResult", "groups");
+            }
+            this.groups = groups;
             return this;
         }
         public Builder groups(String... groups) {
@@ -65,14 +69,17 @@ public final class GetIdentityGroupsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIdentityGroupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetIdentityGroupsResult build() {
-            final var o = new GetIdentityGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetIdentityGroupsResult();
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

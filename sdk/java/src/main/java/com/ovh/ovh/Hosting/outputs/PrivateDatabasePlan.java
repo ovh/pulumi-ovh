@@ -5,6 +5,7 @@ package com.ovh.ovh.Hosting.outputs;
 
 import com.ovh.ovh.Hosting.outputs.PrivateDatabasePlanConfiguration;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -102,11 +103,13 @@ public final class PrivateDatabasePlan {
 
         @CustomType.Setter
         public Builder catalogName(@Nullable String catalogName) {
+
             this.catalogName = catalogName;
             return this;
         }
         @CustomType.Setter
         public Builder configurations(@Nullable List<PrivateDatabasePlanConfiguration> configurations) {
+
             this.configurations = configurations;
             return this;
         }
@@ -115,27 +118,36 @@ public final class PrivateDatabasePlan {
         }
         @CustomType.Setter
         public Builder duration(String duration) {
-            this.duration = Objects.requireNonNull(duration);
+            if (duration == null) {
+              throw new MissingRequiredPropertyException("PrivateDatabasePlan", "duration");
+            }
+            this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder planCode(String planCode) {
-            this.planCode = Objects.requireNonNull(planCode);
+            if (planCode == null) {
+              throw new MissingRequiredPropertyException("PrivateDatabasePlan", "planCode");
+            }
+            this.planCode = planCode;
             return this;
         }
         @CustomType.Setter
         public Builder pricingMode(String pricingMode) {
-            this.pricingMode = Objects.requireNonNull(pricingMode);
+            if (pricingMode == null) {
+              throw new MissingRequiredPropertyException("PrivateDatabasePlan", "pricingMode");
+            }
+            this.pricingMode = pricingMode;
             return this;
         }
         public PrivateDatabasePlan build() {
-            final var o = new PrivateDatabasePlan();
-            o.catalogName = catalogName;
-            o.configurations = configurations;
-            o.duration = duration;
-            o.planCode = planCode;
-            o.pricingMode = pricingMode;
-            return o;
+            final var _resultValue = new PrivateDatabasePlan();
+            _resultValue.catalogName = catalogName;
+            _resultValue.configurations = configurations;
+            _resultValue.duration = duration;
+            _resultValue.planCode = planCode;
+            _resultValue.pricingMode = pricingMode;
+            return _resultValue;
         }
     }
 }

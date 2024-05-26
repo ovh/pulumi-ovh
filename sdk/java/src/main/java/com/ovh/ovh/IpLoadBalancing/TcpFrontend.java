@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Creates a backend server group (frontend) to be used by loadbalancing frontend(s)
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,28 +48,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
- *             .serviceName(&#34;ip-1.2.3.4&#34;)
- *             .state(&#34;ok&#34;)
+ *             .serviceName("ip-1.2.3.4")
+ *             .state("ok")
  *             .build());
  * 
- *         var farm80 = new TcpFarm(&#34;farm80&#34;, TcpFarmArgs.builder()        
- *             .displayName(&#34;ingress-8080-gra&#34;)
+ *         var farm80 = new TcpFarm("farm80", TcpFarmArgs.builder()        
+ *             .displayName("ingress-8080-gra")
  *             .port(80)
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -&gt; getIpLoadBalancingResult.serviceName()))
- *             .zone(&#34;all&#34;)
+ *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .zone("all")
  *             .build());
  * 
- *         var testfrontend = new TcpFrontend(&#34;testfrontend&#34;, TcpFrontendArgs.builder()        
+ *         var testfrontend = new TcpFrontend("testfrontend", TcpFrontendArgs.builder()        
  *             .defaultFarmId(farm80.id())
- *             .displayName(&#34;ingress-8080-gra&#34;)
- *             .port(&#34;80,443&#34;)
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -&gt; getIpLoadBalancingResult.serviceName()))
- *             .zone(&#34;all&#34;)
+ *             .displayName("ingress-8080-gra")
+ *             .port("80,443")
+ *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .zone("all")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/tcpFrontend:TcpFrontend")

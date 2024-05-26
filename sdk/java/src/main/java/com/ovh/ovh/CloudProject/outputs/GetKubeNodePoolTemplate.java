@@ -43,19 +43,21 @@ public final class GetKubeNodePoolTemplate {
 
         @CustomType.Setter
         public Builder metadata(@Nullable GetKubeNodePoolTemplateMetadata metadata) {
+
             this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder spec(@Nullable GetKubeNodePoolTemplateSpec spec) {
+
             this.spec = spec;
             return this;
         }
         public GetKubeNodePoolTemplate build() {
-            final var o = new GetKubeNodePoolTemplate();
-            o.metadata = metadata;
-            o.spec = spec;
-            return o;
+            final var _resultValue = new GetKubeNodePoolTemplate();
+            _resultValue.metadata = metadata;
+            _resultValue.spec = spec;
+            return _resultValue;
         }
     }
 }

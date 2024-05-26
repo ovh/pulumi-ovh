@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -152,9 +153,15 @@ public final class S3PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public S3PolicyArgs build() {
-            $.policy = Objects.requireNonNull($.policy, "expected parameter 'policy' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.policy == null) {
+                throw new MissingRequiredPropertyException("S3PolicyArgs", "policy");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("S3PolicyArgs", "serviceName");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("S3PolicyArgs", "userId");
+            }
             return $;
         }
     }

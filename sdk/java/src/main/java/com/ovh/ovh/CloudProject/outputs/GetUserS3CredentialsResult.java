@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -69,7 +70,10 @@ public final class GetUserS3CredentialsResult {
 
         @CustomType.Setter
         public Builder accessKeyIds(List<String> accessKeyIds) {
-            this.accessKeyIds = Objects.requireNonNull(accessKeyIds);
+            if (accessKeyIds == null) {
+              throw new MissingRequiredPropertyException("GetUserS3CredentialsResult", "accessKeyIds");
+            }
+            this.accessKeyIds = accessKeyIds;
             return this;
         }
         public Builder accessKeyIds(String... accessKeyIds) {
@@ -77,26 +81,35 @@ public final class GetUserS3CredentialsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserS3CredentialsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetUserS3CredentialsResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetUserS3CredentialsResult", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         public GetUserS3CredentialsResult build() {
-            final var o = new GetUserS3CredentialsResult();
-            o.accessKeyIds = accessKeyIds;
-            o.id = id;
-            o.serviceName = serviceName;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GetUserS3CredentialsResult();
+            _resultValue.accessKeyIds = accessKeyIds;
+            _resultValue.id = id;
+            _resultValue.serviceName = serviceName;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

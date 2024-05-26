@@ -5,6 +5,7 @@ package com.ovh.ovh.Hosting.outputs;
 
 import com.ovh.ovh.Hosting.outputs.GetPrivateDatabaseDbUser;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -113,52 +114,73 @@ public final class GetPrivateDatabaseDbResult {
 
         @CustomType.Setter
         public Builder backupTime(String backupTime) {
-            this.backupTime = Objects.requireNonNull(backupTime);
+            if (backupTime == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseDbResult", "backupTime");
+            }
+            this.backupTime = backupTime;
             return this;
         }
         @CustomType.Setter
         public Builder creationDate(String creationDate) {
-            this.creationDate = Objects.requireNonNull(creationDate);
+            if (creationDate == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseDbResult", "creationDate");
+            }
+            this.creationDate = creationDate;
             return this;
         }
         @CustomType.Setter
         public Builder databaseName(String databaseName) {
-            this.databaseName = Objects.requireNonNull(databaseName);
+            if (databaseName == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseDbResult", "databaseName");
+            }
+            this.databaseName = databaseName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseDbResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder quotaUsed(Integer quotaUsed) {
-            this.quotaUsed = Objects.requireNonNull(quotaUsed);
+            if (quotaUsed == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseDbResult", "quotaUsed");
+            }
+            this.quotaUsed = quotaUsed;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseDbResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder users(List<GetPrivateDatabaseDbUser> users) {
-            this.users = Objects.requireNonNull(users);
+            if (users == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseDbResult", "users");
+            }
+            this.users = users;
             return this;
         }
         public Builder users(GetPrivateDatabaseDbUser... users) {
             return users(List.of(users));
         }
         public GetPrivateDatabaseDbResult build() {
-            final var o = new GetPrivateDatabaseDbResult();
-            o.backupTime = backupTime;
-            o.creationDate = creationDate;
-            o.databaseName = databaseName;
-            o.id = id;
-            o.quotaUsed = quotaUsed;
-            o.serviceName = serviceName;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetPrivateDatabaseDbResult();
+            _resultValue.backupTime = backupTime;
+            _resultValue.creationDate = creationDate;
+            _resultValue.databaseName = databaseName;
+            _resultValue.id = id;
+            _resultValue.quotaUsed = quotaUsed;
+            _resultValue.serviceName = serviceName;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

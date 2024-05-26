@@ -4,6 +4,7 @@
 package com.ovh.ovh.Domain.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -120,52 +121,73 @@ public final class GetZoneResult {
 
         @CustomType.Setter
         public Builder ZoneURN(String ZoneURN) {
-            this.ZoneURN = Objects.requireNonNull(ZoneURN);
+            if (ZoneURN == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "ZoneURN");
+            }
+            this.ZoneURN = ZoneURN;
             return this;
         }
         @CustomType.Setter
         public Builder dnssecSupported(Boolean dnssecSupported) {
-            this.dnssecSupported = Objects.requireNonNull(dnssecSupported);
+            if (dnssecSupported == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "dnssecSupported");
+            }
+            this.dnssecSupported = dnssecSupported;
             return this;
         }
         @CustomType.Setter
         public Builder hasDnsAnycast(Boolean hasDnsAnycast) {
-            this.hasDnsAnycast = Objects.requireNonNull(hasDnsAnycast);
+            if (hasDnsAnycast == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "hasDnsAnycast");
+            }
+            this.hasDnsAnycast = hasDnsAnycast;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastUpdate(String lastUpdate) {
-            this.lastUpdate = Objects.requireNonNull(lastUpdate);
+            if (lastUpdate == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "lastUpdate");
+            }
+            this.lastUpdate = lastUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameServers(List<String> nameServers) {
-            this.nameServers = Objects.requireNonNull(nameServers);
+            if (nameServers == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "nameServers");
+            }
+            this.nameServers = nameServers;
             return this;
         }
         public Builder nameServers(String... nameServers) {
             return nameServers(List.of(nameServers));
         }
         public GetZoneResult build() {
-            final var o = new GetZoneResult();
-            o.ZoneURN = ZoneURN;
-            o.dnssecSupported = dnssecSupported;
-            o.hasDnsAnycast = hasDnsAnycast;
-            o.id = id;
-            o.lastUpdate = lastUpdate;
-            o.name = name;
-            o.nameServers = nameServers;
-            return o;
+            final var _resultValue = new GetZoneResult();
+            _resultValue.ZoneURN = ZoneURN;
+            _resultValue.dnssecSupported = dnssecSupported;
+            _resultValue.hasDnsAnycast = hasDnsAnycast;
+            _resultValue.id = id;
+            _resultValue.lastUpdate = lastUpdate;
+            _resultValue.name = name;
+            _resultValue.nameServers = nameServers;
+            return _resultValue;
         }
     }
 }

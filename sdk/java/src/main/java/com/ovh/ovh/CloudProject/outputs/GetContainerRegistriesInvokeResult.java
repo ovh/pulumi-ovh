@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.ovh.ovh.CloudProject.outputs.GetContainerRegistriesResult;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -64,12 +65,18 @@ public final class GetContainerRegistriesInvokeResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistriesInvokeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder results(List<GetContainerRegistriesResult> results) {
-            this.results = Objects.requireNonNull(results);
+            if (results == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistriesInvokeResult", "results");
+            }
+            this.results = results;
             return this;
         }
         public Builder results(GetContainerRegistriesResult... results) {
@@ -77,15 +84,18 @@ public final class GetContainerRegistriesInvokeResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistriesInvokeResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetContainerRegistriesInvokeResult build() {
-            final var o = new GetContainerRegistriesInvokeResult();
-            o.id = id;
-            o.results = results;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetContainerRegistriesInvokeResult();
+            _resultValue.id = id;
+            _resultValue.results = results;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

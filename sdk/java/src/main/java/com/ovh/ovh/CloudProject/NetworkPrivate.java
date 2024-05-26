@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * Creates a private network in a public cloud project.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,16 +44,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new NetworkPrivate(&#34;net&#34;, NetworkPrivateArgs.builder()        
+ *         var net = new NetworkPrivate("net", NetworkPrivateArgs.builder()        
  *             .regions(            
- *                 &#34;GRA1&#34;,
- *                 &#34;BHS1&#34;)
- *             .serviceName(&#34;XXXXXX&#34;)
+ *                 "GRA1",
+ *                 "BHS1")
+ *             .serviceName("XXXXXX")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,25 +71,34 @@ public final class GetIpxeScriptResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpxeScriptResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetIpxeScriptResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder script(String script) {
-            this.script = Objects.requireNonNull(script);
+            if (script == null) {
+              throw new MissingRequiredPropertyException("GetIpxeScriptResult", "script");
+            }
+            this.script = script;
             return this;
         }
         public GetIpxeScriptResult build() {
-            final var o = new GetIpxeScriptResult();
-            o.id = id;
-            o.name = name;
-            o.script = script;
-            return o;
+            final var _resultValue = new GetIpxeScriptResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.script = script;
+            return _resultValue;
         }
     }
 }

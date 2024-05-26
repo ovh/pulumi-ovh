@@ -6,6 +6,7 @@ package com.ovh.ovh.CloudProject.inputs;
 import com.ovh.ovh.CloudProject.inputs.ProjectPlanConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -236,9 +237,15 @@ public final class ProjectPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectPlanArgs build() {
-            $.duration = Objects.requireNonNull($.duration, "expected parameter 'duration' to be non-null");
-            $.planCode = Objects.requireNonNull($.planCode, "expected parameter 'planCode' to be non-null");
-            $.pricingMode = Objects.requireNonNull($.pricingMode, "expected parameter 'pricingMode' to be non-null");
+            if ($.duration == null) {
+                throw new MissingRequiredPropertyException("ProjectPlanArgs", "duration");
+            }
+            if ($.planCode == null) {
+                throw new MissingRequiredPropertyException("ProjectPlanArgs", "planCode");
+            }
+            if ($.pricingMode == null) {
+                throw new MissingRequiredPropertyException("ProjectPlanArgs", "pricingMode");
+            }
             return $;
         }
     }

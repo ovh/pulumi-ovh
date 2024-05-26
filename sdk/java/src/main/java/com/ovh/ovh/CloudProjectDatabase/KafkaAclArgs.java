@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProjectDatabase;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -230,11 +231,21 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public KafkaAclArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.permission = Objects.requireNonNull($.permission, "expected parameter 'permission' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.topic = Objects.requireNonNull($.topic, "expected parameter 'topic' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("KafkaAclArgs", "clusterId");
+            }
+            if ($.permission == null) {
+                throw new MissingRequiredPropertyException("KafkaAclArgs", "permission");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("KafkaAclArgs", "serviceName");
+            }
+            if ($.topic == null) {
+                throw new MissingRequiredPropertyException("KafkaAclArgs", "topic");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("KafkaAclArgs", "username");
+            }
             return $;
         }
     }

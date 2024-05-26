@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -119,49 +120,70 @@ public final class GetIdentityGroupResult {
 
         @CustomType.Setter
         public Builder creation(String creation) {
-            this.creation = Objects.requireNonNull(creation);
+            if (creation == null) {
+              throw new MissingRequiredPropertyException("GetIdentityGroupResult", "creation");
+            }
+            this.creation = creation;
             return this;
         }
         @CustomType.Setter
         public Builder defaultGroup(Boolean defaultGroup) {
-            this.defaultGroup = Objects.requireNonNull(defaultGroup);
+            if (defaultGroup == null) {
+              throw new MissingRequiredPropertyException("GetIdentityGroupResult", "defaultGroup");
+            }
+            this.defaultGroup = defaultGroup;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetIdentityGroupResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIdentityGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastUpdate(String lastUpdate) {
-            this.lastUpdate = Objects.requireNonNull(lastUpdate);
+            if (lastUpdate == null) {
+              throw new MissingRequiredPropertyException("GetIdentityGroupResult", "lastUpdate");
+            }
+            this.lastUpdate = lastUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetIdentityGroupResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetIdentityGroupResult", "role");
+            }
+            this.role = role;
             return this;
         }
         public GetIdentityGroupResult build() {
-            final var o = new GetIdentityGroupResult();
-            o.creation = creation;
-            o.defaultGroup = defaultGroup;
-            o.description = description;
-            o.id = id;
-            o.lastUpdate = lastUpdate;
-            o.name = name;
-            o.role = role;
-            return o;
+            final var _resultValue = new GetIdentityGroupResult();
+            _resultValue.creation = creation;
+            _resultValue.defaultGroup = defaultGroup;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.lastUpdate = lastUpdate;
+            _resultValue.name = name;
+            _resultValue.role = role;
+            return _resultValue;
         }
     }
 }

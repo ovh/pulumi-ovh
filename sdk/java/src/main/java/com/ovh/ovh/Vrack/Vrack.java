@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,29 +50,30 @@ import javax.annotation.Nullable;
  *         final var myaccount = MeFunctions.getMe();
  * 
  *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
- *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
  *             .build());
  * 
  *         final var vrackCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
- *             .priceCapacity(&#34;renew&#34;)
- *             .product(&#34;vrack&#34;)
- *             .planCode(&#34;vrack&#34;)
+ *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .priceCapacity("renew")
+ *             .product("vrack")
+ *             .planCode("vrack")
  *             .build());
  * 
- *         var vrackVrack = new Vrack(&#34;vrackVrack&#34;, VrackArgs.builder()        
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -&gt; getCartResult.ovhSubsidiary()))
- *             .description(&#34;my vrack&#34;)
+ *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()        
+ *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .description("my vrack")
  *             .plan(VrackPlanArgs.builder()
- *                 .duration(vrackCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(vrackCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.planCode()))
- *                 .pricingMode(vrackCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
+ *                 .planCode(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *                 .pricingMode(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

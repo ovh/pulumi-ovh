@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -143,31 +144,41 @@ public final class GetKubeOidcResult {
 
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKubeOidcResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder issuerUrl(@Nullable String issuerUrl) {
+
             this.issuerUrl = issuerUrl;
             return this;
         }
         @CustomType.Setter
         public Builder kubeId(String kubeId) {
-            this.kubeId = Objects.requireNonNull(kubeId);
+            if (kubeId == null) {
+              throw new MissingRequiredPropertyException("GetKubeOidcResult", "kubeId");
+            }
+            this.kubeId = kubeId;
             return this;
         }
         @CustomType.Setter
         public Builder oidcCaContent(@Nullable String oidcCaContent) {
+
             this.oidcCaContent = oidcCaContent;
             return this;
         }
         @CustomType.Setter
         public Builder oidcGroupsClaims(@Nullable List<String> oidcGroupsClaims) {
+
             this.oidcGroupsClaims = oidcGroupsClaims;
             return this;
         }
@@ -176,11 +187,13 @@ public final class GetKubeOidcResult {
         }
         @CustomType.Setter
         public Builder oidcGroupsPrefix(@Nullable String oidcGroupsPrefix) {
+
             this.oidcGroupsPrefix = oidcGroupsPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder oidcRequiredClaims(@Nullable List<String> oidcRequiredClaims) {
+
             this.oidcRequiredClaims = oidcRequiredClaims;
             return this;
         }
@@ -189,6 +202,7 @@ public final class GetKubeOidcResult {
         }
         @CustomType.Setter
         public Builder oidcSigningAlgs(@Nullable List<String> oidcSigningAlgs) {
+
             this.oidcSigningAlgs = oidcSigningAlgs;
             return this;
         }
@@ -197,34 +211,39 @@ public final class GetKubeOidcResult {
         }
         @CustomType.Setter
         public Builder oidcUsernameClaim(@Nullable String oidcUsernameClaim) {
+
             this.oidcUsernameClaim = oidcUsernameClaim;
             return this;
         }
         @CustomType.Setter
         public Builder oidcUsernamePrefix(@Nullable String oidcUsernamePrefix) {
+
             this.oidcUsernamePrefix = oidcUsernamePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKubeOidcResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetKubeOidcResult build() {
-            final var o = new GetKubeOidcResult();
-            o.clientId = clientId;
-            o.id = id;
-            o.issuerUrl = issuerUrl;
-            o.kubeId = kubeId;
-            o.oidcCaContent = oidcCaContent;
-            o.oidcGroupsClaims = oidcGroupsClaims;
-            o.oidcGroupsPrefix = oidcGroupsPrefix;
-            o.oidcRequiredClaims = oidcRequiredClaims;
-            o.oidcSigningAlgs = oidcSigningAlgs;
-            o.oidcUsernameClaim = oidcUsernameClaim;
-            o.oidcUsernamePrefix = oidcUsernamePrefix;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetKubeOidcResult();
+            _resultValue.clientId = clientId;
+            _resultValue.id = id;
+            _resultValue.issuerUrl = issuerUrl;
+            _resultValue.kubeId = kubeId;
+            _resultValue.oidcCaContent = oidcCaContent;
+            _resultValue.oidcGroupsClaims = oidcGroupsClaims;
+            _resultValue.oidcGroupsPrefix = oidcGroupsPrefix;
+            _resultValue.oidcRequiredClaims = oidcRequiredClaims;
+            _resultValue.oidcSigningAlgs = oidcSigningAlgs;
+            _resultValue.oidcUsernameClaim = oidcUsernameClaim;
+            _resultValue.oidcUsernamePrefix = oidcUsernamePrefix;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

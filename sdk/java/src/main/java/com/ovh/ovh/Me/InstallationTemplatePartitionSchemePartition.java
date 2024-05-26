@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Use this resource to create a partition in the partition scheme of a custom installation template available for dedicated servers.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,30 +44,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytemplate = new InstallationTemplate(&#34;mytemplate&#34;, InstallationTemplateArgs.builder()        
- *             .baseTemplateName(&#34;centos7_64&#34;)
- *             .templateName(&#34;mytemplate&#34;)
- *             .defaultLanguage(&#34;fr&#34;)
+ *         var mytemplate = new InstallationTemplate("mytemplate", InstallationTemplateArgs.builder()        
+ *             .baseTemplateName("centos7_64")
+ *             .templateName("mytemplate")
+ *             .defaultLanguage("fr")
  *             .build());
  * 
- *         var scheme = new InstallationTemplatePartitionScheme(&#34;scheme&#34;, InstallationTemplatePartitionSchemeArgs.builder()        
+ *         var scheme = new InstallationTemplatePartitionScheme("scheme", InstallationTemplatePartitionSchemeArgs.builder()        
  *             .templateName(mytemplate.templateName())
  *             .priority(1)
  *             .build());
  * 
- *         var root = new InstallationTemplatePartitionSchemePartition(&#34;root&#34;, InstallationTemplatePartitionSchemePartitionArgs.builder()        
+ *         var root = new InstallationTemplatePartitionSchemePartition("root", InstallationTemplatePartitionSchemePartitionArgs.builder()        
  *             .templateName(scheme.templateName())
  *             .schemeName(scheme.name())
- *             .mountpoint(&#34;/&#34;)
- *             .filesystem(&#34;ext4&#34;)
- *             .size(&#34;400&#34;)
+ *             .mountpoint("/")
+ *             .filesystem("ext4")
+ *             .size("400")
  *             .order(1)
- *             .type(&#34;primary&#34;)
+ *             .type("primary")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

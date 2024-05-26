@@ -4,6 +4,7 @@
 package com.ovh.ovh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,22 +58,28 @@ public final class GetInstallationTemplatesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder results(List<String> results) {
-            this.results = Objects.requireNonNull(results);
+            if (results == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatesResult", "results");
+            }
+            this.results = results;
             return this;
         }
         public Builder results(String... results) {
             return results(List.of(results));
         }
         public GetInstallationTemplatesResult build() {
-            final var o = new GetInstallationTemplatesResult();
-            o.id = id;
-            o.results = results;
-            return o;
+            final var _resultValue = new GetInstallationTemplatesResult();
+            _resultValue.id = id;
+            _resultValue.results = results;
+            return _resultValue;
         }
     }
 }

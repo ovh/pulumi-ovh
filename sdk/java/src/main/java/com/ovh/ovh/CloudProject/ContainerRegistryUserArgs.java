@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -189,10 +190,18 @@ public final class ContainerRegistryUserArgs extends com.pulumi.resources.Resour
         }
 
         public ContainerRegistryUserArgs build() {
-            $.email = Objects.requireNonNull($.email, "expected parameter 'email' to be non-null");
-            $.login = Objects.requireNonNull($.login, "expected parameter 'login' to be non-null");
-            $.registryId = Objects.requireNonNull($.registryId, "expected parameter 'registryId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryUserArgs", "email");
+            }
+            if ($.login == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryUserArgs", "login");
+            }
+            if ($.registryId == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryUserArgs", "registryId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryUserArgs", "serviceName");
+            }
             return $;
         }
     }

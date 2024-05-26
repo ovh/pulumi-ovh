@@ -5,6 +5,7 @@ package com.ovh.ovh.Me.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetAPIOAuth2ClientArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetAPIOAuth2ClientArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("GetAPIOAuth2ClientArgs", "clientId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,12 +86,18 @@ public final class GetKubeIpRestrictionsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKubeIpRestrictionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ips(List<String> ips) {
-            this.ips = Objects.requireNonNull(ips);
+            if (ips == null) {
+              throw new MissingRequiredPropertyException("GetKubeIpRestrictionsResult", "ips");
+            }
+            this.ips = ips;
             return this;
         }
         public Builder ips(String... ips) {
@@ -98,21 +105,27 @@ public final class GetKubeIpRestrictionsResult {
         }
         @CustomType.Setter
         public Builder kubeId(String kubeId) {
-            this.kubeId = Objects.requireNonNull(kubeId);
+            if (kubeId == null) {
+              throw new MissingRequiredPropertyException("GetKubeIpRestrictionsResult", "kubeId");
+            }
+            this.kubeId = kubeId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKubeIpRestrictionsResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetKubeIpRestrictionsResult build() {
-            final var o = new GetKubeIpRestrictionsResult();
-            o.id = id;
-            o.ips = ips;
-            o.kubeId = kubeId;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetKubeIpRestrictionsResult();
+            _resultValue.id = id;
+            _resultValue.ips = ips;
+            _resultValue.kubeId = kubeId;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

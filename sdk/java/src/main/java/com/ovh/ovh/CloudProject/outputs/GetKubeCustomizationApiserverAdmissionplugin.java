@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class GetKubeCustomizationApiserverAdmissionplugin {
 
         @CustomType.Setter
         public Builder disableds(List<String> disableds) {
-            this.disableds = Objects.requireNonNull(disableds);
+            if (disableds == null) {
+              throw new MissingRequiredPropertyException("GetKubeCustomizationApiserverAdmissionplugin", "disableds");
+            }
+            this.disableds = disableds;
             return this;
         }
         public Builder disableds(String... disableds) {
@@ -65,17 +69,20 @@ public final class GetKubeCustomizationApiserverAdmissionplugin {
         }
         @CustomType.Setter
         public Builder enableds(List<String> enableds) {
-            this.enableds = Objects.requireNonNull(enableds);
+            if (enableds == null) {
+              throw new MissingRequiredPropertyException("GetKubeCustomizationApiserverAdmissionplugin", "enableds");
+            }
+            this.enableds = enableds;
             return this;
         }
         public Builder enableds(String... enableds) {
             return enableds(List.of(enableds));
         }
         public GetKubeCustomizationApiserverAdmissionplugin build() {
-            final var o = new GetKubeCustomizationApiserverAdmissionplugin();
-            o.disableds = disableds;
-            o.enableds = enableds;
-            return o;
+            final var _resultValue = new GetKubeCustomizationApiserverAdmissionplugin();
+            _resultValue.disableds = disableds;
+            _resultValue.enableds = enableds;
+            return _resultValue;
         }
     }
 }

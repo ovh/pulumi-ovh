@@ -5,6 +5,7 @@ package com.ovh.ovh.Me;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -198,8 +199,12 @@ public final class APIOAuth2ClientArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public APIOAuth2ClientArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.flow = Objects.requireNonNull($.flow, "expected parameter 'flow' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("APIOAuth2ClientArgs", "description");
+            }
+            if ($.flow == null) {
+                throw new MissingRequiredPropertyException("APIOAuth2ClientArgs", "flow");
+            }
             return $;
         }
     }

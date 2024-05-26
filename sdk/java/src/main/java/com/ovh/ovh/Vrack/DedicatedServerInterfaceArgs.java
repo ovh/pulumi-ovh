@@ -5,6 +5,7 @@ package com.ovh.ovh.Vrack;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -115,8 +116,12 @@ public final class DedicatedServerInterfaceArgs extends com.pulumi.resources.Res
         }
 
         public DedicatedServerInterfaceArgs build() {
-            $.interfaceId = Objects.requireNonNull($.interfaceId, "expected parameter 'interfaceId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.interfaceId == null) {
+                throw new MissingRequiredPropertyException("DedicatedServerInterfaceArgs", "interfaceId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("DedicatedServerInterfaceArgs", "serviceName");
+            }
             return $;
         }
     }

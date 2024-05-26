@@ -5,6 +5,7 @@ package com.ovh.ovh.IpLoadBalancing;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -502,10 +503,18 @@ public final class TcpFarmServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TcpFarmServerArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.farmId = Objects.requireNonNull($.farmId, "expected parameter 'farmId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("TcpFarmServerArgs", "address");
+            }
+            if ($.farmId == null) {
+                throw new MissingRequiredPropertyException("TcpFarmServerArgs", "farmId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("TcpFarmServerArgs", "serviceName");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("TcpFarmServerArgs", "status");
+            }
             return $;
         }
     }

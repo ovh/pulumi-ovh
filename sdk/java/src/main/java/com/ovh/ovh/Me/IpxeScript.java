@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Creates an IPXE Script.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -38,13 +39,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var script = new IpxeScript(&#34;script&#34;, IpxeScriptArgs.builder()        
- *             .script(Files.readString(Paths.get(String.format(&#34;%s/boot.ipxe&#34;, path.module()))))
+ *         var script = new IpxeScript("script", IpxeScriptArgs.builder()        
+ *             .script(Files.readString(Paths.get(String.format("%s/boot.ipxe", path.module()))))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Me/ipxeScript:IpxeScript")

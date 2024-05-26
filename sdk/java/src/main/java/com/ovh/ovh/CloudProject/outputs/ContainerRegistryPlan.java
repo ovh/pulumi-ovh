@@ -131,16 +131,19 @@ public final class ContainerRegistryPlan {
 
         @CustomType.Setter
         public Builder code(@Nullable String code) {
+
             this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(@Nullable String createdAt) {
+
             this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder features(@Nullable List<ContainerRegistryPlanFeature> features) {
+
             this.features = features;
             return this;
         }
@@ -149,16 +152,19 @@ public final class ContainerRegistryPlan {
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder registryLimits(@Nullable List<ContainerRegistryPlanRegistryLimit> registryLimits) {
+
             this.registryLimits = registryLimits;
             return this;
         }
@@ -167,19 +173,20 @@ public final class ContainerRegistryPlan {
         }
         @CustomType.Setter
         public Builder updatedAt(@Nullable String updatedAt) {
+
             this.updatedAt = updatedAt;
             return this;
         }
         public ContainerRegistryPlan build() {
-            final var o = new ContainerRegistryPlan();
-            o.code = code;
-            o.createdAt = createdAt;
-            o.features = features;
-            o.id = id;
-            o.name = name;
-            o.registryLimits = registryLimits;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new ContainerRegistryPlan();
+            _resultValue.code = code;
+            _resultValue.createdAt = createdAt;
+            _resultValue.features = features;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.registryLimits = registryLimits;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

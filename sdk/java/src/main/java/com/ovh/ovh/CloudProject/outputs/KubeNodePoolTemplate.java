@@ -6,6 +6,7 @@ package com.ovh.ovh.CloudProject.outputs;
 import com.ovh.ovh.CloudProject.outputs.KubeNodePoolTemplateMetadata;
 import com.ovh.ovh.CloudProject.outputs.KubeNodePoolTemplateSpec;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 @CustomType
@@ -57,19 +58,25 @@ public final class KubeNodePoolTemplate {
 
         @CustomType.Setter
         public Builder metadata(KubeNodePoolTemplateMetadata metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("KubeNodePoolTemplate", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder spec(KubeNodePoolTemplateSpec spec) {
-            this.spec = Objects.requireNonNull(spec);
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("KubeNodePoolTemplate", "spec");
+            }
+            this.spec = spec;
             return this;
         }
         public KubeNodePoolTemplate build() {
-            final var o = new KubeNodePoolTemplate();
-            o.metadata = metadata;
-            o.spec = spec;
-            return o;
+            final var _resultValue = new KubeNodePoolTemplate();
+            _resultValue.metadata = metadata;
+            _resultValue.spec = spec;
+            return _resultValue;
         }
     }
 }

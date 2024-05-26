@@ -5,6 +5,7 @@ package com.ovh.ovh.Domain;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,9 +226,15 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ZoneRecordArgs build() {
-            $.fieldtype = Objects.requireNonNull($.fieldtype, "expected parameter 'fieldtype' to be non-null");
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
-            $.zone = Objects.requireNonNull($.zone, "expected parameter 'zone' to be non-null");
+            if ($.fieldtype == null) {
+                throw new MissingRequiredPropertyException("ZoneRecordArgs", "fieldtype");
+            }
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("ZoneRecordArgs", "target");
+            }
+            if ($.zone == null) {
+                throw new MissingRequiredPropertyException("ZoneRecordArgs", "zone");
+            }
             return $;
         }
     }

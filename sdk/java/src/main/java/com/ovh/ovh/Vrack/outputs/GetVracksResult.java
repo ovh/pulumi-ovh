@@ -4,6 +4,7 @@
 package com.ovh.ovh.Vrack.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,22 +58,28 @@ public final class GetVracksResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVracksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder results(List<String> results) {
-            this.results = Objects.requireNonNull(results);
+            if (results == null) {
+              throw new MissingRequiredPropertyException("GetVracksResult", "results");
+            }
+            this.results = results;
             return this;
         }
         public Builder results(String... results) {
             return results(List.of(results));
         }
         public GetVracksResult build() {
-            final var o = new GetVracksResult();
-            o.id = id;
-            o.results = results;
-            return o;
+            final var _resultValue = new GetVracksResult();
+            _resultValue.id = id;
+            _resultValue.results = results;
+            return _resultValue;
         }
     }
 }

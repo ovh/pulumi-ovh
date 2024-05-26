@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Add a new access ACL for the given network/mask.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,18 +42,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var my-ceph = DedicatedFunctions.getCeph(GetCephArgs.builder()
- *             .serviceName(&#34;94d423da-0e55-45f2-9812-836460a19939&#34;)
+ *             .serviceName("94d423da-0e55-45f2-9812-836460a19939")
  *             .build());
  * 
- *         var my_acl = new CephAcl(&#34;my-acl&#34;, CephAclArgs.builder()        
+ *         var my_acl = new CephAcl("my-acl", CephAclArgs.builder()        
  *             .serviceName(my_ceph.id())
- *             .network(&#34;1.2.3.4&#34;)
- *             .netmask(&#34;255.255.255.255&#34;)
+ *             .network("1.2.3.4")
+ *             .netmask("255.255.255.255")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Dedicated/cephAcl:CephAcl")

@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -152,9 +153,15 @@ public final class GetUserS3CredentialArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetUserS3CredentialArgs build() {
-            $.accessKeyId = Objects.requireNonNull($.accessKeyId, "expected parameter 'accessKeyId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.accessKeyId == null) {
+                throw new MissingRequiredPropertyException("GetUserS3CredentialArgs", "accessKeyId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetUserS3CredentialArgs", "serviceName");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("GetUserS3CredentialArgs", "userId");
+            }
             return $;
         }
     }

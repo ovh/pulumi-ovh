@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -99,49 +100,64 @@ public final class GetPaymentmeanBankAccountResult {
 
         @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
-            this.default_ = Objects.requireNonNull(default_);
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("GetPaymentmeanBankAccountResult", "default_");
+            }
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPaymentmeanBankAccountResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder descriptionRegexp(@Nullable String descriptionRegexp) {
+
             this.descriptionRegexp = descriptionRegexp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPaymentmeanBankAccountResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetPaymentmeanBankAccountResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder useDefault(@Nullable Boolean useDefault) {
+
             this.useDefault = useDefault;
             return this;
         }
         @CustomType.Setter
         public Builder useOldest(@Nullable Boolean useOldest) {
+
             this.useOldest = useOldest;
             return this;
         }
         public GetPaymentmeanBankAccountResult build() {
-            final var o = new GetPaymentmeanBankAccountResult();
-            o.default_ = default_;
-            o.description = description;
-            o.descriptionRegexp = descriptionRegexp;
-            o.id = id;
-            o.state = state;
-            o.useDefault = useDefault;
-            o.useOldest = useOldest;
-            return o;
+            final var _resultValue = new GetPaymentmeanBankAccountResult();
+            _resultValue.default_ = default_;
+            _resultValue.description = description;
+            _resultValue.descriptionRegexp = descriptionRegexp;
+            _resultValue.id = id;
+            _resultValue.state = state;
+            _resultValue.useDefault = useDefault;
+            _resultValue.useOldest = useOldest;
+            return _resultValue;
         }
     }
 }

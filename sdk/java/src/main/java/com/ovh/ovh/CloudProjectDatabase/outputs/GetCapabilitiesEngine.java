@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -99,22 +100,34 @@ public final class GetCapabilitiesEngine {
 
         @CustomType.Setter
         public Builder defaultVersion(String defaultVersion) {
-            this.defaultVersion = Objects.requireNonNull(defaultVersion);
+            if (defaultVersion == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesEngine", "defaultVersion");
+            }
+            this.defaultVersion = defaultVersion;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesEngine", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesEngine", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder sslModes(List<String> sslModes) {
-            this.sslModes = Objects.requireNonNull(sslModes);
+            if (sslModes == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesEngine", "sslModes");
+            }
+            this.sslModes = sslModes;
             return this;
         }
         public Builder sslModes(String... sslModes) {
@@ -122,20 +135,23 @@ public final class GetCapabilitiesEngine {
         }
         @CustomType.Setter
         public Builder versions(List<String> versions) {
-            this.versions = Objects.requireNonNull(versions);
+            if (versions == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesEngine", "versions");
+            }
+            this.versions = versions;
             return this;
         }
         public Builder versions(String... versions) {
             return versions(List.of(versions));
         }
         public GetCapabilitiesEngine build() {
-            final var o = new GetCapabilitiesEngine();
-            o.defaultVersion = defaultVersion;
-            o.description = description;
-            o.name = name;
-            o.sslModes = sslModes;
-            o.versions = versions;
-            return o;
+            final var _resultValue = new GetCapabilitiesEngine();
+            _resultValue.defaultVersion = defaultVersion;
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.sslModes = sslModes;
+            _resultValue.versions = versions;
+            return _resultValue;
         }
     }
 }

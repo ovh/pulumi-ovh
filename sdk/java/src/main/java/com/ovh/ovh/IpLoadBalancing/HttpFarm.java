@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * Creates a HTTP backend server group (farm) to be used by loadbalancing frontend(s)
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,19 +45,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
- *             .serviceName(&#34;ip-1.2.3.4&#34;)
- *             .state(&#34;ok&#34;)
+ *             .serviceName("ip-1.2.3.4")
+ *             .state("ok")
  *             .build());
  * 
- *         var farmname = new HttpFarm(&#34;farmname&#34;, HttpFarmArgs.builder()        
- *             .displayName(&#34;ingress-8080-gra&#34;)
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -&gt; getIpLoadBalancingResult.serviceName()))
- *             .zone(&#34;GRA&#34;)
+ *         var farmname = new HttpFarm("farmname", HttpFarmArgs.builder()        
+ *             .displayName("ingress-8080-gra")
+ *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .zone("GRA")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/httpFarm:HttpFarm")

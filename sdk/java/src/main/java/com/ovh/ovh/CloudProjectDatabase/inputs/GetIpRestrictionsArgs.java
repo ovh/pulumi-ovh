@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProjectDatabase.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -156,9 +157,15 @@ public final class GetIpRestrictionsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetIpRestrictionsArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetIpRestrictionsArgs", "clusterId");
+            }
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("GetIpRestrictionsArgs", "engine");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetIpRestrictionsArgs", "serviceName");
+            }
             return $;
         }
     }

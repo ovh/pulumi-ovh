@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -174,73 +175,106 @@ public final class GetIdentityUserResult {
 
         @CustomType.Setter
         public Builder UserURN(String UserURN) {
-            this.UserURN = Objects.requireNonNull(UserURN);
+            if (UserURN == null) {
+              throw new MissingRequiredPropertyException("GetIdentityUserResult", "UserURN");
+            }
+            this.UserURN = UserURN;
             return this;
         }
         @CustomType.Setter
         public Builder creation(String creation) {
-            this.creation = Objects.requireNonNull(creation);
+            if (creation == null) {
+              throw new MissingRequiredPropertyException("GetIdentityUserResult", "creation");
+            }
+            this.creation = creation;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetIdentityUserResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetIdentityUserResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("GetIdentityUserResult", "group");
+            }
+            this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIdentityUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastUpdate(String lastUpdate) {
-            this.lastUpdate = Objects.requireNonNull(lastUpdate);
+            if (lastUpdate == null) {
+              throw new MissingRequiredPropertyException("GetIdentityUserResult", "lastUpdate");
+            }
+            this.lastUpdate = lastUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder login(String login) {
-            this.login = Objects.requireNonNull(login);
+            if (login == null) {
+              throw new MissingRequiredPropertyException("GetIdentityUserResult", "login");
+            }
+            this.login = login;
             return this;
         }
         @CustomType.Setter
         public Builder passwordLastUpdate(String passwordLastUpdate) {
-            this.passwordLastUpdate = Objects.requireNonNull(passwordLastUpdate);
+            if (passwordLastUpdate == null) {
+              throw new MissingRequiredPropertyException("GetIdentityUserResult", "passwordLastUpdate");
+            }
+            this.passwordLastUpdate = passwordLastUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetIdentityUserResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("GetIdentityUserResult", "user");
+            }
+            this.user = user;
             return this;
         }
         public GetIdentityUserResult build() {
-            final var o = new GetIdentityUserResult();
-            o.UserURN = UserURN;
-            o.creation = creation;
-            o.description = description;
-            o.email = email;
-            o.group = group;
-            o.id = id;
-            o.lastUpdate = lastUpdate;
-            o.login = login;
-            o.passwordLastUpdate = passwordLastUpdate;
-            o.status = status;
-            o.user = user;
-            return o;
+            final var _resultValue = new GetIdentityUserResult();
+            _resultValue.UserURN = UserURN;
+            _resultValue.creation = creation;
+            _resultValue.description = description;
+            _resultValue.email = email;
+            _resultValue.group = group;
+            _resultValue.id = id;
+            _resultValue.lastUpdate = lastUpdate;
+            _resultValue.login = login;
+            _resultValue.passwordLastUpdate = passwordLastUpdate;
+            _resultValue.status = status;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

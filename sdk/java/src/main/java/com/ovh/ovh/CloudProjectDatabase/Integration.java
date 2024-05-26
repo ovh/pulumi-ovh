@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Push PostgreSQL logs in an OpenSearch DB:
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,29 +50,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var dbpostgresql = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
- *             .serviceName(&#34;XXXX&#34;)
- *             .engine(&#34;postgresql&#34;)
- *             .id(&#34;ZZZZ&#34;)
+ *             .serviceName("XXXX")
+ *             .engine("postgresql")
+ *             .id("ZZZZ")
  *             .build());
  * 
  *         final var dbopensearch = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
- *             .serviceName(&#34;XXXX&#34;)
- *             .engine(&#34;opensearch&#34;)
- *             .id(&#34;ZZZZ&#34;)
+ *             .serviceName("XXXX")
+ *             .engine("opensearch")
+ *             .id("ZZZZ")
  *             .build());
  * 
- *         var integration = new Integration(&#34;integration&#34;, IntegrationArgs.builder()        
- *             .serviceName(dbpostgresql.applyValue(getDatabaseResult -&gt; getDatabaseResult.serviceName()))
- *             .engine(dbpostgresql.applyValue(getDatabaseResult -&gt; getDatabaseResult.engine()))
- *             .clusterId(dbpostgresql.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()))
- *             .sourceServiceId(dbpostgresql.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()))
- *             .destinationServiceId(dbopensearch.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()))
- *             .type(&#34;opensearchLogs&#34;)
+ *         var integration = new Integration("integration", IntegrationArgs.builder()        
+ *             .serviceName(dbpostgresql.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
+ *             .engine(dbpostgresql.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
+ *             .clusterId(dbpostgresql.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .sourceServiceId(dbpostgresql.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .destinationServiceId(dbopensearch.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .type("opensearchLogs")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

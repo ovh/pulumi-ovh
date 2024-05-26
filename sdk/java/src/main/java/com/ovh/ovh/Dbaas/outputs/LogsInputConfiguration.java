@@ -59,19 +59,21 @@ public final class LogsInputConfiguration {
 
         @CustomType.Setter
         public Builder flowgger(@Nullable LogsInputConfigurationFlowgger flowgger) {
+
             this.flowgger = flowgger;
             return this;
         }
         @CustomType.Setter
         public Builder logstash(@Nullable LogsInputConfigurationLogstash logstash) {
+
             this.logstash = logstash;
             return this;
         }
         public LogsInputConfiguration build() {
-            final var o = new LogsInputConfiguration();
-            o.flowgger = flowgger;
-            o.logstash = logstash;
-            return o;
+            final var _resultValue = new LogsInputConfiguration();
+            _resultValue.flowgger = flowgger;
+            _resultValue.logstash = logstash;
+            return _resultValue;
         }
     }
 }

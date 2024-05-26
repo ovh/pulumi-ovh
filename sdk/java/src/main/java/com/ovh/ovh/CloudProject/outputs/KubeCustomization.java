@@ -52,6 +52,7 @@ public final class KubeCustomization {
 
         @CustomType.Setter
         public Builder apiservers(@Nullable List<KubeCustomizationApiserver> apiservers) {
+
             this.apiservers = apiservers;
             return this;
         }
@@ -59,9 +60,9 @@ public final class KubeCustomization {
             return apiservers(List.of(apiservers));
         }
         public KubeCustomization build() {
-            final var o = new KubeCustomization();
-            o.apiservers = apiservers;
-            return o;
+            final var _resultValue = new KubeCustomization();
+            _resultValue.apiservers = apiservers;
+            return _resultValue;
         }
     }
 }

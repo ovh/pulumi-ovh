@@ -5,6 +5,7 @@ package com.ovh.ovh.Dbaas.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class LogsInputConfigurationFlowggerArgs extends com.pulumi.resourc
         }
 
         public LogsInputConfigurationFlowggerArgs build() {
-            $.logFormat = Objects.requireNonNull($.logFormat, "expected parameter 'logFormat' to be non-null");
-            $.logFraming = Objects.requireNonNull($.logFraming, "expected parameter 'logFraming' to be non-null");
+            if ($.logFormat == null) {
+                throw new MissingRequiredPropertyException("LogsInputConfigurationFlowggerArgs", "logFormat");
+            }
+            if ($.logFraming == null) {
+                throw new MissingRequiredPropertyException("LogsInputConfigurationFlowggerArgs", "logFraming");
+            }
             return $;
         }
     }

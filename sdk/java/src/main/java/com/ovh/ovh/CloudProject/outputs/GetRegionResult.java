@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.ovh.ovh.CloudProject.outputs.GetRegionService;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -110,46 +111,64 @@ public final class GetRegionResult {
 
         @CustomType.Setter
         public Builder continentCode(String continentCode) {
-            this.continentCode = Objects.requireNonNull(continentCode);
+            if (continentCode == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "continentCode");
+            }
+            this.continentCode = continentCode;
             return this;
         }
         @CustomType.Setter
         public Builder datacenterLocation(String datacenterLocation) {
-            this.datacenterLocation = Objects.requireNonNull(datacenterLocation);
+            if (datacenterLocation == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "datacenterLocation");
+            }
+            this.datacenterLocation = datacenterLocation;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder services(List<GetRegionService> services) {
-            this.services = Objects.requireNonNull(services);
+            if (services == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "services");
+            }
+            this.services = services;
             return this;
         }
         public Builder services(GetRegionService... services) {
             return services(List.of(services));
         }
         public GetRegionResult build() {
-            final var o = new GetRegionResult();
-            o.continentCode = continentCode;
-            o.datacenterLocation = datacenterLocation;
-            o.id = id;
-            o.name = name;
-            o.serviceName = serviceName;
-            o.services = services;
-            return o;
+            final var _resultValue = new GetRegionResult();
+            _resultValue.continentCode = continentCode;
+            _resultValue.datacenterLocation = datacenterLocation;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.serviceName = serviceName;
+            _resultValue.services = services;
+            return _resultValue;
         }
     }
 }

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,18 +43,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myOauth2ClientAuthCode = new APIOAuth2Client(&#34;myOauth2ClientAuthCode&#34;, APIOAuth2ClientArgs.builder()        
- *             .callbackUrls(&#34;https://my-app.com/callback&#34;)
- *             .description(&#34;An OAuth2 client using the authorization code flow for my-app.com&#34;)
- *             .flow(&#34;AUTHORIZATION_CODE&#34;)
+ *         var myOauth2ClientAuthCode = new APIOAuth2Client("myOauth2ClientAuthCode", APIOAuth2ClientArgs.builder()        
+ *             .callbackUrls("https://my-app.com/callback")
+ *             .description("An OAuth2 client using the authorization code flow for my-app.com")
+ *             .flow("AUTHORIZATION_CODE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -74,14 +77,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myOauth2ClientClientCreds = new APIOAuth2Client(&#34;myOauth2ClientClientCreds&#34;, APIOAuth2ClientArgs.builder()        
- *             .description(&#34;An OAuth2 client using the client credentials flow for my app&#34;)
- *             .flow(&#34;CLIENT_CREDENTIALS&#34;)
+ *         var myOauth2ClientClientCreds = new APIOAuth2Client("myOauth2ClientClientCreds", APIOAuth2ClientArgs.builder()        
+ *             .description("An OAuth2 client using the client credentials flow for my app")
+ *             .flow("CLIENT_CREDENTIALS")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

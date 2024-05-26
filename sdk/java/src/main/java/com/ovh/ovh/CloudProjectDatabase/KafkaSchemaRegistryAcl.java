@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Creates a schema registry ACL for a Kafka cluster associated with a public cloud project.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,22 +42,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var kafka = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
- *             .serviceName(&#34;XXX&#34;)
- *             .engine(&#34;kafka&#34;)
- *             .id(&#34;ZZZ&#34;)
+ *             .serviceName("XXX")
+ *             .engine("kafka")
+ *             .id("ZZZ")
  *             .build());
  * 
- *         var schemaRegistryAcl = new KafkaSchemaRegistryAcl(&#34;schemaRegistryAcl&#34;, KafkaSchemaRegistryAclArgs.builder()        
- *             .serviceName(kafka.applyValue(getDatabaseResult -&gt; getDatabaseResult.serviceName()))
- *             .clusterId(kafka.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()))
- *             .permission(&#34;schema_registry_read&#34;)
- *             .resource(&#34;Subject:myResource&#34;)
- *             .username(&#34;johndoe&#34;)
+ *         var schemaRegistryAcl = new KafkaSchemaRegistryAcl("schemaRegistryAcl", KafkaSchemaRegistryAclArgs.builder()        
+ *             .serviceName(kafka.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
+ *             .clusterId(kafka.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .permission("schema_registry_read")
+ *             .resource("Subject:myResource")
+ *             .username("johndoe")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

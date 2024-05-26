@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,39 +52,40 @@ import javax.annotation.Nullable;
  *         final var myaccount = MeFunctions.getMe();
  * 
  *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
- *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
  *             .build());
  * 
  *         final var databaseCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
- *             .priceCapacity(&#34;renew&#34;)
- *             .product(&#34;privateSQL&#34;)
- *             .planCode(&#34;private-sql-512-instance&#34;)
+ *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .priceCapacity("renew")
+ *             .product("privateSQL")
+ *             .planCode("private-sql-512-instance")
  *             .build());
  * 
- *         var databasePrivateDatabase = new PrivateDatabase(&#34;databasePrivateDatabase&#34;, PrivateDatabaseArgs.builder()        
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -&gt; getCartResult.ovhSubsidiary()))
- *             .displayName(&#34;Postgresql-12&#34;)
+ *         var databasePrivateDatabase = new PrivateDatabase("databasePrivateDatabase", PrivateDatabaseArgs.builder()        
+ *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .displayName("Postgresql-12")
  *             .plan(PrivateDatabasePlanArgs.builder()
- *                 .duration(databaseCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.prices()[3].duration()))
- *                 .planCode(databaseCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.planCode()))
- *                 .pricingMode(databaseCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(databaseCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.prices()[3].duration()))
+ *                 .planCode(databaseCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *                 .pricingMode(databaseCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
  *                 .configurations(                
  *                     PrivateDatabasePlanConfigurationArgs.builder()
- *                         .label(&#34;dc&#34;)
- *                         .value(&#34;gra3&#34;)
+ *                         .label("dc")
+ *                         .value("gra3")
  *                         .build(),
  *                     PrivateDatabasePlanConfigurationArgs.builder()
- *                         .label(&#34;engine&#34;)
- *                         .value(&#34;postgresql_12&#34;)
+ *                         .label("engine")
+ *                         .value("postgresql_12")
  *                         .build())
  *                 .build())
  *             .build());
  * 
- *         ctx.export(&#34;privatedatabaseServiceName&#34;, databasePrivateDatabase.serviceName());
+ *         ctx.export("privatedatabaseServiceName", databasePrivateDatabase.serviceName());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

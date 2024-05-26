@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Provides a resource for managing access rights to partitions on HA-NAS services
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,16 +40,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_partition = new NasHAPartitionAccess(&#34;my-partition&#34;, NasHAPartitionAccessArgs.builder()        
- *             .ip(&#34;123.123.123.123/32&#34;)
- *             .partitionName(&#34;my-partition&#34;)
- *             .serviceName(&#34;zpool-12345&#34;)
- *             .type(&#34;readwrite&#34;)
+ *         var my_partition = new NasHAPartitionAccess("my-partition", NasHAPartitionAccessArgs.builder()        
+ *             .ip("123.123.123.123/32")
+ *             .partitionName("my-partition")
+ *             .serviceName("zpool-12345")
+ *             .type("readwrite")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

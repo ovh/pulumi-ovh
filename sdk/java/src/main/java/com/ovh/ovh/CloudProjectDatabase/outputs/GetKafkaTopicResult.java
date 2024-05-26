@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,61 +156,88 @@ public final class GetKafkaTopicResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder minInsyncReplicas(Integer minInsyncReplicas) {
-            this.minInsyncReplicas = Objects.requireNonNull(minInsyncReplicas);
+            if (minInsyncReplicas == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "minInsyncReplicas");
+            }
+            this.minInsyncReplicas = minInsyncReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder partitions(Integer partitions) {
-            this.partitions = Objects.requireNonNull(partitions);
+            if (partitions == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "partitions");
+            }
+            this.partitions = partitions;
             return this;
         }
         @CustomType.Setter
         public Builder replication(Integer replication) {
-            this.replication = Objects.requireNonNull(replication);
+            if (replication == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "replication");
+            }
+            this.replication = replication;
             return this;
         }
         @CustomType.Setter
         public Builder retentionBytes(Integer retentionBytes) {
-            this.retentionBytes = Objects.requireNonNull(retentionBytes);
+            if (retentionBytes == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "retentionBytes");
+            }
+            this.retentionBytes = retentionBytes;
             return this;
         }
         @CustomType.Setter
         public Builder retentionHours(Integer retentionHours) {
-            this.retentionHours = Objects.requireNonNull(retentionHours);
+            if (retentionHours == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "retentionHours");
+            }
+            this.retentionHours = retentionHours;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetKafkaTopicResult build() {
-            final var o = new GetKafkaTopicResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.minInsyncReplicas = minInsyncReplicas;
-            o.name = name;
-            o.partitions = partitions;
-            o.replication = replication;
-            o.retentionBytes = retentionBytes;
-            o.retentionHours = retentionHours;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetKafkaTopicResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.minInsyncReplicas = minInsyncReplicas;
+            _resultValue.name = name;
+            _resultValue.partitions = partitions;
+            _resultValue.replication = replication;
+            _resultValue.retentionBytes = retentionBytes;
+            _resultValue.retentionHours = retentionHours;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

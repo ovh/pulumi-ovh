@@ -5,6 +5,7 @@ package com.ovh.ovh.Domain;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,9 +299,15 @@ public final class ZoneRedirectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ZoneRedirectionArgs build() {
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.zone = Objects.requireNonNull($.zone, "expected parameter 'zone' to be non-null");
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("ZoneRedirectionArgs", "target");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ZoneRedirectionArgs", "type");
+            }
+            if ($.zone == null) {
+                throw new MissingRequiredPropertyException("ZoneRedirectionArgs", "zone");
+            }
             return $;
         }
     }

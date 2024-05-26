@@ -5,6 +5,7 @@ package com.ovh.ovh.IpLoadBalancing;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class RefreshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RefreshArgs build() {
-            $.keepers = Objects.requireNonNull($.keepers, "expected parameter 'keepers' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.keepers == null) {
+                throw new MissingRequiredPropertyException("RefreshArgs", "keepers");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("RefreshArgs", "serviceName");
+            }
             return $;
         }
     }

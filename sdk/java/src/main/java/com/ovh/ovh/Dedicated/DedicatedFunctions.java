@@ -24,7 +24,8 @@ public final class DedicatedFunctions {
      * Use this data source to retrieve information about a dedicated CEPH.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,12 +47,13 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-ceph = DedicatedFunctions.getCeph(GetCephArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCephResult> getCeph(GetCephArgs args) {
@@ -61,7 +63,8 @@ public final class DedicatedFunctions {
      * Use this data source to retrieve information about a dedicated CEPH.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -83,12 +86,13 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-ceph = DedicatedFunctions.getCeph(GetCephArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCephResult> getCephPlain(GetCephPlainArgs args) {
@@ -98,7 +102,8 @@ public final class DedicatedFunctions {
      * Use this data source to retrieve information about a dedicated CEPH.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -120,12 +125,13 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-ceph = DedicatedFunctions.getCeph(GetCephArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCephResult> getCeph(GetCephArgs args, InvokeOptions options) {
@@ -135,7 +141,8 @@ public final class DedicatedFunctions {
      * Use this data source to retrieve information about a dedicated CEPH.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -157,12 +164,13 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-ceph = DedicatedFunctions.getCeph(GetCephArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCephResult> getCephPlain(GetCephPlainArgs args, InvokeOptions options) {
@@ -172,7 +180,8 @@ public final class DedicatedFunctions {
      * Use this data source to retrieve information about a dedicated HA-NAS.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -194,12 +203,13 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-nas-ha = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
-     *             .serviceName(&#34;zpool-12345&#34;)
+     *             .serviceName("zpool-12345")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetNasHAResult> getNasHA(GetNasHAArgs args) {
@@ -209,7 +219,8 @@ public final class DedicatedFunctions {
      * Use this data source to retrieve information about a dedicated HA-NAS.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -231,12 +242,13 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-nas-ha = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
-     *             .serviceName(&#34;zpool-12345&#34;)
+     *             .serviceName("zpool-12345")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNasHAResult> getNasHAPlain(GetNasHAPlainArgs args) {
@@ -246,7 +258,8 @@ public final class DedicatedFunctions {
      * Use this data source to retrieve information about a dedicated HA-NAS.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -268,12 +281,13 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-nas-ha = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
-     *             .serviceName(&#34;zpool-12345&#34;)
+     *             .serviceName("zpool-12345")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetNasHAResult> getNasHA(GetNasHAArgs args, InvokeOptions options) {
@@ -283,7 +297,8 @@ public final class DedicatedFunctions {
      * Use this data source to retrieve information about a dedicated HA-NAS.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -305,12 +320,13 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-nas-ha = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
-     *             .serviceName(&#34;zpool-12345&#34;)
+     *             .serviceName("zpool-12345")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNasHAResult> getNasHAPlain(GetNasHAPlainArgs args, InvokeOptions options) {
@@ -320,7 +336,8 @@ public final class DedicatedFunctions {
      * Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -342,13 +359,14 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var netboots = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
-     *             .bootType(&#34;harddisk&#34;)
-     *             .serviceName(&#34;myserver&#34;)
+     *             .bootType("harddisk")
+     *             .serviceName("myserver")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetServerBootsResult> getServerBoots(GetServerBootsArgs args) {
@@ -358,7 +376,8 @@ public final class DedicatedFunctions {
      * Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -380,13 +399,14 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var netboots = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
-     *             .bootType(&#34;harddisk&#34;)
-     *             .serviceName(&#34;myserver&#34;)
+     *             .bootType("harddisk")
+     *             .serviceName("myserver")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServerBootsResult> getServerBootsPlain(GetServerBootsPlainArgs args) {
@@ -396,7 +416,8 @@ public final class DedicatedFunctions {
      * Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -418,13 +439,14 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var netboots = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
-     *             .bootType(&#34;harddisk&#34;)
-     *             .serviceName(&#34;myserver&#34;)
+     *             .bootType("harddisk")
+     *             .serviceName("myserver")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetServerBootsResult> getServerBoots(GetServerBootsArgs args, InvokeOptions options) {
@@ -434,7 +456,8 @@ public final class DedicatedFunctions {
      * Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -456,13 +479,14 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var netboots = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
-     *             .bootType(&#34;harddisk&#34;)
-     *             .serviceName(&#34;myserver&#34;)
+     *             .bootType("harddisk")
+     *             .serviceName("myserver")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServerBootsResult> getServerBootsPlain(GetServerBootsPlainArgs args, InvokeOptions options) {

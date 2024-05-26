@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * Creates a user in a public cloud project.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,13 +44,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user1 = new User(&#34;user1&#34;, UserArgs.builder()        
- *             .serviceName(&#34;XXX&#34;)
+ *         var user1 = new User("user1", UserArgs.builder()        
+ *             .serviceName("XXX")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:CloudProject/user:User")

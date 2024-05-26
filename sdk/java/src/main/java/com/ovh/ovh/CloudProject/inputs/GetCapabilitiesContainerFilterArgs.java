@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -152,9 +153,15 @@ public final class GetCapabilitiesContainerFilterArgs extends com.pulumi.resourc
         }
 
         public GetCapabilitiesContainerFilterArgs build() {
-            $.planName = Objects.requireNonNull($.planName, "expected parameter 'planName' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.planName == null) {
+                throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterArgs", "planName");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterArgs", "region");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterArgs", "serviceName");
+            }
             return $;
         }
     }

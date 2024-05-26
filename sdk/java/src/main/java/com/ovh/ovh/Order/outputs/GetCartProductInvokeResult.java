@@ -5,6 +5,7 @@ package com.ovh.ovh.Order.outputs;
 
 import com.ovh.ovh.Order.outputs.GetCartProductResult;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -70,34 +71,46 @@ public final class GetCartProductInvokeResult {
 
         @CustomType.Setter
         public Builder cartId(String cartId) {
-            this.cartId = Objects.requireNonNull(cartId);
+            if (cartId == null) {
+              throw new MissingRequiredPropertyException("GetCartProductInvokeResult", "cartId");
+            }
+            this.cartId = cartId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCartProductInvokeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder product(String product) {
-            this.product = Objects.requireNonNull(product);
+            if (product == null) {
+              throw new MissingRequiredPropertyException("GetCartProductInvokeResult", "product");
+            }
+            this.product = product;
             return this;
         }
         @CustomType.Setter
         public Builder results(List<GetCartProductResult> results) {
-            this.results = Objects.requireNonNull(results);
+            if (results == null) {
+              throw new MissingRequiredPropertyException("GetCartProductInvokeResult", "results");
+            }
+            this.results = results;
             return this;
         }
         public Builder results(GetCartProductResult... results) {
             return results(List.of(results));
         }
         public GetCartProductInvokeResult build() {
-            final var o = new GetCartProductInvokeResult();
-            o.cartId = cartId;
-            o.id = id;
-            o.product = product;
-            o.results = results;
-            return o;
+            final var _resultValue = new GetCartProductInvokeResult();
+            _resultValue.cartId = cartId;
+            _resultValue.id = id;
+            _resultValue.product = product;
+            _resultValue.results = results;
+            return _resultValue;
         }
     }
 }

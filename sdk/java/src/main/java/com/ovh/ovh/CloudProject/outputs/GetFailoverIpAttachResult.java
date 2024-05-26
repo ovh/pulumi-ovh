@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -129,67 +130,97 @@ public final class GetFailoverIpAttachResult {
 
         @CustomType.Setter
         public Builder block(String block) {
-            this.block = Objects.requireNonNull(block);
+            if (block == null) {
+              throw new MissingRequiredPropertyException("GetFailoverIpAttachResult", "block");
+            }
+            this.block = block;
             return this;
         }
         @CustomType.Setter
         public Builder continentCode(String continentCode) {
-            this.continentCode = Objects.requireNonNull(continentCode);
+            if (continentCode == null) {
+              throw new MissingRequiredPropertyException("GetFailoverIpAttachResult", "continentCode");
+            }
+            this.continentCode = continentCode;
             return this;
         }
         @CustomType.Setter
         public Builder geoLoc(String geoLoc) {
-            this.geoLoc = Objects.requireNonNull(geoLoc);
+            if (geoLoc == null) {
+              throw new MissingRequiredPropertyException("GetFailoverIpAttachResult", "geoLoc");
+            }
+            this.geoLoc = geoLoc;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFailoverIpAttachResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetFailoverIpAttachResult", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder progress(Integer progress) {
-            this.progress = Objects.requireNonNull(progress);
+            if (progress == null) {
+              throw new MissingRequiredPropertyException("GetFailoverIpAttachResult", "progress");
+            }
+            this.progress = progress;
             return this;
         }
         @CustomType.Setter
         public Builder routedTo(String routedTo) {
-            this.routedTo = Objects.requireNonNull(routedTo);
+            if (routedTo == null) {
+              throw new MissingRequiredPropertyException("GetFailoverIpAttachResult", "routedTo");
+            }
+            this.routedTo = routedTo;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetFailoverIpAttachResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetFailoverIpAttachResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subType(String subType) {
-            this.subType = Objects.requireNonNull(subType);
+            if (subType == null) {
+              throw new MissingRequiredPropertyException("GetFailoverIpAttachResult", "subType");
+            }
+            this.subType = subType;
             return this;
         }
         public GetFailoverIpAttachResult build() {
-            final var o = new GetFailoverIpAttachResult();
-            o.block = block;
-            o.continentCode = continentCode;
-            o.geoLoc = geoLoc;
-            o.id = id;
-            o.ip = ip;
-            o.progress = progress;
-            o.routedTo = routedTo;
-            o.serviceName = serviceName;
-            o.status = status;
-            o.subType = subType;
-            return o;
+            final var _resultValue = new GetFailoverIpAttachResult();
+            _resultValue.block = block;
+            _resultValue.continentCode = continentCode;
+            _resultValue.geoLoc = geoLoc;
+            _resultValue.id = id;
+            _resultValue.ip = ip;
+            _resultValue.progress = progress;
+            _resultValue.routedTo = routedTo;
+            _resultValue.serviceName = serviceName;
+            _resultValue.status = status;
+            _resultValue.subType = subType;
+            return _resultValue;
         }
     }
 }

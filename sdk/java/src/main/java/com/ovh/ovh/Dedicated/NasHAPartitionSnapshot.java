@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Provides a resource for managing **snapshot** to partitions on HA-NAS services
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -38,15 +39,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_partition = new NasHAPartitionSnapshot(&#34;my-partition&#34;, NasHAPartitionSnapshotArgs.builder()        
- *             .partitionName(&#34;my-partition&#34;)
- *             .serviceName(&#34;zpool-12345&#34;)
- *             .type(&#34;day-3&#34;)
+ *         var my_partition = new NasHAPartitionSnapshot("my-partition", NasHAPartitionSnapshotArgs.builder()        
+ *             .partitionName("my-partition")
+ *             .serviceName("zpool-12345")
+ *             .type("day-3")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

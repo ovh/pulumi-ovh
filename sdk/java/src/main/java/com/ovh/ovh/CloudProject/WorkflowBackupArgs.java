@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -316,11 +317,21 @@ public final class WorkflowBackupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public WorkflowBackupArgs build() {
-            $.cron = Objects.requireNonNull($.cron, "expected parameter 'cron' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.regionName = Objects.requireNonNull($.regionName, "expected parameter 'regionName' to be non-null");
-            $.rotation = Objects.requireNonNull($.rotation, "expected parameter 'rotation' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.cron == null) {
+                throw new MissingRequiredPropertyException("WorkflowBackupArgs", "cron");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("WorkflowBackupArgs", "instanceId");
+            }
+            if ($.regionName == null) {
+                throw new MissingRequiredPropertyException("WorkflowBackupArgs", "regionName");
+            }
+            if ($.rotation == null) {
+                throw new MissingRequiredPropertyException("WorkflowBackupArgs", "rotation");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("WorkflowBackupArgs", "serviceName");
+            }
             return $;
         }
     }

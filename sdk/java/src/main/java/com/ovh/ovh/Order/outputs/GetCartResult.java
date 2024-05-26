@@ -4,6 +4,7 @@
 package com.ovh.ovh.Order.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -113,32 +114,46 @@ public final class GetCartResult {
 
         @CustomType.Setter
         public Builder assign(@Nullable Boolean assign) {
+
             this.assign = assign;
             return this;
         }
         @CustomType.Setter
         public Builder cartId(String cartId) {
-            this.cartId = Objects.requireNonNull(cartId);
+            if (cartId == null) {
+              throw new MissingRequiredPropertyException("GetCartResult", "cartId");
+            }
+            this.cartId = cartId;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expire(String expire) {
-            this.expire = Objects.requireNonNull(expire);
+            if (expire == null) {
+              throw new MissingRequiredPropertyException("GetCartResult", "expire");
+            }
+            this.expire = expire;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCartResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder items(List<Integer> items) {
-            this.items = Objects.requireNonNull(items);
+            if (items == null) {
+              throw new MissingRequiredPropertyException("GetCartResult", "items");
+            }
+            this.items = items;
             return this;
         }
         public Builder items(Integer... items) {
@@ -146,25 +161,31 @@ public final class GetCartResult {
         }
         @CustomType.Setter
         public Builder ovhSubsidiary(String ovhSubsidiary) {
-            this.ovhSubsidiary = Objects.requireNonNull(ovhSubsidiary);
+            if (ovhSubsidiary == null) {
+              throw new MissingRequiredPropertyException("GetCartResult", "ovhSubsidiary");
+            }
+            this.ovhSubsidiary = ovhSubsidiary;
             return this;
         }
         @CustomType.Setter
         public Builder readOnly(Boolean readOnly) {
-            this.readOnly = Objects.requireNonNull(readOnly);
+            if (readOnly == null) {
+              throw new MissingRequiredPropertyException("GetCartResult", "readOnly");
+            }
+            this.readOnly = readOnly;
             return this;
         }
         public GetCartResult build() {
-            final var o = new GetCartResult();
-            o.assign = assign;
-            o.cartId = cartId;
-            o.description = description;
-            o.expire = expire;
-            o.id = id;
-            o.items = items;
-            o.ovhSubsidiary = ovhSubsidiary;
-            o.readOnly = readOnly;
-            return o;
+            final var _resultValue = new GetCartResult();
+            _resultValue.assign = assign;
+            _resultValue.cartId = cartId;
+            _resultValue.description = description;
+            _resultValue.expire = expire;
+            _resultValue.id = id;
+            _resultValue.items = items;
+            _resultValue.ovhSubsidiary = ovhSubsidiary;
+            _resultValue.readOnly = readOnly;
+            return _resultValue;
         }
     }
 }

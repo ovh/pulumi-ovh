@@ -46,19 +46,21 @@ public final class GetKubeNodePoolTemplateSpec {
 
         @CustomType.Setter
         public Builder taints(@Nullable List<Map<String,Object>> taints) {
+
             this.taints = taints;
             return this;
         }
         @CustomType.Setter
         public Builder unschedulable(@Nullable Boolean unschedulable) {
+
             this.unschedulable = unschedulable;
             return this;
         }
         public GetKubeNodePoolTemplateSpec build() {
-            final var o = new GetKubeNodePoolTemplateSpec();
-            o.taints = taints;
-            o.unschedulable = unschedulable;
-            return o;
+            final var _resultValue = new GetKubeNodePoolTemplateSpec();
+            _resultValue.taints = taints;
+            _resultValue.unschedulable = unschedulable;
+            return _resultValue;
         }
     }
 }

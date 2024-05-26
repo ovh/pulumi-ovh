@@ -89,11 +89,13 @@ public final class VrackOrder {
 
         @CustomType.Setter
         public Builder date(@Nullable String date) {
+
             this.date = date;
             return this;
         }
         @CustomType.Setter
         public Builder details(@Nullable List<VrackOrderDetail> details) {
+
             this.details = details;
             return this;
         }
@@ -102,21 +104,23 @@ public final class VrackOrder {
         }
         @CustomType.Setter
         public Builder expirationDate(@Nullable String expirationDate) {
+
             this.expirationDate = expirationDate;
             return this;
         }
         @CustomType.Setter
         public Builder orderId(@Nullable Integer orderId) {
+
             this.orderId = orderId;
             return this;
         }
         public VrackOrder build() {
-            final var o = new VrackOrder();
-            o.date = date;
-            o.details = details;
-            o.expirationDate = expirationDate;
-            o.orderId = orderId;
-            return o;
+            final var _resultValue = new VrackOrder();
+            _resultValue.date = date;
+            _resultValue.details = details;
+            _resultValue.expirationDate = expirationDate;
+            _resultValue.orderId = orderId;
+            return _resultValue;
         }
     }
 }

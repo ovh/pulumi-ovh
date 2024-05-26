@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,10 @@ public final class GetDatabasesResult {
 
         @CustomType.Setter
         public Builder clusterIds(List<String> clusterIds) {
-            this.clusterIds = Objects.requireNonNull(clusterIds);
+            if (clusterIds == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesResult", "clusterIds");
+            }
+            this.clusterIds = clusterIds;
             return this;
         }
         public Builder clusterIds(String... clusterIds) {
@@ -93,26 +97,35 @@ public final class GetDatabasesResult {
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesResult", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetDatabasesResult build() {
-            final var o = new GetDatabasesResult();
-            o.clusterIds = clusterIds;
-            o.engine = engine;
-            o.id = id;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetDatabasesResult();
+            _resultValue.clusterIds = clusterIds;
+            _resultValue.engine = engine;
+            _resultValue.id = id;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

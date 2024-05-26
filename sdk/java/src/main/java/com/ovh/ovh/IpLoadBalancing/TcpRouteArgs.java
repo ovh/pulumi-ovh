@@ -6,6 +6,7 @@ package com.ovh.ovh.IpLoadBalancing;
 import com.ovh.ovh.IpLoadBalancing.inputs.TcpRouteActionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -226,8 +227,12 @@ public final class TcpRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TcpRouteArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("TcpRouteArgs", "action");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("TcpRouteArgs", "serviceName");
+            }
             return $;
         }
     }

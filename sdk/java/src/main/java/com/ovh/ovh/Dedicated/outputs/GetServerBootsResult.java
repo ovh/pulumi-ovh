@@ -4,6 +4,7 @@
 package com.ovh.ovh.Dedicated.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -78,22 +79,30 @@ public final class GetServerBootsResult {
 
         @CustomType.Setter
         public Builder bootType(@Nullable String bootType) {
+
             this.bootType = bootType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerBootsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kernel(@Nullable String kernel) {
+
             this.kernel = kernel;
             return this;
         }
         @CustomType.Setter
         public Builder results(List<Integer> results) {
-            this.results = Objects.requireNonNull(results);
+            if (results == null) {
+              throw new MissingRequiredPropertyException("GetServerBootsResult", "results");
+            }
+            this.results = results;
             return this;
         }
         public Builder results(Integer... results) {
@@ -101,17 +110,20 @@ public final class GetServerBootsResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetServerBootsResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetServerBootsResult build() {
-            final var o = new GetServerBootsResult();
-            o.bootType = bootType;
-            o.id = id;
-            o.kernel = kernel;
-            o.results = results;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetServerBootsResult();
+            _resultValue.bootType = bootType;
+            _resultValue.id = id;
+            _resultValue.kernel = kernel;
+            _resultValue.results = results;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

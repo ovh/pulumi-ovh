@@ -4,6 +4,7 @@
 package com.ovh.ovh.Vps.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -278,32 +279,50 @@ public final class GetVpsResult {
 
         @CustomType.Setter
         public Builder VpsURN(String VpsURN) {
-            this.VpsURN = Objects.requireNonNull(VpsURN);
+            if (VpsURN == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "VpsURN");
+            }
+            this.VpsURN = VpsURN;
             return this;
         }
         @CustomType.Setter
         public Builder cluster(String cluster) {
-            this.cluster = Objects.requireNonNull(cluster);
+            if (cluster == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "cluster");
+            }
+            this.cluster = cluster;
             return this;
         }
         @CustomType.Setter
         public Builder datacenter(Map<String,String> datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder displayname(String displayname) {
-            this.displayname = Objects.requireNonNull(displayname);
+            if (displayname == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "displayname");
+            }
+            this.displayname = displayname;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ips(List<String> ips) {
-            this.ips = Objects.requireNonNull(ips);
+            if (ips == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "ips");
+            }
+            this.ips = ips;
             return this;
         }
         public Builder ips(String... ips) {
@@ -311,85 +330,121 @@ public final class GetVpsResult {
         }
         @CustomType.Setter
         public Builder keymap(String keymap) {
-            this.keymap = Objects.requireNonNull(keymap);
+            if (keymap == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "keymap");
+            }
+            this.keymap = keymap;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder model(Map<String,String> model) {
-            this.model = Objects.requireNonNull(model);
+            if (model == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "model");
+            }
+            this.model = model;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder netbootmode(String netbootmode) {
-            this.netbootmode = Objects.requireNonNull(netbootmode);
+            if (netbootmode == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "netbootmode");
+            }
+            this.netbootmode = netbootmode;
             return this;
         }
         @CustomType.Setter
         public Builder offertype(String offertype) {
-            this.offertype = Objects.requireNonNull(offertype);
+            if (offertype == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "offertype");
+            }
+            this.offertype = offertype;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder slamonitoring(Boolean slamonitoring) {
-            this.slamonitoring = Objects.requireNonNull(slamonitoring);
+            if (slamonitoring == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "slamonitoring");
+            }
+            this.slamonitoring = slamonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vcore(Integer vcore) {
-            this.vcore = Objects.requireNonNull(vcore);
+            if (vcore == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "vcore");
+            }
+            this.vcore = vcore;
             return this;
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetVpsResult", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetVpsResult build() {
-            final var o = new GetVpsResult();
-            o.VpsURN = VpsURN;
-            o.cluster = cluster;
-            o.datacenter = datacenter;
-            o.displayname = displayname;
-            o.id = id;
-            o.ips = ips;
-            o.keymap = keymap;
-            o.memory = memory;
-            o.model = model;
-            o.name = name;
-            o.netbootmode = netbootmode;
-            o.offertype = offertype;
-            o.serviceName = serviceName;
-            o.slamonitoring = slamonitoring;
-            o.state = state;
-            o.type = type;
-            o.vcore = vcore;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetVpsResult();
+            _resultValue.VpsURN = VpsURN;
+            _resultValue.cluster = cluster;
+            _resultValue.datacenter = datacenter;
+            _resultValue.displayname = displayname;
+            _resultValue.id = id;
+            _resultValue.ips = ips;
+            _resultValue.keymap = keymap;
+            _resultValue.memory = memory;
+            _resultValue.model = model;
+            _resultValue.name = name;
+            _resultValue.netbootmode = netbootmode;
+            _resultValue.offertype = offertype;
+            _resultValue.serviceName = serviceName;
+            _resultValue.slamonitoring = slamonitoring;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.vcore = vcore;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

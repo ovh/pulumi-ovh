@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -114,31 +115,45 @@ public final class GetPaymentmeanCreditCardResult {
 
         @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
-            this.default_ = Objects.requireNonNull(default_);
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("GetPaymentmeanCreditCardResult", "default_");
+            }
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPaymentmeanCreditCardResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder descriptionRegexp(@Nullable String descriptionRegexp) {
+
             this.descriptionRegexp = descriptionRegexp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPaymentmeanCreditCardResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetPaymentmeanCreditCardResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder states(@Nullable List<String> states) {
+
             this.states = states;
             return this;
         }
@@ -147,25 +162,27 @@ public final class GetPaymentmeanCreditCardResult {
         }
         @CustomType.Setter
         public Builder useDefault(@Nullable Boolean useDefault) {
+
             this.useDefault = useDefault;
             return this;
         }
         @CustomType.Setter
         public Builder useLastToExpire(@Nullable Boolean useLastToExpire) {
+
             this.useLastToExpire = useLastToExpire;
             return this;
         }
         public GetPaymentmeanCreditCardResult build() {
-            final var o = new GetPaymentmeanCreditCardResult();
-            o.default_ = default_;
-            o.description = description;
-            o.descriptionRegexp = descriptionRegexp;
-            o.id = id;
-            o.state = state;
-            o.states = states;
-            o.useDefault = useDefault;
-            o.useLastToExpire = useLastToExpire;
-            return o;
+            final var _resultValue = new GetPaymentmeanCreditCardResult();
+            _resultValue.default_ = default_;
+            _resultValue.description = description;
+            _resultValue.descriptionRegexp = descriptionRegexp;
+            _resultValue.id = id;
+            _resultValue.state = state;
+            _resultValue.states = states;
+            _resultValue.useDefault = useDefault;
+            _resultValue.useLastToExpire = useLastToExpire;
+            return _resultValue;
         }
     }
 }

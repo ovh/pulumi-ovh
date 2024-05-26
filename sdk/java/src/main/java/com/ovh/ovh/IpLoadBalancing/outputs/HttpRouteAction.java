@@ -4,6 +4,7 @@
 package com.ovh.ovh.IpLoadBalancing.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -73,25 +74,30 @@ public final class HttpRouteAction {
 
         @CustomType.Setter
         public Builder status(@Nullable Integer status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder target(@Nullable String target) {
+
             this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("HttpRouteAction", "type");
+            }
+            this.type = type;
             return this;
         }
         public HttpRouteAction build() {
-            final var o = new HttpRouteAction();
-            o.status = status;
-            o.target = target;
-            o.type = type;
-            return o;
+            final var _resultValue = new HttpRouteAction();
+            _resultValue.status = status;
+            _resultValue.target = target;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

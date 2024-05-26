@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Set the S3 Policy of a public cloud project user.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,38 +44,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .serviceName(&#34;XXX&#34;)
- *             .description(&#34;my user&#34;)
- *             .roleNames(&#34;objectstore_operator&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .serviceName("XXX")
+ *             .description("my user")
+ *             .roleNames("objectstore_operator")
  *             .build());
  * 
- *         var myS3Credentials = new S3Credential(&#34;myS3Credentials&#34;, S3CredentialArgs.builder()        
+ *         var myS3Credentials = new S3Credential("myS3Credentials", S3CredentialArgs.builder()        
  *             .serviceName(user.serviceName())
  *             .userId(user.id())
  *             .build());
  * 
- *         var policy = new S3Policy(&#34;policy&#34;, S3PolicyArgs.builder()        
+ *         var policy = new S3Policy("policy", S3PolicyArgs.builder()        
  *             .serviceName(user.serviceName())
  *             .userId(user.id())
  *             .policy(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Statement&#34;, jsonArray(jsonObject(
- *                         jsonProperty(&#34;Sid&#34;, &#34;RWContainer&#34;),
- *                         jsonProperty(&#34;Effect&#34;, &#34;Allow&#34;),
- *                         jsonProperty(&#34;Action&#34;, jsonArray(
- *                             &#34;s3:GetObject&#34;, 
- *                             &#34;s3:PutObject&#34;, 
- *                             &#34;s3:DeleteObject&#34;, 
- *                             &#34;s3:ListBucket&#34;, 
- *                             &#34;s3:ListMultipartUploadParts&#34;, 
- *                             &#34;s3:ListBucketMultipartUploads&#34;, 
- *                             &#34;s3:AbortMultipartUpload&#34;, 
- *                             &#34;s3:GetBucketLocation&#34;
+ *                     jsonProperty("Statement", jsonArray(jsonObject(
+ *                         jsonProperty("Sid", "RWContainer"),
+ *                         jsonProperty("Effect", "Allow"),
+ *                         jsonProperty("Action", jsonArray(
+ *                             "s3:GetObject", 
+ *                             "s3:PutObject", 
+ *                             "s3:DeleteObject", 
+ *                             "s3:ListBucket", 
+ *                             "s3:ListMultipartUploadParts", 
+ *                             "s3:ListBucketMultipartUploads", 
+ *                             "s3:AbortMultipartUpload", 
+ *                             "s3:GetBucketLocation"
  *                         )),
- *                         jsonProperty(&#34;Resource&#34;, jsonArray(
- *                             &#34;arn:aws:s3:::hp-bucket&#34;, 
- *                             &#34;arn:aws:s3:::hp-bucket/*&#34;
+ *                         jsonProperty("Resource", jsonArray(
+ *                             "arn:aws:s3:::hp-bucket", 
+ *                             "arn:aws:s3:::hp-bucket/*"
  *                         ))
  *                     )))
  *                 )))
@@ -82,7 +83,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

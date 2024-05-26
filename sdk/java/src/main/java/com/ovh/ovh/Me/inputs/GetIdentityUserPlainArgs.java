@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetIdentityUserPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetIdentityUserPlainArgs build() {
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
+            if ($.user == null) {
+                throw new MissingRequiredPropertyException("GetIdentityUserPlainArgs", "user");
+            }
             return $;
         }
     }

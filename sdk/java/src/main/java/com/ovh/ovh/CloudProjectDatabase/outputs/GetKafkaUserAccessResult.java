@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,43 +113,61 @@ public final class GetKafkaUserAccessResult {
 
         @CustomType.Setter
         public Builder cert(String cert) {
-            this.cert = Objects.requireNonNull(cert);
+            if (cert == null) {
+              throw new MissingRequiredPropertyException("GetKafkaUserAccessResult", "cert");
+            }
+            this.cert = cert;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetKafkaUserAccessResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKafkaUserAccessResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("GetKafkaUserAccessResult", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKafkaUserAccessResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetKafkaUserAccessResult", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         public GetKafkaUserAccessResult build() {
-            final var o = new GetKafkaUserAccessResult();
-            o.cert = cert;
-            o.clusterId = clusterId;
-            o.id = id;
-            o.key = key;
-            o.serviceName = serviceName;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GetKafkaUserAccessResult();
+            _resultValue.cert = cert;
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.key = key;
+            _resultValue.serviceName = serviceName;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

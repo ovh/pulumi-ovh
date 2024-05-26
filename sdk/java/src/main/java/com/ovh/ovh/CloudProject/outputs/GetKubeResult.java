@@ -7,6 +7,7 @@ import com.ovh.ovh.CloudProject.outputs.GetKubeCustomization;
 import com.ovh.ovh.CloudProject.outputs.GetKubeCustomizationApiserver;
 import com.ovh.ovh.CloudProject.outputs.GetKubeCustomizationKubeProxy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -295,12 +296,18 @@ public final class GetKubeResult {
 
         @CustomType.Setter
         public Builder controlPlaneIsUpToDate(Boolean controlPlaneIsUpToDate) {
-            this.controlPlaneIsUpToDate = Objects.requireNonNull(controlPlaneIsUpToDate);
+            if (controlPlaneIsUpToDate == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "controlPlaneIsUpToDate");
+            }
+            this.controlPlaneIsUpToDate = controlPlaneIsUpToDate;
             return this;
         }
         @CustomType.Setter
         public Builder customizationApiservers(List<GetKubeCustomizationApiserver> customizationApiservers) {
-            this.customizationApiservers = Objects.requireNonNull(customizationApiservers);
+            if (customizationApiservers == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "customizationApiservers");
+            }
+            this.customizationApiservers = customizationApiservers;
             return this;
         }
         public Builder customizationApiservers(GetKubeCustomizationApiserver... customizationApiservers) {
@@ -308,12 +315,16 @@ public final class GetKubeResult {
         }
         @CustomType.Setter
         public Builder customizationKubeProxy(@Nullable GetKubeCustomizationKubeProxy customizationKubeProxy) {
+
             this.customizationKubeProxy = customizationKubeProxy;
             return this;
         }
         @CustomType.Setter
         public Builder customizations(List<GetKubeCustomization> customizations) {
-            this.customizations = Objects.requireNonNull(customizations);
+            if (customizations == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "customizations");
+            }
+            this.customizations = customizations;
             return this;
         }
         public Builder customizations(GetKubeCustomization... customizations) {
@@ -321,32 +332,46 @@ public final class GetKubeResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isUpToDate(Boolean isUpToDate) {
-            this.isUpToDate = Objects.requireNonNull(isUpToDate);
+            if (isUpToDate == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "isUpToDate");
+            }
+            this.isUpToDate = isUpToDate;
             return this;
         }
         @CustomType.Setter
         public Builder kubeId(String kubeId) {
-            this.kubeId = Objects.requireNonNull(kubeId);
+            if (kubeId == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "kubeId");
+            }
+            this.kubeId = kubeId;
             return this;
         }
         @CustomType.Setter
         public Builder kubeProxyMode(@Nullable String kubeProxyMode) {
+
             this.kubeProxyMode = kubeProxyMode;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nextUpgradeVersions(List<String> nextUpgradeVersions) {
-            this.nextUpgradeVersions = Objects.requireNonNull(nextUpgradeVersions);
+            if (nextUpgradeVersions == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "nextUpgradeVersions");
+            }
+            this.nextUpgradeVersions = nextUpgradeVersions;
             return this;
         }
         public Builder nextUpgradeVersions(String... nextUpgradeVersions) {
@@ -354,65 +379,83 @@ public final class GetKubeResult {
         }
         @CustomType.Setter
         public Builder nodesUrl(String nodesUrl) {
-            this.nodesUrl = Objects.requireNonNull(nodesUrl);
+            if (nodesUrl == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "nodesUrl");
+            }
+            this.nodesUrl = nodesUrl;
             return this;
         }
         @CustomType.Setter
         public Builder privateNetworkId(String privateNetworkId) {
-            this.privateNetworkId = Objects.requireNonNull(privateNetworkId);
+            if (privateNetworkId == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "privateNetworkId");
+            }
+            this.privateNetworkId = privateNetworkId;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder updatePolicy(@Nullable String updatePolicy) {
+
             this.updatePolicy = updatePolicy;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "url");
+            }
+            this.url = url;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }
         public GetKubeResult build() {
-            final var o = new GetKubeResult();
-            o.controlPlaneIsUpToDate = controlPlaneIsUpToDate;
-            o.customizationApiservers = customizationApiservers;
-            o.customizationKubeProxy = customizationKubeProxy;
-            o.customizations = customizations;
-            o.id = id;
-            o.isUpToDate = isUpToDate;
-            o.kubeId = kubeId;
-            o.kubeProxyMode = kubeProxyMode;
-            o.name = name;
-            o.nextUpgradeVersions = nextUpgradeVersions;
-            o.nodesUrl = nodesUrl;
-            o.privateNetworkId = privateNetworkId;
-            o.region = region;
-            o.serviceName = serviceName;
-            o.status = status;
-            o.updatePolicy = updatePolicy;
-            o.url = url;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetKubeResult();
+            _resultValue.controlPlaneIsUpToDate = controlPlaneIsUpToDate;
+            _resultValue.customizationApiservers = customizationApiservers;
+            _resultValue.customizationKubeProxy = customizationKubeProxy;
+            _resultValue.customizations = customizations;
+            _resultValue.id = id;
+            _resultValue.isUpToDate = isUpToDate;
+            _resultValue.kubeId = kubeId;
+            _resultValue.kubeProxyMode = kubeProxyMode;
+            _resultValue.name = name;
+            _resultValue.nextUpgradeVersions = nextUpgradeVersions;
+            _resultValue.nodesUrl = nodesUrl;
+            _resultValue.privateNetworkId = privateNetworkId;
+            _resultValue.region = region;
+            _resultValue.serviceName = serviceName;
+            _resultValue.status = status;
+            _resultValue.updatePolicy = updatePolicy;
+            _resultValue.url = url;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

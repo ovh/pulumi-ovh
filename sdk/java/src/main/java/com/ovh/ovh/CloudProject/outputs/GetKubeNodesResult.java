@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.ovh.ovh.CloudProject.outputs.GetKubeNodesNode;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,17 +87,26 @@ public final class GetKubeNodesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kubeId(String kubeId) {
-            this.kubeId = Objects.requireNonNull(kubeId);
+            if (kubeId == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodesResult", "kubeId");
+            }
+            this.kubeId = kubeId;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(List<GetKubeNodesNode> nodes) {
-            this.nodes = Objects.requireNonNull(nodes);
+            if (nodes == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodesResult", "nodes");
+            }
+            this.nodes = nodes;
             return this;
         }
         public Builder nodes(GetKubeNodesNode... nodes) {
@@ -104,16 +114,19 @@ public final class GetKubeNodesResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodesResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetKubeNodesResult build() {
-            final var o = new GetKubeNodesResult();
-            o.id = id;
-            o.kubeId = kubeId;
-            o.nodes = nodes;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetKubeNodesResult();
+            _resultValue.id = id;
+            _resultValue.kubeId = kubeId;
+            _resultValue.nodes = nodes;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

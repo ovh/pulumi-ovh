@@ -44,13 +44,14 @@ public final class ContainerRegistryPlanFeature {
 
         @CustomType.Setter
         public Builder vulnerability(@Nullable Boolean vulnerability) {
+
             this.vulnerability = vulnerability;
             return this;
         }
         public ContainerRegistryPlanFeature build() {
-            final var o = new ContainerRegistryPlanFeature();
-            o.vulnerability = vulnerability;
-            return o;
+            final var _resultValue = new ContainerRegistryPlanFeature();
+            _resultValue.vulnerability = vulnerability;
+            return _resultValue;
         }
     }
 }

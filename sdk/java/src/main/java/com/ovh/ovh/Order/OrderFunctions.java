@@ -30,7 +30,8 @@ public final class OrderFunctions {
      * Use this data source to create a temporary order cart to retrieve information order cart products.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -55,12 +56,13 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCartResult> getCart(GetCartArgs args) {
@@ -70,7 +72,8 @@ public final class OrderFunctions {
      * Use this data source to create a temporary order cart to retrieve information order cart products.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -95,12 +98,13 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCartResult> getCartPlain(GetCartPlainArgs args) {
@@ -110,7 +114,8 @@ public final class OrderFunctions {
      * Use this data source to create a temporary order cart to retrieve information order cart products.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -135,12 +140,13 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCartResult> getCart(GetCartArgs args, InvokeOptions options) {
@@ -150,7 +156,8 @@ public final class OrderFunctions {
      * Use this data source to create a temporary order cart to retrieve information order cart products.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -175,12 +182,13 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCartResult> getCartPlain(GetCartPlainArgs args, InvokeOptions options) {
@@ -190,7 +198,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product products.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -216,17 +225,18 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plans = OrderFunctions.getCartProduct(GetCartProductArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .product(&#34;...&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .product("...")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCartProductInvokeResult> getCartProduct(GetCartProductArgs args) {
@@ -236,7 +246,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product products.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -262,17 +273,18 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plans = OrderFunctions.getCartProduct(GetCartProductArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .product(&#34;...&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .product("...")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCartProductInvokeResult> getCartProductPlain(GetCartProductPlainArgs args) {
@@ -282,7 +294,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product products.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -308,17 +321,18 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plans = OrderFunctions.getCartProduct(GetCartProductArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .product(&#34;...&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .product("...")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCartProductInvokeResult> getCartProduct(GetCartProductArgs args, InvokeOptions options) {
@@ -328,7 +342,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product products.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -354,17 +369,18 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plans = OrderFunctions.getCartProduct(GetCartProductArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .product(&#34;...&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .product("...")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCartProductInvokeResult> getCartProductPlain(GetCartProductPlainArgs args, InvokeOptions options) {
@@ -374,7 +390,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -400,18 +417,19 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var options = OrderFunctions.getCartProductOptions(GetCartProductOptionsArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .product("cloud")
+     *             .planCode("project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCartProductOptionsInvokeResult> getCartProductOptions(GetCartProductOptionsArgs args) {
@@ -421,7 +439,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -447,18 +466,19 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var options = OrderFunctions.getCartProductOptions(GetCartProductOptionsArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .product("cloud")
+     *             .planCode("project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCartProductOptionsInvokeResult> getCartProductOptionsPlain(GetCartProductOptionsPlainArgs args) {
@@ -468,7 +488,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -494,18 +515,19 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var options = OrderFunctions.getCartProductOptions(GetCartProductOptionsArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .product("cloud")
+     *             .planCode("project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCartProductOptionsInvokeResult> getCartProductOptions(GetCartProductOptionsArgs args, InvokeOptions options) {
@@ -515,7 +537,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -541,18 +564,19 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var options = OrderFunctions.getCartProductOptions(GetCartProductOptionsArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .product("cloud")
+     *             .planCode("project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCartProductOptionsInvokeResult> getCartProductOptionsPlain(GetCartProductOptionsPlainArgs args, InvokeOptions options) {
@@ -562,7 +586,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options plan.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -588,20 +613,21 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductOptionsPlan(GetCartProductOptionsPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .priceCapacity(&#34;renew&#34;)
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
-     *             .optionsPlanCode(&#34;vrack&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .priceCapacity("renew")
+     *             .product("cloud")
+     *             .planCode("project")
+     *             .optionsPlanCode("vrack")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCartProductOptionsPlanResult> getCartProductOptionsPlan(GetCartProductOptionsPlanArgs args) {
@@ -611,7 +637,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options plan.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -637,20 +664,21 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductOptionsPlan(GetCartProductOptionsPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .priceCapacity(&#34;renew&#34;)
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
-     *             .optionsPlanCode(&#34;vrack&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .priceCapacity("renew")
+     *             .product("cloud")
+     *             .planCode("project")
+     *             .optionsPlanCode("vrack")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCartProductOptionsPlanResult> getCartProductOptionsPlanPlain(GetCartProductOptionsPlanPlainArgs args) {
@@ -660,7 +688,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options plan.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -686,20 +715,21 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductOptionsPlan(GetCartProductOptionsPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .priceCapacity(&#34;renew&#34;)
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
-     *             .optionsPlanCode(&#34;vrack&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .priceCapacity("renew")
+     *             .product("cloud")
+     *             .planCode("project")
+     *             .optionsPlanCode("vrack")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCartProductOptionsPlanResult> getCartProductOptionsPlan(GetCartProductOptionsPlanArgs args, InvokeOptions options) {
@@ -709,7 +739,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options plan.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -735,20 +766,21 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductOptionsPlan(GetCartProductOptionsPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .priceCapacity(&#34;renew&#34;)
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
-     *             .optionsPlanCode(&#34;vrack&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .priceCapacity("renew")
+     *             .product("cloud")
+     *             .planCode("project")
+     *             .optionsPlanCode("vrack")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCartProductOptionsPlanResult> getCartProductOptionsPlanPlain(GetCartProductOptionsPlanPlainArgs args, InvokeOptions options) {
@@ -758,7 +790,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product plan.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -784,19 +817,20 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .priceCapacity(&#34;renew&#34;)
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .priceCapacity("renew")
+     *             .product("cloud")
+     *             .planCode("project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCartProductPlanResult> getCartProductPlan(GetCartProductPlanArgs args) {
@@ -806,7 +840,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product plan.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -832,19 +867,20 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .priceCapacity(&#34;renew&#34;)
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .priceCapacity("renew")
+     *             .product("cloud")
+     *             .planCode("project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCartProductPlanResult> getCartProductPlanPlain(GetCartProductPlanPlainArgs args) {
@@ -854,7 +890,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product plan.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -880,19 +917,20 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .priceCapacity(&#34;renew&#34;)
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .priceCapacity("renew")
+     *             .product("cloud")
+     *             .planCode("project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCartProductPlanResult> getCartProductPlan(GetCartProductPlanArgs args, InvokeOptions options) {
@@ -902,7 +940,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product plan.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -928,19 +967,20 @@ public final class OrderFunctions {
      *         final var myaccount = MeFunctions.getMe();
      * 
      *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
-     *             .priceCapacity(&#34;renew&#34;)
-     *             .product(&#34;cloud&#34;)
-     *             .planCode(&#34;project&#34;)
+     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .priceCapacity("renew")
+     *             .product("cloud")
+     *             .planCode("project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCartProductPlanResult> getCartProductPlanPlain(GetCartProductPlanPlainArgs args, InvokeOptions options) {

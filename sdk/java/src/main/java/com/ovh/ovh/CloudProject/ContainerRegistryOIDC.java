@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * Creates an OIDC configuration in an OVHcloud Managed Private Registry.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,26 +42,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_oidc = new ContainerRegistryOIDC(&#34;my-oidc&#34;, ContainerRegistryOIDCArgs.builder()        
- *             .serviceName(&#34;XXXXXX&#34;)
- *             .registryId(&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx&#34;)
- *             .oidcName(&#34;my-oidc-provider&#34;)
- *             .oidcEndpoint(&#34;https://xxxx.yyy.com&#34;)
- *             .oidcClientId(&#34;xxx&#34;)
- *             .oidcClientSecret(&#34;xxx&#34;)
- *             .oidcScope(&#34;openid,profile,email,offline_access&#34;)
- *             .oidcGroupsClaim(&#34;groups&#34;)
- *             .oidcAdminGroup(&#34;harbor-admin&#34;)
+ *         var my_oidc = new ContainerRegistryOIDC("my-oidc", ContainerRegistryOIDCArgs.builder()        
+ *             .serviceName("XXXXXX")
+ *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+ *             .oidcName("my-oidc-provider")
+ *             .oidcEndpoint("https://xxxx.yyy.com")
+ *             .oidcClientId("xxx")
+ *             .oidcClientSecret("xxx")
+ *             .oidcScope("openid,profile,email,offline_access")
+ *             .oidcGroupsClaim("groups")
+ *             .oidcAdminGroup("harbor-admin")
  *             .oidcVerifyCert(true)
  *             .oidcAutoOnboard(true)
- *             .oidcUserClaim(&#34;preferred_username&#34;)
+ *             .oidcUserClaim("preferred_username")
  *             .deleteUsers(false)
  *             .build());
  * 
- *         ctx.export(&#34;oidcClientSecret&#34;, my_oidc.oidcClientSecret());
+ *         ctx.export("oidcClientSecret", my_oidc.oidcClientSecret());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

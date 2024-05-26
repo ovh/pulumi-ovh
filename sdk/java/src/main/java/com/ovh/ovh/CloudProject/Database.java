@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Minimum settings for each engine (region choice is up to the user):
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,140 +47,142 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cassandradb = new Database(&#34;cassandradb&#34;, DatabaseArgs.builder()        
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *             .description(&#34;my-first-cassandra&#34;)
- *             .engine(&#34;cassandra&#34;)
- *             .version(&#34;4.0&#34;)
- *             .plan(&#34;essential&#34;)
+ *         var cassandradb = new Database("cassandradb", DatabaseArgs.builder()        
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-first-cassandra")
+ *             .engine("cassandra")
+ *             .version("4.0")
+ *             .plan("essential")
  *             .nodes(            
  *                 DatabaseNodeArgs.builder()
- *                     .region(&#34;BHS&#34;)
+ *                     .region("BHS")
  *                     .build(),
  *                 DatabaseNodeArgs.builder()
- *                     .region(&#34;BHS&#34;)
+ *                     .region("BHS")
  *                     .build(),
  *                 DatabaseNodeArgs.builder()
- *                     .region(&#34;BHS&#34;)
+ *                     .region("BHS")
  *                     .build())
- *             .flavor(&#34;db1-4&#34;)
+ *             .flavor("db1-4")
  *             .build());
  * 
- *         var kafkadb = new Database(&#34;kafkadb&#34;, DatabaseArgs.builder()        
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *             .description(&#34;my-first-kafka&#34;)
- *             .engine(&#34;kafka&#34;)
- *             .version(&#34;3.4&#34;)
- *             .plan(&#34;business&#34;)
+ *         var kafkadb = new Database("kafkadb", DatabaseArgs.builder()        
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-first-kafka")
+ *             .engine("kafka")
+ *             .version("3.4")
+ *             .plan("business")
  *             .kafkaRestApi(true)
  *             .nodes(            
  *                 DatabaseNodeArgs.builder()
- *                     .region(&#34;DE&#34;)
+ *                     .region("DE")
  *                     .build(),
  *                 DatabaseNodeArgs.builder()
- *                     .region(&#34;DE&#34;)
+ *                     .region("DE")
  *                     .build(),
  *                 DatabaseNodeArgs.builder()
- *                     .region(&#34;DE&#34;)
+ *                     .region("DE")
  *                     .build())
- *             .flavor(&#34;db1-4&#34;)
+ *             .flavor("db1-4")
  *             .build());
  * 
- *         var m3db = new Database(&#34;m3db&#34;, DatabaseArgs.builder()        
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *             .description(&#34;my-first-m3db&#34;)
- *             .engine(&#34;m3db&#34;)
- *             .version(&#34;1.2&#34;)
- *             .plan(&#34;essential&#34;)
+ *         var m3db = new Database("m3db", DatabaseArgs.builder()        
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-first-m3db")
+ *             .engine("m3db")
+ *             .version("1.2")
+ *             .plan("essential")
  *             .nodes(DatabaseNodeArgs.builder()
- *                 .region(&#34;BHS&#34;)
+ *                 .region("BHS")
  *                 .build())
- *             .flavor(&#34;db1-7&#34;)
+ *             .flavor("db1-7")
  *             .build());
  * 
- *         var mongodb = new Database(&#34;mongodb&#34;, DatabaseArgs.builder()        
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *             .description(&#34;my-first-mongodb&#34;)
- *             .engine(&#34;mongodb&#34;)
- *             .version(&#34;5.0&#34;)
- *             .plan(&#34;essential&#34;)
+ *         var mongodb = new Database("mongodb", DatabaseArgs.builder()        
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-first-mongodb")
+ *             .engine("mongodb")
+ *             .version("5.0")
+ *             .plan("essential")
  *             .nodes(DatabaseNodeArgs.builder()
- *                 .region(&#34;GRA&#34;)
+ *                 .region("GRA")
  *                 .build())
- *             .flavor(&#34;db1-2&#34;)
+ *             .flavor("db1-2")
  *             .build());
  * 
- *         var mysqldb = new Database(&#34;mysqldb&#34;, DatabaseArgs.builder()        
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *             .description(&#34;my-first-mysql&#34;)
- *             .engine(&#34;mysql&#34;)
- *             .version(&#34;8&#34;)
- *             .plan(&#34;essential&#34;)
+ *         var mysqldb = new Database("mysqldb", DatabaseArgs.builder()        
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-first-mysql")
+ *             .engine("mysql")
+ *             .version("8")
+ *             .plan("essential")
  *             .nodes(DatabaseNodeArgs.builder()
- *                 .region(&#34;SBG&#34;)
+ *                 .region("SBG")
  *                 .build())
- *             .flavor(&#34;db1-4&#34;)
+ *             .flavor("db1-4")
  *             .advancedConfiguration(Map.ofEntries(
- *                 Map.entry(&#34;mysql.sql_mode&#34;, &#34;ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES&#34;),
- *                 Map.entry(&#34;mysql.sql_require_primary_key&#34;, &#34;true&#34;)
+ *                 Map.entry("mysql.sql_mode", "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES"),
+ *                 Map.entry("mysql.sql_require_primary_key", "true")
  *             ))
  *             .build());
  * 
- *         var opensearchdb = new Database(&#34;opensearchdb&#34;, DatabaseArgs.builder()        
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *             .description(&#34;my-first-opensearch&#34;)
- *             .engine(&#34;opensearch&#34;)
- *             .version(&#34;1&#34;)
- *             .plan(&#34;essential&#34;)
+ *         var opensearchdb = new Database("opensearchdb", DatabaseArgs.builder()        
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-first-opensearch")
+ *             .engine("opensearch")
+ *             .version("1")
+ *             .plan("essential")
  *             .opensearchAclsEnabled(true)
  *             .nodes(DatabaseNodeArgs.builder()
- *                 .region(&#34;UK&#34;)
+ *                 .region("UK")
  *                 .build())
- *             .flavor(&#34;db1-4&#34;)
+ *             .flavor("db1-4")
  *             .build());
  * 
- *         var pgsqldb = new Database(&#34;pgsqldb&#34;, DatabaseArgs.builder()        
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *             .description(&#34;my-first-postgresql&#34;)
- *             .engine(&#34;postgresql&#34;)
- *             .version(&#34;14&#34;)
- *             .plan(&#34;essential&#34;)
+ *         var pgsqldb = new Database("pgsqldb", DatabaseArgs.builder()        
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-first-postgresql")
+ *             .engine("postgresql")
+ *             .version("14")
+ *             .plan("essential")
  *             .nodes(DatabaseNodeArgs.builder()
- *                 .region(&#34;WAW&#34;)
+ *                 .region("WAW")
  *                 .build())
- *             .flavor(&#34;db1-4&#34;)
+ *             .flavor("db1-4")
  *             .build());
  * 
- *         var redisdb = new Database(&#34;redisdb&#34;, DatabaseArgs.builder()        
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *             .description(&#34;my-first-redis&#34;)
- *             .engine(&#34;redis&#34;)
- *             .version(&#34;6.2&#34;)
- *             .plan(&#34;essential&#34;)
+ *         var redisdb = new Database("redisdb", DatabaseArgs.builder()        
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-first-redis")
+ *             .engine("redis")
+ *             .version("6.2")
+ *             .plan("essential")
  *             .nodes(DatabaseNodeArgs.builder()
- *                 .region(&#34;BHS&#34;)
+ *                 .region("BHS")
  *                 .build())
- *             .flavor(&#34;db1-4&#34;)
+ *             .flavor("db1-4")
  *             .build());
  * 
- *         var grafana = new Database(&#34;grafana&#34;, DatabaseArgs.builder()        
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *             .description(&#34;my-first-grafana&#34;)
- *             .engine(&#34;grafana&#34;)
- *             .version(&#34;9.1&#34;)
- *             .plan(&#34;essential&#34;)
+ *         var grafana = new Database("grafana", DatabaseArgs.builder()        
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-first-grafana")
+ *             .engine("grafana")
+ *             .version("9.1")
+ *             .plan("essential")
  *             .nodes(DatabaseNodeArgs.builder()
- *                 .region(&#34;GRA&#34;)
+ *                 .region("GRA")
  *                 .build())
- *             .flavor(&#34;db1-4&#34;)
+ *             .flavor("db1-4")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * To deploy a business PostgreSQL service with two nodes on public network:
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -201,28 +204,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgresql = new Database(&#34;postgresql&#34;, DatabaseArgs.builder()        
- *             .description(&#34;my-first-postgresql&#34;)
- *             .engine(&#34;postgresql&#34;)
- *             .flavor(&#34;db1-15&#34;)
+ *         var postgresql = new Database("postgresql", DatabaseArgs.builder()        
+ *             .description("my-first-postgresql")
+ *             .engine("postgresql")
+ *             .flavor("db1-15")
  *             .nodes(            
  *                 DatabaseNodeArgs.builder()
- *                     .region(&#34;GRA&#34;)
+ *                     .region("GRA")
  *                     .build(),
  *                 DatabaseNodeArgs.builder()
- *                     .region(&#34;GRA&#34;)
+ *                     .region("GRA")
  *                     .build())
- *             .plan(&#34;business&#34;)
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *             .version(&#34;14&#34;)
+ *             .plan("business")
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .version("14")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * To deploy an enterprise MongoDB service with three nodes on private network:
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -244,34 +249,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mongodb = new Database(&#34;mongodb&#34;, DatabaseArgs.builder()        
- *             .description(&#34;my-first-mongodb&#34;)
- *             .engine(&#34;mongodb&#34;)
- *             .flavor(&#34;db1-30&#34;)
+ *         var mongodb = new Database("mongodb", DatabaseArgs.builder()        
+ *             .description("my-first-mongodb")
+ *             .engine("mongodb")
+ *             .flavor("db1-30")
  *             .nodes(            
  *                 DatabaseNodeArgs.builder()
- *                     .networkId(&#34;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&#34;)
- *                     .region(&#34;SBG&#34;)
- *                     .subnetId(&#34;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&#34;)
+ *                     .networkId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
+ *                     .region("SBG")
+ *                     .subnetId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
  *                     .build(),
  *                 DatabaseNodeArgs.builder()
- *                     .networkId(&#34;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&#34;)
- *                     .region(&#34;SBG&#34;)
- *                     .subnetId(&#34;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&#34;)
+ *                     .networkId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
+ *                     .region("SBG")
+ *                     .subnetId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
  *                     .build(),
  *                 DatabaseNodeArgs.builder()
- *                     .networkId(&#34;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&#34;)
- *                     .region(&#34;SBG&#34;)
- *                     .subnetId(&#34;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&#34;)
+ *                     .networkId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
+ *                     .region("SBG")
+ *                     .subnetId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
  *                     .build())
- *             .plan(&#34;enterprise&#34;)
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *             .version(&#34;5.0&#34;)
+ *             .plan("enterprise")
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .version("5.0")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Provides a resource for managing partitions on HA-NAS services
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,15 +41,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_partition = new NasHAPartition(&#34;my-partition&#34;, NasHAPartitionArgs.builder()        
- *             .protocol(&#34;NFS&#34;)
- *             .serviceName(&#34;zpool-12345&#34;)
+ *         var my_partition = new NasHAPartition("my-partition", NasHAPartitionArgs.builder()        
+ *             .protocol("NFS")
+ *             .serviceName("zpool-12345")
  *             .size(20)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

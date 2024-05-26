@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.ovh.ovh.CloudProject.outputs.GetUsersUserRole;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -116,17 +117,26 @@ public final class GetUsersUser {
 
         @CustomType.Setter
         public Builder creationDate(String creationDate) {
-            this.creationDate = Objects.requireNonNull(creationDate);
+            if (creationDate == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "creationDate");
+            }
+            this.creationDate = creationDate;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder roles(List<GetUsersUserRole> roles) {
-            this.roles = Objects.requireNonNull(roles);
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "roles");
+            }
+            this.roles = roles;
             return this;
         }
         public Builder roles(GetUsersUserRole... roles) {
@@ -134,28 +144,37 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetUsersUser build() {
-            final var o = new GetUsersUser();
-            o.creationDate = creationDate;
-            o.description = description;
-            o.roles = roles;
-            o.status = status;
-            o.userId = userId;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetUsersUser();
+            _resultValue.creationDate = creationDate;
+            _resultValue.description = description;
+            _resultValue.roles = roles;
+            _resultValue.status = status;
+            _resultValue.userId = userId;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

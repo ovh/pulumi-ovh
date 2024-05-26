@@ -4,6 +4,7 @@
 package com.ovh.ovh.Dbaas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -69,34 +70,46 @@ public final class GetLogsClustersResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLogsClustersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetLogsClustersResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder urn(String urn) {
-            this.urn = Objects.requireNonNull(urn);
+            if (urn == null) {
+              throw new MissingRequiredPropertyException("GetLogsClustersResult", "urn");
+            }
+            this.urn = urn;
             return this;
         }
         @CustomType.Setter
         public Builder uuids(List<String> uuids) {
-            this.uuids = Objects.requireNonNull(uuids);
+            if (uuids == null) {
+              throw new MissingRequiredPropertyException("GetLogsClustersResult", "uuids");
+            }
+            this.uuids = uuids;
             return this;
         }
         public Builder uuids(String... uuids) {
             return uuids(List.of(uuids));
         }
         public GetLogsClustersResult build() {
-            final var o = new GetLogsClustersResult();
-            o.id = id;
-            o.serviceName = serviceName;
-            o.urn = urn;
-            o.uuids = uuids;
-            return o;
+            final var _resultValue = new GetLogsClustersResult();
+            _resultValue.id = id;
+            _resultValue.serviceName = serviceName;
+            _resultValue.urn = urn;
+            _resultValue.uuids = uuids;
+            return _resultValue;
         }
     }
 }

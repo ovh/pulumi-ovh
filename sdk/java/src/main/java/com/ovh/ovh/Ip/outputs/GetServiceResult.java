@@ -5,6 +5,7 @@ package com.ovh.ovh.Ip.outputs;
 
 import com.ovh.ovh.Ip.outputs.GetServiceRoutedTo;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -157,37 +158,58 @@ public final class GetServiceResult {
 
         @CustomType.Setter
         public Builder canBeTerminated(Boolean canBeTerminated) {
-            this.canBeTerminated = Objects.requireNonNull(canBeTerminated);
+            if (canBeTerminated == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "canBeTerminated");
+            }
+            this.canBeTerminated = canBeTerminated;
             return this;
         }
         @CustomType.Setter
         public Builder country(String country) {
-            this.country = Objects.requireNonNull(country);
+            if (country == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "country");
+            }
+            this.country = country;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder organisationId(String organisationId) {
-            this.organisationId = Objects.requireNonNull(organisationId);
+            if (organisationId == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "organisationId");
+            }
+            this.organisationId = organisationId;
             return this;
         }
         @CustomType.Setter
         public Builder routedTos(List<GetServiceRoutedTo> routedTos) {
-            this.routedTos = Objects.requireNonNull(routedTos);
+            if (routedTos == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "routedTos");
+            }
+            this.routedTos = routedTos;
             return this;
         }
         public Builder routedTos(GetServiceRoutedTo... routedTos) {
@@ -195,26 +217,32 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetServiceResult build() {
-            final var o = new GetServiceResult();
-            o.canBeTerminated = canBeTerminated;
-            o.country = country;
-            o.description = description;
-            o.id = id;
-            o.ip = ip;
-            o.organisationId = organisationId;
-            o.routedTos = routedTos;
-            o.serviceName = serviceName;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetServiceResult();
+            _resultValue.canBeTerminated = canBeTerminated;
+            _resultValue.country = country;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ip = ip;
+            _resultValue.organisationId = organisationId;
+            _resultValue.routedTos = routedTos;
+            _resultValue.serviceName = serviceName;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

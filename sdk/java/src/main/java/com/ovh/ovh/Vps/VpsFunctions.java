@@ -20,7 +20,8 @@ public final class VpsFunctions {
      * Use this data source to retrieve information about a vps associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -42,12 +43,13 @@ public final class VpsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server = VpsFunctions.getVps(GetVpsArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetVpsResult> getVps(GetVpsArgs args) {
@@ -57,7 +59,8 @@ public final class VpsFunctions {
      * Use this data source to retrieve information about a vps associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -79,12 +82,13 @@ public final class VpsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server = VpsFunctions.getVps(GetVpsArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVpsResult> getVpsPlain(GetVpsPlainArgs args) {
@@ -94,7 +98,8 @@ public final class VpsFunctions {
      * Use this data source to retrieve information about a vps associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -116,12 +121,13 @@ public final class VpsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server = VpsFunctions.getVps(GetVpsArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetVpsResult> getVps(GetVpsArgs args, InvokeOptions options) {
@@ -131,7 +137,8 @@ public final class VpsFunctions {
      * Use this data source to retrieve information about a vps associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -153,12 +160,13 @@ public final class VpsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server = VpsFunctions.getVps(GetVpsArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVpsResult> getVpsPlain(GetVpsPlainArgs args, InvokeOptions options) {
@@ -168,7 +176,8 @@ public final class VpsFunctions {
      * Use this data source to get the list of VPS associated with your OVH Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -192,7 +201,8 @@ public final class VpsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetVpssResult> getVpss() {
@@ -202,7 +212,8 @@ public final class VpsFunctions {
      * Use this data source to get the list of VPS associated with your OVH Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -226,7 +237,8 @@ public final class VpsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVpssResult> getVpssPlain() {
@@ -236,7 +248,8 @@ public final class VpsFunctions {
      * Use this data source to get the list of VPS associated with your OVH Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -260,7 +273,8 @@ public final class VpsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetVpssResult> getVpss(InvokeArgs args) {
@@ -270,7 +284,8 @@ public final class VpsFunctions {
      * Use this data source to get the list of VPS associated with your OVH Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -294,7 +309,8 @@ public final class VpsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVpssResult> getVpssPlain(InvokeArgs args) {
@@ -304,7 +320,8 @@ public final class VpsFunctions {
      * Use this data source to get the list of VPS associated with your OVH Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -328,7 +345,8 @@ public final class VpsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetVpssResult> getVpss(InvokeArgs args, InvokeOptions options) {
@@ -338,7 +356,8 @@ public final class VpsFunctions {
      * Use this data source to get the list of VPS associated with your OVH Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -362,7 +381,8 @@ public final class VpsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVpssResult> getVpssPlain(InvokeArgs args, InvokeOptions options) {

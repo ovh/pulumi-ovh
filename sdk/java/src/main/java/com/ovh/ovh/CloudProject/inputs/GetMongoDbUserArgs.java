@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -29,14 +30,14 @@ public final class GetMongoDbUserArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
+     * Name of the user with the authentication database in the format name{@literal @}authDB, for example: johndoe{@literal @}admin
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
+     * @return Name of the user with the authentication database in the format name{@literal @}authDB, for example: johndoe{@literal @}admin
      * 
      */
     public Output<String> name() {
@@ -108,7 +109,7 @@ public final class GetMongoDbUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
+         * @param name Name of the user with the authentication database in the format name{@literal @}authDB, for example: johndoe{@literal @}admin
          * 
          * @return builder
          * 
@@ -119,7 +120,7 @@ public final class GetMongoDbUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
+         * @param name Name of the user with the authentication database in the format name{@literal @}authDB, for example: johndoe{@literal @}admin
          * 
          * @return builder
          * 
@@ -152,9 +153,15 @@ public final class GetMongoDbUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetMongoDbUserArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetMongoDbUserArgs", "clusterId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetMongoDbUserArgs", "name");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetMongoDbUserArgs", "serviceName");
+            }
             return $;
         }
     }

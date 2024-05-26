@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Create a new user on your private cloud database instance.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,15 +40,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user = new PrivateDatabaseUser(&#34;user&#34;, PrivateDatabaseUserArgs.builder()        
- *             .password(&#34;XXXXXX&#34;)
- *             .serviceName(&#34;XXXXXX&#34;)
- *             .userName(&#34;XXXXXX&#34;)
+ *         var user = new PrivateDatabaseUser("user", PrivateDatabaseUserArgs.builder()        
+ *             .password("XXXXXX")
+ *             .serviceName("XXXXXX")
+ *             .userName("XXXXXX")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

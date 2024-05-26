@@ -4,6 +4,7 @@
 package com.ovh.ovh.IpLoadBalancing.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -158,61 +159,72 @@ public final class HttpFarmProbe {
 
         @CustomType.Setter
         public Builder forceSsl(@Nullable Boolean forceSsl) {
+
             this.forceSsl = forceSsl;
             return this;
         }
         @CustomType.Setter
         public Builder interval(@Nullable Integer interval) {
+
             this.interval = interval;
             return this;
         }
         @CustomType.Setter
         public Builder match(@Nullable String match) {
+
             this.match = match;
             return this;
         }
         @CustomType.Setter
         public Builder method(@Nullable String method) {
+
             this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder negate(@Nullable Boolean negate) {
+
             this.negate = negate;
             return this;
         }
         @CustomType.Setter
         public Builder pattern(@Nullable String pattern) {
+
             this.pattern = pattern;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("HttpFarmProbe", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder url(@Nullable String url) {
+
             this.url = url;
             return this;
         }
         public HttpFarmProbe build() {
-            final var o = new HttpFarmProbe();
-            o.forceSsl = forceSsl;
-            o.interval = interval;
-            o.match = match;
-            o.method = method;
-            o.negate = negate;
-            o.pattern = pattern;
-            o.port = port;
-            o.type = type;
-            o.url = url;
-            return o;
+            final var _resultValue = new HttpFarmProbe();
+            _resultValue.forceSsl = forceSsl;
+            _resultValue.interval = interval;
+            _resultValue.match = match;
+            _resultValue.method = method;
+            _resultValue.negate = negate;
+            _resultValue.pattern = pattern;
+            _resultValue.port = port;
+            _resultValue.type = type;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

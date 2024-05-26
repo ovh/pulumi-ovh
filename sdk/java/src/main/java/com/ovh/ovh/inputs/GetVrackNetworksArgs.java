@@ -5,6 +5,7 @@ package com.ovh.ovh.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,7 +152,9 @@ public final class GetVrackNetworksArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetVrackNetworksArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetVrackNetworksArgs", "serviceName");
+            }
             return $;
         }
     }

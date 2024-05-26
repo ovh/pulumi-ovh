@@ -5,6 +5,7 @@ package com.ovh.ovh.Vrack;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -119,8 +120,12 @@ public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CloudProjectArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("CloudProjectArgs", "projectId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("CloudProjectArgs", "serviceName");
+            }
             return $;
         }
     }

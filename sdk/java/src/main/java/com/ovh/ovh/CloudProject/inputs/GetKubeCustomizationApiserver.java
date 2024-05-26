@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.inputs;
 
 import com.ovh.ovh.CloudProject.inputs.GetKubeCustomizationApiserverAdmissionplugin;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetKubeCustomizationApiserver extends com.pulumi.resources.In
         }
 
         public GetKubeCustomizationApiserver build() {
-            $.admissionplugins = Objects.requireNonNull($.admissionplugins, "expected parameter 'admissionplugins' to be non-null");
+            if ($.admissionplugins == null) {
+                throw new MissingRequiredPropertyException("GetKubeCustomizationApiserver", "admissionplugins");
+            }
             return $;
         }
     }

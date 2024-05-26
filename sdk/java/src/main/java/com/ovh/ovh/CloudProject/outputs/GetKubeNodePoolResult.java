@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.ovh.ovh.CloudProject.outputs.GetKubeNodePoolTemplate;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -331,133 +332,194 @@ public final class GetKubeNodePoolResult {
 
         @CustomType.Setter
         public Builder antiAffinity(Boolean antiAffinity) {
-            this.antiAffinity = Objects.requireNonNull(antiAffinity);
+            if (antiAffinity == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "antiAffinity");
+            }
+            this.antiAffinity = antiAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder autoscale(Boolean autoscale) {
-            this.autoscale = Objects.requireNonNull(autoscale);
+            if (autoscale == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "autoscale");
+            }
+            this.autoscale = autoscale;
             return this;
         }
         @CustomType.Setter
         public Builder availableNodes(Integer availableNodes) {
-            this.availableNodes = Objects.requireNonNull(availableNodes);
+            if (availableNodes == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "availableNodes");
+            }
+            this.availableNodes = availableNodes;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder currentNodes(Integer currentNodes) {
-            this.currentNodes = Objects.requireNonNull(currentNodes);
+            if (currentNodes == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "currentNodes");
+            }
+            this.currentNodes = currentNodes;
             return this;
         }
         @CustomType.Setter
         public Builder desiredNodes(Integer desiredNodes) {
-            this.desiredNodes = Objects.requireNonNull(desiredNodes);
+            if (desiredNodes == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "desiredNodes");
+            }
+            this.desiredNodes = desiredNodes;
             return this;
         }
         @CustomType.Setter
         public Builder flavor(String flavor) {
-            this.flavor = Objects.requireNonNull(flavor);
+            if (flavor == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "flavor");
+            }
+            this.flavor = flavor;
             return this;
         }
         @CustomType.Setter
         public Builder flavorName(String flavorName) {
-            this.flavorName = Objects.requireNonNull(flavorName);
+            if (flavorName == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "flavorName");
+            }
+            this.flavorName = flavorName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kubeId(String kubeId) {
-            this.kubeId = Objects.requireNonNull(kubeId);
+            if (kubeId == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "kubeId");
+            }
+            this.kubeId = kubeId;
             return this;
         }
         @CustomType.Setter
         public Builder maxNodes(Integer maxNodes) {
-            this.maxNodes = Objects.requireNonNull(maxNodes);
+            if (maxNodes == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "maxNodes");
+            }
+            this.maxNodes = maxNodes;
             return this;
         }
         @CustomType.Setter
         public Builder minNodes(Integer minNodes) {
-            this.minNodes = Objects.requireNonNull(minNodes);
+            if (minNodes == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "minNodes");
+            }
+            this.minNodes = minNodes;
             return this;
         }
         @CustomType.Setter
         public Builder monthlyBilled(Boolean monthlyBilled) {
-            this.monthlyBilled = Objects.requireNonNull(monthlyBilled);
+            if (monthlyBilled == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "monthlyBilled");
+            }
+            this.monthlyBilled = monthlyBilled;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder sizeStatus(String sizeStatus) {
-            this.sizeStatus = Objects.requireNonNull(sizeStatus);
+            if (sizeStatus == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "sizeStatus");
+            }
+            this.sizeStatus = sizeStatus;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder template(@Nullable GetKubeNodePoolTemplate template) {
+
             this.template = template;
             return this;
         }
         @CustomType.Setter
         public Builder upToDateNodes(Integer upToDateNodes) {
-            this.upToDateNodes = Objects.requireNonNull(upToDateNodes);
+            if (upToDateNodes == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "upToDateNodes");
+            }
+            this.upToDateNodes = upToDateNodes;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         public GetKubeNodePoolResult build() {
-            final var o = new GetKubeNodePoolResult();
-            o.antiAffinity = antiAffinity;
-            o.autoscale = autoscale;
-            o.availableNodes = availableNodes;
-            o.createdAt = createdAt;
-            o.currentNodes = currentNodes;
-            o.desiredNodes = desiredNodes;
-            o.flavor = flavor;
-            o.flavorName = flavorName;
-            o.id = id;
-            o.kubeId = kubeId;
-            o.maxNodes = maxNodes;
-            o.minNodes = minNodes;
-            o.monthlyBilled = monthlyBilled;
-            o.name = name;
-            o.projectId = projectId;
-            o.serviceName = serviceName;
-            o.sizeStatus = sizeStatus;
-            o.status = status;
-            o.template = template;
-            o.upToDateNodes = upToDateNodes;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new GetKubeNodePoolResult();
+            _resultValue.antiAffinity = antiAffinity;
+            _resultValue.autoscale = autoscale;
+            _resultValue.availableNodes = availableNodes;
+            _resultValue.createdAt = createdAt;
+            _resultValue.currentNodes = currentNodes;
+            _resultValue.desiredNodes = desiredNodes;
+            _resultValue.flavor = flavor;
+            _resultValue.flavorName = flavorName;
+            _resultValue.id = id;
+            _resultValue.kubeId = kubeId;
+            _resultValue.maxNodes = maxNodes;
+            _resultValue.minNodes = minNodes;
+            _resultValue.monthlyBilled = monthlyBilled;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.serviceName = serviceName;
+            _resultValue.sizeStatus = sizeStatus;
+            _resultValue.status = status;
+            _resultValue.template = template;
+            _resultValue.upToDateNodes = upToDateNodes;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

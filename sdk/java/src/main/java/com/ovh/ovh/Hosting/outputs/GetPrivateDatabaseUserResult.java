@@ -5,6 +5,7 @@ package com.ovh.ovh.Hosting.outputs;
 
 import com.ovh.ovh.Hosting.outputs.GetPrivateDatabaseUserDatabase;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -84,12 +85,18 @@ public final class GetPrivateDatabaseUserResult {
 
         @CustomType.Setter
         public Builder creationDate(String creationDate) {
-            this.creationDate = Objects.requireNonNull(creationDate);
+            if (creationDate == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserResult", "creationDate");
+            }
+            this.creationDate = creationDate;
             return this;
         }
         @CustomType.Setter
         public Builder databases(List<GetPrivateDatabaseUserDatabase> databases) {
-            this.databases = Objects.requireNonNull(databases);
+            if (databases == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserResult", "databases");
+            }
+            this.databases = databases;
             return this;
         }
         public Builder databases(GetPrivateDatabaseUserDatabase... databases) {
@@ -97,27 +104,36 @@ public final class GetPrivateDatabaseUserResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder userName(String userName) {
-            this.userName = Objects.requireNonNull(userName);
+            if (userName == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserResult", "userName");
+            }
+            this.userName = userName;
             return this;
         }
         public GetPrivateDatabaseUserResult build() {
-            final var o = new GetPrivateDatabaseUserResult();
-            o.creationDate = creationDate;
-            o.databases = databases;
-            o.id = id;
-            o.serviceName = serviceName;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetPrivateDatabaseUserResult();
+            _resultValue.creationDate = creationDate;
+            _resultValue.databases = databases;
+            _resultValue.id = id;
+            _resultValue.serviceName = serviceName;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

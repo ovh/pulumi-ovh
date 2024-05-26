@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -93,8 +94,12 @@ public final class GetM3dbNamespacesPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetM3dbNamespacesPlainArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetM3dbNamespacesPlainArgs", "clusterId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetM3dbNamespacesPlainArgs", "serviceName");
+            }
             return $;
         }
     }

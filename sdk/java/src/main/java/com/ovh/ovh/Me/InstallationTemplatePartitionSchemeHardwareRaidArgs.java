@@ -5,6 +5,7 @@ package com.ovh.ovh.Me;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -273,11 +274,21 @@ public final class InstallationTemplatePartitionSchemeHardwareRaidArgs extends c
         }
 
         public InstallationTemplatePartitionSchemeHardwareRaidArgs build() {
-            $.disks = Objects.requireNonNull($.disks, "expected parameter 'disks' to be non-null");
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
-            $.schemeName = Objects.requireNonNull($.schemeName, "expected parameter 'schemeName' to be non-null");
-            $.step = Objects.requireNonNull($.step, "expected parameter 'step' to be non-null");
-            $.templateName = Objects.requireNonNull($.templateName, "expected parameter 'templateName' to be non-null");
+            if ($.disks == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemeHardwareRaidArgs", "disks");
+            }
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemeHardwareRaidArgs", "mode");
+            }
+            if ($.schemeName == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemeHardwareRaidArgs", "schemeName");
+            }
+            if ($.step == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemeHardwareRaidArgs", "step");
+            }
+            if ($.templateName == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemeHardwareRaidArgs", "templateName");
+            }
             return $;
         }
     }

@@ -18,7 +18,8 @@ public final class IpFunctions {
      * Use this data source to retrieve information about an IP service.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -40,12 +41,13 @@ public final class IpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myip = IpFunctions.getService(GetServiceArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -55,7 +57,8 @@ public final class IpFunctions {
      * Use this data source to retrieve information about an IP service.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -77,12 +80,13 @@ public final class IpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myip = IpFunctions.getService(GetServiceArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -92,7 +96,8 @@ public final class IpFunctions {
      * Use this data source to retrieve information about an IP service.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -114,12 +119,13 @@ public final class IpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myip = IpFunctions.getService(GetServiceArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -129,7 +135,8 @@ public final class IpFunctions {
      * Use this data source to retrieve information about an IP service.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -151,12 +158,13 @@ public final class IpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myip = IpFunctions.getService(GetServiceArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

@@ -4,6 +4,7 @@
 package com.ovh.ovh.Hosting.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -60,19 +61,25 @@ public final class PrivateDatabasePlanOptionConfiguration {
 
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("PrivateDatabasePlanOptionConfiguration", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("PrivateDatabasePlanOptionConfiguration", "value");
+            }
+            this.value = value;
             return this;
         }
         public PrivateDatabasePlanOptionConfiguration build() {
-            final var o = new PrivateDatabasePlanOptionConfiguration();
-            o.label = label;
-            o.value = value;
-            return o;
+            final var _resultValue = new PrivateDatabasePlanOptionConfiguration();
+            _resultValue.label = label;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

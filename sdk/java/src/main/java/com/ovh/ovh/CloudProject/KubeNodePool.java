@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Create a simple node pool in your Kubernetes cluster:
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,21 +45,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var nodePool = new KubeNodePool(&#34;nodePool&#34;, KubeNodePoolArgs.builder()        
+ *         var nodePool = new KubeNodePool("nodePool", KubeNodePoolArgs.builder()        
  *             .desiredNodes(3)
- *             .flavorName(&#34;b2-7&#34;)
- *             .kubeId(&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;)
+ *             .flavorName("b2-7")
+ *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
  *             .maxNodes(3)
  *             .minNodes(3)
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * Create an advanced node pool in your Kubernetes cluster:
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -82,32 +85,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new KubeNodePool(&#34;pool&#34;, KubeNodePoolArgs.builder()        
+ *         var pool = new KubeNodePool("pool", KubeNodePoolArgs.builder()        
  *             .desiredNodes(3)
- *             .flavorName(&#34;b2-7&#34;)
- *             .kubeId(&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;)
+ *             .flavorName("b2-7")
+ *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
  *             .maxNodes(3)
  *             .minNodes(3)
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .template(KubeNodePoolTemplateArgs.builder()
  *                 .metadata(KubeNodePoolTemplateMetadataArgs.builder()
  *                     .annotations(Map.ofEntries(
- *                         Map.entry(&#34;k1&#34;, &#34;v1&#34;),
- *                         Map.entry(&#34;k2&#34;, &#34;v2&#34;)
+ *                         Map.entry("k1", "v1"),
+ *                         Map.entry("k2", "v2")
  *                     ))
  *                     .finalizers(                    
- *                         &#34;ovhcloud.com/v1beta1&#34;,
- *                         &#34;ovhcloud.com/v1&#34;)
+ *                         "ovhcloud.com/v1beta1",
+ *                         "ovhcloud.com/v1")
  *                     .labels(Map.ofEntries(
- *                         Map.entry(&#34;k3&#34;, &#34;v3&#34;),
- *                         Map.entry(&#34;k4&#34;, &#34;v4&#34;)
+ *                         Map.entry("k3", "v3"),
+ *                         Map.entry("k4", "v4")
  *                     ))
  *                     .build())
  *                 .spec(KubeNodePoolTemplateSpecArgs.builder()
  *                     .taints(Map.ofEntries(
- *                         Map.entry(&#34;effect&#34;, &#34;PreferNoSchedule&#34;),
- *                         Map.entry(&#34;key&#34;, &#34;k&#34;),
- *                         Map.entry(&#34;value&#34;, &#34;v&#34;)
+ *                         Map.entry("effect", "PreferNoSchedule"),
+ *                         Map.entry("key", "k"),
+ *                         Map.entry("value", "v")
  *                     ))
  *                     .unschedulable(false)
  *                     .build())
@@ -116,7 +119,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

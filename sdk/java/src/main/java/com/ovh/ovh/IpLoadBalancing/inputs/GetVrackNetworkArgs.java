@@ -5,6 +5,7 @@ package com.ovh.ovh.IpLoadBalancing.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class GetVrackNetworkArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetVrackNetworkArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.vrackNetworkId = Objects.requireNonNull($.vrackNetworkId, "expected parameter 'vrackNetworkId' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetVrackNetworkArgs", "serviceName");
+            }
+            if ($.vrackNetworkId == null) {
+                throw new MissingRequiredPropertyException("GetVrackNetworkArgs", "vrackNetworkId");
+            }
             return $;
         }
     }

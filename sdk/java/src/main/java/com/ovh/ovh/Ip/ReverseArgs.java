@@ -5,6 +5,7 @@ package com.ovh.ovh.Ip;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class ReverseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ReverseArgs build() {
-            $.ReverseIp = Objects.requireNonNull($.ReverseIp, "expected parameter 'ReverseIp' to be non-null");
-            $.ReverseValue = Objects.requireNonNull($.ReverseValue, "expected parameter 'ReverseValue' to be non-null");
-            $.ip = Objects.requireNonNull($.ip, "expected parameter 'ip' to be non-null");
+            if ($.ReverseIp == null) {
+                throw new MissingRequiredPropertyException("ReverseArgs", "ReverseIp");
+            }
+            if ($.ReverseValue == null) {
+                throw new MissingRequiredPropertyException("ReverseArgs", "ReverseValue");
+            }
+            if ($.ip == null) {
+                throw new MissingRequiredPropertyException("ReverseArgs", "ip");
+            }
             return $;
         }
     }

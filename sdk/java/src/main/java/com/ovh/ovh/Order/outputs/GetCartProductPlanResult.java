@@ -6,6 +6,7 @@ package com.ovh.ovh.Order.outputs;
 import com.ovh.ovh.Order.outputs.GetCartProductPlanPrice;
 import com.ovh.ovh.Order.outputs.GetCartProductPlanSelectedPrice;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -141,32 +142,48 @@ public final class GetCartProductPlanResult {
 
         @CustomType.Setter
         public Builder cartId(String cartId) {
-            this.cartId = Objects.requireNonNull(cartId);
+            if (cartId == null) {
+              throw new MissingRequiredPropertyException("GetCartProductPlanResult", "cartId");
+            }
+            this.cartId = cartId;
             return this;
         }
         @CustomType.Setter
         public Builder catalogName(@Nullable String catalogName) {
+
             this.catalogName = catalogName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCartProductPlanResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder planCode(String planCode) {
-            this.planCode = Objects.requireNonNull(planCode);
+            if (planCode == null) {
+              throw new MissingRequiredPropertyException("GetCartProductPlanResult", "planCode");
+            }
+            this.planCode = planCode;
             return this;
         }
         @CustomType.Setter
         public Builder priceCapacity(String priceCapacity) {
-            this.priceCapacity = Objects.requireNonNull(priceCapacity);
+            if (priceCapacity == null) {
+              throw new MissingRequiredPropertyException("GetCartProductPlanResult", "priceCapacity");
+            }
+            this.priceCapacity = priceCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder prices(List<GetCartProductPlanPrice> prices) {
-            this.prices = Objects.requireNonNull(prices);
+            if (prices == null) {
+              throw new MissingRequiredPropertyException("GetCartProductPlanResult", "prices");
+            }
+            this.prices = prices;
             return this;
         }
         public Builder prices(GetCartProductPlanPrice... prices) {
@@ -174,40 +191,52 @@ public final class GetCartProductPlanResult {
         }
         @CustomType.Setter
         public Builder product(String product) {
-            this.product = Objects.requireNonNull(product);
+            if (product == null) {
+              throw new MissingRequiredPropertyException("GetCartProductPlanResult", "product");
+            }
+            this.product = product;
             return this;
         }
         @CustomType.Setter
         public Builder productName(String productName) {
-            this.productName = Objects.requireNonNull(productName);
+            if (productName == null) {
+              throw new MissingRequiredPropertyException("GetCartProductPlanResult", "productName");
+            }
+            this.productName = productName;
             return this;
         }
         @CustomType.Setter
         public Builder productType(String productType) {
-            this.productType = Objects.requireNonNull(productType);
+            if (productType == null) {
+              throw new MissingRequiredPropertyException("GetCartProductPlanResult", "productType");
+            }
+            this.productType = productType;
             return this;
         }
         @CustomType.Setter
         public Builder selectedPrices(List<GetCartProductPlanSelectedPrice> selectedPrices) {
-            this.selectedPrices = Objects.requireNonNull(selectedPrices);
+            if (selectedPrices == null) {
+              throw new MissingRequiredPropertyException("GetCartProductPlanResult", "selectedPrices");
+            }
+            this.selectedPrices = selectedPrices;
             return this;
         }
         public Builder selectedPrices(GetCartProductPlanSelectedPrice... selectedPrices) {
             return selectedPrices(List.of(selectedPrices));
         }
         public GetCartProductPlanResult build() {
-            final var o = new GetCartProductPlanResult();
-            o.cartId = cartId;
-            o.catalogName = catalogName;
-            o.id = id;
-            o.planCode = planCode;
-            o.priceCapacity = priceCapacity;
-            o.prices = prices;
-            o.product = product;
-            o.productName = productName;
-            o.productType = productType;
-            o.selectedPrices = selectedPrices;
-            return o;
+            final var _resultValue = new GetCartProductPlanResult();
+            _resultValue.cartId = cartId;
+            _resultValue.catalogName = catalogName;
+            _resultValue.id = id;
+            _resultValue.planCode = planCode;
+            _resultValue.priceCapacity = priceCapacity;
+            _resultValue.prices = prices;
+            _resultValue.product = product;
+            _resultValue.productName = productName;
+            _resultValue.productType = productType;
+            _resultValue.selectedPrices = selectedPrices;
+            return _resultValue;
         }
     }
 }

@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProjectDatabase;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -311,11 +312,21 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IntegrationArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.destinationServiceId = Objects.requireNonNull($.destinationServiceId, "expected parameter 'destinationServiceId' to be non-null");
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.sourceServiceId = Objects.requireNonNull($.sourceServiceId, "expected parameter 'sourceServiceId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "clusterId");
+            }
+            if ($.destinationServiceId == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "destinationServiceId");
+            }
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "engine");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "serviceName");
+            }
+            if ($.sourceServiceId == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "sourceServiceId");
+            }
             return $;
         }
     }

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Route which redirect all url to https.
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,20 +47,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var httpsredirect = new HttpRoute(&#34;httpsredirect&#34;, HttpRouteArgs.builder()        
+ *         var httpsredirect = new HttpRoute("httpsredirect", HttpRouteArgs.builder()        
  *             .action(HttpRouteActionArgs.builder()
  *                 .status(302)
- *                 .target(&#34;https://${host}${path}${arguments}&#34;)
- *                 .type(&#34;redirect&#34;)
+ *                 .target("https://${host}${path}${arguments}")
+ *                 .type("redirect")
  *                 .build())
- *             .displayName(&#34;Redirect to HTTPS&#34;)
- *             .serviceName(&#34;loadbalancer-xxxxxxxxxxxxxxxxxx&#34;)
+ *             .displayName("Redirect to HTTPS")
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .weight(1)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/httpRoute:HttpRoute")

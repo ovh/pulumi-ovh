@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,17 +40,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ldp = new LogsCluster(&#34;ldp&#34;, LogsClusterArgs.builder()        
- *             .archiveAllowedNetworks(&#34;10.0.0.0/16&#34;)
- *             .clusterId(&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;)
- *             .directInputAllowedNetworks(&#34;10.0.0.0/16&#34;)
- *             .queryAllowedNetworks(&#34;10.0.0.0/16&#34;)
- *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
+ *         var ldp = new LogsCluster("ldp", LogsClusterArgs.builder()        
+ *             .archiveAllowedNetworks("10.0.0.0/16")
+ *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .directInputAllowedNetworks("10.0.0.0/16")
+ *             .queryAllowedNetworks("10.0.0.0/16")
+ *             .serviceName("ldp-xx-xxxxx")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

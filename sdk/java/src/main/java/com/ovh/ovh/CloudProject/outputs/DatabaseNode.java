@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -74,25 +75,30 @@ public final class DatabaseNode {
 
         @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
+
             this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("DatabaseNode", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(@Nullable String subnetId) {
+
             this.subnetId = subnetId;
             return this;
         }
         public DatabaseNode build() {
-            final var o = new DatabaseNode();
-            o.networkId = networkId;
-            o.region = region;
-            o.subnetId = subnetId;
-            return o;
+            final var _resultValue = new DatabaseNode();
+            _resultValue.networkId = networkId;
+            _resultValue.region = region;
+            _resultValue.subnetId = subnetId;
+            return _resultValue;
         }
     }
 }

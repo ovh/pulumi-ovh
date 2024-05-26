@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -87,31 +88,43 @@ public final class GetSshKeyResult {
 
         @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
-            this.default_ = Objects.requireNonNull(default_);
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("GetSshKeyResult", "default_");
+            }
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSshKeyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("GetSshKeyResult", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder keyName(String keyName) {
-            this.keyName = Objects.requireNonNull(keyName);
+            if (keyName == null) {
+              throw new MissingRequiredPropertyException("GetSshKeyResult", "keyName");
+            }
+            this.keyName = keyName;
             return this;
         }
         public GetSshKeyResult build() {
-            final var o = new GetSshKeyResult();
-            o.default_ = default_;
-            o.id = id;
-            o.key = key;
-            o.keyName = keyName;
-            return o;
+            final var _resultValue = new GetSshKeyResult();
+            _resultValue.default_ = default_;
+            _resultValue.id = id;
+            _resultValue.key = key;
+            _resultValue.keyName = keyName;
+            return _resultValue;
         }
     }
 }

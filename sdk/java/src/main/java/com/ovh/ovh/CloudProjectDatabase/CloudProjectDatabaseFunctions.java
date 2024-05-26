@@ -100,7 +100,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about certificates of a cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -122,15 +123,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var certificates = CloudProjectDatabaseFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;certificatesCa&#34;, certificates.applyValue(getCertificatesResult -&gt; getCertificatesResult.ca()));
+     *         ctx.export("certificatesCa", certificates.applyValue(getCertificatesResult -> getCertificatesResult.ca()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args) {
@@ -140,7 +142,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about certificates of a cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -162,15 +165,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var certificates = CloudProjectDatabaseFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;certificatesCa&#34;, certificates.applyValue(getCertificatesResult -&gt; getCertificatesResult.ca()));
+     *         ctx.export("certificatesCa", certificates.applyValue(getCertificatesResult -> getCertificatesResult.ca()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args) {
@@ -180,7 +184,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about certificates of a cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -202,15 +207,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var certificates = CloudProjectDatabaseFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;certificatesCa&#34;, certificates.applyValue(getCertificatesResult -&gt; getCertificatesResult.ca()));
+     *         ctx.export("certificatesCa", certificates.applyValue(getCertificatesResult -> getCertificatesResult.ca()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOptions options) {
@@ -220,7 +226,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about certificates of a cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -242,15 +249,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var certificates = CloudProjectDatabaseFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;certificatesCa&#34;, certificates.applyValue(getCertificatesResult -&gt; getCertificatesResult.ca()));
+     *         ctx.export("certificatesCa", certificates.applyValue(getCertificatesResult -> getCertificatesResult.ca()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args, InvokeOptions options) {
@@ -262,7 +270,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get information of a database cluster service:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -284,15 +293,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var db = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .id(&#34;ZZZZ&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
+     *             .id("ZZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, db.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()));
+     *         ctx.export("clusterId", db.applyValue(getDatabaseResult -> getDatabaseResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args) {
@@ -304,7 +314,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get information of a database cluster service:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -326,15 +337,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var db = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .id(&#34;ZZZZ&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
+     *             .id("ZZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, db.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()));
+     *         ctx.export("clusterId", db.applyValue(getDatabaseResult -> getDatabaseResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabaseResult> getDatabasePlain(GetDatabasePlainArgs args) {
@@ -346,7 +358,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get information of a database cluster service:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -368,15 +381,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var db = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .id(&#34;ZZZZ&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
+     *             .id("ZZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, db.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()));
+     *         ctx.export("clusterId", db.applyValue(getDatabaseResult -> getDatabaseResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args, InvokeOptions options) {
@@ -388,7 +402,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get information of a database cluster service:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -410,15 +425,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var db = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .id(&#34;ZZZZ&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
+     *             .id("ZZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, db.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()));
+     *         ctx.export("clusterId", db.applyValue(getDatabaseResult -> getDatabaseResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabaseResult> getDatabasePlain(GetDatabasePlainArgs args, InvokeOptions options) {
@@ -428,7 +444,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a database of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -450,16 +467,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var database = CloudProjectDatabaseFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .name(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseName&#34;, database.applyValue(getDatabaseInstanceResult -&gt; getDatabaseInstanceResult.name()));
+     *         ctx.export("databaseName", database.applyValue(getDatabaseInstanceResult -> getDatabaseInstanceResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args) {
@@ -469,7 +487,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a database of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -491,16 +510,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var database = CloudProjectDatabaseFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .name(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseName&#34;, database.applyValue(getDatabaseInstanceResult -&gt; getDatabaseInstanceResult.name()));
+     *         ctx.export("databaseName", database.applyValue(getDatabaseInstanceResult -> getDatabaseInstanceResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args) {
@@ -510,7 +530,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a database of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -532,16 +553,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var database = CloudProjectDatabaseFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .name(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseName&#34;, database.applyValue(getDatabaseInstanceResult -&gt; getDatabaseInstanceResult.name()));
+     *         ctx.export("databaseName", database.applyValue(getDatabaseInstanceResult -> getDatabaseInstanceResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args, InvokeOptions options) {
@@ -551,7 +573,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a database of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -573,16 +596,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var database = CloudProjectDatabaseFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .name(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseName&#34;, database.applyValue(getDatabaseInstanceResult -&gt; getDatabaseInstanceResult.name()));
+     *         ctx.export("databaseName", database.applyValue(getDatabaseInstanceResult -> getDatabaseInstanceResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args, InvokeOptions options) {
@@ -592,7 +616,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -614,15 +639,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var databases = CloudProjectDatabaseFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
-     *             .serviceName(&#34;XXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseIds&#34;, databases.applyValue(getDatabaseInstancesResult -&gt; getDatabaseInstancesResult.databaseIds()));
+     *         ctx.export("databaseIds", databases.applyValue(getDatabaseInstancesResult -> getDatabaseInstancesResult.databaseIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args) {
@@ -632,7 +658,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -654,15 +681,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var databases = CloudProjectDatabaseFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
-     *             .serviceName(&#34;XXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseIds&#34;, databases.applyValue(getDatabaseInstancesResult -&gt; getDatabaseInstancesResult.databaseIds()));
+     *         ctx.export("databaseIds", databases.applyValue(getDatabaseInstancesResult -> getDatabaseInstancesResult.databaseIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs args) {
@@ -672,7 +700,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -694,15 +723,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var databases = CloudProjectDatabaseFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
-     *             .serviceName(&#34;XXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseIds&#34;, databases.applyValue(getDatabaseInstancesResult -&gt; getDatabaseInstancesResult.databaseIds()));
+     *         ctx.export("databaseIds", databases.applyValue(getDatabaseInstancesResult -> getDatabaseInstancesResult.databaseIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args, InvokeOptions options) {
@@ -712,7 +742,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -734,15 +765,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var databases = CloudProjectDatabaseFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
-     *             .serviceName(&#34;XXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseIds&#34;, databases.applyValue(getDatabaseInstancesResult -&gt; getDatabaseInstancesResult.databaseIds()));
+     *         ctx.export("databaseIds", databases.applyValue(getDatabaseInstancesResult -> getDatabaseInstancesResult.databaseIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs args, InvokeOptions options) {
@@ -752,7 +784,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an integration of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -774,16 +807,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var integration = CloudProjectDatabaseFunctions.getDatabaseIntegration(GetDatabaseIntegrationArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .id(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .id("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;integrationType&#34;, integration.applyValue(getDatabaseIntegrationResult -&gt; getDatabaseIntegrationResult.type()));
+     *         ctx.export("integrationType", integration.applyValue(getDatabaseIntegrationResult -> getDatabaseIntegrationResult.type()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabaseIntegrationResult> getDatabaseIntegration(GetDatabaseIntegrationArgs args) {
@@ -793,7 +827,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an integration of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -815,16 +850,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var integration = CloudProjectDatabaseFunctions.getDatabaseIntegration(GetDatabaseIntegrationArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .id(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .id("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;integrationType&#34;, integration.applyValue(getDatabaseIntegrationResult -&gt; getDatabaseIntegrationResult.type()));
+     *         ctx.export("integrationType", integration.applyValue(getDatabaseIntegrationResult -> getDatabaseIntegrationResult.type()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabaseIntegrationResult> getDatabaseIntegrationPlain(GetDatabaseIntegrationPlainArgs args) {
@@ -834,7 +870,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an integration of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -856,16 +893,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var integration = CloudProjectDatabaseFunctions.getDatabaseIntegration(GetDatabaseIntegrationArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .id(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .id("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;integrationType&#34;, integration.applyValue(getDatabaseIntegrationResult -&gt; getDatabaseIntegrationResult.type()));
+     *         ctx.export("integrationType", integration.applyValue(getDatabaseIntegrationResult -> getDatabaseIntegrationResult.type()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabaseIntegrationResult> getDatabaseIntegration(GetDatabaseIntegrationArgs args, InvokeOptions options) {
@@ -875,7 +913,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an integration of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -897,16 +936,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var integration = CloudProjectDatabaseFunctions.getDatabaseIntegration(GetDatabaseIntegrationArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .id(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .id("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;integrationType&#34;, integration.applyValue(getDatabaseIntegrationResult -&gt; getDatabaseIntegrationResult.type()));
+     *         ctx.export("integrationType", integration.applyValue(getDatabaseIntegrationResult -> getDatabaseIntegrationResult.type()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabaseIntegrationResult> getDatabaseIntegrationPlain(GetDatabaseIntegrationPlainArgs args, InvokeOptions options) {
@@ -916,7 +956,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of integrations of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -938,15 +979,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var integrations = CloudProjectDatabaseFunctions.getDatabaseIntegrations(GetDatabaseIntegrationsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;integrationIds&#34;, integrations.applyValue(getDatabaseIntegrationsResult -&gt; getDatabaseIntegrationsResult.integrationIds()));
+     *         ctx.export("integrationIds", integrations.applyValue(getDatabaseIntegrationsResult -> getDatabaseIntegrationsResult.integrationIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabaseIntegrationsResult> getDatabaseIntegrations(GetDatabaseIntegrationsArgs args) {
@@ -956,7 +998,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of integrations of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -978,15 +1021,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var integrations = CloudProjectDatabaseFunctions.getDatabaseIntegrations(GetDatabaseIntegrationsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;integrationIds&#34;, integrations.applyValue(getDatabaseIntegrationsResult -&gt; getDatabaseIntegrationsResult.integrationIds()));
+     *         ctx.export("integrationIds", integrations.applyValue(getDatabaseIntegrationsResult -> getDatabaseIntegrationsResult.integrationIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabaseIntegrationsResult> getDatabaseIntegrationsPlain(GetDatabaseIntegrationsPlainArgs args) {
@@ -996,7 +1040,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of integrations of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1018,15 +1063,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var integrations = CloudProjectDatabaseFunctions.getDatabaseIntegrations(GetDatabaseIntegrationsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;integrationIds&#34;, integrations.applyValue(getDatabaseIntegrationsResult -&gt; getDatabaseIntegrationsResult.integrationIds()));
+     *         ctx.export("integrationIds", integrations.applyValue(getDatabaseIntegrationsResult -> getDatabaseIntegrationsResult.integrationIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabaseIntegrationsResult> getDatabaseIntegrations(GetDatabaseIntegrationsArgs args, InvokeOptions options) {
@@ -1036,7 +1082,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of integrations of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1058,15 +1105,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var integrations = CloudProjectDatabaseFunctions.getDatabaseIntegrations(GetDatabaseIntegrationsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;integrationIds&#34;, integrations.applyValue(getDatabaseIntegrationsResult -&gt; getDatabaseIntegrationsResult.integrationIds()));
+     *         ctx.export("integrationIds", integrations.applyValue(getDatabaseIntegrationsResult -> getDatabaseIntegrationsResult.integrationIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabaseIntegrationsResult> getDatabaseIntegrationsPlain(GetDatabaseIntegrationsPlainArgs args, InvokeOptions options) {
@@ -1078,7 +1126,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of database clusters service for a given engine:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1100,14 +1149,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dbs = CloudProjectDatabaseFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterIds&#34;, dbs.applyValue(getDatabasesResult -&gt; getDatabasesResult.clusterIds()));
+     *         ctx.export("clusterIds", dbs.applyValue(getDatabasesResult -> getDatabasesResult.clusterIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args) {
@@ -1119,7 +1169,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of database clusters service for a given engine:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1141,14 +1192,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dbs = CloudProjectDatabaseFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterIds&#34;, dbs.applyValue(getDatabasesResult -&gt; getDatabasesResult.clusterIds()));
+     *         ctx.export("clusterIds", dbs.applyValue(getDatabasesResult -> getDatabasesResult.clusterIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args) {
@@ -1160,7 +1212,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of database clusters service for a given engine:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1182,14 +1235,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dbs = CloudProjectDatabaseFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterIds&#34;, dbs.applyValue(getDatabasesResult -&gt; getDatabasesResult.clusterIds()));
+     *         ctx.export("clusterIds", dbs.applyValue(getDatabasesResult -> getDatabasesResult.clusterIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOptions options) {
@@ -1201,7 +1255,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of database clusters service for a given engine:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1223,14 +1278,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dbs = CloudProjectDatabaseFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterIds&#34;, dbs.applyValue(getDatabasesResult -&gt; getDatabasesResult.clusterIds()));
+     *         ctx.export("clusterIds", dbs.applyValue(getDatabasesResult -> getDatabasesResult.clusterIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args, InvokeOptions options) {
@@ -1242,7 +1298,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of IP restriction on a database cluster service:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1264,15 +1321,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var iprestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZZ&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;ips&#34;, iprestrictions.applyValue(getIpRestrictionsResult -&gt; getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", iprestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetIpRestrictionsResult> getIpRestrictions(GetIpRestrictionsArgs args) {
@@ -1284,7 +1342,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of IP restriction on a database cluster service:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1306,15 +1365,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var iprestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZZ&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;ips&#34;, iprestrictions.applyValue(getIpRestrictionsResult -&gt; getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", iprestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetIpRestrictionsResult> getIpRestrictionsPlain(GetIpRestrictionsPlainArgs args) {
@@ -1326,7 +1386,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of IP restriction on a database cluster service:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1348,15 +1409,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var iprestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZZ&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;ips&#34;, iprestrictions.applyValue(getIpRestrictionsResult -&gt; getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", iprestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetIpRestrictionsResult> getIpRestrictions(GetIpRestrictionsArgs args, InvokeOptions options) {
@@ -1368,7 +1430,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of IP restriction on a database cluster service:
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1390,15 +1453,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var iprestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZZ&#34;)
+     *             .serviceName("XXXXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;ips&#34;, iprestrictions.applyValue(getIpRestrictionsResult -&gt; getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", iprestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetIpRestrictionsResult> getIpRestrictionsPlain(GetIpRestrictionsPlainArgs args, InvokeOptions options) {
@@ -1408,7 +1472,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1430,15 +1495,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acl = CloudProjectDatabaseFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;aclPermission&#34;, acl.applyValue(getKafkaAclResult -&gt; getKafkaAclResult.permission()));
+     *         ctx.export("aclPermission", acl.applyValue(getKafkaAclResult -> getKafkaAclResult.permission()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaAclResult> getKafkaAcl(GetKafkaAclArgs args) {
@@ -1448,7 +1514,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1470,15 +1537,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acl = CloudProjectDatabaseFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;aclPermission&#34;, acl.applyValue(getKafkaAclResult -&gt; getKafkaAclResult.permission()));
+     *         ctx.export("aclPermission", acl.applyValue(getKafkaAclResult -> getKafkaAclResult.permission()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaAclResult> getKafkaAclPlain(GetKafkaAclPlainArgs args) {
@@ -1488,7 +1556,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1510,15 +1579,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acl = CloudProjectDatabaseFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;aclPermission&#34;, acl.applyValue(getKafkaAclResult -&gt; getKafkaAclResult.permission()));
+     *         ctx.export("aclPermission", acl.applyValue(getKafkaAclResult -> getKafkaAclResult.permission()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaAclResult> getKafkaAcl(GetKafkaAclArgs args, InvokeOptions options) {
@@ -1528,7 +1598,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1550,15 +1621,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acl = CloudProjectDatabaseFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;aclPermission&#34;, acl.applyValue(getKafkaAclResult -&gt; getKafkaAclResult.permission()));
+     *         ctx.export("aclPermission", acl.applyValue(getKafkaAclResult -> getKafkaAclResult.permission()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaAclResult> getKafkaAclPlain(GetKafkaAclPlainArgs args, InvokeOptions options) {
@@ -1568,7 +1640,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1590,14 +1663,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acls = CloudProjectDatabaseFunctions.getKafkaAcls(GetKafkaAclsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;aclIds&#34;, acls.applyValue(getKafkaAclsResult -&gt; getKafkaAclsResult.aclIds()));
+     *         ctx.export("aclIds", acls.applyValue(getKafkaAclsResult -> getKafkaAclsResult.aclIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaAclsResult> getKafkaAcls(GetKafkaAclsArgs args) {
@@ -1607,7 +1681,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1629,14 +1704,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acls = CloudProjectDatabaseFunctions.getKafkaAcls(GetKafkaAclsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;aclIds&#34;, acls.applyValue(getKafkaAclsResult -&gt; getKafkaAclsResult.aclIds()));
+     *         ctx.export("aclIds", acls.applyValue(getKafkaAclsResult -> getKafkaAclsResult.aclIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaAclsResult> getKafkaAclsPlain(GetKafkaAclsPlainArgs args) {
@@ -1646,7 +1722,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1668,14 +1745,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acls = CloudProjectDatabaseFunctions.getKafkaAcls(GetKafkaAclsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;aclIds&#34;, acls.applyValue(getKafkaAclsResult -&gt; getKafkaAclsResult.aclIds()));
+     *         ctx.export("aclIds", acls.applyValue(getKafkaAclsResult -> getKafkaAclsResult.aclIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaAclsResult> getKafkaAcls(GetKafkaAclsArgs args, InvokeOptions options) {
@@ -1685,7 +1763,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1707,14 +1786,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var acls = CloudProjectDatabaseFunctions.getKafkaAcls(GetKafkaAclsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;aclIds&#34;, acls.applyValue(getKafkaAclsResult -&gt; getKafkaAclsResult.aclIds()));
+     *         ctx.export("aclIds", acls.applyValue(getKafkaAclsResult -> getKafkaAclsResult.aclIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaAclsResult> getKafkaAclsPlain(GetKafkaAclsPlainArgs args, InvokeOptions options) {
@@ -1724,7 +1804,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1746,15 +1827,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var schemaRegistryAcl = CloudProjectDatabaseFunctions.getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;aclPermission&#34;, schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -&gt; getKafkaSchemaRegistryAclResult.permission()));
+     *         ctx.export("aclPermission", schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -> getKafkaSchemaRegistryAclResult.permission()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs args) {
@@ -1764,7 +1846,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1786,15 +1869,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var schemaRegistryAcl = CloudProjectDatabaseFunctions.getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;aclPermission&#34;, schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -&gt; getKafkaSchemaRegistryAclResult.permission()));
+     *         ctx.export("aclPermission", schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -> getKafkaSchemaRegistryAclResult.permission()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAclPlain(GetKafkaSchemaRegistryAclPlainArgs args) {
@@ -1804,7 +1888,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1826,15 +1911,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var schemaRegistryAcl = CloudProjectDatabaseFunctions.getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;aclPermission&#34;, schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -&gt; getKafkaSchemaRegistryAclResult.permission()));
+     *         ctx.export("aclPermission", schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -> getKafkaSchemaRegistryAclResult.permission()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs args, InvokeOptions options) {
@@ -1844,7 +1930,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1866,15 +1953,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var schemaRegistryAcl = CloudProjectDatabaseFunctions.getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;aclPermission&#34;, schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -&gt; getKafkaSchemaRegistryAclResult.permission()));
+     *         ctx.export("aclPermission", schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -> getKafkaSchemaRegistryAclResult.permission()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAclPlain(GetKafkaSchemaRegistryAclPlainArgs args, InvokeOptions options) {
@@ -1884,7 +1972,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1906,14 +1995,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var schemaRegistryAcls = CloudProjectDatabaseFunctions.getKafkaSchemaRegistryAcls(GetKafkaSchemaRegistryAclsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;aclIds&#34;, schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -&gt; getKafkaSchemaRegistryAclsResult.aclIds()));
+     *         ctx.export("aclIds", schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -> getKafkaSchemaRegistryAclsResult.aclIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclsResult> getKafkaSchemaRegistryAcls(GetKafkaSchemaRegistryAclsArgs args) {
@@ -1923,7 +2013,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1945,14 +2036,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var schemaRegistryAcls = CloudProjectDatabaseFunctions.getKafkaSchemaRegistryAcls(GetKafkaSchemaRegistryAclsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;aclIds&#34;, schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -&gt; getKafkaSchemaRegistryAclsResult.aclIds()));
+     *         ctx.export("aclIds", schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -> getKafkaSchemaRegistryAclsResult.aclIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaSchemaRegistryAclsResult> getKafkaSchemaRegistryAclsPlain(GetKafkaSchemaRegistryAclsPlainArgs args) {
@@ -1962,7 +2054,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1984,14 +2077,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var schemaRegistryAcls = CloudProjectDatabaseFunctions.getKafkaSchemaRegistryAcls(GetKafkaSchemaRegistryAclsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;aclIds&#34;, schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -&gt; getKafkaSchemaRegistryAclsResult.aclIds()));
+     *         ctx.export("aclIds", schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -> getKafkaSchemaRegistryAclsResult.aclIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclsResult> getKafkaSchemaRegistryAcls(GetKafkaSchemaRegistryAclsArgs args, InvokeOptions options) {
@@ -2001,7 +2095,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2023,14 +2118,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var schemaRegistryAcls = CloudProjectDatabaseFunctions.getKafkaSchemaRegistryAcls(GetKafkaSchemaRegistryAclsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;aclIds&#34;, schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -&gt; getKafkaSchemaRegistryAclsResult.aclIds()));
+     *         ctx.export("aclIds", schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -> getKafkaSchemaRegistryAclsResult.aclIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaSchemaRegistryAclsResult> getKafkaSchemaRegistryAclsPlain(GetKafkaSchemaRegistryAclsPlainArgs args, InvokeOptions options) {
@@ -2040,7 +2136,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2062,15 +2159,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topic = CloudProjectDatabaseFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;topicName&#34;, topic.applyValue(getKafkaTopicResult -&gt; getKafkaTopicResult.name()));
+     *         ctx.export("topicName", topic.applyValue(getKafkaTopicResult -> getKafkaTopicResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaTopicResult> getKafkaTopic(GetKafkaTopicArgs args) {
@@ -2080,7 +2178,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2102,15 +2201,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topic = CloudProjectDatabaseFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;topicName&#34;, topic.applyValue(getKafkaTopicResult -&gt; getKafkaTopicResult.name()));
+     *         ctx.export("topicName", topic.applyValue(getKafkaTopicResult -> getKafkaTopicResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaTopicResult> getKafkaTopicPlain(GetKafkaTopicPlainArgs args) {
@@ -2120,7 +2220,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2142,15 +2243,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topic = CloudProjectDatabaseFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;topicName&#34;, topic.applyValue(getKafkaTopicResult -&gt; getKafkaTopicResult.name()));
+     *         ctx.export("topicName", topic.applyValue(getKafkaTopicResult -> getKafkaTopicResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaTopicResult> getKafkaTopic(GetKafkaTopicArgs args, InvokeOptions options) {
@@ -2160,7 +2262,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2182,15 +2285,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topic = CloudProjectDatabaseFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .id(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;topicName&#34;, topic.applyValue(getKafkaTopicResult -&gt; getKafkaTopicResult.name()));
+     *         ctx.export("topicName", topic.applyValue(getKafkaTopicResult -> getKafkaTopicResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaTopicResult> getKafkaTopicPlain(GetKafkaTopicPlainArgs args, InvokeOptions options) {
@@ -2200,7 +2304,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2222,14 +2327,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topics = CloudProjectDatabaseFunctions.getKafkaTopics(GetKafkaTopicsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;topicIds&#34;, topics.applyValue(getKafkaTopicsResult -&gt; getKafkaTopicsResult.topicIds()));
+     *         ctx.export("topicIds", topics.applyValue(getKafkaTopicsResult -> getKafkaTopicsResult.topicIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaTopicsResult> getKafkaTopics(GetKafkaTopicsArgs args) {
@@ -2239,7 +2345,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2261,14 +2368,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topics = CloudProjectDatabaseFunctions.getKafkaTopics(GetKafkaTopicsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;topicIds&#34;, topics.applyValue(getKafkaTopicsResult -&gt; getKafkaTopicsResult.topicIds()));
+     *         ctx.export("topicIds", topics.applyValue(getKafkaTopicsResult -> getKafkaTopicsResult.topicIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaTopicsResult> getKafkaTopicsPlain(GetKafkaTopicsPlainArgs args) {
@@ -2278,7 +2386,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2300,14 +2409,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topics = CloudProjectDatabaseFunctions.getKafkaTopics(GetKafkaTopicsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;topicIds&#34;, topics.applyValue(getKafkaTopicsResult -&gt; getKafkaTopicsResult.topicIds()));
+     *         ctx.export("topicIds", topics.applyValue(getKafkaTopicsResult -> getKafkaTopicsResult.topicIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaTopicsResult> getKafkaTopics(GetKafkaTopicsArgs args, InvokeOptions options) {
@@ -2317,7 +2427,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2339,14 +2450,15 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topics = CloudProjectDatabaseFunctions.getKafkaTopics(GetKafkaTopicsArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export(&#34;topicIds&#34;, topics.applyValue(getKafkaTopicsResult -&gt; getKafkaTopicsResult.topicIds()));
+     *         ctx.export("topicIds", topics.applyValue(getKafkaTopicsResult -> getKafkaTopicsResult.topicIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaTopicsResult> getKafkaTopicsPlain(GetKafkaTopicsPlainArgs args, InvokeOptions options) {
@@ -2356,7 +2468,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2378,15 +2491,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var access = CloudProjectDatabaseFunctions.getKafkaUserAccess(GetKafkaUserAccessArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .userId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .userId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;accessCert&#34;, access.applyValue(getKafkaUserAccessResult -&gt; getKafkaUserAccessResult.cert()));
+     *         ctx.export("accessCert", access.applyValue(getKafkaUserAccessResult -> getKafkaUserAccessResult.cert()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaUserAccessResult> getKafkaUserAccess(GetKafkaUserAccessArgs args) {
@@ -2396,7 +2510,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2418,15 +2533,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var access = CloudProjectDatabaseFunctions.getKafkaUserAccess(GetKafkaUserAccessArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .userId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .userId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;accessCert&#34;, access.applyValue(getKafkaUserAccessResult -&gt; getKafkaUserAccessResult.cert()));
+     *         ctx.export("accessCert", access.applyValue(getKafkaUserAccessResult -> getKafkaUserAccessResult.cert()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaUserAccessResult> getKafkaUserAccessPlain(GetKafkaUserAccessPlainArgs args) {
@@ -2436,7 +2552,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2458,15 +2575,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var access = CloudProjectDatabaseFunctions.getKafkaUserAccess(GetKafkaUserAccessArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .userId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .userId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;accessCert&#34;, access.applyValue(getKafkaUserAccessResult -&gt; getKafkaUserAccessResult.cert()));
+     *         ctx.export("accessCert", access.applyValue(getKafkaUserAccessResult -> getKafkaUserAccessResult.cert()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaUserAccessResult> getKafkaUserAccess(GetKafkaUserAccessArgs args, InvokeOptions options) {
@@ -2476,7 +2594,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2498,15 +2617,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var access = CloudProjectDatabaseFunctions.getKafkaUserAccess(GetKafkaUserAccessArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .userId(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .userId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;accessCert&#34;, access.applyValue(getKafkaUserAccessResult -&gt; getKafkaUserAccessResult.cert()));
+     *         ctx.export("accessCert", access.applyValue(getKafkaUserAccessResult -> getKafkaUserAccessResult.cert()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaUserAccessResult> getKafkaUserAccessPlain(GetKafkaUserAccessPlainArgs args, InvokeOptions options) {
@@ -2516,7 +2636,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2538,15 +2659,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pguser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .name(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;pguserRoles&#34;, pguser.applyValue(getPostgresSqlUserResult -&gt; getPostgresSqlUserResult.roles()));
+     *         ctx.export("pguserRoles", pguser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresSqlUserResult> getPostgresSqlUser(GetPostgresSqlUserArgs args) {
@@ -2556,7 +2678,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2578,15 +2701,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pguser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .name(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;pguserRoles&#34;, pguser.applyValue(getPostgresSqlUserResult -&gt; getPostgresSqlUserResult.roles()));
+     *         ctx.export("pguserRoles", pguser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresSqlUserResult> getPostgresSqlUserPlain(GetPostgresSqlUserPlainArgs args) {
@@ -2596,7 +2720,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2618,15 +2743,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pguser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .name(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;pguserRoles&#34;, pguser.applyValue(getPostgresSqlUserResult -&gt; getPostgresSqlUserResult.roles()));
+     *         ctx.export("pguserRoles", pguser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresSqlUserResult> getPostgresSqlUser(GetPostgresSqlUserArgs args, InvokeOptions options) {
@@ -2636,7 +2762,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2658,15 +2785,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pguser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .clusterId(&#34;YYY&#34;)
-     *             .name(&#34;ZZZ&#34;)
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;pguserRoles&#34;, pguser.applyValue(getPostgresSqlUserResult -&gt; getPostgresSqlUserResult.roles()));
+     *         ctx.export("pguserRoles", pguser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresSqlUserResult> getPostgresSqlUserPlain(GetPostgresSqlUserPlainArgs args, InvokeOptions options) {
@@ -2676,7 +2804,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2698,16 +2827,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = CloudProjectDatabaseFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .name(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;userName&#34;, user.applyValue(getUserResult -&gt; getUserResult.name()));
+     *         ctx.export("userName", user.applyValue(getUserResult -> getUserResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
@@ -2717,7 +2847,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2739,16 +2870,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = CloudProjectDatabaseFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .name(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;userName&#34;, user.applyValue(getUserResult -&gt; getUserResult.name()));
+     *         ctx.export("userName", user.applyValue(getUserResult -> getUserResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -2758,7 +2890,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2780,16 +2913,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = CloudProjectDatabaseFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .name(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;userName&#34;, user.applyValue(getUserResult -&gt; getUserResult.name()));
+     *         ctx.export("userName", user.applyValue(getUserResult -> getUserResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
@@ -2799,7 +2933,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2821,16 +2956,17 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = CloudProjectDatabaseFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(&#34;XXX&#34;)
-     *             .engine(&#34;YYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
-     *             .name(&#34;UUU&#34;)
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export(&#34;userName&#34;, user.applyValue(getUserResult -&gt; getUserResult.name()));
+     *         ctx.export("userName", user.applyValue(getUserResult -> getUserResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
@@ -2840,7 +2976,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of users of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2862,15 +2999,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var users = CloudProjectDatabaseFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName(&#34;XXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;userIds&#34;, users.applyValue(getUsersResult -&gt; getUsersResult.userIds()));
+     *         ctx.export("userIds", users.applyValue(getUsersResult -> getUsersResult.userIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
@@ -2880,7 +3018,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of users of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2902,15 +3041,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var users = CloudProjectDatabaseFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName(&#34;XXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;userIds&#34;, users.applyValue(getUsersResult -&gt; getUsersResult.userIds()));
+     *         ctx.export("userIds", users.applyValue(getUsersResult -> getUsersResult.userIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
@@ -2920,7 +3060,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of users of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2942,15 +3083,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var users = CloudProjectDatabaseFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName(&#34;XXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;userIds&#34;, users.applyValue(getUsersResult -&gt; getUsersResult.userIds()));
+     *         ctx.export("userIds", users.applyValue(getUsersResult -> getUsersResult.userIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
@@ -2960,7 +3102,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of users of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2982,15 +3125,16 @@ public final class CloudProjectDatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var users = CloudProjectDatabaseFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName(&#34;XXXX&#34;)
-     *             .engine(&#34;YYYY&#34;)
-     *             .clusterId(&#34;ZZZ&#34;)
+     *             .serviceName("XXXX")
+     *             .engine("YYYY")
+     *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export(&#34;userIds&#34;, users.applyValue(getUsersResult -&gt; getUsersResult.userIds()));
+     *         ctx.export("userIds", users.applyValue(getUsersResult -> getUsersResult.userIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {

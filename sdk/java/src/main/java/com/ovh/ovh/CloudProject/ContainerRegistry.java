@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * Creates a container registry associated with a public cloud project.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,20 +45,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var regcap = CloudProjectFunctions.getCapabilitiesContainerFilter(GetCapabilitiesContainerFilterArgs.builder()
- *             .serviceName(&#34;XXXXXX&#34;)
- *             .planName(&#34;SMALL&#34;)
- *             .region(&#34;GRA&#34;)
+ *             .serviceName("XXXXXX")
+ *             .planName("SMALL")
+ *             .region("GRA")
  *             .build());
  * 
- *         var my_registry = new ContainerRegistry(&#34;my-registry&#34;, ContainerRegistryArgs.builder()        
- *             .serviceName(regcap.applyValue(getCapabilitiesContainerFilterResult -&gt; getCapabilitiesContainerFilterResult.serviceName()))
- *             .planId(regcap.applyValue(getCapabilitiesContainerFilterResult -&gt; getCapabilitiesContainerFilterResult.id()))
- *             .region(regcap.applyValue(getCapabilitiesContainerFilterResult -&gt; getCapabilitiesContainerFilterResult.region()))
+ *         var my_registry = new ContainerRegistry("my-registry", ContainerRegistryArgs.builder()        
+ *             .serviceName(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.serviceName()))
+ *             .planId(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.id()))
+ *             .region(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.region()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * &gt; __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
  * 

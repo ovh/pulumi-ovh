@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Creates a user for a container registry associated with a public cloud project.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,20 +43,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var registry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
- *             .serviceName(&#34;XXXXXX&#34;)
- *             .registryId(&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx&#34;)
+ *             .serviceName("XXXXXX")
+ *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
  *             .build());
  * 
- *         var user = new ContainerRegistryUser(&#34;user&#34;, ContainerRegistryUserArgs.builder()        
+ *         var user = new ContainerRegistryUser("user", ContainerRegistryUserArgs.builder()        
  *             .serviceName(ovh_cloud_project_containerregistry.registry().service_name())
  *             .registryId(ovh_cloud_project_containerregistry.registry().id())
- *             .email(&#34;foo@bar.com&#34;)
- *             .login(&#34;foobar&#34;)
+ *             .email("foo{@literal @}bar.com")
+ *             .login("foobar")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:CloudProject/containerRegistryUser:ContainerRegistryUser")

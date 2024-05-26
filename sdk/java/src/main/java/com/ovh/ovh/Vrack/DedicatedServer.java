@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * Attach a dedicated server to a VRack.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,14 +42,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vds = new DedicatedServer(&#34;vds&#34;, DedicatedServerArgs.builder()        
- *             .serverId(&#34;67890&#34;)
- *             .serviceName(&#34;XXXX&#34;)
+ *         var vds = new DedicatedServer("vds", DedicatedServerArgs.builder()        
+ *             .serverId("67890")
+ *             .serviceName("XXXX")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Vrack/dedicatedServer:DedicatedServer")

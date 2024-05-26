@@ -58,19 +58,21 @@ public final class LoadBalancerOrderableZone {
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder planCode(@Nullable String planCode) {
+
             this.planCode = planCode;
             return this;
         }
         public LoadBalancerOrderableZone build() {
-            final var o = new LoadBalancerOrderableZone();
-            o.name = name;
-            o.planCode = planCode;
-            return o;
+            final var _resultValue = new LoadBalancerOrderableZone();
+            _resultValue.name = name;
+            _resultValue.planCode = planCode;
+            return _resultValue;
         }
     }
 }

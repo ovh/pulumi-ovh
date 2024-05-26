@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,17 +86,26 @@ public final class GetM3dbNamespacesResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespacesResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespacesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceIds(List<String> namespaceIds) {
-            this.namespaceIds = Objects.requireNonNull(namespaceIds);
+            if (namespaceIds == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespacesResult", "namespaceIds");
+            }
+            this.namespaceIds = namespaceIds;
             return this;
         }
         public Builder namespaceIds(String... namespaceIds) {
@@ -103,16 +113,19 @@ public final class GetM3dbNamespacesResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespacesResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetM3dbNamespacesResult build() {
-            final var o = new GetM3dbNamespacesResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.namespaceIds = namespaceIds;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetM3dbNamespacesResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.namespaceIds = namespaceIds;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

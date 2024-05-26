@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,25 +71,34 @@ public final class GetDatabaseNode {
 
         @CustomType.Setter
         public Builder networkId(String networkId) {
-            this.networkId = Objects.requireNonNull(networkId);
+            if (networkId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseNode", "networkId");
+            }
+            this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseNode", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(String subnetId) {
-            this.subnetId = Objects.requireNonNull(subnetId);
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseNode", "subnetId");
+            }
+            this.subnetId = subnetId;
             return this;
         }
         public GetDatabaseNode build() {
-            final var o = new GetDatabaseNode();
-            o.networkId = networkId;
-            o.region = region;
-            o.subnetId = subnetId;
-            return o;
+            final var _resultValue = new GetDatabaseNode();
+            _resultValue.networkId = networkId;
+            _resultValue.region = region;
+            _resultValue.subnetId = subnetId;
+            return _resultValue;
         }
     }
 }

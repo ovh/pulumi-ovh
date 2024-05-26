@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -38,17 +39,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new ZoneRecord(&#34;test&#34;, ZoneRecordArgs.builder()        
- *             .fieldtype(&#34;A&#34;)
- *             .subdomain(&#34;test&#34;)
- *             .target(&#34;0.0.0.0&#34;)
+ *         var test = new ZoneRecord("test", ZoneRecordArgs.builder()        
+ *             .fieldtype("A")
+ *             .subdomain("test")
+ *             .target("0.0.0.0")
  *             .ttl(3600)
- *             .zone(&#34;testdemo.ovh&#34;)
+ *             .zone("testdemo.ovh")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

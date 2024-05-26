@@ -6,6 +6,7 @@ package com.ovh.ovh.Hosting.inputs;
 import com.ovh.ovh.Hosting.inputs.PrivateDatabasePlanOptionConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -236,9 +237,15 @@ public final class PrivateDatabasePlanOptionArgs extends com.pulumi.resources.Re
         }
 
         public PrivateDatabasePlanOptionArgs build() {
-            $.duration = Objects.requireNonNull($.duration, "expected parameter 'duration' to be non-null");
-            $.planCode = Objects.requireNonNull($.planCode, "expected parameter 'planCode' to be non-null");
-            $.pricingMode = Objects.requireNonNull($.pricingMode, "expected parameter 'pricingMode' to be non-null");
+            if ($.duration == null) {
+                throw new MissingRequiredPropertyException("PrivateDatabasePlanOptionArgs", "duration");
+            }
+            if ($.planCode == null) {
+                throw new MissingRequiredPropertyException("PrivateDatabasePlanOptionArgs", "planCode");
+            }
+            if ($.pricingMode == null) {
+                throw new MissingRequiredPropertyException("PrivateDatabasePlanOptionArgs", "pricingMode");
+            }
             return $;
         }
     }

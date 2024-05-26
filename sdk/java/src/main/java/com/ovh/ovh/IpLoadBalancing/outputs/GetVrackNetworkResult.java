@@ -4,6 +4,7 @@
 package com.ovh.ovh.IpLoadBalancing.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -111,49 +112,70 @@ public final class GetVrackNetworkResult {
 
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetVrackNetworkResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVrackNetworkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder natIp(String natIp) {
-            this.natIp = Objects.requireNonNull(natIp);
+            if (natIp == null) {
+              throw new MissingRequiredPropertyException("GetVrackNetworkResult", "natIp");
+            }
+            this.natIp = natIp;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetVrackNetworkResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder subnet(String subnet) {
-            this.subnet = Objects.requireNonNull(subnet);
+            if (subnet == null) {
+              throw new MissingRequiredPropertyException("GetVrackNetworkResult", "subnet");
+            }
+            this.subnet = subnet;
             return this;
         }
         @CustomType.Setter
         public Builder vlan(Integer vlan) {
-            this.vlan = Objects.requireNonNull(vlan);
+            if (vlan == null) {
+              throw new MissingRequiredPropertyException("GetVrackNetworkResult", "vlan");
+            }
+            this.vlan = vlan;
             return this;
         }
         @CustomType.Setter
         public Builder vrackNetworkId(Integer vrackNetworkId) {
-            this.vrackNetworkId = Objects.requireNonNull(vrackNetworkId);
+            if (vrackNetworkId == null) {
+              throw new MissingRequiredPropertyException("GetVrackNetworkResult", "vrackNetworkId");
+            }
+            this.vrackNetworkId = vrackNetworkId;
             return this;
         }
         public GetVrackNetworkResult build() {
-            final var o = new GetVrackNetworkResult();
-            o.displayName = displayName;
-            o.id = id;
-            o.natIp = natIp;
-            o.serviceName = serviceName;
-            o.subnet = subnet;
-            o.vlan = vlan;
-            o.vrackNetworkId = vrackNetworkId;
-            return o;
+            final var _resultValue = new GetVrackNetworkResult();
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.natIp = natIp;
+            _resultValue.serviceName = serviceName;
+            _resultValue.subnet = subnet;
+            _resultValue.vlan = vlan;
+            _resultValue.vrackNetworkId = vrackNetworkId;
+            return _resultValue;
         }
     }
 }

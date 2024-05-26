@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Apply IP restrictions to an OVHcloud Managed Kubernetes cluster.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,15 +40,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vrackOnly = new KubeIpRestrictions(&#34;vrackOnly&#34;, KubeIpRestrictionsArgs.builder()        
- *             .ips(&#34;10.42.0.0/16&#34;)
- *             .kubeId(&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx&#34;)
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
+ *         var vrackOnly = new KubeIpRestrictions("vrackOnly", KubeIpRestrictionsArgs.builder()        
+ *             .ips("10.42.0.0/16")
+ *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

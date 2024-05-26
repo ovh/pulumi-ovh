@@ -4,6 +4,7 @@
 package com.ovh.ovh.Dbaas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -67,37 +68,52 @@ public final class GetLogsInputEngineResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLogsInputEngineResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isDeprecated(Boolean isDeprecated) {
-            this.isDeprecated = Objects.requireNonNull(isDeprecated);
+            if (isDeprecated == null) {
+              throw new MissingRequiredPropertyException("GetLogsInputEngineResult", "isDeprecated");
+            }
+            this.isDeprecated = isDeprecated;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetLogsInputEngineResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetLogsInputEngineResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetLogsInputEngineResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetLogsInputEngineResult build() {
-            final var o = new GetLogsInputEngineResult();
-            o.id = id;
-            o.isDeprecated = isDeprecated;
-            o.name = name;
-            o.serviceName = serviceName;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetLogsInputEngineResult();
+            _resultValue.id = id;
+            _resultValue.isDeprecated = isDeprecated;
+            _resultValue.name = name;
+            _resultValue.serviceName = serviceName;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

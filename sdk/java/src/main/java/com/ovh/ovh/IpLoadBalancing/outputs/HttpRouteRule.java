@@ -116,43 +116,49 @@ public final class HttpRouteRule {
 
         @CustomType.Setter
         public Builder field(@Nullable String field) {
+
             this.field = field;
             return this;
         }
         @CustomType.Setter
         public Builder match(@Nullable String match) {
+
             this.match = match;
             return this;
         }
         @CustomType.Setter
         public Builder negate(@Nullable Boolean negate) {
+
             this.negate = negate;
             return this;
         }
         @CustomType.Setter
         public Builder pattern(@Nullable String pattern) {
+
             this.pattern = pattern;
             return this;
         }
         @CustomType.Setter
         public Builder ruleId(@Nullable Integer ruleId) {
+
             this.ruleId = ruleId;
             return this;
         }
         @CustomType.Setter
         public Builder subField(@Nullable String subField) {
+
             this.subField = subField;
             return this;
         }
         public HttpRouteRule build() {
-            final var o = new HttpRouteRule();
-            o.field = field;
-            o.match = match;
-            o.negate = negate;
-            o.pattern = pattern;
-            o.ruleId = ruleId;
-            o.subField = subField;
-            return o;
+            final var _resultValue = new HttpRouteRule();
+            _resultValue.field = field;
+            _resultValue.match = match;
+            _resultValue.negate = negate;
+            _resultValue.pattern = pattern;
+            _resultValue.ruleId = ruleId;
+            _resultValue.subField = subField;
+            return _resultValue;
         }
     }
 }

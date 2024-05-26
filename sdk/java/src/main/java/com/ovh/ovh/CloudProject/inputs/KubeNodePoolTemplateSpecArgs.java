@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -125,8 +126,12 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
         }
 
         public KubeNodePoolTemplateSpecArgs build() {
-            $.taints = Objects.requireNonNull($.taints, "expected parameter 'taints' to be non-null");
-            $.unschedulable = Objects.requireNonNull($.unschedulable, "expected parameter 'unschedulable' to be non-null");
+            if ($.taints == null) {
+                throw new MissingRequiredPropertyException("KubeNodePoolTemplateSpecArgs", "taints");
+            }
+            if ($.unschedulable == null) {
+                throw new MissingRequiredPropertyException("KubeNodePoolTemplateSpecArgs", "unschedulable");
+            }
             return $;
         }
     }

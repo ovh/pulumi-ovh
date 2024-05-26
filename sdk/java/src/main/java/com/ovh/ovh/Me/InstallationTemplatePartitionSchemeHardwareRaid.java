@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Use this resource to create a hardware raid group in the partition scheme of a custom installation template available for dedicated servers.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,30 +45,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytemplate = new InstallationTemplate(&#34;mytemplate&#34;, InstallationTemplateArgs.builder()        
- *             .baseTemplateName(&#34;centos7_64&#34;)
- *             .templateName(&#34;mytemplate&#34;)
- *             .defaultLanguage(&#34;fr&#34;)
+ *         var mytemplate = new InstallationTemplate("mytemplate", InstallationTemplateArgs.builder()        
+ *             .baseTemplateName("centos7_64")
+ *             .templateName("mytemplate")
+ *             .defaultLanguage("fr")
  *             .build());
  * 
- *         var scheme = new InstallationTemplatePartitionScheme(&#34;scheme&#34;, InstallationTemplatePartitionSchemeArgs.builder()        
+ *         var scheme = new InstallationTemplatePartitionScheme("scheme", InstallationTemplatePartitionSchemeArgs.builder()        
  *             .templateName(mytemplate.templateName())
  *             .priority(1)
  *             .build());
  * 
- *         var group1 = new InstallationTemplatePartitionSchemeHardwareRaid(&#34;group1&#34;, InstallationTemplatePartitionSchemeHardwareRaidArgs.builder()        
+ *         var group1 = new InstallationTemplatePartitionSchemeHardwareRaid("group1", InstallationTemplatePartitionSchemeHardwareRaidArgs.builder()        
  *             .templateName(scheme.templateName())
  *             .schemeName(scheme.name())
  *             .disks(            
- *                 &#34;[c1:d1,c1:d2,c1:d3]&#34;,
- *                 &#34;[c1:d10,c1:d20,c1:d30]&#34;)
- *             .mode(&#34;raid50&#34;)
+ *                 "[c1:d1,c1:d2,c1:d3]",
+ *                 "[c1:d10,c1:d20,c1:d30]")
+ *             .mode("raid50")
  *             .step(1)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

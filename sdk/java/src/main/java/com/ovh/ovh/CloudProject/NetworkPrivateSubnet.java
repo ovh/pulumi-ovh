@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Creates a subnet in a private network of a public cloud project.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,20 +43,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subnet = new NetworkPrivateSubnet(&#34;subnet&#34;, NetworkPrivateSubnetArgs.builder()        
+ *         var subnet = new NetworkPrivateSubnet("subnet", NetworkPrivateSubnetArgs.builder()        
  *             .dhcp(true)
- *             .end(&#34;192.168.168.200&#34;)
- *             .network(&#34;192.168.168.0/24&#34;)
- *             .networkId(&#34;0234543&#34;)
+ *             .end("192.168.168.200")
+ *             .network("192.168.168.0/24")
+ *             .networkId("0234543")
  *             .noGateway(false)
- *             .region(&#34;GRA1&#34;)
- *             .serviceName(&#34;xxxxx&#34;)
- *             .start(&#34;192.168.168.100&#34;)
+ *             .region("GRA1")
+ *             .serviceName("xxxxx")
+ *             .start("192.168.168.100")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

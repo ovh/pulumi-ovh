@@ -86,31 +86,35 @@ public final class KubeKubeconfigAttribute {
 
         @CustomType.Setter
         public Builder clientCertificate(@Nullable String clientCertificate) {
+
             this.clientCertificate = clientCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
+
             this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder clusterCaCertificate(@Nullable String clusterCaCertificate) {
+
             this.clusterCaCertificate = clusterCaCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
         public KubeKubeconfigAttribute build() {
-            final var o = new KubeKubeconfigAttribute();
-            o.clientCertificate = clientCertificate;
-            o.clientKey = clientKey;
-            o.clusterCaCertificate = clusterCaCertificate;
-            o.host = host;
-            return o;
+            final var _resultValue = new KubeKubeconfigAttribute();
+            _resultValue.clientCertificate = clientCertificate;
+            _resultValue.clientKey = clientKey;
+            _resultValue.clusterCaCertificate = clusterCaCertificate;
+            _resultValue.host = host;
+            return _resultValue;
         }
     }
 }

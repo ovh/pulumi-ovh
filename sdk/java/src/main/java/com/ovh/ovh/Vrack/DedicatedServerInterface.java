@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Attach a Dedicated Server Network Interface to a VRack.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,17 +42,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var server = OvhFunctions.getServer(GetServerArgs.builder()
- *             .serviceName(&#34;nsxxxxxxx.ip-xx-xx-xx.eu&#34;)
+ *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
  *             .build());
  * 
- *         var vdsi = new DedicatedServerInterface(&#34;vdsi&#34;, DedicatedServerInterfaceArgs.builder()        
- *             .serviceName(&#34;pn-xxxxxxx&#34;)
- *             .interfaceId(server.applyValue(getServerResult -&gt; getServerResult.enabledVrackVnis()[0]))
+ *         var vdsi = new DedicatedServerInterface("vdsi", DedicatedServerInterfaceArgs.builder()        
+ *             .serviceName("pn-xxxxxxx")
+ *             .interfaceId(server.applyValue(getServerResult -> getServerResult.enabledVrackVnis()[0]))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface")

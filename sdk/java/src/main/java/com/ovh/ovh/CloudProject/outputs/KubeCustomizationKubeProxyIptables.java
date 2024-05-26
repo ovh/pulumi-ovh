@@ -58,19 +58,21 @@ public final class KubeCustomizationKubeProxyIptables {
 
         @CustomType.Setter
         public Builder minSyncPeriod(@Nullable String minSyncPeriod) {
+
             this.minSyncPeriod = minSyncPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder syncPeriod(@Nullable String syncPeriod) {
+
             this.syncPeriod = syncPeriod;
             return this;
         }
         public KubeCustomizationKubeProxyIptables build() {
-            final var o = new KubeCustomizationKubeProxyIptables();
-            o.minSyncPeriod = minSyncPeriod;
-            o.syncPeriod = syncPeriod;
-            return o;
+            final var _resultValue = new KubeCustomizationKubeProxyIptables();
+            _resultValue.minSyncPeriod = minSyncPeriod;
+            _resultValue.syncPeriod = syncPeriod;
+            return _resultValue;
         }
     }
 }

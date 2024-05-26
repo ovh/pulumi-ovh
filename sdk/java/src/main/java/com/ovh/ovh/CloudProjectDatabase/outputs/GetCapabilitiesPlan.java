@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,25 +71,34 @@ public final class GetCapabilitiesPlan {
 
         @CustomType.Setter
         public Builder backupRetention(String backupRetention) {
-            this.backupRetention = Objects.requireNonNull(backupRetention);
+            if (backupRetention == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesPlan", "backupRetention");
+            }
+            this.backupRetention = backupRetention;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesPlan", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesPlan", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetCapabilitiesPlan build() {
-            final var o = new GetCapabilitiesPlan();
-            o.backupRetention = backupRetention;
-            o.description = description;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetCapabilitiesPlan();
+            _resultValue.backupRetention = backupRetention;
+            _resultValue.description = description;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

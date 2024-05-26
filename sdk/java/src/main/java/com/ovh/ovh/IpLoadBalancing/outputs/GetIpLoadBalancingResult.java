@@ -5,6 +5,7 @@ package com.ovh.ovh.IpLoadBalancing.outputs;
 
 import com.ovh.ovh.IpLoadBalancing.outputs.GetIpLoadBalancingOrderableZone;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -155,42 +156,66 @@ public final class GetIpLoadBalancingResult {
 
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipLoadbalancing(String ipLoadbalancing) {
-            this.ipLoadbalancing = Objects.requireNonNull(ipLoadbalancing);
+            if (ipLoadbalancing == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "ipLoadbalancing");
+            }
+            this.ipLoadbalancing = ipLoadbalancing;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4(String ipv4) {
-            this.ipv4 = Objects.requireNonNull(ipv4);
+            if (ipv4 == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "ipv4");
+            }
+            this.ipv4 = ipv4;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6(String ipv6) {
-            this.ipv6 = Objects.requireNonNull(ipv6);
+            if (ipv6 == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "ipv6");
+            }
+            this.ipv6 = ipv6;
             return this;
         }
         @CustomType.Setter
         public Builder metricsToken(String metricsToken) {
-            this.metricsToken = Objects.requireNonNull(metricsToken);
+            if (metricsToken == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "metricsToken");
+            }
+            this.metricsToken = metricsToken;
             return this;
         }
         @CustomType.Setter
         public Builder offer(String offer) {
-            this.offer = Objects.requireNonNull(offer);
+            if (offer == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "offer");
+            }
+            this.offer = offer;
             return this;
         }
         @CustomType.Setter
         public Builder orderableZones(List<GetIpLoadBalancingOrderableZone> orderableZones) {
-            this.orderableZones = Objects.requireNonNull(orderableZones);
+            if (orderableZones == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "orderableZones");
+            }
+            this.orderableZones = orderableZones;
             return this;
         }
         public Builder orderableZones(GetIpLoadBalancingOrderableZone... orderableZones) {
@@ -198,60 +223,81 @@ public final class GetIpLoadBalancingResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder sslConfiguration(String sslConfiguration) {
-            this.sslConfiguration = Objects.requireNonNull(sslConfiguration);
+            if (sslConfiguration == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "sslConfiguration");
+            }
+            this.sslConfiguration = sslConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder urn(String urn) {
-            this.urn = Objects.requireNonNull(urn);
+            if (urn == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "urn");
+            }
+            this.urn = urn;
             return this;
         }
         @CustomType.Setter
         public Builder vrackEligibility(Boolean vrackEligibility) {
-            this.vrackEligibility = Objects.requireNonNull(vrackEligibility);
+            if (vrackEligibility == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "vrackEligibility");
+            }
+            this.vrackEligibility = vrackEligibility;
             return this;
         }
         @CustomType.Setter
         public Builder vrackName(String vrackName) {
-            this.vrackName = Objects.requireNonNull(vrackName);
+            if (vrackName == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "vrackName");
+            }
+            this.vrackName = vrackName;
             return this;
         }
         @CustomType.Setter
         public Builder zones(List<String> zones) {
-            this.zones = Objects.requireNonNull(zones);
+            if (zones == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingResult", "zones");
+            }
+            this.zones = zones;
             return this;
         }
         public Builder zones(String... zones) {
             return zones(List.of(zones));
         }
         public GetIpLoadBalancingResult build() {
-            final var o = new GetIpLoadBalancingResult();
-            o.displayName = displayName;
-            o.id = id;
-            o.ipLoadbalancing = ipLoadbalancing;
-            o.ipv4 = ipv4;
-            o.ipv6 = ipv6;
-            o.metricsToken = metricsToken;
-            o.offer = offer;
-            o.orderableZones = orderableZones;
-            o.serviceName = serviceName;
-            o.sslConfiguration = sslConfiguration;
-            o.state = state;
-            o.urn = urn;
-            o.vrackEligibility = vrackEligibility;
-            o.vrackName = vrackName;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetIpLoadBalancingResult();
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.ipLoadbalancing = ipLoadbalancing;
+            _resultValue.ipv4 = ipv4;
+            _resultValue.ipv6 = ipv6;
+            _resultValue.metricsToken = metricsToken;
+            _resultValue.offer = offer;
+            _resultValue.orderableZones = orderableZones;
+            _resultValue.serviceName = serviceName;
+            _resultValue.sslConfiguration = sslConfiguration;
+            _resultValue.state = state;
+            _resultValue.urn = urn;
+            _resultValue.vrackEligibility = vrackEligibility;
+            _resultValue.vrackName = vrackName;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -57,19 +58,25 @@ public final class KubePrivateNetworkConfiguration {
 
         @CustomType.Setter
         public Builder defaultVrackGateway(String defaultVrackGateway) {
-            this.defaultVrackGateway = Objects.requireNonNull(defaultVrackGateway);
+            if (defaultVrackGateway == null) {
+              throw new MissingRequiredPropertyException("KubePrivateNetworkConfiguration", "defaultVrackGateway");
+            }
+            this.defaultVrackGateway = defaultVrackGateway;
             return this;
         }
         @CustomType.Setter
         public Builder privateNetworkRoutingAsDefault(Boolean privateNetworkRoutingAsDefault) {
-            this.privateNetworkRoutingAsDefault = Objects.requireNonNull(privateNetworkRoutingAsDefault);
+            if (privateNetworkRoutingAsDefault == null) {
+              throw new MissingRequiredPropertyException("KubePrivateNetworkConfiguration", "privateNetworkRoutingAsDefault");
+            }
+            this.privateNetworkRoutingAsDefault = privateNetworkRoutingAsDefault;
             return this;
         }
         public KubePrivateNetworkConfiguration build() {
-            final var o = new KubePrivateNetworkConfiguration();
-            o.defaultVrackGateway = defaultVrackGateway;
-            o.privateNetworkRoutingAsDefault = privateNetworkRoutingAsDefault;
-            return o;
+            final var _resultValue = new KubePrivateNetworkConfiguration();
+            _resultValue.defaultVrackGateway = defaultVrackGateway;
+            _resultValue.privateNetworkRoutingAsDefault = privateNetworkRoutingAsDefault;
+            return _resultValue;
         }
     }
 }

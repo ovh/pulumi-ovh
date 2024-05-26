@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -99,22 +100,34 @@ public final class GetDatabaseIntegrationsResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationsResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationsResult", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder integrationIds(List<String> integrationIds) {
-            this.integrationIds = Objects.requireNonNull(integrationIds);
+            if (integrationIds == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationsResult", "integrationIds");
+            }
+            this.integrationIds = integrationIds;
             return this;
         }
         public Builder integrationIds(String... integrationIds) {
@@ -122,17 +135,20 @@ public final class GetDatabaseIntegrationsResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationsResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetDatabaseIntegrationsResult build() {
-            final var o = new GetDatabaseIntegrationsResult();
-            o.clusterId = clusterId;
-            o.engine = engine;
-            o.id = id;
-            o.integrationIds = integrationIds;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetDatabaseIntegrationsResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.engine = engine;
+            _resultValue.id = id;
+            _resultValue.integrationIds = integrationIds;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

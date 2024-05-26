@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -169,7 +170,10 @@ public final class GetRedisUserResult {
 
         @CustomType.Setter
         public Builder categories(List<String> categories) {
-            this.categories = Objects.requireNonNull(categories);
+            if (categories == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "categories");
+            }
+            this.categories = categories;
             return this;
         }
         public Builder categories(String... categories) {
@@ -177,7 +181,10 @@ public final class GetRedisUserResult {
         }
         @CustomType.Setter
         public Builder channels(List<String> channels) {
-            this.channels = Objects.requireNonNull(channels);
+            if (channels == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "channels");
+            }
+            this.channels = channels;
             return this;
         }
         public Builder channels(String... channels) {
@@ -185,12 +192,18 @@ public final class GetRedisUserResult {
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder commands(List<String> commands) {
-            this.commands = Objects.requireNonNull(commands);
+            if (commands == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "commands");
+            }
+            this.commands = commands;
             return this;
         }
         public Builder commands(String... commands) {
@@ -198,17 +211,26 @@ public final class GetRedisUserResult {
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keys(List<String> keys) {
-            this.keys = Objects.requireNonNull(keys);
+            if (keys == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "keys");
+            }
+            this.keys = keys;
             return this;
         }
         public Builder keys(String... keys) {
@@ -216,32 +238,41 @@ public final class GetRedisUserResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetRedisUserResult build() {
-            final var o = new GetRedisUserResult();
-            o.categories = categories;
-            o.channels = channels;
-            o.clusterId = clusterId;
-            o.commands = commands;
-            o.createdAt = createdAt;
-            o.id = id;
-            o.keys = keys;
-            o.name = name;
-            o.serviceName = serviceName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRedisUserResult();
+            _resultValue.categories = categories;
+            _resultValue.channels = channels;
+            _resultValue.clusterId = clusterId;
+            _resultValue.commands = commands;
+            _resultValue.createdAt = createdAt;
+            _resultValue.id = id;
+            _resultValue.keys = keys;
+            _resultValue.name = name;
+            _resultValue.serviceName = serviceName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

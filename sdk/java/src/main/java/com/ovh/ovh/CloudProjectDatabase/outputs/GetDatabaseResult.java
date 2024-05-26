@@ -6,6 +6,7 @@ package com.ovh.ovh.CloudProjectDatabase.outputs;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseEndpoint;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseNode;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -292,37 +293,58 @@ public final class GetDatabaseResult {
 
         @CustomType.Setter
         public Builder advancedConfiguration(Map<String,String> advancedConfiguration) {
-            this.advancedConfiguration = Objects.requireNonNull(advancedConfiguration);
+            if (advancedConfiguration == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "advancedConfiguration");
+            }
+            this.advancedConfiguration = advancedConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder backupTime(String backupTime) {
-            this.backupTime = Objects.requireNonNull(backupTime);
+            if (backupTime == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "backupTime");
+            }
+            this.backupTime = backupTime;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(Integer diskSize) {
-            this.diskSize = Objects.requireNonNull(diskSize);
+            if (diskSize == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "diskSize");
+            }
+            this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder endpoints(List<GetDatabaseEndpoint> endpoints) {
-            this.endpoints = Objects.requireNonNull(endpoints);
+            if (endpoints == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "endpoints");
+            }
+            this.endpoints = endpoints;
             return this;
         }
         public Builder endpoints(GetDatabaseEndpoint... endpoints) {
@@ -330,37 +352,58 @@ public final class GetDatabaseResult {
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder flavor(String flavor) {
-            this.flavor = Objects.requireNonNull(flavor);
+            if (flavor == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "flavor");
+            }
+            this.flavor = flavor;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaRestApi(Boolean kafkaRestApi) {
-            this.kafkaRestApi = Objects.requireNonNull(kafkaRestApi);
+            if (kafkaRestApi == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "kafkaRestApi");
+            }
+            this.kafkaRestApi = kafkaRestApi;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceTime(String maintenanceTime) {
-            this.maintenanceTime = Objects.requireNonNull(maintenanceTime);
+            if (maintenanceTime == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "maintenanceTime");
+            }
+            this.maintenanceTime = maintenanceTime;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(List<GetDatabaseNode> nodes) {
-            this.nodes = Objects.requireNonNull(nodes);
+            if (nodes == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "nodes");
+            }
+            this.nodes = nodes;
             return this;
         }
         public Builder nodes(GetDatabaseNode... nodes) {
@@ -368,51 +411,66 @@ public final class GetDatabaseResult {
         }
         @CustomType.Setter
         public Builder opensearchAclsEnabled(Boolean opensearchAclsEnabled) {
-            this.opensearchAclsEnabled = Objects.requireNonNull(opensearchAclsEnabled);
+            if (opensearchAclsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "opensearchAclsEnabled");
+            }
+            this.opensearchAclsEnabled = opensearchAclsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder plan(String plan) {
-            this.plan = Objects.requireNonNull(plan);
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "plan");
+            }
+            this.plan = plan;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetDatabaseResult build() {
-            final var o = new GetDatabaseResult();
-            o.advancedConfiguration = advancedConfiguration;
-            o.backupTime = backupTime;
-            o.createdAt = createdAt;
-            o.description = description;
-            o.diskSize = diskSize;
-            o.diskType = diskType;
-            o.endpoints = endpoints;
-            o.engine = engine;
-            o.flavor = flavor;
-            o.id = id;
-            o.kafkaRestApi = kafkaRestApi;
-            o.maintenanceTime = maintenanceTime;
-            o.networkType = networkType;
-            o.nodes = nodes;
-            o.opensearchAclsEnabled = opensearchAclsEnabled;
-            o.plan = plan;
-            o.serviceName = serviceName;
-            o.status = status;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetDatabaseResult();
+            _resultValue.advancedConfiguration = advancedConfiguration;
+            _resultValue.backupTime = backupTime;
+            _resultValue.createdAt = createdAt;
+            _resultValue.description = description;
+            _resultValue.diskSize = diskSize;
+            _resultValue.diskType = diskType;
+            _resultValue.endpoints = endpoints;
+            _resultValue.engine = engine;
+            _resultValue.flavor = flavor;
+            _resultValue.id = id;
+            _resultValue.kafkaRestApi = kafkaRestApi;
+            _resultValue.maintenanceTime = maintenanceTime;
+            _resultValue.networkType = networkType;
+            _resultValue.nodes = nodes;
+            _resultValue.opensearchAclsEnabled = opensearchAclsEnabled;
+            _resultValue.plan = plan;
+            _resultValue.serviceName = serviceName;
+            _resultValue.status = status;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

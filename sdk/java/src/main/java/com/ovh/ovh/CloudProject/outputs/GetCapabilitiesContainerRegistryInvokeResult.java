@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.ovh.ovh.CloudProject.outputs.GetCapabilitiesContainerRegistryResult;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -64,12 +65,18 @@ public final class GetCapabilitiesContainerRegistryInvokeResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryInvokeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder results(List<GetCapabilitiesContainerRegistryResult> results) {
-            this.results = Objects.requireNonNull(results);
+            if (results == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryInvokeResult", "results");
+            }
+            this.results = results;
             return this;
         }
         public Builder results(GetCapabilitiesContainerRegistryResult... results) {
@@ -77,15 +84,18 @@ public final class GetCapabilitiesContainerRegistryInvokeResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryInvokeResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetCapabilitiesContainerRegistryInvokeResult build() {
-            final var o = new GetCapabilitiesContainerRegistryInvokeResult();
-            o.id = id;
-            o.results = results;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetCapabilitiesContainerRegistryInvokeResult();
+            _resultValue.id = id;
+            _resultValue.results = results;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

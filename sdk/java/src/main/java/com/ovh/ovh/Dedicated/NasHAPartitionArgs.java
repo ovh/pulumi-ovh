@@ -5,6 +5,7 @@ package com.ovh.ovh.Dedicated;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,9 +226,15 @@ public final class NasHAPartitionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public NasHAPartitionArgs build() {
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("NasHAPartitionArgs", "protocol");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("NasHAPartitionArgs", "serviceName");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("NasHAPartitionArgs", "size");
+            }
             return $;
         }
     }

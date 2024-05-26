@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,19 +57,25 @@ public final class GetOpenSearchUserAcl {
 
         @CustomType.Setter
         public Builder pattern(String pattern) {
-            this.pattern = Objects.requireNonNull(pattern);
+            if (pattern == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchUserAcl", "pattern");
+            }
+            this.pattern = pattern;
             return this;
         }
         @CustomType.Setter
         public Builder permission(String permission) {
-            this.permission = Objects.requireNonNull(permission);
+            if (permission == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchUserAcl", "permission");
+            }
+            this.permission = permission;
             return this;
         }
         public GetOpenSearchUserAcl build() {
-            final var o = new GetOpenSearchUserAcl();
-            o.pattern = pattern;
-            o.permission = permission;
-            return o;
+            final var _resultValue = new GetOpenSearchUserAcl();
+            _resultValue.pattern = pattern;
+            _resultValue.permission = permission;
+            return _resultValue;
         }
     }
 }

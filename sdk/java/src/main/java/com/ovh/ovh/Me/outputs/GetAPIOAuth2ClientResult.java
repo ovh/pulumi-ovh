@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -119,7 +120,10 @@ public final class GetAPIOAuth2ClientResult {
 
         @CustomType.Setter
         public Builder callbackUrls(List<String> callbackUrls) {
-            this.callbackUrls = Objects.requireNonNull(callbackUrls);
+            if (callbackUrls == null) {
+              throw new MissingRequiredPropertyException("GetAPIOAuth2ClientResult", "callbackUrls");
+            }
+            this.callbackUrls = callbackUrls;
             return this;
         }
         public Builder callbackUrls(String... callbackUrls) {
@@ -127,44 +131,62 @@ public final class GetAPIOAuth2ClientResult {
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetAPIOAuth2ClientResult", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAPIOAuth2ClientResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder flow(String flow) {
-            this.flow = Objects.requireNonNull(flow);
+            if (flow == null) {
+              throw new MissingRequiredPropertyException("GetAPIOAuth2ClientResult", "flow");
+            }
+            this.flow = flow;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAPIOAuth2ClientResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder identity(String identity) {
-            this.identity = Objects.requireNonNull(identity);
+            if (identity == null) {
+              throw new MissingRequiredPropertyException("GetAPIOAuth2ClientResult", "identity");
+            }
+            this.identity = identity;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAPIOAuth2ClientResult", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetAPIOAuth2ClientResult build() {
-            final var o = new GetAPIOAuth2ClientResult();
-            o.callbackUrls = callbackUrls;
-            o.clientId = clientId;
-            o.description = description;
-            o.flow = flow;
-            o.id = id;
-            o.identity = identity;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetAPIOAuth2ClientResult();
+            _resultValue.callbackUrls = callbackUrls;
+            _resultValue.clientId = clientId;
+            _resultValue.description = description;
+            _resultValue.flow = flow;
+            _resultValue.id = id;
+            _resultValue.identity = identity;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

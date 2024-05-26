@@ -44,6 +44,7 @@ public final class KubeCustomizationApiserver {
 
         @CustomType.Setter
         public Builder admissionplugins(@Nullable List<KubeCustomizationApiserverAdmissionplugin> admissionplugins) {
+
             this.admissionplugins = admissionplugins;
             return this;
         }
@@ -51,9 +52,9 @@ public final class KubeCustomizationApiserver {
             return admissionplugins(List.of(admissionplugins));
         }
         public KubeCustomizationApiserver build() {
-            final var o = new KubeCustomizationApiserver();
-            o.admissionplugins = admissionplugins;
-            return o;
+            final var _resultValue = new KubeCustomizationApiserver();
+            _resultValue.admissionplugins = admissionplugins;
+            return _resultValue;
         }
     }
 }

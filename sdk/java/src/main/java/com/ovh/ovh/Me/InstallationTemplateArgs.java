@@ -6,6 +6,7 @@ package com.ovh.ovh.Me;
 import com.ovh.ovh.Me.inputs.InstallationTemplateCustomizationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -206,9 +207,15 @@ public final class InstallationTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         public InstallationTemplateArgs build() {
-            $.baseTemplateName = Objects.requireNonNull($.baseTemplateName, "expected parameter 'baseTemplateName' to be non-null");
-            $.defaultLanguage = Objects.requireNonNull($.defaultLanguage, "expected parameter 'defaultLanguage' to be non-null");
-            $.templateName = Objects.requireNonNull($.templateName, "expected parameter 'templateName' to be non-null");
+            if ($.baseTemplateName == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplateArgs", "baseTemplateName");
+            }
+            if ($.defaultLanguage == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplateArgs", "defaultLanguage");
+            }
+            if ($.templateName == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplateArgs", "templateName");
+            }
             return $;
         }
     }

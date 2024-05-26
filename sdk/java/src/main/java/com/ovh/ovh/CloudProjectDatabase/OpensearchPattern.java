@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Creates a pattern for a opensearch cluster associated with a public cloud project.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,21 +44,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var opensearch = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
- *             .serviceName(&#34;XXX&#34;)
- *             .engine(&#34;opensearch&#34;)
- *             .id(&#34;ZZZ&#34;)
+ *             .serviceName("XXX")
+ *             .engine("opensearch")
+ *             .id("ZZZ")
  *             .build());
  * 
- *         var pattern = new OpensearchPattern(&#34;pattern&#34;, OpensearchPatternArgs.builder()        
- *             .serviceName(opensearch.applyValue(getDatabaseResult -&gt; getDatabaseResult.serviceName()))
- *             .clusterId(opensearch.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()))
+ *         var pattern = new OpensearchPattern("pattern", OpensearchPatternArgs.builder()        
+ *             .serviceName(opensearch.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
+ *             .clusterId(opensearch.applyValue(getDatabaseResult -> getDatabaseResult.id()))
  *             .maxIndexCount(2)
- *             .pattern(&#34;logs_*&#34;)
+ *             .pattern("logs_*")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

@@ -7,6 +7,7 @@ import com.ovh.ovh.Domain.inputs.ZonePlanArgs;
 import com.ovh.ovh.Domain.inputs.ZonePlanOptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -216,8 +217,12 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ZoneArgs build() {
-            $.ovhSubsidiary = Objects.requireNonNull($.ovhSubsidiary, "expected parameter 'ovhSubsidiary' to be non-null");
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
+            if ($.ovhSubsidiary == null) {
+                throw new MissingRequiredPropertyException("ZoneArgs", "ovhSubsidiary");
+            }
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("ZoneArgs", "plan");
+            }
             return $;
         }
     }

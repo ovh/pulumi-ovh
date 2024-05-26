@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Creates an identity group.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,14 +41,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myGroup = new IdentityGroup(&#34;myGroup&#34;, IdentityGroupArgs.builder()        
- *             .description(&#34;Some custom description&#34;)
- *             .role(&#34;NONE&#34;)
+ *         var myGroup = new IdentityGroup("myGroup", IdentityGroupArgs.builder()        
+ *             .description("Some custom description")
+ *             .role("NONE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Me/identityGroup:IdentityGroup")

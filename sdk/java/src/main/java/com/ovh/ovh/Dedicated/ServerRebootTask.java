@@ -16,7 +16,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,26 +43,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var rescue = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
- *             .serviceName(&#34;nsxxxxxxx.ip-xx-xx-xx.eu&#34;)
- *             .bootType(&#34;rescue&#34;)
- *             .kernel(&#34;rescue64-pro&#34;)
+ *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
+ *             .bootType("rescue")
+ *             .kernel("rescue64-pro")
  *             .build());
  * 
- *         var serverOnRescue = new ServerUpdate(&#34;serverOnRescue&#34;, ServerUpdateArgs.builder()        
- *             .serviceName(&#34;nsxxxxxxx.ip-xx-xx-xx.eu&#34;)
- *             .bootId(rescue.applyValue(getServerBootsResult -&gt; getServerBootsResult.results()[0]))
+ *         var serverOnRescue = new ServerUpdate("serverOnRescue", ServerUpdateArgs.builder()        
+ *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
+ *             .bootId(rescue.applyValue(getServerBootsResult -> getServerBootsResult.results()[0]))
  *             .monitoring(true)
- *             .state(&#34;ok&#34;)
+ *             .state("ok")
  *             .build());
  * 
- *         var serverReboot = new ServerRebootTask(&#34;serverReboot&#34;, ServerRebootTaskArgs.builder()        
- *             .serviceName(rescue.applyValue(getServerBootsResult -&gt; getServerBootsResult.serviceName()))
+ *         var serverReboot = new ServerRebootTask("serverReboot", ServerRebootTaskArgs.builder()        
+ *             .serviceName(rescue.applyValue(getServerBootsResult -> getServerBootsResult.serviceName()))
  *             .keepers(serverOnRescue.bootId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Dedicated/serverRebootTask:ServerRebootTask")

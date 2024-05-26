@@ -5,6 +5,7 @@ package com.ovh.ovh.IpLoadBalancing;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -440,9 +441,15 @@ public final class TcpFrontendArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TcpFrontendArgs build() {
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.zone = Objects.requireNonNull($.zone, "expected parameter 'zone' to be non-null");
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("TcpFrontendArgs", "port");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("TcpFrontendArgs", "serviceName");
+            }
+            if ($.zone == null) {
+                throw new MissingRequiredPropertyException("TcpFrontendArgs", "zone");
+            }
             return $;
         }
     }

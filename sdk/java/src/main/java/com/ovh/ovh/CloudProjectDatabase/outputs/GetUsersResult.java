@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -99,40 +100,55 @@ public final class GetUsersResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder userIds(List<String> userIds) {
-            this.userIds = Objects.requireNonNull(userIds);
+            if (userIds == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "userIds");
+            }
+            this.userIds = userIds;
             return this;
         }
         public Builder userIds(String... userIds) {
             return userIds(List.of(userIds));
         }
         public GetUsersResult build() {
-            final var o = new GetUsersResult();
-            o.clusterId = clusterId;
-            o.engine = engine;
-            o.id = id;
-            o.serviceName = serviceName;
-            o.userIds = userIds;
-            return o;
+            final var _resultValue = new GetUsersResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.engine = engine;
+            _resultValue.id = id;
+            _resultValue.serviceName = serviceName;
+            _resultValue.userIds = userIds;
+            return _resultValue;
         }
     }
 }

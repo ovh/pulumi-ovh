@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -372,12 +373,24 @@ public final class NetworkPrivateSubnetArgs extends com.pulumi.resources.Resourc
         }
 
         public NetworkPrivateSubnetArgs build() {
-            $.end = Objects.requireNonNull($.end, "expected parameter 'end' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.networkId = Objects.requireNonNull($.networkId, "expected parameter 'networkId' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.start = Objects.requireNonNull($.start, "expected parameter 'start' to be non-null");
+            if ($.end == null) {
+                throw new MissingRequiredPropertyException("NetworkPrivateSubnetArgs", "end");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("NetworkPrivateSubnetArgs", "network");
+            }
+            if ($.networkId == null) {
+                throw new MissingRequiredPropertyException("NetworkPrivateSubnetArgs", "networkId");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("NetworkPrivateSubnetArgs", "region");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("NetworkPrivateSubnetArgs", "serviceName");
+            }
+            if ($.start == null) {
+                throw new MissingRequiredPropertyException("NetworkPrivateSubnetArgs", "start");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -56,25 +57,30 @@ public final class NetworkPrivateRegionsAttribute {
 
         @CustomType.Setter
         public Builder openstackid(@Nullable String openstackid) {
+
             this.openstackid = openstackid;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("NetworkPrivateRegionsAttribute", "status");
+            }
+            this.status = status;
             return this;
         }
         public NetworkPrivateRegionsAttribute build() {
-            final var o = new NetworkPrivateRegionsAttribute();
-            o.openstackid = openstackid;
-            o.region = region;
-            o.status = status;
-            return o;
+            final var _resultValue = new NetworkPrivateRegionsAttribute();
+            _resultValue.openstackid = openstackid;
+            _resultValue.region = region;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

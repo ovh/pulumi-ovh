@@ -113,37 +113,42 @@ public final class NetworkPrivateSubnetIpPool {
 
         @CustomType.Setter
         public Builder dhcp(@Nullable Boolean dhcp) {
+
             this.dhcp = dhcp;
             return this;
         }
         @CustomType.Setter
         public Builder end(@Nullable String end) {
+
             this.end = end;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder start(@Nullable String start) {
+
             this.start = start;
             return this;
         }
         public NetworkPrivateSubnetIpPool build() {
-            final var o = new NetworkPrivateSubnetIpPool();
-            o.dhcp = dhcp;
-            o.end = end;
-            o.network = network;
-            o.region = region;
-            o.start = start;
-            return o;
+            final var _resultValue = new NetworkPrivateSubnetIpPool();
+            _resultValue.dhcp = dhcp;
+            _resultValue.end = end;
+            _resultValue.network = network;
+            _resultValue.region = region;
+            _resultValue.start = start;
+            return _resultValue;
         }
     }
 }

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,37 +51,38 @@ import javax.annotation.Nullable;
  *         final var myaccount = MeFunctions.getMe();
  * 
  *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
- *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
  *             .build());
  * 
  *         final var zoneCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
- *             .priceCapacity(&#34;renew&#34;)
- *             .product(&#34;dns&#34;)
- *             .planCode(&#34;zone&#34;)
+ *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .priceCapacity("renew")
+ *             .product("dns")
+ *             .planCode("zone")
  *             .build());
  * 
- *         var zoneZone = new Zone(&#34;zoneZone&#34;, ZoneArgs.builder()        
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -&gt; getCartResult.ovhSubsidiary()))
+ *         var zoneZone = new Zone("zoneZone", ZoneArgs.builder()        
+ *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
  *             .plan(ZonePlanArgs.builder()
- *                 .duration(zoneCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(zoneCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.planCode()))
- *                 .pricingMode(zoneCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(zoneCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
+ *                 .planCode(zoneCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *                 .pricingMode(zoneCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
  *                 .configurations(                
  *                     ZonePlanConfigurationArgs.builder()
- *                         .label(&#34;zone&#34;)
- *                         .value(&#34;myzone.mydomain.com&#34;)
+ *                         .label("zone")
+ *                         .value("myzone.mydomain.com")
  *                         .build(),
  *                     ZonePlanConfigurationArgs.builder()
- *                         .label(&#34;template&#34;)
- *                         .value(&#34;minimized&#34;)
+ *                         .label("template")
+ *                         .value("minimized")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

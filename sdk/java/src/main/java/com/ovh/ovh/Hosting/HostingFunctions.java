@@ -30,7 +30,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting database.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -52,12 +53,13 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var database = HostingFunctions.getPrivateDatabase(GetPrivateDatabaseArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPrivateDatabaseResult> getPrivateDatabase(GetPrivateDatabaseArgs args) {
@@ -67,7 +69,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting database.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -89,12 +92,13 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var database = HostingFunctions.getPrivateDatabase(GetPrivateDatabaseArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseResult> getPrivateDatabasePlain(GetPrivateDatabasePlainArgs args) {
@@ -104,7 +108,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting database.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -126,12 +131,13 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var database = HostingFunctions.getPrivateDatabase(GetPrivateDatabaseArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPrivateDatabaseResult> getPrivateDatabase(GetPrivateDatabaseArgs args, InvokeOptions options) {
@@ -141,7 +147,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting database.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -163,12 +170,13 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var database = HostingFunctions.getPrivateDatabase(GetPrivateDatabaseArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseResult> getPrivateDatabasePlain(GetPrivateDatabasePlainArgs args, InvokeOptions options) {
@@ -178,7 +186,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase whitelist.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -200,13 +209,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var whitelist = HostingFunctions.getPrivateDatabaseAllowlist(GetPrivateDatabaseAllowlistArgs.builder()
-     *             .ip(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .ip("XXXXXX")
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPrivateDatabaseAllowlistResult> getPrivateDatabaseAllowlist(GetPrivateDatabaseAllowlistArgs args) {
@@ -216,7 +226,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase whitelist.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -238,13 +249,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var whitelist = HostingFunctions.getPrivateDatabaseAllowlist(GetPrivateDatabaseAllowlistArgs.builder()
-     *             .ip(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .ip("XXXXXX")
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseAllowlistResult> getPrivateDatabaseAllowlistPlain(GetPrivateDatabaseAllowlistPlainArgs args) {
@@ -254,7 +266,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase whitelist.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -276,13 +289,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var whitelist = HostingFunctions.getPrivateDatabaseAllowlist(GetPrivateDatabaseAllowlistArgs.builder()
-     *             .ip(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .ip("XXXXXX")
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPrivateDatabaseAllowlistResult> getPrivateDatabaseAllowlist(GetPrivateDatabaseAllowlistArgs args, InvokeOptions options) {
@@ -292,7 +306,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase whitelist.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -314,13 +329,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var whitelist = HostingFunctions.getPrivateDatabaseAllowlist(GetPrivateDatabaseAllowlistArgs.builder()
-     *             .ip(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .ip("XXXXXX")
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseAllowlistResult> getPrivateDatabaseAllowlistPlain(GetPrivateDatabaseAllowlistPlainArgs args, InvokeOptions options) {
@@ -330,7 +346,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -352,13 +369,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
-     *             .databaseName(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .databaseName("XXXXXX")
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPrivateDatabaseDbResult> getPrivateDatabaseDb(GetPrivateDatabaseDbArgs args) {
@@ -368,7 +386,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -390,13 +409,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
-     *             .databaseName(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .databaseName("XXXXXX")
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseDbResult> getPrivateDatabaseDbPlain(GetPrivateDatabaseDbPlainArgs args) {
@@ -406,7 +426,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -428,13 +449,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
-     *             .databaseName(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .databaseName("XXXXXX")
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPrivateDatabaseDbResult> getPrivateDatabaseDb(GetPrivateDatabaseDbArgs args, InvokeOptions options) {
@@ -444,7 +466,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -466,13 +489,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
-     *             .databaseName(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .databaseName("XXXXXX")
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseDbResult> getPrivateDatabaseDbPlain(GetPrivateDatabaseDbPlainArgs args, InvokeOptions options) {
@@ -482,7 +506,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -504,13 +529,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = HostingFunctions.getPrivateDatabaseUser(GetPrivateDatabaseUserArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .userName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
+     *             .userName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPrivateDatabaseUserResult> getPrivateDatabaseUser(GetPrivateDatabaseUserArgs args) {
@@ -520,7 +546,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -542,13 +569,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = HostingFunctions.getPrivateDatabaseUser(GetPrivateDatabaseUserArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .userName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
+     *             .userName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseUserResult> getPrivateDatabaseUserPlain(GetPrivateDatabaseUserPlainArgs args) {
@@ -558,7 +586,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -580,13 +609,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = HostingFunctions.getPrivateDatabaseUser(GetPrivateDatabaseUserArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .userName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
+     *             .userName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPrivateDatabaseUserResult> getPrivateDatabaseUser(GetPrivateDatabaseUserArgs args, InvokeOptions options) {
@@ -596,7 +626,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -618,13 +649,14 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = HostingFunctions.getPrivateDatabaseUser(GetPrivateDatabaseUserArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .userName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
+     *             .userName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseUserResult> getPrivateDatabaseUserPlain(GetPrivateDatabaseUserPlainArgs args, InvokeOptions options) {
@@ -634,7 +666,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user grant.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -656,14 +689,15 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var userGrant = HostingFunctions.getPrivateDatabaseUserGrant(GetPrivateDatabaseUserGrantArgs.builder()
-     *             .databaseName(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .userName(&#34;XXXXXX&#34;)
+     *             .databaseName("XXXXXX")
+     *             .serviceName("XXXXXX")
+     *             .userName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPrivateDatabaseUserGrantResult> getPrivateDatabaseUserGrant(GetPrivateDatabaseUserGrantArgs args) {
@@ -673,7 +707,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user grant.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -695,14 +730,15 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var userGrant = HostingFunctions.getPrivateDatabaseUserGrant(GetPrivateDatabaseUserGrantArgs.builder()
-     *             .databaseName(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .userName(&#34;XXXXXX&#34;)
+     *             .databaseName("XXXXXX")
+     *             .serviceName("XXXXXX")
+     *             .userName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseUserGrantResult> getPrivateDatabaseUserGrantPlain(GetPrivateDatabaseUserGrantPlainArgs args) {
@@ -712,7 +748,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user grant.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -734,14 +771,15 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var userGrant = HostingFunctions.getPrivateDatabaseUserGrant(GetPrivateDatabaseUserGrantArgs.builder()
-     *             .databaseName(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .userName(&#34;XXXXXX&#34;)
+     *             .databaseName("XXXXXX")
+     *             .serviceName("XXXXXX")
+     *             .userName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPrivateDatabaseUserGrantResult> getPrivateDatabaseUserGrant(GetPrivateDatabaseUserGrantArgs args, InvokeOptions options) {
@@ -751,7 +789,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user grant.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -773,14 +812,15 @@ public final class HostingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var userGrant = HostingFunctions.getPrivateDatabaseUserGrant(GetPrivateDatabaseUserGrantArgs.builder()
-     *             .databaseName(&#34;XXXXXX&#34;)
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .userName(&#34;XXXXXX&#34;)
+     *             .databaseName("XXXXXX")
+     *             .serviceName("XXXXXX")
+     *             .userName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseUserGrantResult> getPrivateDatabaseUserGrantPlain(GetPrivateDatabaseUserGrantPlainArgs args, InvokeOptions options) {

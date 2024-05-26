@@ -5,6 +5,7 @@ package com.ovh.ovh.Me;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class InstallationTemplatePartitionSchemeArgs extends com.pulumi.re
         }
 
         public InstallationTemplatePartitionSchemeArgs build() {
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.templateName = Objects.requireNonNull($.templateName, "expected parameter 'templateName' to be non-null");
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemeArgs", "priority");
+            }
+            if ($.templateName == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemeArgs", "templateName");
+            }
             return $;
         }
     }

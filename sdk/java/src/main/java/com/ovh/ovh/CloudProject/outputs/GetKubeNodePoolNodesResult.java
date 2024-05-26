@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.ovh.ovh.CloudProject.outputs.GetKubeNodePoolNodesNode;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,22 +101,34 @@ public final class GetKubeNodePoolNodesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kubeId(String kubeId) {
-            this.kubeId = Objects.requireNonNull(kubeId);
+            if (kubeId == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesResult", "kubeId");
+            }
+            this.kubeId = kubeId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(List<GetKubeNodePoolNodesNode> nodes) {
-            this.nodes = Objects.requireNonNull(nodes);
+            if (nodes == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesResult", "nodes");
+            }
+            this.nodes = nodes;
             return this;
         }
         public Builder nodes(GetKubeNodePoolNodesNode... nodes) {
@@ -123,17 +136,20 @@ public final class GetKubeNodePoolNodesResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetKubeNodePoolNodesResult build() {
-            final var o = new GetKubeNodePoolNodesResult();
-            o.id = id;
-            o.kubeId = kubeId;
-            o.name = name;
-            o.nodes = nodes;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetKubeNodePoolNodesResult();
+            _resultValue.id = id;
+            _resultValue.kubeId = kubeId;
+            _resultValue.name = name;
+            _resultValue.nodes = nodes;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

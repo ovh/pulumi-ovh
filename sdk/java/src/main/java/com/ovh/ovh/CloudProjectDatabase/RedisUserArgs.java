@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProjectDatabase;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -380,8 +381,12 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RedisUserArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("RedisUserArgs", "clusterId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("RedisUserArgs", "serviceName");
+            }
             return $;
         }
     }

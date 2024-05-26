@@ -4,6 +4,7 @@
 package com.ovh.ovh.Dbaas.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,7 +93,9 @@ public final class GetLogsClusterPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetLogsClusterPlainArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetLogsClusterPlainArgs", "serviceName");
+            }
             return $;
         }
     }

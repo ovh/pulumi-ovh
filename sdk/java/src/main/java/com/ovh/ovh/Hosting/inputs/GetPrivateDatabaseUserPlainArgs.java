@@ -4,6 +4,7 @@
 package com.ovh.ovh.Hosting.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetPrivateDatabaseUserPlainArgs extends com.pulumi.resources.
         }
 
         public GetPrivateDatabaseUserPlainArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.userName = Objects.requireNonNull($.userName, "expected parameter 'userName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetPrivateDatabaseUserPlainArgs", "serviceName");
+            }
+            if ($.userName == null) {
+                throw new MissingRequiredPropertyException("GetPrivateDatabaseUserPlainArgs", "userName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.Hosting.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -88,43 +89,61 @@ public final class GetPrivateDatabaseUserGrantResult {
 
         @CustomType.Setter
         public Builder creationDate(String creationDate) {
-            this.creationDate = Objects.requireNonNull(creationDate);
+            if (creationDate == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserGrantResult", "creationDate");
+            }
+            this.creationDate = creationDate;
             return this;
         }
         @CustomType.Setter
         public Builder databaseName(String databaseName) {
-            this.databaseName = Objects.requireNonNull(databaseName);
+            if (databaseName == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserGrantResult", "databaseName");
+            }
+            this.databaseName = databaseName;
             return this;
         }
         @CustomType.Setter
         public Builder grant(String grant) {
-            this.grant = Objects.requireNonNull(grant);
+            if (grant == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserGrantResult", "grant");
+            }
+            this.grant = grant;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserGrantResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserGrantResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder userName(String userName) {
-            this.userName = Objects.requireNonNull(userName);
+            if (userName == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserGrantResult", "userName");
+            }
+            this.userName = userName;
             return this;
         }
         public GetPrivateDatabaseUserGrantResult build() {
-            final var o = new GetPrivateDatabaseUserGrantResult();
-            o.creationDate = creationDate;
-            o.databaseName = databaseName;
-            o.grant = grant;
-            o.id = id;
-            o.serviceName = serviceName;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetPrivateDatabaseUserGrantResult();
+            _resultValue.creationDate = creationDate;
+            _resultValue.databaseName = databaseName;
+            _resultValue.grant = grant;
+            _resultValue.id = id;
+            _resultValue.serviceName = serviceName;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

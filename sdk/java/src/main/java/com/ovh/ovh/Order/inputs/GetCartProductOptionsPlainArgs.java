@@ -4,6 +4,7 @@
 package com.ovh.ovh.Order.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -146,9 +147,15 @@ public final class GetCartProductOptionsPlainArgs extends com.pulumi.resources.I
         }
 
         public GetCartProductOptionsPlainArgs build() {
-            $.cartId = Objects.requireNonNull($.cartId, "expected parameter 'cartId' to be non-null");
-            $.planCode = Objects.requireNonNull($.planCode, "expected parameter 'planCode' to be non-null");
-            $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
+            if ($.cartId == null) {
+                throw new MissingRequiredPropertyException("GetCartProductOptionsPlainArgs", "cartId");
+            }
+            if ($.planCode == null) {
+                throw new MissingRequiredPropertyException("GetCartProductOptionsPlainArgs", "planCode");
+            }
+            if ($.product == null) {
+                throw new MissingRequiredPropertyException("GetCartProductOptionsPlainArgs", "product");
+            }
             return $;
         }
     }

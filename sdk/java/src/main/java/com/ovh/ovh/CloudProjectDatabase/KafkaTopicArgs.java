@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProjectDatabase;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -340,8 +341,12 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public KafkaTopicArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("KafkaTopicArgs", "clusterId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("KafkaTopicArgs", "serviceName");
+            }
             return $;
         }
     }

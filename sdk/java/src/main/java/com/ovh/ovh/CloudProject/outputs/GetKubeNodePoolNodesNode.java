@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -197,79 +198,115 @@ public final class GetKubeNodePoolNodesNode {
 
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder deployedAt(String deployedAt) {
-            this.deployedAt = Objects.requireNonNull(deployedAt);
+            if (deployedAt == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "deployedAt");
+            }
+            this.deployedAt = deployedAt;
             return this;
         }
         @CustomType.Setter
         public Builder flavor(String flavor) {
-            this.flavor = Objects.requireNonNull(flavor);
+            if (flavor == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "flavor");
+            }
+            this.flavor = flavor;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder isUpToDate(Boolean isUpToDate) {
-            this.isUpToDate = Objects.requireNonNull(isUpToDate);
+            if (isUpToDate == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "isUpToDate");
+            }
+            this.isUpToDate = isUpToDate;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodePoolId(String nodePoolId) {
-            this.nodePoolId = Objects.requireNonNull(nodePoolId);
+            if (nodePoolId == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "nodePoolId");
+            }
+            this.nodePoolId = nodePoolId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolNodesNode", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetKubeNodePoolNodesNode build() {
-            final var o = new GetKubeNodePoolNodesNode();
-            o.createdAt = createdAt;
-            o.deployedAt = deployedAt;
-            o.flavor = flavor;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.isUpToDate = isUpToDate;
-            o.name = name;
-            o.nodePoolId = nodePoolId;
-            o.projectId = projectId;
-            o.status = status;
-            o.updatedAt = updatedAt;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetKubeNodePoolNodesNode();
+            _resultValue.createdAt = createdAt;
+            _resultValue.deployedAt = deployedAt;
+            _resultValue.flavor = flavor;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.isUpToDate = isUpToDate;
+            _resultValue.name = name;
+            _resultValue.nodePoolId = nodePoolId;
+            _resultValue.projectId = projectId;
+            _resultValue.status = status;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

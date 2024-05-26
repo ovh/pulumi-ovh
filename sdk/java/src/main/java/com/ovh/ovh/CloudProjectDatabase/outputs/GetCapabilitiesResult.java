@@ -8,6 +8,7 @@ import com.ovh.ovh.CloudProjectDatabase.outputs.GetCapabilitiesFlavor;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetCapabilitiesOption;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetCapabilitiesPlan;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -117,7 +118,10 @@ public final class GetCapabilitiesResult {
 
         @CustomType.Setter
         public Builder engines(List<GetCapabilitiesEngine> engines) {
-            this.engines = Objects.requireNonNull(engines);
+            if (engines == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesResult", "engines");
+            }
+            this.engines = engines;
             return this;
         }
         public Builder engines(GetCapabilitiesEngine... engines) {
@@ -125,7 +129,10 @@ public final class GetCapabilitiesResult {
         }
         @CustomType.Setter
         public Builder flavors(List<GetCapabilitiesFlavor> flavors) {
-            this.flavors = Objects.requireNonNull(flavors);
+            if (flavors == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesResult", "flavors");
+            }
+            this.flavors = flavors;
             return this;
         }
         public Builder flavors(GetCapabilitiesFlavor... flavors) {
@@ -133,12 +140,18 @@ public final class GetCapabilitiesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder options(List<GetCapabilitiesOption> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesResult", "options");
+            }
+            this.options = options;
             return this;
         }
         public Builder options(GetCapabilitiesOption... options) {
@@ -146,7 +159,10 @@ public final class GetCapabilitiesResult {
         }
         @CustomType.Setter
         public Builder plans(List<GetCapabilitiesPlan> plans) {
-            this.plans = Objects.requireNonNull(plans);
+            if (plans == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesResult", "plans");
+            }
+            this.plans = plans;
             return this;
         }
         public Builder plans(GetCapabilitiesPlan... plans) {
@@ -154,18 +170,21 @@ public final class GetCapabilitiesResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetCapabilitiesResult build() {
-            final var o = new GetCapabilitiesResult();
-            o.engines = engines;
-            o.flavors = flavors;
-            o.id = id;
-            o.options = options;
-            o.plans = plans;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetCapabilitiesResult();
+            _resultValue.engines = engines;
+            _resultValue.flavors = flavors;
+            _resultValue.id = id;
+            _resultValue.options = options;
+            _resultValue.plans = plans;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

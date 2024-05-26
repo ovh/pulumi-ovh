@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * Manage TCP route for a loadbalancer service
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,17 +45,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcpreject = new TcpRoute(&#34;tcpreject&#34;, TcpRouteArgs.builder()        
+ *         var tcpreject = new TcpRoute("tcpreject", TcpRouteArgs.builder()        
  *             .action(TcpRouteActionArgs.builder()
- *                 .type(&#34;reject&#34;)
+ *                 .type("reject")
  *                 .build())
- *             .serviceName(&#34;loadbalancer-xxxxxxxxxxxxxxxxxx&#34;)
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .weight(1)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/tcpRoute:TcpRoute")

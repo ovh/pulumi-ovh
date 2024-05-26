@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -99,22 +100,34 @@ public final class GetIpRestrictionsResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetIpRestrictionsResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetIpRestrictionsResult", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpRestrictionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ips(List<String> ips) {
-            this.ips = Objects.requireNonNull(ips);
+            if (ips == null) {
+              throw new MissingRequiredPropertyException("GetIpRestrictionsResult", "ips");
+            }
+            this.ips = ips;
             return this;
         }
         public Builder ips(String... ips) {
@@ -122,17 +135,20 @@ public final class GetIpRestrictionsResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetIpRestrictionsResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetIpRestrictionsResult build() {
-            final var o = new GetIpRestrictionsResult();
-            o.clusterId = clusterId;
-            o.engine = engine;
-            o.id = id;
-            o.ips = ips;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetIpRestrictionsResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.engine = engine;
+            _resultValue.id = id;
+            _resultValue.ips = ips;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

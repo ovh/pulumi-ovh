@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -160,9 +161,15 @@ public final class KubeNodePoolTemplateMetadataArgs extends com.pulumi.resources
         }
 
         public KubeNodePoolTemplateMetadataArgs build() {
-            $.annotations = Objects.requireNonNull($.annotations, "expected parameter 'annotations' to be non-null");
-            $.finalizers = Objects.requireNonNull($.finalizers, "expected parameter 'finalizers' to be non-null");
-            $.labels = Objects.requireNonNull($.labels, "expected parameter 'labels' to be non-null");
+            if ($.annotations == null) {
+                throw new MissingRequiredPropertyException("KubeNodePoolTemplateMetadataArgs", "annotations");
+            }
+            if ($.finalizers == null) {
+                throw new MissingRequiredPropertyException("KubeNodePoolTemplateMetadataArgs", "finalizers");
+            }
+            if ($.labels == null) {
+                throw new MissingRequiredPropertyException("KubeNodePoolTemplateMetadataArgs", "labels");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.IpLoadBalancing.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,19 +57,25 @@ public final class GetIpLoadBalancingOrderableZone {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingOrderableZone", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder planCode(String planCode) {
-            this.planCode = Objects.requireNonNull(planCode);
+            if (planCode == null) {
+              throw new MissingRequiredPropertyException("GetIpLoadBalancingOrderableZone", "planCode");
+            }
+            this.planCode = planCode;
             return this;
         }
         public GetIpLoadBalancingOrderableZone build() {
-            final var o = new GetIpLoadBalancingOrderableZone();
-            o.name = name;
-            o.planCode = planCode;
-            return o;
+            final var _resultValue = new GetIpLoadBalancingOrderableZone();
+            _resultValue.name = name;
+            _resultValue.planCode = planCode;
+            return _resultValue;
         }
     }
 }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,10 @@ public final class GetKafkaAclsResult {
 
         @CustomType.Setter
         public Builder aclIds(List<String> aclIds) {
-            this.aclIds = Objects.requireNonNull(aclIds);
+            if (aclIds == null) {
+              throw new MissingRequiredPropertyException("GetKafkaAclsResult", "aclIds");
+            }
+            this.aclIds = aclIds;
             return this;
         }
         public Builder aclIds(String... aclIds) {
@@ -93,26 +97,35 @@ public final class GetKafkaAclsResult {
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetKafkaAclsResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKafkaAclsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKafkaAclsResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetKafkaAclsResult build() {
-            final var o = new GetKafkaAclsResult();
-            o.aclIds = aclIds;
-            o.clusterId = clusterId;
-            o.id = id;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetKafkaAclsResult();
+            _resultValue.aclIds = aclIds;
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

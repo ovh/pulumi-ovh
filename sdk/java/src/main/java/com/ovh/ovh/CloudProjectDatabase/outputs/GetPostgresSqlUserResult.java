@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -127,27 +128,42 @@ public final class GetPostgresSqlUserResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresSqlUserResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetPostgresSqlUserResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPostgresSqlUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPostgresSqlUserResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder roles(List<String> roles) {
-            this.roles = Objects.requireNonNull(roles);
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("GetPostgresSqlUserResult", "roles");
+            }
+            this.roles = roles;
             return this;
         }
         public Builder roles(String... roles) {
@@ -155,24 +171,30 @@ public final class GetPostgresSqlUserResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetPostgresSqlUserResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetPostgresSqlUserResult", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetPostgresSqlUserResult build() {
-            final var o = new GetPostgresSqlUserResult();
-            o.clusterId = clusterId;
-            o.createdAt = createdAt;
-            o.id = id;
-            o.name = name;
-            o.roles = roles;
-            o.serviceName = serviceName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetPostgresSqlUserResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.createdAt = createdAt;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.roles = roles;
+            _resultValue.serviceName = serviceName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

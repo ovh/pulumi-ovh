@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -144,49 +145,70 @@ public final class GetInstallationTemplateCustomization {
 
         @CustomType.Setter
         public Builder changeLog(String changeLog) {
-            this.changeLog = Objects.requireNonNull(changeLog);
+            if (changeLog == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "changeLog");
+            }
+            this.changeLog = changeLog;
             return this;
         }
         @CustomType.Setter
         public Builder customHostname(String customHostname) {
-            this.customHostname = Objects.requireNonNull(customHostname);
+            if (customHostname == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "customHostname");
+            }
+            this.customHostname = customHostname;
             return this;
         }
         @CustomType.Setter
         public Builder postInstallationScriptLink(String postInstallationScriptLink) {
-            this.postInstallationScriptLink = Objects.requireNonNull(postInstallationScriptLink);
+            if (postInstallationScriptLink == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "postInstallationScriptLink");
+            }
+            this.postInstallationScriptLink = postInstallationScriptLink;
             return this;
         }
         @CustomType.Setter
         public Builder postInstallationScriptReturn(String postInstallationScriptReturn) {
-            this.postInstallationScriptReturn = Objects.requireNonNull(postInstallationScriptReturn);
+            if (postInstallationScriptReturn == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "postInstallationScriptReturn");
+            }
+            this.postInstallationScriptReturn = postInstallationScriptReturn;
             return this;
         }
         @CustomType.Setter
         public Builder rating(Integer rating) {
-            this.rating = Objects.requireNonNull(rating);
+            if (rating == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "rating");
+            }
+            this.rating = rating;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyName(String sshKeyName) {
-            this.sshKeyName = Objects.requireNonNull(sshKeyName);
+            if (sshKeyName == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "sshKeyName");
+            }
+            this.sshKeyName = sshKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder useDistributionKernel(Boolean useDistributionKernel) {
-            this.useDistributionKernel = Objects.requireNonNull(useDistributionKernel);
+            if (useDistributionKernel == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "useDistributionKernel");
+            }
+            this.useDistributionKernel = useDistributionKernel;
             return this;
         }
         public GetInstallationTemplateCustomization build() {
-            final var o = new GetInstallationTemplateCustomization();
-            o.changeLog = changeLog;
-            o.customHostname = customHostname;
-            o.postInstallationScriptLink = postInstallationScriptLink;
-            o.postInstallationScriptReturn = postInstallationScriptReturn;
-            o.rating = rating;
-            o.sshKeyName = sshKeyName;
-            o.useDistributionKernel = useDistributionKernel;
-            return o;
+            final var _resultValue = new GetInstallationTemplateCustomization();
+            _resultValue.changeLog = changeLog;
+            _resultValue.customHostname = customHostname;
+            _resultValue.postInstallationScriptLink = postInstallationScriptLink;
+            _resultValue.postInstallationScriptReturn = postInstallationScriptReturn;
+            _resultValue.rating = rating;
+            _resultValue.sshKeyName = sshKeyName;
+            _resultValue.useDistributionKernel = useDistributionKernel;
+            return _resultValue;
         }
     }
 }

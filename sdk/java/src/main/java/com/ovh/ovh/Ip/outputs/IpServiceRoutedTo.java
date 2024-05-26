@@ -44,13 +44,14 @@ public final class IpServiceRoutedTo {
 
         @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
+
             this.serviceName = serviceName;
             return this;
         }
         public IpServiceRoutedTo build() {
-            final var o = new IpServiceRoutedTo();
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new IpServiceRoutedTo();
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

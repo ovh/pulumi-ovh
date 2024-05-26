@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -265,7 +266,9 @@ public final class FailoverIpAttachArgs extends com.pulumi.resources.ResourceArg
         }
 
         public FailoverIpAttachArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("FailoverIpAttachArgs", "serviceName");
+            }
             return $;
         }
     }

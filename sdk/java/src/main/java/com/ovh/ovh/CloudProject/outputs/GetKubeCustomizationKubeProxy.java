@@ -59,19 +59,21 @@ public final class GetKubeCustomizationKubeProxy {
 
         @CustomType.Setter
         public Builder iptables(@Nullable GetKubeCustomizationKubeProxyIptables iptables) {
+
             this.iptables = iptables;
             return this;
         }
         @CustomType.Setter
         public Builder ipvs(@Nullable GetKubeCustomizationKubeProxyIpvs ipvs) {
+
             this.ipvs = ipvs;
             return this;
         }
         public GetKubeCustomizationKubeProxy build() {
-            final var o = new GetKubeCustomizationKubeProxy();
-            o.iptables = iptables;
-            o.ipvs = ipvs;
-            return o;
+            final var _resultValue = new GetKubeCustomizationKubeProxy();
+            _resultValue.iptables = iptables;
+            _resultValue.ipvs = ipvs;
+            return _resultValue;
         }
     }
 }

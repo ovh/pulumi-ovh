@@ -6,6 +6,7 @@ package com.ovh.ovh.Me.outputs;
 import com.ovh.ovh.Me.outputs.GetInstallationTemplateCustomization;
 import com.ovh.ovh.Me.outputs.GetInstallationTemplatePartitionScheme;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -281,7 +282,10 @@ public final class GetInstallationTemplateResult {
 
         @CustomType.Setter
         public Builder availableLanguages(List<String> availableLanguages) {
-            this.availableLanguages = Objects.requireNonNull(availableLanguages);
+            if (availableLanguages == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "availableLanguages");
+            }
+            this.availableLanguages = availableLanguages;
             return this;
         }
         public Builder availableLanguages(String... availableLanguages) {
@@ -289,22 +293,34 @@ public final class GetInstallationTemplateResult {
         }
         @CustomType.Setter
         public Builder beta(Boolean beta) {
-            this.beta = Objects.requireNonNull(beta);
+            if (beta == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "beta");
+            }
+            this.beta = beta;
             return this;
         }
         @CustomType.Setter
         public Builder bitFormat(Integer bitFormat) {
-            this.bitFormat = Objects.requireNonNull(bitFormat);
+            if (bitFormat == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "bitFormat");
+            }
+            this.bitFormat = bitFormat;
             return this;
         }
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder customizations(List<GetInstallationTemplateCustomization> customizations) {
-            this.customizations = Objects.requireNonNull(customizations);
+            if (customizations == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "customizations");
+            }
+            this.customizations = customizations;
             return this;
         }
         public Builder customizations(GetInstallationTemplateCustomization... customizations) {
@@ -312,32 +328,50 @@ public final class GetInstallationTemplateResult {
         }
         @CustomType.Setter
         public Builder defaultLanguage(String defaultLanguage) {
-            this.defaultLanguage = Objects.requireNonNull(defaultLanguage);
+            if (defaultLanguage == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "defaultLanguage");
+            }
+            this.defaultLanguage = defaultLanguage;
             return this;
         }
         @CustomType.Setter
         public Builder deprecated(Boolean deprecated) {
-            this.deprecated = Objects.requireNonNull(deprecated);
+            if (deprecated == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "deprecated");
+            }
+            this.deprecated = deprecated;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder distribution(String distribution) {
-            this.distribution = Objects.requireNonNull(distribution);
+            if (distribution == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "distribution");
+            }
+            this.distribution = distribution;
             return this;
         }
         @CustomType.Setter
         public Builder family(String family) {
-            this.family = Objects.requireNonNull(family);
+            if (family == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "family");
+            }
+            this.family = family;
             return this;
         }
         @CustomType.Setter
         public Builder filesystems(List<String> filesystems) {
-            this.filesystems = Objects.requireNonNull(filesystems);
+            if (filesystems == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "filesystems");
+            }
+            this.filesystems = filesystems;
             return this;
         }
         public Builder filesystems(String... filesystems) {
@@ -345,27 +379,42 @@ public final class GetInstallationTemplateResult {
         }
         @CustomType.Setter
         public Builder hardRaidConfiguration(Boolean hardRaidConfiguration) {
-            this.hardRaidConfiguration = Objects.requireNonNull(hardRaidConfiguration);
+            if (hardRaidConfiguration == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "hardRaidConfiguration");
+            }
+            this.hardRaidConfiguration = hardRaidConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastModification(String lastModification) {
-            this.lastModification = Objects.requireNonNull(lastModification);
+            if (lastModification == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "lastModification");
+            }
+            this.lastModification = lastModification;
             return this;
         }
         @CustomType.Setter
         public Builder lvmReady(Boolean lvmReady) {
-            this.lvmReady = Objects.requireNonNull(lvmReady);
+            if (lvmReady == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "lvmReady");
+            }
+            this.lvmReady = lvmReady;
             return this;
         }
         @CustomType.Setter
         public Builder partitionSchemes(List<GetInstallationTemplatePartitionScheme> partitionSchemes) {
-            this.partitionSchemes = Objects.requireNonNull(partitionSchemes);
+            if (partitionSchemes == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "partitionSchemes");
+            }
+            this.partitionSchemes = partitionSchemes;
             return this;
         }
         public Builder partitionSchemes(GetInstallationTemplatePartitionScheme... partitionSchemes) {
@@ -373,47 +422,59 @@ public final class GetInstallationTemplateResult {
         }
         @CustomType.Setter
         public Builder supportsDistributionKernel(Boolean supportsDistributionKernel) {
-            this.supportsDistributionKernel = Objects.requireNonNull(supportsDistributionKernel);
+            if (supportsDistributionKernel == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "supportsDistributionKernel");
+            }
+            this.supportsDistributionKernel = supportsDistributionKernel;
             return this;
         }
         @CustomType.Setter
         public Builder supportsRtm(Boolean supportsRtm) {
-            this.supportsRtm = Objects.requireNonNull(supportsRtm);
+            if (supportsRtm == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "supportsRtm");
+            }
+            this.supportsRtm = supportsRtm;
             return this;
         }
         @CustomType.Setter
         public Builder supportsSqlServer(Boolean supportsSqlServer) {
-            this.supportsSqlServer = Objects.requireNonNull(supportsSqlServer);
+            if (supportsSqlServer == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "supportsSqlServer");
+            }
+            this.supportsSqlServer = supportsSqlServer;
             return this;
         }
         @CustomType.Setter
         public Builder templateName(String templateName) {
-            this.templateName = Objects.requireNonNull(templateName);
+            if (templateName == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "templateName");
+            }
+            this.templateName = templateName;
             return this;
         }
         public GetInstallationTemplateResult build() {
-            final var o = new GetInstallationTemplateResult();
-            o.availableLanguages = availableLanguages;
-            o.beta = beta;
-            o.bitFormat = bitFormat;
-            o.category = category;
-            o.customizations = customizations;
-            o.defaultLanguage = defaultLanguage;
-            o.deprecated = deprecated;
-            o.description = description;
-            o.distribution = distribution;
-            o.family = family;
-            o.filesystems = filesystems;
-            o.hardRaidConfiguration = hardRaidConfiguration;
-            o.id = id;
-            o.lastModification = lastModification;
-            o.lvmReady = lvmReady;
-            o.partitionSchemes = partitionSchemes;
-            o.supportsDistributionKernel = supportsDistributionKernel;
-            o.supportsRtm = supportsRtm;
-            o.supportsSqlServer = supportsSqlServer;
-            o.templateName = templateName;
-            return o;
+            final var _resultValue = new GetInstallationTemplateResult();
+            _resultValue.availableLanguages = availableLanguages;
+            _resultValue.beta = beta;
+            _resultValue.bitFormat = bitFormat;
+            _resultValue.category = category;
+            _resultValue.customizations = customizations;
+            _resultValue.defaultLanguage = defaultLanguage;
+            _resultValue.deprecated = deprecated;
+            _resultValue.description = description;
+            _resultValue.distribution = distribution;
+            _resultValue.family = family;
+            _resultValue.filesystems = filesystems;
+            _resultValue.hardRaidConfiguration = hardRaidConfiguration;
+            _resultValue.id = id;
+            _resultValue.lastModification = lastModification;
+            _resultValue.lvmReady = lvmReady;
+            _resultValue.partitionSchemes = partitionSchemes;
+            _resultValue.supportsDistributionKernel = supportsDistributionKernel;
+            _resultValue.supportsRtm = supportsRtm;
+            _resultValue.supportsSqlServer = supportsSqlServer;
+            _resultValue.templateName = templateName;
+            return _resultValue;
         }
     }
 }

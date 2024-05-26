@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -211,85 +212,124 @@ public final class GetM3dbNamespaceResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resolution(String resolution) {
-            this.resolution = Objects.requireNonNull(resolution);
+            if (resolution == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "resolution");
+            }
+            this.resolution = resolution;
             return this;
         }
         @CustomType.Setter
         public Builder retentionBlockDataExpirationDuration(String retentionBlockDataExpirationDuration) {
-            this.retentionBlockDataExpirationDuration = Objects.requireNonNull(retentionBlockDataExpirationDuration);
+            if (retentionBlockDataExpirationDuration == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "retentionBlockDataExpirationDuration");
+            }
+            this.retentionBlockDataExpirationDuration = retentionBlockDataExpirationDuration;
             return this;
         }
         @CustomType.Setter
         public Builder retentionBlockSizeDuration(String retentionBlockSizeDuration) {
-            this.retentionBlockSizeDuration = Objects.requireNonNull(retentionBlockSizeDuration);
+            if (retentionBlockSizeDuration == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "retentionBlockSizeDuration");
+            }
+            this.retentionBlockSizeDuration = retentionBlockSizeDuration;
             return this;
         }
         @CustomType.Setter
         public Builder retentionBufferFutureDuration(String retentionBufferFutureDuration) {
-            this.retentionBufferFutureDuration = Objects.requireNonNull(retentionBufferFutureDuration);
+            if (retentionBufferFutureDuration == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "retentionBufferFutureDuration");
+            }
+            this.retentionBufferFutureDuration = retentionBufferFutureDuration;
             return this;
         }
         @CustomType.Setter
         public Builder retentionBufferPastDuration(String retentionBufferPastDuration) {
-            this.retentionBufferPastDuration = Objects.requireNonNull(retentionBufferPastDuration);
+            if (retentionBufferPastDuration == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "retentionBufferPastDuration");
+            }
+            this.retentionBufferPastDuration = retentionBufferPastDuration;
             return this;
         }
         @CustomType.Setter
         public Builder retentionPeriodDuration(String retentionPeriodDuration) {
-            this.retentionPeriodDuration = Objects.requireNonNull(retentionPeriodDuration);
+            if (retentionPeriodDuration == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "retentionPeriodDuration");
+            }
+            this.retentionPeriodDuration = retentionPeriodDuration;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotEnabled(Boolean snapshotEnabled) {
-            this.snapshotEnabled = Objects.requireNonNull(snapshotEnabled);
+            if (snapshotEnabled == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "snapshotEnabled");
+            }
+            this.snapshotEnabled = snapshotEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder writesToCommitLogEnabled(Boolean writesToCommitLogEnabled) {
-            this.writesToCommitLogEnabled = Objects.requireNonNull(writesToCommitLogEnabled);
+            if (writesToCommitLogEnabled == null) {
+              throw new MissingRequiredPropertyException("GetM3dbNamespaceResult", "writesToCommitLogEnabled");
+            }
+            this.writesToCommitLogEnabled = writesToCommitLogEnabled;
             return this;
         }
         public GetM3dbNamespaceResult build() {
-            final var o = new GetM3dbNamespaceResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.name = name;
-            o.resolution = resolution;
-            o.retentionBlockDataExpirationDuration = retentionBlockDataExpirationDuration;
-            o.retentionBlockSizeDuration = retentionBlockSizeDuration;
-            o.retentionBufferFutureDuration = retentionBufferFutureDuration;
-            o.retentionBufferPastDuration = retentionBufferPastDuration;
-            o.retentionPeriodDuration = retentionPeriodDuration;
-            o.serviceName = serviceName;
-            o.snapshotEnabled = snapshotEnabled;
-            o.type = type;
-            o.writesToCommitLogEnabled = writesToCommitLogEnabled;
-            return o;
+            final var _resultValue = new GetM3dbNamespaceResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.resolution = resolution;
+            _resultValue.retentionBlockDataExpirationDuration = retentionBlockDataExpirationDuration;
+            _resultValue.retentionBlockSizeDuration = retentionBlockSizeDuration;
+            _resultValue.retentionBufferFutureDuration = retentionBufferFutureDuration;
+            _resultValue.retentionBufferPastDuration = retentionBufferPastDuration;
+            _resultValue.retentionPeriodDuration = retentionPeriodDuration;
+            _resultValue.serviceName = serviceName;
+            _resultValue.snapshotEnabled = snapshotEnabled;
+            _resultValue.type = type;
+            _resultValue.writesToCommitLogEnabled = writesToCommitLogEnabled;
+            return _resultValue;
         }
     }
 }

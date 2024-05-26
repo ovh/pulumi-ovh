@@ -5,6 +5,7 @@ package com.ovh.ovh.Me;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -441,13 +442,27 @@ public final class InstallationTemplatePartitionSchemePartitionArgs extends com.
         }
 
         public InstallationTemplatePartitionSchemePartitionArgs build() {
-            $.filesystem = Objects.requireNonNull($.filesystem, "expected parameter 'filesystem' to be non-null");
-            $.mountpoint = Objects.requireNonNull($.mountpoint, "expected parameter 'mountpoint' to be non-null");
-            $.order = Objects.requireNonNull($.order, "expected parameter 'order' to be non-null");
-            $.schemeName = Objects.requireNonNull($.schemeName, "expected parameter 'schemeName' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
-            $.templateName = Objects.requireNonNull($.templateName, "expected parameter 'templateName' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.filesystem == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemePartitionArgs", "filesystem");
+            }
+            if ($.mountpoint == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemePartitionArgs", "mountpoint");
+            }
+            if ($.order == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemePartitionArgs", "order");
+            }
+            if ($.schemeName == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemePartitionArgs", "schemeName");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemePartitionArgs", "size");
+            }
+            if ($.templateName == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemePartitionArgs", "templateName");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("InstallationTemplatePartitionSchemePartitionArgs", "type");
+            }
             return $;
         }
     }

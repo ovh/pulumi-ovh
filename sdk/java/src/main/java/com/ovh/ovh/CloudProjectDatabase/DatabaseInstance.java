@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  *   * `postgresql`
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,20 +48,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var db = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
- *             .serviceName(&#34;XXXX&#34;)
- *             .engine(&#34;YYYY&#34;)
- *             .id(&#34;ZZZZ&#34;)
+ *             .serviceName("XXXX")
+ *             .engine("YYYY")
+ *             .id("ZZZZ")
  *             .build());
  * 
- *         var database = new DatabaseInstance(&#34;database&#34;, DatabaseInstanceArgs.builder()        
- *             .serviceName(db.applyValue(getDatabaseResult -&gt; getDatabaseResult.serviceName()))
- *             .engine(db.applyValue(getDatabaseResult -&gt; getDatabaseResult.engine()))
- *             .clusterId(db.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()))
+ *         var database = new DatabaseInstance("database", DatabaseInstanceArgs.builder()        
+ *             .serviceName(db.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
+ *             .engine(db.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
+ *             .clusterId(db.applyValue(getDatabaseResult -> getDatabaseResult.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

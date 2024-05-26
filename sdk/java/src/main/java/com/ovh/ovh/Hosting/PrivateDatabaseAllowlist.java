@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Create a new IP whitelist on your private cloud database instance.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,16 +40,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ip = new PrivateDatabaseAllowlist(&#34;ip&#34;, PrivateDatabaseAllowlistArgs.builder()        
- *             .ip(&#34;1.2.3.4&#34;)
+ *         var ip = new PrivateDatabaseAllowlist("ip", PrivateDatabaseAllowlistArgs.builder()        
+ *             .ip("1.2.3.4")
  *             .service(true)
- *             .serviceName(&#34;XXXXXX&#34;)
+ *             .serviceName("XXXXXX")
  *             .sftp(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

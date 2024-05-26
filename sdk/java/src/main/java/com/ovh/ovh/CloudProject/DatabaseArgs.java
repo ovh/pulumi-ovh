@@ -6,6 +6,7 @@ package com.ovh.ovh.CloudProject;
 import com.ovh.ovh.CloudProject.inputs.DatabaseNodeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -486,12 +487,24 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DatabaseArgs build() {
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.flavor = Objects.requireNonNull($.flavor, "expected parameter 'flavor' to be non-null");
-            $.nodes = Objects.requireNonNull($.nodes, "expected parameter 'nodes' to be non-null");
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("DatabaseArgs", "engine");
+            }
+            if ($.flavor == null) {
+                throw new MissingRequiredPropertyException("DatabaseArgs", "flavor");
+            }
+            if ($.nodes == null) {
+                throw new MissingRequiredPropertyException("DatabaseArgs", "nodes");
+            }
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("DatabaseArgs", "plan");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("DatabaseArgs", "serviceName");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("DatabaseArgs", "version");
+            }
             return $;
         }
     }

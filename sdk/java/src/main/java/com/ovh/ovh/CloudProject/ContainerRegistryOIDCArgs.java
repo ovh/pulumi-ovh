@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -521,13 +522,27 @@ public final class ContainerRegistryOIDCArgs extends com.pulumi.resources.Resour
         }
 
         public ContainerRegistryOIDCArgs build() {
-            $.oidcClientId = Objects.requireNonNull($.oidcClientId, "expected parameter 'oidcClientId' to be non-null");
-            $.oidcClientSecret = Objects.requireNonNull($.oidcClientSecret, "expected parameter 'oidcClientSecret' to be non-null");
-            $.oidcEndpoint = Objects.requireNonNull($.oidcEndpoint, "expected parameter 'oidcEndpoint' to be non-null");
-            $.oidcName = Objects.requireNonNull($.oidcName, "expected parameter 'oidcName' to be non-null");
-            $.oidcScope = Objects.requireNonNull($.oidcScope, "expected parameter 'oidcScope' to be non-null");
-            $.registryId = Objects.requireNonNull($.registryId, "expected parameter 'registryId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.oidcClientId == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryOIDCArgs", "oidcClientId");
+            }
+            if ($.oidcClientSecret == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryOIDCArgs", "oidcClientSecret");
+            }
+            if ($.oidcEndpoint == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryOIDCArgs", "oidcEndpoint");
+            }
+            if ($.oidcName == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryOIDCArgs", "oidcName");
+            }
+            if ($.oidcScope == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryOIDCArgs", "oidcScope");
+            }
+            if ($.registryId == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryOIDCArgs", "registryId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryOIDCArgs", "serviceName");
+            }
             return $;
         }
     }

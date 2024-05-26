@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -28,14 +29,14 @@ public final class GetMongoDbUserPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
+     * Name of the user with the authentication database in the format name{@literal @}authDB, for example: johndoe{@literal @}admin
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
+     * @return Name of the user with the authentication database in the format name{@literal @}authDB, for example: johndoe{@literal @}admin
      * 
      */
     public String name() {
@@ -97,7 +98,7 @@ public final class GetMongoDbUserPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
+         * @param name Name of the user with the authentication database in the format name{@literal @}authDB, for example: johndoe{@literal @}admin
          * 
          * @return builder
          * 
@@ -120,9 +121,15 @@ public final class GetMongoDbUserPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetMongoDbUserPlainArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetMongoDbUserPlainArgs", "clusterId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetMongoDbUserPlainArgs", "name");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetMongoDbUserPlainArgs", "serviceName");
+            }
             return $;
         }
     }

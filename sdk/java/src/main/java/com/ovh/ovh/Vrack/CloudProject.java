@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Attach a Public Cloud Project to a VRack.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -38,14 +39,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vcp = new CloudProject(&#34;vcp&#34;, CloudProjectArgs.builder()        
- *             .projectId(&#34;67890&#34;)
- *             .serviceName(&#34;12345&#34;)
+ *         var vcp = new CloudProject("vcp", CloudProjectArgs.builder()        
+ *             .projectId("67890")
+ *             .serviceName("12345")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

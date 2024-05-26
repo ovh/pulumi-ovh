@@ -236,91 +236,105 @@ public final class ServerInstallTaskDetails {
 
         @CustomType.Setter
         public Builder changeLog(@Nullable String changeLog) {
+
             this.changeLog = changeLog;
             return this;
         }
         @CustomType.Setter
         public Builder customHostname(@Nullable String customHostname) {
+
             this.customHostname = customHostname;
             return this;
         }
         @CustomType.Setter
         public Builder diskGroupId(@Nullable Integer diskGroupId) {
+
             this.diskGroupId = diskGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder installRtm(@Nullable Boolean installRtm) {
+
             this.installRtm = installRtm;
             return this;
         }
         @CustomType.Setter
         public Builder installSqlServer(@Nullable Boolean installSqlServer) {
+
             this.installSqlServer = installSqlServer;
             return this;
         }
         @CustomType.Setter
         public Builder language(@Nullable String language) {
+
             this.language = language;
             return this;
         }
         @CustomType.Setter
         public Builder noRaid(@Nullable Boolean noRaid) {
+
             this.noRaid = noRaid;
             return this;
         }
         @CustomType.Setter
         public Builder postInstallationScriptLink(@Nullable String postInstallationScriptLink) {
+
             this.postInstallationScriptLink = postInstallationScriptLink;
             return this;
         }
         @CustomType.Setter
         public Builder postInstallationScriptReturn(@Nullable String postInstallationScriptReturn) {
+
             this.postInstallationScriptReturn = postInstallationScriptReturn;
             return this;
         }
         @CustomType.Setter
         public Builder resetHwRaid(@Nullable Boolean resetHwRaid) {
+
             this.resetHwRaid = resetHwRaid;
             return this;
         }
         @CustomType.Setter
         public Builder softRaidDevices(@Nullable Integer softRaidDevices) {
+
             this.softRaidDevices = softRaidDevices;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyName(@Nullable String sshKeyName) {
+
             this.sshKeyName = sshKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder useDistribKernel(@Nullable Boolean useDistribKernel) {
+
             this.useDistribKernel = useDistribKernel;
             return this;
         }
         @CustomType.Setter
         public Builder useSpla(@Nullable Boolean useSpla) {
+
             this.useSpla = useSpla;
             return this;
         }
         public ServerInstallTaskDetails build() {
-            final var o = new ServerInstallTaskDetails();
-            o.changeLog = changeLog;
-            o.customHostname = customHostname;
-            o.diskGroupId = diskGroupId;
-            o.installRtm = installRtm;
-            o.installSqlServer = installSqlServer;
-            o.language = language;
-            o.noRaid = noRaid;
-            o.postInstallationScriptLink = postInstallationScriptLink;
-            o.postInstallationScriptReturn = postInstallationScriptReturn;
-            o.resetHwRaid = resetHwRaid;
-            o.softRaidDevices = softRaidDevices;
-            o.sshKeyName = sshKeyName;
-            o.useDistribKernel = useDistribKernel;
-            o.useSpla = useSpla;
-            return o;
+            final var _resultValue = new ServerInstallTaskDetails();
+            _resultValue.changeLog = changeLog;
+            _resultValue.customHostname = customHostname;
+            _resultValue.diskGroupId = diskGroupId;
+            _resultValue.installRtm = installRtm;
+            _resultValue.installSqlServer = installSqlServer;
+            _resultValue.language = language;
+            _resultValue.noRaid = noRaid;
+            _resultValue.postInstallationScriptLink = postInstallationScriptLink;
+            _resultValue.postInstallationScriptReturn = postInstallationScriptReturn;
+            _resultValue.resetHwRaid = resetHwRaid;
+            _resultValue.softRaidDevices = softRaidDevices;
+            _resultValue.sshKeyName = sshKeyName;
+            _resultValue.useDistribKernel = useDistribKernel;
+            _resultValue.useSpla = useSpla;
+            return _resultValue;
         }
     }
 }

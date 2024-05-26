@@ -89,11 +89,13 @@ public final class PrivateDatabaseOrder {
 
         @CustomType.Setter
         public Builder date(@Nullable String date) {
+
             this.date = date;
             return this;
         }
         @CustomType.Setter
         public Builder details(@Nullable List<PrivateDatabaseOrderDetail> details) {
+
             this.details = details;
             return this;
         }
@@ -102,21 +104,23 @@ public final class PrivateDatabaseOrder {
         }
         @CustomType.Setter
         public Builder expirationDate(@Nullable String expirationDate) {
+
             this.expirationDate = expirationDate;
             return this;
         }
         @CustomType.Setter
         public Builder orderId(@Nullable Integer orderId) {
+
             this.orderId = orderId;
             return this;
         }
         public PrivateDatabaseOrder build() {
-            final var o = new PrivateDatabaseOrder();
-            o.date = date;
-            o.details = details;
-            o.expirationDate = expirationDate;
-            o.orderId = orderId;
-            return o;
+            final var _resultValue = new PrivateDatabaseOrder();
+            _resultValue.date = date;
+            _resultValue.details = details;
+            _resultValue.expirationDate = expirationDate;
+            _resultValue.orderId = orderId;
+            return _resultValue;
         }
     }
 }

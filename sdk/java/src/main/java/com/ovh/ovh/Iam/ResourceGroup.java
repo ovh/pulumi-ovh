@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * Provides an OVHcloud IAM resource group.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,15 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myResourceGroup = new ResourceGroup(&#34;myResourceGroup&#34;, ResourceGroupArgs.builder()        
+ *         var myResourceGroup = new ResourceGroup("myResourceGroup", ResourceGroupArgs.builder()        
  *             .resources(            
- *                 &#34;urn:v1:eu:resource:service1:service1-id&#34;,
- *                 &#34;urn:v1:eu:resource:service2:service2-id&#34;)
+ *                 "urn:v1:eu:resource:service1:service1-id",
+ *                 "urn:v1:eu:resource:service2:service2-id")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Iam/resourceGroup:ResourceGroup")

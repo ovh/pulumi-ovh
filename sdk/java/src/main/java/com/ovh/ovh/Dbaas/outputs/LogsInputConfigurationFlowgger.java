@@ -4,6 +4,7 @@
 package com.ovh.ovh.Dbaas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,19 +57,25 @@ public final class LogsInputConfigurationFlowgger {
 
         @CustomType.Setter
         public Builder logFormat(String logFormat) {
-            this.logFormat = Objects.requireNonNull(logFormat);
+            if (logFormat == null) {
+              throw new MissingRequiredPropertyException("LogsInputConfigurationFlowgger", "logFormat");
+            }
+            this.logFormat = logFormat;
             return this;
         }
         @CustomType.Setter
         public Builder logFraming(String logFraming) {
-            this.logFraming = Objects.requireNonNull(logFraming);
+            if (logFraming == null) {
+              throw new MissingRequiredPropertyException("LogsInputConfigurationFlowgger", "logFraming");
+            }
+            this.logFraming = logFraming;
             return this;
         }
         public LogsInputConfigurationFlowgger build() {
-            final var o = new LogsInputConfigurationFlowgger();
-            o.logFormat = logFormat;
-            o.logFraming = logFraming;
-            return o;
+            final var _resultValue = new LogsInputConfigurationFlowgger();
+            _resultValue.logFormat = logFormat;
+            _resultValue.logFraming = logFraming;
+            return _resultValue;
         }
     }
 }

@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.ovh.ovh.CloudProject.outputs.GetKubeCustomizationApiserver;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -51,16 +52,19 @@ public final class GetKubeCustomization {
 
         @CustomType.Setter
         public Builder apiservers(List<GetKubeCustomizationApiserver> apiservers) {
-            this.apiservers = Objects.requireNonNull(apiservers);
+            if (apiservers == null) {
+              throw new MissingRequiredPropertyException("GetKubeCustomization", "apiservers");
+            }
+            this.apiservers = apiservers;
             return this;
         }
         public Builder apiservers(GetKubeCustomizationApiserver... apiservers) {
             return apiservers(List.of(apiservers));
         }
         public GetKubeCustomization build() {
-            final var o = new GetKubeCustomization();
-            o.apiservers = apiservers;
-            return o;
+            final var _resultValue = new GetKubeCustomization();
+            _resultValue.apiservers = apiservers;
+            return _resultValue;
         }
     }
 }

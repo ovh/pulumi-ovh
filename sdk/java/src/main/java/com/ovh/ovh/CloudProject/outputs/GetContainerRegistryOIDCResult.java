@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -199,79 +200,97 @@ public final class GetContainerRegistryOIDCResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryOIDCResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder oidcAdminGroup(@Nullable String oidcAdminGroup) {
+
             this.oidcAdminGroup = oidcAdminGroup;
             return this;
         }
         @CustomType.Setter
         public Builder oidcAutoOnboard(@Nullable Boolean oidcAutoOnboard) {
+
             this.oidcAutoOnboard = oidcAutoOnboard;
             return this;
         }
         @CustomType.Setter
         public Builder oidcClientId(@Nullable String oidcClientId) {
+
             this.oidcClientId = oidcClientId;
             return this;
         }
         @CustomType.Setter
         public Builder oidcEndpoint(@Nullable String oidcEndpoint) {
+
             this.oidcEndpoint = oidcEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder oidcGroupsClaim(@Nullable String oidcGroupsClaim) {
+
             this.oidcGroupsClaim = oidcGroupsClaim;
             return this;
         }
         @CustomType.Setter
         public Builder oidcName(@Nullable String oidcName) {
+
             this.oidcName = oidcName;
             return this;
         }
         @CustomType.Setter
         public Builder oidcScope(@Nullable String oidcScope) {
+
             this.oidcScope = oidcScope;
             return this;
         }
         @CustomType.Setter
         public Builder oidcUserClaim(@Nullable String oidcUserClaim) {
+
             this.oidcUserClaim = oidcUserClaim;
             return this;
         }
         @CustomType.Setter
         public Builder oidcVerifyCert(@Nullable Boolean oidcVerifyCert) {
+
             this.oidcVerifyCert = oidcVerifyCert;
             return this;
         }
         @CustomType.Setter
         public Builder registryId(String registryId) {
-            this.registryId = Objects.requireNonNull(registryId);
+            if (registryId == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryOIDCResult", "registryId");
+            }
+            this.registryId = registryId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryOIDCResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetContainerRegistryOIDCResult build() {
-            final var o = new GetContainerRegistryOIDCResult();
-            o.id = id;
-            o.oidcAdminGroup = oidcAdminGroup;
-            o.oidcAutoOnboard = oidcAutoOnboard;
-            o.oidcClientId = oidcClientId;
-            o.oidcEndpoint = oidcEndpoint;
-            o.oidcGroupsClaim = oidcGroupsClaim;
-            o.oidcName = oidcName;
-            o.oidcScope = oidcScope;
-            o.oidcUserClaim = oidcUserClaim;
-            o.oidcVerifyCert = oidcVerifyCert;
-            o.registryId = registryId;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetContainerRegistryOIDCResult();
+            _resultValue.id = id;
+            _resultValue.oidcAdminGroup = oidcAdminGroup;
+            _resultValue.oidcAutoOnboard = oidcAutoOnboard;
+            _resultValue.oidcClientId = oidcClientId;
+            _resultValue.oidcEndpoint = oidcEndpoint;
+            _resultValue.oidcGroupsClaim = oidcGroupsClaim;
+            _resultValue.oidcName = oidcName;
+            _resultValue.oidcScope = oidcScope;
+            _resultValue.oidcUserClaim = oidcUserClaim;
+            _resultValue.oidcVerifyCert = oidcVerifyCert;
+            _resultValue.registryId = registryId;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

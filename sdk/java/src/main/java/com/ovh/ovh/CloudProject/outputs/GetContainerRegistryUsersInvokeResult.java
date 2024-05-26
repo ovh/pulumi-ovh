@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.ovh.ovh.CloudProject.outputs.GetContainerRegistryUsersResult;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -70,17 +71,26 @@ public final class GetContainerRegistryUsersInvokeResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryUsersInvokeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder registryId(String registryId) {
-            this.registryId = Objects.requireNonNull(registryId);
+            if (registryId == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryUsersInvokeResult", "registryId");
+            }
+            this.registryId = registryId;
             return this;
         }
         @CustomType.Setter
         public Builder results(List<GetContainerRegistryUsersResult> results) {
-            this.results = Objects.requireNonNull(results);
+            if (results == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryUsersInvokeResult", "results");
+            }
+            this.results = results;
             return this;
         }
         public Builder results(GetContainerRegistryUsersResult... results) {
@@ -88,16 +98,19 @@ public final class GetContainerRegistryUsersInvokeResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryUsersInvokeResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetContainerRegistryUsersInvokeResult build() {
-            final var o = new GetContainerRegistryUsersInvokeResult();
-            o.id = id;
-            o.registryId = registryId;
-            o.results = results;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetContainerRegistryUsersInvokeResult();
+            _resultValue.id = id;
+            _resultValue.registryId = registryId;
+            _resultValue.results = results;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

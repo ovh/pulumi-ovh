@@ -5,6 +5,7 @@ package com.ovh.ovh.Iam.outputs;
 
 import com.ovh.ovh.Iam.outputs.GetReferenceActionsAction;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -64,7 +65,10 @@ public final class GetReferenceActionsResult {
 
         @CustomType.Setter
         public Builder actions(List<GetReferenceActionsAction> actions) {
-            this.actions = Objects.requireNonNull(actions);
+            if (actions == null) {
+              throw new MissingRequiredPropertyException("GetReferenceActionsResult", "actions");
+            }
+            this.actions = actions;
             return this;
         }
         public Builder actions(GetReferenceActionsAction... actions) {
@@ -72,20 +76,26 @@ public final class GetReferenceActionsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetReferenceActionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetReferenceActionsResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetReferenceActionsResult build() {
-            final var o = new GetReferenceActionsResult();
-            o.actions = actions;
-            o.id = id;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetReferenceActionsResult();
+            _resultValue.actions = actions;
+            _resultValue.id = id;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

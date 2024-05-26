@@ -58,19 +58,21 @@ public final class ContainerRegistryPlanRegistryLimit {
 
         @CustomType.Setter
         public Builder imageStorage(@Nullable Integer imageStorage) {
+
             this.imageStorage = imageStorage;
             return this;
         }
         @CustomType.Setter
         public Builder parallelRequest(@Nullable Integer parallelRequest) {
+
             this.parallelRequest = parallelRequest;
             return this;
         }
         public ContainerRegistryPlanRegistryLimit build() {
-            final var o = new ContainerRegistryPlanRegistryLimit();
-            o.imageStorage = imageStorage;
-            o.parallelRequest = parallelRequest;
-            return o;
+            final var _resultValue = new ContainerRegistryPlanRegistryLimit();
+            _resultValue.imageStorage = imageStorage;
+            _resultValue.parallelRequest = parallelRequest;
+            return _resultValue;
         }
     }
 }

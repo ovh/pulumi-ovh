@@ -4,6 +4,7 @@
 package com.ovh.ovh.Iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,12 +86,18 @@ public final class GetReferenceActionsAction {
 
         @CustomType.Setter
         public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("GetReferenceActionsAction", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder categories(List<String> categories) {
-            this.categories = Objects.requireNonNull(categories);
+            if (categories == null) {
+              throw new MissingRequiredPropertyException("GetReferenceActionsAction", "categories");
+            }
+            this.categories = categories;
             return this;
         }
         public Builder categories(String... categories) {
@@ -98,21 +105,27 @@ public final class GetReferenceActionsAction {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetReferenceActionsAction", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(String resourceType) {
-            this.resourceType = Objects.requireNonNull(resourceType);
+            if (resourceType == null) {
+              throw new MissingRequiredPropertyException("GetReferenceActionsAction", "resourceType");
+            }
+            this.resourceType = resourceType;
             return this;
         }
         public GetReferenceActionsAction build() {
-            final var o = new GetReferenceActionsAction();
-            o.action = action;
-            o.categories = categories;
-            o.description = description;
-            o.resourceType = resourceType;
-            return o;
+            final var _resultValue = new GetReferenceActionsAction();
+            _resultValue.action = action;
+            _resultValue.categories = categories;
+            _resultValue.description = description;
+            _resultValue.resourceType = resourceType;
+            return _resultValue;
         }
     }
 }

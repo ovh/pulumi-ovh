@@ -7,6 +7,7 @@ import com.ovh.ovh.CloudProject.inputs.KubeNodePoolTemplateMetadataArgs;
 import com.ovh.ovh.CloudProject.inputs.KubeNodePoolTemplateSpecArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 
@@ -112,8 +113,12 @@ public final class KubeNodePoolTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         public KubeNodePoolTemplateArgs build() {
-            $.metadata = Objects.requireNonNull($.metadata, "expected parameter 'metadata' to be non-null");
-            $.spec = Objects.requireNonNull($.spec, "expected parameter 'spec' to be non-null");
+            if ($.metadata == null) {
+                throw new MissingRequiredPropertyException("KubeNodePoolTemplateArgs", "metadata");
+            }
+            if ($.spec == null) {
+                throw new MissingRequiredPropertyException("KubeNodePoolTemplateArgs", "spec");
+            }
             return $;
         }
     }

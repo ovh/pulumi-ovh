@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,36 +49,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var rescue = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
- *             .serviceName(&#34;nsxxxxxxx.ip-xx-xx-xx.eu&#34;)
- *             .bootType(&#34;rescue&#34;)
+ *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
+ *             .bootType("rescue")
  *             .build());
  * 
- *         var key = new SshKey(&#34;key&#34;, SshKeyArgs.builder()        
- *             .keyName(&#34;mykey&#34;)
- *             .key(&#34;ssh-ed25519 AAAAC3...&#34;)
+ *         var key = new SshKey("key", SshKeyArgs.builder()        
+ *             .keyName("mykey")
+ *             .key("ssh-ed25519 AAAAC3...")
  *             .build());
  * 
- *         var debian = new InstallationTemplate(&#34;debian&#34;, InstallationTemplateArgs.builder()        
- *             .baseTemplateName(&#34;debian11_64&#34;)
- *             .templateName(&#34;mydebian11&#34;)
- *             .defaultLanguage(&#34;en&#34;)
+ *         var debian = new InstallationTemplate("debian", InstallationTemplateArgs.builder()        
+ *             .baseTemplateName("debian11_64")
+ *             .templateName("mydebian11")
+ *             .defaultLanguage("en")
  *             .customization(InstallationTemplateCustomizationArgs.builder()
  *                 .sshKeyName(key.keyName())
  *                 .build())
  *             .build());
  * 
- *         var serverInstall = new ServerInstallTask(&#34;serverInstall&#34;, ServerInstallTaskArgs.builder()        
- *             .serviceName(&#34;nsxxxxxxx.ip-xx-xx-xx.eu&#34;)
+ *         var serverInstall = new ServerInstallTask("serverInstall", ServerInstallTaskArgs.builder()        
+ *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
  *             .templateName(debian.templateName())
- *             .bootidOnDestroy(rescue.applyValue(getServerBootsResult -&gt; getServerBootsResult.results()[0]))
+ *             .bootidOnDestroy(rescue.applyValue(getServerBootsResult -> getServerBootsResult.results()[0]))
  *             .details(ServerInstallTaskDetailsArgs.builder()
- *                 .customHostname(&#34;mytest&#34;)
+ *                 .customHostname("mytest")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

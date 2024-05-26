@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Create a new database on your private cloud database service.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -38,14 +39,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new PrivateDatabaseDb(&#34;database&#34;, PrivateDatabaseDbArgs.builder()        
- *             .databaseName(&#34;XXXXXX&#34;)
- *             .serviceName(&#34;XXXXXX&#34;)
+ *         var database = new PrivateDatabaseDb("database", PrivateDatabaseDbArgs.builder()        
+ *             .databaseName("XXXXXX")
+ *             .serviceName("XXXXXX")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

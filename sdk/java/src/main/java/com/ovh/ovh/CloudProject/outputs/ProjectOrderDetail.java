@@ -87,31 +87,35 @@ public final class ProjectOrderDetail {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder orderDetailId(@Nullable Integer orderDetailId) {
+
             this.orderDetailId = orderDetailId;
             return this;
         }
         @CustomType.Setter
         public Builder quantity(@Nullable String quantity) {
+
             this.quantity = quantity;
             return this;
         }
         public ProjectOrderDetail build() {
-            final var o = new ProjectOrderDetail();
-            o.description = description;
-            o.domain = domain;
-            o.orderDetailId = orderDetailId;
-            o.quantity = quantity;
-            return o;
+            final var _resultValue = new ProjectOrderDetail();
+            _resultValue.description = description;
+            _resultValue.domain = domain;
+            _resultValue.orderDetailId = orderDetailId;
+            _resultValue.quantity = quantity;
+            return _resultValue;
         }
     }
 }

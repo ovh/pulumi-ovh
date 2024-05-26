@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Attach an IP Load Balancing to a VRack.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -38,14 +39,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var viplb = new IpLoadbalancing(&#34;viplb&#34;, IpLoadbalancingArgs.builder()        
- *             .LoadbalancingId(&#34;yyy&#34;)
- *             .serviceName(&#34;xxx&#34;)
+ *         var viplb = new IpLoadbalancing("viplb", IpLoadbalancingArgs.builder()        
+ *             .LoadbalancingId("yyy")
+ *             .serviceName("xxx")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Vrack/ipLoadbalancing:IpLoadbalancing")

@@ -6,6 +6,7 @@ package com.ovh.ovh.CloudProject.outputs;
 import com.ovh.ovh.CloudProject.outputs.GetCapabilitiesContainerRegistryResultPlanFeature;
 import com.ovh.ovh.CloudProject.outputs.GetCapabilitiesContainerRegistryResultPlanRegistryLimit;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -129,17 +130,26 @@ public final class GetCapabilitiesContainerRegistryResultPlan {
 
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryResultPlan", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryResultPlan", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder features(List<GetCapabilitiesContainerRegistryResultPlanFeature> features) {
-            this.features = Objects.requireNonNull(features);
+            if (features == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryResultPlan", "features");
+            }
+            this.features = features;
             return this;
         }
         public Builder features(GetCapabilitiesContainerRegistryResultPlanFeature... features) {
@@ -147,17 +157,26 @@ public final class GetCapabilitiesContainerRegistryResultPlan {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryResultPlan", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryResultPlan", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder registryLimits(List<GetCapabilitiesContainerRegistryResultPlanRegistryLimit> registryLimits) {
-            this.registryLimits = Objects.requireNonNull(registryLimits);
+            if (registryLimits == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryResultPlan", "registryLimits");
+            }
+            this.registryLimits = registryLimits;
             return this;
         }
         public Builder registryLimits(GetCapabilitiesContainerRegistryResultPlanRegistryLimit... registryLimits) {
@@ -165,19 +184,22 @@ public final class GetCapabilitiesContainerRegistryResultPlan {
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryResultPlan", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         public GetCapabilitiesContainerRegistryResultPlan build() {
-            final var o = new GetCapabilitiesContainerRegistryResultPlan();
-            o.code = code;
-            o.createdAt = createdAt;
-            o.features = features;
-            o.id = id;
-            o.name = name;
-            o.registryLimits = registryLimits;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new GetCapabilitiesContainerRegistryResultPlan();
+            _resultValue.code = code;
+            _resultValue.createdAt = createdAt;
+            _resultValue.features = features;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.registryLimits = registryLimits;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

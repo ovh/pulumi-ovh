@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Creates an ACL for a kafka cluster associated with a public cloud project.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,22 +42,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var kafka = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
- *             .serviceName(&#34;XXX&#34;)
- *             .engine(&#34;kafka&#34;)
- *             .id(&#34;ZZZ&#34;)
+ *             .serviceName("XXX")
+ *             .engine("kafka")
+ *             .id("ZZZ")
  *             .build());
  * 
- *         var acl = new KafkaAcl(&#34;acl&#34;, KafkaAclArgs.builder()        
- *             .serviceName(kafka.applyValue(getDatabaseResult -&gt; getDatabaseResult.serviceName()))
- *             .clusterId(kafka.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()))
- *             .permission(&#34;read&#34;)
- *             .topic(&#34;mytopic&#34;)
- *             .username(&#34;johndoe&#34;)
+ *         var acl = new KafkaAcl("acl", KafkaAclArgs.builder()        
+ *             .serviceName(kafka.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
+ *             .clusterId(kafka.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .permission("read")
+ *             .topic("mytopic")
+ *             .username("johndoe")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

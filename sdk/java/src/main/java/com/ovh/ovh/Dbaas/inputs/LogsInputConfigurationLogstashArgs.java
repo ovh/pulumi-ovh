@@ -5,6 +5,7 @@ package com.ovh.ovh.Dbaas.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class LogsInputConfigurationLogstashArgs extends com.pulumi.resourc
         }
 
         public LogsInputConfigurationLogstashArgs build() {
-            $.inputSection = Objects.requireNonNull($.inputSection, "expected parameter 'inputSection' to be non-null");
+            if ($.inputSection == null) {
+                throw new MissingRequiredPropertyException("LogsInputConfigurationLogstashArgs", "inputSection");
+            }
             return $;
         }
     }

@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Creates a namespace for a M3DB cluster associated with a public cloud project.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,21 +44,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var m3db = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
- *             .serviceName(&#34;XXX&#34;)
- *             .engine(&#34;m3db&#34;)
- *             .id(&#34;ZZZ&#34;)
+ *             .serviceName("XXX")
+ *             .engine("m3db")
+ *             .id("ZZZ")
  *             .build());
  * 
- *         var namespace = new M3DbNamespace(&#34;namespace&#34;, M3DbNamespaceArgs.builder()        
- *             .serviceName(m3db.applyValue(getDatabaseResult -&gt; getDatabaseResult.serviceName()))
- *             .clusterId(m3db.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()))
- *             .resolution(&#34;P2D&#34;)
- *             .retentionPeriodDuration(&#34;PT48H&#34;)
+ *         var namespace = new M3DbNamespace("namespace", M3DbNamespaceArgs.builder()        
+ *             .serviceName(m3db.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
+ *             .clusterId(m3db.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .resolution("P2D")
+ *             .retentionPeriodDuration("PT48H")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

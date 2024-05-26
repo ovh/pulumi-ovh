@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,38 +47,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
- *             .serviceName(&#34;ip-1.2.3.4&#34;)
- *             .state(&#34;ok&#34;)
+ *             .serviceName("ip-1.2.3.4")
+ *             .state("ok")
  *             .build());
  * 
- *         var farmname = new TcpFarm(&#34;farmname&#34;, TcpFarmArgs.builder()        
+ *         var farmname = new TcpFarm("farmname", TcpFarmArgs.builder()        
  *             .port(8080)
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -&gt; getIpLoadBalancingResult.serviceName()))
- *             .zone(&#34;all&#34;)
+ *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .zone("all")
  *             .build());
  * 
- *         var backend = new TcpFarmServer(&#34;backend&#34;, TcpFarmServerArgs.builder()        
- *             .address(&#34;4.5.6.7&#34;)
+ *         var backend = new TcpFarmServer("backend", TcpFarmServerArgs.builder()        
+ *             .address("4.5.6.7")
  *             .backup(true)
- *             .displayName(&#34;mybackend&#34;)
+ *             .displayName("mybackend")
  *             .farmId(farmname.id())
  *             .port(80)
  *             .probe(true)
- *             .proxyProtocolVersion(&#34;v2&#34;)
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -&gt; getIpLoadBalancingResult.serviceName()))
+ *             .proxyProtocolVersion("v2")
+ *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .ssl(false)
- *             .status(&#34;active&#34;)
+ *             .status("active")
  *             .weight(2)
  *             .build());
  * 
- *         var mylb = new Refresh(&#34;mylb&#34;, RefreshArgs.builder()        
- *             .keepers(backend.stream().map(element -&gt; element.address()).collect(toList()))
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -&gt; getIpLoadBalancingResult.serviceName()))
+ *         var mylb = new Refresh("mylb", RefreshArgs.builder()        
+ *             .keepers(backend.stream().map(element -> element.address()).collect(toList()))
+ *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/refresh:Refresh")

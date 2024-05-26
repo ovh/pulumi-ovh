@@ -4,6 +4,7 @@
 package com.ovh.ovh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -128,22 +129,34 @@ public final class GetServerVni {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetServerVni", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetServerVni", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServerVni", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nics(List<String> nics) {
-            this.nics = Objects.requireNonNull(nics);
+            if (nics == null) {
+              throw new MissingRequiredPropertyException("GetServerVni", "nics");
+            }
+            this.nics = nics;
             return this;
         }
         public Builder nics(String... nics) {
@@ -151,29 +164,38 @@ public final class GetServerVni {
         }
         @CustomType.Setter
         public Builder serverName(String serverName) {
-            this.serverName = Objects.requireNonNull(serverName);
+            if (serverName == null) {
+              throw new MissingRequiredPropertyException("GetServerVni", "serverName");
+            }
+            this.serverName = serverName;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetServerVni", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder vrack(String vrack) {
-            this.vrack = Objects.requireNonNull(vrack);
+            if (vrack == null) {
+              throw new MissingRequiredPropertyException("GetServerVni", "vrack");
+            }
+            this.vrack = vrack;
             return this;
         }
         public GetServerVni build() {
-            final var o = new GetServerVni();
-            o.enabled = enabled;
-            o.mode = mode;
-            o.name = name;
-            o.nics = nics;
-            o.serverName = serverName;
-            o.uuid = uuid;
-            o.vrack = vrack;
-            return o;
+            final var _resultValue = new GetServerVni();
+            _resultValue.enabled = enabled;
+            _resultValue.mode = mode;
+            _resultValue.name = name;
+            _resultValue.nics = nics;
+            _resultValue.serverName = serverName;
+            _resultValue.uuid = uuid;
+            _resultValue.vrack = vrack;
+            return _resultValue;
         }
     }
 }

@@ -5,6 +5,7 @@ package com.ovh.ovh.Vrack;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class IpAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IpAddressArgs build() {
-            $.block = Objects.requireNonNull($.block, "expected parameter 'block' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.block == null) {
+                throw new MissingRequiredPropertyException("IpAddressArgs", "block");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("IpAddressArgs", "serviceName");
+            }
             return $;
         }
     }

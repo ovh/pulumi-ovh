@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,18 +42,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myBackup = new WorkflowBackup(&#34;myBackup&#34;, WorkflowBackupArgs.builder()        
- *             .cron(&#34;50 4 * * *&#34;)
- *             .instanceId(&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx&#34;)
- *             .maxExecutionCount(&#34;0&#34;)
- *             .regionName(&#34;GRA11&#34;)
- *             .rotation(&#34;7&#34;)
- *             .serviceName(&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
+ *         var myBackup = new WorkflowBackup("myBackup", WorkflowBackupArgs.builder()        
+ *             .cron("50 4 * * *")
+ *             .instanceId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
+ *             .maxExecutionCount("0")
+ *             .regionName("GRA11")
+ *             .rotation("7")
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:CloudProject/workflowBackup:WorkflowBackup")

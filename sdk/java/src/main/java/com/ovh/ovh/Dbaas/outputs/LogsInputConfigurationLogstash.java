@@ -4,6 +4,7 @@
 package com.ovh.ovh.Dbaas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,25 +73,30 @@ public final class LogsInputConfigurationLogstash {
 
         @CustomType.Setter
         public Builder filterSection(@Nullable String filterSection) {
+
             this.filterSection = filterSection;
             return this;
         }
         @CustomType.Setter
         public Builder inputSection(String inputSection) {
-            this.inputSection = Objects.requireNonNull(inputSection);
+            if (inputSection == null) {
+              throw new MissingRequiredPropertyException("LogsInputConfigurationLogstash", "inputSection");
+            }
+            this.inputSection = inputSection;
             return this;
         }
         @CustomType.Setter
         public Builder patternSection(@Nullable String patternSection) {
+
             this.patternSection = patternSection;
             return this;
         }
         public LogsInputConfigurationLogstash build() {
-            final var o = new LogsInputConfigurationLogstash();
-            o.filterSection = filterSection;
-            o.inputSection = inputSection;
-            o.patternSection = patternSection;
-            return o;
+            final var _resultValue = new LogsInputConfigurationLogstash();
+            _resultValue.filterSection = filterSection;
+            _resultValue.inputSection = inputSection;
+            _resultValue.patternSection = patternSection;
+            return _resultValue;
         }
     }
 }

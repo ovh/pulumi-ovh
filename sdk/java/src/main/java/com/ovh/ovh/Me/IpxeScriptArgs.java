@@ -5,6 +5,7 @@ package com.ovh.ovh.Me;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class IpxeScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IpxeScriptArgs build() {
-            $.script = Objects.requireNonNull($.script, "expected parameter 'script' to be non-null");
+            if ($.script == null) {
+                throw new MissingRequiredPropertyException("IpxeScriptArgs", "script");
+            }
             return $;
         }
     }

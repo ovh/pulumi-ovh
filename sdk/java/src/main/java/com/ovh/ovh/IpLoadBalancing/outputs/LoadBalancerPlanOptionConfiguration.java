@@ -4,6 +4,7 @@
 package com.ovh.ovh.IpLoadBalancing.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,19 +57,25 @@ public final class LoadBalancerPlanOptionConfiguration {
 
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerPlanOptionConfiguration", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerPlanOptionConfiguration", "value");
+            }
+            this.value = value;
             return this;
         }
         public LoadBalancerPlanOptionConfiguration build() {
-            final var o = new LoadBalancerPlanOptionConfiguration();
-            o.label = label;
-            o.value = value;
-            return o;
+            final var _resultValue = new LoadBalancerPlanOptionConfiguration();
+            _resultValue.label = label;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

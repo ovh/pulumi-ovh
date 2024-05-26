@@ -4,6 +4,7 @@
 package com.ovh.ovh.Order.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -200,11 +201,21 @@ public final class GetCartProductOptionsPlanPlainArgs extends com.pulumi.resourc
         }
 
         public GetCartProductOptionsPlanPlainArgs build() {
-            $.cartId = Objects.requireNonNull($.cartId, "expected parameter 'cartId' to be non-null");
-            $.optionsPlanCode = Objects.requireNonNull($.optionsPlanCode, "expected parameter 'optionsPlanCode' to be non-null");
-            $.planCode = Objects.requireNonNull($.planCode, "expected parameter 'planCode' to be non-null");
-            $.priceCapacity = Objects.requireNonNull($.priceCapacity, "expected parameter 'priceCapacity' to be non-null");
-            $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
+            if ($.cartId == null) {
+                throw new MissingRequiredPropertyException("GetCartProductOptionsPlanPlainArgs", "cartId");
+            }
+            if ($.optionsPlanCode == null) {
+                throw new MissingRequiredPropertyException("GetCartProductOptionsPlanPlainArgs", "optionsPlanCode");
+            }
+            if ($.planCode == null) {
+                throw new MissingRequiredPropertyException("GetCartProductOptionsPlanPlainArgs", "planCode");
+            }
+            if ($.priceCapacity == null) {
+                throw new MissingRequiredPropertyException("GetCartProductOptionsPlanPlainArgs", "priceCapacity");
+            }
+            if ($.product == null) {
+                throw new MissingRequiredPropertyException("GetCartProductOptionsPlanPlainArgs", "product");
+            }
             return $;
         }
     }

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Route which redirect all URL to HTTPs for example.com (Vhost).
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,34 +46,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var httpsredirect = new HttpRoute(&#34;httpsredirect&#34;, HttpRouteArgs.builder()        
+ *         var httpsredirect = new HttpRoute("httpsredirect", HttpRouteArgs.builder()        
  *             .action(HttpRouteActionArgs.builder()
  *                 .status(302)
- *                 .target(&#34;https://${host}${path}${arguments}&#34;)
- *                 .type(&#34;redirect&#34;)
+ *                 .target("https://${host}${path}${arguments}")
+ *                 .type("redirect")
  *                 .build())
- *             .displayName(&#34;Redirect to HTTPS&#34;)
+ *             .displayName("Redirect to HTTPS")
  *             .frontendId(11111)
- *             .serviceName(&#34;loadbalancer-xxxxxxxxxxxxxxxxxx&#34;)
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .weight(1)
  *             .build());
  * 
- *         var examplerule = new HttpRouteRule(&#34;examplerule&#34;, HttpRouteRuleArgs.builder()        
- *             .displayName(&#34;Match example.com host&#34;)
- *             .field(&#34;host&#34;)
- *             .match(&#34;is&#34;)
+ *         var examplerule = new HttpRouteRule("examplerule", HttpRouteRuleArgs.builder()        
+ *             .displayName("Match example.com host")
+ *             .field("host")
+ *             .match("is")
  *             .negate(false)
- *             .pattern(&#34;example.com&#34;)
+ *             .pattern("example.com")
  *             .routeId(httpsredirect.id())
- *             .serviceName(&#34;loadbalancer-xxxxxxxxxxxxxxxxxx&#34;)
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * Rule which match a specific header (same effect as the host match above).
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -93,20 +96,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplerule = new HttpRouteRule(&#34;examplerule&#34;, HttpRouteRuleArgs.builder()        
- *             .displayName(&#34;Match example.com Host header&#34;)
- *             .field(&#34;headers&#34;)
- *             .match(&#34;is&#34;)
+ *         var examplerule = new HttpRouteRule("examplerule", HttpRouteRuleArgs.builder()        
+ *             .displayName("Match example.com Host header")
+ *             .field("headers")
+ *             .match("is")
  *             .negate(false)
- *             .pattern(&#34;example.com&#34;)
+ *             .pattern("example.com")
  *             .routeId(ovh_iploadbalancing_http_route.httpsredirect().id())
- *             .serviceName(&#34;loadbalancer-xxxxxxxxxxxxxxxxxx&#34;)
- *             .subField(&#34;Host&#34;)
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
+ *             .subField("Host")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule")

@@ -4,6 +4,7 @@
 package com.ovh.ovh.Dbaas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -356,157 +357,232 @@ public final class GetLogsOutputGraylogStreamResult {
 
         @CustomType.Setter
         public Builder canAlert(Boolean canAlert) {
-            this.canAlert = Objects.requireNonNull(canAlert);
+            if (canAlert == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "canAlert");
+            }
+            this.canAlert = canAlert;
             return this;
         }
         @CustomType.Setter
         public Builder coldStorageCompression(String coldStorageCompression) {
-            this.coldStorageCompression = Objects.requireNonNull(coldStorageCompression);
+            if (coldStorageCompression == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "coldStorageCompression");
+            }
+            this.coldStorageCompression = coldStorageCompression;
             return this;
         }
         @CustomType.Setter
         public Builder coldStorageContent(String coldStorageContent) {
-            this.coldStorageContent = Objects.requireNonNull(coldStorageContent);
+            if (coldStorageContent == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "coldStorageContent");
+            }
+            this.coldStorageContent = coldStorageContent;
             return this;
         }
         @CustomType.Setter
         public Builder coldStorageEnabled(Boolean coldStorageEnabled) {
-            this.coldStorageEnabled = Objects.requireNonNull(coldStorageEnabled);
+            if (coldStorageEnabled == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "coldStorageEnabled");
+            }
+            this.coldStorageEnabled = coldStorageEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder coldStorageNotifyEnabled(Boolean coldStorageNotifyEnabled) {
-            this.coldStorageNotifyEnabled = Objects.requireNonNull(coldStorageNotifyEnabled);
+            if (coldStorageNotifyEnabled == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "coldStorageNotifyEnabled");
+            }
+            this.coldStorageNotifyEnabled = coldStorageNotifyEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder coldStorageRetention(Integer coldStorageRetention) {
-            this.coldStorageRetention = Objects.requireNonNull(coldStorageRetention);
+            if (coldStorageRetention == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "coldStorageRetention");
+            }
+            this.coldStorageRetention = coldStorageRetention;
             return this;
         }
         @CustomType.Setter
         public Builder coldStorageTarget(String coldStorageTarget) {
-            this.coldStorageTarget = Objects.requireNonNull(coldStorageTarget);
+            if (coldStorageTarget == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "coldStorageTarget");
+            }
+            this.coldStorageTarget = coldStorageTarget;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder indexingEnabled(Boolean indexingEnabled) {
-            this.indexingEnabled = Objects.requireNonNull(indexingEnabled);
+            if (indexingEnabled == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "indexingEnabled");
+            }
+            this.indexingEnabled = indexingEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder indexingMaxSize(Integer indexingMaxSize) {
-            this.indexingMaxSize = Objects.requireNonNull(indexingMaxSize);
+            if (indexingMaxSize == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "indexingMaxSize");
+            }
+            this.indexingMaxSize = indexingMaxSize;
             return this;
         }
         @CustomType.Setter
         public Builder indexingNotifyEnabled(Boolean indexingNotifyEnabled) {
-            this.indexingNotifyEnabled = Objects.requireNonNull(indexingNotifyEnabled);
+            if (indexingNotifyEnabled == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "indexingNotifyEnabled");
+            }
+            this.indexingNotifyEnabled = indexingNotifyEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder isEditable(Boolean isEditable) {
-            this.isEditable = Objects.requireNonNull(isEditable);
+            if (isEditable == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "isEditable");
+            }
+            this.isEditable = isEditable;
             return this;
         }
         @CustomType.Setter
         public Builder isShareable(Boolean isShareable) {
-            this.isShareable = Objects.requireNonNull(isShareable);
+            if (isShareable == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "isShareable");
+            }
+            this.isShareable = isShareable;
             return this;
         }
         @CustomType.Setter
         public Builder nbAlertCondition(Integer nbAlertCondition) {
-            this.nbAlertCondition = Objects.requireNonNull(nbAlertCondition);
+            if (nbAlertCondition == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "nbAlertCondition");
+            }
+            this.nbAlertCondition = nbAlertCondition;
             return this;
         }
         @CustomType.Setter
         public Builder nbArchive(Integer nbArchive) {
-            this.nbArchive = Objects.requireNonNull(nbArchive);
+            if (nbArchive == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "nbArchive");
+            }
+            this.nbArchive = nbArchive;
             return this;
         }
         @CustomType.Setter
         public Builder parentStreamId(String parentStreamId) {
-            this.parentStreamId = Objects.requireNonNull(parentStreamId);
+            if (parentStreamId == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "parentStreamId");
+            }
+            this.parentStreamId = parentStreamId;
             return this;
         }
         @CustomType.Setter
         public Builder pauseIndexingOnMaxSize(Boolean pauseIndexingOnMaxSize) {
-            this.pauseIndexingOnMaxSize = Objects.requireNonNull(pauseIndexingOnMaxSize);
+            if (pauseIndexingOnMaxSize == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "pauseIndexingOnMaxSize");
+            }
+            this.pauseIndexingOnMaxSize = pauseIndexingOnMaxSize;
             return this;
         }
         @CustomType.Setter
         public Builder retentionId(String retentionId) {
-            this.retentionId = Objects.requireNonNull(retentionId);
+            if (retentionId == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "retentionId");
+            }
+            this.retentionId = retentionId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder streamId(String streamId) {
-            this.streamId = Objects.requireNonNull(streamId);
+            if (streamId == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "streamId");
+            }
+            this.streamId = streamId;
             return this;
         }
         @CustomType.Setter
         public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "title");
+            }
+            this.title = title;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder webSocketEnabled(Boolean webSocketEnabled) {
-            this.webSocketEnabled = Objects.requireNonNull(webSocketEnabled);
+            if (webSocketEnabled == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "webSocketEnabled");
+            }
+            this.webSocketEnabled = webSocketEnabled;
             return this;
         }
         public GetLogsOutputGraylogStreamResult build() {
-            final var o = new GetLogsOutputGraylogStreamResult();
-            o.canAlert = canAlert;
-            o.coldStorageCompression = coldStorageCompression;
-            o.coldStorageContent = coldStorageContent;
-            o.coldStorageEnabled = coldStorageEnabled;
-            o.coldStorageNotifyEnabled = coldStorageNotifyEnabled;
-            o.coldStorageRetention = coldStorageRetention;
-            o.coldStorageTarget = coldStorageTarget;
-            o.createdAt = createdAt;
-            o.description = description;
-            o.id = id;
-            o.indexingEnabled = indexingEnabled;
-            o.indexingMaxSize = indexingMaxSize;
-            o.indexingNotifyEnabled = indexingNotifyEnabled;
-            o.isEditable = isEditable;
-            o.isShareable = isShareable;
-            o.nbAlertCondition = nbAlertCondition;
-            o.nbArchive = nbArchive;
-            o.parentStreamId = parentStreamId;
-            o.pauseIndexingOnMaxSize = pauseIndexingOnMaxSize;
-            o.retentionId = retentionId;
-            o.serviceName = serviceName;
-            o.streamId = streamId;
-            o.title = title;
-            o.updatedAt = updatedAt;
-            o.webSocketEnabled = webSocketEnabled;
-            return o;
+            final var _resultValue = new GetLogsOutputGraylogStreamResult();
+            _resultValue.canAlert = canAlert;
+            _resultValue.coldStorageCompression = coldStorageCompression;
+            _resultValue.coldStorageContent = coldStorageContent;
+            _resultValue.coldStorageEnabled = coldStorageEnabled;
+            _resultValue.coldStorageNotifyEnabled = coldStorageNotifyEnabled;
+            _resultValue.coldStorageRetention = coldStorageRetention;
+            _resultValue.coldStorageTarget = coldStorageTarget;
+            _resultValue.createdAt = createdAt;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.indexingEnabled = indexingEnabled;
+            _resultValue.indexingMaxSize = indexingMaxSize;
+            _resultValue.indexingNotifyEnabled = indexingNotifyEnabled;
+            _resultValue.isEditable = isEditable;
+            _resultValue.isShareable = isShareable;
+            _resultValue.nbAlertCondition = nbAlertCondition;
+            _resultValue.nbArchive = nbArchive;
+            _resultValue.parentStreamId = parentStreamId;
+            _resultValue.pauseIndexingOnMaxSize = pauseIndexingOnMaxSize;
+            _resultValue.retentionId = retentionId;
+            _resultValue.serviceName = serviceName;
+            _resultValue.streamId = streamId;
+            _resultValue.title = title;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.webSocketEnabled = webSocketEnabled;
+            return _resultValue;
         }
     }
 }

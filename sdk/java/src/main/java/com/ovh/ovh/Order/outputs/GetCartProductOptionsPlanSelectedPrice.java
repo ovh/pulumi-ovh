@@ -5,6 +5,7 @@ package com.ovh.ovh.Order.outputs;
 
 import com.ovh.ovh.Order.outputs.GetCartProductOptionsPlanSelectedPricePrice;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -200,7 +201,10 @@ public final class GetCartProductOptionsPlanSelectedPrice {
 
         @CustomType.Setter
         public Builder capacities(List<Object> capacities) {
-            this.capacities = Objects.requireNonNull(capacities);
+            if (capacities == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "capacities");
+            }
+            this.capacities = capacities;
             return this;
         }
         public Builder capacities(Object... capacities) {
@@ -208,47 +212,74 @@ public final class GetCartProductOptionsPlanSelectedPrice {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder duration(String duration) {
-            this.duration = Objects.requireNonNull(duration);
+            if (duration == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "duration");
+            }
+            this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder interval(Integer interval) {
-            this.interval = Objects.requireNonNull(interval);
+            if (interval == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "interval");
+            }
+            this.interval = interval;
             return this;
         }
         @CustomType.Setter
         public Builder maximumQuantity(Integer maximumQuantity) {
-            this.maximumQuantity = Objects.requireNonNull(maximumQuantity);
+            if (maximumQuantity == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "maximumQuantity");
+            }
+            this.maximumQuantity = maximumQuantity;
             return this;
         }
         @CustomType.Setter
         public Builder maximumRepeat(Integer maximumRepeat) {
-            this.maximumRepeat = Objects.requireNonNull(maximumRepeat);
+            if (maximumRepeat == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "maximumRepeat");
+            }
+            this.maximumRepeat = maximumRepeat;
             return this;
         }
         @CustomType.Setter
         public Builder minimumQuantity(Integer minimumQuantity) {
-            this.minimumQuantity = Objects.requireNonNull(minimumQuantity);
+            if (minimumQuantity == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "minimumQuantity");
+            }
+            this.minimumQuantity = minimumQuantity;
             return this;
         }
         @CustomType.Setter
         public Builder minimumRepeat(Integer minimumRepeat) {
-            this.minimumRepeat = Objects.requireNonNull(minimumRepeat);
+            if (minimumRepeat == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "minimumRepeat");
+            }
+            this.minimumRepeat = minimumRepeat;
             return this;
         }
         @CustomType.Setter
         public Builder priceInUcents(Integer priceInUcents) {
-            this.priceInUcents = Objects.requireNonNull(priceInUcents);
+            if (priceInUcents == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "priceInUcents");
+            }
+            this.priceInUcents = priceInUcents;
             return this;
         }
         @CustomType.Setter
         public Builder prices(List<GetCartProductOptionsPlanSelectedPricePrice> prices) {
-            this.prices = Objects.requireNonNull(prices);
+            if (prices == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "prices");
+            }
+            this.prices = prices;
             return this;
         }
         public Builder prices(GetCartProductOptionsPlanSelectedPricePrice... prices) {
@@ -256,29 +287,35 @@ public final class GetCartProductOptionsPlanSelectedPrice {
         }
         @CustomType.Setter
         public Builder pricingMode(String pricingMode) {
-            this.pricingMode = Objects.requireNonNull(pricingMode);
+            if (pricingMode == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "pricingMode");
+            }
+            this.pricingMode = pricingMode;
             return this;
         }
         @CustomType.Setter
         public Builder pricingType(String pricingType) {
-            this.pricingType = Objects.requireNonNull(pricingType);
+            if (pricingType == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanSelectedPrice", "pricingType");
+            }
+            this.pricingType = pricingType;
             return this;
         }
         public GetCartProductOptionsPlanSelectedPrice build() {
-            final var o = new GetCartProductOptionsPlanSelectedPrice();
-            o.capacities = capacities;
-            o.description = description;
-            o.duration = duration;
-            o.interval = interval;
-            o.maximumQuantity = maximumQuantity;
-            o.maximumRepeat = maximumRepeat;
-            o.minimumQuantity = minimumQuantity;
-            o.minimumRepeat = minimumRepeat;
-            o.priceInUcents = priceInUcents;
-            o.prices = prices;
-            o.pricingMode = pricingMode;
-            o.pricingType = pricingType;
-            return o;
+            final var _resultValue = new GetCartProductOptionsPlanSelectedPrice();
+            _resultValue.capacities = capacities;
+            _resultValue.description = description;
+            _resultValue.duration = duration;
+            _resultValue.interval = interval;
+            _resultValue.maximumQuantity = maximumQuantity;
+            _resultValue.maximumRepeat = maximumRepeat;
+            _resultValue.minimumQuantity = minimumQuantity;
+            _resultValue.minimumRepeat = minimumRepeat;
+            _resultValue.priceInUcents = priceInUcents;
+            _resultValue.prices = prices;
+            _resultValue.pricingMode = pricingMode;
+            _resultValue.pricingType = pricingType;
+            return _resultValue;
         }
     }
 }

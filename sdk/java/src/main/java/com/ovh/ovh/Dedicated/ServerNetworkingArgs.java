@@ -6,6 +6,7 @@ package com.ovh.ovh.Dedicated;
 import com.ovh.ovh.Dedicated.inputs.ServerNetworkingInterfaceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,8 +124,12 @@ public final class ServerNetworkingArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ServerNetworkingArgs build() {
-            $.interfaces = Objects.requireNonNull($.interfaces, "expected parameter 'interfaces' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.interfaces == null) {
+                throw new MissingRequiredPropertyException("ServerNetworkingArgs", "interfaces");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ServerNetworkingArgs", "serviceName");
+            }
             return $;
         }
     }

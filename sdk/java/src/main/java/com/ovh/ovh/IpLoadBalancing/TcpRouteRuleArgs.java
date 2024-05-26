@@ -5,6 +5,7 @@ package com.ovh.ovh.IpLoadBalancing;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -336,10 +337,18 @@ public final class TcpRouteRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TcpRouteRuleArgs build() {
-            $.field = Objects.requireNonNull($.field, "expected parameter 'field' to be non-null");
-            $.match = Objects.requireNonNull($.match, "expected parameter 'match' to be non-null");
-            $.routeId = Objects.requireNonNull($.routeId, "expected parameter 'routeId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.field == null) {
+                throw new MissingRequiredPropertyException("TcpRouteRuleArgs", "field");
+            }
+            if ($.match == null) {
+                throw new MissingRequiredPropertyException("TcpRouteRuleArgs", "match");
+            }
+            if ($.routeId == null) {
+                throw new MissingRequiredPropertyException("TcpRouteRuleArgs", "routeId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("TcpRouteRuleArgs", "serviceName");
+            }
             return $;
         }
     }

@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Creates an identity user.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,17 +41,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myUser = new IdentityUser(&#34;myUser&#34;, IdentityUserArgs.builder()        
- *             .description(&#34;Some custom description&#34;)
- *             .email(&#34;my_login@example.com&#34;)
- *             .group(&#34;DEFAULT&#34;)
- *             .login(&#34;my_login&#34;)
- *             .password(&#34;super-s3cr3t!password&#34;)
+ *         var myUser = new IdentityUser("myUser", IdentityUserArgs.builder()        
+ *             .description("Some custom description")
+ *             .email("my_login{@literal @}example.com")
+ *             .group("DEFAULT")
+ *             .login("my_login")
+ *             .password("super-s3cr3t!password")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Me/identityUser:IdentityUser")

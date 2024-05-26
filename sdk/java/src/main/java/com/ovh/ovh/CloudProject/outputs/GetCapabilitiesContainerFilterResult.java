@@ -6,6 +6,7 @@ package com.ovh.ovh.CloudProject.outputs;
 import com.ovh.ovh.CloudProject.outputs.GetCapabilitiesContainerFilterFeature;
 import com.ovh.ovh.CloudProject.outputs.GetCapabilitiesContainerFilterRegistryLimit;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -147,17 +148,26 @@ public final class GetCapabilitiesContainerFilterResult {
 
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterResult", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder features(List<GetCapabilitiesContainerFilterFeature> features) {
-            this.features = Objects.requireNonNull(features);
+            if (features == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterResult", "features");
+            }
+            this.features = features;
             return this;
         }
         public Builder features(GetCapabilitiesContainerFilterFeature... features) {
@@ -165,27 +175,42 @@ public final class GetCapabilitiesContainerFilterResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder planName(String planName) {
-            this.planName = Objects.requireNonNull(planName);
+            if (planName == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterResult", "planName");
+            }
+            this.planName = planName;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder registryLimits(List<GetCapabilitiesContainerFilterRegistryLimit> registryLimits) {
-            this.registryLimits = Objects.requireNonNull(registryLimits);
+            if (registryLimits == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterResult", "registryLimits");
+            }
+            this.registryLimits = registryLimits;
             return this;
         }
         public Builder registryLimits(GetCapabilitiesContainerFilterRegistryLimit... registryLimits) {
@@ -193,27 +218,33 @@ public final class GetCapabilitiesContainerFilterResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerFilterResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         public GetCapabilitiesContainerFilterResult build() {
-            final var o = new GetCapabilitiesContainerFilterResult();
-            o.code = code;
-            o.createdAt = createdAt;
-            o.features = features;
-            o.id = id;
-            o.name = name;
-            o.planName = planName;
-            o.region = region;
-            o.registryLimits = registryLimits;
-            o.serviceName = serviceName;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new GetCapabilitiesContainerFilterResult();
+            _resultValue.code = code;
+            _resultValue.createdAt = createdAt;
+            _resultValue.features = features;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.planName = planName;
+            _resultValue.region = region;
+            _resultValue.registryLimits = registryLimits;
+            _resultValue.serviceName = serviceName;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

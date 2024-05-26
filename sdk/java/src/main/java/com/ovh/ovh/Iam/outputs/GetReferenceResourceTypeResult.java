@@ -4,6 +4,7 @@
 package com.ovh.ovh.Iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,22 +58,28 @@ public final class GetReferenceResourceTypeResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetReferenceResourceTypeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder types(List<String> types) {
-            this.types = Objects.requireNonNull(types);
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetReferenceResourceTypeResult", "types");
+            }
+            this.types = types;
             return this;
         }
         public Builder types(String... types) {
             return types(List.of(types));
         }
         public GetReferenceResourceTypeResult build() {
-            final var o = new GetReferenceResourceTypeResult();
-            o.id = id;
-            o.types = types;
-            return o;
+            final var _resultValue = new GetReferenceResourceTypeResult();
+            _resultValue.id = id;
+            _resultValue.types = types;
+            return _resultValue;
         }
     }
 }

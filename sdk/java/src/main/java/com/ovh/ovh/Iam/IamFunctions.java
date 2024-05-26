@@ -28,7 +28,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -52,7 +53,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPoliciesResult> getPolicies() {
@@ -62,7 +64,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -86,7 +89,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain() {
@@ -96,7 +100,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -120,7 +125,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPoliciesResult> getPolicies(InvokeArgs args) {
@@ -130,7 +136,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -154,7 +161,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(InvokeArgs args) {
@@ -164,7 +172,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -188,7 +197,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPoliciesResult> getPolicies(InvokeArgs args, InvokeOptions options) {
@@ -198,7 +208,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -222,7 +233,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(InvokeArgs args, InvokeOptions options) {
@@ -232,7 +244,8 @@ public final class IamFunctions {
      * Use this data source to retrieve am IAM policy.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -254,12 +267,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPolicy = IamFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .id(&#34;my_policy_id&#34;)
+     *             .id("my_policy_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args) {
@@ -269,7 +283,8 @@ public final class IamFunctions {
      * Use this data source to retrieve am IAM policy.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -291,12 +306,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPolicy = IamFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .id(&#34;my_policy_id&#34;)
+     *             .id("my_policy_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPolicyResult> getPolicyPlain(GetPolicyPlainArgs args) {
@@ -306,7 +322,8 @@ public final class IamFunctions {
      * Use this data source to retrieve am IAM policy.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -328,12 +345,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPolicy = IamFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .id(&#34;my_policy_id&#34;)
+     *             .id("my_policy_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args, InvokeOptions options) {
@@ -343,7 +361,8 @@ public final class IamFunctions {
      * Use this data source to retrieve am IAM policy.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -365,12 +384,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPolicy = IamFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .id(&#34;my_policy_id&#34;)
+     *             .id("my_policy_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPolicyResult> getPolicyPlain(GetPolicyPlainArgs args, InvokeOptions options) {
@@ -381,7 +401,8 @@ public final class IamFunctions {
      * 
      * ## Example Usage
      * 
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -403,12 +424,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpsActions = IamFunctions.getReferenceActions(GetReferenceActionsArgs.builder()
-     *             .resourceType(&#34;vps&#34;)
+     *             .resourceType("vps")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetReferenceActionsResult> getReferenceActions(GetReferenceActionsArgs args) {
@@ -419,7 +441,8 @@ public final class IamFunctions {
      * 
      * ## Example Usage
      * 
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -441,12 +464,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpsActions = IamFunctions.getReferenceActions(GetReferenceActionsArgs.builder()
-     *             .resourceType(&#34;vps&#34;)
+     *             .resourceType("vps")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetReferenceActionsResult> getReferenceActionsPlain(GetReferenceActionsPlainArgs args) {
@@ -457,7 +481,8 @@ public final class IamFunctions {
      * 
      * ## Example Usage
      * 
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -479,12 +504,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpsActions = IamFunctions.getReferenceActions(GetReferenceActionsArgs.builder()
-     *             .resourceType(&#34;vps&#34;)
+     *             .resourceType("vps")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetReferenceActionsResult> getReferenceActions(GetReferenceActionsArgs args, InvokeOptions options) {
@@ -495,7 +521,8 @@ public final class IamFunctions {
      * 
      * ## Example Usage
      * 
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -517,12 +544,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpsActions = IamFunctions.getReferenceActions(GetReferenceActionsArgs.builder()
-     *             .resourceType(&#34;vps&#34;)
+     *             .resourceType("vps")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetReferenceActionsResult> getReferenceActionsPlain(GetReferenceActionsPlainArgs args, InvokeOptions options) {
@@ -532,7 +560,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -556,7 +585,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetReferenceResourceTypeResult> getReferenceResourceType() {
@@ -566,7 +596,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -590,7 +621,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetReferenceResourceTypeResult> getReferenceResourceTypePlain() {
@@ -600,7 +632,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -624,7 +657,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetReferenceResourceTypeResult> getReferenceResourceType(InvokeArgs args) {
@@ -634,7 +668,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -658,7 +693,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetReferenceResourceTypeResult> getReferenceResourceTypePlain(InvokeArgs args) {
@@ -668,7 +704,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -692,7 +729,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetReferenceResourceTypeResult> getReferenceResourceType(InvokeArgs args, InvokeOptions options) {
@@ -702,7 +740,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -726,7 +765,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetReferenceResourceTypeResult> getReferenceResourceTypePlain(InvokeArgs args, InvokeOptions options) {
@@ -736,7 +776,8 @@ public final class IamFunctions {
      * Use this data source get details about a resource group.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -758,12 +799,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myResourceGroup = IamFunctions.getResourceGroup(GetResourceGroupArgs.builder()
-     *             .id(&#34;my_resource_group_id&#34;)
+     *             .id("my_resource_group_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetResourceGroupResult> getResourceGroup(GetResourceGroupArgs args) {
@@ -773,7 +815,8 @@ public final class IamFunctions {
      * Use this data source get details about a resource group.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -795,12 +838,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myResourceGroup = IamFunctions.getResourceGroup(GetResourceGroupArgs.builder()
-     *             .id(&#34;my_resource_group_id&#34;)
+     *             .id("my_resource_group_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetResourceGroupResult> getResourceGroupPlain(GetResourceGroupPlainArgs args) {
@@ -810,7 +854,8 @@ public final class IamFunctions {
      * Use this data source get details about a resource group.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -832,12 +877,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myResourceGroup = IamFunctions.getResourceGroup(GetResourceGroupArgs.builder()
-     *             .id(&#34;my_resource_group_id&#34;)
+     *             .id("my_resource_group_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetResourceGroupResult> getResourceGroup(GetResourceGroupArgs args, InvokeOptions options) {
@@ -847,7 +893,8 @@ public final class IamFunctions {
      * Use this data source get details about a resource group.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -869,12 +916,13 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myResourceGroup = IamFunctions.getResourceGroup(GetResourceGroupArgs.builder()
-     *             .id(&#34;my_resource_group_id&#34;)
+     *             .id("my_resource_group_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetResourceGroupResult> getResourceGroupPlain(GetResourceGroupPlainArgs args, InvokeOptions options) {
@@ -884,7 +932,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -908,7 +957,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups() {
@@ -918,7 +968,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -942,7 +993,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain() {
@@ -952,7 +1004,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -976,7 +1029,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(InvokeArgs args) {
@@ -986,7 +1040,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1010,7 +1065,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(InvokeArgs args) {
@@ -1020,7 +1076,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1044,7 +1101,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(InvokeArgs args, InvokeOptions options) {
@@ -1054,7 +1112,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1078,7 +1137,8 @@ public final class IamFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(InvokeArgs args, InvokeOptions options) {

@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Provides a OVHcloud IP reverse.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -38,15 +39,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Reverse(&#34;test&#34;, ReverseArgs.builder()        
- *             .ip(&#34;192.0.2.0/24&#34;)
- *             .ReverseIp(&#34;192.0.2.1&#34;)
- *             .ReverseValue(&#34;example.com&#34;)
+ *         var test = new Reverse("test", ReverseArgs.builder()        
+ *             .ip("192.0.2.0/24")
+ *             .ReverseIp("192.0.2.1")
+ *             .ReverseValue("example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

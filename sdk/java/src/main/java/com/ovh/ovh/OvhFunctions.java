@@ -24,7 +24,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -48,7 +49,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetInstallationTemplatesResult> getInstallationTemplates() {
@@ -58,7 +60,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -82,7 +85,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetInstallationTemplatesResult> getInstallationTemplatesPlain() {
@@ -92,7 +96,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -116,7 +121,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetInstallationTemplatesResult> getInstallationTemplates(InvokeArgs args) {
@@ -126,7 +132,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -150,7 +157,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetInstallationTemplatesResult> getInstallationTemplatesPlain(InvokeArgs args) {
@@ -160,7 +168,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -184,7 +193,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetInstallationTemplatesResult> getInstallationTemplates(InvokeArgs args, InvokeOptions options) {
@@ -194,7 +204,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -218,7 +229,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetInstallationTemplatesResult> getInstallationTemplatesPlain(InvokeArgs args, InvokeOptions options) {
@@ -228,7 +240,8 @@ public final class OvhFunctions {
      * Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -250,12 +263,13 @@ public final class OvhFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server = OvhFunctions.getServer(GetServerArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetServerResult> getServer(GetServerArgs args) {
@@ -265,7 +279,8 @@ public final class OvhFunctions {
      * Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -287,12 +302,13 @@ public final class OvhFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server = OvhFunctions.getServer(GetServerArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServerResult> getServerPlain(GetServerPlainArgs args) {
@@ -302,7 +318,8 @@ public final class OvhFunctions {
      * Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -324,12 +341,13 @@ public final class OvhFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server = OvhFunctions.getServer(GetServerArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetServerResult> getServer(GetServerArgs args, InvokeOptions options) {
@@ -339,7 +357,8 @@ public final class OvhFunctions {
      * Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -361,12 +380,13 @@ public final class OvhFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server = OvhFunctions.getServer(GetServerArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
+     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServerResult> getServerPlain(GetServerPlainArgs args, InvokeOptions options) {
@@ -376,7 +396,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -400,7 +421,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetServersResult> getServers() {
@@ -410,7 +432,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -434,7 +457,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServersResult> getServersPlain() {
@@ -444,7 +468,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -468,7 +493,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetServersResult> getServers(InvokeArgs args) {
@@ -478,7 +504,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -502,7 +529,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServersResult> getServersPlain(InvokeArgs args) {
@@ -512,7 +540,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -536,7 +565,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetServersResult> getServers(InvokeArgs args, InvokeOptions options) {
@@ -546,7 +576,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -570,7 +601,8 @@ public final class OvhFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServersResult> getServersPlain(InvokeArgs args, InvokeOptions options) {
@@ -580,7 +612,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -602,13 +635,14 @@ public final class OvhFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lbNetworks = OvhFunctions.getVrackNetworks(GetVrackNetworksArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .subnet(&#34;10.0.0.0/24&#34;)
+     *             .serviceName("XXXXXX")
+     *             .subnet("10.0.0.0/24")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetVrackNetworksResult> getVrackNetworks(GetVrackNetworksArgs args) {
@@ -618,7 +652,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -640,13 +675,14 @@ public final class OvhFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lbNetworks = OvhFunctions.getVrackNetworks(GetVrackNetworksArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .subnet(&#34;10.0.0.0/24&#34;)
+     *             .serviceName("XXXXXX")
+     *             .subnet("10.0.0.0/24")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVrackNetworksResult> getVrackNetworksPlain(GetVrackNetworksPlainArgs args) {
@@ -656,7 +692,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -678,13 +715,14 @@ public final class OvhFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lbNetworks = OvhFunctions.getVrackNetworks(GetVrackNetworksArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .subnet(&#34;10.0.0.0/24&#34;)
+     *             .serviceName("XXXXXX")
+     *             .subnet("10.0.0.0/24")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetVrackNetworksResult> getVrackNetworks(GetVrackNetworksArgs args, InvokeOptions options) {
@@ -694,7 +732,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -716,13 +755,14 @@ public final class OvhFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var lbNetworks = OvhFunctions.getVrackNetworks(GetVrackNetworksArgs.builder()
-     *             .serviceName(&#34;XXXXXX&#34;)
-     *             .subnet(&#34;10.0.0.0/24&#34;)
+     *             .serviceName("XXXXXX")
+     *             .subnet("10.0.0.0/24")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVrackNetworksResult> getVrackNetworksPlain(GetVrackNetworksPlainArgs args, InvokeOptions options) {

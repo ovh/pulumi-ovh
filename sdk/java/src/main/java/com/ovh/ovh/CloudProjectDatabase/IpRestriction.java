@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Apply IP restrictions to an OVHcloud Managed Database cluster.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,21 +43,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var db = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
- *             .serviceName(&#34;XXXX&#34;)
- *             .engine(&#34;YYYY&#34;)
- *             .id(&#34;ZZZZ&#34;)
+ *             .serviceName("XXXX")
+ *             .engine("YYYY")
+ *             .id("ZZZZ")
  *             .build());
  * 
- *         var iprestriction = new IpRestriction(&#34;iprestriction&#34;, IpRestrictionArgs.builder()        
- *             .serviceName(db.applyValue(getDatabaseResult -&gt; getDatabaseResult.serviceName()))
- *             .engine(db.applyValue(getDatabaseResult -&gt; getDatabaseResult.engine()))
- *             .clusterId(db.applyValue(getDatabaseResult -&gt; getDatabaseResult.id()))
- *             .ip(&#34;178.97.6.0/24&#34;)
+ *         var iprestriction = new IpRestriction("iprestriction", IpRestrictionArgs.builder()        
+ *             .serviceName(db.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
+ *             .engine(db.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
+ *             .clusterId(db.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .ip("178.97.6.0/24")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

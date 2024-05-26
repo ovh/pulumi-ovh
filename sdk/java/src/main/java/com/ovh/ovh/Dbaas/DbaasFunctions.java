@@ -27,7 +27,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve informations about a DBaas logs cluster tenant.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -49,13 +50,14 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsCluster(GetLogsClusterArgs.builder()
-     *             .clusterId(&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;)
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .serviceName("ldp-xx-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetLogsClusterResult> getLogsCluster(GetLogsClusterArgs args) {
@@ -65,7 +67,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve informations about a DBaas logs cluster tenant.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -87,13 +90,14 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsCluster(GetLogsClusterArgs.builder()
-     *             .clusterId(&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;)
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .serviceName("ldp-xx-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLogsClusterResult> getLogsClusterPlain(GetLogsClusterPlainArgs args) {
@@ -103,7 +107,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve informations about a DBaas logs cluster tenant.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -125,13 +130,14 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsCluster(GetLogsClusterArgs.builder()
-     *             .clusterId(&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;)
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .serviceName("ldp-xx-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetLogsClusterResult> getLogsCluster(GetLogsClusterArgs args, InvokeOptions options) {
@@ -141,7 +147,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve informations about a DBaas logs cluster tenant.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -163,13 +170,14 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsCluster(GetLogsClusterArgs.builder()
-     *             .clusterId(&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;)
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .serviceName("ldp-xx-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLogsClusterResult> getLogsClusterPlain(GetLogsClusterPlainArgs args, InvokeOptions options) {
@@ -179,7 +187,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve UUIDs of DBaas logs clusters.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -201,12 +210,13 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsClusters(GetLogsClustersArgs.builder()
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
+     *             .serviceName("ldp-xx-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetLogsClustersResult> getLogsClusters(GetLogsClustersArgs args) {
@@ -216,7 +226,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve UUIDs of DBaas logs clusters.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -238,12 +249,13 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsClusters(GetLogsClustersArgs.builder()
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
+     *             .serviceName("ldp-xx-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLogsClustersResult> getLogsClustersPlain(GetLogsClustersPlainArgs args) {
@@ -253,7 +265,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve UUIDs of DBaas logs clusters.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -275,12 +288,13 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsClusters(GetLogsClustersArgs.builder()
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
+     *             .serviceName("ldp-xx-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetLogsClustersResult> getLogsClusters(GetLogsClustersArgs args, InvokeOptions options) {
@@ -290,7 +304,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve UUIDs of DBaas logs clusters.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -312,12 +327,13 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsClusters(GetLogsClustersArgs.builder()
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
+     *             .serviceName("ldp-xx-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLogsClustersResult> getLogsClustersPlain(GetLogsClustersPlainArgs args, InvokeOptions options) {
@@ -327,7 +343,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs input engine.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -350,14 +367,15 @@ public final class DbaasFunctions {
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsInputEngine(GetLogsInputEngineArgs.builder()
      *             .isDeprecated(true)
-     *             .name(&#34;logstash&#34;)
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
-     *             .version(&#34;6.8&#34;)
+     *             .name("logstash")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .version("6.8")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetLogsInputEngineResult> getLogsInputEngine(GetLogsInputEngineArgs args) {
@@ -367,7 +385,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs input engine.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -390,14 +409,15 @@ public final class DbaasFunctions {
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsInputEngine(GetLogsInputEngineArgs.builder()
      *             .isDeprecated(true)
-     *             .name(&#34;logstash&#34;)
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
-     *             .version(&#34;6.8&#34;)
+     *             .name("logstash")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .version("6.8")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLogsInputEngineResult> getLogsInputEnginePlain(GetLogsInputEnginePlainArgs args) {
@@ -407,7 +427,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs input engine.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -430,14 +451,15 @@ public final class DbaasFunctions {
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsInputEngine(GetLogsInputEngineArgs.builder()
      *             .isDeprecated(true)
-     *             .name(&#34;logstash&#34;)
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
-     *             .version(&#34;6.8&#34;)
+     *             .name("logstash")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .version("6.8")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetLogsInputEngineResult> getLogsInputEngine(GetLogsInputEngineArgs args, InvokeOptions options) {
@@ -447,7 +469,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs input engine.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -470,14 +493,15 @@ public final class DbaasFunctions {
      *     public static void stack(Context ctx) {
      *         final var logstash = DbaasFunctions.getLogsInputEngine(GetLogsInputEngineArgs.builder()
      *             .isDeprecated(true)
-     *             .name(&#34;logstash&#34;)
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
-     *             .version(&#34;6.8&#34;)
+     *             .name("logstash")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .version("6.8")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLogsInputEngineResult> getLogsInputEnginePlain(GetLogsInputEnginePlainArgs args, InvokeOptions options) {
@@ -487,7 +511,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs output graylog stream.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -509,13 +534,14 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var stream = DbaasFunctions.getLogsOutputGraylogStream(GetLogsOutputGraylogStreamArgs.builder()
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
-     *             .title(&#34;my stream&#34;)
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .title("my stream")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetLogsOutputGraylogStreamResult> getLogsOutputGraylogStream(GetLogsOutputGraylogStreamArgs args) {
@@ -525,7 +551,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs output graylog stream.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -547,13 +574,14 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var stream = DbaasFunctions.getLogsOutputGraylogStream(GetLogsOutputGraylogStreamArgs.builder()
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
-     *             .title(&#34;my stream&#34;)
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .title("my stream")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLogsOutputGraylogStreamResult> getLogsOutputGraylogStreamPlain(GetLogsOutputGraylogStreamPlainArgs args) {
@@ -563,7 +591,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs output graylog stream.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -585,13 +614,14 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var stream = DbaasFunctions.getLogsOutputGraylogStream(GetLogsOutputGraylogStreamArgs.builder()
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
-     *             .title(&#34;my stream&#34;)
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .title("my stream")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetLogsOutputGraylogStreamResult> getLogsOutputGraylogStream(GetLogsOutputGraylogStreamArgs args, InvokeOptions options) {
@@ -601,7 +631,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs output graylog stream.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -623,13 +654,14 @@ public final class DbaasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var stream = DbaasFunctions.getLogsOutputGraylogStream(GetLogsOutputGraylogStreamArgs.builder()
-     *             .serviceName(&#34;ldp-xx-xxxxx&#34;)
-     *             .title(&#34;my stream&#34;)
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .title("my stream")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLogsOutputGraylogStreamResult> getLogsOutputGraylogStreamPlain(GetLogsOutputGraylogStreamPlainArgs args, InvokeOptions options) {

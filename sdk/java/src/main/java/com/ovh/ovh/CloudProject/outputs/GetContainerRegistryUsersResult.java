@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,25 +71,34 @@ public final class GetContainerRegistryUsersResult {
 
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryUsersResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryUsersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryUsersResult", "user");
+            }
+            this.user = user;
             return this;
         }
         public GetContainerRegistryUsersResult build() {
-            final var o = new GetContainerRegistryUsersResult();
-            o.email = email;
-            o.id = id;
-            o.user = user;
-            return o;
+            final var _resultValue = new GetContainerRegistryUsersResult();
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.Vps.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetVpsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetVpsPlainArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetVpsPlainArgs", "serviceName");
+            }
             return $;
         }
     }

@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * Creates an IAM policy.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,26 +47,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var account = MeFunctions.getMe();
  * 
- *         var myGroup = new IdentityGroup(&#34;myGroup&#34;, IdentityGroupArgs.builder()        
- *             .description(&#34;my_group created in Terraform&#34;)
+ *         var myGroup = new IdentityGroup("myGroup", IdentityGroupArgs.builder()        
+ *             .description("my_group created in Terraform")
  *             .build());
  * 
- *         var manager = new Policy(&#34;manager&#34;, PolicyArgs.builder()        
- *             .description(&#34;Users are allowed to use the OVH manager&#34;)
+ *         var manager = new Policy("manager", PolicyArgs.builder()        
+ *             .description("Users are allowed to use the OVH manager")
  *             .identities(myGroup.GroupURN())
- *             .resources(account.applyValue(getMeResult -&gt; getMeResult.AccountURN()))
+ *             .resources(account.applyValue(getMeResult -> getMeResult.AccountURN()))
  *             .allows(            
- *                 &#34;account:apiovh:me/get&#34;,
- *                 &#34;account:apiovh:me/supportLevel/get&#34;,
- *                 &#34;account:apiovh:me/certificates/get&#34;,
- *                 &#34;account:apiovh:me/tag/get&#34;,
- *                 &#34;account:apiovh:services/get&#34;,
- *                 &#34;account:apiovh:*&#34;)
+ *                 "account:apiovh:me/get",
+ *                 "account:apiovh:me/supportLevel/get",
+ *                 "account:apiovh:me/certificates/get",
+ *                 "account:apiovh:me/tag/get",
+ *                 "account:apiovh:services/get",
+ *                 "account:apiovh:*")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Iam/policy:Policy")

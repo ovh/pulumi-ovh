@@ -4,6 +4,7 @@
 package com.ovh.ovh.Domain.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,19 +57,25 @@ public final class ZonePlanConfiguration {
 
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("ZonePlanConfiguration", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("ZonePlanConfiguration", "value");
+            }
+            this.value = value;
             return this;
         }
         public ZonePlanConfiguration build() {
-            final var o = new ZonePlanConfiguration();
-            o.label = label;
-            o.value = value;
-            return o;
+            final var _resultValue = new ZonePlanConfiguration();
+            _resultValue.label = label;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -5,6 +5,7 @@ package com.ovh.ovh.Dedicated;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class CephAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CephAclArgs build() {
-            $.netmask = Objects.requireNonNull($.netmask, "expected parameter 'netmask' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.netmask == null) {
+                throw new MissingRequiredPropertyException("CephAclArgs", "netmask");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("CephAclArgs", "network");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("CephAclArgs", "serviceName");
+            }
             return $;
         }
     }

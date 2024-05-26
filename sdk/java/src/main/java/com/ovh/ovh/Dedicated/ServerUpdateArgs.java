@@ -5,6 +5,7 @@ package com.ovh.ovh.Dedicated;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -189,7 +190,9 @@ public final class ServerUpdateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ServerUpdateArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ServerUpdateArgs", "serviceName");
+            }
             return $;
         }
     }

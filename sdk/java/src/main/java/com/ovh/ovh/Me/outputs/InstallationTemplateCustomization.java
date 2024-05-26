@@ -146,49 +146,56 @@ public final class InstallationTemplateCustomization {
 
         @CustomType.Setter
         public Builder changeLog(@Nullable String changeLog) {
+
             this.changeLog = changeLog;
             return this;
         }
         @CustomType.Setter
         public Builder customHostname(@Nullable String customHostname) {
+
             this.customHostname = customHostname;
             return this;
         }
         @CustomType.Setter
         public Builder postInstallationScriptLink(@Nullable String postInstallationScriptLink) {
+
             this.postInstallationScriptLink = postInstallationScriptLink;
             return this;
         }
         @CustomType.Setter
         public Builder postInstallationScriptReturn(@Nullable String postInstallationScriptReturn) {
+
             this.postInstallationScriptReturn = postInstallationScriptReturn;
             return this;
         }
         @CustomType.Setter
         public Builder rating(@Nullable Integer rating) {
+
             this.rating = rating;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyName(@Nullable String sshKeyName) {
+
             this.sshKeyName = sshKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder useDistributionKernel(@Nullable Boolean useDistributionKernel) {
+
             this.useDistributionKernel = useDistributionKernel;
             return this;
         }
         public InstallationTemplateCustomization build() {
-            final var o = new InstallationTemplateCustomization();
-            o.changeLog = changeLog;
-            o.customHostname = customHostname;
-            o.postInstallationScriptLink = postInstallationScriptLink;
-            o.postInstallationScriptReturn = postInstallationScriptReturn;
-            o.rating = rating;
-            o.sshKeyName = sshKeyName;
-            o.useDistributionKernel = useDistributionKernel;
-            return o;
+            final var _resultValue = new InstallationTemplateCustomization();
+            _resultValue.changeLog = changeLog;
+            _resultValue.customHostname = customHostname;
+            _resultValue.postInstallationScriptLink = postInstallationScriptLink;
+            _resultValue.postInstallationScriptReturn = postInstallationScriptReturn;
+            _resultValue.rating = rating;
+            _resultValue.sshKeyName = sshKeyName;
+            _resultValue.useDistributionKernel = useDistributionKernel;
+            return _resultValue;
         }
     }
 }

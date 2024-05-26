@@ -4,6 +4,7 @@
 package com.ovh.ovh.Order.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -71,25 +72,34 @@ public final class GetCartProductOptionsPlanPricePrice {
 
         @CustomType.Setter
         public Builder currencyCode(String currencyCode) {
-            this.currencyCode = Objects.requireNonNull(currencyCode);
+            if (currencyCode == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanPricePrice", "currencyCode");
+            }
+            this.currencyCode = currencyCode;
             return this;
         }
         @CustomType.Setter
         public Builder text(String text) {
-            this.text = Objects.requireNonNull(text);
+            if (text == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanPricePrice", "text");
+            }
+            this.text = text;
             return this;
         }
         @CustomType.Setter
         public Builder value(Double value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsPlanPricePrice", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetCartProductOptionsPlanPricePrice build() {
-            final var o = new GetCartProductOptionsPlanPricePrice();
-            o.currencyCode = currencyCode;
-            o.text = text;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetCartProductOptionsPlanPricePrice();
+            _resultValue.currencyCode = currencyCode;
+            _resultValue.text = text;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -111,8 +112,12 @@ public final class GetKubeCustomizationApiserverAdmissionplugin extends com.pulu
         }
 
         public GetKubeCustomizationApiserverAdmissionplugin build() {
-            $.disableds = Objects.requireNonNull($.disableds, "expected parameter 'disableds' to be non-null");
-            $.enableds = Objects.requireNonNull($.enableds, "expected parameter 'enableds' to be non-null");
+            if ($.disableds == null) {
+                throw new MissingRequiredPropertyException("GetKubeCustomizationApiserverAdmissionplugin", "disableds");
+            }
+            if ($.enableds == null) {
+                throw new MissingRequiredPropertyException("GetKubeCustomizationApiserverAdmissionplugin", "enableds");
+            }
             return $;
         }
     }

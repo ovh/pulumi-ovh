@@ -4,6 +4,7 @@
 package com.ovh.ovh.Hosting.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,19 +57,25 @@ public final class GetPrivateDatabaseUserDatabase {
 
         @CustomType.Setter
         public Builder databaseName(String databaseName) {
-            this.databaseName = Objects.requireNonNull(databaseName);
+            if (databaseName == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserDatabase", "databaseName");
+            }
+            this.databaseName = databaseName;
             return this;
         }
         @CustomType.Setter
         public Builder grantType(String grantType) {
-            this.grantType = Objects.requireNonNull(grantType);
+            if (grantType == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseUserDatabase", "grantType");
+            }
+            this.grantType = grantType;
             return this;
         }
         public GetPrivateDatabaseUserDatabase build() {
-            final var o = new GetPrivateDatabaseUserDatabase();
-            o.databaseName = databaseName;
-            o.grantType = grantType;
-            return o;
+            final var _resultValue = new GetPrivateDatabaseUserDatabase();
+            _resultValue.databaseName = databaseName;
+            _resultValue.grantType = grantType;
+            return _resultValue;
         }
     }
 }

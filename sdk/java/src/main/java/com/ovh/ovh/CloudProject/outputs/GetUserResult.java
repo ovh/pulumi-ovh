@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.ovh.ovh.CloudProject.outputs.GetUserRole;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -128,22 +129,34 @@ public final class GetUserResult {
 
         @CustomType.Setter
         public Builder creationDate(String creationDate) {
-            this.creationDate = Objects.requireNonNull(creationDate);
+            if (creationDate == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "creationDate");
+            }
+            this.creationDate = creationDate;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder roles(List<GetUserRole> roles) {
-            this.roles = Objects.requireNonNull(roles);
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "roles");
+            }
+            this.roles = roles;
             return this;
         }
         public Builder roles(GetUserRole... roles) {
@@ -151,35 +164,47 @@ public final class GetUserResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetUserResult build() {
-            final var o = new GetUserResult();
-            o.creationDate = creationDate;
-            o.description = description;
-            o.id = id;
-            o.roles = roles;
-            o.serviceName = serviceName;
-            o.status = status;
-            o.userId = userId;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetUserResult();
+            _resultValue.creationDate = creationDate;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.roles = roles;
+            _resultValue.serviceName = serviceName;
+            _resultValue.status = status;
+            _resultValue.userId = userId;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

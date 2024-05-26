@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Manage rules for TCP route.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,28 +44,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var reject = new TcpRoute(&#34;reject&#34;, TcpRouteArgs.builder()        
- *             .serviceName(&#34;loadbalancer-xxxxxxxxxxxxxxxxxx&#34;)
+ *         var reject = new TcpRoute("reject", TcpRouteArgs.builder()        
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .weight(1)
  *             .frontendId(11111)
  *             .action(TcpRouteActionArgs.builder()
- *                 .type(&#34;reject&#34;)
+ *                 .type("reject")
  *                 .build())
  *             .build());
  * 
- *         var examplerule = new TcpRouteRule(&#34;examplerule&#34;, TcpRouteRuleArgs.builder()        
- *             .serviceName(&#34;loadbalancer-xxxxxxxxxxxxxxxxxx&#34;)
+ *         var examplerule = new TcpRouteRule("examplerule", TcpRouteRuleArgs.builder()        
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .routeId(reject.id())
- *             .displayName(&#34;Match example.com host&#34;)
- *             .field(&#34;sni&#34;)
- *             .match(&#34;is&#34;)
+ *             .displayName("Match example.com host")
+ *             .field("sni")
+ *             .match("is")
  *             .negate(false)
- *             .pattern(&#34;example.com&#34;)
+ *             .pattern("example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule")

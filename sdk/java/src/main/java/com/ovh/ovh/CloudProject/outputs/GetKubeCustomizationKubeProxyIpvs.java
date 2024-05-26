@@ -114,43 +114,49 @@ public final class GetKubeCustomizationKubeProxyIpvs {
 
         @CustomType.Setter
         public Builder minSyncPeriod(@Nullable String minSyncPeriod) {
+
             this.minSyncPeriod = minSyncPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder scheduler(@Nullable String scheduler) {
+
             this.scheduler = scheduler;
             return this;
         }
         @CustomType.Setter
         public Builder syncPeriod(@Nullable String syncPeriod) {
+
             this.syncPeriod = syncPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder tcpFinTimeout(@Nullable String tcpFinTimeout) {
+
             this.tcpFinTimeout = tcpFinTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder tcpTimeout(@Nullable String tcpTimeout) {
+
             this.tcpTimeout = tcpTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder udpTimeout(@Nullable String udpTimeout) {
+
             this.udpTimeout = udpTimeout;
             return this;
         }
         public GetKubeCustomizationKubeProxyIpvs build() {
-            final var o = new GetKubeCustomizationKubeProxyIpvs();
-            o.minSyncPeriod = minSyncPeriod;
-            o.scheduler = scheduler;
-            o.syncPeriod = syncPeriod;
-            o.tcpFinTimeout = tcpFinTimeout;
-            o.tcpTimeout = tcpTimeout;
-            o.udpTimeout = udpTimeout;
-            return o;
+            final var _resultValue = new GetKubeCustomizationKubeProxyIpvs();
+            _resultValue.minSyncPeriod = minSyncPeriod;
+            _resultValue.scheduler = scheduler;
+            _resultValue.syncPeriod = syncPeriod;
+            _resultValue.tcpFinTimeout = tcpFinTimeout;
+            _resultValue.tcpTimeout = tcpTimeout;
+            _resultValue.udpTimeout = udpTimeout;
+            return _resultValue;
         }
     }
 }

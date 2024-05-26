@@ -6,6 +6,7 @@ package com.ovh.ovh.Dbaas;
 import com.ovh.ovh.Dbaas.inputs.LogsInputConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -385,12 +386,24 @@ public final class LogsInputArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LogsInputArgs build() {
-            $.configuration = Objects.requireNonNull($.configuration, "expected parameter 'configuration' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.engineId = Objects.requireNonNull($.engineId, "expected parameter 'engineId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.streamId = Objects.requireNonNull($.streamId, "expected parameter 'streamId' to be non-null");
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.configuration == null) {
+                throw new MissingRequiredPropertyException("LogsInputArgs", "configuration");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("LogsInputArgs", "description");
+            }
+            if ($.engineId == null) {
+                throw new MissingRequiredPropertyException("LogsInputArgs", "engineId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("LogsInputArgs", "serviceName");
+            }
+            if ($.streamId == null) {
+                throw new MissingRequiredPropertyException("LogsInputArgs", "streamId");
+            }
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("LogsInputArgs", "title");
+            }
             return $;
         }
     }

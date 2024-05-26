@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Creates a dbaas logs input.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,42 +50,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var logstash = DbaasFunctions.getLogsInputEngine(GetLogsInputEngineArgs.builder()
- *             .name(&#34;logstash&#34;)
- *             .version(&#34;7.x&#34;)
+ *             .name("logstash")
+ *             .version("7.x")
  *             .build());
  * 
- *         var stream = new LogsOutputGraylogStream(&#34;stream&#34;, LogsOutputGraylogStreamArgs.builder()        
- *             .serviceName(&#34;....&#34;)
- *             .title(&#34;my stream&#34;)
- *             .description(&#34;my graylog stream&#34;)
+ *         var stream = new LogsOutputGraylogStream("stream", LogsOutputGraylogStreamArgs.builder()        
+ *             .serviceName("....")
+ *             .title("my stream")
+ *             .description("my graylog stream")
  *             .build());
  * 
- *         var input = new LogsInput(&#34;input&#34;, LogsInputArgs.builder()        
+ *         var input = new LogsInput("input", LogsInputArgs.builder()        
  *             .serviceName(stream.serviceName())
  *             .description(stream.description())
  *             .title(stream.title())
- *             .engineId(logstash.applyValue(getLogsInputEngineResult -&gt; getLogsInputEngineResult.id()))
+ *             .engineId(logstash.applyValue(getLogsInputEngineResult -> getLogsInputEngineResult.id()))
  *             .streamId(stream.id())
- *             .allowedNetworks(&#34;10.0.0.0/16&#34;)
- *             .exposedPort(&#34;6154&#34;)
+ *             .allowedNetworks("10.0.0.0/16")
+ *             .exposedPort("6154")
  *             .nbInstance(2)
  *             .configuration(LogsInputConfigurationArgs.builder()
  *                 .logstash(LogsInputConfigurationLogstashArgs.builder()
- *                     .inputSection(&#34;&#34;&#34;
+ *                     .inputSection("""
  *   beats {
- *     port =&gt; 6514
- *     ssl =&gt; true
- *     ssl_certificate =&gt; &#34;/etc/ssl/private/server.crt&#34;
- *     ssl_key =&gt; &#34;/etc/ssl/private/server.key&#34;
+ *     port => 6514
+ *     ssl => true
+ *     ssl_certificate => "/etc/ssl/private/server.crt"
+ *     ssl_key => "/etc/ssl/private/server.key"
  *   }
- *                     &#34;&#34;&#34;)
+ *                     """)
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Dbaas/logsInput:LogsInput")

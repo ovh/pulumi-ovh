@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -86,7 +87,10 @@ public final class GetInstallationTemplatePartitionSchemeHardwareRaid {
 
         @CustomType.Setter
         public Builder disks(List<String> disks) {
-            this.disks = Objects.requireNonNull(disks);
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionSchemeHardwareRaid", "disks");
+            }
+            this.disks = disks;
             return this;
         }
         public Builder disks(String... disks) {
@@ -94,26 +98,35 @@ public final class GetInstallationTemplatePartitionSchemeHardwareRaid {
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionSchemeHardwareRaid", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionSchemeHardwareRaid", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder step(Integer step) {
-            this.step = Objects.requireNonNull(step);
+            if (step == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionSchemeHardwareRaid", "step");
+            }
+            this.step = step;
             return this;
         }
         public GetInstallationTemplatePartitionSchemeHardwareRaid build() {
-            final var o = new GetInstallationTemplatePartitionSchemeHardwareRaid();
-            o.disks = disks;
-            o.mode = mode;
-            o.name = name;
-            o.step = step;
-            return o;
+            final var _resultValue = new GetInstallationTemplatePartitionSchemeHardwareRaid();
+            _resultValue.disks = disks;
+            _resultValue.mode = mode;
+            _resultValue.name = name;
+            _resultValue.step = step;
+            return _resultValue;
         }
     }
 }

@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Attach an IP block to a VRack.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,55 +52,56 @@ import javax.annotation.Nullable;
  *         final var myaccount = MeFunctions.getMe();
  * 
  *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
- *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
  *             .build());
  * 
  *         final var vrackCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
- *             .priceCapacity(&#34;renew&#34;)
- *             .product(&#34;vrack&#34;)
- *             .planCode(&#34;vrack&#34;)
+ *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .priceCapacity("renew")
+ *             .product("vrack")
+ *             .planCode("vrack")
  *             .build());
  * 
- *         var vrackVrack = new Vrack(&#34;vrackVrack&#34;, VrackArgs.builder()        
- *             .description(mycart.applyValue(getCartResult -&gt; getCartResult.description()))
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -&gt; getCartResult.ovhSubsidiary()))
+ *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()        
+ *             .description(mycart.applyValue(getCartResult -> getCartResult.description()))
+ *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
  *             .plan(VrackPlanArgs.builder()
- *                 .duration(vrackCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(vrackCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.planCode()))
- *                 .pricingMode(vrackCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
+ *                 .planCode(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *                 .pricingMode(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
  *                 .build())
  *             .build());
  * 
  *         final var ipblockCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
- *             .priceCapacity(&#34;renew&#34;)
- *             .product(&#34;ip&#34;)
- *             .planCode(&#34;ip-v4-s30-ripe&#34;)
+ *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .priceCapacity("renew")
+ *             .product("ip")
+ *             .planCode("ip-v4-s30-ripe")
  *             .build());
  * 
- *         var ipblockIpService = new IpService(&#34;ipblockIpService&#34;, IpServiceArgs.builder()        
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -&gt; getCartResult.ovhSubsidiary()))
- *             .description(mycart.applyValue(getCartResult -&gt; getCartResult.description()))
+ *         var ipblockIpService = new IpService("ipblockIpService", IpServiceArgs.builder()        
+ *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .description(mycart.applyValue(getCartResult -> getCartResult.description()))
  *             .plan(IpServicePlanArgs.builder()
- *                 .duration(ipblockCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.planCode()))
- *                 .pricingMode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
+ *                 .planCode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *                 .pricingMode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
  *                 .configurations(IpServicePlanConfigurationArgs.builder()
- *                     .label(&#34;country&#34;)
- *                     .value(&#34;FR&#34;)
+ *                     .label("country")
+ *                     .value("FR")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var vrackblock = new IpAddress(&#34;vrackblock&#34;, IpAddressArgs.builder()        
+ *         var vrackblock = new IpAddress("vrackblock", IpAddressArgs.builder()        
  *             .serviceName(vrackVrack.serviceName())
  *             .block(ipblockIpService.ip())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Vrack/ipAddress:IpAddress")

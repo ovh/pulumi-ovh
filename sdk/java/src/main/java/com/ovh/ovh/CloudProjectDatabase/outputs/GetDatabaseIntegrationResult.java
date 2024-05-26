@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -155,61 +156,88 @@ public final class GetDatabaseIntegrationResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder destinationServiceId(String destinationServiceId) {
-            this.destinationServiceId = Objects.requireNonNull(destinationServiceId);
+            if (destinationServiceId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationResult", "destinationServiceId");
+            }
+            this.destinationServiceId = destinationServiceId;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationResult", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(Map<String,String> parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationResult", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder sourceServiceId(String sourceServiceId) {
-            this.sourceServiceId = Objects.requireNonNull(sourceServiceId);
+            if (sourceServiceId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationResult", "sourceServiceId");
+            }
+            this.sourceServiceId = sourceServiceId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseIntegrationResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetDatabaseIntegrationResult build() {
-            final var o = new GetDatabaseIntegrationResult();
-            o.clusterId = clusterId;
-            o.destinationServiceId = destinationServiceId;
-            o.engine = engine;
-            o.id = id;
-            o.parameters = parameters;
-            o.serviceName = serviceName;
-            o.sourceServiceId = sourceServiceId;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDatabaseIntegrationResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.destinationServiceId = destinationServiceId;
+            _resultValue.engine = engine;
+            _resultValue.id = id;
+            _resultValue.parameters = parameters;
+            _resultValue.serviceName = serviceName;
+            _resultValue.sourceServiceId = sourceServiceId;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

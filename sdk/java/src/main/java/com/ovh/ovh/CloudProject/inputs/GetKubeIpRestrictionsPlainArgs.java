@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -93,8 +94,12 @@ public final class GetKubeIpRestrictionsPlainArgs extends com.pulumi.resources.I
         }
 
         public GetKubeIpRestrictionsPlainArgs build() {
-            $.kubeId = Objects.requireNonNull($.kubeId, "expected parameter 'kubeId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.kubeId == null) {
+                throw new MissingRequiredPropertyException("GetKubeIpRestrictionsPlainArgs", "kubeId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetKubeIpRestrictionsPlainArgs", "serviceName");
+            }
             return $;
         }
     }

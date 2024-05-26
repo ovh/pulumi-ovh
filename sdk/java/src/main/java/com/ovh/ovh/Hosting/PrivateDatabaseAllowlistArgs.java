@@ -5,6 +5,7 @@ package com.ovh.ovh.Hosting;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -225,10 +226,18 @@ public final class PrivateDatabaseAllowlistArgs extends com.pulumi.resources.Res
         }
 
         public PrivateDatabaseAllowlistArgs build() {
-            $.ip = Objects.requireNonNull($.ip, "expected parameter 'ip' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.sftp = Objects.requireNonNull($.sftp, "expected parameter 'sftp' to be non-null");
+            if ($.ip == null) {
+                throw new MissingRequiredPropertyException("PrivateDatabaseAllowlistArgs", "ip");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("PrivateDatabaseAllowlistArgs", "service");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("PrivateDatabaseAllowlistArgs", "serviceName");
+            }
+            if ($.sftp == null) {
+                throw new MissingRequiredPropertyException("PrivateDatabaseAllowlistArgs", "sftp");
+            }
             return $;
         }
     }

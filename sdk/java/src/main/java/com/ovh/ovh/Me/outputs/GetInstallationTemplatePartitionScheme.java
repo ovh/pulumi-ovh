@@ -6,6 +6,7 @@ package com.ovh.ovh.Me.outputs;
 import com.ovh.ovh.Me.outputs.GetInstallationTemplatePartitionSchemeHardwareRaid;
 import com.ovh.ovh.Me.outputs.GetInstallationTemplatePartitionSchemePartition;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -72,7 +73,10 @@ public final class GetInstallationTemplatePartitionScheme {
 
         @CustomType.Setter
         public Builder hardwareRaids(List<GetInstallationTemplatePartitionSchemeHardwareRaid> hardwareRaids) {
-            this.hardwareRaids = Objects.requireNonNull(hardwareRaids);
+            if (hardwareRaids == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionScheme", "hardwareRaids");
+            }
+            this.hardwareRaids = hardwareRaids;
             return this;
         }
         public Builder hardwareRaids(GetInstallationTemplatePartitionSchemeHardwareRaid... hardwareRaids) {
@@ -80,12 +84,18 @@ public final class GetInstallationTemplatePartitionScheme {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionScheme", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder partitions(List<GetInstallationTemplatePartitionSchemePartition> partitions) {
-            this.partitions = Objects.requireNonNull(partitions);
+            if (partitions == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionScheme", "partitions");
+            }
+            this.partitions = partitions;
             return this;
         }
         public Builder partitions(GetInstallationTemplatePartitionSchemePartition... partitions) {
@@ -93,16 +103,19 @@ public final class GetInstallationTemplatePartitionScheme {
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplatePartitionScheme", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         public GetInstallationTemplatePartitionScheme build() {
-            final var o = new GetInstallationTemplatePartitionScheme();
-            o.hardwareRaids = hardwareRaids;
-            o.name = name;
-            o.partitions = partitions;
-            o.priority = priority;
-            return o;
+            final var _resultValue = new GetInstallationTemplatePartitionScheme();
+            _resultValue.hardwareRaids = hardwareRaids;
+            _resultValue.name = name;
+            _resultValue.partitions = partitions;
+            _resultValue.priority = priority;
+            return _resultValue;
         }
     }
 }

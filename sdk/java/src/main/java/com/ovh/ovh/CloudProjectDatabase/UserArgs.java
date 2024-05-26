@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProjectDatabase;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -232,9 +233,15 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "clusterId");
+            }
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "engine");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "serviceName");
+            }
             return $;
         }
     }

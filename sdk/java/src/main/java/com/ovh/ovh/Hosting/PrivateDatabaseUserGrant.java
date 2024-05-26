@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * Add grant on a database in your private cloud database instance.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -38,16 +39,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var userGrant = new PrivateDatabaseUserGrant(&#34;userGrant&#34;, PrivateDatabaseUserGrantArgs.builder()        
- *             .databaseName(&#34;ovhcloud&#34;)
- *             .grant(&#34;admin&#34;)
- *             .serviceName(&#34;XXXXXX&#34;)
- *             .userName(&#34;terraform&#34;)
+ *         var userGrant = new PrivateDatabaseUserGrant("userGrant", PrivateDatabaseUserGrantArgs.builder()        
+ *             .databaseName("ovhcloud")
+ *             .grant("admin")
+ *             .serviceName("XXXXXX")
+ *             .userName("terraform")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

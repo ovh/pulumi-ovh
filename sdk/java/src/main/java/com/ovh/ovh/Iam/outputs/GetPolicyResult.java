@@ -4,6 +4,7 @@
 package com.ovh.ovh.Iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -192,6 +193,7 @@ public final class GetPolicyResult {
 
         @CustomType.Setter
         public Builder allows(@Nullable List<String> allows) {
+
             this.allows = allows;
             return this;
         }
@@ -200,11 +202,15 @@ public final class GetPolicyResult {
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetPolicyResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder denies(@Nullable List<String> denies) {
+
             this.denies = denies;
             return this;
         }
@@ -213,11 +219,13 @@ public final class GetPolicyResult {
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder excepts(@Nullable List<String> excepts) {
+
             this.excepts = excepts;
             return this;
         }
@@ -226,12 +234,18 @@ public final class GetPolicyResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder identities(List<String> identities) {
-            this.identities = Objects.requireNonNull(identities);
+            if (identities == null) {
+              throw new MissingRequiredPropertyException("GetPolicyResult", "identities");
+            }
+            this.identities = identities;
             return this;
         }
         public Builder identities(String... identities) {
@@ -239,22 +253,34 @@ public final class GetPolicyResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPolicyResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder owner(String owner) {
-            this.owner = Objects.requireNonNull(owner);
+            if (owner == null) {
+              throw new MissingRequiredPropertyException("GetPolicyResult", "owner");
+            }
+            this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder readOnly(Boolean readOnly) {
-            this.readOnly = Objects.requireNonNull(readOnly);
+            if (readOnly == null) {
+              throw new MissingRequiredPropertyException("GetPolicyResult", "readOnly");
+            }
+            this.readOnly = readOnly;
             return this;
         }
         @CustomType.Setter
         public Builder resources(List<String> resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("GetPolicyResult", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         public Builder resources(String... resources) {
@@ -262,24 +288,27 @@ public final class GetPolicyResult {
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetPolicyResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         public GetPolicyResult build() {
-            final var o = new GetPolicyResult();
-            o.allows = allows;
-            o.createdAt = createdAt;
-            o.denies = denies;
-            o.description = description;
-            o.excepts = excepts;
-            o.id = id;
-            o.identities = identities;
-            o.name = name;
-            o.owner = owner;
-            o.readOnly = readOnly;
-            o.resources = resources;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new GetPolicyResult();
+            _resultValue.allows = allows;
+            _resultValue.createdAt = createdAt;
+            _resultValue.denies = denies;
+            _resultValue.description = description;
+            _resultValue.excepts = excepts;
+            _resultValue.id = id;
+            _resultValue.identities = identities;
+            _resultValue.name = name;
+            _resultValue.owner = owner;
+            _resultValue.readOnly = readOnly;
+            _resultValue.resources = resources;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

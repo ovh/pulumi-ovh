@@ -5,6 +5,7 @@ package com.ovh.ovh.Ip.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class IpServicePlanConfigurationArgs extends com.pulumi.resources.R
         }
 
         public IpServicePlanConfigurationArgs build() {
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("IpServicePlanConfigurationArgs", "label");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("IpServicePlanConfigurationArgs", "value");
+            }
             return $;
         }
     }

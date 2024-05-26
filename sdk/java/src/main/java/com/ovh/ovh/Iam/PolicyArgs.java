@@ -5,6 +5,7 @@ package com.ovh.ovh.Iam;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -349,8 +350,12 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PolicyArgs build() {
-            $.identities = Objects.requireNonNull($.identities, "expected parameter 'identities' to be non-null");
-            $.resources = Objects.requireNonNull($.resources, "expected parameter 'resources' to be non-null");
+            if ($.identities == null) {
+                throw new MissingRequiredPropertyException("PolicyArgs", "identities");
+            }
+            if ($.resources == null) {
+                throw new MissingRequiredPropertyException("PolicyArgs", "resources");
+            }
             return $;
         }
     }

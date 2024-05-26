@@ -5,6 +5,7 @@ package com.ovh.ovh.outputs;
 
 import com.ovh.ovh.outputs.GetServerVni;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -360,27 +361,42 @@ public final class GetServerResult {
 
         @CustomType.Setter
         public Builder ServerURN(String ServerURN) {
-            this.ServerURN = Objects.requireNonNull(ServerURN);
+            if (ServerURN == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "ServerURN");
+            }
+            this.ServerURN = ServerURN;
             return this;
         }
         @CustomType.Setter
         public Builder bootId(Integer bootId) {
-            this.bootId = Objects.requireNonNull(bootId);
+            if (bootId == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "bootId");
+            }
+            this.bootId = bootId;
             return this;
         }
         @CustomType.Setter
         public Builder commercialRange(String commercialRange) {
-            this.commercialRange = Objects.requireNonNull(commercialRange);
+            if (commercialRange == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "commercialRange");
+            }
+            this.commercialRange = commercialRange;
             return this;
         }
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder enabledPublicVnis(List<String> enabledPublicVnis) {
-            this.enabledPublicVnis = Objects.requireNonNull(enabledPublicVnis);
+            if (enabledPublicVnis == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "enabledPublicVnis");
+            }
+            this.enabledPublicVnis = enabledPublicVnis;
             return this;
         }
         public Builder enabledPublicVnis(String... enabledPublicVnis) {
@@ -388,7 +404,10 @@ public final class GetServerResult {
         }
         @CustomType.Setter
         public Builder enabledVrackAggregationVnis(List<String> enabledVrackAggregationVnis) {
-            this.enabledVrackAggregationVnis = Objects.requireNonNull(enabledVrackAggregationVnis);
+            if (enabledVrackAggregationVnis == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "enabledVrackAggregationVnis");
+            }
+            this.enabledVrackAggregationVnis = enabledVrackAggregationVnis;
             return this;
         }
         public Builder enabledVrackAggregationVnis(String... enabledVrackAggregationVnis) {
@@ -396,7 +415,10 @@ public final class GetServerResult {
         }
         @CustomType.Setter
         public Builder enabledVrackVnis(List<String> enabledVrackVnis) {
-            this.enabledVrackVnis = Objects.requireNonNull(enabledVrackVnis);
+            if (enabledVrackVnis == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "enabledVrackVnis");
+            }
+            this.enabledVrackVnis = enabledVrackVnis;
             return this;
         }
         public Builder enabledVrackVnis(String... enabledVrackVnis) {
@@ -404,17 +426,26 @@ public final class GetServerResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder ips(List<String> ips) {
-            this.ips = Objects.requireNonNull(ips);
+            if (ips == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "ips");
+            }
+            this.ips = ips;
             return this;
         }
         public Builder ips(String... ips) {
@@ -422,104 +453,146 @@ public final class GetServerResult {
         }
         @CustomType.Setter
         public Builder linkSpeed(Integer linkSpeed) {
-            this.linkSpeed = Objects.requireNonNull(linkSpeed);
+            if (linkSpeed == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "linkSpeed");
+            }
+            this.linkSpeed = linkSpeed;
             return this;
         }
         @CustomType.Setter
         public Builder monitoring(Boolean monitoring) {
-            this.monitoring = Objects.requireNonNull(monitoring);
+            if (monitoring == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "monitoring");
+            }
+            this.monitoring = monitoring;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder os(String os) {
-            this.os = Objects.requireNonNull(os);
+            if (os == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "os");
+            }
+            this.os = os;
             return this;
         }
         @CustomType.Setter
         public Builder professionalUse(Boolean professionalUse) {
-            this.professionalUse = Objects.requireNonNull(professionalUse);
+            if (professionalUse == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "professionalUse");
+            }
+            this.professionalUse = professionalUse;
             return this;
         }
         @CustomType.Setter
         public Builder rack(String rack) {
-            this.rack = Objects.requireNonNull(rack);
+            if (rack == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "rack");
+            }
+            this.rack = rack;
             return this;
         }
         @CustomType.Setter
         public Builder rescueMail(String rescueMail) {
-            this.rescueMail = Objects.requireNonNull(rescueMail);
+            if (rescueMail == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "rescueMail");
+            }
+            this.rescueMail = rescueMail;
             return this;
         }
         @CustomType.Setter
         public Builder reverse(String reverse) {
-            this.reverse = Objects.requireNonNull(reverse);
+            if (reverse == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "reverse");
+            }
+            this.reverse = reverse;
             return this;
         }
         @CustomType.Setter
         public Builder rootDevice(String rootDevice) {
-            this.rootDevice = Objects.requireNonNull(rootDevice);
+            if (rootDevice == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "rootDevice");
+            }
+            this.rootDevice = rootDevice;
             return this;
         }
         @CustomType.Setter
         public Builder serverId(Integer serverId) {
-            this.serverId = Objects.requireNonNull(serverId);
+            if (serverId == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "serverId");
+            }
+            this.serverId = serverId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder supportLevel(String supportLevel) {
-            this.supportLevel = Objects.requireNonNull(supportLevel);
+            if (supportLevel == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "supportLevel");
+            }
+            this.supportLevel = supportLevel;
             return this;
         }
         @CustomType.Setter
         public Builder vnis(List<GetServerVni> vnis) {
-            this.vnis = Objects.requireNonNull(vnis);
+            if (vnis == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "vnis");
+            }
+            this.vnis = vnis;
             return this;
         }
         public Builder vnis(GetServerVni... vnis) {
             return vnis(List.of(vnis));
         }
         public GetServerResult build() {
-            final var o = new GetServerResult();
-            o.ServerURN = ServerURN;
-            o.bootId = bootId;
-            o.commercialRange = commercialRange;
-            o.datacenter = datacenter;
-            o.enabledPublicVnis = enabledPublicVnis;
-            o.enabledVrackAggregationVnis = enabledVrackAggregationVnis;
-            o.enabledVrackVnis = enabledVrackVnis;
-            o.id = id;
-            o.ip = ip;
-            o.ips = ips;
-            o.linkSpeed = linkSpeed;
-            o.monitoring = monitoring;
-            o.name = name;
-            o.os = os;
-            o.professionalUse = professionalUse;
-            o.rack = rack;
-            o.rescueMail = rescueMail;
-            o.reverse = reverse;
-            o.rootDevice = rootDevice;
-            o.serverId = serverId;
-            o.serviceName = serviceName;
-            o.state = state;
-            o.supportLevel = supportLevel;
-            o.vnis = vnis;
-            return o;
+            final var _resultValue = new GetServerResult();
+            _resultValue.ServerURN = ServerURN;
+            _resultValue.bootId = bootId;
+            _resultValue.commercialRange = commercialRange;
+            _resultValue.datacenter = datacenter;
+            _resultValue.enabledPublicVnis = enabledPublicVnis;
+            _resultValue.enabledVrackAggregationVnis = enabledVrackAggregationVnis;
+            _resultValue.enabledVrackVnis = enabledVrackVnis;
+            _resultValue.id = id;
+            _resultValue.ip = ip;
+            _resultValue.ips = ips;
+            _resultValue.linkSpeed = linkSpeed;
+            _resultValue.monitoring = monitoring;
+            _resultValue.name = name;
+            _resultValue.os = os;
+            _resultValue.professionalUse = professionalUse;
+            _resultValue.rack = rack;
+            _resultValue.rescueMail = rescueMail;
+            _resultValue.reverse = reverse;
+            _resultValue.rootDevice = rootDevice;
+            _resultValue.serverId = serverId;
+            _resultValue.serviceName = serviceName;
+            _resultValue.state = state;
+            _resultValue.supportLevel = supportLevel;
+            _resultValue.vnis = vnis;
+            return _resultValue;
         }
     }
 }

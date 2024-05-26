@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Provides a OVHcloud domain zone redirection.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,16 +40,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new ZoneRedirection(&#34;test&#34;, ZoneRedirectionArgs.builder()        
- *             .subdomain(&#34;test&#34;)
- *             .target(&#34;http://www.ovh&#34;)
- *             .type(&#34;visiblePermanent&#34;)
- *             .zone(&#34;testdemo.ovh&#34;)
+ *         var test = new ZoneRedirection("test", ZoneRedirectionArgs.builder()        
+ *             .subdomain("test")
+ *             .target("http://www.ovh")
+ *             .type("visiblePermanent")
+ *             .zone("testdemo.ovh")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Domain/zoneRedirection:ZoneRedirection")

@@ -6,6 +6,7 @@ package com.ovh.ovh.CloudProjectDatabase;
 import com.ovh.ovh.CloudProjectDatabase.inputs.OpensearchUserAclArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -240,8 +241,12 @@ public final class OpensearchUserArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public OpensearchUserArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("OpensearchUserArgs", "clusterId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("OpensearchUserArgs", "serviceName");
+            }
             return $;
         }
     }

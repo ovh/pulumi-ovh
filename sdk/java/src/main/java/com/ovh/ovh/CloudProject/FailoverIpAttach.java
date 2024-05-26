@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * Attaches a failover IP address to a compute instance
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,15 +40,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myfailoverip = new FailoverIpAttach(&#34;myfailoverip&#34;, FailoverIpAttachArgs.builder()        
- *             .ip(&#34;XXXXXX&#34;)
- *             .routedTo(&#34;XXXXXX&#34;)
- *             .serviceName(&#34;XXXXXX&#34;)
+ *         var myfailoverip = new FailoverIpAttach("myfailoverip", FailoverIpAttachArgs.builder()        
+ *             .ip("XXXXXX")
+ *             .routedTo("XXXXXX")
+ *             .serviceName("XXXXXX")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:CloudProject/failoverIpAttach:FailoverIpAttach")

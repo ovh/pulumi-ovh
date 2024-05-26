@@ -49,11 +49,13 @@ public final class GetKubeNodePoolTemplateMetadata {
 
         @CustomType.Setter
         public Builder annotations(@Nullable Map<String,String> annotations) {
+
             this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder finalizers(@Nullable List<String> finalizers) {
+
             this.finalizers = finalizers;
             return this;
         }
@@ -62,15 +64,16 @@ public final class GetKubeNodePoolTemplateMetadata {
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         public GetKubeNodePoolTemplateMetadata build() {
-            final var o = new GetKubeNodePoolTemplateMetadata();
-            o.annotations = annotations;
-            o.finalizers = finalizers;
-            o.labels = labels;
-            return o;
+            final var _resultValue = new GetKubeNodePoolTemplateMetadata();
+            _resultValue.annotations = annotations;
+            _resultValue.finalizers = finalizers;
+            _resultValue.labels = labels;
+            return _resultValue;
         }
     }
 }

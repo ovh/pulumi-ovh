@@ -16,7 +16,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -37,14 +38,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mykey = new SshKey(&#34;mykey&#34;, SshKeyArgs.builder()        
- *             .key(&#34;ssh-ed25519 AAAAC3...&#34;)
- *             .keyName(&#34;mykey&#34;)
+ *         var mykey = new SshKey("mykey", SshKeyArgs.builder()        
+ *             .key("ssh-ed25519 AAAAC3...")
+ *             .keyName("mykey")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:Me/sshKey:SshKey")

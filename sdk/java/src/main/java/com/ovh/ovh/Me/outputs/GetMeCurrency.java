@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,19 +57,25 @@ public final class GetMeCurrency {
 
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetMeCurrency", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder symbol(String symbol) {
-            this.symbol = Objects.requireNonNull(symbol);
+            if (symbol == null) {
+              throw new MissingRequiredPropertyException("GetMeCurrency", "symbol");
+            }
+            this.symbol = symbol;
             return this;
         }
         public GetMeCurrency build() {
-            final var o = new GetMeCurrency();
-            o.code = code;
-            o.symbol = symbol;
-            return o;
+            final var _resultValue = new GetMeCurrency();
+            _resultValue.code = code;
+            _resultValue.symbol = symbol;
+            return _resultValue;
         }
     }
 }

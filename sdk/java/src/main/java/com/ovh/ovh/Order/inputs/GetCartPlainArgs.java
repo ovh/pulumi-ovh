@@ -4,6 +4,7 @@
 package com.ovh.ovh.Order.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -147,7 +148,9 @@ public final class GetCartPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetCartPlainArgs build() {
-            $.ovhSubsidiary = Objects.requireNonNull($.ovhSubsidiary, "expected parameter 'ovhSubsidiary' to be non-null");
+            if ($.ovhSubsidiary == null) {
+                throw new MissingRequiredPropertyException("GetCartPlainArgs", "ovhSubsidiary");
+            }
             return $;
         }
     }

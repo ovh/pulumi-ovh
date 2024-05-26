@@ -4,6 +4,7 @@
 package com.ovh.ovh.Iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,22 +58,28 @@ public final class GetResourceGroupsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroups(List<String> resourceGroups) {
-            this.resourceGroups = Objects.requireNonNull(resourceGroups);
+            if (resourceGroups == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsResult", "resourceGroups");
+            }
+            this.resourceGroups = resourceGroups;
             return this;
         }
         public Builder resourceGroups(String... resourceGroups) {
             return resourceGroups(List.of(resourceGroups));
         }
         public GetResourceGroupsResult build() {
-            final var o = new GetResourceGroupsResult();
-            o.id = id;
-            o.resourceGroups = resourceGroups;
-            return o;
+            final var _resultValue = new GetResourceGroupsResult();
+            _resultValue.id = id;
+            _resultValue.resourceGroups = resourceGroups;
+            return _resultValue;
         }
     }
 }

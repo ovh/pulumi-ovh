@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,13 +43,16 @@ public final class GetCapabilitiesContainerRegistryResultPlanFeature {
 
         @CustomType.Setter
         public Builder vulnerability(Boolean vulnerability) {
-            this.vulnerability = Objects.requireNonNull(vulnerability);
+            if (vulnerability == null) {
+              throw new MissingRequiredPropertyException("GetCapabilitiesContainerRegistryResultPlanFeature", "vulnerability");
+            }
+            this.vulnerability = vulnerability;
             return this;
         }
         public GetCapabilitiesContainerRegistryResultPlanFeature build() {
-            final var o = new GetCapabilitiesContainerRegistryResultPlanFeature();
-            o.vulnerability = vulnerability;
-            return o;
+            final var _resultValue = new GetCapabilitiesContainerRegistryResultPlanFeature();
+            _resultValue.vulnerability = vulnerability;
+            return _resultValue;
         }
     }
 }

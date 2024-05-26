@@ -5,6 +5,7 @@ package com.ovh.ovh.CloudProjectDatabase;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -451,10 +452,18 @@ public final class M3DbNamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public M3DbNamespaceArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.resolution = Objects.requireNonNull($.resolution, "expected parameter 'resolution' to be non-null");
-            $.retentionPeriodDuration = Objects.requireNonNull($.retentionPeriodDuration, "expected parameter 'retentionPeriodDuration' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("M3DbNamespaceArgs", "clusterId");
+            }
+            if ($.resolution == null) {
+                throw new MissingRequiredPropertyException("M3DbNamespaceArgs", "resolution");
+            }
+            if ($.retentionPeriodDuration == null) {
+                throw new MissingRequiredPropertyException("M3DbNamespaceArgs", "retentionPeriodDuration");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("M3DbNamespaceArgs", "serviceName");
+            }
             return $;
         }
     }

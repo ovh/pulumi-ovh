@@ -4,6 +4,7 @@
 package com.ovh.ovh.Hosting.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -141,61 +142,86 @@ public final class GetPrivateDatabaseAllowlistResult {
 
         @CustomType.Setter
         public Builder creationDate(String creationDate) {
-            this.creationDate = Objects.requireNonNull(creationDate);
+            if (creationDate == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseAllowlistResult", "creationDate");
+            }
+            this.creationDate = creationDate;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseAllowlistResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ip(@Nullable String ip) {
+
             this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder lastUpdate(String lastUpdate) {
-            this.lastUpdate = Objects.requireNonNull(lastUpdate);
+            if (lastUpdate == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseAllowlistResult", "lastUpdate");
+            }
+            this.lastUpdate = lastUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseAllowlistResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder service(Boolean service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseAllowlistResult", "service");
+            }
+            this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseAllowlistResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder sftp(Boolean sftp) {
-            this.sftp = Objects.requireNonNull(sftp);
+            if (sftp == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseAllowlistResult", "sftp");
+            }
+            this.sftp = sftp;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetPrivateDatabaseAllowlistResult", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetPrivateDatabaseAllowlistResult build() {
-            final var o = new GetPrivateDatabaseAllowlistResult();
-            o.creationDate = creationDate;
-            o.id = id;
-            o.ip = ip;
-            o.lastUpdate = lastUpdate;
-            o.name = name;
-            o.service = service;
-            o.serviceName = serviceName;
-            o.sftp = sftp;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetPrivateDatabaseAllowlistResult();
+            _resultValue.creationDate = creationDate;
+            _resultValue.id = id;
+            _resultValue.ip = ip;
+            _resultValue.lastUpdate = lastUpdate;
+            _resultValue.name = name;
+            _resultValue.service = service;
+            _resultValue.serviceName = serviceName;
+            _resultValue.sftp = sftp;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.Ip.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,13 +43,16 @@ public final class GetServiceRoutedTo {
 
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetServiceRoutedTo", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetServiceRoutedTo build() {
-            final var o = new GetServiceRoutedTo();
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetServiceRoutedTo();
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.Dbaas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -212,12 +213,18 @@ public final class GetLogsClusterResult {
 
         @CustomType.Setter
         public Builder DBaasURN(String DBaasURN) {
-            this.DBaasURN = Objects.requireNonNull(DBaasURN);
+            if (DBaasURN == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "DBaasURN");
+            }
+            this.DBaasURN = DBaasURN;
             return this;
         }
         @CustomType.Setter
         public Builder archiveAllowedNetworks(List<String> archiveAllowedNetworks) {
-            this.archiveAllowedNetworks = Objects.requireNonNull(archiveAllowedNetworks);
+            if (archiveAllowedNetworks == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "archiveAllowedNetworks");
+            }
+            this.archiveAllowedNetworks = archiveAllowedNetworks;
             return this;
         }
         public Builder archiveAllowedNetworks(String... archiveAllowedNetworks) {
@@ -225,22 +232,32 @@ public final class GetLogsClusterResult {
         }
         @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
+
             this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterType(String clusterType) {
-            this.clusterType = Objects.requireNonNull(clusterType);
+            if (clusterType == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "clusterType");
+            }
+            this.clusterType = clusterType;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedInputPem(String dedicatedInputPem) {
-            this.dedicatedInputPem = Objects.requireNonNull(dedicatedInputPem);
+            if (dedicatedInputPem == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "dedicatedInputPem");
+            }
+            this.dedicatedInputPem = dedicatedInputPem;
             return this;
         }
         @CustomType.Setter
         public Builder directInputAllowedNetworks(List<String> directInputAllowedNetworks) {
-            this.directInputAllowedNetworks = Objects.requireNonNull(directInputAllowedNetworks);
+            if (directInputAllowedNetworks == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "directInputAllowedNetworks");
+            }
+            this.directInputAllowedNetworks = directInputAllowedNetworks;
             return this;
         }
         public Builder directInputAllowedNetworks(String... directInputAllowedNetworks) {
@@ -248,32 +265,50 @@ public final class GetLogsClusterResult {
         }
         @CustomType.Setter
         public Builder directInputPem(String directInputPem) {
-            this.directInputPem = Objects.requireNonNull(directInputPem);
+            if (directInputPem == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "directInputPem");
+            }
+            this.directInputPem = directInputPem;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
-            this.isDefault = Objects.requireNonNull(isDefault);
+            if (isDefault == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "isDefault");
+            }
+            this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
         public Builder isUnlocked(Boolean isUnlocked) {
-            this.isUnlocked = Objects.requireNonNull(isUnlocked);
+            if (isUnlocked == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "isUnlocked");
+            }
+            this.isUnlocked = isUnlocked;
             return this;
         }
         @CustomType.Setter
         public Builder queryAllowedNetworks(List<String> queryAllowedNetworks) {
-            this.queryAllowedNetworks = Objects.requireNonNull(queryAllowedNetworks);
+            if (queryAllowedNetworks == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "queryAllowedNetworks");
+            }
+            this.queryAllowedNetworks = queryAllowedNetworks;
             return this;
         }
         public Builder queryAllowedNetworks(String... queryAllowedNetworks) {
@@ -281,31 +316,37 @@ public final class GetLogsClusterResult {
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetLogsClusterResult build() {
-            final var o = new GetLogsClusterResult();
-            o.DBaasURN = DBaasURN;
-            o.archiveAllowedNetworks = archiveAllowedNetworks;
-            o.clusterId = clusterId;
-            o.clusterType = clusterType;
-            o.dedicatedInputPem = dedicatedInputPem;
-            o.directInputAllowedNetworks = directInputAllowedNetworks;
-            o.directInputPem = directInputPem;
-            o.hostname = hostname;
-            o.id = id;
-            o.isDefault = isDefault;
-            o.isUnlocked = isUnlocked;
-            o.queryAllowedNetworks = queryAllowedNetworks;
-            o.region = region;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetLogsClusterResult();
+            _resultValue.DBaasURN = DBaasURN;
+            _resultValue.archiveAllowedNetworks = archiveAllowedNetworks;
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterType = clusterType;
+            _resultValue.dedicatedInputPem = dedicatedInputPem;
+            _resultValue.directInputAllowedNetworks = directInputAllowedNetworks;
+            _resultValue.directInputPem = directInputPem;
+            _resultValue.hostname = hostname;
+            _resultValue.id = id;
+            _resultValue.isDefault = isDefault;
+            _resultValue.isUnlocked = isUnlocked;
+            _resultValue.queryAllowedNetworks = queryAllowedNetworks;
+            _resultValue.region = region;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

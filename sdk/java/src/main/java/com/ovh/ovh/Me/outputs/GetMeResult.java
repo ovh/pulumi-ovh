@@ -5,6 +5,7 @@ package com.ovh.ovh.Me.outputs;
 
 import com.ovh.ovh.Me.outputs.GetMeCurrency;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -456,52 +457,82 @@ public final class GetMeResult {
 
         @CustomType.Setter
         public Builder AccountURN(String AccountURN) {
-            this.AccountURN = Objects.requireNonNull(AccountURN);
+            if (AccountURN == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "AccountURN");
+            }
+            this.AccountURN = AccountURN;
             return this;
         }
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder area(String area) {
-            this.area = Objects.requireNonNull(area);
+            if (area == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "area");
+            }
+            this.area = area;
             return this;
         }
         @CustomType.Setter
         public Builder birthCity(String birthCity) {
-            this.birthCity = Objects.requireNonNull(birthCity);
+            if (birthCity == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "birthCity");
+            }
+            this.birthCity = birthCity;
             return this;
         }
         @CustomType.Setter
         public Builder birthDay(String birthDay) {
-            this.birthDay = Objects.requireNonNull(birthDay);
+            if (birthDay == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "birthDay");
+            }
+            this.birthDay = birthDay;
             return this;
         }
         @CustomType.Setter
         public Builder city(String city) {
-            this.city = Objects.requireNonNull(city);
+            if (city == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "city");
+            }
+            this.city = city;
             return this;
         }
         @CustomType.Setter
         public Builder companyNationalIdentificationNumber(String companyNationalIdentificationNumber) {
-            this.companyNationalIdentificationNumber = Objects.requireNonNull(companyNationalIdentificationNumber);
+            if (companyNationalIdentificationNumber == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "companyNationalIdentificationNumber");
+            }
+            this.companyNationalIdentificationNumber = companyNationalIdentificationNumber;
             return this;
         }
         @CustomType.Setter
         public Builder corporationType(String corporationType) {
-            this.corporationType = Objects.requireNonNull(corporationType);
+            if (corporationType == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "corporationType");
+            }
+            this.corporationType = corporationType;
             return this;
         }
         @CustomType.Setter
         public Builder country(String country) {
-            this.country = Objects.requireNonNull(country);
+            if (country == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "country");
+            }
+            this.country = country;
             return this;
         }
         @CustomType.Setter
         public Builder currencies(List<GetMeCurrency> currencies) {
-            this.currencies = Objects.requireNonNull(currencies);
+            if (currencies == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "currencies");
+            }
+            this.currencies = currencies;
             return this;
         }
         public Builder currencies(GetMeCurrency... currencies) {
@@ -509,143 +540,206 @@ public final class GetMeResult {
         }
         @CustomType.Setter
         public Builder customerCode(String customerCode) {
-            this.customerCode = Objects.requireNonNull(customerCode);
+            if (customerCode == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "customerCode");
+            }
+            this.customerCode = customerCode;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder fax(String fax) {
-            this.fax = Objects.requireNonNull(fax);
+            if (fax == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "fax");
+            }
+            this.fax = fax;
             return this;
         }
         @CustomType.Setter
         public Builder firstname(String firstname) {
-            this.firstname = Objects.requireNonNull(firstname);
+            if (firstname == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "firstname");
+            }
+            this.firstname = firstname;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder italianSdi(String italianSdi) {
-            this.italianSdi = Objects.requireNonNull(italianSdi);
+            if (italianSdi == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "italianSdi");
+            }
+            this.italianSdi = italianSdi;
             return this;
         }
         @CustomType.Setter
         public Builder language(String language) {
-            this.language = Objects.requireNonNull(language);
+            if (language == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "language");
+            }
+            this.language = language;
             return this;
         }
         @CustomType.Setter
         public Builder legalform(String legalform) {
-            this.legalform = Objects.requireNonNull(legalform);
+            if (legalform == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "legalform");
+            }
+            this.legalform = legalform;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nationalIdentificationNumber(String nationalIdentificationNumber) {
-            this.nationalIdentificationNumber = Objects.requireNonNull(nationalIdentificationNumber);
+            if (nationalIdentificationNumber == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "nationalIdentificationNumber");
+            }
+            this.nationalIdentificationNumber = nationalIdentificationNumber;
             return this;
         }
         @CustomType.Setter
         public Builder nichandle(String nichandle) {
-            this.nichandle = Objects.requireNonNull(nichandle);
+            if (nichandle == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "nichandle");
+            }
+            this.nichandle = nichandle;
             return this;
         }
         @CustomType.Setter
         public Builder organisation(String organisation) {
-            this.organisation = Objects.requireNonNull(organisation);
+            if (organisation == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "organisation");
+            }
+            this.organisation = organisation;
             return this;
         }
         @CustomType.Setter
         public Builder ovhCompany(String ovhCompany) {
-            this.ovhCompany = Objects.requireNonNull(ovhCompany);
+            if (ovhCompany == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "ovhCompany");
+            }
+            this.ovhCompany = ovhCompany;
             return this;
         }
         @CustomType.Setter
         public Builder ovhSubsidiary(String ovhSubsidiary) {
-            this.ovhSubsidiary = Objects.requireNonNull(ovhSubsidiary);
+            if (ovhSubsidiary == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "ovhSubsidiary");
+            }
+            this.ovhSubsidiary = ovhSubsidiary;
             return this;
         }
         @CustomType.Setter
         public Builder phone(String phone) {
-            this.phone = Objects.requireNonNull(phone);
+            if (phone == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "phone");
+            }
+            this.phone = phone;
             return this;
         }
         @CustomType.Setter
         public Builder phoneCountry(String phoneCountry) {
-            this.phoneCountry = Objects.requireNonNull(phoneCountry);
+            if (phoneCountry == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "phoneCountry");
+            }
+            this.phoneCountry = phoneCountry;
             return this;
         }
         @CustomType.Setter
         public Builder sex(String sex) {
-            this.sex = Objects.requireNonNull(sex);
+            if (sex == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "sex");
+            }
+            this.sex = sex;
             return this;
         }
         @CustomType.Setter
         public Builder spareEmail(String spareEmail) {
-            this.spareEmail = Objects.requireNonNull(spareEmail);
+            if (spareEmail == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "spareEmail");
+            }
+            this.spareEmail = spareEmail;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder vat(String vat) {
-            this.vat = Objects.requireNonNull(vat);
+            if (vat == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "vat");
+            }
+            this.vat = vat;
             return this;
         }
         @CustomType.Setter
         public Builder zip(String zip) {
-            this.zip = Objects.requireNonNull(zip);
+            if (zip == null) {
+              throw new MissingRequiredPropertyException("GetMeResult", "zip");
+            }
+            this.zip = zip;
             return this;
         }
         public GetMeResult build() {
-            final var o = new GetMeResult();
-            o.AccountURN = AccountURN;
-            o.address = address;
-            o.area = area;
-            o.birthCity = birthCity;
-            o.birthDay = birthDay;
-            o.city = city;
-            o.companyNationalIdentificationNumber = companyNationalIdentificationNumber;
-            o.corporationType = corporationType;
-            o.country = country;
-            o.currencies = currencies;
-            o.customerCode = customerCode;
-            o.email = email;
-            o.fax = fax;
-            o.firstname = firstname;
-            o.id = id;
-            o.italianSdi = italianSdi;
-            o.language = language;
-            o.legalform = legalform;
-            o.name = name;
-            o.nationalIdentificationNumber = nationalIdentificationNumber;
-            o.nichandle = nichandle;
-            o.organisation = organisation;
-            o.ovhCompany = ovhCompany;
-            o.ovhSubsidiary = ovhSubsidiary;
-            o.phone = phone;
-            o.phoneCountry = phoneCountry;
-            o.sex = sex;
-            o.spareEmail = spareEmail;
-            o.state = state;
-            o.vat = vat;
-            o.zip = zip;
-            return o;
+            final var _resultValue = new GetMeResult();
+            _resultValue.AccountURN = AccountURN;
+            _resultValue.address = address;
+            _resultValue.area = area;
+            _resultValue.birthCity = birthCity;
+            _resultValue.birthDay = birthDay;
+            _resultValue.city = city;
+            _resultValue.companyNationalIdentificationNumber = companyNationalIdentificationNumber;
+            _resultValue.corporationType = corporationType;
+            _resultValue.country = country;
+            _resultValue.currencies = currencies;
+            _resultValue.customerCode = customerCode;
+            _resultValue.email = email;
+            _resultValue.fax = fax;
+            _resultValue.firstname = firstname;
+            _resultValue.id = id;
+            _resultValue.italianSdi = italianSdi;
+            _resultValue.language = language;
+            _resultValue.legalform = legalform;
+            _resultValue.name = name;
+            _resultValue.nationalIdentificationNumber = nationalIdentificationNumber;
+            _resultValue.nichandle = nichandle;
+            _resultValue.organisation = organisation;
+            _resultValue.ovhCompany = ovhCompany;
+            _resultValue.ovhSubsidiary = ovhSubsidiary;
+            _resultValue.phone = phone;
+            _resultValue.phoneCountry = phoneCountry;
+            _resultValue.sex = sex;
+            _resultValue.spareEmail = spareEmail;
+            _resultValue.state = state;
+            _resultValue.vat = vat;
+            _resultValue.zip = zip;
+            return _resultValue;
         }
     }
 }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.Dedicated.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -184,73 +185,106 @@ public final class GetNasHAResult {
 
         @CustomType.Setter
         public Builder NasHAURN(String NasHAURN) {
-            this.NasHAURN = Objects.requireNonNull(NasHAURN);
+            if (NasHAURN == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "NasHAURN");
+            }
+            this.NasHAURN = NasHAURN;
             return this;
         }
         @CustomType.Setter
         public Builder canCreatePartition(Boolean canCreatePartition) {
-            this.canCreatePartition = Objects.requireNonNull(canCreatePartition);
+            if (canCreatePartition == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "canCreatePartition");
+            }
+            this.canCreatePartition = canCreatePartition;
             return this;
         }
         @CustomType.Setter
         public Builder customName(String customName) {
-            this.customName = Objects.requireNonNull(customName);
+            if (customName == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "customName");
+            }
+            this.customName = customName;
             return this;
         }
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder monitored(Boolean monitored) {
-            this.monitored = Objects.requireNonNull(monitored);
+            if (monitored == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "monitored");
+            }
+            this.monitored = monitored;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder zpoolCapacity(Double zpoolCapacity) {
-            this.zpoolCapacity = Objects.requireNonNull(zpoolCapacity);
+            if (zpoolCapacity == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "zpoolCapacity");
+            }
+            this.zpoolCapacity = zpoolCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder zpoolSize(Double zpoolSize) {
-            this.zpoolSize = Objects.requireNonNull(zpoolSize);
+            if (zpoolSize == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "zpoolSize");
+            }
+            this.zpoolSize = zpoolSize;
             return this;
         }
         public GetNasHAResult build() {
-            final var o = new GetNasHAResult();
-            o.NasHAURN = NasHAURN;
-            o.canCreatePartition = canCreatePartition;
-            o.customName = customName;
-            o.datacenter = datacenter;
-            o.diskType = diskType;
-            o.id = id;
-            o.ip = ip;
-            o.monitored = monitored;
-            o.serviceName = serviceName;
-            o.zpoolCapacity = zpoolCapacity;
-            o.zpoolSize = zpoolSize;
-            return o;
+            final var _resultValue = new GetNasHAResult();
+            _resultValue.NasHAURN = NasHAURN;
+            _resultValue.canCreatePartition = canCreatePartition;
+            _resultValue.customName = customName;
+            _resultValue.datacenter = datacenter;
+            _resultValue.diskType = diskType;
+            _resultValue.id = id;
+            _resultValue.ip = ip;
+            _resultValue.monitored = monitored;
+            _resultValue.serviceName = serviceName;
+            _resultValue.zpoolCapacity = zpoolCapacity;
+            _resultValue.zpoolSize = zpoolSize;
+            return _resultValue;
         }
     }
 }

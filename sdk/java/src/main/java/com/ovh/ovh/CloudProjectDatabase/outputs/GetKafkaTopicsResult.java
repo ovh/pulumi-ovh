@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,34 +86,46 @@ public final class GetKafkaTopicsResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicsResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicsResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder topicIds(List<String> topicIds) {
-            this.topicIds = Objects.requireNonNull(topicIds);
+            if (topicIds == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicsResult", "topicIds");
+            }
+            this.topicIds = topicIds;
             return this;
         }
         public Builder topicIds(String... topicIds) {
             return topicIds(List.of(topicIds));
         }
         public GetKafkaTopicsResult build() {
-            final var o = new GetKafkaTopicsResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.serviceName = serviceName;
-            o.topicIds = topicIds;
-            return o;
+            final var _resultValue = new GetKafkaTopicsResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.serviceName = serviceName;
+            _resultValue.topicIds = topicIds;
+            return _resultValue;
         }
     }
 }

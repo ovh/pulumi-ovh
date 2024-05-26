@@ -5,6 +5,7 @@ package com.ovh.ovh.Order.outputs;
 
 import com.ovh.ovh.Order.outputs.GetCartProductOptionsResult;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -92,46 +93,62 @@ public final class GetCartProductOptionsInvokeResult {
 
         @CustomType.Setter
         public Builder cartId(String cartId) {
-            this.cartId = Objects.requireNonNull(cartId);
+            if (cartId == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsInvokeResult", "cartId");
+            }
+            this.cartId = cartId;
             return this;
         }
         @CustomType.Setter
         public Builder catalogName(@Nullable String catalogName) {
+
             this.catalogName = catalogName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsInvokeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder planCode(String planCode) {
-            this.planCode = Objects.requireNonNull(planCode);
+            if (planCode == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsInvokeResult", "planCode");
+            }
+            this.planCode = planCode;
             return this;
         }
         @CustomType.Setter
         public Builder product(String product) {
-            this.product = Objects.requireNonNull(product);
+            if (product == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsInvokeResult", "product");
+            }
+            this.product = product;
             return this;
         }
         @CustomType.Setter
         public Builder results(List<GetCartProductOptionsResult> results) {
-            this.results = Objects.requireNonNull(results);
+            if (results == null) {
+              throw new MissingRequiredPropertyException("GetCartProductOptionsInvokeResult", "results");
+            }
+            this.results = results;
             return this;
         }
         public Builder results(GetCartProductOptionsResult... results) {
             return results(List.of(results));
         }
         public GetCartProductOptionsInvokeResult build() {
-            final var o = new GetCartProductOptionsInvokeResult();
-            o.cartId = cartId;
-            o.catalogName = catalogName;
-            o.id = id;
-            o.planCode = planCode;
-            o.product = product;
-            o.results = results;
-            return o;
+            final var _resultValue = new GetCartProductOptionsInvokeResult();
+            _resultValue.cartId = cartId;
+            _resultValue.catalogName = catalogName;
+            _resultValue.id = id;
+            _resultValue.planCode = planCode;
+            _resultValue.product = product;
+            _resultValue.results = results;
+            return _resultValue;
         }
     }
 }

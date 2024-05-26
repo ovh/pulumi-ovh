@@ -4,6 +4,7 @@
 package com.ovh.ovh.Dedicated.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +42,10 @@ public final class ServerNetworkingInterface {
 
         @CustomType.Setter
         public Builder macs(List<String> macs) {
-            this.macs = Objects.requireNonNull(macs);
+            if (macs == null) {
+              throw new MissingRequiredPropertyException("ServerNetworkingInterface", "macs");
+            }
+            this.macs = macs;
             return this;
         }
         public Builder macs(String... macs) {
@@ -49,14 +53,17 @@ public final class ServerNetworkingInterface {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ServerNetworkingInterface", "type");
+            }
+            this.type = type;
             return this;
         }
         public ServerNetworkingInterface build() {
-            final var o = new ServerNetworkingInterface();
-            o.macs = macs;
-            o.type = type;
-            return o;
+            final var _resultValue = new ServerNetworkingInterface();
+            _resultValue.macs = macs;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

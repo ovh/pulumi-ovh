@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * Use this resource to create a custom installation template available for dedicated servers.
  * 
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,15 +44,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytemplate = new InstallationTemplate(&#34;mytemplate&#34;, InstallationTemplateArgs.builder()        
- *             .baseTemplateName(&#34;centos7_64&#34;)
- *             .defaultLanguage(&#34;en&#34;)
- *             .templateName(&#34;mytemplate&#34;)
+ *         var mytemplate = new InstallationTemplate("mytemplate", InstallationTemplateArgs.builder()        
+ *             .baseTemplateName("centos7_64")
+ *             .defaultLanguage("en")
+ *             .templateName("mytemplate")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  * ## Import
  * 

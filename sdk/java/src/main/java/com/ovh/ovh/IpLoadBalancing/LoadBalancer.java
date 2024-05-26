@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,42 +54,43 @@ import javax.annotation.Nullable;
  *         final var myaccount = MeFunctions.getMe();
  * 
  *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
- *             .ovhSubsidiary(myaccount.applyValue(getMeResult -&gt; getMeResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
  *             .build());
  * 
  *         final var iplb = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -&gt; getCartResult.id()))
- *             .priceCapacity(&#34;renew&#34;)
- *             .product(&#34;ipLoadbalancing&#34;)
- *             .planCode(&#34;iplb-lb1&#34;)
+ *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .priceCapacity("renew")
+ *             .product("ipLoadbalancing")
+ *             .planCode("iplb-lb1")
  *             .build());
  * 
  *         final var bhs = OrderFunctions.getCartProductOptionsPlan(GetCartProductOptionsPlanArgs.builder()
- *             .cartId(iplb.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.cartId()))
- *             .priceCapacity(iplb.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.priceCapacity()))
- *             .product(iplb.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.product()))
- *             .planCode(iplb.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.planCode()))
- *             .optionsPlanCode(&#34;iplb-zone-lb1-rbx&#34;)
+ *             .cartId(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.cartId()))
+ *             .priceCapacity(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.priceCapacity()))
+ *             .product(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.product()))
+ *             .planCode(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *             .optionsPlanCode("iplb-zone-lb1-rbx")
  *             .build());
  * 
- *         var iplb_lb1 = new LoadBalancer(&#34;iplb-lb1&#34;, LoadBalancerArgs.builder()        
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -&gt; getCartResult.ovhSubsidiary()))
- *             .displayName(&#34;my ip loadbalancing&#34;)
+ *         var iplb_lb1 = new LoadBalancer("iplb-lb1", LoadBalancerArgs.builder()        
+ *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .displayName("my ip loadbalancing")
  *             .plan(LoadBalancerPlanArgs.builder()
- *                 .duration(iplb.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(iplb.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.planCode()))
- *                 .pricingMode(iplb.applyValue(getCartProductPlanResult -&gt; getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
+ *                 .planCode(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *                 .pricingMode(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
  *                 .build())
  *             .planOptions(LoadBalancerPlanOptionArgs.builder()
- *                 .duration(bhs.applyValue(getCartProductOptionsPlanResult -&gt; getCartProductOptionsPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(bhs.applyValue(getCartProductOptionsPlanResult -&gt; getCartProductOptionsPlanResult.planCode()))
- *                 .pricingMode(bhs.applyValue(getCartProductOptionsPlanResult -&gt; getCartProductOptionsPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(bhs.applyValue(getCartProductOptionsPlanResult -> getCartProductOptionsPlanResult.selectedPrices()[0].duration()))
+ *                 .planCode(bhs.applyValue(getCartProductOptionsPlanResult -> getCartProductOptionsPlanResult.planCode()))
+ *                 .pricingMode(bhs.applyValue(getCartProductOptionsPlanResult -> getCartProductOptionsPlanResult.selectedPrices()[0].pricingMode()))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/loadBalancer:LoadBalancer")

@@ -5,6 +5,7 @@ package com.ovh.ovh.Dedicated;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class NasHAPartitionAccessArgs extends com.pulumi.resources.Resourc
         }
 
         public NasHAPartitionAccessArgs build() {
-            $.ip = Objects.requireNonNull($.ip, "expected parameter 'ip' to be non-null");
-            $.partitionName = Objects.requireNonNull($.partitionName, "expected parameter 'partitionName' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.ip == null) {
+                throw new MissingRequiredPropertyException("NasHAPartitionAccessArgs", "ip");
+            }
+            if ($.partitionName == null) {
+                throw new MissingRequiredPropertyException("NasHAPartitionAccessArgs", "partitionName");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("NasHAPartitionAccessArgs", "serviceName");
+            }
             return $;
         }
     }

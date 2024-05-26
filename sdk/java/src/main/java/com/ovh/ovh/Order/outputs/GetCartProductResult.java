@@ -5,6 +5,7 @@ package com.ovh.ovh.Order.outputs;
 
 import com.ovh.ovh.Order.outputs.GetCartProductResultPrice;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,12 +87,18 @@ public final class GetCartProductResult {
 
         @CustomType.Setter
         public Builder planCode(String planCode) {
-            this.planCode = Objects.requireNonNull(planCode);
+            if (planCode == null) {
+              throw new MissingRequiredPropertyException("GetCartProductResult", "planCode");
+            }
+            this.planCode = planCode;
             return this;
         }
         @CustomType.Setter
         public Builder prices(List<GetCartProductResultPrice> prices) {
-            this.prices = Objects.requireNonNull(prices);
+            if (prices == null) {
+              throw new MissingRequiredPropertyException("GetCartProductResult", "prices");
+            }
+            this.prices = prices;
             return this;
         }
         public Builder prices(GetCartProductResultPrice... prices) {
@@ -99,21 +106,27 @@ public final class GetCartProductResult {
         }
         @CustomType.Setter
         public Builder productName(String productName) {
-            this.productName = Objects.requireNonNull(productName);
+            if (productName == null) {
+              throw new MissingRequiredPropertyException("GetCartProductResult", "productName");
+            }
+            this.productName = productName;
             return this;
         }
         @CustomType.Setter
         public Builder productType(String productType) {
-            this.productType = Objects.requireNonNull(productType);
+            if (productType == null) {
+              throw new MissingRequiredPropertyException("GetCartProductResult", "productType");
+            }
+            this.productType = productType;
             return this;
         }
         public GetCartProductResult build() {
-            final var o = new GetCartProductResult();
-            o.planCode = planCode;
-            o.prices = prices;
-            o.productName = productName;
-            o.productType = productType;
-            return o;
+            final var _resultValue = new GetCartProductResult();
+            _resultValue.planCode = planCode;
+            _resultValue.prices = prices;
+            _resultValue.productName = productName;
+            _resultValue.productType = productType;
+            return _resultValue;
         }
     }
 }

@@ -4,6 +4,7 @@
 package com.ovh.ovh.Iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -134,37 +135,58 @@ public final class GetResourceGroupResult {
 
         @CustomType.Setter
         public Builder GroupURN(String GroupURN) {
-            this.GroupURN = Objects.requireNonNull(GroupURN);
+            if (GroupURN == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupResult", "GroupURN");
+            }
+            this.GroupURN = GroupURN;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder owner(String owner) {
-            this.owner = Objects.requireNonNull(owner);
+            if (owner == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupResult", "owner");
+            }
+            this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder readOnly(Boolean readOnly) {
-            this.readOnly = Objects.requireNonNull(readOnly);
+            if (readOnly == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupResult", "readOnly");
+            }
+            this.readOnly = readOnly;
             return this;
         }
         @CustomType.Setter
         public Builder resources(List<String> resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupResult", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         public Builder resources(String... resources) {
@@ -172,20 +194,23 @@ public final class GetResourceGroupResult {
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         public GetResourceGroupResult build() {
-            final var o = new GetResourceGroupResult();
-            o.GroupURN = GroupURN;
-            o.createdAt = createdAt;
-            o.id = id;
-            o.name = name;
-            o.owner = owner;
-            o.readOnly = readOnly;
-            o.resources = resources;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new GetResourceGroupResult();
+            _resultValue.GroupURN = GroupURN;
+            _resultValue.createdAt = createdAt;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.owner = owner;
+            _resultValue.readOnly = readOnly;
+            _resultValue.resources = resources;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

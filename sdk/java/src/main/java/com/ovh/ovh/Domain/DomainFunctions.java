@@ -18,7 +18,8 @@ public final class DomainFunctions {
      * Use this data source to retrieve information about a domain zone.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -40,12 +41,13 @@ public final class DomainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rootzone = DomainFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;mysite.ovh&#34;)
+     *             .name("mysite.ovh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetZoneResult> getZone(GetZoneArgs args) {
@@ -55,7 +57,8 @@ public final class DomainFunctions {
      * Use this data source to retrieve information about a domain zone.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -77,12 +80,13 @@ public final class DomainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rootzone = DomainFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;mysite.ovh&#34;)
+     *             .name("mysite.ovh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args) {
@@ -92,7 +96,8 @@ public final class DomainFunctions {
      * Use this data source to retrieve information about a domain zone.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -114,12 +119,13 @@ public final class DomainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rootzone = DomainFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;mysite.ovh&#34;)
+     *             .name("mysite.ovh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static Output<GetZoneResult> getZone(GetZoneArgs args, InvokeOptions options) {
@@ -129,7 +135,8 @@ public final class DomainFunctions {
      * Use this data source to retrieve information about a domain zone.
      * 
      * ## Example Usage
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -151,12 +158,13 @@ public final class DomainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rootzone = DomainFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;mysite.ovh&#34;)
+     *             .name("mysite.ovh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args, InvokeOptions options) {

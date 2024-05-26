@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,7 +115,9 @@ public final class GetRegionsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRegionsPlainArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetRegionsPlainArgs", "serviceName");
+            }
             return $;
         }
     }
