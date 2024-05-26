@@ -12,10 +12,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// <summary>
     /// ## Import
     /// 
-    /// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+    /// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+    /// 
+    /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:CloudProjectDatabase/user:User my_user service_name/engine/cluster_id/id
+    /// $ pulumi import ovh:CloudProjectDatabase/user:User my_user service_name/engine/cluster_id/id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/user:User")]
@@ -41,7 +43,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -136,7 +138,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> Engine { get; set; } = null!;
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -182,7 +184,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user. The "Grafana" engine only allows the "avnadmin" mapping.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

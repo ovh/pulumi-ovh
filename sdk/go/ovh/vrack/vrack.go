@@ -48,12 +48,12 @@ import (
 //				return err
 //			}
 //			_, err = Vrack.NewVrack(ctx, "vrackVrack", &Vrack.VrackArgs{
-//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				Description:   pulumi.String("my vrack"),
 //				Plan: &vrack.VrackPlanArgs{
-//					Duration:    *pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    *pulumi.String(vrackCartProductPlan.PlanCode),
-//					PricingMode: *pulumi.String(vrackCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(vrackCartProductPlan.PlanCode),
+//					PricingMode: pulumi.String(vrackCartProductPlan.SelectedPrices[0].PricingMode),
 //				},
 //			})
 //			if err != nil {
@@ -67,14 +67,12 @@ import (
 //
 // ## Import
 //
-// vRack can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders).
+// vRack can be imported using the `service_name`.
 //
 // bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
-//
+// $ pulumi import ovh:Vrack/vrack:Vrack vrack service_name
 // ```
 type Vrack struct {
 	pulumi.CustomResourceState
@@ -191,6 +189,8 @@ type vrackArgs struct {
 	Description *string `pulumi:"description"`
 	// yourvrackname
 	Name *string `pulumi:"name"`
+	// Details about an Order
+	Orders []VrackOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
@@ -209,6 +209,8 @@ type VrackArgs struct {
 	Description pulumi.StringPtrInput
 	// yourvrackname
 	Name pulumi.StringPtrInput
+	// Details about an Order
+	Orders VrackOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode

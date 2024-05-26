@@ -14,9 +14,7 @@ namespace Pulumi.Ovh
         /// <summary>
         /// Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -33,8 +31,6 @@ namespace Pulumi.Ovh
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerResult> InvokeAsync(GetServerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("ovh:index/getServer:getServer", args ?? new GetServerArgs(), options.WithDefaults());
@@ -42,9 +38,7 @@ namespace Pulumi.Ovh
         /// <summary>
         /// Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -61,8 +55,6 @@ namespace Pulumi.Ovh
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerResult> Invoke(GetServerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerResult>("ovh:index/getServer:getServer", args ?? new GetServerInvokeArgs(), options.WithDefaults());
@@ -106,17 +98,25 @@ namespace Pulumi.Ovh
         /// </summary>
         public readonly string ServerURN;
         /// <summary>
-        /// boot id of the server
+        /// Boot id of the server
         /// </summary>
         public readonly int BootId;
         /// <summary>
-        /// dedicated server commercial range
+        /// Boot script of the server
+        /// </summary>
+        public readonly string BootScript;
+        /// <summary>
+        /// Dedicated server commercial range
         /// </summary>
         public readonly string CommercialRange;
         /// <summary>
-        /// dedicated datacenter localisation (bhs1,bhs2,...)
+        /// Dedicated datacenter localisation (bhs1,bhs2,...)
         /// </summary>
         public readonly string Datacenter;
+        /// <summary>
+        /// Dedicated server display name
+        /// </summary>
+        public readonly string DisplayName;
         /// <summary>
         /// List of enabled public VNI uuids
         /// </summary>
@@ -134,15 +134,15 @@ namespace Pulumi.Ovh
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// dedicated server ip (IPv4)
+        /// Dedicated server ip (IPv4)
         /// </summary>
         public readonly string Ip;
         /// <summary>
-        /// dedicated server ip blocks
+        /// Dedicated server ip blocks
         /// </summary>
         public readonly ImmutableArray<string> Ips;
         /// <summary>
-        /// link speed of the server
+        /// Link speed of the server
         /// </summary>
         public readonly int LinkSpeed;
         /// <summary>
@@ -162,28 +162,28 @@ namespace Pulumi.Ovh
         /// </summary>
         public readonly bool ProfessionalUse;
         /// <summary>
-        /// rack id of the server
+        /// Rack id of the server
         /// </summary>
         public readonly string Rack;
         /// <summary>
-        /// rescue mail of the server
+        /// Rescue mail of the server
         /// </summary>
         public readonly string RescueMail;
         /// <summary>
-        /// dedicated server reverse
+        /// Dedicated server reverse
         /// </summary>
         public readonly string Reverse;
         /// <summary>
-        /// root device of the server
+        /// Root device of the server
         /// </summary>
         public readonly string RootDevice;
         /// <summary>
-        /// your server id
+        /// Server id
         /// </summary>
         public readonly int ServerId;
         public readonly string ServiceName;
         /// <summary>
-        /// error, hacked, hackedBlocked, ok
+        /// Error, hacked, hackedBlocked, ok
         /// </summary>
         public readonly string State;
         /// <summary>
@@ -191,7 +191,7 @@ namespace Pulumi.Ovh
         /// </summary>
         public readonly string SupportLevel;
         /// <summary>
-        /// the list of Virtualnetworkinterface assiociated with this server
+        /// The list of Virtualnetworkinterface associated with this server
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerVniResult> Vnis;
 
@@ -201,9 +201,13 @@ namespace Pulumi.Ovh
 
             int bootId,
 
+            string bootScript,
+
             string commercialRange,
 
             string datacenter,
+
+            string displayName,
 
             ImmutableArray<string> enabledPublicVnis,
 
@@ -247,8 +251,10 @@ namespace Pulumi.Ovh
         {
             this.ServerURN = ServerURN;
             BootId = bootId;
+            BootScript = bootScript;
             CommercialRange = commercialRange;
             Datacenter = datacenter;
+            DisplayName = displayName;
             EnabledPublicVnis = enabledPublicVnis;
             EnabledVrackAggregationVnis = enabledVrackAggregationVnis;
             EnabledVrackVnis = enabledVrackVnis;

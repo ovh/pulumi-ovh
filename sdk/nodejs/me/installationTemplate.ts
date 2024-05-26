@@ -9,25 +9,14 @@ import * as utilities from "../utilities";
 /**
  * Use this resource to create a custom installation template available for dedicated servers.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
- *
- * const mytemplate = new ovh.me.InstallationTemplate("mytemplate", {
- *     baseTemplateName: "centos7_64",
- *     defaultLanguage: "en",
- *     templateName: "mytemplate",
- * });
- * ```
- *
  * ## Import
  *
- * Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g., bash
+ * Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by "/" E.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name
+ * $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name
  * ```
  */
 export class InstallationTemplate extends pulumi.CustomResource {
@@ -59,17 +48,9 @@ export class InstallationTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * List of all language available for this template.
-     */
-    public /*out*/ readonly availableLanguages!: pulumi.Output<string[]>;
-    /**
      * The name of an existing installation template, choose one among the list given by `ovh.getInstallationTemplates` datasource.
      */
     public readonly baseTemplateName!: pulumi.Output<string>;
-    /**
-     * This distribution is new and, although tested and functional, may still display odd behaviour.
-     */
-    public /*out*/ readonly beta!: pulumi.Output<boolean>;
     /**
      * This template bit format (32 or 64).
      */
@@ -80,14 +61,6 @@ export class InstallationTemplate extends pulumi.CustomResource {
     public /*out*/ readonly category!: pulumi.Output<string>;
     public readonly customization!: pulumi.Output<outputs.Me.InstallationTemplateCustomization | undefined>;
     /**
-     * The default language of this template.
-     */
-    public readonly defaultLanguage!: pulumi.Output<string>;
-    /**
-     * is this distribution deprecated.
-     */
-    public /*out*/ readonly deprecated!: pulumi.Output<boolean>;
-    /**
      * information about this template.
      */
     public /*out*/ readonly description!: pulumi.Output<string>;
@@ -96,41 +69,44 @@ export class InstallationTemplate extends pulumi.CustomResource {
      */
     public /*out*/ readonly distribution!: pulumi.Output<string>;
     /**
-     * this template family type (bsd,linux,solaris,windows).
+     * after this date, install of this template will not be possible at OVH
+     */
+    public /*out*/ readonly endOfInstall!: pulumi.Output<string>;
+    /**
+     * this template family type.
      */
     public /*out*/ readonly family!: pulumi.Output<string>;
     /**
-     * Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+     * Filesystems available.
      */
     public /*out*/ readonly filesystems!: pulumi.Output<string[]>;
     /**
-     * This distribution supports hardware raid configuration through the OVHcloud API.
+     * This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
+     *
+     * @deprecated This will be deprecated in the next release
      */
     public /*out*/ readonly hardRaidConfiguration!: pulumi.Output<boolean>;
+    public /*out*/ readonly inputs!: pulumi.Output<outputs.Me.InstallationTemplateInput[]>;
     /**
-     * Date of last modification of the base image.
-     */
-    public /*out*/ readonly lastModification!: pulumi.Output<string>;
-    /**
-     * This distribution supports Logical Volumes (Linux LVM)
+     * Whether this distribution supports Logical Volumes (Linux LVM)
      */
     public /*out*/ readonly lvmReady!: pulumi.Output<boolean>;
+    /**
+     * Partitioning customization is not available for this OS template
+     */
+    public /*out*/ readonly noPartitioning!: pulumi.Output<boolean>;
     /**
      * Remove default partition schemes at creation.
      */
     public readonly removeDefaultPartitionSchemes!: pulumi.Output<boolean>;
     /**
-     * This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
+     * Partitioning customization is available but limited to mirroring for this OS template
      */
-    public /*out*/ readonly supportsDistributionKernel!: pulumi.Output<boolean>;
+    public /*out*/ readonly softRaidOnlyMirroring!: pulumi.Output<boolean>;
     /**
-     * This distribution supports RTM software.
+     * this template subfamily type
      */
-    public /*out*/ readonly supportsRtm!: pulumi.Output<boolean>;
-    /**
-     * This distribution supports the microsoft SQL server.
-     */
-    public /*out*/ readonly supportsSqlServer!: pulumi.Output<boolean>;
+    public /*out*/ readonly subfamily!: pulumi.Output<string>;
     /**
      * This template name.
      */
@@ -149,57 +125,48 @@ export class InstallationTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstallationTemplateState | undefined;
-            resourceInputs["availableLanguages"] = state ? state.availableLanguages : undefined;
             resourceInputs["baseTemplateName"] = state ? state.baseTemplateName : undefined;
-            resourceInputs["beta"] = state ? state.beta : undefined;
             resourceInputs["bitFormat"] = state ? state.bitFormat : undefined;
             resourceInputs["category"] = state ? state.category : undefined;
             resourceInputs["customization"] = state ? state.customization : undefined;
-            resourceInputs["defaultLanguage"] = state ? state.defaultLanguage : undefined;
-            resourceInputs["deprecated"] = state ? state.deprecated : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["distribution"] = state ? state.distribution : undefined;
+            resourceInputs["endOfInstall"] = state ? state.endOfInstall : undefined;
             resourceInputs["family"] = state ? state.family : undefined;
             resourceInputs["filesystems"] = state ? state.filesystems : undefined;
             resourceInputs["hardRaidConfiguration"] = state ? state.hardRaidConfiguration : undefined;
-            resourceInputs["lastModification"] = state ? state.lastModification : undefined;
+            resourceInputs["inputs"] = state ? state.inputs : undefined;
             resourceInputs["lvmReady"] = state ? state.lvmReady : undefined;
+            resourceInputs["noPartitioning"] = state ? state.noPartitioning : undefined;
             resourceInputs["removeDefaultPartitionSchemes"] = state ? state.removeDefaultPartitionSchemes : undefined;
-            resourceInputs["supportsDistributionKernel"] = state ? state.supportsDistributionKernel : undefined;
-            resourceInputs["supportsRtm"] = state ? state.supportsRtm : undefined;
-            resourceInputs["supportsSqlServer"] = state ? state.supportsSqlServer : undefined;
+            resourceInputs["softRaidOnlyMirroring"] = state ? state.softRaidOnlyMirroring : undefined;
+            resourceInputs["subfamily"] = state ? state.subfamily : undefined;
             resourceInputs["templateName"] = state ? state.templateName : undefined;
         } else {
             const args = argsOrState as InstallationTemplateArgs | undefined;
             if ((!args || args.baseTemplateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'baseTemplateName'");
             }
-            if ((!args || args.defaultLanguage === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'defaultLanguage'");
-            }
             if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
             resourceInputs["baseTemplateName"] = args ? args.baseTemplateName : undefined;
             resourceInputs["customization"] = args ? args.customization : undefined;
-            resourceInputs["defaultLanguage"] = args ? args.defaultLanguage : undefined;
             resourceInputs["removeDefaultPartitionSchemes"] = args ? args.removeDefaultPartitionSchemes : undefined;
             resourceInputs["templateName"] = args ? args.templateName : undefined;
-            resourceInputs["availableLanguages"] = undefined /*out*/;
-            resourceInputs["beta"] = undefined /*out*/;
             resourceInputs["bitFormat"] = undefined /*out*/;
             resourceInputs["category"] = undefined /*out*/;
-            resourceInputs["deprecated"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["distribution"] = undefined /*out*/;
+            resourceInputs["endOfInstall"] = undefined /*out*/;
             resourceInputs["family"] = undefined /*out*/;
             resourceInputs["filesystems"] = undefined /*out*/;
             resourceInputs["hardRaidConfiguration"] = undefined /*out*/;
-            resourceInputs["lastModification"] = undefined /*out*/;
+            resourceInputs["inputs"] = undefined /*out*/;
             resourceInputs["lvmReady"] = undefined /*out*/;
-            resourceInputs["supportsDistributionKernel"] = undefined /*out*/;
-            resourceInputs["supportsRtm"] = undefined /*out*/;
-            resourceInputs["supportsSqlServer"] = undefined /*out*/;
+            resourceInputs["noPartitioning"] = undefined /*out*/;
+            resourceInputs["softRaidOnlyMirroring"] = undefined /*out*/;
+            resourceInputs["subfamily"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstallationTemplate.__pulumiType, name, resourceInputs, opts);
@@ -211,17 +178,9 @@ export class InstallationTemplate extends pulumi.CustomResource {
  */
 export interface InstallationTemplateState {
     /**
-     * List of all language available for this template.
-     */
-    availableLanguages?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * The name of an existing installation template, choose one among the list given by `ovh.getInstallationTemplates` datasource.
      */
     baseTemplateName?: pulumi.Input<string>;
-    /**
-     * This distribution is new and, although tested and functional, may still display odd behaviour.
-     */
-    beta?: pulumi.Input<boolean>;
     /**
      * This template bit format (32 or 64).
      */
@@ -232,14 +191,6 @@ export interface InstallationTemplateState {
     category?: pulumi.Input<string>;
     customization?: pulumi.Input<inputs.Me.InstallationTemplateCustomization>;
     /**
-     * The default language of this template.
-     */
-    defaultLanguage?: pulumi.Input<string>;
-    /**
-     * is this distribution deprecated.
-     */
-    deprecated?: pulumi.Input<boolean>;
-    /**
      * information about this template.
      */
     description?: pulumi.Input<string>;
@@ -248,41 +199,44 @@ export interface InstallationTemplateState {
      */
     distribution?: pulumi.Input<string>;
     /**
-     * this template family type (bsd,linux,solaris,windows).
+     * after this date, install of this template will not be possible at OVH
+     */
+    endOfInstall?: pulumi.Input<string>;
+    /**
+     * this template family type.
      */
     family?: pulumi.Input<string>;
     /**
-     * Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+     * Filesystems available.
      */
     filesystems?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * This distribution supports hardware raid configuration through the OVHcloud API.
+     * This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
+     *
+     * @deprecated This will be deprecated in the next release
      */
     hardRaidConfiguration?: pulumi.Input<boolean>;
+    inputs?: pulumi.Input<pulumi.Input<inputs.Me.InstallationTemplateInput>[]>;
     /**
-     * Date of last modification of the base image.
-     */
-    lastModification?: pulumi.Input<string>;
-    /**
-     * This distribution supports Logical Volumes (Linux LVM)
+     * Whether this distribution supports Logical Volumes (Linux LVM)
      */
     lvmReady?: pulumi.Input<boolean>;
+    /**
+     * Partitioning customization is not available for this OS template
+     */
+    noPartitioning?: pulumi.Input<boolean>;
     /**
      * Remove default partition schemes at creation.
      */
     removeDefaultPartitionSchemes?: pulumi.Input<boolean>;
     /**
-     * This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
+     * Partitioning customization is available but limited to mirroring for this OS template
      */
-    supportsDistributionKernel?: pulumi.Input<boolean>;
+    softRaidOnlyMirroring?: pulumi.Input<boolean>;
     /**
-     * This distribution supports RTM software.
+     * this template subfamily type
      */
-    supportsRtm?: pulumi.Input<boolean>;
-    /**
-     * This distribution supports the microsoft SQL server.
-     */
-    supportsSqlServer?: pulumi.Input<boolean>;
+    subfamily?: pulumi.Input<string>;
     /**
      * This template name.
      */
@@ -298,10 +252,6 @@ export interface InstallationTemplateArgs {
      */
     baseTemplateName: pulumi.Input<string>;
     customization?: pulumi.Input<inputs.Me.InstallationTemplateCustomization>;
-    /**
-     * The default language of this template.
-     */
-    defaultLanguage: pulumi.Input<string>;
     /**
      * Remove default partition schemes at creation.
      */

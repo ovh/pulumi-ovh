@@ -11,11 +11,16 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AlertingFormattedMonthlyThreshold',
     'ContainerRegistryPlan',
     'ContainerRegistryPlanFeature',
     'ContainerRegistryPlanRegistryLimit',
     'DatabaseEndpoint',
+    'DatabaseIpRestriction',
     'DatabaseNode',
+    'GatewayExternalInformation',
+    'GatewayExternalInformationIp',
+    'GatewayInterface',
     'KubeCustomization',
     'KubeCustomizationApiserver',
     'KubeCustomizationApiserverAdmissionplugin',
@@ -62,6 +67,66 @@ __all__ = [
     'GetUsersUserResult',
     'GetUsersUserRoleResult',
 ]
+
+@pulumi.output_type
+class AlertingFormattedMonthlyThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currencyCode":
+            suggest = "currency_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertingFormattedMonthlyThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertingFormattedMonthlyThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertingFormattedMonthlyThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 currency_code: Optional[str] = None,
+                 text: Optional[str] = None,
+                 value: Optional[float] = None):
+        """
+        :param str currency_code: Currency of the monthly threshold
+        :param str text: Text representation of the monthly threshold
+        :param float value: Value of the monthly threshold
+        """
+        if currency_code is not None:
+            pulumi.set(__self__, "currency_code", currency_code)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> Optional[str]:
+        """
+        Currency of the monthly threshold
+        """
+        return pulumi.get(self, "currency_code")
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[str]:
+        """
+        Text representation of the monthly threshold
+        """
+        return pulumi.get(self, "text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[float]:
+        """
+        Value of the monthly threshold
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class ContainerRegistryPlan(dict):
@@ -365,6 +430,49 @@ class DatabaseEndpoint(dict):
 
 
 @pulumi.output_type
+class DatabaseIpRestriction(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 ip: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        :param str description: Description of the IP restriction
+        :param str ip: Authorized IP
+        :param str status: Current status of the cluster.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the IP restriction
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        Authorized IP
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Current status of the cluster.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class DatabaseNode(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -428,6 +536,176 @@ class DatabaseNode(dict):
 
 
 @pulumi.output_type
+class GatewayExternalInformation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkId":
+            suggest = "network_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayExternalInformation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayExternalInformation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayExternalInformation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ips: Optional[Sequence['outputs.GatewayExternalInformationIp']] = None,
+                 network_id: Optional[str] = None):
+        """
+        :param Sequence['GatewayExternalInformationIpArgs'] ips: List of external ips of the gateway.
+        :param str network_id: ID of the private network.
+        """
+        if ips is not None:
+            pulumi.set(__self__, "ips", ips)
+        if network_id is not None:
+            pulumi.set(__self__, "network_id", network_id)
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Optional[Sequence['outputs.GatewayExternalInformationIp']]:
+        """
+        List of external ips of the gateway.
+        """
+        return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[str]:
+        """
+        ID of the private network.
+        """
+        return pulumi.get(self, "network_id")
+
+
+@pulumi.output_type
+class GatewayExternalInformationIp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayExternalInformationIp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayExternalInformationIp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayExternalInformationIp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip: Optional[str] = None,
+                 subnet_id: Optional[str] = None):
+        """
+        :param str ip: IP of the interface.
+        :param str subnet_id: ID of the subnet.
+        """
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        IP of the interface.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[str]:
+        """
+        ID of the subnet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GatewayInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkId":
+            suggest = "network_id"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayInterface.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 ip: Optional[str] = None,
+                 network_id: Optional[str] = None,
+                 subnet_id: Optional[str] = None):
+        """
+        :param str id: ID of the interface.
+        :param str ip: IP of the interface.
+        :param str network_id: ID of the private network.
+        :param str subnet_id: ID of the subnet.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if network_id is not None:
+            pulumi.set(__self__, "network_id", network_id)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the interface.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        IP of the interface.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[str]:
+        """
+        ID of the private network.
+        """
+        return pulumi.get(self, "network_id")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[str]:
+        """
+        ID of the subnet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
 class KubeCustomization(dict):
     def __init__(__self__, *,
                  apiservers: Optional[Sequence['outputs.KubeCustomizationApiserver']] = None):
@@ -473,10 +751,6 @@ class KubeCustomizationApiserverAdmissionplugin(dict):
     def __init__(__self__, *,
                  disableds: Optional[Sequence[str]] = None,
                  enableds: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] disableds: Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
-        :param Sequence[str] enableds: Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-        """
         if disableds is not None:
             pulumi.set(__self__, "disableds", disableds)
         if enableds is not None:
@@ -485,17 +759,11 @@ class KubeCustomizationApiserverAdmissionplugin(dict):
     @property
     @pulumi.getter
     def disableds(self) -> Optional[Sequence[str]]:
-        """
-        Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
-        """
         return pulumi.get(self, "disableds")
 
     @property
     @pulumi.getter
     def enableds(self) -> Optional[Sequence[str]]:
-        """
-        Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-        """
         return pulumi.get(self, "enableds")
 
 
@@ -554,10 +822,6 @@ class KubeCustomizationKubeProxyIptables(dict):
     def __init__(__self__, *,
                  min_sync_period: Optional[str] = None,
                  sync_period: Optional[str] = None):
-        """
-        :param str min_sync_period: Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
-        :param str sync_period: Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-        """
         if min_sync_period is not None:
             pulumi.set(__self__, "min_sync_period", min_sync_period)
         if sync_period is not None:
@@ -566,17 +830,11 @@ class KubeCustomizationKubeProxyIptables(dict):
     @property
     @pulumi.getter(name="minSyncPeriod")
     def min_sync_period(self) -> Optional[str]:
-        """
-        Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
-        """
         return pulumi.get(self, "min_sync_period")
 
     @property
     @pulumi.getter(name="syncPeriod")
     def sync_period(self) -> Optional[str]:
-        """
-        Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-        """
         return pulumi.get(self, "sync_period")
 
 
@@ -614,14 +872,6 @@ class KubeCustomizationKubeProxyIpvs(dict):
                  tcp_fin_timeout: Optional[str] = None,
                  tcp_timeout: Optional[str] = None,
                  udp_timeout: Optional[str] = None):
-        """
-        :param str min_sync_period: Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
-        :param str scheduler: IPVS scheduler.
-        :param str sync_period: Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-        :param str tcp_fin_timeout: Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        :param str tcp_timeout: Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        :param str udp_timeout: timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        """
         if min_sync_period is not None:
             pulumi.set(__self__, "min_sync_period", min_sync_period)
         if scheduler is not None:
@@ -638,49 +888,31 @@ class KubeCustomizationKubeProxyIpvs(dict):
     @property
     @pulumi.getter(name="minSyncPeriod")
     def min_sync_period(self) -> Optional[str]:
-        """
-        Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
-        """
         return pulumi.get(self, "min_sync_period")
 
     @property
     @pulumi.getter
     def scheduler(self) -> Optional[str]:
-        """
-        IPVS scheduler.
-        """
         return pulumi.get(self, "scheduler")
 
     @property
     @pulumi.getter(name="syncPeriod")
     def sync_period(self) -> Optional[str]:
-        """
-        Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-        """
         return pulumi.get(self, "sync_period")
 
     @property
     @pulumi.getter(name="tcpFinTimeout")
     def tcp_fin_timeout(self) -> Optional[str]:
-        """
-        Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        """
         return pulumi.get(self, "tcp_fin_timeout")
 
     @property
     @pulumi.getter(name="tcpTimeout")
     def tcp_timeout(self) -> Optional[str]:
-        """
-        Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        """
         return pulumi.get(self, "tcp_timeout")
 
     @property
     @pulumi.getter(name="udpTimeout")
     def udp_timeout(self) -> Optional[str]:
-        """
-        timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        """
         return pulumi.get(self, "udp_timeout")
 
 
@@ -766,8 +998,8 @@ class KubeNodePoolTemplate(dict):
                  metadata: 'outputs.KubeNodePoolTemplateMetadata',
                  spec: 'outputs.KubeNodePoolTemplateSpec'):
         """
-        :param 'KubeNodePoolTemplateMetadataArgs' metadata: Metadata of each node in the pool
-        :param 'KubeNodePoolTemplateSpecArgs' spec: Spec of each node in the pool
+        :param 'KubeNodePoolTemplateMetadataArgs' metadata: metadata
+        :param 'KubeNodePoolTemplateSpecArgs' spec: spec
         """
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "spec", spec)
@@ -776,7 +1008,7 @@ class KubeNodePoolTemplate(dict):
     @pulumi.getter
     def metadata(self) -> 'outputs.KubeNodePoolTemplateMetadata':
         """
-        Metadata of each node in the pool
+        metadata
         """
         return pulumi.get(self, "metadata")
 
@@ -784,7 +1016,7 @@ class KubeNodePoolTemplate(dict):
     @pulumi.getter
     def spec(self) -> 'outputs.KubeNodePoolTemplateSpec':
         """
-        Spec of each node in the pool
+        spec
         """
         return pulumi.get(self, "spec")
 
@@ -796,9 +1028,9 @@ class KubeNodePoolTemplateMetadata(dict):
                  finalizers: Sequence[str],
                  labels: Mapping[str, str]):
         """
-        :param Mapping[str, str] annotations: Annotations to apply to each node
-        :param Sequence[str] finalizers: Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
-        :param Mapping[str, str] labels: Labels to apply to each node
+        :param Mapping[str, str] annotations: annotations
+        :param Sequence[str] finalizers: finalizers
+        :param Mapping[str, str] labels: labels
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "finalizers", finalizers)
@@ -808,7 +1040,7 @@ class KubeNodePoolTemplateMetadata(dict):
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        Annotations to apply to each node
+        annotations
         """
         return pulumi.get(self, "annotations")
 
@@ -816,7 +1048,7 @@ class KubeNodePoolTemplateMetadata(dict):
     @pulumi.getter
     def finalizers(self) -> Sequence[str]:
         """
-        Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+        finalizers
         """
         return pulumi.get(self, "finalizers")
 
@@ -824,7 +1056,7 @@ class KubeNodePoolTemplateMetadata(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Labels to apply to each node
+        labels
         """
         return pulumi.get(self, "labels")
 
@@ -835,8 +1067,8 @@ class KubeNodePoolTemplateSpec(dict):
                  taints: Sequence[Mapping[str, Any]],
                  unschedulable: bool):
         """
-        :param Sequence[Mapping[str, Any]] taints: Taints to apply to each node
-        :param bool unschedulable: If true, set nodes as un-schedulable
+        :param Sequence[Mapping[str, Any]] taints: taints
+        :param bool unschedulable: unschedulable
         """
         pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "unschedulable", unschedulable)
@@ -845,7 +1077,7 @@ class KubeNodePoolTemplateSpec(dict):
     @pulumi.getter
     def taints(self) -> Sequence[Mapping[str, Any]]:
         """
-        Taints to apply to each node
+        taints
         """
         return pulumi.get(self, "taints")
 
@@ -853,7 +1085,7 @@ class KubeNodePoolTemplateSpec(dict):
     @pulumi.getter
     def unschedulable(self) -> bool:
         """
-        If true, set nodes as un-schedulable
+        unschedulable
         """
         return pulumi.get(self, "unschedulable")
 
@@ -885,6 +1117,11 @@ class KubePrivateNetworkConfiguration(dict):
         """
         :param str default_vrack_gateway: If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
         :param bool private_network_routing_as_default: Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+               
+               In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "default_vrack_gateway", default_vrack_gateway)
         pulumi.set(__self__, "private_network_routing_as_default", private_network_routing_as_default)
@@ -902,6 +1139,11 @@ class KubePrivateNetworkConfiguration(dict):
     def private_network_routing_as_default(self) -> bool:
         """
         Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+
+        In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "private_network_routing_as_default")
 
@@ -1222,7 +1464,7 @@ class ProjectPlan(dict):
                  configurations: Optional[Sequence['outputs.ProjectPlanConfiguration']] = None):
         """
         :param str duration: duration
-        :param str plan_code: Plan code
+        :param str plan_code: Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
         :param str pricing_mode: Pricing model identifier
         :param str catalog_name: Catalog name
         :param Sequence['ProjectPlanConfigurationArgs'] configurations: Representation of a configuration item for personalizing product
@@ -1247,7 +1489,7 @@ class ProjectPlan(dict):
     @pulumi.getter(name="planCode")
     def plan_code(self) -> str:
         """
-        Plan code
+        Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
         """
         return pulumi.get(self, "plan_code")
 
@@ -2191,6 +2433,10 @@ class GetKubeNodePoolTemplateResult(dict):
     def __init__(__self__, *,
                  metadata: Optional['outputs.GetKubeNodePoolTemplateMetadataResult'] = None,
                  spec: Optional['outputs.GetKubeNodePoolTemplateSpecResult'] = None):
+        """
+        :param 'GetKubeNodePoolTemplateMetadataArgs' metadata: metadata
+        :param 'GetKubeNodePoolTemplateSpecArgs' spec: spec
+        """
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if spec is not None:
@@ -2199,11 +2445,17 @@ class GetKubeNodePoolTemplateResult(dict):
     @property
     @pulumi.getter
     def metadata(self) -> Optional['outputs.GetKubeNodePoolTemplateMetadataResult']:
+        """
+        metadata
+        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def spec(self) -> Optional['outputs.GetKubeNodePoolTemplateSpecResult']:
+        """
+        spec
+        """
         return pulumi.get(self, "spec")
 
 
@@ -2213,6 +2465,11 @@ class GetKubeNodePoolTemplateMetadataResult(dict):
                  annotations: Optional[Mapping[str, str]] = None,
                  finalizers: Optional[Sequence[str]] = None,
                  labels: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] annotations: annotations
+        :param Sequence[str] finalizers: finalizers
+        :param Mapping[str, str] labels: labels
+        """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if finalizers is not None:
@@ -2223,16 +2480,25 @@ class GetKubeNodePoolTemplateMetadataResult(dict):
     @property
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, str]]:
+        """
+        annotations
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def finalizers(self) -> Optional[Sequence[str]]:
+        """
+        finalizers
+        """
         return pulumi.get(self, "finalizers")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        labels
+        """
         return pulumi.get(self, "labels")
 
 
@@ -2241,6 +2507,10 @@ class GetKubeNodePoolTemplateSpecResult(dict):
     def __init__(__self__, *,
                  taints: Optional[Sequence[Mapping[str, Any]]] = None,
                  unschedulable: Optional[bool] = None):
+        """
+        :param Sequence[Mapping[str, Any]] taints: taints
+        :param bool unschedulable: unschedulable
+        """
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if unschedulable is not None:
@@ -2249,11 +2519,17 @@ class GetKubeNodePoolTemplateSpecResult(dict):
     @property
     @pulumi.getter
     def taints(self) -> Optional[Sequence[Mapping[str, Any]]]:
+        """
+        taints
+        """
         return pulumi.get(self, "taints")
 
     @property
     @pulumi.getter
     def unschedulable(self) -> Optional[bool]:
+        """
+        unschedulable
+        """
         return pulumi.get(self, "unschedulable")
 
 

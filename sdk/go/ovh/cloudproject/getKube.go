@@ -58,7 +58,7 @@ type LookupKubeArgs struct {
 	CustomizationKubeProxy *GetKubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Customizations []GetKubeCustomization `pulumi:"customizations"`
 	// The id of the managed kubernetes cluster.
 	KubeId string `pulumi:"kubeId"`
@@ -86,7 +86,7 @@ type LookupKubeResult struct {
 	CustomizationKubeProxy *GetKubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Customizations []GetKubeCustomization `pulumi:"customizations"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -139,7 +139,7 @@ type LookupKubeOutputArgs struct {
 	CustomizationKubeProxy GetKubeCustomizationKubeProxyPtrInput `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Customizations GetKubeCustomizationArrayInput `pulumi:"customizations"`
 	// The id of the managed kubernetes cluster.
 	KubeId pulumi.StringInput `pulumi:"kubeId"`
@@ -193,7 +193,7 @@ func (o LookupKubeResultOutput) CustomizationKubeProxy() GetKubeCustomizationKub
 
 // **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 //
-// Deprecated: Use customization_apiserver instead
+// Deprecated: Use customizationApiserver instead
 func (o LookupKubeResultOutput) Customizations() GetKubeCustomizationArrayOutput {
 	return o.ApplyT(func(v LookupKubeResult) []GetKubeCustomization { return v.Customizations }).(GetKubeCustomizationArrayOutput)
 }

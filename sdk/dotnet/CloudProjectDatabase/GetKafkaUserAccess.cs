@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -39,8 +37,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaUserAccessResult> InvokeAsync(GetKafkaUserAccessArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaUserAccessResult>("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", args ?? new GetKafkaUserAccessArgs(), options.WithDefaults());
@@ -48,9 +44,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -73,8 +67,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaUserAccessResult> Invoke(GetKafkaUserAccessInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaUserAccessResult>("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", args ?? new GetKafkaUserAccessInvokeArgs(), options.WithDefaults());

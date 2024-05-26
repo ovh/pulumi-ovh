@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         private InputList<ImmutableDictionary<string, object>>? _taints;
 
         /// <summary>
-        /// Taints to apply to each node
+        /// taints
         /// </summary>
         public InputList<ImmutableDictionary<string, object>> Taints
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         }
 
         /// <summary>
-        /// If true, set nodes as un-schedulable
+        /// unschedulable
         /// </summary>
         [Input("unschedulable", required: true)]
         public Input<bool> Unschedulable { get; set; } = null!;

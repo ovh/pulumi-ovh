@@ -51,11 +51,11 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewIntegration(ctx, "integration", &CloudProjectDatabase.IntegrationArgs{
-//				ServiceName:          *pulumi.String(dbpostgresql.ServiceName),
-//				Engine:               *pulumi.String(dbpostgresql.Engine),
-//				ClusterId:            *pulumi.String(dbpostgresql.Id),
-//				SourceServiceId:      *pulumi.String(dbpostgresql.Id),
-//				DestinationServiceId: *pulumi.String(dbopensearch.Id),
+//				ServiceName:          pulumi.String(dbpostgresql.ServiceName),
+//				Engine:               pulumi.String(dbpostgresql.Engine),
+//				ClusterId:            pulumi.String(dbpostgresql.Id),
+//				SourceServiceId:      pulumi.String(dbpostgresql.Id),
+//				DestinationServiceId: pulumi.String(dbopensearch.Id),
 //				Type:                 pulumi.String("opensearchLogs"),
 //			})
 //			if err != nil {
@@ -69,12 +69,12 @@ import (
 //
 // ## Import
 //
-// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
-//
+// $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
 // ```
 type Integration struct {
 	pulumi.CustomResourceState

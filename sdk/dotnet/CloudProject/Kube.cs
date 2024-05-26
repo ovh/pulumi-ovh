@@ -12,10 +12,12 @@ namespace Pulumi.Ovh.CloudProject
     /// <summary>
     /// ## Import
     /// 
-    /// OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash
+    /// OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
+    /// 
+    /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
+    /// $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/kube:Kube")]
@@ -88,7 +90,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> NodesUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The private network configuration
+        /// The private network configuration. If this is set then the 2 parameters below shall be defined.
         /// </summary>
         [Output("privateNetworkConfiguration")]
         public Output<Outputs.KubePrivateNetworkConfiguration?> PrivateNetworkConfiguration { get; private set; } = null!;
@@ -233,7 +235,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The private network configuration
+        /// The private network configuration. If this is set then the 2 parameters below shall be defined.
         /// </summary>
         [Input("privateNetworkConfiguration")]
         public Input<Inputs.KubePrivateNetworkConfigurationArgs>? PrivateNetworkConfiguration { get; set; }
@@ -384,7 +386,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? NodesUrl { get; set; }
 
         /// <summary>
-        /// The private network configuration
+        /// The private network configuration. If this is set then the 2 parameters below shall be defined.
         /// </summary>
         [Input("privateNetworkConfiguration")]
         public Input<Inputs.KubePrivateNetworkConfigurationGetArgs>? PrivateNetworkConfiguration { get; set; }

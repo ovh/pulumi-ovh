@@ -38,7 +38,7 @@ namespace Pulumi.Ovh.Hosting
     /// OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
+    /// $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
     /// ```
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist")]

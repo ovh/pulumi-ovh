@@ -13,12 +13,6 @@ namespace Pulumi.Ovh.Dedicated.Inputs
     public sealed class ServerInstallTaskDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Template change log details.
-        /// </summary>
-        [Input("changeLog")]
-        public Input<string>? ChangeLog { get; set; }
-
-        /// <summary>
         /// Set up the server using the provided hostname instead of the default hostname.
         /// </summary>
         [Input("customHostname")]
@@ -31,25 +25,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         public Input<int>? DiskGroupId { get; set; }
 
         /// <summary>
-        /// set to true to install RTM.
-        /// </summary>
-        [Input("installRtm")]
-        public Input<bool>? InstallRtm { get; set; }
-
-        /// <summary>
-        /// set to true to install sql server (Windows template only).
-        /// </summary>
-        [Input("installSqlServer")]
-        public Input<bool>? InstallSqlServer { get; set; }
-
-        /// <summary>
-        /// language.
-        /// </summary>
-        [Input("language")]
-        public Input<string>? Language { get; set; }
-
-        /// <summary>
-        /// set to true to disable RAID.
+        /// Set to true to disable RAID.
         /// </summary>
         [Input("noRaid")]
         public Input<bool>? NoRaid { get; set; }
@@ -67,34 +43,10 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         public Input<string>? PostInstallationScriptReturn { get; set; }
 
         /// <summary>
-        /// set to true to make a hardware raid reset.
-        /// </summary>
-        [Input("resetHwRaid")]
-        public Input<bool>? ResetHwRaid { get; set; }
-
-        /// <summary>
         /// soft raid devices.
         /// </summary>
         [Input("softRaidDevices")]
         public Input<int>? SoftRaidDevices { get; set; }
-
-        /// <summary>
-        /// Name of the ssh key that should be installed. Password login will be disabled.
-        /// </summary>
-        [Input("sshKeyName")]
-        public Input<string>? SshKeyName { get; set; }
-
-        /// <summary>
-        /// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-        /// </summary>
-        [Input("useDistribKernel")]
-        public Input<bool>? UseDistribKernel { get; set; }
-
-        /// <summary>
-        /// set to true to use SPLA.
-        /// </summary>
-        [Input("useSpla")]
-        public Input<bool>? UseSpla { get; set; }
 
         public ServerInstallTaskDetailsArgs()
         {

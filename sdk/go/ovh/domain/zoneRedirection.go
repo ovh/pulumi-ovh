@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Add a redirection to a sub-domain
 //			_, err := Domain.NewZoneRedirection(ctx, "test", &Domain.ZoneRedirectionArgs{
 //				Subdomain: pulumi.String("test"),
 //				Target:    pulumi.String("http://www.ovh"),

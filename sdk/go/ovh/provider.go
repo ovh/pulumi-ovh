@@ -18,13 +18,17 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// The OVH API Application Key.
+	// The OVH API Application Key
 	ApplicationKey pulumi.StringPtrOutput `pulumi:"applicationKey"`
-	// The OVH API Application Secret.
+	// The OVH API Application Secret
 	ApplicationSecret pulumi.StringPtrOutput `pulumi:"applicationSecret"`
-	// The OVH API Consumer key.
+	// OAuth 2.0 application's ID
+	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
+	// OAuth 2.0 application's secret
+	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
+	// The OVH API Consumer Key
 	ConsumerKey pulumi.StringPtrOutput `pulumi:"consumerKey"`
-	// The OVH API endpoint to target (ex: "ovh-eu").
+	// The OVH API endpoint to target (ex: "ovh-eu")
 	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
 }
 
@@ -72,25 +76,33 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// The OVH API Application Key.
+	// The OVH API Application Key
 	ApplicationKey *string `pulumi:"applicationKey"`
-	// The OVH API Application Secret.
+	// The OVH API Application Secret
 	ApplicationSecret *string `pulumi:"applicationSecret"`
-	// The OVH API Consumer key.
+	// OAuth 2.0 application's ID
+	ClientId *string `pulumi:"clientId"`
+	// OAuth 2.0 application's secret
+	ClientSecret *string `pulumi:"clientSecret"`
+	// The OVH API Consumer Key
 	ConsumerKey *string `pulumi:"consumerKey"`
-	// The OVH API endpoint to target (ex: "ovh-eu").
+	// The OVH API endpoint to target (ex: "ovh-eu")
 	Endpoint *string `pulumi:"endpoint"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// The OVH API Application Key.
+	// The OVH API Application Key
 	ApplicationKey pulumi.StringPtrInput
-	// The OVH API Application Secret.
+	// The OVH API Application Secret
 	ApplicationSecret pulumi.StringPtrInput
-	// The OVH API Consumer key.
+	// OAuth 2.0 application's ID
+	ClientId pulumi.StringPtrInput
+	// OAuth 2.0 application's secret
+	ClientSecret pulumi.StringPtrInput
+	// The OVH API Consumer Key
 	ConsumerKey pulumi.StringPtrInput
-	// The OVH API endpoint to target (ex: "ovh-eu").
+	// The OVH API endpoint to target (ex: "ovh-eu")
 	Endpoint pulumi.StringPtrInput
 }
 
@@ -131,22 +143,32 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// The OVH API Application Key.
+// The OVH API Application Key
 func (o ProviderOutput) ApplicationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApplicationKey }).(pulumi.StringPtrOutput)
 }
 
-// The OVH API Application Secret.
+// The OVH API Application Secret
 func (o ProviderOutput) ApplicationSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApplicationSecret }).(pulumi.StringPtrOutput)
 }
 
-// The OVH API Consumer key.
+// OAuth 2.0 application's ID
+func (o ProviderOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// OAuth 2.0 application's secret
+func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// The OVH API Consumer Key
 func (o ProviderOutput) ConsumerKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConsumerKey }).(pulumi.StringPtrOutput)
 }
 
-// The OVH API endpoint to target (ex: "ovh-eu").
+// The OVH API endpoint to target (ex: "ovh-eu")
 func (o ProviderOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Endpoint }).(pulumi.StringPtrOutput)
 }

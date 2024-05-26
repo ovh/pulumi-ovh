@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to list the existing IAM policies of an account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -30,8 +28,6 @@ namespace Pulumi.Ovh.Iam
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("ovh:Iam/getPolicies:getPolicies", InvokeArgs.Empty, options.WithDefaults());
@@ -39,9 +35,7 @@ namespace Pulumi.Ovh.Iam
         /// <summary>
         /// Use this data source to list the existing IAM policies of an account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -55,8 +49,6 @@ namespace Pulumi.Ovh.Iam
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPoliciesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("ovh:Iam/getPolicies:getPolicies", InvokeArgs.Empty, options.WithDefaults());

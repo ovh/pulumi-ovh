@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the container registries of a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -33,8 +31,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerRegistriesResult> InvokeAsync(GetContainerRegistriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistriesResult>("ovh:CloudProject/getContainerRegistries:getContainerRegistries", args ?? new GetContainerRegistriesArgs(), options.WithDefaults());
@@ -42,9 +38,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the container registries of a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -61,8 +55,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerRegistriesResult> Invoke(GetContainerRegistriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistriesResult>("ovh:CloudProject/getContainerRegistries:getContainerRegistries", args ?? new GetContainerRegistriesInvokeArgs(), options.WithDefaults());

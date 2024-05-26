@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const user = new ovh.hosting.PrivateDatabaseUser("user", {
  *     password: "XXXXXX",
@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
  *
  * ```sh
- *  $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
+ * $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
  * ```
  */
 export class PrivateDatabaseUser extends pulumi.CustomResource {

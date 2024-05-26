@@ -55,12 +55,12 @@ import (
 //
 // ## Import
 //
-// OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g., bash
+// OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
-//
+// $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
 // ```
 type ContainerRegistryOIDC struct {
 	pulumi.CustomResourceState

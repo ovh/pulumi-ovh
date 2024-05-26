@@ -18,17 +18,21 @@ class ZoneArgs:
     def __init__(__self__, *,
                  ovh_subsidiary: pulumi.Input[str],
                  plan: pulumi.Input['ZonePlanArgs'],
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneOrderArgs']]]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionArgs']]]] = None):
         """
         The set of arguments for constructing a Zone resource.
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input['ZonePlanArgs'] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneOrderArgs']]] orders: Details about an Order
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionArgs']]] plan_options: Product Plan to order
         """
         pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
         pulumi.set(__self__, "plan", plan)
+        if orders is not None:
+            pulumi.set(__self__, "orders", orders)
         if payment_mean is not None:
             warnings.warn("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""", DeprecationWarning)
             pulumi.log.warn("""payment_mean is deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
@@ -60,6 +64,18 @@ class ZoneArgs:
     @plan.setter
     def plan(self, value: pulumi.Input['ZonePlanArgs']):
         pulumi.set(self, "plan", value)
+
+    @property
+    @pulumi.getter
+    def orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneOrderArgs']]]]:
+        """
+        Details about an Order
+        """
+        return pulumi.get(self, "orders")
+
+    @orders.setter
+    def orders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneOrderArgs']]]]):
+        pulumi.set(self, "orders", value)
 
     @property
     @pulumi.getter(name="paymentMean")
@@ -280,6 +296,7 @@ class Zone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneOrderArgs']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[pulumi.InputType['ZonePlanArgs']]] = None,
@@ -324,11 +341,12 @@ class Zone(pulumi.CustomResource):
         bash
 
         ```sh
-         $ pulumi import ovh:Domain/zone:Zone zone order_id
+        $ pulumi import ovh:Domain/zone:Zone zone order_id
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneOrderArgs']]]] orders: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['ZonePlanArgs']] plan: Product Plan to order
@@ -379,7 +397,7 @@ class Zone(pulumi.CustomResource):
         bash
 
         ```sh
-         $ pulumi import ovh:Domain/zone:Zone zone order_id
+        $ pulumi import ovh:Domain/zone:Zone zone order_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -397,6 +415,7 @@ class Zone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneOrderArgs']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[pulumi.InputType['ZonePlanArgs']]] = None,
@@ -410,6 +429,7 @@ class Zone(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZoneArgs.__new__(ZoneArgs)
 
+            __props__.__dict__["orders"] = orders
             if ovh_subsidiary is None and not opts.urn:
                 raise TypeError("Missing required property 'ovh_subsidiary'")
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
@@ -424,7 +444,6 @@ class Zone(pulumi.CustomResource):
             __props__.__dict__["last_update"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["name_servers"] = None
-            __props__.__dict__["orders"] = None
         super(Zone, __self__).__init__(
             'ovh:Domain/zone:Zone',
             resource_name,

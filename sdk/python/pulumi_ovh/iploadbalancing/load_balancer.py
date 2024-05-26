@@ -19,6 +19,7 @@ class LoadBalancerArgs:
                  ovh_subsidiary: pulumi.Input[str],
                  plan: pulumi.Input['LoadBalancerPlanArgs'],
                  display_name: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerOrderArgs']]]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPlanOptionArgs']]]] = None,
                  ssl_configuration: Optional[pulumi.Input[str]] = None):
@@ -27,6 +28,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input['LoadBalancerPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[str] display_name: Set the name displayed in ManagerV6 for your iplb (max 50 chars)
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerOrderArgs']]] orders: Details about an Order
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPlanOptionArgs']]] plan_options: Product Plan to order
         :param pulumi.Input[str] ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
@@ -35,6 +37,8 @@ class LoadBalancerArgs:
         pulumi.set(__self__, "plan", plan)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if orders is not None:
+            pulumi.set(__self__, "orders", orders)
         if payment_mean is not None:
             warnings.warn("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""", DeprecationWarning)
             pulumi.log.warn("""payment_mean is deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
@@ -80,6 +84,18 @@ class LoadBalancerArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerOrderArgs']]]]:
+        """
+        Details about an Order
+        """
+        return pulumi.get(self, "orders")
+
+    @orders.setter
+    def orders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerOrderArgs']]]]):
+        pulumi.set(self, "orders", value)
 
     @property
     @pulumi.getter(name="paymentMean")
@@ -445,6 +461,7 @@ class LoadBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderArgs']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[pulumi.InputType['LoadBalancerPlanArgs']]] = None,
@@ -487,6 +504,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Set the name displayed in ManagerV6 for your iplb (max 50 chars)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderArgs']]]] orders: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['LoadBalancerPlanArgs']] plan: Product Plan to order
@@ -548,6 +566,7 @@ class LoadBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderArgs']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[pulumi.InputType['LoadBalancerPlanArgs']]] = None,
@@ -563,6 +582,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__ = LoadBalancerArgs.__new__(LoadBalancerArgs)
 
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["orders"] = orders
             if ovh_subsidiary is None and not opts.urn:
                 raise TypeError("Missing required property 'ovh_subsidiary'")
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
@@ -579,7 +599,6 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["metrics_token"] = None
             __props__.__dict__["offer"] = None
             __props__.__dict__["orderable_zones"] = None
-            __props__.__dict__["orders"] = None
             __props__.__dict__["service_name"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["vrack_eligibility"] = None

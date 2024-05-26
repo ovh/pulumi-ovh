@@ -15,9 +15,7 @@ namespace Pulumi.Ovh.Me
         /// Use this data source to retrieve information about a bank account
         /// payment mean associated with an OVHcloud account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -34,8 +32,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPaymentmeanBankAccountResult> InvokeAsync(GetPaymentmeanBankAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPaymentmeanBankAccountResult>("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", args ?? new GetPaymentmeanBankAccountArgs(), options.WithDefaults());
@@ -44,9 +40,7 @@ namespace Pulumi.Ovh.Me
         /// Use this data source to retrieve information about a bank account
         /// payment mean associated with an OVHcloud account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -63,8 +57,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPaymentmeanBankAccountResult> Invoke(GetPaymentmeanBankAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPaymentmeanBankAccountResult>("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", args ?? new GetPaymentmeanBankAccountInvokeArgs(), options.WithDefaults());

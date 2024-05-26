@@ -11,12 +11,11 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const mytemplate = new ovh.me.InstallationTemplate("mytemplate", {
- *     baseTemplateName: "centos7_64",
+ *     baseTemplateName: "debian12_64",
  *     templateName: "mytemplate",
- *     defaultLanguage: "fr",
  * });
  * const scheme = new ovh.me.InstallationTemplatePartitionScheme("scheme", {
  *     templateName: mytemplate.templateName,
@@ -35,10 +34,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g., bash
+ * The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
+ * $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
  * ```
  */
 export class InstallationTemplatePartitionSchemePartition extends pulumi.CustomResource {

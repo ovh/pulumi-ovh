@@ -76,6 +76,10 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule")]
     public partial class HttpRouteRule : global::Pulumi.CustomResource

@@ -11,13 +11,19 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const myResourceGroup = new ovh.iam.ResourceGroup("myResourceGroup", {resources: [
  *     "urn:v1:eu:resource:service1:service1-id",
  *     "urn:v1:eu:resource:service2:service2-id",
  * ]});
  * ```
+ *
+ * ## Import
+ *
+ * Resource groups can be imported by using their id.
+ *
+ * > Read only resource groups cannot be imported
  */
 export class ResourceGroup extends pulumi.CustomResource {
     /**

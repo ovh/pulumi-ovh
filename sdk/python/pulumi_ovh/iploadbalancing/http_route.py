@@ -116,7 +116,7 @@ class _HttpRouteState:
         :param pulumi.Input[int] frontend_id: Route traffic for this frontend
         :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]] rules: List of rules to match to trigger action
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] status: HTTP status code for "redirect" and "reject" actions
+        :param pulumi.Input[str] status: Route status. Routes in "ok" state are ready to operate
         :param pulumi.Input[int] weight: Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
         """
         if action is not None:
@@ -198,7 +198,7 @@ class _HttpRouteState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        HTTP status code for "redirect" and "reject" actions
+        Route status. Routes in "ok" state are ready to operate
         """
         return pulumi.get(self, "status")
 
@@ -252,6 +252,10 @@ class HttpRoute(pulumi.CustomResource):
             weight=1)
         ```
 
+        ## Import
+
+        HTTP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['HttpRouteActionArgs']] action: Action triggered when all rules match
@@ -287,6 +291,10 @@ class HttpRoute(pulumi.CustomResource):
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             weight=1)
         ```
+
+        ## Import
+
+        HTTP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param HttpRouteArgs args: The arguments to use to populate this resource's properties.
@@ -357,7 +365,7 @@ class HttpRoute(pulumi.CustomResource):
         :param pulumi.Input[int] frontend_id: Route traffic for this frontend
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]] rules: List of rules to match to trigger action
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] status: HTTP status code for "redirect" and "reject" actions
+        :param pulumi.Input[str] status: Route status. Routes in "ok" state are ready to operate
         :param pulumi.Input[int] weight: Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -417,7 +425,7 @@ class HttpRoute(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        HTTP status code for "redirect" and "reject" actions
+        Route status. Routes in "ok" state are ready to operate
         """
         return pulumi.get(self, "status")
 

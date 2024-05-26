@@ -64,6 +64,10 @@ export interface GetDatabaseResult {
      */
     readonly advancedConfiguration: {[key: string]: string};
     /**
+     * List of region where backups are pushed.
+     */
+    readonly backupRegions: string[];
+    /**
      * Time on which backups start every day.
      */
     readonly backupTime: string;
@@ -72,7 +76,7 @@ export interface GetDatabaseResult {
      */
     readonly createdAt: string;
     /**
-     * Small description of the database service.
+     * Description of the IP restriction
      */
     readonly description: string;
     /**
@@ -100,9 +104,17 @@ export interface GetDatabaseResult {
      */
     readonly id: string;
     /**
+     * IP Blocks authorized to access to the cluster.
+     */
+    readonly ipRestrictions: outputs.CloudProjectDatabase.GetDatabaseIpRestriction[];
+    /**
      * Defines whether the REST API is enabled on a kafka cluster.
      */
     readonly kafkaRestApi: boolean;
+    /**
+     * Defines whether the schema registry is enabled on a Kafka cluster
+     */
+    readonly kafkaSchemaRegistry: boolean;
     /**
      * Time on which maintenances can start every day.
      */

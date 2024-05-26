@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get the managed database of a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// To get information of a database cluster service:
         /// 
@@ -41,8 +39,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseResult> InvokeAsync(GetDatabaseArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseResult>("ovh:CloudProjectDatabase/getDatabase:getDatabase", args ?? new GetDatabaseArgs(), options.WithDefaults());
@@ -50,9 +46,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Use this data source to get the managed database of a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// To get information of a database cluster service:
         /// 
@@ -77,8 +71,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseResult> Invoke(GetDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseResult>("ovh:CloudProjectDatabase/getDatabase:getDatabase", args ?? new GetDatabaseInvokeArgs(), options.WithDefaults());
@@ -150,6 +142,10 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public readonly ImmutableDictionary<string, string> AdvancedConfiguration;
         /// <summary>
+        /// List of region where backups are pushed.
+        /// </summary>
+        public readonly ImmutableArray<string> BackupRegions;
+        /// <summary>
         /// Time on which backups start every day.
         /// </summary>
         public readonly string BackupTime;
@@ -158,7 +154,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Small description of the database service.
+        /// Description of the IP restriction
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -186,9 +182,17 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// IP Blocks authorized to access to the cluster.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseIpRestrictionResult> IpRestrictions;
+        /// <summary>
         /// Defines whether the REST API is enabled on a kafka cluster.
         /// </summary>
         public readonly bool KafkaRestApi;
+        /// <summary>
+        /// Defines whether the schema registry is enabled on a Kafka cluster
+        /// </summary>
+        public readonly bool KafkaSchemaRegistry;
         /// <summary>
         /// Time on which maintenances can start every day.
         /// </summary>
@@ -223,6 +227,8 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private GetDatabaseResult(
             ImmutableDictionary<string, string> advancedConfiguration,
 
+            ImmutableArray<string> backupRegions,
+
             string backupTime,
 
             string createdAt,
@@ -241,7 +247,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
             string id,
 
+            ImmutableArray<Outputs.GetDatabaseIpRestrictionResult> ipRestrictions,
+
             bool kafkaRestApi,
+
+            bool kafkaSchemaRegistry,
 
             string maintenanceTime,
 
@@ -260,6 +270,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             string version)
         {
             AdvancedConfiguration = advancedConfiguration;
+            BackupRegions = backupRegions;
             BackupTime = backupTime;
             CreatedAt = createdAt;
             Description = description;
@@ -269,7 +280,9 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             Engine = engine;
             Flavor = flavor;
             Id = id;
+            IpRestrictions = ipRestrictions;
             KafkaRestApi = kafkaRestApi;
+            KafkaSchemaRegistry = kafkaSchemaRegistry;
             MaintenanceTime = maintenanceTime;
             NetworkType = networkType;
             Nodes = nodes;

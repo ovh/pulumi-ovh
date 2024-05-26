@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const httpsredirect = new ovh.iploadbalancing.HttpRoute("httpsredirect", {
  *     action: {
@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     weight: 1,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * HTTP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
  */
 export class HttpRoute extends pulumi.CustomResource {
     /**
@@ -78,7 +82,7 @@ export class HttpRoute extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * HTTP status code for "redirect" and "reject" actions
+     * Route status. Routes in "ok" state are ready to operate
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -152,7 +156,7 @@ export interface HttpRouteState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * HTTP status code for "redirect" and "reject" actions
+     * Route status. Routes in "ok" state are ready to operate
      */
     status?: pulumi.Input<string>;
     /**

@@ -97,6 +97,7 @@ def get_user_s3_credential(access_key_id: Optional[str] = None,
     import pulumi_ovh as ovh
 
     project_users = ovh.CloudProject.get_users(service_name="XXX")
+    # Get the user ID of a previously created user with the description "S3-User"
     users = [user.user_id for user in project_users.users if user.description == "S3-User"]
     s3_user_id = users[0]
     my_s3_credentials = ovh.CloudProject.get_user_s3_credentials(service_name=project_users.service_name,
@@ -144,6 +145,7 @@ def get_user_s3_credential_output(access_key_id: Optional[pulumi.Input[str]] = N
     import pulumi_ovh as ovh
 
     project_users = ovh.CloudProject.get_users(service_name="XXX")
+    # Get the user ID of a previously created user with the description "S3-User"
     users = [user.user_id for user in project_users.users if user.description == "S3-User"]
     s3_user_id = users[0]
     my_s3_credentials = ovh.CloudProject.get_user_s3_credentials(service_name=project_users.service_name,

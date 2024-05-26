@@ -48,12 +48,12 @@ import (
 //				return err
 //			}
 //			_, err = Ip.NewIpService(ctx, "ipblockIpService", &Ip.IpServiceArgs{
-//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				Description:   pulumi.String("my ip block"),
 //				Plan: &ip.IpServicePlanArgs{
-//					Duration:    *pulumi.String(ipblockCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    *pulumi.String(ipblockCartProductPlan.PlanCode),
-//					PricingMode: *pulumi.String(ipblockCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(ipblockCartProductPlan.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(ipblockCartProductPlan.PlanCode),
+//					PricingMode: pulumi.String(ipblockCartProductPlan.SelectedPrices[0].PricingMode),
 //					Configurations: ip.IpServicePlanConfigurationArray{
 //						&ip.IpServicePlanConfigurationArgs{
 //							Label: pulumi.String("country"),
@@ -207,6 +207,8 @@ func (IpServiceState) ElementType() reflect.Type {
 type ipServiceArgs struct {
 	// Custom description on your ip.
 	Description *string `pulumi:"description"`
+	// Details about an Order
+	Orders []IpServiceOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
@@ -223,6 +225,8 @@ type ipServiceArgs struct {
 type IpServiceArgs struct {
 	// Custom description on your ip.
 	Description pulumi.StringPtrInput
+	// Details about an Order
+	Orders IpServiceOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode

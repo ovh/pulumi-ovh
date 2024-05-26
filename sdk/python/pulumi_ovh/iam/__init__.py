@@ -5,12 +5,15 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_permissions_group import *
+from .get_permissions_groups import *
 from .get_policies import *
 from .get_policy import *
 from .get_reference_actions import *
 from .get_reference_resource_type import *
 from .get_resource_group import *
 from .get_resource_groups import *
+from .permissions_group import *
 from .policy import *
 from .resource_group import *
 from . import outputs

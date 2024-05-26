@@ -12,10 +12,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// <summary>
     /// ## Import
     /// 
-    /// OVHcloud Managed PostgreSQL clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+    /// OVHcloud Managed PostgreSQL clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+    /// 
+    /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser my_user service_name/cluster_id/id
+    /// $ pulumi import ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser my_user service_name/cluster_id/id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser")]
@@ -34,7 +36,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -129,7 +131,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -181,7 +183,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -12,7 +12,9 @@ from . import outputs
 
 __all__ = [
     'InstallationTemplateCustomization',
+    'InstallationTemplateInput',
     'GetInstallationTemplateCustomizationResult',
+    'GetInstallationTemplateInputResult',
     'GetInstallationTemplatePartitionSchemeResult',
     'GetInstallationTemplatePartitionSchemeHardwareRaidResult',
     'GetInstallationTemplatePartitionSchemePartitionResult',
@@ -24,18 +26,12 @@ class InstallationTemplateCustomization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "changeLog":
-            suggest = "change_log"
-        elif key == "customHostname":
+        if key == "customHostname":
             suggest = "custom_hostname"
         elif key == "postInstallationScriptLink":
             suggest = "post_installation_script_link"
         elif key == "postInstallationScriptReturn":
             suggest = "post_installation_script_return"
-        elif key == "sshKeyName":
-            suggest = "ssh_key_name"
-        elif key == "useDistributionKernel":
-            suggest = "use_distribution_kernel"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstallationTemplateCustomization. Access the value via the '{suggest}' property getter instead.")
@@ -49,47 +45,20 @@ class InstallationTemplateCustomization(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 change_log: Optional[str] = None,
                  custom_hostname: Optional[str] = None,
                  post_installation_script_link: Optional[str] = None,
-                 post_installation_script_return: Optional[str] = None,
-                 rating: Optional[int] = None,
-                 ssh_key_name: Optional[str] = None,
-                 use_distribution_kernel: Optional[bool] = None):
+                 post_installation_script_return: Optional[str] = None):
         """
-        :param str change_log: Template change log details.
         :param str custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param str post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
         :param str post_installation_script_return: indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        :param int rating: Rating.
-        :param str ssh_key_name: Name of the ssh key that should be installed. Password login will be disabled.
-        :param bool use_distribution_kernel: Use the distribution's native kernel instead of the recommended OV
         """
-        if change_log is not None:
-            pulumi.set(__self__, "change_log", change_log)
         if custom_hostname is not None:
             pulumi.set(__self__, "custom_hostname", custom_hostname)
         if post_installation_script_link is not None:
             pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
         if post_installation_script_return is not None:
             pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
-        if rating is not None:
-            pulumi.set(__self__, "rating", rating)
-        if ssh_key_name is not None:
-            pulumi.set(__self__, "ssh_key_name", ssh_key_name)
-        if use_distribution_kernel is not None:
-            pulumi.set(__self__, "use_distribution_kernel", use_distribution_kernel)
-
-    @property
-    @pulumi.getter(name="changeLog")
-    def change_log(self) -> Optional[str]:
-        """
-        Template change log details.
-        """
-        warnings.warn("""field is not used anymore""", DeprecationWarning)
-        pulumi.log.warn("""change_log is deprecated: field is not used anymore""")
-
-        return pulumi.get(self, "change_log")
 
     @property
     @pulumi.getter(name="customHostname")
@@ -115,71 +84,80 @@ class InstallationTemplateCustomization(dict):
         """
         return pulumi.get(self, "post_installation_script_return")
 
+
+@pulumi.output_type
+class InstallationTemplateInput(dict):
+    def __init__(__self__, *,
+                 default: Optional[str] = None,
+                 description: Optional[str] = None,
+                 enums: Optional[Sequence[str]] = None,
+                 mandatory: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str description: information about this template.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if mandatory is not None:
+            pulumi.set(__self__, "mandatory", mandatory)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
     @property
     @pulumi.getter
-    def rating(self) -> Optional[int]:
-        """
-        Rating.
-        """
-        warnings.warn("""field is not used anymore""", DeprecationWarning)
-        pulumi.log.warn("""rating is deprecated: field is not used anymore""")
-
-        return pulumi.get(self, "rating")
+    def default(self) -> Optional[str]:
+        return pulumi.get(self, "default")
 
     @property
-    @pulumi.getter(name="sshKeyName")
-    def ssh_key_name(self) -> Optional[str]:
+    @pulumi.getter
+    def description(self) -> Optional[str]:
         """
-        Name of the ssh key that should be installed. Password login will be disabled.
+        information about this template.
         """
-        return pulumi.get(self, "ssh_key_name")
+        return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="useDistributionKernel")
-    def use_distribution_kernel(self) -> Optional[bool]:
-        """
-        Use the distribution's native kernel instead of the recommended OV
-        """
-        return pulumi.get(self, "use_distribution_kernel")
+    @pulumi.getter
+    def enums(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "enums")
+
+    @property
+    @pulumi.getter
+    def mandatory(self) -> Optional[bool]:
+        return pulumi.get(self, "mandatory")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
 class GetInstallationTemplateCustomizationResult(dict):
     def __init__(__self__, *,
-                 change_log: str,
                  custom_hostname: str,
                  post_installation_script_link: str,
-                 post_installation_script_return: str,
-                 rating: int,
-                 ssh_key_name: str,
-                 use_distribution_kernel: bool):
+                 post_installation_script_return: str):
         """
-        :param str change_log: (DEPRECATED) Template change log details.
         :param str custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param str post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
-        :param str post_installation_script_return: indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        :param int rating: (DEPRECATED) Rating.
-        :param str ssh_key_name: Name of the ssh key that should be installed. Password login will be disabled.
-        :param bool use_distribution_kernel: Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
+        :param str post_installation_script_return: Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         """
-        pulumi.set(__self__, "change_log", change_log)
         pulumi.set(__self__, "custom_hostname", custom_hostname)
         pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
         pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
-        pulumi.set(__self__, "rating", rating)
-        pulumi.set(__self__, "ssh_key_name", ssh_key_name)
-        pulumi.set(__self__, "use_distribution_kernel", use_distribution_kernel)
-
-    @property
-    @pulumi.getter(name="changeLog")
-    def change_log(self) -> str:
-        """
-        (DEPRECATED) Template change log details.
-        """
-        warnings.warn("""field is not used anymore""", DeprecationWarning)
-        pulumi.log.warn("""change_log is deprecated: field is not used anymore""")
-
-        return pulumi.get(self, "change_log")
 
     @property
     @pulumi.getter(name="customHostname")
@@ -201,36 +179,70 @@ class GetInstallationTemplateCustomizationResult(dict):
     @pulumi.getter(name="postInstallationScriptReturn")
     def post_installation_script_return(self) -> str:
         """
-        indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
+        Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         """
         return pulumi.get(self, "post_installation_script_return")
 
+
+@pulumi.output_type
+class GetInstallationTemplateInputResult(dict):
+    def __init__(__self__, *,
+                 default: str,
+                 description: str,
+                 enums: Sequence[str],
+                 mandatory: bool,
+                 name: str,
+                 type: str):
+        """
+        :param str description: Information about this template.
+        :param str name: Hardware RAID name.
+        :param str type: Partition type.
+        """
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enums", enums)
+        pulumi.set(__self__, "mandatory", mandatory)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
     @property
     @pulumi.getter
-    def rating(self) -> int:
-        """
-        (DEPRECATED) Rating.
-        """
-        warnings.warn("""field is not used anymore""", DeprecationWarning)
-        pulumi.log.warn("""rating is deprecated: field is not used anymore""")
-
-        return pulumi.get(self, "rating")
+    def default(self) -> str:
+        return pulumi.get(self, "default")
 
     @property
-    @pulumi.getter(name="sshKeyName")
-    def ssh_key_name(self) -> str:
+    @pulumi.getter
+    def description(self) -> str:
         """
-        Name of the ssh key that should be installed. Password login will be disabled.
+        Information about this template.
         """
-        return pulumi.get(self, "ssh_key_name")
+        return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="useDistributionKernel")
-    def use_distribution_kernel(self) -> bool:
+    @pulumi.getter
+    def enums(self) -> Sequence[str]:
+        return pulumi.get(self, "enums")
+
+    @property
+    @pulumi.getter
+    def mandatory(self) -> bool:
+        return pulumi.get(self, "mandatory")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         """
-        Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
+        Hardware RAID name.
         """
-        return pulumi.get(self, "use_distribution_kernel")
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Partition type.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -242,7 +254,7 @@ class GetInstallationTemplatePartitionSchemeResult(dict):
                  priority: int):
         """
         :param str name: Hardware RAID name.
-        :param int priority: on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
+        :param int priority: On a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
         """
         pulumi.set(__self__, "hardware_raids", hardware_raids)
         pulumi.set(__self__, "name", name)
@@ -271,7 +283,7 @@ class GetInstallationTemplatePartitionSchemeResult(dict):
     @pulumi.getter
     def priority(self) -> int:
         """
-        on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
+        On a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
         """
         return pulumi.get(self, "priority")
 
@@ -339,12 +351,12 @@ class GetInstallationTemplatePartitionSchemePartitionResult(dict):
                  volume_name: str):
         """
         :param str filesystem: Partition filesystem.
-        :param str mountpoint: partition mount point.
-        :param int order: step or order. specifies the creation order of the partition on the disk
-        :param str raid: raid partition type.
-        :param int size: size of partition in MB, 0 => rest of the space.
-        :param str type: partition type.
-        :param str volume_name: The volume name needed for proxmox distribution
+        :param str mountpoint: Partition mount point.
+        :param int order: Step or order. Specifies the creation order of the partition on the disk.
+        :param str raid: Raid partition type.
+        :param int size: Size of partition in MB, 0 => rest of the space.
+        :param str type: Partition type.
+        :param str volume_name: Volume name needed for proxmox distribution.
         """
         pulumi.set(__self__, "filesystem", filesystem)
         pulumi.set(__self__, "mountpoint", mountpoint)
@@ -366,7 +378,7 @@ class GetInstallationTemplatePartitionSchemePartitionResult(dict):
     @pulumi.getter
     def mountpoint(self) -> str:
         """
-        partition mount point.
+        Partition mount point.
         """
         return pulumi.get(self, "mountpoint")
 
@@ -374,7 +386,7 @@ class GetInstallationTemplatePartitionSchemePartitionResult(dict):
     @pulumi.getter
     def order(self) -> int:
         """
-        step or order. specifies the creation order of the partition on the disk
+        Step or order. Specifies the creation order of the partition on the disk.
         """
         return pulumi.get(self, "order")
 
@@ -382,7 +394,7 @@ class GetInstallationTemplatePartitionSchemePartitionResult(dict):
     @pulumi.getter
     def raid(self) -> str:
         """
-        raid partition type.
+        Raid partition type.
         """
         return pulumi.get(self, "raid")
 
@@ -390,7 +402,7 @@ class GetInstallationTemplatePartitionSchemePartitionResult(dict):
     @pulumi.getter
     def size(self) -> int:
         """
-        size of partition in MB, 0 => rest of the space.
+        Size of partition in MB, 0 => rest of the space.
         """
         return pulumi.get(self, "size")
 
@@ -398,7 +410,7 @@ class GetInstallationTemplatePartitionSchemePartitionResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        partition type.
+        Partition type.
         """
         return pulumi.get(self, "type")
 
@@ -406,7 +418,7 @@ class GetInstallationTemplatePartitionSchemePartitionResult(dict):
     @pulumi.getter(name="volumeName")
     def volume_name(self) -> str:
         """
-        The volume name needed for proxmox distribution
+        Volume name needed for proxmox distribution.
         """
         return pulumi.get(self, "volume_name")
 

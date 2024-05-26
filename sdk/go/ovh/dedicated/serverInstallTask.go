@@ -14,6 +14,7 @@ import (
 
 // ## Example Usage
 //
+// Using a custom template based on an OVHCloud template
 // ```go
 // package main
 //
@@ -34,19 +35,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			key, err := Me.NewSshKey(ctx, "key", &Me.SshKeyArgs{
-//				KeyName: pulumi.String("mykey"),
-//				Key:     pulumi.String("ssh-ed25519 AAAAC3..."),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			debian, err := Me.NewInstallationTemplate(ctx, "debian", &Me.InstallationTemplateArgs{
-//				BaseTemplateName: pulumi.String("debian11_64"),
-//				TemplateName:     pulumi.String("mydebian11"),
-//				DefaultLanguage:  pulumi.String("en"),
+//				BaseTemplateName: pulumi.String("debian12_64"),
+//				TemplateName:     pulumi.String("mydebian12"),
 //				Customization: &me.InstallationTemplateCustomizationArgs{
-//					SshKeyName: key.KeyName,
+//					PostInstallationScriptLink:   pulumi.String("http://test"),
+//					PostInstallationScriptReturn: pulumi.String("ok"),
 //				},
 //			})
 //			if err != nil {
@@ -55,9 +49,164 @@ import (
 //			_, err = Dedicated.NewServerInstallTask(ctx, "serverInstall", &Dedicated.ServerInstallTaskArgs{
 //				ServiceName:     pulumi.String("nsxxxxxxx.ip-xx-xx-xx.eu"),
 //				TemplateName:    debian.TemplateName,
-//				BootidOnDestroy: *pulumi.Int(rescue.Results[0]),
+//				BootidOnDestroy: pulumi.Int(rescue.Results[0]),
 //				Details: &dedicated.ServerInstallTaskDetailsArgs{
 //					CustomHostname: pulumi.String("mytest"),
+//				},
+//				UserMetadatas: dedicated.ServerInstallTaskUserMetadataArray{
+//					&dedicated.ServerInstallTaskUserMetadataArgs{
+//						Key:   pulumi.String("sshKey"),
+//						Value: pulumi.String("ssh-ed25519 AAAAC3..."),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Using a BringYourOwnLinux (BYOLinux) template (with userMetadata)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			server, err := ovh.GetServer(ctx, &ovh.GetServerArgs{
+//				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			rescue, err := Dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
+//				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+//				BootType:    pulumi.StringRef("rescue"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Dedicated.NewServerInstallTask(ctx, "serverInstall", &Dedicated.ServerInstallTaskArgs{
+//				ServiceName:     pulumi.String(server.ServiceName),
+//				TemplateName:    pulumi.String("byolinux_64"),
+//				BootidOnDestroy: pulumi.Int(rescue.Results[0]),
+//				Details: &dedicated.ServerInstallTaskDetailsArgs{
+//					CustomHostname: pulumi.String("mytest"),
+//				},
+//				UserMetadatas: dedicated.ServerInstallTaskUserMetadataArray{
+//					&dedicated.ServerInstallTaskUserMetadataArgs{
+//						Key:   pulumi.String("imageURL"),
+//						Value: pulumi.String("https://myimage.qcow2"),
+//					},
+//					&dedicated.ServerInstallTaskUserMetadataArgs{
+//						Key:   pulumi.String("imageType"),
+//						Value: pulumi.String("qcow2"),
+//					},
+//					&dedicated.ServerInstallTaskUserMetadataArgs{
+//						Key:   pulumi.String("httpHeaders0Key"),
+//						Value: pulumi.String("Authorization"),
+//					},
+//					&dedicated.ServerInstallTaskUserMetadataArgs{
+//						Key:   pulumi.String("httpHeaders0Value"),
+//						Value: pulumi.String("Basic bG9naW46xxxxxxx="),
+//					},
+//					&dedicated.ServerInstallTaskUserMetadataArgs{
+//						Key:   pulumi.String("imageChecksumType"),
+//						Value: pulumi.String("sha512"),
+//					},
+//					&dedicated.ServerInstallTaskUserMetadataArgs{
+//						Key:   pulumi.String("imageCheckSum"),
+//						Value: pulumi.String("047122c9ff4d2a69512212104b06c678f5a9cdb22b75467353613ff87ccd03b57b38967e56d810e61366f9d22d6bd39ac0addf4e00a4c6445112a2416af8f225"),
+//					},
+//					&dedicated.ServerInstallTaskUserMetadataArgs{
+//						Key: pulumi.String("configDriveUserData"),
+//						Value: pulumi.String(fmt.Sprintf(`#cloud-config
+//
+// ssh_authorized_keys:
+//   - %v
+//
+// users:
+//   - name: patient0
+//     sudo: ALL=(ALL) NOPASSWD:ALL
+//     groups: users, sudo
+//     shell: /bin/bash
+//     lock_passwd: false
+//     ssh_authorized_keys:
+//   - %v
+//
+// disable_root: false
+// packages:
+//   - vim
+//   - tree
+//
+// final_message: The system is finally up, after $UPTIME seconds
+// `, data.Ovh_me_ssh_key.Mykey.Key, data.Ovh_me_ssh_key.Mykey.Key)),
+//
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Using a Microsoft Windows server OVHcloud template with a specific language
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			server, err := ovh.GetServer(ctx, &ovh.GetServerArgs{
+//				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			rescue, err := Dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
+//				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+//				BootType:    pulumi.StringRef("rescue"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Dedicated.NewServerInstallTask(ctx, "serverInstall", &Dedicated.ServerInstallTaskArgs{
+//				ServiceName:     pulumi.String(server.ServiceName),
+//				TemplateName:    pulumi.String("win2019-std_64"),
+//				BootidOnDestroy: pulumi.Int(rescue.Results[0]),
+//				Details: &dedicated.ServerInstallTaskDetailsArgs{
+//					CustomHostname: pulumi.String("mytest"),
+//				},
+//				UserMetadatas: dedicated.ServerInstallTaskUserMetadataArray{
+//					&dedicated.ServerInstallTaskUserMetadataArgs{
+//						Key:   pulumi.String("language"),
+//						Value: pulumi.String("fr-fr"),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -71,14 +220,12 @@ import (
 //
 // ## Import
 //
-// Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used
+// Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used  and ths `task_id`, separated by "/" E.g.,
 //
-// and ths `task_id`, separated by "/" E.g., bash
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345
-//
+// $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345
 // ```
 type ServerInstallTask struct {
 	pulumi.CustomResourceState
@@ -105,6 +252,8 @@ type ServerInstallTask struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Template name.
 	TemplateName pulumi.StringOutput `pulumi:"templateName"`
+	// see `userMetadata` block below.
+	UserMetadatas ServerInstallTaskUserMetadataArrayOutput `pulumi:"userMetadatas"`
 }
 
 // NewServerInstallTask registers a new resource with the given unique name, arguments, and options.
@@ -165,6 +314,8 @@ type serverInstallTaskState struct {
 	Status *string `pulumi:"status"`
 	// Template name.
 	TemplateName *string `pulumi:"templateName"`
+	// see `userMetadata` block below.
+	UserMetadatas []ServerInstallTaskUserMetadata `pulumi:"userMetadatas"`
 }
 
 type ServerInstallTaskState struct {
@@ -190,6 +341,8 @@ type ServerInstallTaskState struct {
 	Status pulumi.StringPtrInput
 	// Template name.
 	TemplateName pulumi.StringPtrInput
+	// see `userMetadata` block below.
+	UserMetadatas ServerInstallTaskUserMetadataArrayInput
 }
 
 func (ServerInstallTaskState) ElementType() reflect.Type {
@@ -207,6 +360,8 @@ type serverInstallTaskArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 	// Template name.
 	TemplateName string `pulumi:"templateName"`
+	// see `userMetadata` block below.
+	UserMetadatas []ServerInstallTaskUserMetadata `pulumi:"userMetadatas"`
 }
 
 // The set of arguments for constructing a ServerInstallTask resource.
@@ -221,6 +376,8 @@ type ServerInstallTaskArgs struct {
 	ServiceName pulumi.StringInput
 	// Template name.
 	TemplateName pulumi.StringInput
+	// see `userMetadata` block below.
+	UserMetadatas ServerInstallTaskUserMetadataArrayInput
 }
 
 func (ServerInstallTaskArgs) ElementType() reflect.Type {
@@ -363,6 +520,11 @@ func (o ServerInstallTaskOutput) Status() pulumi.StringOutput {
 // Template name.
 func (o ServerInstallTaskOutput) TemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerInstallTask) pulumi.StringOutput { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// see `userMetadata` block below.
+func (o ServerInstallTaskOutput) UserMetadatas() ServerInstallTaskUserMetadataArrayOutput {
+	return o.ApplyT(func(v *ServerInstallTask) ServerInstallTaskUserMetadataArrayOutput { return v.UserMetadatas }).(ServerInstallTaskUserMetadataArrayOutput)
 }
 
 type ServerInstallTaskArrayOutput struct{ *pulumi.OutputState }

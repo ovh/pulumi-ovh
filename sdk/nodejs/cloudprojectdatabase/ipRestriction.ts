@@ -5,13 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Deprecated: Use ipRestriction field in cloudProjectDatabase resource instead.
+ * Continuing to use the ovh.CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloudProjectDatabase resource will cause the cloudProjectDatabase resource to be updated on every apply
+ *
  * Apply IP restrictions to an OVHcloud Managed Database cluster.
  *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  * import * as ovh from "@pulumi/ovh";
  *
  * const db = ovh.CloudProjectDatabase.getDatabase({
@@ -29,10 +32,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g., bash
+ * OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
+ * $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
  * ```
  */
 export class IpRestriction extends pulumi.CustomResource {

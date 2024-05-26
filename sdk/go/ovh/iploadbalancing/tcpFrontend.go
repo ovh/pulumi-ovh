@@ -38,7 +38,7 @@ import (
 //			farm80, err := IpLoadBalancing.NewTcpFarm(ctx, "farm80", &IpLoadBalancing.TcpFarmArgs{
 //				DisplayName: pulumi.String("ingress-8080-gra"),
 //				Port:        pulumi.Int(80),
-//				ServiceName: *pulumi.String(lb.ServiceName),
+//				ServiceName: pulumi.String(lb.ServiceName),
 //				Zone:        pulumi.String("all"),
 //			})
 //			if err != nil {
@@ -48,7 +48,7 @@ import (
 //				DefaultFarmId: farm80.ID(),
 //				DisplayName:   pulumi.String("ingress-8080-gra"),
 //				Port:          pulumi.String("80,443"),
-//				ServiceName:   *pulumi.String(lb.ServiceName),
+//				ServiceName:   pulumi.String(lb.ServiceName),
 //				Zone:          pulumi.String("all"),
 //			})
 //			if err != nil {
@@ -59,6 +59,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// TCP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
 type TcpFrontend struct {
 	pulumi.CustomResourceState
 

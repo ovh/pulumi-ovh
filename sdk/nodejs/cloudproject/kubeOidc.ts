@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const my_oidc = new ovh.cloudproject.KubeOidc("my-oidc", {
  *     serviceName: _var.projectid,
@@ -30,10 +30,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud Managed Kubernetes Service cluster OIDC can be imported using the tenant `service_name` and cluster id `kube_id` separated by "/" E.g., bash
+ * OVHcloud Managed Kubernetes Service cluster OIDC can be imported using the tenant `service_name` and cluster id `kube_id` separated by "/" E.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:CloudProject/kubeOidc:KubeOidc my-oidc service_name/kube_id
+ * $ pulumi import ovh:CloudProject/kubeOidc:KubeOidc my-oidc service_name/kube_id
  * ```
  */
 export class KubeOidc extends pulumi.CustomResource {
@@ -76,12 +78,33 @@ export class KubeOidc extends pulumi.CustomResource {
      * The ID of the managed kubernetes cluster. **Changing this value recreates the resource.**
      */
     public readonly kubeId!: pulumi.Output<string>;
+    /**
+     * Content of the certificate for the CA, in Base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.
+     */
     public readonly oidcCaContent!: pulumi.Output<string | undefined>;
+    /**
+     * Array of JWT claim to use as the user's group. If the claim is present it must be an array of strings.
+     */
     public readonly oidcGroupsClaims!: pulumi.Output<string[] | undefined>;
+    /**
+     * Prefix prepended to group claims to prevent clashes with existing names (such as `system:groups`). For example, the value `oidc:` will create group names like `oidc:engineering` and `oidc:infra`.
+     */
     public readonly oidcGroupsPrefix!: pulumi.Output<string | undefined>;
+    /**
+     * Array of `key=value` pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value."
+     */
     public readonly oidcRequiredClaims!: pulumi.Output<string[] | undefined>;
+    /**
+     * Array of signing algorithms accepted. Default is `RS256`.
+     */
     public readonly oidcSigningAlgs!: pulumi.Output<string[] | undefined>;
+    /**
+     * JWT claim to use as the username. By default, sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
+     */
     public readonly oidcUsernameClaim!: pulumi.Output<string | undefined>;
+    /**
+     * Prefix prepended to username claims to prevent clashes with existing names (such as `system:users`). For example, the value `oidc:` will create usernames like `oidc:jane.doe`. If this field isn't set and `oidcUsernameClaim` is a value other than email the prefix defaults to `issuerUrl` where `issuerUrl` is the value of `issuer_url.` The value - can be used to disable all prefixing.
+     */
     public readonly oidcUsernamePrefix!: pulumi.Output<string | undefined>;
     /**
      * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
@@ -159,12 +182,33 @@ export interface KubeOidcState {
      * The ID of the managed kubernetes cluster. **Changing this value recreates the resource.**
      */
     kubeId?: pulumi.Input<string>;
+    /**
+     * Content of the certificate for the CA, in Base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.
+     */
     oidcCaContent?: pulumi.Input<string>;
+    /**
+     * Array of JWT claim to use as the user's group. If the claim is present it must be an array of strings.
+     */
     oidcGroupsClaims?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Prefix prepended to group claims to prevent clashes with existing names (such as `system:groups`). For example, the value `oidc:` will create group names like `oidc:engineering` and `oidc:infra`.
+     */
     oidcGroupsPrefix?: pulumi.Input<string>;
+    /**
+     * Array of `key=value` pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value."
+     */
     oidcRequiredClaims?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Array of signing algorithms accepted. Default is `RS256`.
+     */
     oidcSigningAlgs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * JWT claim to use as the username. By default, sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
+     */
     oidcUsernameClaim?: pulumi.Input<string>;
+    /**
+     * Prefix prepended to username claims to prevent clashes with existing names (such as `system:users`). For example, the value `oidc:` will create usernames like `oidc:jane.doe`. If this field isn't set and `oidcUsernameClaim` is a value other than email the prefix defaults to `issuerUrl` where `issuerUrl` is the value of `issuer_url.` The value - can be used to disable all prefixing.
+     */
     oidcUsernamePrefix?: pulumi.Input<string>;
     /**
      * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
@@ -188,12 +232,33 @@ export interface KubeOidcArgs {
      * The ID of the managed kubernetes cluster. **Changing this value recreates the resource.**
      */
     kubeId: pulumi.Input<string>;
+    /**
+     * Content of the certificate for the CA, in Base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.
+     */
     oidcCaContent?: pulumi.Input<string>;
+    /**
+     * Array of JWT claim to use as the user's group. If the claim is present it must be an array of strings.
+     */
     oidcGroupsClaims?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Prefix prepended to group claims to prevent clashes with existing names (such as `system:groups`). For example, the value `oidc:` will create group names like `oidc:engineering` and `oidc:infra`.
+     */
     oidcGroupsPrefix?: pulumi.Input<string>;
+    /**
+     * Array of `key=value` pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value."
+     */
     oidcRequiredClaims?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Array of signing algorithms accepted. Default is `RS256`.
+     */
     oidcSigningAlgs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * JWT claim to use as the username. By default, sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
+     */
     oidcUsernameClaim?: pulumi.Input<string>;
+    /**
+     * Prefix prepended to username claims to prevent clashes with existing names (such as `system:users`). For example, the value `oidc:` will create usernames like `oidc:jane.doe`. If this field isn't set and `oidcUsernameClaim` is a value other than email the prefix defaults to `issuerUrl` where `issuerUrl` is the value of `issuer_url.` The value - can be used to disable all prefixing.
+     */
     oidcUsernamePrefix?: pulumi.Input<string>;
     /**
      * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**

@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information about an identity user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -33,8 +31,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIdentityUserResult> InvokeAsync(GetIdentityUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIdentityUserResult>("ovh:Me/getIdentityUser:getIdentityUser", args ?? new GetIdentityUserArgs(), options.WithDefaults());
@@ -42,9 +38,7 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information about an identity user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -61,8 +55,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIdentityUserResult> Invoke(GetIdentityUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityUserResult>("ovh:Me/getIdentityUser:getIdentityUser", args ?? new GetIdentityUserInvokeArgs(), options.WithDefaults());

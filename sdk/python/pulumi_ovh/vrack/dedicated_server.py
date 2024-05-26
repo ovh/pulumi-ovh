@@ -102,10 +102,10 @@ class DedicatedServer(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **NOTE:** The resource `Vrack.DedicatedServer` is DEPRECATED and will be removed in a future version.
-        Use the resource `Vrack.DedicatedServerInterface` instead.
+        Attach a legacy dedicated server to a vRack.
 
-        Attach a dedicated server to a VRack.
+        > **NOTE:** The resource `Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br />
+        Dedicated servers that have configurable network interfaces MUST use the resource `Vrack.DedicatedServerInterface` instead.
 
         ## Example Usage
 
@@ -131,10 +131,10 @@ class DedicatedServer(pulumi.CustomResource):
                  args: DedicatedServerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **NOTE:** The resource `Vrack.DedicatedServer` is DEPRECATED and will be removed in a future version.
-        Use the resource `Vrack.DedicatedServerInterface` instead.
+        Attach a legacy dedicated server to a vRack.
 
-        Attach a dedicated server to a VRack.
+        > **NOTE:** The resource `Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br />
+        Dedicated servers that have configurable network interfaces MUST use the resource `Vrack.DedicatedServerInterface` instead.
 
         ## Example Usage
 

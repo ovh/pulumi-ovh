@@ -7,10 +7,12 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * OVHcloud Managed PostgreSQL clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+ * OVHcloud Managed PostgreSQL clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser my_user service_name/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser my_user service_name/cluster_id/id
  * ```
  */
 export class PostgresSqlUser extends pulumi.CustomResource {
@@ -50,7 +52,7 @@ export class PostgresSqlUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -134,7 +136,7 @@ export interface PostgresSqlUserState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**
@@ -170,7 +172,7 @@ export interface PostgresSqlUserArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**

@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes node pool.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -39,8 +37,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubeNodePoolResult> InvokeAsync(GetKubeNodePoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubeNodePoolResult>("ovh:CloudProject/getKubeNodePool:getKubeNodePool", args ?? new GetKubeNodePoolArgs(), options.WithDefaults());
@@ -48,9 +44,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes node pool.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -73,8 +67,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubeNodePoolResult> Invoke(GetKubeNodePoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeNodePoolResult>("ovh:CloudProject/getKubeNodePool:getKubeNodePool", args ?? new GetKubeNodePoolInvokeArgs(), options.WithDefaults());
@@ -153,6 +145,21 @@ namespace Pulumi.Ovh.CloudProject
         /// (Optional) Enable auto-scaling for the pool. Default to `false`.
         /// </summary>
         public readonly bool Autoscale;
+        /// <summary>
+        /// (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
+        /// How long a node should be unneeded before it is eligible for scale down
+        /// </summary>
+        public readonly int AutoscalingScaleDownUnneededTimeSeconds;
+        /// <summary>
+        /// (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
+        /// How long an unready node should be unneeded before it is eligible for scale down
+        /// </summary>
+        public readonly int AutoscalingScaleDownUnreadyTimeSeconds;
+        /// <summary>
+        /// (Optional) scaleDownUtilizationThreshold autoscaling parameter
+        /// Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        /// </summary>
+        public readonly double AutoscalingScaleDownUtilizationThreshold;
         /// <summary>
         /// Number of nodes which are actually ready in the pool
         /// </summary>
@@ -239,6 +246,12 @@ namespace Pulumi.Ovh.CloudProject
 
             bool autoscale,
 
+            int autoscalingScaleDownUnneededTimeSeconds,
+
+            int autoscalingScaleDownUnreadyTimeSeconds,
+
+            double autoscalingScaleDownUtilizationThreshold,
+
             int availableNodes,
 
             string createdAt,
@@ -279,6 +292,9 @@ namespace Pulumi.Ovh.CloudProject
         {
             AntiAffinity = antiAffinity;
             Autoscale = autoscale;
+            AutoscalingScaleDownUnneededTimeSeconds = autoscalingScaleDownUnneededTimeSeconds;
+            AutoscalingScaleDownUnreadyTimeSeconds = autoscalingScaleDownUnreadyTimeSeconds;
+            AutoscalingScaleDownUtilizationThreshold = autoscalingScaleDownUtilizationThreshold;
             AvailableNodes = availableNodes;
             CreatedAt = createdAt;
             CurrentNodes = currentNodes;

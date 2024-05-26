@@ -48,12 +48,12 @@ import (
 //				return err
 //			}
 //			databasePrivateDatabase, err := Hosting.NewPrivateDatabase(ctx, "databasePrivateDatabase", &Hosting.PrivateDatabaseArgs{
-//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				DisplayName:   pulumi.String("Postgresql-12"),
 //				Plan: &hosting.PrivateDatabasePlanArgs{
-//					Duration:    *pulumi.String(databaseCartProductPlan.Prices[3].Duration),
-//					PlanCode:    *pulumi.String(databaseCartProductPlan.PlanCode),
-//					PricingMode: *pulumi.String(databaseCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(databaseCartProductPlan.Prices[3].Duration),
+//					PlanCode:    pulumi.String(databaseCartProductPlan.PlanCode),
+//					PricingMode: pulumi.String(databaseCartProductPlan.SelectedPrices[0].PricingMode),
 //					Configurations: hosting.PrivateDatabasePlanConfigurationArray{
 //						&hosting.PrivateDatabasePlanConfigurationArgs{
 //							Label: pulumi.String("dc"),
@@ -81,9 +81,7 @@ import (
 // OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
 //
 // ```sh
-//
-//	$ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
-//
+// $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
 // ```
 type PrivateDatabase struct {
 	pulumi.CustomResourceState
@@ -294,6 +292,8 @@ func (PrivateDatabaseState) ElementType() reflect.Type {
 type privateDatabaseArgs struct {
 	// Name displayed in customer panel for your private database
 	DisplayName *string `pulumi:"displayName"`
+	// Details about your Order
+	Orders []PrivateDatabaseOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
@@ -312,6 +312,8 @@ type privateDatabaseArgs struct {
 type PrivateDatabaseArgs struct {
 	// Name displayed in customer panel for your private database
 	DisplayName pulumi.StringPtrInput
+	// Details about your Order
+	Orders PrivateDatabaseOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode

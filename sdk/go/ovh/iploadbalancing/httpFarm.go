@@ -37,7 +37,7 @@ import (
 //			}
 //			_, err = IpLoadBalancing.NewHttpFarm(ctx, "farmname", &IpLoadBalancing.HttpFarmArgs{
 //				DisplayName: pulumi.String("ingress-8080-gra"),
-//				ServiceName: *pulumi.String(lb.ServiceName),
+//				ServiceName: pulumi.String(lb.ServiceName),
 //				Zone:        pulumi.String("GRA"),
 //			})
 //			if err != nil {
@@ -48,6 +48,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// HTTP farm can be imported using the following format `serviceName` and the `id` of the farm, separated by "/" e.g.
 type HttpFarm struct {
 	pulumi.CustomResourceState
 
@@ -55,7 +59,7 @@ type HttpFarm struct {
 	Balance pulumi.StringPtrOutput `pulumi:"balance"`
 	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Port for backends to receive traffic on.
+	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// define a backend healthcheck probe
 	Probe HttpFarmProbePtrOutput `pulumi:"probe"`
@@ -109,7 +113,7 @@ type httpFarmState struct {
 	Balance *string `pulumi:"balance"`
 	// Readable label for loadbalancer farm
 	DisplayName *string `pulumi:"displayName"`
-	// Port for backends to receive traffic on.
+	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port *int `pulumi:"port"`
 	// define a backend healthcheck probe
 	Probe *HttpFarmProbe `pulumi:"probe"`
@@ -128,7 +132,7 @@ type HttpFarmState struct {
 	Balance pulumi.StringPtrInput
 	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrInput
-	// Port for backends to receive traffic on.
+	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port pulumi.IntPtrInput
 	// define a backend healthcheck probe
 	Probe HttpFarmProbePtrInput
@@ -151,7 +155,7 @@ type httpFarmArgs struct {
 	Balance *string `pulumi:"balance"`
 	// Readable label for loadbalancer farm
 	DisplayName *string `pulumi:"displayName"`
-	// Port for backends to receive traffic on.
+	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port *int `pulumi:"port"`
 	// define a backend healthcheck probe
 	Probe *HttpFarmProbe `pulumi:"probe"`
@@ -171,7 +175,7 @@ type HttpFarmArgs struct {
 	Balance pulumi.StringPtrInput
 	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrInput
-	// Port for backends to receive traffic on.
+	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port pulumi.IntPtrInput
 	// define a backend healthcheck probe
 	Probe HttpFarmProbePtrInput
@@ -282,7 +286,7 @@ func (o HttpFarmOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpFarm) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Port for backends to receive traffic on.
+// Port attached to your farm ([1..49151]). Inherited from frontend if null
 func (o HttpFarmOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HttpFarm) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }

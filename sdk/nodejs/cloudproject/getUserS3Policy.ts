@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * const projectUsers = ovh.CloudProject.getUsers({
  *     serviceName: "XXX",
  * });
+ * // Get the user ID of a previously created user with the description "S3-User"
  * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
  * const s3UserId = users[0];
  * const policy = Promise.all([projectUsers, s3UserId]).then(([projectUsers, s3UserId]) => ovh.CloudProject.getUserS3Policy({
@@ -75,6 +76,7 @@ export interface GetUserS3PolicyResult {
  * const projectUsers = ovh.CloudProject.getUsers({
  *     serviceName: "XXX",
  * });
+ * // Get the user ID of a previously created user with the description "S3-User"
  * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
  * const s3UserId = users[0];
  * const policy = Promise.all([projectUsers, s3UserId]).then(([projectUsers, s3UserId]) => ovh.CloudProject.getUserS3Policy({

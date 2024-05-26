@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetPermissionsGroupArgs, GetPermissionsGroupResult, GetPermissionsGroupOutputArgs } from "./getPermissionsGroup";
+export const getPermissionsGroup: typeof import("./getPermissionsGroup").getPermissionsGroup = null as any;
+export const getPermissionsGroupOutput: typeof import("./getPermissionsGroup").getPermissionsGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getPermissionsGroup","getPermissionsGroupOutput"], () => require("./getPermissionsGroup"));
+
+export { GetPermissionsGroupsResult } from "./getPermissionsGroups";
+export const getPermissionsGroups: typeof import("./getPermissionsGroups").getPermissionsGroups = null as any;
+export const getPermissionsGroupsOutput: typeof import("./getPermissionsGroups").getPermissionsGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getPermissionsGroups","getPermissionsGroupsOutput"], () => require("./getPermissionsGroups"));
+
 export { GetPoliciesResult } from "./getPolicies";
 export const getPolicies: typeof import("./getPolicies").getPolicies = null as any;
 export const getPoliciesOutput: typeof import("./getPolicies").getPoliciesOutput = null as any;
@@ -35,6 +45,11 @@ export const getResourceGroups: typeof import("./getResourceGroups").getResource
 export const getResourceGroupsOutput: typeof import("./getResourceGroups").getResourceGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getResourceGroups","getResourceGroupsOutput"], () => require("./getResourceGroups"));
 
+export { PermissionsGroupArgs, PermissionsGroupState } from "./permissionsGroup";
+export type PermissionsGroup = import("./permissionsGroup").PermissionsGroup;
+export const PermissionsGroup: typeof import("./permissionsGroup").PermissionsGroup = null as any;
+utilities.lazyLoad(exports, ["PermissionsGroup"], () => require("./permissionsGroup"));
+
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
@@ -50,6 +65,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "ovh:Iam/permissionsGroup:PermissionsGroup":
+                return new PermissionsGroup(name, <any>undefined, { urn })
             case "ovh:Iam/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             case "ovh:Iam/resourceGroup:ResourceGroup":
@@ -59,5 +76,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("ovh", "Iam/permissionsGroup", _module)
 pulumi.runtime.registerResourceModule("ovh", "Iam/policy", _module)
 pulumi.runtime.registerResourceModule("ovh", "Iam/resourceGroup", _module)

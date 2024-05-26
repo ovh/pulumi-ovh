@@ -14,12 +14,12 @@ import (
 
 // ## Import
 //
-// OVHcloud Managed M3DB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+// OVHcloud Managed M3DB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProjectDatabase/m3DbUser:M3DbUser my_user service_name/cluster_id/id
-//
+// $ pulumi import ovh:CloudProjectDatabase/m3DbUser:M3DbUser my_user service_name/cluster_id/id
 // ```
 type M3DbUser struct {
 	pulumi.CustomResourceState
@@ -30,7 +30,7 @@ type M3DbUser struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Group of the user:
 	Group pulumi.StringPtrOutput `pulumi:"group"`
-	// Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
@@ -89,7 +89,7 @@ type m3dbUserState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Group of the user:
 	Group *string `pulumi:"group"`
-	// Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name *string `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
@@ -109,7 +109,7 @@ type M3DbUserState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Group of the user:
 	Group pulumi.StringPtrInput
-	// Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name pulumi.StringPtrInput
 	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
@@ -131,7 +131,7 @@ type m3dbUserArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Group of the user:
 	Group *string `pulumi:"group"`
-	// Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
@@ -146,7 +146,7 @@ type M3DbUserArgs struct {
 	ClusterId pulumi.StringInput
 	// Group of the user:
 	Group pulumi.StringPtrInput
-	// Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
@@ -257,7 +257,7 @@ func (o M3DbUserOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
+// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 func (o M3DbUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

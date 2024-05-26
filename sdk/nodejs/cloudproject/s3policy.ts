@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const user = new ovh.cloudproject.User("user", {
  *     serviceName: "XXX",
@@ -50,10 +50,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash
+ * OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
+ * $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
  * ```
  */
 export class S3Policy extends pulumi.CustomResource {

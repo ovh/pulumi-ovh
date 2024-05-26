@@ -69,7 +69,7 @@ namespace Pulumi.Ovh.Domain
     /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:Domain/zone:Zone zone order_id
+    /// $ pulumi import ovh:Domain/zone:Zone zone order_id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:Domain/zone:Zone")]
@@ -185,6 +185,18 @@ namespace Pulumi.Ovh.Domain
 
     public sealed class ZoneArgs : global::Pulumi.ResourceArgs
     {
+        [Input("orders")]
+        private InputList<Inputs.ZoneOrderArgs>? _orders;
+
+        /// <summary>
+        /// Details about an Order
+        /// </summary>
+        public InputList<Inputs.ZoneOrderArgs> Orders
+        {
+            get => _orders ?? (_orders = new InputList<Inputs.ZoneOrderArgs>());
+            set => _orders = value;
+        }
+
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>

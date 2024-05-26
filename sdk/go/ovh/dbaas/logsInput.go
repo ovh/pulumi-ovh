@@ -47,7 +47,7 @@ import (
 //				ServiceName: stream.ServiceName,
 //				Description: stream.Description,
 //				Title:       stream.Title,
-//				EngineId:    *pulumi.String(logstash.Id),
+//				EngineId:    pulumi.String(logstash.Id),
 //				StreamId:    stream.ID(),
 //				AllowedNetworks: pulumi.StringArray{
 //					pulumi.String("10.0.0.0/16"),

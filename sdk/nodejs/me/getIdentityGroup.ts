@@ -41,6 +41,10 @@ export interface GetIdentityGroupArgs {
  */
 export interface GetIdentityGroupResult {
     /**
+     * Identity URN of the group.
+     */
+    readonly GroupURN: string;
+    /**
      * Creation date of this group.
      */
     readonly creation: string;

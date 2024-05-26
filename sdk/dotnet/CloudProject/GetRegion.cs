@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -34,8 +32,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("ovh:CloudProject/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithDefaults());
@@ -43,9 +39,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -63,8 +57,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionResult> Invoke(GetRegionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionResult>("ovh:CloudProject/getRegion:getRegion", args ?? new GetRegionInvokeArgs(), options.WithDefaults());

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myaccount = ovh.Me.getMe({});
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * bash
  *
  * ```sh
- *  $ pulumi import ovh:Domain/zone:Zone zone order_id
+ * $ pulumi import ovh:Domain/zone:Zone zone order_id
  * ```
  */
 export class Zone extends pulumi.CustomResource {
@@ -106,7 +106,7 @@ export class Zone extends pulumi.CustomResource {
     /**
      * Details about an Order
      */
-    public /*out*/ readonly orders!: pulumi.Output<outputs.Domain.ZoneOrder[]>;
+    public readonly orders!: pulumi.Output<outputs.Domain.ZoneOrder[]>;
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
@@ -158,6 +158,7 @@ export class Zone extends pulumi.CustomResource {
             if ((!args || args.plan === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'plan'");
             }
+            resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
             resourceInputs["paymentMean"] = args ? args.paymentMean : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
@@ -168,7 +169,6 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["lastUpdate"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nameServers"] = undefined /*out*/;
-            resourceInputs["orders"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Zone.__pulumiType, name, resourceInputs, opts);
@@ -228,6 +228,10 @@ export interface ZoneState {
  * The set of arguments for constructing a Zone resource.
  */
 export interface ZoneArgs {
+    /**
+     * Details about an Order
+     */
+    orders?: pulumi.Input<pulumi.Input<inputs.Domain.ZoneOrder>[]>;
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */

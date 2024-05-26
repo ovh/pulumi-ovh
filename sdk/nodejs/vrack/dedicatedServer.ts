@@ -5,16 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * > **NOTE:** The resource `ovh.Vrack.DedicatedServer` is DEPRECATED and will be removed in a future version.
- * Use the resource `ovh.Vrack.DedicatedServerInterface` instead.
+ * Attach a legacy dedicated server to a vRack.
  *
- * Attach a dedicated server to a VRack.
+ * > **NOTE:** The resource `ovh.Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br />
+ * Dedicated servers that have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServerInterface` instead.
  *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const vds = new ovh.vrack.DedicatedServer("vds", {
  *     serverId: "67890",

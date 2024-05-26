@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const userGrant = new ovh.hosting.PrivateDatabaseUserGrant("userGrant", {
  *     databaseName: "ovhcloud",
@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
  *
  * ```sh
- *  $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
+ * $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
  * ```
  */
 export class PrivateDatabaseUserGrant extends pulumi.CustomResource {

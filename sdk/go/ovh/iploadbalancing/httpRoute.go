@@ -48,6 +48,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// HTTP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
 type HttpRoute struct {
 	pulumi.CustomResourceState
 
@@ -61,7 +65,7 @@ type HttpRoute struct {
 	Rules HttpRouteRuleTypeArrayOutput `pulumi:"rules"`
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// HTTP status code for "redirect" and "reject" actions
+	// Route status. Routes in "ok" state are ready to operate
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
 	Weight pulumi.IntOutput `pulumi:"weight"`
@@ -113,7 +117,7 @@ type httpRouteState struct {
 	Rules []HttpRouteRuleType `pulumi:"rules"`
 	// The internal name of your IP load balancing
 	ServiceName *string `pulumi:"serviceName"`
-	// HTTP status code for "redirect" and "reject" actions
+	// Route status. Routes in "ok" state are ready to operate
 	Status *string `pulumi:"status"`
 	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
 	Weight *int `pulumi:"weight"`
@@ -130,7 +134,7 @@ type HttpRouteState struct {
 	Rules HttpRouteRuleTypeArrayInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringPtrInput
-	// HTTP status code for "redirect" and "reject" actions
+	// Route status. Routes in "ok" state are ready to operate
 	Status pulumi.StringPtrInput
 	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
 	Weight pulumi.IntPtrInput
@@ -279,7 +283,7 @@ func (o HttpRouteOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// HTTP status code for "redirect" and "reject" actions
+// Route status. Routes in "ok" state are ready to operate
 func (o HttpRouteOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -18,6 +18,7 @@ __all__ = [
     'IpServicePlanOption',
     'IpServicePlanOptionConfiguration',
     'IpServiceRoutedTo',
+    'MoveRoutedTo',
     'GetServiceRoutedToResult',
 ]
 
@@ -427,6 +428,41 @@ class IpServiceRoutedTo(dict):
     def service_name(self) -> Optional[str]:
         """
         service name
+        """
+        return pulumi.get(self, "service_name")
+
+
+@pulumi.output_type
+class MoveRoutedTo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MoveRoutedTo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MoveRoutedTo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MoveRoutedTo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_name: str):
+        """
+        :param str service_name: Name of the service to route the IP to. IP will be parked if this value is an empty string
+        """
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Name of the service to route the IP to. IP will be parked if this value is an empty string
         """
         return pulumi.get(self, "service_name")
 

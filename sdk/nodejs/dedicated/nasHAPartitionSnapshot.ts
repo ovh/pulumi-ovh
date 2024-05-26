@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const my_partition = new ovh.dedicated.NasHAPartitionSnapshot("my-partition", {
  *     partitionName: "my-partition",
@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
  *
  * ```sh
- *  $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
+ * $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
  * ```
  */
 export class NasHAPartitionSnapshot extends pulumi.CustomResource {

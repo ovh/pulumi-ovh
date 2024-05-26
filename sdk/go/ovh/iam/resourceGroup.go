@@ -41,6 +41,12 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// Resource groups can be imported by using their id.
+//
+// > Read only resource groups cannot be imported
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 

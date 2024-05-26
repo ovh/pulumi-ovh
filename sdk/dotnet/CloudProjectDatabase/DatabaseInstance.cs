@@ -46,10 +46,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g., bash
+    /// OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g.,
+    /// 
+    /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
+    /// $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance")]

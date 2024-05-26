@@ -10,7 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.Vrack
 {
     /// <summary>
-    /// Attach a Dedicated Server Network Interface to a VRack.
+    /// Attach a Dedicated Server Network Interface to a vRack.
+    /// 
+    /// &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.&lt;br /&gt;
+    /// Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServer` instead.
     /// 
     /// ## Example Usage
     /// 

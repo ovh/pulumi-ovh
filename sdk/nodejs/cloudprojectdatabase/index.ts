@@ -45,6 +45,21 @@ export const getDatabaseIntegrations: typeof import("./getDatabaseIntegrations")
 export const getDatabaseIntegrationsOutput: typeof import("./getDatabaseIntegrations").getDatabaseIntegrationsOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseIntegrations","getDatabaseIntegrationsOutput"], () => require("./getDatabaseIntegrations"));
 
+export { GetDatabaseLogSubscriptionArgs, GetDatabaseLogSubscriptionResult, GetDatabaseLogSubscriptionOutputArgs } from "./getDatabaseLogSubscription";
+export const getDatabaseLogSubscription: typeof import("./getDatabaseLogSubscription").getDatabaseLogSubscription = null as any;
+export const getDatabaseLogSubscriptionOutput: typeof import("./getDatabaseLogSubscription").getDatabaseLogSubscriptionOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseLogSubscription","getDatabaseLogSubscriptionOutput"], () => require("./getDatabaseLogSubscription"));
+
+export { GetDatabaseLogSubscriptionsArgs, GetDatabaseLogSubscriptionsResult, GetDatabaseLogSubscriptionsOutputArgs } from "./getDatabaseLogSubscriptions";
+export const getDatabaseLogSubscriptions: typeof import("./getDatabaseLogSubscriptions").getDatabaseLogSubscriptions = null as any;
+export const getDatabaseLogSubscriptionsOutput: typeof import("./getDatabaseLogSubscriptions").getDatabaseLogSubscriptionsOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseLogSubscriptions","getDatabaseLogSubscriptionsOutput"], () => require("./getDatabaseLogSubscriptions"));
+
+export { GetDatabasePostgreSQLConnectionPoolsArgs, GetDatabasePostgreSQLConnectionPoolsResult, GetDatabasePostgreSQLConnectionPoolsOutputArgs } from "./getDatabasePostgreSQLConnectionPools";
+export const getDatabasePostgreSQLConnectionPools: typeof import("./getDatabasePostgreSQLConnectionPools").getDatabasePostgreSQLConnectionPools = null as any;
+export const getDatabasePostgreSQLConnectionPoolsOutput: typeof import("./getDatabasePostgreSQLConnectionPools").getDatabasePostgreSQLConnectionPoolsOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabasePostgreSQLConnectionPools","getDatabasePostgreSQLConnectionPoolsOutput"], () => require("./getDatabasePostgreSQLConnectionPools"));
+
 export { GetDatabasesArgs, GetDatabasesResult, GetDatabasesOutputArgs } from "./getDatabases";
 export const getDatabases: typeof import("./getDatabases").getDatabases = null as any;
 export const getDatabasesOutput: typeof import("./getDatabases").getDatabasesOutput = null as any;
@@ -90,6 +105,11 @@ export const getKafkaUserAccess: typeof import("./getKafkaUserAccess").getKafkaU
 export const getKafkaUserAccessOutput: typeof import("./getKafkaUserAccess").getKafkaUserAccessOutput = null as any;
 utilities.lazyLoad(exports, ["getKafkaUserAccess","getKafkaUserAccessOutput"], () => require("./getKafkaUserAccess"));
 
+export { GetPostgresSqlConnectionPoolArgs, GetPostgresSqlConnectionPoolResult, GetPostgresSqlConnectionPoolOutputArgs } from "./getPostgresSqlConnectionPool";
+export const getPostgresSqlConnectionPool: typeof import("./getPostgresSqlConnectionPool").getPostgresSqlConnectionPool = null as any;
+export const getPostgresSqlConnectionPoolOutput: typeof import("./getPostgresSqlConnectionPool").getPostgresSqlConnectionPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresSqlConnectionPool","getPostgresSqlConnectionPoolOutput"], () => require("./getPostgresSqlConnectionPool"));
+
 export { GetPostgresSqlUserArgs, GetPostgresSqlUserResult, GetPostgresSqlUserOutputArgs } from "./getPostgresSqlUser";
 export const getPostgresSqlUser: typeof import("./getPostgresSqlUser").getPostgresSqlUser = null as any;
 export const getPostgresSqlUserOutput: typeof import("./getPostgresSqlUser").getPostgresSqlUserOutput = null as any;
@@ -130,6 +150,11 @@ export type KafkaTopic = import("./kafkaTopic").KafkaTopic;
 export const KafkaTopic: typeof import("./kafkaTopic").KafkaTopic = null as any;
 utilities.lazyLoad(exports, ["KafkaTopic"], () => require("./kafkaTopic"));
 
+export { LogSubscriptionArgs, LogSubscriptionState } from "./logSubscription";
+export type LogSubscription = import("./logSubscription").LogSubscription;
+export const LogSubscription: typeof import("./logSubscription").LogSubscription = null as any;
+utilities.lazyLoad(exports, ["LogSubscription"], () => require("./logSubscription"));
+
 export { M3DbNamespaceArgs, M3DbNamespaceState } from "./m3dbNamespace";
 export type M3DbNamespace = import("./m3dbNamespace").M3DbNamespace;
 export const M3DbNamespace: typeof import("./m3dbNamespace").M3DbNamespace = null as any;
@@ -154,6 +179,11 @@ export { OpensearchUserArgs, OpensearchUserState } from "./opensearchUser";
 export type OpensearchUser = import("./opensearchUser").OpensearchUser;
 export const OpensearchUser: typeof import("./opensearchUser").OpensearchUser = null as any;
 utilities.lazyLoad(exports, ["OpensearchUser"], () => require("./opensearchUser"));
+
+export { PostgresSqlConnectionPoolArgs, PostgresSqlConnectionPoolState } from "./postgresSqlConnectionPool";
+export type PostgresSqlConnectionPool = import("./postgresSqlConnectionPool").PostgresSqlConnectionPool;
+export const PostgresSqlConnectionPool: typeof import("./postgresSqlConnectionPool").PostgresSqlConnectionPool = null as any;
+utilities.lazyLoad(exports, ["PostgresSqlConnectionPool"], () => require("./postgresSqlConnectionPool"));
 
 export { PostgresSqlUserArgs, PostgresSqlUserState } from "./postgresSqlUser";
 export type PostgresSqlUser = import("./postgresSqlUser").PostgresSqlUser;
@@ -187,6 +217,8 @@ const _module = {
                 return new KafkaSchemaRegistryAcl(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic":
                 return new KafkaTopic(name, <any>undefined, { urn })
+            case "ovh:CloudProjectDatabase/logSubscription:LogSubscription":
+                return new LogSubscription(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace":
                 return new M3DbNamespace(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/m3DbUser:M3DbUser":
@@ -197,6 +229,8 @@ const _module = {
                 return new OpensearchPattern(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/opensearchUser:OpensearchUser":
                 return new OpensearchUser(name, <any>undefined, { urn })
+            case "ovh:CloudProjectDatabase/postgresSqlConnectionPool:PostgresSqlConnectionPool":
+                return new PostgresSqlConnectionPool(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser":
                 return new PostgresSqlUser(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/redisUser:RedisUser":
@@ -214,11 +248,13 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/ipRestriction
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/kafkaAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/kafkaSchemaRegistryAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/kafkaTopic", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/logSubscription", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/m3DbNamespace", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/m3DbUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/mongoDbUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/opensearchPattern", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/opensearchUser", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/postgresSqlConnectionPool", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/postgresSqlUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/redisUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/user", _module)

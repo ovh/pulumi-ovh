@@ -37,6 +37,10 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// TCP Farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/tcpFarm:TcpFarm")]
     public partial class TcpFarm : global::Pulumi.CustomResource
@@ -54,7 +58,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Port for backends to receive traffic on.
+        /// Port attached to your farm ([1..49151]). Inherited from frontend if null
         /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
@@ -149,7 +153,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Port for backends to receive traffic on.
+        /// Port attached to your farm ([1..49151]). Inherited from frontend if null
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -205,7 +209,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Port for backends to receive traffic on.
+        /// Port attached to your farm ([1..49151]). Inherited from frontend if null
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

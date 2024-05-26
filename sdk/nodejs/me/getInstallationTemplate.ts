@@ -33,7 +33,7 @@ export function getInstallationTemplate(args: GetInstallationTemplateArgs, opts?
  */
 export interface GetInstallationTemplateArgs {
     /**
-     * This template name
+     * Template name.
      */
     templateName: string;
 }
@@ -43,48 +43,38 @@ export interface GetInstallationTemplateArgs {
  */
 export interface GetInstallationTemplateResult {
     /**
-     * List of all language available for this template.
-     */
-    readonly availableLanguages: string[];
-    /**
-     * This distribution is new and, although tested and functional, may still display odd behaviour.
-     */
-    readonly beta: boolean;
-    /**
-     * This template bit format (32 or 64).
+     * Template bit format (32 or 64).
      */
     readonly bitFormat: number;
     /**
-     * Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+     * Category of this template (informative only).
      */
     readonly category: string;
     readonly customizations: outputs.Me.GetInstallationTemplateCustomization[];
     /**
-     * The default language of this template.
-     */
-    readonly defaultLanguage: string;
-    /**
-     * is this distribution deprecated.
-     */
-    readonly deprecated: boolean;
-    /**
-     * information about this template.
+     * Information about this template.
      */
     readonly description: string;
     /**
-     * the distribution this template is based on.
+     * Distribution this template is based on.
      */
     readonly distribution: string;
     /**
-     * this template family type (bsd,linux,solaris,windows).
+     * End of install date of the template.
+     */
+    readonly endOfInstall: string;
+    /**
+     * Template family type (bsd,linux,solaris,windows).
      */
     readonly family: string;
     /**
-     * Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+     * Filesystems available.
      */
     readonly filesystems: string[];
     /**
-     * This distribution supports hardware raid configuration through the OVHcloud API.
+     * Distribution supports hardware raid configuration through the OVHcloud API.
+     *
+     * @deprecated This will be deprecated in the next release
      */
     readonly hardRaidConfiguration: boolean;
     /**
@@ -92,23 +82,26 @@ export interface GetInstallationTemplateResult {
      */
     readonly id: string;
     /**
-     * Date of last modification of the base image.
+     * Represents the questions of the expected answers in the userMetadata field.
      */
-    readonly lastModification: string;
+    readonly inputs: outputs.Me.GetInstallationTemplateInput[];
+    /**
+     * Whether this template supports LVM.
+     */
     readonly lvmReady: boolean;
+    /**
+     * Partitioning customization is not available for this OS template.
+     */
+    readonly noPartitioning: boolean;
     readonly partitionSchemes: outputs.Me.GetInstallationTemplatePartitionScheme[];
     /**
-     * This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
+     * Template supports RAID0 and RAID1 on 2 disks.
      */
-    readonly supportsDistributionKernel: boolean;
+    readonly softRaidOnlyMirroring: boolean;
     /**
-     * This distribution supports RTM software.
+     * Subfamily of the template.
      */
-    readonly supportsRtm: boolean;
-    /**
-     * This distribution supports the microsoft SQL server.
-     */
-    readonly supportsSqlServer: boolean;
+    readonly subfamily: string;
     readonly templateName: string;
 }
 /**
@@ -134,7 +127,7 @@ export function getInstallationTemplateOutput(args: GetInstallationTemplateOutpu
  */
 export interface GetInstallationTemplateOutputArgs {
     /**
-     * This template name
+     * Template name.
      */
     templateName: pulumi.Input<string>;
 }

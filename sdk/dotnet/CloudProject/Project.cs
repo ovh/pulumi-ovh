@@ -17,7 +17,7 @@ namespace Pulumi.Ovh.CloudProject
     /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
+    /// $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/project:Project")]
@@ -138,6 +138,18 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("orders")]
+        private InputList<Inputs.ProjectOrderArgs>? _orders;
+
+        /// <summary>
+        /// Details about the order that was used to create the public cloud project
+        /// </summary>
+        public InputList<Inputs.ProjectOrderArgs> Orders
+        {
+            get => _orders ?? (_orders = new InputList<Inputs.ProjectOrderArgs>());
+            set => _orders = value;
+        }
 
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)

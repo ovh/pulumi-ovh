@@ -12,10 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **NOTE:** The resource `Vrack.DedicatedServer` is DEPRECATED and will be removed in a future version.
-// Use the resource `Vrack.DedicatedServerInterface` instead.
+// Attach a legacy dedicated server to a vRack.
 //
-// Attach a dedicated server to a VRack.
+// > **NOTE:** The resource `Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br />
+// Dedicated servers that have configurable network interfaces MUST use the resource `Vrack.DedicatedServerInterface` instead.
 //
 // ## Example Usage
 //

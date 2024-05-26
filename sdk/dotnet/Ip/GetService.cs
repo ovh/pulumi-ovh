@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.Ip
         /// <summary>
         /// Use this data source to retrieve information about an IP service.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -33,8 +31,6 @@ namespace Pulumi.Ovh.Ip
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("ovh:Ip/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
@@ -42,9 +38,7 @@ namespace Pulumi.Ovh.Ip
         /// <summary>
         /// Use this data source to retrieve information about an IP service.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -61,8 +55,6 @@ namespace Pulumi.Ovh.Ip
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("ovh:Ip/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());

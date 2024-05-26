@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const my_partition = new ovh.dedicated.NasHAPartitionAccess("my-partition", {
  *     ip: "123.123.123.123/32",
@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
  *
  * ```sh
- *  $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+ * $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
  * ```
  */
 export class NasHAPartitionAccess extends pulumi.CustomResource {

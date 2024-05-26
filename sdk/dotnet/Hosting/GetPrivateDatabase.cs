@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.Hosting
         /// <summary>
         /// Use this data source to retrieve information about an hosting database.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -33,8 +31,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrivateDatabaseResult> InvokeAsync(GetPrivateDatabaseArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateDatabaseResult>("ovh:Hosting/getPrivateDatabase:getPrivateDatabase", args ?? new GetPrivateDatabaseArgs(), options.WithDefaults());
@@ -42,9 +38,7 @@ namespace Pulumi.Ovh.Hosting
         /// <summary>
         /// Use this data source to retrieve information about an hosting database.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -61,8 +55,6 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrivateDatabaseResult> Invoke(GetPrivateDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseResult>("ovh:Hosting/getPrivateDatabase:getPrivateDatabase", args ?? new GetPrivateDatabaseInvokeArgs(), options.WithDefaults());

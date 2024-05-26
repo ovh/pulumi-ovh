@@ -50,8 +50,6 @@ export interface GetVpsResult {
     readonly cluster: string;
     /**
      * The datacenter in which the vps is located
-     * * `datacenter.longname` - The fullname of the datacenter (ex: "Strasbourg SBG1")
-     * * `datacenter.name` - The short name of the datacenter (ex: "sbg1)
      */
     readonly datacenter: {[key: string]: string};
     /**
@@ -76,9 +74,6 @@ export interface GetVpsResult {
     readonly memory: number;
     /**
      * A dict describing the type of vps.
-     * * `model.name` - The model name (ex: model1)
-     * * `model.offer` - The model human description (ex: "VPS 2016 SSD 1")
-     * * `model.version` - The model version (ex: "2017v2")
      */
     readonly model: {[key: string]: string};
     readonly name: string;

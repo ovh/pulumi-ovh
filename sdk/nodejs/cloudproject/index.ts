@@ -5,10 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AlertingArgs, AlertingState } from "./alerting";
+export type Alerting = import("./alerting").Alerting;
+export const Alerting: typeof import("./alerting").Alerting = null as any;
+utilities.lazyLoad(exports, ["Alerting"], () => require("./alerting"));
+
 export { ContainerRegistryArgs, ContainerRegistryState } from "./containerRegistry";
 export type ContainerRegistry = import("./containerRegistry").ContainerRegistry;
 export const ContainerRegistry: typeof import("./containerRegistry").ContainerRegistry = null as any;
 utilities.lazyLoad(exports, ["ContainerRegistry"], () => require("./containerRegistry"));
+
+export { ContainerRegistryIPRestrictionsManagementArgs, ContainerRegistryIPRestrictionsManagementState } from "./containerRegistryIPRestrictionsManagement";
+export type ContainerRegistryIPRestrictionsManagement = import("./containerRegistryIPRestrictionsManagement").ContainerRegistryIPRestrictionsManagement;
+export const ContainerRegistryIPRestrictionsManagement: typeof import("./containerRegistryIPRestrictionsManagement").ContainerRegistryIPRestrictionsManagement = null as any;
+utilities.lazyLoad(exports, ["ContainerRegistryIPRestrictionsManagement"], () => require("./containerRegistryIPRestrictionsManagement"));
+
+export { ContainerRegistryIPRestrictionsRegistryArgs, ContainerRegistryIPRestrictionsRegistryState } from "./containerRegistryIPRestrictionsRegistry";
+export type ContainerRegistryIPRestrictionsRegistry = import("./containerRegistryIPRestrictionsRegistry").ContainerRegistryIPRestrictionsRegistry;
+export const ContainerRegistryIPRestrictionsRegistry: typeof import("./containerRegistryIPRestrictionsRegistry").ContainerRegistryIPRestrictionsRegistry = null as any;
+utilities.lazyLoad(exports, ["ContainerRegistryIPRestrictionsRegistry"], () => require("./containerRegistryIPRestrictionsRegistry"));
 
 export { ContainerRegistryOIDCArgs, ContainerRegistryOIDCState } from "./containerRegistryOIDC";
 export type ContainerRegistryOIDC = import("./containerRegistryOIDC").ContainerRegistryOIDC;
@@ -30,6 +45,11 @@ export type FailoverIpAttach = import("./failoverIpAttach").FailoverIpAttach;
 export const FailoverIpAttach: typeof import("./failoverIpAttach").FailoverIpAttach = null as any;
 utilities.lazyLoad(exports, ["FailoverIpAttach"], () => require("./failoverIpAttach"));
 
+export { GatewayArgs, GatewayState } from "./gateway";
+export type Gateway = import("./gateway").Gateway;
+export const Gateway: typeof import("./gateway").Gateway = null as any;
+utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+
 export { GetCapabilitiesContainerFilterArgs, GetCapabilitiesContainerFilterResult, GetCapabilitiesContainerFilterOutputArgs } from "./getCapabilitiesContainerFilter";
 export const getCapabilitiesContainerFilter: typeof import("./getCapabilitiesContainerFilter").getCapabilitiesContainerFilter = null as any;
 export const getCapabilitiesContainerFilterOutput: typeof import("./getCapabilitiesContainerFilter").getCapabilitiesContainerFilterOutput = null as any;
@@ -49,6 +69,16 @@ export { GetContainerRegistryArgs, GetContainerRegistryResult, GetContainerRegis
 export const getContainerRegistry: typeof import("./getContainerRegistry").getContainerRegistry = null as any;
 export const getContainerRegistryOutput: typeof import("./getContainerRegistry").getContainerRegistryOutput = null as any;
 utilities.lazyLoad(exports, ["getContainerRegistry","getContainerRegistryOutput"], () => require("./getContainerRegistry"));
+
+export { GetContainerRegistryIPRestrictionsManagementArgs, GetContainerRegistryIPRestrictionsManagementResult, GetContainerRegistryIPRestrictionsManagementOutputArgs } from "./getContainerRegistryIPRestrictionsManagement";
+export const getContainerRegistryIPRestrictionsManagement: typeof import("./getContainerRegistryIPRestrictionsManagement").getContainerRegistryIPRestrictionsManagement = null as any;
+export const getContainerRegistryIPRestrictionsManagementOutput: typeof import("./getContainerRegistryIPRestrictionsManagement").getContainerRegistryIPRestrictionsManagementOutput = null as any;
+utilities.lazyLoad(exports, ["getContainerRegistryIPRestrictionsManagement","getContainerRegistryIPRestrictionsManagementOutput"], () => require("./getContainerRegistryIPRestrictionsManagement"));
+
+export { GetContainerRegistryIPRestrictionsRegistryArgs, GetContainerRegistryIPRestrictionsRegistryResult, GetContainerRegistryIPRestrictionsRegistryOutputArgs } from "./getContainerRegistryIPRestrictionsRegistry";
+export const getContainerRegistryIPRestrictionsRegistry: typeof import("./getContainerRegistryIPRestrictionsRegistry").getContainerRegistryIPRestrictionsRegistry = null as any;
+export const getContainerRegistryIPRestrictionsRegistryOutput: typeof import("./getContainerRegistryIPRestrictionsRegistry").getContainerRegistryIPRestrictionsRegistryOutput = null as any;
+utilities.lazyLoad(exports, ["getContainerRegistryIPRestrictionsRegistry","getContainerRegistryIPRestrictionsRegistryOutput"], () => require("./getContainerRegistryIPRestrictionsRegistry"));
 
 export { GetContainerRegistryOIDCArgs, GetContainerRegistryOIDCResult, GetContainerRegistryOIDCOutputArgs } from "./getContainerRegistryOIDC";
 export const getContainerRegistryOIDC: typeof import("./getContainerRegistryOIDC").getContainerRegistryOIDC = null as any;
@@ -240,8 +270,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "ovh:CloudProject/alerting:Alerting":
+                return new Alerting(name, <any>undefined, { urn })
             case "ovh:CloudProject/containerRegistry:ContainerRegistry":
                 return new ContainerRegistry(name, <any>undefined, { urn })
+            case "ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement":
+                return new ContainerRegistryIPRestrictionsManagement(name, <any>undefined, { urn })
+            case "ovh:CloudProject/containerRegistryIPRestrictionsRegistry:ContainerRegistryIPRestrictionsRegistry":
+                return new ContainerRegistryIPRestrictionsRegistry(name, <any>undefined, { urn })
             case "ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC":
                 return new ContainerRegistryOIDC(name, <any>undefined, { urn })
             case "ovh:CloudProject/containerRegistryUser:ContainerRegistryUser":
@@ -250,6 +286,8 @@ const _module = {
                 return new Database(name, <any>undefined, { urn })
             case "ovh:CloudProject/failoverIpAttach:FailoverIpAttach":
                 return new FailoverIpAttach(name, <any>undefined, { urn })
+            case "ovh:CloudProject/gateway:Gateway":
+                return new Gateway(name, <any>undefined, { urn })
             case "ovh:CloudProject/kube:Kube":
                 return new Kube(name, <any>undefined, { urn })
             case "ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions":
@@ -279,11 +317,15 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/alerting", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistry", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistryIPRestrictionsManagement", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistryIPRestrictionsRegistry", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistryOIDC", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/containerRegistryUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/database", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/failoverIpAttach", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/gateway", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kube", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeIpRestrictions", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeNodePool", _module)

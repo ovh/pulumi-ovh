@@ -89,12 +89,12 @@ import (
 //
 // ## Import
 //
-// OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g., bash
+// OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
-//
+// $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
 // ```
 type S3Policy struct {
 	pulumi.CustomResourceState

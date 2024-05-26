@@ -13,7 +13,13 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class GetKubeNodePoolTemplateResult
     {
+        /// <summary>
+        /// metadata
+        /// </summary>
         public readonly Outputs.GetKubeNodePoolTemplateMetadataResult? Metadata;
+        /// <summary>
+        /// spec
+        /// </summary>
         public readonly Outputs.GetKubeNodePoolTemplateSpecResult? Spec;
 
         [OutputConstructor]

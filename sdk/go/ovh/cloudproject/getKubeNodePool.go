@@ -69,6 +69,15 @@ type LookupKubeNodePoolResult struct {
 	AntiAffinity bool `pulumi:"antiAffinity"`
 	// (Optional) Enable auto-scaling for the pool. Default to `false`.
 	Autoscale bool `pulumi:"autoscale"`
+	// (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
+	// How long a node should be unneeded before it is eligible for scale down
+	AutoscalingScaleDownUnneededTimeSeconds int `pulumi:"autoscalingScaleDownUnneededTimeSeconds"`
+	// (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
+	// How long an unready node should be unneeded before it is eligible for scale down
+	AutoscalingScaleDownUnreadyTimeSeconds int `pulumi:"autoscalingScaleDownUnreadyTimeSeconds"`
+	// (Optional) scaleDownUtilizationThreshold autoscaling parameter
+	// Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+	AutoscalingScaleDownUtilizationThreshold float64 `pulumi:"autoscalingScaleDownUtilizationThreshold"`
 	// Number of nodes which are actually ready in the pool
 	AvailableNodes int `pulumi:"availableNodes"`
 	// Creation date
@@ -166,6 +175,24 @@ func (o LookupKubeNodePoolResultOutput) AntiAffinity() pulumi.BoolOutput {
 // (Optional) Enable auto-scaling for the pool. Default to `false`.
 func (o LookupKubeNodePoolResultOutput) Autoscale() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKubeNodePoolResult) bool { return v.Autoscale }).(pulumi.BoolOutput)
+}
+
+// (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
+// How long a node should be unneeded before it is eligible for scale down
+func (o LookupKubeNodePoolResultOutput) AutoscalingScaleDownUnneededTimeSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupKubeNodePoolResult) int { return v.AutoscalingScaleDownUnneededTimeSeconds }).(pulumi.IntOutput)
+}
+
+// (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
+// How long an unready node should be unneeded before it is eligible for scale down
+func (o LookupKubeNodePoolResultOutput) AutoscalingScaleDownUnreadyTimeSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupKubeNodePoolResult) int { return v.AutoscalingScaleDownUnreadyTimeSeconds }).(pulumi.IntOutput)
+}
+
+// (Optional) scaleDownUtilizationThreshold autoscaling parameter
+// Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+func (o LookupKubeNodePoolResultOutput) AutoscalingScaleDownUtilizationThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupKubeNodePoolResult) float64 { return v.AutoscalingScaleDownUtilizationThreshold }).(pulumi.Float64Output)
 }
 
 // Number of nodes which are actually ready in the pool

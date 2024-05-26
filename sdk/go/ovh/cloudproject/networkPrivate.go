@@ -46,12 +46,12 @@ import (
 //
 // ## Import
 //
-// Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g., bash
+// Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678
-//
+// $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678
 // ```
 type NetworkPrivate struct {
 	pulumi.CustomResourceState
@@ -70,7 +70,7 @@ type NetworkPrivate struct {
 	// * `regions_status/region` - (Deprecated) The id of the region.
 	// * `regions_status/status` - (Deprecated) The status of the network in the region.
 	//
-	// Deprecated: use the regions_attributes field instead
+	// Deprecated: use the regionsAttributes field instead
 	RegionsStatuses NetworkPrivateRegionsStatusArrayOutput `pulumi:"regionsStatuses"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -131,7 +131,7 @@ type networkPrivateState struct {
 	// * `regions_status/region` - (Deprecated) The id of the region.
 	// * `regions_status/status` - (Deprecated) The status of the network in the region.
 	//
-	// Deprecated: use the regions_attributes field instead
+	// Deprecated: use the regionsAttributes field instead
 	RegionsStatuses []NetworkPrivateRegionsStatus `pulumi:"regionsStatuses"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -160,7 +160,7 @@ type NetworkPrivateState struct {
 	// * `regions_status/region` - (Deprecated) The id of the region.
 	// * `regions_status/status` - (Deprecated) The status of the network in the region.
 	//
-	// Deprecated: use the regions_attributes field instead
+	// Deprecated: use the regionsAttributes field instead
 	RegionsStatuses NetworkPrivateRegionsStatusArrayInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -317,7 +317,7 @@ func (o NetworkPrivateOutput) RegionsAttributes() NetworkPrivateRegionsAttribute
 // * `regions_status/region` - (Deprecated) The id of the region.
 // * `regions_status/status` - (Deprecated) The status of the network in the region.
 //
-// Deprecated: use the regions_attributes field instead
+// Deprecated: use the regionsAttributes field instead
 func (o NetworkPrivateOutput) RegionsStatuses() NetworkPrivateRegionsStatusArrayOutput {
 	return o.ApplyT(func(v *NetworkPrivate) NetworkPrivateRegionsStatusArrayOutput { return v.RegionsStatuses }).(NetworkPrivateRegionsStatusArrayOutput)
 }

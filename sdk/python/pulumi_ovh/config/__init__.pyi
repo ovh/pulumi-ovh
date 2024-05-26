@@ -11,21 +11,31 @@ from .. import _utilities
 
 applicationKey: Optional[str]
 """
-The OVH API Application Key.
+The OVH API Application Key
 """
 
 applicationSecret: Optional[str]
 """
-The OVH API Application Secret.
+The OVH API Application Secret
+"""
+
+clientId: Optional[str]
+"""
+OAuth 2.0 application's ID
+"""
+
+clientSecret: Optional[str]
+"""
+OAuth 2.0 application's secret
 """
 
 consumerKey: Optional[str]
 """
-The OVH API Consumer key.
+The OVH API Consumer Key
 """
 
 endpoint: Optional[str]
 """
-The OVH API endpoint to target (ex: "ovh-eu").
+The OVH API endpoint to target (ex: "ovh-eu")
 """
 

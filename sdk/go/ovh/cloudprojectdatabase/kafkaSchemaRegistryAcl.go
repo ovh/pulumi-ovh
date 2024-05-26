@@ -37,8 +37,8 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewKafkaSchemaRegistryAcl(ctx, "schemaRegistryAcl", &CloudProjectDatabase.KafkaSchemaRegistryAclArgs{
-//				ServiceName: *pulumi.String(kafka.ServiceName),
-//				ClusterId:   *pulumi.String(kafka.Id),
+//				ServiceName: pulumi.String(kafka.ServiceName),
+//				ClusterId:   pulumi.String(kafka.Id),
 //				Permission:  pulumi.String("schema_registry_read"),
 //				Resource:    pulumi.String("Subject:myResource"),
 //				Username:    pulumi.String("johndoe"),
@@ -54,12 +54,12 @@ import (
 //
 // ## Import
 //
-// OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g., bash
+// OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id
-//
+// $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id
 // ```
 type KafkaSchemaRegistryAcl struct {
 	pulumi.CustomResourceState

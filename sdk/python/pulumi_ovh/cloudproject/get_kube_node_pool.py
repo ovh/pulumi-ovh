@@ -23,13 +23,22 @@ class GetKubeNodePoolResult:
     """
     A collection of values returned by getKubeNodePool.
     """
-    def __init__(__self__, anti_affinity=None, autoscale=None, available_nodes=None, created_at=None, current_nodes=None, desired_nodes=None, flavor=None, flavor_name=None, id=None, kube_id=None, max_nodes=None, min_nodes=None, monthly_billed=None, name=None, project_id=None, service_name=None, size_status=None, status=None, template=None, up_to_date_nodes=None, updated_at=None):
+    def __init__(__self__, anti_affinity=None, autoscale=None, autoscaling_scale_down_unneeded_time_seconds=None, autoscaling_scale_down_unready_time_seconds=None, autoscaling_scale_down_utilization_threshold=None, available_nodes=None, created_at=None, current_nodes=None, desired_nodes=None, flavor=None, flavor_name=None, id=None, kube_id=None, max_nodes=None, min_nodes=None, monthly_billed=None, name=None, project_id=None, service_name=None, size_status=None, status=None, template=None, up_to_date_nodes=None, updated_at=None):
         if anti_affinity and not isinstance(anti_affinity, bool):
             raise TypeError("Expected argument 'anti_affinity' to be a bool")
         pulumi.set(__self__, "anti_affinity", anti_affinity)
         if autoscale and not isinstance(autoscale, bool):
             raise TypeError("Expected argument 'autoscale' to be a bool")
         pulumi.set(__self__, "autoscale", autoscale)
+        if autoscaling_scale_down_unneeded_time_seconds and not isinstance(autoscaling_scale_down_unneeded_time_seconds, int):
+            raise TypeError("Expected argument 'autoscaling_scale_down_unneeded_time_seconds' to be a int")
+        pulumi.set(__self__, "autoscaling_scale_down_unneeded_time_seconds", autoscaling_scale_down_unneeded_time_seconds)
+        if autoscaling_scale_down_unready_time_seconds and not isinstance(autoscaling_scale_down_unready_time_seconds, int):
+            raise TypeError("Expected argument 'autoscaling_scale_down_unready_time_seconds' to be a int")
+        pulumi.set(__self__, "autoscaling_scale_down_unready_time_seconds", autoscaling_scale_down_unready_time_seconds)
+        if autoscaling_scale_down_utilization_threshold and not isinstance(autoscaling_scale_down_utilization_threshold, float):
+            raise TypeError("Expected argument 'autoscaling_scale_down_utilization_threshold' to be a float")
+        pulumi.set(__self__, "autoscaling_scale_down_utilization_threshold", autoscaling_scale_down_utilization_threshold)
         if available_nodes and not isinstance(available_nodes, int):
             raise TypeError("Expected argument 'available_nodes' to be a int")
         pulumi.set(__self__, "available_nodes", available_nodes)
@@ -103,6 +112,33 @@ class GetKubeNodePoolResult:
         (Optional) Enable auto-scaling for the pool. Default to `false`.
         """
         return pulumi.get(self, "autoscale")
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
+    def autoscaling_scale_down_unneeded_time_seconds(self) -> int:
+        """
+        (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
+        How long a node should be unneeded before it is eligible for scale down
+        """
+        return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
+    def autoscaling_scale_down_unready_time_seconds(self) -> int:
+        """
+        (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
+        How long an unready node should be unneeded before it is eligible for scale down
+        """
+        return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
+
+    @property
+    @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
+    def autoscaling_scale_down_utilization_threshold(self) -> float:
+        """
+        (Optional) scaleDownUtilizationThreshold autoscaling parameter
+        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        """
+        return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
 
     @property
     @pulumi.getter(name="availableNodes")
@@ -268,6 +304,9 @@ class AwaitableGetKubeNodePoolResult(GetKubeNodePoolResult):
         return GetKubeNodePoolResult(
             anti_affinity=self.anti_affinity,
             autoscale=self.autoscale,
+            autoscaling_scale_down_unneeded_time_seconds=self.autoscaling_scale_down_unneeded_time_seconds,
+            autoscaling_scale_down_unready_time_seconds=self.autoscaling_scale_down_unready_time_seconds,
+            autoscaling_scale_down_utilization_threshold=self.autoscaling_scale_down_utilization_threshold,
             available_nodes=self.available_nodes,
             created_at=self.created_at,
             current_nodes=self.current_nodes,
@@ -326,6 +365,9 @@ def get_kube_node_pool(kube_id: Optional[str] = None,
     return AwaitableGetKubeNodePoolResult(
         anti_affinity=pulumi.get(__ret__, 'anti_affinity'),
         autoscale=pulumi.get(__ret__, 'autoscale'),
+        autoscaling_scale_down_unneeded_time_seconds=pulumi.get(__ret__, 'autoscaling_scale_down_unneeded_time_seconds'),
+        autoscaling_scale_down_unready_time_seconds=pulumi.get(__ret__, 'autoscaling_scale_down_unready_time_seconds'),
+        autoscaling_scale_down_utilization_threshold=pulumi.get(__ret__, 'autoscaling_scale_down_utilization_threshold'),
         available_nodes=pulumi.get(__ret__, 'available_nodes'),
         created_at=pulumi.get(__ret__, 'created_at'),
         current_nodes=pulumi.get(__ret__, 'current_nodes'),

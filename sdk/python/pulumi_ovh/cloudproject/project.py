@@ -19,6 +19,7 @@ class ProjectArgs:
                  ovh_subsidiary: pulumi.Input[str],
                  plan: pulumi.Input['ProjectPlanArgs'],
                  description: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectOrderArgs']]]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectPlanOptionArgs']]]] = None):
         """
@@ -26,6 +27,7 @@ class ProjectArgs:
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input['ProjectPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[str] description: A description associated with the user.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectOrderArgs']]] orders: Details about the order that was used to create the public cloud project
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[Sequence[pulumi.Input['ProjectPlanOptionArgs']]] plan_options: Product Plan to order
         """
@@ -33,6 +35,8 @@ class ProjectArgs:
         pulumi.set(__self__, "plan", plan)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if orders is not None:
+            pulumi.set(__self__, "orders", orders)
         if payment_mean is not None:
             warnings.warn("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""", DeprecationWarning)
             pulumi.log.warn("""payment_mean is deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
@@ -76,6 +80,18 @@ class ProjectArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectOrderArgs']]]]:
+        """
+        Details about the order that was used to create the public cloud project
+        """
+        return pulumi.get(self, "orders")
+
+    @orders.setter
+    def orders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectOrderArgs']]]]):
+        pulumi.set(self, "orders", value)
 
     @property
     @pulumi.getter(name="paymentMean")
@@ -297,6 +313,7 @@ class Project(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectOrderArgs']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[pulumi.InputType['ProjectPlanArgs']]] = None,
@@ -310,12 +327,13 @@ class Project(pulumi.CustomResource):
         bash
 
         ```sh
-         $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
+        $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description associated with the user.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectOrderArgs']]]] orders: Details about the order that was used to create the public cloud project
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['ProjectPlanArgs']] plan: Product Plan to order
@@ -335,7 +353,7 @@ class Project(pulumi.CustomResource):
         bash
 
         ```sh
-         $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
+        $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -354,6 +372,7 @@ class Project(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectOrderArgs']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[pulumi.InputType['ProjectPlanArgs']]] = None,
@@ -368,6 +387,7 @@ class Project(pulumi.CustomResource):
             __props__ = ProjectArgs.__new__(ProjectArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["orders"] = orders
             if ovh_subsidiary is None and not opts.urn:
                 raise TypeError("Missing required property 'ovh_subsidiary'")
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
@@ -378,7 +398,6 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["plan_options"] = plan_options
             __props__.__dict__["project_urn"] = None
             __props__.__dict__["access"] = None
-            __props__.__dict__["orders"] = None
             __props__.__dict__["project_id"] = None
             __props__.__dict__["project_name"] = None
             __props__.__dict__["status"] = None

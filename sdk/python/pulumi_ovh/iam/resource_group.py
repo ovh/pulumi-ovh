@@ -194,6 +194,12 @@ class ResourceGroup(pulumi.CustomResource):
         ])
         ```
 
+        ## Import
+
+        Resource groups can be imported by using their id.
+
+        > Read only resource groups cannot be imported
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the resource group
@@ -219,6 +225,12 @@ class ResourceGroup(pulumi.CustomResource):
             "urn:v1:eu:resource:service2:service2-id",
         ])
         ```
+
+        ## Import
+
+        Resource groups can be imported by using their id.
+
+        > Read only resource groups cannot be imported
 
         :param str resource_name: The name of the resource.
         :param ResourceGroupArgs args: The arguments to use to populate this resource's properties.

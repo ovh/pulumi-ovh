@@ -16,18 +16,22 @@ class ServerUpdateArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[str],
                  boot_id: Optional[pulumi.Input[int]] = None,
+                 boot_script: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServerUpdate resource.
         :param pulumi.Input[str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[int] boot_id: boot id of the server
+        :param pulumi.Input[str] boot_script: boot script of the server
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
         """
         pulumi.set(__self__, "service_name", service_name)
         if boot_id is not None:
             pulumi.set(__self__, "boot_id", boot_id)
+        if boot_script is not None:
+            pulumi.set(__self__, "boot_script", boot_script)
         if monitoring is not None:
             pulumi.set(__self__, "monitoring", monitoring)
         if state is not None:
@@ -58,6 +62,18 @@ class ServerUpdateArgs:
         pulumi.set(self, "boot_id", value)
 
     @property
+    @pulumi.getter(name="bootScript")
+    def boot_script(self) -> Optional[pulumi.Input[str]]:
+        """
+        boot script of the server
+        """
+        return pulumi.get(self, "boot_script")
+
+    @boot_script.setter
+    def boot_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "boot_script", value)
+
+    @property
     @pulumi.getter
     def monitoring(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -86,18 +102,22 @@ class ServerUpdateArgs:
 class _ServerUpdateState:
     def __init__(__self__, *,
                  boot_id: Optional[pulumi.Input[int]] = None,
+                 boot_script: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServerUpdate resources.
         :param pulumi.Input[int] boot_id: boot id of the server
+        :param pulumi.Input[str] boot_script: boot script of the server
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
         """
         if boot_id is not None:
             pulumi.set(__self__, "boot_id", boot_id)
+        if boot_script is not None:
+            pulumi.set(__self__, "boot_script", boot_script)
         if monitoring is not None:
             pulumi.set(__self__, "monitoring", monitoring)
         if service_name is not None:
@@ -116,6 +136,18 @@ class _ServerUpdateState:
     @boot_id.setter
     def boot_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "boot_id", value)
+
+    @property
+    @pulumi.getter(name="bootScript")
+    def boot_script(self) -> Optional[pulumi.Input[str]]:
+        """
+        boot script of the server
+        """
+        return pulumi.get(self, "boot_script")
+
+    @boot_script.setter
+    def boot_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "boot_script", value)
 
     @property
     @pulumi.getter
@@ -160,6 +192,7 @@ class ServerUpdate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  boot_id: Optional[pulumi.Input[int]] = None,
+                 boot_script: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -184,6 +217,7 @@ class ServerUpdate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] boot_id: boot id of the server
+        :param pulumi.Input[str] boot_script: boot script of the server
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
@@ -227,6 +261,7 @@ class ServerUpdate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  boot_id: Optional[pulumi.Input[int]] = None,
+                 boot_script: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -240,6 +275,7 @@ class ServerUpdate(pulumi.CustomResource):
             __props__ = ServerUpdateArgs.__new__(ServerUpdateArgs)
 
             __props__.__dict__["boot_id"] = boot_id
+            __props__.__dict__["boot_script"] = boot_script
             __props__.__dict__["monitoring"] = monitoring
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
@@ -256,6 +292,7 @@ class ServerUpdate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             boot_id: Optional[pulumi.Input[int]] = None,
+            boot_script: Optional[pulumi.Input[str]] = None,
             monitoring: Optional[pulumi.Input[bool]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'ServerUpdate':
@@ -267,6 +304,7 @@ class ServerUpdate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] boot_id: boot id of the server
+        :param pulumi.Input[str] boot_script: boot script of the server
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
@@ -276,6 +314,7 @@ class ServerUpdate(pulumi.CustomResource):
         __props__ = _ServerUpdateState.__new__(_ServerUpdateState)
 
         __props__.__dict__["boot_id"] = boot_id
+        __props__.__dict__["boot_script"] = boot_script
         __props__.__dict__["monitoring"] = monitoring
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["state"] = state
@@ -288,6 +327,14 @@ class ServerUpdate(pulumi.CustomResource):
         boot id of the server
         """
         return pulumi.get(self, "boot_id")
+
+    @property
+    @pulumi.getter(name="bootScript")
+    def boot_script(self) -> pulumi.Output[Optional[str]]:
+        """
+        boot script of the server
+        """
+        return pulumi.get(self, "boot_script")
 
     @property
     @pulumi.getter

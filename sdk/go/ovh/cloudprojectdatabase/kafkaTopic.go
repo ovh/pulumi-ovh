@@ -37,8 +37,8 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewKafkaTopic(ctx, "topic", &CloudProjectDatabase.KafkaTopicArgs{
-//				ServiceName:       *pulumi.String(kafka.ServiceName),
-//				ClusterId:         *pulumi.String(kafka.Id),
+//				ServiceName:       pulumi.String(kafka.ServiceName),
+//				ClusterId:         pulumi.String(kafka.Id),
 //				MinInsyncReplicas: pulumi.Int(1),
 //				Partitions:        pulumi.Int(3),
 //				Replication:       pulumi.Int(2),
@@ -56,12 +56,12 @@ import (
 //
 // ## Import
 //
-// OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g., bash
+// OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
-//
+// $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
 // ```
 type KafkaTopic struct {
 	pulumi.CustomResourceState

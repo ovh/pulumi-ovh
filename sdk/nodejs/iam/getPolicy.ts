@@ -27,6 +27,7 @@ export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Pro
         "description": args.description,
         "excepts": args.excepts,
         "id": args.id,
+        "permissionsGroups": args.permissionsGroups,
     }, opts);
 }
 
@@ -35,11 +36,11 @@ export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetPolicyArgs {
     /**
-     * List of actions allowed by the policy.
+     * Set of actions allowed by the policy.
      */
     allows?: string[];
     /**
-     * List of actions that will be denied no matter what policy exists.
+     * Set of actions that will be denied no matter what policy exists.
      */
     denies?: string[];
     /**
@@ -47,13 +48,17 @@ export interface GetPolicyArgs {
      */
     description?: string;
     /**
-     * List of actions that will be subtracted from the `allow` list.
+     * Set of actions that will be subtracted from the `allow` list.
      */
     excepts?: string[];
     /**
      * UUID of the policy.
      */
     id: string;
+    /**
+     * Set of permissions groups that apply to the policy.
+     */
+    permissionsGroups?: string[];
 }
 
 /**
@@ -61,7 +66,7 @@ export interface GetPolicyArgs {
  */
 export interface GetPolicyResult {
     /**
-     * List of actions allowed by the policy.
+     * Set of actions allowed by the policy.
      */
     readonly allows?: string[];
     /**
@@ -69,7 +74,7 @@ export interface GetPolicyResult {
      */
     readonly createdAt: string;
     /**
-     * List of actions that will be denied no matter what policy exists.
+     * Set of actions that will be denied no matter what policy exists.
      */
     readonly denies?: string[];
     /**
@@ -77,12 +82,12 @@ export interface GetPolicyResult {
      */
     readonly description?: string;
     /**
-     * List of actions that will be subtracted from the `allow` list.
+     * Set of actions that will be subtracted from the `allow` list.
      */
     readonly excepts?: string[];
     readonly id: string;
     /**
-     * List of identities affected by the policy.
+     * Set of identities affected by the policy.
      */
     readonly identities: string[];
     /**
@@ -94,11 +99,15 @@ export interface GetPolicyResult {
      */
     readonly owner: string;
     /**
+     * Set of permissions groups that apply to the policy.
+     */
+    readonly permissionsGroups?: string[];
+    /**
      * Indicates that the policy is a default one.
      */
     readonly readOnly: boolean;
     /**
-     * List of resources affected by the policy.
+     * Set of resources affected by the policy.
      */
     readonly resources: string[];
     /**
@@ -129,11 +138,11 @@ export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetPolicyOutputArgs {
     /**
-     * List of actions allowed by the policy.
+     * Set of actions allowed by the policy.
      */
     allows?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of actions that will be denied no matter what policy exists.
+     * Set of actions that will be denied no matter what policy exists.
      */
     denies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -141,11 +150,15 @@ export interface GetPolicyOutputArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * List of actions that will be subtracted from the `allow` list.
+     * Set of actions that will be subtracted from the `allow` list.
      */
     excepts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * UUID of the policy.
      */
     id: pulumi.Input<string>;
+    /**
+     * Set of permissions groups that apply to the policy.
+     */
+    permissionsGroups?: pulumi.Input<pulumi.Input<string>[]>;
 }

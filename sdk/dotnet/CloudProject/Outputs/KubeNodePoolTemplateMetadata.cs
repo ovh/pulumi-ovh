@@ -14,15 +14,15 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class KubeNodePoolTemplateMetadata
     {
         /// <summary>
-        /// Annotations to apply to each node
+        /// annotations
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
-        /// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+        /// finalizers
         /// </summary>
         public readonly ImmutableArray<string> Finalizers;
         /// <summary>
-        /// Labels to apply to each node
+        /// labels
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
 

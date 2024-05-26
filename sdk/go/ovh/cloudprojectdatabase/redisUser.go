@@ -14,12 +14,12 @@ import (
 
 // ## Import
 //
-// OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+// OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
-//
+// $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
 // ```
 type RedisUser struct {
 	pulumi.CustomResourceState
@@ -36,7 +36,7 @@ type RedisUser struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Keys of the user.
 	Keys pulumi.StringArrayOutput `pulumi:"keys"`
-	// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+	// Name of the user.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
@@ -101,7 +101,7 @@ type redisUserState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Keys of the user.
 	Keys []string `pulumi:"keys"`
-	// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+	// Name of the user.
 	Name *string `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
@@ -127,7 +127,7 @@ type RedisUserState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Keys of the user.
 	Keys pulumi.StringArrayInput
-	// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+	// Name of the user.
 	Name pulumi.StringPtrInput
 	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
@@ -155,7 +155,7 @@ type redisUserArgs struct {
 	Commands []string `pulumi:"commands"`
 	// Keys of the user.
 	Keys []string `pulumi:"keys"`
-	// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+	// Name of the user.
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
@@ -176,7 +176,7 @@ type RedisUserArgs struct {
 	Commands pulumi.StringArrayInput
 	// Keys of the user.
 	Keys pulumi.StringArrayInput
-	// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+	// Name of the user.
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
@@ -302,7 +302,7 @@ func (o RedisUserOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringArrayOutput { return v.Keys }).(pulumi.StringArrayOutput)
 }
 
-// Name of the user. A user named "avnadmin" is map with already created admin user and reset his password instead of create a new user.
+// Name of the user.
 func (o RedisUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

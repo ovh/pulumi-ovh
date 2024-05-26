@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const cassandradb = new ovh.cloudproject.Database("cassandradb", {
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     version: "3.4",
  *     plan: "business",
  *     kafkaRestApi: true,
+ *     kafkaSchemaRegistry: true,
  *     nodes: [
  *         {
  *             region: "DE",
@@ -70,7 +71,7 @@ import * as utilities from "../utilities";
  *     description: "my-first-mongodb",
  *     engine: "mongodb",
  *     version: "5.0",
- *     plan: "essential",
+ *     plan: "discovery",
  *     nodes: [{
  *         region: "GRA",
  *     }],
@@ -113,6 +114,16 @@ import * as utilities from "../utilities";
  *         region: "WAW",
  *     }],
  *     flavor: "db1-4",
+ *     ipRestrictions: [
+ *         {
+ *             description: "ip 1",
+ *             ip: "178.97.6.0/24",
+ *         },
+ *         {
+ *             description: "ip 2",
+ *             ip: "178.97.7.0/24",
+ *         },
+ *     ],
  * });
  * const redisdb = new ovh.cloudproject.Database("redisdb", {
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -142,7 +153,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const postgresql = new ovh.cloudproject.Database("postgresql", {
  *     description: "my-first-postgresql",
@@ -166,7 +177,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const mongodb = new ovh.cloudproject.Database("mongodb", {
  *     description: "my-first-mongodb",
@@ -189,7 +200,7 @@ import * as utilities from "../utilities";
  *             subnetId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
  *         },
  *     ],
- *     plan: "enterprise",
+ *     plan: "production",
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     version: "5.0",
  * });
@@ -197,10 +208,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash
+ * OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+ * $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
  * ```
  */
 export class Database extends pulumi.CustomResource {
@@ -236,9 +249,13 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly advancedConfiguration!: pulumi.Output<{[key: string]: string}>;
     /**
+     * List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+     */
+    public readonly backupRegions!: pulumi.Output<string[]>;
+    /**
      * Time on which backups start every day.
      */
-    public /*out*/ readonly backupTime!: pulumi.Output<string>;
+    public readonly backupTime!: pulumi.Output<string>;
     /**
      * Date of the creation of the cluster.
      */
@@ -271,9 +288,17 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly flavor!: pulumi.Output<string>;
     /**
+     * IP Blocks authorized to access to the cluster.
+     */
+    public readonly ipRestrictions!: pulumi.Output<outputs.CloudProject.DatabaseIpRestriction[] | undefined>;
+    /**
      * Defines whether the REST API is enabled on a kafka cluster
      */
     public readonly kafkaRestApi!: pulumi.Output<boolean | undefined>;
+    /**
+     * Defines whether the schema registry is enabled on a Kafka cluster
+     */
+    public readonly kafkaSchemaRegistry!: pulumi.Output<boolean | undefined>;
     /**
      * Time on which maintenances can start every day.
      */
@@ -293,7 +318,10 @@ export class Database extends pulumi.CustomResource {
     public readonly opensearchAclsEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Plan of the cluster.
-     * Enum: "essential", "business", "enterprise".
+     * * MongoDB: Enum: "discovery", "production", "advanced".
+     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+     * * M3 Aggregator: "business", "enterprise".
+     * * Redis: "essential", "business"
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -324,6 +352,7 @@ export class Database extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
             resourceInputs["advancedConfiguration"] = state ? state.advancedConfiguration : undefined;
+            resourceInputs["backupRegions"] = state ? state.backupRegions : undefined;
             resourceInputs["backupTime"] = state ? state.backupTime : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -332,7 +361,9 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["endpoints"] = state ? state.endpoints : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["flavor"] = state ? state.flavor : undefined;
+            resourceInputs["ipRestrictions"] = state ? state.ipRestrictions : undefined;
             resourceInputs["kafkaRestApi"] = state ? state.kafkaRestApi : undefined;
+            resourceInputs["kafkaSchemaRegistry"] = state ? state.kafkaSchemaRegistry : undefined;
             resourceInputs["maintenanceTime"] = state ? state.maintenanceTime : undefined;
             resourceInputs["networkType"] = state ? state.networkType : undefined;
             resourceInputs["nodes"] = state ? state.nodes : undefined;
@@ -362,17 +393,20 @@ export class Database extends pulumi.CustomResource {
                 throw new Error("Missing required property 'version'");
             }
             resourceInputs["advancedConfiguration"] = args ? args.advancedConfiguration : undefined;
+            resourceInputs["backupRegions"] = args ? args.backupRegions : undefined;
+            resourceInputs["backupTime"] = args ? args.backupTime : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
             resourceInputs["flavor"] = args ? args.flavor : undefined;
+            resourceInputs["ipRestrictions"] = args ? args.ipRestrictions : undefined;
             resourceInputs["kafkaRestApi"] = args ? args.kafkaRestApi : undefined;
+            resourceInputs["kafkaSchemaRegistry"] = args ? args.kafkaSchemaRegistry : undefined;
             resourceInputs["nodes"] = args ? args.nodes : undefined;
             resourceInputs["opensearchAclsEnabled"] = args ? args.opensearchAclsEnabled : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["backupTime"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["diskType"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
@@ -393,6 +427,10 @@ export interface DatabaseState {
      * Advanced configuration key / value.
      */
     advancedConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+     */
+    backupRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Time on which backups start every day.
      */
@@ -429,9 +467,17 @@ export interface DatabaseState {
      */
     flavor?: pulumi.Input<string>;
     /**
+     * IP Blocks authorized to access to the cluster.
+     */
+    ipRestrictions?: pulumi.Input<pulumi.Input<inputs.CloudProject.DatabaseIpRestriction>[]>;
+    /**
      * Defines whether the REST API is enabled on a kafka cluster
      */
     kafkaRestApi?: pulumi.Input<boolean>;
+    /**
+     * Defines whether the schema registry is enabled on a Kafka cluster
+     */
+    kafkaSchemaRegistry?: pulumi.Input<boolean>;
     /**
      * Time on which maintenances can start every day.
      */
@@ -451,7 +497,10 @@ export interface DatabaseState {
     opensearchAclsEnabled?: pulumi.Input<boolean>;
     /**
      * Plan of the cluster.
-     * Enum: "essential", "business", "enterprise".
+     * * MongoDB: Enum: "discovery", "production", "advanced".
+     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+     * * M3 Aggregator: "business", "enterprise".
+     * * Redis: "essential", "business"
      */
     plan?: pulumi.Input<string>;
     /**
@@ -478,6 +527,14 @@ export interface DatabaseArgs {
      */
     advancedConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+     */
+    backupRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Time on which backups start every day.
+     */
+    backupTime?: pulumi.Input<string>;
+    /**
      * Small description of the database service.
      */
     description?: pulumi.Input<string>;
@@ -497,9 +554,17 @@ export interface DatabaseArgs {
      */
     flavor: pulumi.Input<string>;
     /**
+     * IP Blocks authorized to access to the cluster.
+     */
+    ipRestrictions?: pulumi.Input<pulumi.Input<inputs.CloudProject.DatabaseIpRestriction>[]>;
+    /**
      * Defines whether the REST API is enabled on a kafka cluster
      */
     kafkaRestApi?: pulumi.Input<boolean>;
+    /**
+     * Defines whether the schema registry is enabled on a Kafka cluster
+     */
+    kafkaSchemaRegistry?: pulumi.Input<boolean>;
     /**
      * List of nodes object.
      * Multi region cluster are not yet available, all node should be identical.
@@ -511,7 +576,10 @@ export interface DatabaseArgs {
     opensearchAclsEnabled?: pulumi.Input<boolean>;
     /**
      * Plan of the cluster.
-     * Enum: "essential", "business", "enterprise".
+     * * MongoDB: Enum: "discovery", "production", "advanced".
+     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+     * * M3 Aggregator: "business", "enterprise".
+     * * Redis: "essential", "business"
      */
     plan: pulumi.Input<string>;
     /**

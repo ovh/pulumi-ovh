@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the list of users of a container registry associated with a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -40,8 +38,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerRegistryUsersResult> InvokeAsync(GetContainerRegistryUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryUsersResult>("ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers", args ?? new GetContainerRegistryUsersArgs(), options.WithDefaults());
@@ -49,9 +45,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the list of users of a container registry associated with a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -75,8 +69,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerRegistryUsersResult> Invoke(GetContainerRegistryUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryUsersResult>("ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers", args ?? new GetContainerRegistryUsersInvokeArgs(), options.WithDefaults());

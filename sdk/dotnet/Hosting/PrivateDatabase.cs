@@ -72,7 +72,7 @@ namespace Pulumi.Ovh.Hosting
     /// OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+    /// $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
     /// ```
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabase:PrivateDatabase")]
@@ -280,6 +280,18 @@ namespace Pulumi.Ovh.Hosting
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("orders")]
+        private InputList<Inputs.PrivateDatabaseOrderArgs>? _orders;
+
+        /// <summary>
+        /// Details about your Order
+        /// </summary>
+        public InputList<Inputs.PrivateDatabaseOrderArgs> Orders
+        {
+            get => _orders ?? (_orders = new InputList<Inputs.PrivateDatabaseOrderArgs>());
+            set => _orders = value;
+        }
 
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)

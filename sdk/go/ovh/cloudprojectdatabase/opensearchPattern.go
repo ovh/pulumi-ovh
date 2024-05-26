@@ -37,8 +37,8 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewOpensearchPattern(ctx, "pattern", &CloudProjectDatabase.OpensearchPatternArgs{
-//				ServiceName:   *pulumi.String(opensearch.ServiceName),
-//				ClusterId:     *pulumi.String(opensearch.Id),
+//				ServiceName:   pulumi.String(opensearch.ServiceName),
+//				ClusterId:     pulumi.String(opensearch.Id),
 //				MaxIndexCount: pulumi.Int(2),
 //				Pattern:       pulumi.String("logs_*"),
 //			})
@@ -53,12 +53,12 @@ import (
 //
 // ## Import
 //
-// OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g., bash
+// OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
-//
+// $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
 // ```
 type OpensearchPattern struct {
 	pulumi.CustomResourceState

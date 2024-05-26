@@ -78,6 +78,7 @@ def get_users(service_name: Optional[str] = None,
     import pulumi_ovh as ovh
 
     project_users = ovh.CloudProject.get_users(service_name="XXX")
+    # Get the user ID of a previously created user with the description "S3-User"
     users = [user.user_id for user in project_users.users if user.description == "S3-User"]
     s3_user_id = users[0]
     pulumi.export("userId", s3_user_id)
@@ -111,6 +112,7 @@ def get_users_output(service_name: Optional[pulumi.Input[str]] = None,
     import pulumi_ovh as ovh
 
     project_users = ovh.CloudProject.get_users(service_name="XXX")
+    # Get the user ID of a previously created user with the description "S3-User"
     users = [user.user_id for user in project_users.users if user.description == "S3-User"]
     s3_user_id = users[0]
     pulumi.export("userId", s3_user_id)

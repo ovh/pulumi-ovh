@@ -21,8 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "ovh:CloudProject/alerting:Alerting":
+		r = &Alerting{}
 	case "ovh:CloudProject/containerRegistry:ContainerRegistry":
 		r = &ContainerRegistry{}
+	case "ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement":
+		r = &ContainerRegistryIPRestrictionsManagement{}
+	case "ovh:CloudProject/containerRegistryIPRestrictionsRegistry:ContainerRegistryIPRestrictionsRegistry":
+		r = &ContainerRegistryIPRestrictionsRegistry{}
 	case "ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC":
 		r = &ContainerRegistryOIDC{}
 	case "ovh:CloudProject/containerRegistryUser:ContainerRegistryUser":
@@ -31,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Database{}
 	case "ovh:CloudProject/failoverIpAttach:FailoverIpAttach":
 		r = &FailoverIpAttach{}
+	case "ovh:CloudProject/gateway:Gateway":
+		r = &Gateway{}
 	case "ovh:CloudProject/kube:Kube":
 		r = &Kube{}
 	case "ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions":
@@ -70,7 +78,22 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"CloudProject/alerting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"CloudProject/containerRegistry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/containerRegistryIPRestrictionsManagement",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/containerRegistryIPRestrictionsRegistry",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -91,6 +114,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProject/failoverIpAttach",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/gateway",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

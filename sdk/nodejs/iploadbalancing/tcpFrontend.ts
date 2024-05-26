@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  * import * as ovh from "@pulumi/ovh";
  *
  * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     zone: "all",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * TCP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
  */
 export class TcpFrontend extends pulumi.CustomResource {
     /**

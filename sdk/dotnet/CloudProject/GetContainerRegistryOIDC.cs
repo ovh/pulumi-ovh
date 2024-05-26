@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Private Registry OIDC.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -38,8 +36,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerRegistryOIDCResult> InvokeAsync(GetContainerRegistryOIDCArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryOIDCResult>("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", args ?? new GetContainerRegistryOIDCArgs(), options.WithDefaults());
@@ -47,9 +43,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Private Registry OIDC.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -71,8 +65,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerRegistryOIDCResult> Invoke(GetContainerRegistryOIDCInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryOIDCResult>("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", args ?? new GetContainerRegistryOIDCInvokeArgs(), options.WithDefaults());

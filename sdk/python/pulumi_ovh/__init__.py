@@ -5,6 +5,7 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .get_installation_template import *
 from .get_installation_templates import *
 from .get_server import *
 from .get_servers import *
@@ -14,6 +15,8 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_ovh.cloud as __cloud
+    cloud = __cloud
     import pulumi_ovh.cloudproject as __cloudproject
     cloudproject = __cloudproject
     import pulumi_ovh.cloudprojectdatabase as __cloudprojectdatabase
@@ -43,6 +46,7 @@ if typing.TYPE_CHECKING:
     import pulumi_ovh.vrack as __vrack
     vrack = __vrack
 else:
+    cloud = _utilities.lazy_import('pulumi_ovh.cloud')
     cloudproject = _utilities.lazy_import('pulumi_ovh.cloudproject')
     cloudprojectdatabase = _utilities.lazy_import('pulumi_ovh.cloudprojectdatabase')
     config = _utilities.lazy_import('pulumi_ovh.config')
@@ -63,10 +67,34 @@ _utilities.register(
 [
  {
   "pkg": "ovh",
+  "mod": "CloudProject/alerting",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/alerting:Alerting": "Alerting"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProject/containerRegistry",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/containerRegistry:ContainerRegistry": "ContainerRegistry"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProject/containerRegistryIPRestrictionsManagement",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement": "ContainerRegistryIPRestrictionsManagement"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProject/containerRegistryIPRestrictionsRegistry",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/containerRegistryIPRestrictionsRegistry:ContainerRegistryIPRestrictionsRegistry": "ContainerRegistryIPRestrictionsRegistry"
   }
  },
  {
@@ -99,6 +127,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/failoverIpAttach:FailoverIpAttach": "FailoverIpAttach"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProject/gateway",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/gateway:Gateway": "Gateway"
   }
  },
  {
@@ -247,6 +283,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProjectDatabase/logSubscription",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
+  "classes": {
+   "ovh:CloudProjectDatabase/logSubscription:LogSubscription": "LogSubscription"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProjectDatabase/m3DbNamespace",
   "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
@@ -283,6 +327,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/opensearchUser:OpensearchUser": "OpensearchUser"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProjectDatabase/postgresSqlConnectionPool",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
+  "classes": {
+   "ovh:CloudProjectDatabase/postgresSqlConnectionPool:PostgresSqlConnectionPool": "PostgresSqlConnectionPool"
   }
  },
  {
@@ -407,6 +459,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Domain/zoneDNSSec",
+  "fqn": "pulumi_ovh.domain",
+  "classes": {
+   "ovh:Domain/zoneDNSSec:ZoneDNSSec": "ZoneDNSSec"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Domain/zoneRecord",
   "fqn": "pulumi_ovh.domain",
   "classes": {
@@ -463,6 +523,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Iam/permissionsGroup",
+  "fqn": "pulumi_ovh.iam",
+  "classes": {
+   "ovh:Iam/permissionsGroup:PermissionsGroup": "PermissionsGroup"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Iam/policy",
   "fqn": "pulumi_ovh.iam",
   "classes": {
@@ -479,10 +547,42 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Ip/firewall",
+  "fqn": "pulumi_ovh.ip",
+  "classes": {
+   "ovh:Ip/firewall:Firewall": "Firewall"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Ip/firewallRule",
+  "fqn": "pulumi_ovh.ip",
+  "classes": {
+   "ovh:Ip/firewallRule:FirewallRule": "FirewallRule"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Ip/ipService",
   "fqn": "pulumi_ovh.ip",
   "classes": {
    "ovh:Ip/ipService:IpService": "IpService"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Ip/mitigation",
+  "fqn": "pulumi_ovh.ip",
+  "classes": {
+   "ovh:Ip/mitigation:Mitigation": "Mitigation"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Ip/move",
+  "fqn": "pulumi_ovh.ip",
+  "classes": {
+   "ovh:Ip/move:Move": "Move"
   }
  },
  {
@@ -591,6 +691,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "IpLoadBalancing/udpFrontend",
+  "fqn": "pulumi_ovh.iploadbalancing",
+  "classes": {
+   "ovh:IpLoadBalancing/udpFrontend:UdpFrontend": "UdpFrontend"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "IpLoadBalancing/vrackNetwork",
   "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
@@ -655,18 +763,10 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
-  "mod": "Me/ipxeScript",
-  "fqn": "pulumi_ovh.me",
+  "mod": "Vps/vps",
+  "fqn": "pulumi_ovh.vps",
   "classes": {
-   "ovh:Me/ipxeScript:IpxeScript": "IpxeScript"
-  }
- },
- {
-  "pkg": "ovh",
-  "mod": "Me/sshKey",
-  "fqn": "pulumi_ovh.me",
-  "classes": {
-   "ovh:Me/sshKey:SshKey": "SshKey"
+   "ovh:Vps/vps:Vps": "Vps"
   }
  },
  {

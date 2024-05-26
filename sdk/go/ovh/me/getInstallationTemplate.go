@@ -50,48 +50,45 @@ func LookupInstallationTemplate(ctx *pulumi.Context, args *LookupInstallationTem
 
 // A collection of arguments for invoking getInstallationTemplate.
 type LookupInstallationTemplateArgs struct {
-	// This template name
+	// Template name.
 	TemplateName string `pulumi:"templateName"`
 }
 
 // A collection of values returned by getInstallationTemplate.
 type LookupInstallationTemplateResult struct {
-	// List of all language available for this template.
-	AvailableLanguages []string `pulumi:"availableLanguages"`
-	// This distribution is new and, although tested and functional, may still display odd behaviour.
-	Beta bool `pulumi:"beta"`
-	// This template bit format (32 or 64).
+	// Template bit format (32 or 64).
 	BitFormat int `pulumi:"bitFormat"`
-	// Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+	// Category of this template (informative only).
 	Category       string                                 `pulumi:"category"`
 	Customizations []GetInstallationTemplateCustomization `pulumi:"customizations"`
-	// The default language of this template.
-	DefaultLanguage string `pulumi:"defaultLanguage"`
-	// is this distribution deprecated.
-	Deprecated bool `pulumi:"deprecated"`
-	// information about this template.
+	// Information about this template.
 	Description string `pulumi:"description"`
-	// the distribution this template is based on.
+	// Distribution this template is based on.
 	Distribution string `pulumi:"distribution"`
-	// this template family type (bsd,linux,solaris,windows).
+	// End of install date of the template.
+	EndOfInstall string `pulumi:"endOfInstall"`
+	// Template family type (bsd,linux,solaris,windows).
 	Family string `pulumi:"family"`
-	// Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+	// Filesystems available.
 	Filesystems []string `pulumi:"filesystems"`
-	// This distribution supports hardware raid configuration through the OVHcloud API.
+	// Distribution supports hardware raid configuration through the OVHcloud API.
+	//
+	// Deprecated: This will be deprecated in the next release
 	HardRaidConfiguration bool `pulumi:"hardRaidConfiguration"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Date of last modification of the base image.
-	LastModification string                                       `pulumi:"lastModification"`
-	LvmReady         bool                                         `pulumi:"lvmReady"`
+	// Represents the questions of the expected answers in the userMetadata field.
+	Inputs []GetInstallationTemplateInput `pulumi:"inputs"`
+	// Whether this template supports LVM.
+	LvmReady bool `pulumi:"lvmReady"`
+	// Partitioning customization is not available for this OS template.
+	NoPartitioning   bool                                         `pulumi:"noPartitioning"`
 	PartitionSchemes []GetInstallationTemplatePartitionSchemeType `pulumi:"partitionSchemes"`
-	// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-	SupportsDistributionKernel bool `pulumi:"supportsDistributionKernel"`
-	// This distribution supports RTM software.
-	SupportsRtm bool `pulumi:"supportsRtm"`
-	// This distribution supports the microsoft SQL server.
-	SupportsSqlServer bool   `pulumi:"supportsSqlServer"`
-	TemplateName      string `pulumi:"templateName"`
+	// Template supports RAID0 and RAID1 on 2 disks.
+	SoftRaidOnlyMirroring bool `pulumi:"softRaidOnlyMirroring"`
+	// Subfamily of the template.
+	Subfamily    string `pulumi:"subfamily"`
+	TemplateName string `pulumi:"templateName"`
 }
 
 func LookupInstallationTemplateOutput(ctx *pulumi.Context, args LookupInstallationTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupInstallationTemplateResultOutput {
@@ -109,7 +106,7 @@ func LookupInstallationTemplateOutput(ctx *pulumi.Context, args LookupInstallati
 
 // A collection of arguments for invoking getInstallationTemplate.
 type LookupInstallationTemplateOutputArgs struct {
-	// This template name
+	// Template name.
 	TemplateName pulumi.StringInput `pulumi:"templateName"`
 }
 
@@ -132,22 +129,12 @@ func (o LookupInstallationTemplateResultOutput) ToLookupInstallationTemplateResu
 	return o
 }
 
-// List of all language available for this template.
-func (o LookupInstallationTemplateResultOutput) AvailableLanguages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) []string { return v.AvailableLanguages }).(pulumi.StringArrayOutput)
-}
-
-// This distribution is new and, although tested and functional, may still display odd behaviour.
-func (o LookupInstallationTemplateResultOutput) Beta() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.Beta }).(pulumi.BoolOutput)
-}
-
-// This template bit format (32 or 64).
+// Template bit format (32 or 64).
 func (o LookupInstallationTemplateResultOutput) BitFormat() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) int { return v.BitFormat }).(pulumi.IntOutput)
 }
 
-// Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+// Category of this template (informative only).
 func (o LookupInstallationTemplateResultOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.Category }).(pulumi.StringOutput)
 }
@@ -158,37 +145,34 @@ func (o LookupInstallationTemplateResultOutput) Customizations() GetInstallation
 	}).(GetInstallationTemplateCustomizationArrayOutput)
 }
 
-// The default language of this template.
-func (o LookupInstallationTemplateResultOutput) DefaultLanguage() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.DefaultLanguage }).(pulumi.StringOutput)
-}
-
-// is this distribution deprecated.
-func (o LookupInstallationTemplateResultOutput) Deprecated() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.Deprecated }).(pulumi.BoolOutput)
-}
-
-// information about this template.
+// Information about this template.
 func (o LookupInstallationTemplateResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// the distribution this template is based on.
+// Distribution this template is based on.
 func (o LookupInstallationTemplateResultOutput) Distribution() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.Distribution }).(pulumi.StringOutput)
 }
 
-// this template family type (bsd,linux,solaris,windows).
+// End of install date of the template.
+func (o LookupInstallationTemplateResultOutput) EndOfInstall() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.EndOfInstall }).(pulumi.StringOutput)
+}
+
+// Template family type (bsd,linux,solaris,windows).
 func (o LookupInstallationTemplateResultOutput) Family() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.Family }).(pulumi.StringOutput)
 }
 
-// Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+// Filesystems available.
 func (o LookupInstallationTemplateResultOutput) Filesystems() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) []string { return v.Filesystems }).(pulumi.StringArrayOutput)
 }
 
-// This distribution supports hardware raid configuration through the OVHcloud API.
+// Distribution supports hardware raid configuration through the OVHcloud API.
+//
+// Deprecated: This will be deprecated in the next release
 func (o LookupInstallationTemplateResultOutput) HardRaidConfiguration() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.HardRaidConfiguration }).(pulumi.BoolOutput)
 }
@@ -198,13 +182,19 @@ func (o LookupInstallationTemplateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Date of last modification of the base image.
-func (o LookupInstallationTemplateResultOutput) LastModification() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.LastModification }).(pulumi.StringOutput)
+// Represents the questions of the expected answers in the userMetadata field.
+func (o LookupInstallationTemplateResultOutput) Inputs() GetInstallationTemplateInputArrayOutput {
+	return o.ApplyT(func(v LookupInstallationTemplateResult) []GetInstallationTemplateInput { return v.Inputs }).(GetInstallationTemplateInputArrayOutput)
 }
 
+// Whether this template supports LVM.
 func (o LookupInstallationTemplateResultOutput) LvmReady() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.LvmReady }).(pulumi.BoolOutput)
+}
+
+// Partitioning customization is not available for this OS template.
+func (o LookupInstallationTemplateResultOutput) NoPartitioning() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.NoPartitioning }).(pulumi.BoolOutput)
 }
 
 func (o LookupInstallationTemplateResultOutput) PartitionSchemes() GetInstallationTemplatePartitionSchemeTypeArrayOutput {
@@ -213,19 +203,14 @@ func (o LookupInstallationTemplateResultOutput) PartitionSchemes() GetInstallati
 	}).(GetInstallationTemplatePartitionSchemeTypeArrayOutput)
 }
 
-// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
-func (o LookupInstallationTemplateResultOutput) SupportsDistributionKernel() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.SupportsDistributionKernel }).(pulumi.BoolOutput)
+// Template supports RAID0 and RAID1 on 2 disks.
+func (o LookupInstallationTemplateResultOutput) SoftRaidOnlyMirroring() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.SoftRaidOnlyMirroring }).(pulumi.BoolOutput)
 }
 
-// This distribution supports RTM software.
-func (o LookupInstallationTemplateResultOutput) SupportsRtm() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.SupportsRtm }).(pulumi.BoolOutput)
-}
-
-// This distribution supports the microsoft SQL server.
-func (o LookupInstallationTemplateResultOutput) SupportsSqlServer() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupInstallationTemplateResult) bool { return v.SupportsSqlServer }).(pulumi.BoolOutput)
+// Subfamily of the template.
+func (o LookupInstallationTemplateResultOutput) Subfamily() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstallationTemplateResult) string { return v.Subfamily }).(pulumi.StringOutput)
 }
 
 func (o LookupInstallationTemplateResultOutput) TemplateName() pulumi.StringOutput {

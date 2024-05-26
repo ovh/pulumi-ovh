@@ -916,6 +916,143 @@ func (o IpServiceRoutedToArrayOutput) Index(i pulumi.IntInput) IpServiceRoutedTo
 	}).(IpServiceRoutedToOutput)
 }
 
+type MoveRoutedTo struct {
+	// Name of the service to route the IP to. IP will be parked if this value is an empty string
+	ServiceName string `pulumi:"serviceName"`
+}
+
+// MoveRoutedToInput is an input type that accepts MoveRoutedToArgs and MoveRoutedToOutput values.
+// You can construct a concrete instance of `MoveRoutedToInput` via:
+//
+//	MoveRoutedToArgs{...}
+type MoveRoutedToInput interface {
+	pulumi.Input
+
+	ToMoveRoutedToOutput() MoveRoutedToOutput
+	ToMoveRoutedToOutputWithContext(context.Context) MoveRoutedToOutput
+}
+
+type MoveRoutedToArgs struct {
+	// Name of the service to route the IP to. IP will be parked if this value is an empty string
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (MoveRoutedToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoveRoutedTo)(nil)).Elem()
+}
+
+func (i MoveRoutedToArgs) ToMoveRoutedToOutput() MoveRoutedToOutput {
+	return i.ToMoveRoutedToOutputWithContext(context.Background())
+}
+
+func (i MoveRoutedToArgs) ToMoveRoutedToOutputWithContext(ctx context.Context) MoveRoutedToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoveRoutedToOutput)
+}
+
+func (i MoveRoutedToArgs) ToMoveRoutedToPtrOutput() MoveRoutedToPtrOutput {
+	return i.ToMoveRoutedToPtrOutputWithContext(context.Background())
+}
+
+func (i MoveRoutedToArgs) ToMoveRoutedToPtrOutputWithContext(ctx context.Context) MoveRoutedToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoveRoutedToOutput).ToMoveRoutedToPtrOutputWithContext(ctx)
+}
+
+// MoveRoutedToPtrInput is an input type that accepts MoveRoutedToArgs, MoveRoutedToPtr and MoveRoutedToPtrOutput values.
+// You can construct a concrete instance of `MoveRoutedToPtrInput` via:
+//
+//	        MoveRoutedToArgs{...}
+//
+//	or:
+//
+//	        nil
+type MoveRoutedToPtrInput interface {
+	pulumi.Input
+
+	ToMoveRoutedToPtrOutput() MoveRoutedToPtrOutput
+	ToMoveRoutedToPtrOutputWithContext(context.Context) MoveRoutedToPtrOutput
+}
+
+type moveRoutedToPtrType MoveRoutedToArgs
+
+func MoveRoutedToPtr(v *MoveRoutedToArgs) MoveRoutedToPtrInput {
+	return (*moveRoutedToPtrType)(v)
+}
+
+func (*moveRoutedToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoveRoutedTo)(nil)).Elem()
+}
+
+func (i *moveRoutedToPtrType) ToMoveRoutedToPtrOutput() MoveRoutedToPtrOutput {
+	return i.ToMoveRoutedToPtrOutputWithContext(context.Background())
+}
+
+func (i *moveRoutedToPtrType) ToMoveRoutedToPtrOutputWithContext(ctx context.Context) MoveRoutedToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoveRoutedToPtrOutput)
+}
+
+type MoveRoutedToOutput struct{ *pulumi.OutputState }
+
+func (MoveRoutedToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoveRoutedTo)(nil)).Elem()
+}
+
+func (o MoveRoutedToOutput) ToMoveRoutedToOutput() MoveRoutedToOutput {
+	return o
+}
+
+func (o MoveRoutedToOutput) ToMoveRoutedToOutputWithContext(ctx context.Context) MoveRoutedToOutput {
+	return o
+}
+
+func (o MoveRoutedToOutput) ToMoveRoutedToPtrOutput() MoveRoutedToPtrOutput {
+	return o.ToMoveRoutedToPtrOutputWithContext(context.Background())
+}
+
+func (o MoveRoutedToOutput) ToMoveRoutedToPtrOutputWithContext(ctx context.Context) MoveRoutedToPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoveRoutedTo) *MoveRoutedTo {
+		return &v
+	}).(MoveRoutedToPtrOutput)
+}
+
+// Name of the service to route the IP to. IP will be parked if this value is an empty string
+func (o MoveRoutedToOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v MoveRoutedTo) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+type MoveRoutedToPtrOutput struct{ *pulumi.OutputState }
+
+func (MoveRoutedToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoveRoutedTo)(nil)).Elem()
+}
+
+func (o MoveRoutedToPtrOutput) ToMoveRoutedToPtrOutput() MoveRoutedToPtrOutput {
+	return o
+}
+
+func (o MoveRoutedToPtrOutput) ToMoveRoutedToPtrOutputWithContext(ctx context.Context) MoveRoutedToPtrOutput {
+	return o
+}
+
+func (o MoveRoutedToPtrOutput) Elem() MoveRoutedToOutput {
+	return o.ApplyT(func(v *MoveRoutedTo) MoveRoutedTo {
+		if v != nil {
+			return *v
+		}
+		var ret MoveRoutedTo
+		return ret
+	}).(MoveRoutedToOutput)
+}
+
+// Name of the service to route the IP to. IP will be parked if this value is an empty string
+func (o MoveRoutedToPtrOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MoveRoutedTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetServiceRoutedTo struct {
 	// The service name
 	ServiceName string `pulumi:"serviceName"`
@@ -1028,6 +1165,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IpServicePlanOptionConfigurationArrayInput)(nil)).Elem(), IpServicePlanOptionConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IpServiceRoutedToInput)(nil)).Elem(), IpServiceRoutedToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IpServiceRoutedToArrayInput)(nil)).Elem(), IpServiceRoutedToArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoveRoutedToInput)(nil)).Elem(), MoveRoutedToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoveRoutedToPtrInput)(nil)).Elem(), MoveRoutedToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceRoutedToInput)(nil)).Elem(), GetServiceRoutedToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceRoutedToArrayInput)(nil)).Elem(), GetServiceRoutedToArray{})
 	pulumi.RegisterOutputType(IpServiceOrderOutput{})
@@ -1044,6 +1183,8 @@ func init() {
 	pulumi.RegisterOutputType(IpServicePlanOptionConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(IpServiceRoutedToOutput{})
 	pulumi.RegisterOutputType(IpServiceRoutedToArrayOutput{})
+	pulumi.RegisterOutputType(MoveRoutedToOutput{})
+	pulumi.RegisterOutputType(MoveRoutedToPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceRoutedToOutput{})
 	pulumi.RegisterOutputType(GetServiceRoutedToArrayOutput{})
 }

@@ -33,6 +33,12 @@ namespace Pulumi.Ovh.Iam
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Resource groups can be imported by using their id.
+    /// 
+    /// &gt; Read only resource groups cannot be imported
     /// </summary>
     [OvhResourceType("ovh:Iam/resourceGroup:ResourceGroup")]
     public partial class ResourceGroup : global::Pulumi.CustomResource

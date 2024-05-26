@@ -48,11 +48,11 @@ import (
 //				return err
 //			}
 //			_, err = Domain.NewZone(ctx, "zoneZone", &Domain.ZoneArgs{
-//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				Plan: &domain.ZonePlanArgs{
-//					Duration:    *pulumi.String(zoneCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    *pulumi.String(zoneCartProductPlan.PlanCode),
-//					PricingMode: *pulumi.String(zoneCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(zoneCartProductPlan.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(zoneCartProductPlan.PlanCode),
+//					PricingMode: pulumi.String(zoneCartProductPlan.SelectedPrices[0].PricingMode),
 //					Configurations: domain.ZonePlanConfigurationArray{
 //						&domain.ZonePlanConfigurationArgs{
 //							Label: pulumi.String("zone"),
@@ -81,9 +81,7 @@ import (
 // bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:Domain/zone:Zone zone order_id
-//
+// $ pulumi import ovh:Domain/zone:Zone zone order_id
 // ```
 type Zone struct {
 	pulumi.CustomResourceState
@@ -205,6 +203,8 @@ func (ZoneState) ElementType() reflect.Type {
 }
 
 type zoneArgs struct {
+	// Details about an Order
+	Orders []ZoneOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
@@ -219,6 +219,8 @@ type zoneArgs struct {
 
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
+	// Details about an Order
+	Orders ZoneOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode

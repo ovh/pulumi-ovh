@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -35,8 +33,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCapabilitiesContainerFilterResult> InvokeAsync(GetCapabilitiesContainerFilterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCapabilitiesContainerFilterResult>("ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter", args ?? new GetCapabilitiesContainerFilterArgs(), options.WithDefaults());
@@ -44,9 +40,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -65,8 +59,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCapabilitiesContainerFilterResult> Invoke(GetCapabilitiesContainerFilterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesContainerFilterResult>("ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter", args ?? new GetCapabilitiesContainerFilterInvokeArgs(), options.WithDefaults());

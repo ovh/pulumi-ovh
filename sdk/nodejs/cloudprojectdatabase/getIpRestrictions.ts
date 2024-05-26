@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use the list of IP restrictions associated with a public cloud project.
+ * Deprecated: Use ipRestrictions field in cloudProjectDatabase datasource instead.
+ *
+ * Use this data source to get the list of IP restrictions associated with a public cloud project.
  *
  * ## Example Usage
  *
@@ -79,7 +81,9 @@ export interface GetIpRestrictionsResult {
     readonly serviceName: string;
 }
 /**
- * Use the list of IP restrictions associated with a public cloud project.
+ * Deprecated: Use ipRestrictions field in cloudProjectDatabase datasource instead.
+ *
+ * Use this data source to get the list of IP restrictions associated with a public cloud project.
  *
  * ## Example Usage
  *

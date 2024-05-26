@@ -58,18 +58,18 @@ import (
 //				return err
 //			}
 //			_, err = IpLoadBalancing.NewLoadBalancer(ctx, "iplb-lb1", &IpLoadBalancing.LoadBalancerArgs{
-//				OvhSubsidiary: *pulumi.String(mycart.OvhSubsidiary),
+//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				DisplayName:   pulumi.String("my ip loadbalancing"),
 //				Plan: &iploadbalancing.LoadBalancerPlanArgs{
-//					Duration:    *pulumi.String(iplb.SelectedPrices[0].Duration),
-//					PlanCode:    *pulumi.String(iplb.PlanCode),
-//					PricingMode: *pulumi.String(iplb.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(iplb.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(iplb.PlanCode),
+//					PricingMode: pulumi.String(iplb.SelectedPrices[0].PricingMode),
 //				},
 //				PlanOptions: iploadbalancing.LoadBalancerPlanOptionArray{
 //					&iploadbalancing.LoadBalancerPlanOptionArgs{
-//						Duration:    *pulumi.String(bhs.SelectedPrices[0].Duration),
-//						PlanCode:    *pulumi.String(bhs.PlanCode),
-//						PricingMode: *pulumi.String(bhs.SelectedPrices[0].PricingMode),
+//						Duration:    pulumi.String(bhs.SelectedPrices[0].Duration),
+//						PlanCode:    pulumi.String(bhs.PlanCode),
+//						PricingMode: pulumi.String(bhs.SelectedPrices[0].PricingMode),
 //					},
 //				},
 //			})
@@ -258,6 +258,8 @@ func (LoadBalancerState) ElementType() reflect.Type {
 type loadBalancerArgs struct {
 	// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
 	DisplayName *string `pulumi:"displayName"`
+	// Details about an Order
+	Orders []LoadBalancerOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
@@ -276,6 +278,8 @@ type loadBalancerArgs struct {
 type LoadBalancerArgs struct {
 	// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
 	DisplayName pulumi.StringPtrInput
+	// Details about an Order
+	Orders LoadBalancerOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
 	OvhSubsidiary pulumi.StringInput
 	// Ovh payment mode

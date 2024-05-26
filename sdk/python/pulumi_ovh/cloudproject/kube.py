@@ -36,7 +36,7 @@ class KubeArgs:
         :param pulumi.Input[Sequence[pulumi.Input['KubeCustomizationArgs']]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
         :param pulumi.Input[str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
         :param pulumi.Input[str] name: The name of the kubernetes cluster.
-        :param pulumi.Input['KubePrivateNetworkConfigurationArgs'] private_network_configuration: The private network configuration
+        :param pulumi.Input['KubePrivateNetworkConfigurationArgs'] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[str] private_network_id: OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
@@ -158,7 +158,7 @@ class KubeArgs:
     @pulumi.getter(name="privateNetworkConfiguration")
     def private_network_configuration(self) -> Optional[pulumi.Input['KubePrivateNetworkConfigurationArgs']]:
         """
-        The private network configuration
+        The private network configuration. If this is set then the 2 parameters below shall be defined.
         """
         return pulumi.get(self, "private_network_configuration")
 
@@ -240,7 +240,7 @@ class _KubeState:
         :param pulumi.Input[str] name: The name of the kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] next_upgrade_versions: Kubernetes versions available for upgrade.
         :param pulumi.Input[str] nodes_url: Cluster nodes URL.
-        :param pulumi.Input['KubePrivateNetworkConfigurationArgs'] private_network_configuration: The private network configuration
+        :param pulumi.Input['KubePrivateNetworkConfigurationArgs'] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[str] private_network_id: OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
@@ -432,7 +432,7 @@ class _KubeState:
     @pulumi.getter(name="privateNetworkConfiguration")
     def private_network_configuration(self) -> Optional[pulumi.Input['KubePrivateNetworkConfigurationArgs']]:
         """
-        The private network configuration
+        The private network configuration. If this is set then the 2 parameters below shall be defined.
         """
         return pulumi.get(self, "private_network_configuration")
 
@@ -547,10 +547,12 @@ class Kube(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash
+        OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
+
+        bash
 
         ```sh
-         $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
+        $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -560,7 +562,7 @@ class Kube(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeCustomizationArgs']]]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
         :param pulumi.Input[str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
         :param pulumi.Input[str] name: The name of the kubernetes cluster.
-        :param pulumi.Input[pulumi.InputType['KubePrivateNetworkConfigurationArgs']] private_network_configuration: The private network configuration
+        :param pulumi.Input[pulumi.InputType['KubePrivateNetworkConfigurationArgs']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[str] private_network_id: OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
@@ -578,10 +580,12 @@ class Kube(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash
+        OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
+
+        bash
 
         ```sh
-         $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
+        $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -691,7 +695,7 @@ class Kube(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] next_upgrade_versions: Kubernetes versions available for upgrade.
         :param pulumi.Input[str] nodes_url: Cluster nodes URL.
-        :param pulumi.Input[pulumi.InputType['KubePrivateNetworkConfigurationArgs']] private_network_configuration: The private network configuration
+        :param pulumi.Input[pulumi.InputType['KubePrivateNetworkConfigurationArgs']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[str] private_network_id: OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
@@ -822,7 +826,7 @@ class Kube(pulumi.CustomResource):
     @pulumi.getter(name="privateNetworkConfiguration")
     def private_network_configuration(self) -> pulumi.Output[Optional['outputs.KubePrivateNetworkConfiguration']]:
         """
-        The private network configuration
+        The private network configuration. If this is set then the 2 parameters below shall be defined.
         """
         return pulumi.get(self, "private_network_configuration")
 

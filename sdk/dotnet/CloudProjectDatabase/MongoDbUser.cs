@@ -12,10 +12,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// <summary>
     /// ## Import
     /// 
-    /// OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+    /// OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+    /// 
+    /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
+    /// $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser")]
@@ -34,7 +36,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -52,8 +54,25 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string?> PasswordReset { get; private set; } = null!;
 
         /// <summary>
-        /// Roles the user belongs to.
+        /// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
         /// Available roles:
+        /// * `backup@admin`
+        /// * `clusterAdmin@admin`
+        /// * `clusterManager@admin`
+        /// * `clusterMonitor@admin`
+        /// * `dbAdmin@(defined db)`
+        /// * `dbAdminAnyDatabase@admin`
+        /// * `dbOwner@(defined db)`
+        /// * `enableSharding@(defined db)`
+        /// * `hostManager@admin`
+        /// * `read@(defined db)`
+        /// * `readAnyDatabase@admin`
+        /// * `readWrite@(defined db)`
+        /// * `readWriteAnyDatabase@admin`
+        /// * `restore@admin`
+        /// * `root@admin`
+        /// * `userAdmin@(defined db)`
+        /// * `userAdminAnyDatabase@admin`
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
@@ -129,7 +148,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -144,8 +163,25 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Roles the user belongs to.
+        /// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
         /// Available roles:
+        /// * `backup@admin`
+        /// * `clusterAdmin@admin`
+        /// * `clusterManager@admin`
+        /// * `clusterMonitor@admin`
+        /// * `dbAdmin@(defined db)`
+        /// * `dbAdminAnyDatabase@admin`
+        /// * `dbOwner@(defined db)`
+        /// * `enableSharding@(defined db)`
+        /// * `hostManager@admin`
+        /// * `read@(defined db)`
+        /// * `readAnyDatabase@admin`
+        /// * `readWrite@(defined db)`
+        /// * `readWriteAnyDatabase@admin`
+        /// * `restore@admin`
+        /// * `root@admin`
+        /// * `userAdmin@(defined db)`
+        /// * `userAdminAnyDatabase@admin`
         /// </summary>
         public InputList<string> Roles
         {
@@ -181,7 +217,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -212,8 +248,25 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Roles the user belongs to.
+        /// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
         /// Available roles:
+        /// * `backup@admin`
+        /// * `clusterAdmin@admin`
+        /// * `clusterManager@admin`
+        /// * `clusterMonitor@admin`
+        /// * `dbAdmin@(defined db)`
+        /// * `dbAdminAnyDatabase@admin`
+        /// * `dbOwner@(defined db)`
+        /// * `enableSharding@(defined db)`
+        /// * `hostManager@admin`
+        /// * `read@(defined db)`
+        /// * `readAnyDatabase@admin`
+        /// * `readWrite@(defined db)`
+        /// * `readWriteAnyDatabase@admin`
+        /// * `restore@admin`
+        /// * `root@admin`
+        /// * `userAdmin@(defined db)`
+        /// * `userAdminAnyDatabase@admin`
         /// </summary>
         public InputList<string> Roles
         {

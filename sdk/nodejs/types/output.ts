@@ -5,6 +5,87 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetInstallationTemplateInput {
+    default: string;
+    /**
+     * Information about this template.
+     */
+    description: string;
+    enums: string[];
+    mandatory: boolean;
+    name: string;
+    type: string;
+}
+
+export interface GetInstallationTemplateLicense {
+    os: outputs.GetInstallationTemplateLicenseO[];
+    usages: outputs.GetInstallationTemplateLicenseUsage[];
+}
+
+export interface GetInstallationTemplateLicenseO {
+    names: string[];
+    url: string;
+}
+
+export interface GetInstallationTemplateLicenseUsage {
+    names: string[];
+    url: string;
+}
+
+export interface GetInstallationTemplateProject {
+    /**
+     * OS template project OS details
+     */
+    os: outputs.GetInstallationTemplateProjectO[];
+    usages: outputs.GetInstallationTemplateProjectUsage[];
+}
+
+export interface GetInstallationTemplateProjectO {
+    /**
+     * OS template project item governance
+     */
+    governances: string[];
+    /**
+     * OS template project item name
+     */
+    name: string;
+    /**
+     * OS template project item release notes
+     */
+    releaseNotes: string;
+    /**
+     * OS template project item url
+     */
+    url: string;
+    /**
+     * OS template project item version
+     */
+    version: string;
+}
+
+export interface GetInstallationTemplateProjectUsage {
+    /**
+     * OS template project item governance
+     */
+    governances: string[];
+    /**
+     * OS template project item name
+     */
+    name: string;
+    /**
+     * OS template project item release notes
+     */
+    releaseNotes: string;
+    /**
+     * OS template project item url
+     */
+    url: string;
+    /**
+     * OS template project item version
+     */
+    version: string;
+}
+
 export interface GetServerVni {
     /**
      * VirtualNetworkInterface activation state
@@ -36,7 +117,118 @@ export interface GetServerVni {
     vrack: string;
 }
 
+export namespace Cloud {
+    export interface GetProjectIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags: {[key: string]: string};
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn: string;
+    }
+
+    export interface GetProjectsProject {
+        /**
+         * Project access
+         */
+        access: string;
+        /**
+         * Project creation date
+         */
+        creationDate: string;
+        /**
+         * Description of your project
+         */
+        description: string;
+        /**
+         * Expiration date of your project. After this date, your project will be deleted
+         */
+        expiration: string;
+        /**
+         * IAM resource information
+         */
+        iam: outputs.Cloud.GetProjectsProjectIam;
+        /**
+         * Manual quota prevent automatic quota upgrade
+         */
+        manualQuota: boolean;
+        /**
+         * Project order ID
+         */
+        orderId: number;
+        /**
+         * Order plan code
+         */
+        planCode: string;
+        /**
+         * Project ID
+         */
+        projectId: string;
+        /**
+         * Project name
+         */
+        projectName: string;
+        /**
+         * ID of the public cloud project
+         */
+        serviceName: string;
+        /**
+         * Current status
+         */
+        status: string;
+        /**
+         * Project unleashed
+         */
+        unleash: boolean;
+    }
+
+    export interface GetProjectsProjectIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags: {[key: string]: string};
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn: string;
+    }
+
+}
+
 export namespace CloudProject {
+    export interface AlertingFormattedMonthlyThreshold {
+        /**
+         * Currency of the monthly threshold
+         */
+        currencyCode: string;
+        /**
+         * Text representation of the monthly threshold
+         */
+        text: string;
+        /**
+         * Value of the monthly threshold
+         */
+        value: number;
+    }
+
     export interface ContainerRegistryPlan {
         /**
          * Plan code from the catalog
@@ -121,6 +313,21 @@ export namespace CloudProject {
         uri: string;
     }
 
+    export interface DatabaseIpRestriction {
+        /**
+         * Description of the IP restriction
+         */
+        description?: string;
+        /**
+         * Authorized IP
+         */
+        ip?: string;
+        /**
+         * Current status of the cluster.
+         */
+        status: string;
+    }
+
     export interface DatabaseNode {
         /**
          * Private network id in which the node should be deployed. It's the regional openstackId of the private network
@@ -135,6 +342,47 @@ export namespace CloudProject {
          * Private subnet ID in which the node is.
          */
         subnetId?: string;
+    }
+
+    export interface GatewayExternalInformation {
+        /**
+         * List of external ips of the gateway.
+         */
+        ips: outputs.CloudProject.GatewayExternalInformationIp[];
+        /**
+         * ID of the private network.
+         */
+        networkId: string;
+    }
+
+    export interface GatewayExternalInformationIp {
+        /**
+         * IP of the interface.
+         */
+        ip: string;
+        /**
+         * ID of the subnet.
+         */
+        subnetId: string;
+    }
+
+    export interface GatewayInterface {
+        /**
+         * ID of the interface.
+         */
+        id: string;
+        /**
+         * IP of the interface.
+         */
+        ip: string;
+        /**
+         * ID of the private network.
+         */
+        networkId: string;
+        /**
+         * ID of the subnet.
+         */
+        subnetId: string;
     }
 
     export interface GetCapabilitiesContainerFilterFeature {
@@ -277,7 +525,7 @@ export namespace CloudProject {
         /**
          * Kubernetes API server customization
          *
-         * @deprecated Use customization_apiserver instead
+         * @deprecated Use customizationApiserver instead
          */
         apiservers: outputs.CloudProject.GetKubeCustomizationApiserver[];
     }
@@ -401,18 +649,39 @@ export namespace CloudProject {
     }
 
     export interface GetKubeNodePoolTemplate {
+        /**
+         * metadata
+         */
         metadata?: outputs.CloudProject.GetKubeNodePoolTemplateMetadata;
+        /**
+         * spec
+         */
         spec?: outputs.CloudProject.GetKubeNodePoolTemplateSpec;
     }
 
     export interface GetKubeNodePoolTemplateMetadata {
+        /**
+         * annotations
+         */
         annotations?: {[key: string]: string};
+        /**
+         * finalizers
+         */
         finalizers?: string[];
+        /**
+         * labels
+         */
         labels?: {[key: string]: string};
     }
 
     export interface GetKubeNodePoolTemplateSpec {
+        /**
+         * taints
+         */
         taints?: {[key: string]: any}[];
+        /**
+         * unschedulable
+         */
         unschedulable?: boolean;
     }
 
@@ -560,7 +829,7 @@ export namespace CloudProject {
         /**
          * Kubernetes API server customization
          *
-         * @deprecated Use customization_apiserver instead
+         * @deprecated Use customizationApiserver instead
          */
         apiservers: outputs.CloudProject.KubeCustomizationApiserver[];
     }
@@ -573,13 +842,7 @@ export namespace CloudProject {
     }
 
     export interface KubeCustomizationApiserverAdmissionplugin {
-        /**
-         * Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
-         */
         disableds: string[];
-        /**
-         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-         */
         enableds: string[];
     }
 
@@ -595,40 +858,16 @@ export namespace CloudProject {
     }
 
     export interface KubeCustomizationKubeProxyIptables {
-        /**
-         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
-         */
         minSyncPeriod?: string;
-        /**
-         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-         */
         syncPeriod?: string;
     }
 
     export interface KubeCustomizationKubeProxyIpvs {
-        /**
-         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
-         */
         minSyncPeriod?: string;
-        /**
-         * IPVS scheduler.
-         */
         scheduler?: string;
-        /**
-         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-         */
         syncPeriod?: string;
-        /**
-         * Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-         */
         tcpFinTimeout?: string;
-        /**
-         * Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-         */
         tcpTimeout?: string;
-        /**
-         * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-         */
         udpTimeout?: string;
     }
 
@@ -653,37 +892,37 @@ export namespace CloudProject {
 
     export interface KubeNodePoolTemplate {
         /**
-         * Metadata of each node in the pool
+         * metadata
          */
         metadata: outputs.CloudProject.KubeNodePoolTemplateMetadata;
         /**
-         * Spec of each node in the pool
+         * spec
          */
         spec: outputs.CloudProject.KubeNodePoolTemplateSpec;
     }
 
     export interface KubeNodePoolTemplateMetadata {
         /**
-         * Annotations to apply to each node
+         * annotations
          */
         annotations: {[key: string]: string};
         /**
-         * Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+         * finalizers
          */
         finalizers: string[];
         /**
-         * Labels to apply to each node
+         * labels
          */
         labels: {[key: string]: string};
     }
 
     export interface KubeNodePoolTemplateSpec {
         /**
-         * Taints to apply to each node
+         * taints
          */
         taints: {[key: string]: any}[];
         /**
-         * If true, set nodes as un-schedulable
+         * unschedulable
          */
         unschedulable: boolean;
     }
@@ -695,6 +934,11 @@ export namespace CloudProject {
         defaultVrackGateway: string;
         /**
          * Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+         *
+         * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         privateNetworkRoutingAsDefault: boolean;
     }
@@ -797,7 +1041,7 @@ export namespace CloudProject {
          */
         duration: string;
         /**
-         * Plan code
+         * Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
          */
         planCode: string;
         /**
@@ -976,6 +1220,21 @@ export namespace CloudProjectDatabase {
         uri: string;
     }
 
+    export interface GetDatabaseIpRestriction {
+        /**
+         * Description of the IP restriction
+         */
+        description: string;
+        /**
+         * Authorized IP
+         */
+        ip: string;
+        /**
+         * Current status of the cluster.
+         */
+        status: string;
+    }
+
     export interface GetDatabaseNode {
         /**
          * Private network id in which the node should be deployed. It's the regional openstackId of the private network
@@ -1019,11 +1278,11 @@ export namespace Dbaas {
 
     export interface LogsInputConfigurationFlowgger {
         /**
-         * Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
+         * Type of format to decode
          */
         logFormat: string;
         /**
-         * Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
+         * Indicates how messages are delimited
          */
         logFraming: string;
     }
@@ -1046,13 +1305,280 @@ export namespace Dbaas {
 }
 
 export namespace Dedicated {
-    export interface ServerInstallTaskDetails {
+    export interface GetServerSpecificationsHardwareDefaultHardwareRaidSize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsHardwareDiskGroup {
         /**
-         * Template change log details.
-         *
-         * @deprecated field is not used anymore
+         * Default hardware raid size for this disk group
          */
-        changeLog?: string;
+        defaultHardwareRaidSize: outputs.Dedicated.GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize;
+        /**
+         * Default hardware raid type for this disk group
+         */
+        defaultHardwareRaidType: string;
+        /**
+         * Expansion card description
+         */
+        description: string;
+        /**
+         * Identifier of this disk group
+         */
+        diskGroupId: number;
+        /**
+         * Disk capacity
+         */
+        diskSize: outputs.Dedicated.GetServerSpecificationsHardwareDiskGroupDiskSize;
+        /**
+         * Type of the disk (SSD, SATA, SAS, ...)
+         */
+        diskType: string;
+        /**
+         * Number of disks in this group
+         */
+        numberOfDisks: number;
+        /**
+         * Raid controller, if any, managing this group of disks
+         */
+        raidController: string;
+    }
+
+    export interface GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsHardwareDiskGroupDiskSize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsHardwareExpansionCard {
+        /**
+         * Expansion card description
+         */
+        description: string;
+        /**
+         * Expansion card type enum
+         */
+        type: string;
+    }
+
+    export interface GetServerSpecificationsHardwareMemorySize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsHardwareUsbKey {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkBandwidth {
+        /**
+         * Bandwidth limitation Internet to OVH
+         */
+        internetToOvh: outputs.Dedicated.GetServerSpecificationsNetworkBandwidthInternetToOvh;
+        /**
+         * Bandwidth limitation OVH to Internet
+         */
+        ovhToInternet: outputs.Dedicated.GetServerSpecificationsNetworkBandwidthOvhToInternet;
+        /**
+         * Bandwidth limitation OVH to OVH
+         */
+        ovhToOvh: outputs.Dedicated.GetServerSpecificationsNetworkBandwidthOvhToOvh;
+        /**
+         * Bandwidth offer type (included┃standard)
+         */
+        type: string;
+    }
+
+    export interface GetServerSpecificationsNetworkBandwidthInternetToOvh {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkBandwidthOvhToInternet {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkBandwidthOvhToOvh {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkConnectionVal {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkOla {
+        /**
+         * Is the OLA feature available
+         */
+        available: boolean;
+        /**
+         * Supported modes
+         */
+        availableModes: outputs.Dedicated.GetServerSpecificationsNetworkOlaAvailableMode[];
+        /**
+         * Supported modes (DEPRECATED)
+         */
+        supportedModes: string[];
+    }
+
+    export interface GetServerSpecificationsNetworkOlaAvailableMode {
+        /**
+         * Whether it is the default configuration of the server
+         */
+        default: boolean;
+        /**
+         * Interface layout
+         */
+        interfaces: outputs.Dedicated.GetServerSpecificationsNetworkOlaAvailableModeInterface[];
+        /**
+         * Switch name
+         */
+        name: string;
+    }
+
+    export interface GetServerSpecificationsNetworkOlaAvailableModeInterface {
+        /**
+         * Interface aggregation status
+         */
+        aggregation: boolean;
+        /**
+         * Interface count
+         */
+        count: number;
+        /**
+         * Bandwidth offer type (included┃standard)
+         */
+        type: string;
+    }
+
+    export interface GetServerSpecificationsNetworkRouting {
+        /**
+         * Ipv4 routing details
+         */
+        ipv4: outputs.Dedicated.GetServerSpecificationsNetworkRoutingIpv4;
+        /**
+         * Ipv6 routing details
+         */
+        ipv6: outputs.Dedicated.GetServerSpecificationsNetworkRoutingIpv6;
+    }
+
+    export interface GetServerSpecificationsNetworkRoutingIpv4 {
+        /**
+         * Server gateway
+         */
+        gateway: string;
+        /**
+         * Server main IP
+         */
+        ip: string;
+        /**
+         * Server network
+         */
+        network: string;
+    }
+
+    export interface GetServerSpecificationsNetworkRoutingIpv6 {
+        /**
+         * Server gateway
+         */
+        gateway: string;
+        /**
+         * Server main IP
+         */
+        ip: string;
+        /**
+         * Server network
+         */
+        network: string;
+    }
+
+    export interface GetServerSpecificationsNetworkSwitching {
+        /**
+         * Switch name
+         */
+        name: string;
+    }
+
+    export interface GetServerSpecificationsNetworkTraffic {
+        /**
+         * Monthly input traffic quota allowed
+         */
+        inputQuotaSize: outputs.Dedicated.GetServerSpecificationsNetworkTrafficInputQuotaSize;
+        /**
+         * Monthly input traffic consumed this month
+         */
+        inputQuotaUsed: outputs.Dedicated.GetServerSpecificationsNetworkTrafficInputQuotaUsed;
+        /**
+         * Whether bandwidth is throttleted for being over quota
+         */
+        isThrottled: boolean;
+        /**
+         * Monthly output traffic quota allowed
+         */
+        outputQuotaSize: outputs.Dedicated.GetServerSpecificationsNetworkTrafficOutputQuotaSize;
+        /**
+         * Monthly output traffic consumed this month
+         */
+        outputQuotaUsed: outputs.Dedicated.GetServerSpecificationsNetworkTrafficOutputQuotaUsed;
+        /**
+         * Next reset quota date for traffic counter
+         */
+        resetQuotaDate: string;
+    }
+
+    export interface GetServerSpecificationsNetworkTrafficInputQuotaSize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkTrafficInputQuotaUsed {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkTrafficOutputQuotaSize {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkTrafficOutputQuotaUsed {
+        unit: string;
+        value: number;
+    }
+
+    export interface GetServerSpecificationsNetworkVmac {
+        /**
+         * Whether server is compatible vmac
+         */
+        supported: boolean;
+    }
+
+    export interface GetServerSpecificationsNetworkVrack {
+        /**
+         * vrack bandwidth limitation
+         */
+        bandwidth: outputs.Dedicated.GetServerSpecificationsNetworkVrackBandwidth;
+        /**
+         * Bandwidth offer type (included┃standard)
+         */
+        type: string;
+    }
+
+    export interface GetServerSpecificationsNetworkVrackBandwidth {
+        unit: string;
+        value: number;
+    }
+
+    export interface ServerInstallTaskDetails {
         /**
          * Set up the server using the provided hostname instead of the default hostname.
          */
@@ -1062,19 +1588,7 @@ export namespace Dedicated {
          */
         diskGroupId?: number;
         /**
-         * set to true to install RTM.
-         */
-        installRtm?: boolean;
-        /**
-         * set to true to install sql server (Windows template only).
-         */
-        installSqlServer?: boolean;
-        /**
-         * language.
-         */
-        language?: string;
-        /**
-         * set to true to disable RAID.
+         * Set to true to disable RAID.
          */
         noRaid?: boolean;
         /**
@@ -1086,29 +1600,30 @@ export namespace Dedicated {
          */
         postInstallationScriptReturn?: string;
         /**
-         * set to true to make a hardware raid reset.
-         */
-        resetHwRaid?: boolean;
-        /**
          * soft raid devices.
          */
         softRaidDevices?: number;
+    }
+
+    export interface ServerInstallTaskUserMetadata {
         /**
-         * Name of the ssh key that should be installed. Password login will be disabled.
+         * The key for the user_metadata
          */
-        sshKeyName?: string;
+        key: string;
         /**
-         * Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
+         * The value for the user_metadata
          */
-        useDistribKernel?: boolean;
-        /**
-         * set to true to use SPLA.
-         */
-        useSpla?: boolean;
+        value: string;
     }
 
     export interface ServerNetworkingInterface {
+        /**
+         * Interface Mac address
+         */
         macs: string[];
+        /**
+         * Interface type
+         */
         type: string;
     }
 
@@ -1159,7 +1674,7 @@ export namespace Domain {
          */
         catalogName?: string;
         /**
-         * Representation of a configuration item for personalizing product
+         * Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
          */
         configurations?: outputs.Domain.ZonePlanConfiguration[];
         /**
@@ -1314,8 +1829,6 @@ export namespace Hosting {
         label: string;
         /**
          * Path to the resource in API.OVH.COM
-         *
-         * Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
          */
         value: string;
     }
@@ -1330,11 +1843,11 @@ export namespace Hosting {
          */
         configurations?: outputs.Hosting.PrivateDatabasePlanOptionConfiguration[];
         /**
-         * duration.
+         * Service duration
          */
         duration: string;
         /**
-         * Plan code.
+         * Plan code
          */
         planCode: string;
         /**
@@ -1350,8 +1863,6 @@ export namespace Hosting {
         label: string;
         /**
          * Path to the resource in API.OVH.COM
-         *
-         * Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
          */
         value: string;
     }
@@ -1501,6 +2012,13 @@ export namespace Ip {
         serviceName: string;
     }
 
+    export interface MoveRoutedTo {
+        /**
+         * Name of the service to route the IP to. IP will be parked if this value is an empty string
+         */
+        serviceName: string;
+    }
+
 }
 
 export namespace IpLoadBalancing {
@@ -1640,7 +2158,7 @@ export namespace IpLoadBalancing {
          */
         name: string;
         /**
-         * Plan code
+         * The billing planCode for this zone
          */
         planCode: string;
     }
@@ -1795,12 +2313,6 @@ export namespace IpLoadBalancing {
 export namespace Me {
     export interface GetInstallationTemplateCustomization {
         /**
-         * (DEPRECATED) Template change log details.
-         *
-         * @deprecated field is not used anymore
-         */
-        changeLog: string;
-        /**
          * Set up the server using the provided hostname instead of the default hostname.
          */
         customHostname: string;
@@ -1809,23 +2321,27 @@ export namespace Me {
          */
         postInstallationScriptLink: string;
         /**
-         * indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
+         * Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
          */
         postInstallationScriptReturn: string;
+    }
+
+    export interface GetInstallationTemplateInput {
+        default: string;
         /**
-         * (DEPRECATED) Rating.
-         *
-         * @deprecated field is not used anymore
+         * Information about this template.
          */
-        rating: number;
+        description: string;
+        enums: string[];
+        mandatory: boolean;
         /**
-         * Name of the ssh key that should be installed. Password login will be disabled.
+         * Hardware RAID name.
          */
-        sshKeyName: string;
+        name: string;
         /**
-         * Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
+         * Partition type.
          */
-        useDistributionKernel: boolean;
+        type: string;
     }
 
     export interface GetInstallationTemplatePartitionScheme {
@@ -1836,7 +2352,7 @@ export namespace Me {
         name: string;
         partitions: outputs.Me.GetInstallationTemplatePartitionSchemePartition[];
         /**
-         * on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
+         * On a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
          */
         priority: number;
     }
@@ -1866,27 +2382,27 @@ export namespace Me {
          */
         filesystem: string;
         /**
-         * partition mount point.
+         * Partition mount point.
          */
         mountpoint: string;
         /**
-         * step or order. specifies the creation order of the partition on the disk
+         * Step or order. Specifies the creation order of the partition on the disk.
          */
         order: number;
         /**
-         * raid partition type.
+         * Raid partition type.
          */
         raid: string;
         /**
-         * size of partition in MB, 0 => rest of the space.
+         * Size of partition in MB, 0 => rest of the space.
          */
         size: number;
         /**
-         * partition type.
+         * Partition type.
          */
         type: string;
         /**
-         * The volume name needed for proxmox distribution
+         * Volume name needed for proxmox distribution.
          */
         volumeName: string;
     }
@@ -1904,12 +2420,6 @@ export namespace Me {
 
     export interface InstallationTemplateCustomization {
         /**
-         * Template change log details.
-         *
-         * @deprecated field is not used anymore
-         */
-        changeLog?: string;
-        /**
          * Set up the server using the provided hostname instead of the default hostname.
          */
         customHostname?: string;
@@ -1921,20 +2431,18 @@ export namespace Me {
          * indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
          */
         postInstallationScriptReturn?: string;
+    }
+
+    export interface InstallationTemplateInput {
+        default: string;
         /**
-         * Rating.
-         *
-         * @deprecated field is not used anymore
+         * information about this template.
          */
-        rating?: number;
-        /**
-         * Name of the ssh key that should be installed. Password login will be disabled.
-         */
-        sshKeyName?: string;
-        /**
-         * Use the distribution's native kernel instead of the recommended OV
-         */
-        useDistributionKernel?: boolean;
+        description: string;
+        enums: string[];
+        mandatory: boolean;
+        name: string;
+        type: string;
     }
 
 }
@@ -2384,6 +2892,161 @@ export namespace Order {
          * The effective price
          */
         value: number;
+    }
+
+}
+
+export namespace Vps {
+    export interface VpsIam {
+        /**
+         * Custom display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags: {[key: string]: string};
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn: string;
+    }
+
+    export interface VpsModel {
+        /**
+         * All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
+         */
+        availableOptions: string[];
+        /**
+         * Datacenters where this model is available
+         */
+        datacenters: string[];
+        /**
+         * Disk capacity of this VPS
+         */
+        disk: number;
+        /**
+         * Maximum number of additional IPs
+         */
+        maximumAdditionnalIp: number;
+        /**
+         * RAM of the VPS
+         */
+        memory: number;
+        /**
+         * Name of the VPS
+         */
+        name: string;
+        /**
+         * Description of this VPS offer
+         */
+        offer: string;
+        /**
+         * Number of vcores
+         */
+        vcore: number;
+        /**
+         * All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+         */
+        version: string;
+    }
+
+    export interface VpsOrder {
+        date: string;
+        details: outputs.Vps.VpsOrderDetail[];
+        expirationDate: string;
+        orderId: number;
+    }
+
+    export interface VpsOrderDetail {
+        description: string;
+        /**
+         * Product type of item in order
+         */
+        detailType: string;
+        domain: string;
+        orderDetailId: number;
+        quantity: string;
+    }
+
+    export interface VpsPlan {
+        /**
+         * Representation of a configuration item for personalizing product
+         */
+        configurations: outputs.Vps.VpsPlanConfiguration[];
+        /**
+         * duration
+         */
+        duration: string;
+        /**
+         * Cart item to be linked
+         */
+        itemId?: number;
+        /**
+         * Plan code
+         */
+        planCode: string;
+        /**
+         * Pricing model identifier
+         */
+        pricingMode: string;
+        /**
+         * Quantity of product desired
+         */
+        quantity?: number;
+    }
+
+    export interface VpsPlanConfiguration {
+        /**
+         * Label for your configuration item
+         */
+        label: string;
+        /**
+         * Value or resource URL on API.OVH.COM of your configuration item
+         */
+        value: string;
+    }
+
+    export interface VpsPlanOption {
+        /**
+         * Representation of a configuration item for personalizing product
+         */
+        configurations: outputs.Vps.VpsPlanOptionConfiguration[];
+        /**
+         * duration
+         */
+        duration: string;
+        /**
+         * Cart item to be linked
+         */
+        itemId: number;
+        /**
+         * Plan code
+         */
+        planCode: string;
+        /**
+         * Pricing model identifier
+         */
+        pricingMode: string;
+        /**
+         * Quantity of product desired
+         */
+        quantity: number;
+    }
+
+    export interface VpsPlanOptionConfiguration {
+        /**
+         * Label for your configuration item
+         */
+        label: string;
+        /**
+         * Value or resource URL on API.OVH.COM of your configuration item
+         */
+        value: string;
     }
 
 }

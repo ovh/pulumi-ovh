@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  * import * as ovh from "@pulumi/ovh";
  *
  * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
@@ -37,6 +37,10 @@ import * as utilities from "../utilities";
  *     weight: 2,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * HTTP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
  */
 export class HttpFarmServer extends pulumi.CustomResource {
     /**

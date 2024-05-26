@@ -20,6 +20,7 @@ class VrackArgs:
                  plan: pulumi.Input['VrackPlanArgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input['VrackOrderArgs']]]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['VrackPlanOptionArgs']]]] = None):
         """
@@ -28,6 +29,7 @@ class VrackArgs:
         :param pulumi.Input['VrackPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[str] description: yourvrackdescription
         :param pulumi.Input[str] name: yourvrackname
+        :param pulumi.Input[Sequence[pulumi.Input['VrackOrderArgs']]] orders: Details about an Order
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[Sequence[pulumi.Input['VrackPlanOptionArgs']]] plan_options: Product Plan to order
         """
@@ -37,6 +39,8 @@ class VrackArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if orders is not None:
+            pulumi.set(__self__, "orders", orders)
         if payment_mean is not None:
             warnings.warn("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""", DeprecationWarning)
             pulumi.log.warn("""payment_mean is deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
@@ -92,6 +96,18 @@ class VrackArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VrackOrderArgs']]]]:
+        """
+        Details about an Order
+        """
+        return pulumi.get(self, "orders")
+
+    @orders.setter
+    def orders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VrackOrderArgs']]]]):
+        pulumi.set(self, "orders", value)
 
     @property
     @pulumi.getter(name="paymentMean")
@@ -286,6 +302,7 @@ class Vrack(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackOrderArgs']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[pulumi.InputType['VrackPlanArgs']]] = None,
@@ -316,18 +333,19 @@ class Vrack(pulumi.CustomResource):
 
         ## Import
 
-        vRack can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders).
+        vRack can be imported using the `service_name`.
 
         bash
 
         ```sh
-         $ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
+        $ pulumi import ovh:Vrack/vrack:Vrack vrack service_name
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: yourvrackdescription
         :param pulumi.Input[str] name: yourvrackname
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackOrderArgs']]]] orders: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['VrackPlanArgs']] plan: Product Plan to order
@@ -364,12 +382,12 @@ class Vrack(pulumi.CustomResource):
 
         ## Import
 
-        vRack can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders).
+        vRack can be imported using the `service_name`.
 
         bash
 
         ```sh
-         $ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
+        $ pulumi import ovh:Vrack/vrack:Vrack vrack service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -389,6 +407,7 @@ class Vrack(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackOrderArgs']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[pulumi.InputType['VrackPlanArgs']]] = None,
@@ -404,6 +423,7 @@ class Vrack(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            __props__.__dict__["orders"] = orders
             if ovh_subsidiary is None and not opts.urn:
                 raise TypeError("Missing required property 'ovh_subsidiary'")
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
@@ -413,7 +433,6 @@ class Vrack(pulumi.CustomResource):
             __props__.__dict__["plan"] = plan
             __props__.__dict__["plan_options"] = plan_options
             __props__.__dict__["vrack_urn"] = None
-            __props__.__dict__["orders"] = None
             __props__.__dict__["service_name"] = None
         super(Vrack, __self__).__init__(
             'ovh:Vrack/vrack:Vrack',

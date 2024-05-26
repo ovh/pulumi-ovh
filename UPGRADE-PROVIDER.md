@@ -107,3 +107,15 @@ or visit https://pulumi.com/docs/install/ for manual instructions and release no
 * A new Pull Request will be created at this step.
   
 * After approving and merging the PR, create a new tag and push it. A GH action will run and push the packages.
+
+# Changes without upgrade
+
+* Edit `provider/resources.go` file for example
+
+* Re-build the SDKs
+
+```
+$ make build
+```
+
+* When everything is done, create a new git tag

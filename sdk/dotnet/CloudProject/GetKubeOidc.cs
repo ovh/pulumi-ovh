@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -38,8 +36,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubeOidcResult> InvokeAsync(GetKubeOidcArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubeOidcResult>("ovh:CloudProject/getKubeOidc:getKubeOidc", args ?? new GetKubeOidcArgs(), options.WithDefaults());
@@ -47,9 +43,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -71,8 +65,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubeOidcResult> Invoke(GetKubeOidcInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeOidcResult>("ovh:CloudProject/getKubeOidc:getKubeOidc", args ?? new GetKubeOidcInvokeArgs(), options.WithDefaults());
@@ -99,22 +91,36 @@ namespace Pulumi.Ovh.CloudProject
         [Input("kubeId", required: true)]
         public string KubeId { get; set; } = null!;
 
+        /// <summary>
+        /// Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.
+        /// </summary>
         [Input("oidcCaContent")]
         public string? OidcCaContent { get; set; }
 
         [Input("oidcGroupsClaims")]
         private List<string>? _oidcGroupsClaims;
+
+        /// <summary>
+        /// Array of JWT claim to use as the user's group. If the claim is present it must be an array of strings.
+        /// </summary>
         public List<string> OidcGroupsClaims
         {
             get => _oidcGroupsClaims ?? (_oidcGroupsClaims = new List<string>());
             set => _oidcGroupsClaims = value;
         }
 
+        /// <summary>
+        /// Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.
+        /// </summary>
         [Input("oidcGroupsPrefix")]
         public string? OidcGroupsPrefix { get; set; }
 
         [Input("oidcRequiredClaims")]
         private List<string>? _oidcRequiredClaims;
+
+        /// <summary>
+        /// Array of key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value."
+        /// </summary>
         public List<string> OidcRequiredClaims
         {
             get => _oidcRequiredClaims ?? (_oidcRequiredClaims = new List<string>());
@@ -123,15 +129,25 @@ namespace Pulumi.Ovh.CloudProject
 
         [Input("oidcSigningAlgs")]
         private List<string>? _oidcSigningAlgs;
+
+        /// <summary>
+        /// Array of signing algorithms accepted. Default is \"RS256\".
+        /// </summary>
         public List<string> OidcSigningAlgs
         {
             get => _oidcSigningAlgs ?? (_oidcSigningAlgs = new List<string>());
             set => _oidcSigningAlgs = value;
         }
 
+        /// <summary>
+        /// JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
+        /// </summary>
         [Input("oidcUsernameClaim")]
         public string? OidcUsernameClaim { get; set; }
 
+        /// <summary>
+        /// Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and `oidc_username_claim` is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.
+        /// </summary>
         [Input("oidcUsernamePrefix")]
         public string? OidcUsernamePrefix { get; set; }
 
@@ -168,22 +184,36 @@ namespace Pulumi.Ovh.CloudProject
         [Input("kubeId", required: true)]
         public Input<string> KubeId { get; set; } = null!;
 
+        /// <summary>
+        /// Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.
+        /// </summary>
         [Input("oidcCaContent")]
         public Input<string>? OidcCaContent { get; set; }
 
         [Input("oidcGroupsClaims")]
         private InputList<string>? _oidcGroupsClaims;
+
+        /// <summary>
+        /// Array of JWT claim to use as the user's group. If the claim is present it must be an array of strings.
+        /// </summary>
         public InputList<string> OidcGroupsClaims
         {
             get => _oidcGroupsClaims ?? (_oidcGroupsClaims = new InputList<string>());
             set => _oidcGroupsClaims = value;
         }
 
+        /// <summary>
+        /// Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.
+        /// </summary>
         [Input("oidcGroupsPrefix")]
         public Input<string>? OidcGroupsPrefix { get; set; }
 
         [Input("oidcRequiredClaims")]
         private InputList<string>? _oidcRequiredClaims;
+
+        /// <summary>
+        /// Array of key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value."
+        /// </summary>
         public InputList<string> OidcRequiredClaims
         {
             get => _oidcRequiredClaims ?? (_oidcRequiredClaims = new InputList<string>());
@@ -192,15 +222,25 @@ namespace Pulumi.Ovh.CloudProject
 
         [Input("oidcSigningAlgs")]
         private InputList<string>? _oidcSigningAlgs;
+
+        /// <summary>
+        /// Array of signing algorithms accepted. Default is \"RS256\".
+        /// </summary>
         public InputList<string> OidcSigningAlgs
         {
             get => _oidcSigningAlgs ?? (_oidcSigningAlgs = new InputList<string>());
             set => _oidcSigningAlgs = value;
         }
 
+        /// <summary>
+        /// JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
+        /// </summary>
         [Input("oidcUsernameClaim")]
         public Input<string>? OidcUsernameClaim { get; set; }
 
+        /// <summary>
+        /// Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and `oidc_username_claim` is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.
+        /// </summary>
         [Input("oidcUsernamePrefix")]
         public Input<string>? OidcUsernamePrefix { get; set; }
 
@@ -237,12 +277,33 @@ namespace Pulumi.Ovh.CloudProject
         /// See Argument Reference above.
         /// </summary>
         public readonly string KubeId;
+        /// <summary>
+        /// Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.
+        /// </summary>
         public readonly string? OidcCaContent;
+        /// <summary>
+        /// Array of JWT claim to use as the user's group. If the claim is present it must be an array of strings.
+        /// </summary>
         public readonly ImmutableArray<string> OidcGroupsClaims;
+        /// <summary>
+        /// Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.
+        /// </summary>
         public readonly string? OidcGroupsPrefix;
+        /// <summary>
+        /// Array of key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value."
+        /// </summary>
         public readonly ImmutableArray<string> OidcRequiredClaims;
+        /// <summary>
+        /// Array of signing algorithms accepted. Default is \"RS256\".
+        /// </summary>
         public readonly ImmutableArray<string> OidcSigningAlgs;
+        /// <summary>
+        /// JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
+        /// </summary>
         public readonly string? OidcUsernameClaim;
+        /// <summary>
+        /// Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and `oidc_username_claim` is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.
+        /// </summary>
         public readonly string? OidcUsernamePrefix;
         /// <summary>
         /// See Argument Reference above.

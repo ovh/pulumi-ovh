@@ -39,6 +39,10 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HTTP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/httpRoute:HttpRoute")]
     public partial class HttpRoute : global::Pulumi.CustomResource
@@ -74,7 +78,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// HTTP status code for "redirect" and "reject" actions
+        /// Route status. Routes in "ok" state are ready to operate
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -207,7 +211,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// HTTP status code for "redirect" and "reject" actions
+        /// Route status. Routes in "ok" state are ready to operate
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

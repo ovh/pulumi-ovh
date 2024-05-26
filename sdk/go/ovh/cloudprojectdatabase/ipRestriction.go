@@ -12,6 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: Use ipRestriction field in cloudProjectDatabase resource instead.
+// Continuing to use the CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloudProjectDatabase resource will cause the cloudProjectDatabase resource to be updated on every apply
+//
 // Apply IP restrictions to an OVHcloud Managed Database cluster.
 //
 // ## Example Usage
@@ -37,9 +40,9 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewIpRestriction(ctx, "iprestriction", &CloudProjectDatabase.IpRestrictionArgs{
-//				ServiceName: *pulumi.String(db.ServiceName),
-//				Engine:      *pulumi.String(db.Engine),
-//				ClusterId:   *pulumi.String(db.Id),
+//				ServiceName: pulumi.String(db.ServiceName),
+//				Engine:      pulumi.String(db.Engine),
+//				ClusterId:   pulumi.String(db.Id),
 //				Ip:          pulumi.String("178.97.6.0/24"),
 //			})
 //			if err != nil {
@@ -53,12 +56,12 @@ import (
 //
 // ## Import
 //
-// OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g., bash
+// OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
-//
+// $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
 // ```
 type IpRestriction struct {
 	pulumi.CustomResourceState

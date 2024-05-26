@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information the list of existing OAuth2 service account IDs.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -30,8 +28,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAPIOAuth2ClientsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAPIOAuth2ClientsResult>("ovh:Me/getAPIOAuth2Clients:getAPIOAuth2Clients", InvokeArgs.Empty, options.WithDefaults());
@@ -39,9 +35,7 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to retrieve information the list of existing OAuth2 service account IDs.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -55,8 +49,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAPIOAuth2ClientsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAPIOAuth2ClientsResult>("ovh:Me/getAPIOAuth2Clients:getAPIOAuth2Clients", InvokeArgs.Empty, options.WithDefaults());

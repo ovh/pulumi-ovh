@@ -51,12 +51,13 @@ import (
 //				return err
 //			}
 //			_, err = CloudProject.NewDatabase(ctx, "kafkadb", &CloudProject.DatabaseArgs{
-//				ServiceName:  pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
-//				Description:  pulumi.String("my-first-kafka"),
-//				Engine:       pulumi.String("kafka"),
-//				Version:      pulumi.String("3.4"),
-//				Plan:         pulumi.String("business"),
-//				KafkaRestApi: pulumi.Bool(true),
+//				ServiceName:         pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				Description:         pulumi.String("my-first-kafka"),
+//				Engine:              pulumi.String("kafka"),
+//				Version:             pulumi.String("3.4"),
+//				Plan:                pulumi.String("business"),
+//				KafkaRestApi:        pulumi.Bool(true),
+//				KafkaSchemaRegistry: pulumi.Bool(true),
 //				Nodes: cloudproject.DatabaseNodeArray{
 //					&cloudproject.DatabaseNodeArgs{
 //						Region: pulumi.String("DE"),
@@ -94,7 +95,7 @@ import (
 //				Description: pulumi.String("my-first-mongodb"),
 //				Engine:      pulumi.String("mongodb"),
 //				Version:     pulumi.String("5.0"),
-//				Plan:        pulumi.String("essential"),
+//				Plan:        pulumi.String("discovery"),
 //				Nodes: cloudproject.DatabaseNodeArray{
 //					&cloudproject.DatabaseNodeArgs{
 //						Region: pulumi.String("GRA"),
@@ -154,6 +155,16 @@ import (
 //					},
 //				},
 //				Flavor: pulumi.String("db1-4"),
+//				IpRestrictions: cloudproject.DatabaseIpRestrictionArray{
+//					&cloudproject.DatabaseIpRestrictionArgs{
+//						Description: pulumi.String("ip 1"),
+//						Ip:          pulumi.String("178.97.6.0/24"),
+//					},
+//					&cloudproject.DatabaseIpRestrictionArgs{
+//						Description: pulumi.String("ip 2"),
+//						Ip:          pulumi.String("178.97.7.0/24"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -270,7 +281,7 @@ import (
 //						SubnetId:  pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
 //					},
 //				},
-//				Plan:        pulumi.String("enterprise"),
+//				Plan:        pulumi.String("production"),
 //				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Version:     pulumi.String("5.0"),
 //			})
@@ -285,18 +296,20 @@ import (
 //
 // ## Import
 //
-// OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g., bash
+// OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
-//
+// $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
 // ```
 type Database struct {
 	pulumi.CustomResourceState
 
 	// Advanced configuration key / value.
 	AdvancedConfiguration pulumi.StringMapOutput `pulumi:"advancedConfiguration"`
+	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+	BackupRegions pulumi.StringArrayOutput `pulumi:"backupRegions"`
 	// Time on which backups start every day.
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
@@ -316,8 +329,12 @@ type Database struct {
 	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
 	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor pulumi.StringOutput `pulumi:"flavor"`
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions DatabaseIpRestrictionArrayOutput `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi pulumi.BoolPtrOutput `pulumi:"kafkaRestApi"`
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry pulumi.BoolPtrOutput `pulumi:"kafkaSchemaRegistry"`
 	// Time on which maintenances can start every day.
 	MaintenanceTime pulumi.StringOutput `pulumi:"maintenanceTime"`
 	// Type of network of the cluster.
@@ -328,7 +345,10 @@ type Database struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrOutput `pulumi:"opensearchAclsEnabled"`
 	// Plan of the cluster.
-	// Enum: "essential", "business", "enterprise".
+	// * MongoDB: Enum: "discovery", "production", "advanced".
+	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+	// * M3 Aggregator: "business", "enterprise".
+	// * Redis: "essential", "business"
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -389,6 +409,8 @@ func GetDatabase(ctx *pulumi.Context,
 type databaseState struct {
 	// Advanced configuration key / value.
 	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
+	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+	BackupRegions []string `pulumi:"backupRegions"`
 	// Time on which backups start every day.
 	BackupTime *string `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
@@ -408,8 +430,12 @@ type databaseState struct {
 	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
 	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor *string `pulumi:"flavor"`
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions []DatabaseIpRestriction `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi *bool `pulumi:"kafkaRestApi"`
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry *bool `pulumi:"kafkaSchemaRegistry"`
 	// Time on which maintenances can start every day.
 	MaintenanceTime *string `pulumi:"maintenanceTime"`
 	// Type of network of the cluster.
@@ -420,7 +446,10 @@ type databaseState struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled *bool `pulumi:"opensearchAclsEnabled"`
 	// Plan of the cluster.
-	// Enum: "essential", "business", "enterprise".
+	// * MongoDB: Enum: "discovery", "production", "advanced".
+	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+	// * M3 Aggregator: "business", "enterprise".
+	// * Redis: "essential", "business"
 	Plan *string `pulumi:"plan"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -434,6 +463,8 @@ type databaseState struct {
 type DatabaseState struct {
 	// Advanced configuration key / value.
 	AdvancedConfiguration pulumi.StringMapInput
+	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+	BackupRegions pulumi.StringArrayInput
 	// Time on which backups start every day.
 	BackupTime pulumi.StringPtrInput
 	// Date of the creation of the cluster.
@@ -453,8 +484,12 @@ type DatabaseState struct {
 	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
 	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor pulumi.StringPtrInput
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions DatabaseIpRestrictionArrayInput
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi pulumi.BoolPtrInput
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry pulumi.BoolPtrInput
 	// Time on which maintenances can start every day.
 	MaintenanceTime pulumi.StringPtrInput
 	// Type of network of the cluster.
@@ -465,7 +500,10 @@ type DatabaseState struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrInput
 	// Plan of the cluster.
-	// Enum: "essential", "business", "enterprise".
+	// * MongoDB: Enum: "discovery", "production", "advanced".
+	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+	// * M3 Aggregator: "business", "enterprise".
+	// * Redis: "essential", "business"
 	Plan pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -483,6 +521,10 @@ func (DatabaseState) ElementType() reflect.Type {
 type databaseArgs struct {
 	// Advanced configuration key / value.
 	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
+	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+	BackupRegions []string `pulumi:"backupRegions"`
+	// Time on which backups start every day.
+	BackupTime *string `pulumi:"backupTime"`
 	// Small description of the database service.
 	Description *string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
@@ -494,15 +536,22 @@ type databaseArgs struct {
 	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
 	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor string `pulumi:"flavor"`
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions []DatabaseIpRestriction `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi *bool `pulumi:"kafkaRestApi"`
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry *bool `pulumi:"kafkaSchemaRegistry"`
 	// List of nodes object.
 	// Multi region cluster are not yet available, all node should be identical.
 	Nodes []DatabaseNode `pulumi:"nodes"`
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled *bool `pulumi:"opensearchAclsEnabled"`
 	// Plan of the cluster.
-	// Enum: "essential", "business", "enterprise".
+	// * MongoDB: Enum: "discovery", "production", "advanced".
+	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+	// * M3 Aggregator: "business", "enterprise".
+	// * Redis: "essential", "business"
 	Plan string `pulumi:"plan"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -515,6 +564,10 @@ type databaseArgs struct {
 type DatabaseArgs struct {
 	// Advanced configuration key / value.
 	AdvancedConfiguration pulumi.StringMapInput
+	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+	BackupRegions pulumi.StringArrayInput
+	// Time on which backups start every day.
+	BackupTime pulumi.StringPtrInput
 	// Small description of the database service.
 	Description pulumi.StringPtrInput
 	// The disk size (in GB) of the database service.
@@ -526,15 +579,22 @@ type DatabaseArgs struct {
 	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
 	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor pulumi.StringInput
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions DatabaseIpRestrictionArrayInput
 	// Defines whether the REST API is enabled on a kafka cluster
 	KafkaRestApi pulumi.BoolPtrInput
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry pulumi.BoolPtrInput
 	// List of nodes object.
 	// Multi region cluster are not yet available, all node should be identical.
 	Nodes DatabaseNodeArrayInput
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrInput
 	// Plan of the cluster.
-	// Enum: "essential", "business", "enterprise".
+	// * MongoDB: Enum: "discovery", "production", "advanced".
+	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+	// * M3 Aggregator: "business", "enterprise".
+	// * Redis: "essential", "business"
 	Plan pulumi.StringInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -635,6 +695,11 @@ func (o DatabaseOutput) AdvancedConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringMapOutput { return v.AdvancedConfiguration }).(pulumi.StringMapOutput)
 }
 
+// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+func (o DatabaseOutput) BackupRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringArrayOutput { return v.BackupRegions }).(pulumi.StringArrayOutput)
+}
+
 // Time on which backups start every day.
 func (o DatabaseOutput) BackupTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.BackupTime }).(pulumi.StringOutput)
@@ -678,9 +743,19 @@ func (o DatabaseOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Flavor }).(pulumi.StringOutput)
 }
 
+// IP Blocks authorized to access to the cluster.
+func (o DatabaseOutput) IpRestrictions() DatabaseIpRestrictionArrayOutput {
+	return o.ApplyT(func(v *Database) DatabaseIpRestrictionArrayOutput { return v.IpRestrictions }).(DatabaseIpRestrictionArrayOutput)
+}
+
 // Defines whether the REST API is enabled on a kafka cluster
 func (o DatabaseOutput) KafkaRestApi() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.KafkaRestApi }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the schema registry is enabled on a Kafka cluster
+func (o DatabaseOutput) KafkaSchemaRegistry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.KafkaSchemaRegistry }).(pulumi.BoolPtrOutput)
 }
 
 // Time on which maintenances can start every day.
@@ -705,7 +780,10 @@ func (o DatabaseOutput) OpensearchAclsEnabled() pulumi.BoolPtrOutput {
 }
 
 // Plan of the cluster.
-// Enum: "essential", "business", "enterprise".
+// * MongoDB: Enum: "discovery", "production", "advanced".
+// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+// * M3 Aggregator: "business", "enterprise".
+// * Redis: "essential", "business"
 func (o DatabaseOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }

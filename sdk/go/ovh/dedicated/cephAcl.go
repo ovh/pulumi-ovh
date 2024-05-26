@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			_, err = Dedicated.NewCephAcl(ctx, "my-acl", &Dedicated.CephAclArgs{
-//				ServiceName: *pulumi.String(my_ceph.Id),
+//				ServiceName: pulumi.String(my_ceph.Id),
 //				Network:     pulumi.String("1.2.3.4"),
 //				Netmask:     pulumi.String("255.255.255.255"),
 //			})

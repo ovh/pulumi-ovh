@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to get a custom installation template available for dedicated servers.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -33,8 +31,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstallationTemplateResult> InvokeAsync(GetInstallationTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstallationTemplateResult>("ovh:Me/getInstallationTemplate:getInstallationTemplate", args ?? new GetInstallationTemplateArgs(), options.WithDefaults());
@@ -42,9 +38,7 @@ namespace Pulumi.Ovh.Me
         /// <summary>
         /// Use this data source to get a custom installation template available for dedicated servers.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -61,8 +55,6 @@ namespace Pulumi.Ovh.Me
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstallationTemplateResult> Invoke(GetInstallationTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstallationTemplateResult>("ovh:Me/getInstallationTemplate:getInstallationTemplate", args ?? new GetInstallationTemplateInvokeArgs(), options.WithDefaults());
@@ -72,7 +64,7 @@ namespace Pulumi.Ovh.Me
     public sealed class GetInstallationTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// This template name
+        /// Template name.
         /// </summary>
         [Input("templateName", required: true)]
         public string TemplateName { get; set; } = null!;
@@ -86,7 +78,7 @@ namespace Pulumi.Ovh.Me
     public sealed class GetInstallationTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// This template name
+        /// Template name.
         /// </summary>
         [Input("templateName", required: true)]
         public Input<string> TemplateName { get; set; } = null!;
@@ -102,48 +94,36 @@ namespace Pulumi.Ovh.Me
     public sealed class GetInstallationTemplateResult
     {
         /// <summary>
-        /// List of all language available for this template.
-        /// </summary>
-        public readonly ImmutableArray<string> AvailableLanguages;
-        /// <summary>
-        /// This distribution is new and, although tested and functional, may still display odd behaviour.
-        /// </summary>
-        public readonly bool Beta;
-        /// <summary>
-        /// This template bit format (32 or 64).
+        /// Template bit format (32 or 64).
         /// </summary>
         public readonly int BitFormat;
         /// <summary>
-        /// Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+        /// Category of this template (informative only).
         /// </summary>
         public readonly string Category;
         public readonly ImmutableArray<Outputs.GetInstallationTemplateCustomizationResult> Customizations;
         /// <summary>
-        /// The default language of this template.
-        /// </summary>
-        public readonly string DefaultLanguage;
-        /// <summary>
-        /// is this distribution deprecated.
-        /// </summary>
-        public readonly bool Deprecated;
-        /// <summary>
-        /// information about this template.
+        /// Information about this template.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// the distribution this template is based on.
+        /// Distribution this template is based on.
         /// </summary>
         public readonly string Distribution;
         /// <summary>
-        /// this template family type (bsd,linux,solaris,windows).
+        /// End of install date of the template.
+        /// </summary>
+        public readonly string EndOfInstall;
+        /// <summary>
+        /// Template family type (bsd,linux,solaris,windows).
         /// </summary>
         public readonly string Family;
         /// <summary>
-        /// Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+        /// Filesystems available.
         /// </summary>
         public readonly ImmutableArray<string> Filesystems;
         /// <summary>
-        /// This distribution supports hardware raid configuration through the OVHcloud API.
+        /// Distribution supports hardware raid configuration through the OVHcloud API.
         /// </summary>
         public readonly bool HardRaidConfiguration;
         /// <summary>
@@ -151,44 +131,41 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Date of last modification of the base image.
+        /// Represents the questions of the expected answers in the userMetadata field.
         /// </summary>
-        public readonly string LastModification;
+        public readonly ImmutableArray<Outputs.GetInstallationTemplateInputResult> Inputs;
+        /// <summary>
+        /// Whether this template supports LVM.
+        /// </summary>
         public readonly bool LvmReady;
+        /// <summary>
+        /// Partitioning customization is not available for this OS template.
+        /// </summary>
+        public readonly bool NoPartitioning;
         public readonly ImmutableArray<Outputs.GetInstallationTemplatePartitionSchemeResult> PartitionSchemes;
         /// <summary>
-        /// This distribution supports installation using the distribution's native kernel instead of the recommended OVHcloud kernel.
+        /// Template supports RAID0 and RAID1 on 2 disks.
         /// </summary>
-        public readonly bool SupportsDistributionKernel;
+        public readonly bool SoftRaidOnlyMirroring;
         /// <summary>
-        /// This distribution supports RTM software.
+        /// Subfamily of the template.
         /// </summary>
-        public readonly bool SupportsRtm;
-        /// <summary>
-        /// This distribution supports the microsoft SQL server.
-        /// </summary>
-        public readonly bool SupportsSqlServer;
+        public readonly string Subfamily;
         public readonly string TemplateName;
 
         [OutputConstructor]
         private GetInstallationTemplateResult(
-            ImmutableArray<string> availableLanguages,
-
-            bool beta,
-
             int bitFormat,
 
             string category,
 
             ImmutableArray<Outputs.GetInstallationTemplateCustomizationResult> customizations,
 
-            string defaultLanguage,
-
-            bool deprecated,
-
             string description,
 
             string distribution,
+
+            string endOfInstall,
 
             string family,
 
@@ -198,39 +175,36 @@ namespace Pulumi.Ovh.Me
 
             string id,
 
-            string lastModification,
+            ImmutableArray<Outputs.GetInstallationTemplateInputResult> inputs,
 
             bool lvmReady,
 
+            bool noPartitioning,
+
             ImmutableArray<Outputs.GetInstallationTemplatePartitionSchemeResult> partitionSchemes,
 
-            bool supportsDistributionKernel,
+            bool softRaidOnlyMirroring,
 
-            bool supportsRtm,
-
-            bool supportsSqlServer,
+            string subfamily,
 
             string templateName)
         {
-            AvailableLanguages = availableLanguages;
-            Beta = beta;
             BitFormat = bitFormat;
             Category = category;
             Customizations = customizations;
-            DefaultLanguage = defaultLanguage;
-            Deprecated = deprecated;
             Description = description;
             Distribution = distribution;
+            EndOfInstall = endOfInstall;
             Family = family;
             Filesystems = filesystems;
             HardRaidConfiguration = hardRaidConfiguration;
             Id = id;
-            LastModification = lastModification;
+            Inputs = inputs;
             LvmReady = lvmReady;
+            NoPartitioning = noPartitioning;
             PartitionSchemes = partitionSchemes;
-            SupportsDistributionKernel = supportsDistributionKernel;
-            SupportsRtm = supportsRtm;
-            SupportsSqlServer = supportsSqlServer;
+            SoftRaidOnlyMirroring = softRaidOnlyMirroring;
+            Subfamily = subfamily;
             TemplateName = templateName;
         }
     }

@@ -16,14 +16,18 @@ class ProviderArgs:
     def __init__(__self__, *,
                  application_key: Optional[pulumi.Input[str]] = None,
                  application_secret: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  consumer_key: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] application_key: The OVH API Application Key.
-        :param pulumi.Input[str] application_secret: The OVH API Application Secret.
-        :param pulumi.Input[str] consumer_key: The OVH API Consumer key.
-        :param pulumi.Input[str] endpoint: The OVH API endpoint to target (ex: "ovh-eu").
+        :param pulumi.Input[str] application_key: The OVH API Application Key
+        :param pulumi.Input[str] application_secret: The OVH API Application Secret
+        :param pulumi.Input[str] client_id: OAuth 2.0 application's ID
+        :param pulumi.Input[str] client_secret: OAuth 2.0 application's secret
+        :param pulumi.Input[str] consumer_key: The OVH API Consumer Key
+        :param pulumi.Input[str] endpoint: The OVH API endpoint to target (ex: "ovh-eu")
         """
         if application_key is None:
             application_key = _utilities.get_env('OVH_APPLICATION_KEY')
@@ -33,6 +37,10 @@ class ProviderArgs:
             application_secret = _utilities.get_env('OVH_APPLICATION_SECRET')
         if application_secret is not None:
             pulumi.set(__self__, "application_secret", application_secret)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if consumer_key is None:
             consumer_key = _utilities.get_env('OVH_CONSUMER_KEY')
         if consumer_key is not None:
@@ -46,7 +54,7 @@ class ProviderArgs:
     @pulumi.getter(name="applicationKey")
     def application_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The OVH API Application Key.
+        The OVH API Application Key
         """
         return pulumi.get(self, "application_key")
 
@@ -58,7 +66,7 @@ class ProviderArgs:
     @pulumi.getter(name="applicationSecret")
     def application_secret(self) -> Optional[pulumi.Input[str]]:
         """
-        The OVH API Application Secret.
+        The OVH API Application Secret
         """
         return pulumi.get(self, "application_secret")
 
@@ -67,10 +75,34 @@ class ProviderArgs:
         pulumi.set(self, "application_secret", value)
 
     @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OAuth 2.0 application's ID
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        OAuth 2.0 application's secret
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
     @pulumi.getter(name="consumerKey")
     def consumer_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The OVH API Consumer key.
+        The OVH API Consumer Key
         """
         return pulumi.get(self, "consumer_key")
 
@@ -82,7 +114,7 @@ class ProviderArgs:
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        The OVH API endpoint to target (ex: "ovh-eu").
+        The OVH API endpoint to target (ex: "ovh-eu")
         """
         return pulumi.get(self, "endpoint")
 
@@ -98,6 +130,8 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_key: Optional[pulumi.Input[str]] = None,
                  application_secret: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  consumer_key: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -109,10 +143,12 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_key: The OVH API Application Key.
-        :param pulumi.Input[str] application_secret: The OVH API Application Secret.
-        :param pulumi.Input[str] consumer_key: The OVH API Consumer key.
-        :param pulumi.Input[str] endpoint: The OVH API endpoint to target (ex: "ovh-eu").
+        :param pulumi.Input[str] application_key: The OVH API Application Key
+        :param pulumi.Input[str] application_secret: The OVH API Application Secret
+        :param pulumi.Input[str] client_id: OAuth 2.0 application's ID
+        :param pulumi.Input[str] client_secret: OAuth 2.0 application's secret
+        :param pulumi.Input[str] consumer_key: The OVH API Consumer Key
+        :param pulumi.Input[str] endpoint: The OVH API endpoint to target (ex: "ovh-eu")
         """
         ...
     @overload
@@ -143,6 +179,8 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_key: Optional[pulumi.Input[str]] = None,
                  application_secret: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  consumer_key: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -160,6 +198,8 @@ class Provider(pulumi.ProviderResource):
             if application_secret is None:
                 application_secret = _utilities.get_env('OVH_APPLICATION_SECRET')
             __props__.__dict__["application_secret"] = None if application_secret is None else pulumi.Output.secret(application_secret)
+            __props__.__dict__["client_id"] = client_id
+            __props__.__dict__["client_secret"] = client_secret
             if consumer_key is None:
                 consumer_key = _utilities.get_env('OVH_CONSUMER_KEY')
             __props__.__dict__["consumer_key"] = consumer_key
@@ -178,7 +218,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="applicationKey")
     def application_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The OVH API Application Key.
+        The OVH API Application Key
         """
         return pulumi.get(self, "application_key")
 
@@ -186,15 +226,31 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="applicationSecret")
     def application_secret(self) -> pulumi.Output[Optional[str]]:
         """
-        The OVH API Application Secret.
+        The OVH API Application Secret
         """
         return pulumi.get(self, "application_secret")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        OAuth 2.0 application's ID
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Output[Optional[str]]:
+        """
+        OAuth 2.0 application's secret
+        """
+        return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="consumerKey")
     def consumer_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The OVH API Consumer key.
+        The OVH API Consumer Key
         """
         return pulumi.get(self, "consumer_key")
 
@@ -202,7 +258,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[Optional[str]]:
         """
-        The OVH API endpoint to target (ex: "ovh-eu").
+        The OVH API endpoint to target (ex: "ovh-eu")
         """
         return pulumi.get(self, "endpoint")
 

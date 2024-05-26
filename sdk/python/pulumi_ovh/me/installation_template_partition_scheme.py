@@ -140,9 +140,8 @@ class InstallationTemplatePartitionScheme(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         mytemplate = ovh.me.InstallationTemplate("mytemplate",
-            base_template_name="centos7_64",
-            template_name="mytemplate",
-            default_language="fr")
+            base_template_name="debian12_64",
+            template_name="mytemplate")
         scheme = ovh.me.InstallationTemplatePartitionScheme("scheme",
             template_name=mytemplate.template_name,
             priority=1)
@@ -150,10 +149,12 @@ class InstallationTemplatePartitionScheme(pulumi.CustomResource):
 
         ## Import
 
-        The resource can be imported using the `template_name`, `name` of the cluster, separated by "/" E.g., bash
+        The resource can be imported using the `template_name`, `name` of the cluster, separated by "/" E.g.,
+
+        bash
 
         ```sh
-         $ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name
+        $ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name
         ```
 
         :param str resource_name: The name of the resource.
@@ -178,9 +179,8 @@ class InstallationTemplatePartitionScheme(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         mytemplate = ovh.me.InstallationTemplate("mytemplate",
-            base_template_name="centos7_64",
-            template_name="mytemplate",
-            default_language="fr")
+            base_template_name="debian12_64",
+            template_name="mytemplate")
         scheme = ovh.me.InstallationTemplatePartitionScheme("scheme",
             template_name=mytemplate.template_name,
             priority=1)
@@ -188,10 +188,12 @@ class InstallationTemplatePartitionScheme(pulumi.CustomResource):
 
         ## Import
 
-        The resource can be imported using the `template_name`, `name` of the cluster, separated by "/" E.g., bash
+        The resource can be imported using the `template_name`, `name` of the cluster, separated by "/" E.g.,
+
+        bash
 
         ```sh
-         $ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name
+        $ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name
         ```
 
         :param str resource_name: The name of the resource.

@@ -17,6 +17,7 @@ __all__ = [
     'IpServicePlanOptionArgs',
     'IpServicePlanOptionConfigurationArgs',
     'IpServiceRoutedToArgs',
+    'MoveRoutedToArgs',
 ]
 
 @pulumi.input_type
@@ -423,6 +424,28 @@ class IpServiceRoutedToArgs:
 
     @service_name.setter
     def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
+class MoveRoutedToArgs:
+    def __init__(__self__, *,
+                 service_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] service_name: Name of the service to route the IP to. IP will be parked if this value is an empty string
+        """
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        Name of the service to route the IP to. IP will be parked if this value is an empty string
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_name", value)
 
 

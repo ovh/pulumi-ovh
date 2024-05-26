@@ -47,6 +47,10 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/tcpFrontend:TcpFrontend")]
     public partial class TcpFrontend : global::Pulumi.CustomResource

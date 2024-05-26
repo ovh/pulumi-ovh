@@ -37,7 +37,7 @@ import (
 //			}
 //			farmname, err := IpLoadBalancing.NewHttpFarm(ctx, "farmname", &IpLoadBalancing.HttpFarmArgs{
 //				Port:        pulumi.Int(8080),
-//				ServiceName: *pulumi.String(lb.ServiceName),
+//				ServiceName: pulumi.String(lb.ServiceName),
 //				Zone:        pulumi.String("all"),
 //			})
 //			if err != nil {
@@ -51,7 +51,7 @@ import (
 //				Port:                 pulumi.Int(80),
 //				Probe:                pulumi.Bool(true),
 //				ProxyProtocolVersion: pulumi.String("v2"),
-//				ServiceName:          *pulumi.String(lb.ServiceName),
+//				ServiceName:          pulumi.String(lb.ServiceName),
 //				Ssl:                  pulumi.Bool(false),
 //				Status:               pulumi.String("active"),
 //				Weight:               pulumi.Int(2),
@@ -64,6 +64,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// HTTP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
 type HttpFarmServer struct {
 	pulumi.CustomResourceState
 

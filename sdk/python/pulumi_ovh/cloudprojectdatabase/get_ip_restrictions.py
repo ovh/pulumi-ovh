@@ -97,7 +97,9 @@ def get_ip_restrictions(cluster_id: Optional[str] = None,
                         service_name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpRestrictionsResult:
     """
-    Use the list of IP restrictions associated with a public cloud project.
+    Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+
+    Use this data source to get the list of IP restrictions associated with a public cloud project.
 
     ## Example Usage
 
@@ -141,7 +143,9 @@ def get_ip_restrictions_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpRestrictionsResult]:
     """
-    Use the list of IP restrictions associated with a public cloud project.
+    Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+
+    Use this data source to get the list of IP restrictions associated with a public cloud project.
 
     ## Example Usage
 

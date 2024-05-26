@@ -12,11 +12,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public static class GetIpRestrictions
     {
         /// <summary>
-        /// Use the list of IP restrictions associated with a public cloud project.
+        /// Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
         /// 
-        /// {{% examples %}}
+        /// Use this data source to get the list of IP restrictions associated with a public cloud project.
+        /// 
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// To get the list of IP restriction on a database cluster service:
         /// 
@@ -41,18 +41,16 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpRestrictionsResult> InvokeAsync(GetIpRestrictionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpRestrictionsResult>("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args ?? new GetIpRestrictionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use the list of IP restrictions associated with a public cloud project.
+        /// Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
         /// 
-        /// {{% examples %}}
+        /// Use this data source to get the list of IP restrictions associated with a public cloud project.
+        /// 
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// To get the list of IP restriction on a database cluster service:
         /// 
@@ -77,8 +75,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpRestrictionsResult> Invoke(GetIpRestrictionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpRestrictionsResult>("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args ?? new GetIpRestrictionsInvokeArgs(), options.WithDefaults());

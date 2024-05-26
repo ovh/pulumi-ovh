@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to retrieve the list of all the S3 access_key_id associated with a public cloud project's user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -38,8 +36,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserS3CredentialsResult> InvokeAsync(GetUserS3CredentialsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserS3CredentialsResult>("ovh:CloudProject/getUserS3Credentials:getUserS3Credentials", args ?? new GetUserS3CredentialsArgs(), options.WithDefaults());
@@ -47,9 +43,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to retrieve the list of all the S3 access_key_id associated with a public cloud project's user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -71,8 +65,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetUserS3CredentialsResult> Invoke(GetUserS3CredentialsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserS3CredentialsResult>("ovh:CloudProject/getUserS3Credentials:getUserS3Credentials", args ?? new GetUserS3CredentialsInvokeArgs(), options.WithDefaults());

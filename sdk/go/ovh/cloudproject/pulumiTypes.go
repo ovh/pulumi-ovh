@@ -13,6 +13,181 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AlertingFormattedMonthlyThreshold struct {
+	// Currency of the monthly threshold
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// Text representation of the monthly threshold
+	Text *string `pulumi:"text"`
+	// Value of the monthly threshold
+	Value *float64 `pulumi:"value"`
+}
+
+// AlertingFormattedMonthlyThresholdInput is an input type that accepts AlertingFormattedMonthlyThresholdArgs and AlertingFormattedMonthlyThresholdOutput values.
+// You can construct a concrete instance of `AlertingFormattedMonthlyThresholdInput` via:
+//
+//	AlertingFormattedMonthlyThresholdArgs{...}
+type AlertingFormattedMonthlyThresholdInput interface {
+	pulumi.Input
+
+	ToAlertingFormattedMonthlyThresholdOutput() AlertingFormattedMonthlyThresholdOutput
+	ToAlertingFormattedMonthlyThresholdOutputWithContext(context.Context) AlertingFormattedMonthlyThresholdOutput
+}
+
+type AlertingFormattedMonthlyThresholdArgs struct {
+	// Currency of the monthly threshold
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// Text representation of the monthly threshold
+	Text pulumi.StringPtrInput `pulumi:"text"`
+	// Value of the monthly threshold
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (AlertingFormattedMonthlyThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertingFormattedMonthlyThreshold)(nil)).Elem()
+}
+
+func (i AlertingFormattedMonthlyThresholdArgs) ToAlertingFormattedMonthlyThresholdOutput() AlertingFormattedMonthlyThresholdOutput {
+	return i.ToAlertingFormattedMonthlyThresholdOutputWithContext(context.Background())
+}
+
+func (i AlertingFormattedMonthlyThresholdArgs) ToAlertingFormattedMonthlyThresholdOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertingFormattedMonthlyThresholdOutput)
+}
+
+func (i AlertingFormattedMonthlyThresholdArgs) ToAlertingFormattedMonthlyThresholdPtrOutput() AlertingFormattedMonthlyThresholdPtrOutput {
+	return i.ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i AlertingFormattedMonthlyThresholdArgs) ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertingFormattedMonthlyThresholdOutput).ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(ctx)
+}
+
+// AlertingFormattedMonthlyThresholdPtrInput is an input type that accepts AlertingFormattedMonthlyThresholdArgs, AlertingFormattedMonthlyThresholdPtr and AlertingFormattedMonthlyThresholdPtrOutput values.
+// You can construct a concrete instance of `AlertingFormattedMonthlyThresholdPtrInput` via:
+//
+//	        AlertingFormattedMonthlyThresholdArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertingFormattedMonthlyThresholdPtrInput interface {
+	pulumi.Input
+
+	ToAlertingFormattedMonthlyThresholdPtrOutput() AlertingFormattedMonthlyThresholdPtrOutput
+	ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(context.Context) AlertingFormattedMonthlyThresholdPtrOutput
+}
+
+type alertingFormattedMonthlyThresholdPtrType AlertingFormattedMonthlyThresholdArgs
+
+func AlertingFormattedMonthlyThresholdPtr(v *AlertingFormattedMonthlyThresholdArgs) AlertingFormattedMonthlyThresholdPtrInput {
+	return (*alertingFormattedMonthlyThresholdPtrType)(v)
+}
+
+func (*alertingFormattedMonthlyThresholdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertingFormattedMonthlyThreshold)(nil)).Elem()
+}
+
+func (i *alertingFormattedMonthlyThresholdPtrType) ToAlertingFormattedMonthlyThresholdPtrOutput() AlertingFormattedMonthlyThresholdPtrOutput {
+	return i.ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i *alertingFormattedMonthlyThresholdPtrType) ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertingFormattedMonthlyThresholdPtrOutput)
+}
+
+type AlertingFormattedMonthlyThresholdOutput struct{ *pulumi.OutputState }
+
+func (AlertingFormattedMonthlyThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertingFormattedMonthlyThreshold)(nil)).Elem()
+}
+
+func (o AlertingFormattedMonthlyThresholdOutput) ToAlertingFormattedMonthlyThresholdOutput() AlertingFormattedMonthlyThresholdOutput {
+	return o
+}
+
+func (o AlertingFormattedMonthlyThresholdOutput) ToAlertingFormattedMonthlyThresholdOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdOutput {
+	return o
+}
+
+func (o AlertingFormattedMonthlyThresholdOutput) ToAlertingFormattedMonthlyThresholdPtrOutput() AlertingFormattedMonthlyThresholdPtrOutput {
+	return o.ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(context.Background())
+}
+
+func (o AlertingFormattedMonthlyThresholdOutput) ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertingFormattedMonthlyThreshold) *AlertingFormattedMonthlyThreshold {
+		return &v
+	}).(AlertingFormattedMonthlyThresholdPtrOutput)
+}
+
+// Currency of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// Text representation of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+// Value of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
+type AlertingFormattedMonthlyThresholdPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertingFormattedMonthlyThresholdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertingFormattedMonthlyThreshold)(nil)).Elem()
+}
+
+func (o AlertingFormattedMonthlyThresholdPtrOutput) ToAlertingFormattedMonthlyThresholdPtrOutput() AlertingFormattedMonthlyThresholdPtrOutput {
+	return o
+}
+
+func (o AlertingFormattedMonthlyThresholdPtrOutput) ToAlertingFormattedMonthlyThresholdPtrOutputWithContext(ctx context.Context) AlertingFormattedMonthlyThresholdPtrOutput {
+	return o
+}
+
+func (o AlertingFormattedMonthlyThresholdPtrOutput) Elem() AlertingFormattedMonthlyThresholdOutput {
+	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) AlertingFormattedMonthlyThreshold {
+		if v != nil {
+			return *v
+		}
+		var ret AlertingFormattedMonthlyThreshold
+		return ret
+	}).(AlertingFormattedMonthlyThresholdOutput)
+}
+
+// Currency of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdPtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Text representation of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of the monthly threshold
+func (o AlertingFormattedMonthlyThresholdPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
 type ContainerRegistryPlan struct {
 	// Plan code from the catalog
 	Code *string `pulumi:"code"`
@@ -527,6 +702,121 @@ func (o DatabaseEndpointArrayOutput) Index(i pulumi.IntInput) DatabaseEndpointOu
 	}).(DatabaseEndpointOutput)
 }
 
+type DatabaseIpRestriction struct {
+	// Description of the IP restriction
+	Description *string `pulumi:"description"`
+	// Authorized IP
+	Ip *string `pulumi:"ip"`
+	// Current status of the cluster.
+	Status *string `pulumi:"status"`
+}
+
+// DatabaseIpRestrictionInput is an input type that accepts DatabaseIpRestrictionArgs and DatabaseIpRestrictionOutput values.
+// You can construct a concrete instance of `DatabaseIpRestrictionInput` via:
+//
+//	DatabaseIpRestrictionArgs{...}
+type DatabaseIpRestrictionInput interface {
+	pulumi.Input
+
+	ToDatabaseIpRestrictionOutput() DatabaseIpRestrictionOutput
+	ToDatabaseIpRestrictionOutputWithContext(context.Context) DatabaseIpRestrictionOutput
+}
+
+type DatabaseIpRestrictionArgs struct {
+	// Description of the IP restriction
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Authorized IP
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// Current status of the cluster.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (DatabaseIpRestrictionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseIpRestriction)(nil)).Elem()
+}
+
+func (i DatabaseIpRestrictionArgs) ToDatabaseIpRestrictionOutput() DatabaseIpRestrictionOutput {
+	return i.ToDatabaseIpRestrictionOutputWithContext(context.Background())
+}
+
+func (i DatabaseIpRestrictionArgs) ToDatabaseIpRestrictionOutputWithContext(ctx context.Context) DatabaseIpRestrictionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIpRestrictionOutput)
+}
+
+// DatabaseIpRestrictionArrayInput is an input type that accepts DatabaseIpRestrictionArray and DatabaseIpRestrictionArrayOutput values.
+// You can construct a concrete instance of `DatabaseIpRestrictionArrayInput` via:
+//
+//	DatabaseIpRestrictionArray{ DatabaseIpRestrictionArgs{...} }
+type DatabaseIpRestrictionArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseIpRestrictionArrayOutput() DatabaseIpRestrictionArrayOutput
+	ToDatabaseIpRestrictionArrayOutputWithContext(context.Context) DatabaseIpRestrictionArrayOutput
+}
+
+type DatabaseIpRestrictionArray []DatabaseIpRestrictionInput
+
+func (DatabaseIpRestrictionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseIpRestriction)(nil)).Elem()
+}
+
+func (i DatabaseIpRestrictionArray) ToDatabaseIpRestrictionArrayOutput() DatabaseIpRestrictionArrayOutput {
+	return i.ToDatabaseIpRestrictionArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseIpRestrictionArray) ToDatabaseIpRestrictionArrayOutputWithContext(ctx context.Context) DatabaseIpRestrictionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIpRestrictionArrayOutput)
+}
+
+type DatabaseIpRestrictionOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIpRestrictionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseIpRestriction)(nil)).Elem()
+}
+
+func (o DatabaseIpRestrictionOutput) ToDatabaseIpRestrictionOutput() DatabaseIpRestrictionOutput {
+	return o
+}
+
+func (o DatabaseIpRestrictionOutput) ToDatabaseIpRestrictionOutputWithContext(ctx context.Context) DatabaseIpRestrictionOutput {
+	return o
+}
+
+// Description of the IP restriction
+func (o DatabaseIpRestrictionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseIpRestriction) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Authorized IP
+func (o DatabaseIpRestrictionOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseIpRestriction) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// Current status of the cluster.
+func (o DatabaseIpRestrictionOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseIpRestriction) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseIpRestrictionArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIpRestrictionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseIpRestriction)(nil)).Elem()
+}
+
+func (o DatabaseIpRestrictionArrayOutput) ToDatabaseIpRestrictionArrayOutput() DatabaseIpRestrictionArrayOutput {
+	return o
+}
+
+func (o DatabaseIpRestrictionArrayOutput) ToDatabaseIpRestrictionArrayOutputWithContext(ctx context.Context) DatabaseIpRestrictionArrayOutput {
+	return o
+}
+
+func (o DatabaseIpRestrictionArrayOutput) Index(i pulumi.IntInput) DatabaseIpRestrictionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseIpRestriction {
+		return vs[0].([]DatabaseIpRestriction)[vs[1].(int)]
+	}).(DatabaseIpRestrictionOutput)
+}
+
 type DatabaseNode struct {
 	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
 	NetworkId *string `pulumi:"networkId"`
@@ -645,10 +935,346 @@ func (o DatabaseNodeArrayOutput) Index(i pulumi.IntInput) DatabaseNodeOutput {
 	}).(DatabaseNodeOutput)
 }
 
+type GatewayExternalInformation struct {
+	// List of external ips of the gateway.
+	Ips []GatewayExternalInformationIp `pulumi:"ips"`
+	// ID of the private network.
+	NetworkId *string `pulumi:"networkId"`
+}
+
+// GatewayExternalInformationInput is an input type that accepts GatewayExternalInformationArgs and GatewayExternalInformationOutput values.
+// You can construct a concrete instance of `GatewayExternalInformationInput` via:
+//
+//	GatewayExternalInformationArgs{...}
+type GatewayExternalInformationInput interface {
+	pulumi.Input
+
+	ToGatewayExternalInformationOutput() GatewayExternalInformationOutput
+	ToGatewayExternalInformationOutputWithContext(context.Context) GatewayExternalInformationOutput
+}
+
+type GatewayExternalInformationArgs struct {
+	// List of external ips of the gateway.
+	Ips GatewayExternalInformationIpArrayInput `pulumi:"ips"`
+	// ID of the private network.
+	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
+}
+
+func (GatewayExternalInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayExternalInformation)(nil)).Elem()
+}
+
+func (i GatewayExternalInformationArgs) ToGatewayExternalInformationOutput() GatewayExternalInformationOutput {
+	return i.ToGatewayExternalInformationOutputWithContext(context.Background())
+}
+
+func (i GatewayExternalInformationArgs) ToGatewayExternalInformationOutputWithContext(ctx context.Context) GatewayExternalInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayExternalInformationOutput)
+}
+
+// GatewayExternalInformationArrayInput is an input type that accepts GatewayExternalInformationArray and GatewayExternalInformationArrayOutput values.
+// You can construct a concrete instance of `GatewayExternalInformationArrayInput` via:
+//
+//	GatewayExternalInformationArray{ GatewayExternalInformationArgs{...} }
+type GatewayExternalInformationArrayInput interface {
+	pulumi.Input
+
+	ToGatewayExternalInformationArrayOutput() GatewayExternalInformationArrayOutput
+	ToGatewayExternalInformationArrayOutputWithContext(context.Context) GatewayExternalInformationArrayOutput
+}
+
+type GatewayExternalInformationArray []GatewayExternalInformationInput
+
+func (GatewayExternalInformationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayExternalInformation)(nil)).Elem()
+}
+
+func (i GatewayExternalInformationArray) ToGatewayExternalInformationArrayOutput() GatewayExternalInformationArrayOutput {
+	return i.ToGatewayExternalInformationArrayOutputWithContext(context.Background())
+}
+
+func (i GatewayExternalInformationArray) ToGatewayExternalInformationArrayOutputWithContext(ctx context.Context) GatewayExternalInformationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayExternalInformationArrayOutput)
+}
+
+type GatewayExternalInformationOutput struct{ *pulumi.OutputState }
+
+func (GatewayExternalInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayExternalInformation)(nil)).Elem()
+}
+
+func (o GatewayExternalInformationOutput) ToGatewayExternalInformationOutput() GatewayExternalInformationOutput {
+	return o
+}
+
+func (o GatewayExternalInformationOutput) ToGatewayExternalInformationOutputWithContext(ctx context.Context) GatewayExternalInformationOutput {
+	return o
+}
+
+// List of external ips of the gateway.
+func (o GatewayExternalInformationOutput) Ips() GatewayExternalInformationIpArrayOutput {
+	return o.ApplyT(func(v GatewayExternalInformation) []GatewayExternalInformationIp { return v.Ips }).(GatewayExternalInformationIpArrayOutput)
+}
+
+// ID of the private network.
+func (o GatewayExternalInformationOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayExternalInformation) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
+}
+
+type GatewayExternalInformationArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayExternalInformationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayExternalInformation)(nil)).Elem()
+}
+
+func (o GatewayExternalInformationArrayOutput) ToGatewayExternalInformationArrayOutput() GatewayExternalInformationArrayOutput {
+	return o
+}
+
+func (o GatewayExternalInformationArrayOutput) ToGatewayExternalInformationArrayOutputWithContext(ctx context.Context) GatewayExternalInformationArrayOutput {
+	return o
+}
+
+func (o GatewayExternalInformationArrayOutput) Index(i pulumi.IntInput) GatewayExternalInformationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayExternalInformation {
+		return vs[0].([]GatewayExternalInformation)[vs[1].(int)]
+	}).(GatewayExternalInformationOutput)
+}
+
+type GatewayExternalInformationIp struct {
+	// IP of the interface.
+	Ip *string `pulumi:"ip"`
+	// ID of the subnet.
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// GatewayExternalInformationIpInput is an input type that accepts GatewayExternalInformationIpArgs and GatewayExternalInformationIpOutput values.
+// You can construct a concrete instance of `GatewayExternalInformationIpInput` via:
+//
+//	GatewayExternalInformationIpArgs{...}
+type GatewayExternalInformationIpInput interface {
+	pulumi.Input
+
+	ToGatewayExternalInformationIpOutput() GatewayExternalInformationIpOutput
+	ToGatewayExternalInformationIpOutputWithContext(context.Context) GatewayExternalInformationIpOutput
+}
+
+type GatewayExternalInformationIpArgs struct {
+	// IP of the interface.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// ID of the subnet.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (GatewayExternalInformationIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayExternalInformationIp)(nil)).Elem()
+}
+
+func (i GatewayExternalInformationIpArgs) ToGatewayExternalInformationIpOutput() GatewayExternalInformationIpOutput {
+	return i.ToGatewayExternalInformationIpOutputWithContext(context.Background())
+}
+
+func (i GatewayExternalInformationIpArgs) ToGatewayExternalInformationIpOutputWithContext(ctx context.Context) GatewayExternalInformationIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayExternalInformationIpOutput)
+}
+
+// GatewayExternalInformationIpArrayInput is an input type that accepts GatewayExternalInformationIpArray and GatewayExternalInformationIpArrayOutput values.
+// You can construct a concrete instance of `GatewayExternalInformationIpArrayInput` via:
+//
+//	GatewayExternalInformationIpArray{ GatewayExternalInformationIpArgs{...} }
+type GatewayExternalInformationIpArrayInput interface {
+	pulumi.Input
+
+	ToGatewayExternalInformationIpArrayOutput() GatewayExternalInformationIpArrayOutput
+	ToGatewayExternalInformationIpArrayOutputWithContext(context.Context) GatewayExternalInformationIpArrayOutput
+}
+
+type GatewayExternalInformationIpArray []GatewayExternalInformationIpInput
+
+func (GatewayExternalInformationIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayExternalInformationIp)(nil)).Elem()
+}
+
+func (i GatewayExternalInformationIpArray) ToGatewayExternalInformationIpArrayOutput() GatewayExternalInformationIpArrayOutput {
+	return i.ToGatewayExternalInformationIpArrayOutputWithContext(context.Background())
+}
+
+func (i GatewayExternalInformationIpArray) ToGatewayExternalInformationIpArrayOutputWithContext(ctx context.Context) GatewayExternalInformationIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayExternalInformationIpArrayOutput)
+}
+
+type GatewayExternalInformationIpOutput struct{ *pulumi.OutputState }
+
+func (GatewayExternalInformationIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayExternalInformationIp)(nil)).Elem()
+}
+
+func (o GatewayExternalInformationIpOutput) ToGatewayExternalInformationIpOutput() GatewayExternalInformationIpOutput {
+	return o
+}
+
+func (o GatewayExternalInformationIpOutput) ToGatewayExternalInformationIpOutputWithContext(ctx context.Context) GatewayExternalInformationIpOutput {
+	return o
+}
+
+// IP of the interface.
+func (o GatewayExternalInformationIpOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayExternalInformationIp) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// ID of the subnet.
+func (o GatewayExternalInformationIpOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayExternalInformationIp) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type GatewayExternalInformationIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayExternalInformationIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayExternalInformationIp)(nil)).Elem()
+}
+
+func (o GatewayExternalInformationIpArrayOutput) ToGatewayExternalInformationIpArrayOutput() GatewayExternalInformationIpArrayOutput {
+	return o
+}
+
+func (o GatewayExternalInformationIpArrayOutput) ToGatewayExternalInformationIpArrayOutputWithContext(ctx context.Context) GatewayExternalInformationIpArrayOutput {
+	return o
+}
+
+func (o GatewayExternalInformationIpArrayOutput) Index(i pulumi.IntInput) GatewayExternalInformationIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayExternalInformationIp {
+		return vs[0].([]GatewayExternalInformationIp)[vs[1].(int)]
+	}).(GatewayExternalInformationIpOutput)
+}
+
+type GatewayInterface struct {
+	// ID of the interface.
+	Id *string `pulumi:"id"`
+	// IP of the interface.
+	Ip *string `pulumi:"ip"`
+	// ID of the private network.
+	NetworkId *string `pulumi:"networkId"`
+	// ID of the subnet.
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// GatewayInterfaceInput is an input type that accepts GatewayInterfaceArgs and GatewayInterfaceOutput values.
+// You can construct a concrete instance of `GatewayInterfaceInput` via:
+//
+//	GatewayInterfaceArgs{...}
+type GatewayInterfaceInput interface {
+	pulumi.Input
+
+	ToGatewayInterfaceOutput() GatewayInterfaceOutput
+	ToGatewayInterfaceOutputWithContext(context.Context) GatewayInterfaceOutput
+}
+
+type GatewayInterfaceArgs struct {
+	// ID of the interface.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// IP of the interface.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// ID of the private network.
+	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
+	// ID of the subnet.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (GatewayInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayInterface)(nil)).Elem()
+}
+
+func (i GatewayInterfaceArgs) ToGatewayInterfaceOutput() GatewayInterfaceOutput {
+	return i.ToGatewayInterfaceOutputWithContext(context.Background())
+}
+
+func (i GatewayInterfaceArgs) ToGatewayInterfaceOutputWithContext(ctx context.Context) GatewayInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayInterfaceOutput)
+}
+
+// GatewayInterfaceArrayInput is an input type that accepts GatewayInterfaceArray and GatewayInterfaceArrayOutput values.
+// You can construct a concrete instance of `GatewayInterfaceArrayInput` via:
+//
+//	GatewayInterfaceArray{ GatewayInterfaceArgs{...} }
+type GatewayInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGatewayInterfaceArrayOutput() GatewayInterfaceArrayOutput
+	ToGatewayInterfaceArrayOutputWithContext(context.Context) GatewayInterfaceArrayOutput
+}
+
+type GatewayInterfaceArray []GatewayInterfaceInput
+
+func (GatewayInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayInterface)(nil)).Elem()
+}
+
+func (i GatewayInterfaceArray) ToGatewayInterfaceArrayOutput() GatewayInterfaceArrayOutput {
+	return i.ToGatewayInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GatewayInterfaceArray) ToGatewayInterfaceArrayOutputWithContext(ctx context.Context) GatewayInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayInterfaceArrayOutput)
+}
+
+type GatewayInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GatewayInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayInterface)(nil)).Elem()
+}
+
+func (o GatewayInterfaceOutput) ToGatewayInterfaceOutput() GatewayInterfaceOutput {
+	return o
+}
+
+func (o GatewayInterfaceOutput) ToGatewayInterfaceOutputWithContext(ctx context.Context) GatewayInterfaceOutput {
+	return o
+}
+
+// ID of the interface.
+func (o GatewayInterfaceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayInterface) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// IP of the interface.
+func (o GatewayInterfaceOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayInterface) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// ID of the private network.
+func (o GatewayInterfaceOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayInterface) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the subnet.
+func (o GatewayInterfaceOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayInterface) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type GatewayInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayInterface)(nil)).Elem()
+}
+
+func (o GatewayInterfaceArrayOutput) ToGatewayInterfaceArrayOutput() GatewayInterfaceArrayOutput {
+	return o
+}
+
+func (o GatewayInterfaceArrayOutput) ToGatewayInterfaceArrayOutputWithContext(ctx context.Context) GatewayInterfaceArrayOutput {
+	return o
+}
+
+func (o GatewayInterfaceArrayOutput) Index(i pulumi.IntInput) GatewayInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayInterface {
+		return vs[0].([]GatewayInterface)[vs[1].(int)]
+	}).(GatewayInterfaceOutput)
+}
+
 type KubeCustomization struct {
 	// Kubernetes API server customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Apiservers []KubeCustomizationApiserver `pulumi:"apiservers"`
 }
 
@@ -666,7 +1292,7 @@ type KubeCustomizationInput interface {
 type KubeCustomizationArgs struct {
 	// Kubernetes API server customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Apiservers KubeCustomizationApiserverArrayInput `pulumi:"apiservers"`
 }
 
@@ -723,7 +1349,7 @@ func (o KubeCustomizationOutput) ToKubeCustomizationOutputWithContext(ctx contex
 
 // Kubernetes API server customization
 //
-// Deprecated: Use customization_apiserver instead
+// Deprecated: Use customizationApiserver instead
 func (o KubeCustomizationOutput) Apiservers() KubeCustomizationApiserverArrayOutput {
 	return o.ApplyT(func(v KubeCustomization) []KubeCustomizationApiserver { return v.Apiservers }).(KubeCustomizationApiserverArrayOutput)
 }
@@ -848,10 +1474,8 @@ func (o KubeCustomizationApiserverArrayOutput) Index(i pulumi.IntInput) KubeCust
 }
 
 type KubeCustomizationApiserverAdmissionplugin struct {
-	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds []string `pulumi:"disableds"`
-	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-	Enableds []string `pulumi:"enableds"`
+	Enableds  []string `pulumi:"enableds"`
 }
 
 // KubeCustomizationApiserverAdmissionpluginInput is an input type that accepts KubeCustomizationApiserverAdmissionpluginArgs and KubeCustomizationApiserverAdmissionpluginOutput values.
@@ -866,10 +1490,8 @@ type KubeCustomizationApiserverAdmissionpluginInput interface {
 }
 
 type KubeCustomizationApiserverAdmissionpluginArgs struct {
-	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds pulumi.StringArrayInput `pulumi:"disableds"`
-	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-	Enableds pulumi.StringArrayInput `pulumi:"enableds"`
+	Enableds  pulumi.StringArrayInput `pulumi:"enableds"`
 }
 
 func (KubeCustomizationApiserverAdmissionpluginArgs) ElementType() reflect.Type {
@@ -923,12 +1545,10 @@ func (o KubeCustomizationApiserverAdmissionpluginOutput) ToKubeCustomizationApis
 	return o
 }
 
-// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 func (o KubeCustomizationApiserverAdmissionpluginOutput) Disableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeCustomizationApiserverAdmissionplugin) []string { return v.Disableds }).(pulumi.StringArrayOutput)
 }
 
-// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
 func (o KubeCustomizationApiserverAdmissionpluginOutput) Enableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeCustomizationApiserverAdmissionplugin) []string { return v.Enableds }).(pulumi.StringArrayOutput)
 }
@@ -1110,10 +1730,8 @@ func (o KubeCustomizationKubeProxyPtrOutput) Ipvs() KubeCustomizationKubeProxyIp
 }
 
 type KubeCustomizationKubeProxyIptables struct {
-	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-	SyncPeriod *string `pulumi:"syncPeriod"`
+	SyncPeriod    *string `pulumi:"syncPeriod"`
 }
 
 // KubeCustomizationKubeProxyIptablesInput is an input type that accepts KubeCustomizationKubeProxyIptablesArgs and KubeCustomizationKubeProxyIptablesOutput values.
@@ -1128,10 +1746,8 @@ type KubeCustomizationKubeProxyIptablesInput interface {
 }
 
 type KubeCustomizationKubeProxyIptablesArgs struct {
-	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
 }
 
 func (KubeCustomizationKubeProxyIptablesArgs) ElementType() reflect.Type {
@@ -1211,12 +1827,10 @@ func (o KubeCustomizationKubeProxyIptablesOutput) ToKubeCustomizationKubeProxyIp
 	}).(KubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIptablesOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIptables) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIptablesOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIptables) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
@@ -1245,7 +1859,6 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) Elem() KubeCustomizationKub
 	}).(KubeCustomizationKubeProxyIptablesOutput)
 }
 
-// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -1255,7 +1868,6 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -1266,18 +1878,12 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.StringP
 }
 
 type KubeCustomizationKubeProxyIpvs struct {
-	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	// IPVS scheduler.
-	Scheduler *string `pulumi:"scheduler"`
-	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-	SyncPeriod *string `pulumi:"syncPeriod"`
-	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	Scheduler     *string `pulumi:"scheduler"`
+	SyncPeriod    *string `pulumi:"syncPeriod"`
 	TcpFinTimeout *string `pulumi:"tcpFinTimeout"`
-	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-	TcpTimeout *string `pulumi:"tcpTimeout"`
-	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-	UdpTimeout *string `pulumi:"udpTimeout"`
+	TcpTimeout    *string `pulumi:"tcpTimeout"`
+	UdpTimeout    *string `pulumi:"udpTimeout"`
 }
 
 // KubeCustomizationKubeProxyIpvsInput is an input type that accepts KubeCustomizationKubeProxyIpvsArgs and KubeCustomizationKubeProxyIpvsOutput values.
@@ -1292,18 +1898,12 @@ type KubeCustomizationKubeProxyIpvsInput interface {
 }
 
 type KubeCustomizationKubeProxyIpvsArgs struct {
-	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	// IPVS scheduler.
-	Scheduler pulumi.StringPtrInput `pulumi:"scheduler"`
-	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
-	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	Scheduler     pulumi.StringPtrInput `pulumi:"scheduler"`
+	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
 	TcpFinTimeout pulumi.StringPtrInput `pulumi:"tcpFinTimeout"`
-	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-	TcpTimeout pulumi.StringPtrInput `pulumi:"tcpTimeout"`
-	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-	UdpTimeout pulumi.StringPtrInput `pulumi:"udpTimeout"`
+	TcpTimeout    pulumi.StringPtrInput `pulumi:"tcpTimeout"`
+	UdpTimeout    pulumi.StringPtrInput `pulumi:"udpTimeout"`
 }
 
 func (KubeCustomizationKubeProxyIpvsArgs) ElementType() reflect.Type {
@@ -1383,32 +1983,26 @@ func (o KubeCustomizationKubeProxyIpvsOutput) ToKubeCustomizationKubeProxyIpvsPt
 	}).(KubeCustomizationKubeProxyIpvsPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
-// IPVS scheduler.
 func (o KubeCustomizationKubeProxyIpvsOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.Scheduler }).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.TcpFinTimeout }).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.TcpTimeout }).(pulumi.StringPtrOutput)
 }
 
-// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.UdpTimeout }).(pulumi.StringPtrOutput)
 }
@@ -1437,7 +2031,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) Elem() KubeCustomizationKubePro
 	}).(KubeCustomizationKubeProxyIpvsOutput)
 }
 
-// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -1447,7 +2040,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPVS scheduler.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -1457,7 +2049,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -1467,7 +2058,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -1477,7 +2067,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -1487,7 +2076,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -1622,9 +2210,9 @@ func (o KubeKubeconfigAttributeArrayOutput) Index(i pulumi.IntInput) KubeKubecon
 }
 
 type KubeNodePoolTemplate struct {
-	// Metadata of each node in the pool
+	// metadata
 	Metadata KubeNodePoolTemplateMetadata `pulumi:"metadata"`
-	// Spec of each node in the pool
+	// spec
 	Spec KubeNodePoolTemplateSpec `pulumi:"spec"`
 }
 
@@ -1640,9 +2228,9 @@ type KubeNodePoolTemplateInput interface {
 }
 
 type KubeNodePoolTemplateArgs struct {
-	// Metadata of each node in the pool
+	// metadata
 	Metadata KubeNodePoolTemplateMetadataInput `pulumi:"metadata"`
-	// Spec of each node in the pool
+	// spec
 	Spec KubeNodePoolTemplateSpecInput `pulumi:"spec"`
 }
 
@@ -1723,12 +2311,12 @@ func (o KubeNodePoolTemplateOutput) ToKubeNodePoolTemplatePtrOutputWithContext(c
 	}).(KubeNodePoolTemplatePtrOutput)
 }
 
-// Metadata of each node in the pool
+// metadata
 func (o KubeNodePoolTemplateOutput) Metadata() KubeNodePoolTemplateMetadataOutput {
 	return o.ApplyT(func(v KubeNodePoolTemplate) KubeNodePoolTemplateMetadata { return v.Metadata }).(KubeNodePoolTemplateMetadataOutput)
 }
 
-// Spec of each node in the pool
+// spec
 func (o KubeNodePoolTemplateOutput) Spec() KubeNodePoolTemplateSpecOutput {
 	return o.ApplyT(func(v KubeNodePoolTemplate) KubeNodePoolTemplateSpec { return v.Spec }).(KubeNodePoolTemplateSpecOutput)
 }
@@ -1757,7 +2345,7 @@ func (o KubeNodePoolTemplatePtrOutput) Elem() KubeNodePoolTemplateOutput {
 	}).(KubeNodePoolTemplateOutput)
 }
 
-// Metadata of each node in the pool
+// metadata
 func (o KubeNodePoolTemplatePtrOutput) Metadata() KubeNodePoolTemplateMetadataPtrOutput {
 	return o.ApplyT(func(v *KubeNodePoolTemplate) *KubeNodePoolTemplateMetadata {
 		if v == nil {
@@ -1767,7 +2355,7 @@ func (o KubeNodePoolTemplatePtrOutput) Metadata() KubeNodePoolTemplateMetadataPt
 	}).(KubeNodePoolTemplateMetadataPtrOutput)
 }
 
-// Spec of each node in the pool
+// spec
 func (o KubeNodePoolTemplatePtrOutput) Spec() KubeNodePoolTemplateSpecPtrOutput {
 	return o.ApplyT(func(v *KubeNodePoolTemplate) *KubeNodePoolTemplateSpec {
 		if v == nil {
@@ -1778,11 +2366,11 @@ func (o KubeNodePoolTemplatePtrOutput) Spec() KubeNodePoolTemplateSpecPtrOutput 
 }
 
 type KubeNodePoolTemplateMetadata struct {
-	// Annotations to apply to each node
+	// annotations
 	Annotations map[string]string `pulumi:"annotations"`
-	// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+	// finalizers
 	Finalizers []string `pulumi:"finalizers"`
-	// Labels to apply to each node
+	// labels
 	Labels map[string]string `pulumi:"labels"`
 }
 
@@ -1798,11 +2386,11 @@ type KubeNodePoolTemplateMetadataInput interface {
 }
 
 type KubeNodePoolTemplateMetadataArgs struct {
-	// Annotations to apply to each node
+	// annotations
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+	// finalizers
 	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
-	// Labels to apply to each node
+	// labels
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
 
@@ -1883,17 +2471,17 @@ func (o KubeNodePoolTemplateMetadataOutput) ToKubeNodePoolTemplateMetadataPtrOut
 	}).(KubeNodePoolTemplateMetadataPtrOutput)
 }
 
-// Annotations to apply to each node
+// annotations
 func (o KubeNodePoolTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v KubeNodePoolTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+// finalizers
 func (o KubeNodePoolTemplateMetadataOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeNodePoolTemplateMetadata) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
 }
 
-// Labels to apply to each node
+// labels
 func (o KubeNodePoolTemplateMetadataOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v KubeNodePoolTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1922,7 +2510,7 @@ func (o KubeNodePoolTemplateMetadataPtrOutput) Elem() KubeNodePoolTemplateMetada
 	}).(KubeNodePoolTemplateMetadataOutput)
 }
 
-// Annotations to apply to each node
+// annotations
 func (o KubeNodePoolTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *KubeNodePoolTemplateMetadata) map[string]string {
 		if v == nil {
@@ -1932,7 +2520,7 @@ func (o KubeNodePoolTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOut
 	}).(pulumi.StringMapOutput)
 }
 
-// Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+// finalizers
 func (o KubeNodePoolTemplateMetadataPtrOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KubeNodePoolTemplateMetadata) []string {
 		if v == nil {
@@ -1942,7 +2530,7 @@ func (o KubeNodePoolTemplateMetadataPtrOutput) Finalizers() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Labels to apply to each node
+// labels
 func (o KubeNodePoolTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *KubeNodePoolTemplateMetadata) map[string]string {
 		if v == nil {
@@ -1953,9 +2541,9 @@ func (o KubeNodePoolTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
 }
 
 type KubeNodePoolTemplateSpec struct {
-	// Taints to apply to each node
+	// taints
 	Taints []map[string]interface{} `pulumi:"taints"`
-	// If true, set nodes as un-schedulable
+	// unschedulable
 	Unschedulable bool `pulumi:"unschedulable"`
 }
 
@@ -1971,9 +2559,9 @@ type KubeNodePoolTemplateSpecInput interface {
 }
 
 type KubeNodePoolTemplateSpecArgs struct {
-	// Taints to apply to each node
+	// taints
 	Taints pulumi.MapArrayInput `pulumi:"taints"`
-	// If true, set nodes as un-schedulable
+	// unschedulable
 	Unschedulable pulumi.BoolInput `pulumi:"unschedulable"`
 }
 
@@ -2054,12 +2642,12 @@ func (o KubeNodePoolTemplateSpecOutput) ToKubeNodePoolTemplateSpecPtrOutputWithC
 	}).(KubeNodePoolTemplateSpecPtrOutput)
 }
 
-// Taints to apply to each node
+// taints
 func (o KubeNodePoolTemplateSpecOutput) Taints() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v KubeNodePoolTemplateSpec) []map[string]interface{} { return v.Taints }).(pulumi.MapArrayOutput)
 }
 
-// If true, set nodes as un-schedulable
+// unschedulable
 func (o KubeNodePoolTemplateSpecOutput) Unschedulable() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubeNodePoolTemplateSpec) bool { return v.Unschedulable }).(pulumi.BoolOutput)
 }
@@ -2088,7 +2676,7 @@ func (o KubeNodePoolTemplateSpecPtrOutput) Elem() KubeNodePoolTemplateSpecOutput
 	}).(KubeNodePoolTemplateSpecOutput)
 }
 
-// Taints to apply to each node
+// taints
 func (o KubeNodePoolTemplateSpecPtrOutput) Taints() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v *KubeNodePoolTemplateSpec) []map[string]interface{} {
 		if v == nil {
@@ -2098,7 +2686,7 @@ func (o KubeNodePoolTemplateSpecPtrOutput) Taints() pulumi.MapArrayOutput {
 	}).(pulumi.MapArrayOutput)
 }
 
-// If true, set nodes as un-schedulable
+// unschedulable
 func (o KubeNodePoolTemplateSpecPtrOutput) Unschedulable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubeNodePoolTemplateSpec) *bool {
 		if v == nil {
@@ -2112,6 +2700,21 @@ type KubePrivateNetworkConfiguration struct {
 	// If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
 	DefaultVrackGateway string `pulumi:"defaultVrackGateway"`
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+	//
+	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	PrivateNetworkRoutingAsDefault bool `pulumi:"privateNetworkRoutingAsDefault"`
 }
 
@@ -2130,6 +2733,21 @@ type KubePrivateNetworkConfigurationArgs struct {
 	// If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
 	DefaultVrackGateway pulumi.StringInput `pulumi:"defaultVrackGateway"`
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+	//
+	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	PrivateNetworkRoutingAsDefault pulumi.BoolInput `pulumi:"privateNetworkRoutingAsDefault"`
 }
 
@@ -2216,6 +2834,24 @@ func (o KubePrivateNetworkConfigurationOutput) DefaultVrackGateway() pulumi.Stri
 }
 
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+//
+// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o KubePrivateNetworkConfigurationOutput) PrivateNetworkRoutingAsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubePrivateNetworkConfiguration) bool { return v.PrivateNetworkRoutingAsDefault }).(pulumi.BoolOutput)
 }
@@ -2255,6 +2891,24 @@ func (o KubePrivateNetworkConfigurationPtrOutput) DefaultVrackGateway() pulumi.S
 }
 
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+//
+// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o KubePrivateNetworkConfigurationPtrOutput) PrivateNetworkRoutingAsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubePrivateNetworkConfiguration) *bool {
 		if v == nil {
@@ -2882,7 +3536,7 @@ type ProjectPlan struct {
 	Configurations []ProjectPlanConfiguration `pulumi:"configurations"`
 	// duration
 	Duration string `pulumi:"duration"`
-	// Plan code
+	// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
 	PlanCode string `pulumi:"planCode"`
 	// Pricing model identifier
 	PricingMode string `pulumi:"pricingMode"`
@@ -2906,7 +3560,7 @@ type ProjectPlanArgs struct {
 	Configurations ProjectPlanConfigurationArrayInput `pulumi:"configurations"`
 	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
-	// Plan code
+	// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
 	PlanCode pulumi.StringInput `pulumi:"planCode"`
 	// Pricing model identifier
 	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
@@ -3004,7 +3658,7 @@ func (o ProjectPlanOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectPlan) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// Plan code
+// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
 func (o ProjectPlanOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectPlan) string { return v.PlanCode }).(pulumi.StringOutput)
 }
@@ -3068,7 +3722,7 @@ func (o ProjectPlanPtrOutput) Duration() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Plan code
+// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
 func (o ProjectPlanPtrOutput) PlanCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectPlan) *string {
 		if v == nil {
@@ -4522,7 +5176,7 @@ func (o GetContainerRegistryUsersResultArrayOutput) Index(i pulumi.IntInput) Get
 type GetKubeCustomization struct {
 	// Kubernetes API server customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Apiservers []GetKubeCustomizationApiserver `pulumi:"apiservers"`
 }
 
@@ -4540,7 +5194,7 @@ type GetKubeCustomizationInput interface {
 type GetKubeCustomizationArgs struct {
 	// Kubernetes API server customization
 	//
-	// Deprecated: Use customization_apiserver instead
+	// Deprecated: Use customizationApiserver instead
 	Apiservers GetKubeCustomizationApiserverArrayInput `pulumi:"apiservers"`
 }
 
@@ -4597,7 +5251,7 @@ func (o GetKubeCustomizationOutput) ToGetKubeCustomizationOutputWithContext(ctx 
 
 // Kubernetes API server customization
 //
-// Deprecated: Use customization_apiserver instead
+// Deprecated: Use customizationApiserver instead
 func (o GetKubeCustomizationOutput) Apiservers() GetKubeCustomizationApiserverArrayOutput {
 	return o.ApplyT(func(v GetKubeCustomization) []GetKubeCustomizationApiserver { return v.Apiservers }).(GetKubeCustomizationApiserverArrayOutput)
 }
@@ -5568,8 +6222,10 @@ func (o GetKubeNodePoolNodesNodeArrayOutput) Index(i pulumi.IntInput) GetKubeNod
 }
 
 type GetKubeNodePoolTemplate struct {
+	// metadata
 	Metadata *GetKubeNodePoolTemplateMetadata `pulumi:"metadata"`
-	Spec     *GetKubeNodePoolTemplateSpec     `pulumi:"spec"`
+	// spec
+	Spec *GetKubeNodePoolTemplateSpec `pulumi:"spec"`
 }
 
 // GetKubeNodePoolTemplateInput is an input type that accepts GetKubeNodePoolTemplateArgs and GetKubeNodePoolTemplateOutput values.
@@ -5584,8 +6240,10 @@ type GetKubeNodePoolTemplateInput interface {
 }
 
 type GetKubeNodePoolTemplateArgs struct {
+	// metadata
 	Metadata GetKubeNodePoolTemplateMetadataPtrInput `pulumi:"metadata"`
-	Spec     GetKubeNodePoolTemplateSpecPtrInput     `pulumi:"spec"`
+	// spec
+	Spec GetKubeNodePoolTemplateSpecPtrInput `pulumi:"spec"`
 }
 
 func (GetKubeNodePoolTemplateArgs) ElementType() reflect.Type {
@@ -5665,10 +6323,12 @@ func (o GetKubeNodePoolTemplateOutput) ToGetKubeNodePoolTemplatePtrOutputWithCon
 	}).(GetKubeNodePoolTemplatePtrOutput)
 }
 
+// metadata
 func (o GetKubeNodePoolTemplateOutput) Metadata() GetKubeNodePoolTemplateMetadataPtrOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplate) *GetKubeNodePoolTemplateMetadata { return v.Metadata }).(GetKubeNodePoolTemplateMetadataPtrOutput)
 }
 
+// spec
 func (o GetKubeNodePoolTemplateOutput) Spec() GetKubeNodePoolTemplateSpecPtrOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplate) *GetKubeNodePoolTemplateSpec { return v.Spec }).(GetKubeNodePoolTemplateSpecPtrOutput)
 }
@@ -5697,6 +6357,7 @@ func (o GetKubeNodePoolTemplatePtrOutput) Elem() GetKubeNodePoolTemplateOutput {
 	}).(GetKubeNodePoolTemplateOutput)
 }
 
+// metadata
 func (o GetKubeNodePoolTemplatePtrOutput) Metadata() GetKubeNodePoolTemplateMetadataPtrOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplate) *GetKubeNodePoolTemplateMetadata {
 		if v == nil {
@@ -5706,6 +6367,7 @@ func (o GetKubeNodePoolTemplatePtrOutput) Metadata() GetKubeNodePoolTemplateMeta
 	}).(GetKubeNodePoolTemplateMetadataPtrOutput)
 }
 
+// spec
 func (o GetKubeNodePoolTemplatePtrOutput) Spec() GetKubeNodePoolTemplateSpecPtrOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplate) *GetKubeNodePoolTemplateSpec {
 		if v == nil {
@@ -5716,9 +6378,12 @@ func (o GetKubeNodePoolTemplatePtrOutput) Spec() GetKubeNodePoolTemplateSpecPtrO
 }
 
 type GetKubeNodePoolTemplateMetadata struct {
+	// annotations
 	Annotations map[string]string `pulumi:"annotations"`
-	Finalizers  []string          `pulumi:"finalizers"`
-	Labels      map[string]string `pulumi:"labels"`
+	// finalizers
+	Finalizers []string `pulumi:"finalizers"`
+	// labels
+	Labels map[string]string `pulumi:"labels"`
 }
 
 // GetKubeNodePoolTemplateMetadataInput is an input type that accepts GetKubeNodePoolTemplateMetadataArgs and GetKubeNodePoolTemplateMetadataOutput values.
@@ -5733,9 +6398,12 @@ type GetKubeNodePoolTemplateMetadataInput interface {
 }
 
 type GetKubeNodePoolTemplateMetadataArgs struct {
-	Annotations pulumi.StringMapInput   `pulumi:"annotations"`
-	Finalizers  pulumi.StringArrayInput `pulumi:"finalizers"`
-	Labels      pulumi.StringMapInput   `pulumi:"labels"`
+	// annotations
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// finalizers
+	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
+	// labels
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
 
 func (GetKubeNodePoolTemplateMetadataArgs) ElementType() reflect.Type {
@@ -5815,14 +6483,17 @@ func (o GetKubeNodePoolTemplateMetadataOutput) ToGetKubeNodePoolTemplateMetadata
 	}).(GetKubeNodePoolTemplateMetadataPtrOutput)
 }
 
+// annotations
 func (o GetKubeNodePoolTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// finalizers
 func (o GetKubeNodePoolTemplateMetadataOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplateMetadata) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
 }
 
+// labels
 func (o GetKubeNodePoolTemplateMetadataOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -5851,6 +6522,7 @@ func (o GetKubeNodePoolTemplateMetadataPtrOutput) Elem() GetKubeNodePoolTemplate
 	}).(GetKubeNodePoolTemplateMetadataOutput)
 }
 
+// annotations
 func (o GetKubeNodePoolTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplateMetadata) map[string]string {
 		if v == nil {
@@ -5860,6 +6532,7 @@ func (o GetKubeNodePoolTemplateMetadataPtrOutput) Annotations() pulumi.StringMap
 	}).(pulumi.StringMapOutput)
 }
 
+// finalizers
 func (o GetKubeNodePoolTemplateMetadataPtrOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplateMetadata) []string {
 		if v == nil {
@@ -5869,6 +6542,7 @@ func (o GetKubeNodePoolTemplateMetadataPtrOutput) Finalizers() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+// labels
 func (o GetKubeNodePoolTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplateMetadata) map[string]string {
 		if v == nil {
@@ -5879,8 +6553,10 @@ func (o GetKubeNodePoolTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutpu
 }
 
 type GetKubeNodePoolTemplateSpec struct {
-	Taints        []map[string]interface{} `pulumi:"taints"`
-	Unschedulable *bool                    `pulumi:"unschedulable"`
+	// taints
+	Taints []map[string]interface{} `pulumi:"taints"`
+	// unschedulable
+	Unschedulable *bool `pulumi:"unschedulable"`
 }
 
 // GetKubeNodePoolTemplateSpecInput is an input type that accepts GetKubeNodePoolTemplateSpecArgs and GetKubeNodePoolTemplateSpecOutput values.
@@ -5895,8 +6571,10 @@ type GetKubeNodePoolTemplateSpecInput interface {
 }
 
 type GetKubeNodePoolTemplateSpecArgs struct {
-	Taints        pulumi.MapArrayInput `pulumi:"taints"`
-	Unschedulable pulumi.BoolPtrInput  `pulumi:"unschedulable"`
+	// taints
+	Taints pulumi.MapArrayInput `pulumi:"taints"`
+	// unschedulable
+	Unschedulable pulumi.BoolPtrInput `pulumi:"unschedulable"`
 }
 
 func (GetKubeNodePoolTemplateSpecArgs) ElementType() reflect.Type {
@@ -5976,10 +6654,12 @@ func (o GetKubeNodePoolTemplateSpecOutput) ToGetKubeNodePoolTemplateSpecPtrOutpu
 	}).(GetKubeNodePoolTemplateSpecPtrOutput)
 }
 
+// taints
 func (o GetKubeNodePoolTemplateSpecOutput) Taints() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplateSpec) []map[string]interface{} { return v.Taints }).(pulumi.MapArrayOutput)
 }
 
+// unschedulable
 func (o GetKubeNodePoolTemplateSpecOutput) Unschedulable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetKubeNodePoolTemplateSpec) *bool { return v.Unschedulable }).(pulumi.BoolPtrOutput)
 }
@@ -6008,6 +6688,7 @@ func (o GetKubeNodePoolTemplateSpecPtrOutput) Elem() GetKubeNodePoolTemplateSpec
 	}).(GetKubeNodePoolTemplateSpecOutput)
 }
 
+// taints
 func (o GetKubeNodePoolTemplateSpecPtrOutput) Taints() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplateSpec) []map[string]interface{} {
 		if v == nil {
@@ -6017,6 +6698,7 @@ func (o GetKubeNodePoolTemplateSpecPtrOutput) Taints() pulumi.MapArrayOutput {
 	}).(pulumi.MapArrayOutput)
 }
 
+// unschedulable
 func (o GetKubeNodePoolTemplateSpecPtrOutput) Unschedulable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetKubeNodePoolTemplateSpec) *bool {
 		if v == nil {
@@ -6831,6 +7513,8 @@ func (o GetUsersUserRoleArrayOutput) Index(i pulumi.IntInput) GetUsersUserRoleOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertingFormattedMonthlyThresholdInput)(nil)).Elem(), AlertingFormattedMonthlyThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertingFormattedMonthlyThresholdPtrInput)(nil)).Elem(), AlertingFormattedMonthlyThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRegistryPlanInput)(nil)).Elem(), ContainerRegistryPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRegistryPlanArrayInput)(nil)).Elem(), ContainerRegistryPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRegistryPlanFeatureInput)(nil)).Elem(), ContainerRegistryPlanFeatureArgs{})
@@ -6839,8 +7523,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRegistryPlanRegistryLimitArrayInput)(nil)).Elem(), ContainerRegistryPlanRegistryLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEndpointInput)(nil)).Elem(), DatabaseEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEndpointArrayInput)(nil)).Elem(), DatabaseEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIpRestrictionInput)(nil)).Elem(), DatabaseIpRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIpRestrictionArrayInput)(nil)).Elem(), DatabaseIpRestrictionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseNodeInput)(nil)).Elem(), DatabaseNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseNodeArrayInput)(nil)).Elem(), DatabaseNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExternalInformationInput)(nil)).Elem(), GatewayExternalInformationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExternalInformationArrayInput)(nil)).Elem(), GatewayExternalInformationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExternalInformationIpInput)(nil)).Elem(), GatewayExternalInformationIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExternalInformationIpArrayInput)(nil)).Elem(), GatewayExternalInformationIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInterfaceInput)(nil)).Elem(), GatewayInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInterfaceArrayInput)(nil)).Elem(), GatewayInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationInput)(nil)).Elem(), KubeCustomizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationArrayInput)(nil)).Elem(), KubeCustomizationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationApiserverInput)(nil)).Elem(), KubeCustomizationApiserverArgs{})
@@ -6931,6 +7623,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserRoleInput)(nil)).Elem(), GetUsersUserRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserRoleArrayInput)(nil)).Elem(), GetUsersUserRoleArray{})
+	pulumi.RegisterOutputType(AlertingFormattedMonthlyThresholdOutput{})
+	pulumi.RegisterOutputType(AlertingFormattedMonthlyThresholdPtrOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryPlanOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryPlanArrayOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryPlanFeatureOutput{})
@@ -6939,8 +7633,16 @@ func init() {
 	pulumi.RegisterOutputType(ContainerRegistryPlanRegistryLimitArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseEndpointOutput{})
 	pulumi.RegisterOutputType(DatabaseEndpointArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseIpRestrictionOutput{})
+	pulumi.RegisterOutputType(DatabaseIpRestrictionArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseNodeOutput{})
 	pulumi.RegisterOutputType(DatabaseNodeArrayOutput{})
+	pulumi.RegisterOutputType(GatewayExternalInformationOutput{})
+	pulumi.RegisterOutputType(GatewayExternalInformationArrayOutput{})
+	pulumi.RegisterOutputType(GatewayExternalInformationIpOutput{})
+	pulumi.RegisterOutputType(GatewayExternalInformationIpArrayOutput{})
+	pulumi.RegisterOutputType(GatewayInterfaceOutput{})
+	pulumi.RegisterOutputType(GatewayInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationArrayOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationApiserverOutput{})

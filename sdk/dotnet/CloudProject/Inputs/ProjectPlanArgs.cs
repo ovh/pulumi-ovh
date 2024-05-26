@@ -37,7 +37,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         public Input<string> Duration { get; set; } = null!;
 
         /// <summary>
-        /// Plan code
+        /// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
         /// </summary>
         [Input("planCode", required: true)]
         public Input<string> PlanCode { get; set; } = null!;

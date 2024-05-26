@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const myOauth2ClientAuthCode = new ovh.me.APIOAuth2Client("myOauth2ClientAuthCode", {
  *     callbackUrls: ["https://my-app.com/callback"],
@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const myOauth2ClientClientCreds = new ovh.me.APIOAuth2Client("myOauth2ClientClientCreds", {
  *     description: "An OAuth2 client using the client credentials flow for my app",
@@ -36,16 +36,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OAuth2 clients can be imported using their `client_id`bash
+ * OAuth2 clients can be imported using their `client_id`:
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id
+ * $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id
  * ```
  *
- *  Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separatorbash
+ * Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separator:
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
+ * $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
  * ```
  */
 export class APIOAuth2Client extends pulumi.CustomResource {

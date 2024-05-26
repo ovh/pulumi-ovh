@@ -50,16 +50,6 @@ export const getInstallationTemplates: typeof import("./getInstallationTemplates
 export const getInstallationTemplatesOutput: typeof import("./getInstallationTemplates").getInstallationTemplatesOutput = null as any;
 utilities.lazyLoad(exports, ["getInstallationTemplates","getInstallationTemplatesOutput"], () => require("./getInstallationTemplates"));
 
-export { GetIpxeScriptArgs, GetIpxeScriptResult, GetIpxeScriptOutputArgs } from "./getIpxeScript";
-export const getIpxeScript: typeof import("./getIpxeScript").getIpxeScript = null as any;
-export const getIpxeScriptOutput: typeof import("./getIpxeScript").getIpxeScriptOutput = null as any;
-utilities.lazyLoad(exports, ["getIpxeScript","getIpxeScriptOutput"], () => require("./getIpxeScript"));
-
-export { GetIpxeScriptsResult } from "./getIpxeScripts";
-export const getIpxeScripts: typeof import("./getIpxeScripts").getIpxeScripts = null as any;
-export const getIpxeScriptsOutput: typeof import("./getIpxeScripts").getIpxeScriptsOutput = null as any;
-utilities.lazyLoad(exports, ["getIpxeScripts","getIpxeScriptsOutput"], () => require("./getIpxeScripts"));
-
 export { GetMeResult } from "./getMe";
 export const getMe: typeof import("./getMe").getMe = null as any;
 export const getMeOutput: typeof import("./getMe").getMeOutput = null as any;
@@ -74,16 +64,6 @@ export { GetPaymentmeanCreditCardArgs, GetPaymentmeanCreditCardResult, GetPaymen
 export const getPaymentmeanCreditCard: typeof import("./getPaymentmeanCreditCard").getPaymentmeanCreditCard = null as any;
 export const getPaymentmeanCreditCardOutput: typeof import("./getPaymentmeanCreditCard").getPaymentmeanCreditCardOutput = null as any;
 utilities.lazyLoad(exports, ["getPaymentmeanCreditCard","getPaymentmeanCreditCardOutput"], () => require("./getPaymentmeanCreditCard"));
-
-export { GetSshKeyArgs, GetSshKeyResult, GetSshKeyOutputArgs } from "./getSshKey";
-export const getSshKey: typeof import("./getSshKey").getSshKey = null as any;
-export const getSshKeyOutput: typeof import("./getSshKey").getSshKeyOutput = null as any;
-utilities.lazyLoad(exports, ["getSshKey","getSshKeyOutput"], () => require("./getSshKey"));
-
-export { GetSshKeysResult } from "./getSshKeys";
-export const getSshKeys: typeof import("./getSshKeys").getSshKeys = null as any;
-export const getSshKeysOutput: typeof import("./getSshKeys").getSshKeysOutput = null as any;
-utilities.lazyLoad(exports, ["getSshKeys","getSshKeysOutput"], () => require("./getSshKeys"));
 
 export { IdentityGroupArgs, IdentityGroupState } from "./identityGroup";
 export type IdentityGroup = import("./identityGroup").IdentityGroup;
@@ -115,16 +95,6 @@ export type InstallationTemplatePartitionSchemePartition = import("./installatio
 export const InstallationTemplatePartitionSchemePartition: typeof import("./installationTemplatePartitionSchemePartition").InstallationTemplatePartitionSchemePartition = null as any;
 utilities.lazyLoad(exports, ["InstallationTemplatePartitionSchemePartition"], () => require("./installationTemplatePartitionSchemePartition"));
 
-export { IpxeScriptArgs, IpxeScriptState } from "./ipxeScript";
-export type IpxeScript = import("./ipxeScript").IpxeScript;
-export const IpxeScript: typeof import("./ipxeScript").IpxeScript = null as any;
-utilities.lazyLoad(exports, ["IpxeScript"], () => require("./ipxeScript"));
-
-export { SshKeyArgs, SshKeyState } from "./sshKey";
-export type SshKey = import("./sshKey").SshKey;
-export const SshKey: typeof import("./sshKey").SshKey = null as any;
-utilities.lazyLoad(exports, ["SshKey"], () => require("./sshKey"));
-
 
 const _module = {
     version: utilities.getVersion(),
@@ -144,10 +114,6 @@ const _module = {
                 return new InstallationTemplatePartitionSchemeHardwareRaid(name, <any>undefined, { urn })
             case "ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition":
                 return new InstallationTemplatePartitionSchemePartition(name, <any>undefined, { urn })
-            case "ovh:Me/ipxeScript:IpxeScript":
-                return new IpxeScript(name, <any>undefined, { urn })
-            case "ovh:Me/sshKey:SshKey":
-                return new SshKey(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -160,5 +126,3 @@ pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplate", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplatePartitionScheme", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplatePartitionSchemeHardwareRaid", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplatePartitionSchemePartition", _module)
-pulumi.runtime.registerResourceModule("ovh", "Me/ipxeScript", _module)
-pulumi.runtime.registerResourceModule("ovh", "Me/sshKey", _module)

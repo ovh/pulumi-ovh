@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const database = new ovh.hosting.PrivateDatabaseDb("database", {
  *     databaseName: "XXXXXX",
@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
  *
  * ```sh
- *  $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
+ * $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
  * ```
  */
 export class PrivateDatabaseDb extends pulumi.CustomResource {

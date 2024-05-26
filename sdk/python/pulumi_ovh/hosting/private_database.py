@@ -19,6 +19,7 @@ class PrivateDatabaseArgs:
                  ovh_subsidiary: pulumi.Input[str],
                  plan: pulumi.Input['PrivateDatabasePlanArgs'],
                  display_name: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateDatabaseOrderArgs']]]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateDatabasePlanOptionArgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
@@ -27,6 +28,7 @@ class PrivateDatabaseArgs:
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input['PrivateDatabasePlanArgs'] plan: Product Plan to order
         :param pulumi.Input[str] display_name: Name displayed in customer panel for your private database
+        :param pulumi.Input[Sequence[pulumi.Input['PrivateDatabaseOrderArgs']]] orders: Details about your Order
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[Sequence[pulumi.Input['PrivateDatabasePlanOptionArgs']]] plan_options: Product Plan to order
         :param pulumi.Input[str] service_name: Service name
@@ -35,6 +37,8 @@ class PrivateDatabaseArgs:
         pulumi.set(__self__, "plan", plan)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if orders is not None:
+            pulumi.set(__self__, "orders", orders)
         if payment_mean is not None:
             warnings.warn("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""", DeprecationWarning)
             pulumi.log.warn("""payment_mean is deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
@@ -80,6 +84,18 @@ class PrivateDatabaseArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateDatabaseOrderArgs']]]]:
+        """
+        Details about your Order
+        """
+        return pulumi.get(self, "orders")
+
+    @orders.setter
+    def orders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateDatabaseOrderArgs']]]]):
+        pulumi.set(self, "orders", value)
 
     @property
     @pulumi.getter(name="paymentMean")
@@ -541,6 +557,7 @@ class PrivateDatabase(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabaseOrderArgs']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[pulumi.InputType['PrivateDatabasePlanArgs']]] = None,
@@ -586,12 +603,13 @@ class PrivateDatabase(pulumi.CustomResource):
         OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
 
         ```sh
-         $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+        $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name displayed in customer panel for your private database
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabaseOrderArgs']]]] orders: Details about your Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[pulumi.InputType['PrivateDatabasePlanArgs']] plan: Product Plan to order
@@ -643,7 +661,7 @@ class PrivateDatabase(pulumi.CustomResource):
         OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
 
         ```sh
-         $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+        $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -662,6 +680,7 @@ class PrivateDatabase(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabaseOrderArgs']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[pulumi.InputType['PrivateDatabasePlanArgs']]] = None,
@@ -677,6 +696,7 @@ class PrivateDatabase(pulumi.CustomResource):
             __props__ = PrivateDatabaseArgs.__new__(PrivateDatabaseArgs)
 
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["orders"] = orders
             if ovh_subsidiary is None and not opts.urn:
                 raise TypeError("Missing required property 'ovh_subsidiary'")
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
@@ -693,7 +713,6 @@ class PrivateDatabase(pulumi.CustomResource):
             __props__.__dict__["hostname_ftp"] = None
             __props__.__dict__["infrastructure"] = None
             __props__.__dict__["offer"] = None
-            __props__.__dict__["orders"] = None
             __props__.__dict__["port"] = None
             __props__.__dict__["port_ftp"] = None
             __props__.__dict__["quota_size"] = None

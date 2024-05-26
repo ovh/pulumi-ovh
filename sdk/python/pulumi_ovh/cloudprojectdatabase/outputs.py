@@ -16,6 +16,7 @@ __all__ = [
     'GetCapabilitiesOptionResult',
     'GetCapabilitiesPlanResult',
     'GetDatabaseEndpointResult',
+    'GetDatabaseIpRestrictionResult',
     'GetDatabaseNodeResult',
 ]
 
@@ -325,6 +326,46 @@ class GetDatabaseEndpointResult(dict):
         URI of the endpoint.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetDatabaseIpRestrictionResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 ip: str,
+                 status: str):
+        """
+        :param str description: Description of the IP restriction
+        :param str ip: Authorized IP
+        :param str status: Current status of the cluster.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the IP restriction
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        Authorized IP
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Current status of the cluster.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

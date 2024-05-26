@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myaccount = ovh.Me.getMe({});
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
  *
  * ```sh
- *  $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
+ * $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
  * ```
  */
 export class PrivateDatabase extends pulumi.CustomResource {
@@ -117,7 +117,7 @@ export class PrivateDatabase extends pulumi.CustomResource {
     /**
      * Details about your Order
      */
-    public /*out*/ readonly orders!: pulumi.Output<outputs.Hosting.PrivateDatabaseOrder[]>;
+    public readonly orders!: pulumi.Output<outputs.Hosting.PrivateDatabaseOrder[]>;
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
@@ -232,6 +232,7 @@ export class PrivateDatabase extends pulumi.CustomResource {
                 throw new Error("Missing required property 'plan'");
             }
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
             resourceInputs["paymentMean"] = args ? args.paymentMean : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
@@ -244,7 +245,6 @@ export class PrivateDatabase extends pulumi.CustomResource {
             resourceInputs["hostnameFtp"] = undefined /*out*/;
             resourceInputs["infrastructure"] = undefined /*out*/;
             resourceInputs["offer"] = undefined /*out*/;
-            resourceInputs["orders"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["portFtp"] = undefined /*out*/;
             resourceInputs["quotaSize"] = undefined /*out*/;
@@ -378,6 +378,10 @@ export interface PrivateDatabaseArgs {
      * Name displayed in customer panel for your private database
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Details about your Order
+     */
+    orders?: pulumi.Input<pulumi.Input<inputs.Hosting.PrivateDatabaseOrder>[]>;
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */

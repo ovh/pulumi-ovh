@@ -8,10 +8,277 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
 
 __all__ = [
+    'GetInstallationTemplateInputResult',
+    'GetInstallationTemplateLicenseResult',
+    'GetInstallationTemplateLicenseOResult',
+    'GetInstallationTemplateLicenseUsageResult',
+    'GetInstallationTemplateProjectResult',
+    'GetInstallationTemplateProjectOResult',
+    'GetInstallationTemplateProjectUsageResult',
     'GetServerVniResult',
 ]
+
+@pulumi.output_type
+class GetInstallationTemplateInputResult(dict):
+    def __init__(__self__, *,
+                 default: str,
+                 description: str,
+                 enums: Sequence[str],
+                 mandatory: bool,
+                 name: str,
+                 type: str):
+        """
+        :param str description: Information about this template.
+        """
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enums", enums)
+        pulumi.set(__self__, "mandatory", mandatory)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def default(self) -> str:
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Information about this template.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Sequence[str]:
+        return pulumi.get(self, "enums")
+
+    @property
+    @pulumi.getter
+    def mandatory(self) -> bool:
+        return pulumi.get(self, "mandatory")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInstallationTemplateLicenseResult(dict):
+    def __init__(__self__, *,
+                 os: Sequence['outputs.GetInstallationTemplateLicenseOResult'],
+                 usages: Sequence['outputs.GetInstallationTemplateLicenseUsageResult']):
+        pulumi.set(__self__, "os", os)
+        pulumi.set(__self__, "usages", usages)
+
+    @property
+    @pulumi.getter
+    def os(self) -> Sequence['outputs.GetInstallationTemplateLicenseOResult']:
+        return pulumi.get(self, "os")
+
+    @property
+    @pulumi.getter
+    def usages(self) -> Sequence['outputs.GetInstallationTemplateLicenseUsageResult']:
+        return pulumi.get(self, "usages")
+
+
+@pulumi.output_type
+class GetInstallationTemplateLicenseOResult(dict):
+    def __init__(__self__, *,
+                 names: Sequence[str],
+                 url: str):
+        pulumi.set(__self__, "names", names)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def names(self) -> Sequence[str]:
+        return pulumi.get(self, "names")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetInstallationTemplateLicenseUsageResult(dict):
+    def __init__(__self__, *,
+                 names: Sequence[str],
+                 url: str):
+        pulumi.set(__self__, "names", names)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def names(self) -> Sequence[str]:
+        return pulumi.get(self, "names")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetInstallationTemplateProjectResult(dict):
+    def __init__(__self__, *,
+                 os: Sequence['outputs.GetInstallationTemplateProjectOResult'],
+                 usages: Sequence['outputs.GetInstallationTemplateProjectUsageResult']):
+        """
+        :param Sequence['GetInstallationTemplateProjectOArgs'] os: OS template project OS details
+        """
+        pulumi.set(__self__, "os", os)
+        pulumi.set(__self__, "usages", usages)
+
+    @property
+    @pulumi.getter
+    def os(self) -> Sequence['outputs.GetInstallationTemplateProjectOResult']:
+        """
+        OS template project OS details
+        """
+        return pulumi.get(self, "os")
+
+    @property
+    @pulumi.getter
+    def usages(self) -> Sequence['outputs.GetInstallationTemplateProjectUsageResult']:
+        return pulumi.get(self, "usages")
+
+
+@pulumi.output_type
+class GetInstallationTemplateProjectOResult(dict):
+    def __init__(__self__, *,
+                 governances: Sequence[str],
+                 name: str,
+                 release_notes: str,
+                 url: str,
+                 version: str):
+        """
+        :param Sequence[str] governances: OS template project item governance
+        :param str name: OS template project item name
+        :param str release_notes: OS template project item release notes
+        :param str url: OS template project item url
+        :param str version: OS template project item version
+        """
+        pulumi.set(__self__, "governances", governances)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "release_notes", release_notes)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def governances(self) -> Sequence[str]:
+        """
+        OS template project item governance
+        """
+        return pulumi.get(self, "governances")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        OS template project item name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="releaseNotes")
+    def release_notes(self) -> str:
+        """
+        OS template project item release notes
+        """
+        return pulumi.get(self, "release_notes")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        OS template project item url
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        OS template project item version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetInstallationTemplateProjectUsageResult(dict):
+    def __init__(__self__, *,
+                 governances: Sequence[str],
+                 name: str,
+                 release_notes: str,
+                 url: str,
+                 version: str):
+        """
+        :param Sequence[str] governances: OS template project item governance
+        :param str name: OS template project item name
+        :param str release_notes: OS template project item release notes
+        :param str url: OS template project item url
+        :param str version: OS template project item version
+        """
+        pulumi.set(__self__, "governances", governances)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "release_notes", release_notes)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def governances(self) -> Sequence[str]:
+        """
+        OS template project item governance
+        """
+        return pulumi.get(self, "governances")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        OS template project item name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="releaseNotes")
+    def release_notes(self) -> str:
+        """
+        OS template project item release notes
+        """
+        return pulumi.get(self, "release_notes")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        OS template project item url
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        OS template project item version
+        """
+        return pulumi.get(self, "version")
+
 
 @pulumi.output_type
 class GetServerVniResult(dict):

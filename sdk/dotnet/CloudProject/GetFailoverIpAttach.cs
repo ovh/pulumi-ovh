@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the details of a failover IP address of a service in a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -34,8 +32,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFailoverIpAttachResult> InvokeAsync(GetFailoverIpAttachArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFailoverIpAttachResult>("ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach", args ?? new GetFailoverIpAttachArgs(), options.WithDefaults());
@@ -43,9 +39,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Use this data source to get the details of a failover IP address of a service in a public cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -63,8 +57,6 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFailoverIpAttachResult> Invoke(GetFailoverIpAttachInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFailoverIpAttachResult>("ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach", args ?? new GetFailoverIpAttachInvokeArgs(), options.WithDefaults());

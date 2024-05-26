@@ -12,10 +12,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// <summary>
     /// ## Import
     /// 
-    /// OVHcloud Managed M3DB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+    /// OVHcloud Managed M3DB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+    /// 
+    /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:CloudProjectDatabase/m3DbUser:M3DbUser my_user service_name/cluster_id/id
+    /// $ pulumi import ovh:CloudProjectDatabase/m3DbUser:M3DbUser my_user service_name/cluster_id/id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/m3DbUser:M3DbUser")]
@@ -40,7 +42,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string?> Group { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -134,7 +136,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -179,7 +181,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// Name of the user. A user named "avnadmin" is map with already created admin user instead of create a new user.
+        /// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * const projectUsers = ovh.CloudProject.getUsers({
  *     serviceName: "XXX",
  * });
+ * // Get the user ID of a previously created user with the description "S3-User"
  * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
  * const s3UserId = users[0];
  * export const userId = s3UserId;
@@ -68,6 +69,7 @@ export interface GetUsersResult {
  * const projectUsers = ovh.CloudProject.getUsers({
  *     serviceName: "XXX",
  * });
+ * // Get the user ID of a previously created user with the description "S3-User"
  * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
  * const s3UserId = users[0];
  * export const userId = s3UserId;

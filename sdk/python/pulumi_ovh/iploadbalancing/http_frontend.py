@@ -490,6 +490,7 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
+
         ### With HTTP Header
 
         ```python
@@ -514,6 +515,10 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
+
+        ## Import
+
+        HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -562,6 +567,7 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
+
         ### With HTTP Header
 
         ```python
@@ -586,6 +592,10 @@ class HttpFrontend(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="all")
         ```
+
+        ## Import
+
+        HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param HttpFrontendArgs args: The arguments to use to populate this resource's properties.

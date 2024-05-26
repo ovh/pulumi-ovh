@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const ldp = new ovh.dbaas.LogsCluster("ldp", {
  *     archiveAllowedNetworks: ["10.0.0.0/16"],
@@ -22,10 +22,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by "/" E.g., bash
+ * OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by "/" E.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id
+ * $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id
  * ```
  */
 export class LogsCluster extends pulumi.CustomResource {

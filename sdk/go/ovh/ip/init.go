@@ -21,8 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "ovh:Ip/firewall:Firewall":
+		r = &Firewall{}
+	case "ovh:Ip/firewallRule:FirewallRule":
+		r = &FirewallRule{}
 	case "ovh:Ip/ipService:IpService":
 		r = &IpService{}
+	case "ovh:Ip/mitigation:Mitigation":
+		r = &Mitigation{}
+	case "ovh:Ip/move:Move":
+		r = &Move{}
 	case "ovh:Ip/reverse:Reverse":
 		r = &Reverse{}
 	default:
@@ -40,7 +48,27 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"Ip/firewall",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Ip/firewallRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"Ip/ipService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Ip/mitigation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Ip/move",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

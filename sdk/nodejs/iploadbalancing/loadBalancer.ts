@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myaccount = ovh.Me.getMe({});
@@ -110,7 +110,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * Details about an Order
      */
-    public /*out*/ readonly orders!: pulumi.Output<outputs.IpLoadBalancing.LoadBalancerOrder[]>;
+    public readonly orders!: pulumi.Output<outputs.IpLoadBalancing.LoadBalancerOrder[]>;
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
@@ -195,6 +195,7 @@ export class LoadBalancer extends pulumi.CustomResource {
                 throw new Error("Missing required property 'plan'");
             }
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
             resourceInputs["paymentMean"] = args ? args.paymentMean : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
@@ -207,7 +208,6 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["metricsToken"] = undefined /*out*/;
             resourceInputs["offer"] = undefined /*out*/;
             resourceInputs["orderableZones"] = undefined /*out*/;
-            resourceInputs["orders"] = undefined /*out*/;
             resourceInputs["serviceName"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["vrackEligibility"] = undefined /*out*/;
@@ -313,6 +313,10 @@ export interface LoadBalancerArgs {
      * Set the name displayed in ManagerV6 for your iplb (max 50 chars)
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Details about an Order
+     */
+    orders?: pulumi.Input<pulumi.Input<inputs.IpLoadBalancing.LoadBalancerOrder>[]>;
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */

@@ -14,9 +14,7 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve information about a DBaas logs output graylog stream.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -34,8 +32,6 @@ namespace Pulumi.Ovh.Dbaas
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLogsOutputGraylogStreamResult> InvokeAsync(GetLogsOutputGraylogStreamArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogsOutputGraylogStreamResult>("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args ?? new GetLogsOutputGraylogStreamArgs(), options.WithDefaults());
@@ -43,9 +39,7 @@ namespace Pulumi.Ovh.Dbaas
         /// <summary>
         /// Use this data source to retrieve information about a DBaas logs output graylog stream.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -63,8 +57,6 @@ namespace Pulumi.Ovh.Dbaas
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetLogsOutputGraylogStreamResult> Invoke(GetLogsOutputGraylogStreamInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsOutputGraylogStreamResult>("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args ?? new GetLogsOutputGraylogStreamInvokeArgs(), options.WithDefaults());

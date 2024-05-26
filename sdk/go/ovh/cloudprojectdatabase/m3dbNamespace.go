@@ -37,8 +37,8 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewM3DbNamespace(ctx, "namespace", &CloudProjectDatabase.M3DbNamespaceArgs{
-//				ServiceName:             *pulumi.String(m3db.ServiceName),
-//				ClusterId:               *pulumi.String(m3db.Id),
+//				ServiceName:             pulumi.String(m3db.ServiceName),
+//				ClusterId:               pulumi.String(m3db.Id),
 //				Resolution:              pulumi.String("P2D"),
 //				RetentionPeriodDuration: pulumi.String("PT48H"),
 //			})
@@ -53,12 +53,12 @@ import (
 //
 // ## Import
 //
-// OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g., bash
+// OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
-//
+// $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
 // ```
 type M3DbNamespace struct {
 	pulumi.CustomResourceState

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const my_partition = new ovh.dedicated.NasHAPartition("my-partition", {
  *     protocol: "NFS",
@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * HA-NAS can be imported using the `{service_name}/{name}`, e.g.
  *
  * ```sh
- *  $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
+ * $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
  * ```
  */
 export class NasHAPartition extends pulumi.CustomResource {

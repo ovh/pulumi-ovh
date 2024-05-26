@@ -56,6 +56,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// TCP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
 type TcpRouteRule struct {
 	pulumi.CustomResourceState
 

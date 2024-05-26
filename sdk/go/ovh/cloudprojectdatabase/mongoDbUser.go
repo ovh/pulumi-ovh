@@ -14,12 +14,12 @@ import (
 
 // ## Import
 //
-// OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+// OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+//
+// bash
 //
 // ```sh
-//
-//	$ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
-//
+// $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
 // ```
 type MongoDbUser struct {
 	pulumi.CustomResourceState
@@ -28,14 +28,31 @@ type MongoDbUser struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Date of the creation of the user.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Name of the user.
+	// Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	// Roles the user belongs to.
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
 	// Available roles:
+	// * `backup@admin`
+	// * `clusterAdmin@admin`
+	// * `clusterManager@admin`
+	// * `clusterMonitor@admin`
+	// * `dbAdmin@(defined db)`
+	// * `dbAdminAnyDatabase@admin`
+	// * `dbOwner@(defined db)`
+	// * `enableSharding@(defined db)`
+	// * `hostManager@admin`
+	// * `read@(defined db)`
+	// * `readAnyDatabase@admin`
+	// * `readWrite@(defined db)`
+	// * `readWriteAnyDatabase@admin`
+	// * `restore@admin`
+	// * `root@admin`
+	// * `userAdmin@(defined db)`
+	// * `userAdminAnyDatabase@admin`
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -88,14 +105,31 @@ type mongoDbUserState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Date of the creation of the user.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Name of the user.
+	// Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
 	Name *string `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// Roles the user belongs to.
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
 	// Available roles:
+	// * `backup@admin`
+	// * `clusterAdmin@admin`
+	// * `clusterManager@admin`
+	// * `clusterMonitor@admin`
+	// * `dbAdmin@(defined db)`
+	// * `dbAdminAnyDatabase@admin`
+	// * `dbOwner@(defined db)`
+	// * `enableSharding@(defined db)`
+	// * `hostManager@admin`
+	// * `read@(defined db)`
+	// * `readAnyDatabase@admin`
+	// * `readWrite@(defined db)`
+	// * `readWriteAnyDatabase@admin`
+	// * `restore@admin`
+	// * `root@admin`
+	// * `userAdmin@(defined db)`
+	// * `userAdminAnyDatabase@admin`
 	Roles []string `pulumi:"roles"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -109,14 +143,31 @@ type MongoDbUserState struct {
 	ClusterId pulumi.StringPtrInput
 	// Date of the creation of the user.
 	CreatedAt pulumi.StringPtrInput
-	// Name of the user.
+	// Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
 	Name pulumi.StringPtrInput
 	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// Roles the user belongs to.
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
 	// Available roles:
+	// * `backup@admin`
+	// * `clusterAdmin@admin`
+	// * `clusterManager@admin`
+	// * `clusterMonitor@admin`
+	// * `dbAdmin@(defined db)`
+	// * `dbAdminAnyDatabase@admin`
+	// * `dbOwner@(defined db)`
+	// * `enableSharding@(defined db)`
+	// * `hostManager@admin`
+	// * `read@(defined db)`
+	// * `readAnyDatabase@admin`
+	// * `readWrite@(defined db)`
+	// * `readWriteAnyDatabase@admin`
+	// * `restore@admin`
+	// * `root@admin`
+	// * `userAdmin@(defined db)`
+	// * `userAdminAnyDatabase@admin`
 	Roles pulumi.StringArrayInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -132,12 +183,29 @@ func (MongoDbUserState) ElementType() reflect.Type {
 type mongoDbUserArgs struct {
 	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// Name of the user.
+	// Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// Roles the user belongs to.
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
 	// Available roles:
+	// * `backup@admin`
+	// * `clusterAdmin@admin`
+	// * `clusterManager@admin`
+	// * `clusterMonitor@admin`
+	// * `dbAdmin@(defined db)`
+	// * `dbAdminAnyDatabase@admin`
+	// * `dbOwner@(defined db)`
+	// * `enableSharding@(defined db)`
+	// * `hostManager@admin`
+	// * `read@(defined db)`
+	// * `readAnyDatabase@admin`
+	// * `readWrite@(defined db)`
+	// * `readWriteAnyDatabase@admin`
+	// * `restore@admin`
+	// * `root@admin`
+	// * `userAdmin@(defined db)`
+	// * `userAdminAnyDatabase@admin`
 	Roles []string `pulumi:"roles"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -148,12 +216,29 @@ type mongoDbUserArgs struct {
 type MongoDbUserArgs struct {
 	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// Name of the user.
+	// Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// Roles the user belongs to.
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
 	// Available roles:
+	// * `backup@admin`
+	// * `clusterAdmin@admin`
+	// * `clusterManager@admin`
+	// * `clusterMonitor@admin`
+	// * `dbAdmin@(defined db)`
+	// * `dbAdminAnyDatabase@admin`
+	// * `dbOwner@(defined db)`
+	// * `enableSharding@(defined db)`
+	// * `hostManager@admin`
+	// * `read@(defined db)`
+	// * `readAnyDatabase@admin`
+	// * `readWrite@(defined db)`
+	// * `readWriteAnyDatabase@admin`
+	// * `restore@admin`
+	// * `root@admin`
+	// * `userAdmin@(defined db)`
+	// * `userAdminAnyDatabase@admin`
 	Roles pulumi.StringArrayInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -257,7 +342,7 @@ func (o MongoDbUserOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongoDbUser) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Name of the user.
+// Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
 func (o MongoDbUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongoDbUser) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -272,8 +357,25 @@ func (o MongoDbUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MongoDbUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
-// Roles the user belongs to.
+// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
 // Available roles:
+// * `backup@admin`
+// * `clusterAdmin@admin`
+// * `clusterManager@admin`
+// * `clusterMonitor@admin`
+// * `dbAdmin@(defined db)`
+// * `dbAdminAnyDatabase@admin`
+// * `dbOwner@(defined db)`
+// * `enableSharding@(defined db)`
+// * `hostManager@admin`
+// * `read@(defined db)`
+// * `readAnyDatabase@admin`
+// * `readWrite@(defined db)`
+// * `readWriteAnyDatabase@admin`
+// * `restore@admin`
+// * `root@admin`
+// * `userAdmin@(defined db)`
+// * `userAdminAnyDatabase@admin`
 func (o MongoDbUserOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MongoDbUser) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
 }

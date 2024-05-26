@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  * import * as ovh from "@pulumi/ovh";
  *
  * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     zone: "GRA",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * HTTP farm can be imported using the following format `serviceName` and the `id` of the farm, separated by "/" e.g.
  */
 export class HttpFarm extends pulumi.CustomResource {
     /**
@@ -64,7 +68,7 @@ export class HttpFarm extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Port for backends to receive traffic on.
+     * Port attached to your farm ([1..49151]). Inherited from frontend if null
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
@@ -144,7 +148,7 @@ export interface HttpFarmState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Port for backends to receive traffic on.
+     * Port attached to your farm ([1..49151]). Inherited from frontend if null
      */
     port?: pulumi.Input<number>;
     /**
@@ -182,7 +186,7 @@ export interface HttpFarmArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Port for backends to receive traffic on.
+     * Port attached to your farm ([1..49151]). Inherited from frontend if null
      */
     port?: pulumi.Input<number>;
     /**

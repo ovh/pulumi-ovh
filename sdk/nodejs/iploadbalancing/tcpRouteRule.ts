@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const reject = new ovh.iploadbalancing.TcpRoute("reject", {
  *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     pattern: "example.com",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * TCP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
  */
 export class TcpRouteRule extends pulumi.CustomResource {
     /**

@@ -14,36 +14,18 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ServerInstallTaskDetails struct {
-	// Template change log details.
-	//
-	// Deprecated: field is not used anymore
-	ChangeLog *string `pulumi:"changeLog"`
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname *string `pulumi:"customHostname"`
 	// Disk group id.
 	DiskGroupId *int `pulumi:"diskGroupId"`
-	// set to true to install RTM.
-	InstallRtm *bool `pulumi:"installRtm"`
-	// set to true to install sql server (Windows template only).
-	InstallSqlServer *bool `pulumi:"installSqlServer"`
-	// language.
-	Language *string `pulumi:"language"`
-	// set to true to disable RAID.
+	// Set to true to disable RAID.
 	NoRaid *bool `pulumi:"noRaid"`
 	// Indicate the URL where your postinstall customisation script is located.
 	PostInstallationScriptLink *string `pulumi:"postInstallationScriptLink"`
 	// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn *string `pulumi:"postInstallationScriptReturn"`
-	// set to true to make a hardware raid reset.
-	ResetHwRaid *bool `pulumi:"resetHwRaid"`
 	// soft raid devices.
 	SoftRaidDevices *int `pulumi:"softRaidDevices"`
-	// Name of the ssh key that should be installed. Password login will be disabled.
-	SshKeyName *string `pulumi:"sshKeyName"`
-	// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-	UseDistribKernel *bool `pulumi:"useDistribKernel"`
-	// set to true to use SPLA.
-	UseSpla *bool `pulumi:"useSpla"`
 }
 
 // ServerInstallTaskDetailsInput is an input type that accepts ServerInstallTaskDetailsArgs and ServerInstallTaskDetailsOutput values.
@@ -58,36 +40,18 @@ type ServerInstallTaskDetailsInput interface {
 }
 
 type ServerInstallTaskDetailsArgs struct {
-	// Template change log details.
-	//
-	// Deprecated: field is not used anymore
-	ChangeLog pulumi.StringPtrInput `pulumi:"changeLog"`
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname pulumi.StringPtrInput `pulumi:"customHostname"`
 	// Disk group id.
 	DiskGroupId pulumi.IntPtrInput `pulumi:"diskGroupId"`
-	// set to true to install RTM.
-	InstallRtm pulumi.BoolPtrInput `pulumi:"installRtm"`
-	// set to true to install sql server (Windows template only).
-	InstallSqlServer pulumi.BoolPtrInput `pulumi:"installSqlServer"`
-	// language.
-	Language pulumi.StringPtrInput `pulumi:"language"`
-	// set to true to disable RAID.
+	// Set to true to disable RAID.
 	NoRaid pulumi.BoolPtrInput `pulumi:"noRaid"`
 	// Indicate the URL where your postinstall customisation script is located.
 	PostInstallationScriptLink pulumi.StringPtrInput `pulumi:"postInstallationScriptLink"`
 	// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
 	PostInstallationScriptReturn pulumi.StringPtrInput `pulumi:"postInstallationScriptReturn"`
-	// set to true to make a hardware raid reset.
-	ResetHwRaid pulumi.BoolPtrInput `pulumi:"resetHwRaid"`
 	// soft raid devices.
 	SoftRaidDevices pulumi.IntPtrInput `pulumi:"softRaidDevices"`
-	// Name of the ssh key that should be installed. Password login will be disabled.
-	SshKeyName pulumi.StringPtrInput `pulumi:"sshKeyName"`
-	// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-	UseDistribKernel pulumi.BoolPtrInput `pulumi:"useDistribKernel"`
-	// set to true to use SPLA.
-	UseSpla pulumi.BoolPtrInput `pulumi:"useSpla"`
 }
 
 func (ServerInstallTaskDetailsArgs) ElementType() reflect.Type {
@@ -167,13 +131,6 @@ func (o ServerInstallTaskDetailsOutput) ToServerInstallTaskDetailsPtrOutputWithC
 	}).(ServerInstallTaskDetailsPtrOutput)
 }
 
-// Template change log details.
-//
-// Deprecated: field is not used anymore
-func (o ServerInstallTaskDetailsOutput) ChangeLog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.ChangeLog }).(pulumi.StringPtrOutput)
-}
-
 // Set up the server using the provided hostname instead of the default hostname.
 func (o ServerInstallTaskDetailsOutput) CustomHostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.CustomHostname }).(pulumi.StringPtrOutput)
@@ -184,22 +141,7 @@ func (o ServerInstallTaskDetailsOutput) DiskGroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *int { return v.DiskGroupId }).(pulumi.IntPtrOutput)
 }
 
-// set to true to install RTM.
-func (o ServerInstallTaskDetailsOutput) InstallRtm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.InstallRtm }).(pulumi.BoolPtrOutput)
-}
-
-// set to true to install sql server (Windows template only).
-func (o ServerInstallTaskDetailsOutput) InstallSqlServer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.InstallSqlServer }).(pulumi.BoolPtrOutput)
-}
-
-// language.
-func (o ServerInstallTaskDetailsOutput) Language() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.Language }).(pulumi.StringPtrOutput)
-}
-
-// set to true to disable RAID.
+// Set to true to disable RAID.
 func (o ServerInstallTaskDetailsOutput) NoRaid() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.NoRaid }).(pulumi.BoolPtrOutput)
 }
@@ -214,29 +156,9 @@ func (o ServerInstallTaskDetailsOutput) PostInstallationScriptReturn() pulumi.St
 	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.PostInstallationScriptReturn }).(pulumi.StringPtrOutput)
 }
 
-// set to true to make a hardware raid reset.
-func (o ServerInstallTaskDetailsOutput) ResetHwRaid() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.ResetHwRaid }).(pulumi.BoolPtrOutput)
-}
-
 // soft raid devices.
 func (o ServerInstallTaskDetailsOutput) SoftRaidDevices() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *int { return v.SoftRaidDevices }).(pulumi.IntPtrOutput)
-}
-
-// Name of the ssh key that should be installed. Password login will be disabled.
-func (o ServerInstallTaskDetailsOutput) SshKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.SshKeyName }).(pulumi.StringPtrOutput)
-}
-
-// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-func (o ServerInstallTaskDetailsOutput) UseDistribKernel() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.UseDistribKernel }).(pulumi.BoolPtrOutput)
-}
-
-// set to true to use SPLA.
-func (o ServerInstallTaskDetailsOutput) UseSpla() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.UseSpla }).(pulumi.BoolPtrOutput)
 }
 
 type ServerInstallTaskDetailsPtrOutput struct{ *pulumi.OutputState }
@@ -263,18 +185,6 @@ func (o ServerInstallTaskDetailsPtrOutput) Elem() ServerInstallTaskDetailsOutput
 	}).(ServerInstallTaskDetailsOutput)
 }
 
-// Template change log details.
-//
-// Deprecated: field is not used anymore
-func (o ServerInstallTaskDetailsPtrOutput) ChangeLog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ChangeLog
-	}).(pulumi.StringPtrOutput)
-}
-
 // Set up the server using the provided hostname instead of the default hostname.
 func (o ServerInstallTaskDetailsPtrOutput) CustomHostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerInstallTaskDetails) *string {
@@ -295,37 +205,7 @@ func (o ServerInstallTaskDetailsPtrOutput) DiskGroupId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// set to true to install RTM.
-func (o ServerInstallTaskDetailsPtrOutput) InstallRtm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.InstallRtm
-	}).(pulumi.BoolPtrOutput)
-}
-
-// set to true to install sql server (Windows template only).
-func (o ServerInstallTaskDetailsPtrOutput) InstallSqlServer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.InstallSqlServer
-	}).(pulumi.BoolPtrOutput)
-}
-
-// language.
-func (o ServerInstallTaskDetailsPtrOutput) Language() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Language
-	}).(pulumi.StringPtrOutput)
-}
-
-// set to true to disable RAID.
+// Set to true to disable RAID.
 func (o ServerInstallTaskDetailsPtrOutput) NoRaid() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
 		if v == nil {
@@ -355,16 +235,6 @@ func (o ServerInstallTaskDetailsPtrOutput) PostInstallationScriptReturn() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// set to true to make a hardware raid reset.
-func (o ServerInstallTaskDetailsPtrOutput) ResetHwRaid() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ResetHwRaid
-	}).(pulumi.BoolPtrOutput)
-}
-
 // soft raid devices.
 func (o ServerInstallTaskDetailsPtrOutput) SoftRaidDevices() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerInstallTaskDetails) *int {
@@ -375,39 +245,117 @@ func (o ServerInstallTaskDetailsPtrOutput) SoftRaidDevices() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// Name of the ssh key that should be installed. Password login will be disabled.
-func (o ServerInstallTaskDetailsPtrOutput) SshKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SshKeyName
-	}).(pulumi.StringPtrOutput)
+type ServerInstallTaskUserMetadata struct {
+	// The key for the user_metadata
+	Key string `pulumi:"key"`
+	// The value for the user_metadata
+	Value string `pulumi:"value"`
 }
 
-// Use the distribution's native kernel instead of the recommended OVHcloud Kernel.
-func (o ServerInstallTaskDetailsPtrOutput) UseDistribKernel() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UseDistribKernel
-	}).(pulumi.BoolPtrOutput)
+// ServerInstallTaskUserMetadataInput is an input type that accepts ServerInstallTaskUserMetadataArgs and ServerInstallTaskUserMetadataOutput values.
+// You can construct a concrete instance of `ServerInstallTaskUserMetadataInput` via:
+//
+//	ServerInstallTaskUserMetadataArgs{...}
+type ServerInstallTaskUserMetadataInput interface {
+	pulumi.Input
+
+	ToServerInstallTaskUserMetadataOutput() ServerInstallTaskUserMetadataOutput
+	ToServerInstallTaskUserMetadataOutputWithContext(context.Context) ServerInstallTaskUserMetadataOutput
 }
 
-// set to true to use SPLA.
-func (o ServerInstallTaskDetailsPtrOutput) UseSpla() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UseSpla
-	}).(pulumi.BoolPtrOutput)
+type ServerInstallTaskUserMetadataArgs struct {
+	// The key for the user_metadata
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value for the user_metadata
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ServerInstallTaskUserMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerInstallTaskUserMetadata)(nil)).Elem()
+}
+
+func (i ServerInstallTaskUserMetadataArgs) ToServerInstallTaskUserMetadataOutput() ServerInstallTaskUserMetadataOutput {
+	return i.ToServerInstallTaskUserMetadataOutputWithContext(context.Background())
+}
+
+func (i ServerInstallTaskUserMetadataArgs) ToServerInstallTaskUserMetadataOutputWithContext(ctx context.Context) ServerInstallTaskUserMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskUserMetadataOutput)
+}
+
+// ServerInstallTaskUserMetadataArrayInput is an input type that accepts ServerInstallTaskUserMetadataArray and ServerInstallTaskUserMetadataArrayOutput values.
+// You can construct a concrete instance of `ServerInstallTaskUserMetadataArrayInput` via:
+//
+//	ServerInstallTaskUserMetadataArray{ ServerInstallTaskUserMetadataArgs{...} }
+type ServerInstallTaskUserMetadataArrayInput interface {
+	pulumi.Input
+
+	ToServerInstallTaskUserMetadataArrayOutput() ServerInstallTaskUserMetadataArrayOutput
+	ToServerInstallTaskUserMetadataArrayOutputWithContext(context.Context) ServerInstallTaskUserMetadataArrayOutput
+}
+
+type ServerInstallTaskUserMetadataArray []ServerInstallTaskUserMetadataInput
+
+func (ServerInstallTaskUserMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerInstallTaskUserMetadata)(nil)).Elem()
+}
+
+func (i ServerInstallTaskUserMetadataArray) ToServerInstallTaskUserMetadataArrayOutput() ServerInstallTaskUserMetadataArrayOutput {
+	return i.ToServerInstallTaskUserMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i ServerInstallTaskUserMetadataArray) ToServerInstallTaskUserMetadataArrayOutputWithContext(ctx context.Context) ServerInstallTaskUserMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskUserMetadataArrayOutput)
+}
+
+type ServerInstallTaskUserMetadataOutput struct{ *pulumi.OutputState }
+
+func (ServerInstallTaskUserMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerInstallTaskUserMetadata)(nil)).Elem()
+}
+
+func (o ServerInstallTaskUserMetadataOutput) ToServerInstallTaskUserMetadataOutput() ServerInstallTaskUserMetadataOutput {
+	return o
+}
+
+func (o ServerInstallTaskUserMetadataOutput) ToServerInstallTaskUserMetadataOutputWithContext(ctx context.Context) ServerInstallTaskUserMetadataOutput {
+	return o
+}
+
+// The key for the user_metadata
+func (o ServerInstallTaskUserMetadataOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerInstallTaskUserMetadata) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value for the user_metadata
+func (o ServerInstallTaskUserMetadataOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerInstallTaskUserMetadata) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ServerInstallTaskUserMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerInstallTaskUserMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerInstallTaskUserMetadata)(nil)).Elem()
+}
+
+func (o ServerInstallTaskUserMetadataArrayOutput) ToServerInstallTaskUserMetadataArrayOutput() ServerInstallTaskUserMetadataArrayOutput {
+	return o
+}
+
+func (o ServerInstallTaskUserMetadataArrayOutput) ToServerInstallTaskUserMetadataArrayOutputWithContext(ctx context.Context) ServerInstallTaskUserMetadataArrayOutput {
+	return o
+}
+
+func (o ServerInstallTaskUserMetadataArrayOutput) Index(i pulumi.IntInput) ServerInstallTaskUserMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerInstallTaskUserMetadata {
+		return vs[0].([]ServerInstallTaskUserMetadata)[vs[1].(int)]
+	}).(ServerInstallTaskUserMetadataOutput)
 }
 
 type ServerNetworkingInterface struct {
+	// Interface Mac address
 	Macs []string `pulumi:"macs"`
-	Type string   `pulumi:"type"`
+	// Interface type
+	Type string `pulumi:"type"`
 }
 
 // ServerNetworkingInterfaceInput is an input type that accepts ServerNetworkingInterfaceArgs and ServerNetworkingInterfaceOutput values.
@@ -422,8 +370,10 @@ type ServerNetworkingInterfaceInput interface {
 }
 
 type ServerNetworkingInterfaceArgs struct {
+	// Interface Mac address
 	Macs pulumi.StringArrayInput `pulumi:"macs"`
-	Type pulumi.StringInput      `pulumi:"type"`
+	// Interface type
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (ServerNetworkingInterfaceArgs) ElementType() reflect.Type {
@@ -477,10 +427,12 @@ func (o ServerNetworkingInterfaceOutput) ToServerNetworkingInterfaceOutputWithCo
 	return o
 }
 
+// Interface Mac address
 func (o ServerNetworkingInterfaceOutput) Macs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerNetworkingInterface) []string { return v.Macs }).(pulumi.StringArrayOutput)
 }
 
+// Interface type
 func (o ServerNetworkingInterfaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerNetworkingInterface) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -505,13 +457,2028 @@ func (o ServerNetworkingInterfaceArrayOutput) Index(i pulumi.IntInput) ServerNet
 	}).(ServerNetworkingInterfaceOutput)
 }
 
+type GetServerSpecificationsHardwareDefaultHardwareRaidSize struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsHardwareDefaultHardwareRaidSizeInput is an input type that accepts GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs and GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareDefaultHardwareRaidSizeInput` via:
+//
+//	GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs{...}
+type GetServerSpecificationsHardwareDefaultHardwareRaidSizeInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput
+	ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutputWithContext(context.Context) GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput
+}
+
+type GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDefaultHardwareRaidSize)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs) ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput {
+	return i.ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs) ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput)
+}
+
+type GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDefaultHardwareRaidSize)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) ToGetServerSpecificationsHardwareDefaultHardwareRaidSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDefaultHardwareRaidSize) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDefaultHardwareRaidSize) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsHardwareDiskGroup struct {
+	// Default hardware raid size for this disk group
+	DefaultHardwareRaidSize GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize `pulumi:"defaultHardwareRaidSize"`
+	// Default hardware raid type for this disk group
+	DefaultHardwareRaidType string `pulumi:"defaultHardwareRaidType"`
+	// Expansion card description
+	Description string `pulumi:"description"`
+	// Identifier of this disk group
+	DiskGroupId float64 `pulumi:"diskGroupId"`
+	// Disk capacity
+	DiskSize GetServerSpecificationsHardwareDiskGroupDiskSize `pulumi:"diskSize"`
+	// Type of the disk (SSD, SATA, SAS, ...)
+	DiskType string `pulumi:"diskType"`
+	// Number of disks in this group
+	NumberOfDisks float64 `pulumi:"numberOfDisks"`
+	// Raid controller, if any, managing this group of disks
+	RaidController string `pulumi:"raidController"`
+}
+
+// GetServerSpecificationsHardwareDiskGroupInput is an input type that accepts GetServerSpecificationsHardwareDiskGroupArgs and GetServerSpecificationsHardwareDiskGroupOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareDiskGroupInput` via:
+//
+//	GetServerSpecificationsHardwareDiskGroupArgs{...}
+type GetServerSpecificationsHardwareDiskGroupInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareDiskGroupOutput() GetServerSpecificationsHardwareDiskGroupOutput
+	ToGetServerSpecificationsHardwareDiskGroupOutputWithContext(context.Context) GetServerSpecificationsHardwareDiskGroupOutput
+}
+
+type GetServerSpecificationsHardwareDiskGroupArgs struct {
+	// Default hardware raid size for this disk group
+	DefaultHardwareRaidSize GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput `pulumi:"defaultHardwareRaidSize"`
+	// Default hardware raid type for this disk group
+	DefaultHardwareRaidType pulumi.StringInput `pulumi:"defaultHardwareRaidType"`
+	// Expansion card description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Identifier of this disk group
+	DiskGroupId pulumi.Float64Input `pulumi:"diskGroupId"`
+	// Disk capacity
+	DiskSize GetServerSpecificationsHardwareDiskGroupDiskSizeInput `pulumi:"diskSize"`
+	// Type of the disk (SSD, SATA, SAS, ...)
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// Number of disks in this group
+	NumberOfDisks pulumi.Float64Input `pulumi:"numberOfDisks"`
+	// Raid controller, if any, managing this group of disks
+	RaidController pulumi.StringInput `pulumi:"raidController"`
+}
+
+func (GetServerSpecificationsHardwareDiskGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroup)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupArgs) ToGetServerSpecificationsHardwareDiskGroupOutput() GetServerSpecificationsHardwareDiskGroupOutput {
+	return i.ToGetServerSpecificationsHardwareDiskGroupOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupArgs) ToGetServerSpecificationsHardwareDiskGroupOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareDiskGroupOutput)
+}
+
+// GetServerSpecificationsHardwareDiskGroupArrayInput is an input type that accepts GetServerSpecificationsHardwareDiskGroupArray and GetServerSpecificationsHardwareDiskGroupArrayOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareDiskGroupArrayInput` via:
+//
+//	GetServerSpecificationsHardwareDiskGroupArray{ GetServerSpecificationsHardwareDiskGroupArgs{...} }
+type GetServerSpecificationsHardwareDiskGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareDiskGroupArrayOutput() GetServerSpecificationsHardwareDiskGroupArrayOutput
+	ToGetServerSpecificationsHardwareDiskGroupArrayOutputWithContext(context.Context) GetServerSpecificationsHardwareDiskGroupArrayOutput
+}
+
+type GetServerSpecificationsHardwareDiskGroupArray []GetServerSpecificationsHardwareDiskGroupInput
+
+func (GetServerSpecificationsHardwareDiskGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareDiskGroup)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupArray) ToGetServerSpecificationsHardwareDiskGroupArrayOutput() GetServerSpecificationsHardwareDiskGroupArrayOutput {
+	return i.ToGetServerSpecificationsHardwareDiskGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupArray) ToGetServerSpecificationsHardwareDiskGroupArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareDiskGroupArrayOutput)
+}
+
+type GetServerSpecificationsHardwareDiskGroupOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareDiskGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroup)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupOutput) ToGetServerSpecificationsHardwareDiskGroupOutput() GetServerSpecificationsHardwareDiskGroupOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupOutput) ToGetServerSpecificationsHardwareDiskGroupOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupOutput {
+	return o
+}
+
+// Default hardware raid size for this disk group
+func (o GetServerSpecificationsHardwareDiskGroupOutput) DefaultHardwareRaidSize() GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize {
+		return v.DefaultHardwareRaidSize
+	}).(GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput)
+}
+
+// Default hardware raid type for this disk group
+func (o GetServerSpecificationsHardwareDiskGroupOutput) DefaultHardwareRaidType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.DefaultHardwareRaidType }).(pulumi.StringOutput)
+}
+
+// Expansion card description
+func (o GetServerSpecificationsHardwareDiskGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Identifier of this disk group
+func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskGroupId() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) float64 { return v.DiskGroupId }).(pulumi.Float64Output)
+}
+
+// Disk capacity
+func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskSize() GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) GetServerSpecificationsHardwareDiskGroupDiskSize {
+		return v.DiskSize
+	}).(GetServerSpecificationsHardwareDiskGroupDiskSizeOutput)
+}
+
+// Type of the disk (SSD, SATA, SAS, ...)
+func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Number of disks in this group
+func (o GetServerSpecificationsHardwareDiskGroupOutput) NumberOfDisks() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) float64 { return v.NumberOfDisks }).(pulumi.Float64Output)
+}
+
+// Raid controller, if any, managing this group of disks
+func (o GetServerSpecificationsHardwareDiskGroupOutput) RaidController() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.RaidController }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsHardwareDiskGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareDiskGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareDiskGroup)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupArrayOutput) ToGetServerSpecificationsHardwareDiskGroupArrayOutput() GetServerSpecificationsHardwareDiskGroupArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupArrayOutput) ToGetServerSpecificationsHardwareDiskGroupArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupArrayOutput) Index(i pulumi.IntInput) GetServerSpecificationsHardwareDiskGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerSpecificationsHardwareDiskGroup {
+		return vs[0].([]GetServerSpecificationsHardwareDiskGroup)[vs[1].(int)]
+	}).(GetServerSpecificationsHardwareDiskGroupOutput)
+}
+
+type GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput is an input type that accepts GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs and GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput` via:
+//
+//	GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs{...}
+type GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput
+	ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutputWithContext(context.Context) GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput
+}
+
+type GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs) ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
+	return i.ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs) ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput)
+}
+
+type GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput) ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput() GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput) ToGetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsHardwareDiskGroupDiskSize struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsHardwareDiskGroupDiskSizeInput is an input type that accepts GetServerSpecificationsHardwareDiskGroupDiskSizeArgs and GetServerSpecificationsHardwareDiskGroupDiskSizeOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareDiskGroupDiskSizeInput` via:
+//
+//	GetServerSpecificationsHardwareDiskGroupDiskSizeArgs{...}
+type GetServerSpecificationsHardwareDiskGroupDiskSizeInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutput() GetServerSpecificationsHardwareDiskGroupDiskSizeOutput
+	ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutputWithContext(context.Context) GetServerSpecificationsHardwareDiskGroupDiskSizeOutput
+}
+
+type GetServerSpecificationsHardwareDiskGroupDiskSizeArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsHardwareDiskGroupDiskSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDiskSize)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupDiskSizeArgs) ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutput() GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
+	return i.ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareDiskGroupDiskSizeArgs) ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareDiskGroupDiskSizeOutput)
+}
+
+type GetServerSpecificationsHardwareDiskGroupDiskSizeOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDiskSize)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutput() GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) ToGetServerSpecificationsHardwareDiskGroupDiskSizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroupDiskSize) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroupDiskSize) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsHardwareExpansionCard struct {
+	// Expansion card description
+	Description string `pulumi:"description"`
+	// Expansion card type enum
+	Type string `pulumi:"type"`
+}
+
+// GetServerSpecificationsHardwareExpansionCardInput is an input type that accepts GetServerSpecificationsHardwareExpansionCardArgs and GetServerSpecificationsHardwareExpansionCardOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareExpansionCardInput` via:
+//
+//	GetServerSpecificationsHardwareExpansionCardArgs{...}
+type GetServerSpecificationsHardwareExpansionCardInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareExpansionCardOutput() GetServerSpecificationsHardwareExpansionCardOutput
+	ToGetServerSpecificationsHardwareExpansionCardOutputWithContext(context.Context) GetServerSpecificationsHardwareExpansionCardOutput
+}
+
+type GetServerSpecificationsHardwareExpansionCardArgs struct {
+	// Expansion card description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Expansion card type enum
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServerSpecificationsHardwareExpansionCardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareExpansionCard)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareExpansionCardArgs) ToGetServerSpecificationsHardwareExpansionCardOutput() GetServerSpecificationsHardwareExpansionCardOutput {
+	return i.ToGetServerSpecificationsHardwareExpansionCardOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareExpansionCardArgs) ToGetServerSpecificationsHardwareExpansionCardOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareExpansionCardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareExpansionCardOutput)
+}
+
+// GetServerSpecificationsHardwareExpansionCardArrayInput is an input type that accepts GetServerSpecificationsHardwareExpansionCardArray and GetServerSpecificationsHardwareExpansionCardArrayOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareExpansionCardArrayInput` via:
+//
+//	GetServerSpecificationsHardwareExpansionCardArray{ GetServerSpecificationsHardwareExpansionCardArgs{...} }
+type GetServerSpecificationsHardwareExpansionCardArrayInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareExpansionCardArrayOutput() GetServerSpecificationsHardwareExpansionCardArrayOutput
+	ToGetServerSpecificationsHardwareExpansionCardArrayOutputWithContext(context.Context) GetServerSpecificationsHardwareExpansionCardArrayOutput
+}
+
+type GetServerSpecificationsHardwareExpansionCardArray []GetServerSpecificationsHardwareExpansionCardInput
+
+func (GetServerSpecificationsHardwareExpansionCardArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareExpansionCard)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareExpansionCardArray) ToGetServerSpecificationsHardwareExpansionCardArrayOutput() GetServerSpecificationsHardwareExpansionCardArrayOutput {
+	return i.ToGetServerSpecificationsHardwareExpansionCardArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareExpansionCardArray) ToGetServerSpecificationsHardwareExpansionCardArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareExpansionCardArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareExpansionCardArrayOutput)
+}
+
+type GetServerSpecificationsHardwareExpansionCardOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareExpansionCardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareExpansionCard)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareExpansionCardOutput) ToGetServerSpecificationsHardwareExpansionCardOutput() GetServerSpecificationsHardwareExpansionCardOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareExpansionCardOutput) ToGetServerSpecificationsHardwareExpansionCardOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareExpansionCardOutput {
+	return o
+}
+
+// Expansion card description
+func (o GetServerSpecificationsHardwareExpansionCardOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareExpansionCard) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Expansion card type enum
+func (o GetServerSpecificationsHardwareExpansionCardOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareExpansionCard) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsHardwareExpansionCardArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareExpansionCardArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareExpansionCard)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareExpansionCardArrayOutput) ToGetServerSpecificationsHardwareExpansionCardArrayOutput() GetServerSpecificationsHardwareExpansionCardArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareExpansionCardArrayOutput) ToGetServerSpecificationsHardwareExpansionCardArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareExpansionCardArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareExpansionCardArrayOutput) Index(i pulumi.IntInput) GetServerSpecificationsHardwareExpansionCardOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerSpecificationsHardwareExpansionCard {
+		return vs[0].([]GetServerSpecificationsHardwareExpansionCard)[vs[1].(int)]
+	}).(GetServerSpecificationsHardwareExpansionCardOutput)
+}
+
+type GetServerSpecificationsHardwareMemorySize struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsHardwareMemorySizeInput is an input type that accepts GetServerSpecificationsHardwareMemorySizeArgs and GetServerSpecificationsHardwareMemorySizeOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareMemorySizeInput` via:
+//
+//	GetServerSpecificationsHardwareMemorySizeArgs{...}
+type GetServerSpecificationsHardwareMemorySizeInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareMemorySizeOutput() GetServerSpecificationsHardwareMemorySizeOutput
+	ToGetServerSpecificationsHardwareMemorySizeOutputWithContext(context.Context) GetServerSpecificationsHardwareMemorySizeOutput
+}
+
+type GetServerSpecificationsHardwareMemorySizeArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsHardwareMemorySizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareMemorySize)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareMemorySizeArgs) ToGetServerSpecificationsHardwareMemorySizeOutput() GetServerSpecificationsHardwareMemorySizeOutput {
+	return i.ToGetServerSpecificationsHardwareMemorySizeOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareMemorySizeArgs) ToGetServerSpecificationsHardwareMemorySizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareMemorySizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareMemorySizeOutput)
+}
+
+type GetServerSpecificationsHardwareMemorySizeOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareMemorySizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareMemorySize)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareMemorySizeOutput) ToGetServerSpecificationsHardwareMemorySizeOutput() GetServerSpecificationsHardwareMemorySizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareMemorySizeOutput) ToGetServerSpecificationsHardwareMemorySizeOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareMemorySizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareMemorySizeOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareMemorySize) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsHardwareMemorySizeOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareMemorySize) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsHardwareUsbKey struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsHardwareUsbKeyInput is an input type that accepts GetServerSpecificationsHardwareUsbKeyArgs and GetServerSpecificationsHardwareUsbKeyOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareUsbKeyInput` via:
+//
+//	GetServerSpecificationsHardwareUsbKeyArgs{...}
+type GetServerSpecificationsHardwareUsbKeyInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareUsbKeyOutput() GetServerSpecificationsHardwareUsbKeyOutput
+	ToGetServerSpecificationsHardwareUsbKeyOutputWithContext(context.Context) GetServerSpecificationsHardwareUsbKeyOutput
+}
+
+type GetServerSpecificationsHardwareUsbKeyArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsHardwareUsbKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareUsbKey)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareUsbKeyArgs) ToGetServerSpecificationsHardwareUsbKeyOutput() GetServerSpecificationsHardwareUsbKeyOutput {
+	return i.ToGetServerSpecificationsHardwareUsbKeyOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareUsbKeyArgs) ToGetServerSpecificationsHardwareUsbKeyOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareUsbKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareUsbKeyOutput)
+}
+
+// GetServerSpecificationsHardwareUsbKeyArrayInput is an input type that accepts GetServerSpecificationsHardwareUsbKeyArray and GetServerSpecificationsHardwareUsbKeyArrayOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsHardwareUsbKeyArrayInput` via:
+//
+//	GetServerSpecificationsHardwareUsbKeyArray{ GetServerSpecificationsHardwareUsbKeyArgs{...} }
+type GetServerSpecificationsHardwareUsbKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsHardwareUsbKeyArrayOutput() GetServerSpecificationsHardwareUsbKeyArrayOutput
+	ToGetServerSpecificationsHardwareUsbKeyArrayOutputWithContext(context.Context) GetServerSpecificationsHardwareUsbKeyArrayOutput
+}
+
+type GetServerSpecificationsHardwareUsbKeyArray []GetServerSpecificationsHardwareUsbKeyInput
+
+func (GetServerSpecificationsHardwareUsbKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareUsbKey)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsHardwareUsbKeyArray) ToGetServerSpecificationsHardwareUsbKeyArrayOutput() GetServerSpecificationsHardwareUsbKeyArrayOutput {
+	return i.ToGetServerSpecificationsHardwareUsbKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsHardwareUsbKeyArray) ToGetServerSpecificationsHardwareUsbKeyArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareUsbKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsHardwareUsbKeyArrayOutput)
+}
+
+type GetServerSpecificationsHardwareUsbKeyOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareUsbKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsHardwareUsbKey)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyOutput) ToGetServerSpecificationsHardwareUsbKeyOutput() GetServerSpecificationsHardwareUsbKeyOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyOutput) ToGetServerSpecificationsHardwareUsbKeyOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareUsbKeyOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareUsbKey) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsHardwareUsbKey) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsHardwareUsbKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsHardwareUsbKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsHardwareUsbKey)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyArrayOutput) ToGetServerSpecificationsHardwareUsbKeyArrayOutput() GetServerSpecificationsHardwareUsbKeyArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyArrayOutput) ToGetServerSpecificationsHardwareUsbKeyArrayOutputWithContext(ctx context.Context) GetServerSpecificationsHardwareUsbKeyArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsHardwareUsbKeyArrayOutput) Index(i pulumi.IntInput) GetServerSpecificationsHardwareUsbKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerSpecificationsHardwareUsbKey {
+		return vs[0].([]GetServerSpecificationsHardwareUsbKey)[vs[1].(int)]
+	}).(GetServerSpecificationsHardwareUsbKeyOutput)
+}
+
+type GetServerSpecificationsNetworkBandwidth struct {
+	// Bandwidth limitation Internet to OVH
+	InternetToOvh GetServerSpecificationsNetworkBandwidthInternetToOvh `pulumi:"internetToOvh"`
+	// Bandwidth limitation OVH to Internet
+	OvhToInternet GetServerSpecificationsNetworkBandwidthOvhToInternet `pulumi:"ovhToInternet"`
+	// Bandwidth limitation OVH to OVH
+	OvhToOvh GetServerSpecificationsNetworkBandwidthOvhToOvh `pulumi:"ovhToOvh"`
+	// Bandwidth offer type (included┃standard)
+	Type string `pulumi:"type"`
+}
+
+// GetServerSpecificationsNetworkBandwidthInput is an input type that accepts GetServerSpecificationsNetworkBandwidthArgs and GetServerSpecificationsNetworkBandwidthOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkBandwidthInput` via:
+//
+//	GetServerSpecificationsNetworkBandwidthArgs{...}
+type GetServerSpecificationsNetworkBandwidthInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkBandwidthOutput() GetServerSpecificationsNetworkBandwidthOutput
+	ToGetServerSpecificationsNetworkBandwidthOutputWithContext(context.Context) GetServerSpecificationsNetworkBandwidthOutput
+}
+
+type GetServerSpecificationsNetworkBandwidthArgs struct {
+	// Bandwidth limitation Internet to OVH
+	InternetToOvh GetServerSpecificationsNetworkBandwidthInternetToOvhInput `pulumi:"internetToOvh"`
+	// Bandwidth limitation OVH to Internet
+	OvhToInternet GetServerSpecificationsNetworkBandwidthOvhToInternetInput `pulumi:"ovhToInternet"`
+	// Bandwidth limitation OVH to OVH
+	OvhToOvh GetServerSpecificationsNetworkBandwidthOvhToOvhInput `pulumi:"ovhToOvh"`
+	// Bandwidth offer type (included┃standard)
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServerSpecificationsNetworkBandwidthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkBandwidth)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkBandwidthArgs) ToGetServerSpecificationsNetworkBandwidthOutput() GetServerSpecificationsNetworkBandwidthOutput {
+	return i.ToGetServerSpecificationsNetworkBandwidthOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkBandwidthArgs) ToGetServerSpecificationsNetworkBandwidthOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkBandwidthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkBandwidthOutput)
+}
+
+type GetServerSpecificationsNetworkBandwidthOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkBandwidthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkBandwidth)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkBandwidthOutput) ToGetServerSpecificationsNetworkBandwidthOutput() GetServerSpecificationsNetworkBandwidthOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkBandwidthOutput) ToGetServerSpecificationsNetworkBandwidthOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkBandwidthOutput {
+	return o
+}
+
+// Bandwidth limitation Internet to OVH
+func (o GetServerSpecificationsNetworkBandwidthOutput) InternetToOvh() GetServerSpecificationsNetworkBandwidthInternetToOvhOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) GetServerSpecificationsNetworkBandwidthInternetToOvh {
+		return v.InternetToOvh
+	}).(GetServerSpecificationsNetworkBandwidthInternetToOvhOutput)
+}
+
+// Bandwidth limitation OVH to Internet
+func (o GetServerSpecificationsNetworkBandwidthOutput) OvhToInternet() GetServerSpecificationsNetworkBandwidthOvhToInternetOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) GetServerSpecificationsNetworkBandwidthOvhToInternet {
+		return v.OvhToInternet
+	}).(GetServerSpecificationsNetworkBandwidthOvhToInternetOutput)
+}
+
+// Bandwidth limitation OVH to OVH
+func (o GetServerSpecificationsNetworkBandwidthOutput) OvhToOvh() GetServerSpecificationsNetworkBandwidthOvhToOvhOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) GetServerSpecificationsNetworkBandwidthOvhToOvh {
+		return v.OvhToOvh
+	}).(GetServerSpecificationsNetworkBandwidthOvhToOvhOutput)
+}
+
+// Bandwidth offer type (included┃standard)
+func (o GetServerSpecificationsNetworkBandwidthOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsNetworkBandwidthInternetToOvh struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsNetworkBandwidthInternetToOvhInput is an input type that accepts GetServerSpecificationsNetworkBandwidthInternetToOvhArgs and GetServerSpecificationsNetworkBandwidthInternetToOvhOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkBandwidthInternetToOvhInput` via:
+//
+//	GetServerSpecificationsNetworkBandwidthInternetToOvhArgs{...}
+type GetServerSpecificationsNetworkBandwidthInternetToOvhInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkBandwidthInternetToOvhOutput() GetServerSpecificationsNetworkBandwidthInternetToOvhOutput
+	ToGetServerSpecificationsNetworkBandwidthInternetToOvhOutputWithContext(context.Context) GetServerSpecificationsNetworkBandwidthInternetToOvhOutput
+}
+
+type GetServerSpecificationsNetworkBandwidthInternetToOvhArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsNetworkBandwidthInternetToOvhArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkBandwidthInternetToOvh)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkBandwidthInternetToOvhArgs) ToGetServerSpecificationsNetworkBandwidthInternetToOvhOutput() GetServerSpecificationsNetworkBandwidthInternetToOvhOutput {
+	return i.ToGetServerSpecificationsNetworkBandwidthInternetToOvhOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkBandwidthInternetToOvhArgs) ToGetServerSpecificationsNetworkBandwidthInternetToOvhOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkBandwidthInternetToOvhOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkBandwidthInternetToOvhOutput)
+}
+
+type GetServerSpecificationsNetworkBandwidthInternetToOvhOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkBandwidthInternetToOvhOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkBandwidthInternetToOvh)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkBandwidthInternetToOvhOutput) ToGetServerSpecificationsNetworkBandwidthInternetToOvhOutput() GetServerSpecificationsNetworkBandwidthInternetToOvhOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkBandwidthInternetToOvhOutput) ToGetServerSpecificationsNetworkBandwidthInternetToOvhOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkBandwidthInternetToOvhOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkBandwidthInternetToOvhOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidthInternetToOvh) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsNetworkBandwidthInternetToOvhOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidthInternetToOvh) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsNetworkBandwidthOvhToInternet struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsNetworkBandwidthOvhToInternetInput is an input type that accepts GetServerSpecificationsNetworkBandwidthOvhToInternetArgs and GetServerSpecificationsNetworkBandwidthOvhToInternetOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkBandwidthOvhToInternetInput` via:
+//
+//	GetServerSpecificationsNetworkBandwidthOvhToInternetArgs{...}
+type GetServerSpecificationsNetworkBandwidthOvhToInternetInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkBandwidthOvhToInternetOutput() GetServerSpecificationsNetworkBandwidthOvhToInternetOutput
+	ToGetServerSpecificationsNetworkBandwidthOvhToInternetOutputWithContext(context.Context) GetServerSpecificationsNetworkBandwidthOvhToInternetOutput
+}
+
+type GetServerSpecificationsNetworkBandwidthOvhToInternetArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsNetworkBandwidthOvhToInternetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkBandwidthOvhToInternet)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkBandwidthOvhToInternetArgs) ToGetServerSpecificationsNetworkBandwidthOvhToInternetOutput() GetServerSpecificationsNetworkBandwidthOvhToInternetOutput {
+	return i.ToGetServerSpecificationsNetworkBandwidthOvhToInternetOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkBandwidthOvhToInternetArgs) ToGetServerSpecificationsNetworkBandwidthOvhToInternetOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkBandwidthOvhToInternetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkBandwidthOvhToInternetOutput)
+}
+
+type GetServerSpecificationsNetworkBandwidthOvhToInternetOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkBandwidthOvhToInternetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkBandwidthOvhToInternet)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkBandwidthOvhToInternetOutput) ToGetServerSpecificationsNetworkBandwidthOvhToInternetOutput() GetServerSpecificationsNetworkBandwidthOvhToInternetOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkBandwidthOvhToInternetOutput) ToGetServerSpecificationsNetworkBandwidthOvhToInternetOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkBandwidthOvhToInternetOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkBandwidthOvhToInternetOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidthOvhToInternet) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsNetworkBandwidthOvhToInternetOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidthOvhToInternet) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsNetworkBandwidthOvhToOvh struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsNetworkBandwidthOvhToOvhInput is an input type that accepts GetServerSpecificationsNetworkBandwidthOvhToOvhArgs and GetServerSpecificationsNetworkBandwidthOvhToOvhOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkBandwidthOvhToOvhInput` via:
+//
+//	GetServerSpecificationsNetworkBandwidthOvhToOvhArgs{...}
+type GetServerSpecificationsNetworkBandwidthOvhToOvhInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkBandwidthOvhToOvhOutput() GetServerSpecificationsNetworkBandwidthOvhToOvhOutput
+	ToGetServerSpecificationsNetworkBandwidthOvhToOvhOutputWithContext(context.Context) GetServerSpecificationsNetworkBandwidthOvhToOvhOutput
+}
+
+type GetServerSpecificationsNetworkBandwidthOvhToOvhArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsNetworkBandwidthOvhToOvhArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkBandwidthOvhToOvh)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkBandwidthOvhToOvhArgs) ToGetServerSpecificationsNetworkBandwidthOvhToOvhOutput() GetServerSpecificationsNetworkBandwidthOvhToOvhOutput {
+	return i.ToGetServerSpecificationsNetworkBandwidthOvhToOvhOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkBandwidthOvhToOvhArgs) ToGetServerSpecificationsNetworkBandwidthOvhToOvhOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkBandwidthOvhToOvhOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkBandwidthOvhToOvhOutput)
+}
+
+type GetServerSpecificationsNetworkBandwidthOvhToOvhOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkBandwidthOvhToOvhOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkBandwidthOvhToOvh)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkBandwidthOvhToOvhOutput) ToGetServerSpecificationsNetworkBandwidthOvhToOvhOutput() GetServerSpecificationsNetworkBandwidthOvhToOvhOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkBandwidthOvhToOvhOutput) ToGetServerSpecificationsNetworkBandwidthOvhToOvhOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkBandwidthOvhToOvhOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkBandwidthOvhToOvhOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidthOvhToOvh) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsNetworkBandwidthOvhToOvhOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidthOvhToOvh) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsNetworkConnectionVal struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsNetworkConnectionValInput is an input type that accepts GetServerSpecificationsNetworkConnectionValArgs and GetServerSpecificationsNetworkConnectionValOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkConnectionValInput` via:
+//
+//	GetServerSpecificationsNetworkConnectionValArgs{...}
+type GetServerSpecificationsNetworkConnectionValInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkConnectionValOutput() GetServerSpecificationsNetworkConnectionValOutput
+	ToGetServerSpecificationsNetworkConnectionValOutputWithContext(context.Context) GetServerSpecificationsNetworkConnectionValOutput
+}
+
+type GetServerSpecificationsNetworkConnectionValArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsNetworkConnectionValArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkConnectionVal)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkConnectionValArgs) ToGetServerSpecificationsNetworkConnectionValOutput() GetServerSpecificationsNetworkConnectionValOutput {
+	return i.ToGetServerSpecificationsNetworkConnectionValOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkConnectionValArgs) ToGetServerSpecificationsNetworkConnectionValOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkConnectionValOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkConnectionValOutput)
+}
+
+type GetServerSpecificationsNetworkConnectionValOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkConnectionValOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkConnectionVal)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkConnectionValOutput) ToGetServerSpecificationsNetworkConnectionValOutput() GetServerSpecificationsNetworkConnectionValOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkConnectionValOutput) ToGetServerSpecificationsNetworkConnectionValOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkConnectionValOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkConnectionValOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkConnectionVal) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsNetworkConnectionValOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkConnectionVal) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsNetworkOla struct {
+	// Is the OLA feature available
+	Available bool `pulumi:"available"`
+	// Supported modes
+	AvailableModes []GetServerSpecificationsNetworkOlaAvailableMode `pulumi:"availableModes"`
+	// Supported modes (DEPRECATED)
+	SupportedModes []string `pulumi:"supportedModes"`
+}
+
+// GetServerSpecificationsNetworkOlaInput is an input type that accepts GetServerSpecificationsNetworkOlaArgs and GetServerSpecificationsNetworkOlaOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkOlaInput` via:
+//
+//	GetServerSpecificationsNetworkOlaArgs{...}
+type GetServerSpecificationsNetworkOlaInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkOlaOutput() GetServerSpecificationsNetworkOlaOutput
+	ToGetServerSpecificationsNetworkOlaOutputWithContext(context.Context) GetServerSpecificationsNetworkOlaOutput
+}
+
+type GetServerSpecificationsNetworkOlaArgs struct {
+	// Is the OLA feature available
+	Available pulumi.BoolInput `pulumi:"available"`
+	// Supported modes
+	AvailableModes GetServerSpecificationsNetworkOlaAvailableModeArrayInput `pulumi:"availableModes"`
+	// Supported modes (DEPRECATED)
+	SupportedModes pulumi.StringArrayInput `pulumi:"supportedModes"`
+}
+
+func (GetServerSpecificationsNetworkOlaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkOla)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkOlaArgs) ToGetServerSpecificationsNetworkOlaOutput() GetServerSpecificationsNetworkOlaOutput {
+	return i.ToGetServerSpecificationsNetworkOlaOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkOlaArgs) ToGetServerSpecificationsNetworkOlaOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkOlaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkOlaOutput)
+}
+
+type GetServerSpecificationsNetworkOlaOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkOlaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkOla)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkOlaOutput) ToGetServerSpecificationsNetworkOlaOutput() GetServerSpecificationsNetworkOlaOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkOlaOutput) ToGetServerSpecificationsNetworkOlaOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkOlaOutput {
+	return o
+}
+
+// Is the OLA feature available
+func (o GetServerSpecificationsNetworkOlaOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkOla) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+// Supported modes
+func (o GetServerSpecificationsNetworkOlaOutput) AvailableModes() GetServerSpecificationsNetworkOlaAvailableModeArrayOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkOla) []GetServerSpecificationsNetworkOlaAvailableMode {
+		return v.AvailableModes
+	}).(GetServerSpecificationsNetworkOlaAvailableModeArrayOutput)
+}
+
+// Supported modes (DEPRECATED)
+func (o GetServerSpecificationsNetworkOlaOutput) SupportedModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkOla) []string { return v.SupportedModes }).(pulumi.StringArrayOutput)
+}
+
+type GetServerSpecificationsNetworkOlaAvailableMode struct {
+	// Whether it is the default configuration of the server
+	Default bool `pulumi:"default"`
+	// Interface layout
+	Interfaces []GetServerSpecificationsNetworkOlaAvailableModeInterface `pulumi:"interfaces"`
+	// Switch name
+	Name string `pulumi:"name"`
+}
+
+// GetServerSpecificationsNetworkOlaAvailableModeInput is an input type that accepts GetServerSpecificationsNetworkOlaAvailableModeArgs and GetServerSpecificationsNetworkOlaAvailableModeOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkOlaAvailableModeInput` via:
+//
+//	GetServerSpecificationsNetworkOlaAvailableModeArgs{...}
+type GetServerSpecificationsNetworkOlaAvailableModeInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkOlaAvailableModeOutput() GetServerSpecificationsNetworkOlaAvailableModeOutput
+	ToGetServerSpecificationsNetworkOlaAvailableModeOutputWithContext(context.Context) GetServerSpecificationsNetworkOlaAvailableModeOutput
+}
+
+type GetServerSpecificationsNetworkOlaAvailableModeArgs struct {
+	// Whether it is the default configuration of the server
+	Default pulumi.BoolInput `pulumi:"default"`
+	// Interface layout
+	Interfaces GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayInput `pulumi:"interfaces"`
+	// Switch name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetServerSpecificationsNetworkOlaAvailableModeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkOlaAvailableMode)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkOlaAvailableModeArgs) ToGetServerSpecificationsNetworkOlaAvailableModeOutput() GetServerSpecificationsNetworkOlaAvailableModeOutput {
+	return i.ToGetServerSpecificationsNetworkOlaAvailableModeOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkOlaAvailableModeArgs) ToGetServerSpecificationsNetworkOlaAvailableModeOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkOlaAvailableModeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkOlaAvailableModeOutput)
+}
+
+// GetServerSpecificationsNetworkOlaAvailableModeArrayInput is an input type that accepts GetServerSpecificationsNetworkOlaAvailableModeArray and GetServerSpecificationsNetworkOlaAvailableModeArrayOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkOlaAvailableModeArrayInput` via:
+//
+//	GetServerSpecificationsNetworkOlaAvailableModeArray{ GetServerSpecificationsNetworkOlaAvailableModeArgs{...} }
+type GetServerSpecificationsNetworkOlaAvailableModeArrayInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkOlaAvailableModeArrayOutput() GetServerSpecificationsNetworkOlaAvailableModeArrayOutput
+	ToGetServerSpecificationsNetworkOlaAvailableModeArrayOutputWithContext(context.Context) GetServerSpecificationsNetworkOlaAvailableModeArrayOutput
+}
+
+type GetServerSpecificationsNetworkOlaAvailableModeArray []GetServerSpecificationsNetworkOlaAvailableModeInput
+
+func (GetServerSpecificationsNetworkOlaAvailableModeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsNetworkOlaAvailableMode)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkOlaAvailableModeArray) ToGetServerSpecificationsNetworkOlaAvailableModeArrayOutput() GetServerSpecificationsNetworkOlaAvailableModeArrayOutput {
+	return i.ToGetServerSpecificationsNetworkOlaAvailableModeArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkOlaAvailableModeArray) ToGetServerSpecificationsNetworkOlaAvailableModeArrayOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkOlaAvailableModeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkOlaAvailableModeArrayOutput)
+}
+
+type GetServerSpecificationsNetworkOlaAvailableModeOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkOlaAvailableModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkOlaAvailableMode)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) ToGetServerSpecificationsNetworkOlaAvailableModeOutput() GetServerSpecificationsNetworkOlaAvailableModeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) ToGetServerSpecificationsNetworkOlaAvailableModeOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkOlaAvailableModeOutput {
+	return o
+}
+
+// Whether it is the default configuration of the server
+func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableMode) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
+// Interface layout
+func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) Interfaces() GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableMode) []GetServerSpecificationsNetworkOlaAvailableModeInterface {
+		return v.Interfaces
+	}).(GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput)
+}
+
+// Switch name
+func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableMode) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsNetworkOlaAvailableModeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkOlaAvailableModeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsNetworkOlaAvailableMode)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkOlaAvailableModeArrayOutput) ToGetServerSpecificationsNetworkOlaAvailableModeArrayOutput() GetServerSpecificationsNetworkOlaAvailableModeArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkOlaAvailableModeArrayOutput) ToGetServerSpecificationsNetworkOlaAvailableModeArrayOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkOlaAvailableModeArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkOlaAvailableModeArrayOutput) Index(i pulumi.IntInput) GetServerSpecificationsNetworkOlaAvailableModeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerSpecificationsNetworkOlaAvailableMode {
+		return vs[0].([]GetServerSpecificationsNetworkOlaAvailableMode)[vs[1].(int)]
+	}).(GetServerSpecificationsNetworkOlaAvailableModeOutput)
+}
+
+type GetServerSpecificationsNetworkOlaAvailableModeInterface struct {
+	// Interface aggregation status
+	Aggregation bool `pulumi:"aggregation"`
+	// Interface count
+	Count float64 `pulumi:"count"`
+	// Bandwidth offer type (included┃standard)
+	Type string `pulumi:"type"`
+}
+
+// GetServerSpecificationsNetworkOlaAvailableModeInterfaceInput is an input type that accepts GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs and GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkOlaAvailableModeInterfaceInput` via:
+//
+//	GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs{...}
+type GetServerSpecificationsNetworkOlaAvailableModeInterfaceInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput() GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput
+	ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceOutputWithContext(context.Context) GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput
+}
+
+type GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs struct {
+	// Interface aggregation status
+	Aggregation pulumi.BoolInput `pulumi:"aggregation"`
+	// Interface count
+	Count pulumi.Float64Input `pulumi:"count"`
+	// Bandwidth offer type (included┃standard)
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkOlaAvailableModeInterface)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs) ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput() GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput {
+	return i.ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs) ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput)
+}
+
+// GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayInput is an input type that accepts GetServerSpecificationsNetworkOlaAvailableModeInterfaceArray and GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayInput` via:
+//
+//	GetServerSpecificationsNetworkOlaAvailableModeInterfaceArray{ GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs{...} }
+type GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput() GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput
+	ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutputWithContext(context.Context) GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput
+}
+
+type GetServerSpecificationsNetworkOlaAvailableModeInterfaceArray []GetServerSpecificationsNetworkOlaAvailableModeInterfaceInput
+
+func (GetServerSpecificationsNetworkOlaAvailableModeInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsNetworkOlaAvailableModeInterface)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkOlaAvailableModeInterfaceArray) ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput() GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput {
+	return i.ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkOlaAvailableModeInterfaceArray) ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput)
+}
+
+type GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkOlaAvailableModeInterface)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput) ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput() GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput) ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput {
+	return o
+}
+
+// Interface aggregation status
+func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput) Aggregation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableModeInterface) bool { return v.Aggregation }).(pulumi.BoolOutput)
+}
+
+// Interface count
+func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput) Count() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableModeInterface) float64 { return v.Count }).(pulumi.Float64Output)
+}
+
+// Bandwidth offer type (included┃standard)
+func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableModeInterface) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSpecificationsNetworkOlaAvailableModeInterface)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput) ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput() GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput) ToGetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput) Index(i pulumi.IntInput) GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerSpecificationsNetworkOlaAvailableModeInterface {
+		return vs[0].([]GetServerSpecificationsNetworkOlaAvailableModeInterface)[vs[1].(int)]
+	}).(GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput)
+}
+
+type GetServerSpecificationsNetworkRouting struct {
+	// Ipv4 routing details
+	Ipv4 GetServerSpecificationsNetworkRoutingIpv4 `pulumi:"ipv4"`
+	// Ipv6 routing details
+	Ipv6 GetServerSpecificationsNetworkRoutingIpv6 `pulumi:"ipv6"`
+}
+
+// GetServerSpecificationsNetworkRoutingInput is an input type that accepts GetServerSpecificationsNetworkRoutingArgs and GetServerSpecificationsNetworkRoutingOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkRoutingInput` via:
+//
+//	GetServerSpecificationsNetworkRoutingArgs{...}
+type GetServerSpecificationsNetworkRoutingInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkRoutingOutput() GetServerSpecificationsNetworkRoutingOutput
+	ToGetServerSpecificationsNetworkRoutingOutputWithContext(context.Context) GetServerSpecificationsNetworkRoutingOutput
+}
+
+type GetServerSpecificationsNetworkRoutingArgs struct {
+	// Ipv4 routing details
+	Ipv4 GetServerSpecificationsNetworkRoutingIpv4Input `pulumi:"ipv4"`
+	// Ipv6 routing details
+	Ipv6 GetServerSpecificationsNetworkRoutingIpv6Input `pulumi:"ipv6"`
+}
+
+func (GetServerSpecificationsNetworkRoutingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkRouting)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkRoutingArgs) ToGetServerSpecificationsNetworkRoutingOutput() GetServerSpecificationsNetworkRoutingOutput {
+	return i.ToGetServerSpecificationsNetworkRoutingOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkRoutingArgs) ToGetServerSpecificationsNetworkRoutingOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkRoutingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkRoutingOutput)
+}
+
+type GetServerSpecificationsNetworkRoutingOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkRoutingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkRouting)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkRoutingOutput) ToGetServerSpecificationsNetworkRoutingOutput() GetServerSpecificationsNetworkRoutingOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkRoutingOutput) ToGetServerSpecificationsNetworkRoutingOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkRoutingOutput {
+	return o
+}
+
+// Ipv4 routing details
+func (o GetServerSpecificationsNetworkRoutingOutput) Ipv4() GetServerSpecificationsNetworkRoutingIpv4Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkRouting) GetServerSpecificationsNetworkRoutingIpv4 { return v.Ipv4 }).(GetServerSpecificationsNetworkRoutingIpv4Output)
+}
+
+// Ipv6 routing details
+func (o GetServerSpecificationsNetworkRoutingOutput) Ipv6() GetServerSpecificationsNetworkRoutingIpv6Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkRouting) GetServerSpecificationsNetworkRoutingIpv6 { return v.Ipv6 }).(GetServerSpecificationsNetworkRoutingIpv6Output)
+}
+
+type GetServerSpecificationsNetworkRoutingIpv4 struct {
+	// Server gateway
+	Gateway string `pulumi:"gateway"`
+	// Server main IP
+	Ip string `pulumi:"ip"`
+	// Server network
+	Network string `pulumi:"network"`
+}
+
+// GetServerSpecificationsNetworkRoutingIpv4Input is an input type that accepts GetServerSpecificationsNetworkRoutingIpv4Args and GetServerSpecificationsNetworkRoutingIpv4Output values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkRoutingIpv4Input` via:
+//
+//	GetServerSpecificationsNetworkRoutingIpv4Args{...}
+type GetServerSpecificationsNetworkRoutingIpv4Input interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkRoutingIpv4Output() GetServerSpecificationsNetworkRoutingIpv4Output
+	ToGetServerSpecificationsNetworkRoutingIpv4OutputWithContext(context.Context) GetServerSpecificationsNetworkRoutingIpv4Output
+}
+
+type GetServerSpecificationsNetworkRoutingIpv4Args struct {
+	// Server gateway
+	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// Server main IP
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Server network
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (GetServerSpecificationsNetworkRoutingIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkRoutingIpv4)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkRoutingIpv4Args) ToGetServerSpecificationsNetworkRoutingIpv4Output() GetServerSpecificationsNetworkRoutingIpv4Output {
+	return i.ToGetServerSpecificationsNetworkRoutingIpv4OutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkRoutingIpv4Args) ToGetServerSpecificationsNetworkRoutingIpv4OutputWithContext(ctx context.Context) GetServerSpecificationsNetworkRoutingIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkRoutingIpv4Output)
+}
+
+type GetServerSpecificationsNetworkRoutingIpv4Output struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkRoutingIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkRoutingIpv4)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkRoutingIpv4Output) ToGetServerSpecificationsNetworkRoutingIpv4Output() GetServerSpecificationsNetworkRoutingIpv4Output {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkRoutingIpv4Output) ToGetServerSpecificationsNetworkRoutingIpv4OutputWithContext(ctx context.Context) GetServerSpecificationsNetworkRoutingIpv4Output {
+	return o
+}
+
+// Server gateway
+func (o GetServerSpecificationsNetworkRoutingIpv4Output) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkRoutingIpv4) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// Server main IP
+func (o GetServerSpecificationsNetworkRoutingIpv4Output) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkRoutingIpv4) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Server network
+func (o GetServerSpecificationsNetworkRoutingIpv4Output) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkRoutingIpv4) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsNetworkRoutingIpv6 struct {
+	// Server gateway
+	Gateway string `pulumi:"gateway"`
+	// Server main IP
+	Ip string `pulumi:"ip"`
+	// Server network
+	Network string `pulumi:"network"`
+}
+
+// GetServerSpecificationsNetworkRoutingIpv6Input is an input type that accepts GetServerSpecificationsNetworkRoutingIpv6Args and GetServerSpecificationsNetworkRoutingIpv6Output values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkRoutingIpv6Input` via:
+//
+//	GetServerSpecificationsNetworkRoutingIpv6Args{...}
+type GetServerSpecificationsNetworkRoutingIpv6Input interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkRoutingIpv6Output() GetServerSpecificationsNetworkRoutingIpv6Output
+	ToGetServerSpecificationsNetworkRoutingIpv6OutputWithContext(context.Context) GetServerSpecificationsNetworkRoutingIpv6Output
+}
+
+type GetServerSpecificationsNetworkRoutingIpv6Args struct {
+	// Server gateway
+	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// Server main IP
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Server network
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (GetServerSpecificationsNetworkRoutingIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkRoutingIpv6)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkRoutingIpv6Args) ToGetServerSpecificationsNetworkRoutingIpv6Output() GetServerSpecificationsNetworkRoutingIpv6Output {
+	return i.ToGetServerSpecificationsNetworkRoutingIpv6OutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkRoutingIpv6Args) ToGetServerSpecificationsNetworkRoutingIpv6OutputWithContext(ctx context.Context) GetServerSpecificationsNetworkRoutingIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkRoutingIpv6Output)
+}
+
+type GetServerSpecificationsNetworkRoutingIpv6Output struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkRoutingIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkRoutingIpv6)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkRoutingIpv6Output) ToGetServerSpecificationsNetworkRoutingIpv6Output() GetServerSpecificationsNetworkRoutingIpv6Output {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkRoutingIpv6Output) ToGetServerSpecificationsNetworkRoutingIpv6OutputWithContext(ctx context.Context) GetServerSpecificationsNetworkRoutingIpv6Output {
+	return o
+}
+
+// Server gateway
+func (o GetServerSpecificationsNetworkRoutingIpv6Output) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkRoutingIpv6) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// Server main IP
+func (o GetServerSpecificationsNetworkRoutingIpv6Output) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkRoutingIpv6) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Server network
+func (o GetServerSpecificationsNetworkRoutingIpv6Output) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkRoutingIpv6) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsNetworkSwitching struct {
+	// Switch name
+	Name string `pulumi:"name"`
+}
+
+// GetServerSpecificationsNetworkSwitchingInput is an input type that accepts GetServerSpecificationsNetworkSwitchingArgs and GetServerSpecificationsNetworkSwitchingOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkSwitchingInput` via:
+//
+//	GetServerSpecificationsNetworkSwitchingArgs{...}
+type GetServerSpecificationsNetworkSwitchingInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkSwitchingOutput() GetServerSpecificationsNetworkSwitchingOutput
+	ToGetServerSpecificationsNetworkSwitchingOutputWithContext(context.Context) GetServerSpecificationsNetworkSwitchingOutput
+}
+
+type GetServerSpecificationsNetworkSwitchingArgs struct {
+	// Switch name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetServerSpecificationsNetworkSwitchingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkSwitching)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkSwitchingArgs) ToGetServerSpecificationsNetworkSwitchingOutput() GetServerSpecificationsNetworkSwitchingOutput {
+	return i.ToGetServerSpecificationsNetworkSwitchingOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkSwitchingArgs) ToGetServerSpecificationsNetworkSwitchingOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkSwitchingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkSwitchingOutput)
+}
+
+type GetServerSpecificationsNetworkSwitchingOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkSwitchingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkSwitching)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkSwitchingOutput) ToGetServerSpecificationsNetworkSwitchingOutput() GetServerSpecificationsNetworkSwitchingOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkSwitchingOutput) ToGetServerSpecificationsNetworkSwitchingOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkSwitchingOutput {
+	return o
+}
+
+// Switch name
+func (o GetServerSpecificationsNetworkSwitchingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkSwitching) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsNetworkTraffic struct {
+	// Monthly input traffic quota allowed
+	InputQuotaSize GetServerSpecificationsNetworkTrafficInputQuotaSize `pulumi:"inputQuotaSize"`
+	// Monthly input traffic consumed this month
+	InputQuotaUsed GetServerSpecificationsNetworkTrafficInputQuotaUsed `pulumi:"inputQuotaUsed"`
+	// Whether bandwidth is throttleted for being over quota
+	IsThrottled bool `pulumi:"isThrottled"`
+	// Monthly output traffic quota allowed
+	OutputQuotaSize GetServerSpecificationsNetworkTrafficOutputQuotaSize `pulumi:"outputQuotaSize"`
+	// Monthly output traffic consumed this month
+	OutputQuotaUsed GetServerSpecificationsNetworkTrafficOutputQuotaUsed `pulumi:"outputQuotaUsed"`
+	// Next reset quota date for traffic counter
+	ResetQuotaDate string `pulumi:"resetQuotaDate"`
+}
+
+// GetServerSpecificationsNetworkTrafficInput is an input type that accepts GetServerSpecificationsNetworkTrafficArgs and GetServerSpecificationsNetworkTrafficOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkTrafficInput` via:
+//
+//	GetServerSpecificationsNetworkTrafficArgs{...}
+type GetServerSpecificationsNetworkTrafficInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkTrafficOutput() GetServerSpecificationsNetworkTrafficOutput
+	ToGetServerSpecificationsNetworkTrafficOutputWithContext(context.Context) GetServerSpecificationsNetworkTrafficOutput
+}
+
+type GetServerSpecificationsNetworkTrafficArgs struct {
+	// Monthly input traffic quota allowed
+	InputQuotaSize GetServerSpecificationsNetworkTrafficInputQuotaSizeInput `pulumi:"inputQuotaSize"`
+	// Monthly input traffic consumed this month
+	InputQuotaUsed GetServerSpecificationsNetworkTrafficInputQuotaUsedInput `pulumi:"inputQuotaUsed"`
+	// Whether bandwidth is throttleted for being over quota
+	IsThrottled pulumi.BoolInput `pulumi:"isThrottled"`
+	// Monthly output traffic quota allowed
+	OutputQuotaSize GetServerSpecificationsNetworkTrafficOutputQuotaSizeInput `pulumi:"outputQuotaSize"`
+	// Monthly output traffic consumed this month
+	OutputQuotaUsed GetServerSpecificationsNetworkTrafficOutputQuotaUsedInput `pulumi:"outputQuotaUsed"`
+	// Next reset quota date for traffic counter
+	ResetQuotaDate pulumi.StringInput `pulumi:"resetQuotaDate"`
+}
+
+func (GetServerSpecificationsNetworkTrafficArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkTraffic)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkTrafficArgs) ToGetServerSpecificationsNetworkTrafficOutput() GetServerSpecificationsNetworkTrafficOutput {
+	return i.ToGetServerSpecificationsNetworkTrafficOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkTrafficArgs) ToGetServerSpecificationsNetworkTrafficOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkTrafficOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkTrafficOutput)
+}
+
+type GetServerSpecificationsNetworkTrafficOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkTrafficOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkTraffic)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkTrafficOutput) ToGetServerSpecificationsNetworkTrafficOutput() GetServerSpecificationsNetworkTrafficOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkTrafficOutput) ToGetServerSpecificationsNetworkTrafficOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkTrafficOutput {
+	return o
+}
+
+// Monthly input traffic quota allowed
+func (o GetServerSpecificationsNetworkTrafficOutput) InputQuotaSize() GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTraffic) GetServerSpecificationsNetworkTrafficInputQuotaSize {
+		return v.InputQuotaSize
+	}).(GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput)
+}
+
+// Monthly input traffic consumed this month
+func (o GetServerSpecificationsNetworkTrafficOutput) InputQuotaUsed() GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTraffic) GetServerSpecificationsNetworkTrafficInputQuotaUsed {
+		return v.InputQuotaUsed
+	}).(GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput)
+}
+
+// Whether bandwidth is throttleted for being over quota
+func (o GetServerSpecificationsNetworkTrafficOutput) IsThrottled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTraffic) bool { return v.IsThrottled }).(pulumi.BoolOutput)
+}
+
+// Monthly output traffic quota allowed
+func (o GetServerSpecificationsNetworkTrafficOutput) OutputQuotaSize() GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTraffic) GetServerSpecificationsNetworkTrafficOutputQuotaSize {
+		return v.OutputQuotaSize
+	}).(GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput)
+}
+
+// Monthly output traffic consumed this month
+func (o GetServerSpecificationsNetworkTrafficOutput) OutputQuotaUsed() GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTraffic) GetServerSpecificationsNetworkTrafficOutputQuotaUsed {
+		return v.OutputQuotaUsed
+	}).(GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput)
+}
+
+// Next reset quota date for traffic counter
+func (o GetServerSpecificationsNetworkTrafficOutput) ResetQuotaDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTraffic) string { return v.ResetQuotaDate }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsNetworkTrafficInputQuotaSize struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsNetworkTrafficInputQuotaSizeInput is an input type that accepts GetServerSpecificationsNetworkTrafficInputQuotaSizeArgs and GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkTrafficInputQuotaSizeInput` via:
+//
+//	GetServerSpecificationsNetworkTrafficInputQuotaSizeArgs{...}
+type GetServerSpecificationsNetworkTrafficInputQuotaSizeInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkTrafficInputQuotaSizeOutput() GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput
+	ToGetServerSpecificationsNetworkTrafficInputQuotaSizeOutputWithContext(context.Context) GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput
+}
+
+type GetServerSpecificationsNetworkTrafficInputQuotaSizeArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsNetworkTrafficInputQuotaSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkTrafficInputQuotaSize)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkTrafficInputQuotaSizeArgs) ToGetServerSpecificationsNetworkTrafficInputQuotaSizeOutput() GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput {
+	return i.ToGetServerSpecificationsNetworkTrafficInputQuotaSizeOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkTrafficInputQuotaSizeArgs) ToGetServerSpecificationsNetworkTrafficInputQuotaSizeOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput)
+}
+
+type GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkTrafficInputQuotaSize)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput) ToGetServerSpecificationsNetworkTrafficInputQuotaSizeOutput() GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput) ToGetServerSpecificationsNetworkTrafficInputQuotaSizeOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTrafficInputQuotaSize) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTrafficInputQuotaSize) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsNetworkTrafficInputQuotaUsed struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsNetworkTrafficInputQuotaUsedInput is an input type that accepts GetServerSpecificationsNetworkTrafficInputQuotaUsedArgs and GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkTrafficInputQuotaUsedInput` via:
+//
+//	GetServerSpecificationsNetworkTrafficInputQuotaUsedArgs{...}
+type GetServerSpecificationsNetworkTrafficInputQuotaUsedInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkTrafficInputQuotaUsedOutput() GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput
+	ToGetServerSpecificationsNetworkTrafficInputQuotaUsedOutputWithContext(context.Context) GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput
+}
+
+type GetServerSpecificationsNetworkTrafficInputQuotaUsedArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsNetworkTrafficInputQuotaUsedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkTrafficInputQuotaUsed)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkTrafficInputQuotaUsedArgs) ToGetServerSpecificationsNetworkTrafficInputQuotaUsedOutput() GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput {
+	return i.ToGetServerSpecificationsNetworkTrafficInputQuotaUsedOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkTrafficInputQuotaUsedArgs) ToGetServerSpecificationsNetworkTrafficInputQuotaUsedOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput)
+}
+
+type GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkTrafficInputQuotaUsed)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput) ToGetServerSpecificationsNetworkTrafficInputQuotaUsedOutput() GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput) ToGetServerSpecificationsNetworkTrafficInputQuotaUsedOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTrafficInputQuotaUsed) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTrafficInputQuotaUsed) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsNetworkTrafficOutputQuotaSize struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsNetworkTrafficOutputQuotaSizeInput is an input type that accepts GetServerSpecificationsNetworkTrafficOutputQuotaSizeArgs and GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkTrafficOutputQuotaSizeInput` via:
+//
+//	GetServerSpecificationsNetworkTrafficOutputQuotaSizeArgs{...}
+type GetServerSpecificationsNetworkTrafficOutputQuotaSizeInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput() GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput
+	ToGetServerSpecificationsNetworkTrafficOutputQuotaSizeOutputWithContext(context.Context) GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput
+}
+
+type GetServerSpecificationsNetworkTrafficOutputQuotaSizeArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsNetworkTrafficOutputQuotaSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkTrafficOutputQuotaSize)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkTrafficOutputQuotaSizeArgs) ToGetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput() GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput {
+	return i.ToGetServerSpecificationsNetworkTrafficOutputQuotaSizeOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkTrafficOutputQuotaSizeArgs) ToGetServerSpecificationsNetworkTrafficOutputQuotaSizeOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput)
+}
+
+type GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkTrafficOutputQuotaSize)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput) ToGetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput() GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput) ToGetServerSpecificationsNetworkTrafficOutputQuotaSizeOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTrafficOutputQuotaSize) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTrafficOutputQuotaSize) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsNetworkTrafficOutputQuotaUsed struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsNetworkTrafficOutputQuotaUsedInput is an input type that accepts GetServerSpecificationsNetworkTrafficOutputQuotaUsedArgs and GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkTrafficOutputQuotaUsedInput` via:
+//
+//	GetServerSpecificationsNetworkTrafficOutputQuotaUsedArgs{...}
+type GetServerSpecificationsNetworkTrafficOutputQuotaUsedInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput() GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput
+	ToGetServerSpecificationsNetworkTrafficOutputQuotaUsedOutputWithContext(context.Context) GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput
+}
+
+type GetServerSpecificationsNetworkTrafficOutputQuotaUsedArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsNetworkTrafficOutputQuotaUsedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkTrafficOutputQuotaUsed)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkTrafficOutputQuotaUsedArgs) ToGetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput() GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput {
+	return i.ToGetServerSpecificationsNetworkTrafficOutputQuotaUsedOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkTrafficOutputQuotaUsedArgs) ToGetServerSpecificationsNetworkTrafficOutputQuotaUsedOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput)
+}
+
+type GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkTrafficOutputQuotaUsed)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput) ToGetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput() GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput) ToGetServerSpecificationsNetworkTrafficOutputQuotaUsedOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTrafficOutputQuotaUsed) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkTrafficOutputQuotaUsed) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type GetServerSpecificationsNetworkVmac struct {
+	// Whether server is compatible vmac
+	Supported bool `pulumi:"supported"`
+}
+
+// GetServerSpecificationsNetworkVmacInput is an input type that accepts GetServerSpecificationsNetworkVmacArgs and GetServerSpecificationsNetworkVmacOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkVmacInput` via:
+//
+//	GetServerSpecificationsNetworkVmacArgs{...}
+type GetServerSpecificationsNetworkVmacInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkVmacOutput() GetServerSpecificationsNetworkVmacOutput
+	ToGetServerSpecificationsNetworkVmacOutputWithContext(context.Context) GetServerSpecificationsNetworkVmacOutput
+}
+
+type GetServerSpecificationsNetworkVmacArgs struct {
+	// Whether server is compatible vmac
+	Supported pulumi.BoolInput `pulumi:"supported"`
+}
+
+func (GetServerSpecificationsNetworkVmacArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkVmac)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkVmacArgs) ToGetServerSpecificationsNetworkVmacOutput() GetServerSpecificationsNetworkVmacOutput {
+	return i.ToGetServerSpecificationsNetworkVmacOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkVmacArgs) ToGetServerSpecificationsNetworkVmacOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkVmacOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkVmacOutput)
+}
+
+type GetServerSpecificationsNetworkVmacOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkVmacOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkVmac)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkVmacOutput) ToGetServerSpecificationsNetworkVmacOutput() GetServerSpecificationsNetworkVmacOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkVmacOutput) ToGetServerSpecificationsNetworkVmacOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkVmacOutput {
+	return o
+}
+
+// Whether server is compatible vmac
+func (o GetServerSpecificationsNetworkVmacOutput) Supported() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkVmac) bool { return v.Supported }).(pulumi.BoolOutput)
+}
+
+type GetServerSpecificationsNetworkVrack struct {
+	// vrack bandwidth limitation
+	Bandwidth GetServerSpecificationsNetworkVrackBandwidth `pulumi:"bandwidth"`
+	// Bandwidth offer type (included┃standard)
+	Type string `pulumi:"type"`
+}
+
+// GetServerSpecificationsNetworkVrackInput is an input type that accepts GetServerSpecificationsNetworkVrackArgs and GetServerSpecificationsNetworkVrackOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkVrackInput` via:
+//
+//	GetServerSpecificationsNetworkVrackArgs{...}
+type GetServerSpecificationsNetworkVrackInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkVrackOutput() GetServerSpecificationsNetworkVrackOutput
+	ToGetServerSpecificationsNetworkVrackOutputWithContext(context.Context) GetServerSpecificationsNetworkVrackOutput
+}
+
+type GetServerSpecificationsNetworkVrackArgs struct {
+	// vrack bandwidth limitation
+	Bandwidth GetServerSpecificationsNetworkVrackBandwidthInput `pulumi:"bandwidth"`
+	// Bandwidth offer type (included┃standard)
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServerSpecificationsNetworkVrackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkVrack)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkVrackArgs) ToGetServerSpecificationsNetworkVrackOutput() GetServerSpecificationsNetworkVrackOutput {
+	return i.ToGetServerSpecificationsNetworkVrackOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkVrackArgs) ToGetServerSpecificationsNetworkVrackOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkVrackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkVrackOutput)
+}
+
+type GetServerSpecificationsNetworkVrackOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkVrackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkVrack)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkVrackOutput) ToGetServerSpecificationsNetworkVrackOutput() GetServerSpecificationsNetworkVrackOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkVrackOutput) ToGetServerSpecificationsNetworkVrackOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkVrackOutput {
+	return o
+}
+
+// vrack bandwidth limitation
+func (o GetServerSpecificationsNetworkVrackOutput) Bandwidth() GetServerSpecificationsNetworkVrackBandwidthOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkVrack) GetServerSpecificationsNetworkVrackBandwidth {
+		return v.Bandwidth
+	}).(GetServerSpecificationsNetworkVrackBandwidthOutput)
+}
+
+// Bandwidth offer type (included┃standard)
+func (o GetServerSpecificationsNetworkVrackOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkVrack) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServerSpecificationsNetworkVrackBandwidth struct {
+	Unit  string  `pulumi:"unit"`
+	Value float64 `pulumi:"value"`
+}
+
+// GetServerSpecificationsNetworkVrackBandwidthInput is an input type that accepts GetServerSpecificationsNetworkVrackBandwidthArgs and GetServerSpecificationsNetworkVrackBandwidthOutput values.
+// You can construct a concrete instance of `GetServerSpecificationsNetworkVrackBandwidthInput` via:
+//
+//	GetServerSpecificationsNetworkVrackBandwidthArgs{...}
+type GetServerSpecificationsNetworkVrackBandwidthInput interface {
+	pulumi.Input
+
+	ToGetServerSpecificationsNetworkVrackBandwidthOutput() GetServerSpecificationsNetworkVrackBandwidthOutput
+	ToGetServerSpecificationsNetworkVrackBandwidthOutputWithContext(context.Context) GetServerSpecificationsNetworkVrackBandwidthOutput
+}
+
+type GetServerSpecificationsNetworkVrackBandwidthArgs struct {
+	Unit  pulumi.StringInput  `pulumi:"unit"`
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (GetServerSpecificationsNetworkVrackBandwidthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkVrackBandwidth)(nil)).Elem()
+}
+
+func (i GetServerSpecificationsNetworkVrackBandwidthArgs) ToGetServerSpecificationsNetworkVrackBandwidthOutput() GetServerSpecificationsNetworkVrackBandwidthOutput {
+	return i.ToGetServerSpecificationsNetworkVrackBandwidthOutputWithContext(context.Background())
+}
+
+func (i GetServerSpecificationsNetworkVrackBandwidthArgs) ToGetServerSpecificationsNetworkVrackBandwidthOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkVrackBandwidthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSpecificationsNetworkVrackBandwidthOutput)
+}
+
+type GetServerSpecificationsNetworkVrackBandwidthOutput struct{ *pulumi.OutputState }
+
+func (GetServerSpecificationsNetworkVrackBandwidthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSpecificationsNetworkVrackBandwidth)(nil)).Elem()
+}
+
+func (o GetServerSpecificationsNetworkVrackBandwidthOutput) ToGetServerSpecificationsNetworkVrackBandwidthOutput() GetServerSpecificationsNetworkVrackBandwidthOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkVrackBandwidthOutput) ToGetServerSpecificationsNetworkVrackBandwidthOutputWithContext(ctx context.Context) GetServerSpecificationsNetworkVrackBandwidthOutput {
+	return o
+}
+
+func (o GetServerSpecificationsNetworkVrackBandwidthOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkVrackBandwidth) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+func (o GetServerSpecificationsNetworkVrackBandwidthOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerSpecificationsNetworkVrackBandwidth) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskDetailsInput)(nil)).Elem(), ServerInstallTaskDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskDetailsPtrInput)(nil)).Elem(), ServerInstallTaskDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskUserMetadataInput)(nil)).Elem(), ServerInstallTaskUserMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskUserMetadataArrayInput)(nil)).Elem(), ServerInstallTaskUserMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerNetworkingInterfaceInput)(nil)).Elem(), ServerNetworkingInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerNetworkingInterfaceArrayInput)(nil)).Elem(), ServerNetworkingInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDefaultHardwareRaidSizeInput)(nil)).Elem(), GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupArrayInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupDiskSizeInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupDiskSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareExpansionCardInput)(nil)).Elem(), GetServerSpecificationsHardwareExpansionCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareExpansionCardArrayInput)(nil)).Elem(), GetServerSpecificationsHardwareExpansionCardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareMemorySizeInput)(nil)).Elem(), GetServerSpecificationsHardwareMemorySizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareUsbKeyInput)(nil)).Elem(), GetServerSpecificationsHardwareUsbKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareUsbKeyArrayInput)(nil)).Elem(), GetServerSpecificationsHardwareUsbKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkBandwidthInput)(nil)).Elem(), GetServerSpecificationsNetworkBandwidthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkBandwidthInternetToOvhInput)(nil)).Elem(), GetServerSpecificationsNetworkBandwidthInternetToOvhArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkBandwidthOvhToInternetInput)(nil)).Elem(), GetServerSpecificationsNetworkBandwidthOvhToInternetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkBandwidthOvhToOvhInput)(nil)).Elem(), GetServerSpecificationsNetworkBandwidthOvhToOvhArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkConnectionValInput)(nil)).Elem(), GetServerSpecificationsNetworkConnectionValArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkOlaInput)(nil)).Elem(), GetServerSpecificationsNetworkOlaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkOlaAvailableModeInput)(nil)).Elem(), GetServerSpecificationsNetworkOlaAvailableModeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkOlaAvailableModeArrayInput)(nil)).Elem(), GetServerSpecificationsNetworkOlaAvailableModeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkOlaAvailableModeInterfaceInput)(nil)).Elem(), GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayInput)(nil)).Elem(), GetServerSpecificationsNetworkOlaAvailableModeInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkRoutingInput)(nil)).Elem(), GetServerSpecificationsNetworkRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkRoutingIpv4Input)(nil)).Elem(), GetServerSpecificationsNetworkRoutingIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkRoutingIpv6Input)(nil)).Elem(), GetServerSpecificationsNetworkRoutingIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkSwitchingInput)(nil)).Elem(), GetServerSpecificationsNetworkSwitchingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkTrafficInput)(nil)).Elem(), GetServerSpecificationsNetworkTrafficArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkTrafficInputQuotaSizeInput)(nil)).Elem(), GetServerSpecificationsNetworkTrafficInputQuotaSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkTrafficInputQuotaUsedInput)(nil)).Elem(), GetServerSpecificationsNetworkTrafficInputQuotaUsedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkTrafficOutputQuotaSizeInput)(nil)).Elem(), GetServerSpecificationsNetworkTrafficOutputQuotaSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkTrafficOutputQuotaUsedInput)(nil)).Elem(), GetServerSpecificationsNetworkTrafficOutputQuotaUsedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkVmacInput)(nil)).Elem(), GetServerSpecificationsNetworkVmacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkVrackInput)(nil)).Elem(), GetServerSpecificationsNetworkVrackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkVrackBandwidthInput)(nil)).Elem(), GetServerSpecificationsNetworkVrackBandwidthArgs{})
 	pulumi.RegisterOutputType(ServerInstallTaskDetailsOutput{})
 	pulumi.RegisterOutputType(ServerInstallTaskDetailsPtrOutput{})
+	pulumi.RegisterOutputType(ServerInstallTaskUserMetadataOutput{})
+	pulumi.RegisterOutputType(ServerInstallTaskUserMetadataArrayOutput{})
 	pulumi.RegisterOutputType(ServerNetworkingInterfaceOutput{})
 	pulumi.RegisterOutputType(ServerNetworkingInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupDiskSizeOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareExpansionCardOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareExpansionCardArrayOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareMemorySizeOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareUsbKeyOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsHardwareUsbKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkBandwidthOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkBandwidthInternetToOvhOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkBandwidthOvhToInternetOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkBandwidthOvhToOvhOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkConnectionValOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkOlaOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkOlaAvailableModeOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkOlaAvailableModeArrayOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkRoutingOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkRoutingIpv4Output{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkRoutingIpv6Output{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkSwitchingOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkTrafficOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkTrafficInputQuotaSizeOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkTrafficOutputQuotaSizeOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkVmacOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkVrackOutput{})
+	pulumi.RegisterOutputType(GetServerSpecificationsNetworkVrackBandwidthOutput{})
 }

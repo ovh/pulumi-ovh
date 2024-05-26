@@ -24,10 +24,27 @@ class MongoDbUserArgs:
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] name: Name of the user.
+        :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
                Available roles:
+               * `backup@admin`
+               * `clusterAdmin@admin`
+               * `clusterManager@admin`
+               * `clusterMonitor@admin`
+               * `dbAdmin@(defined db)`
+               * `dbAdminAnyDatabase@admin`
+               * `dbOwner@(defined db)`
+               * `enableSharding@(defined db)`
+               * `hostManager@admin`
+               * `read@(defined db)`
+               * `readAnyDatabase@admin`
+               * `readWrite@(defined db)`
+               * `readWriteAnyDatabase@admin`
+               * `restore@admin`
+               * `root@admin`
+               * `userAdmin@(defined db)`
+               * `userAdminAnyDatabase@admin`
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -67,7 +84,7 @@ class MongoDbUserArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user.
+        Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
@@ -91,8 +108,25 @@ class MongoDbUserArgs:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Roles the user belongs to.
+        Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
         Available roles:
+        * `backup@admin`
+        * `clusterAdmin@admin`
+        * `clusterManager@admin`
+        * `clusterMonitor@admin`
+        * `dbAdmin@(defined db)`
+        * `dbAdminAnyDatabase@admin`
+        * `dbOwner@(defined db)`
+        * `enableSharding@(defined db)`
+        * `hostManager@admin`
+        * `read@(defined db)`
+        * `readAnyDatabase@admin`
+        * `readWrite@(defined db)`
+        * `readWriteAnyDatabase@admin`
+        * `restore@admin`
+        * `root@admin`
+        * `userAdmin@(defined db)`
+        * `userAdminAnyDatabase@admin`
         """
         return pulumi.get(self, "roles")
 
@@ -116,11 +150,28 @@ class _MongoDbUserState:
         Input properties used for looking up and filtering MongoDbUser resources.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
-        :param pulumi.Input[str] name: Name of the user.
+        :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
                Available roles:
+               * `backup@admin`
+               * `clusterAdmin@admin`
+               * `clusterManager@admin`
+               * `clusterMonitor@admin`
+               * `dbAdmin@(defined db)`
+               * `dbAdminAnyDatabase@admin`
+               * `dbOwner@(defined db)`
+               * `enableSharding@(defined db)`
+               * `hostManager@admin`
+               * `read@(defined db)`
+               * `readAnyDatabase@admin`
+               * `readWrite@(defined db)`
+               * `readWriteAnyDatabase@admin`
+               * `restore@admin`
+               * `root@admin`
+               * `userAdmin@(defined db)`
+               * `userAdminAnyDatabase@admin`
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
@@ -170,7 +221,7 @@ class _MongoDbUserState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user.
+        Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
@@ -206,8 +257,25 @@ class _MongoDbUserState:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Roles the user belongs to.
+        Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
         Available roles:
+        * `backup@admin`
+        * `clusterAdmin@admin`
+        * `clusterManager@admin`
+        * `clusterMonitor@admin`
+        * `dbAdmin@(defined db)`
+        * `dbAdminAnyDatabase@admin`
+        * `dbOwner@(defined db)`
+        * `enableSharding@(defined db)`
+        * `hostManager@admin`
+        * `read@(defined db)`
+        * `readAnyDatabase@admin`
+        * `readWrite@(defined db)`
+        * `readWriteAnyDatabase@admin`
+        * `restore@admin`
+        * `root@admin`
+        * `userAdmin@(defined db)`
+        * `userAdminAnyDatabase@admin`
         """
         return pulumi.get(self, "roles")
 
@@ -255,19 +323,38 @@ class MongoDbUser(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+        OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+
+        bash
 
         ```sh
-         $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
+        $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] name: Name of the user.
+        :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
                Available roles:
+               * `backup@admin`
+               * `clusterAdmin@admin`
+               * `clusterManager@admin`
+               * `clusterMonitor@admin`
+               * `dbAdmin@(defined db)`
+               * `dbAdminAnyDatabase@admin`
+               * `dbOwner@(defined db)`
+               * `enableSharding@(defined db)`
+               * `hostManager@admin`
+               * `read@(defined db)`
+               * `readAnyDatabase@admin`
+               * `readWrite@(defined db)`
+               * `readWriteAnyDatabase@admin`
+               * `restore@admin`
+               * `root@admin`
+               * `userAdmin@(defined db)`
+               * `userAdminAnyDatabase@admin`
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
@@ -280,10 +367,12 @@ class MongoDbUser(pulumi.CustomResource):
         """
         ## Import
 
-        OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g., bash
+        OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+
+        bash
 
         ```sh
-         $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
+        $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
         ```
 
         :param str resource_name: The name of the resource.
@@ -356,11 +445,28 @@ class MongoDbUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
-        :param pulumi.Input[str] name: Name of the user.
+        :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
                Available roles:
+               * `backup@admin`
+               * `clusterAdmin@admin`
+               * `clusterManager@admin`
+               * `clusterMonitor@admin`
+               * `dbAdmin@(defined db)`
+               * `dbAdminAnyDatabase@admin`
+               * `dbOwner@(defined db)`
+               * `enableSharding@(defined db)`
+               * `hostManager@admin`
+               * `read@(defined db)`
+               * `readAnyDatabase@admin`
+               * `readWrite@(defined db)`
+               * `readWriteAnyDatabase@admin`
+               * `restore@admin`
+               * `root@admin`
+               * `userAdmin@(defined db)`
+               * `userAdminAnyDatabase@admin`
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
@@ -399,7 +505,7 @@ class MongoDbUser(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the user.
+        Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
@@ -423,8 +529,25 @@ class MongoDbUser(pulumi.CustomResource):
     @pulumi.getter
     def roles(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Roles the user belongs to.
+        Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
         Available roles:
+        * `backup@admin`
+        * `clusterAdmin@admin`
+        * `clusterManager@admin`
+        * `clusterMonitor@admin`
+        * `dbAdmin@(defined db)`
+        * `dbAdminAnyDatabase@admin`
+        * `dbOwner@(defined db)`
+        * `enableSharding@(defined db)`
+        * `hostManager@admin`
+        * `read@(defined db)`
+        * `readAnyDatabase@admin`
+        * `readWrite@(defined db)`
+        * `readWriteAnyDatabase@admin`
+        * `restore@admin`
+        * `root@admin`
+        * `userAdmin@(defined db)`
+        * `userAdminAnyDatabase@admin`
         """
         return pulumi.get(self, "roles")
 

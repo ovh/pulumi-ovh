@@ -30,7 +30,7 @@ class HttpFarmArgs:
         :param pulumi.Input[str] zone: Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
         :param pulumi.Input[str] balance: Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
         :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
-        :param pulumi.Input[int] port: Port for backends to receive traffic on.
+        :param pulumi.Input[int] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
         :param pulumi.Input['HttpFarmProbeArgs'] probe: define a backend healthcheck probe
         :param pulumi.Input[str] stickiness: Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
         :param pulumi.Input[int] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
@@ -102,7 +102,7 @@ class HttpFarmArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        Port for backends to receive traffic on.
+        Port attached to your farm ([1..49151]). Inherited from frontend if null
         """
         return pulumi.get(self, "port")
 
@@ -162,7 +162,7 @@ class _HttpFarmState:
         Input properties used for looking up and filtering HttpFarm resources.
         :param pulumi.Input[str] balance: Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
         :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
-        :param pulumi.Input[int] port: Port for backends to receive traffic on.
+        :param pulumi.Input[int] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
         :param pulumi.Input['HttpFarmProbeArgs'] probe: define a backend healthcheck probe
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] stickiness: Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
@@ -214,7 +214,7 @@ class _HttpFarmState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        Port for backends to receive traffic on.
+        Port attached to your farm ([1..49151]). Inherited from frontend if null
         """
         return pulumi.get(self, "port")
 
@@ -314,11 +314,15 @@ class HttpFarm(pulumi.CustomResource):
             zone="GRA")
         ```
 
+        ## Import
+
+        HTTP farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] balance: Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
         :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
-        :param pulumi.Input[int] port: Port for backends to receive traffic on.
+        :param pulumi.Input[int] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
         :param pulumi.Input[pulumi.InputType['HttpFarmProbeArgs']] probe: define a backend healthcheck probe
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] stickiness: Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
@@ -347,6 +351,10 @@ class HttpFarm(pulumi.CustomResource):
             service_name=lb.service_name,
             zone="GRA")
         ```
+
+        ## Import
+
+        HTTP farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
 
         :param str resource_name: The name of the resource.
         :param HttpFarmArgs args: The arguments to use to populate this resource's properties.
@@ -419,7 +427,7 @@ class HttpFarm(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] balance: Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
         :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
-        :param pulumi.Input[int] port: Port for backends to receive traffic on.
+        :param pulumi.Input[int] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
         :param pulumi.Input[pulumi.InputType['HttpFarmProbeArgs']] probe: define a backend healthcheck probe
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] stickiness: Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
@@ -460,7 +468,7 @@ class HttpFarm(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[int]]:
         """
-        Port for backends to receive traffic on.
+        Port attached to your farm ([1..49151]). Inherited from frontend if null
         """
         return pulumi.get(self, "port")
 

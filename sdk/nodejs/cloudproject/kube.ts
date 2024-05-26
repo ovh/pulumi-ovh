@@ -9,10 +9,12 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g., bash
+ * OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
+ * $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
  * ```
  */
 export class Kube extends pulumi.CustomResource {
@@ -58,7 +60,7 @@ export class Kube extends pulumi.CustomResource {
     /**
      * **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
      *
-     * @deprecated Use customization_apiserver instead
+     * @deprecated Use customizationApiserver instead
      */
     public readonly customizations!: pulumi.Output<outputs.CloudProject.KubeCustomization[]>;
     /**
@@ -90,7 +92,7 @@ export class Kube extends pulumi.CustomResource {
      */
     public /*out*/ readonly nodesUrl!: pulumi.Output<string>;
     /**
-     * The private network configuration
+     * The private network configuration. If this is set then the 2 parameters below shall be defined.
      */
     public readonly privateNetworkConfiguration!: pulumi.Output<outputs.CloudProject.KubePrivateNetworkConfiguration | undefined>;
     /**
@@ -210,7 +212,7 @@ export interface KubeState {
     /**
      * **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
      *
-     * @deprecated Use customization_apiserver instead
+     * @deprecated Use customizationApiserver instead
      */
     customizations?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomization>[]>;
     /**
@@ -242,7 +244,7 @@ export interface KubeState {
      */
     nodesUrl?: pulumi.Input<string>;
     /**
-     * The private network configuration
+     * The private network configuration. If this is set then the 2 parameters below shall be defined.
      */
     privateNetworkConfiguration?: pulumi.Input<inputs.CloudProject.KubePrivateNetworkConfiguration>;
     /**
@@ -292,7 +294,7 @@ export interface KubeArgs {
     /**
      * **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
      *
-     * @deprecated Use customization_apiserver instead
+     * @deprecated Use customizationApiserver instead
      */
     customizations?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomization>[]>;
     /**
@@ -304,7 +306,7 @@ export interface KubeArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The private network configuration
+     * The private network configuration. If this is set then the 2 parameters below shall be defined.
      */
     privateNetworkConfiguration?: pulumi.Input<inputs.CloudProject.KubePrivateNetworkConfiguration>;
     /**

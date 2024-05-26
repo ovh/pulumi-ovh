@@ -69,11 +69,13 @@ type GetDatabaseArgs struct {
 type GetDatabaseResult struct {
 	// Advanced configuration key / value.
 	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
+	// List of region where backups are pushed.
+	BackupRegions []string `pulumi:"backupRegions"`
 	// Time on which backups start every day.
 	BackupTime string `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt string `pulumi:"createdAt"`
-	// Small description of the database service.
+	// Description of the IP restriction
 	Description string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
 	DiskSize int `pulumi:"diskSize"`
@@ -87,8 +89,12 @@ type GetDatabaseResult struct {
 	Flavor string `pulumi:"flavor"`
 	// See Argument Reference above.
 	Id string `pulumi:"id"`
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions []GetDatabaseIpRestriction `pulumi:"ipRestrictions"`
 	// Defines whether the REST API is enabled on a kafka cluster.
 	KafkaRestApi bool `pulumi:"kafkaRestApi"`
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry bool `pulumi:"kafkaSchemaRegistry"`
 	// Time on which maintenances can start every day.
 	MaintenanceTime string `pulumi:"maintenanceTime"`
 	// Type of network of the cluster.
@@ -155,6 +161,11 @@ func (o GetDatabaseResultOutput) AdvancedConfiguration() pulumi.StringMapOutput 
 	return o.ApplyT(func(v GetDatabaseResult) map[string]string { return v.AdvancedConfiguration }).(pulumi.StringMapOutput)
 }
 
+// List of region where backups are pushed.
+func (o GetDatabaseResultOutput) BackupRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseResult) []string { return v.BackupRegions }).(pulumi.StringArrayOutput)
+}
+
 // Time on which backups start every day.
 func (o GetDatabaseResultOutput) BackupTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.BackupTime }).(pulumi.StringOutput)
@@ -165,7 +176,7 @@ func (o GetDatabaseResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Small description of the database service.
+// Description of the IP restriction
 func (o GetDatabaseResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -200,9 +211,19 @@ func (o GetDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// IP Blocks authorized to access to the cluster.
+func (o GetDatabaseResultOutput) IpRestrictions() GetDatabaseIpRestrictionArrayOutput {
+	return o.ApplyT(func(v GetDatabaseResult) []GetDatabaseIpRestriction { return v.IpRestrictions }).(GetDatabaseIpRestrictionArrayOutput)
+}
+
 // Defines whether the REST API is enabled on a kafka cluster.
 func (o GetDatabaseResultOutput) KafkaRestApi() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseResult) bool { return v.KafkaRestApi }).(pulumi.BoolOutput)
+}
+
+// Defines whether the schema registry is enabled on a Kafka cluster
+func (o GetDatabaseResultOutput) KafkaSchemaRegistry() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseResult) bool { return v.KafkaSchemaRegistry }).(pulumi.BoolOutput)
 }
 
 // Time on which maintenances can start every day.

@@ -33,6 +33,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Get the user ID of a previously created user with the description "S3-User"
 //			users := "TODO: For expression"
 //			s3UserId := users[0]
 //			myS3Credentials, err := CloudProject.GetUserS3Credentials(ctx, &cloudproject.GetUserS3CredentialsArgs{

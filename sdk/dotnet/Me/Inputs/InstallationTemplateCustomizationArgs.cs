@@ -13,12 +13,6 @@ namespace Pulumi.Ovh.Me.Inputs
     public sealed class InstallationTemplateCustomizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Template change log details.
-        /// </summary>
-        [Input("changeLog")]
-        public Input<string>? ChangeLog { get; set; }
-
-        /// <summary>
         /// Set up the server using the provided hostname instead of the default hostname.
         /// </summary>
         [Input("customHostname")]
@@ -35,24 +29,6 @@ namespace Pulumi.Ovh.Me.Inputs
         /// </summary>
         [Input("postInstallationScriptReturn")]
         public Input<string>? PostInstallationScriptReturn { get; set; }
-
-        /// <summary>
-        /// Rating.
-        /// </summary>
-        [Input("rating")]
-        public Input<int>? Rating { get; set; }
-
-        /// <summary>
-        /// Name of the ssh key that should be installed. Password login will be disabled.
-        /// </summary>
-        [Input("sshKeyName")]
-        public Input<string>? SshKeyName { get; set; }
-
-        /// <summary>
-        /// Use the distribution's native kernel instead of the recommended OV
-        /// </summary>
-        [Input("useDistributionKernel")]
-        public Input<bool>? UseDistributionKernel { get; set; }
 
         public InstallationTemplateCustomizationArgs()
         {

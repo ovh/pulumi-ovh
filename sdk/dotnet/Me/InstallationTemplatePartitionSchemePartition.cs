@@ -24,9 +24,8 @@ namespace Pulumi.Ovh.Me
     /// {
     ///     var mytemplate = new Ovh.Me.InstallationTemplate("mytemplate", new()
     ///     {
-    ///         BaseTemplateName = "centos7_64",
+    ///         BaseTemplateName = "debian12_64",
     ///         TemplateName = "mytemplate",
-    ///         DefaultLanguage = "fr",
     ///     });
     /// 
     ///     var scheme = new Ovh.Me.InstallationTemplatePartitionScheme("scheme", new()
@@ -51,10 +50,12 @@ namespace Pulumi.Ovh.Me
     /// 
     /// ## Import
     /// 
-    /// The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g., bash
+    /// The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by "/" E.g.,
+    /// 
+    /// bash
     /// 
     /// ```sh
-    ///  $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
+    /// $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
     /// ```
     /// </summary>
     [OvhResourceType("ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition")]

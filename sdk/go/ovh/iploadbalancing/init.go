@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TcpRoute{}
 	case "ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule":
 		r = &TcpRouteRule{}
+	case "ovh:IpLoadBalancing/udpFrontend:UdpFrontend":
+		r = &UdpFrontend{}
 	case "ovh:IpLoadBalancing/vrackNetwork:VrackNetwork":
 		r = &VrackNetwork{}
 	default:
@@ -118,6 +120,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"IpLoadBalancing/tcpRouteRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"IpLoadBalancing/udpFrontend",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

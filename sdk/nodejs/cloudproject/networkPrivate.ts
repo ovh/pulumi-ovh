@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const net = new ovh.cloudproject.NetworkPrivate("net", {
  *     regions: [
@@ -26,10 +26,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g., bash
+ * Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by "/" E.g.,
+ *
+ * bash
  *
  * ```sh
- *  $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678
+ * $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678
  * ```
  */
 export class NetworkPrivate extends pulumi.CustomResource {
@@ -81,7 +83,7 @@ export class NetworkPrivate extends pulumi.CustomResource {
      * * `regions_status/region` - (Deprecated) The id of the region.
      * * `regions_status/status` - (Deprecated) The status of the network in the region.
      *
-     * @deprecated use the regions_attributes field instead
+     * @deprecated use the regionsAttributes field instead
      */
     public /*out*/ readonly regionsStatuses!: pulumi.Output<outputs.CloudProject.NetworkPrivateRegionsStatus[]>;
     /**
@@ -168,7 +170,7 @@ export interface NetworkPrivateState {
      * * `regions_status/region` - (Deprecated) The id of the region.
      * * `regions_status/status` - (Deprecated) The status of the network in the region.
      *
-     * @deprecated use the regions_attributes field instead
+     * @deprecated use the regionsAttributes field instead
      */
     regionsStatuses?: pulumi.Input<pulumi.Input<inputs.CloudProject.NetworkPrivateRegionsStatus>[]>;
     /**

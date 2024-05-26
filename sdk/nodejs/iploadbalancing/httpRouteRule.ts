@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const httpsredirect = new ovh.iploadbalancing.HttpRoute("httpsredirect", {
  *     action: {
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovh-devrelteam/pulumi-ovh";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const examplerule = new ovh.iploadbalancing.HttpRouteRule("examplerule", {
  *     displayName: "Match example.com Host header",
@@ -54,6 +54,10 @@ import * as utilities from "../utilities";
  *     subField: "Host",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * HTTP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
  */
 export class HttpRouteRule extends pulumi.CustomResource {
     /**
