@@ -12,5 +12,6 @@ from .get_logs_output_graylog_stream import *
 from .logs_cluster import *
 from .logs_input import *
 from .logs_output_graylog_stream import *
+from .logs_token import *
 from ._inputs import *
 from . import outputs

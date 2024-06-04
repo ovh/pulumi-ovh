@@ -21,6 +21,7 @@ class TcpFrontendArgs:
                  dedicated_ipfos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_farm_id: Optional[pulumi.Input[int]] = None,
                  default_ssl_id: Optional[pulumi.Input[int]] = None,
+                 denied_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  ssl: Optional[pulumi.Input[bool]] = None):
@@ -35,6 +36,7 @@ class TcpFrontendArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dedicated_ipfos: Only attach frontend on these ip. No restriction if null. List of Ip blocks.
         :param pulumi.Input[int] default_farm_id: Default TCP Farm of your frontend
         :param pulumi.Input[int] default_ssl_id: Default ssl served to your customer
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_sources: Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
         :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
         :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
         :param pulumi.Input[bool] ssl: SSL deciphering. Default: 'false'
@@ -50,6 +52,8 @@ class TcpFrontendArgs:
             pulumi.set(__self__, "default_farm_id", default_farm_id)
         if default_ssl_id is not None:
             pulumi.set(__self__, "default_ssl_id", default_ssl_id)
+        if denied_sources is not None:
+            pulumi.set(__self__, "denied_sources", denied_sources)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
@@ -144,6 +148,18 @@ class TcpFrontendArgs:
         pulumi.set(self, "default_ssl_id", value)
 
     @property
+    @pulumi.getter(name="deniedSources")
+    def denied_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+        """
+        return pulumi.get(self, "denied_sources")
+
+    @denied_sources.setter
+    def denied_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "denied_sources", value)
+
+    @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -187,6 +203,7 @@ class _TcpFrontendState:
                  dedicated_ipfos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_farm_id: Optional[pulumi.Input[int]] = None,
                  default_ssl_id: Optional[pulumi.Input[int]] = None,
+                 denied_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
@@ -199,6 +216,7 @@ class _TcpFrontendState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dedicated_ipfos: Only attach frontend on these ip. No restriction if null. List of Ip blocks.
         :param pulumi.Input[int] default_farm_id: Default TCP Farm of your frontend
         :param pulumi.Input[int] default_ssl_id: Default ssl served to your customer
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_sources: Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
         :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
         :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
         :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
@@ -216,6 +234,8 @@ class _TcpFrontendState:
             pulumi.set(__self__, "default_farm_id", default_farm_id)
         if default_ssl_id is not None:
             pulumi.set(__self__, "default_ssl_id", default_ssl_id)
+        if denied_sources is not None:
+            pulumi.set(__self__, "denied_sources", denied_sources)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
@@ -276,6 +296,18 @@ class _TcpFrontendState:
     @default_ssl_id.setter
     def default_ssl_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "default_ssl_id", value)
+
+    @property
+    @pulumi.getter(name="deniedSources")
+    def denied_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+        """
+        return pulumi.get(self, "denied_sources")
+
+    @denied_sources.setter
+    def denied_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "denied_sources", value)
 
     @property
     @pulumi.getter
@@ -361,6 +393,7 @@ class TcpFrontend(pulumi.CustomResource):
                  dedicated_ipfos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_farm_id: Optional[pulumi.Input[int]] = None,
                  default_ssl_id: Optional[pulumi.Input[int]] = None,
+                 denied_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
@@ -402,6 +435,7 @@ class TcpFrontend(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dedicated_ipfos: Only attach frontend on these ip. No restriction if null. List of Ip blocks.
         :param pulumi.Input[int] default_farm_id: Default TCP Farm of your frontend
         :param pulumi.Input[int] default_ssl_id: Default ssl served to your customer
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_sources: Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
         :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
         :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
         :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
@@ -464,6 +498,7 @@ class TcpFrontend(pulumi.CustomResource):
                  dedicated_ipfos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_farm_id: Optional[pulumi.Input[int]] = None,
                  default_ssl_id: Optional[pulumi.Input[int]] = None,
+                 denied_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
@@ -483,6 +518,7 @@ class TcpFrontend(pulumi.CustomResource):
             __props__.__dict__["dedicated_ipfos"] = dedicated_ipfos
             __props__.__dict__["default_farm_id"] = default_farm_id
             __props__.__dict__["default_ssl_id"] = default_ssl_id
+            __props__.__dict__["denied_sources"] = denied_sources
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
             if port is None and not opts.urn:
@@ -509,6 +545,7 @@ class TcpFrontend(pulumi.CustomResource):
             dedicated_ipfos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             default_farm_id: Optional[pulumi.Input[int]] = None,
             default_ssl_id: Optional[pulumi.Input[int]] = None,
+            denied_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[str]] = None,
@@ -526,6 +563,7 @@ class TcpFrontend(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dedicated_ipfos: Only attach frontend on these ip. No restriction if null. List of Ip blocks.
         :param pulumi.Input[int] default_farm_id: Default TCP Farm of your frontend
         :param pulumi.Input[int] default_ssl_id: Default ssl served to your customer
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_sources: Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
         :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
         :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
         :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
@@ -543,6 +581,7 @@ class TcpFrontend(pulumi.CustomResource):
         __props__.__dict__["dedicated_ipfos"] = dedicated_ipfos
         __props__.__dict__["default_farm_id"] = default_farm_id
         __props__.__dict__["default_ssl_id"] = default_ssl_id
+        __props__.__dict__["denied_sources"] = denied_sources
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["port"] = port
@@ -582,6 +621,14 @@ class TcpFrontend(pulumi.CustomResource):
         Default ssl served to your customer
         """
         return pulumi.get(self, "default_ssl_id")
+
+    @property
+    @pulumi.getter(name="deniedSources")
+    def denied_sources(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+        """
+        return pulumi.get(self, "denied_sources")
 
     @property
     @pulumi.getter

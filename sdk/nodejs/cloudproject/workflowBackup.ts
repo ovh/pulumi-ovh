@@ -59,6 +59,8 @@ export class WorkflowBackup extends pulumi.CustomResource {
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The cron periodicity at which the backup workflow is scheduled
+     *
+     * * `instanceId` the id of the instance to back up
      */
     public readonly cron!: pulumi.Output<string>;
     public readonly instanceId!: pulumi.Output<string>;
@@ -148,6 +150,8 @@ export interface WorkflowBackupState {
     createdAt?: pulumi.Input<string>;
     /**
      * The cron periodicity at which the backup workflow is scheduled
+     *
+     * * `instanceId` the id of the instance to back up
      */
     cron?: pulumi.Input<string>;
     instanceId?: pulumi.Input<string>;
@@ -183,6 +187,8 @@ export interface WorkflowBackupArgs {
     backupName?: pulumi.Input<string>;
     /**
      * The cron periodicity at which the backup workflow is scheduled
+     *
+     * * `instanceId` the id of the instance to back up
      */
     cron: pulumi.Input<string>;
     instanceId: pulumi.Input<string>;

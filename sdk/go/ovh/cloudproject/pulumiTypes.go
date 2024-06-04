@@ -1474,8 +1474,10 @@ func (o KubeCustomizationApiserverArrayOutput) Index(i pulumi.IntInput) KubeCust
 }
 
 type KubeCustomizationApiserverAdmissionplugin struct {
+	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds []string `pulumi:"disableds"`
-	Enableds  []string `pulumi:"enableds"`
+	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+	Enableds []string `pulumi:"enableds"`
 }
 
 // KubeCustomizationApiserverAdmissionpluginInput is an input type that accepts KubeCustomizationApiserverAdmissionpluginArgs and KubeCustomizationApiserverAdmissionpluginOutput values.
@@ -1490,8 +1492,10 @@ type KubeCustomizationApiserverAdmissionpluginInput interface {
 }
 
 type KubeCustomizationApiserverAdmissionpluginArgs struct {
+	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds pulumi.StringArrayInput `pulumi:"disableds"`
-	Enableds  pulumi.StringArrayInput `pulumi:"enableds"`
+	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+	Enableds pulumi.StringArrayInput `pulumi:"enableds"`
 }
 
 func (KubeCustomizationApiserverAdmissionpluginArgs) ElementType() reflect.Type {
@@ -1545,10 +1549,12 @@ func (o KubeCustomizationApiserverAdmissionpluginOutput) ToKubeCustomizationApis
 	return o
 }
 
+// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 func (o KubeCustomizationApiserverAdmissionpluginOutput) Disableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeCustomizationApiserverAdmissionplugin) []string { return v.Disableds }).(pulumi.StringArrayOutput)
 }
 
+// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
 func (o KubeCustomizationApiserverAdmissionpluginOutput) Enableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeCustomizationApiserverAdmissionplugin) []string { return v.Enableds }).(pulumi.StringArrayOutput)
 }
@@ -1730,8 +1736,10 @@ func (o KubeCustomizationKubeProxyPtrOutput) Ipvs() KubeCustomizationKubeProxyIp
 }
 
 type KubeCustomizationKubeProxyIptables struct {
+	// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	SyncPeriod    *string `pulumi:"syncPeriod"`
+	// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+	SyncPeriod *string `pulumi:"syncPeriod"`
 }
 
 // KubeCustomizationKubeProxyIptablesInput is an input type that accepts KubeCustomizationKubeProxyIptablesArgs and KubeCustomizationKubeProxyIptablesOutput values.
@@ -1746,8 +1754,10 @@ type KubeCustomizationKubeProxyIptablesInput interface {
 }
 
 type KubeCustomizationKubeProxyIptablesArgs struct {
+	// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
 }
 
 func (KubeCustomizationKubeProxyIptablesArgs) ElementType() reflect.Type {
@@ -1827,10 +1837,12 @@ func (o KubeCustomizationKubeProxyIptablesOutput) ToKubeCustomizationKubeProxyIp
 	}).(KubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
+// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 func (o KubeCustomizationKubeProxyIptablesOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIptables) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIptablesOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIptables) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
@@ -1859,6 +1871,7 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) Elem() KubeCustomizationKub
 	}).(KubeCustomizationKubeProxyIptablesOutput)
 }
 
+// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 func (o KubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -1868,6 +1881,7 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -1878,12 +1892,18 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.StringP
 }
 
 type KubeCustomizationKubeProxyIpvs struct {
+	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	Scheduler     *string `pulumi:"scheduler"`
-	SyncPeriod    *string `pulumi:"syncPeriod"`
+	// IPVS scheduler.
+	Scheduler *string `pulumi:"scheduler"`
+	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+	SyncPeriod *string `pulumi:"syncPeriod"`
+	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 	TcpFinTimeout *string `pulumi:"tcpFinTimeout"`
-	TcpTimeout    *string `pulumi:"tcpTimeout"`
-	UdpTimeout    *string `pulumi:"udpTimeout"`
+	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	TcpTimeout *string `pulumi:"tcpTimeout"`
+	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	UdpTimeout *string `pulumi:"udpTimeout"`
 }
 
 // KubeCustomizationKubeProxyIpvsInput is an input type that accepts KubeCustomizationKubeProxyIpvsArgs and KubeCustomizationKubeProxyIpvsOutput values.
@@ -1898,12 +1918,18 @@ type KubeCustomizationKubeProxyIpvsInput interface {
 }
 
 type KubeCustomizationKubeProxyIpvsArgs struct {
+	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	Scheduler     pulumi.StringPtrInput `pulumi:"scheduler"`
-	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	// IPVS scheduler.
+	Scheduler pulumi.StringPtrInput `pulumi:"scheduler"`
+	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 	TcpFinTimeout pulumi.StringPtrInput `pulumi:"tcpFinTimeout"`
-	TcpTimeout    pulumi.StringPtrInput `pulumi:"tcpTimeout"`
-	UdpTimeout    pulumi.StringPtrInput `pulumi:"udpTimeout"`
+	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	TcpTimeout pulumi.StringPtrInput `pulumi:"tcpTimeout"`
+	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	UdpTimeout pulumi.StringPtrInput `pulumi:"udpTimeout"`
 }
 
 func (KubeCustomizationKubeProxyIpvsArgs) ElementType() reflect.Type {
@@ -1983,26 +2009,32 @@ func (o KubeCustomizationKubeProxyIpvsOutput) ToKubeCustomizationKubeProxyIpvsPt
 	}).(KubeCustomizationKubeProxyIpvsPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
+// IPVS scheduler.
 func (o KubeCustomizationKubeProxyIpvsOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.Scheduler }).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.TcpFinTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.TcpTimeout }).(pulumi.StringPtrOutput)
 }
 
+// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.UdpTimeout }).(pulumi.StringPtrOutput)
 }
@@ -2031,6 +2063,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) Elem() KubeCustomizationKubePro
 	}).(KubeCustomizationKubeProxyIpvsOutput)
 }
 
+// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -2040,6 +2073,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// IPVS scheduler.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -2049,6 +2083,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -2058,6 +2093,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -2067,6 +2103,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -2076,6 +2113,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -6904,6 +6942,324 @@ func (o GetKubeNodesNodeArrayOutput) Index(i pulumi.IntInput) GetKubeNodesNodeOu
 	}).(GetKubeNodesNodeOutput)
 }
 
+type GetLoadBalancerFloatingIp struct {
+	// ID of the loadbalancer
+	Id string `pulumi:"id"`
+	// Value of the floating IP
+	Ip string `pulumi:"ip"`
+}
+
+// GetLoadBalancerFloatingIpInput is an input type that accepts GetLoadBalancerFloatingIpArgs and GetLoadBalancerFloatingIpOutput values.
+// You can construct a concrete instance of `GetLoadBalancerFloatingIpInput` via:
+//
+//	GetLoadBalancerFloatingIpArgs{...}
+type GetLoadBalancerFloatingIpInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerFloatingIpOutput() GetLoadBalancerFloatingIpOutput
+	ToGetLoadBalancerFloatingIpOutputWithContext(context.Context) GetLoadBalancerFloatingIpOutput
+}
+
+type GetLoadBalancerFloatingIpArgs struct {
+	// ID of the loadbalancer
+	Id pulumi.StringInput `pulumi:"id"`
+	// Value of the floating IP
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (GetLoadBalancerFloatingIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerFloatingIp)(nil)).Elem()
+}
+
+func (i GetLoadBalancerFloatingIpArgs) ToGetLoadBalancerFloatingIpOutput() GetLoadBalancerFloatingIpOutput {
+	return i.ToGetLoadBalancerFloatingIpOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerFloatingIpArgs) ToGetLoadBalancerFloatingIpOutputWithContext(ctx context.Context) GetLoadBalancerFloatingIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerFloatingIpOutput)
+}
+
+type GetLoadBalancerFloatingIpOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerFloatingIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerFloatingIp)(nil)).Elem()
+}
+
+func (o GetLoadBalancerFloatingIpOutput) ToGetLoadBalancerFloatingIpOutput() GetLoadBalancerFloatingIpOutput {
+	return o
+}
+
+func (o GetLoadBalancerFloatingIpOutput) ToGetLoadBalancerFloatingIpOutputWithContext(ctx context.Context) GetLoadBalancerFloatingIpOutput {
+	return o
+}
+
+// ID of the loadbalancer
+func (o GetLoadBalancerFloatingIpOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerFloatingIp) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Value of the floating IP
+func (o GetLoadBalancerFloatingIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerFloatingIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type GetLoadBalancersLoadbalancer struct {
+	// Date of creation of the loadbalancer
+	CreatedAt string `pulumi:"createdAt"`
+	// ID of the flavor
+	FlavorId string `pulumi:"flavorId"`
+	// Information about the floating IP
+	FloatingIp GetLoadBalancersLoadbalancerFloatingIp `pulumi:"floatingIp"`
+	// ID of the floating IP
+	Id string `pulumi:"id"`
+	// Name of the loadbalancer
+	Name string `pulumi:"name"`
+	// Operating status of the loadbalancer
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Provisioning status of the loadbalancer
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// Region of the loadbalancer
+	Region string `pulumi:"region"`
+	// Last update date of the loadbalancer
+	UpdatedAt string `pulumi:"updatedAt"`
+	// IP address of the Virtual IP
+	VipAddress string `pulumi:"vipAddress"`
+	// Openstack ID of the network for the Virtual IP
+	VipNetworkId string `pulumi:"vipNetworkId"`
+	// ID of the subnet for the Virtual IP
+	VipSubnetId string `pulumi:"vipSubnetId"`
+}
+
+// GetLoadBalancersLoadbalancerInput is an input type that accepts GetLoadBalancersLoadbalancerArgs and GetLoadBalancersLoadbalancerOutput values.
+// You can construct a concrete instance of `GetLoadBalancersLoadbalancerInput` via:
+//
+//	GetLoadBalancersLoadbalancerArgs{...}
+type GetLoadBalancersLoadbalancerInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancersLoadbalancerOutput() GetLoadBalancersLoadbalancerOutput
+	ToGetLoadBalancersLoadbalancerOutputWithContext(context.Context) GetLoadBalancersLoadbalancerOutput
+}
+
+type GetLoadBalancersLoadbalancerArgs struct {
+	// Date of creation of the loadbalancer
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// ID of the flavor
+	FlavorId pulumi.StringInput `pulumi:"flavorId"`
+	// Information about the floating IP
+	FloatingIp GetLoadBalancersLoadbalancerFloatingIpInput `pulumi:"floatingIp"`
+	// ID of the floating IP
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the loadbalancer
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operating status of the loadbalancer
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Provisioning status of the loadbalancer
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// Region of the loadbalancer
+	Region pulumi.StringInput `pulumi:"region"`
+	// Last update date of the loadbalancer
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// IP address of the Virtual IP
+	VipAddress pulumi.StringInput `pulumi:"vipAddress"`
+	// Openstack ID of the network for the Virtual IP
+	VipNetworkId pulumi.StringInput `pulumi:"vipNetworkId"`
+	// ID of the subnet for the Virtual IP
+	VipSubnetId pulumi.StringInput `pulumi:"vipSubnetId"`
+}
+
+func (GetLoadBalancersLoadbalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersLoadbalancer)(nil)).Elem()
+}
+
+func (i GetLoadBalancersLoadbalancerArgs) ToGetLoadBalancersLoadbalancerOutput() GetLoadBalancersLoadbalancerOutput {
+	return i.ToGetLoadBalancersLoadbalancerOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancersLoadbalancerArgs) ToGetLoadBalancersLoadbalancerOutputWithContext(ctx context.Context) GetLoadBalancersLoadbalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersLoadbalancerOutput)
+}
+
+// GetLoadBalancersLoadbalancerArrayInput is an input type that accepts GetLoadBalancersLoadbalancerArray and GetLoadBalancersLoadbalancerArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancersLoadbalancerArrayInput` via:
+//
+//	GetLoadBalancersLoadbalancerArray{ GetLoadBalancersLoadbalancerArgs{...} }
+type GetLoadBalancersLoadbalancerArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancersLoadbalancerArrayOutput() GetLoadBalancersLoadbalancerArrayOutput
+	ToGetLoadBalancersLoadbalancerArrayOutputWithContext(context.Context) GetLoadBalancersLoadbalancerArrayOutput
+}
+
+type GetLoadBalancersLoadbalancerArray []GetLoadBalancersLoadbalancerInput
+
+func (GetLoadBalancersLoadbalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancersLoadbalancer)(nil)).Elem()
+}
+
+func (i GetLoadBalancersLoadbalancerArray) ToGetLoadBalancersLoadbalancerArrayOutput() GetLoadBalancersLoadbalancerArrayOutput {
+	return i.ToGetLoadBalancersLoadbalancerArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancersLoadbalancerArray) ToGetLoadBalancersLoadbalancerArrayOutputWithContext(ctx context.Context) GetLoadBalancersLoadbalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersLoadbalancerArrayOutput)
+}
+
+type GetLoadBalancersLoadbalancerOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersLoadbalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersLoadbalancer)(nil)).Elem()
+}
+
+func (o GetLoadBalancersLoadbalancerOutput) ToGetLoadBalancersLoadbalancerOutput() GetLoadBalancersLoadbalancerOutput {
+	return o
+}
+
+func (o GetLoadBalancersLoadbalancerOutput) ToGetLoadBalancersLoadbalancerOutputWithContext(ctx context.Context) GetLoadBalancersLoadbalancerOutput {
+	return o
+}
+
+// Date of creation of the loadbalancer
+func (o GetLoadBalancersLoadbalancerOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// ID of the flavor
+func (o GetLoadBalancersLoadbalancerOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.FlavorId }).(pulumi.StringOutput)
+}
+
+// Information about the floating IP
+func (o GetLoadBalancersLoadbalancerOutput) FloatingIp() GetLoadBalancersLoadbalancerFloatingIpOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) GetLoadBalancersLoadbalancerFloatingIp { return v.FloatingIp }).(GetLoadBalancersLoadbalancerFloatingIpOutput)
+}
+
+// ID of the floating IP
+func (o GetLoadBalancersLoadbalancerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the loadbalancer
+func (o GetLoadBalancersLoadbalancerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating status of the loadbalancer
+func (o GetLoadBalancersLoadbalancerOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Provisioning status of the loadbalancer
+func (o GetLoadBalancersLoadbalancerOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// Region of the loadbalancer
+func (o GetLoadBalancersLoadbalancerOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Last update date of the loadbalancer
+func (o GetLoadBalancersLoadbalancerOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// IP address of the Virtual IP
+func (o GetLoadBalancersLoadbalancerOutput) VipAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.VipAddress }).(pulumi.StringOutput)
+}
+
+// Openstack ID of the network for the Virtual IP
+func (o GetLoadBalancersLoadbalancerOutput) VipNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.VipNetworkId }).(pulumi.StringOutput)
+}
+
+// ID of the subnet for the Virtual IP
+func (o GetLoadBalancersLoadbalancerOutput) VipSubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.VipSubnetId }).(pulumi.StringOutput)
+}
+
+type GetLoadBalancersLoadbalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersLoadbalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancersLoadbalancer)(nil)).Elem()
+}
+
+func (o GetLoadBalancersLoadbalancerArrayOutput) ToGetLoadBalancersLoadbalancerArrayOutput() GetLoadBalancersLoadbalancerArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancersLoadbalancerArrayOutput) ToGetLoadBalancersLoadbalancerArrayOutputWithContext(ctx context.Context) GetLoadBalancersLoadbalancerArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancersLoadbalancerArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersLoadbalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancersLoadbalancer {
+		return vs[0].([]GetLoadBalancersLoadbalancer)[vs[1].(int)]
+	}).(GetLoadBalancersLoadbalancerOutput)
+}
+
+type GetLoadBalancersLoadbalancerFloatingIp struct {
+	// ID of the floating IP
+	Id string `pulumi:"id"`
+	// Value of the floating IP
+	Ip string `pulumi:"ip"`
+}
+
+// GetLoadBalancersLoadbalancerFloatingIpInput is an input type that accepts GetLoadBalancersLoadbalancerFloatingIpArgs and GetLoadBalancersLoadbalancerFloatingIpOutput values.
+// You can construct a concrete instance of `GetLoadBalancersLoadbalancerFloatingIpInput` via:
+//
+//	GetLoadBalancersLoadbalancerFloatingIpArgs{...}
+type GetLoadBalancersLoadbalancerFloatingIpInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancersLoadbalancerFloatingIpOutput() GetLoadBalancersLoadbalancerFloatingIpOutput
+	ToGetLoadBalancersLoadbalancerFloatingIpOutputWithContext(context.Context) GetLoadBalancersLoadbalancerFloatingIpOutput
+}
+
+type GetLoadBalancersLoadbalancerFloatingIpArgs struct {
+	// ID of the floating IP
+	Id pulumi.StringInput `pulumi:"id"`
+	// Value of the floating IP
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (GetLoadBalancersLoadbalancerFloatingIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersLoadbalancerFloatingIp)(nil)).Elem()
+}
+
+func (i GetLoadBalancersLoadbalancerFloatingIpArgs) ToGetLoadBalancersLoadbalancerFloatingIpOutput() GetLoadBalancersLoadbalancerFloatingIpOutput {
+	return i.ToGetLoadBalancersLoadbalancerFloatingIpOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancersLoadbalancerFloatingIpArgs) ToGetLoadBalancersLoadbalancerFloatingIpOutputWithContext(ctx context.Context) GetLoadBalancersLoadbalancerFloatingIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersLoadbalancerFloatingIpOutput)
+}
+
+type GetLoadBalancersLoadbalancerFloatingIpOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersLoadbalancerFloatingIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersLoadbalancerFloatingIp)(nil)).Elem()
+}
+
+func (o GetLoadBalancersLoadbalancerFloatingIpOutput) ToGetLoadBalancersLoadbalancerFloatingIpOutput() GetLoadBalancersLoadbalancerFloatingIpOutput {
+	return o
+}
+
+func (o GetLoadBalancersLoadbalancerFloatingIpOutput) ToGetLoadBalancersLoadbalancerFloatingIpOutputWithContext(ctx context.Context) GetLoadBalancersLoadbalancerFloatingIpOutput {
+	return o
+}
+
+// ID of the floating IP
+func (o GetLoadBalancersLoadbalancerFloatingIpOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancerFloatingIp) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Value of the floating IP
+func (o GetLoadBalancersLoadbalancerFloatingIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadbalancerFloatingIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
 type GetOpenSearchUserAcl struct {
 	// Pattern of the ACL.
 	Pattern string `pulumi:"pattern"`
@@ -7613,6 +7969,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodePoolTemplateSpecPtrInput)(nil)).Elem(), GetKubeNodePoolTemplateSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodesNodeInput)(nil)).Elem(), GetKubeNodesNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodesNodeArrayInput)(nil)).Elem(), GetKubeNodesNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFloatingIpInput)(nil)).Elem(), GetLoadBalancerFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadbalancerInput)(nil)).Elem(), GetLoadBalancersLoadbalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadbalancerArrayInput)(nil)).Elem(), GetLoadBalancersLoadbalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadbalancerFloatingIpInput)(nil)).Elem(), GetLoadBalancersLoadbalancerFloatingIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchUserAclInput)(nil)).Elem(), GetOpenSearchUserAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchUserAclArrayInput)(nil)).Elem(), GetOpenSearchUserAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionServiceInput)(nil)).Elem(), GetRegionServiceArgs{})
@@ -7723,6 +8083,10 @@ func init() {
 	pulumi.RegisterOutputType(GetKubeNodePoolTemplateSpecPtrOutput{})
 	pulumi.RegisterOutputType(GetKubeNodesNodeOutput{})
 	pulumi.RegisterOutputType(GetKubeNodesNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerFloatingIpOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancersLoadbalancerOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancersLoadbalancerArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancersLoadbalancerFloatingIpOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchUserAclOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchUserAclArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionServiceOutput{})

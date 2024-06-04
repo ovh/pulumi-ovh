@@ -50,6 +50,7 @@ export class FailoverIpAttach extends pulumi.CustomResource {
 
     /**
      * The IP block
+     * * `continentCode` - The Ip continent
      */
     public readonly block!: pulumi.Output<string>;
     /**
@@ -66,6 +67,7 @@ export class FailoverIpAttach extends pulumi.CustomResource {
     public readonly ip!: pulumi.Output<string>;
     /**
      * Current operation progress in percent
+     * * `routedTo` - Instance where ip is routed to
      */
     public /*out*/ readonly progress!: pulumi.Output<number>;
     /**
@@ -79,6 +81,7 @@ export class FailoverIpAttach extends pulumi.CustomResource {
     public readonly serviceName!: pulumi.Output<string>;
     /**
      * Ip status, can be `ok` or `operationPending`
+     * * `subType` - IP sub type, can be `cloud` or `ovh`
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -134,6 +137,7 @@ export class FailoverIpAttach extends pulumi.CustomResource {
 export interface FailoverIpAttachState {
     /**
      * The IP block
+     * * `continentCode` - The Ip continent
      */
     block?: pulumi.Input<string>;
     /**
@@ -150,6 +154,7 @@ export interface FailoverIpAttachState {
     ip?: pulumi.Input<string>;
     /**
      * Current operation progress in percent
+     * * `routedTo` - Instance where ip is routed to
      */
     progress?: pulumi.Input<number>;
     /**
@@ -163,6 +168,7 @@ export interface FailoverIpAttachState {
     serviceName?: pulumi.Input<string>;
     /**
      * Ip status, can be `ok` or `operationPending`
+     * * `subType` - IP sub type, can be `cloud` or `ovh`
      */
     status?: pulumi.Input<string>;
     /**
@@ -177,6 +183,7 @@ export interface FailoverIpAttachState {
 export interface FailoverIpAttachArgs {
     /**
      * The IP block
+     * * `continentCode` - The Ip continent
      */
     block?: pulumi.Input<string>;
     /**

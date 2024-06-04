@@ -25,6 +25,8 @@ class WorkflowBackupArgs:
         """
         The set of arguments for constructing a WorkflowBackup resource.
         :param pulumi.Input[str] cron: The cron periodicity at which the backup workflow is scheduled
+               
+               * `instanceId` the id of the instance to back up
         :param pulumi.Input[str] region_name: The name of the openstack region.
         :param pulumi.Input[int] rotation: The number of backup that are retained.
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -49,6 +51,8 @@ class WorkflowBackupArgs:
     def cron(self) -> pulumi.Input[str]:
         """
         The cron periodicity at which the backup workflow is scheduled
+
+        * `instanceId` the id of the instance to back up
         """
         return pulumi.get(self, "cron")
 
@@ -154,6 +158,8 @@ class _WorkflowBackupState:
         Input properties used for looking up and filtering WorkflowBackup resources.
         :param pulumi.Input[str] backup_name: The name of the backup files that are created. If empty, the `name` attribute is used.
         :param pulumi.Input[str] cron: The cron periodicity at which the backup workflow is scheduled
+               
+               * `instanceId` the id of the instance to back up
         :param pulumi.Input[int] max_execution_count: The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
         :param pulumi.Input[str] name: The worflow name that is used in the UI
         :param pulumi.Input[str] region_name: The name of the openstack region.
@@ -205,6 +211,8 @@ class _WorkflowBackupState:
     def cron(self) -> Optional[pulumi.Input[str]]:
         """
         The cron periodicity at which the backup workflow is scheduled
+
+        * `instanceId` the id of the instance to back up
         """
         return pulumi.get(self, "cron")
 
@@ -319,6 +327,8 @@ class WorkflowBackup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_name: The name of the backup files that are created. If empty, the `name` attribute is used.
         :param pulumi.Input[str] cron: The cron periodicity at which the backup workflow is scheduled
+               
+               * `instanceId` the id of the instance to back up
         :param pulumi.Input[int] max_execution_count: The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
         :param pulumi.Input[str] name: The worflow name that is used in the UI
         :param pulumi.Input[str] region_name: The name of the openstack region.
@@ -429,6 +439,8 @@ class WorkflowBackup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_name: The name of the backup files that are created. If empty, the `name` attribute is used.
         :param pulumi.Input[str] cron: The cron periodicity at which the backup workflow is scheduled
+               
+               * `instanceId` the id of the instance to back up
         :param pulumi.Input[int] max_execution_count: The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
         :param pulumi.Input[str] name: The worflow name that is used in the UI
         :param pulumi.Input[str] region_name: The name of the openstack region.
@@ -468,6 +480,8 @@ class WorkflowBackup(pulumi.CustomResource):
     def cron(self) -> pulumi.Output[str]:
         """
         The cron periodicity at which the backup workflow is scheduled
+
+        * `instanceId` the id of the instance to back up
         """
         return pulumi.get(self, "cron")
 

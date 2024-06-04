@@ -38,6 +38,7 @@ export function getFailoverIpAttach(args: GetFailoverIpAttachArgs, opts?: pulumi
 export interface GetFailoverIpAttachArgs {
     /**
      * The IP block
+     * * `continentCode` - The Ip continent
      */
     block?: string;
     continentCode?: string;
@@ -60,6 +61,7 @@ export interface GetFailoverIpAttachArgs {
 export interface GetFailoverIpAttachResult {
     /**
      * The IP block
+     * * `continentCode` - The Ip continent
      */
     readonly block: string;
     readonly continentCode: string;
@@ -74,12 +76,14 @@ export interface GetFailoverIpAttachResult {
     readonly ip: string;
     /**
      * Current operation progress in percent
+     * * `routedTo` - Instance where ip is routed to
      */
     readonly progress: number;
     readonly routedTo: string;
     readonly serviceName: string;
     /**
      * Ip status, can be `ok` or `operationPending`
+     * * `subType` - IP sub type, can be `cloud` or `ovh`
      */
     readonly status: string;
     readonly subType: string;
@@ -109,6 +113,7 @@ export function getFailoverIpAttachOutput(args: GetFailoverIpAttachOutputArgs, o
 export interface GetFailoverIpAttachOutputArgs {
     /**
      * The IP block
+     * * `continentCode` - The Ip continent
      */
     block?: pulumi.Input<string>;
     continentCode?: pulumi.Input<string>;

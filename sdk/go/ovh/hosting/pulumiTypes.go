@@ -478,6 +478,8 @@ type PrivateDatabasePlanConfiguration struct {
 	// Identifier of the resource
 	Label string `pulumi:"label"`
 	// Path to the resource in API.OVH.COM
+	//
+	// Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
 	Value string `pulumi:"value"`
 }
 
@@ -496,6 +498,8 @@ type PrivateDatabasePlanConfigurationArgs struct {
 	// Identifier of the resource
 	Label pulumi.StringInput `pulumi:"label"`
 	// Path to the resource in API.OVH.COM
+	//
+	// Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -556,6 +560,8 @@ func (o PrivateDatabasePlanConfigurationOutput) Label() pulumi.StringOutput {
 }
 
 // Path to the resource in API.OVH.COM
+//
+// Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
 func (o PrivateDatabasePlanConfigurationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateDatabasePlanConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }

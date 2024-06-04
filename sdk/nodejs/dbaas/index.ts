@@ -40,6 +40,11 @@ export type LogsOutputGraylogStream = import("./logsOutputGraylogStream").LogsOu
 export const LogsOutputGraylogStream: typeof import("./logsOutputGraylogStream").LogsOutputGraylogStream = null as any;
 utilities.lazyLoad(exports, ["LogsOutputGraylogStream"], () => require("./logsOutputGraylogStream"));
 
+export { LogsTokenArgs, LogsTokenState } from "./logsToken";
+export type LogsToken = import("./logsToken").LogsToken;
+export const LogsToken: typeof import("./logsToken").LogsToken = null as any;
+utilities.lazyLoad(exports, ["LogsToken"], () => require("./logsToken"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -51,6 +56,8 @@ const _module = {
                 return new LogsInput(name, <any>undefined, { urn })
             case "ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream":
                 return new LogsOutputGraylogStream(name, <any>undefined, { urn })
+            case "ovh:Dbaas/logsToken:LogsToken":
+                return new LogsToken(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -59,3 +66,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsCluster", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsInput", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsOutputGraylogStream", _module)
+pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsToken", _module)

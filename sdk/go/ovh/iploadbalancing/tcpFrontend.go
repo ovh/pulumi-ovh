@@ -74,6 +74,8 @@ type TcpFrontend struct {
 	DefaultFarmId pulumi.IntOutput `pulumi:"defaultFarmId"`
 	// Default ssl served to your customer
 	DefaultSslId pulumi.IntOutput `pulumi:"defaultSslId"`
+	// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowedSource` and `deniedSource` at the same time. List of IP blocks.
+	DeniedSources pulumi.StringArrayOutput `pulumi:"deniedSources"`
 	// Disable your frontend. Default: 'false'
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Human readable name for your frontend, this field is for you
@@ -137,6 +139,8 @@ type tcpFrontendState struct {
 	DefaultFarmId *int `pulumi:"defaultFarmId"`
 	// Default ssl served to your customer
 	DefaultSslId *int `pulumi:"defaultSslId"`
+	// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowedSource` and `deniedSource` at the same time. List of IP blocks.
+	DeniedSources []string `pulumi:"deniedSources"`
 	// Disable your frontend. Default: 'false'
 	Disabled *bool `pulumi:"disabled"`
 	// Human readable name for your frontend, this field is for you
@@ -162,6 +166,8 @@ type TcpFrontendState struct {
 	DefaultFarmId pulumi.IntPtrInput
 	// Default ssl served to your customer
 	DefaultSslId pulumi.IntPtrInput
+	// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowedSource` and `deniedSource` at the same time. List of IP blocks.
+	DeniedSources pulumi.StringArrayInput
 	// Disable your frontend. Default: 'false'
 	Disabled pulumi.BoolPtrInput
 	// Human readable name for your frontend, this field is for you
@@ -191,6 +197,8 @@ type tcpFrontendArgs struct {
 	DefaultFarmId *int `pulumi:"defaultFarmId"`
 	// Default ssl served to your customer
 	DefaultSslId *int `pulumi:"defaultSslId"`
+	// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowedSource` and `deniedSource` at the same time. List of IP blocks.
+	DeniedSources []string `pulumi:"deniedSources"`
 	// Disable your frontend. Default: 'false'
 	Disabled *bool `pulumi:"disabled"`
 	// Human readable name for your frontend, this field is for you
@@ -217,6 +225,8 @@ type TcpFrontendArgs struct {
 	DefaultFarmId pulumi.IntPtrInput
 	// Default ssl served to your customer
 	DefaultSslId pulumi.IntPtrInput
+	// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowedSource` and `deniedSource` at the same time. List of IP blocks.
+	DeniedSources pulumi.StringArrayInput
 	// Disable your frontend. Default: 'false'
 	Disabled pulumi.BoolPtrInput
 	// Human readable name for your frontend, this field is for you
@@ -338,6 +348,11 @@ func (o TcpFrontendOutput) DefaultFarmId() pulumi.IntOutput {
 // Default ssl served to your customer
 func (o TcpFrontendOutput) DefaultSslId() pulumi.IntOutput {
 	return o.ApplyT(func(v *TcpFrontend) pulumi.IntOutput { return v.DefaultSslId }).(pulumi.IntOutput)
+}
+
+// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowedSource` and `deniedSource` at the same time. List of IP blocks.
+func (o TcpFrontendOutput) DeniedSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TcpFrontend) pulumi.StringArrayOutput { return v.DeniedSources }).(pulumi.StringArrayOutput)
 }
 
 // Disable your frontend. Default: 'false'

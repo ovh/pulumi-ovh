@@ -115,6 +115,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Type of the integration.
         /// Available types:
+        /// * `grafanaDashboard`
+        /// * `grafanaDatasource`
+        /// * `kafkaConnect`
+        /// * `kafkaLogs`
+        /// * `kafkaMirrorMaker`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -213,6 +218,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Type of the integration.
         /// Available types:
+        /// * `grafanaDashboard`
+        /// * `grafanaDatasource`
+        /// * `kafkaConnect`
+        /// * `kafkaLogs`
+        /// * `kafkaMirrorMaker`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -278,6 +288,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Type of the integration.
         /// Available types:
+        /// * `grafanaDashboard`
+        /// * `grafanaDatasource`
+        /// * `kafkaConnect`
+        /// * `kafkaLogs`
+        /// * `kafkaMirrorMaker`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

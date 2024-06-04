@@ -447,6 +447,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_dbaas_logs_cluster": {
 				Tok: ovhResource(dbaasMod, "LogsCluster"),
 			},
+			"ovh_dbaas_logs_token": {
+				Tok: ovhResource(dbaasMod, "LogsToken"),
+			},
 			"ovh_iam_permissions_group": {
 				Tok: ovhResource(iamMod, "PermissionsGroup"),
 			},
@@ -617,6 +620,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_database_redis_user": {
 				Tok: ovhDataSource(cloudProjectMod, "getRedisUser"),
+			},
+			"ovh_cloud_project_loadbalancer": {
+				Tok: ovhDataSource(cloudProjectMod, "getLoadBalancer"),
+			},
+			"ovh_cloud_project_loadbalancers": {
+				Tok: ovhDataSource(cloudProjectMod, "getLoadBalancers"),
 			},
 			"ovh_cloud_project_region": {
 				Tok: ovhDataSource(cloudProjectMod, "getRegion"),

@@ -19,6 +19,8 @@ namespace Pulumi.Ovh.Hosting.Outputs
         public readonly string Label;
         /// <summary>
         /// Path to the resource in API.OVH.COM
+        /// 
+        /// Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
         /// </summary>
         public readonly string Value;
 

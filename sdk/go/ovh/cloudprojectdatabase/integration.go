@@ -97,6 +97,11 @@ type Integration struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Type of the integration.
 	// Available types:
+	// * `grafanaDashboard`
+	// * `grafanaDatasource`
+	// * `kafkaConnect`
+	// * `kafkaLogs`
+	// * `kafkaMirrorMaker`
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -163,6 +168,11 @@ type integrationState struct {
 	Status *string `pulumi:"status"`
 	// Type of the integration.
 	// Available types:
+	// * `grafanaDashboard`
+	// * `grafanaDatasource`
+	// * `kafkaConnect`
+	// * `kafkaLogs`
+	// * `kafkaMirrorMaker`
 	Type *string `pulumi:"type"`
 }
 
@@ -185,6 +195,11 @@ type IntegrationState struct {
 	Status pulumi.StringPtrInput
 	// Type of the integration.
 	// Available types:
+	// * `grafanaDashboard`
+	// * `grafanaDatasource`
+	// * `kafkaConnect`
+	// * `kafkaLogs`
+	// * `kafkaMirrorMaker`
 	Type pulumi.StringPtrInput
 }
 
@@ -209,6 +224,11 @@ type integrationArgs struct {
 	SourceServiceId string `pulumi:"sourceServiceId"`
 	// Type of the integration.
 	// Available types:
+	// * `grafanaDashboard`
+	// * `grafanaDatasource`
+	// * `kafkaConnect`
+	// * `kafkaLogs`
+	// * `kafkaMirrorMaker`
 	Type *string `pulumi:"type"`
 }
 
@@ -230,6 +250,11 @@ type IntegrationArgs struct {
 	SourceServiceId pulumi.StringInput
 	// Type of the integration.
 	// Available types:
+	// * `grafanaDashboard`
+	// * `grafanaDatasource`
+	// * `kafkaConnect`
+	// * `kafkaLogs`
+	// * `kafkaMirrorMaker`
 	Type pulumi.StringPtrInput
 }
 
@@ -359,6 +384,11 @@ func (o IntegrationOutput) Status() pulumi.StringOutput {
 
 // Type of the integration.
 // Available types:
+// * `grafanaDashboard`
+// * `grafanaDatasource`
+// * `kafkaConnect`
+// * `kafkaLogs`
+// * `kafkaMirrorMaker`
 func (o IntegrationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

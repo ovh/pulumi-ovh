@@ -67,6 +67,7 @@ namespace Pulumi.Ovh.CloudProject
     {
         /// <summary>
         /// The IP block
+        /// * `continentCode` - The Ip continent
         /// </summary>
         [Input("block")]
         public string? Block { get; set; }
@@ -103,6 +104,7 @@ namespace Pulumi.Ovh.CloudProject
     {
         /// <summary>
         /// The IP block
+        /// * `continentCode` - The Ip continent
         /// </summary>
         [Input("block")]
         public Input<string>? Block { get; set; }
@@ -141,6 +143,7 @@ namespace Pulumi.Ovh.CloudProject
     {
         /// <summary>
         /// The IP block
+        /// * `continentCode` - The Ip continent
         /// </summary>
         public readonly string Block;
         public readonly string ContinentCode;
@@ -155,12 +158,14 @@ namespace Pulumi.Ovh.CloudProject
         public readonly string Ip;
         /// <summary>
         /// Current operation progress in percent
+        /// * `routedTo` - Instance where ip is routed to
         /// </summary>
         public readonly int Progress;
         public readonly string RoutedTo;
         public readonly string ServiceName;
         /// <summary>
         /// Ip status, can be `ok` or `operationPending`
+        /// * `subType` - IP sub type, can be `cloud` or `ovh`
         /// </summary>
         public readonly string Status;
         public readonly string SubType;

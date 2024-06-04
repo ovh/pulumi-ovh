@@ -29,6 +29,8 @@ from .get_kube_node_pool import *
 from .get_kube_node_pool_nodes import *
 from .get_kube_nodes import *
 from .get_kube_oidc import *
+from .get_load_balancer import *
+from .get_load_balancers import *
 from .get_m3db_namespace import *
 from .get_m3db_namespaces import *
 from .get_m3db_user import *

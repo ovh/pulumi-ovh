@@ -80,6 +80,12 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<int> DefaultSslId { get; private set; } = null!;
 
         /// <summary>
+        /// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+        /// </summary>
+        [Output("deniedSources")]
+        public Output<ImmutableArray<string>> DeniedSources { get; private set; } = null!;
+
+        /// <summary>
         /// Disable your frontend. Default: 'false'
         /// </summary>
         [Output("disabled")]
@@ -200,6 +206,18 @@ namespace Pulumi.Ovh.IpLoadBalancing
         [Input("defaultSslId")]
         public Input<int>? DefaultSslId { get; set; }
 
+        [Input("deniedSources")]
+        private InputList<string>? _deniedSources;
+
+        /// <summary>
+        /// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+        /// </summary>
+        public InputList<string> DeniedSources
+        {
+            get => _deniedSources ?? (_deniedSources = new InputList<string>());
+            set => _deniedSources = value;
+        }
+
         /// <summary>
         /// Disable your frontend. Default: 'false'
         /// </summary>
@@ -281,6 +299,18 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// </summary>
         [Input("defaultSslId")]
         public Input<int>? DefaultSslId { get; set; }
+
+        [Input("deniedSources")]
+        private InputList<string>? _deniedSources;
+
+        /// <summary>
+        /// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+        /// </summary>
+        public InputList<string> DeniedSources
+        {
+            get => _deniedSources ?? (_deniedSources = new InputList<string>());
+            set => _deniedSources = value;
+        }
 
         /// <summary>
         /// Disable your frontend. Default: 'false'
