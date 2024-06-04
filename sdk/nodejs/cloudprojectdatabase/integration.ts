@@ -111,6 +111,11 @@ export class Integration extends pulumi.CustomResource {
     /**
      * Type of the integration.
      * Available types:
+     * * `grafanaDashboard`
+     * * `grafanaDatasource`
+     * * `kafkaConnect`
+     * * `kafkaLogs`
+     * * `kafkaMirrorMaker`
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -203,6 +208,11 @@ export interface IntegrationState {
     /**
      * Type of the integration.
      * Available types:
+     * * `grafanaDashboard`
+     * * `grafanaDatasource`
+     * * `kafkaConnect`
+     * * `kafkaLogs`
+     * * `kafkaMirrorMaker`
      */
     type?: pulumi.Input<string>;
 }
@@ -240,6 +250,11 @@ export interface IntegrationArgs {
     /**
      * Type of the integration.
      * Available types:
+     * * `grafanaDashboard`
+     * * `grafanaDatasource`
+     * * `kafkaConnect`
+     * * `kafkaLogs`
+     * * `kafkaMirrorMaker`
      */
     type?: pulumi.Input<string>;
 }

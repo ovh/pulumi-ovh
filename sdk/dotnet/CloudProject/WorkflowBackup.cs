@@ -50,6 +50,8 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// The cron periodicity at which the backup workflow is scheduled
+        /// 
+        /// * `instanceId` the id of the instance to back up
         /// </summary>
         [Output("cron")]
         public Output<string> Cron { get; private set; } = null!;
@@ -142,6 +144,8 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// The cron periodicity at which the backup workflow is scheduled
+        /// 
+        /// * `instanceId` the id of the instance to back up
         /// </summary>
         [Input("cron", required: true)]
         public Input<string> Cron { get; set; } = null!;
@@ -198,6 +202,8 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// The cron periodicity at which the backup workflow is scheduled
+        /// 
+        /// * `instanceId` the id of the instance to back up
         /// </summary>
         [Input("cron")]
         public Input<string>? Cron { get; set; }

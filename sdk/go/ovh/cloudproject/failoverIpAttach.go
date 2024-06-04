@@ -45,6 +45,7 @@ type FailoverIpAttach struct {
 	pulumi.CustomResourceState
 
 	// The IP block
+	// * `continentCode` - The Ip continent
 	Block pulumi.StringOutput `pulumi:"block"`
 	// Ip continent
 	ContinentCode pulumi.StringOutput `pulumi:"continentCode"`
@@ -53,6 +54,7 @@ type FailoverIpAttach struct {
 	// The failover ip address to attach
 	Ip pulumi.StringOutput `pulumi:"ip"`
 	// Current operation progress in percent
+	// * `routedTo` - Instance where ip is routed to
 	Progress pulumi.IntOutput `pulumi:"progress"`
 	// The GUID of an instance to which the failover IP address is be attached
 	RoutedTo pulumi.StringOutput `pulumi:"routedTo"`
@@ -60,6 +62,7 @@ type FailoverIpAttach struct {
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Ip status, can be `ok` or `operationPending`
+	// * `subType` - IP sub type, can be `cloud` or `ovh`
 	Status pulumi.StringOutput `pulumi:"status"`
 	// IP sub type
 	SubType pulumi.StringOutput `pulumi:"subType"`
@@ -99,6 +102,7 @@ func GetFailoverIpAttach(ctx *pulumi.Context,
 // Input properties used for looking up and filtering FailoverIpAttach resources.
 type failoverIpAttachState struct {
 	// The IP block
+	// * `continentCode` - The Ip continent
 	Block *string `pulumi:"block"`
 	// Ip continent
 	ContinentCode *string `pulumi:"continentCode"`
@@ -107,6 +111,7 @@ type failoverIpAttachState struct {
 	// The failover ip address to attach
 	Ip *string `pulumi:"ip"`
 	// Current operation progress in percent
+	// * `routedTo` - Instance where ip is routed to
 	Progress *int `pulumi:"progress"`
 	// The GUID of an instance to which the failover IP address is be attached
 	RoutedTo *string `pulumi:"routedTo"`
@@ -114,6 +119,7 @@ type failoverIpAttachState struct {
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Ip status, can be `ok` or `operationPending`
+	// * `subType` - IP sub type, can be `cloud` or `ovh`
 	Status *string `pulumi:"status"`
 	// IP sub type
 	SubType *string `pulumi:"subType"`
@@ -121,6 +127,7 @@ type failoverIpAttachState struct {
 
 type FailoverIpAttachState struct {
 	// The IP block
+	// * `continentCode` - The Ip continent
 	Block pulumi.StringPtrInput
 	// Ip continent
 	ContinentCode pulumi.StringPtrInput
@@ -129,6 +136,7 @@ type FailoverIpAttachState struct {
 	// The failover ip address to attach
 	Ip pulumi.StringPtrInput
 	// Current operation progress in percent
+	// * `routedTo` - Instance where ip is routed to
 	Progress pulumi.IntPtrInput
 	// The GUID of an instance to which the failover IP address is be attached
 	RoutedTo pulumi.StringPtrInput
@@ -136,6 +144,7 @@ type FailoverIpAttachState struct {
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Ip status, can be `ok` or `operationPending`
+	// * `subType` - IP sub type, can be `cloud` or `ovh`
 	Status pulumi.StringPtrInput
 	// IP sub type
 	SubType pulumi.StringPtrInput
@@ -147,6 +156,7 @@ func (FailoverIpAttachState) ElementType() reflect.Type {
 
 type failoverIpAttachArgs struct {
 	// The IP block
+	// * `continentCode` - The Ip continent
 	Block *string `pulumi:"block"`
 	// Ip continent
 	ContinentCode *string `pulumi:"continentCode"`
@@ -164,6 +174,7 @@ type failoverIpAttachArgs struct {
 // The set of arguments for constructing a FailoverIpAttach resource.
 type FailoverIpAttachArgs struct {
 	// The IP block
+	// * `continentCode` - The Ip continent
 	Block pulumi.StringPtrInput
 	// Ip continent
 	ContinentCode pulumi.StringPtrInput
@@ -266,6 +277,7 @@ func (o FailoverIpAttachOutput) ToFailoverIpAttachOutputWithContext(ctx context.
 }
 
 // The IP block
+// * `continentCode` - The Ip continent
 func (o FailoverIpAttachOutput) Block() pulumi.StringOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.StringOutput { return v.Block }).(pulumi.StringOutput)
 }
@@ -286,6 +298,7 @@ func (o FailoverIpAttachOutput) Ip() pulumi.StringOutput {
 }
 
 // Current operation progress in percent
+// * `routedTo` - Instance where ip is routed to
 func (o FailoverIpAttachOutput) Progress() pulumi.IntOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.IntOutput { return v.Progress }).(pulumi.IntOutput)
 }
@@ -302,6 +315,7 @@ func (o FailoverIpAttachOutput) ServiceName() pulumi.StringOutput {
 }
 
 // Ip status, can be `ok` or `operationPending`
+// * `subType` - IP sub type, can be `cloud` or `ovh`
 func (o FailoverIpAttachOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -125,6 +125,16 @@ export const getKubeOidc: typeof import("./getKubeOidc").getKubeOidc = null as a
 export const getKubeOidcOutput: typeof import("./getKubeOidc").getKubeOidcOutput = null as any;
 utilities.lazyLoad(exports, ["getKubeOidc","getKubeOidcOutput"], () => require("./getKubeOidc"));
 
+export { GetLoadBalancerArgs, GetLoadBalancerResult, GetLoadBalancerOutputArgs } from "./getLoadBalancer";
+export const getLoadBalancer: typeof import("./getLoadBalancer").getLoadBalancer = null as any;
+export const getLoadBalancerOutput: typeof import("./getLoadBalancer").getLoadBalancerOutput = null as any;
+utilities.lazyLoad(exports, ["getLoadBalancer","getLoadBalancerOutput"], () => require("./getLoadBalancer"));
+
+export { GetLoadBalancersArgs, GetLoadBalancersResult, GetLoadBalancersOutputArgs } from "./getLoadBalancers";
+export const getLoadBalancers: typeof import("./getLoadBalancers").getLoadBalancers = null as any;
+export const getLoadBalancersOutput: typeof import("./getLoadBalancers").getLoadBalancersOutput = null as any;
+utilities.lazyLoad(exports, ["getLoadBalancers","getLoadBalancersOutput"], () => require("./getLoadBalancers"));
+
 export { GetM3dbNamespaceArgs, GetM3dbNamespaceResult, GetM3dbNamespaceOutputArgs } from "./getM3dbNamespace";
 export const getM3dbNamespace: typeof import("./getM3dbNamespace").getM3dbNamespace = null as any;
 export const getM3dbNamespaceOutput: typeof import("./getM3dbNamespace").getM3dbNamespaceOutput = null as any;

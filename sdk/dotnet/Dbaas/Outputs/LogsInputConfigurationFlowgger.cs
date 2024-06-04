@@ -14,11 +14,11 @@ namespace Pulumi.Ovh.Dbaas.Outputs
     public sealed class LogsInputConfigurationFlowgger
     {
         /// <summary>
-        /// Type of format to decode
+        /// Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
         /// </summary>
         public readonly string LogFormat;
         /// <summary>
-        /// Indicates how messages are delimited
+        /// Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
         /// </summary>
         public readonly string LogFraming;
 

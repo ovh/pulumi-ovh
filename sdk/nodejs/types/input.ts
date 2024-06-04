@@ -423,7 +423,13 @@ export namespace CloudProject {
     }
 
     export interface KubeCustomizationApiserverAdmissionplugin {
+        /**
+         * Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+         */
         disableds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+         */
         enableds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -439,16 +445,40 @@ export namespace CloudProject {
     }
 
     export interface KubeCustomizationKubeProxyIptables {
+        /**
+         * Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
+         */
         minSyncPeriod?: pulumi.Input<string>;
+        /**
+         * Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+         */
         syncPeriod?: pulumi.Input<string>;
     }
 
     export interface KubeCustomizationKubeProxyIpvs {
+        /**
+         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+         */
         minSyncPeriod?: pulumi.Input<string>;
+        /**
+         * IPVS scheduler.
+         */
         scheduler?: pulumi.Input<string>;
+        /**
+         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+         */
         syncPeriod?: pulumi.Input<string>;
+        /**
+         * Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         tcpFinTimeout?: pulumi.Input<string>;
+        /**
+         * Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         tcpTimeout?: pulumi.Input<string>;
+        /**
+         * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         udpTimeout?: pulumi.Input<string>;
     }
 
@@ -724,11 +754,11 @@ export namespace Dbaas {
 
     export interface LogsInputConfigurationFlowgger {
         /**
-         * Type of format to decode
+         * Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
          */
         logFormat: pulumi.Input<string>;
         /**
-         * Indicates how messages are delimited
+         * Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
          */
         logFraming: pulumi.Input<string>;
     }
@@ -864,11 +894,11 @@ export namespace Domain {
 
     export interface ZonePlanConfiguration {
         /**
-         * Identifier of the resource
+         * Identifier of the resource : `zone` or `template`
          */
         label: pulumi.Input<string>;
         /**
-         * Path to the resource in API.OVH.COM
+         * For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
          */
         value: pulumi.Input<string>;
     }
@@ -977,6 +1007,8 @@ export namespace Hosting {
         label: pulumi.Input<string>;
         /**
          * Path to the resource in API.OVH.COM
+         *
+         * Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
          */
         value: pulumi.Input<string>;
     }
@@ -1556,11 +1588,11 @@ export namespace Vps {
 
     export interface VpsPlanConfiguration {
         /**
-         * Label for your configuration item
+         * Identifier of the resource
          */
         label: pulumi.Input<string>;
         /**
-         * Value or resource URL on API.OVH.COM of your configuration item
+         * Path to the resource in api.ovh.com
          */
         value: pulumi.Input<string>;
     }
@@ -1594,11 +1626,11 @@ export namespace Vps {
 
     export interface VpsPlanOptionConfiguration {
         /**
-         * Label for your configuration item
+         * Identifier of the resource
          */
         label: pulumi.Input<string>;
         /**
-         * Value or resource URL on API.OVH.COM of your configuration item
+         * Path to the resource in api.ovh.com
          */
         value: pulumi.Input<string>;
     }

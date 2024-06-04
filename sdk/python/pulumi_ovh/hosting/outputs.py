@@ -260,6 +260,8 @@ class PrivateDatabasePlanConfiguration(dict):
         """
         :param str label: Identifier of the resource
         :param str value: Path to the resource in API.OVH.COM
+               
+               Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -277,6 +279,8 @@ class PrivateDatabasePlanConfiguration(dict):
     def value(self) -> str:
         """
         Path to the resource in API.OVH.COM
+
+        Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
         """
         return pulumi.get(self, "value")
 

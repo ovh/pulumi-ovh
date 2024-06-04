@@ -736,6 +736,79 @@ export namespace CloudProject {
         version: string;
     }
 
+    export interface GetLoadBalancerFloatingIp {
+        /**
+         * ID of the loadbalancer
+         */
+        id: string;
+        /**
+         * Value of the floating IP
+         */
+        ip: string;
+    }
+
+    export interface GetLoadBalancersLoadbalancer {
+        /**
+         * Date of creation of the loadbalancer
+         */
+        createdAt: string;
+        /**
+         * ID of the flavor
+         */
+        flavorId: string;
+        /**
+         * Information about the floating IP
+         */
+        floatingIp: outputs.CloudProject.GetLoadBalancersLoadbalancerFloatingIp;
+        /**
+         * ID of the floating IP
+         */
+        id: string;
+        /**
+         * Name of the loadbalancer
+         */
+        name: string;
+        /**
+         * Operating status of the loadbalancer
+         */
+        operatingStatus: string;
+        /**
+         * Provisioning status of the loadbalancer
+         */
+        provisioningStatus: string;
+        /**
+         * Region of the loadbalancer
+         */
+        region: string;
+        /**
+         * Last update date of the loadbalancer
+         */
+        updatedAt: string;
+        /**
+         * IP address of the Virtual IP
+         */
+        vipAddress: string;
+        /**
+         * Openstack ID of the network for the Virtual IP
+         */
+        vipNetworkId: string;
+        /**
+         * ID of the subnet for the Virtual IP
+         */
+        vipSubnetId: string;
+    }
+
+    export interface GetLoadBalancersLoadbalancerFloatingIp {
+        /**
+         * ID of the floating IP
+         */
+        id: string;
+        /**
+         * Value of the floating IP
+         */
+        ip: string;
+    }
+
     export interface GetOpenSearchUserAcl {
         /**
          * Pattern of the ACL.
@@ -842,7 +915,13 @@ export namespace CloudProject {
     }
 
     export interface KubeCustomizationApiserverAdmissionplugin {
+        /**
+         * Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+         */
         disableds: string[];
+        /**
+         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+         */
         enableds: string[];
     }
 
@@ -858,16 +937,40 @@ export namespace CloudProject {
     }
 
     export interface KubeCustomizationKubeProxyIptables {
+        /**
+         * Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
+         */
         minSyncPeriod?: string;
+        /**
+         * Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+         */
         syncPeriod?: string;
     }
 
     export interface KubeCustomizationKubeProxyIpvs {
+        /**
+         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+         */
         minSyncPeriod?: string;
+        /**
+         * IPVS scheduler.
+         */
         scheduler?: string;
+        /**
+         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+         */
         syncPeriod?: string;
+        /**
+         * Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         tcpFinTimeout?: string;
+        /**
+         * Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         tcpTimeout?: string;
+        /**
+         * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         udpTimeout?: string;
     }
 
@@ -1278,11 +1381,11 @@ export namespace Dbaas {
 
     export interface LogsInputConfigurationFlowgger {
         /**
-         * Type of format to decode
+         * Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
          */
         logFormat: string;
         /**
-         * Indicates how messages are delimited
+         * Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
          */
         logFraming: string;
     }
@@ -1693,11 +1796,11 @@ export namespace Domain {
 
     export interface ZonePlanConfiguration {
         /**
-         * Identifier of the resource
+         * Identifier of the resource : `zone` or `template`
          */
         label: string;
         /**
-         * Path to the resource in API.OVH.COM
+         * For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
          */
         value: string;
     }
@@ -1829,6 +1932,8 @@ export namespace Hosting {
         label: string;
         /**
          * Path to the resource in API.OVH.COM
+         *
+         * Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
          */
         value: string;
     }
@@ -3002,11 +3107,11 @@ export namespace Vps {
 
     export interface VpsPlanConfiguration {
         /**
-         * Label for your configuration item
+         * Identifier of the resource
          */
         label: string;
         /**
-         * Value or resource URL on API.OVH.COM of your configuration item
+         * Path to the resource in api.ovh.com
          */
         value: string;
     }
@@ -3040,11 +3145,11 @@ export namespace Vps {
 
     export interface VpsPlanOptionConfiguration {
         /**
-         * Label for your configuration item
+         * Identifier of the resource
          */
         label: string;
         /**
-         * Value or resource URL on API.OVH.COM of your configuration item
+         * Path to the resource in api.ovh.com
          */
         value: string;
     }

@@ -61,6 +61,9 @@ __all__ = [
     'GetKubeNodePoolTemplateMetadataResult',
     'GetKubeNodePoolTemplateSpecResult',
     'GetKubeNodesNodeResult',
+    'GetLoadBalancerFloatingIpResult',
+    'GetLoadBalancersLoadbalancerResult',
+    'GetLoadBalancersLoadbalancerFloatingIpResult',
     'GetOpenSearchUserAclResult',
     'GetRegionServiceResult',
     'GetUserRoleResult',
@@ -751,6 +754,10 @@ class KubeCustomizationApiserverAdmissionplugin(dict):
     def __init__(__self__, *,
                  disableds: Optional[Sequence[str]] = None,
                  enableds: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] disableds: Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+        :param Sequence[str] enableds: Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+        """
         if disableds is not None:
             pulumi.set(__self__, "disableds", disableds)
         if enableds is not None:
@@ -759,11 +766,17 @@ class KubeCustomizationApiserverAdmissionplugin(dict):
     @property
     @pulumi.getter
     def disableds(self) -> Optional[Sequence[str]]:
+        """
+        Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+        """
         return pulumi.get(self, "disableds")
 
     @property
     @pulumi.getter
     def enableds(self) -> Optional[Sequence[str]]:
+        """
+        Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+        """
         return pulumi.get(self, "enableds")
 
 
@@ -822,6 +835,10 @@ class KubeCustomizationKubeProxyIptables(dict):
     def __init__(__self__, *,
                  min_sync_period: Optional[str] = None,
                  sync_period: Optional[str] = None):
+        """
+        :param str min_sync_period: Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
+        :param str sync_period: Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+        """
         if min_sync_period is not None:
             pulumi.set(__self__, "min_sync_period", min_sync_period)
         if sync_period is not None:
@@ -830,11 +847,17 @@ class KubeCustomizationKubeProxyIptables(dict):
     @property
     @pulumi.getter(name="minSyncPeriod")
     def min_sync_period(self) -> Optional[str]:
+        """
+        Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
+        """
         return pulumi.get(self, "min_sync_period")
 
     @property
     @pulumi.getter(name="syncPeriod")
     def sync_period(self) -> Optional[str]:
+        """
+        Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+        """
         return pulumi.get(self, "sync_period")
 
 
@@ -872,6 +895,14 @@ class KubeCustomizationKubeProxyIpvs(dict):
                  tcp_fin_timeout: Optional[str] = None,
                  tcp_timeout: Optional[str] = None,
                  udp_timeout: Optional[str] = None):
+        """
+        :param str min_sync_period: Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+        :param str scheduler: IPVS scheduler.
+        :param str sync_period: Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+        :param str tcp_fin_timeout: Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        :param str tcp_timeout: Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        :param str udp_timeout: timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        """
         if min_sync_period is not None:
             pulumi.set(__self__, "min_sync_period", min_sync_period)
         if scheduler is not None:
@@ -888,31 +919,49 @@ class KubeCustomizationKubeProxyIpvs(dict):
     @property
     @pulumi.getter(name="minSyncPeriod")
     def min_sync_period(self) -> Optional[str]:
+        """
+        Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+        """
         return pulumi.get(self, "min_sync_period")
 
     @property
     @pulumi.getter
     def scheduler(self) -> Optional[str]:
+        """
+        IPVS scheduler.
+        """
         return pulumi.get(self, "scheduler")
 
     @property
     @pulumi.getter(name="syncPeriod")
     def sync_period(self) -> Optional[str]:
+        """
+        Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+        """
         return pulumi.get(self, "sync_period")
 
     @property
     @pulumi.getter(name="tcpFinTimeout")
     def tcp_fin_timeout(self) -> Optional[str]:
+        """
+        Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        """
         return pulumi.get(self, "tcp_fin_timeout")
 
     @property
     @pulumi.getter(name="tcpTimeout")
     def tcp_timeout(self) -> Optional[str]:
+        """
+        Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        """
         return pulumi.get(self, "tcp_timeout")
 
     @property
     @pulumi.getter(name="udpTimeout")
     def udp_timeout(self) -> Optional[str]:
+        """
+        timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        """
         return pulumi.get(self, "udp_timeout")
 
 
@@ -2670,6 +2719,203 @@ class GetKubeNodesNodeResult(dict):
         Version in which the node is
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetLoadBalancerFloatingIpResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 ip: str):
+        """
+        :param str id: ID of the loadbalancer
+        :param str ip: Value of the floating IP
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the loadbalancer
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        Value of the floating IP
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class GetLoadBalancersLoadbalancerResult(dict):
+    def __init__(__self__, *,
+                 created_at: str,
+                 flavor_id: str,
+                 floating_ip: 'outputs.GetLoadBalancersLoadbalancerFloatingIpResult',
+                 id: str,
+                 name: str,
+                 operating_status: str,
+                 provisioning_status: str,
+                 region: str,
+                 updated_at: str,
+                 vip_address: str,
+                 vip_network_id: str,
+                 vip_subnet_id: str):
+        """
+        :param str created_at: Date of creation of the loadbalancer
+        :param str flavor_id: ID of the flavor
+        :param 'GetLoadBalancersLoadbalancerFloatingIpArgs' floating_ip: Information about the floating IP
+        :param str id: ID of the floating IP
+        :param str name: Name of the loadbalancer
+        :param str operating_status: Operating status of the loadbalancer
+        :param str provisioning_status: Provisioning status of the loadbalancer
+        :param str region: Region of the loadbalancer
+        :param str updated_at: Last update date of the loadbalancer
+        :param str vip_address: IP address of the Virtual IP
+        :param str vip_network_id: Openstack ID of the network for the Virtual IP
+        :param str vip_subnet_id: ID of the subnet for the Virtual IP
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "flavor_id", flavor_id)
+        pulumi.set(__self__, "floating_ip", floating_ip)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "vip_address", vip_address)
+        pulumi.set(__self__, "vip_network_id", vip_network_id)
+        pulumi.set(__self__, "vip_subnet_id", vip_subnet_id)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        Date of creation of the loadbalancer
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> str:
+        """
+        ID of the flavor
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @property
+    @pulumi.getter(name="floatingIp")
+    def floating_ip(self) -> 'outputs.GetLoadBalancersLoadbalancerFloatingIpResult':
+        """
+        Information about the floating IP
+        """
+        return pulumi.get(self, "floating_ip")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the floating IP
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the loadbalancer
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> str:
+        """
+        Operating status of the loadbalancer
+        """
+        return pulumi.get(self, "operating_status")
+
+    @property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> str:
+        """
+        Provisioning status of the loadbalancer
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region of the loadbalancer
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        """
+        Last update date of the loadbalancer
+        """
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="vipAddress")
+    def vip_address(self) -> str:
+        """
+        IP address of the Virtual IP
+        """
+        return pulumi.get(self, "vip_address")
+
+    @property
+    @pulumi.getter(name="vipNetworkId")
+    def vip_network_id(self) -> str:
+        """
+        Openstack ID of the network for the Virtual IP
+        """
+        return pulumi.get(self, "vip_network_id")
+
+    @property
+    @pulumi.getter(name="vipSubnetId")
+    def vip_subnet_id(self) -> str:
+        """
+        ID of the subnet for the Virtual IP
+        """
+        return pulumi.get(self, "vip_subnet_id")
+
+
+@pulumi.output_type
+class GetLoadBalancersLoadbalancerFloatingIpResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 ip: str):
+        """
+        :param str id: ID of the floating IP
+        :param str ip: Value of the floating IP
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the floating IP
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        Value of the floating IP
+        """
+        return pulumi.get(self, "ip")
 
 
 @pulumi.output_type

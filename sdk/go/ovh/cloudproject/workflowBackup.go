@@ -52,6 +52,8 @@ type WorkflowBackup struct {
 	BackupName pulumi.StringOutput `pulumi:"backupName"`
 	CreatedAt  pulumi.StringOutput `pulumi:"createdAt"`
 	// The cron periodicity at which the backup workflow is scheduled
+	//
+	// * `instanceId` the id of the instance to back up
 	Cron       pulumi.StringOutput `pulumi:"cron"`
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
@@ -115,6 +117,8 @@ type workflowBackupState struct {
 	BackupName *string `pulumi:"backupName"`
 	CreatedAt  *string `pulumi:"createdAt"`
 	// The cron periodicity at which the backup workflow is scheduled
+	//
+	// * `instanceId` the id of the instance to back up
 	Cron       *string `pulumi:"cron"`
 	InstanceId *string `pulumi:"instanceId"`
 	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
@@ -134,6 +138,8 @@ type WorkflowBackupState struct {
 	BackupName pulumi.StringPtrInput
 	CreatedAt  pulumi.StringPtrInput
 	// The cron periodicity at which the backup workflow is scheduled
+	//
+	// * `instanceId` the id of the instance to back up
 	Cron       pulumi.StringPtrInput
 	InstanceId pulumi.StringPtrInput
 	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
@@ -156,6 +162,8 @@ type workflowBackupArgs struct {
 	// The name of the backup files that are created. If empty, the `name` attribute is used.
 	BackupName *string `pulumi:"backupName"`
 	// The cron periodicity at which the backup workflow is scheduled
+	//
+	// * `instanceId` the id of the instance to back up
 	Cron       string `pulumi:"cron"`
 	InstanceId string `pulumi:"instanceId"`
 	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
@@ -175,6 +183,8 @@ type WorkflowBackupArgs struct {
 	// The name of the backup files that are created. If empty, the `name` attribute is used.
 	BackupName pulumi.StringPtrInput
 	// The cron periodicity at which the backup workflow is scheduled
+	//
+	// * `instanceId` the id of the instance to back up
 	Cron       pulumi.StringInput
 	InstanceId pulumi.StringInput
 	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
@@ -286,6 +296,8 @@ func (o WorkflowBackupOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // The cron periodicity at which the backup workflow is scheduled
+//
+// * `instanceId` the id of the instance to back up
 func (o WorkflowBackupOutput) Cron() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.Cron }).(pulumi.StringOutput)
 }

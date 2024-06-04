@@ -475,9 +475,9 @@ func (o ZonePlanPtrOutput) PricingMode() pulumi.StringPtrOutput {
 }
 
 type ZonePlanConfiguration struct {
-	// Identifier of the resource
+	// Identifier of the resource : `zone` or `template`
 	Label string `pulumi:"label"`
-	// Path to the resource in API.OVH.COM
+	// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
 	Value string `pulumi:"value"`
 }
 
@@ -493,9 +493,9 @@ type ZonePlanConfigurationInput interface {
 }
 
 type ZonePlanConfigurationArgs struct {
-	// Identifier of the resource
+	// Identifier of the resource : `zone` or `template`
 	Label pulumi.StringInput `pulumi:"label"`
-	// Path to the resource in API.OVH.COM
+	// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -550,12 +550,12 @@ func (o ZonePlanConfigurationOutput) ToZonePlanConfigurationOutputWithContext(ct
 	return o
 }
 
-// Identifier of the resource
+// Identifier of the resource : `zone` or `template`
 func (o ZonePlanConfigurationOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v ZonePlanConfiguration) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// Path to the resource in API.OVH.COM
+// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
 func (o ZonePlanConfigurationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ZonePlanConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }

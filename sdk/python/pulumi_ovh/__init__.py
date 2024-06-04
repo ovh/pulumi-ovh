@@ -387,6 +387,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Dbaas/logsToken",
+  "fqn": "pulumi_ovh.dbaas",
+  "classes": {
+   "ovh:Dbaas/logsToken:LogsToken": "LogsToken"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Dedicated/cephAcl",
   "fqn": "pulumi_ovh.dedicated",
   "classes": {

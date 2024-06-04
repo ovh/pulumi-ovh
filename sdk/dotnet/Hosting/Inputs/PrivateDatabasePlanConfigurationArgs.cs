@@ -20,6 +20,8 @@ namespace Pulumi.Ovh.Hosting.Inputs
 
         /// <summary>
         /// Path to the resource in API.OVH.COM
+        /// 
+        /// Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

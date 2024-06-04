@@ -13,13 +13,13 @@ namespace Pulumi.Ovh.Dbaas.Inputs
     public sealed class LogsInputConfigurationFlowggerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of format to decode
+        /// Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
         /// </summary>
         [Input("logFormat", required: true)]
         public Input<string> LogFormat { get; set; } = null!;
 
         /// <summary>
-        /// Indicates how messages are delimited
+        /// Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
         /// </summary>
         [Input("logFraming", required: true)]
         public Input<string> LogFraming { get; set; } = null!;

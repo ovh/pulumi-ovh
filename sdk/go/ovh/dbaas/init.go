@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogsInput{}
 	case "ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream":
 		r = &LogsOutputGraylogStream{}
+	case "ovh:Dbaas/logsToken:LogsToken":
+		r = &LogsToken{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Dbaas/logsOutputGraylogStream",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Dbaas/logsToken",
 		&module{version},
 	)
 }

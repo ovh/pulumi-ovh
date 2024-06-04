@@ -740,6 +740,10 @@ class KubeCustomizationApiserverAdmissionpluginArgs:
     def __init__(__self__, *,
                  disableds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enableds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disableds: Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enableds: Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+        """
         if disableds is not None:
             pulumi.set(__self__, "disableds", disableds)
         if enableds is not None:
@@ -748,6 +752,9 @@ class KubeCustomizationApiserverAdmissionpluginArgs:
     @property
     @pulumi.getter
     def disableds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+        """
         return pulumi.get(self, "disableds")
 
     @disableds.setter
@@ -757,6 +764,9 @@ class KubeCustomizationApiserverAdmissionpluginArgs:
     @property
     @pulumi.getter
     def enableds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+        """
         return pulumi.get(self, "enableds")
 
     @enableds.setter
@@ -808,6 +818,10 @@ class KubeCustomizationKubeProxyIptablesArgs:
     def __init__(__self__, *,
                  min_sync_period: Optional[pulumi.Input[str]] = None,
                  sync_period: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] min_sync_period: Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
+        :param pulumi.Input[str] sync_period: Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+        """
         if min_sync_period is not None:
             pulumi.set(__self__, "min_sync_period", min_sync_period)
         if sync_period is not None:
@@ -816,6 +830,9 @@ class KubeCustomizationKubeProxyIptablesArgs:
     @property
     @pulumi.getter(name="minSyncPeriod")
     def min_sync_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
+        """
         return pulumi.get(self, "min_sync_period")
 
     @min_sync_period.setter
@@ -825,6 +842,9 @@ class KubeCustomizationKubeProxyIptablesArgs:
     @property
     @pulumi.getter(name="syncPeriod")
     def sync_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+        """
         return pulumi.get(self, "sync_period")
 
     @sync_period.setter
@@ -841,6 +861,14 @@ class KubeCustomizationKubeProxyIpvsArgs:
                  tcp_fin_timeout: Optional[pulumi.Input[str]] = None,
                  tcp_timeout: Optional[pulumi.Input[str]] = None,
                  udp_timeout: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] min_sync_period: Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+        :param pulumi.Input[str] scheduler: IPVS scheduler.
+        :param pulumi.Input[str] sync_period: Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+        :param pulumi.Input[str] tcp_fin_timeout: Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        :param pulumi.Input[str] tcp_timeout: Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        :param pulumi.Input[str] udp_timeout: timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        """
         if min_sync_period is not None:
             pulumi.set(__self__, "min_sync_period", min_sync_period)
         if scheduler is not None:
@@ -857,6 +885,9 @@ class KubeCustomizationKubeProxyIpvsArgs:
     @property
     @pulumi.getter(name="minSyncPeriod")
     def min_sync_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+        """
         return pulumi.get(self, "min_sync_period")
 
     @min_sync_period.setter
@@ -866,6 +897,9 @@ class KubeCustomizationKubeProxyIpvsArgs:
     @property
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPVS scheduler.
+        """
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
@@ -875,6 +909,9 @@ class KubeCustomizationKubeProxyIpvsArgs:
     @property
     @pulumi.getter(name="syncPeriod")
     def sync_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+        """
         return pulumi.get(self, "sync_period")
 
     @sync_period.setter
@@ -884,6 +921,9 @@ class KubeCustomizationKubeProxyIpvsArgs:
     @property
     @pulumi.getter(name="tcpFinTimeout")
     def tcp_fin_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        """
         return pulumi.get(self, "tcp_fin_timeout")
 
     @tcp_fin_timeout.setter
@@ -893,6 +933,9 @@ class KubeCustomizationKubeProxyIpvsArgs:
     @property
     @pulumi.getter(name="tcpTimeout")
     def tcp_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        """
         return pulumi.get(self, "tcp_timeout")
 
     @tcp_timeout.setter
@@ -902,6 +945,9 @@ class KubeCustomizationKubeProxyIpvsArgs:
     @property
     @pulumi.getter(name="udpTimeout")
     def udp_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        """
         return pulumi.get(self, "udp_timeout")
 
     @udp_timeout.setter

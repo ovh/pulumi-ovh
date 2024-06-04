@@ -82,6 +82,10 @@ export class TcpFrontend extends pulumi.CustomResource {
      */
     public readonly defaultSslId!: pulumi.Output<number>;
     /**
+     * Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowedSource` and `deniedSource` at the same time. List of IP blocks.
+     */
+    public readonly deniedSources!: pulumi.Output<string[] | undefined>;
+    /**
      * Disable your frontend. Default: 'false'
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
@@ -125,6 +129,7 @@ export class TcpFrontend extends pulumi.CustomResource {
             resourceInputs["dedicatedIpfos"] = state ? state.dedicatedIpfos : undefined;
             resourceInputs["defaultFarmId"] = state ? state.defaultFarmId : undefined;
             resourceInputs["defaultSslId"] = state ? state.defaultSslId : undefined;
+            resourceInputs["deniedSources"] = state ? state.deniedSources : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
@@ -146,6 +151,7 @@ export class TcpFrontend extends pulumi.CustomResource {
             resourceInputs["dedicatedIpfos"] = args ? args.dedicatedIpfos : undefined;
             resourceInputs["defaultFarmId"] = args ? args.defaultFarmId : undefined;
             resourceInputs["defaultSslId"] = args ? args.defaultSslId : undefined;
+            resourceInputs["deniedSources"] = args ? args.deniedSources : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
@@ -178,6 +184,10 @@ export interface TcpFrontendState {
      * Default ssl served to your customer
      */
     defaultSslId?: pulumi.Input<number>;
+    /**
+     * Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowedSource` and `deniedSource` at the same time. List of IP blocks.
+     */
+    deniedSources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Disable your frontend. Default: 'false'
      */
@@ -226,6 +236,10 @@ export interface TcpFrontendArgs {
      * Default ssl served to your customer
      */
     defaultSslId?: pulumi.Input<number>;
+    /**
+     * Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowedSource` and `deniedSource` at the same time. List of IP blocks.
+     */
+    deniedSources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Disable your frontend. Default: 'false'
      */

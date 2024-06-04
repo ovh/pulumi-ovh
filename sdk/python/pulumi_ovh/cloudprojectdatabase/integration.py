@@ -33,6 +33,11 @@ class IntegrationArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Parameters for the integration.
         :param pulumi.Input[str] type: Type of the integration.
                Available types:
+               * `grafanaDashboard`
+               * `grafanaDatasource`
+               * `kafkaConnect`
+               * `kafkaLogs`
+               * `kafkaMirrorMaker`
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "destination_service_id", destination_service_id)
@@ -124,6 +129,11 @@ class IntegrationArgs:
         """
         Type of the integration.
         Available types:
+        * `grafanaDashboard`
+        * `grafanaDatasource`
+        * `kafkaConnect`
+        * `kafkaLogs`
+        * `kafkaMirrorMaker`
         """
         return pulumi.get(self, "type")
 
@@ -156,6 +166,11 @@ class _IntegrationState:
         :param pulumi.Input[str] status: Current status of the integration.
         :param pulumi.Input[str] type: Type of the integration.
                Available types:
+               * `grafanaDashboard`
+               * `grafanaDatasource`
+               * `kafkaConnect`
+               * `kafkaLogs`
+               * `kafkaMirrorMaker`
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -266,6 +281,11 @@ class _IntegrationState:
         """
         Type of the integration.
         Available types:
+        * `grafanaDashboard`
+        * `grafanaDatasource`
+        * `kafkaConnect`
+        * `kafkaLogs`
+        * `kafkaMirrorMaker`
         """
         return pulumi.get(self, "type")
 
@@ -339,6 +359,11 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] source_service_id: ID of the source service.
         :param pulumi.Input[str] type: Type of the integration.
                Available types:
+               * `grafanaDashboard`
+               * `grafanaDatasource`
+               * `kafkaConnect`
+               * `kafkaLogs`
+               * `kafkaMirrorMaker`
         """
         ...
     @overload
@@ -471,6 +496,11 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] status: Current status of the integration.
         :param pulumi.Input[str] type: Type of the integration.
                Available types:
+               * `grafanaDashboard`
+               * `grafanaDatasource`
+               * `kafkaConnect`
+               * `kafkaLogs`
+               * `kafkaMirrorMaker`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -550,6 +580,11 @@ class Integration(pulumi.CustomResource):
         """
         Type of the integration.
         Available types:
+        * `grafanaDashboard`
+        * `grafanaDatasource`
+        * `kafkaConnect`
+        * `kafkaLogs`
+        * `kafkaMirrorMaker`
         """
         return pulumi.get(self, "type")
 
