@@ -124,6 +124,7 @@ golang.org/x/crypto; BSD-3-Clause
 golang.org/x/exp; BSD-3-Clause
 golang.org/x/mod; BSD-3-Clause
 golang.org/x/net; BSD-3-Clause
+golang.org/x/oauth2; BSD-3-Clause
 golang.org/x/sync; BSD-3-Clause
 golang.org/x/sys; BSD-3-Clause
 golang.org/x/term; BSD-3-Clause
