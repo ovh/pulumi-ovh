@@ -23,6 +23,7 @@ import (
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/ovh/pulumi-ovh/provider/pkg/version"
@@ -77,6 +78,12 @@ func Provider() tfbridge.ProviderInfo {
 		shimv2.NewProvider(ovh.Provider()),
 		&ovh.OvhProvider{},
 	)
+
+	// ComputeID
+	delegateID := func(pulumiField string) tfbridge.ComputeID {
+		return tfbridge.DelegateIDField(resource.PropertyKey(pulumiField),
+			"ovh", "https://github.com/ovh/pulumi-ovh")
+	}
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -292,7 +299,8 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"ovh_domain_zone_dnssec": {
-				Tok: ovhResource(domainMod, "ZoneDNSSec"),
+				Tok:       ovhResource(domainMod, "ZoneDNSSec"),
+				ComputeID: delegateID("zone_name"),
 			},
 			"ovh_domain_zone_record": {
 				Tok: ovhResource(domainMod, "ZoneRecord"),
@@ -321,13 +329,16 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: ovhResource(hostingMod, "PrivateDatabaseAllowlist"),
 			},
 			"ovh_ip_firewall": {
-				Tok: ovhResource(ipMod, "Firewall"),
+				Tok:       ovhResource(ipMod, "Firewall"),
+				ComputeID: delegateID("ip"),
 			},
 			"ovh_ip_firewall_rule": {
-				Tok: ovhResource(ipMod, "FirewallRule"),
+				Tok:       ovhResource(ipMod, "FirewallRule"),
+				ComputeID: delegateID("ip"),
 			},
 			"ovh_ip_mitigation": {
-				Tok: ovhResource(ipMod, "Mitigation"),
+				Tok:       ovhResource(ipMod, "Mitigation"),
+				ComputeID: delegateID("ip"),
 			},
 			"ovh_ip_move": {
 				Tok: ovhResource(ipMod, "Move"),
@@ -388,7 +399,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: ovhResource(ipLoadBalancingMod, "TcpRouteRule"),
 			},
 			"ovh_iploadbalancing_udp_frontend": {
-				Tok: ovhResource(ipLoadBalancingMod, "UdpFrontend"),
+				Tok:       ovhResource(ipLoadBalancingMod, "UdpFrontend"),
+				ComputeID: delegateID("display_name"),
 			},
 			"ovh_iploadbalancing_vrack_network": {
 				Tok: ovhResource(ipLoadBalancingMod, "VrackNetwork"),
@@ -448,7 +460,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: ovhResource(dbaasMod, "LogsCluster"),
 			},
 			"ovh_dbaas_logs_token": {
-				Tok: ovhResource(dbaasMod, "LogsToken"),
+				Tok:       ovhResource(dbaasMod, "LogsToken"),
+				ComputeID: delegateID("name"),
 			},
 			"ovh_iam_permissions_group": {
 				Tok: ovhResource(iamMod, "PermissionsGroup"),
@@ -476,7 +489,8 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"ovh_vps": {
-				Tok: ovhResource(vpsMod, "Vps"),
+				Tok:       ovhResource(vpsMod, "Vps"),
+				ComputeID: delegateID("display_name"),
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
@@ -656,6 +670,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dbaas_logs_clusters": {
 				Tok: ovhDataSource(dbaasMod, "getLogsClusters"),
+			},
+			"ovh_dbaas_logs_cluster_retention": {
+				Tok: ovhDataSource(dbaasMod, "getLogsClustersRetention"),
 			},
 			"ovh_dbaas_logs_input_engine": {
 				Tok: ovhDataSource(dbaasMod, "getLogsInputEngine"),
