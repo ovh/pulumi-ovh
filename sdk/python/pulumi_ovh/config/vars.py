@@ -16,6 +16,13 @@ __config__ = pulumi.Config('ovh')
 
 class _ExportableConfig(types.ModuleType):
     @property
+    def access_token(self) -> Optional[str]:
+        """
+        The OVH API Access Token
+        """
+        return __config__.get('accessToken')
+
+    @property
     def application_key(self) -> Optional[str]:
         """
         The OVH API Application Key

@@ -11,6 +11,11 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// The OVH API Access Token
+func GetAccessToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "ovh:accessToken")
+}
+
 // The OVH API Application Key
 func GetApplicationKey(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "ovh:applicationKey")

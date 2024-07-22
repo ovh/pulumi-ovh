@@ -96,10 +96,14 @@ type LookupKubeResult struct {
 	KubeId string `pulumi:"kubeId"`
 	// Selected mode for kube-proxy.
 	KubeProxyMode *string `pulumi:"kubeProxyMode"`
+	// Openstack private network (or vRack) ID to use for load balancers.
+	LoadBalancersSubnetId string `pulumi:"loadBalancersSubnetId"`
 	// The name of the managed kubernetes cluster.
 	Name *string `pulumi:"name"`
 	// Kubernetes versions available for upgrade.
 	NextUpgradeVersions []string `pulumi:"nextUpgradeVersions"`
+	// Openstack private network (or vRack) ID to use for nodes.
+	NodesSubnetId string `pulumi:"nodesSubnetId"`
 	// Cluster nodes URL.
 	NodesUrl string `pulumi:"nodesUrl"`
 	// OpenStack private network (or vrack) ID to use.
@@ -218,6 +222,11 @@ func (o LookupKubeResultOutput) KubeProxyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKubeResult) *string { return v.KubeProxyMode }).(pulumi.StringPtrOutput)
 }
 
+// Openstack private network (or vRack) ID to use for load balancers.
+func (o LookupKubeResultOutput) LoadBalancersSubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubeResult) string { return v.LoadBalancersSubnetId }).(pulumi.StringOutput)
+}
+
 // The name of the managed kubernetes cluster.
 func (o LookupKubeResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKubeResult) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -226,6 +235,11 @@ func (o LookupKubeResultOutput) Name() pulumi.StringPtrOutput {
 // Kubernetes versions available for upgrade.
 func (o LookupKubeResultOutput) NextUpgradeVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupKubeResult) []string { return v.NextUpgradeVersions }).(pulumi.StringArrayOutput)
+}
+
+// Openstack private network (or vRack) ID to use for nodes.
+func (o LookupKubeResultOutput) NodesSubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubeResult) string { return v.NodesSubnetId }).(pulumi.StringOutput)
 }
 
 // Cluster nodes URL.

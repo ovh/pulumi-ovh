@@ -270,6 +270,10 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly string? KubeProxyMode;
         /// <summary>
+        /// Openstack private network (or vRack) ID to use for load balancers.
+        /// </summary>
+        public readonly string LoadBalancersSubnetId;
+        /// <summary>
         /// The name of the managed kubernetes cluster.
         /// </summary>
         public readonly string? Name;
@@ -277,6 +281,10 @@ namespace Pulumi.Ovh.CloudProject
         /// Kubernetes versions available for upgrade.
         /// </summary>
         public readonly ImmutableArray<string> NextUpgradeVersions;
+        /// <summary>
+        /// Openstack private network (or vRack) ID to use for nodes.
+        /// </summary>
+        public readonly string NodesSubnetId;
         /// <summary>
         /// Cluster nodes URL.
         /// </summary>
@@ -328,9 +336,13 @@ namespace Pulumi.Ovh.CloudProject
 
             string? kubeProxyMode,
 
+            string loadBalancersSubnetId,
+
             string? name,
 
             ImmutableArray<string> nextUpgradeVersions,
+
+            string nodesSubnetId,
 
             string nodesUrl,
 
@@ -356,8 +368,10 @@ namespace Pulumi.Ovh.CloudProject
             IsUpToDate = isUpToDate;
             KubeId = kubeId;
             KubeProxyMode = kubeProxyMode;
+            LoadBalancersSubnetId = loadBalancersSubnetId;
             Name = name;
             NextUpgradeVersions = nextUpgradeVersions;
+            NodesSubnetId = nodesSubnetId;
             NodesUrl = nodesUrl;
             PrivateNetworkId = privateNetworkId;
             Region = region;

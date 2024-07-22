@@ -80,6 +80,10 @@ export class Kube extends pulumi.CustomResource {
      */
     public /*out*/ readonly kubeconfigAttributes!: pulumi.Output<outputs.CloudProject.KubeKubeconfigAttribute[]>;
     /**
+     * Openstack private network (or vRack) ID to use for load balancers.
+     */
+    public readonly loadBalancersSubnetId!: pulumi.Output<string | undefined>;
+    /**
      * The name of the kubernetes cluster.
      */
     public readonly name!: pulumi.Output<string>;
@@ -87,6 +91,10 @@ export class Kube extends pulumi.CustomResource {
      * Kubernetes versions available for upgrade.
      */
     public /*out*/ readonly nextUpgradeVersions!: pulumi.Output<string[]>;
+    /**
+     * Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+     */
+    public readonly nodesSubnetId!: pulumi.Output<string>;
     /**
      * Cluster nodes URL.
      */
@@ -147,8 +155,10 @@ export class Kube extends pulumi.CustomResource {
             resourceInputs["kubeProxyMode"] = state ? state.kubeProxyMode : undefined;
             resourceInputs["kubeconfig"] = state ? state.kubeconfig : undefined;
             resourceInputs["kubeconfigAttributes"] = state ? state.kubeconfigAttributes : undefined;
+            resourceInputs["loadBalancersSubnetId"] = state ? state.loadBalancersSubnetId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nextUpgradeVersions"] = state ? state.nextUpgradeVersions : undefined;
+            resourceInputs["nodesSubnetId"] = state ? state.nodesSubnetId : undefined;
             resourceInputs["nodesUrl"] = state ? state.nodesUrl : undefined;
             resourceInputs["privateNetworkConfiguration"] = state ? state.privateNetworkConfiguration : undefined;
             resourceInputs["privateNetworkId"] = state ? state.privateNetworkId : undefined;
@@ -170,7 +180,9 @@ export class Kube extends pulumi.CustomResource {
             resourceInputs["customizationKubeProxy"] = args ? args.customizationKubeProxy : undefined;
             resourceInputs["customizations"] = args ? args.customizations : undefined;
             resourceInputs["kubeProxyMode"] = args ? args.kubeProxyMode : undefined;
+            resourceInputs["loadBalancersSubnetId"] = args ? args.loadBalancersSubnetId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodesSubnetId"] = args ? args.nodesSubnetId : undefined;
             resourceInputs["privateNetworkConfiguration"] = args ? args.privateNetworkConfiguration : undefined;
             resourceInputs["privateNetworkId"] = args ? args.privateNetworkId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -232,6 +244,10 @@ export interface KubeState {
      */
     kubeconfigAttributes?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeKubeconfigAttribute>[]>;
     /**
+     * Openstack private network (or vRack) ID to use for load balancers.
+     */
+    loadBalancersSubnetId?: pulumi.Input<string>;
+    /**
      * The name of the kubernetes cluster.
      */
     name?: pulumi.Input<string>;
@@ -239,6 +255,10 @@ export interface KubeState {
      * Kubernetes versions available for upgrade.
      */
     nextUpgradeVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+     */
+    nodesSubnetId?: pulumi.Input<string>;
     /**
      * Cluster nodes URL.
      */
@@ -302,9 +322,17 @@ export interface KubeArgs {
      */
     kubeProxyMode?: pulumi.Input<string>;
     /**
+     * Openstack private network (or vRack) ID to use for load balancers.
+     */
+    loadBalancersSubnetId?: pulumi.Input<string>;
+    /**
      * The name of the kubernetes cluster.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+     */
+    nodesSubnetId?: pulumi.Input<string>;
     /**
      * The private network configuration. If this is set then the 2 parameters below shall be defined.
      */

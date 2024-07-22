@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const my_partition = new ovh.dedicated.NasHAPartitionAccess("my-partition", {
+ *     aclDescription: "Description of the ACL",
  *     ip: "123.123.123.123/32",
  *     partitionName: "my-partition",
  *     serviceName: "zpool-12345",
@@ -58,11 +59,15 @@ export class NasHAPartitionAccess extends pulumi.CustomResource {
     }
 
     /**
-     * ip block in x.x.x.x/x format
+     * A brief description of the acl
+     */
+    public readonly aclDescription!: pulumi.Output<string | undefined>;
+    /**
+     * IP block in x.x.x.x/x format
      */
     public readonly ip!: pulumi.Output<string>;
     /**
-     * name of the partition
+     * Name of the partition
      */
     public readonly partitionName!: pulumi.Output<string>;
     /**
@@ -70,7 +75,7 @@ export class NasHAPartitionAccess extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * one of "readwrite", "readonly"
+     * One of "readwrite", "readonly"
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -87,6 +92,7 @@ export class NasHAPartitionAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NasHAPartitionAccessState | undefined;
+            resourceInputs["aclDescription"] = state ? state.aclDescription : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["partitionName"] = state ? state.partitionName : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
@@ -102,6 +108,7 @@ export class NasHAPartitionAccess extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
+            resourceInputs["aclDescription"] = args ? args.aclDescription : undefined;
             resourceInputs["ip"] = args ? args.ip : undefined;
             resourceInputs["partitionName"] = args ? args.partitionName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
@@ -117,11 +124,15 @@ export class NasHAPartitionAccess extends pulumi.CustomResource {
  */
 export interface NasHAPartitionAccessState {
     /**
-     * ip block in x.x.x.x/x format
+     * A brief description of the acl
+     */
+    aclDescription?: pulumi.Input<string>;
+    /**
+     * IP block in x.x.x.x/x format
      */
     ip?: pulumi.Input<string>;
     /**
-     * name of the partition
+     * Name of the partition
      */
     partitionName?: pulumi.Input<string>;
     /**
@@ -129,7 +140,7 @@ export interface NasHAPartitionAccessState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * one of "readwrite", "readonly"
+     * One of "readwrite", "readonly"
      */
     type?: pulumi.Input<string>;
 }
@@ -139,11 +150,15 @@ export interface NasHAPartitionAccessState {
  */
 export interface NasHAPartitionAccessArgs {
     /**
-     * ip block in x.x.x.x/x format
+     * A brief description of the acl
+     */
+    aclDescription?: pulumi.Input<string>;
+    /**
+     * IP block in x.x.x.x/x format
      */
     ip: pulumi.Input<string>;
     /**
-     * name of the partition
+     * Name of the partition
      */
     partitionName: pulumi.Input<string>;
     /**
@@ -151,7 +166,7 @@ export interface NasHAPartitionAccessArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * one of "readwrite", "readonly"
+     * One of "readwrite", "readonly"
      */
     type?: pulumi.Input<string>;
 }

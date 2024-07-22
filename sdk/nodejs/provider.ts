@@ -26,6 +26,10 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
+     * The OVH API Access Token
+     */
+    public readonly accessToken!: pulumi.Output<string | undefined>;
+    /**
      * The OVH API Application Key
      */
     public readonly applicationKey!: pulumi.Output<string | undefined>;
@@ -61,6 +65,7 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            resourceInputs["accessToken"] = args ? args.accessToken : undefined;
             resourceInputs["applicationKey"] = (args ? args.applicationKey : undefined) ?? utilities.getEnv("OVH_APPLICATION_KEY");
             resourceInputs["applicationSecret"] = (args?.applicationSecret ? pulumi.secret(args.applicationSecret) : undefined) ?? utilities.getEnv("OVH_APPLICATION_SECRET");
             resourceInputs["clientId"] = args ? args.clientId : undefined;
@@ -79,6 +84,10 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * The OVH API Access Token
+     */
+    accessToken?: pulumi.Input<string>;
     /**
      * The OVH API Application Key
      */

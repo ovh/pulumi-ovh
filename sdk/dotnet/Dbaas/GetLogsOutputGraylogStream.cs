@@ -198,6 +198,10 @@ namespace Pulumi.Ovh.Dbaas
         /// Enable Websocket
         /// </summary>
         public readonly bool WebSocketEnabled;
+        /// <summary>
+        /// Write token of the stream (empty if the caller is not the owner of the stream)
+        /// </summary>
+        public readonly string WriteToken;
 
         [OutputConstructor]
         private GetLogsOutputGraylogStreamResult(
@@ -249,7 +253,9 @@ namespace Pulumi.Ovh.Dbaas
 
             string updatedAt,
 
-            bool webSocketEnabled)
+            bool webSocketEnabled,
+
+            string writeToken)
         {
             CanAlert = canAlert;
             ColdStorageCompression = coldStorageCompression;
@@ -276,6 +282,7 @@ namespace Pulumi.Ovh.Dbaas
             Title = title;
             UpdatedAt = updatedAt;
             WebSocketEnabled = webSocketEnabled;
+            WriteToken = writeToken;
         }
     }
 }

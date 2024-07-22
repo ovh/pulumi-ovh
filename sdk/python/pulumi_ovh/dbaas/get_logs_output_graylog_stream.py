@@ -21,7 +21,7 @@ class GetLogsOutputGraylogStreamResult:
     """
     A collection of values returned by getLogsOutputGraylogStream.
     """
-    def __init__(__self__, can_alert=None, cold_storage_compression=None, cold_storage_content=None, cold_storage_enabled=None, cold_storage_notify_enabled=None, cold_storage_retention=None, cold_storage_target=None, created_at=None, description=None, id=None, indexing_enabled=None, indexing_max_size=None, indexing_notify_enabled=None, is_editable=None, is_shareable=None, nb_alert_condition=None, nb_archive=None, parent_stream_id=None, pause_indexing_on_max_size=None, retention_id=None, service_name=None, stream_id=None, title=None, updated_at=None, web_socket_enabled=None):
+    def __init__(__self__, can_alert=None, cold_storage_compression=None, cold_storage_content=None, cold_storage_enabled=None, cold_storage_notify_enabled=None, cold_storage_retention=None, cold_storage_target=None, created_at=None, description=None, id=None, indexing_enabled=None, indexing_max_size=None, indexing_notify_enabled=None, is_editable=None, is_shareable=None, nb_alert_condition=None, nb_archive=None, parent_stream_id=None, pause_indexing_on_max_size=None, retention_id=None, service_name=None, stream_id=None, title=None, updated_at=None, web_socket_enabled=None, write_token=None):
         if can_alert and not isinstance(can_alert, bool):
             raise TypeError("Expected argument 'can_alert' to be a bool")
         pulumi.set(__self__, "can_alert", can_alert)
@@ -97,6 +97,9 @@ class GetLogsOutputGraylogStreamResult:
         if web_socket_enabled and not isinstance(web_socket_enabled, bool):
             raise TypeError("Expected argument 'web_socket_enabled' to be a bool")
         pulumi.set(__self__, "web_socket_enabled", web_socket_enabled)
+        if write_token and not isinstance(write_token, str):
+            raise TypeError("Expected argument 'write_token' to be a str")
+        pulumi.set(__self__, "write_token", write_token)
 
     @property
     @pulumi.getter(name="canAlert")
@@ -289,6 +292,14 @@ class GetLogsOutputGraylogStreamResult:
         """
         return pulumi.get(self, "web_socket_enabled")
 
+    @property
+    @pulumi.getter(name="writeToken")
+    def write_token(self) -> str:
+        """
+        Write token of the stream (empty if the caller is not the owner of the stream)
+        """
+        return pulumi.get(self, "write_token")
+
 
 class AwaitableGetLogsOutputGraylogStreamResult(GetLogsOutputGraylogStreamResult):
     # pylint: disable=using-constant-test
@@ -320,7 +331,8 @@ class AwaitableGetLogsOutputGraylogStreamResult(GetLogsOutputGraylogStreamResult
             stream_id=self.stream_id,
             title=self.title,
             updated_at=self.updated_at,
-            web_socket_enabled=self.web_socket_enabled)
+            web_socket_enabled=self.web_socket_enabled,
+            write_token=self.write_token)
 
 
 def get_logs_output_graylog_stream(service_name: Optional[str] = None,
@@ -374,7 +386,8 @@ def get_logs_output_graylog_stream(service_name: Optional[str] = None,
         stream_id=pulumi.get(__ret__, 'stream_id'),
         title=pulumi.get(__ret__, 'title'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
-        web_socket_enabled=pulumi.get(__ret__, 'web_socket_enabled'))
+        web_socket_enabled=pulumi.get(__ret__, 'web_socket_enabled'),
+        write_token=pulumi.get(__ret__, 'write_token'))
 
 
 @_utilities.lift_output_func(get_logs_output_graylog_stream)

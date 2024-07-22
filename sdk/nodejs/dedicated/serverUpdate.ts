@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *     bootId: rescue.then(rescue => rescue.results?.[0]),
  *     monitoring: true,
  *     state: "ok",
+ *     displayName: "Some human-readable name",
  * });
  * ```
  */
@@ -62,6 +63,10 @@ export class ServerUpdate extends pulumi.CustomResource {
      */
     public readonly bootScript!: pulumi.Output<string | undefined>;
     /**
+     * display name of the dedicated server
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
      * Icmp monitoring state
      */
     public readonly monitoring!: pulumi.Output<boolean>;
@@ -89,6 +94,7 @@ export class ServerUpdate extends pulumi.CustomResource {
             const state = argsOrState as ServerUpdateState | undefined;
             resourceInputs["bootId"] = state ? state.bootId : undefined;
             resourceInputs["bootScript"] = state ? state.bootScript : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["monitoring"] = state ? state.monitoring : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
@@ -99,6 +105,7 @@ export class ServerUpdate extends pulumi.CustomResource {
             }
             resourceInputs["bootId"] = args ? args.bootId : undefined;
             resourceInputs["bootScript"] = args ? args.bootScript : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
@@ -120,6 +127,10 @@ export interface ServerUpdateState {
      * boot script of the server
      */
     bootScript?: pulumi.Input<string>;
+    /**
+     * display name of the dedicated server
+     */
+    displayName?: pulumi.Input<string>;
     /**
      * Icmp monitoring state
      */
@@ -146,6 +157,10 @@ export interface ServerUpdateArgs {
      * boot script of the server
      */
     bootScript?: pulumi.Input<string>;
+    /**
+     * display name of the dedicated server
+     */
+    displayName?: pulumi.Input<string>;
     /**
      * Icmp monitoring state
      */

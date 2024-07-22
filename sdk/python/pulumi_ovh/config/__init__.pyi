@@ -9,6 +9,11 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
+accessToken: Optional[str]
+"""
+The OVH API Access Token
+"""
+
 applicationKey: Optional[str]
 """
 The OVH API Application Key

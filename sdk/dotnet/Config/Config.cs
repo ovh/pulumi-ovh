@@ -32,6 +32,16 @@ namespace Pulumi.Ovh
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("ovh");
 
+        private static readonly __Value<string?> _accessToken = new __Value<string?>(() => __config.Get("accessToken"));
+        /// <summary>
+        /// The OVH API Access Token
+        /// </summary>
+        public static string? AccessToken
+        {
+            get => _accessToken.Get();
+            set => _accessToken.Set(value);
+        }
+
         private static readonly __Value<string?> _applicationKey = new __Value<string?>(() => __config.Get("applicationKey") ?? Utilities.GetEnv("OVH_APPLICATION_KEY"));
         /// <summary>
         /// The OVH API Application Key

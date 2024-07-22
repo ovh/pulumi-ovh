@@ -137,6 +137,10 @@ export interface GetLogsOutputGraylogStreamResult {
      * Enable Websocket
      */
     readonly webSocketEnabled: boolean;
+    /**
+     * Write token of the stream (empty if the caller is not the owner of the stream)
+     */
+    readonly writeToken: string;
 }
 /**
  * Use this data source to retrieve information about a DBaas logs output graylog stream.

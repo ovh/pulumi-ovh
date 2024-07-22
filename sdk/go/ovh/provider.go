@@ -18,6 +18,8 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
+	// The OVH API Access Token
+	AccessToken pulumi.StringPtrOutput `pulumi:"accessToken"`
 	// The OVH API Application Key
 	ApplicationKey pulumi.StringPtrOutput `pulumi:"applicationKey"`
 	// The OVH API Application Secret
@@ -76,6 +78,8 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	// The OVH API Access Token
+	AccessToken *string `pulumi:"accessToken"`
 	// The OVH API Application Key
 	ApplicationKey *string `pulumi:"applicationKey"`
 	// The OVH API Application Secret
@@ -92,6 +96,8 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	// The OVH API Access Token
+	AccessToken pulumi.StringPtrInput
 	// The OVH API Application Key
 	ApplicationKey pulumi.StringPtrInput
 	// The OVH API Application Secret
@@ -141,6 +147,11 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+// The OVH API Access Token
+func (o ProviderOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccessToken }).(pulumi.StringPtrOutput)
 }
 
 // The OVH API Application Key

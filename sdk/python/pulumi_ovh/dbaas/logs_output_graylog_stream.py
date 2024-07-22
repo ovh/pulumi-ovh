@@ -35,12 +35,12 @@ class LogsOutputGraylogStreamArgs:
         :param pulumi.Input[str] description: Stream description
         :param pulumi.Input[str] service_name: The service name
         :param pulumi.Input[str] title: Stream description
-        :param pulumi.Input[str] cold_storage_compression: Cold storage compression method
-        :param pulumi.Input[str] cold_storage_content: ColdStorage content
+        :param pulumi.Input[str] cold_storage_compression: Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+        :param pulumi.Input[str] cold_storage_content: ColdStorage content. One of "ALL", "GLEF", "PLAIN"
         :param pulumi.Input[bool] cold_storage_enabled: Is Cold storage enabled?
         :param pulumi.Input[bool] cold_storage_notify_enabled: Notify on new Cold storage archive
         :param pulumi.Input[int] cold_storage_retention: Cold storage retention in year
-        :param pulumi.Input[str] cold_storage_target: ColdStorage destination
+        :param pulumi.Input[str] cold_storage_target: ColdStorage destination. One of "PCA", "PCS"
         :param pulumi.Input[bool] indexing_enabled: Enable ES indexing
         :param pulumi.Input[int] indexing_max_size: Maximum indexing size (in GB)
         :param pulumi.Input[bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
@@ -119,7 +119,7 @@ class LogsOutputGraylogStreamArgs:
     @pulumi.getter(name="coldStorageCompression")
     def cold_storage_compression(self) -> Optional[pulumi.Input[str]]:
         """
-        Cold storage compression method
+        Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
         """
         return pulumi.get(self, "cold_storage_compression")
 
@@ -131,7 +131,7 @@ class LogsOutputGraylogStreamArgs:
     @pulumi.getter(name="coldStorageContent")
     def cold_storage_content(self) -> Optional[pulumi.Input[str]]:
         """
-        ColdStorage content
+        ColdStorage content. One of "ALL", "GLEF", "PLAIN"
         """
         return pulumi.get(self, "cold_storage_content")
 
@@ -179,7 +179,7 @@ class LogsOutputGraylogStreamArgs:
     @pulumi.getter(name="coldStorageTarget")
     def cold_storage_target(self) -> Optional[pulumi.Input[str]]:
         """
-        ColdStorage destination
+        ColdStorage destination. One of "PCA", "PCS"
         """
         return pulumi.get(self, "cold_storage_target")
 
@@ -298,16 +298,17 @@ class _LogsOutputGraylogStreamState:
                  stream_id: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
-                 web_socket_enabled: Optional[pulumi.Input[bool]] = None):
+                 web_socket_enabled: Optional[pulumi.Input[bool]] = None,
+                 write_token: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogsOutputGraylogStream resources.
         :param pulumi.Input[bool] can_alert: Indicates if the current user can create alert on the stream
-        :param pulumi.Input[str] cold_storage_compression: Cold storage compression method
-        :param pulumi.Input[str] cold_storage_content: ColdStorage content
+        :param pulumi.Input[str] cold_storage_compression: Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+        :param pulumi.Input[str] cold_storage_content: ColdStorage content. One of "ALL", "GLEF", "PLAIN"
         :param pulumi.Input[bool] cold_storage_enabled: Is Cold storage enabled?
         :param pulumi.Input[bool] cold_storage_notify_enabled: Notify on new Cold storage archive
         :param pulumi.Input[int] cold_storage_retention: Cold storage retention in year
-        :param pulumi.Input[str] cold_storage_target: ColdStorage destination
+        :param pulumi.Input[str] cold_storage_target: ColdStorage destination. One of "PCA", "PCS"
         :param pulumi.Input[str] created_at: Stream creation
         :param pulumi.Input[str] description: Stream description
         :param pulumi.Input[bool] indexing_enabled: Enable ES indexing
@@ -316,15 +317,16 @@ class _LogsOutputGraylogStreamState:
         :param pulumi.Input[bool] is_editable: Indicates if you are allowed to edit entry
         :param pulumi.Input[bool] is_shareable: Indicates if you are allowed to share entry
         :param pulumi.Input[int] nb_alert_condition: Number of alert condition
-        :param pulumi.Input[int] nb_archive: Number of coldstored archives
+        :param pulumi.Input[int] nb_archive: Number of coldstored archivesr
         :param pulumi.Input[str] parent_stream_id: Parent stream ID
         :param pulumi.Input[bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reach
         :param pulumi.Input[str] retention_id: Retention ID
         :param pulumi.Input[str] service_name: The service name
         :param pulumi.Input[str] stream_id: Stream ID
         :param pulumi.Input[str] title: Stream description
-        :param pulumi.Input[str] updated_at: Stream last update
+        :param pulumi.Input[str] updated_at: Stream last updater
         :param pulumi.Input[bool] web_socket_enabled: Enable Websocket
+        :param pulumi.Input[str] write_token: Write token of the stream (empty if the caller is not the owner of the stream)
         """
         if can_alert is not None:
             pulumi.set(__self__, "can_alert", can_alert)
@@ -374,6 +376,8 @@ class _LogsOutputGraylogStreamState:
             pulumi.set(__self__, "updated_at", updated_at)
         if web_socket_enabled is not None:
             pulumi.set(__self__, "web_socket_enabled", web_socket_enabled)
+        if write_token is not None:
+            pulumi.set(__self__, "write_token", write_token)
 
     @property
     @pulumi.getter(name="canAlert")
@@ -391,7 +395,7 @@ class _LogsOutputGraylogStreamState:
     @pulumi.getter(name="coldStorageCompression")
     def cold_storage_compression(self) -> Optional[pulumi.Input[str]]:
         """
-        Cold storage compression method
+        Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
         """
         return pulumi.get(self, "cold_storage_compression")
 
@@ -403,7 +407,7 @@ class _LogsOutputGraylogStreamState:
     @pulumi.getter(name="coldStorageContent")
     def cold_storage_content(self) -> Optional[pulumi.Input[str]]:
         """
-        ColdStorage content
+        ColdStorage content. One of "ALL", "GLEF", "PLAIN"
         """
         return pulumi.get(self, "cold_storage_content")
 
@@ -451,7 +455,7 @@ class _LogsOutputGraylogStreamState:
     @pulumi.getter(name="coldStorageTarget")
     def cold_storage_target(self) -> Optional[pulumi.Input[str]]:
         """
-        ColdStorage destination
+        ColdStorage destination. One of "PCA", "PCS"
         """
         return pulumi.get(self, "cold_storage_target")
 
@@ -559,7 +563,7 @@ class _LogsOutputGraylogStreamState:
     @pulumi.getter(name="nbArchive")
     def nb_archive(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of coldstored archives
+        Number of coldstored archivesr
         """
         return pulumi.get(self, "nb_archive")
 
@@ -643,7 +647,7 @@ class _LogsOutputGraylogStreamState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Stream last update
+        Stream last updater
         """
         return pulumi.get(self, "updated_at")
 
@@ -662,6 +666,18 @@ class _LogsOutputGraylogStreamState:
     @web_socket_enabled.setter
     def web_socket_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "web_socket_enabled", value)
+
+    @property
+    @pulumi.getter(name="writeToken")
+    def write_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Write token of the stream (empty if the caller is not the owner of the stream)
+        """
+        return pulumi.get(self, "write_token")
+
+    @write_token.setter
+    def write_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "write_token", value)
 
 
 class LogsOutputGraylogStream(pulumi.CustomResource):
@@ -687,15 +703,44 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
                  web_socket_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a LogsOutputGraylogStream resource with the given unique name, props, and options.
+        Creates a DBaaS Logs Graylog output stream.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        stream = ovh.dbaas.LogsOutputGraylogStream("stream",
+            description="my graylog stream",
+            service_name="....",
+            title="my stream")
+        ```
+
+        To define the retention of the stream, you can use the following configuration:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        retention = ovh.Dbaas.get_logs_clusters_retention(service_name="ldp-xx-xxxxx",
+            cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            duration="P14D")
+        stream = ovh.dbaas.LogsOutputGraylogStream("stream",
+            service_name="....",
+            title="my stream",
+            description="my graylog stream",
+            retention_id=retention.retention_id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cold_storage_compression: Cold storage compression method
-        :param pulumi.Input[str] cold_storage_content: ColdStorage content
+        :param pulumi.Input[str] cold_storage_compression: Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+        :param pulumi.Input[str] cold_storage_content: ColdStorage content. One of "ALL", "GLEF", "PLAIN"
         :param pulumi.Input[bool] cold_storage_enabled: Is Cold storage enabled?
         :param pulumi.Input[bool] cold_storage_notify_enabled: Notify on new Cold storage archive
         :param pulumi.Input[int] cold_storage_retention: Cold storage retention in year
-        :param pulumi.Input[str] cold_storage_target: ColdStorage destination
+        :param pulumi.Input[str] cold_storage_target: ColdStorage destination. One of "PCA", "PCS"
         :param pulumi.Input[str] description: Stream description
         :param pulumi.Input[bool] indexing_enabled: Enable ES indexing
         :param pulumi.Input[int] indexing_max_size: Maximum indexing size (in GB)
@@ -714,7 +759,36 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
                  args: LogsOutputGraylogStreamArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LogsOutputGraylogStream resource with the given unique name, props, and options.
+        Creates a DBaaS Logs Graylog output stream.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        stream = ovh.dbaas.LogsOutputGraylogStream("stream",
+            description="my graylog stream",
+            service_name="....",
+            title="my stream")
+        ```
+
+        To define the retention of the stream, you can use the following configuration:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        retention = ovh.Dbaas.get_logs_clusters_retention(service_name="ldp-xx-xxxxx",
+            cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            duration="P14D")
+        stream = ovh.dbaas.LogsOutputGraylogStream("stream",
+            service_name="....",
+            title="my stream",
+            description="my graylog stream",
+            retention_id=retention.retention_id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param LogsOutputGraylogStreamArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -785,6 +859,9 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
             __props__.__dict__["nb_archive"] = None
             __props__.__dict__["stream_id"] = None
             __props__.__dict__["updated_at"] = None
+            __props__.__dict__["write_token"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["writeToken"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(LogsOutputGraylogStream, __self__).__init__(
             'ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream',
             resource_name,
@@ -818,7 +895,8 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
             stream_id: Optional[pulumi.Input[str]] = None,
             title: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
-            web_socket_enabled: Optional[pulumi.Input[bool]] = None) -> 'LogsOutputGraylogStream':
+            web_socket_enabled: Optional[pulumi.Input[bool]] = None,
+            write_token: Optional[pulumi.Input[str]] = None) -> 'LogsOutputGraylogStream':
         """
         Get an existing LogsOutputGraylogStream resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -827,12 +905,12 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_alert: Indicates if the current user can create alert on the stream
-        :param pulumi.Input[str] cold_storage_compression: Cold storage compression method
-        :param pulumi.Input[str] cold_storage_content: ColdStorage content
+        :param pulumi.Input[str] cold_storage_compression: Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+        :param pulumi.Input[str] cold_storage_content: ColdStorage content. One of "ALL", "GLEF", "PLAIN"
         :param pulumi.Input[bool] cold_storage_enabled: Is Cold storage enabled?
         :param pulumi.Input[bool] cold_storage_notify_enabled: Notify on new Cold storage archive
         :param pulumi.Input[int] cold_storage_retention: Cold storage retention in year
-        :param pulumi.Input[str] cold_storage_target: ColdStorage destination
+        :param pulumi.Input[str] cold_storage_target: ColdStorage destination. One of "PCA", "PCS"
         :param pulumi.Input[str] created_at: Stream creation
         :param pulumi.Input[str] description: Stream description
         :param pulumi.Input[bool] indexing_enabled: Enable ES indexing
@@ -841,15 +919,16 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         :param pulumi.Input[bool] is_editable: Indicates if you are allowed to edit entry
         :param pulumi.Input[bool] is_shareable: Indicates if you are allowed to share entry
         :param pulumi.Input[int] nb_alert_condition: Number of alert condition
-        :param pulumi.Input[int] nb_archive: Number of coldstored archives
+        :param pulumi.Input[int] nb_archive: Number of coldstored archivesr
         :param pulumi.Input[str] parent_stream_id: Parent stream ID
         :param pulumi.Input[bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reach
         :param pulumi.Input[str] retention_id: Retention ID
         :param pulumi.Input[str] service_name: The service name
         :param pulumi.Input[str] stream_id: Stream ID
         :param pulumi.Input[str] title: Stream description
-        :param pulumi.Input[str] updated_at: Stream last update
+        :param pulumi.Input[str] updated_at: Stream last updater
         :param pulumi.Input[bool] web_socket_enabled: Enable Websocket
+        :param pulumi.Input[str] write_token: Write token of the stream (empty if the caller is not the owner of the stream)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -879,6 +958,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         __props__.__dict__["title"] = title
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["web_socket_enabled"] = web_socket_enabled
+        __props__.__dict__["write_token"] = write_token
         return LogsOutputGraylogStream(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -893,7 +973,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
     @pulumi.getter(name="coldStorageCompression")
     def cold_storage_compression(self) -> pulumi.Output[str]:
         """
-        Cold storage compression method
+        Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
         """
         return pulumi.get(self, "cold_storage_compression")
 
@@ -901,7 +981,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
     @pulumi.getter(name="coldStorageContent")
     def cold_storage_content(self) -> pulumi.Output[str]:
         """
-        ColdStorage content
+        ColdStorage content. One of "ALL", "GLEF", "PLAIN"
         """
         return pulumi.get(self, "cold_storage_content")
 
@@ -933,7 +1013,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
     @pulumi.getter(name="coldStorageTarget")
     def cold_storage_target(self) -> pulumi.Output[str]:
         """
-        ColdStorage destination
+        ColdStorage destination. One of "PCA", "PCS"
         """
         return pulumi.get(self, "cold_storage_target")
 
@@ -1005,7 +1085,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
     @pulumi.getter(name="nbArchive")
     def nb_archive(self) -> pulumi.Output[int]:
         """
-        Number of coldstored archives
+        Number of coldstored archivesr
         """
         return pulumi.get(self, "nb_archive")
 
@@ -1061,7 +1141,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
         """
-        Stream last update
+        Stream last updater
         """
         return pulumi.get(self, "updated_at")
 
@@ -1072,4 +1152,12 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         Enable Websocket
         """
         return pulumi.get(self, "web_socket_enabled")
+
+    @property
+    @pulumi.getter(name="writeToken")
+    def write_token(self) -> pulumi.Output[str]:
+        """
+        Write token of the stream (empty if the caller is not the owner of the stream)
+        """
+        return pulumi.get(self, "write_token")
 

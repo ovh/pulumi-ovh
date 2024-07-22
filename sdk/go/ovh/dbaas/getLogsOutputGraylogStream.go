@@ -106,6 +106,8 @@ type LookupLogsOutputGraylogStreamResult struct {
 	UpdatedAt string `pulumi:"updatedAt"`
 	// Enable Websocket
 	WebSocketEnabled bool `pulumi:"webSocketEnabled"`
+	// Write token of the stream (empty if the caller is not the owner of the stream)
+	WriteToken string `pulumi:"writeToken"`
 }
 
 func LookupLogsOutputGraylogStreamOutput(ctx *pulumi.Context, args LookupLogsOutputGraylogStreamOutputArgs, opts ...pulumi.InvokeOption) LookupLogsOutputGraylogStreamResultOutput {
@@ -268,6 +270,11 @@ func (o LookupLogsOutputGraylogStreamResultOutput) UpdatedAt() pulumi.StringOutp
 // Enable Websocket
 func (o LookupLogsOutputGraylogStreamResultOutput) WebSocketEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLogsOutputGraylogStreamResult) bool { return v.WebSocketEnabled }).(pulumi.BoolOutput)
+}
+
+// Write token of the stream (empty if the caller is not the owner of the stream)
+func (o LookupLogsOutputGraylogStreamResultOutput) WriteToken() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLogsOutputGraylogStreamResult) string { return v.WriteToken }).(pulumi.StringOutput)
 }
 
 func init() {

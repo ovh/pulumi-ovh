@@ -39,6 +39,7 @@ import (
 //				BootId:      pulumi.Int(rescue.Results[0]),
 //				Monitoring:  pulumi.Bool(true),
 //				State:       pulumi.String("ok"),
+//				DisplayName: pulumi.String("Some human-readable name"),
 //			})
 //			if err != nil {
 //				return err
@@ -55,6 +56,8 @@ type ServerUpdate struct {
 	BootId pulumi.IntOutput `pulumi:"bootId"`
 	// boot script of the server
 	BootScript pulumi.StringPtrOutput `pulumi:"bootScript"`
+	// display name of the dedicated server
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Icmp monitoring state
 	Monitoring pulumi.BoolOutput `pulumi:"monitoring"`
 	// The serviceName of your dedicated server.
@@ -100,6 +103,8 @@ type serverUpdateState struct {
 	BootId *int `pulumi:"bootId"`
 	// boot script of the server
 	BootScript *string `pulumi:"bootScript"`
+	// display name of the dedicated server
+	DisplayName *string `pulumi:"displayName"`
 	// Icmp monitoring state
 	Monitoring *bool `pulumi:"monitoring"`
 	// The serviceName of your dedicated server.
@@ -113,6 +118,8 @@ type ServerUpdateState struct {
 	BootId pulumi.IntPtrInput
 	// boot script of the server
 	BootScript pulumi.StringPtrInput
+	// display name of the dedicated server
+	DisplayName pulumi.StringPtrInput
 	// Icmp monitoring state
 	Monitoring pulumi.BoolPtrInput
 	// The serviceName of your dedicated server.
@@ -130,6 +137,8 @@ type serverUpdateArgs struct {
 	BootId *int `pulumi:"bootId"`
 	// boot script of the server
 	BootScript *string `pulumi:"bootScript"`
+	// display name of the dedicated server
+	DisplayName *string `pulumi:"displayName"`
 	// Icmp monitoring state
 	Monitoring *bool `pulumi:"monitoring"`
 	// The serviceName of your dedicated server.
@@ -144,6 +153,8 @@ type ServerUpdateArgs struct {
 	BootId pulumi.IntPtrInput
 	// boot script of the server
 	BootScript pulumi.StringPtrInput
+	// display name of the dedicated server
+	DisplayName pulumi.StringPtrInput
 	// Icmp monitoring state
 	Monitoring pulumi.BoolPtrInput
 	// The serviceName of your dedicated server.
@@ -247,6 +258,11 @@ func (o ServerUpdateOutput) BootId() pulumi.IntOutput {
 // boot script of the server
 func (o ServerUpdateOutput) BootScript() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerUpdate) pulumi.StringPtrOutput { return v.BootScript }).(pulumi.StringPtrOutput)
+}
+
+// display name of the dedicated server
+func (o ServerUpdateOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerUpdate) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Icmp monitoring state

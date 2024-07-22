@@ -262,13 +262,11 @@ class _InstallationTemplateState:
 
     @property
     @pulumi.getter(name="hardRaidConfiguration")
+    @_utilities.deprecated("""This will be deprecated in the next release""")
     def hard_raid_configuration(self) -> Optional[pulumi.Input[bool]]:
         """
         This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
         """
-        warnings.warn("""This will be deprecated in the next release""", DeprecationWarning)
-        pulumi.log.warn("""hard_raid_configuration is deprecated: This will be deprecated in the next release""")
-
         return pulumi.get(self, "hard_raid_configuration")
 
     @hard_raid_configuration.setter
@@ -598,13 +596,11 @@ class InstallationTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hardRaidConfiguration")
+    @_utilities.deprecated("""This will be deprecated in the next release""")
     def hard_raid_configuration(self) -> pulumi.Output[bool]:
         """
         This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
         """
-        warnings.warn("""This will be deprecated in the next release""", DeprecationWarning)
-        pulumi.log.warn("""hard_raid_configuration is deprecated: This will be deprecated in the next release""")
-
         return pulumi.get(self, "hard_raid_configuration")
 
     @property

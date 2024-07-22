@@ -19,6 +19,12 @@ namespace Pulumi.Ovh
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
+        /// The OVH API Access Token
+        /// </summary>
+        [Output("accessToken")]
+        public Output<string?> AccessToken { get; private set; } = null!;
+
+        /// <summary>
         /// The OVH API Application Key
         /// </summary>
         [Output("applicationKey")]
@@ -87,6 +93,12 @@ namespace Pulumi.Ovh
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The OVH API Access Token
+        /// </summary>
+        [Input("accessToken")]
+        public Input<string>? AccessToken { get; set; }
+
         /// <summary>
         /// The OVH API Application Key
         /// </summary>

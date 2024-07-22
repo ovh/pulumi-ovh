@@ -33,6 +33,7 @@ namespace Pulumi.Ovh.Dedicated
     ///         BootId = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.Results[0]),
     ///         Monitoring = true,
     ///         State = "ok",
+    ///         DisplayName = "Some human-readable name",
     ///     });
     /// 
     /// });
@@ -52,6 +53,12 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         [Output("bootScript")]
         public Output<string?> BootScript { get; private set; } = null!;
+
+        /// <summary>
+        /// display name of the dedicated server
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// Icmp monitoring state
@@ -131,6 +138,12 @@ namespace Pulumi.Ovh.Dedicated
         public Input<string>? BootScript { get; set; }
 
         /// <summary>
+        /// display name of the dedicated server
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
         /// Icmp monitoring state
         /// </summary>
         [Input("monitoring")]
@@ -167,6 +180,12 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         [Input("bootScript")]
         public Input<string>? BootScript { get; set; }
+
+        /// <summary>
+        /// display name of the dedicated server
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         /// <summary>
         /// Icmp monitoring state

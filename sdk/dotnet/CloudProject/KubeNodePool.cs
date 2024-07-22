@@ -64,11 +64,7 @@ namespace Pulumi.Ovh.CloudProject
     ///                     { "k1", "v1" },
     ///                     { "k2", "v2" },
     ///                 },
-    ///                 Finalizers = new[]
-    ///                 {
-    ///                     "ovhcloud.com/v1beta1",
-    ///                     "ovhcloud.com/v1",
-    ///                 },
+    ///                 Finalizers = new() { },
     ///                 Labels = 
     ///                 {
     ///                     { "k3", "v3" },

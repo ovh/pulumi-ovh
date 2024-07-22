@@ -126,6 +126,10 @@ export interface GetKubeResult {
      */
     readonly kubeProxyMode?: string;
     /**
+     * Openstack private network (or vRack) ID to use for load balancers.
+     */
+    readonly loadBalancersSubnetId: string;
+    /**
      * The name of the managed kubernetes cluster.
      */
     readonly name?: string;
@@ -133,6 +137,10 @@ export interface GetKubeResult {
      * Kubernetes versions available for upgrade.
      */
     readonly nextUpgradeVersions: string[];
+    /**
+     * Openstack private network (or vRack) ID to use for nodes.
+     */
+    readonly nodesSubnetId: string;
     /**
      * Cluster nodes URL.
      */

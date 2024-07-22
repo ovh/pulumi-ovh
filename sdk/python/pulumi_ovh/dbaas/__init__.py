@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .get_logs_cluster import *
 from .get_logs_clusters import *
+from .get_logs_clusters_retention import *
 from .get_logs_input_engine import *
 from .get_logs_output_graylog_stream import *
 from .logs_cluster import *
