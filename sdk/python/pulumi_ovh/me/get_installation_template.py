@@ -138,13 +138,11 @@ class GetInstallationTemplateResult:
 
     @property
     @pulumi.getter(name="hardRaidConfiguration")
+    @_utilities.deprecated("""This will be deprecated in the next release""")
     def hard_raid_configuration(self) -> bool:
         """
         Distribution supports hardware raid configuration through the OVHcloud API.
         """
-        warnings.warn("""This will be deprecated in the next release""", DeprecationWarning)
-        pulumi.log.warn("""hard_raid_configuration is deprecated: This will be deprecated in the next release""")
-
         return pulumi.get(self, "hard_raid_configuration")
 
     @property

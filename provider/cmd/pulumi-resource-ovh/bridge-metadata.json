@@ -158,6 +158,7 @@
             "ovh:CloudProjectDatabase/getUsers:getUsers": 0,
             "ovh:Dbaas/getLogsCluster:getLogsCluster": 0,
             "ovh:Dbaas/getLogsClusters:getLogsClusters": 0,
+            "ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention": 1,
             "ovh:Dbaas/getLogsInputEngine:getLogsInputEngine": 0,
             "ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream": 0,
             "ovh:Dedicated/getCeph:getCeph": 0,

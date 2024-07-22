@@ -24,6 +24,7 @@ namespace Pulumi.Ovh.Dedicated
     /// {
     ///     var my_partition = new Ovh.Dedicated.NasHAPartitionAccess("my-partition", new()
     ///     {
+    ///         AclDescription = "Description of the ACL",
     ///         Ip = "123.123.123.123/32",
     ///         PartitionName = "my-partition",
     ///         ServiceName = "zpool-12345",
@@ -45,13 +46,19 @@ namespace Pulumi.Ovh.Dedicated
     public partial class NasHAPartitionAccess : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ip block in x.x.x.x/x format
+        /// A brief description of the acl
+        /// </summary>
+        [Output("aclDescription")]
+        public Output<string?> AclDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// IP block in x.x.x.x/x format
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
-        /// name of the partition
+        /// Name of the partition
         /// </summary>
         [Output("partitionName")]
         public Output<string> PartitionName { get; private set; } = null!;
@@ -63,7 +70,7 @@ namespace Pulumi.Ovh.Dedicated
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// one of "readwrite", "readonly"
+        /// One of "readwrite", "readonly"
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -116,13 +123,19 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class NasHAPartitionAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ip block in x.x.x.x/x format
+        /// A brief description of the acl
+        /// </summary>
+        [Input("aclDescription")]
+        public Input<string>? AclDescription { get; set; }
+
+        /// <summary>
+        /// IP block in x.x.x.x/x format
         /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// name of the partition
+        /// Name of the partition
         /// </summary>
         [Input("partitionName", required: true)]
         public Input<string> PartitionName { get; set; } = null!;
@@ -134,7 +147,7 @@ namespace Pulumi.Ovh.Dedicated
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// one of "readwrite", "readonly"
+        /// One of "readwrite", "readonly"
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -148,13 +161,19 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class NasHAPartitionAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ip block in x.x.x.x/x format
+        /// A brief description of the acl
+        /// </summary>
+        [Input("aclDescription")]
+        public Input<string>? AclDescription { get; set; }
+
+        /// <summary>
+        /// IP block in x.x.x.x/x format
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// name of the partition
+        /// Name of the partition
         /// </summary>
         [Input("partitionName")]
         public Input<string>? PartitionName { get; set; }
@@ -166,7 +185,7 @@ namespace Pulumi.Ovh.Dedicated
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// one of "readwrite", "readonly"
+        /// One of "readwrite", "readonly"
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

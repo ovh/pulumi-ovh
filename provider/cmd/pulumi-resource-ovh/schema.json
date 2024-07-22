@@ -61,6 +61,10 @@
     },
     "config": {
         "variables": {
+            "accessToken": {
+                "type": "string",
+                "description": "The OVH API Access Token\n"
+            },
             "applicationKey": {
                 "type": "string",
                 "description": "The OVH API Application Key\n",
@@ -5700,6 +5704,10 @@
     "provider": {
         "description": "The provider type for the ovh package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
+            "accessToken": {
+                "type": "string",
+                "description": "The OVH API Access Token\n"
+            },
             "applicationKey": {
                 "type": "string",
                 "description": "The OVH API Application Key\n"
@@ -5727,6 +5735,10 @@
             }
         },
         "inputProperties": {
+            "accessToken": {
+                "type": "string",
+                "description": "The OVH API Access Token\n"
+            },
             "applicationKey": {
                 "type": "string",
                 "description": "The OVH API Application Key\n",
@@ -7108,6 +7120,10 @@
                     "description": "The kubeconfig file attributes.\n",
                     "secret": true
                 },
+                "loadBalancersSubnetId": {
+                    "type": "string",
+                    "description": "Openstack private network (or vRack) ID to use for load balancers.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the kubernetes cluster.\n"
@@ -7118,6 +7134,10 @@
                         "type": "string"
                     },
                     "description": "Kubernetes versions available for upgrade.\n"
+                },
+                "nodesSubnetId": {
+                    "type": "string",
+                    "description": "Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**\n"
                 },
                 "nodesUrl": {
                     "type": "string",
@@ -7166,6 +7186,7 @@
                 "kubeconfigAttributes",
                 "name",
                 "nextUpgradeVersions",
+                "nodesSubnetId",
                 "nodesUrl",
                 "region",
                 "serviceName",
@@ -7199,9 +7220,17 @@
                     "description": "Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.\n",
                     "willReplaceOnChanges": true
                 },
+                "loadBalancersSubnetId": {
+                    "type": "string",
+                    "description": "Openstack private network (or vRack) ID to use for load balancers.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the kubernetes cluster.\n"
+                },
+                "nodesSubnetId": {
+                    "type": "string",
+                    "description": "Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**\n"
                 },
                 "privateNetworkConfiguration": {
                     "$ref": "#/types/ovh:CloudProject/KubePrivateNetworkConfiguration:KubePrivateNetworkConfiguration",
@@ -7283,6 +7312,10 @@
                         "description": "The kubeconfig file attributes.\n",
                         "secret": true
                     },
+                    "loadBalancersSubnetId": {
+                        "type": "string",
+                        "description": "Openstack private network (or vRack) ID to use for load balancers.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the kubernetes cluster.\n"
@@ -7293,6 +7326,10 @@
                             "type": "string"
                         },
                         "description": "Kubernetes versions available for upgrade.\n"
+                    },
+                    "nodesSubnetId": {
+                        "type": "string",
+                        "description": "Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**\n"
                     },
                     "nodesUrl": {
                         "type": "string",
@@ -7410,7 +7447,7 @@
             }
         },
         "ovh:CloudProject/kubeNodePool:KubeNodePool": {
-            "description": "Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.\n\n## Example Usage\n\nCreate a simple node pool in your Kubernetes cluster:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst nodePool = new ovh.cloudproject.KubeNodePool(\"nodePool\", {\n    desiredNodes: 3,\n    flavorName: \"b2-7\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    maxNodes: 3,\n    minNodes: 3,\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnode_pool = ovh.cloud_project.KubeNodePool(\"nodePool\",\n    desired_nodes=3,\n    flavor_name=\"b2-7\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    max_nodes=3,\n    min_nodes=3,\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var nodePool = new Ovh.CloudProject.KubeNodePool(\"nodePool\", new()\n    {\n        DesiredNodes = 3,\n        FlavorName = \"b2-7\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        MaxNodes = 3,\n        MinNodes = 3,\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.NewKubeNodePool(ctx, \"nodePool\", \u0026CloudProject.KubeNodePoolArgs{\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tFlavorName:   pulumi.String(\"b2-7\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tMaxNodes:     pulumi.Int(3),\n\t\t\tMinNodes:     pulumi.Int(3),\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var nodePool = new KubeNodePool(\"nodePool\", KubeNodePoolArgs.builder()\n            .desiredNodes(3)\n            .flavorName(\"b2-7\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .maxNodes(3)\n            .minNodes(3)\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  nodePool:\n    type: ovh:CloudProject:KubeNodePool\n    properties:\n      desiredNodes: 3\n      flavorName: b2-7\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      maxNodes: 3\n      minNodes: 3\n      # Warning: \"_\" char is not allowed!\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate an advanced node pool in your Kubernetes cluster:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst pool = new ovh.cloudproject.KubeNodePool(\"pool\", {\n    desiredNodes: 3,\n    flavorName: \"b2-7\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    maxNodes: 3,\n    minNodes: 3,\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    template: {\n        metadata: {\n            annotations: {\n                k1: \"v1\",\n                k2: \"v2\",\n            },\n            finalizers: [\n                \"ovhcloud.com/v1beta1\",\n                \"ovhcloud.com/v1\",\n            ],\n            labels: {\n                k3: \"v3\",\n                k4: \"v4\",\n            },\n        },\n        spec: {\n            taints: [{\n                effect: \"PreferNoSchedule\",\n                key: \"k\",\n                value: \"v\",\n            }],\n            unschedulable: false,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\npool = ovh.cloud_project.KubeNodePool(\"pool\",\n    desired_nodes=3,\n    flavor_name=\"b2-7\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    max_nodes=3,\n    min_nodes=3,\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    template=ovh.cloud_project.KubeNodePoolTemplateArgs(\n        metadata=ovh.cloud_project.KubeNodePoolTemplateMetadataArgs(\n            annotations={\n                \"k1\": \"v1\",\n                \"k2\": \"v2\",\n            },\n            finalizers=[\n                \"ovhcloud.com/v1beta1\",\n                \"ovhcloud.com/v1\",\n            ],\n            labels={\n                \"k3\": \"v3\",\n                \"k4\": \"v4\",\n            },\n        ),\n        spec=ovh.cloud_project.KubeNodePoolTemplateSpecArgs(\n            taints=[{\n                \"effect\": \"PreferNoSchedule\",\n                \"key\": \"k\",\n                \"value\": \"v\",\n            }],\n            unschedulable=False,\n        ),\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pool = new Ovh.CloudProject.KubeNodePool(\"pool\", new()\n    {\n        DesiredNodes = 3,\n        FlavorName = \"b2-7\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        MaxNodes = 3,\n        MinNodes = 3,\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        Template = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateArgs\n        {\n            Metadata = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateMetadataArgs\n            {\n                Annotations = \n                {\n                    { \"k1\", \"v1\" },\n                    { \"k2\", \"v2\" },\n                },\n                Finalizers = new[]\n                {\n                    \"ovhcloud.com/v1beta1\",\n                    \"ovhcloud.com/v1\",\n                },\n                Labels = \n                {\n                    { \"k3\", \"v3\" },\n                    { \"k4\", \"v4\" },\n                },\n            },\n            Spec = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateSpecArgs\n            {\n                Taints = new[]\n                {\n                    \n                    {\n                        { \"effect\", \"PreferNoSchedule\" },\n                        { \"key\", \"k\" },\n                        { \"value\", \"v\" },\n                    },\n                },\n                Unschedulable = false,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.NewKubeNodePool(ctx, \"pool\", \u0026CloudProject.KubeNodePoolArgs{\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tFlavorName:   pulumi.String(\"b2-7\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tMaxNodes:     pulumi.Int(3),\n\t\t\tMinNodes:     pulumi.Int(3),\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tTemplate: \u0026cloudproject.KubeNodePoolTemplateArgs{\n\t\t\t\tMetadata: \u0026cloudproject.KubeNodePoolTemplateMetadataArgs{\n\t\t\t\t\tAnnotations: pulumi.StringMap{\n\t\t\t\t\t\t\"k1\": pulumi.String(\"v1\"),\n\t\t\t\t\t\t\"k2\": pulumi.String(\"v2\"),\n\t\t\t\t\t},\n\t\t\t\t\tFinalizers: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"ovhcloud.com/v1beta1\"),\n\t\t\t\t\t\tpulumi.String(\"ovhcloud.com/v1\"),\n\t\t\t\t\t},\n\t\t\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\t\t\"k3\": pulumi.String(\"v3\"),\n\t\t\t\t\t\t\"k4\": pulumi.String(\"v4\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSpec: \u0026cloudproject.KubeNodePoolTemplateSpecArgs{\n\t\t\t\t\tTaints: pulumi.MapArray{\n\t\t\t\t\t\tpulumi.Map{\n\t\t\t\t\t\t\t\"effect\": pulumi.Any(\"PreferNoSchedule\"),\n\t\t\t\t\t\t\t\"key\":    pulumi.Any(\"k\"),\n\t\t\t\t\t\t\t\"value\":  pulumi.Any(\"v\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tUnschedulable: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateMetadataArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pool = new KubeNodePool(\"pool\", KubeNodePoolArgs.builder()\n            .desiredNodes(3)\n            .flavorName(\"b2-7\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .maxNodes(3)\n            .minNodes(3)\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .template(KubeNodePoolTemplateArgs.builder()\n                .metadata(KubeNodePoolTemplateMetadataArgs.builder()\n                    .annotations(Map.ofEntries(\n                        Map.entry(\"k1\", \"v1\"),\n                        Map.entry(\"k2\", \"v2\")\n                    ))\n                    .finalizers(                    \n                        \"ovhcloud.com/v1beta1\",\n                        \"ovhcloud.com/v1\")\n                    .labels(Map.ofEntries(\n                        Map.entry(\"k3\", \"v3\"),\n                        Map.entry(\"k4\", \"v4\")\n                    ))\n                    .build())\n                .spec(KubeNodePoolTemplateSpecArgs.builder()\n                    .taints(Map.ofEntries(\n                        Map.entry(\"effect\", \"PreferNoSchedule\"),\n                        Map.entry(\"key\", \"k\"),\n                        Map.entry(\"value\", \"v\")\n                    ))\n                    .unschedulable(false)\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pool:\n    type: ovh:CloudProject:KubeNodePool\n    properties:\n      desiredNodes: 3\n      flavorName: b2-7\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      maxNodes: 3\n      minNodes: 3\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      template:\n        metadata:\n          annotations:\n            k1: v1\n            k2: v2\n          finalizers:\n            - ovhcloud.com/v1beta1\n            - ovhcloud.com/v1\n          labels:\n            k3: v3\n            k4: v4\n        spec:\n          taints:\n            - effect: PreferNoSchedule\n              key: k\n              value: v\n          unschedulable: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid\n```\n\n",
+            "description": "Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.\n\n## Example Usage\n\nCreate a simple node pool in your Kubernetes cluster:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst nodePool = new ovh.cloudproject.KubeNodePool(\"nodePool\", {\n    desiredNodes: 3,\n    flavorName: \"b2-7\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    maxNodes: 3,\n    minNodes: 3,\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnode_pool = ovh.cloud_project.KubeNodePool(\"nodePool\",\n    desired_nodes=3,\n    flavor_name=\"b2-7\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    max_nodes=3,\n    min_nodes=3,\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var nodePool = new Ovh.CloudProject.KubeNodePool(\"nodePool\", new()\n    {\n        DesiredNodes = 3,\n        FlavorName = \"b2-7\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        MaxNodes = 3,\n        MinNodes = 3,\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.NewKubeNodePool(ctx, \"nodePool\", \u0026CloudProject.KubeNodePoolArgs{\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tFlavorName:   pulumi.String(\"b2-7\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tMaxNodes:     pulumi.Int(3),\n\t\t\tMinNodes:     pulumi.Int(3),\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var nodePool = new KubeNodePool(\"nodePool\", KubeNodePoolArgs.builder()\n            .desiredNodes(3)\n            .flavorName(\"b2-7\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .maxNodes(3)\n            .minNodes(3)\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  nodePool:\n    type: ovh:CloudProject:KubeNodePool\n    properties:\n      desiredNodes: 3\n      flavorName: b2-7\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      maxNodes: 3\n      minNodes: 3\n      # Warning: \"_\" char is not allowed!\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate an advanced node pool in your Kubernetes cluster:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst pool = new ovh.cloudproject.KubeNodePool(\"pool\", {\n    desiredNodes: 3,\n    flavorName: \"b2-7\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    maxNodes: 3,\n    minNodes: 3,\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    template: {\n        metadata: {\n            annotations: {\n                k1: \"v1\",\n                k2: \"v2\",\n            },\n            finalizers: [],\n            labels: {\n                k3: \"v3\",\n                k4: \"v4\",\n            },\n        },\n        spec: {\n            taints: [{\n                effect: \"PreferNoSchedule\",\n                key: \"k\",\n                value: \"v\",\n            }],\n            unschedulable: false,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\npool = ovh.cloud_project.KubeNodePool(\"pool\",\n    desired_nodes=3,\n    flavor_name=\"b2-7\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    max_nodes=3,\n    min_nodes=3,\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    template=ovh.cloud_project.KubeNodePoolTemplateArgs(\n        metadata=ovh.cloud_project.KubeNodePoolTemplateMetadataArgs(\n            annotations={\n                \"k1\": \"v1\",\n                \"k2\": \"v2\",\n            },\n            finalizers=[],\n            labels={\n                \"k3\": \"v3\",\n                \"k4\": \"v4\",\n            },\n        ),\n        spec=ovh.cloud_project.KubeNodePoolTemplateSpecArgs(\n            taints=[{\n                \"effect\": \"PreferNoSchedule\",\n                \"key\": \"k\",\n                \"value\": \"v\",\n            }],\n            unschedulable=False,\n        ),\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pool = new Ovh.CloudProject.KubeNodePool(\"pool\", new()\n    {\n        DesiredNodes = 3,\n        FlavorName = \"b2-7\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        MaxNodes = 3,\n        MinNodes = 3,\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        Template = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateArgs\n        {\n            Metadata = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateMetadataArgs\n            {\n                Annotations = \n                {\n                    { \"k1\", \"v1\" },\n                    { \"k2\", \"v2\" },\n                },\n                Finalizers = new() { },\n                Labels = \n                {\n                    { \"k3\", \"v3\" },\n                    { \"k4\", \"v4\" },\n                },\n            },\n            Spec = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateSpecArgs\n            {\n                Taints = new[]\n                {\n                    \n                    {\n                        { \"effect\", \"PreferNoSchedule\" },\n                        { \"key\", \"k\" },\n                        { \"value\", \"v\" },\n                    },\n                },\n                Unschedulable = false,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.NewKubeNodePool(ctx, \"pool\", \u0026CloudProject.KubeNodePoolArgs{\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tFlavorName:   pulumi.String(\"b2-7\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tMaxNodes:     pulumi.Int(3),\n\t\t\tMinNodes:     pulumi.Int(3),\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tTemplate: \u0026cloudproject.KubeNodePoolTemplateArgs{\n\t\t\t\tMetadata: \u0026cloudproject.KubeNodePoolTemplateMetadataArgs{\n\t\t\t\t\tAnnotations: pulumi.StringMap{\n\t\t\t\t\t\t\"k1\": pulumi.String(\"v1\"),\n\t\t\t\t\t\t\"k2\": pulumi.String(\"v2\"),\n\t\t\t\t\t},\n\t\t\t\t\tFinalizers: pulumi.StringArray{},\n\t\t\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\t\t\"k3\": pulumi.String(\"v3\"),\n\t\t\t\t\t\t\"k4\": pulumi.String(\"v4\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSpec: \u0026cloudproject.KubeNodePoolTemplateSpecArgs{\n\t\t\t\t\tTaints: pulumi.MapArray{\n\t\t\t\t\t\tpulumi.Map{\n\t\t\t\t\t\t\t\"effect\": pulumi.Any(\"PreferNoSchedule\"),\n\t\t\t\t\t\t\t\"key\":    pulumi.Any(\"k\"),\n\t\t\t\t\t\t\t\"value\":  pulumi.Any(\"v\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tUnschedulable: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateMetadataArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pool = new KubeNodePool(\"pool\", KubeNodePoolArgs.builder()\n            .desiredNodes(3)\n            .flavorName(\"b2-7\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .maxNodes(3)\n            .minNodes(3)\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .template(KubeNodePoolTemplateArgs.builder()\n                .metadata(KubeNodePoolTemplateMetadataArgs.builder()\n                    .annotations(Map.ofEntries(\n                        Map.entry(\"k1\", \"v1\"),\n                        Map.entry(\"k2\", \"v2\")\n                    ))\n                    .finalizers()\n                    .labels(Map.ofEntries(\n                        Map.entry(\"k3\", \"v3\"),\n                        Map.entry(\"k4\", \"v4\")\n                    ))\n                    .build())\n                .spec(KubeNodePoolTemplateSpecArgs.builder()\n                    .taints(Map.ofEntries(\n                        Map.entry(\"effect\", \"PreferNoSchedule\"),\n                        Map.entry(\"key\", \"k\"),\n                        Map.entry(\"value\", \"v\")\n                    ))\n                    .unschedulable(false)\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pool:\n    type: ovh:CloudProject:KubeNodePool\n    properties:\n      desiredNodes: 3\n      flavorName: b2-7\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      maxNodes: 3\n      minNodes: 3\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      template:\n        metadata:\n          annotations:\n            k1: v1\n            k2: v2\n          finalizers: []\n          labels:\n            k3: v3\n            k4: v4\n        spec:\n          taints:\n            - effect: PreferNoSchedule\n              key: k\n              value: v\n          unschedulable: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid\n```\n\n",
             "properties": {
                 "antiAffinity": {
                     "type": "boolean",
@@ -11398,6 +11435,7 @@
             }
         },
         "ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream": {
+            "description": "Creates a DBaaS Logs Graylog output stream.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst stream = new ovh.dbaas.LogsOutputGraylogStream(\"stream\", {\n    description: \"my graylog stream\",\n    serviceName: \"....\",\n    title: \"my stream\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nstream = ovh.dbaas.LogsOutputGraylogStream(\"stream\",\n    description=\"my graylog stream\",\n    service_name=\"....\",\n    title=\"my stream\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var stream = new Ovh.Dbaas.LogsOutputGraylogStream(\"stream\", new()\n    {\n        Description = \"my graylog stream\",\n        ServiceName = \"....\",\n        Title = \"my stream\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Dbaas.NewLogsOutputGraylogStream(ctx, \"stream\", \u0026Dbaas.LogsOutputGraylogStreamArgs{\n\t\t\tDescription: pulumi.String(\"my graylog stream\"),\n\t\t\tServiceName: pulumi.String(\"....\"),\n\t\t\tTitle:       pulumi.String(\"my stream\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Dbaas.LogsOutputGraylogStream;\nimport com.pulumi.ovh.Dbaas.LogsOutputGraylogStreamArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var stream = new LogsOutputGraylogStream(\"stream\", LogsOutputGraylogStreamArgs.builder()\n            .description(\"my graylog stream\")\n            .serviceName(\"....\")\n            .title(\"my stream\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  stream:\n    type: ovh:Dbaas:LogsOutputGraylogStream\n    properties:\n      description: my graylog stream\n      serviceName: '....'\n      title: my stream\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nTo define the retention of the stream, you can use the following configuration:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst retention = ovh.Dbaas.getLogsClustersRetention({\n    serviceName: \"ldp-xx-xxxxx\",\n    clusterId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    duration: \"P14D\",\n});\nconst stream = new ovh.dbaas.LogsOutputGraylogStream(\"stream\", {\n    serviceName: \"....\",\n    title: \"my stream\",\n    description: \"my graylog stream\",\n    retentionId: retention.then(retention =\u003e retention.retentionId),\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nretention = ovh.Dbaas.get_logs_clusters_retention(service_name=\"ldp-xx-xxxxx\",\n    cluster_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    duration=\"P14D\")\nstream = ovh.dbaas.LogsOutputGraylogStream(\"stream\",\n    service_name=\"....\",\n    title=\"my stream\",\n    description=\"my graylog stream\",\n    retention_id=retention.retention_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()\n    {\n        ServiceName = \"ldp-xx-xxxxx\",\n        ClusterId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Duration = \"P14D\",\n    });\n\n    var stream = new Ovh.Dbaas.LogsOutputGraylogStream(\"stream\", new()\n    {\n        ServiceName = \"....\",\n        Title = \"my stream\",\n        Description = \"my graylog stream\",\n        RetentionId = retention.Apply(getLogsClustersRetentionResult =\u003e getLogsClustersRetentionResult.RetentionId),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tretention, err := Dbaas.GetLogsClustersRetention(ctx, \u0026dbaas.GetLogsClustersRetentionArgs{\n\t\t\tServiceName: \"ldp-xx-xxxxx\",\n\t\t\tClusterId:   \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t\tDuration:    pulumi.StringRef(\"P14D\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Dbaas.NewLogsOutputGraylogStream(ctx, \"stream\", \u0026Dbaas.LogsOutputGraylogStreamArgs{\n\t\t\tServiceName: pulumi.String(\"....\"),\n\t\t\tTitle:       pulumi.String(\"my stream\"),\n\t\t\tDescription: pulumi.String(\"my graylog stream\"),\n\t\t\tRetentionId: pulumi.String(retention.RetentionId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Dbaas.DbaasFunctions;\nimport com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;\nimport com.pulumi.ovh.Dbaas.LogsOutputGraylogStream;\nimport com.pulumi.ovh.Dbaas.LogsOutputGraylogStreamArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()\n            .serviceName(\"ldp-xx-xxxxx\")\n            .clusterId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .duration(\"P14D\")\n            .build());\n\n        var stream = new LogsOutputGraylogStream(\"stream\", LogsOutputGraylogStreamArgs.builder()\n            .serviceName(\"....\")\n            .title(\"my stream\")\n            .description(\"my graylog stream\")\n            .retentionId(retention.applyValue(getLogsClustersRetentionResult -\u003e getLogsClustersRetentionResult.retentionId()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  stream:\n    type: ovh:Dbaas:LogsOutputGraylogStream\n    properties:\n      serviceName: '....'\n      title: my stream\n      description: my graylog stream\n      retentionId: ${retention.retentionId}\nvariables:\n  retention:\n    fn::invoke:\n      Function: ovh:Dbaas:getLogsClustersRetention\n      Arguments:\n        serviceName: ldp-xx-xxxxx\n        clusterId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n        duration: P14D\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "canAlert": {
                     "type": "boolean",
@@ -11405,11 +11443,11 @@
                 },
                 "coldStorageCompression": {
                     "type": "string",
-                    "description": "Cold storage compression method\n"
+                    "description": "Cold storage compression method. One of \"LZMA\", \"GZIP\", \"DEFLATED\", \"ZSTD\"\n"
                 },
                 "coldStorageContent": {
                     "type": "string",
-                    "description": "ColdStorage content\n"
+                    "description": "ColdStorage content. One of \"ALL\", \"GLEF\", \"PLAIN\"\n"
                 },
                 "coldStorageEnabled": {
                     "type": "boolean",
@@ -11425,7 +11463,7 @@
                 },
                 "coldStorageTarget": {
                     "type": "string",
-                    "description": "ColdStorage destination\n"
+                    "description": "ColdStorage destination. One of \"PCA\", \"PCS\"\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -11461,7 +11499,7 @@
                 },
                 "nbArchive": {
                     "type": "integer",
-                    "description": "Number of coldstored archives\n"
+                    "description": "Number of coldstored archivesr\n"
                 },
                 "parentStreamId": {
                     "type": "string",
@@ -11489,11 +11527,16 @@
                 },
                 "updatedAt": {
                     "type": "string",
-                    "description": "Stream last update\n"
+                    "description": "Stream last updater\n"
                 },
                 "webSocketEnabled": {
                     "type": "boolean",
                     "description": "Enable Websocket\n"
+                },
+                "writeToken": {
+                    "type": "string",
+                    "description": "Write token of the stream (empty if the caller is not the owner of the stream)\n",
+                    "secret": true
                 }
             },
             "required": [
@@ -11519,16 +11562,17 @@
                 "streamId",
                 "title",
                 "updatedAt",
-                "webSocketEnabled"
+                "webSocketEnabled",
+                "writeToken"
             ],
             "inputProperties": {
                 "coldStorageCompression": {
                     "type": "string",
-                    "description": "Cold storage compression method\n"
+                    "description": "Cold storage compression method. One of \"LZMA\", \"GZIP\", \"DEFLATED\", \"ZSTD\"\n"
                 },
                 "coldStorageContent": {
                     "type": "string",
-                    "description": "ColdStorage content\n"
+                    "description": "ColdStorage content. One of \"ALL\", \"GLEF\", \"PLAIN\"\n"
                 },
                 "coldStorageEnabled": {
                     "type": "boolean",
@@ -11544,7 +11588,7 @@
                 },
                 "coldStorageTarget": {
                     "type": "string",
-                    "description": "ColdStorage destination\n"
+                    "description": "ColdStorage destination. One of \"PCA\", \"PCS\"\n"
                 },
                 "description": {
                     "type": "string",
@@ -11603,11 +11647,11 @@
                     },
                     "coldStorageCompression": {
                         "type": "string",
-                        "description": "Cold storage compression method\n"
+                        "description": "Cold storage compression method. One of \"LZMA\", \"GZIP\", \"DEFLATED\", \"ZSTD\"\n"
                     },
                     "coldStorageContent": {
                         "type": "string",
-                        "description": "ColdStorage content\n"
+                        "description": "ColdStorage content. One of \"ALL\", \"GLEF\", \"PLAIN\"\n"
                     },
                     "coldStorageEnabled": {
                         "type": "boolean",
@@ -11623,7 +11667,7 @@
                     },
                     "coldStorageTarget": {
                         "type": "string",
-                        "description": "ColdStorage destination\n"
+                        "description": "ColdStorage destination. One of \"PCA\", \"PCS\"\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -11659,7 +11703,7 @@
                     },
                     "nbArchive": {
                         "type": "integer",
-                        "description": "Number of coldstored archives\n"
+                        "description": "Number of coldstored archivesr\n"
                     },
                     "parentStreamId": {
                         "type": "string",
@@ -11689,11 +11733,16 @@
                     },
                     "updatedAt": {
                         "type": "string",
-                        "description": "Stream last update\n"
+                        "description": "Stream last updater\n"
                     },
                     "webSocketEnabled": {
                         "type": "boolean",
                         "description": "Enable Websocket\n"
+                    },
+                    "writeToken": {
+                        "type": "string",
+                        "description": "Write token of the stream (empty if the caller is not the owner of the stream)\n",
+                        "secret": true
                     }
                 },
                 "type": "object"
@@ -11977,15 +12026,19 @@
             }
         },
         "ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess": {
-            "description": "Provides a resource for managing access rights to partitions on HA-NAS services\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst my_partition = new ovh.dedicated.NasHAPartitionAccess(\"my-partition\", {\n    ip: \"123.123.123.123/32\",\n    partitionName: \"my-partition\",\n    serviceName: \"zpool-12345\",\n    type: \"readwrite\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmy_partition = ovh.dedicated.NasHAPartitionAccess(\"my-partition\",\n    ip=\"123.123.123.123/32\",\n    partition_name=\"my-partition\",\n    service_name=\"zpool-12345\",\n    type=\"readwrite\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_partition = new Ovh.Dedicated.NasHAPartitionAccess(\"my-partition\", new()\n    {\n        Ip = \"123.123.123.123/32\",\n        PartitionName = \"my-partition\",\n        ServiceName = \"zpool-12345\",\n        Type = \"readwrite\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Dedicated.NewNasHAPartitionAccess(ctx, \"my-partition\", \u0026Dedicated.NasHAPartitionAccessArgs{\n\t\t\tIp:            pulumi.String(\"123.123.123.123/32\"),\n\t\t\tPartitionName: pulumi.String(\"my-partition\"),\n\t\t\tServiceName:   pulumi.String(\"zpool-12345\"),\n\t\t\tType:          pulumi.String(\"readwrite\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Dedicated.NasHAPartitionAccess;\nimport com.pulumi.ovh.Dedicated.NasHAPartitionAccessArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_partition = new NasHAPartitionAccess(\"my-partition\", NasHAPartitionAccessArgs.builder()\n            .ip(\"123.123.123.123/32\")\n            .partitionName(\"my-partition\")\n            .serviceName(\"zpool-12345\")\n            .type(\"readwrite\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-partition:\n    type: ovh:Dedicated:NasHAPartitionAccess\n    properties:\n      ip: 123.123.123.123/32\n      partitionName: my-partition\n      serviceName: zpool-12345\n      type: readwrite\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nHA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.  \n\n```sh\n$ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`\n```\n\n",
+            "description": "Provides a resource for managing access rights to partitions on HA-NAS services\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst my_partition = new ovh.dedicated.NasHAPartitionAccess(\"my-partition\", {\n    aclDescription: \"Description of the ACL\",\n    ip: \"123.123.123.123/32\",\n    partitionName: \"my-partition\",\n    serviceName: \"zpool-12345\",\n    type: \"readwrite\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmy_partition = ovh.dedicated.NasHAPartitionAccess(\"my-partition\",\n    acl_description=\"Description of the ACL\",\n    ip=\"123.123.123.123/32\",\n    partition_name=\"my-partition\",\n    service_name=\"zpool-12345\",\n    type=\"readwrite\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_partition = new Ovh.Dedicated.NasHAPartitionAccess(\"my-partition\", new()\n    {\n        AclDescription = \"Description of the ACL\",\n        Ip = \"123.123.123.123/32\",\n        PartitionName = \"my-partition\",\n        ServiceName = \"zpool-12345\",\n        Type = \"readwrite\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Dedicated.NewNasHAPartitionAccess(ctx, \"my-partition\", \u0026Dedicated.NasHAPartitionAccessArgs{\n\t\t\tAclDescription: pulumi.String(\"Description of the ACL\"),\n\t\t\tIp:             pulumi.String(\"123.123.123.123/32\"),\n\t\t\tPartitionName:  pulumi.String(\"my-partition\"),\n\t\t\tServiceName:    pulumi.String(\"zpool-12345\"),\n\t\t\tType:           pulumi.String(\"readwrite\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Dedicated.NasHAPartitionAccess;\nimport com.pulumi.ovh.Dedicated.NasHAPartitionAccessArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_partition = new NasHAPartitionAccess(\"my-partition\", NasHAPartitionAccessArgs.builder()\n            .aclDescription(\"Description of the ACL\")\n            .ip(\"123.123.123.123/32\")\n            .partitionName(\"my-partition\")\n            .serviceName(\"zpool-12345\")\n            .type(\"readwrite\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-partition:\n    type: ovh:Dedicated:NasHAPartitionAccess\n    properties:\n      aclDescription: Description of the ACL\n      ip: 123.123.123.123/32\n      partitionName: my-partition\n      serviceName: zpool-12345\n      type: readwrite\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nHA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.  \n\n```sh\n$ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`\n```\n\n",
             "properties": {
+                "aclDescription": {
+                    "type": "string",
+                    "description": "A brief description of the acl\n"
+                },
                 "ip": {
                     "type": "string",
-                    "description": "ip block in x.x.x.x/x format\n"
+                    "description": "IP block in x.x.x.x/x format\n"
                 },
                 "partitionName": {
                     "type": "string",
-                    "description": "name of the partition\n"
+                    "description": "Name of the partition\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -11993,7 +12046,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "one of \"readwrite\", \"readonly\"\n"
+                    "description": "One of \"readwrite\", \"readonly\"\n"
                 }
             },
             "required": [
@@ -12002,14 +12055,19 @@
                 "serviceName"
             ],
             "inputProperties": {
+                "aclDescription": {
+                    "type": "string",
+                    "description": "A brief description of the acl\n",
+                    "willReplaceOnChanges": true
+                },
                 "ip": {
                     "type": "string",
-                    "description": "ip block in x.x.x.x/x format\n",
+                    "description": "IP block in x.x.x.x/x format\n",
                     "willReplaceOnChanges": true
                 },
                 "partitionName": {
                     "type": "string",
-                    "description": "name of the partition\n",
+                    "description": "Name of the partition\n",
                     "willReplaceOnChanges": true
                 },
                 "serviceName": {
@@ -12019,7 +12077,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "one of \"readwrite\", \"readonly\"\n",
+                    "description": "One of \"readwrite\", \"readonly\"\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -12031,14 +12089,19 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering NasHAPartitionAccess resources.\n",
                 "properties": {
+                    "aclDescription": {
+                        "type": "string",
+                        "description": "A brief description of the acl\n",
+                        "willReplaceOnChanges": true
+                    },
                     "ip": {
                         "type": "string",
-                        "description": "ip block in x.x.x.x/x format\n",
+                        "description": "IP block in x.x.x.x/x format\n",
                         "willReplaceOnChanges": true
                     },
                     "partitionName": {
                         "type": "string",
-                        "description": "name of the partition\n",
+                        "description": "Name of the partition\n",
                         "willReplaceOnChanges": true
                     },
                     "serviceName": {
@@ -12048,7 +12111,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "one of \"readwrite\", \"readonly\"\n",
+                        "description": "One of \"readwrite\", \"readonly\"\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -12474,7 +12537,7 @@
             }
         },
         "ovh:Dedicated/serverUpdate:ServerUpdate": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst rescue = ovh.Dedicated.getServerBoots({\n    serviceName: \"nsxxxxxxx.ip-xx-xx-xx.eu\",\n    bootType: \"rescue\",\n    kernel: \"rescue64-pro\",\n});\nconst server = new ovh.dedicated.ServerUpdate(\"server\", {\n    serviceName: \"nsxxxxxxx.ip-xx-xx-xx.eu\",\n    bootId: rescue.then(rescue =\u003e rescue.results?.[0]),\n    monitoring: true,\n    state: \"ok\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nrescue = ovh.Dedicated.get_server_boots(service_name=\"nsxxxxxxx.ip-xx-xx-xx.eu\",\n    boot_type=\"rescue\",\n    kernel=\"rescue64-pro\")\nserver = ovh.dedicated.ServerUpdate(\"server\",\n    service_name=\"nsxxxxxxx.ip-xx-xx-xx.eu\",\n    boot_id=rescue.results[0],\n    monitoring=True,\n    state=\"ok\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rescue = Ovh.Dedicated.GetServerBoots.Invoke(new()\n    {\n        ServiceName = \"nsxxxxxxx.ip-xx-xx-xx.eu\",\n        BootType = \"rescue\",\n        Kernel = \"rescue64-pro\",\n    });\n\n    var server = new Ovh.Dedicated.ServerUpdate(\"server\", new()\n    {\n        ServiceName = \"nsxxxxxxx.ip-xx-xx-xx.eu\",\n        BootId = rescue.Apply(getServerBootsResult =\u003e getServerBootsResult.Results[0]),\n        Monitoring = true,\n        State = \"ok\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trescue, err := Dedicated.GetServerBoots(ctx, \u0026dedicated.GetServerBootsArgs{\n\t\t\tServiceName: \"nsxxxxxxx.ip-xx-xx-xx.eu\",\n\t\t\tBootType:    pulumi.StringRef(\"rescue\"),\n\t\t\tKernel:      pulumi.StringRef(\"rescue64-pro\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Dedicated.NewServerUpdate(ctx, \"server\", \u0026Dedicated.ServerUpdateArgs{\n\t\t\tServiceName: pulumi.String(\"nsxxxxxxx.ip-xx-xx-xx.eu\"),\n\t\t\tBootId:      pulumi.Int(rescue.Results[0]),\n\t\t\tMonitoring:  pulumi.Bool(true),\n\t\t\tState:       pulumi.String(\"ok\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Dedicated.DedicatedFunctions;\nimport com.pulumi.ovh.Dedicated.inputs.GetServerBootsArgs;\nimport com.pulumi.ovh.Dedicated.ServerUpdate;\nimport com.pulumi.ovh.Dedicated.ServerUpdateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var rescue = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()\n            .serviceName(\"nsxxxxxxx.ip-xx-xx-xx.eu\")\n            .bootType(\"rescue\")\n            .kernel(\"rescue64-pro\")\n            .build());\n\n        var server = new ServerUpdate(\"server\", ServerUpdateArgs.builder()\n            .serviceName(\"nsxxxxxxx.ip-xx-xx-xx.eu\")\n            .bootId(rescue.applyValue(getServerBootsResult -\u003e getServerBootsResult.results()[0]))\n            .monitoring(true)\n            .state(\"ok\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  server:\n    type: ovh:Dedicated:ServerUpdate\n    properties:\n      serviceName: nsxxxxxxx.ip-xx-xx-xx.eu\n      bootId: ${rescue.results[0]}\n      monitoring: true\n      state: ok\nvariables:\n  rescue:\n    fn::invoke:\n      Function: ovh:Dedicated:getServerBoots\n      Arguments:\n        serviceName: nsxxxxxxx.ip-xx-xx-xx.eu\n        bootType: rescue\n        kernel: rescue64-pro\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst rescue = ovh.Dedicated.getServerBoots({\n    serviceName: \"nsxxxxxxx.ip-xx-xx-xx.eu\",\n    bootType: \"rescue\",\n    kernel: \"rescue64-pro\",\n});\nconst server = new ovh.dedicated.ServerUpdate(\"server\", {\n    serviceName: \"nsxxxxxxx.ip-xx-xx-xx.eu\",\n    bootId: rescue.then(rescue =\u003e rescue.results?.[0]),\n    monitoring: true,\n    state: \"ok\",\n    displayName: \"Some human-readable name\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nrescue = ovh.Dedicated.get_server_boots(service_name=\"nsxxxxxxx.ip-xx-xx-xx.eu\",\n    boot_type=\"rescue\",\n    kernel=\"rescue64-pro\")\nserver = ovh.dedicated.ServerUpdate(\"server\",\n    service_name=\"nsxxxxxxx.ip-xx-xx-xx.eu\",\n    boot_id=rescue.results[0],\n    monitoring=True,\n    state=\"ok\",\n    display_name=\"Some human-readable name\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rescue = Ovh.Dedicated.GetServerBoots.Invoke(new()\n    {\n        ServiceName = \"nsxxxxxxx.ip-xx-xx-xx.eu\",\n        BootType = \"rescue\",\n        Kernel = \"rescue64-pro\",\n    });\n\n    var server = new Ovh.Dedicated.ServerUpdate(\"server\", new()\n    {\n        ServiceName = \"nsxxxxxxx.ip-xx-xx-xx.eu\",\n        BootId = rescue.Apply(getServerBootsResult =\u003e getServerBootsResult.Results[0]),\n        Monitoring = true,\n        State = \"ok\",\n        DisplayName = \"Some human-readable name\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trescue, err := Dedicated.GetServerBoots(ctx, \u0026dedicated.GetServerBootsArgs{\n\t\t\tServiceName: \"nsxxxxxxx.ip-xx-xx-xx.eu\",\n\t\t\tBootType:    pulumi.StringRef(\"rescue\"),\n\t\t\tKernel:      pulumi.StringRef(\"rescue64-pro\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Dedicated.NewServerUpdate(ctx, \"server\", \u0026Dedicated.ServerUpdateArgs{\n\t\t\tServiceName: pulumi.String(\"nsxxxxxxx.ip-xx-xx-xx.eu\"),\n\t\t\tBootId:      pulumi.Int(rescue.Results[0]),\n\t\t\tMonitoring:  pulumi.Bool(true),\n\t\t\tState:       pulumi.String(\"ok\"),\n\t\t\tDisplayName: pulumi.String(\"Some human-readable name\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Dedicated.DedicatedFunctions;\nimport com.pulumi.ovh.Dedicated.inputs.GetServerBootsArgs;\nimport com.pulumi.ovh.Dedicated.ServerUpdate;\nimport com.pulumi.ovh.Dedicated.ServerUpdateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var rescue = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()\n            .serviceName(\"nsxxxxxxx.ip-xx-xx-xx.eu\")\n            .bootType(\"rescue\")\n            .kernel(\"rescue64-pro\")\n            .build());\n\n        var server = new ServerUpdate(\"server\", ServerUpdateArgs.builder()\n            .serviceName(\"nsxxxxxxx.ip-xx-xx-xx.eu\")\n            .bootId(rescue.applyValue(getServerBootsResult -\u003e getServerBootsResult.results()[0]))\n            .monitoring(true)\n            .state(\"ok\")\n            .displayName(\"Some human-readable name\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  server:\n    type: ovh:Dedicated:ServerUpdate\n    properties:\n      serviceName: nsxxxxxxx.ip-xx-xx-xx.eu\n      bootId: ${rescue.results[0]}\n      monitoring: true\n      state: ok\n      displayName: Some human-readable name\nvariables:\n  rescue:\n    fn::invoke:\n      Function: ovh:Dedicated:getServerBoots\n      Arguments:\n        serviceName: nsxxxxxxx.ip-xx-xx-xx.eu\n        bootType: rescue\n        kernel: rescue64-pro\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "bootId": {
                     "type": "integer",
@@ -12483,6 +12546,10 @@
                 "bootScript": {
                     "type": "string",
                     "description": "boot script of the server\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "display name of the dedicated server\n"
                 },
                 "monitoring": {
                     "type": "boolean",
@@ -12499,6 +12566,7 @@
             },
             "required": [
                 "bootId",
+                "displayName",
                 "monitoring",
                 "serviceName",
                 "state"
@@ -12511,6 +12579,10 @@
                 "bootScript": {
                     "type": "string",
                     "description": "boot script of the server\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "display name of the dedicated server\n"
                 },
                 "monitoring": {
                     "type": "boolean",
@@ -12538,6 +12610,10 @@
                     "bootScript": {
                         "type": "string",
                         "description": "boot script of the server\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "display name of the dedicated server\n"
                     },
                     "monitoring": {
                         "type": "boolean",
@@ -19152,6 +19228,10 @@
                         "type": "string",
                         "description": "Selected mode for kube-proxy.\n"
                     },
+                    "loadBalancersSubnetId": {
+                        "type": "string",
+                        "description": "Openstack private network (or vRack) ID to use for load balancers.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the managed kubernetes cluster.\n"
@@ -19162,6 +19242,10 @@
                             "type": "string"
                         },
                         "description": "Kubernetes versions available for upgrade.\n"
+                    },
+                    "nodesSubnetId": {
+                        "type": "string",
+                        "description": "Openstack private network (or vRack) ID to use for nodes.\n"
                     },
                     "nodesUrl": {
                         "type": "string",
@@ -19203,7 +19287,9 @@
                     "customizationApiservers",
                     "isUpToDate",
                     "kubeId",
+                    "loadBalancersSubnetId",
                     "nextUpgradeVersions",
+                    "nodesSubnetId",
                     "nodesUrl",
                     "privateNetworkId",
                     "serviceName",
@@ -22592,6 +22678,71 @@
                 ]
             }
         },
+        "ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention": {
+            "description": "Use this data source to retrieve information about a DBaas logs cluster retention.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst retention = ovh.Dbaas.getLogsClustersRetention({\n    clusterId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    retentionId: \"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\",\n    serviceName: \"ldp-xx-xxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nretention = ovh.Dbaas.get_logs_clusters_retention(cluster_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    retention_id=\"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\",\n    service_name=\"ldp-xx-xxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()\n    {\n        ClusterId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        RetentionId = \"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\",\n        ServiceName = \"ldp-xx-xxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Dbaas.GetLogsClustersRetention(ctx, \u0026dbaas.GetLogsClustersRetentionArgs{\n\t\t\tClusterId:   \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t\tRetentionId: pulumi.StringRef(\"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\"),\n\t\t\tServiceName: \"ldp-xx-xxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Dbaas.DbaasFunctions;\nimport com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()\n            .clusterId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .retentionId(\"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\")\n            .serviceName(\"ldp-xx-xxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  retention:\n    fn::invoke:\n      Function: ovh:Dbaas:getLogsClustersRetention\n      Arguments:\n        clusterId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n        retentionId: yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\n        serviceName: ldp-xx-xxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nIt is also possible to retrieve a retention using its duration:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst retention = ovh.Dbaas.getLogsClustersRetention({\n    clusterId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    duration: \"P14D\",\n    serviceName: \"ldp-xx-xxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nretention = ovh.Dbaas.get_logs_clusters_retention(cluster_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    duration=\"P14D\",\n    service_name=\"ldp-xx-xxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()\n    {\n        ClusterId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Duration = \"P14D\",\n        ServiceName = \"ldp-xx-xxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Dbaas.GetLogsClustersRetention(ctx, \u0026dbaas.GetLogsClustersRetentionArgs{\n\t\t\tClusterId:   \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t\tDuration:    pulumi.StringRef(\"P14D\"),\n\t\t\tServiceName: \"ldp-xx-xxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Dbaas.DbaasFunctions;\nimport com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()\n            .clusterId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .duration(\"P14D\")\n            .serviceName(\"ldp-xx-xxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  retention:\n    fn::invoke:\n      Function: ovh:Dbaas:getLogsClustersRetention\n      Arguments:\n        clusterId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n        duration: P14D\n        serviceName: ldp-xx-xxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getLogsClustersRetention.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "Cluster ID\n"
+                    },
+                    "duration": {
+                        "type": "string",
+                        "description": "Indexed duration expressed in ISO-8601 format\n"
+                    },
+                    "retentionId": {
+                        "type": "string",
+                        "description": "ID of the retention object\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The service name. It's the ID of your Logs Data Platform instance.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getLogsClustersRetention.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string"
+                    },
+                    "duration": {
+                        "type": "string",
+                        "description": "Indexed duration expressed in ISO-8601 format\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "isSupported": {
+                        "type": "boolean",
+                        "description": "Indicates if a new stream can use it\n"
+                    },
+                    "retentionId": {
+                        "type": "string",
+                        "description": "ID of the retention that can be used when creating a stream\n"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId",
+                    "duration",
+                    "isSupported",
+                    "retentionId",
+                    "serviceName",
+                    "id"
+                ]
+            }
+        },
         "ovh:Dbaas/getLogsInputEngine:getLogsInputEngine": {
             "description": "Use this data source to retrieve information about a DBaas logs input engine.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst logstash = ovh.Dbaas.getLogsInputEngine({\n    isDeprecated: true,\n    name: \"logstash\",\n    serviceName: \"ldp-xx-xxxxx\",\n    version: \"6.8\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nlogstash = ovh.Dbaas.get_logs_input_engine(is_deprecated=True,\n    name=\"logstash\",\n    service_name=\"ldp-xx-xxxxx\",\n    version=\"6.8\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var logstash = Ovh.Dbaas.GetLogsInputEngine.Invoke(new()\n    {\n        IsDeprecated = true,\n        Name = \"logstash\",\n        ServiceName = \"ldp-xx-xxxxx\",\n        Version = \"6.8\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Dbaas.GetLogsInputEngine(ctx, \u0026dbaas.GetLogsInputEngineArgs{\n\t\t\tIsDeprecated: pulumi.BoolRef(true),\n\t\t\tName:         pulumi.StringRef(\"logstash\"),\n\t\t\tServiceName:  \"ldp-xx-xxxxx\",\n\t\t\tVersion:      pulumi.StringRef(\"6.8\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Dbaas.DbaasFunctions;\nimport com.pulumi.ovh.Dbaas.inputs.GetLogsInputEngineArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var logstash = DbaasFunctions.getLogsInputEngine(GetLogsInputEngineArgs.builder()\n            .isDeprecated(true)\n            .name(\"logstash\")\n            .serviceName(\"ldp-xx-xxxxx\")\n            .version(\"6.8\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  logstash:\n    fn::invoke:\n      Function: ovh:Dbaas:getLogsInputEngine\n      Arguments:\n        isDeprecated: true\n        name: logstash\n        serviceName: ldp-xx-xxxxx\n        version: '6.8'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -22768,6 +22919,11 @@
                     "webSocketEnabled": {
                         "type": "boolean",
                         "description": "Enable Websocket\n"
+                    },
+                    "writeToken": {
+                        "type": "string",
+                        "description": "Write token of the stream (empty if the caller is not the owner of the stream)\n",
+                        "secret": true
                     }
                 },
                 "type": "object",
@@ -22796,6 +22952,7 @@
                     "title",
                     "updatedAt",
                     "webSocketEnabled",
+                    "writeToken",
                     "id"
                 ]
             }

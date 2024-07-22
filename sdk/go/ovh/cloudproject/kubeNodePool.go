@@ -74,10 +74,7 @@ import (
 //							"k1": pulumi.String("v1"),
 //							"k2": pulumi.String("v2"),
 //						},
-//						Finalizers: pulumi.StringArray{
-//							pulumi.String("ovhcloud.com/v1beta1"),
-//							pulumi.String("ovhcloud.com/v1"),
-//						},
+//						Finalizers: pulumi.StringArray{},
 //						Labels: pulumi.StringMap{
 //							"k3": pulumi.String("v3"),
 //							"k4": pulumi.String("v4"),

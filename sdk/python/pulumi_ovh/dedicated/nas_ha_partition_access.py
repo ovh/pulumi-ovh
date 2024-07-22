@@ -17,17 +17,21 @@ class NasHAPartitionAccessArgs:
                  ip: pulumi.Input[str],
                  partition_name: pulumi.Input[str],
                  service_name: pulumi.Input[str],
+                 acl_description: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NasHAPartitionAccess resource.
-        :param pulumi.Input[str] ip: ip block in x.x.x.x/x format
-        :param pulumi.Input[str] partition_name: name of the partition
+        :param pulumi.Input[str] ip: IP block in x.x.x.x/x format
+        :param pulumi.Input[str] partition_name: Name of the partition
         :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-        :param pulumi.Input[str] type: one of "readwrite", "readonly"
+        :param pulumi.Input[str] acl_description: A brief description of the acl
+        :param pulumi.Input[str] type: One of "readwrite", "readonly"
         """
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "partition_name", partition_name)
         pulumi.set(__self__, "service_name", service_name)
+        if acl_description is not None:
+            pulumi.set(__self__, "acl_description", acl_description)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -35,7 +39,7 @@ class NasHAPartitionAccessArgs:
     @pulumi.getter
     def ip(self) -> pulumi.Input[str]:
         """
-        ip block in x.x.x.x/x format
+        IP block in x.x.x.x/x format
         """
         return pulumi.get(self, "ip")
 
@@ -47,7 +51,7 @@ class NasHAPartitionAccessArgs:
     @pulumi.getter(name="partitionName")
     def partition_name(self) -> pulumi.Input[str]:
         """
-        name of the partition
+        Name of the partition
         """
         return pulumi.get(self, "partition_name")
 
@@ -68,10 +72,22 @@ class NasHAPartitionAccessArgs:
         pulumi.set(self, "service_name", value)
 
     @property
+    @pulumi.getter(name="aclDescription")
+    def acl_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A brief description of the acl
+        """
+        return pulumi.get(self, "acl_description")
+
+    @acl_description.setter
+    def acl_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_description", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        one of "readwrite", "readonly"
+        One of "readwrite", "readonly"
         """
         return pulumi.get(self, "type")
 
@@ -83,17 +99,21 @@ class NasHAPartitionAccessArgs:
 @pulumi.input_type
 class _NasHAPartitionAccessState:
     def __init__(__self__, *,
+                 acl_description: Optional[pulumi.Input[str]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  partition_name: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NasHAPartitionAccess resources.
-        :param pulumi.Input[str] ip: ip block in x.x.x.x/x format
-        :param pulumi.Input[str] partition_name: name of the partition
+        :param pulumi.Input[str] acl_description: A brief description of the acl
+        :param pulumi.Input[str] ip: IP block in x.x.x.x/x format
+        :param pulumi.Input[str] partition_name: Name of the partition
         :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-        :param pulumi.Input[str] type: one of "readwrite", "readonly"
+        :param pulumi.Input[str] type: One of "readwrite", "readonly"
         """
+        if acl_description is not None:
+            pulumi.set(__self__, "acl_description", acl_description)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
         if partition_name is not None:
@@ -104,10 +124,22 @@ class _NasHAPartitionAccessState:
             pulumi.set(__self__, "type", type)
 
     @property
+    @pulumi.getter(name="aclDescription")
+    def acl_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A brief description of the acl
+        """
+        return pulumi.get(self, "acl_description")
+
+    @acl_description.setter
+    def acl_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_description", value)
+
+    @property
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        ip block in x.x.x.x/x format
+        IP block in x.x.x.x/x format
         """
         return pulumi.get(self, "ip")
 
@@ -119,7 +151,7 @@ class _NasHAPartitionAccessState:
     @pulumi.getter(name="partitionName")
     def partition_name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the partition
+        Name of the partition
         """
         return pulumi.get(self, "partition_name")
 
@@ -143,7 +175,7 @@ class _NasHAPartitionAccessState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        one of "readwrite", "readonly"
+        One of "readwrite", "readonly"
         """
         return pulumi.get(self, "type")
 
@@ -157,6 +189,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_description: Optional[pulumi.Input[str]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  partition_name: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -172,6 +205,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         my_partition = ovh.dedicated.NasHAPartitionAccess("my-partition",
+            acl_description="Description of the ACL",
             ip="123.123.123.123/32",
             partition_name="my-partition",
             service_name="zpool-12345",
@@ -188,10 +222,11 @@ class NasHAPartitionAccess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ip: ip block in x.x.x.x/x format
-        :param pulumi.Input[str] partition_name: name of the partition
+        :param pulumi.Input[str] acl_description: A brief description of the acl
+        :param pulumi.Input[str] ip: IP block in x.x.x.x/x format
+        :param pulumi.Input[str] partition_name: Name of the partition
         :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-        :param pulumi.Input[str] type: one of "readwrite", "readonly"
+        :param pulumi.Input[str] type: One of "readwrite", "readonly"
         """
         ...
     @overload
@@ -209,6 +244,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         my_partition = ovh.dedicated.NasHAPartitionAccess("my-partition",
+            acl_description="Description of the ACL",
             ip="123.123.123.123/32",
             partition_name="my-partition",
             service_name="zpool-12345",
@@ -238,6 +274,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_description: Optional[pulumi.Input[str]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  partition_name: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -251,6 +288,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NasHAPartitionAccessArgs.__new__(NasHAPartitionAccessArgs)
 
+            __props__.__dict__["acl_description"] = acl_description
             if ip is None and not opts.urn:
                 raise TypeError("Missing required property 'ip'")
             __props__.__dict__["ip"] = ip
@@ -271,6 +309,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acl_description: Optional[pulumi.Input[str]] = None,
             ip: Optional[pulumi.Input[str]] = None,
             partition_name: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
@@ -282,15 +321,17 @@ class NasHAPartitionAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ip: ip block in x.x.x.x/x format
-        :param pulumi.Input[str] partition_name: name of the partition
+        :param pulumi.Input[str] acl_description: A brief description of the acl
+        :param pulumi.Input[str] ip: IP block in x.x.x.x/x format
+        :param pulumi.Input[str] partition_name: Name of the partition
         :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-        :param pulumi.Input[str] type: one of "readwrite", "readonly"
+        :param pulumi.Input[str] type: One of "readwrite", "readonly"
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _NasHAPartitionAccessState.__new__(_NasHAPartitionAccessState)
 
+        __props__.__dict__["acl_description"] = acl_description
         __props__.__dict__["ip"] = ip
         __props__.__dict__["partition_name"] = partition_name
         __props__.__dict__["service_name"] = service_name
@@ -298,10 +339,18 @@ class NasHAPartitionAccess(pulumi.CustomResource):
         return NasHAPartitionAccess(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="aclDescription")
+    def acl_description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A brief description of the acl
+        """
+        return pulumi.get(self, "acl_description")
+
+    @property
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
         """
-        ip block in x.x.x.x/x format
+        IP block in x.x.x.x/x format
         """
         return pulumi.get(self, "ip")
 
@@ -309,7 +358,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
     @pulumi.getter(name="partitionName")
     def partition_name(self) -> pulumi.Output[str]:
         """
-        name of the partition
+        Name of the partition
         """
         return pulumi.get(self, "partition_name")
 
@@ -325,7 +374,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        one of "readwrite", "readonly"
+        One of "readwrite", "readonly"
         """
         return pulumi.get(self, "type")
 

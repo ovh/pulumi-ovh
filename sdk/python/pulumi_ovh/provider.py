@@ -14,6 +14,7 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
+                 access_token: Optional[pulumi.Input[str]] = None,
                  application_key: Optional[pulumi.Input[str]] = None,
                  application_secret: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
@@ -22,6 +23,7 @@ class ProviderArgs:
                  endpoint: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
+        :param pulumi.Input[str] access_token: The OVH API Access Token
         :param pulumi.Input[str] application_key: The OVH API Application Key
         :param pulumi.Input[str] application_secret: The OVH API Application Secret
         :param pulumi.Input[str] client_id: OAuth 2.0 application's ID
@@ -29,6 +31,8 @@ class ProviderArgs:
         :param pulumi.Input[str] consumer_key: The OVH API Consumer Key
         :param pulumi.Input[str] endpoint: The OVH API endpoint to target (ex: "ovh-eu")
         """
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
         if application_key is None:
             application_key = _utilities.get_env('OVH_APPLICATION_KEY')
         if application_key is not None:
@@ -49,6 +53,18 @@ class ProviderArgs:
             endpoint = _utilities.get_env('OVH_ENDPOINT')
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OVH API Access Token
+        """
+        return pulumi.get(self, "access_token")
+
+    @access_token.setter
+    def access_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_token", value)
 
     @property
     @pulumi.getter(name="applicationKey")
@@ -128,6 +144,7 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_token: Optional[pulumi.Input[str]] = None,
                  application_key: Optional[pulumi.Input[str]] = None,
                  application_secret: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
@@ -143,6 +160,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_token: The OVH API Access Token
         :param pulumi.Input[str] application_key: The OVH API Application Key
         :param pulumi.Input[str] application_secret: The OVH API Application Secret
         :param pulumi.Input[str] client_id: OAuth 2.0 application's ID
@@ -177,6 +195,7 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_token: Optional[pulumi.Input[str]] = None,
                  application_key: Optional[pulumi.Input[str]] = None,
                  application_secret: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
@@ -192,6 +211,7 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            __props__.__dict__["access_token"] = access_token
             if application_key is None:
                 application_key = _utilities.get_env('OVH_APPLICATION_KEY')
             __props__.__dict__["application_key"] = application_key
@@ -213,6 +233,14 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        The OVH API Access Token
+        """
+        return pulumi.get(self, "access_token")
 
     @property
     @pulumi.getter(name="applicationKey")

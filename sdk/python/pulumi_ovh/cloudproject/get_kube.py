@@ -23,7 +23,7 @@ class GetKubeResult:
     """
     A collection of values returned by getKube.
     """
-    def __init__(__self__, control_plane_is_up_to_date=None, customization_apiservers=None, customization_kube_proxy=None, customizations=None, id=None, is_up_to_date=None, kube_id=None, kube_proxy_mode=None, name=None, next_upgrade_versions=None, nodes_url=None, private_network_id=None, region=None, service_name=None, status=None, update_policy=None, url=None, version=None):
+    def __init__(__self__, control_plane_is_up_to_date=None, customization_apiservers=None, customization_kube_proxy=None, customizations=None, id=None, is_up_to_date=None, kube_id=None, kube_proxy_mode=None, load_balancers_subnet_id=None, name=None, next_upgrade_versions=None, nodes_subnet_id=None, nodes_url=None, private_network_id=None, region=None, service_name=None, status=None, update_policy=None, url=None, version=None):
         if control_plane_is_up_to_date and not isinstance(control_plane_is_up_to_date, bool):
             raise TypeError("Expected argument 'control_plane_is_up_to_date' to be a bool")
         pulumi.set(__self__, "control_plane_is_up_to_date", control_plane_is_up_to_date)
@@ -48,12 +48,18 @@ class GetKubeResult:
         if kube_proxy_mode and not isinstance(kube_proxy_mode, str):
             raise TypeError("Expected argument 'kube_proxy_mode' to be a str")
         pulumi.set(__self__, "kube_proxy_mode", kube_proxy_mode)
+        if load_balancers_subnet_id and not isinstance(load_balancers_subnet_id, str):
+            raise TypeError("Expected argument 'load_balancers_subnet_id' to be a str")
+        pulumi.set(__self__, "load_balancers_subnet_id", load_balancers_subnet_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if next_upgrade_versions and not isinstance(next_upgrade_versions, list):
             raise TypeError("Expected argument 'next_upgrade_versions' to be a list")
         pulumi.set(__self__, "next_upgrade_versions", next_upgrade_versions)
+        if nodes_subnet_id and not isinstance(nodes_subnet_id, str):
+            raise TypeError("Expected argument 'nodes_subnet_id' to be a str")
+        pulumi.set(__self__, "nodes_subnet_id", nodes_subnet_id)
         if nodes_url and not isinstance(nodes_url, str):
             raise TypeError("Expected argument 'nodes_url' to be a str")
         pulumi.set(__self__, "nodes_url", nodes_url)
@@ -105,13 +111,11 @@ class GetKubeResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use customization_apiserver instead""")
     def customizations(self) -> Sequence['outputs.GetKubeCustomizationResult']:
         """
         **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
         """
-        warnings.warn("""Use customization_apiserver instead""", DeprecationWarning)
-        pulumi.log.warn("""customizations is deprecated: Use customization_apiserver instead""")
-
         return pulumi.get(self, "customizations")
 
     @property
@@ -147,6 +151,14 @@ class GetKubeResult:
         return pulumi.get(self, "kube_proxy_mode")
 
     @property
+    @pulumi.getter(name="loadBalancersSubnetId")
+    def load_balancers_subnet_id(self) -> str:
+        """
+        Openstack private network (or vRack) ID to use for load balancers.
+        """
+        return pulumi.get(self, "load_balancers_subnet_id")
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
@@ -161,6 +173,14 @@ class GetKubeResult:
         Kubernetes versions available for upgrade.
         """
         return pulumi.get(self, "next_upgrade_versions")
+
+    @property
+    @pulumi.getter(name="nodesSubnetId")
+    def nodes_subnet_id(self) -> str:
+        """
+        Openstack private network (or vRack) ID to use for nodes.
+        """
+        return pulumi.get(self, "nodes_subnet_id")
 
     @property
     @pulumi.getter(name="nodesUrl")
@@ -241,8 +261,10 @@ class AwaitableGetKubeResult(GetKubeResult):
             is_up_to_date=self.is_up_to_date,
             kube_id=self.kube_id,
             kube_proxy_mode=self.kube_proxy_mode,
+            load_balancers_subnet_id=self.load_balancers_subnet_id,
             name=self.name,
             next_upgrade_versions=self.next_upgrade_versions,
+            nodes_subnet_id=self.nodes_subnet_id,
             nodes_url=self.nodes_url,
             private_network_id=self.private_network_id,
             region=self.region,
@@ -313,8 +335,10 @@ def get_kube(customization_apiservers: Optional[Sequence[pulumi.InputType['GetKu
         is_up_to_date=pulumi.get(__ret__, 'is_up_to_date'),
         kube_id=pulumi.get(__ret__, 'kube_id'),
         kube_proxy_mode=pulumi.get(__ret__, 'kube_proxy_mode'),
+        load_balancers_subnet_id=pulumi.get(__ret__, 'load_balancers_subnet_id'),
         name=pulumi.get(__ret__, 'name'),
         next_upgrade_versions=pulumi.get(__ret__, 'next_upgrade_versions'),
+        nodes_subnet_id=pulumi.get(__ret__, 'nodes_subnet_id'),
         nodes_url=pulumi.get(__ret__, 'nodes_url'),
         private_network_id=pulumi.get(__ret__, 'private_network_id'),
         region=pulumi.get(__ret__, 'region'),

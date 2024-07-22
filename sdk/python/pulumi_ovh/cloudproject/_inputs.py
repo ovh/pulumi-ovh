@@ -698,13 +698,11 @@ class KubeCustomizationArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use customization_apiserver instead""")
     def apiservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubeCustomizationApiserverArgs']]]]:
         """
         Kubernetes API server customization
         """
-        warnings.warn("""Use customization_apiserver instead""", DeprecationWarning)
-        pulumi.log.warn("""apiservers is deprecated: Use customization_apiserver instead""")
-
         return pulumi.get(self, "apiservers")
 
     @apiservers.setter
@@ -1847,13 +1845,11 @@ class GetKubeCustomizationArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use customization_apiserver instead""")
     def apiservers(self) -> Sequence['GetKubeCustomizationApiserverArgs']:
         """
         Kubernetes API server customization
         """
-        warnings.warn("""Use customization_apiserver instead""", DeprecationWarning)
-        pulumi.log.warn("""apiservers is deprecated: Use customization_apiserver instead""")
-
         return pulumi.get(self, "apiservers")
 
     @apiservers.setter

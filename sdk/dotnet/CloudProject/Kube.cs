@@ -72,6 +72,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<Outputs.KubeKubeconfigAttribute>> KubeconfigAttributes { get; private set; } = null!;
 
         /// <summary>
+        /// Openstack private network (or vRack) ID to use for load balancers.
+        /// </summary>
+        [Output("loadBalancersSubnetId")]
+        public Output<string?> LoadBalancersSubnetId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the kubernetes cluster.
         /// </summary>
         [Output("name")]
@@ -82,6 +88,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Output("nextUpgradeVersions")]
         public Output<ImmutableArray<string>> NextUpgradeVersions { get; private set; } = null!;
+
+        /// <summary>
+        /// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        /// </summary>
+        [Output("nodesSubnetId")]
+        public Output<string> NodesSubnetId { get; private set; } = null!;
 
         /// <summary>
         /// Cluster nodes URL.
@@ -229,10 +241,22 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? KubeProxyMode { get; set; }
 
         /// <summary>
+        /// Openstack private network (or vRack) ID to use for load balancers.
+        /// </summary>
+        [Input("loadBalancersSubnetId")]
+        public Input<string>? LoadBalancersSubnetId { get; set; }
+
+        /// <summary>
         /// The name of the kubernetes cluster.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        /// </summary>
+        [Input("nodesSubnetId")]
+        public Input<string>? NodesSubnetId { get; set; }
 
         /// <summary>
         /// The private network configuration. If this is set then the 2 parameters below shall be defined.
@@ -362,6 +386,12 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
+        /// Openstack private network (or vRack) ID to use for load balancers.
+        /// </summary>
+        [Input("loadBalancersSubnetId")]
+        public Input<string>? LoadBalancersSubnetId { get; set; }
+
+        /// <summary>
         /// The name of the kubernetes cluster.
         /// </summary>
         [Input("name")]
@@ -378,6 +408,12 @@ namespace Pulumi.Ovh.CloudProject
             get => _nextUpgradeVersions ?? (_nextUpgradeVersions = new InputList<string>());
             set => _nextUpgradeVersions = value;
         }
+
+        /// <summary>
+        /// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        /// </summary>
+        [Input("nodesSubnetId")]
+        public Input<string>? NodesSubnetId { get; set; }
 
         /// <summary>
         /// Cluster nodes URL.

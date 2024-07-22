@@ -29,10 +29,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := Dedicated.NewNasHAPartitionAccess(ctx, "my-partition", &Dedicated.NasHAPartitionAccessArgs{
-//				Ip:            pulumi.String("123.123.123.123/32"),
-//				PartitionName: pulumi.String("my-partition"),
-//				ServiceName:   pulumi.String("zpool-12345"),
-//				Type:          pulumi.String("readwrite"),
+//				AclDescription: pulumi.String("Description of the ACL"),
+//				Ip:             pulumi.String("123.123.123.123/32"),
+//				PartitionName:  pulumi.String("my-partition"),
+//				ServiceName:    pulumi.String("zpool-12345"),
+//				Type:           pulumi.String("readwrite"),
 //			})
 //			if err != nil {
 //				return err
@@ -53,13 +54,15 @@ import (
 type NasHAPartitionAccess struct {
 	pulumi.CustomResourceState
 
-	// ip block in x.x.x.x/x format
+	// A brief description of the acl
+	AclDescription pulumi.StringPtrOutput `pulumi:"aclDescription"`
+	// IP block in x.x.x.x/x format
 	Ip pulumi.StringOutput `pulumi:"ip"`
-	// name of the partition
+	// Name of the partition
 	PartitionName pulumi.StringOutput `pulumi:"partitionName"`
 	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// one of "readwrite", "readonly"
+	// One of "readwrite", "readonly"
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -102,24 +105,28 @@ func GetNasHAPartitionAccess(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NasHAPartitionAccess resources.
 type nasHAPartitionAccessState struct {
-	// ip block in x.x.x.x/x format
+	// A brief description of the acl
+	AclDescription *string `pulumi:"aclDescription"`
+	// IP block in x.x.x.x/x format
 	Ip *string `pulumi:"ip"`
-	// name of the partition
+	// Name of the partition
 	PartitionName *string `pulumi:"partitionName"`
 	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
 	ServiceName *string `pulumi:"serviceName"`
-	// one of "readwrite", "readonly"
+	// One of "readwrite", "readonly"
 	Type *string `pulumi:"type"`
 }
 
 type NasHAPartitionAccessState struct {
-	// ip block in x.x.x.x/x format
+	// A brief description of the acl
+	AclDescription pulumi.StringPtrInput
+	// IP block in x.x.x.x/x format
 	Ip pulumi.StringPtrInput
-	// name of the partition
+	// Name of the partition
 	PartitionName pulumi.StringPtrInput
 	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
 	ServiceName pulumi.StringPtrInput
-	// one of "readwrite", "readonly"
+	// One of "readwrite", "readonly"
 	Type pulumi.StringPtrInput
 }
 
@@ -128,25 +135,29 @@ func (NasHAPartitionAccessState) ElementType() reflect.Type {
 }
 
 type nasHAPartitionAccessArgs struct {
-	// ip block in x.x.x.x/x format
+	// A brief description of the acl
+	AclDescription *string `pulumi:"aclDescription"`
+	// IP block in x.x.x.x/x format
 	Ip string `pulumi:"ip"`
-	// name of the partition
+	// Name of the partition
 	PartitionName string `pulumi:"partitionName"`
 	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
 	ServiceName string `pulumi:"serviceName"`
-	// one of "readwrite", "readonly"
+	// One of "readwrite", "readonly"
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a NasHAPartitionAccess resource.
 type NasHAPartitionAccessArgs struct {
-	// ip block in x.x.x.x/x format
+	// A brief description of the acl
+	AclDescription pulumi.StringPtrInput
+	// IP block in x.x.x.x/x format
 	Ip pulumi.StringInput
-	// name of the partition
+	// Name of the partition
 	PartitionName pulumi.StringInput
 	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
 	ServiceName pulumi.StringInput
-	// one of "readwrite", "readonly"
+	// One of "readwrite", "readonly"
 	Type pulumi.StringPtrInput
 }
 
@@ -237,12 +248,17 @@ func (o NasHAPartitionAccessOutput) ToNasHAPartitionAccessOutputWithContext(ctx 
 	return o
 }
 
-// ip block in x.x.x.x/x format
+// A brief description of the acl
+func (o NasHAPartitionAccessOutput) AclDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NasHAPartitionAccess) pulumi.StringPtrOutput { return v.AclDescription }).(pulumi.StringPtrOutput)
+}
+
+// IP block in x.x.x.x/x format
 func (o NasHAPartitionAccessOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartitionAccess) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
-// name of the partition
+// Name of the partition
 func (o NasHAPartitionAccessOutput) PartitionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartitionAccess) pulumi.StringOutput { return v.PartitionName }).(pulumi.StringOutput)
 }
@@ -252,7 +268,7 @@ func (o NasHAPartitionAccessOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartitionAccess) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// one of "readwrite", "readonly"
+// One of "readwrite", "readonly"
 func (o NasHAPartitionAccessOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NasHAPartitionAccess) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -95,13 +95,11 @@ class ProjectArgs:
 
     @property
     @pulumi.getter(name="paymentMean")
+    @_utilities.deprecated("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
     def payment_mean(self) -> Optional[pulumi.Input[str]]:
         """
         Ovh payment mode
         """
-        warnings.warn("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""", DeprecationWarning)
-        pulumi.log.warn("""payment_mean is deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
-
         return pulumi.get(self, "payment_mean")
 
     @payment_mean.setter
@@ -233,13 +231,11 @@ class _ProjectState:
 
     @property
     @pulumi.getter(name="paymentMean")
+    @_utilities.deprecated("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
     def payment_mean(self) -> Optional[pulumi.Input[str]]:
         """
         Ovh payment mode
         """
-        warnings.warn("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""", DeprecationWarning)
-        pulumi.log.warn("""payment_mean is deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
-
         return pulumi.get(self, "payment_mean")
 
     @payment_mean.setter
@@ -496,13 +492,11 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="paymentMean")
+    @_utilities.deprecated("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
     def payment_mean(self) -> pulumi.Output[Optional[str]]:
         """
         Ovh payment mode
         """
-        warnings.warn("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""", DeprecationWarning)
-        pulumi.log.warn("""payment_mean is deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
-
         return pulumi.get(self, "payment_mean")
 
     @property

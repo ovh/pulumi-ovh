@@ -115,6 +115,7 @@
         "config/vars.ts",
         "dbaas/getLogsCluster.ts",
         "dbaas/getLogsClusters.ts",
+        "dbaas/getLogsClustersRetention.ts",
         "dbaas/getLogsInputEngine.ts",
         "dbaas/getLogsOutputGraylogStream.ts",
         "dbaas/index.ts",

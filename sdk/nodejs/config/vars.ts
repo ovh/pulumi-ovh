@@ -8,6 +8,17 @@ declare var exports: any;
 const __config = new pulumi.Config("ovh");
 
 /**
+ * The OVH API Access Token
+ */
+export declare const accessToken: string | undefined;
+Object.defineProperty(exports, "accessToken", {
+    get() {
+        return __config.get("accessToken");
+    },
+    enumerable: true,
+});
+
+/**
  * The OVH API Application Key
  */
 export declare const applicationKey: string | undefined;

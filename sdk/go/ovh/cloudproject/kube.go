@@ -42,10 +42,14 @@ type Kube struct {
 	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
 	// The kubeconfig file attributes.
 	KubeconfigAttributes KubeKubeconfigAttributeArrayOutput `pulumi:"kubeconfigAttributes"`
+	// Openstack private network (or vRack) ID to use for load balancers.
+	LoadBalancersSubnetId pulumi.StringPtrOutput `pulumi:"loadBalancersSubnetId"`
 	// The name of the kubernetes cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Kubernetes versions available for upgrade.
 	NextUpgradeVersions pulumi.StringArrayOutput `pulumi:"nextUpgradeVersions"`
+	// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+	NodesSubnetId pulumi.StringOutput `pulumi:"nodesSubnetId"`
 	// Cluster nodes URL.
 	NodesUrl pulumi.StringOutput `pulumi:"nodesUrl"`
 	// The private network configuration. If this is set then the 2 parameters below shall be defined.
@@ -127,10 +131,14 @@ type kubeState struct {
 	Kubeconfig *string `pulumi:"kubeconfig"`
 	// The kubeconfig file attributes.
 	KubeconfigAttributes []KubeKubeconfigAttribute `pulumi:"kubeconfigAttributes"`
+	// Openstack private network (or vRack) ID to use for load balancers.
+	LoadBalancersSubnetId *string `pulumi:"loadBalancersSubnetId"`
 	// The name of the kubernetes cluster.
 	Name *string `pulumi:"name"`
 	// Kubernetes versions available for upgrade.
 	NextUpgradeVersions []string `pulumi:"nextUpgradeVersions"`
+	// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+	NodesSubnetId *string `pulumi:"nodesSubnetId"`
 	// Cluster nodes URL.
 	NodesUrl *string `pulumi:"nodesUrl"`
 	// The private network configuration. If this is set then the 2 parameters below shall be defined.
@@ -172,10 +180,14 @@ type KubeState struct {
 	Kubeconfig pulumi.StringPtrInput
 	// The kubeconfig file attributes.
 	KubeconfigAttributes KubeKubeconfigAttributeArrayInput
+	// Openstack private network (or vRack) ID to use for load balancers.
+	LoadBalancersSubnetId pulumi.StringPtrInput
 	// The name of the kubernetes cluster.
 	Name pulumi.StringPtrInput
 	// Kubernetes versions available for upgrade.
 	NextUpgradeVersions pulumi.StringArrayInput
+	// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+	NodesSubnetId pulumi.StringPtrInput
 	// Cluster nodes URL.
 	NodesUrl pulumi.StringPtrInput
 	// The private network configuration. If this is set then the 2 parameters below shall be defined.
@@ -213,8 +225,12 @@ type kubeArgs struct {
 	Customizations []KubeCustomization `pulumi:"customizations"`
 	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
 	KubeProxyMode *string `pulumi:"kubeProxyMode"`
+	// Openstack private network (or vRack) ID to use for load balancers.
+	LoadBalancersSubnetId *string `pulumi:"loadBalancersSubnetId"`
 	// The name of the kubernetes cluster.
 	Name *string `pulumi:"name"`
+	// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+	NodesSubnetId *string `pulumi:"nodesSubnetId"`
 	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration *KubePrivateNetworkConfiguration `pulumi:"privateNetworkConfiguration"`
 	// OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
@@ -243,8 +259,12 @@ type KubeArgs struct {
 	Customizations KubeCustomizationArrayInput
 	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
 	KubeProxyMode pulumi.StringPtrInput
+	// Openstack private network (or vRack) ID to use for load balancers.
+	LoadBalancersSubnetId pulumi.StringPtrInput
 	// The name of the kubernetes cluster.
 	Name pulumi.StringPtrInput
+	// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+	NodesSubnetId pulumi.StringPtrInput
 	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrInput
 	// OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
@@ -390,6 +410,11 @@ func (o KubeOutput) KubeconfigAttributes() KubeKubeconfigAttributeArrayOutput {
 	return o.ApplyT(func(v *Kube) KubeKubeconfigAttributeArrayOutput { return v.KubeconfigAttributes }).(KubeKubeconfigAttributeArrayOutput)
 }
 
+// Openstack private network (or vRack) ID to use for load balancers.
+func (o KubeOutput) LoadBalancersSubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Kube) pulumi.StringPtrOutput { return v.LoadBalancersSubnetId }).(pulumi.StringPtrOutput)
+}
+
 // The name of the kubernetes cluster.
 func (o KubeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -398,6 +423,11 @@ func (o KubeOutput) Name() pulumi.StringOutput {
 // Kubernetes versions available for upgrade.
 func (o KubeOutput) NextUpgradeVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringArrayOutput { return v.NextUpgradeVersions }).(pulumi.StringArrayOutput)
+}
+
+// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+func (o KubeOutput) NodesSubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.NodesSubnetId }).(pulumi.StringOutput)
 }
 
 // Cluster nodes URL.
