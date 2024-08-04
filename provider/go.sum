@@ -1881,8 +1881,8 @@ github.com/opentracing/opentracing-go v1.2.0 h1:uEJPy/1a5RIPAJ0Ov+OIO8OxWu77jEv+
 github.com/opentracing/opentracing-go v1.2.0/go.mod h1:GxEUsuufX4nBwe+T+Wl9TAgYrxe9dPLANfrWvHYVTgc=
 github.com/ovh/go-ovh v1.6.0 h1:ixLOwxQdzYDx296sXcgS35TOPEahJkpjMGtzPadCjQI=
 github.com/ovh/go-ovh v1.6.0/go.mod h1:cTVDnl94z4tl8pP1uZ/8jlVxntjSIf09bNcQ5TJSC7c=
-github.com/ovh/terraform-provider-ovh v0.47.0 h1:ViWQSu8/TN1knNnLDGoSorhOITHX7CYNOWCkb5XYUfI=
-github.com/ovh/terraform-provider-ovh v0.47.0/go.mod h1:9W2xVNvXTS4twSTs4VIQg489bahwSHGMIqYbYUrktOI=
+github.com/ovh/terraform-provider-ovh v0.48.0 h1:pFiW+ZdaBA7KLRkHHYo8FjwN2+Wome4tC83XE99ynQk=
+github.com/ovh/terraform-provider-ovh v0.48.0/go.mod h1:9W2xVNvXTS4twSTs4VIQg489bahwSHGMIqYbYUrktOI=
 github.com/pgavlin/fx v0.1.6 h1:r9jEg69DhNoCd3Xh0+5mIbdbS3PqWrVWujkY76MFRTU=
 github.com/pgavlin/fx v0.1.6/go.mod h1:KWZJ6fqBBSh8GxHYqwYCf3rYE7Gp2p0N8tJp8xv9u9M=
 github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 h1:LoCV5cscNVWyK5ChN/uCoIFJz8jZD63VQiGJIRgr6uo=
