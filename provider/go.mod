@@ -8,7 +8,7 @@ require (
 	github.com/ovh/terraform-provider-ovh v0.48.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.41.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.88.0
-	github.com/pulumi/pulumi/sdk/v3 v3.126.0
+	github.com/pulumi/pulumi/sdk/v3 v3.128.0
 )
 
 require (
