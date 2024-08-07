@@ -14,6 +14,7 @@ from .container_registry_user import *
 from .database import *
 from .failover_ip_attach import *
 from .gateway import *
+from .gateway_interface import *
 from .get_capabilities_container_filter import *
 from .get_capabilities_container_registry import *
 from .get_container_registries import *
@@ -23,6 +24,7 @@ from .get_container_registry_ip_restrictions_registry import *
 from .get_container_registry_oidc import *
 from .get_container_registry_users import *
 from .get_failover_ip_attach import *
+from .get_gateway_interface import *
 from .get_kube import *
 from .get_kube_ip_restrictions import *
 from .get_kube_node_pool import *
@@ -40,6 +42,8 @@ from .get_open_search_patterns import *
 from .get_open_search_user import *
 from .get_redis_user import *
 from .get_region import *
+from .get_region_load_balancer_log_subscription import *
+from .get_region_load_balancer_log_subscriptions import *
 from .get_regions import *
 from .get_user import *
 from .get_user_s3_credential import *
@@ -54,6 +58,7 @@ from .kube_oidc import *
 from .network_private import *
 from .network_private_subnet import *
 from .project import *
+from .region_load_balancer_log_subscription import *
 from .region_storage_presign import *
 from .s3_credential import *
 from .s3_policy import *

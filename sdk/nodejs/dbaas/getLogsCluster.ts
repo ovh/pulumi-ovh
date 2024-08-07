@@ -50,7 +50,7 @@ export interface GetLogsClusterResult {
      * is allowed networks for ARCHIVE flow type
      */
     readonly archiveAllowedNetworks: string[];
-    readonly clusterId?: string;
+    readonly clusterId: string;
     /**
      * is type of cluster (DEDICATED, PRO or TRIAL)
      */

@@ -139,6 +139,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProject/gatewayInterface",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/gatewayInterface:GatewayInterface": "GatewayInterface"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProject/kube",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
@@ -191,6 +199,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProject/regionLoadBalancerLogSubscription",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription": "RegionLoadBalancerLogSubscription"
   }
  },
  {

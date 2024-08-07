@@ -75,7 +75,7 @@ class GetLogsClusterResult:
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[str]:
+    def cluster_id(self) -> str:
         return pulumi.get(self, "cluster_id")
 
     @property

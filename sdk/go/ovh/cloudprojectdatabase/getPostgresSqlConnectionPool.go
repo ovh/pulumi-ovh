@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("testPool", map[string]interface{}{
+//			ctx.Export("testPool", pulumi.Map{
 //				"service_name": testPoolPostgresSqlConnectionPool.ServiceName,
 //				"cluster_id":   testPoolPostgresSqlConnectionPool.ClusterId,
 //				"name":         testPoolPostgresSqlConnectionPool.Name,
