@@ -1147,7 +1147,7 @@ func (o GatewayExternalInformationIpArrayOutput) Index(i pulumi.IntInput) Gatewa
 	}).(GatewayExternalInformationIpOutput)
 }
 
-type GatewayInterface struct {
+type GatewayInterfaceType struct {
 	// ID of the interface.
 	Id *string `pulumi:"id"`
 	// IP of the interface.
@@ -1158,18 +1158,18 @@ type GatewayInterface struct {
 	SubnetId *string `pulumi:"subnetId"`
 }
 
-// GatewayInterfaceInput is an input type that accepts GatewayInterfaceArgs and GatewayInterfaceOutput values.
-// You can construct a concrete instance of `GatewayInterfaceInput` via:
+// GatewayInterfaceTypeInput is an input type that accepts GatewayInterfaceTypeArgs and GatewayInterfaceTypeOutput values.
+// You can construct a concrete instance of `GatewayInterfaceTypeInput` via:
 //
-//	GatewayInterfaceArgs{...}
-type GatewayInterfaceInput interface {
+//	GatewayInterfaceTypeArgs{...}
+type GatewayInterfaceTypeInput interface {
 	pulumi.Input
 
-	ToGatewayInterfaceOutput() GatewayInterfaceOutput
-	ToGatewayInterfaceOutputWithContext(context.Context) GatewayInterfaceOutput
+	ToGatewayInterfaceTypeOutput() GatewayInterfaceTypeOutput
+	ToGatewayInterfaceTypeOutputWithContext(context.Context) GatewayInterfaceTypeOutput
 }
 
-type GatewayInterfaceArgs struct {
+type GatewayInterfaceTypeArgs struct {
 	// ID of the interface.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// IP of the interface.
@@ -1180,95 +1180,95 @@ type GatewayInterfaceArgs struct {
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
-func (GatewayInterfaceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayInterface)(nil)).Elem()
+func (GatewayInterfaceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayInterfaceType)(nil)).Elem()
 }
 
-func (i GatewayInterfaceArgs) ToGatewayInterfaceOutput() GatewayInterfaceOutput {
-	return i.ToGatewayInterfaceOutputWithContext(context.Background())
+func (i GatewayInterfaceTypeArgs) ToGatewayInterfaceTypeOutput() GatewayInterfaceTypeOutput {
+	return i.ToGatewayInterfaceTypeOutputWithContext(context.Background())
 }
 
-func (i GatewayInterfaceArgs) ToGatewayInterfaceOutputWithContext(ctx context.Context) GatewayInterfaceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayInterfaceOutput)
+func (i GatewayInterfaceTypeArgs) ToGatewayInterfaceTypeOutputWithContext(ctx context.Context) GatewayInterfaceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayInterfaceTypeOutput)
 }
 
-// GatewayInterfaceArrayInput is an input type that accepts GatewayInterfaceArray and GatewayInterfaceArrayOutput values.
-// You can construct a concrete instance of `GatewayInterfaceArrayInput` via:
+// GatewayInterfaceTypeArrayInput is an input type that accepts GatewayInterfaceTypeArray and GatewayInterfaceTypeArrayOutput values.
+// You can construct a concrete instance of `GatewayInterfaceTypeArrayInput` via:
 //
-//	GatewayInterfaceArray{ GatewayInterfaceArgs{...} }
-type GatewayInterfaceArrayInput interface {
+//	GatewayInterfaceTypeArray{ GatewayInterfaceTypeArgs{...} }
+type GatewayInterfaceTypeArrayInput interface {
 	pulumi.Input
 
-	ToGatewayInterfaceArrayOutput() GatewayInterfaceArrayOutput
-	ToGatewayInterfaceArrayOutputWithContext(context.Context) GatewayInterfaceArrayOutput
+	ToGatewayInterfaceTypeArrayOutput() GatewayInterfaceTypeArrayOutput
+	ToGatewayInterfaceTypeArrayOutputWithContext(context.Context) GatewayInterfaceTypeArrayOutput
 }
 
-type GatewayInterfaceArray []GatewayInterfaceInput
+type GatewayInterfaceTypeArray []GatewayInterfaceTypeInput
 
-func (GatewayInterfaceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GatewayInterface)(nil)).Elem()
+func (GatewayInterfaceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayInterfaceType)(nil)).Elem()
 }
 
-func (i GatewayInterfaceArray) ToGatewayInterfaceArrayOutput() GatewayInterfaceArrayOutput {
-	return i.ToGatewayInterfaceArrayOutputWithContext(context.Background())
+func (i GatewayInterfaceTypeArray) ToGatewayInterfaceTypeArrayOutput() GatewayInterfaceTypeArrayOutput {
+	return i.ToGatewayInterfaceTypeArrayOutputWithContext(context.Background())
 }
 
-func (i GatewayInterfaceArray) ToGatewayInterfaceArrayOutputWithContext(ctx context.Context) GatewayInterfaceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayInterfaceArrayOutput)
+func (i GatewayInterfaceTypeArray) ToGatewayInterfaceTypeArrayOutputWithContext(ctx context.Context) GatewayInterfaceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayInterfaceTypeArrayOutput)
 }
 
-type GatewayInterfaceOutput struct{ *pulumi.OutputState }
+type GatewayInterfaceTypeOutput struct{ *pulumi.OutputState }
 
-func (GatewayInterfaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayInterface)(nil)).Elem()
+func (GatewayInterfaceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayInterfaceType)(nil)).Elem()
 }
 
-func (o GatewayInterfaceOutput) ToGatewayInterfaceOutput() GatewayInterfaceOutput {
+func (o GatewayInterfaceTypeOutput) ToGatewayInterfaceTypeOutput() GatewayInterfaceTypeOutput {
 	return o
 }
 
-func (o GatewayInterfaceOutput) ToGatewayInterfaceOutputWithContext(ctx context.Context) GatewayInterfaceOutput {
+func (o GatewayInterfaceTypeOutput) ToGatewayInterfaceTypeOutputWithContext(ctx context.Context) GatewayInterfaceTypeOutput {
 	return o
 }
 
 // ID of the interface.
-func (o GatewayInterfaceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayInterface) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o GatewayInterfaceTypeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // IP of the interface.
-func (o GatewayInterfaceOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayInterface) *string { return v.Ip }).(pulumi.StringPtrOutput)
+func (o GatewayInterfaceTypeOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
 // ID of the private network.
-func (o GatewayInterfaceOutput) NetworkId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayInterface) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
+func (o GatewayInterfaceTypeOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the subnet.
-func (o GatewayInterfaceOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayInterface) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+func (o GatewayInterfaceTypeOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
-type GatewayInterfaceArrayOutput struct{ *pulumi.OutputState }
+type GatewayInterfaceTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (GatewayInterfaceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GatewayInterface)(nil)).Elem()
+func (GatewayInterfaceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayInterfaceType)(nil)).Elem()
 }
 
-func (o GatewayInterfaceArrayOutput) ToGatewayInterfaceArrayOutput() GatewayInterfaceArrayOutput {
+func (o GatewayInterfaceTypeArrayOutput) ToGatewayInterfaceTypeArrayOutput() GatewayInterfaceTypeArrayOutput {
 	return o
 }
 
-func (o GatewayInterfaceArrayOutput) ToGatewayInterfaceArrayOutputWithContext(ctx context.Context) GatewayInterfaceArrayOutput {
+func (o GatewayInterfaceTypeArrayOutput) ToGatewayInterfaceTypeArrayOutputWithContext(ctx context.Context) GatewayInterfaceTypeArrayOutput {
 	return o
 }
 
-func (o GatewayInterfaceArrayOutput) Index(i pulumi.IntInput) GatewayInterfaceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayInterface {
-		return vs[0].([]GatewayInterface)[vs[1].(int)]
-	}).(GatewayInterfaceOutput)
+func (o GatewayInterfaceTypeArrayOutput) Index(i pulumi.IntInput) GatewayInterfaceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayInterfaceType {
+		return vs[0].([]GatewayInterfaceType)[vs[1].(int)]
+	}).(GatewayInterfaceTypeOutput)
 }
 
 type KubeCustomization struct {
@@ -7887,8 +7887,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExternalInformationArrayInput)(nil)).Elem(), GatewayExternalInformationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExternalInformationIpInput)(nil)).Elem(), GatewayExternalInformationIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExternalInformationIpArrayInput)(nil)).Elem(), GatewayExternalInformationIpArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInterfaceInput)(nil)).Elem(), GatewayInterfaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInterfaceArrayInput)(nil)).Elem(), GatewayInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInterfaceTypeInput)(nil)).Elem(), GatewayInterfaceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInterfaceTypeArrayInput)(nil)).Elem(), GatewayInterfaceTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationInput)(nil)).Elem(), KubeCustomizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationArrayInput)(nil)).Elem(), KubeCustomizationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationApiserverInput)(nil)).Elem(), KubeCustomizationApiserverArgs{})
@@ -8001,8 +8001,8 @@ func init() {
 	pulumi.RegisterOutputType(GatewayExternalInformationArrayOutput{})
 	pulumi.RegisterOutputType(GatewayExternalInformationIpOutput{})
 	pulumi.RegisterOutputType(GatewayExternalInformationIpArrayOutput{})
-	pulumi.RegisterOutputType(GatewayInterfaceOutput{})
-	pulumi.RegisterOutputType(GatewayInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GatewayInterfaceTypeOutput{})
+	pulumi.RegisterOutputType(GatewayInterfaceTypeArrayOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationArrayOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationApiserverOutput{})

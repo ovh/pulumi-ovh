@@ -111,7 +111,7 @@ namespace Pulumi.Ovh.Dbaas
         /// is allowed networks for ARCHIVE flow type
         /// </summary>
         public readonly ImmutableArray<string> ArchiveAllowedNetworks;
-        public readonly string? ClusterId;
+        public readonly string ClusterId;
         /// <summary>
         /// is type of cluster (DEDICATED, PRO or TRIAL)
         /// </summary>
@@ -162,7 +162,7 @@ namespace Pulumi.Ovh.Dbaas
         private GetLogsClusterResult(
             ImmutableArray<string> archiveAllowedNetworks,
 
-            string? clusterId,
+            string clusterId,
 
             string clusterType,
 

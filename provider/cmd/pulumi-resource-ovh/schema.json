@@ -7073,6 +7073,96 @@
                 "type": "object"
             }
         },
+        "ovh:CloudProject/gatewayInterface:GatewayInterface": {
+            "description": "Create a new Gateway Interface for existing subnet in the specified public cloud project.\n\n## Import\n\nA gateway interface can be imported using the `service_name`, `region`, `id` (identifier of the gateway) and `interface_id` properties, separated by a `/`.\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id\n```\n\n",
+            "properties": {
+                "interfaceId": {
+                    "type": "string",
+                    "description": "ID of the interface\n"
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "IP of the interface\n"
+                },
+                "networkId": {
+                    "type": "string",
+                    "description": "Network ID of the interface\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the gateway\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "ID of the cloud project\n"
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "ID of the subnet to add\n"
+                }
+            },
+            "required": [
+                "interfaceId",
+                "ip",
+                "networkId",
+                "region",
+                "serviceName",
+                "subnetId"
+            ],
+            "inputProperties": {
+                "interfaceId": {
+                    "type": "string",
+                    "description": "ID of the interface\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the gateway\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "ID of the cloud project\n"
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "ID of the subnet to add\n"
+                }
+            },
+            "requiredInputs": [
+                "region",
+                "serviceName",
+                "subnetId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GatewayInterface resources.\n",
+                "properties": {
+                    "interfaceId": {
+                        "type": "string",
+                        "description": "ID of the interface\n"
+                    },
+                    "ip": {
+                        "type": "string",
+                        "description": "IP of the interface\n"
+                    },
+                    "networkId": {
+                        "type": "string",
+                        "description": "Network ID of the interface\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region of the gateway\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "ID of the cloud project\n"
+                    },
+                    "subnetId": {
+                        "type": "string",
+                        "description": "ID of the subnet to add\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "ovh:CloudProject/kube:Kube": {
             "description": "\n\n## Import\n\nOVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id\n```\n\n",
             "properties": {
@@ -8396,6 +8486,166 @@
                     "status": {
                         "type": "string",
                         "description": "project status\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription": {
+            "description": "Subscribe to a Managed Loadbalance Logs Service in a public cloud project.\n\n## Example Usage\n\nCreate a subscription\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst createLogSubscription = new ovh.cloudproject.RegionLoadBalancerLogSubscription(\"createLogSubscription\", {\n    kind: \"haproxy\",\n    loadbalancerId: \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\n    regionName: \"yyyy\",\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    streamId: \"ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\ncreate_log_subscription = ovh.cloud_project.RegionLoadBalancerLogSubscription(\"createLogSubscription\",\n    kind=\"haproxy\",\n    loadbalancer_id=\"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\n    region_name=\"yyyy\",\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    stream_id=\"ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var createLogSubscription = new Ovh.CloudProject.RegionLoadBalancerLogSubscription(\"createLogSubscription\", new()\n    {\n        Kind = \"haproxy\",\n        LoadbalancerId = \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\n        RegionName = \"yyyy\",\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        StreamId = \"ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.NewRegionLoadBalancerLogSubscription(ctx, \"createLogSubscription\", \u0026CloudProject.RegionLoadBalancerLogSubscriptionArgs{\n\t\t\tKind:           pulumi.String(\"haproxy\"),\n\t\t\tLoadbalancerId: pulumi.String(\"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"),\n\t\t\tRegionName:     pulumi.String(\"yyyy\"),\n\t\t\tServiceName:    pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tStreamId:       pulumi.String(\"ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.RegionLoadBalancerLogSubscription;\nimport com.pulumi.ovh.CloudProject.RegionLoadBalancerLogSubscriptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var createLogSubscription = new RegionLoadBalancerLogSubscription(\"createLogSubscription\", RegionLoadBalancerLogSubscriptionArgs.builder()\n            .kind(\"haproxy\")\n            .loadbalancerId(\"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\")\n            .regionName(\"yyyy\")\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .streamId(\"ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  createLogSubscription:\n    type: ovh:CloudProject:RegionLoadBalancerLogSubscription\n    properties:\n      kind: haproxy\n      loadbalancerId: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\n      regionName: yyyy\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      streamId: ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date of the subscription creation\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "haproxy  **Changing this value recreates the resource.**\n"
+                },
+                "ldpServiceName": {
+                    "type": "string",
+                    "description": "LDP service name\n"
+                },
+                "loadbalancerId": {
+                    "type": "string",
+                    "description": "Loadbalancer id to get the logs  **Changing this value recreates the resource.**\n"
+                },
+                "operationId": {
+                    "type": "string",
+                    "description": "The operation ID\n"
+                },
+                "regionName": {
+                    "type": "string",
+                    "description": "A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: \"GRA11\". **Changing this value recreates the resource.**\n"
+                },
+                "resourceName": {
+                    "type": "string",
+                    "description": "The resource name\n"
+                },
+                "resourceType": {
+                    "type": "string",
+                    "description": "The resource type\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**\n"
+                },
+                "streamId": {
+                    "type": "string",
+                    "description": "Data stream id to use for the subscription  **Changing this value recreates the resource.**\n"
+                },
+                "subscriptionId": {
+                    "type": "string",
+                    "description": "The subscription id\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The last update of the subscription\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "kind",
+                "ldpServiceName",
+                "loadbalancerId",
+                "operationId",
+                "regionName",
+                "resourceName",
+                "resourceType",
+                "serviceName",
+                "streamId",
+                "subscriptionId",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "kind": {
+                    "type": "string",
+                    "description": "haproxy  **Changing this value recreates the resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "loadbalancerId": {
+                    "type": "string",
+                    "description": "Loadbalancer id to get the logs  **Changing this value recreates the resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "regionName": {
+                    "type": "string",
+                    "description": "A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: \"GRA11\". **Changing this value recreates the resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "streamId": {
+                    "type": "string",
+                    "description": "Data stream id to use for the subscription  **Changing this value recreates the resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "kind",
+                "loadbalancerId",
+                "regionName",
+                "serviceName",
+                "streamId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RegionLoadBalancerLogSubscription resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date of the subscription creation\n"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "haproxy  **Changing this value recreates the resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "ldpServiceName": {
+                        "type": "string",
+                        "description": "LDP service name\n"
+                    },
+                    "loadbalancerId": {
+                        "type": "string",
+                        "description": "Loadbalancer id to get the logs  **Changing this value recreates the resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "operationId": {
+                        "type": "string",
+                        "description": "The operation ID\n"
+                    },
+                    "regionName": {
+                        "type": "string",
+                        "description": "A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: \"GRA11\". **Changing this value recreates the resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "resourceName": {
+                        "type": "string",
+                        "description": "The resource name\n"
+                    },
+                    "resourceType": {
+                        "type": "string",
+                        "description": "The resource type\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "streamId": {
+                        "type": "string",
+                        "description": "Data stream id to use for the subscription  **Changing this value recreates the resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "subscriptionId": {
+                        "type": "string",
+                        "description": "The subscription id\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The last update of the subscription\n"
                     }
                 },
                 "type": "object"
@@ -15814,7 +16064,7 @@
             }
         },
         "ovh:IpLoadBalancing/refresh:Refresh": {
-            "description": "Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst lb = ovh.IpLoadBalancing.getIpLoadBalancing({\n    serviceName: \"ip-1.2.3.4\",\n    state: \"ok\",\n});\nconst farmname = new ovh.iploadbalancing.TcpFarm(\"farmname\", {\n    port: 8080,\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n    zone: \"all\",\n});\nconst backend = new ovh.iploadbalancing.TcpFarmServer(\"backend\", {\n    address: \"4.5.6.7\",\n    backup: true,\n    displayName: \"mybackend\",\n    farmId: farmname.id,\n    port: 80,\n    probe: true,\n    proxyProtocolVersion: \"v2\",\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n    ssl: false,\n    status: \"active\",\n    weight: 2,\n});\nconst mylb = new ovh.iploadbalancing.Refresh(\"mylb\", {\n    keepers: [[backend].map(__item =\u003e __item.address)],\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nlb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name=\"ip-1.2.3.4\",\n    state=\"ok\")\nfarmname = ovh.ip_load_balancing.TcpFarm(\"farmname\",\n    port=8080,\n    service_name=lb.service_name,\n    zone=\"all\")\nbackend = ovh.ip_load_balancing.TcpFarmServer(\"backend\",\n    address=\"4.5.6.7\",\n    backup=True,\n    display_name=\"mybackend\",\n    farm_id=farmname.id,\n    port=80,\n    probe=True,\n    proxy_protocol_version=\"v2\",\n    service_name=lb.service_name,\n    ssl=False,\n    status=\"active\",\n    weight=2)\nmylb = ovh.ip_load_balancing.Refresh(\"mylb\",\n    keepers=[[__item.address for __item in [backend]]],\n    service_name=lb.service_name)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()\n    {\n        ServiceName = \"ip-1.2.3.4\",\n        State = \"ok\",\n    });\n\n    var farmname = new Ovh.IpLoadBalancing.TcpFarm(\"farmname\", new()\n    {\n        Port = 8080,\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n        Zone = \"all\",\n    });\n\n    var backend = new Ovh.IpLoadBalancing.TcpFarmServer(\"backend\", new()\n    {\n        Address = \"4.5.6.7\",\n        Backup = true,\n        DisplayName = \"mybackend\",\n        FarmId = farmname.Id,\n        Port = 80,\n        Probe = true,\n        ProxyProtocolVersion = \"v2\",\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n        Ssl = false,\n        Status = \"active\",\n        Weight = 2,\n    });\n\n    var mylb = new Ovh.IpLoadBalancing.Refresh(\"mylb\", new()\n    {\n        Keepers = new[]\n        {\n            new[]\n            {\n                backend,\n            }.Select(__item =\u003e __item.Address).ToList(),\n        },\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\nlb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, \u0026iploadbalancing.GetIpLoadBalancingArgs{\nServiceName: pulumi.StringRef(\"ip-1.2.3.4\"),\nState: pulumi.StringRef(\"ok\"),\n}, nil);\nif err != nil {\nreturn err\n}\nfarmname, err := IpLoadBalancing.NewTcpFarm(ctx, \"farmname\", \u0026IpLoadBalancing.TcpFarmArgs{\nPort: pulumi.Int(8080),\nServiceName: pulumi.String(lb.ServiceName),\nZone: pulumi.String(\"all\"),\n})\nif err != nil {\nreturn err\n}\nbackend, err := IpLoadBalancing.NewTcpFarmServer(ctx, \"backend\", \u0026IpLoadBalancing.TcpFarmServerArgs{\nAddress: pulumi.String(\"4.5.6.7\"),\nBackup: pulumi.Bool(true),\nDisplayName: pulumi.String(\"mybackend\"),\nFarmId: farmname.ID(),\nPort: pulumi.Int(80),\nProbe: pulumi.Bool(true),\nProxyProtocolVersion: pulumi.String(\"v2\"),\nServiceName: pulumi.String(lb.ServiceName),\nSsl: pulumi.Bool(false),\nStatus: pulumi.String(\"active\"),\nWeight: pulumi.Int(2),\n})\nif err != nil {\nreturn err\n}\n_, err = IpLoadBalancing.NewRefresh(ctx, \"mylb\", \u0026IpLoadBalancing.RefreshArgs{\nKeepers: pulumi.StringArray{\n%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-ovh:IpLoadBalancing-refresh:Refresh.pp:23,16-35),\n},\nServiceName: pulumi.String(lb.ServiceName),\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;\nimport com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;\nimport com.pulumi.ovh.IpLoadBalancing.TcpFarm;\nimport com.pulumi.ovh.IpLoadBalancing.TcpFarmArgs;\nimport com.pulumi.ovh.IpLoadBalancing.TcpFarmServer;\nimport com.pulumi.ovh.IpLoadBalancing.TcpFarmServerArgs;\nimport com.pulumi.ovh.IpLoadBalancing.Refresh;\nimport com.pulumi.ovh.IpLoadBalancing.RefreshArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()\n            .serviceName(\"ip-1.2.3.4\")\n            .state(\"ok\")\n            .build());\n\n        var farmname = new TcpFarm(\"farmname\", TcpFarmArgs.builder()\n            .port(8080)\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .zone(\"all\")\n            .build());\n\n        var backend = new TcpFarmServer(\"backend\", TcpFarmServerArgs.builder()\n            .address(\"4.5.6.7\")\n            .backup(true)\n            .displayName(\"mybackend\")\n            .farmId(farmname.id())\n            .port(80)\n            .probe(true)\n            .proxyProtocolVersion(\"v2\")\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .ssl(false)\n            .status(\"active\")\n            .weight(2)\n            .build());\n\n        var mylb = new Refresh(\"mylb\", RefreshArgs.builder()\n            .keepers(backend.stream().map(element -\u003e element.address()).collect(toList()))\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .build());\n\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst lb = ovh.IpLoadBalancing.getIpLoadBalancing({\n    serviceName: \"ip-1.2.3.4\",\n    state: \"ok\",\n});\nconst farmname = new ovh.iploadbalancing.TcpFarm(\"farmname\", {\n    port: 8080,\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n    zone: \"all\",\n});\nconst backend = new ovh.iploadbalancing.TcpFarmServer(\"backend\", {\n    address: \"4.5.6.7\",\n    backup: true,\n    displayName: \"mybackend\",\n    farmId: farmname.id,\n    port: 80,\n    probe: true,\n    proxyProtocolVersion: \"v2\",\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n    ssl: false,\n    status: \"active\",\n    weight: 2,\n});\nconst mylb = new ovh.iploadbalancing.Refresh(\"mylb\", {\n    keepers: [[backend].map(__item =\u003e __item.address)],\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nlb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name=\"ip-1.2.3.4\",\n    state=\"ok\")\nfarmname = ovh.ip_load_balancing.TcpFarm(\"farmname\",\n    port=8080,\n    service_name=lb.service_name,\n    zone=\"all\")\nbackend = ovh.ip_load_balancing.TcpFarmServer(\"backend\",\n    address=\"4.5.6.7\",\n    backup=True,\n    display_name=\"mybackend\",\n    farm_id=farmname.id,\n    port=80,\n    probe=True,\n    proxy_protocol_version=\"v2\",\n    service_name=lb.service_name,\n    ssl=False,\n    status=\"active\",\n    weight=2)\nmylb = ovh.ip_load_balancing.Refresh(\"mylb\",\n    keepers=[[__item.address for __item in [backend]]],\n    service_name=lb.service_name)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()\n    {\n        ServiceName = \"ip-1.2.3.4\",\n        State = \"ok\",\n    });\n\n    var farmname = new Ovh.IpLoadBalancing.TcpFarm(\"farmname\", new()\n    {\n        Port = 8080,\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n        Zone = \"all\",\n    });\n\n    var backend = new Ovh.IpLoadBalancing.TcpFarmServer(\"backend\", new()\n    {\n        Address = \"4.5.6.7\",\n        Backup = true,\n        DisplayName = \"mybackend\",\n        FarmId = farmname.Id,\n        Port = 80,\n        Probe = true,\n        ProxyProtocolVersion = \"v2\",\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n        Ssl = false,\n        Status = \"active\",\n        Weight = 2,\n    });\n\n    var mylb = new Ovh.IpLoadBalancing.Refresh(\"mylb\", new()\n    {\n        Keepers = new[]\n        {\n            new[]\n            {\n                backend,\n            }.Select(__item =\u003e __item.Address).ToList(),\n        },\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\nlb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, \u0026iploadbalancing.GetIpLoadBalancingArgs{\nServiceName: pulumi.StringRef(\"ip-1.2.3.4\"),\nState: pulumi.StringRef(\"ok\"),\n}, nil);\nif err != nil {\nreturn err\n}\nfarmname, err := IpLoadBalancing.NewTcpFarm(ctx, \"farmname\", \u0026IpLoadBalancing.TcpFarmArgs{\nPort: pulumi.Int(8080),\nServiceName: pulumi.String(lb.ServiceName),\nZone: pulumi.String(\"all\"),\n})\nif err != nil {\nreturn err\n}\nbackend, err := IpLoadBalancing.NewTcpFarmServer(ctx, \"backend\", \u0026IpLoadBalancing.TcpFarmServerArgs{\nAddress: pulumi.String(\"4.5.6.7\"),\nBackup: pulumi.Bool(true),\nDisplayName: pulumi.String(\"mybackend\"),\nFarmId: farmname.ID(),\nPort: pulumi.Int(80),\nProbe: pulumi.Bool(true),\nProxyProtocolVersion: pulumi.String(\"v2\"),\nServiceName: pulumi.String(lb.ServiceName),\nSsl: pulumi.Bool(false),\nStatus: pulumi.String(\"active\"),\nWeight: pulumi.Int(2),\n})\nif err != nil {\nreturn err\n}\n_, err = IpLoadBalancing.NewRefresh(ctx, \"mylb\", \u0026IpLoadBalancing.RefreshArgs{\nKeepers: pulumi.StringArray{\npulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-ovh:IpLoadBalancing-refresh:Refresh.pp:23,16-35)),\n},\nServiceName: pulumi.String(lb.ServiceName),\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;\nimport com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;\nimport com.pulumi.ovh.IpLoadBalancing.TcpFarm;\nimport com.pulumi.ovh.IpLoadBalancing.TcpFarmArgs;\nimport com.pulumi.ovh.IpLoadBalancing.TcpFarmServer;\nimport com.pulumi.ovh.IpLoadBalancing.TcpFarmServerArgs;\nimport com.pulumi.ovh.IpLoadBalancing.Refresh;\nimport com.pulumi.ovh.IpLoadBalancing.RefreshArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()\n            .serviceName(\"ip-1.2.3.4\")\n            .state(\"ok\")\n            .build());\n\n        var farmname = new TcpFarm(\"farmname\", TcpFarmArgs.builder()\n            .port(8080)\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .zone(\"all\")\n            .build());\n\n        var backend = new TcpFarmServer(\"backend\", TcpFarmServerArgs.builder()\n            .address(\"4.5.6.7\")\n            .backup(true)\n            .displayName(\"mybackend\")\n            .farmId(farmname.id())\n            .port(80)\n            .probe(true)\n            .proxyProtocolVersion(\"v2\")\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .ssl(false)\n            .status(\"active\")\n            .weight(2)\n            .build());\n\n        var mylb = new Refresh(\"mylb\", RefreshArgs.builder()\n            .keepers(backend.stream().map(element -\u003e element.address()).collect(toList()))\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .build());\n\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "keepers": {
                     "type": "array",
@@ -19126,6 +19376,80 @@
                 ]
             }
         },
+        "ovh:CloudProject/getGatewayInterface:getGatewayInterface": {
+            "description": "Use this datasource to get a public cloud project Gateway Interface.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst interface = ovh.CloudProject.getGatewayInterface({\n    id: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n    interfaceId: \"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy\",\n    region: \"GRA11\",\n    serviceName: \"XXXXXX\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\ninterface = ovh.CloudProject.get_gateway_interface(id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n    interface_id=\"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy\",\n    region=\"GRA11\",\n    service_name=\"XXXXXX\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @interface = Ovh.CloudProject.GetGatewayInterface.Invoke(new()\n    {\n        Id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n        InterfaceId = \"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy\",\n        Region = \"GRA11\",\n        ServiceName = \"XXXXXX\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.GetGatewayInterface(ctx, \u0026cloudproject.GetGatewayInterfaceArgs{\n\t\t\tId:          \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n\t\t\tInterfaceId: \"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy\",\n\t\t\tRegion:      \"GRA11\",\n\t\t\tServiceName: \"XXXXXX\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.CloudProjectFunctions;\nimport com.pulumi.ovh.CloudProject.inputs.GetGatewayInterfaceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var interface = CloudProjectFunctions.getGatewayInterface(GetGatewayInterfaceArgs.builder()\n            .id(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\")\n            .interfaceId(\"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy\")\n            .region(\"GRA11\")\n            .serviceName(\"XXXXXX\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  interface:\n    fn::invoke:\n      Function: ovh:CloudProject:getGatewayInterface\n      Arguments:\n        id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\n        interfaceId: yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy\n        region: GRA11\n        serviceName: XXXXXX\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGatewayInterface.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of the gateway\n"
+                    },
+                    "interfaceId": {
+                        "type": "string",
+                        "description": "ID of the interface\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region of the gateway\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "ID of the cloud project\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "interfaceId",
+                    "region",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGatewayInterface.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of the gateway\n"
+                    },
+                    "interfaceId": {
+                        "type": "string",
+                        "description": "ID of the interface\n"
+                    },
+                    "ip": {
+                        "type": "string",
+                        "description": "IP of the interface\n"
+                    },
+                    "networkId": {
+                        "type": "string",
+                        "description": "Network ID of the interface\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region of the gateway\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "ID of the cloud project\n"
+                    },
+                    "subnetId": {
+                        "type": "string",
+                        "description": "ID of the subnet to add\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "interfaceId",
+                    "ip",
+                    "networkId",
+                    "region",
+                    "serviceName",
+                    "subnetId"
+                ]
+            }
+        },
         "ovh:CloudProject/getKube:getKube": {
             "description": "Use this data source to get a OVHcloud Managed Kubernetes Service cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst myKubeCluster = ovh.CloudProject.getKube({\n    serviceName: \"XXXXXX\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n});\nexport const version = myKubeCluster.then(myKubeCluster =\u003e myKubeCluster.version);\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmy_kube_cluster = ovh.CloudProject.get_kube(service_name=\"XXXXXX\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\")\npulumi.export(\"version\", my_kube_cluster.version)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myKubeCluster = Ovh.CloudProject.GetKube.Invoke(new()\n    {\n        ServiceName = \"XXXXXX\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"version\"] = myKubeCluster.Apply(getKubeResult =\u003e getKubeResult.Version),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyKubeCluster, err := CloudProject.GetKube(ctx, \u0026cloudproject.GetKubeArgs{\n\t\t\tServiceName: \"XXXXXX\",\n\t\t\tKubeId:      \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"version\", myKubeCluster.Version)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.CloudProjectFunctions;\nimport com.pulumi.ovh.CloudProject.inputs.GetKubeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myKubeCluster = CloudProjectFunctions.getKube(GetKubeArgs.builder()\n            .serviceName(\"XXXXXX\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\")\n            .build());\n\n        ctx.export(\"version\", myKubeCluster.applyValue(getKubeResult -\u003e getKubeResult.version()));\n    }\n}\n```\n```yaml\nvariables:\n  myKubeCluster:\n    fn::invoke:\n      Function: ovh:CloudProject:getKube\n      Arguments:\n        serviceName: XXXXXX\n        kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\noutputs:\n  version: ${myKubeCluster.version}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -20539,6 +20863,175 @@
                     "name",
                     "serviceName",
                     "services",
+                    "id"
+                ]
+            }
+        },
+        "ovh:CloudProject/getRegionLoadBalancerLogSubscription:getRegionLoadBalancerLogSubscription": {
+            "description": "Get information about a subscription to a Managed Loadbalancer Logs Service in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst sub = ovh.CloudProject.getRegionLoadBalancerLogSubscription({\n    loadbalancerId: \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\n    regionName: \"gggg\",\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    subscriptionId: \"zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nsub = ovh.CloudProject.get_region_load_balancer_log_subscription(loadbalancer_id=\"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\n    region_name=\"gggg\",\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    subscription_id=\"zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sub = Ovh.CloudProject.GetRegionLoadBalancerLogSubscription.Invoke(new()\n    {\n        LoadbalancerId = \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\n        RegionName = \"gggg\",\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        SubscriptionId = \"zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.GetRegionLoadBalancerLogSubscription(ctx, \u0026cloudproject.GetRegionLoadBalancerLogSubscriptionArgs{\n\t\t\tLoadbalancerId: \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\n\t\t\tRegionName:     \"gggg\",\n\t\t\tServiceName:    \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n\t\t\tSubscriptionId: \"zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.CloudProjectFunctions;\nimport com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var sub = CloudProjectFunctions.getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs.builder()\n            .loadbalancerId(\"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\")\n            .regionName(\"gggg\")\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .subscriptionId(\"zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  sub:\n    fn::invoke:\n      Function: ovh:CloudProject:getRegionLoadBalancerLogSubscription\n      Arguments:\n        loadbalancerId: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\n        regionName: gggg\n        serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n        subscriptionId: zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRegionLoadBalancerLogSubscription.\n",
+                "properties": {
+                    "loadbalancerId": {
+                        "type": "string",
+                        "description": "Loadbalancer id to get the logs\n"
+                    },
+                    "regionName": {
+                        "type": "string",
+                        "description": "A valid OVHcloud public cloud region name in which the loadbalancer is available. Ex.: \"GRA11\".\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n"
+                    },
+                    "subscriptionId": {
+                        "type": "string",
+                        "description": "Subscription id\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loadbalancerId",
+                    "regionName",
+                    "serviceName",
+                    "subscriptionId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRegionLoadBalancerLogSubscription.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date of the subscription creation\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "Router used for forwarding log\n"
+                    },
+                    "ldpServiceName": {
+                        "type": "string",
+                        "description": "LDP service name\n"
+                    },
+                    "loadbalancerId": {
+                        "type": "string",
+                        "description": "Loadbalancer id to get the logs\n"
+                    },
+                    "regionName": {
+                        "type": "string",
+                        "description": "A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: \"GRA11\".\n"
+                    },
+                    "resourceName": {
+                        "type": "string",
+                        "description": "The resource name\n"
+                    },
+                    "resourceType": {
+                        "type": "string",
+                        "description": "The resource type\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project.\n"
+                    },
+                    "streamId": {
+                        "type": "string",
+                        "description": "Data stream id to use for the subscription\n"
+                    },
+                    "subscriptionId": {
+                        "type": "string",
+                        "description": "The subscription id\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The last update of the subscription\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "createdAt",
+                    "kind",
+                    "ldpServiceName",
+                    "loadbalancerId",
+                    "regionName",
+                    "resourceName",
+                    "resourceType",
+                    "serviceName",
+                    "streamId",
+                    "subscriptionId",
+                    "updatedAt",
+                    "id"
+                ]
+            }
+        },
+        "ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions": {
+            "description": "Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst subs = ovh.CloudProject.getRegionLoadBalancerLogSubscriptions({\n    loadbalancerId: \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\n    regionName: \"gggg\",\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nsubs = ovh.CloudProject.get_region_load_balancer_log_subscriptions(loadbalancer_id=\"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\n    region_name=\"gggg\",\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var subs = Ovh.CloudProject.GetRegionLoadBalancerLogSubscriptions.Invoke(new()\n    {\n        LoadbalancerId = \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\n        RegionName = \"gggg\",\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.GetRegionLoadBalancerLogSubscriptions(ctx, \u0026cloudproject.GetRegionLoadBalancerLogSubscriptionsArgs{\n\t\t\tLoadbalancerId: \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\n\t\t\tRegionName:     \"gggg\",\n\t\t\tServiceName:    \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.CloudProjectFunctions;\nimport com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var subs = CloudProjectFunctions.getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs.builder()\n            .loadbalancerId(\"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\")\n            .regionName(\"gggg\")\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  subs:\n    fn::invoke:\n      Function: ovh:CloudProject:getRegionLoadBalancerLogSubscriptions\n      Arguments:\n        loadbalancerId: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\n        regionName: gggg\n        serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRegionLoadBalancerLogSubscriptions.\n",
+                "properties": {
+                    "kind": {
+                        "type": "string",
+                        "description": "currently only \"haproxy\" is available\n"
+                    },
+                    "loadbalancerId": {
+                        "type": "string",
+                        "description": "Loadbalancer id to get the logs\n"
+                    },
+                    "regionName": {
+                        "type": "string",
+                        "description": "A valid OVHcloud public cloud region name in which the loadbalancer is available. Ex.: \"GRA11\".\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loadbalancerId",
+                    "regionName",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRegionLoadBalancerLogSubscriptions.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "Router used for forwarding log\n"
+                    },
+                    "loadbalancerId": {
+                        "type": "string",
+                        "description": "Loadbalancer id to get the logs\n"
+                    },
+                    "regionName": {
+                        "type": "string",
+                        "description": "A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: \"GRA11\".\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project.\n"
+                    },
+                    "subscriptionIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of the subscription id\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loadbalancerId",
+                    "regionName",
+                    "serviceName",
+                    "subscriptionIds",
                     "id"
                 ]
             }
@@ -22231,7 +22724,7 @@
             }
         },
         "ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool": {
-            "description": "Use this data source to get information about a connection pool of a postgresql cluster associated with a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst testPoolPostgresSqlConnectionPool = ovh.CloudProjectDatabase.getPostgresSqlConnectionPool({\n    serviceName: \"XXX\",\n    clusterId: \"YYY\",\n    name: \"ZZZ\",\n});\nexport const testPool = {\n    service_name: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.serviceName),\n    cluster_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.clusterId),\n    name: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.name),\n    database_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.databaseId),\n    mode: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.mode),\n    size: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.size),\n    port: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.port),\n    ssl_mode: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.sslMode),\n    uri: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.uri),\n    user_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.userId),\n};\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\ntest_pool_postgres_sql_connection_pool = ovh.CloudProjectDatabase.get_postgres_sql_connection_pool(service_name=\"XXX\",\n    cluster_id=\"YYY\",\n    name=\"ZZZ\")\npulumi.export(\"testPool\", {\n    \"service_name\": test_pool_postgres_sql_connection_pool.service_name,\n    \"cluster_id\": test_pool_postgres_sql_connection_pool.cluster_id,\n    \"name\": test_pool_postgres_sql_connection_pool.name,\n    \"database_id\": test_pool_postgres_sql_connection_pool.database_id,\n    \"mode\": test_pool_postgres_sql_connection_pool.mode,\n    \"size\": test_pool_postgres_sql_connection_pool.size,\n    \"port\": test_pool_postgres_sql_connection_pool.port,\n    \"ssl_mode\": test_pool_postgres_sql_connection_pool.ssl_mode,\n    \"uri\": test_pool_postgres_sql_connection_pool.uri,\n    \"user_id\": test_pool_postgres_sql_connection_pool.user_id,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testPoolPostgresSqlConnectionPool = Ovh.CloudProjectDatabase.GetPostgresSqlConnectionPool.Invoke(new()\n    {\n        ServiceName = \"XXX\",\n        ClusterId = \"YYY\",\n        Name = \"ZZZ\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"testPool\"] = \n        {\n            { \"service_name\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.ServiceName) },\n            { \"cluster_id\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.ClusterId) },\n            { \"name\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.Name) },\n            { \"database_id\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.DatabaseId) },\n            { \"mode\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.Mode) },\n            { \"size\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.Size) },\n            { \"port\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.Port) },\n            { \"ssl_mode\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.SslMode) },\n            { \"uri\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.Uri) },\n            { \"user_id\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.UserId) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttestPoolPostgresSqlConnectionPool, err := CloudProjectDatabase.GetPostgresSqlConnectionPool(ctx, \u0026cloudprojectdatabase.GetPostgresSqlConnectionPoolArgs{\n\t\t\tServiceName: \"XXX\",\n\t\t\tClusterId:   \"YYY\",\n\t\t\tName:        \"ZZZ\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"testPool\", map[string]interface{}{\n\t\t\t\"service_name\": testPoolPostgresSqlConnectionPool.ServiceName,\n\t\t\t\"cluster_id\":   testPoolPostgresSqlConnectionPool.ClusterId,\n\t\t\t\"name\":         testPoolPostgresSqlConnectionPool.Name,\n\t\t\t\"database_id\":  testPoolPostgresSqlConnectionPool.DatabaseId,\n\t\t\t\"mode\":         testPoolPostgresSqlConnectionPool.Mode,\n\t\t\t\"size\":         testPoolPostgresSqlConnectionPool.Size,\n\t\t\t\"port\":         testPoolPostgresSqlConnectionPool.Port,\n\t\t\t\"ssl_mode\":     testPoolPostgresSqlConnectionPool.SslMode,\n\t\t\t\"uri\":          testPoolPostgresSqlConnectionPool.Uri,\n\t\t\t\"user_id\":      testPoolPostgresSqlConnectionPool.UserId,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;\nimport com.pulumi.ovh.CloudProjectDatabase.inputs.GetPostgresSqlConnectionPoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var testPoolPostgresSqlConnectionPool = CloudProjectDatabaseFunctions.getPostgresSqlConnectionPool(GetPostgresSqlConnectionPoolArgs.builder()\n            .serviceName(\"XXX\")\n            .clusterId(\"YYY\")\n            .name(\"ZZZ\")\n            .build());\n\n        ctx.export(\"testPool\", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));\n    }\n}\n```\n```yaml\nvariables:\n  testPoolPostgresSqlConnectionPool:\n    fn::invoke:\n      Function: ovh:CloudProjectDatabase:getPostgresSqlConnectionPool\n      Arguments:\n        serviceName: XXX\n        clusterId: YYY\n        name: ZZZ\noutputs:\n  testPool:\n    service_name: ${testPoolPostgresSqlConnectionPool.serviceName}\n    cluster_id: ${testPoolPostgresSqlConnectionPool.clusterId}\n    name: ${testPoolPostgresSqlConnectionPool.name}\n    database_id: ${testPoolPostgresSqlConnectionPool.databaseId}\n    mode: ${testPoolPostgresSqlConnectionPool.mode}\n    size: ${testPoolPostgresSqlConnectionPool.size}\n    port: ${testPoolPostgresSqlConnectionPool.port}\n    ssl_mode: ${testPoolPostgresSqlConnectionPool.sslMode}\n    uri: ${testPoolPostgresSqlConnectionPool.uri}\n    user_id: ${testPoolPostgresSqlConnectionPool.userId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Use this data source to get information about a connection pool of a postgresql cluster associated with a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst testPoolPostgresSqlConnectionPool = ovh.CloudProjectDatabase.getPostgresSqlConnectionPool({\n    serviceName: \"XXX\",\n    clusterId: \"YYY\",\n    name: \"ZZZ\",\n});\nexport const testPool = {\n    service_name: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.serviceName),\n    cluster_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.clusterId),\n    name: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.name),\n    database_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.databaseId),\n    mode: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.mode),\n    size: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.size),\n    port: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.port),\n    ssl_mode: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.sslMode),\n    uri: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.uri),\n    user_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool =\u003e testPoolPostgresSqlConnectionPool.userId),\n};\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\ntest_pool_postgres_sql_connection_pool = ovh.CloudProjectDatabase.get_postgres_sql_connection_pool(service_name=\"XXX\",\n    cluster_id=\"YYY\",\n    name=\"ZZZ\")\npulumi.export(\"testPool\", {\n    \"service_name\": test_pool_postgres_sql_connection_pool.service_name,\n    \"cluster_id\": test_pool_postgres_sql_connection_pool.cluster_id,\n    \"name\": test_pool_postgres_sql_connection_pool.name,\n    \"database_id\": test_pool_postgres_sql_connection_pool.database_id,\n    \"mode\": test_pool_postgres_sql_connection_pool.mode,\n    \"size\": test_pool_postgres_sql_connection_pool.size,\n    \"port\": test_pool_postgres_sql_connection_pool.port,\n    \"ssl_mode\": test_pool_postgres_sql_connection_pool.ssl_mode,\n    \"uri\": test_pool_postgres_sql_connection_pool.uri,\n    \"user_id\": test_pool_postgres_sql_connection_pool.user_id,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testPoolPostgresSqlConnectionPool = Ovh.CloudProjectDatabase.GetPostgresSqlConnectionPool.Invoke(new()\n    {\n        ServiceName = \"XXX\",\n        ClusterId = \"YYY\",\n        Name = \"ZZZ\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"testPool\"] = \n        {\n            { \"service_name\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.ServiceName) },\n            { \"cluster_id\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.ClusterId) },\n            { \"name\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.Name) },\n            { \"database_id\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.DatabaseId) },\n            { \"mode\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.Mode) },\n            { \"size\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.Size) },\n            { \"port\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.Port) },\n            { \"ssl_mode\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.SslMode) },\n            { \"uri\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.Uri) },\n            { \"user_id\", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =\u003e getPostgresSqlConnectionPoolResult.UserId) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttestPoolPostgresSqlConnectionPool, err := CloudProjectDatabase.GetPostgresSqlConnectionPool(ctx, \u0026cloudprojectdatabase.GetPostgresSqlConnectionPoolArgs{\n\t\t\tServiceName: \"XXX\",\n\t\t\tClusterId:   \"YYY\",\n\t\t\tName:        \"ZZZ\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"testPool\", pulumi.Map{\n\t\t\t\"service_name\": testPoolPostgresSqlConnectionPool.ServiceName,\n\t\t\t\"cluster_id\":   testPoolPostgresSqlConnectionPool.ClusterId,\n\t\t\t\"name\":         testPoolPostgresSqlConnectionPool.Name,\n\t\t\t\"database_id\":  testPoolPostgresSqlConnectionPool.DatabaseId,\n\t\t\t\"mode\":         testPoolPostgresSqlConnectionPool.Mode,\n\t\t\t\"size\":         testPoolPostgresSqlConnectionPool.Size,\n\t\t\t\"port\":         testPoolPostgresSqlConnectionPool.Port,\n\t\t\t\"ssl_mode\":     testPoolPostgresSqlConnectionPool.SslMode,\n\t\t\t\"uri\":          testPoolPostgresSqlConnectionPool.Uri,\n\t\t\t\"user_id\":      testPoolPostgresSqlConnectionPool.UserId,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;\nimport com.pulumi.ovh.CloudProjectDatabase.inputs.GetPostgresSqlConnectionPoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var testPoolPostgresSqlConnectionPool = CloudProjectDatabaseFunctions.getPostgresSqlConnectionPool(GetPostgresSqlConnectionPoolArgs.builder()\n            .serviceName(\"XXX\")\n            .clusterId(\"YYY\")\n            .name(\"ZZZ\")\n            .build());\n\n        ctx.export(\"testPool\", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));\n    }\n}\n```\n```yaml\nvariables:\n  testPoolPostgresSqlConnectionPool:\n    fn::invoke:\n      Function: ovh:CloudProjectDatabase:getPostgresSqlConnectionPool\n      Arguments:\n        serviceName: XXX\n        clusterId: YYY\n        name: ZZZ\noutputs:\n  testPool:\n    service_name: ${testPoolPostgresSqlConnectionPool.serviceName}\n    cluster_id: ${testPoolPostgresSqlConnectionPool.clusterId}\n    name: ${testPoolPostgresSqlConnectionPool.name}\n    database_id: ${testPoolPostgresSqlConnectionPool.databaseId}\n    mode: ${testPoolPostgresSqlConnectionPool.mode}\n    size: ${testPoolPostgresSqlConnectionPool.size}\n    port: ${testPoolPostgresSqlConnectionPool.port}\n    ssl_mode: ${testPoolPostgresSqlConnectionPool.sslMode}\n    uri: ${testPoolPostgresSqlConnectionPool.uri}\n    user_id: ${testPoolPostgresSqlConnectionPool.userId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPostgresSqlConnectionPool.\n",
                 "properties": {
@@ -22618,6 +23111,7 @@
                 "type": "object",
                 "required": [
                     "archiveAllowedNetworks",
+                    "clusterId",
                     "clusterType",
                     "dedicatedInputPem",
                     "directInputAllowedNetworks",

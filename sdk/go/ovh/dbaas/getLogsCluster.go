@@ -61,7 +61,7 @@ type LookupLogsClusterArgs struct {
 type LookupLogsClusterResult struct {
 	// is allowed networks for ARCHIVE flow type
 	ArchiveAllowedNetworks []string `pulumi:"archiveAllowedNetworks"`
-	ClusterId              *string  `pulumi:"clusterId"`
+	ClusterId              string   `pulumi:"clusterId"`
 	// is type of cluster (DEDICATED, PRO or TRIAL)
 	ClusterType string `pulumi:"clusterType"`
 	// is PEM for dedicated inputs
@@ -132,8 +132,8 @@ func (o LookupLogsClusterResultOutput) ArchiveAllowedNetworks() pulumi.StringArr
 	return o.ApplyT(func(v LookupLogsClusterResult) []string { return v.ArchiveAllowedNetworks }).(pulumi.StringArrayOutput)
 }
 
-func (o LookupLogsClusterResultOutput) ClusterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupLogsClusterResult) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+func (o LookupLogsClusterResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLogsClusterResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
 // is type of cluster (DEDICATED, PRO or TRIAL)

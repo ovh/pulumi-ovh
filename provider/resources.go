@@ -230,6 +230,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_gateway": {
 				Tok: ovhResource(cloudProjectMod, "Gateway"),
 			},
+			"ovh_cloud_project_gateway_interface": {
+				Tok: ovhResource(cloudProjectMod, "GatewayInterface"),
+			},
 			"ovh_cloud_project_kube": {
 				Tok: ovhResource(cloudProjectMod, "Kube"),
 			},
@@ -250,6 +253,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_region_storage_presign": {
 				Tok: ovhResource(cloudProjectMod, "RegionStoragePresign"),
+			},
+			"ovh_cloud_project_region_loadbalancer_log_subscription": {
+				Tok: ovhResource(cloudProjectMod, "RegionLoadBalancerLogSubscription"),
 			},
 			"ovh_cloud_project_user": {
 				Tok: ovhResource(cloudProjectMod, "User"),
@@ -593,6 +599,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_failover_ip_attach": {
 				Tok: ovhDataSource(cloudProjectMod, "getFailoverIpAttach"),
 			},
+			"ovh_cloud_project_gateway_interface": {
+				Tok: ovhDataSource(cloudProjectMod, "getGatewayInterface"),
+			},
 			"ovh_cloud_project_kube": {
 				Tok: ovhDataSource(cloudProjectMod, "getKube"),
 			},
@@ -646,6 +655,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_regions": {
 				Tok: ovhDataSource(cloudProjectMod, "getRegions"),
+			},
+			"ovh_cloud_project_region_loadbalancer_log_subscription": {
+				Tok: ovhDataSource(cloudProjectMod, "getRegionLoadBalancerLogSubscription"),
+			},
+			"ovh_cloud_project_region_loadbalancer_log_subscriptions": {
+				Tok: ovhDataSource(cloudProjectMod, "getRegionLoadBalancerLogSubscriptions"),
 			},
 			"ovh_cloud_project_user": {
 				Tok: ovhDataSource(cloudProjectMod, "getUser"),

@@ -29,7 +29,7 @@ type Gateway struct {
 	// List of External Information of the gateway.
 	ExternalInformations GatewayExternalInformationArrayOutput `pulumi:"externalInformations"`
 	// Interfaces list of the gateway.
-	Interfaces GatewayInterfaceArrayOutput `pulumi:"interfaces"`
+	Interfaces GatewayInterfaceTypeArrayOutput `pulumi:"interfaces"`
 	// Model of the gateway.
 	Model pulumi.StringOutput `pulumi:"model"`
 	// Name of the gateway.
@@ -94,7 +94,7 @@ type gatewayState struct {
 	// List of External Information of the gateway.
 	ExternalInformations []GatewayExternalInformation `pulumi:"externalInformations"`
 	// Interfaces list of the gateway.
-	Interfaces []GatewayInterface `pulumi:"interfaces"`
+	Interfaces []GatewayInterfaceType `pulumi:"interfaces"`
 	// Model of the gateway.
 	Model *string `pulumi:"model"`
 	// Name of the gateway.
@@ -115,7 +115,7 @@ type GatewayState struct {
 	// List of External Information of the gateway.
 	ExternalInformations GatewayExternalInformationArrayInput
 	// Interfaces list of the gateway.
-	Interfaces GatewayInterfaceArrayInput
+	Interfaces GatewayInterfaceTypeArrayInput
 	// Model of the gateway.
 	Model pulumi.StringPtrInput
 	// Name of the gateway.
@@ -260,8 +260,8 @@ func (o GatewayOutput) ExternalInformations() GatewayExternalInformationArrayOut
 }
 
 // Interfaces list of the gateway.
-func (o GatewayOutput) Interfaces() GatewayInterfaceArrayOutput {
-	return o.ApplyT(func(v *Gateway) GatewayInterfaceArrayOutput { return v.Interfaces }).(GatewayInterfaceArrayOutput)
+func (o GatewayOutput) Interfaces() GatewayInterfaceTypeArrayOutput {
+	return o.ApplyT(func(v *Gateway) GatewayInterfaceTypeArrayOutput { return v.Interfaces }).(GatewayInterfaceTypeArrayOutput)
 }
 
 // Model of the gateway.

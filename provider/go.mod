@@ -5,10 +5,10 @@ go 1.21.12
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 
 require (
-	github.com/ovh/terraform-provider-ovh v0.47.0
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.40.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.87.0
-	github.com/pulumi/pulumi/sdk/v3 v3.124.0
+	github.com/ovh/terraform-provider-ovh v0.48.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.41.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.88.0
+	github.com/pulumi/pulumi/sdk/v3 v3.126.0
 )
 
 require (
@@ -120,7 +120,7 @@ require (
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.20.0 // indirect
 	github.com/hashicorp/terraform-json v0.21.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.10.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.11.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.23.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
@@ -181,7 +181,7 @@ require (
 	github.com/pulumi/pulumi-java/pkg v0.11.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
 	github.com/pulumi/pulumi-yaml v1.9.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.124.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.126.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect

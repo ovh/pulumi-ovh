@@ -60,7 +60,7 @@ import (
 // }
 // _, err = IpLoadBalancing.NewRefresh(ctx, "mylb", &IpLoadBalancing.RefreshArgs{
 // Keepers: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-ovh:IpLoadBalancing-refresh:Refresh.pp:23,16-35),
+// pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-ovh:IpLoadBalancing-refresh:Refresh.pp:23,16-35)),
 // },
 // ServiceName: pulumi.String(lb.ServiceName),
 // })
