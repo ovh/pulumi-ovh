@@ -14,6 +14,8 @@ JAVA_GEN_VERSION := v0.13.0
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
+JAVA_GROUP_ID    := com.${ORG}.pulumi
+JAVA_ARTIFACT_ID := ${ORG}
 
 TESTPARALLELISM := 4
 
