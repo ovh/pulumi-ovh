@@ -19,9 +19,12 @@ env:
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
   PYPI_USERNAME: "__token__"
+  PUBLISH_REPO_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+  PUBLISH_REPO_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
   PUBLISH_PYPI: true
   PUBLISH_NPM: true
   PUBLISH_NUGET: true
+  PUBLISH_NRM: true
 jobs:
   publish_binary:
     name: publish
@@ -98,6 +101,12 @@ jobs:
         uses: actions/setup-python@61a6322f88396a6271a6ee3565807d608ecaddd1 # tag=v4.2.0
         with:
           python-version: ${{matrix.pythonversion}}
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          cache: gradle
+          distribution: temurin
+          java-version: ${{ matrix.javaversion }}          
       - name: Build SDK
         run: make build_${{ matrix.language }}
       - name: Check worktree clean
@@ -130,6 +139,17 @@ jobs:
         run: |
           dotnet nuget push ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg -s ${{ env.NUGET_FEED_URL }} -k ${{ env.NUGET_PUBLISH_KEY }} --skip-duplicate
           echo "done publishing packages"
+      - if: ${{ matrix.language == 'java' && env.PUBLISH_NRM == 'true' }}
+        name: Set PACKAGE_VERSION to Env for Java SDK
+        run: echo "PACKAGE_VERSION=$(pulumictl get version --language generic)" >>
+          $GITHUB_ENV
+      - if: ${{ matrix.language == 'java' && env.PUBLISH_NRM == 'true' }}
+        name: Publish Java SDK
+        uses: gradle/gradle-build-action@9bca466e2722baf9e77b4f929bbe0af18848791f
+        with:
+          arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository
+          build-root-directory: ./sdk/java
+          gradle-version: 7.4.1          
     strategy:
       fail-fast: true
       matrix:
@@ -138,11 +158,14 @@ jobs:
         goversion:
           - 1.21.x
         language:
-          - nodejs
-          - python
-          - go
-          - dotnet
+#          - nodejs
+#          - python
+#          - go
+#          - dotnet
+          - java
         nodeversion:
           - 18.x
         pythonversion:
           - "3.9"
+        javaversion:
+          - "21"
