@@ -101,6 +101,16 @@ build_go:: install_plugins tfgen # build the go sdk
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
 build_java:: $(WORKING_DIR)/bin/$(JAVA_GEN)
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
+	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
+	echo "update java version in build.gradle" && cd ./sdk/java/ && sed -i '' -e 's/of(11)/of(21)/g' build.gradle
+	echo "update meta info in build.gradle" && cd ./sdk/java/ && sed -i '' -e 's/info.metaClass.name = .*/info.metaClass.name = "$(JAVA_ARTIFACT_ID)"/g' build.gradle && \
+	sed -i '' -e 's/group = .*/group = "$(JAVA_GROUP_ID)"/g' build.gradle && \
+  sed -i '' -e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' build.gradle && \
+  sed -i '' -e 's/artifactId = .*/artifactId = "$(JAVA_ARTIFACT_ID)"/g' build.gradle && \
+  sed -i '' -e 's/description = .*/description = "A Pulumi package for creating and managing OVH resources."/g' build.gradle
+								
+	echo "update rootProject in settings.gradle" && cd ./sdk/java && sed -i '' -e 's/rootProject.name = .*/rootProject.name = "$(JAVA_GROUP_ID)"/g' settings.gradle
+	
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
 		gradle --console=plain build
@@ -121,7 +131,7 @@ help::
  	expand -t20
 
 clean::
-	rm -rf sdk/{dotnet,nodejs,go,python}
+	rm -rf sdk/{dotnet,nodejs,go,python,java}
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
@@ -134,6 +144,8 @@ install_dotnet_sdk::
 install_python_sdk::
 
 install_go_sdk::
+
+install_java_sdk::
 
 install_nodejs_sdk::
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
