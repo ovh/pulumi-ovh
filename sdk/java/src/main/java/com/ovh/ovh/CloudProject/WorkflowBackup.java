@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -42,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myBackup = new WorkflowBackup("myBackup", WorkflowBackupArgs.builder()        
+ *         var myBackup = new WorkflowBackup("myBackup", WorkflowBackupArgs.builder()
  *             .cron("50 4 * * *")
  *             .instanceId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
  *             .maxExecutionCount("0")
@@ -55,6 +57,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:CloudProject/workflowBackup:WorkflowBackup")
@@ -82,12 +85,16 @@ public class WorkflowBackup extends com.pulumi.resources.CustomResource {
     /**
      * The cron periodicity at which the backup workflow is scheduled
      * 
+     * * `instanceId` the id of the instance to back up
+     * 
      */
     @Export(name="cron", refs={String.class}, tree="[0]")
     private Output<String> cron;
 
     /**
      * @return The cron periodicity at which the backup workflow is scheduled
+     * 
+     * * `instanceId` the id of the instance to back up
      * 
      */
     public Output<String> cron() {
@@ -192,11 +199,18 @@ public class WorkflowBackup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkflowBackup(String name, WorkflowBackupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/workflowBackup:WorkflowBackup", name, args == null ? WorkflowBackupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/workflowBackup:WorkflowBackup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkflowBackup(String name, Output<String> id, @Nullable WorkflowBackupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/workflowBackup:WorkflowBackup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkflowBackupArgs makeArgs(WorkflowBackupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkflowBackupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -95,14 +95,14 @@ public final class HttpRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * HTTP status code for &#34;redirect&#34; and &#34;reject&#34; actions
+     * Route status. Routes in &#34;ok&#34; state are ready to operate
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return HTTP status code for &#34;redirect&#34; and &#34;reject&#34; actions
+     * @return Route status. Routes in &#34;ok&#34; state are ready to operate
      * 
      */
     public Optional<Output<String>> status() {
@@ -270,7 +270,7 @@ public final class HttpRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status HTTP status code for &#34;redirect&#34; and &#34;reject&#34; actions
+         * @param status Route status. Routes in &#34;ok&#34; state are ready to operate
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class HttpRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status HTTP status code for &#34;redirect&#34; and &#34;reject&#34; actions
+         * @param status Route status. Routes in &#34;ok&#34; state are ready to operate
          * 
          * @return builder
          * 

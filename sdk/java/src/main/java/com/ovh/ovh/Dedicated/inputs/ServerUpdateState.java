@@ -33,6 +33,36 @@ public final class ServerUpdateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * boot script of the server
+     * 
+     */
+    @Import(name="bootScript")
+    private @Nullable Output<String> bootScript;
+
+    /**
+     * @return boot script of the server
+     * 
+     */
+    public Optional<Output<String>> bootScript() {
+        return Optional.ofNullable(this.bootScript);
+    }
+
+    /**
+     * display name of the dedicated server
+     * 
+     */
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
+
+    /**
+     * @return display name of the dedicated server
+     * 
+     */
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
+    }
+
+    /**
      * Icmp monitoring state
      * 
      */
@@ -81,6 +111,8 @@ public final class ServerUpdateState extends com.pulumi.resources.ResourceArgs {
 
     private ServerUpdateState(ServerUpdateState $) {
         this.bootId = $.bootId;
+        this.bootScript = $.bootScript;
+        this.displayName = $.displayName;
         this.monitoring = $.monitoring;
         this.serviceName = $.serviceName;
         this.state = $.state;
@@ -123,6 +155,48 @@ public final class ServerUpdateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bootId(Integer bootId) {
             return bootId(Output.of(bootId));
+        }
+
+        /**
+         * @param bootScript boot script of the server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootScript(@Nullable Output<String> bootScript) {
+            $.bootScript = bootScript;
+            return this;
+        }
+
+        /**
+         * @param bootScript boot script of the server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootScript(String bootScript) {
+            return bootScript(Output.of(bootScript));
+        }
+
+        /**
+         * @param displayName display name of the dedicated server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(@Nullable Output<String> displayName) {
+            $.displayName = displayName;
+            return this;
+        }
+
+        /**
+         * @param displayName display name of the dedicated server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(String displayName) {
+            return displayName(Output.of(displayName));
         }
 
         /**

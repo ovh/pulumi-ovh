@@ -10,6 +10,10 @@ import com.ovh.ovh.CloudProject.inputs.GetCapabilitiesContainerRegistryPlainArgs
 import com.ovh.ovh.CloudProject.inputs.GetContainerRegistriesArgs;
 import com.ovh.ovh.CloudProject.inputs.GetContainerRegistriesPlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetContainerRegistryArgs;
+import com.ovh.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsManagementArgs;
+import com.ovh.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsManagementPlainArgs;
+import com.ovh.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsRegistryArgs;
+import com.ovh.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsRegistryPlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetContainerRegistryOIDCArgs;
 import com.ovh.ovh.CloudProject.inputs.GetContainerRegistryOIDCPlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetContainerRegistryPlainArgs;
@@ -17,6 +21,8 @@ import com.ovh.ovh.CloudProject.inputs.GetContainerRegistryUsersArgs;
 import com.ovh.ovh.CloudProject.inputs.GetContainerRegistryUsersPlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetFailoverIpAttachArgs;
 import com.ovh.ovh.CloudProject.inputs.GetFailoverIpAttachPlainArgs;
+import com.ovh.ovh.CloudProject.inputs.GetGatewayInterfaceArgs;
+import com.ovh.ovh.CloudProject.inputs.GetGatewayInterfacePlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetKubeArgs;
 import com.ovh.ovh.CloudProject.inputs.GetKubeIpRestrictionsArgs;
 import com.ovh.ovh.CloudProject.inputs.GetKubeIpRestrictionsPlainArgs;
@@ -29,6 +35,10 @@ import com.ovh.ovh.CloudProject.inputs.GetKubeNodesPlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetKubeOidcArgs;
 import com.ovh.ovh.CloudProject.inputs.GetKubeOidcPlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetKubePlainArgs;
+import com.ovh.ovh.CloudProject.inputs.GetLoadBalancerArgs;
+import com.ovh.ovh.CloudProject.inputs.GetLoadBalancerPlainArgs;
+import com.ovh.ovh.CloudProject.inputs.GetLoadBalancersArgs;
+import com.ovh.ovh.CloudProject.inputs.GetLoadBalancersPlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetM3dbNamespaceArgs;
 import com.ovh.ovh.CloudProject.inputs.GetM3dbNamespacePlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetM3dbNamespacesArgs;
@@ -46,6 +56,10 @@ import com.ovh.ovh.CloudProject.inputs.GetOpenSearchUserPlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetRedisUserArgs;
 import com.ovh.ovh.CloudProject.inputs.GetRedisUserPlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetRegionArgs;
+import com.ovh.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionArgs;
+import com.ovh.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionPlainArgs;
+import com.ovh.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionsArgs;
+import com.ovh.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionsPlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetRegionPlainArgs;
 import com.ovh.ovh.CloudProject.inputs.GetRegionsArgs;
 import com.ovh.ovh.CloudProject.inputs.GetRegionsPlainArgs;
@@ -64,16 +78,21 @@ import com.ovh.ovh.CloudProject.inputs.GetVRackPlainArgs;
 import com.ovh.ovh.CloudProject.outputs.GetCapabilitiesContainerFilterResult;
 import com.ovh.ovh.CloudProject.outputs.GetCapabilitiesContainerRegistryInvokeResult;
 import com.ovh.ovh.CloudProject.outputs.GetContainerRegistriesInvokeResult;
+import com.ovh.ovh.CloudProject.outputs.GetContainerRegistryIPRestrictionsManagementResult;
+import com.ovh.ovh.CloudProject.outputs.GetContainerRegistryIPRestrictionsRegistryResult;
 import com.ovh.ovh.CloudProject.outputs.GetContainerRegistryOIDCResult;
 import com.ovh.ovh.CloudProject.outputs.GetContainerRegistryResult;
 import com.ovh.ovh.CloudProject.outputs.GetContainerRegistryUsersInvokeResult;
 import com.ovh.ovh.CloudProject.outputs.GetFailoverIpAttachResult;
+import com.ovh.ovh.CloudProject.outputs.GetGatewayInterfaceResult;
 import com.ovh.ovh.CloudProject.outputs.GetKubeIpRestrictionsResult;
 import com.ovh.ovh.CloudProject.outputs.GetKubeNodePoolNodesResult;
 import com.ovh.ovh.CloudProject.outputs.GetKubeNodePoolResult;
 import com.ovh.ovh.CloudProject.outputs.GetKubeNodesResult;
 import com.ovh.ovh.CloudProject.outputs.GetKubeOidcResult;
 import com.ovh.ovh.CloudProject.outputs.GetKubeResult;
+import com.ovh.ovh.CloudProject.outputs.GetLoadBalancerResult;
+import com.ovh.ovh.CloudProject.outputs.GetLoadBalancersResult;
 import com.ovh.ovh.CloudProject.outputs.GetM3dbNamespaceResult;
 import com.ovh.ovh.CloudProject.outputs.GetM3dbNamespacesResult;
 import com.ovh.ovh.CloudProject.outputs.GetM3dbUserResult;
@@ -82,6 +101,8 @@ import com.ovh.ovh.CloudProject.outputs.GetOpenSearchPatternResult;
 import com.ovh.ovh.CloudProject.outputs.GetOpenSearchPatternsResult;
 import com.ovh.ovh.CloudProject.outputs.GetOpenSearchUserResult;
 import com.ovh.ovh.CloudProject.outputs.GetRedisUserResult;
+import com.ovh.ovh.CloudProject.outputs.GetRegionLoadBalancerLogSubscriptionResult;
+import com.ovh.ovh.CloudProject.outputs.GetRegionLoadBalancerLogSubscriptionsResult;
 import com.ovh.ovh.CloudProject.outputs.GetRegionResult;
 import com.ovh.ovh.CloudProject.outputs.GetRegionsResult;
 import com.ovh.ovh.CloudProject.outputs.GetUserResult;
@@ -102,6 +123,8 @@ public final class CloudProjectFunctions {
      * Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -134,6 +157,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCapabilitiesContainerFilterResult> getCapabilitiesContainerFilter(GetCapabilitiesContainerFilterArgs args) {
@@ -143,6 +167,8 @@ public final class CloudProjectFunctions {
      * Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -175,6 +201,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCapabilitiesContainerFilterResult> getCapabilitiesContainerFilterPlain(GetCapabilitiesContainerFilterPlainArgs args) {
@@ -184,6 +211,8 @@ public final class CloudProjectFunctions {
      * Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -216,6 +245,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCapabilitiesContainerFilterResult> getCapabilitiesContainerFilter(GetCapabilitiesContainerFilterArgs args, InvokeOptions options) {
@@ -225,6 +255,8 @@ public final class CloudProjectFunctions {
      * Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -257,6 +289,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCapabilitiesContainerFilterResult> getCapabilitiesContainerFilterPlain(GetCapabilitiesContainerFilterPlainArgs args, InvokeOptions options) {
@@ -266,6 +299,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the container registry capabilities of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -296,6 +331,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCapabilitiesContainerRegistryInvokeResult> getCapabilitiesContainerRegistry(GetCapabilitiesContainerRegistryArgs args) {
@@ -305,6 +341,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the container registry capabilities of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -335,6 +373,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCapabilitiesContainerRegistryInvokeResult> getCapabilitiesContainerRegistryPlain(GetCapabilitiesContainerRegistryPlainArgs args) {
@@ -344,6 +383,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the container registry capabilities of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -374,6 +415,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCapabilitiesContainerRegistryInvokeResult> getCapabilitiesContainerRegistry(GetCapabilitiesContainerRegistryArgs args, InvokeOptions options) {
@@ -383,6 +425,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the container registry capabilities of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -413,6 +457,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCapabilitiesContainerRegistryInvokeResult> getCapabilitiesContainerRegistryPlain(GetCapabilitiesContainerRegistryPlainArgs args, InvokeOptions options) {
@@ -422,6 +467,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the container registries of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -452,6 +499,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistriesInvokeResult> getContainerRegistries(GetContainerRegistriesArgs args) {
@@ -461,6 +509,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the container registries of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -491,6 +541,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistriesInvokeResult> getContainerRegistriesPlain(GetContainerRegistriesPlainArgs args) {
@@ -500,6 +551,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the container registries of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -530,6 +583,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistriesInvokeResult> getContainerRegistries(GetContainerRegistriesArgs args, InvokeOptions options) {
@@ -539,6 +593,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the container registries of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -569,6 +625,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistriesInvokeResult> getContainerRegistriesPlain(GetContainerRegistriesPlainArgs args, InvokeOptions options) {
@@ -578,6 +635,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a container registry associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -609,6 +668,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistryResult> getContainerRegistry(GetContainerRegistryArgs args) {
@@ -618,6 +678,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a container registry associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -649,6 +711,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistryResult> getContainerRegistryPlain(GetContainerRegistryPlainArgs args) {
@@ -658,6 +721,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a container registry associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -689,6 +754,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistryResult> getContainerRegistry(GetContainerRegistryArgs args, InvokeOptions options) {
@@ -698,6 +764,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a container registry associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -729,15 +797,74 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistryResult> getContainerRegistryPlain(GetContainerRegistryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getContainerRegistry:getContainerRegistry", TypeShape.of(GetContainerRegistryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     */
+    public static Output<GetContainerRegistryIPRestrictionsManagementResult> getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs args) {
+        return getContainerRegistryIPRestrictionsManagement(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     */
+    public static CompletableFuture<GetContainerRegistryIPRestrictionsManagementResult> getContainerRegistryIPRestrictionsManagementPlain(GetContainerRegistryIPRestrictionsManagementPlainArgs args) {
+        return getContainerRegistryIPRestrictionsManagementPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     */
+    public static Output<GetContainerRegistryIPRestrictionsManagementResult> getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement", TypeShape.of(GetContainerRegistryIPRestrictionsManagementResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     */
+    public static CompletableFuture<GetContainerRegistryIPRestrictionsManagementResult> getContainerRegistryIPRestrictionsManagementPlain(GetContainerRegistryIPRestrictionsManagementPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement", TypeShape.of(GetContainerRegistryIPRestrictionsManagementResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     */
+    public static Output<GetContainerRegistryIPRestrictionsRegistryResult> getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs args) {
+        return getContainerRegistryIPRestrictionsRegistry(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     */
+    public static CompletableFuture<GetContainerRegistryIPRestrictionsRegistryResult> getContainerRegistryIPRestrictionsRegistryPlain(GetContainerRegistryIPRestrictionsRegistryPlainArgs args) {
+        return getContainerRegistryIPRestrictionsRegistryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     */
+    public static Output<GetContainerRegistryIPRestrictionsRegistryResult> getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", TypeShape.of(GetContainerRegistryIPRestrictionsRegistryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     */
+    public static CompletableFuture<GetContainerRegistryIPRestrictionsRegistryResult> getContainerRegistryIPRestrictionsRegistryPlain(GetContainerRegistryIPRestrictionsRegistryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", TypeShape.of(GetContainerRegistryIPRestrictionsRegistryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to get a OVHcloud Managed Private Registry OIDC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -770,6 +897,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistryOIDCResult> getContainerRegistryOIDC(GetContainerRegistryOIDCArgs args) {
@@ -779,6 +907,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Private Registry OIDC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -811,6 +941,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistryOIDCResult> getContainerRegistryOIDCPlain(GetContainerRegistryOIDCPlainArgs args) {
@@ -820,6 +951,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Private Registry OIDC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -852,6 +985,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistryOIDCResult> getContainerRegistryOIDC(GetContainerRegistryOIDCArgs args, InvokeOptions options) {
@@ -861,6 +995,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Private Registry OIDC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -893,6 +1029,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistryOIDCResult> getContainerRegistryOIDCPlain(GetContainerRegistryOIDCPlainArgs args, InvokeOptions options) {
@@ -902,6 +1039,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of users of a container registry associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -939,6 +1078,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistryUsersInvokeResult> getContainerRegistryUsers(GetContainerRegistryUsersArgs args) {
@@ -948,6 +1088,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of users of a container registry associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -985,6 +1127,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistryUsersInvokeResult> getContainerRegistryUsersPlain(GetContainerRegistryUsersPlainArgs args) {
@@ -994,6 +1137,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of users of a container registry associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1031,6 +1176,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistryUsersInvokeResult> getContainerRegistryUsers(GetContainerRegistryUsersArgs args, InvokeOptions options) {
@@ -1040,6 +1186,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of users of a container registry associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1077,6 +1225,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistryUsersInvokeResult> getContainerRegistryUsersPlain(GetContainerRegistryUsersPlainArgs args, InvokeOptions options) {
@@ -1086,6 +1235,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the details of a failover IP address of a service in a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1117,6 +1268,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFailoverIpAttachResult> getFailoverIpAttach(GetFailoverIpAttachArgs args) {
@@ -1126,6 +1278,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the details of a failover IP address of a service in a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1157,6 +1311,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFailoverIpAttachResult> getFailoverIpAttachPlain(GetFailoverIpAttachPlainArgs args) {
@@ -1166,6 +1321,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the details of a failover IP address of a service in a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1197,6 +1354,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFailoverIpAttachResult> getFailoverIpAttach(GetFailoverIpAttachArgs args, InvokeOptions options) {
@@ -1206,6 +1364,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the details of a failover IP address of a service in a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1237,15 +1397,198 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFailoverIpAttachResult> getFailoverIpAttachPlain(GetFailoverIpAttachPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach", TypeShape.of(GetFailoverIpAttachResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this datasource to get a public cloud project Gateway Interface.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetGatewayInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var interface = CloudProjectFunctions.getGatewayInterface(GetGatewayInterfaceArgs.builder()
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .interfaceId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy")
+     *             .region("GRA11")
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGatewayInterfaceResult> getGatewayInterface(GetGatewayInterfaceArgs args) {
+        return getGatewayInterface(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to get a public cloud project Gateway Interface.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetGatewayInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var interface = CloudProjectFunctions.getGatewayInterface(GetGatewayInterfaceArgs.builder()
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .interfaceId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy")
+     *             .region("GRA11")
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGatewayInterfaceResult> getGatewayInterfacePlain(GetGatewayInterfacePlainArgs args) {
+        return getGatewayInterfacePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to get a public cloud project Gateway Interface.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetGatewayInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var interface = CloudProjectFunctions.getGatewayInterface(GetGatewayInterfaceArgs.builder()
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .interfaceId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy")
+     *             .region("GRA11")
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGatewayInterfaceResult> getGatewayInterface(GetGatewayInterfaceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getGatewayInterface:getGatewayInterface", TypeShape.of(GetGatewayInterfaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to get a public cloud project Gateway Interface.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetGatewayInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var interface = CloudProjectFunctions.getGatewayInterface(GetGatewayInterfaceArgs.builder()
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .interfaceId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy")
+     *             .region("GRA11")
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGatewayInterfaceResult> getGatewayInterfacePlain(GetGatewayInterfacePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getGatewayInterface:getGatewayInterface", TypeShape.of(GetGatewayInterfaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1278,6 +1621,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeResult> getKube(GetKubeArgs args) {
@@ -1287,6 +1631,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1319,6 +1665,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeResult> getKubePlain(GetKubePlainArgs args) {
@@ -1328,6 +1675,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1360,6 +1709,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeResult> getKube(GetKubeArgs args, InvokeOptions options) {
@@ -1369,6 +1719,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1401,6 +1753,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeResult> getKubePlain(GetKubePlainArgs args, InvokeOptions options) {
@@ -1410,6 +1763,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1442,6 +1797,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeIpRestrictionsResult> getKubeIpRestrictions(GetKubeIpRestrictionsArgs args) {
@@ -1451,6 +1807,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1483,6 +1841,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeIpRestrictionsResult> getKubeIpRestrictionsPlain(GetKubeIpRestrictionsPlainArgs args) {
@@ -1492,6 +1851,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1524,6 +1885,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeIpRestrictionsResult> getKubeIpRestrictions(GetKubeIpRestrictionsArgs args, InvokeOptions options) {
@@ -1533,6 +1895,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1565,6 +1929,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeIpRestrictionsResult> getKubeIpRestrictionsPlain(GetKubeIpRestrictionsPlainArgs args, InvokeOptions options) {
@@ -1574,6 +1939,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes node pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1607,6 +1974,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeNodePoolResult> getKubeNodePool(GetKubeNodePoolArgs args) {
@@ -1616,6 +1984,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes node pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1649,6 +2019,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeNodePoolResult> getKubeNodePoolPlain(GetKubeNodePoolPlainArgs args) {
@@ -1658,6 +2029,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes node pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1691,6 +2064,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeNodePoolResult> getKubeNodePool(GetKubeNodePoolArgs args, InvokeOptions options) {
@@ -1700,6 +2074,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes node pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1733,6 +2109,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeNodePoolResult> getKubeNodePoolPlain(GetKubeNodePoolPlainArgs args, InvokeOptions options) {
@@ -1742,6 +2119,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1775,6 +2154,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeNodePoolNodesResult> getKubeNodePoolNodes(GetKubeNodePoolNodesArgs args) {
@@ -1784,6 +2164,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1817,6 +2199,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeNodePoolNodesResult> getKubeNodePoolNodesPlain(GetKubeNodePoolNodesPlainArgs args) {
@@ -1826,6 +2209,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1859,6 +2244,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeNodePoolNodesResult> getKubeNodePoolNodes(GetKubeNodePoolNodesArgs args, InvokeOptions options) {
@@ -1868,6 +2254,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1901,6 +2289,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeNodePoolNodesResult> getKubeNodePoolNodesPlain(GetKubeNodePoolNodesPlainArgs args, InvokeOptions options) {
@@ -1910,6 +2299,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a list of OVHcloud Managed Kubernetes nodes.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1942,6 +2333,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeNodesResult> getKubeNodes(GetKubeNodesArgs args) {
@@ -1951,6 +2343,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a list of OVHcloud Managed Kubernetes nodes.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1983,6 +2377,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeNodesResult> getKubeNodesPlain(GetKubeNodesPlainArgs args) {
@@ -1992,6 +2387,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a list of OVHcloud Managed Kubernetes nodes.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2024,6 +2421,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeNodesResult> getKubeNodes(GetKubeNodesArgs args, InvokeOptions options) {
@@ -2033,6 +2431,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a list of OVHcloud Managed Kubernetes nodes.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2065,6 +2465,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeNodesResult> getKubeNodesPlain(GetKubeNodesPlainArgs args, InvokeOptions options) {
@@ -2074,6 +2475,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2106,6 +2509,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeOidcResult> getKubeOidc(GetKubeOidcArgs args) {
@@ -2115,6 +2519,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2147,6 +2553,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeOidcResult> getKubeOidcPlain(GetKubeOidcPlainArgs args) {
@@ -2156,6 +2563,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2188,6 +2597,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubeOidcResult> getKubeOidc(GetKubeOidcArgs args, InvokeOptions options) {
@@ -2197,6 +2607,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2229,15 +2641,374 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubeOidcResult> getKubeOidcPlain(GetKubeOidcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getKubeOidc:getKubeOidc", TypeShape.of(GetKubeOidcResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the details of a public cloud project loadbalancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lbLoadBalancer = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .regionName("XXX")
+     *             .id("XXX")
+     *             .build());
+     * 
+     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args) {
+        return getLoadBalancer(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the details of a public cloud project loadbalancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lbLoadBalancer = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .regionName("XXX")
+     *             .id("XXX")
+     *             .build());
+     * 
+     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args) {
+        return getLoadBalancerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the details of a public cloud project loadbalancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lbLoadBalancer = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .regionName("XXX")
+     *             .id("XXX")
+     *             .build());
+     * 
+     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the details of a public cloud project loadbalancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lbLoadBalancer = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .regionName("XXX")
+     *             .id("XXX")
+     *             .build());
+     * 
+     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List your public cloud loadbalancers.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lbsLoadBalancers = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .regionName("XXX")
+     *             .build());
+     * 
+     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLoadBalancersResult> getLoadBalancers(GetLoadBalancersArgs args) {
+        return getLoadBalancers(args, InvokeOptions.Empty);
+    }
+    /**
+     * List your public cloud loadbalancers.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lbsLoadBalancers = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .regionName("XXX")
+     *             .build());
+     * 
+     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args) {
+        return getLoadBalancersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List your public cloud loadbalancers.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lbsLoadBalancers = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .regionName("XXX")
+     *             .build());
+     * 
+     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLoadBalancersResult> getLoadBalancers(GetLoadBalancersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List your public cloud loadbalancers.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lbsLoadBalancers = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .regionName("XXX")
+     *             .build());
+     * 
+     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2271,6 +3042,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3dbNamespaceResult> getM3dbNamespace(GetM3dbNamespaceArgs args) {
@@ -2280,6 +3052,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2313,6 +3087,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3dbNamespaceResult> getM3dbNamespacePlain(GetM3dbNamespacePlainArgs args) {
@@ -2322,6 +3097,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2355,6 +3132,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3dbNamespaceResult> getM3dbNamespace(GetM3dbNamespaceArgs args, InvokeOptions options) {
@@ -2364,6 +3142,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2397,6 +3177,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3dbNamespaceResult> getM3dbNamespacePlain(GetM3dbNamespacePlainArgs args, InvokeOptions options) {
@@ -2406,6 +3187,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2438,6 +3221,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3dbNamespacesResult> getM3dbNamespaces(GetM3dbNamespacesArgs args) {
@@ -2447,6 +3231,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2479,6 +3265,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3dbNamespacesResult> getM3dbNamespacesPlain(GetM3dbNamespacesPlainArgs args) {
@@ -2488,6 +3275,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2520,6 +3309,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3dbNamespacesResult> getM3dbNamespaces(GetM3dbNamespacesArgs args, InvokeOptions options) {
@@ -2529,6 +3319,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2561,6 +3353,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3dbNamespacesResult> getM3dbNamespacesPlain(GetM3dbNamespacesPlainArgs args, InvokeOptions options) {
@@ -2570,6 +3363,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2603,6 +3398,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args) {
@@ -2612,6 +3408,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2645,6 +3443,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3dbUserResult> getM3dbUserPlain(GetM3dbUserPlainArgs args) {
@@ -2654,6 +3453,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2687,6 +3488,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args, InvokeOptions options) {
@@ -2696,6 +3498,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2729,6 +3533,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3dbUserResult> getM3dbUserPlain(GetM3dbUserPlainArgs args, InvokeOptions options) {
@@ -2738,6 +3543,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2771,6 +3578,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMongoDbUserResult> getMongoDbUser(GetMongoDbUserArgs args) {
@@ -2780,6 +3588,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2813,6 +3623,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMongoDbUserResult> getMongoDbUserPlain(GetMongoDbUserPlainArgs args) {
@@ -2822,6 +3633,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2855,6 +3668,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMongoDbUserResult> getMongoDbUser(GetMongoDbUserArgs args, InvokeOptions options) {
@@ -2864,6 +3678,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2897,6 +3713,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMongoDbUserResult> getMongoDbUserPlain(GetMongoDbUserPlainArgs args, InvokeOptions options) {
@@ -2906,6 +3723,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a pattern of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2939,6 +3758,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchPatternResult> getOpenSearchPattern(GetOpenSearchPatternArgs args) {
@@ -2948,6 +3768,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a pattern of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2981,6 +3803,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchPatternResult> getOpenSearchPatternPlain(GetOpenSearchPatternPlainArgs args) {
@@ -2990,6 +3813,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a pattern of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3023,6 +3848,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchPatternResult> getOpenSearchPattern(GetOpenSearchPatternArgs args, InvokeOptions options) {
@@ -3032,6 +3858,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a pattern of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3065,6 +3893,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchPatternResult> getOpenSearchPatternPlain(GetOpenSearchPatternPlainArgs args, InvokeOptions options) {
@@ -3074,6 +3903,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of pattern of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3106,6 +3937,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchPatternsResult> getOpenSearchPatterns(GetOpenSearchPatternsArgs args) {
@@ -3115,6 +3947,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of pattern of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3147,6 +3981,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchPatternsResult> getOpenSearchPatternsPlain(GetOpenSearchPatternsPlainArgs args) {
@@ -3156,6 +3991,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of pattern of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3188,6 +4025,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchPatternsResult> getOpenSearchPatterns(GetOpenSearchPatternsArgs args, InvokeOptions options) {
@@ -3197,6 +4035,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of pattern of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3229,6 +4069,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchPatternsResult> getOpenSearchPatternsPlain(GetOpenSearchPatternsPlainArgs args, InvokeOptions options) {
@@ -3238,6 +4079,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3271,6 +4114,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchUserResult> getOpenSearchUser(GetOpenSearchUserArgs args) {
@@ -3280,6 +4124,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3313,6 +4159,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchUserResult> getOpenSearchUserPlain(GetOpenSearchUserPlainArgs args) {
@@ -3322,6 +4169,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3355,6 +4204,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchUserResult> getOpenSearchUser(GetOpenSearchUserArgs args, InvokeOptions options) {
@@ -3364,6 +4214,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3397,6 +4249,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchUserResult> getOpenSearchUserPlain(GetOpenSearchUserPlainArgs args, InvokeOptions options) {
@@ -3406,6 +4259,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a redis cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3439,6 +4294,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args) {
@@ -3448,6 +4304,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a redis cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3481,6 +4339,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRedisUserResult> getRedisUserPlain(GetRedisUserPlainArgs args) {
@@ -3490,6 +4349,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a redis cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3523,6 +4384,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args, InvokeOptions options) {
@@ -3532,6 +4394,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get information about a user of a redis cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3565,6 +4429,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRedisUserResult> getRedisUserPlain(GetRedisUserPlainArgs args, InvokeOptions options) {
@@ -3574,6 +4439,8 @@ public final class CloudProjectFunctions {
      * Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3605,6 +4472,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionResult> getRegion(GetRegionArgs args) {
@@ -3614,6 +4482,8 @@ public final class CloudProjectFunctions {
      * Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3645,6 +4515,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionResult> getRegionPlain(GetRegionPlainArgs args) {
@@ -3654,6 +4525,8 @@ public final class CloudProjectFunctions {
      * Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3685,6 +4558,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionResult> getRegion(GetRegionArgs args, InvokeOptions options) {
@@ -3694,6 +4568,8 @@ public final class CloudProjectFunctions {
      * Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3725,15 +4601,374 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionResult> getRegionPlain(GetRegionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getRegion:getRegion", TypeShape.of(GetRegionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a subscription to a Managed Loadbalancer Logs Service in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sub = CloudProjectFunctions.getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs.builder()
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .regionName("gggg")
+     *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .subscriptionId("zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionLoadBalancerLogSubscriptionResult> getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs args) {
+        return getRegionLoadBalancerLogSubscription(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a subscription to a Managed Loadbalancer Logs Service in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sub = CloudProjectFunctions.getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs.builder()
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .regionName("gggg")
+     *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .subscriptionId("zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionLoadBalancerLogSubscriptionResult> getRegionLoadBalancerLogSubscriptionPlain(GetRegionLoadBalancerLogSubscriptionPlainArgs args) {
+        return getRegionLoadBalancerLogSubscriptionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a subscription to a Managed Loadbalancer Logs Service in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sub = CloudProjectFunctions.getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs.builder()
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .regionName("gggg")
+     *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .subscriptionId("zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionLoadBalancerLogSubscriptionResult> getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRegionLoadBalancerLogSubscription:getRegionLoadBalancerLogSubscription", TypeShape.of(GetRegionLoadBalancerLogSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a subscription to a Managed Loadbalancer Logs Service in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sub = CloudProjectFunctions.getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs.builder()
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .regionName("gggg")
+     *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .subscriptionId("zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionLoadBalancerLogSubscriptionResult> getRegionLoadBalancerLogSubscriptionPlain(GetRegionLoadBalancerLogSubscriptionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getRegionLoadBalancerLogSubscription:getRegionLoadBalancerLogSubscription", TypeShape.of(GetRegionLoadBalancerLogSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subs = CloudProjectFunctions.getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs.builder()
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .regionName("gggg")
+     *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionLoadBalancerLogSubscriptionsResult> getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs args) {
+        return getRegionLoadBalancerLogSubscriptions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subs = CloudProjectFunctions.getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs.builder()
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .regionName("gggg")
+     *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionLoadBalancerLogSubscriptionsResult> getRegionLoadBalancerLogSubscriptionsPlain(GetRegionLoadBalancerLogSubscriptionsPlainArgs args) {
+        return getRegionLoadBalancerLogSubscriptionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subs = CloudProjectFunctions.getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs.builder()
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .regionName("gggg")
+     *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionLoadBalancerLogSubscriptionsResult> getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions", TypeShape.of(GetRegionLoadBalancerLogSubscriptionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subs = CloudProjectFunctions.getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs.builder()
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .regionName("gggg")
+     *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionLoadBalancerLogSubscriptionsResult> getRegionLoadBalancerLogSubscriptionsPlain(GetRegionLoadBalancerLogSubscriptionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions", TypeShape.of(GetRegionLoadBalancerLogSubscriptionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to get the regions of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3765,6 +5000,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args) {
@@ -3774,6 +5010,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the regions of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3805,6 +5043,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args) {
@@ -3814,6 +5053,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the regions of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3845,6 +5086,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
@@ -3854,6 +5096,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the regions of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3885,6 +5129,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
@@ -3895,6 +5140,50 @@ public final class CloudProjectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
         return getUser(args, InvokeOptions.Empty);
@@ -3903,6 +5192,50 @@ public final class CloudProjectFunctions {
      * Get the user details of a previously created public cloud project user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -3913,6 +5246,50 @@ public final class CloudProjectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
@@ -3921,6 +5298,50 @@ public final class CloudProjectFunctions {
      * Get the user details of a previously created public cloud project user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
@@ -3931,6 +5352,59 @@ public final class CloudProjectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialsArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
+     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
+     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
+     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
+     *             .build());
+     * 
+     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
+     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetUserS3CredentialResult> getUserS3Credential(GetUserS3CredentialArgs args) {
         return getUserS3Credential(args, InvokeOptions.Empty);
@@ -3939,6 +5413,59 @@ public final class CloudProjectFunctions {
      * Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project&#39;s user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialsArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
+     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
+     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
+     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
+     *             .build());
+     * 
+     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
+     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserS3CredentialResult> getUserS3CredentialPlain(GetUserS3CredentialPlainArgs args) {
@@ -3949,6 +5476,59 @@ public final class CloudProjectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialsArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
+     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
+     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
+     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
+     *             .build());
+     * 
+     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
+     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetUserS3CredentialResult> getUserS3Credential(GetUserS3CredentialArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getUserS3Credential:getUserS3Credential", TypeShape.of(GetUserS3CredentialResult.class), args, Utilities.withVersion(options));
@@ -3958,6 +5538,59 @@ public final class CloudProjectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialsArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
+     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
+     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
+     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
+     *             .build());
+     * 
+     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
+     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static CompletableFuture<GetUserS3CredentialResult> getUserS3CredentialPlain(GetUserS3CredentialPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getUserS3Credential:getUserS3Credential", TypeShape.of(GetUserS3CredentialResult.class), args, Utilities.withVersion(options));
@@ -3966,6 +5599,8 @@ public final class CloudProjectFunctions {
      * Use this data source to retrieve the list of all the S3 access_key_id associated with a public cloud project&#39;s user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3998,6 +5633,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserS3CredentialsResult> getUserS3Credentials(GetUserS3CredentialsArgs args) {
@@ -4007,6 +5643,8 @@ public final class CloudProjectFunctions {
      * Use this data source to retrieve the list of all the S3 access_key_id associated with a public cloud project&#39;s user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -4039,6 +5677,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserS3CredentialsResult> getUserS3CredentialsPlain(GetUserS3CredentialsPlainArgs args) {
@@ -4048,6 +5687,8 @@ public final class CloudProjectFunctions {
      * Use this data source to retrieve the list of all the S3 access_key_id associated with a public cloud project&#39;s user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -4080,6 +5721,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserS3CredentialsResult> getUserS3Credentials(GetUserS3CredentialsArgs args, InvokeOptions options) {
@@ -4089,6 +5731,8 @@ public final class CloudProjectFunctions {
      * Use this data source to retrieve the list of all the S3 access_key_id associated with a public cloud project&#39;s user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -4121,6 +5765,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserS3CredentialsResult> getUserS3CredentialsPlain(GetUserS3CredentialsPlainArgs args, InvokeOptions options) {
@@ -4131,6 +5776,50 @@ public final class CloudProjectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetUserS3PolicyResult> getUserS3Policy(GetUserS3PolicyArgs args) {
         return getUserS3Policy(args, InvokeOptions.Empty);
@@ -4139,6 +5828,50 @@ public final class CloudProjectFunctions {
      * Get the S3 Policy of a public cloud project user. The policy can be set by using the `ovh.CloudProject.S3Policy` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserS3PolicyResult> getUserS3PolicyPlain(GetUserS3PolicyPlainArgs args) {
@@ -4149,6 +5882,50 @@ public final class CloudProjectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetUserS3PolicyResult> getUserS3Policy(GetUserS3PolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getUserS3Policy:getUserS3Policy", TypeShape.of(GetUserS3PolicyResult.class), args, Utilities.withVersion(options));
@@ -4157,6 +5934,50 @@ public final class CloudProjectFunctions {
      * Get the S3 Policy of a public cloud project user. The policy can be set by using the `ovh.CloudProject.S3Policy` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
+     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .userId(s3UserId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserS3PolicyResult> getUserS3PolicyPlain(GetUserS3PolicyPlainArgs args, InvokeOptions options) {
@@ -4167,6 +5988,45 @@ public final class CloudProjectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         ctx.export("userId", s3UserId);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
         return getUsers(args, InvokeOptions.Empty);
@@ -4175,6 +6035,45 @@ public final class CloudProjectFunctions {
      * Get the list of all users of a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         ctx.export("userId", s3UserId);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
@@ -4185,6 +6084,45 @@ public final class CloudProjectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         ctx.export("userId", s3UserId);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
@@ -4194,6 +6132,45 @@ public final class CloudProjectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
+     *             .serviceName("XXX")
+     *             .build());
+     * 
+     *         // Get the user ID of a previously created user with the description "S3-User"
+     *         final var users = "TODO: ForExpression";
+     * 
+     *         final var s3UserId = users[0];
+     * 
+     *         ctx.export("userId", s3UserId);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
@@ -4202,6 +6179,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the linked vrack on your public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -4233,6 +6212,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVRackResult> getVRack(GetVRackArgs args) {
@@ -4242,6 +6222,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the linked vrack on your public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -4273,6 +6255,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVRackResult> getVRackPlain(GetVRackPlainArgs args) {
@@ -4282,6 +6265,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the linked vrack on your public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -4313,6 +6298,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVRackResult> getVRack(GetVRackArgs args, InvokeOptions options) {
@@ -4322,6 +6308,8 @@ public final class CloudProjectFunctions {
      * Use this data source to get the linked vrack on your public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -4353,6 +6341,7 @@ public final class CloudProjectFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVRackResult> getVRackPlain(GetVRackPlainArgs args, InvokeOptions options) {

@@ -11,14 +11,10 @@ import com.ovh.ovh.Me.inputs.GetIdentityUserArgs;
 import com.ovh.ovh.Me.inputs.GetIdentityUserPlainArgs;
 import com.ovh.ovh.Me.inputs.GetInstallationTemplateArgs;
 import com.ovh.ovh.Me.inputs.GetInstallationTemplatePlainArgs;
-import com.ovh.ovh.Me.inputs.GetIpxeScriptArgs;
-import com.ovh.ovh.Me.inputs.GetIpxeScriptPlainArgs;
 import com.ovh.ovh.Me.inputs.GetPaymentmeanBankAccountArgs;
 import com.ovh.ovh.Me.inputs.GetPaymentmeanBankAccountPlainArgs;
 import com.ovh.ovh.Me.inputs.GetPaymentmeanCreditCardArgs;
 import com.ovh.ovh.Me.inputs.GetPaymentmeanCreditCardPlainArgs;
-import com.ovh.ovh.Me.inputs.GetSshKeyArgs;
-import com.ovh.ovh.Me.inputs.GetSshKeyPlainArgs;
 import com.ovh.ovh.Me.outputs.GetAPIOAuth2ClientResult;
 import com.ovh.ovh.Me.outputs.GetAPIOAuth2ClientsResult;
 import com.ovh.ovh.Me.outputs.GetIdentityGroupResult;
@@ -27,13 +23,9 @@ import com.ovh.ovh.Me.outputs.GetIdentityUserResult;
 import com.ovh.ovh.Me.outputs.GetIdentityUsersResult;
 import com.ovh.ovh.Me.outputs.GetInstallationTemplateResult;
 import com.ovh.ovh.Me.outputs.GetInstallationTemplatesResult;
-import com.ovh.ovh.Me.outputs.GetIpxeScriptResult;
-import com.ovh.ovh.Me.outputs.GetIpxeScriptsResult;
 import com.ovh.ovh.Me.outputs.GetMeResult;
 import com.ovh.ovh.Me.outputs.GetPaymentmeanBankAccountResult;
 import com.ovh.ovh.Me.outputs.GetPaymentmeanCreditCardResult;
-import com.ovh.ovh.Me.outputs.GetSshKeyResult;
-import com.ovh.ovh.Me.outputs.GetSshKeysResult;
 import com.ovh.ovh.Utilities;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -47,6 +39,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an existing OAuth2 service account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -77,6 +71,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAPIOAuth2ClientResult> getAPIOAuth2Client(GetAPIOAuth2ClientArgs args) {
@@ -86,6 +81,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an existing OAuth2 service account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -116,6 +113,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAPIOAuth2ClientResult> getAPIOAuth2ClientPlain(GetAPIOAuth2ClientPlainArgs args) {
@@ -125,6 +123,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an existing OAuth2 service account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -155,6 +155,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAPIOAuth2ClientResult> getAPIOAuth2Client(GetAPIOAuth2ClientArgs args, InvokeOptions options) {
@@ -164,6 +165,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an existing OAuth2 service account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -194,6 +197,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAPIOAuth2ClientResult> getAPIOAuth2ClientPlain(GetAPIOAuth2ClientPlainArgs args, InvokeOptions options) {
@@ -203,6 +207,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information the list of existing OAuth2 service account IDs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -231,6 +237,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAPIOAuth2ClientsResult> getAPIOAuth2Clients() {
@@ -240,6 +247,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information the list of existing OAuth2 service account IDs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -268,6 +277,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAPIOAuth2ClientsResult> getAPIOAuth2ClientsPlain() {
@@ -277,6 +287,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information the list of existing OAuth2 service account IDs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -305,6 +317,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAPIOAuth2ClientsResult> getAPIOAuth2Clients(InvokeArgs args) {
@@ -314,6 +327,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information the list of existing OAuth2 service account IDs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -342,6 +357,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAPIOAuth2ClientsResult> getAPIOAuth2ClientsPlain(InvokeArgs args) {
@@ -351,6 +367,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information the list of existing OAuth2 service account IDs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -379,6 +397,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAPIOAuth2ClientsResult> getAPIOAuth2Clients(InvokeArgs args, InvokeOptions options) {
@@ -388,6 +407,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information the list of existing OAuth2 service account IDs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -416,6 +437,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAPIOAuth2ClientsResult> getAPIOAuth2ClientsPlain(InvokeArgs args, InvokeOptions options) {
@@ -425,6 +447,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an identity group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -455,6 +479,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIdentityGroupResult> getIdentityGroup(GetIdentityGroupArgs args) {
@@ -464,6 +489,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an identity group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -494,6 +521,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIdentityGroupResult> getIdentityGroupPlain(GetIdentityGroupPlainArgs args) {
@@ -503,6 +531,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an identity group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -533,6 +563,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIdentityGroupResult> getIdentityGroup(GetIdentityGroupArgs args, InvokeOptions options) {
@@ -542,6 +573,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an identity group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -572,6 +605,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIdentityGroupResult> getIdentityGroupPlain(GetIdentityGroupPlainArgs args, InvokeOptions options) {
@@ -581,6 +615,8 @@ public final class MeFunctions {
      * Use this data source to retrieve the list of the account&#39;s identity groups
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -608,6 +644,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIdentityGroupsResult> getIdentityGroups() {
@@ -617,6 +654,8 @@ public final class MeFunctions {
      * Use this data source to retrieve the list of the account&#39;s identity groups
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -644,6 +683,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIdentityGroupsResult> getIdentityGroupsPlain() {
@@ -653,6 +693,8 @@ public final class MeFunctions {
      * Use this data source to retrieve the list of the account&#39;s identity groups
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -680,6 +722,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIdentityGroupsResult> getIdentityGroups(InvokeArgs args) {
@@ -689,6 +732,8 @@ public final class MeFunctions {
      * Use this data source to retrieve the list of the account&#39;s identity groups
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -716,6 +761,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIdentityGroupsResult> getIdentityGroupsPlain(InvokeArgs args) {
@@ -725,6 +771,8 @@ public final class MeFunctions {
      * Use this data source to retrieve the list of the account&#39;s identity groups
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -752,6 +800,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIdentityGroupsResult> getIdentityGroups(InvokeArgs args, InvokeOptions options) {
@@ -761,6 +810,8 @@ public final class MeFunctions {
      * Use this data source to retrieve the list of the account&#39;s identity groups
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -788,6 +839,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIdentityGroupsResult> getIdentityGroupsPlain(InvokeArgs args, InvokeOptions options) {
@@ -797,6 +849,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an identity user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -827,6 +881,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIdentityUserResult> getIdentityUser(GetIdentityUserArgs args) {
@@ -836,6 +891,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an identity user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -866,6 +923,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIdentityUserResult> getIdentityUserPlain(GetIdentityUserPlainArgs args) {
@@ -875,6 +933,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an identity user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -905,6 +965,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIdentityUserResult> getIdentityUser(GetIdentityUserArgs args, InvokeOptions options) {
@@ -914,6 +975,8 @@ public final class MeFunctions {
      * Use this data source to retrieve information about an identity user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -944,6 +1007,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIdentityUserResult> getIdentityUserPlain(GetIdentityUserPlainArgs args, InvokeOptions options) {
@@ -953,6 +1017,8 @@ public final class MeFunctions {
      * Use this data source to retrieve list of user logins of the account&#39;s identity users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -980,6 +1046,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIdentityUsersResult> getIdentityUsers() {
@@ -989,6 +1056,8 @@ public final class MeFunctions {
      * Use this data source to retrieve list of user logins of the account&#39;s identity users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1016,6 +1085,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIdentityUsersResult> getIdentityUsersPlain() {
@@ -1025,6 +1095,8 @@ public final class MeFunctions {
      * Use this data source to retrieve list of user logins of the account&#39;s identity users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1052,6 +1124,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIdentityUsersResult> getIdentityUsers(InvokeArgs args) {
@@ -1061,6 +1134,8 @@ public final class MeFunctions {
      * Use this data source to retrieve list of user logins of the account&#39;s identity users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1088,6 +1163,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIdentityUsersResult> getIdentityUsersPlain(InvokeArgs args) {
@@ -1097,6 +1173,8 @@ public final class MeFunctions {
      * Use this data source to retrieve list of user logins of the account&#39;s identity users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1124,6 +1202,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIdentityUsersResult> getIdentityUsers(InvokeArgs args, InvokeOptions options) {
@@ -1133,6 +1212,8 @@ public final class MeFunctions {
      * Use this data source to retrieve list of user logins of the account&#39;s identity users.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1160,6 +1241,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIdentityUsersResult> getIdentityUsersPlain(InvokeArgs args, InvokeOptions options) {
@@ -1169,6 +1251,8 @@ public final class MeFunctions {
      * Use this data source to get a custom installation template available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1199,6 +1283,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstallationTemplateResult> getInstallationTemplate(GetInstallationTemplateArgs args) {
@@ -1208,6 +1293,8 @@ public final class MeFunctions {
      * Use this data source to get a custom installation template available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1238,6 +1325,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstallationTemplateResult> getInstallationTemplatePlain(GetInstallationTemplatePlainArgs args) {
@@ -1247,6 +1335,8 @@ public final class MeFunctions {
      * Use this data source to get a custom installation template available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1277,6 +1367,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstallationTemplateResult> getInstallationTemplate(GetInstallationTemplateArgs args, InvokeOptions options) {
@@ -1286,6 +1377,8 @@ public final class MeFunctions {
      * Use this data source to get a custom installation template available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1316,6 +1409,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstallationTemplateResult> getInstallationTemplatePlain(GetInstallationTemplatePlainArgs args, InvokeOptions options) {
@@ -1325,6 +1419,8 @@ public final class MeFunctions {
      * Use this data source to get the list of custom installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1352,6 +1448,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstallationTemplatesResult> getInstallationTemplates() {
@@ -1361,6 +1458,8 @@ public final class MeFunctions {
      * Use this data source to get the list of custom installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1388,6 +1487,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstallationTemplatesResult> getInstallationTemplatesPlain() {
@@ -1397,6 +1497,8 @@ public final class MeFunctions {
      * Use this data source to get the list of custom installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1424,6 +1526,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstallationTemplatesResult> getInstallationTemplates(InvokeArgs args) {
@@ -1433,6 +1536,8 @@ public final class MeFunctions {
      * Use this data source to get the list of custom installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1460,6 +1565,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstallationTemplatesResult> getInstallationTemplatesPlain(InvokeArgs args) {
@@ -1469,6 +1575,8 @@ public final class MeFunctions {
      * Use this data source to get the list of custom installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1496,6 +1604,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstallationTemplatesResult> getInstallationTemplates(InvokeArgs args, InvokeOptions options) {
@@ -1505,6 +1614,8 @@ public final class MeFunctions {
      * Use this data source to get the list of custom installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1532,387 +1643,18 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstallationTemplatesResult> getInstallationTemplatesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Me/getInstallationTemplates:getInstallationTemplates", TypeShape.of(GetInstallationTemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve information about an IPXE Script.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetIpxeScriptArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var script = MeFunctions.getIpxeScript(GetIpxeScriptArgs.builder()
-     *             .name("myscript")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetIpxeScriptResult> getIpxeScript(GetIpxeScriptArgs args) {
-        return getIpxeScript(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about an IPXE Script.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetIpxeScriptArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var script = MeFunctions.getIpxeScript(GetIpxeScriptArgs.builder()
-     *             .name("myscript")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetIpxeScriptResult> getIpxeScriptPlain(GetIpxeScriptPlainArgs args) {
-        return getIpxeScriptPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about an IPXE Script.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetIpxeScriptArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var script = MeFunctions.getIpxeScript(GetIpxeScriptArgs.builder()
-     *             .name("myscript")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetIpxeScriptResult> getIpxeScript(GetIpxeScriptArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getIpxeScript:getIpxeScript", TypeShape.of(GetIpxeScriptResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about an IPXE Script.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetIpxeScriptArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var script = MeFunctions.getIpxeScript(GetIpxeScriptArgs.builder()
-     *             .name("myscript")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetIpxeScriptResult> getIpxeScriptPlain(GetIpxeScriptPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("ovh:Me/getIpxeScript:getIpxeScript", TypeShape.of(GetIpxeScriptResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve a list of the names of the account&#39;s IPXE Scripts.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var scripts = MeFunctions.getIpxeScripts();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetIpxeScriptsResult> getIpxeScripts() {
-        return getIpxeScripts(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve a list of the names of the account&#39;s IPXE Scripts.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var scripts = MeFunctions.getIpxeScripts();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetIpxeScriptsResult> getIpxeScriptsPlain() {
-        return getIpxeScriptsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve a list of the names of the account&#39;s IPXE Scripts.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var scripts = MeFunctions.getIpxeScripts();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetIpxeScriptsResult> getIpxeScripts(InvokeArgs args) {
-        return getIpxeScripts(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve a list of the names of the account&#39;s IPXE Scripts.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var scripts = MeFunctions.getIpxeScripts();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetIpxeScriptsResult> getIpxeScriptsPlain(InvokeArgs args) {
-        return getIpxeScriptsPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve a list of the names of the account&#39;s IPXE Scripts.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var scripts = MeFunctions.getIpxeScripts();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetIpxeScriptsResult> getIpxeScripts(InvokeArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getIpxeScripts:getIpxeScripts", TypeShape.of(GetIpxeScriptsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve a list of the names of the account&#39;s IPXE Scripts.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var scripts = MeFunctions.getIpxeScripts();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetIpxeScriptsResult> getIpxeScriptsPlain(InvokeArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("ovh:Me/getIpxeScripts:getIpxeScripts", TypeShape.of(GetIpxeScriptsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
      * Use this data source to get information about the current OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1940,6 +1682,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMeResult> getMe() {
@@ -1949,6 +1692,8 @@ public final class MeFunctions {
      * Use this data source to get information about the current OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1976,6 +1721,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMeResult> getMePlain() {
@@ -1985,6 +1731,8 @@ public final class MeFunctions {
      * Use this data source to get information about the current OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2012,6 +1760,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMeResult> getMe(InvokeArgs args) {
@@ -2021,6 +1770,8 @@ public final class MeFunctions {
      * Use this data source to get information about the current OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2048,6 +1799,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMeResult> getMePlain(InvokeArgs args) {
@@ -2057,6 +1809,8 @@ public final class MeFunctions {
      * Use this data source to get information about the current OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2084,6 +1838,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMeResult> getMe(InvokeArgs args, InvokeOptions options) {
@@ -2093,6 +1848,8 @@ public final class MeFunctions {
      * Use this data source to get information about the current OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2120,6 +1877,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMeResult> getMePlain(InvokeArgs args, InvokeOptions options) {
@@ -2130,6 +1888,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2160,6 +1920,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPaymentmeanBankAccountResult> getPaymentmeanBankAccount() {
@@ -2170,6 +1931,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2200,6 +1963,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPaymentmeanBankAccountResult> getPaymentmeanBankAccountPlain() {
@@ -2210,6 +1974,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2240,6 +2006,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPaymentmeanBankAccountResult> getPaymentmeanBankAccount(GetPaymentmeanBankAccountArgs args) {
@@ -2250,6 +2017,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2280,6 +2049,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPaymentmeanBankAccountResult> getPaymentmeanBankAccountPlain(GetPaymentmeanBankAccountPlainArgs args) {
@@ -2290,6 +2060,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2320,6 +2092,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPaymentmeanBankAccountResult> getPaymentmeanBankAccount(GetPaymentmeanBankAccountArgs args, InvokeOptions options) {
@@ -2330,6 +2103,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2360,6 +2135,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPaymentmeanBankAccountResult> getPaymentmeanBankAccountPlain(GetPaymentmeanBankAccountPlainArgs args, InvokeOptions options) {
@@ -2370,6 +2146,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2400,6 +2178,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPaymentmeanCreditCardResult> getPaymentmeanCreditCard() {
@@ -2410,6 +2189,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2440,6 +2221,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPaymentmeanCreditCardResult> getPaymentmeanCreditCardPlain() {
@@ -2450,6 +2232,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2480,6 +2264,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPaymentmeanCreditCardResult> getPaymentmeanCreditCard(GetPaymentmeanCreditCardArgs args) {
@@ -2490,6 +2275,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2520,6 +2307,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPaymentmeanCreditCardResult> getPaymentmeanCreditCardPlain(GetPaymentmeanCreditCardPlainArgs args) {
@@ -2530,6 +2318,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2560,6 +2350,7 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPaymentmeanCreditCardResult> getPaymentmeanCreditCard(GetPaymentmeanCreditCardArgs args, InvokeOptions options) {
@@ -2570,6 +2361,8 @@ public final class MeFunctions {
      * payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2600,381 +2393,10 @@ public final class MeFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPaymentmeanCreditCardResult> getPaymentmeanCreditCardPlain(GetPaymentmeanCreditCardPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", TypeShape.of(GetPaymentmeanCreditCardResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about an SSH key.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetSshKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mykey = MeFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .keyName("mykey")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetSshKeyResult> getSshKey(GetSshKeyArgs args) {
-        return getSshKey(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about an SSH key.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetSshKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mykey = MeFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .keyName("mykey")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetSshKeyResult> getSshKeyPlain(GetSshKeyPlainArgs args) {
-        return getSshKeyPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about an SSH key.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetSshKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mykey = MeFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .keyName("mykey")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetSshKeyResult> getSshKey(GetSshKeyArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getSshKey:getSshKey", TypeShape.of(GetSshKeyResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about an SSH key.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetSshKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mykey = MeFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .keyName("mykey")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetSshKeyResult> getSshKeyPlain(GetSshKeyPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("ovh:Me/getSshKey:getSshKey", TypeShape.of(GetSshKeyResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve list of names of the account&#39;s SSH keys.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mykeys = MeFunctions.getSshKeys();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetSshKeysResult> getSshKeys() {
-        return getSshKeys(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve list of names of the account&#39;s SSH keys.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mykeys = MeFunctions.getSshKeys();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetSshKeysResult> getSshKeysPlain() {
-        return getSshKeysPlain(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve list of names of the account&#39;s SSH keys.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mykeys = MeFunctions.getSshKeys();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetSshKeysResult> getSshKeys(InvokeArgs args) {
-        return getSshKeys(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve list of names of the account&#39;s SSH keys.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mykeys = MeFunctions.getSshKeys();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetSshKeysResult> getSshKeysPlain(InvokeArgs args) {
-        return getSshKeysPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve list of names of the account&#39;s SSH keys.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mykeys = MeFunctions.getSshKeys();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetSshKeysResult> getSshKeys(InvokeArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getSshKeys:getSshKeys", TypeShape.of(GetSshKeysResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve list of names of the account&#39;s SSH keys.
-     * 
-     * ## Example Usage
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mykeys = MeFunctions.getSshKeys();
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetSshKeysResult> getSshKeysPlain(InvokeArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("ovh:Me/getSshKeys:getSshKeys", TypeShape.of(GetSshKeysResult.class), args, Utilities.withVersion(options));
     }
 }

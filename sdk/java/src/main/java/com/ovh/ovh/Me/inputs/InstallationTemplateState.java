@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.inputs;
 
 import com.ovh.ovh.Me.inputs.InstallationTemplateCustomizationArgs;
+import com.ovh.ovh.Me.inputs.InstallationTemplateInputArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -20,21 +21,6 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
     public static final InstallationTemplateState Empty = new InstallationTemplateState();
 
     /**
-     * List of all language available for this template.
-     * 
-     */
-    @Import(name="availableLanguages")
-    private @Nullable Output<List<String>> availableLanguages;
-
-    /**
-     * @return List of all language available for this template.
-     * 
-     */
-    public Optional<Output<List<String>>> availableLanguages() {
-        return Optional.ofNullable(this.availableLanguages);
-    }
-
-    /**
      * The name of an existing installation template, choose one among the list given by `ovh.getInstallationTemplates` datasource.
      * 
      */
@@ -47,21 +33,6 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> baseTemplateName() {
         return Optional.ofNullable(this.baseTemplateName);
-    }
-
-    /**
-     * This distribution is new and, although tested and functional, may still display odd behaviour.
-     * 
-     */
-    @Import(name="beta")
-    private @Nullable Output<Boolean> beta;
-
-    /**
-     * @return This distribution is new and, although tested and functional, may still display odd behaviour.
-     * 
-     */
-    public Optional<Output<Boolean>> beta() {
-        return Optional.ofNullable(this.beta);
     }
 
     /**
@@ -102,36 +73,6 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The default language of this template.
-     * 
-     */
-    @Import(name="defaultLanguage")
-    private @Nullable Output<String> defaultLanguage;
-
-    /**
-     * @return The default language of this template.
-     * 
-     */
-    public Optional<Output<String>> defaultLanguage() {
-        return Optional.ofNullable(this.defaultLanguage);
-    }
-
-    /**
-     * is this distribution deprecated.
-     * 
-     */
-    @Import(name="deprecated")
-    private @Nullable Output<Boolean> deprecated;
-
-    /**
-     * @return is this distribution deprecated.
-     * 
-     */
-    public Optional<Output<Boolean>> deprecated() {
-        return Optional.ofNullable(this.deprecated);
-    }
-
-    /**
      * information about this template.
      * 
      */
@@ -162,14 +103,29 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * this template family type (bsd,linux,solaris,windows).
+     * after this date, install of this template will not be possible at OVH
+     * 
+     */
+    @Import(name="endOfInstall")
+    private @Nullable Output<String> endOfInstall;
+
+    /**
+     * @return after this date, install of this template will not be possible at OVH
+     * 
+     */
+    public Optional<Output<String>> endOfInstall() {
+        return Optional.ofNullable(this.endOfInstall);
+    }
+
+    /**
+     * this template family type.
      * 
      */
     @Import(name="family")
     private @Nullable Output<String> family;
 
     /**
-     * @return this template family type (bsd,linux,solaris,windows).
+     * @return this template family type.
      * 
      */
     public Optional<Output<String>> family() {
@@ -177,14 +133,14 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+     * Filesystems available.
      * 
      */
     @Import(name="filesystems")
     private @Nullable Output<List<String>> filesystems;
 
     /**
-     * @return Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+     * @return Filesystems available.
      * 
      */
     public Optional<Output<List<String>>> filesystems() {
@@ -192,48 +148,63 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * This distribution supports hardware raid configuration through the OVHcloud API.
+     * This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
+     * 
+     * @deprecated
+     * This will be deprecated in the next release
      * 
      */
+    @Deprecated /* This will be deprecated in the next release */
     @Import(name="hardRaidConfiguration")
     private @Nullable Output<Boolean> hardRaidConfiguration;
 
     /**
-     * @return This distribution supports hardware raid configuration through the OVHcloud API.
+     * @return This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
+     * 
+     * @deprecated
+     * This will be deprecated in the next release
      * 
      */
+    @Deprecated /* This will be deprecated in the next release */
     public Optional<Output<Boolean>> hardRaidConfiguration() {
         return Optional.ofNullable(this.hardRaidConfiguration);
     }
 
-    /**
-     * Date of last modification of the base image.
-     * 
-     */
-    @Import(name="lastModification")
-    private @Nullable Output<String> lastModification;
+    @Import(name="inputs")
+    private @Nullable Output<List<InstallationTemplateInputArgs>> inputs;
 
-    /**
-     * @return Date of last modification of the base image.
-     * 
-     */
-    public Optional<Output<String>> lastModification() {
-        return Optional.ofNullable(this.lastModification);
+    public Optional<Output<List<InstallationTemplateInputArgs>>> inputs() {
+        return Optional.ofNullable(this.inputs);
     }
 
     /**
-     * This distribution supports Logical Volumes (Linux LVM)
+     * Whether this distribution supports Logical Volumes (Linux LVM)
      * 
      */
     @Import(name="lvmReady")
     private @Nullable Output<Boolean> lvmReady;
 
     /**
-     * @return This distribution supports Logical Volumes (Linux LVM)
+     * @return Whether this distribution supports Logical Volumes (Linux LVM)
      * 
      */
     public Optional<Output<Boolean>> lvmReady() {
         return Optional.ofNullable(this.lvmReady);
+    }
+
+    /**
+     * Partitioning customization is not available for this OS template
+     * 
+     */
+    @Import(name="noPartitioning")
+    private @Nullable Output<Boolean> noPartitioning;
+
+    /**
+     * @return Partitioning customization is not available for this OS template
+     * 
+     */
+    public Optional<Output<Boolean>> noPartitioning() {
+        return Optional.ofNullable(this.noPartitioning);
     }
 
     /**
@@ -252,48 +223,33 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * This distribution supports installation using the distribution&#39;s native kernel instead of the recommended OVHcloud kernel.
+     * Partitioning customization is available but limited to mirroring for this OS template
      * 
      */
-    @Import(name="supportsDistributionKernel")
-    private @Nullable Output<Boolean> supportsDistributionKernel;
+    @Import(name="softRaidOnlyMirroring")
+    private @Nullable Output<Boolean> softRaidOnlyMirroring;
 
     /**
-     * @return This distribution supports installation using the distribution&#39;s native kernel instead of the recommended OVHcloud kernel.
+     * @return Partitioning customization is available but limited to mirroring for this OS template
      * 
      */
-    public Optional<Output<Boolean>> supportsDistributionKernel() {
-        return Optional.ofNullable(this.supportsDistributionKernel);
+    public Optional<Output<Boolean>> softRaidOnlyMirroring() {
+        return Optional.ofNullable(this.softRaidOnlyMirroring);
     }
 
     /**
-     * This distribution supports RTM software.
+     * this template subfamily type
      * 
      */
-    @Import(name="supportsRtm")
-    private @Nullable Output<Boolean> supportsRtm;
+    @Import(name="subfamily")
+    private @Nullable Output<String> subfamily;
 
     /**
-     * @return This distribution supports RTM software.
+     * @return this template subfamily type
      * 
      */
-    public Optional<Output<Boolean>> supportsRtm() {
-        return Optional.ofNullable(this.supportsRtm);
-    }
-
-    /**
-     * This distribution supports the microsoft SQL server.
-     * 
-     */
-    @Import(name="supportsSqlServer")
-    private @Nullable Output<Boolean> supportsSqlServer;
-
-    /**
-     * @return This distribution supports the microsoft SQL server.
-     * 
-     */
-    public Optional<Output<Boolean>> supportsSqlServer() {
-        return Optional.ofNullable(this.supportsSqlServer);
+    public Optional<Output<String>> subfamily() {
+        return Optional.ofNullable(this.subfamily);
     }
 
     /**
@@ -314,25 +270,22 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
     private InstallationTemplateState() {}
 
     private InstallationTemplateState(InstallationTemplateState $) {
-        this.availableLanguages = $.availableLanguages;
         this.baseTemplateName = $.baseTemplateName;
-        this.beta = $.beta;
         this.bitFormat = $.bitFormat;
         this.category = $.category;
         this.customization = $.customization;
-        this.defaultLanguage = $.defaultLanguage;
-        this.deprecated = $.deprecated;
         this.description = $.description;
         this.distribution = $.distribution;
+        this.endOfInstall = $.endOfInstall;
         this.family = $.family;
         this.filesystems = $.filesystems;
         this.hardRaidConfiguration = $.hardRaidConfiguration;
-        this.lastModification = $.lastModification;
+        this.inputs = $.inputs;
         this.lvmReady = $.lvmReady;
+        this.noPartitioning = $.noPartitioning;
         this.removeDefaultPartitionSchemes = $.removeDefaultPartitionSchemes;
-        this.supportsDistributionKernel = $.supportsDistributionKernel;
-        this.supportsRtm = $.supportsRtm;
-        this.supportsSqlServer = $.supportsSqlServer;
+        this.softRaidOnlyMirroring = $.softRaidOnlyMirroring;
+        this.subfamily = $.subfamily;
         this.templateName = $.templateName;
     }
 
@@ -355,37 +308,6 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param availableLanguages List of all language available for this template.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder availableLanguages(@Nullable Output<List<String>> availableLanguages) {
-            $.availableLanguages = availableLanguages;
-            return this;
-        }
-
-        /**
-         * @param availableLanguages List of all language available for this template.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder availableLanguages(List<String> availableLanguages) {
-            return availableLanguages(Output.of(availableLanguages));
-        }
-
-        /**
-         * @param availableLanguages List of all language available for this template.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder availableLanguages(String... availableLanguages) {
-            return availableLanguages(List.of(availableLanguages));
-        }
-
-        /**
          * @param baseTemplateName The name of an existing installation template, choose one among the list given by `ovh.getInstallationTemplates` datasource.
          * 
          * @return builder
@@ -404,27 +326,6 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
          */
         public Builder baseTemplateName(String baseTemplateName) {
             return baseTemplateName(Output.of(baseTemplateName));
-        }
-
-        /**
-         * @param beta This distribution is new and, although tested and functional, may still display odd behaviour.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder beta(@Nullable Output<Boolean> beta) {
-            $.beta = beta;
-            return this;
-        }
-
-        /**
-         * @param beta This distribution is new and, although tested and functional, may still display odd behaviour.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder beta(Boolean beta) {
-            return beta(Output.of(beta));
         }
 
         /**
@@ -479,48 +380,6 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param defaultLanguage The default language of this template.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultLanguage(@Nullable Output<String> defaultLanguage) {
-            $.defaultLanguage = defaultLanguage;
-            return this;
-        }
-
-        /**
-         * @param defaultLanguage The default language of this template.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultLanguage(String defaultLanguage) {
-            return defaultLanguage(Output.of(defaultLanguage));
-        }
-
-        /**
-         * @param deprecated is this distribution deprecated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder deprecated(@Nullable Output<Boolean> deprecated) {
-            $.deprecated = deprecated;
-            return this;
-        }
-
-        /**
-         * @param deprecated is this distribution deprecated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder deprecated(Boolean deprecated) {
-            return deprecated(Output.of(deprecated));
-        }
-
-        /**
          * @param description information about this template.
          * 
          * @return builder
@@ -563,7 +422,28 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param family this template family type (bsd,linux,solaris,windows).
+         * @param endOfInstall after this date, install of this template will not be possible at OVH
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endOfInstall(@Nullable Output<String> endOfInstall) {
+            $.endOfInstall = endOfInstall;
+            return this;
+        }
+
+        /**
+         * @param endOfInstall after this date, install of this template will not be possible at OVH
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endOfInstall(String endOfInstall) {
+            return endOfInstall(Output.of(endOfInstall));
+        }
+
+        /**
+         * @param family this template family type.
          * 
          * @return builder
          * 
@@ -574,7 +454,7 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param family this template family type (bsd,linux,solaris,windows).
+         * @param family this template family type.
          * 
          * @return builder
          * 
@@ -584,7 +464,7 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param filesystems Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+         * @param filesystems Filesystems available.
          * 
          * @return builder
          * 
@@ -595,7 +475,7 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param filesystems Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+         * @param filesystems Filesystems available.
          * 
          * @return builder
          * 
@@ -605,7 +485,7 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param filesystems Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+         * @param filesystems Filesystems available.
          * 
          * @return builder
          * 
@@ -615,49 +495,49 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param hardRaidConfiguration This distribution supports hardware raid configuration through the OVHcloud API.
+         * @param hardRaidConfiguration This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be deprecated in the next release
+         * 
          */
+        @Deprecated /* This will be deprecated in the next release */
         public Builder hardRaidConfiguration(@Nullable Output<Boolean> hardRaidConfiguration) {
             $.hardRaidConfiguration = hardRaidConfiguration;
             return this;
         }
 
         /**
-         * @param hardRaidConfiguration This distribution supports hardware raid configuration through the OVHcloud API.
+         * @param hardRaidConfiguration This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be deprecated in the next release
+         * 
          */
+        @Deprecated /* This will be deprecated in the next release */
         public Builder hardRaidConfiguration(Boolean hardRaidConfiguration) {
             return hardRaidConfiguration(Output.of(hardRaidConfiguration));
         }
 
-        /**
-         * @param lastModification Date of last modification of the base image.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lastModification(@Nullable Output<String> lastModification) {
-            $.lastModification = lastModification;
+        public Builder inputs(@Nullable Output<List<InstallationTemplateInputArgs>> inputs) {
+            $.inputs = inputs;
             return this;
         }
 
-        /**
-         * @param lastModification Date of last modification of the base image.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lastModification(String lastModification) {
-            return lastModification(Output.of(lastModification));
+        public Builder inputs(List<InstallationTemplateInputArgs> inputs) {
+            return inputs(Output.of(inputs));
+        }
+
+        public Builder inputs(InstallationTemplateInputArgs... inputs) {
+            return inputs(List.of(inputs));
         }
 
         /**
-         * @param lvmReady This distribution supports Logical Volumes (Linux LVM)
+         * @param lvmReady Whether this distribution supports Logical Volumes (Linux LVM)
          * 
          * @return builder
          * 
@@ -668,13 +548,34 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param lvmReady This distribution supports Logical Volumes (Linux LVM)
+         * @param lvmReady Whether this distribution supports Logical Volumes (Linux LVM)
          * 
          * @return builder
          * 
          */
         public Builder lvmReady(Boolean lvmReady) {
             return lvmReady(Output.of(lvmReady));
+        }
+
+        /**
+         * @param noPartitioning Partitioning customization is not available for this OS template
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noPartitioning(@Nullable Output<Boolean> noPartitioning) {
+            $.noPartitioning = noPartitioning;
+            return this;
+        }
+
+        /**
+         * @param noPartitioning Partitioning customization is not available for this OS template
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noPartitioning(Boolean noPartitioning) {
+            return noPartitioning(Output.of(noPartitioning));
         }
 
         /**
@@ -699,66 +600,45 @@ public final class InstallationTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param supportsDistributionKernel This distribution supports installation using the distribution&#39;s native kernel instead of the recommended OVHcloud kernel.
+         * @param softRaidOnlyMirroring Partitioning customization is available but limited to mirroring for this OS template
          * 
          * @return builder
          * 
          */
-        public Builder supportsDistributionKernel(@Nullable Output<Boolean> supportsDistributionKernel) {
-            $.supportsDistributionKernel = supportsDistributionKernel;
+        public Builder softRaidOnlyMirroring(@Nullable Output<Boolean> softRaidOnlyMirroring) {
+            $.softRaidOnlyMirroring = softRaidOnlyMirroring;
             return this;
         }
 
         /**
-         * @param supportsDistributionKernel This distribution supports installation using the distribution&#39;s native kernel instead of the recommended OVHcloud kernel.
+         * @param softRaidOnlyMirroring Partitioning customization is available but limited to mirroring for this OS template
          * 
          * @return builder
          * 
          */
-        public Builder supportsDistributionKernel(Boolean supportsDistributionKernel) {
-            return supportsDistributionKernel(Output.of(supportsDistributionKernel));
+        public Builder softRaidOnlyMirroring(Boolean softRaidOnlyMirroring) {
+            return softRaidOnlyMirroring(Output.of(softRaidOnlyMirroring));
         }
 
         /**
-         * @param supportsRtm This distribution supports RTM software.
+         * @param subfamily this template subfamily type
          * 
          * @return builder
          * 
          */
-        public Builder supportsRtm(@Nullable Output<Boolean> supportsRtm) {
-            $.supportsRtm = supportsRtm;
+        public Builder subfamily(@Nullable Output<String> subfamily) {
+            $.subfamily = subfamily;
             return this;
         }
 
         /**
-         * @param supportsRtm This distribution supports RTM software.
+         * @param subfamily this template subfamily type
          * 
          * @return builder
          * 
          */
-        public Builder supportsRtm(Boolean supportsRtm) {
-            return supportsRtm(Output.of(supportsRtm));
-        }
-
-        /**
-         * @param supportsSqlServer This distribution supports the microsoft SQL server.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder supportsSqlServer(@Nullable Output<Boolean> supportsSqlServer) {
-            $.supportsSqlServer = supportsSqlServer;
-            return this;
-        }
-
-        /**
-         * @param supportsSqlServer This distribution supports the microsoft SQL server.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder supportsSqlServer(Boolean supportsSqlServer) {
-            return supportsSqlServer(Output.of(supportsSqlServer));
+        public Builder subfamily(String subfamily) {
+            return subfamily(Output.of(subfamily));
         }
 
         /**

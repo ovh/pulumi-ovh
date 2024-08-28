@@ -3,12 +3,16 @@
 
 package com.ovh.ovh.Iam;
 
+import com.ovh.ovh.Iam.inputs.GetPermissionsGroupArgs;
+import com.ovh.ovh.Iam.inputs.GetPermissionsGroupPlainArgs;
 import com.ovh.ovh.Iam.inputs.GetPolicyArgs;
 import com.ovh.ovh.Iam.inputs.GetPolicyPlainArgs;
 import com.ovh.ovh.Iam.inputs.GetReferenceActionsArgs;
 import com.ovh.ovh.Iam.inputs.GetReferenceActionsPlainArgs;
 import com.ovh.ovh.Iam.inputs.GetResourceGroupArgs;
 import com.ovh.ovh.Iam.inputs.GetResourceGroupPlainArgs;
+import com.ovh.ovh.Iam.outputs.GetPermissionsGroupResult;
+import com.ovh.ovh.Iam.outputs.GetPermissionsGroupsResult;
 import com.ovh.ovh.Iam.outputs.GetPoliciesResult;
 import com.ovh.ovh.Iam.outputs.GetPolicyResult;
 import com.ovh.ovh.Iam.outputs.GetReferenceActionsResult;
@@ -24,10 +28,276 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class IamFunctions {
+    public static Output<GetPermissionsGroupResult> getPermissionsGroup(GetPermissionsGroupArgs args) {
+        return getPermissionsGroup(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetPermissionsGroupResult> getPermissionsGroupPlain(GetPermissionsGroupPlainArgs args) {
+        return getPermissionsGroupPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetPermissionsGroupResult> getPermissionsGroup(GetPermissionsGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Iam/getPermissionsGroup:getPermissionsGroup", TypeShape.of(GetPermissionsGroupResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetPermissionsGroupResult> getPermissionsGroupPlain(GetPermissionsGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Iam/getPermissionsGroup:getPermissionsGroup", TypeShape.of(GetPermissionsGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve an IAM permissions group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Iam.IamFunctions;
+     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
+     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPermissionsGroupsResult> getPermissionsGroups() {
+        return getPermissionsGroups(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve an IAM permissions group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Iam.IamFunctions;
+     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
+     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPermissionsGroupsResult> getPermissionsGroupsPlain() {
+        return getPermissionsGroupsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve an IAM permissions group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Iam.IamFunctions;
+     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
+     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPermissionsGroupsResult> getPermissionsGroups(InvokeArgs args) {
+        return getPermissionsGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve an IAM permissions group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Iam.IamFunctions;
+     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
+     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPermissionsGroupsResult> getPermissionsGroupsPlain(InvokeArgs args) {
+        return getPermissionsGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve an IAM permissions group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Iam.IamFunctions;
+     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
+     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPermissionsGroupsResult> getPermissionsGroups(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Iam/getPermissionsGroups:getPermissionsGroups", TypeShape.of(GetPermissionsGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve an IAM permissions group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Iam.IamFunctions;
+     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
+     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPermissionsGroupsResult> getPermissionsGroupsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Iam/getPermissionsGroups:getPermissionsGroups", TypeShape.of(GetPermissionsGroupsResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -55,6 +325,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPoliciesResult> getPolicies() {
@@ -64,6 +335,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -91,6 +364,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain() {
@@ -100,6 +374,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -127,6 +403,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPoliciesResult> getPolicies(InvokeArgs args) {
@@ -136,6 +413,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -163,6 +442,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(InvokeArgs args) {
@@ -172,6 +452,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -199,6 +481,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPoliciesResult> getPolicies(InvokeArgs args, InvokeOptions options) {
@@ -208,6 +491,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -235,6 +520,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(InvokeArgs args, InvokeOptions options) {
@@ -244,6 +530,8 @@ public final class IamFunctions {
      * Use this data source to retrieve am IAM policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -274,6 +562,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args) {
@@ -283,6 +572,8 @@ public final class IamFunctions {
      * Use this data source to retrieve am IAM policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -313,6 +604,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyResult> getPolicyPlain(GetPolicyPlainArgs args) {
@@ -322,6 +614,8 @@ public final class IamFunctions {
      * Use this data source to retrieve am IAM policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -352,6 +646,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args, InvokeOptions options) {
@@ -361,6 +656,8 @@ public final class IamFunctions {
      * Use this data source to retrieve am IAM policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -391,6 +688,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyResult> getPolicyPlain(GetPolicyPlainArgs args, InvokeOptions options) {
@@ -401,6 +699,7 @@ public final class IamFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -431,6 +730,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReferenceActionsResult> getReferenceActions(GetReferenceActionsArgs args) {
@@ -441,6 +741,7 @@ public final class IamFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -471,6 +772,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReferenceActionsResult> getReferenceActionsPlain(GetReferenceActionsPlainArgs args) {
@@ -481,6 +783,7 @@ public final class IamFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -511,6 +814,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReferenceActionsResult> getReferenceActions(GetReferenceActionsArgs args, InvokeOptions options) {
@@ -521,6 +825,7 @@ public final class IamFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -551,6 +856,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReferenceActionsResult> getReferenceActionsPlain(GetReferenceActionsPlainArgs args, InvokeOptions options) {
@@ -560,6 +866,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -587,6 +895,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReferenceResourceTypeResult> getReferenceResourceType() {
@@ -596,6 +905,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -623,6 +934,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReferenceResourceTypeResult> getReferenceResourceTypePlain() {
@@ -632,6 +944,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -659,6 +973,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReferenceResourceTypeResult> getReferenceResourceType(InvokeArgs args) {
@@ -668,6 +983,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -695,6 +1012,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReferenceResourceTypeResult> getReferenceResourceTypePlain(InvokeArgs args) {
@@ -704,6 +1022,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -731,6 +1051,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReferenceResourceTypeResult> getReferenceResourceType(InvokeArgs args, InvokeOptions options) {
@@ -740,6 +1061,8 @@ public final class IamFunctions {
      * Use this data source to list all the IAM resource types.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -767,6 +1090,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReferenceResourceTypeResult> getReferenceResourceTypePlain(InvokeArgs args, InvokeOptions options) {
@@ -776,6 +1100,8 @@ public final class IamFunctions {
      * Use this data source get details about a resource group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -806,6 +1132,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceGroupResult> getResourceGroup(GetResourceGroupArgs args) {
@@ -815,6 +1142,8 @@ public final class IamFunctions {
      * Use this data source get details about a resource group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -845,6 +1174,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceGroupResult> getResourceGroupPlain(GetResourceGroupPlainArgs args) {
@@ -854,6 +1184,8 @@ public final class IamFunctions {
      * Use this data source get details about a resource group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -884,6 +1216,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceGroupResult> getResourceGroup(GetResourceGroupArgs args, InvokeOptions options) {
@@ -893,6 +1226,8 @@ public final class IamFunctions {
      * Use this data source get details about a resource group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -923,6 +1258,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceGroupResult> getResourceGroupPlain(GetResourceGroupPlainArgs args, InvokeOptions options) {
@@ -932,6 +1268,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -959,6 +1297,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups() {
@@ -968,6 +1307,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -995,6 +1336,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain() {
@@ -1004,6 +1346,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1031,6 +1375,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(InvokeArgs args) {
@@ -1040,6 +1385,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1067,6 +1414,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(InvokeArgs args) {
@@ -1076,6 +1424,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1103,6 +1453,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(InvokeArgs args, InvokeOptions options) {
@@ -1112,6 +1463,8 @@ public final class IamFunctions {
      * Use this data source to list the existing IAM policies of an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1139,6 +1492,7 @@ public final class IamFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(InvokeArgs args, InvokeOptions options) {

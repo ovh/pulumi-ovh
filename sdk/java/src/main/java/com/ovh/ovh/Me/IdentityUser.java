@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Creates an identity user.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -41,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myUser = new IdentityUser("myUser", IdentityUserArgs.builder()        
+ *         var myUser = new IdentityUser("myUser", IdentityUserArgs.builder()
  *             .description("Some custom description")
  *             .email("my_login{@literal @}example.com")
  *             .group("DEFAULT")
@@ -53,6 +55,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:Me/identityUser:IdentityUser")
@@ -220,11 +223,18 @@ public class IdentityUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IdentityUser(String name, IdentityUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/identityUser:IdentityUser", name, args == null ? IdentityUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Me/identityUser:IdentityUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IdentityUser(String name, Output<String> id, @Nullable IdentityUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Me/identityUser:IdentityUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IdentityUserArgs makeArgs(IdentityUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IdentityUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

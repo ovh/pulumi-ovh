@@ -64,14 +64,14 @@ public final class ProjectPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Plan code
+     * Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It&#39;s `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
      * 
      */
     @Import(name="planCode", required=true)
     private Output<String> planCode;
 
     /**
-     * @return Plan code
+     * @return Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It&#39;s `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
      * 
      */
     public Output<String> planCode() {
@@ -195,7 +195,7 @@ public final class ProjectPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param planCode Plan code
+         * @param planCode Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It&#39;s `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class ProjectPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param planCode Plan code
+         * @param planCode Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It&#39;s `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
          * 
          * @return builder
          * 

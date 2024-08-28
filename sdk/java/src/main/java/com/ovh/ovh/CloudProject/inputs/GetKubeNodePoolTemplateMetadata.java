@@ -16,23 +16,47 @@ public final class GetKubeNodePoolTemplateMetadata extends com.pulumi.resources.
 
     public static final GetKubeNodePoolTemplateMetadata Empty = new GetKubeNodePoolTemplateMetadata();
 
+    /**
+     * annotations
+     * 
+     */
     @Import(name="annotations")
     private @Nullable Map<String,String> annotations;
 
+    /**
+     * @return annotations
+     * 
+     */
     public Optional<Map<String,String>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
+    /**
+     * finalizers
+     * 
+     */
     @Import(name="finalizers")
     private @Nullable List<String> finalizers;
 
+    /**
+     * @return finalizers
+     * 
+     */
     public Optional<List<String>> finalizers() {
         return Optional.ofNullable(this.finalizers);
     }
 
+    /**
+     * labels
+     * 
+     */
     @Import(name="labels")
     private @Nullable Map<String,String> labels;
 
+    /**
+     * @return labels
+     * 
+     */
     public Optional<Map<String,String>> labels() {
         return Optional.ofNullable(this.labels);
     }
@@ -63,20 +87,44 @@ public final class GetKubeNodePoolTemplateMetadata extends com.pulumi.resources.
             $ = new GetKubeNodePoolTemplateMetadata(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param annotations annotations
+         * 
+         * @return builder
+         * 
+         */
         public Builder annotations(@Nullable Map<String,String> annotations) {
             $.annotations = annotations;
             return this;
         }
 
+        /**
+         * @param finalizers finalizers
+         * 
+         * @return builder
+         * 
+         */
         public Builder finalizers(@Nullable List<String> finalizers) {
             $.finalizers = finalizers;
             return this;
         }
 
+        /**
+         * @param finalizers finalizers
+         * 
+         * @return builder
+         * 
+         */
         public Builder finalizers(String... finalizers) {
             return finalizers(List.of(finalizers));
         }
 
+        /**
+         * @param labels labels
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(@Nullable Map<String,String> labels) {
             $.labels = labels;
             return this;

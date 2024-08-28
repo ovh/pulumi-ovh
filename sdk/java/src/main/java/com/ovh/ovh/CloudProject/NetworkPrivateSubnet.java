@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Creates a subnet in a private network of a public cloud project.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -43,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subnet = new NetworkPrivateSubnet("subnet", NetworkPrivateSubnetArgs.builder()        
+ *         var subnet = new NetworkPrivateSubnet("subnet", NetworkPrivateSubnetArgs.builder()
  *             .dhcp(true)
  *             .end("192.168.168.200")
  *             .network("192.168.168.0/24")
@@ -58,13 +60,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by &#34;/&#34; E.g., bash
+ * Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909
+ * $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909
  * ```
  * 
  */
@@ -275,11 +280,18 @@ public class NetworkPrivateSubnet extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NetworkPrivateSubnet(String name, NetworkPrivateSubnetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet", name, args == null ? NetworkPrivateSubnetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NetworkPrivateSubnet(String name, Output<String> id, @Nullable NetworkPrivateSubnetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NetworkPrivateSubnetArgs makeArgs(NetworkPrivateSubnetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkPrivateSubnetArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

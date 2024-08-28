@@ -30,6 +30,8 @@ public final class OrderFunctions {
      * Use this data source to create a temporary order cart to retrieve information order cart products.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -63,6 +65,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCartResult> getCart(GetCartArgs args) {
@@ -72,6 +75,8 @@ public final class OrderFunctions {
      * Use this data source to create a temporary order cart to retrieve information order cart products.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -105,6 +110,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCartResult> getCartPlain(GetCartPlainArgs args) {
@@ -114,6 +120,8 @@ public final class OrderFunctions {
      * Use this data source to create a temporary order cart to retrieve information order cart products.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -147,6 +155,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCartResult> getCart(GetCartArgs args, InvokeOptions options) {
@@ -156,6 +165,8 @@ public final class OrderFunctions {
      * Use this data source to create a temporary order cart to retrieve information order cart products.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -189,6 +200,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCartResult> getCartPlain(GetCartPlainArgs args, InvokeOptions options) {
@@ -198,6 +210,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product products.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -237,6 +251,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCartProductInvokeResult> getCartProduct(GetCartProductArgs args) {
@@ -246,6 +261,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product products.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -285,6 +302,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCartProductInvokeResult> getCartProductPlain(GetCartProductPlainArgs args) {
@@ -294,6 +312,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product products.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -333,6 +353,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCartProductInvokeResult> getCartProduct(GetCartProductArgs args, InvokeOptions options) {
@@ -342,6 +363,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product products.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -381,6 +404,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCartProductInvokeResult> getCartProductPlain(GetCartProductPlainArgs args, InvokeOptions options) {
@@ -390,6 +414,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -430,6 +456,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCartProductOptionsInvokeResult> getCartProductOptions(GetCartProductOptionsArgs args) {
@@ -439,6 +466,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -479,6 +508,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCartProductOptionsInvokeResult> getCartProductOptionsPlain(GetCartProductOptionsPlainArgs args) {
@@ -488,6 +518,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -528,6 +560,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCartProductOptionsInvokeResult> getCartProductOptions(GetCartProductOptionsArgs args, InvokeOptions options) {
@@ -537,6 +570,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -577,6 +612,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCartProductOptionsInvokeResult> getCartProductOptionsPlain(GetCartProductOptionsPlainArgs args, InvokeOptions options) {
@@ -586,6 +622,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options plan.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -628,6 +666,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCartProductOptionsPlanResult> getCartProductOptionsPlan(GetCartProductOptionsPlanArgs args) {
@@ -637,6 +676,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options plan.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -679,6 +720,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCartProductOptionsPlanResult> getCartProductOptionsPlanPlain(GetCartProductOptionsPlanPlainArgs args) {
@@ -688,6 +730,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options plan.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -730,6 +774,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCartProductOptionsPlanResult> getCartProductOptionsPlan(GetCartProductOptionsPlanArgs args, InvokeOptions options) {
@@ -739,6 +784,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product options plan.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -781,6 +828,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCartProductOptionsPlanResult> getCartProductOptionsPlanPlain(GetCartProductOptionsPlanPlainArgs args, InvokeOptions options) {
@@ -790,6 +838,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product plan.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -831,6 +881,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCartProductPlanResult> getCartProductPlan(GetCartProductPlanArgs args) {
@@ -840,6 +891,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product plan.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -881,6 +934,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCartProductPlanResult> getCartProductPlanPlain(GetCartProductPlanPlainArgs args) {
@@ -890,6 +944,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product plan.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -931,6 +987,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCartProductPlanResult> getCartProductPlan(GetCartProductPlanArgs args, InvokeOptions options) {
@@ -940,6 +997,8 @@ public final class OrderFunctions {
      * Use this data source to retrieve information of order cart product plan.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -981,6 +1040,7 @@ public final class OrderFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCartProductPlanResult> getCartProductPlanPlain(GetCartProductPlanPlainArgs args, InvokeOptions options) {

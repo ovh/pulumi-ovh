@@ -22,7 +22,7 @@ public final class GetInstallationTemplatePartitionScheme {
     private String name;
     private List<GetInstallationTemplatePartitionSchemePartition> partitions;
     /**
-     * @return on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
+     * @return On a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
      * 
      */
     private Integer priority;
@@ -42,7 +42,7 @@ public final class GetInstallationTemplatePartitionScheme {
         return this.partitions;
     }
     /**
-     * @return on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
+     * @return On a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
      * 
      */
     public Integer priority() {

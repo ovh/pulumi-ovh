@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Create a new IP whitelist on your private cloud database instance.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -40,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ip = new PrivateDatabaseAllowlist("ip", PrivateDatabaseAllowlistArgs.builder()        
+ *         var ip = new PrivateDatabaseAllowlist("ip", PrivateDatabaseAllowlistArgs.builder()
  *             .ip("1.2.3.4")
  *             .service(true)
  *             .serviceName("XXXXXX")
@@ -51,13 +53,14 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by &#34;/&#34; E.g.,
  * 
  * ```sh
- *  $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
+ * $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
  * ```
  * 
  */
@@ -156,11 +159,18 @@ public class PrivateDatabaseAllowlist extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public PrivateDatabaseAllowlist(String name, PrivateDatabaseAllowlistArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist", name, args == null ? PrivateDatabaseAllowlistArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PrivateDatabaseAllowlist(String name, Output<String> id, @Nullable PrivateDatabaseAllowlistState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PrivateDatabaseAllowlistArgs makeArgs(PrivateDatabaseAllowlistArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PrivateDatabaseAllowlistArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

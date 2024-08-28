@@ -14,12 +14,14 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServer` is DEPRECATED and will be removed in a future version.
- * Use the resource `ovh.Vrack.DedicatedServerInterface` instead.
+ * Attach a legacy dedicated server to a vRack.
  * 
- * Attach a dedicated server to a VRack.
+ * &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.&lt;br /&gt;
+ * Dedicated servers that have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServerInterface` instead.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -42,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vds = new DedicatedServer("vds", DedicatedServerArgs.builder()        
+ *         var vds = new DedicatedServer("vds", DedicatedServerArgs.builder()
  *             .serverId("67890")
  *             .serviceName("XXXX")
  *             .build());
@@ -51,6 +53,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:Vrack/dedicatedServer:DedicatedServer")
@@ -108,11 +111,18 @@ public class DedicatedServer extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DedicatedServer(String name, DedicatedServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/dedicatedServer:DedicatedServer", name, args == null ? DedicatedServerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Vrack/dedicatedServer:DedicatedServer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DedicatedServer(String name, Output<String> id, @Nullable DedicatedServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Vrack/dedicatedServer:DedicatedServer", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DedicatedServerArgs makeArgs(DedicatedServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DedicatedServerArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

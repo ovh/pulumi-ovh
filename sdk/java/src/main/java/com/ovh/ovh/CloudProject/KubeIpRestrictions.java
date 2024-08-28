@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Apply IP restrictions to an OVHcloud Managed Kubernetes cluster.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -40,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vrackOnly = new KubeIpRestrictions("vrackOnly", KubeIpRestrictionsArgs.builder()        
+ *         var vrackOnly = new KubeIpRestrictions("vrackOnly", KubeIpRestrictionsArgs.builder()
  *             .ips("10.42.0.0/16")
  *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
@@ -50,13 +52,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
+ * $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
  * ```
  * 
  */
@@ -127,11 +132,18 @@ public class KubeIpRestrictions extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KubeIpRestrictions(String name, KubeIpRestrictionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions", name, args == null ? KubeIpRestrictionsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KubeIpRestrictions(String name, Output<String> id, @Nullable KubeIpRestrictionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KubeIpRestrictionsArgs makeArgs(KubeIpRestrictionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KubeIpRestrictionsArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

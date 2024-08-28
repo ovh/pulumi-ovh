@@ -41,12 +41,16 @@ public final class WorkflowBackupState extends com.pulumi.resources.ResourceArgs
     /**
      * The cron periodicity at which the backup workflow is scheduled
      * 
+     * * `instanceId` the id of the instance to back up
+     * 
      */
     @Import(name="cron")
     private @Nullable Output<String> cron;
 
     /**
      * @return The cron periodicity at which the backup workflow is scheduled
+     * 
+     * * `instanceId` the id of the instance to back up
      * 
      */
     public Optional<Output<String>> cron() {
@@ -200,6 +204,8 @@ public final class WorkflowBackupState extends com.pulumi.resources.ResourceArgs
         /**
          * @param cron The cron periodicity at which the backup workflow is scheduled
          * 
+         * * `instanceId` the id of the instance to back up
+         * 
          * @return builder
          * 
          */
@@ -210,6 +216,8 @@ public final class WorkflowBackupState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param cron The cron periodicity at which the backup workflow is scheduled
+         * 
+         * * `instanceId` the id of the instance to back up
          * 
          * @return builder
          * 

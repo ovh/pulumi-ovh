@@ -17,7 +17,7 @@ public final class LoadBalancerOrderableZone {
      */
     private @Nullable String name;
     /**
-     * @return Plan code
+     * @return The billing planCode for this zone
      * 
      */
     private @Nullable String planCode;
@@ -31,7 +31,7 @@ public final class LoadBalancerOrderableZone {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Plan code
+     * @return The billing planCode for this zone
      * 
      */
     public Optional<String> planCode() {

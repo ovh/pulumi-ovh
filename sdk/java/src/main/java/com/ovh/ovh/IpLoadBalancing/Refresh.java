@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -51,13 +53,13 @@ import javax.annotation.Nullable;
  *             .state("ok")
  *             .build());
  * 
- *         var farmname = new TcpFarm("farmname", TcpFarmArgs.builder()        
+ *         var farmname = new TcpFarm("farmname", TcpFarmArgs.builder()
  *             .port(8080)
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .zone("all")
  *             .build());
  * 
- *         var backend = new TcpFarmServer("backend", TcpFarmServerArgs.builder()        
+ *         var backend = new TcpFarmServer("backend", TcpFarmServerArgs.builder()
  *             .address("4.5.6.7")
  *             .backup(true)
  *             .displayName("mybackend")
@@ -71,7 +73,7 @@ import javax.annotation.Nullable;
  *             .weight(2)
  *             .build());
  * 
- *         var mylb = new Refresh("mylb", RefreshArgs.builder()        
+ *         var mylb = new Refresh("mylb", RefreshArgs.builder()
  *             .keepers(backend.stream().map(element -> element.address()).collect(toList()))
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .build());
@@ -80,6 +82,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/refresh:Refresh")
@@ -135,11 +138,18 @@ public class Refresh extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Refresh(String name, RefreshArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/refresh:Refresh", name, args == null ? RefreshArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:IpLoadBalancing/refresh:Refresh", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Refresh(String name, Output<String> id, @Nullable RefreshState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/refresh:Refresh", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RefreshArgs makeArgs(RefreshArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RefreshArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a resource for managing partitions on HA-NAS services
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -41,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_partition = new NasHAPartition("my-partition", NasHAPartitionArgs.builder()        
+ *         var my_partition = new NasHAPartition("my-partition", NasHAPartitionArgs.builder()
  *             .protocol("NFS")
  *             .serviceName("zpool-12345")
  *             .size(20)
@@ -51,13 +53,14 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * HA-NAS can be imported using the `{service_name}/{name}`, e.g.
  * 
  * ```sh
- *  $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
+ * $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
  * ```
  * 
  */
@@ -184,11 +187,18 @@ public class NasHAPartition extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NasHAPartition(String name, NasHAPartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/nasHAPartition:NasHAPartition", name, args == null ? NasHAPartitionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Dedicated/nasHAPartition:NasHAPartition", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NasHAPartition(String name, Output<String> id, @Nullable NasHAPartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Dedicated/nasHAPartition:NasHAPartition", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NasHAPartitionArgs makeArgs(NasHAPartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NasHAPartitionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

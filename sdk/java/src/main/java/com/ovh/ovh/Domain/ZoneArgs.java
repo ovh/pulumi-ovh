@@ -3,6 +3,7 @@
 
 package com.ovh.ovh.Domain;
 
+import com.ovh.ovh.Domain.inputs.ZoneOrderArgs;
 import com.ovh.ovh.Domain.inputs.ZonePlanArgs;
 import com.ovh.ovh.Domain.inputs.ZonePlanOptionArgs;
 import com.pulumi.core.Output;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZoneArgs Empty = new ZoneArgs();
+
+    /**
+     * Details about an Order
+     * 
+     */
+    @Import(name="orders")
+    private @Nullable Output<List<ZoneOrderArgs>> orders;
+
+    /**
+     * @return Details about an Order
+     * 
+     */
+    public Optional<Output<List<ZoneOrderArgs>>> orders() {
+        return Optional.ofNullable(this.orders);
+    }
 
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you&#39;ll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
@@ -90,6 +106,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     private ZoneArgs() {}
 
     private ZoneArgs(ZoneArgs $) {
+        this.orders = $.orders;
         this.ovhSubsidiary = $.ovhSubsidiary;
         this.paymentMean = $.paymentMean;
         this.plan = $.plan;
@@ -112,6 +129,37 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ZoneArgs defaults) {
             $ = new ZoneArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(@Nullable Output<List<ZoneOrderArgs>> orders) {
+            $.orders = orders;
+            return this;
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(List<ZoneOrderArgs> orders) {
+            return orders(Output.of(orders));
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(ZoneOrderArgs... orders) {
+            return orders(List.of(orders));
         }
 
         /**

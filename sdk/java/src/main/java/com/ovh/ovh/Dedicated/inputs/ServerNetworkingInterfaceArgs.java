@@ -15,16 +15,32 @@ public final class ServerNetworkingInterfaceArgs extends com.pulumi.resources.Re
 
     public static final ServerNetworkingInterfaceArgs Empty = new ServerNetworkingInterfaceArgs();
 
+    /**
+     * Interface Mac address
+     * 
+     */
     @Import(name="macs", required=true)
     private Output<List<String>> macs;
 
+    /**
+     * @return Interface Mac address
+     * 
+     */
     public Output<List<String>> macs() {
         return this.macs;
     }
 
+    /**
+     * Interface type
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return Interface type
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -54,24 +70,54 @@ public final class ServerNetworkingInterfaceArgs extends com.pulumi.resources.Re
             $ = new ServerNetworkingInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param macs Interface Mac address
+         * 
+         * @return builder
+         * 
+         */
         public Builder macs(Output<List<String>> macs) {
             $.macs = macs;
             return this;
         }
 
+        /**
+         * @param macs Interface Mac address
+         * 
+         * @return builder
+         * 
+         */
         public Builder macs(List<String> macs) {
             return macs(Output.of(macs));
         }
 
+        /**
+         * @param macs Interface Mac address
+         * 
+         * @return builder
+         * 
+         */
         public Builder macs(String... macs) {
             return macs(List.of(macs));
         }
 
+        /**
+         * @param type Interface type
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Interface type
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

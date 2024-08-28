@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKubeNodePoolTemplate {
+    /**
+     * @return metadata
+     * 
+     */
     private @Nullable GetKubeNodePoolTemplateMetadata metadata;
+    /**
+     * @return spec
+     * 
+     */
     private @Nullable GetKubeNodePoolTemplateSpec spec;
 
     private GetKubeNodePoolTemplate() {}
+    /**
+     * @return metadata
+     * 
+     */
     public Optional<GetKubeNodePoolTemplateMetadata> metadata() {
         return Optional.ofNullable(this.metadata);
     }
+    /**
+     * @return spec
+     * 
+     */
     public Optional<GetKubeNodePoolTemplateSpec> spec() {
         return Optional.ofNullable(this.spec);
     }

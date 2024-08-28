@@ -3,8 +3,17 @@
 
 package com.ovh.ovh.Ip;
 
+import com.ovh.ovh.Ip.inputs.GetFirewallArgs;
+import com.ovh.ovh.Ip.inputs.GetFirewallPlainArgs;
+import com.ovh.ovh.Ip.inputs.GetFirewallRuleArgs;
+import com.ovh.ovh.Ip.inputs.GetFirewallRulePlainArgs;
+import com.ovh.ovh.Ip.inputs.GetMitigationArgs;
+import com.ovh.ovh.Ip.inputs.GetMitigationPlainArgs;
 import com.ovh.ovh.Ip.inputs.GetServiceArgs;
 import com.ovh.ovh.Ip.inputs.GetServicePlainArgs;
+import com.ovh.ovh.Ip.outputs.GetFirewallResult;
+import com.ovh.ovh.Ip.outputs.GetFirewallRuleResult;
+import com.ovh.ovh.Ip.outputs.GetMitigationResult;
 import com.ovh.ovh.Ip.outputs.GetServiceResult;
 import com.ovh.ovh.Utilities;
 import com.pulumi.core.Output;
@@ -15,9 +24,531 @@ import java.util.concurrent.CompletableFuture;
 
 public final class IpFunctions {
     /**
+     * Use this data source to retrieve information about an IP firewall.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetFirewallArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myfirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnFirewall("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFirewallResult> getFirewall(GetFirewallArgs args) {
+        return getFirewall(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an IP firewall.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetFirewallArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myfirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnFirewall("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFirewallResult> getFirewallPlain(GetFirewallPlainArgs args) {
+        return getFirewallPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an IP firewall.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetFirewallArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myfirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnFirewall("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFirewallResult> getFirewall(GetFirewallArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Ip/getFirewall:getFirewall", TypeShape.of(GetFirewallResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an IP firewall.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetFirewallArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myfirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnFirewall("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFirewallResult> getFirewallPlain(GetFirewallPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Ip/getFirewall:getFirewall", TypeShape.of(GetFirewallResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a rule on an IP firewall.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetFirewallRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myfirewallrule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnFirewall("XXXXXX")
+     *             .sequence(0)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFirewallRuleResult> getFirewallRule(GetFirewallRuleArgs args) {
+        return getFirewallRule(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a rule on an IP firewall.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetFirewallRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myfirewallrule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnFirewall("XXXXXX")
+     *             .sequence(0)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFirewallRuleResult> getFirewallRulePlain(GetFirewallRulePlainArgs args) {
+        return getFirewallRulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a rule on an IP firewall.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetFirewallRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myfirewallrule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnFirewall("XXXXXX")
+     *             .sequence(0)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFirewallRuleResult> getFirewallRule(GetFirewallRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Ip/getFirewallRule:getFirewallRule", TypeShape.of(GetFirewallRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a rule on an IP firewall.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetFirewallRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myfirewallrule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnFirewall("XXXXXX")
+     *             .sequence(0)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFirewallRuleResult> getFirewallRulePlain(GetFirewallRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Ip/getFirewallRule:getFirewallRule", TypeShape.of(GetFirewallRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this resource to retrieve information about an IP permanent mitigation.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetMitigationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mitigationData = IpFunctions.getMitigation(GetMitigationArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnMitigation("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMitigationResult> getMitigation(GetMitigationArgs args) {
+        return getMitigation(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this resource to retrieve information about an IP permanent mitigation.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetMitigationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mitigationData = IpFunctions.getMitigation(GetMitigationArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnMitigation("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMitigationResult> getMitigationPlain(GetMitigationPlainArgs args) {
+        return getMitigationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this resource to retrieve information about an IP permanent mitigation.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetMitigationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mitigationData = IpFunctions.getMitigation(GetMitigationArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnMitigation("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMitigationResult> getMitigation(GetMitigationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Ip/getMitigation:getMitigation", TypeShape.of(GetMitigationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this resource to retrieve information about an IP permanent mitigation.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Ip.IpFunctions;
+     * import com.pulumi.ovh.Ip.inputs.GetMitigationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mitigationData = IpFunctions.getMitigation(GetMitigationArgs.builder()
+     *             .ip("XXXXXX")
+     *             .ipOnMitigation("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMitigationResult> getMitigationPlain(GetMitigationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Ip/getMitigation:getMitigation", TypeShape.of(GetMitigationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to retrieve information about an IP service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -48,6 +579,7 @@ public final class IpFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -57,6 +589,8 @@ public final class IpFunctions {
      * Use this data source to retrieve information about an IP service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -87,6 +621,7 @@ public final class IpFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -96,6 +631,8 @@ public final class IpFunctions {
      * Use this data source to retrieve information about an IP service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -126,6 +663,7 @@ public final class IpFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -135,6 +673,8 @@ public final class IpFunctions {
      * Use this data source to retrieve information about an IP service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -165,6 +705,7 @@ public final class IpFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

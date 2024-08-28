@@ -5,22 +5,11 @@ package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstallationTemplateCustomization {
-    /**
-     * @return (DEPRECATED) Template change log details.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    private String changeLog;
     /**
      * @return Set up the server using the provided hostname instead of the default hostname.
      * 
@@ -32,42 +21,12 @@ public final class GetInstallationTemplateCustomization {
      */
     private String postInstallationScriptLink;
     /**
-     * @return indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
+     * @return Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
      * 
      */
     private String postInstallationScriptReturn;
-    /**
-     * @return (DEPRECATED) Rating.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    private Integer rating;
-    /**
-     * @return Name of the ssh key that should be installed. Password login will be disabled.
-     * 
-     */
-    private String sshKeyName;
-    /**
-     * @return Use the distribution&#39;s native kernel instead of the recommended OVHcloud Kernel.
-     * 
-     */
-    private Boolean useDistributionKernel;
 
     private GetInstallationTemplateCustomization() {}
-    /**
-     * @return (DEPRECATED) Template change log details.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    public String changeLog() {
-        return this.changeLog;
-    }
     /**
      * @return Set up the server using the provided hostname instead of the default hostname.
      * 
@@ -83,36 +42,11 @@ public final class GetInstallationTemplateCustomization {
         return this.postInstallationScriptLink;
     }
     /**
-     * @return indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
+     * @return Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
      * 
      */
     public String postInstallationScriptReturn() {
         return this.postInstallationScriptReturn;
-    }
-    /**
-     * @return (DEPRECATED) Rating.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    public Integer rating() {
-        return this.rating;
-    }
-    /**
-     * @return Name of the ssh key that should be installed. Password login will be disabled.
-     * 
-     */
-    public String sshKeyName() {
-        return this.sshKeyName;
-    }
-    /**
-     * @return Use the distribution&#39;s native kernel instead of the recommended OVHcloud Kernel.
-     * 
-     */
-    public Boolean useDistributionKernel() {
-        return this.useDistributionKernel;
     }
 
     public static Builder builder() {
@@ -124,33 +58,17 @@ public final class GetInstallationTemplateCustomization {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String changeLog;
         private String customHostname;
         private String postInstallationScriptLink;
         private String postInstallationScriptReturn;
-        private Integer rating;
-        private String sshKeyName;
-        private Boolean useDistributionKernel;
         public Builder() {}
         public Builder(GetInstallationTemplateCustomization defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.changeLog = defaults.changeLog;
     	      this.customHostname = defaults.customHostname;
     	      this.postInstallationScriptLink = defaults.postInstallationScriptLink;
     	      this.postInstallationScriptReturn = defaults.postInstallationScriptReturn;
-    	      this.rating = defaults.rating;
-    	      this.sshKeyName = defaults.sshKeyName;
-    	      this.useDistributionKernel = defaults.useDistributionKernel;
         }
 
-        @CustomType.Setter
-        public Builder changeLog(String changeLog) {
-            if (changeLog == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "changeLog");
-            }
-            this.changeLog = changeLog;
-            return this;
-        }
         @CustomType.Setter
         public Builder customHostname(String customHostname) {
             if (customHostname == null) {
@@ -175,39 +93,11 @@ public final class GetInstallationTemplateCustomization {
             this.postInstallationScriptReturn = postInstallationScriptReturn;
             return this;
         }
-        @CustomType.Setter
-        public Builder rating(Integer rating) {
-            if (rating == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "rating");
-            }
-            this.rating = rating;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder sshKeyName(String sshKeyName) {
-            if (sshKeyName == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "sshKeyName");
-            }
-            this.sshKeyName = sshKeyName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder useDistributionKernel(Boolean useDistributionKernel) {
-            if (useDistributionKernel == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "useDistributionKernel");
-            }
-            this.useDistributionKernel = useDistributionKernel;
-            return this;
-        }
         public GetInstallationTemplateCustomization build() {
             final var _resultValue = new GetInstallationTemplateCustomization();
-            _resultValue.changeLog = changeLog;
             _resultValue.customHostname = customHostname;
             _resultValue.postInstallationScriptLink = postInstallationScriptLink;
             _resultValue.postInstallationScriptReturn = postInstallationScriptReturn;
-            _resultValue.rating = rating;
-            _resultValue.sshKeyName = sshKeyName;
-            _resultValue.useDistributionKernel = useDistributionKernel;
             return _resultValue;
         }
     }

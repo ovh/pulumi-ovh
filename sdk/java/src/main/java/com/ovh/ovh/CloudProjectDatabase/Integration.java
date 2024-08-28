@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Push PostgreSQL logs in an OpenSearch DB:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -61,7 +63,7 @@ import javax.annotation.Nullable;
  *             .id("ZZZZ")
  *             .build());
  * 
- *         var integration = new Integration("integration", IntegrationArgs.builder()        
+ *         var integration = new Integration("integration", IntegrationArgs.builder()
  *             .serviceName(dbpostgresql.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
  *             .engine(dbpostgresql.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
  *             .clusterId(dbpostgresql.applyValue(getDatabaseResult -> getDatabaseResult.id()))
@@ -74,13 +76,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
  * ```
  * 
  */
@@ -191,6 +196,11 @@ public class Integration extends com.pulumi.resources.CustomResource {
     /**
      * Type of the integration.
      * Available types:
+     * * `grafanaDashboard`
+     * * `grafanaDatasource`
+     * * `kafkaConnect`
+     * * `kafkaLogs`
+     * * `kafkaMirrorMaker`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -199,6 +209,11 @@ public class Integration extends com.pulumi.resources.CustomResource {
     /**
      * @return Type of the integration.
      * Available types:
+     * * `grafanaDashboard`
+     * * `grafanaDatasource`
+     * * `kafkaConnect`
+     * * `kafkaLogs`
+     * * `kafkaMirrorMaker`
      * 
      */
     public Output<String> type() {
@@ -227,11 +242,18 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Integration(String name, IntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/integration:Integration", name, args == null ? IntegrationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/integration:Integration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Integration(String name, Output<String> id, @Nullable IntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/integration:Integration", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IntegrationArgs makeArgs(IntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IntegrationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

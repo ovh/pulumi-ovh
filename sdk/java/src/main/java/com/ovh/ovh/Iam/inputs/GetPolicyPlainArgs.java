@@ -17,14 +17,14 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetPolicyPlainArgs Empty = new GetPolicyPlainArgs();
 
     /**
-     * List of actions allowed by the policy.
+     * Set of actions allowed by the policy.
      * 
      */
     @Import(name="allows")
     private @Nullable List<String> allows;
 
     /**
-     * @return List of actions allowed by the policy.
+     * @return Set of actions allowed by the policy.
      * 
      */
     public Optional<List<String>> allows() {
@@ -32,14 +32,14 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * List of actions that will be denied no matter what policy exists.
+     * Set of actions that will be denied no matter what policy exists.
      * 
      */
     @Import(name="denies")
     private @Nullable List<String> denies;
 
     /**
-     * @return List of actions that will be denied no matter what policy exists.
+     * @return Set of actions that will be denied no matter what policy exists.
      * 
      */
     public Optional<List<String>> denies() {
@@ -62,14 +62,14 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * List of actions that will be subtracted from the `allow` list.
+     * Set of actions that will be subtracted from the `allow` list.
      * 
      */
     @Import(name="excepts")
     private @Nullable List<String> excepts;
 
     /**
-     * @return List of actions that will be subtracted from the `allow` list.
+     * @return Set of actions that will be subtracted from the `allow` list.
      * 
      */
     public Optional<List<String>> excepts() {
@@ -91,6 +91,21 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.id;
     }
 
+    /**
+     * Set of permissions groups that apply to the policy.
+     * 
+     */
+    @Import(name="permissionsGroups")
+    private @Nullable List<String> permissionsGroups;
+
+    /**
+     * @return Set of permissions groups that apply to the policy.
+     * 
+     */
+    public Optional<List<String>> permissionsGroups() {
+        return Optional.ofNullable(this.permissionsGroups);
+    }
+
     private GetPolicyPlainArgs() {}
 
     private GetPolicyPlainArgs(GetPolicyPlainArgs $) {
@@ -99,6 +114,7 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.description = $.description;
         this.excepts = $.excepts;
         this.id = $.id;
+        this.permissionsGroups = $.permissionsGroups;
     }
 
     public static Builder builder() {
@@ -120,7 +136,7 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param allows List of actions allowed by the policy.
+         * @param allows Set of actions allowed by the policy.
          * 
          * @return builder
          * 
@@ -131,7 +147,7 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param allows List of actions allowed by the policy.
+         * @param allows Set of actions allowed by the policy.
          * 
          * @return builder
          * 
@@ -141,7 +157,7 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param denies List of actions that will be denied no matter what policy exists.
+         * @param denies Set of actions that will be denied no matter what policy exists.
          * 
          * @return builder
          * 
@@ -152,7 +168,7 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param denies List of actions that will be denied no matter what policy exists.
+         * @param denies Set of actions that will be denied no matter what policy exists.
          * 
          * @return builder
          * 
@@ -173,7 +189,7 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param excepts List of actions that will be subtracted from the `allow` list.
+         * @param excepts Set of actions that will be subtracted from the `allow` list.
          * 
          * @return builder
          * 
@@ -184,7 +200,7 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param excepts List of actions that will be subtracted from the `allow` list.
+         * @param excepts Set of actions that will be subtracted from the `allow` list.
          * 
          * @return builder
          * 
@@ -202,6 +218,27 @@ public final class GetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
         public Builder id(String id) {
             $.id = id;
             return this;
+        }
+
+        /**
+         * @param permissionsGroups Set of permissions groups that apply to the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissionsGroups(@Nullable List<String> permissionsGroups) {
+            $.permissionsGroups = permissionsGroups;
+            return this;
+        }
+
+        /**
+         * @param permissionsGroups Set of permissions groups that apply to the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissionsGroups(String... permissionsGroups) {
+            return permissionsGroups(List.of(permissionsGroups));
         }
 
         public GetPolicyPlainArgs build() {

@@ -16,16 +16,32 @@ public final class GetKubeNodePoolTemplateArgs extends com.pulumi.resources.Reso
 
     public static final GetKubeNodePoolTemplateArgs Empty = new GetKubeNodePoolTemplateArgs();
 
+    /**
+     * metadata
+     * 
+     */
     @Import(name="metadata")
     private @Nullable Output<GetKubeNodePoolTemplateMetadataArgs> metadata;
 
+    /**
+     * @return metadata
+     * 
+     */
     public Optional<Output<GetKubeNodePoolTemplateMetadataArgs>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
+    /**
+     * spec
+     * 
+     */
     @Import(name="spec")
     private @Nullable Output<GetKubeNodePoolTemplateSpecArgs> spec;
 
+    /**
+     * @return spec
+     * 
+     */
     public Optional<Output<GetKubeNodePoolTemplateSpecArgs>> spec() {
         return Optional.ofNullable(this.spec);
     }
@@ -55,20 +71,44 @@ public final class GetKubeNodePoolTemplateArgs extends com.pulumi.resources.Reso
             $ = new GetKubeNodePoolTemplateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param metadata metadata
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(@Nullable Output<GetKubeNodePoolTemplateMetadataArgs> metadata) {
             $.metadata = metadata;
             return this;
         }
 
+        /**
+         * @param metadata metadata
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(GetKubeNodePoolTemplateMetadataArgs metadata) {
             return metadata(Output.of(metadata));
         }
 
+        /**
+         * @param spec spec
+         * 
+         * @return builder
+         * 
+         */
         public Builder spec(@Nullable Output<GetKubeNodePoolTemplateSpecArgs> spec) {
             $.spec = spec;
             return this;
         }
 
+        /**
+         * @param spec spec
+         * 
+         * @return builder
+         * 
+         */
         public Builder spec(GetKubeNodePoolTemplateSpecArgs spec) {
             return spec(Output.of(spec));
         }

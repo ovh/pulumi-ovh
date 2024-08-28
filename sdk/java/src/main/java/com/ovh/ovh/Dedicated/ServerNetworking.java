@@ -96,11 +96,18 @@ public class ServerNetworking extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ServerNetworking(String name, ServerNetworkingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/serverNetworking:ServerNetworking", name, args == null ? ServerNetworkingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Dedicated/serverNetworking:ServerNetworking", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServerNetworking(String name, Output<String> id, @Nullable ServerNetworkingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Dedicated/serverNetworking:ServerNetworking", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServerNetworkingArgs makeArgs(ServerNetworkingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServerNetworkingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

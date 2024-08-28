@@ -18,6 +18,7 @@ public final class FailoverIpAttachArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The IP block
+     * * `continentCode` - The Ip continent
      * 
      */
     @Import(name="block")
@@ -25,6 +26,7 @@ public final class FailoverIpAttachArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The IP block
+     * * `continentCode` - The Ip continent
      * 
      */
     public Optional<Output<String>> block() {
@@ -139,6 +141,7 @@ public final class FailoverIpAttachArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param block The IP block
+         * * `continentCode` - The Ip continent
          * 
          * @return builder
          * 
@@ -150,6 +153,7 @@ public final class FailoverIpAttachArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param block The IP block
+         * * `continentCode` - The Ip continent
          * 
          * @return builder
          * 

@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  *   * `postgresql`
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -53,7 +55,7 @@ import javax.annotation.Nullable;
  *             .id("ZZZZ")
  *             .build());
  * 
- *         var database = new DatabaseInstance("database", DatabaseInstanceArgs.builder()        
+ *         var database = new DatabaseInstance("database", DatabaseInstanceArgs.builder()
  *             .serviceName(db.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
  *             .engine(db.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
  *             .clusterId(db.applyValue(getDatabaseResult -> getDatabaseResult.id()))
@@ -63,13 +65,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
  * ```
  * 
  */
@@ -172,11 +177,18 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DatabaseInstance(String name, DatabaseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance", name, args == null ? DatabaseInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DatabaseInstance(String name, Output<String> id, @Nullable DatabaseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatabaseInstanceArgs makeArgs(DatabaseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatabaseInstanceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

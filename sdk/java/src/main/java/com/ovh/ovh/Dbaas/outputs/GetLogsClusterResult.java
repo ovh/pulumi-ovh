@@ -9,22 +9,15 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLogsClusterResult {
-    /**
-     * @return is the URN of the DBaas logs instance
-     * 
-     */
-    private String DBaasURN;
     /**
      * @return is allowed networks for ARCHIVE flow type
      * 
      */
     private List<String> archiveAllowedNetworks;
-    private @Nullable String clusterId;
+    private String clusterId;
     /**
      * @return is type of cluster (DEDICATED, PRO or TRIAL)
      * 
@@ -76,15 +69,13 @@ public final class GetLogsClusterResult {
      */
     private String region;
     private String serviceName;
-
-    private GetLogsClusterResult() {}
     /**
      * @return is the URN of the DBaas logs instance
      * 
      */
-    public String DBaasURN() {
-        return this.DBaasURN;
-    }
+    private String urn;
+
+    private GetLogsClusterResult() {}
     /**
      * @return is allowed networks for ARCHIVE flow type
      * 
@@ -92,8 +83,8 @@ public final class GetLogsClusterResult {
     public List<String> archiveAllowedNetworks() {
         return this.archiveAllowedNetworks;
     }
-    public Optional<String> clusterId() {
-        return Optional.ofNullable(this.clusterId);
+    public String clusterId() {
+        return this.clusterId;
     }
     /**
      * @return is type of cluster (DEDICATED, PRO or TRIAL)
@@ -168,6 +159,13 @@ public final class GetLogsClusterResult {
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return is the URN of the DBaas logs instance
+     * 
+     */
+    public String urn() {
+        return this.urn;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -178,9 +176,8 @@ public final class GetLogsClusterResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String DBaasURN;
         private List<String> archiveAllowedNetworks;
-        private @Nullable String clusterId;
+        private String clusterId;
         private String clusterType;
         private String dedicatedInputPem;
         private List<String> directInputAllowedNetworks;
@@ -192,10 +189,10 @@ public final class GetLogsClusterResult {
         private List<String> queryAllowedNetworks;
         private String region;
         private String serviceName;
+        private String urn;
         public Builder() {}
         public Builder(GetLogsClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.DBaasURN = defaults.DBaasURN;
     	      this.archiveAllowedNetworks = defaults.archiveAllowedNetworks;
     	      this.clusterId = defaults.clusterId;
     	      this.clusterType = defaults.clusterType;
@@ -209,16 +206,9 @@ public final class GetLogsClusterResult {
     	      this.queryAllowedNetworks = defaults.queryAllowedNetworks;
     	      this.region = defaults.region;
     	      this.serviceName = defaults.serviceName;
+    	      this.urn = defaults.urn;
         }
 
-        @CustomType.Setter
-        public Builder DBaasURN(String DBaasURN) {
-            if (DBaasURN == null) {
-              throw new MissingRequiredPropertyException("GetLogsClusterResult", "DBaasURN");
-            }
-            this.DBaasURN = DBaasURN;
-            return this;
-        }
         @CustomType.Setter
         public Builder archiveAllowedNetworks(List<String> archiveAllowedNetworks) {
             if (archiveAllowedNetworks == null) {
@@ -231,8 +221,10 @@ public final class GetLogsClusterResult {
             return archiveAllowedNetworks(List.of(archiveAllowedNetworks));
         }
         @CustomType.Setter
-        public Builder clusterId(@Nullable String clusterId) {
-
+        public Builder clusterId(String clusterId) {
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "clusterId");
+            }
             this.clusterId = clusterId;
             return this;
         }
@@ -330,9 +322,16 @@ public final class GetLogsClusterResult {
             this.serviceName = serviceName;
             return this;
         }
+        @CustomType.Setter
+        public Builder urn(String urn) {
+            if (urn == null) {
+              throw new MissingRequiredPropertyException("GetLogsClusterResult", "urn");
+            }
+            this.urn = urn;
+            return this;
+        }
         public GetLogsClusterResult build() {
             final var _resultValue = new GetLogsClusterResult();
-            _resultValue.DBaasURN = DBaasURN;
             _resultValue.archiveAllowedNetworks = archiveAllowedNetworks;
             _resultValue.clusterId = clusterId;
             _resultValue.clusterType = clusterType;
@@ -346,6 +345,7 @@ public final class GetLogsClusterResult {
             _resultValue.queryAllowedNetworks = queryAllowedNetworks;
             _resultValue.region = region;
             _resultValue.serviceName = serviceName;
+            _resultValue.urn = urn;
             return _resultValue;
         }
     }

@@ -18,10 +18,12 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
  * ```
  * 
  */
@@ -56,14 +58,14 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * Name of the user.
+     * Name of the user. A user named &#34;admin&#34; is mapped with already created admin{@literal @}admin user instead of creating a new user.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the user.
+     * @return Name of the user. A user named &#34;admin&#34; is mapped with already created admin{@literal @}admin user instead of creating a new user.
      * 
      */
     public Output<String> name() {
@@ -98,16 +100,50 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.passwordReset);
     }
     /**
-     * Roles the user belongs to.
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
      * Available roles:
+     * * `backup{@literal @}admin`
+     * * `clusterAdmin{@literal @}admin`
+     * * `clusterManager{@literal @}admin`
+     * * `clusterMonitor{@literal @}admin`
+     * * `dbAdmin{@literal @}(defined db)`
+     * * `dbAdminAnyDatabase{@literal @}admin`
+     * * `dbOwner{@literal @}(defined db)`
+     * * `enableSharding{@literal @}(defined db)`
+     * * `hostManager{@literal @}admin`
+     * * `read{@literal @}(defined db)`
+     * * `readAnyDatabase{@literal @}admin`
+     * * `readWrite{@literal @}(defined db)`
+     * * `readWriteAnyDatabase{@literal @}admin`
+     * * `restore{@literal @}admin`
+     * * `root{@literal @}admin`
+     * * `userAdmin{@literal @}(defined db)`
+     * * `userAdminAnyDatabase{@literal @}admin`
      * 
      */
     @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> roles;
 
     /**
-     * @return Roles the user belongs to.
+     * @return Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
      * Available roles:
+     * * `backup{@literal @}admin`
+     * * `clusterAdmin{@literal @}admin`
+     * * `clusterManager{@literal @}admin`
+     * * `clusterMonitor{@literal @}admin`
+     * * `dbAdmin{@literal @}(defined db)`
+     * * `dbAdminAnyDatabase{@literal @}admin`
+     * * `dbOwner{@literal @}(defined db)`
+     * * `enableSharding{@literal @}(defined db)`
+     * * `hostManager{@literal @}admin`
+     * * `read{@literal @}(defined db)`
+     * * `readAnyDatabase{@literal @}admin`
+     * * `readWrite{@literal @}(defined db)`
+     * * `readWriteAnyDatabase{@literal @}admin`
+     * * `restore{@literal @}admin`
+     * * `root{@literal @}admin`
+     * * `userAdmin{@literal @}(defined db)`
+     * * `userAdminAnyDatabase{@literal @}admin`
      * 
      */
     public Output<Optional<List<String>>> roles() {
@@ -166,11 +202,18 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public MongoDbUser(String name, MongoDbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser", name, args == null ? MongoDbUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MongoDbUser(String name, Output<String> id, @Nullable MongoDbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MongoDbUserArgs makeArgs(MongoDbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MongoDbUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

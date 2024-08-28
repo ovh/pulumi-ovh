@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Creates a HTTP backend server group (farm) to be used by loadbalancing frontend(s)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -49,7 +51,7 @@ import javax.annotation.Nullable;
  *             .state("ok")
  *             .build());
  * 
- *         var farmname = new HttpFarm("farmname", HttpFarmArgs.builder()        
+ *         var farmname = new HttpFarm("farmname", HttpFarmArgs.builder()
  *             .displayName("ingress-8080-gra")
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .zone("GRA")
@@ -59,6 +61,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * HTTP farm can be imported using the following format `service_name` and the `id` of the farm, separated by &#34;/&#34; e.g.
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/httpFarm:HttpFarm")
@@ -92,14 +99,14 @@ public class HttpFarm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * Port for backends to receive traffic on.
+     * Port attached to your farm ([1..49151]). Inherited from frontend if null
      * 
      */
     @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
-     * @return Port for backends to receive traffic on.
+     * @return Port attached to your farm ([1..49151]). Inherited from frontend if null
      * 
      */
     public Output<Optional<Integer>> port() {
@@ -198,11 +205,18 @@ public class HttpFarm extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HttpFarm(String name, HttpFarmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/httpFarm:HttpFarm", name, args == null ? HttpFarmArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:IpLoadBalancing/httpFarm:HttpFarm", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HttpFarm(String name, Output<String> id, @Nullable HttpFarmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/httpFarm:HttpFarm", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HttpFarmArgs makeArgs(HttpFarmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HttpFarmArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * Manage TCP route for a loadbalancer service
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -45,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcpreject = new TcpRoute("tcpreject", TcpRouteArgs.builder()        
+ *         var tcpreject = new TcpRoute("tcpreject", TcpRouteArgs.builder()
  *             .action(TcpRouteActionArgs.builder()
  *                 .type("reject")
  *                 .build())
@@ -57,6 +59,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * TCP route can be imported using the following format `service_name` and the `id` of the route separated by &#34;/&#34; e.g.
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/tcpRoute:TcpRoute")
@@ -182,11 +189,18 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TcpRoute(String name, TcpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/tcpRoute:TcpRoute", name, args == null ? TcpRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:IpLoadBalancing/tcpRoute:TcpRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TcpRoute(String name, Output<String> id, @Nullable TcpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/tcpRoute:TcpRoute", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TcpRouteArgs makeArgs(TcpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TcpRouteArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

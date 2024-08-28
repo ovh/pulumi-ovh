@@ -18,6 +18,7 @@ public final class GetFailoverIpAttachArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * The IP block
+     * * `continentCode` - The Ip continent
      * 
      */
     @Import(name="block")
@@ -25,6 +26,7 @@ public final class GetFailoverIpAttachArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * @return The IP block
+     * * `continentCode` - The Ip continent
      * 
      */
     public Optional<Output<String>> block() {
@@ -115,6 +117,7 @@ public final class GetFailoverIpAttachArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param block The IP block
+         * * `continentCode` - The Ip continent
          * 
          * @return builder
          * 
@@ -126,6 +129,7 @@ public final class GetFailoverIpAttachArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param block The IP block
+         * * `continentCode` - The Ip continent
          * 
          * @return builder
          * 

@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Creates a backend server entry linked to loadbalancing group (farm)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -51,13 +53,13 @@ import javax.annotation.Nullable;
  *             .state("ok")
  *             .build());
  * 
- *         var farmname = new TcpFarm("farmname", TcpFarmArgs.builder()        
+ *         var farmname = new TcpFarm("farmname", TcpFarmArgs.builder()
  *             .port(8080)
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .zone("all")
  *             .build());
  * 
- *         var backend = new TcpFarmServer("backend", TcpFarmServerArgs.builder()        
+ *         var backend = new TcpFarmServer("backend", TcpFarmServerArgs.builder()
  *             .address("4.5.6.7")
  *             .backup(true)
  *             .displayName("mybackend")
@@ -75,6 +77,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * TCP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by &#34;/&#34; e.g.
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/tcpFarmServer:TcpFarmServer")
@@ -276,11 +283,18 @@ public class TcpFarmServer extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TcpFarmServer(String name, TcpFarmServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/tcpFarmServer:TcpFarmServer", name, args == null ? TcpFarmServerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:IpLoadBalancing/tcpFarmServer:TcpFarmServer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TcpFarmServer(String name, Output<String> id, @Nullable TcpFarmServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/tcpFarmServer:TcpFarmServer", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TcpFarmServerArgs makeArgs(TcpFarmServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TcpFarmServerArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProject.inputs;
 
 import com.ovh.ovh.CloudProject.inputs.DatabaseEndpointArgs;
+import com.ovh.ovh.CloudProject.inputs.DatabaseIpRestrictionArgs;
 import com.ovh.ovh.CloudProject.inputs.DatabaseNodeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -34,6 +35,21 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> advancedConfiguration() {
         return Optional.ofNullable(this.advancedConfiguration);
+    }
+
+    /**
+     * List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+     * 
+     */
+    @Import(name="backupRegions")
+    private @Nullable Output<List<String>> backupRegions;
+
+    /**
+     * @return List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+     * 
+     */
+    public Optional<Output<List<String>>> backupRegions() {
+        return Optional.ofNullable(this.backupRegions);
     }
 
     /**
@@ -163,6 +179,21 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * IP Blocks authorized to access to the cluster.
+     * 
+     */
+    @Import(name="ipRestrictions")
+    private @Nullable Output<List<DatabaseIpRestrictionArgs>> ipRestrictions;
+
+    /**
+     * @return IP Blocks authorized to access to the cluster.
+     * 
+     */
+    public Optional<Output<List<DatabaseIpRestrictionArgs>>> ipRestrictions() {
+        return Optional.ofNullable(this.ipRestrictions);
+    }
+
+    /**
      * Defines whether the REST API is enabled on a kafka cluster
      * 
      */
@@ -175,6 +206,21 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> kafkaRestApi() {
         return Optional.ofNullable(this.kafkaRestApi);
+    }
+
+    /**
+     * Defines whether the schema registry is enabled on a Kafka cluster
+     * 
+     */
+    @Import(name="kafkaSchemaRegistry")
+    private @Nullable Output<Boolean> kafkaSchemaRegistry;
+
+    /**
+     * @return Defines whether the schema registry is enabled on a Kafka cluster
+     * 
+     */
+    public Optional<Output<Boolean>> kafkaSchemaRegistry() {
+        return Optional.ofNullable(this.kafkaSchemaRegistry);
     }
 
     /**
@@ -241,7 +287,10 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Plan of the cluster.
-     * Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+     * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
+     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+     * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
+     * * Redis: &#34;essential&#34;, &#34;business&#34;
      * 
      */
     @Import(name="plan")
@@ -249,7 +298,10 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Plan of the cluster.
-     * Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+     * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
+     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+     * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
+     * * Redis: &#34;essential&#34;, &#34;business&#34;
      * 
      */
     public Optional<Output<String>> plan() {
@@ -307,6 +359,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     private DatabaseState(DatabaseState $) {
         this.advancedConfiguration = $.advancedConfiguration;
+        this.backupRegions = $.backupRegions;
         this.backupTime = $.backupTime;
         this.createdAt = $.createdAt;
         this.description = $.description;
@@ -315,7 +368,9 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         this.endpoints = $.endpoints;
         this.engine = $.engine;
         this.flavor = $.flavor;
+        this.ipRestrictions = $.ipRestrictions;
         this.kafkaRestApi = $.kafkaRestApi;
+        this.kafkaSchemaRegistry = $.kafkaSchemaRegistry;
         this.maintenanceTime = $.maintenanceTime;
         this.networkType = $.networkType;
         this.nodes = $.nodes;
@@ -363,6 +418,37 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder advancedConfiguration(Map<String,String> advancedConfiguration) {
             return advancedConfiguration(Output.of(advancedConfiguration));
+        }
+
+        /**
+         * @param backupRegions List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRegions(@Nullable Output<List<String>> backupRegions) {
+            $.backupRegions = backupRegions;
+            return this;
+        }
+
+        /**
+         * @param backupRegions List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRegions(List<String> backupRegions) {
+            return backupRegions(Output.of(backupRegions));
+        }
+
+        /**
+         * @param backupRegions List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRegions(String... backupRegions) {
+            return backupRegions(List.of(backupRegions));
         }
 
         /**
@@ -550,6 +636,37 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ipRestrictions IP Blocks authorized to access to the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipRestrictions(@Nullable Output<List<DatabaseIpRestrictionArgs>> ipRestrictions) {
+            $.ipRestrictions = ipRestrictions;
+            return this;
+        }
+
+        /**
+         * @param ipRestrictions IP Blocks authorized to access to the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipRestrictions(List<DatabaseIpRestrictionArgs> ipRestrictions) {
+            return ipRestrictions(Output.of(ipRestrictions));
+        }
+
+        /**
+         * @param ipRestrictions IP Blocks authorized to access to the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipRestrictions(DatabaseIpRestrictionArgs... ipRestrictions) {
+            return ipRestrictions(List.of(ipRestrictions));
+        }
+
+        /**
          * @param kafkaRestApi Defines whether the REST API is enabled on a kafka cluster
          * 
          * @return builder
@@ -568,6 +685,27 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kafkaRestApi(Boolean kafkaRestApi) {
             return kafkaRestApi(Output.of(kafkaRestApi));
+        }
+
+        /**
+         * @param kafkaSchemaRegistry Defines whether the schema registry is enabled on a Kafka cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaSchemaRegistry(@Nullable Output<Boolean> kafkaSchemaRegistry) {
+            $.kafkaSchemaRegistry = kafkaSchemaRegistry;
+            return this;
+        }
+
+        /**
+         * @param kafkaSchemaRegistry Defines whether the schema registry is enabled on a Kafka cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaSchemaRegistry(Boolean kafkaSchemaRegistry) {
+            return kafkaSchemaRegistry(Output.of(kafkaSchemaRegistry));
         }
 
         /**
@@ -669,7 +807,10 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param plan Plan of the cluster.
-         * Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+         * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
+         * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+         * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
+         * * Redis: &#34;essential&#34;, &#34;business&#34;
          * 
          * @return builder
          * 
@@ -681,7 +822,10 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param plan Plan of the cluster.
-         * Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+         * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
+         * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+         * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
+         * * Redis: &#34;essential&#34;, &#34;business&#34;
          * 
          * @return builder
          * 

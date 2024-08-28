@@ -20,20 +20,30 @@ public final class GetServerResult {
      */
     private String ServerURN;
     /**
-     * @return boot id of the server
+     * @return Boot id of the server
      * 
      */
     private Integer bootId;
     /**
-     * @return dedicated server commercial range
+     * @return Boot script of the server
+     * 
+     */
+    private String bootScript;
+    /**
+     * @return Dedicated server commercial range
      * 
      */
     private String commercialRange;
     /**
-     * @return dedicated datacenter localisation (bhs1,bhs2,...)
+     * @return Dedicated datacenter localisation (bhs1,bhs2,...)
      * 
      */
     private String datacenter;
+    /**
+     * @return Dedicated server display name
+     * 
+     */
+    private String displayName;
     /**
      * @return List of enabled public VNI uuids
      * 
@@ -55,17 +65,17 @@ public final class GetServerResult {
      */
     private String id;
     /**
-     * @return dedicated server ip (IPv4)
+     * @return Dedicated server ip (IPv4)
      * 
      */
     private String ip;
     /**
-     * @return dedicated server ip blocks
+     * @return Dedicated server ip blocks
      * 
      */
     private List<String> ips;
     /**
-     * @return link speed of the server
+     * @return Link speed of the server
      * 
      */
     private Integer linkSpeed;
@@ -90,33 +100,33 @@ public final class GetServerResult {
      */
     private Boolean professionalUse;
     /**
-     * @return rack id of the server
+     * @return Rack id of the server
      * 
      */
     private String rack;
     /**
-     * @return rescue mail of the server
+     * @return Rescue mail of the server
      * 
      */
     private String rescueMail;
     /**
-     * @return dedicated server reverse
+     * @return Dedicated server reverse
      * 
      */
     private String reverse;
     /**
-     * @return root device of the server
+     * @return Root device of the server
      * 
      */
     private String rootDevice;
     /**
-     * @return your server id
+     * @return Server id
      * 
      */
     private Integer serverId;
     private String serviceName;
     /**
-     * @return error, hacked, hackedBlocked, ok
+     * @return Error, hacked, hackedBlocked, ok
      * 
      */
     private String state;
@@ -126,7 +136,7 @@ public final class GetServerResult {
      */
     private String supportLevel;
     /**
-     * @return the list of Virtualnetworkinterface assiociated with this server
+     * @return The list of Virtualnetworkinterface associated with this server
      * 
      */
     private List<GetServerVni> vnis;
@@ -140,25 +150,39 @@ public final class GetServerResult {
         return this.ServerURN;
     }
     /**
-     * @return boot id of the server
+     * @return Boot id of the server
      * 
      */
     public Integer bootId() {
         return this.bootId;
     }
     /**
-     * @return dedicated server commercial range
+     * @return Boot script of the server
+     * 
+     */
+    public String bootScript() {
+        return this.bootScript;
+    }
+    /**
+     * @return Dedicated server commercial range
      * 
      */
     public String commercialRange() {
         return this.commercialRange;
     }
     /**
-     * @return dedicated datacenter localisation (bhs1,bhs2,...)
+     * @return Dedicated datacenter localisation (bhs1,bhs2,...)
      * 
      */
     public String datacenter() {
         return this.datacenter;
+    }
+    /**
+     * @return Dedicated server display name
+     * 
+     */
+    public String displayName() {
+        return this.displayName;
     }
     /**
      * @return List of enabled public VNI uuids
@@ -189,21 +213,21 @@ public final class GetServerResult {
         return this.id;
     }
     /**
-     * @return dedicated server ip (IPv4)
+     * @return Dedicated server ip (IPv4)
      * 
      */
     public String ip() {
         return this.ip;
     }
     /**
-     * @return dedicated server ip blocks
+     * @return Dedicated server ip blocks
      * 
      */
     public List<String> ips() {
         return this.ips;
     }
     /**
-     * @return link speed of the server
+     * @return Link speed of the server
      * 
      */
     public Integer linkSpeed() {
@@ -238,35 +262,35 @@ public final class GetServerResult {
         return this.professionalUse;
     }
     /**
-     * @return rack id of the server
+     * @return Rack id of the server
      * 
      */
     public String rack() {
         return this.rack;
     }
     /**
-     * @return rescue mail of the server
+     * @return Rescue mail of the server
      * 
      */
     public String rescueMail() {
         return this.rescueMail;
     }
     /**
-     * @return dedicated server reverse
+     * @return Dedicated server reverse
      * 
      */
     public String reverse() {
         return this.reverse;
     }
     /**
-     * @return root device of the server
+     * @return Root device of the server
      * 
      */
     public String rootDevice() {
         return this.rootDevice;
     }
     /**
-     * @return your server id
+     * @return Server id
      * 
      */
     public Integer serverId() {
@@ -276,7 +300,7 @@ public final class GetServerResult {
         return this.serviceName;
     }
     /**
-     * @return error, hacked, hackedBlocked, ok
+     * @return Error, hacked, hackedBlocked, ok
      * 
      */
     public String state() {
@@ -290,7 +314,7 @@ public final class GetServerResult {
         return this.supportLevel;
     }
     /**
-     * @return the list of Virtualnetworkinterface assiociated with this server
+     * @return The list of Virtualnetworkinterface associated with this server
      * 
      */
     public List<GetServerVni> vnis() {
@@ -308,8 +332,10 @@ public final class GetServerResult {
     public static final class Builder {
         private String ServerURN;
         private Integer bootId;
+        private String bootScript;
         private String commercialRange;
         private String datacenter;
+        private String displayName;
         private List<String> enabledPublicVnis;
         private List<String> enabledVrackAggregationVnis;
         private List<String> enabledVrackVnis;
@@ -335,8 +361,10 @@ public final class GetServerResult {
     	      Objects.requireNonNull(defaults);
     	      this.ServerURN = defaults.ServerURN;
     	      this.bootId = defaults.bootId;
+    	      this.bootScript = defaults.bootScript;
     	      this.commercialRange = defaults.commercialRange;
     	      this.datacenter = defaults.datacenter;
+    	      this.displayName = defaults.displayName;
     	      this.enabledPublicVnis = defaults.enabledPublicVnis;
     	      this.enabledVrackAggregationVnis = defaults.enabledVrackAggregationVnis;
     	      this.enabledVrackVnis = defaults.enabledVrackVnis;
@@ -376,6 +404,14 @@ public final class GetServerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder bootScript(String bootScript) {
+            if (bootScript == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "bootScript");
+            }
+            this.bootScript = bootScript;
+            return this;
+        }
+        @CustomType.Setter
         public Builder commercialRange(String commercialRange) {
             if (commercialRange == null) {
               throw new MissingRequiredPropertyException("GetServerResult", "commercialRange");
@@ -389,6 +425,14 @@ public final class GetServerResult {
               throw new MissingRequiredPropertyException("GetServerResult", "datacenter");
             }
             this.datacenter = datacenter;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder displayName(String displayName) {
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
@@ -570,8 +614,10 @@ public final class GetServerResult {
             final var _resultValue = new GetServerResult();
             _resultValue.ServerURN = ServerURN;
             _resultValue.bootId = bootId;
+            _resultValue.bootScript = bootScript;
             _resultValue.commercialRange = commercialRange;
             _resultValue.datacenter = datacenter;
+            _resultValue.displayName = displayName;
             _resultValue.enabledPublicVnis = enabledPublicVnis;
             _resultValue.enabledVrackAggregationVnis = enabledVrackAggregationVnis;
             _resultValue.enabledVrackVnis = enabledVrackVnis;

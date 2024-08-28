@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Manage rules for TCP route.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -44,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var reject = new TcpRoute("reject", TcpRouteArgs.builder()        
+ *         var reject = new TcpRoute("reject", TcpRouteArgs.builder()
  *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .weight(1)
  *             .frontendId(11111)
@@ -53,7 +55,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var examplerule = new TcpRouteRule("examplerule", TcpRouteRuleArgs.builder()        
+ *         var examplerule = new TcpRouteRule("examplerule", TcpRouteRuleArgs.builder()
  *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .routeId(reject.id())
  *             .displayName("Match example.com host")
@@ -67,6 +69,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * TCP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by &#34;/&#34; e.g.
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule")
@@ -206,11 +213,18 @@ public class TcpRouteRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TcpRouteRule(String name, TcpRouteRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule", name, args == null ? TcpRouteRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TcpRouteRule(String name, Output<String> id, @Nullable TcpRouteRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TcpRouteRuleArgs makeArgs(TcpRouteRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TcpRouteRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

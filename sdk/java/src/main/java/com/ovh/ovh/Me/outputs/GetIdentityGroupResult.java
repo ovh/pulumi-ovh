@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetIdentityGroupResult {
     /**
+     * @return Identity URN of the group.
+     * 
+     */
+    private String GroupURN;
+    /**
      * @return Creation date of this group.
      * 
      */
@@ -44,6 +49,13 @@ public final class GetIdentityGroupResult {
     private String role;
 
     private GetIdentityGroupResult() {}
+    /**
+     * @return Identity URN of the group.
+     * 
+     */
+    public String GroupURN() {
+        return this.GroupURN;
+    }
     /**
      * @return Creation date of this group.
      * 
@@ -99,6 +111,7 @@ public final class GetIdentityGroupResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String GroupURN;
         private String creation;
         private Boolean defaultGroup;
         private String description;
@@ -109,6 +122,7 @@ public final class GetIdentityGroupResult {
         public Builder() {}
         public Builder(GetIdentityGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.GroupURN = defaults.GroupURN;
     	      this.creation = defaults.creation;
     	      this.defaultGroup = defaults.defaultGroup;
     	      this.description = defaults.description;
@@ -118,6 +132,14 @@ public final class GetIdentityGroupResult {
     	      this.role = defaults.role;
         }
 
+        @CustomType.Setter
+        public Builder GroupURN(String GroupURN) {
+            if (GroupURN == null) {
+              throw new MissingRequiredPropertyException("GetIdentityGroupResult", "GroupURN");
+            }
+            this.GroupURN = GroupURN;
+            return this;
+        }
         @CustomType.Setter
         public Builder creation(String creation) {
             if (creation == null) {
@@ -176,6 +198,7 @@ public final class GetIdentityGroupResult {
         }
         public GetIdentityGroupResult build() {
             final var _resultValue = new GetIdentityGroupResult();
+            _resultValue.GroupURN = GroupURN;
             _resultValue.creation = creation;
             _resultValue.defaultGroup = defaultGroup;
             _resultValue.description = description;

@@ -143,11 +143,18 @@ public class VrackNetwork extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public VrackNetwork(String name, VrackNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/vrackNetwork:VrackNetwork", name, args == null ? VrackNetworkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:IpLoadBalancing/vrackNetwork:VrackNetwork", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private VrackNetwork(String name, Output<String> id, @Nullable VrackNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/vrackNetwork:VrackNetwork", name, state, makeResourceOptions(options, id));
+    }
+
+    private static VrackNetworkArgs makeArgs(VrackNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VrackNetworkArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

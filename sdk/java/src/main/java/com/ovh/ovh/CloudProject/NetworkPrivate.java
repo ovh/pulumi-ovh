@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * Creates a private network in a public cloud project.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -44,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new NetworkPrivate("net", NetworkPrivateArgs.builder()        
+ *         var net = new NetworkPrivate("net", NetworkPrivateArgs.builder()
  *             .regions(            
  *                 "GRA1",
  *                 "BHS1")
@@ -55,13 +57,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by &#34;/&#34; E.g., bash
+ * Private network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678
+ * $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678
  * ```
  * 
  */
@@ -222,11 +227,18 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NetworkPrivate(String name, NetworkPrivateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/networkPrivate:NetworkPrivate", name, args == null ? NetworkPrivateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/networkPrivate:NetworkPrivate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NetworkPrivate(String name, Output<String> id, @Nullable NetworkPrivateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/networkPrivate:NetworkPrivate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NetworkPrivateArgs makeArgs(NetworkPrivateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkPrivateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

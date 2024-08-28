@@ -4,6 +4,7 @@
 package com.ovh.ovh.CloudProjectDatabase.outputs;
 
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseEndpoint;
+import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseIpRestriction;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseNode;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -22,6 +23,11 @@ public final class GetDatabaseResult {
      */
     private Map<String,String> advancedConfiguration;
     /**
+     * @return List of region where backups are pushed.
+     * 
+     */
+    private List<String> backupRegions;
+    /**
      * @return Time on which backups start every day.
      * 
      */
@@ -32,7 +38,7 @@ public final class GetDatabaseResult {
      */
     private String createdAt;
     /**
-     * @return Small description of the database service.
+     * @return Description of the IP restriction
      * 
      */
     private String description;
@@ -67,10 +73,20 @@ public final class GetDatabaseResult {
      */
     private String id;
     /**
+     * @return IP Blocks authorized to access to the cluster.
+     * 
+     */
+    private List<GetDatabaseIpRestriction> ipRestrictions;
+    /**
      * @return Defines whether the REST API is enabled on a kafka cluster.
      * 
      */
     private Boolean kafkaRestApi;
+    /**
+     * @return Defines whether the schema registry is enabled on a Kafka cluster
+     * 
+     */
+    private Boolean kafkaSchemaRegistry;
     /**
      * @return Time on which maintenances can start every day.
      * 
@@ -117,6 +133,13 @@ public final class GetDatabaseResult {
         return this.advancedConfiguration;
     }
     /**
+     * @return List of region where backups are pushed.
+     * 
+     */
+    public List<String> backupRegions() {
+        return this.backupRegions;
+    }
+    /**
      * @return Time on which backups start every day.
      * 
      */
@@ -131,7 +154,7 @@ public final class GetDatabaseResult {
         return this.createdAt;
     }
     /**
-     * @return Small description of the database service.
+     * @return Description of the IP restriction
      * 
      */
     public String description() {
@@ -180,11 +203,25 @@ public final class GetDatabaseResult {
         return this.id;
     }
     /**
+     * @return IP Blocks authorized to access to the cluster.
+     * 
+     */
+    public List<GetDatabaseIpRestriction> ipRestrictions() {
+        return this.ipRestrictions;
+    }
+    /**
      * @return Defines whether the REST API is enabled on a kafka cluster.
      * 
      */
     public Boolean kafkaRestApi() {
         return this.kafkaRestApi;
+    }
+    /**
+     * @return Defines whether the schema registry is enabled on a Kafka cluster
+     * 
+     */
+    public Boolean kafkaSchemaRegistry() {
+        return this.kafkaSchemaRegistry;
     }
     /**
      * @return Time on which maintenances can start every day.
@@ -249,6 +286,7 @@ public final class GetDatabaseResult {
     @CustomType.Builder
     public static final class Builder {
         private Map<String,String> advancedConfiguration;
+        private List<String> backupRegions;
         private String backupTime;
         private String createdAt;
         private String description;
@@ -258,7 +296,9 @@ public final class GetDatabaseResult {
         private String engine;
         private String flavor;
         private String id;
+        private List<GetDatabaseIpRestriction> ipRestrictions;
         private Boolean kafkaRestApi;
+        private Boolean kafkaSchemaRegistry;
         private String maintenanceTime;
         private String networkType;
         private List<GetDatabaseNode> nodes;
@@ -271,6 +311,7 @@ public final class GetDatabaseResult {
         public Builder(GetDatabaseResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.advancedConfiguration = defaults.advancedConfiguration;
+    	      this.backupRegions = defaults.backupRegions;
     	      this.backupTime = defaults.backupTime;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
@@ -280,7 +321,9 @@ public final class GetDatabaseResult {
     	      this.engine = defaults.engine;
     	      this.flavor = defaults.flavor;
     	      this.id = defaults.id;
+    	      this.ipRestrictions = defaults.ipRestrictions;
     	      this.kafkaRestApi = defaults.kafkaRestApi;
+    	      this.kafkaSchemaRegistry = defaults.kafkaSchemaRegistry;
     	      this.maintenanceTime = defaults.maintenanceTime;
     	      this.networkType = defaults.networkType;
     	      this.nodes = defaults.nodes;
@@ -298,6 +341,17 @@ public final class GetDatabaseResult {
             }
             this.advancedConfiguration = advancedConfiguration;
             return this;
+        }
+        @CustomType.Setter
+        public Builder backupRegions(List<String> backupRegions) {
+            if (backupRegions == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "backupRegions");
+            }
+            this.backupRegions = backupRegions;
+            return this;
+        }
+        public Builder backupRegions(String... backupRegions) {
+            return backupRegions(List.of(backupRegions));
         }
         @CustomType.Setter
         public Builder backupTime(String backupTime) {
@@ -375,11 +429,30 @@ public final class GetDatabaseResult {
             return this;
         }
         @CustomType.Setter
+        public Builder ipRestrictions(List<GetDatabaseIpRestriction> ipRestrictions) {
+            if (ipRestrictions == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "ipRestrictions");
+            }
+            this.ipRestrictions = ipRestrictions;
+            return this;
+        }
+        public Builder ipRestrictions(GetDatabaseIpRestriction... ipRestrictions) {
+            return ipRestrictions(List.of(ipRestrictions));
+        }
+        @CustomType.Setter
         public Builder kafkaRestApi(Boolean kafkaRestApi) {
             if (kafkaRestApi == null) {
               throw new MissingRequiredPropertyException("GetDatabaseResult", "kafkaRestApi");
             }
             this.kafkaRestApi = kafkaRestApi;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kafkaSchemaRegistry(Boolean kafkaSchemaRegistry) {
+            if (kafkaSchemaRegistry == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "kafkaSchemaRegistry");
+            }
+            this.kafkaSchemaRegistry = kafkaSchemaRegistry;
             return this;
         }
         @CustomType.Setter
@@ -452,6 +525,7 @@ public final class GetDatabaseResult {
         public GetDatabaseResult build() {
             final var _resultValue = new GetDatabaseResult();
             _resultValue.advancedConfiguration = advancedConfiguration;
+            _resultValue.backupRegions = backupRegions;
             _resultValue.backupTime = backupTime;
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;
@@ -461,7 +535,9 @@ public final class GetDatabaseResult {
             _resultValue.engine = engine;
             _resultValue.flavor = flavor;
             _resultValue.id = id;
+            _resultValue.ipRestrictions = ipRestrictions;
             _resultValue.kafkaRestApi = kafkaRestApi;
+            _resultValue.kafkaSchemaRegistry = kafkaSchemaRegistry;
             _resultValue.maintenanceTime = maintenanceTime;
             _resultValue.networkType = networkType;
             _resultValue.nodes = nodes;

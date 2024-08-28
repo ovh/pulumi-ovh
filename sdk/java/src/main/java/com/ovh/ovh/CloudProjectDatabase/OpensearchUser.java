@@ -19,10 +19,12 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * OVHcloud Managed OpenSearch clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed OpenSearch clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/opensearchUser:OpensearchUser my_user service_name/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/opensearchUser:OpensearchUser my_user service_name/cluster_id/id
  * ```
  * 
  */
@@ -71,14 +73,14 @@ public class OpensearchUser extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * Username affected by this acl. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+     * Username affected by this acl. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Username affected by this acl. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+     * @return Username affected by this acl. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user.
      * 
      */
     public Output<String> name() {
@@ -165,11 +167,18 @@ public class OpensearchUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OpensearchUser(String name, OpensearchUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/opensearchUser:OpensearchUser", name, args == null ? OpensearchUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/opensearchUser:OpensearchUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OpensearchUser(String name, Output<String> id, @Nullable OpensearchUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/opensearchUser:OpensearchUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OpensearchUserArgs makeArgs(OpensearchUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OpensearchUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Creates an OIDC configuration in an OVHcloud Managed Private Registry.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -42,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_oidc = new ContainerRegistryOIDC("my-oidc", ContainerRegistryOIDCArgs.builder()        
+ *         var my_oidc = new ContainerRegistryOIDC("my-oidc", ContainerRegistryOIDCArgs.builder()
  *             .serviceName("XXXXXX")
  *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
  *             .oidcName("my-oidc-provider")
@@ -63,13 +65,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
+ * $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
  * ```
  * 
  */
@@ -280,11 +285,18 @@ public class ContainerRegistryOIDC extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ContainerRegistryOIDC(String name, ContainerRegistryOIDCArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC", name, args == null ? ContainerRegistryOIDCArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ContainerRegistryOIDC(String name, Output<String> id, @Nullable ContainerRegistryOIDCState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ContainerRegistryOIDCArgs makeArgs(ContainerRegistryOIDCArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ContainerRegistryOIDCArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

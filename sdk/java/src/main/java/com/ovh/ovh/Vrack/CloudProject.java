@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Attach a Public Cloud Project to a VRack.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -39,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vcp = new CloudProject("vcp", CloudProjectArgs.builder()        
+ *         var vcp = new CloudProject("vcp", CloudProjectArgs.builder()
  *             .projectId("67890")
  *             .serviceName("12345")
  *             .build());
@@ -48,13 +50,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Attachment of a public cloud project and a VRack can be imported using the `project_id`, the `service_name` (vRackID) and the `attach_id`, separated by &#34;/&#34; E.g., bash
+ * Attachment of a public cloud project and a VRack can be imported using the `service_name` (vRack identifier) and the `project_id` (Cloud Project identifier), separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Vrack/cloudProject:CloudProject myattach ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/vrack_pn-12345678-cloudproject_ookie9mee8Shaeghaeleeju7Xeghohv6e-attach
+ * $ pulumi import ovh:Vrack/cloudProject:CloudProject myattach service_name/project_id
  * ```
  * 
  */
@@ -115,11 +120,18 @@ public class CloudProject extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CloudProject(String name, CloudProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/cloudProject:CloudProject", name, args == null ? CloudProjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Vrack/cloudProject:CloudProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CloudProject(String name, Output<String> id, @Nullable CloudProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Vrack/cloudProject:CloudProject", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CloudProjectArgs makeArgs(CloudProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CloudProjectArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Attaches a failover IP address to a compute instance
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -40,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myfailoverip = new FailoverIpAttach("myfailoverip", FailoverIpAttachArgs.builder()        
+ *         var myfailoverip = new FailoverIpAttach("myfailoverip", FailoverIpAttachArgs.builder()
  *             .ip("XXXXXX")
  *             .routedTo("XXXXXX")
  *             .serviceName("XXXXXX")
@@ -50,12 +52,14 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:CloudProject/failoverIpAttach:FailoverIpAttach")
 public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
     /**
      * The IP block
+     * * `continentCode` - The Ip continent
      * 
      */
     @Export(name="block", refs={String.class}, tree="[0]")
@@ -63,6 +67,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The IP block
+     * * `continentCode` - The Ip continent
      * 
      */
     public Output<String> block() {
@@ -112,6 +117,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
     }
     /**
      * Current operation progress in percent
+     * * `routedTo` - Instance where ip is routed to
      * 
      */
     @Export(name="progress", refs={Integer.class}, tree="[0]")
@@ -119,6 +125,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Current operation progress in percent
+     * * `routedTo` - Instance where ip is routed to
      * 
      */
     public Output<Integer> progress() {
@@ -156,6 +163,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
     }
     /**
      * Ip status, can be `ok` or `operationPending`
+     * * `subType` - IP sub type, can be `cloud` or `ovh`
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -163,6 +171,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Ip status, can be `ok` or `operationPending`
+     * * `subType` - IP sub type, can be `cloud` or `ovh`
      * 
      */
     public Output<String> status() {
@@ -205,11 +214,18 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FailoverIpAttach(String name, FailoverIpAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/failoverIpAttach:FailoverIpAttach", name, args == null ? FailoverIpAttachArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/failoverIpAttach:FailoverIpAttach", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FailoverIpAttach(String name, Output<String> id, @Nullable FailoverIpAttachState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/failoverIpAttach:FailoverIpAttach", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FailoverIpAttachArgs makeArgs(FailoverIpAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FailoverIpAttachArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

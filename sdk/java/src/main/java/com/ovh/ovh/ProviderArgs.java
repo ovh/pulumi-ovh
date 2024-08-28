@@ -17,14 +17,29 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * The OVH API Application Key.
+     * The OVH API Access Token
+     * 
+     */
+    @Import(name="accessToken")
+    private @Nullable Output<String> accessToken;
+
+    /**
+     * @return The OVH API Access Token
+     * 
+     */
+    public Optional<Output<String>> accessToken() {
+        return Optional.ofNullable(this.accessToken);
+    }
+
+    /**
+     * The OVH API Application Key
      * 
      */
     @Import(name="applicationKey")
     private @Nullable Output<String> applicationKey;
 
     /**
-     * @return The OVH API Application Key.
+     * @return The OVH API Application Key
      * 
      */
     public Optional<Output<String>> applicationKey() {
@@ -32,14 +47,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The OVH API Application Secret.
+     * The OVH API Application Secret
      * 
      */
     @Import(name="applicationSecret")
     private @Nullable Output<String> applicationSecret;
 
     /**
-     * @return The OVH API Application Secret.
+     * @return The OVH API Application Secret
      * 
      */
     public Optional<Output<String>> applicationSecret() {
@@ -47,14 +62,44 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The OVH API Consumer key.
+     * OAuth 2.0 application&#39;s ID
+     * 
+     */
+    @Import(name="clientId")
+    private @Nullable Output<String> clientId;
+
+    /**
+     * @return OAuth 2.0 application&#39;s ID
+     * 
+     */
+    public Optional<Output<String>> clientId() {
+        return Optional.ofNullable(this.clientId);
+    }
+
+    /**
+     * OAuth 2.0 application&#39;s secret
+     * 
+     */
+    @Import(name="clientSecret")
+    private @Nullable Output<String> clientSecret;
+
+    /**
+     * @return OAuth 2.0 application&#39;s secret
+     * 
+     */
+    public Optional<Output<String>> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
+    }
+
+    /**
+     * The OVH API Consumer Key
      * 
      */
     @Import(name="consumerKey")
     private @Nullable Output<String> consumerKey;
 
     /**
-     * @return The OVH API Consumer key.
+     * @return The OVH API Consumer Key
      * 
      */
     public Optional<Output<String>> consumerKey() {
@@ -62,14 +107,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The OVH API endpoint to target (ex: &#34;ovh-eu&#34;).
+     * The OVH API endpoint to target (ex: &#34;ovh-eu&#34;)
      * 
      */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
     /**
-     * @return The OVH API endpoint to target (ex: &#34;ovh-eu&#34;).
+     * @return The OVH API endpoint to target (ex: &#34;ovh-eu&#34;)
      * 
      */
     public Optional<Output<String>> endpoint() {
@@ -79,8 +124,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
+        this.accessToken = $.accessToken;
         this.applicationKey = $.applicationKey;
         this.applicationSecret = $.applicationSecret;
+        this.clientId = $.clientId;
+        this.clientSecret = $.clientSecret;
         this.consumerKey = $.consumerKey;
         this.endpoint = $.endpoint;
     }
@@ -104,7 +152,28 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationKey The OVH API Application Key.
+         * @param accessToken The OVH API Access Token
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessToken(@Nullable Output<String> accessToken) {
+            $.accessToken = accessToken;
+            return this;
+        }
+
+        /**
+         * @param accessToken The OVH API Access Token
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessToken(String accessToken) {
+            return accessToken(Output.of(accessToken));
+        }
+
+        /**
+         * @param applicationKey The OVH API Application Key
          * 
          * @return builder
          * 
@@ -115,7 +184,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationKey The OVH API Application Key.
+         * @param applicationKey The OVH API Application Key
          * 
          * @return builder
          * 
@@ -125,7 +194,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationSecret The OVH API Application Secret.
+         * @param applicationSecret The OVH API Application Secret
          * 
          * @return builder
          * 
@@ -136,7 +205,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationSecret The OVH API Application Secret.
+         * @param applicationSecret The OVH API Application Secret
          * 
          * @return builder
          * 
@@ -146,7 +215,49 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consumerKey The OVH API Consumer key.
+         * @param clientId OAuth 2.0 application&#39;s ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(@Nullable Output<String> clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
+        /**
+         * @param clientId OAuth 2.0 application&#39;s ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
+        }
+
+        /**
+         * @param clientSecret OAuth 2.0 application&#39;s secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(@Nullable Output<String> clientSecret) {
+            $.clientSecret = clientSecret;
+            return this;
+        }
+
+        /**
+         * @param clientSecret OAuth 2.0 application&#39;s secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(String clientSecret) {
+            return clientSecret(Output.of(clientSecret));
+        }
+
+        /**
+         * @param consumerKey The OVH API Consumer Key
          * 
          * @return builder
          * 
@@ -157,7 +268,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consumerKey The OVH API Consumer key.
+         * @param consumerKey The OVH API Consumer Key
          * 
          * @return builder
          * 
@@ -167,7 +278,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpoint The OVH API endpoint to target (ex: &#34;ovh-eu&#34;).
+         * @param endpoint The OVH API endpoint to target (ex: &#34;ovh-eu&#34;)
          * 
          * @return builder
          * 
@@ -178,7 +289,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpoint The OVH API endpoint to target (ex: &#34;ovh-eu&#34;).
+         * @param endpoint The OVH API endpoint to target (ex: &#34;ovh-eu&#34;)
          * 
          * @return builder
          * 

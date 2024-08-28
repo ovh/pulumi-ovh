@@ -13,9 +13,97 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Creates a DBaaS Logs Graylog output stream.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.ovh.Dbaas.LogsOutputGraylogStream;
+ * import com.pulumi.ovh.Dbaas.LogsOutputGraylogStreamArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var stream = new LogsOutputGraylogStream("stream", LogsOutputGraylogStreamArgs.builder()
+ *             .description("my graylog stream")
+ *             .serviceName("....")
+ *             .title("my stream")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * To define the retention of the stream, you can use the following configuration:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+ * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+ * import com.pulumi.ovh.Dbaas.LogsOutputGraylogStream;
+ * import com.pulumi.ovh.Dbaas.LogsOutputGraylogStreamArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+ *             .serviceName("ldp-xx-xxxxx")
+ *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .duration("P14D")
+ *             .build());
+ * 
+ *         var stream = new LogsOutputGraylogStream("stream", LogsOutputGraylogStreamArgs.builder()
+ *             .serviceName("....")
+ *             .title("my stream")
+ *             .description("my graylog stream")
+ *             .retentionId(retention.applyValue(getLogsClustersRetentionResult -> getLogsClustersRetentionResult.retentionId()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ */
 @ResourceType(type="ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream")
 public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource {
     /**
@@ -33,28 +121,28 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
         return this.canAlert;
     }
     /**
-     * Cold storage compression method
+     * Cold storage compression method. One of &#34;LZMA&#34;, &#34;GZIP&#34;, &#34;DEFLATED&#34;, &#34;ZSTD&#34;
      * 
      */
     @Export(name="coldStorageCompression", refs={String.class}, tree="[0]")
     private Output<String> coldStorageCompression;
 
     /**
-     * @return Cold storage compression method
+     * @return Cold storage compression method. One of &#34;LZMA&#34;, &#34;GZIP&#34;, &#34;DEFLATED&#34;, &#34;ZSTD&#34;
      * 
      */
     public Output<String> coldStorageCompression() {
         return this.coldStorageCompression;
     }
     /**
-     * ColdStorage content
+     * ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
      * 
      */
     @Export(name="coldStorageContent", refs={String.class}, tree="[0]")
     private Output<String> coldStorageContent;
 
     /**
-     * @return ColdStorage content
+     * @return ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
      * 
      */
     public Output<String> coldStorageContent() {
@@ -103,14 +191,14 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
         return this.coldStorageRetention;
     }
     /**
-     * ColdStorage destination
+     * ColdStorage destination. One of &#34;PCA&#34;, &#34;PCS&#34;
      * 
      */
     @Export(name="coldStorageTarget", refs={String.class}, tree="[0]")
     private Output<String> coldStorageTarget;
 
     /**
-     * @return ColdStorage destination
+     * @return ColdStorage destination. One of &#34;PCA&#34;, &#34;PCS&#34;
      * 
      */
     public Output<String> coldStorageTarget() {
@@ -229,14 +317,14 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
         return this.nbAlertCondition;
     }
     /**
-     * Number of coldstored archives
+     * Number of coldstored archivesr
      * 
      */
     @Export(name="nbArchive", refs={Integer.class}, tree="[0]")
     private Output<Integer> nbArchive;
 
     /**
-     * @return Number of coldstored archives
+     * @return Number of coldstored archivesr
      * 
      */
     public Output<Integer> nbArchive() {
@@ -327,14 +415,14 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
         return this.title;
     }
     /**
-     * Stream last update
+     * Stream last updater
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return Stream last update
+     * @return Stream last updater
      * 
      */
     public Output<String> updatedAt() {
@@ -353,6 +441,20 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
      */
     public Output<Boolean> webSocketEnabled() {
         return this.webSocketEnabled;
+    }
+    /**
+     * Write token of the stream (empty if the caller is not the owner of the stream)
+     * 
+     */
+    @Export(name="writeToken", refs={String.class}, tree="[0]")
+    private Output<String> writeToken;
+
+    /**
+     * @return Write token of the stream (empty if the caller is not the owner of the stream)
+     * 
+     */
+    public Output<String> writeToken() {
+        return this.writeToken;
     }
 
     /**
@@ -377,16 +479,26 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public LogsOutputGraylogStream(String name, LogsOutputGraylogStreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream", name, args == null ? LogsOutputGraylogStreamArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LogsOutputGraylogStream(String name, Output<String> id, @Nullable LogsOutputGraylogStreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream", name, state, makeResourceOptions(options, id));
     }
 
+    private static LogsOutputGraylogStreamArgs makeArgs(LogsOutputGraylogStreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LogsOutputGraylogStreamArgs.Empty : args;
+    }
+
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "writeToken"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

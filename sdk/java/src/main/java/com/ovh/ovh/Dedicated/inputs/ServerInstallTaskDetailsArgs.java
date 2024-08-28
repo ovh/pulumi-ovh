@@ -18,29 +18,6 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
     public static final ServerInstallTaskDetailsArgs Empty = new ServerInstallTaskDetailsArgs();
 
     /**
-     * Template change log details.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    @Import(name="changeLog")
-    private @Nullable Output<String> changeLog;
-
-    /**
-     * @return Template change log details.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    public Optional<Output<String>> changeLog() {
-        return Optional.ofNullable(this.changeLog);
-    }
-
-    /**
      * Set up the server using the provided hostname instead of the default hostname.
      * 
      */
@@ -71,59 +48,14 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * set to true to install RTM.
-     * 
-     */
-    @Import(name="installRtm")
-    private @Nullable Output<Boolean> installRtm;
-
-    /**
-     * @return set to true to install RTM.
-     * 
-     */
-    public Optional<Output<Boolean>> installRtm() {
-        return Optional.ofNullable(this.installRtm);
-    }
-
-    /**
-     * set to true to install sql server (Windows template only).
-     * 
-     */
-    @Import(name="installSqlServer")
-    private @Nullable Output<Boolean> installSqlServer;
-
-    /**
-     * @return set to true to install sql server (Windows template only).
-     * 
-     */
-    public Optional<Output<Boolean>> installSqlServer() {
-        return Optional.ofNullable(this.installSqlServer);
-    }
-
-    /**
-     * language.
-     * 
-     */
-    @Import(name="language")
-    private @Nullable Output<String> language;
-
-    /**
-     * @return language.
-     * 
-     */
-    public Optional<Output<String>> language() {
-        return Optional.ofNullable(this.language);
-    }
-
-    /**
-     * set to true to disable RAID.
+     * Set to true to disable RAID.
      * 
      */
     @Import(name="noRaid")
     private @Nullable Output<Boolean> noRaid;
 
     /**
-     * @return set to true to disable RAID.
+     * @return Set to true to disable RAID.
      * 
      */
     public Optional<Output<Boolean>> noRaid() {
@@ -161,21 +93,6 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * set to true to make a hardware raid reset.
-     * 
-     */
-    @Import(name="resetHwRaid")
-    private @Nullable Output<Boolean> resetHwRaid;
-
-    /**
-     * @return set to true to make a hardware raid reset.
-     * 
-     */
-    public Optional<Output<Boolean>> resetHwRaid() {
-        return Optional.ofNullable(this.resetHwRaid);
-    }
-
-    /**
      * soft raid devices.
      * 
      */
@@ -190,68 +107,15 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.softRaidDevices);
     }
 
-    /**
-     * Name of the ssh key that should be installed. Password login will be disabled.
-     * 
-     */
-    @Import(name="sshKeyName")
-    private @Nullable Output<String> sshKeyName;
-
-    /**
-     * @return Name of the ssh key that should be installed. Password login will be disabled.
-     * 
-     */
-    public Optional<Output<String>> sshKeyName() {
-        return Optional.ofNullable(this.sshKeyName);
-    }
-
-    /**
-     * Use the distribution&#39;s native kernel instead of the recommended OVHcloud Kernel.
-     * 
-     */
-    @Import(name="useDistribKernel")
-    private @Nullable Output<Boolean> useDistribKernel;
-
-    /**
-     * @return Use the distribution&#39;s native kernel instead of the recommended OVHcloud Kernel.
-     * 
-     */
-    public Optional<Output<Boolean>> useDistribKernel() {
-        return Optional.ofNullable(this.useDistribKernel);
-    }
-
-    /**
-     * set to true to use SPLA.
-     * 
-     */
-    @Import(name="useSpla")
-    private @Nullable Output<Boolean> useSpla;
-
-    /**
-     * @return set to true to use SPLA.
-     * 
-     */
-    public Optional<Output<Boolean>> useSpla() {
-        return Optional.ofNullable(this.useSpla);
-    }
-
     private ServerInstallTaskDetailsArgs() {}
 
     private ServerInstallTaskDetailsArgs(ServerInstallTaskDetailsArgs $) {
-        this.changeLog = $.changeLog;
         this.customHostname = $.customHostname;
         this.diskGroupId = $.diskGroupId;
-        this.installRtm = $.installRtm;
-        this.installSqlServer = $.installSqlServer;
-        this.language = $.language;
         this.noRaid = $.noRaid;
         this.postInstallationScriptLink = $.postInstallationScriptLink;
         this.postInstallationScriptReturn = $.postInstallationScriptReturn;
-        this.resetHwRaid = $.resetHwRaid;
         this.softRaidDevices = $.softRaidDevices;
-        this.sshKeyName = $.sshKeyName;
-        this.useDistribKernel = $.useDistribKernel;
-        this.useSpla = $.useSpla;
     }
 
     public static Builder builder() {
@@ -270,35 +134,6 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
 
         public Builder(ServerInstallTaskDetailsArgs defaults) {
             $ = new ServerInstallTaskDetailsArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param changeLog Template change log details.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * field is not used anymore
-         * 
-         */
-        @Deprecated /* field is not used anymore */
-        public Builder changeLog(@Nullable Output<String> changeLog) {
-            $.changeLog = changeLog;
-            return this;
-        }
-
-        /**
-         * @param changeLog Template change log details.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * field is not used anymore
-         * 
-         */
-        @Deprecated /* field is not used anymore */
-        public Builder changeLog(String changeLog) {
-            return changeLog(Output.of(changeLog));
         }
 
         /**
@@ -344,70 +179,7 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param installRtm set to true to install RTM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder installRtm(@Nullable Output<Boolean> installRtm) {
-            $.installRtm = installRtm;
-            return this;
-        }
-
-        /**
-         * @param installRtm set to true to install RTM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder installRtm(Boolean installRtm) {
-            return installRtm(Output.of(installRtm));
-        }
-
-        /**
-         * @param installSqlServer set to true to install sql server (Windows template only).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder installSqlServer(@Nullable Output<Boolean> installSqlServer) {
-            $.installSqlServer = installSqlServer;
-            return this;
-        }
-
-        /**
-         * @param installSqlServer set to true to install sql server (Windows template only).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder installSqlServer(Boolean installSqlServer) {
-            return installSqlServer(Output.of(installSqlServer));
-        }
-
-        /**
-         * @param language language.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder language(@Nullable Output<String> language) {
-            $.language = language;
-            return this;
-        }
-
-        /**
-         * @param language language.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder language(String language) {
-            return language(Output.of(language));
-        }
-
-        /**
-         * @param noRaid set to true to disable RAID.
+         * @param noRaid Set to true to disable RAID.
          * 
          * @return builder
          * 
@@ -418,7 +190,7 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param noRaid set to true to disable RAID.
+         * @param noRaid Set to true to disable RAID.
          * 
          * @return builder
          * 
@@ -470,27 +242,6 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param resetHwRaid set to true to make a hardware raid reset.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder resetHwRaid(@Nullable Output<Boolean> resetHwRaid) {
-            $.resetHwRaid = resetHwRaid;
-            return this;
-        }
-
-        /**
-         * @param resetHwRaid set to true to make a hardware raid reset.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder resetHwRaid(Boolean resetHwRaid) {
-            return resetHwRaid(Output.of(resetHwRaid));
-        }
-
-        /**
          * @param softRaidDevices soft raid devices.
          * 
          * @return builder
@@ -509,69 +260,6 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
          */
         public Builder softRaidDevices(Integer softRaidDevices) {
             return softRaidDevices(Output.of(softRaidDevices));
-        }
-
-        /**
-         * @param sshKeyName Name of the ssh key that should be installed. Password login will be disabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sshKeyName(@Nullable Output<String> sshKeyName) {
-            $.sshKeyName = sshKeyName;
-            return this;
-        }
-
-        /**
-         * @param sshKeyName Name of the ssh key that should be installed. Password login will be disabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sshKeyName(String sshKeyName) {
-            return sshKeyName(Output.of(sshKeyName));
-        }
-
-        /**
-         * @param useDistribKernel Use the distribution&#39;s native kernel instead of the recommended OVHcloud Kernel.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder useDistribKernel(@Nullable Output<Boolean> useDistribKernel) {
-            $.useDistribKernel = useDistribKernel;
-            return this;
-        }
-
-        /**
-         * @param useDistribKernel Use the distribution&#39;s native kernel instead of the recommended OVHcloud Kernel.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder useDistribKernel(Boolean useDistribKernel) {
-            return useDistribKernel(Output.of(useDistribKernel));
-        }
-
-        /**
-         * @param useSpla set to true to use SPLA.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder useSpla(@Nullable Output<Boolean> useSpla) {
-            $.useSpla = useSpla;
-            return this;
-        }
-
-        /**
-         * @param useSpla set to true to use SPLA.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder useSpla(Boolean useSpla) {
-            return useSpla(Output.of(useSpla));
         }
 
         public ServerInstallTaskDetailsArgs build() {

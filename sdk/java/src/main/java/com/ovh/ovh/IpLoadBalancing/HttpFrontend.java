@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Creates a backend HTTP server group (frontend) to be used by loadbalancing frontend(s)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -52,14 +54,14 @@ import javax.annotation.Nullable;
  *             .state("ok")
  *             .build());
  * 
- *         var farm80 = new HttpFarm("farm80", HttpFarmArgs.builder()        
+ *         var farm80 = new HttpFarm("farm80", HttpFarmArgs.builder()
  *             .displayName("ingress-8080-gra")
  *             .port(80)
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .zone("all")
  *             .build());
  * 
- *         var testfrontend = new HttpFrontend("testfrontend", HttpFrontendArgs.builder()        
+ *         var testfrontend = new HttpFrontend("testfrontend", HttpFrontendArgs.builder()
  *             .defaultFarmId(farm80.id())
  *             .displayName("ingress-8080-gra")
  *             .port("80,443")
@@ -71,7 +73,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### With HTTP Header
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -103,14 +109,14 @@ import javax.annotation.Nullable;
  *             .state("ok")
  *             .build());
  * 
- *         var farm80 = new HttpFarm("farm80", HttpFarmArgs.builder()        
+ *         var farm80 = new HttpFarm("farm80", HttpFarmArgs.builder()
  *             .displayName("ingress-8080-gra")
  *             .port(80)
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .zone("all")
  *             .build());
  * 
- *         var testfrontend = new HttpFrontend("testfrontend", HttpFrontendArgs.builder()        
+ *         var testfrontend = new HttpFrontend("testfrontend", HttpFrontendArgs.builder()
  *             .defaultFarmId(farm80.id())
  *             .displayName("ingress-8080-gra")
  *             .httpHeaders(            
@@ -125,6 +131,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by &#34;/&#34; e.g.
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/httpFrontend:HttpFrontend")
@@ -338,11 +349,18 @@ public class HttpFrontend extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HttpFrontend(String name, HttpFrontendArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/httpFrontend:HttpFrontend", name, args == null ? HttpFrontendArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:IpLoadBalancing/httpFrontend:HttpFrontend", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HttpFrontend(String name, Output<String> id, @Nullable HttpFrontendState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/httpFrontend:HttpFrontend", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HttpFrontendArgs makeArgs(HttpFrontendArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HttpFrontendArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

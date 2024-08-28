@@ -19,14 +19,14 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
     public static final KubeNodePoolTemplateSpecArgs Empty = new KubeNodePoolTemplateSpecArgs();
 
     /**
-     * Taints to apply to each node
+     * taints
      * 
      */
     @Import(name="taints", required=true)
     private Output<List<Map<String,Object>>> taints;
 
     /**
-     * @return Taints to apply to each node
+     * @return taints
      * 
      */
     public Output<List<Map<String,Object>>> taints() {
@@ -34,14 +34,14 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * If true, set nodes as un-schedulable
+     * unschedulable
      * 
      */
     @Import(name="unschedulable", required=true)
     private Output<Boolean> unschedulable;
 
     /**
-     * @return If true, set nodes as un-schedulable
+     * @return unschedulable
      * 
      */
     public Output<Boolean> unschedulable() {
@@ -74,7 +74,7 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param taints Taints to apply to each node
+         * @param taints taints
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param taints Taints to apply to each node
+         * @param taints taints
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param taints Taints to apply to each node
+         * @param taints taints
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param unschedulable If true, set nodes as un-schedulable
+         * @param unschedulable unschedulable
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param unschedulable If true, set nodes as un-schedulable
+         * @param unschedulable unschedulable
          * 
          * @return builder
          * 

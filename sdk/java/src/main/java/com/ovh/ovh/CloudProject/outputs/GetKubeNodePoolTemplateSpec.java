@@ -15,13 +15,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKubeNodePoolTemplateSpec {
+    /**
+     * @return taints
+     * 
+     */
     private @Nullable List<Map<String,Object>> taints;
+    /**
+     * @return unschedulable
+     * 
+     */
     private @Nullable Boolean unschedulable;
 
     private GetKubeNodePoolTemplateSpec() {}
+    /**
+     * @return taints
+     * 
+     */
     public List<Map<String,Object>> taints() {
         return this.taints == null ? List.of() : this.taints;
     }
+    /**
+     * @return unschedulable
+     * 
+     */
     public Optional<Boolean> unschedulable() {
         return Optional.ofNullable(this.unschedulable);
     }

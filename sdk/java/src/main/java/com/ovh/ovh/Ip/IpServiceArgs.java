@@ -3,6 +3,7 @@
 
 package com.ovh.ovh.Ip;
 
+import com.ovh.ovh.Ip.inputs.IpServiceOrderArgs;
 import com.ovh.ovh.Ip.inputs.IpServicePlanArgs;
 import com.ovh.ovh.Ip.inputs.IpServicePlanOptionArgs;
 import com.pulumi.core.Output;
@@ -32,6 +33,21 @@ public final class IpServiceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Details about an Order
+     * 
+     */
+    @Import(name="orders")
+    private @Nullable Output<List<IpServiceOrderArgs>> orders;
+
+    /**
+     * @return Details about an Order
+     * 
+     */
+    public Optional<Output<List<IpServiceOrderArgs>>> orders() {
+        return Optional.ofNullable(this.orders);
     }
 
     /**
@@ -106,6 +122,7 @@ public final class IpServiceArgs extends com.pulumi.resources.ResourceArgs {
 
     private IpServiceArgs(IpServiceArgs $) {
         this.description = $.description;
+        this.orders = $.orders;
         this.ovhSubsidiary = $.ovhSubsidiary;
         this.paymentMean = $.paymentMean;
         this.plan = $.plan;
@@ -149,6 +166,37 @@ public final class IpServiceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(@Nullable Output<List<IpServiceOrderArgs>> orders) {
+            $.orders = orders;
+            return this;
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(List<IpServiceOrderArgs> orders) {
+            return orders(Output.of(orders));
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(IpServiceOrderArgs... orders) {
+            return orders(List.of(orders));
         }
 
         /**

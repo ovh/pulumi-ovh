@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Provides a OVHcloud IP reverse.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -39,7 +41,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Reverse("test", ReverseArgs.builder()        
+ *         // Set the reverse of an IP
+ *         var test = new Reverse("test", ReverseArgs.builder()
  *             .ip("192.0.2.0/24")
  *             .ReverseIp("192.0.2.1")
  *             .ReverseValue("example.com")
@@ -49,13 +52,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * The resource can be imported using the `ip`, `ip_reverse` of the address, separated by &#34;|&#34; E.g., bash
+ * The resource can be imported using the `ip`, `ip_reverse` of the address, separated by &#34;|&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Ip/reverse:Reverse my_reverse &#39;2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42&#39;
+ * $ pulumi import ovh:Ip/reverse:Reverse my_reverse &#39;2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42&#39;
  * ```
  * 
  */
@@ -126,11 +132,18 @@ public class Reverse extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Reverse(String name, ReverseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Ip/reverse:Reverse", name, args == null ? ReverseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Ip/reverse:Reverse", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Reverse(String name, Output<String> id, @Nullable ReverseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Ip/reverse:Reverse", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ReverseArgs makeArgs(ReverseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReverseArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

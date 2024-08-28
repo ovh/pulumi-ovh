@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Add grant on a database in your private cloud database instance.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -39,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var userGrant = new PrivateDatabaseUserGrant("userGrant", PrivateDatabaseUserGrantArgs.builder()        
+ *         var userGrant = new PrivateDatabaseUserGrant("userGrant", PrivateDatabaseUserGrantArgs.builder()
  *             .databaseName("ovhcloud")
  *             .grant("admin")
  *             .serviceName("XXXXXX")
@@ -50,13 +52,14 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * OVHcloud database user&#39;s grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by &#34;/&#34; E.g.,
  * 
  * ```sh
- *  $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
+ * $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
  * ```
  * 
  */
@@ -149,11 +152,18 @@ public class PrivateDatabaseUserGrant extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public PrivateDatabaseUserGrant(String name, PrivateDatabaseUserGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant", name, args == null ? PrivateDatabaseUserGrantArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PrivateDatabaseUserGrant(String name, Output<String> id, @Nullable PrivateDatabaseUserGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PrivateDatabaseUserGrantArgs makeArgs(PrivateDatabaseUserGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PrivateDatabaseUserGrantArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

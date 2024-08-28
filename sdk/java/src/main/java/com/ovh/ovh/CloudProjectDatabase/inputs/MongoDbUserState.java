@@ -47,14 +47,14 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the user.
+     * Name of the user. A user named &#34;admin&#34; is mapped with already created admin{@literal @}admin user instead of creating a new user.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the user.
+     * @return Name of the user. A user named &#34;admin&#34; is mapped with already created admin{@literal @}admin user instead of creating a new user.
      * 
      */
     public Optional<Output<String>> name() {
@@ -92,16 +92,50 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Roles the user belongs to.
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
      * Available roles:
+     * * `backup{@literal @}admin`
+     * * `clusterAdmin{@literal @}admin`
+     * * `clusterManager{@literal @}admin`
+     * * `clusterMonitor{@literal @}admin`
+     * * `dbAdmin{@literal @}(defined db)`
+     * * `dbAdminAnyDatabase{@literal @}admin`
+     * * `dbOwner{@literal @}(defined db)`
+     * * `enableSharding{@literal @}(defined db)`
+     * * `hostManager{@literal @}admin`
+     * * `read{@literal @}(defined db)`
+     * * `readAnyDatabase{@literal @}admin`
+     * * `readWrite{@literal @}(defined db)`
+     * * `readWriteAnyDatabase{@literal @}admin`
+     * * `restore{@literal @}admin`
+     * * `root{@literal @}admin`
+     * * `userAdmin{@literal @}(defined db)`
+     * * `userAdminAnyDatabase{@literal @}admin`
      * 
      */
     @Import(name="roles")
     private @Nullable Output<List<String>> roles;
 
     /**
-     * @return Roles the user belongs to.
+     * @return Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
      * Available roles:
+     * * `backup{@literal @}admin`
+     * * `clusterAdmin{@literal @}admin`
+     * * `clusterManager{@literal @}admin`
+     * * `clusterMonitor{@literal @}admin`
+     * * `dbAdmin{@literal @}(defined db)`
+     * * `dbAdminAnyDatabase{@literal @}admin`
+     * * `dbOwner{@literal @}(defined db)`
+     * * `enableSharding{@literal @}(defined db)`
+     * * `hostManager{@literal @}admin`
+     * * `read{@literal @}(defined db)`
+     * * `readAnyDatabase{@literal @}admin`
+     * * `readWrite{@literal @}(defined db)`
+     * * `readWriteAnyDatabase{@literal @}admin`
+     * * `restore{@literal @}admin`
+     * * `root{@literal @}admin`
+     * * `userAdmin{@literal @}(defined db)`
+     * * `userAdminAnyDatabase{@literal @}admin`
      * 
      */
     public Optional<Output<List<String>>> roles() {
@@ -214,7 +248,7 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the user.
+         * @param name Name of the user. A user named &#34;admin&#34; is mapped with already created admin{@literal @}admin user instead of creating a new user.
          * 
          * @return builder
          * 
@@ -225,7 +259,7 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the user.
+         * @param name Name of the user. A user named &#34;admin&#34; is mapped with already created admin{@literal @}admin user instead of creating a new user.
          * 
          * @return builder
          * 
@@ -277,8 +311,25 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Roles the user belongs to.
+         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
          * Available roles:
+         * * `backup{@literal @}admin`
+         * * `clusterAdmin{@literal @}admin`
+         * * `clusterManager{@literal @}admin`
+         * * `clusterMonitor{@literal @}admin`
+         * * `dbAdmin{@literal @}(defined db)`
+         * * `dbAdminAnyDatabase{@literal @}admin`
+         * * `dbOwner{@literal @}(defined db)`
+         * * `enableSharding{@literal @}(defined db)`
+         * * `hostManager{@literal @}admin`
+         * * `read{@literal @}(defined db)`
+         * * `readAnyDatabase{@literal @}admin`
+         * * `readWrite{@literal @}(defined db)`
+         * * `readWriteAnyDatabase{@literal @}admin`
+         * * `restore{@literal @}admin`
+         * * `root{@literal @}admin`
+         * * `userAdmin{@literal @}(defined db)`
+         * * `userAdminAnyDatabase{@literal @}admin`
          * 
          * @return builder
          * 
@@ -289,8 +340,25 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Roles the user belongs to.
+         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
          * Available roles:
+         * * `backup{@literal @}admin`
+         * * `clusterAdmin{@literal @}admin`
+         * * `clusterManager{@literal @}admin`
+         * * `clusterMonitor{@literal @}admin`
+         * * `dbAdmin{@literal @}(defined db)`
+         * * `dbAdminAnyDatabase{@literal @}admin`
+         * * `dbOwner{@literal @}(defined db)`
+         * * `enableSharding{@literal @}(defined db)`
+         * * `hostManager{@literal @}admin`
+         * * `read{@literal @}(defined db)`
+         * * `readAnyDatabase{@literal @}admin`
+         * * `readWrite{@literal @}(defined db)`
+         * * `readWriteAnyDatabase{@literal @}admin`
+         * * `restore{@literal @}admin`
+         * * `root{@literal @}admin`
+         * * `userAdmin{@literal @}(defined db)`
+         * * `userAdminAnyDatabase{@literal @}admin`
          * 
          * @return builder
          * 
@@ -300,8 +368,25 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Roles the user belongs to.
+         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
          * Available roles:
+         * * `backup{@literal @}admin`
+         * * `clusterAdmin{@literal @}admin`
+         * * `clusterManager{@literal @}admin`
+         * * `clusterMonitor{@literal @}admin`
+         * * `dbAdmin{@literal @}(defined db)`
+         * * `dbAdminAnyDatabase{@literal @}admin`
+         * * `dbOwner{@literal @}(defined db)`
+         * * `enableSharding{@literal @}(defined db)`
+         * * `hostManager{@literal @}admin`
+         * * `read{@literal @}(defined db)`
+         * * `readAnyDatabase{@literal @}admin`
+         * * `readWrite{@literal @}(defined db)`
+         * * `readWriteAnyDatabase{@literal @}admin`
+         * * `restore{@literal @}admin`
+         * * `root{@literal @}admin`
+         * * `userAdmin{@literal @}(defined db)`
+         * * `userAdminAnyDatabase{@literal @}admin`
          * 
          * @return builder
          * 

@@ -13,10 +13,13 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -47,17 +50,19 @@ import javax.annotation.Nullable;
  *             .kernel("rescue64-pro")
  *             .build());
  * 
- *         var server = new ServerUpdate("server", ServerUpdateArgs.builder()        
+ *         var server = new ServerUpdate("server", ServerUpdateArgs.builder()
  *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
  *             .bootId(rescue.applyValue(getServerBootsResult -> getServerBootsResult.results()[0]))
  *             .monitoring(true)
  *             .state("ok")
+ *             .displayName("Some human-readable name")
  *             .build());
  * 
  *     }
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:Dedicated/serverUpdate:ServerUpdate")
@@ -75,6 +80,34 @@ public class ServerUpdate extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> bootId() {
         return this.bootId;
+    }
+    /**
+     * boot script of the server
+     * 
+     */
+    @Export(name="bootScript", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> bootScript;
+
+    /**
+     * @return boot script of the server
+     * 
+     */
+    public Output<Optional<String>> bootScript() {
+        return Codegen.optional(this.bootScript);
+    }
+    /**
+     * display name of the dedicated server
+     * 
+     */
+    @Export(name="displayName", refs={String.class}, tree="[0]")
+    private Output<String> displayName;
+
+    /**
+     * @return display name of the dedicated server
+     * 
+     */
+    public Output<String> displayName() {
+        return this.displayName;
     }
     /**
      * Icmp monitoring state
@@ -141,11 +174,18 @@ public class ServerUpdate extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ServerUpdate(String name, ServerUpdateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/serverUpdate:ServerUpdate", name, args == null ? ServerUpdateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Dedicated/serverUpdate:ServerUpdate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServerUpdate(String name, Output<String> id, @Nullable ServerUpdateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Dedicated/serverUpdate:ServerUpdate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServerUpdateArgs makeArgs(ServerUpdateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServerUpdateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

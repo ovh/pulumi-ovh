@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Creates an OIDC configuration in an OVHcloud Managed Kubernetes cluster.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -41,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_oidc = new KubeOidc("my-oidc", KubeOidcArgs.builder()        
+ *         var my_oidc = new KubeOidc("my-oidc", KubeOidcArgs.builder()
  *             .serviceName(var_.projectid())
  *             .kubeId(ovh_cloud_project_kube.mykube().id())
  *             .clientId("xxx")
@@ -59,13 +61,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed Kubernetes Service cluster OIDC can be imported using the tenant `service_name` and cluster id `kube_id` separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed Kubernetes Service cluster OIDC can be imported using the tenant `service_name` and cluster id `kube_id` separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProject/kubeOidc:KubeOidc my-oidc service_name/kube_id
+ * $ pulumi import ovh:CloudProject/kubeOidc:KubeOidc my-oidc service_name/kube_id
  * ```
  * 
  */
@@ -113,45 +118,101 @@ public class KubeOidc extends com.pulumi.resources.CustomResource {
     public Output<String> kubeId() {
         return this.kubeId;
     }
+    /**
+     * Content of the certificate for the CA, in Base64 format, that signed your identity provider&#39;s web certificate. Defaults to the host&#39;s root CAs.
+     * 
+     */
     @Export(name="oidcCaContent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oidcCaContent;
 
+    /**
+     * @return Content of the certificate for the CA, in Base64 format, that signed your identity provider&#39;s web certificate. Defaults to the host&#39;s root CAs.
+     * 
+     */
     public Output<Optional<String>> oidcCaContent() {
         return Codegen.optional(this.oidcCaContent);
     }
+    /**
+     * Array of JWT claim to use as the user&#39;s group. If the claim is present it must be an array of strings.
+     * 
+     */
     @Export(name="oidcGroupsClaims", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> oidcGroupsClaims;
 
+    /**
+     * @return Array of JWT claim to use as the user&#39;s group. If the claim is present it must be an array of strings.
+     * 
+     */
     public Output<Optional<List<String>>> oidcGroupsClaims() {
         return Codegen.optional(this.oidcGroupsClaims);
     }
+    /**
+     * Prefix prepended to group claims to prevent clashes with existing names (such as `system:groups`). For example, the value `oidc:` will create group names like `oidc:engineering` and `oidc:infra`.
+     * 
+     */
     @Export(name="oidcGroupsPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oidcGroupsPrefix;
 
+    /**
+     * @return Prefix prepended to group claims to prevent clashes with existing names (such as `system:groups`). For example, the value `oidc:` will create group names like `oidc:engineering` and `oidc:infra`.
+     * 
+     */
     public Output<Optional<String>> oidcGroupsPrefix() {
         return Codegen.optional(this.oidcGroupsPrefix);
     }
+    /**
+     * Array of `key=value` pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value.&#34;
+     * 
+     */
     @Export(name="oidcRequiredClaims", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> oidcRequiredClaims;
 
+    /**
+     * @return Array of `key=value` pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value.&#34;
+     * 
+     */
     public Output<Optional<List<String>>> oidcRequiredClaims() {
         return Codegen.optional(this.oidcRequiredClaims);
     }
+    /**
+     * Array of signing algorithms accepted. Default is `RS256`.
+     * 
+     */
     @Export(name="oidcSigningAlgs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> oidcSigningAlgs;
 
+    /**
+     * @return Array of signing algorithms accepted. Default is `RS256`.
+     * 
+     */
     public Output<Optional<List<String>>> oidcSigningAlgs() {
         return Codegen.optional(this.oidcSigningAlgs);
     }
+    /**
+     * JWT claim to use as the username. By default, sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
+     * 
+     */
     @Export(name="oidcUsernameClaim", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oidcUsernameClaim;
 
+    /**
+     * @return JWT claim to use as the username. By default, sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
+     * 
+     */
     public Output<Optional<String>> oidcUsernameClaim() {
         return Codegen.optional(this.oidcUsernameClaim);
     }
+    /**
+     * Prefix prepended to username claims to prevent clashes with existing names (such as `system:users`). For example, the value `oidc:` will create usernames like `oidc:jane.doe`. If this field isn&#39;t set and `oidc_username_claim` is a value other than email the prefix defaults to `issuer_url` where `issuer_url` is the value of `issuer_url.` The value - can be used to disable all prefixing.
+     * 
+     */
     @Export(name="oidcUsernamePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oidcUsernamePrefix;
 
+    /**
+     * @return Prefix prepended to username claims to prevent clashes with existing names (such as `system:users`). For example, the value `oidc:` will create usernames like `oidc:jane.doe`. If this field isn&#39;t set and `oidc_username_claim` is a value other than email the prefix defaults to `issuer_url` where `issuer_url` is the value of `issuer_url.` The value - can be used to disable all prefixing.
+     * 
+     */
     public Output<Optional<String>> oidcUsernamePrefix() {
         return Codegen.optional(this.oidcUsernamePrefix);
     }
@@ -192,11 +253,18 @@ public class KubeOidc extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KubeOidc(String name, KubeOidcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/kubeOidc:KubeOidc", name, args == null ? KubeOidcArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/kubeOidc:KubeOidc", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KubeOidc(String name, Output<String> id, @Nullable KubeOidcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/kubeOidc:KubeOidc", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KubeOidcArgs makeArgs(KubeOidcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KubeOidcArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

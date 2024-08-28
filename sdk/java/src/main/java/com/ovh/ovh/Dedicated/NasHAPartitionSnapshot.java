@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Provides a resource for managing **snapshot** to partitions on HA-NAS services
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -39,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_partition = new NasHAPartitionSnapshot("my-partition", NasHAPartitionSnapshotArgs.builder()        
+ *         var my_partition = new NasHAPartitionSnapshot("my-partition", NasHAPartitionSnapshotArgs.builder()
  *             .partitionName("my-partition")
  *             .serviceName("zpool-12345")
  *             .type("day-3")
@@ -49,13 +51,14 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
  * 
  * ```sh
- *  $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
+ * $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
  * ```
  * 
  */
@@ -126,11 +129,18 @@ public class NasHAPartitionSnapshot extends com.pulumi.resources.CustomResource 
      * @param options A bag of options that control this resource's behavior.
      */
     public NasHAPartitionSnapshot(String name, NasHAPartitionSnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot", name, args == null ? NasHAPartitionSnapshotArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NasHAPartitionSnapshot(String name, Output<String> id, @Nullable NasHAPartitionSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NasHAPartitionSnapshotArgs makeArgs(NasHAPartitionSnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NasHAPartitionSnapshotArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

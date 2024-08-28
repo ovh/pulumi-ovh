@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -72,7 +74,7 @@ import javax.annotation.Nullable;
  *             .optionsPlanCode("iplb-zone-lb1-rbx")
  *             .build());
  * 
- *         var iplb_lb1 = new LoadBalancer("iplb-lb1", LoadBalancerArgs.builder()        
+ *         var iplb_lb1 = new LoadBalancer("iplb-lb1", LoadBalancerArgs.builder()
  *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
  *             .displayName("my ip loadbalancing")
  *             .plan(LoadBalancerPlanArgs.builder()
@@ -91,6 +93,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/loadBalancer:LoadBalancer")
@@ -388,11 +391,18 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LoadBalancer(String name, LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/loadBalancer:LoadBalancer", name, args == null ? LoadBalancerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:IpLoadBalancing/loadBalancer:LoadBalancer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LoadBalancer(String name, Output<String> id, @Nullable LoadBalancerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/loadBalancer:LoadBalancer", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LoadBalancerArgs makeArgs(LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LoadBalancerArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

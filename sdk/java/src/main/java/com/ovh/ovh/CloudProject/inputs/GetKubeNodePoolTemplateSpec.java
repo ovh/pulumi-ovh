@@ -18,16 +18,32 @@ public final class GetKubeNodePoolTemplateSpec extends com.pulumi.resources.Invo
 
     public static final GetKubeNodePoolTemplateSpec Empty = new GetKubeNodePoolTemplateSpec();
 
+    /**
+     * taints
+     * 
+     */
     @Import(name="taints")
     private @Nullable List<Map<String,Object>> taints;
 
+    /**
+     * @return taints
+     * 
+     */
     public Optional<List<Map<String,Object>>> taints() {
         return Optional.ofNullable(this.taints);
     }
 
+    /**
+     * unschedulable
+     * 
+     */
     @Import(name="unschedulable")
     private @Nullable Boolean unschedulable;
 
+    /**
+     * @return unschedulable
+     * 
+     */
     public Optional<Boolean> unschedulable() {
         return Optional.ofNullable(this.unschedulable);
     }
@@ -57,15 +73,33 @@ public final class GetKubeNodePoolTemplateSpec extends com.pulumi.resources.Invo
             $ = new GetKubeNodePoolTemplateSpec(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param taints taints
+         * 
+         * @return builder
+         * 
+         */
         public Builder taints(@Nullable List<Map<String,Object>> taints) {
             $.taints = taints;
             return this;
         }
 
+        /**
+         * @param taints taints
+         * 
+         * @return builder
+         * 
+         */
         public Builder taints(Map<String,Object>... taints) {
             return taints(List.of(taints));
         }
 
+        /**
+         * @param unschedulable unschedulable
+         * 
+         * @return builder
+         * 
+         */
         public Builder unschedulable(@Nullable Boolean unschedulable) {
             $.unschedulable = unschedulable;
             return this;

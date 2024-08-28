@@ -15,14 +15,14 @@ public final class GetInstallationTemplateArgs extends com.pulumi.resources.Invo
     public static final GetInstallationTemplateArgs Empty = new GetInstallationTemplateArgs();
 
     /**
-     * This template name
+     * Template name.
      * 
      */
     @Import(name="templateName", required=true)
     private Output<String> templateName;
 
     /**
-     * @return This template name
+     * @return Template name.
      * 
      */
     public Output<String> templateName() {
@@ -54,7 +54,7 @@ public final class GetInstallationTemplateArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param templateName This template name
+         * @param templateName Template name.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetInstallationTemplateArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param templateName This template name
+         * @param templateName Template name.
          * 
          * @return builder
          * 

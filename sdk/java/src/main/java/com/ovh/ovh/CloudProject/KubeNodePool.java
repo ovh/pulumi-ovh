@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -23,6 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Create a simple node pool in your Kubernetes cluster:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -45,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var nodePool = new KubeNodePool("nodePool", KubeNodePoolArgs.builder()        
+ *         var nodePool = new KubeNodePool("nodePool", KubeNodePoolArgs.builder()
  *             .desiredNodes(3)
  *             .flavorName("b2-7")
  *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
@@ -58,8 +61,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Create an advanced node pool in your Kubernetes cluster:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -85,7 +91,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool = new KubeNodePool("pool", KubeNodePoolArgs.builder()        
+ *         var pool = new KubeNodePool("pool", KubeNodePoolArgs.builder()
  *             .desiredNodes(3)
  *             .flavorName("b2-7")
  *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
@@ -98,9 +104,7 @@ import javax.annotation.Nullable;
  *                         Map.entry("k1", "v1"),
  *                         Map.entry("k2", "v2")
  *                     ))
- *                     .finalizers(                    
- *                         "ovhcloud.com/v1beta1",
- *                         "ovhcloud.com/v1")
+ *                     .finalizers()
  *                     .labels(Map.ofEntries(
  *                         Map.entry("k3", "v3"),
  *                         Map.entry("k4", "v4")
@@ -121,13 +125,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
+ * $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
  * ```
  * 
  */
@@ -149,7 +156,6 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enable auto-scaling for the pool. Default to `false`.
-     * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      * 
      */
     @Export(name="autoscale", refs={Boolean.class}, tree="[0]")
@@ -157,11 +163,60 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enable auto-scaling for the pool. Default to `false`.
-     * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      * 
      */
     public Output<Boolean> autoscale() {
         return this.autoscale;
+    }
+    /**
+     * scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
+     * 
+     */
+    @Export(name="autoscalingScaleDownUnneededTimeSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> autoscalingScaleDownUnneededTimeSeconds;
+
+    /**
+     * @return scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
+     * 
+     */
+    public Output<Integer> autoscalingScaleDownUnneededTimeSeconds() {
+        return this.autoscalingScaleDownUnneededTimeSeconds;
+    }
+    /**
+     * scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
+     * 
+     */
+    @Export(name="autoscalingScaleDownUnreadyTimeSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> autoscalingScaleDownUnreadyTimeSeconds;
+
+    /**
+     * @return scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
+     * 
+     */
+    public Output<Integer> autoscalingScaleDownUnreadyTimeSeconds() {
+        return this.autoscalingScaleDownUnreadyTimeSeconds;
+    }
+    /**
+     * scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+     * 
+     */
+    @Export(name="autoscalingScaleDownUtilizationThreshold", refs={Double.class}, tree="[0]")
+    private Output<Double> autoscalingScaleDownUtilizationThreshold;
+
+    /**
+     * @return scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+     * 
+     */
+    public Output<Double> autoscalingScaleDownUtilizationThreshold() {
+        return this.autoscalingScaleDownUtilizationThreshold;
     }
     /**
      * Number of nodes which are actually ready in the pool
@@ -440,11 +495,18 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KubeNodePool(String name, KubeNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/kubeNodePool:KubeNodePool", name, args == null ? KubeNodePoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/kubeNodePool:KubeNodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KubeNodePool(String name, Output<String> id, @Nullable KubeNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/kubeNodePool:KubeNodePool", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KubeNodePoolArgs makeArgs(KubeNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KubeNodePoolArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

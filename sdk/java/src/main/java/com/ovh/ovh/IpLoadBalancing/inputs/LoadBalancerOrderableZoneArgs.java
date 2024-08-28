@@ -31,14 +31,14 @@ public final class LoadBalancerOrderableZoneArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Plan code
+     * The billing planCode for this zone
      * 
      */
     @Import(name="planCode")
     private @Nullable Output<String> planCode;
 
     /**
-     * @return Plan code
+     * @return The billing planCode for this zone
      * 
      */
     public Optional<Output<String>> planCode() {
@@ -92,7 +92,7 @@ public final class LoadBalancerOrderableZoneArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param planCode Plan code
+         * @param planCode The billing planCode for this zone
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class LoadBalancerOrderableZoneArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param planCode Plan code
+         * @param planCode The billing planCode for this zone
          * 
          * @return builder
          * 

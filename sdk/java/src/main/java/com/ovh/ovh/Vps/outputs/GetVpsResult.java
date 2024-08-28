@@ -26,8 +26,6 @@ public final class GetVpsResult {
     private String cluster;
     /**
      * @return The datacenter in which the vps is located
-     * * `datacenter.longname` - The fullname of the datacenter (ex: &#34;Strasbourg SBG1&#34;)
-     * * `datacenter.name` - The short name of the datacenter (ex: &#34;sbg1)
      * 
      */
     private Map<String,String> datacenter;
@@ -58,9 +56,6 @@ public final class GetVpsResult {
     private Integer memory;
     /**
      * @return A dict describing the type of vps.
-     * * `model.name` - The model name (ex: model1)
-     * * `model.offer` - The model human description (ex: &#34;VPS 2016 SSD 1&#34;)
-     * * `model.version` - The model version (ex: &#34;2017v2&#34;)
      * 
      */
     private Map<String,String> model;
@@ -119,8 +114,6 @@ public final class GetVpsResult {
     }
     /**
      * @return The datacenter in which the vps is located
-     * * `datacenter.longname` - The fullname of the datacenter (ex: &#34;Strasbourg SBG1&#34;)
-     * * `datacenter.name` - The short name of the datacenter (ex: &#34;sbg1)
      * 
      */
     public Map<String,String> datacenter() {
@@ -163,9 +156,6 @@ public final class GetVpsResult {
     }
     /**
      * @return A dict describing the type of vps.
-     * * `model.name` - The model name (ex: model1)
-     * * `model.offer` - The model human description (ex: &#34;VPS 2016 SSD 1&#34;)
-     * * `model.version` - The model version (ex: &#34;2017v2&#34;)
      * 
      */
     public Map<String,String> model() {

@@ -30,6 +30,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -60,6 +62,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateDatabaseResult> getPrivateDatabase(GetPrivateDatabaseArgs args) {
@@ -69,6 +72,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -99,6 +104,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseResult> getPrivateDatabasePlain(GetPrivateDatabasePlainArgs args) {
@@ -108,6 +114,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -138,6 +146,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateDatabaseResult> getPrivateDatabase(GetPrivateDatabaseArgs args, InvokeOptions options) {
@@ -147,6 +156,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -177,6 +188,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseResult> getPrivateDatabasePlain(GetPrivateDatabasePlainArgs args, InvokeOptions options) {
@@ -186,6 +198,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase whitelist.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -217,6 +231,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateDatabaseAllowlistResult> getPrivateDatabaseAllowlist(GetPrivateDatabaseAllowlistArgs args) {
@@ -226,6 +241,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase whitelist.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -257,6 +274,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseAllowlistResult> getPrivateDatabaseAllowlistPlain(GetPrivateDatabaseAllowlistPlainArgs args) {
@@ -266,6 +284,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase whitelist.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -297,6 +317,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateDatabaseAllowlistResult> getPrivateDatabaseAllowlist(GetPrivateDatabaseAllowlistArgs args, InvokeOptions options) {
@@ -306,6 +327,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase whitelist.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -337,6 +360,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseAllowlistResult> getPrivateDatabaseAllowlistPlain(GetPrivateDatabaseAllowlistPlainArgs args, InvokeOptions options) {
@@ -346,6 +370,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -377,6 +403,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateDatabaseDbResult> getPrivateDatabaseDb(GetPrivateDatabaseDbArgs args) {
@@ -386,6 +413,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -417,6 +446,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseDbResult> getPrivateDatabaseDbPlain(GetPrivateDatabaseDbPlainArgs args) {
@@ -426,6 +456,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -457,6 +489,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateDatabaseDbResult> getPrivateDatabaseDb(GetPrivateDatabaseDbArgs args, InvokeOptions options) {
@@ -466,6 +499,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -497,6 +532,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseDbResult> getPrivateDatabaseDbPlain(GetPrivateDatabaseDbPlainArgs args, InvokeOptions options) {
@@ -506,6 +542,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -537,6 +575,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateDatabaseUserResult> getPrivateDatabaseUser(GetPrivateDatabaseUserArgs args) {
@@ -546,6 +585,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -577,6 +618,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseUserResult> getPrivateDatabaseUserPlain(GetPrivateDatabaseUserPlainArgs args) {
@@ -586,6 +628,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -617,6 +661,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateDatabaseUserResult> getPrivateDatabaseUser(GetPrivateDatabaseUserArgs args, InvokeOptions options) {
@@ -626,6 +671,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -657,6 +704,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseUserResult> getPrivateDatabaseUserPlain(GetPrivateDatabaseUserPlainArgs args, InvokeOptions options) {
@@ -666,6 +714,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user grant.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -698,6 +748,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateDatabaseUserGrantResult> getPrivateDatabaseUserGrant(GetPrivateDatabaseUserGrantArgs args) {
@@ -707,6 +758,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user grant.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -739,6 +792,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseUserGrantResult> getPrivateDatabaseUserGrantPlain(GetPrivateDatabaseUserGrantPlainArgs args) {
@@ -748,6 +802,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user grant.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -780,6 +836,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateDatabaseUserGrantResult> getPrivateDatabaseUserGrant(GetPrivateDatabaseUserGrantArgs args, InvokeOptions options) {
@@ -789,6 +846,8 @@ public final class HostingFunctions {
      * Use this data source to retrieve information about an hosting privatedatabase user grant.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -821,6 +880,7 @@ public final class HostingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateDatabaseUserGrantResult> getPrivateDatabaseUserGrantPlain(GetPrivateDatabaseUserGrantPlainArgs args, InvokeOptions options) {

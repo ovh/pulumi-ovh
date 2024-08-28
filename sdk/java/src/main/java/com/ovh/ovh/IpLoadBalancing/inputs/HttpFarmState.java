@@ -48,14 +48,14 @@ public final class HttpFarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Port for backends to receive traffic on.
+     * Port attached to your farm ([1..49151]). Inherited from frontend if null
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return Port for backends to receive traffic on.
+     * @return Port attached to your farm ([1..49151]). Inherited from frontend if null
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -211,7 +211,7 @@ public final class HttpFarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port Port for backends to receive traffic on.
+         * @param port Port attached to your farm ([1..49151]). Inherited from frontend if null
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class HttpFarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port Port for backends to receive traffic on.
+         * @param port Port attached to your farm ([1..49151]). Inherited from frontend if null
          * 
          * @return builder
          * 

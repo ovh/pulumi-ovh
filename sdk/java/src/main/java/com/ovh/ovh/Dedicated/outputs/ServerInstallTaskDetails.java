@@ -14,15 +14,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerInstallTaskDetails {
     /**
-     * @return Template change log details.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    private @Nullable String changeLog;
-    /**
      * @return Set up the server using the provided hostname instead of the default hostname.
      * 
      */
@@ -33,22 +24,7 @@ public final class ServerInstallTaskDetails {
      */
     private @Nullable Integer diskGroupId;
     /**
-     * @return set to true to install RTM.
-     * 
-     */
-    private @Nullable Boolean installRtm;
-    /**
-     * @return set to true to install sql server (Windows template only).
-     * 
-     */
-    private @Nullable Boolean installSqlServer;
-    /**
-     * @return language.
-     * 
-     */
-    private @Nullable String language;
-    /**
-     * @return set to true to disable RAID.
+     * @return Set to true to disable RAID.
      * 
      */
     private @Nullable Boolean noRaid;
@@ -63,43 +39,12 @@ public final class ServerInstallTaskDetails {
      */
     private @Nullable String postInstallationScriptReturn;
     /**
-     * @return set to true to make a hardware raid reset.
-     * 
-     */
-    private @Nullable Boolean resetHwRaid;
-    /**
      * @return soft raid devices.
      * 
      */
     private @Nullable Integer softRaidDevices;
-    /**
-     * @return Name of the ssh key that should be installed. Password login will be disabled.
-     * 
-     */
-    private @Nullable String sshKeyName;
-    /**
-     * @return Use the distribution&#39;s native kernel instead of the recommended OVHcloud Kernel.
-     * 
-     */
-    private @Nullable Boolean useDistribKernel;
-    /**
-     * @return set to true to use SPLA.
-     * 
-     */
-    private @Nullable Boolean useSpla;
 
     private ServerInstallTaskDetails() {}
-    /**
-     * @return Template change log details.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    public Optional<String> changeLog() {
-        return Optional.ofNullable(this.changeLog);
-    }
     /**
      * @return Set up the server using the provided hostname instead of the default hostname.
      * 
@@ -115,28 +60,7 @@ public final class ServerInstallTaskDetails {
         return Optional.ofNullable(this.diskGroupId);
     }
     /**
-     * @return set to true to install RTM.
-     * 
-     */
-    public Optional<Boolean> installRtm() {
-        return Optional.ofNullable(this.installRtm);
-    }
-    /**
-     * @return set to true to install sql server (Windows template only).
-     * 
-     */
-    public Optional<Boolean> installSqlServer() {
-        return Optional.ofNullable(this.installSqlServer);
-    }
-    /**
-     * @return language.
-     * 
-     */
-    public Optional<String> language() {
-        return Optional.ofNullable(this.language);
-    }
-    /**
-     * @return set to true to disable RAID.
+     * @return Set to true to disable RAID.
      * 
      */
     public Optional<Boolean> noRaid() {
@@ -157,39 +81,11 @@ public final class ServerInstallTaskDetails {
         return Optional.ofNullable(this.postInstallationScriptReturn);
     }
     /**
-     * @return set to true to make a hardware raid reset.
-     * 
-     */
-    public Optional<Boolean> resetHwRaid() {
-        return Optional.ofNullable(this.resetHwRaid);
-    }
-    /**
      * @return soft raid devices.
      * 
      */
     public Optional<Integer> softRaidDevices() {
         return Optional.ofNullable(this.softRaidDevices);
-    }
-    /**
-     * @return Name of the ssh key that should be installed. Password login will be disabled.
-     * 
-     */
-    public Optional<String> sshKeyName() {
-        return Optional.ofNullable(this.sshKeyName);
-    }
-    /**
-     * @return Use the distribution&#39;s native kernel instead of the recommended OVHcloud Kernel.
-     * 
-     */
-    public Optional<Boolean> useDistribKernel() {
-        return Optional.ofNullable(this.useDistribKernel);
-    }
-    /**
-     * @return set to true to use SPLA.
-     * 
-     */
-    public Optional<Boolean> useSpla() {
-        return Optional.ofNullable(this.useSpla);
     }
 
     public static Builder builder() {
@@ -201,45 +97,23 @@ public final class ServerInstallTaskDetails {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String changeLog;
         private @Nullable String customHostname;
         private @Nullable Integer diskGroupId;
-        private @Nullable Boolean installRtm;
-        private @Nullable Boolean installSqlServer;
-        private @Nullable String language;
         private @Nullable Boolean noRaid;
         private @Nullable String postInstallationScriptLink;
         private @Nullable String postInstallationScriptReturn;
-        private @Nullable Boolean resetHwRaid;
         private @Nullable Integer softRaidDevices;
-        private @Nullable String sshKeyName;
-        private @Nullable Boolean useDistribKernel;
-        private @Nullable Boolean useSpla;
         public Builder() {}
         public Builder(ServerInstallTaskDetails defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.changeLog = defaults.changeLog;
     	      this.customHostname = defaults.customHostname;
     	      this.diskGroupId = defaults.diskGroupId;
-    	      this.installRtm = defaults.installRtm;
-    	      this.installSqlServer = defaults.installSqlServer;
-    	      this.language = defaults.language;
     	      this.noRaid = defaults.noRaid;
     	      this.postInstallationScriptLink = defaults.postInstallationScriptLink;
     	      this.postInstallationScriptReturn = defaults.postInstallationScriptReturn;
-    	      this.resetHwRaid = defaults.resetHwRaid;
     	      this.softRaidDevices = defaults.softRaidDevices;
-    	      this.sshKeyName = defaults.sshKeyName;
-    	      this.useDistribKernel = defaults.useDistribKernel;
-    	      this.useSpla = defaults.useSpla;
         }
 
-        @CustomType.Setter
-        public Builder changeLog(@Nullable String changeLog) {
-
-            this.changeLog = changeLog;
-            return this;
-        }
         @CustomType.Setter
         public Builder customHostname(@Nullable String customHostname) {
 
@@ -250,24 +124,6 @@ public final class ServerInstallTaskDetails {
         public Builder diskGroupId(@Nullable Integer diskGroupId) {
 
             this.diskGroupId = diskGroupId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder installRtm(@Nullable Boolean installRtm) {
-
-            this.installRtm = installRtm;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder installSqlServer(@Nullable Boolean installSqlServer) {
-
-            this.installSqlServer = installSqlServer;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder language(@Nullable String language) {
-
-            this.language = language;
             return this;
         }
         @CustomType.Setter
@@ -289,51 +145,19 @@ public final class ServerInstallTaskDetails {
             return this;
         }
         @CustomType.Setter
-        public Builder resetHwRaid(@Nullable Boolean resetHwRaid) {
-
-            this.resetHwRaid = resetHwRaid;
-            return this;
-        }
-        @CustomType.Setter
         public Builder softRaidDevices(@Nullable Integer softRaidDevices) {
 
             this.softRaidDevices = softRaidDevices;
             return this;
         }
-        @CustomType.Setter
-        public Builder sshKeyName(@Nullable String sshKeyName) {
-
-            this.sshKeyName = sshKeyName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder useDistribKernel(@Nullable Boolean useDistribKernel) {
-
-            this.useDistribKernel = useDistribKernel;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder useSpla(@Nullable Boolean useSpla) {
-
-            this.useSpla = useSpla;
-            return this;
-        }
         public ServerInstallTaskDetails build() {
             final var _resultValue = new ServerInstallTaskDetails();
-            _resultValue.changeLog = changeLog;
             _resultValue.customHostname = customHostname;
             _resultValue.diskGroupId = diskGroupId;
-            _resultValue.installRtm = installRtm;
-            _resultValue.installSqlServer = installSqlServer;
-            _resultValue.language = language;
             _resultValue.noRaid = noRaid;
             _resultValue.postInstallationScriptLink = postInstallationScriptLink;
             _resultValue.postInstallationScriptReturn = postInstallationScriptReturn;
-            _resultValue.resetHwRaid = resetHwRaid;
             _resultValue.softRaidDevices = softRaidDevices;
-            _resultValue.sshKeyName = sshKeyName;
-            _resultValue.useDistribKernel = useDistribKernel;
-            _resultValue.useSpla = useSpla;
             return _resultValue;
         }
     }

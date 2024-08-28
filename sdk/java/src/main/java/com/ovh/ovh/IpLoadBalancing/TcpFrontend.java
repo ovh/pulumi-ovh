@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Creates a backend server group (frontend) to be used by loadbalancing frontend(s)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -52,14 +54,14 @@ import javax.annotation.Nullable;
  *             .state("ok")
  *             .build());
  * 
- *         var farm80 = new TcpFarm("farm80", TcpFarmArgs.builder()        
+ *         var farm80 = new TcpFarm("farm80", TcpFarmArgs.builder()
  *             .displayName("ingress-8080-gra")
  *             .port(80)
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .zone("all")
  *             .build());
  * 
- *         var testfrontend = new TcpFrontend("testfrontend", TcpFrontendArgs.builder()        
+ *         var testfrontend = new TcpFrontend("testfrontend", TcpFrontendArgs.builder()
  *             .defaultFarmId(farm80.id())
  *             .displayName("ingress-8080-gra")
  *             .port("80,443")
@@ -71,6 +73,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by &#34;/&#34; e.g.
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/tcpFrontend:TcpFrontend")
@@ -130,6 +137,20 @@ public class TcpFrontend extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> defaultSslId() {
         return this.defaultSslId;
+    }
+    /**
+     * Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+     * 
+     */
+    @Export(name="deniedSources", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> deniedSources;
+
+    /**
+     * @return Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+     * 
+     */
+    public Output<Optional<List<String>>> deniedSources() {
+        return Codegen.optional(this.deniedSources);
     }
     /**
      * Disable your frontend. Default: &#39;false&#39;
@@ -242,11 +263,18 @@ public class TcpFrontend extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TcpFrontend(String name, TcpFrontendArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/tcpFrontend:TcpFrontend", name, args == null ? TcpFrontendArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:IpLoadBalancing/tcpFrontend:TcpFrontend", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TcpFrontend(String name, Output<String> id, @Nullable TcpFrontendState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/tcpFrontend:TcpFrontend", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TcpFrontendArgs makeArgs(TcpFrontendArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TcpFrontendArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

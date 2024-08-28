@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a resource for managing access rights to partitions on HA-NAS services
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -40,7 +42,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_partition = new NasHAPartitionAccess("my-partition", NasHAPartitionAccessArgs.builder()        
+ *         var my_partition = new NasHAPartitionAccess("my-partition", NasHAPartitionAccessArgs.builder()
+ *             .aclDescription("Description of the ACL")
  *             .ip("123.123.123.123/32")
  *             .partitionName("my-partition")
  *             .serviceName("zpool-12345")
@@ -51,41 +54,56 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
  * 
  * ```sh
- *  $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+ * $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
  * ```
  * 
  */
 @ResourceType(type="ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess")
 public class NasHAPartitionAccess extends com.pulumi.resources.CustomResource {
     /**
-     * ip block in x.x.x.x/x format
+     * A brief description of the acl
+     * 
+     */
+    @Export(name="aclDescription", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> aclDescription;
+
+    /**
+     * @return A brief description of the acl
+     * 
+     */
+    public Output<Optional<String>> aclDescription() {
+        return Codegen.optional(this.aclDescription);
+    }
+    /**
+     * IP block in x.x.x.x/x format
      * 
      */
     @Export(name="ip", refs={String.class}, tree="[0]")
     private Output<String> ip;
 
     /**
-     * @return ip block in x.x.x.x/x format
+     * @return IP block in x.x.x.x/x format
      * 
      */
     public Output<String> ip() {
         return this.ip;
     }
     /**
-     * name of the partition
+     * Name of the partition
      * 
      */
     @Export(name="partitionName", refs={String.class}, tree="[0]")
     private Output<String> partitionName;
 
     /**
-     * @return name of the partition
+     * @return Name of the partition
      * 
      */
     public Output<String> partitionName() {
@@ -106,14 +124,14 @@ public class NasHAPartitionAccess extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * one of &#34;readwrite&#34;, &#34;readonly&#34;
+     * One of &#34;readwrite&#34;, &#34;readonly&#34;
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return one of &#34;readwrite&#34;, &#34;readonly&#34;
+     * @return One of &#34;readwrite&#34;, &#34;readonly&#34;
      * 
      */
     public Output<Optional<String>> type() {
@@ -142,11 +160,18 @@ public class NasHAPartitionAccess extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NasHAPartitionAccess(String name, NasHAPartitionAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess", name, args == null ? NasHAPartitionAccessArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NasHAPartitionAccess(String name, Output<String> id, @Nullable NasHAPartitionAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NasHAPartitionAccessArgs makeArgs(NasHAPartitionAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NasHAPartitionAccessArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

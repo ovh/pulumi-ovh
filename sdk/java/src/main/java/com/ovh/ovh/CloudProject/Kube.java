@@ -24,10 +24,12 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
+ * $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
  * ```
  * 
  */
@@ -150,6 +152,20 @@ public class Kube extends com.pulumi.resources.CustomResource {
         return this.kubeconfigAttributes;
     }
     /**
+     * Openstack private network (or vRack) ID to use for load balancers.
+     * 
+     */
+    @Export(name="loadBalancersSubnetId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> loadBalancersSubnetId;
+
+    /**
+     * @return Openstack private network (or vRack) ID to use for load balancers.
+     * 
+     */
+    public Output<Optional<String>> loadBalancersSubnetId() {
+        return Codegen.optional(this.loadBalancersSubnetId);
+    }
+    /**
      * The name of the kubernetes cluster.
      * 
      */
@@ -178,6 +194,20 @@ public class Kube extends com.pulumi.resources.CustomResource {
         return this.nextUpgradeVersions;
     }
     /**
+     * Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+     * 
+     */
+    @Export(name="nodesSubnetId", refs={String.class}, tree="[0]")
+    private Output<String> nodesSubnetId;
+
+    /**
+     * @return Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+     * 
+     */
+    public Output<String> nodesSubnetId() {
+        return this.nodesSubnetId;
+    }
+    /**
      * Cluster nodes URL.
      * 
      */
@@ -192,14 +222,14 @@ public class Kube extends com.pulumi.resources.CustomResource {
         return this.nodesUrl;
     }
     /**
-     * The private network configuration
+     * The private network configuration. If this is set then the 2 parameters below shall be defined.
      * 
      */
     @Export(name="privateNetworkConfiguration", refs={KubePrivateNetworkConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ KubePrivateNetworkConfiguration> privateNetworkConfiguration;
 
     /**
-     * @return The private network configuration
+     * @return The private network configuration. If this is set then the 2 parameters below shall be defined.
      * 
      */
     public Output<Optional<KubePrivateNetworkConfiguration>> privateNetworkConfiguration() {
@@ -330,11 +360,18 @@ public class Kube extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Kube(String name, KubeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/kube:Kube", name, args == null ? KubeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/kube:Kube", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Kube(String name, Output<String> id, @Nullable KubeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/kube:Kube", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KubeArgs makeArgs(KubeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KubeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

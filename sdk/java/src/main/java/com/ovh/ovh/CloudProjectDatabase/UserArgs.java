@@ -49,14 +49,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
+     * Name of the user. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
+     * @return Name of the user. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
      * 
      */
     public Optional<Output<String>> name() {
@@ -168,7 +168,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
+         * @param name Name of the user. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
+         * @param name Name of the user. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
          * 
          * @return builder
          * 

@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a OVHcloud domain zone redirection.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -40,7 +42,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new ZoneRedirection("test", ZoneRedirectionArgs.builder()        
+ *         // Add a redirection to a sub-domain
+ *         var test = new ZoneRedirection("test", ZoneRedirectionArgs.builder()
  *             .subdomain("test")
  *             .target("http://www.ovh")
  *             .type("visiblePermanent")
@@ -51,6 +54,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:Domain/zoneRedirection:ZoneRedirection")
@@ -176,11 +180,18 @@ public class ZoneRedirection extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ZoneRedirection(String name, ZoneRedirectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Domain/zoneRedirection:ZoneRedirection", name, args == null ? ZoneRedirectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Domain/zoneRedirection:ZoneRedirection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ZoneRedirection(String name, Output<String> id, @Nullable ZoneRedirectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Domain/zoneRedirection:ZoneRedirection", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ZoneRedirectionArgs makeArgs(ZoneRedirectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ZoneRedirectionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

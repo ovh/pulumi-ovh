@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Creates a namespace for a M3DB cluster associated with a public cloud project.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -49,7 +51,7 @@ import javax.annotation.Nullable;
  *             .id("ZZZ")
  *             .build());
  * 
- *         var namespace = new M3DbNamespace("namespace", M3DbNamespaceArgs.builder()        
+ *         var namespace = new M3DbNamespace("namespace", M3DbNamespaceArgs.builder()
  *             .serviceName(m3db.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
  *             .clusterId(m3db.applyValue(getDatabaseResult -> getDatabaseResult.id()))
  *             .resolution("P2D")
@@ -60,13 +62,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
  * ```
  * 
  */
@@ -265,11 +270,18 @@ public class M3DbNamespace extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public M3DbNamespace(String name, M3DbNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace", name, args == null ? M3DbNamespaceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private M3DbNamespace(String name, Output<String> id, @Nullable M3DbNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace", name, state, makeResourceOptions(options, id));
+    }
+
+    private static M3DbNamespaceArgs makeArgs(M3DbNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? M3DbNamespaceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

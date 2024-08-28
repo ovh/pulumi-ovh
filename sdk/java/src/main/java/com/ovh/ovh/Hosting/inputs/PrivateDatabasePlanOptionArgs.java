@@ -49,14 +49,14 @@ public final class PrivateDatabasePlanOptionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * duration.
+     * Service duration
      * 
      */
     @Import(name="duration", required=true)
     private Output<String> duration;
 
     /**
-     * @return duration.
+     * @return Service duration
      * 
      */
     public Output<String> duration() {
@@ -64,14 +64,14 @@ public final class PrivateDatabasePlanOptionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Plan code.
+     * Plan code
      * 
      */
     @Import(name="planCode", required=true)
     private Output<String> planCode;
 
     /**
-     * @return Plan code.
+     * @return Plan code
      * 
      */
     public Output<String> planCode() {
@@ -174,7 +174,7 @@ public final class PrivateDatabasePlanOptionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param duration duration.
+         * @param duration Service duration
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class PrivateDatabasePlanOptionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param duration duration.
+         * @param duration Service duration
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class PrivateDatabasePlanOptionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param planCode Plan code.
+         * @param planCode Plan code
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class PrivateDatabasePlanOptionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param planCode Plan code.
+         * @param planCode Plan code
          * 
          * @return builder
          * 

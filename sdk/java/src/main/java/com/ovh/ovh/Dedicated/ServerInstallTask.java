@@ -6,6 +6,7 @@ package com.ovh.ovh.Dedicated;
 import com.ovh.ovh.Dedicated.ServerInstallTaskArgs;
 import com.ovh.ovh.Dedicated.inputs.ServerInstallTaskState;
 import com.ovh.ovh.Dedicated.outputs.ServerInstallTaskDetails;
+import com.ovh.ovh.Dedicated.outputs.ServerInstallTaskUserMetadata;
 import com.ovh.ovh.Utilities;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -13,11 +14,15 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * Using a custom template based on an OVHCloud template
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -27,14 +32,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
  * import com.pulumi.ovh.Dedicated.inputs.GetServerBootsArgs;
- * import com.pulumi.ovh.Me.SshKey;
- * import com.pulumi.ovh.Me.SshKeyArgs;
  * import com.pulumi.ovh.Me.InstallationTemplate;
  * import com.pulumi.ovh.Me.InstallationTemplateArgs;
  * import com.pulumi.ovh.Me.inputs.InstallationTemplateCustomizationArgs;
  * import com.pulumi.ovh.Dedicated.ServerInstallTask;
  * import com.pulumi.ovh.Dedicated.ServerInstallTaskArgs;
  * import com.pulumi.ovh.Dedicated.inputs.ServerInstallTaskDetailsArgs;
+ * import com.pulumi.ovh.Dedicated.inputs.ServerInstallTaskUserMetadataArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,26 +57,25 @@ import javax.annotation.Nullable;
  *             .bootType("rescue")
  *             .build());
  * 
- *         var key = new SshKey("key", SshKeyArgs.builder()        
- *             .keyName("mykey")
- *             .key("ssh-ed25519 AAAAC3...")
- *             .build());
- * 
- *         var debian = new InstallationTemplate("debian", InstallationTemplateArgs.builder()        
- *             .baseTemplateName("debian11_64")
- *             .templateName("mydebian11")
- *             .defaultLanguage("en")
+ *         var debian = new InstallationTemplate("debian", InstallationTemplateArgs.builder()
+ *             .baseTemplateName("debian12_64")
+ *             .templateName("mydebian12")
  *             .customization(InstallationTemplateCustomizationArgs.builder()
- *                 .sshKeyName(key.keyName())
+ *                 .postInstallationScriptLink("http://test")
+ *                 .postInstallationScriptReturn("ok")
  *                 .build())
  *             .build());
  * 
- *         var serverInstall = new ServerInstallTask("serverInstall", ServerInstallTaskArgs.builder()        
+ *         var serverInstall = new ServerInstallTask("serverInstall", ServerInstallTaskArgs.builder()
  *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
  *             .templateName(debian.templateName())
  *             .bootidOnDestroy(rescue.applyValue(getServerBootsResult -> getServerBootsResult.results()[0]))
  *             .details(ServerInstallTaskDetailsArgs.builder()
  *                 .customHostname("mytest")
+ *                 .build())
+ *             .userMetadatas(ServerInstallTaskUserMetadataArgs.builder()
+ *                 .key("sshKey")
+ *                 .value("ssh-ed25519 AAAAC3...")
  *                 .build())
  *             .build());
  * 
@@ -80,15 +83,177 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Using a BringYourOwnLinux (BYOLinux) template (with userMetadata)
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.ovh.OvhFunctions;
+ * import com.pulumi.ovh.inputs.GetServerArgs;
+ * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+ * import com.pulumi.ovh.Dedicated.inputs.GetServerBootsArgs;
+ * import com.pulumi.ovh.Dedicated.ServerInstallTask;
+ * import com.pulumi.ovh.Dedicated.ServerInstallTaskArgs;
+ * import com.pulumi.ovh.Dedicated.inputs.ServerInstallTaskDetailsArgs;
+ * import com.pulumi.ovh.Dedicated.inputs.ServerInstallTaskUserMetadataArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var server = OvhFunctions.getServer(GetServerArgs.builder()
+ *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
+ *             .build());
+ * 
+ *         final var rescue = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
+ *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
+ *             .bootType("rescue")
+ *             .build());
+ * 
+ *         var serverInstall = new ServerInstallTask("serverInstall", ServerInstallTaskArgs.builder()
+ *             .serviceName(server.applyValue(getServerResult -> getServerResult.serviceName()))
+ *             .templateName("byolinux_64")
+ *             .bootidOnDestroy(rescue.applyValue(getServerBootsResult -> getServerBootsResult.results()[0]))
+ *             .details(ServerInstallTaskDetailsArgs.builder()
+ *                 .customHostname("mytest")
+ *                 .build())
+ *             .userMetadatas(            
+ *                 ServerInstallTaskUserMetadataArgs.builder()
+ *                     .key("imageURL")
+ *                     .value("https://myimage.qcow2")
+ *                     .build(),
+ *                 ServerInstallTaskUserMetadataArgs.builder()
+ *                     .key("imageType")
+ *                     .value("qcow2")
+ *                     .build(),
+ *                 ServerInstallTaskUserMetadataArgs.builder()
+ *                     .key("httpHeaders0Key")
+ *                     .value("Authorization")
+ *                     .build(),
+ *                 ServerInstallTaskUserMetadataArgs.builder()
+ *                     .key("httpHeaders0Value")
+ *                     .value("Basic bG9naW46xxxxxxx=")
+ *                     .build(),
+ *                 ServerInstallTaskUserMetadataArgs.builder()
+ *                     .key("imageChecksumType")
+ *                     .value("sha512")
+ *                     .build(),
+ *                 ServerInstallTaskUserMetadataArgs.builder()
+ *                     .key("imageCheckSum")
+ *                     .value("047122c9ff4d2a69512212104b06c678f5a9cdb22b75467353613ff87ccd03b57b38967e56d810e61366f9d22d6bd39ac0addf4e00a4c6445112a2416af8f225")
+ *                     .build(),
+ *                 ServerInstallTaskUserMetadataArgs.builder()
+ *                     .key("configDriveUserData")
+ *                     .value("""
+ * #cloud-config
+ * ssh_authorized_keys:
+ *   - %s
+ * 
+ * users:
+ *   - name: patient0
+ *     sudo: ALL=(ALL) NOPASSWD:ALL
+ *     groups: users, sudo
+ *     shell: /bin/bash
+ *     lock_passwd: false
+ *     ssh_authorized_keys:
+ *       - %s
+ * disable_root: false
+ * packages:
+ *   - vim
+ *   - tree
+ * final_message: The system is finally up, after $UPTIME seconds
+ * ", data.ovh_me_ssh_key().mykey().key(),data.ovh_me_ssh_key().mykey().key()))
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Using a Microsoft Windows server OVHcloud template with a specific language
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.ovh.OvhFunctions;
+ * import com.pulumi.ovh.inputs.GetServerArgs;
+ * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+ * import com.pulumi.ovh.Dedicated.inputs.GetServerBootsArgs;
+ * import com.pulumi.ovh.Dedicated.ServerInstallTask;
+ * import com.pulumi.ovh.Dedicated.ServerInstallTaskArgs;
+ * import com.pulumi.ovh.Dedicated.inputs.ServerInstallTaskDetailsArgs;
+ * import com.pulumi.ovh.Dedicated.inputs.ServerInstallTaskUserMetadataArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var server = OvhFunctions.getServer(GetServerArgs.builder()
+ *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
+ *             .build());
+ * 
+ *         final var rescue = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
+ *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
+ *             .bootType("rescue")
+ *             .build());
+ * 
+ *         var serverInstall = new ServerInstallTask("serverInstall", ServerInstallTaskArgs.builder()
+ *             .serviceName(server.applyValue(getServerResult -> getServerResult.serviceName()))
+ *             .templateName("win2019-std_64")
+ *             .bootidOnDestroy(rescue.applyValue(getServerBootsResult -> getServerBootsResult.results()[0]))
+ *             .details(ServerInstallTaskDetailsArgs.builder()
+ *                 .customHostname("mytest")
+ *                 .build())
+ *             .userMetadatas(ServerInstallTaskUserMetadataArgs.builder()
+ *                 .key("language")
+ *                 .value("fr-fr")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used
+ * Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `template_name` used  and ths `task_id`, separated by &#34;/&#34; E.g.,
  * 
- * and ths `task_id`, separated by &#34;/&#34; E.g., bash
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345
+ * $ pulumi import ovh:Dedicated/serverInstallTask:ServerInstallTask ovh_dedicated_server_install_task nsXXXX.ipXXXX/template_name/12345
  * ```
  * 
  */
@@ -248,6 +413,20 @@ public class ServerInstallTask extends com.pulumi.resources.CustomResource {
     public Output<String> templateName() {
         return this.templateName;
     }
+    /**
+     * see `user_metadata` block below.
+     * 
+     */
+    @Export(name="userMetadatas", refs={List.class,ServerInstallTaskUserMetadata.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ServerInstallTaskUserMetadata>> userMetadatas;
+
+    /**
+     * @return see `user_metadata` block below.
+     * 
+     */
+    public Output<Optional<List<ServerInstallTaskUserMetadata>>> userMetadatas() {
+        return Codegen.optional(this.userMetadatas);
+    }
 
     /**
      *
@@ -271,11 +450,18 @@ public class ServerInstallTask extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ServerInstallTask(String name, ServerInstallTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/serverInstallTask:ServerInstallTask", name, args == null ? ServerInstallTaskArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Dedicated/serverInstallTask:ServerInstallTask", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServerInstallTask(String name, Output<String> id, @Nullable ServerInstallTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Dedicated/serverInstallTask:ServerInstallTask", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServerInstallTaskArgs makeArgs(ServerInstallTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServerInstallTaskArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

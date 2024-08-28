@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -61,7 +63,7 @@ import javax.annotation.Nullable;
  *             .planCode("zone")
  *             .build());
  * 
- *         var zoneZone = new Zone("zoneZone", ZoneArgs.builder()        
+ *         var zoneZone = new Zone("zoneZone", ZoneArgs.builder()
  *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
  *             .plan(ZonePlanArgs.builder()
  *                 .duration(zoneCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
@@ -83,6 +85,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -91,7 +94,7 @@ import javax.annotation.Nullable;
  * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Domain/zone:Zone zone order_id
+ * $ pulumi import ovh:Domain/zone:Zone zone order_id
  * ```
  * 
  */
@@ -270,11 +273,18 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Zone(String name, ZoneArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Domain/zone:Zone", name, args == null ? ZoneArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Domain/zone:Zone", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Zone(String name, Output<String> id, @Nullable ZoneState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Domain/zone:Zone", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ZoneArgs makeArgs(ZoneArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ZoneArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Use this resource to create partition scheme for a custom installation template available for dedicated servers.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -42,13 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytemplate = new InstallationTemplate("mytemplate", InstallationTemplateArgs.builder()        
- *             .baseTemplateName("centos7_64")
+ *         var mytemplate = new InstallationTemplate("mytemplate", InstallationTemplateArgs.builder()
+ *             .baseTemplateName("debian12_64")
  *             .templateName("mytemplate")
- *             .defaultLanguage("fr")
  *             .build());
  * 
- *         var scheme = new InstallationTemplatePartitionScheme("scheme", InstallationTemplatePartitionSchemeArgs.builder()        
+ *         var scheme = new InstallationTemplatePartitionScheme("scheme", InstallationTemplatePartitionSchemeArgs.builder()
  *             .templateName(mytemplate.templateName())
  *             .priority(1)
  *             .build());
@@ -57,13 +58,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * The resource can be imported using the `template_name`, `name` of the cluster, separated by &#34;/&#34; E.g., bash
+ * The resource can be imported using the `template_name`, `name` of the cluster, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name
+ * $ pulumi import ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme scheme template_name/name
  * ```
  * 
  */
@@ -134,11 +138,18 @@ public class InstallationTemplatePartitionScheme extends com.pulumi.resources.Cu
      * @param options A bag of options that control this resource's behavior.
      */
     public InstallationTemplatePartitionScheme(String name, InstallationTemplatePartitionSchemeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme", name, args == null ? InstallationTemplatePartitionSchemeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private InstallationTemplatePartitionScheme(String name, Output<String> id, @Nullable InstallationTemplatePartitionSchemeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InstallationTemplatePartitionSchemeArgs makeArgs(InstallationTemplatePartitionSchemeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstallationTemplatePartitionSchemeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

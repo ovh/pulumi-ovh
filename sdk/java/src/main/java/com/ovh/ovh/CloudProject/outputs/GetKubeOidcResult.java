@@ -33,12 +33,40 @@ public final class GetKubeOidcResult {
      * 
      */
     private String kubeId;
+    /**
+     * @return Content of the certificate for the CA, in base64 format, that signed your identity provider&#39;s web certificate. Defaults to the host&#39;s root CAs.
+     * 
+     */
     private @Nullable String oidcCaContent;
+    /**
+     * @return Array of JWT claim to use as the user&#39;s group. If the claim is present it must be an array of strings.
+     * 
+     */
     private @Nullable List<String> oidcGroupsClaims;
+    /**
+     * @return Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.
+     * 
+     */
     private @Nullable String oidcGroupsPrefix;
+    /**
+     * @return Array of key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value.&#34;
+     * 
+     */
     private @Nullable List<String> oidcRequiredClaims;
+    /**
+     * @return Array of signing algorithms accepted. Default is \&#34;RS256\&#34;.
+     * 
+     */
     private @Nullable List<String> oidcSigningAlgs;
+    /**
+     * @return JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
+     * 
+     */
     private @Nullable String oidcUsernameClaim;
+    /**
+     * @return Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn&#39;t set and `oidc_username_claim` is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.
+     * 
+     */
     private @Nullable String oidcUsernamePrefix;
     /**
      * @return See Argument Reference above.
@@ -75,24 +103,52 @@ public final class GetKubeOidcResult {
     public String kubeId() {
         return this.kubeId;
     }
+    /**
+     * @return Content of the certificate for the CA, in base64 format, that signed your identity provider&#39;s web certificate. Defaults to the host&#39;s root CAs.
+     * 
+     */
     public Optional<String> oidcCaContent() {
         return Optional.ofNullable(this.oidcCaContent);
     }
+    /**
+     * @return Array of JWT claim to use as the user&#39;s group. If the claim is present it must be an array of strings.
+     * 
+     */
     public List<String> oidcGroupsClaims() {
         return this.oidcGroupsClaims == null ? List.of() : this.oidcGroupsClaims;
     }
+    /**
+     * @return Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.
+     * 
+     */
     public Optional<String> oidcGroupsPrefix() {
         return Optional.ofNullable(this.oidcGroupsPrefix);
     }
+    /**
+     * @return Array of key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value.&#34;
+     * 
+     */
     public List<String> oidcRequiredClaims() {
         return this.oidcRequiredClaims == null ? List.of() : this.oidcRequiredClaims;
     }
+    /**
+     * @return Array of signing algorithms accepted. Default is \&#34;RS256\&#34;.
+     * 
+     */
     public List<String> oidcSigningAlgs() {
         return this.oidcSigningAlgs == null ? List.of() : this.oidcSigningAlgs;
     }
+    /**
+     * @return JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
+     * 
+     */
     public Optional<String> oidcUsernameClaim() {
         return Optional.ofNullable(this.oidcUsernameClaim);
     }
+    /**
+     * @return Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn&#39;t set and `oidc_username_claim` is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.
+     * 
+     */
     public Optional<String> oidcUsernamePrefix() {
         return Optional.ofNullable(this.oidcUsernamePrefix);
     }

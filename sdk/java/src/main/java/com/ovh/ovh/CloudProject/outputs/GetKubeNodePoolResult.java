@@ -7,6 +7,7 @@ import com.ovh.ovh.CloudProject.outputs.GetKubeNodePoolTemplate;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -25,6 +26,24 @@ public final class GetKubeNodePoolResult {
      * 
      */
     private Boolean autoscale;
+    /**
+     * @return (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
+     * 
+     */
+    private Integer autoscalingScaleDownUnneededTimeSeconds;
+    /**
+     * @return (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
+     * 
+     */
+    private Integer autoscalingScaleDownUnreadyTimeSeconds;
+    /**
+     * @return (Optional) scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * 
+     */
+    private Double autoscalingScaleDownUtilizationThreshold;
     /**
      * @return Number of nodes which are actually ready in the pool
      * 
@@ -137,6 +156,30 @@ public final class GetKubeNodePoolResult {
      */
     public Boolean autoscale() {
         return this.autoscale;
+    }
+    /**
+     * @return (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
+     * 
+     */
+    public Integer autoscalingScaleDownUnneededTimeSeconds() {
+        return this.autoscalingScaleDownUnneededTimeSeconds;
+    }
+    /**
+     * @return (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
+     * 
+     */
+    public Integer autoscalingScaleDownUnreadyTimeSeconds() {
+        return this.autoscalingScaleDownUnreadyTimeSeconds;
+    }
+    /**
+     * @return (Optional) scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * 
+     */
+    public Double autoscalingScaleDownUtilizationThreshold() {
+        return this.autoscalingScaleDownUtilizationThreshold;
     }
     /**
      * @return Number of nodes which are actually ready in the pool
@@ -285,6 +328,9 @@ public final class GetKubeNodePoolResult {
     public static final class Builder {
         private Boolean antiAffinity;
         private Boolean autoscale;
+        private Integer autoscalingScaleDownUnneededTimeSeconds;
+        private Integer autoscalingScaleDownUnreadyTimeSeconds;
+        private Double autoscalingScaleDownUtilizationThreshold;
         private Integer availableNodes;
         private String createdAt;
         private Integer currentNodes;
@@ -309,6 +355,9 @@ public final class GetKubeNodePoolResult {
     	      Objects.requireNonNull(defaults);
     	      this.antiAffinity = defaults.antiAffinity;
     	      this.autoscale = defaults.autoscale;
+    	      this.autoscalingScaleDownUnneededTimeSeconds = defaults.autoscalingScaleDownUnneededTimeSeconds;
+    	      this.autoscalingScaleDownUnreadyTimeSeconds = defaults.autoscalingScaleDownUnreadyTimeSeconds;
+    	      this.autoscalingScaleDownUtilizationThreshold = defaults.autoscalingScaleDownUtilizationThreshold;
     	      this.availableNodes = defaults.availableNodes;
     	      this.createdAt = defaults.createdAt;
     	      this.currentNodes = defaults.currentNodes;
@@ -344,6 +393,30 @@ public final class GetKubeNodePoolResult {
               throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "autoscale");
             }
             this.autoscale = autoscale;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoscalingScaleDownUnneededTimeSeconds(Integer autoscalingScaleDownUnneededTimeSeconds) {
+            if (autoscalingScaleDownUnneededTimeSeconds == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "autoscalingScaleDownUnneededTimeSeconds");
+            }
+            this.autoscalingScaleDownUnneededTimeSeconds = autoscalingScaleDownUnneededTimeSeconds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoscalingScaleDownUnreadyTimeSeconds(Integer autoscalingScaleDownUnreadyTimeSeconds) {
+            if (autoscalingScaleDownUnreadyTimeSeconds == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "autoscalingScaleDownUnreadyTimeSeconds");
+            }
+            this.autoscalingScaleDownUnreadyTimeSeconds = autoscalingScaleDownUnreadyTimeSeconds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoscalingScaleDownUtilizationThreshold(Double autoscalingScaleDownUtilizationThreshold) {
+            if (autoscalingScaleDownUtilizationThreshold == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "autoscalingScaleDownUtilizationThreshold");
+            }
+            this.autoscalingScaleDownUtilizationThreshold = autoscalingScaleDownUtilizationThreshold;
             return this;
         }
         @CustomType.Setter
@@ -500,6 +573,9 @@ public final class GetKubeNodePoolResult {
             final var _resultValue = new GetKubeNodePoolResult();
             _resultValue.antiAffinity = antiAffinity;
             _resultValue.autoscale = autoscale;
+            _resultValue.autoscalingScaleDownUnneededTimeSeconds = autoscalingScaleDownUnneededTimeSeconds;
+            _resultValue.autoscalingScaleDownUnreadyTimeSeconds = autoscalingScaleDownUnreadyTimeSeconds;
+            _resultValue.autoscalingScaleDownUtilizationThreshold = autoscalingScaleDownUtilizationThreshold;
             _resultValue.availableNodes = availableNodes;
             _resultValue.createdAt = createdAt;
             _resultValue.currentNodes = currentNodes;

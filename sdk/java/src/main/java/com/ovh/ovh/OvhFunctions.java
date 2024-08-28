@@ -4,10 +4,13 @@
 package com.ovh.ovh;
 
 import com.ovh.ovh.Utilities;
+import com.ovh.ovh.inputs.GetInstallationTemplateArgs;
+import com.ovh.ovh.inputs.GetInstallationTemplatePlainArgs;
 import com.ovh.ovh.inputs.GetServerArgs;
 import com.ovh.ovh.inputs.GetServerPlainArgs;
 import com.ovh.ovh.inputs.GetVrackNetworksArgs;
 import com.ovh.ovh.inputs.GetVrackNetworksPlainArgs;
+import com.ovh.ovh.outputs.GetInstallationTemplateResult;
 import com.ovh.ovh.outputs.GetInstallationTemplatesResult;
 import com.ovh.ovh.outputs.GetServerResult;
 import com.ovh.ovh.outputs.GetServersResult;
@@ -21,9 +24,183 @@ import java.util.concurrent.CompletableFuture;
 
 public final class OvhFunctions {
     /**
+     * Use this data source to retrieve information about a specific OVH dedicated server installation template.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetInstallationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ovhtemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *             .templateName("debian12_64")
+     *             .build());
+     * 
+     *         ctx.export("template", ovhtemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstallationTemplateResult> getInstallationTemplate(GetInstallationTemplateArgs args) {
+        return getInstallationTemplate(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a specific OVH dedicated server installation template.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetInstallationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ovhtemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *             .templateName("debian12_64")
+     *             .build());
+     * 
+     *         ctx.export("template", ovhtemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstallationTemplateResult> getInstallationTemplatePlain(GetInstallationTemplatePlainArgs args) {
+        return getInstallationTemplatePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a specific OVH dedicated server installation template.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetInstallationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ovhtemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *             .templateName("debian12_64")
+     *             .build());
+     * 
+     *         ctx.export("template", ovhtemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstallationTemplateResult> getInstallationTemplate(GetInstallationTemplateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getInstallationTemplate:getInstallationTemplate", TypeShape.of(GetInstallationTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a specific OVH dedicated server installation template.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetInstallationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ovhtemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *             .templateName("debian12_64")
+     *             .build());
+     * 
+     *         ctx.export("template", ovhtemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstallationTemplateResult> getInstallationTemplatePlain(GetInstallationTemplatePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getInstallationTemplate:getInstallationTemplate", TypeShape.of(GetInstallationTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -51,6 +228,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstallationTemplatesResult> getInstallationTemplates() {
@@ -60,6 +238,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -87,6 +267,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstallationTemplatesResult> getInstallationTemplatesPlain() {
@@ -96,6 +277,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -123,6 +306,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstallationTemplatesResult> getInstallationTemplates(InvokeArgs args) {
@@ -132,6 +316,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -159,6 +345,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstallationTemplatesResult> getInstallationTemplatesPlain(InvokeArgs args) {
@@ -168,6 +355,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -195,6 +384,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstallationTemplatesResult> getInstallationTemplates(InvokeArgs args, InvokeOptions options) {
@@ -204,6 +394,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of installation templates available for dedicated servers.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -231,6 +423,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstallationTemplatesResult> getInstallationTemplatesPlain(InvokeArgs args, InvokeOptions options) {
@@ -240,6 +433,8 @@ public final class OvhFunctions {
      * Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -270,6 +465,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerResult> getServer(GetServerArgs args) {
@@ -279,6 +475,8 @@ public final class OvhFunctions {
      * Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -309,6 +507,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerResult> getServerPlain(GetServerPlainArgs args) {
@@ -318,6 +517,8 @@ public final class OvhFunctions {
      * Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -348,6 +549,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerResult> getServer(GetServerArgs args, InvokeOptions options) {
@@ -357,6 +559,8 @@ public final class OvhFunctions {
      * Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -387,6 +591,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerResult> getServerPlain(GetServerPlainArgs args, InvokeOptions options) {
@@ -396,6 +601,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -423,6 +630,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServersResult> getServers() {
@@ -432,6 +640,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -459,6 +669,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServersResult> getServersPlain() {
@@ -468,6 +679,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -495,6 +708,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServersResult> getServers(InvokeArgs args) {
@@ -504,6 +718,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -531,6 +747,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServersResult> getServersPlain(InvokeArgs args) {
@@ -540,6 +757,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -567,6 +786,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServersResult> getServers(InvokeArgs args, InvokeOptions options) {
@@ -576,6 +796,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -603,6 +825,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServersResult> getServersPlain(InvokeArgs args, InvokeOptions options) {
@@ -612,6 +835,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -643,6 +868,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVrackNetworksResult> getVrackNetworks(GetVrackNetworksArgs args) {
@@ -652,6 +878,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -683,6 +911,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVrackNetworksResult> getVrackNetworksPlain(GetVrackNetworksPlainArgs args) {
@@ -692,6 +921,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -723,6 +954,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVrackNetworksResult> getVrackNetworks(GetVrackNetworksArgs args, InvokeOptions options) {
@@ -732,6 +964,8 @@ public final class OvhFunctions {
      * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -763,6 +997,7 @@ public final class OvhFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVrackNetworksResult> getVrackNetworksPlain(GetVrackNetworksPlainArgs args, InvokeOptions options) {

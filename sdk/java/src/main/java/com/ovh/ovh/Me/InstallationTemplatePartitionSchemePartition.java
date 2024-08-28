@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Use this resource to create a partition in the partition scheme of a custom installation template available for dedicated servers.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -44,18 +46,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytemplate = new InstallationTemplate("mytemplate", InstallationTemplateArgs.builder()        
- *             .baseTemplateName("centos7_64")
+ *         var mytemplate = new InstallationTemplate("mytemplate", InstallationTemplateArgs.builder()
+ *             .baseTemplateName("debian12_64")
  *             .templateName("mytemplate")
- *             .defaultLanguage("fr")
  *             .build());
  * 
- *         var scheme = new InstallationTemplatePartitionScheme("scheme", InstallationTemplatePartitionSchemeArgs.builder()        
+ *         var scheme = new InstallationTemplatePartitionScheme("scheme", InstallationTemplatePartitionSchemeArgs.builder()
  *             .templateName(mytemplate.templateName())
  *             .priority(1)
  *             .build());
  * 
- *         var root = new InstallationTemplatePartitionSchemePartition("root", InstallationTemplatePartitionSchemePartitionArgs.builder()        
+ *         var root = new InstallationTemplatePartitionSchemePartition("root", InstallationTemplatePartitionSchemePartitionArgs.builder()
  *             .templateName(scheme.templateName())
  *             .schemeName(scheme.name())
  *             .mountpoint("/")
@@ -69,13 +70,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by &#34;/&#34; E.g., bash
+ * The resource can be imported using the `template_name`, `scheme_name`, `mountpoint` of the cluster, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
+ * $ pulumi import ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition root template_name/scheme_name/mountpoint
  * ```
  * 
  */
@@ -264,11 +268,18 @@ public class InstallationTemplatePartitionSchemePartition extends com.pulumi.res
      * @param options A bag of options that control this resource's behavior.
      */
     public InstallationTemplatePartitionSchemePartition(String name, InstallationTemplatePartitionSchemePartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition", name, args == null ? InstallationTemplatePartitionSchemePartitionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private InstallationTemplatePartitionSchemePartition(String name, Output<String> id, @Nullable InstallationTemplatePartitionSchemePartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InstallationTemplatePartitionSchemePartitionArgs makeArgs(InstallationTemplatePartitionSchemePartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstallationTemplatePartitionSchemePartitionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

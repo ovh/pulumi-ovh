@@ -16,14 +16,14 @@ public final class KubeCustomizationKubeProxyIptablesArgs extends com.pulumi.res
     public static final KubeCustomizationKubeProxyIptablesArgs Empty = new KubeCustomizationKubeProxyIptablesArgs();
 
     /**
-     * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+     * Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
      * 
      */
     @Import(name="minSyncPeriod")
     private @Nullable Output<String> minSyncPeriod;
 
     /**
-     * @return Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+     * @return Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
      * 
      */
     public Optional<Output<String>> minSyncPeriod() {
@@ -31,14 +31,14 @@ public final class KubeCustomizationKubeProxyIptablesArgs extends com.pulumi.res
     }
 
     /**
-     * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+     * Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
      * 
      */
     @Import(name="syncPeriod")
     private @Nullable Output<String> syncPeriod;
 
     /**
-     * @return Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+     * @return Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
      * 
      */
     public Optional<Output<String>> syncPeriod() {
@@ -71,7 +71,7 @@ public final class KubeCustomizationKubeProxyIptablesArgs extends com.pulumi.res
         }
 
         /**
-         * @param minSyncPeriod Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+         * @param minSyncPeriod Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class KubeCustomizationKubeProxyIptablesArgs extends com.pulumi.res
         }
 
         /**
-         * @param minSyncPeriod Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+         * @param minSyncPeriod Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class KubeCustomizationKubeProxyIptablesArgs extends com.pulumi.res
         }
 
         /**
-         * @param syncPeriod Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+         * @param syncPeriod Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class KubeCustomizationKubeProxyIptablesArgs extends com.pulumi.res
         }
 
         /**
-         * @param syncPeriod Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+         * @param syncPeriod Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
          * 
          * @return builder
          * 

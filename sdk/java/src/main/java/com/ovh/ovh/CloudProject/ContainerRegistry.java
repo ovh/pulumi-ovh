@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Creates a container registry associated with a public cloud project.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -50,7 +52,7 @@ import javax.annotation.Nullable;
  *             .region("GRA")
  *             .build());
  * 
- *         var my_registry = new ContainerRegistry("my-registry", ContainerRegistryArgs.builder()        
+ *         var my_registry = new ContainerRegistry("my-registry", ContainerRegistryArgs.builder()
  *             .serviceName(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.serviceName()))
  *             .planId(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.id()))
  *             .region(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.region()))
@@ -60,6 +62,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
  * 
@@ -259,11 +262,18 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ContainerRegistry(String name, ContainerRegistryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/containerRegistry:ContainerRegistry", name, args == null ? ContainerRegistryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/containerRegistry:ContainerRegistry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ContainerRegistry(String name, Output<String> id, @Nullable ContainerRegistryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/containerRegistry:ContainerRegistry", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ContainerRegistryArgs makeArgs(ContainerRegistryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ContainerRegistryArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

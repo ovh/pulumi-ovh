@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Creates an ACL for a kafka cluster associated with a public cloud project.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -47,7 +49,7 @@ import javax.annotation.Nullable;
  *             .id("ZZZ")
  *             .build());
  * 
- *         var acl = new KafkaAcl("acl", KafkaAclArgs.builder()        
+ *         var acl = new KafkaAcl("acl", KafkaAclArgs.builder()
  *             .serviceName(kafka.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
  *             .clusterId(kafka.applyValue(getDatabaseResult -> getDatabaseResult.id()))
  *             .permission("read")
@@ -59,13 +61,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id
  * ```
  * 
  */
@@ -168,11 +173,18 @@ public class KafkaAcl extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KafkaAcl(String name, KafkaAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl", name, args == null ? KafkaAclArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KafkaAcl(String name, Output<String> id, @Nullable KafkaAclState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KafkaAclArgs makeArgs(KafkaAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KafkaAclArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

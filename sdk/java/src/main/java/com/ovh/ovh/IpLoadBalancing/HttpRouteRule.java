@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Route which redirect all URL to HTTPs for example.com (Vhost).
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -46,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var httpsredirect = new HttpRoute("httpsredirect", HttpRouteArgs.builder()        
+ *         var httpsredirect = new HttpRoute("httpsredirect", HttpRouteArgs.builder()
  *             .action(HttpRouteActionArgs.builder()
  *                 .status(302)
  *                 .target("https://${host}${path}${arguments}")
@@ -58,7 +60,7 @@ import javax.annotation.Nullable;
  *             .weight(1)
  *             .build());
  * 
- *         var examplerule = new HttpRouteRule("examplerule", HttpRouteRuleArgs.builder()        
+ *         var examplerule = new HttpRouteRule("examplerule", HttpRouteRuleArgs.builder()
  *             .displayName("Match example.com host")
  *             .field("host")
  *             .match("is")
@@ -72,8 +74,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Rule which match a specific header (same effect as the host match above).
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -96,7 +101,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplerule = new HttpRouteRule("examplerule", HttpRouteRuleArgs.builder()        
+ *         var examplerule = new HttpRouteRule("examplerule", HttpRouteRuleArgs.builder()
  *             .displayName("Match example.com Host header")
  *             .field("headers")
  *             .match("is")
@@ -111,6 +116,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by &#34;/&#34; e.g.
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule")
@@ -250,11 +260,18 @@ public class HttpRouteRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HttpRouteRule(String name, HttpRouteRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule", name, args == null ? HttpRouteRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HttpRouteRule(String name, Output<String> id, @Nullable HttpRouteRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HttpRouteRuleArgs makeArgs(HttpRouteRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HttpRouteRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

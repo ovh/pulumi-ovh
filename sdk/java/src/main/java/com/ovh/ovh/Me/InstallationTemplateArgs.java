@@ -41,21 +41,6 @@ public final class InstallationTemplateArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The default language of this template.
-     * 
-     */
-    @Import(name="defaultLanguage", required=true)
-    private Output<String> defaultLanguage;
-
-    /**
-     * @return The default language of this template.
-     * 
-     */
-    public Output<String> defaultLanguage() {
-        return this.defaultLanguage;
-    }
-
-    /**
      * Remove default partition schemes at creation.
      * 
      */
@@ -90,7 +75,6 @@ public final class InstallationTemplateArgs extends com.pulumi.resources.Resourc
     private InstallationTemplateArgs(InstallationTemplateArgs $) {
         this.baseTemplateName = $.baseTemplateName;
         this.customization = $.customization;
-        this.defaultLanguage = $.defaultLanguage;
         this.removeDefaultPartitionSchemes = $.removeDefaultPartitionSchemes;
         this.templateName = $.templateName;
     }
@@ -144,27 +128,6 @@ public final class InstallationTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param defaultLanguage The default language of this template.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultLanguage(Output<String> defaultLanguage) {
-            $.defaultLanguage = defaultLanguage;
-            return this;
-        }
-
-        /**
-         * @param defaultLanguage The default language of this template.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultLanguage(String defaultLanguage) {
-            return defaultLanguage(Output.of(defaultLanguage));
-        }
-
-        /**
          * @param removeDefaultPartitionSchemes Remove default partition schemes at creation.
          * 
          * @return builder
@@ -209,9 +172,6 @@ public final class InstallationTemplateArgs extends com.pulumi.resources.Resourc
         public InstallationTemplateArgs build() {
             if ($.baseTemplateName == null) {
                 throw new MissingRequiredPropertyException("InstallationTemplateArgs", "baseTemplateName");
-            }
-            if ($.defaultLanguage == null) {
-                throw new MissingRequiredPropertyException("InstallationTemplateArgs", "defaultLanguage");
             }
             if ($.templateName == null) {
                 throw new MissingRequiredPropertyException("InstallationTemplateArgs", "templateName");

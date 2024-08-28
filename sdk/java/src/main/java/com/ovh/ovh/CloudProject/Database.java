@@ -6,6 +6,7 @@ package com.ovh.ovh.CloudProject;
 import com.ovh.ovh.CloudProject.DatabaseArgs;
 import com.ovh.ovh.CloudProject.inputs.DatabaseState;
 import com.ovh.ovh.CloudProject.outputs.DatabaseEndpoint;
+import com.ovh.ovh.CloudProject.outputs.DatabaseIpRestriction;
 import com.ovh.ovh.CloudProject.outputs.DatabaseNode;
 import com.ovh.ovh.Utilities;
 import com.pulumi.core.Output;
@@ -24,6 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Minimum settings for each engine (region choice is up to the user):
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -34,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.ovh.CloudProject.Database;
  * import com.pulumi.ovh.CloudProject.DatabaseArgs;
  * import com.pulumi.ovh.CloudProject.inputs.DatabaseNodeArgs;
+ * import com.pulumi.ovh.CloudProject.inputs.DatabaseIpRestrictionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cassandradb = new Database("cassandradb", DatabaseArgs.builder()        
+ *         var cassandradb = new Database("cassandradb", DatabaseArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-cassandra")
  *             .engine("cassandra")
@@ -66,13 +70,14 @@ import javax.annotation.Nullable;
  *             .flavor("db1-4")
  *             .build());
  * 
- *         var kafkadb = new Database("kafkadb", DatabaseArgs.builder()        
+ *         var kafkadb = new Database("kafkadb", DatabaseArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-kafka")
  *             .engine("kafka")
  *             .version("3.4")
  *             .plan("business")
  *             .kafkaRestApi(true)
+ *             .kafkaSchemaRegistry(true)
  *             .nodes(            
  *                 DatabaseNodeArgs.builder()
  *                     .region("DE")
@@ -86,7 +91,7 @@ import javax.annotation.Nullable;
  *             .flavor("db1-4")
  *             .build());
  * 
- *         var m3db = new Database("m3db", DatabaseArgs.builder()        
+ *         var m3db = new Database("m3db", DatabaseArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-m3db")
  *             .engine("m3db")
@@ -98,19 +103,19 @@ import javax.annotation.Nullable;
  *             .flavor("db1-7")
  *             .build());
  * 
- *         var mongodb = new Database("mongodb", DatabaseArgs.builder()        
+ *         var mongodb = new Database("mongodb", DatabaseArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-mongodb")
  *             .engine("mongodb")
  *             .version("5.0")
- *             .plan("essential")
+ *             .plan("discovery")
  *             .nodes(DatabaseNodeArgs.builder()
  *                 .region("GRA")
  *                 .build())
  *             .flavor("db1-2")
  *             .build());
  * 
- *         var mysqldb = new Database("mysqldb", DatabaseArgs.builder()        
+ *         var mysqldb = new Database("mysqldb", DatabaseArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-mysql")
  *             .engine("mysql")
@@ -126,7 +131,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var opensearchdb = new Database("opensearchdb", DatabaseArgs.builder()        
+ *         var opensearchdb = new Database("opensearchdb", DatabaseArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-opensearch")
  *             .engine("opensearch")
@@ -139,7 +144,7 @@ import javax.annotation.Nullable;
  *             .flavor("db1-4")
  *             .build());
  * 
- *         var pgsqldb = new Database("pgsqldb", DatabaseArgs.builder()        
+ *         var pgsqldb = new Database("pgsqldb", DatabaseArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-postgresql")
  *             .engine("postgresql")
@@ -149,9 +154,18 @@ import javax.annotation.Nullable;
  *                 .region("WAW")
  *                 .build())
  *             .flavor("db1-4")
+ *             .ipRestrictions(            
+ *                 DatabaseIpRestrictionArgs.builder()
+ *                     .description("ip 1")
+ *                     .ip("178.97.6.0/24")
+ *                     .build(),
+ *                 DatabaseIpRestrictionArgs.builder()
+ *                     .description("ip 2")
+ *                     .ip("178.97.7.0/24")
+ *                     .build())
  *             .build());
  * 
- *         var redisdb = new Database("redisdb", DatabaseArgs.builder()        
+ *         var redisdb = new Database("redisdb", DatabaseArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-redis")
  *             .engine("redis")
@@ -163,7 +177,7 @@ import javax.annotation.Nullable;
  *             .flavor("db1-4")
  *             .build());
  * 
- *         var grafana = new Database("grafana", DatabaseArgs.builder()        
+ *         var grafana = new Database("grafana", DatabaseArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-grafana")
  *             .engine("grafana")
@@ -179,8 +193,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * To deploy a business PostgreSQL service with two nodes on public network:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -204,7 +221,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgresql = new Database("postgresql", DatabaseArgs.builder()        
+ *         var postgresql = new Database("postgresql", DatabaseArgs.builder()
  *             .description("my-first-postgresql")
  *             .engine("postgresql")
  *             .flavor("db1-15")
@@ -224,8 +241,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * To deploy an enterprise MongoDB service with three nodes on private network:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -249,7 +269,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mongodb = new Database("mongodb", DatabaseArgs.builder()        
+ *         var mongodb = new Database("mongodb", DatabaseArgs.builder()
  *             .description("my-first-mongodb")
  *             .engine("mongodb")
  *             .flavor("db1-30")
@@ -269,7 +289,7 @@ import javax.annotation.Nullable;
  *                     .region("SBG")
  *                     .subnetId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
  *                     .build())
- *             .plan("enterprise")
+ *             .plan("production")
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .version("5.0")
  *             .build());
@@ -278,13 +298,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+ * $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
  * ```
  * 
  */
@@ -303,6 +326,20 @@ public class Database extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> advancedConfiguration() {
         return this.advancedConfiguration;
+    }
+    /**
+     * List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+     * 
+     */
+    @Export(name="backupRegions", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> backupRegions;
+
+    /**
+     * @return List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+     * 
+     */
+    public Output<List<String>> backupRegions() {
+        return this.backupRegions;
     }
     /**
      * Time on which backups start every day.
@@ -423,6 +460,20 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.flavor;
     }
     /**
+     * IP Blocks authorized to access to the cluster.
+     * 
+     */
+    @Export(name="ipRestrictions", refs={List.class,DatabaseIpRestriction.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<DatabaseIpRestriction>> ipRestrictions;
+
+    /**
+     * @return IP Blocks authorized to access to the cluster.
+     * 
+     */
+    public Output<Optional<List<DatabaseIpRestriction>>> ipRestrictions() {
+        return Codegen.optional(this.ipRestrictions);
+    }
+    /**
      * Defines whether the REST API is enabled on a kafka cluster
      * 
      */
@@ -435,6 +486,20 @@ public class Database extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> kafkaRestApi() {
         return Codegen.optional(this.kafkaRestApi);
+    }
+    /**
+     * Defines whether the schema registry is enabled on a Kafka cluster
+     * 
+     */
+    @Export(name="kafkaSchemaRegistry", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> kafkaSchemaRegistry;
+
+    /**
+     * @return Defines whether the schema registry is enabled on a Kafka cluster
+     * 
+     */
+    public Output<Optional<Boolean>> kafkaSchemaRegistry() {
+        return Codegen.optional(this.kafkaSchemaRegistry);
     }
     /**
      * Time on which maintenances can start every day.
@@ -496,7 +561,10 @@ public class Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * Plan of the cluster.
-     * Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+     * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
+     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+     * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
+     * * Redis: &#34;essential&#34;, &#34;business&#34;
      * 
      */
     @Export(name="plan", refs={String.class}, tree="[0]")
@@ -504,7 +572,10 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Plan of the cluster.
-     * Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+     * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
+     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
+     * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
+     * * Redis: &#34;essential&#34;, &#34;business&#34;
      * 
      */
     public Output<String> plan() {
@@ -577,11 +648,18 @@ public class Database extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Database(String name, DatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/database:Database", name, args == null ? DatabaseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/database:Database", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Database(String name, Output<String> id, @Nullable DatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/database:Database", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatabaseArgs makeArgs(DatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatabaseArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

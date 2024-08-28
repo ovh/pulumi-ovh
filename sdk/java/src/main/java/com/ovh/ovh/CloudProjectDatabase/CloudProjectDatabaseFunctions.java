@@ -16,7 +16,13 @@ import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabaseIntegrationArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabaseIntegrationPlainArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabaseIntegrationsArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabaseIntegrationsPlainArgs;
+import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionArgs;
+import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionPlainArgs;
+import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionsArgs;
+import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionsPlainArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabasePlainArgs;
+import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabasePostgreSQLConnectionPoolsArgs;
+import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabasePostgreSQLConnectionPoolsPlainArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabasesArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetDatabasesPlainArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetIpRestrictionsArgs;
@@ -35,6 +41,8 @@ import com.ovh.ovh.CloudProjectDatabase.inputs.GetKafkaTopicsArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetKafkaTopicsPlainArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetKafkaUserAccessArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetKafkaUserAccessPlainArgs;
+import com.ovh.ovh.CloudProjectDatabase.inputs.GetPostgresSqlConnectionPoolArgs;
+import com.ovh.ovh.CloudProjectDatabase.inputs.GetPostgresSqlConnectionPoolPlainArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetPostgresSqlUserArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetPostgresSqlUserPlainArgs;
 import com.ovh.ovh.CloudProjectDatabase.inputs.GetUserArgs;
@@ -47,6 +55,9 @@ import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseInstanceResult;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseInstancesResult;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseIntegrationResult;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseIntegrationsResult;
+import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseLogSubscriptionResult;
+import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseLogSubscriptionsResult;
+import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabasePostgreSQLConnectionPoolsResult;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabaseResult;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetDatabasesResult;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetIpRestrictionsResult;
@@ -57,6 +68,7 @@ import com.ovh.ovh.CloudProjectDatabase.outputs.GetKafkaSchemaRegistryAclsResult
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetKafkaTopicResult;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetKafkaTopicsResult;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetKafkaUserAccessResult;
+import com.ovh.ovh.CloudProjectDatabase.outputs.GetPostgresSqlConnectionPoolResult;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetPostgresSqlUserResult;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetUserResult;
 import com.ovh.ovh.CloudProjectDatabase.outputs.GetUsersResult;
@@ -100,6 +112,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about certificates of a cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -133,6 +147,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args) {
@@ -142,6 +157,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about certificates of a cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -175,6 +192,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args) {
@@ -184,6 +202,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about certificates of a cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -217,6 +237,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOptions options) {
@@ -226,6 +247,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about certificates of a cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -259,6 +282,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args, InvokeOptions options) {
@@ -270,6 +294,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get information of a database cluster service:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -303,6 +329,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args) {
@@ -314,6 +341,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get information of a database cluster service:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -347,6 +376,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseResult> getDatabasePlain(GetDatabasePlainArgs args) {
@@ -358,6 +388,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get information of a database cluster service:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -391,6 +423,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args, InvokeOptions options) {
@@ -402,6 +435,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get information of a database cluster service:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -435,6 +470,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseResult> getDatabasePlain(GetDatabasePlainArgs args, InvokeOptions options) {
@@ -444,6 +480,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a database of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -478,6 +516,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args) {
@@ -487,6 +526,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a database of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -521,6 +562,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args) {
@@ -530,6 +572,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a database of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -564,6 +608,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args, InvokeOptions options) {
@@ -573,6 +618,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a database of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -607,6 +654,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args, InvokeOptions options) {
@@ -616,6 +664,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -649,6 +699,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args) {
@@ -658,6 +709,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -691,6 +744,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs args) {
@@ -700,6 +754,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -733,6 +789,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args, InvokeOptions options) {
@@ -742,6 +799,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -775,6 +834,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs args, InvokeOptions options) {
@@ -784,6 +844,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an integration of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -818,6 +880,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseIntegrationResult> getDatabaseIntegration(GetDatabaseIntegrationArgs args) {
@@ -827,6 +890,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an integration of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -861,6 +926,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseIntegrationResult> getDatabaseIntegrationPlain(GetDatabaseIntegrationPlainArgs args) {
@@ -870,6 +936,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an integration of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -904,6 +972,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseIntegrationResult> getDatabaseIntegration(GetDatabaseIntegrationArgs args, InvokeOptions options) {
@@ -913,6 +982,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an integration of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -947,6 +1018,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseIntegrationResult> getDatabaseIntegrationPlain(GetDatabaseIntegrationPlainArgs args, InvokeOptions options) {
@@ -956,6 +1028,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of integrations of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -989,6 +1063,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseIntegrationsResult> getDatabaseIntegrations(GetDatabaseIntegrationsArgs args) {
@@ -998,6 +1073,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of integrations of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1031,6 +1108,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseIntegrationsResult> getDatabaseIntegrationsPlain(GetDatabaseIntegrationsPlainArgs args) {
@@ -1040,6 +1118,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of integrations of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1073,6 +1153,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseIntegrationsResult> getDatabaseIntegrations(GetDatabaseIntegrationsArgs args, InvokeOptions options) {
@@ -1082,6 +1163,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of integrations of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1115,10 +1198,551 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseIntegrationsResult> getDatabaseIntegrationsPlain(GetDatabaseIntegrationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabaseIntegrations:getDatabaseIntegrations", TypeShape.of(GetDatabaseIntegrationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a log subscription for a cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscription = CloudProjectDatabaseFunctions.getDatabaseLogSubscription(GetDatabaseLogSubscriptionArgs.builder()
+     *             .serviceName("VVV")
+     *             .engine("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("subscriptionLdpName", subscription.applyValue(getDatabaseLogSubscriptionResult -> getDatabaseLogSubscriptionResult.ldpServiceName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseLogSubscriptionResult> getDatabaseLogSubscription(GetDatabaseLogSubscriptionArgs args) {
+        return getDatabaseLogSubscription(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a log subscription for a cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscription = CloudProjectDatabaseFunctions.getDatabaseLogSubscription(GetDatabaseLogSubscriptionArgs.builder()
+     *             .serviceName("VVV")
+     *             .engine("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("subscriptionLdpName", subscription.applyValue(getDatabaseLogSubscriptionResult -> getDatabaseLogSubscriptionResult.ldpServiceName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDatabaseLogSubscriptionResult> getDatabaseLogSubscriptionPlain(GetDatabaseLogSubscriptionPlainArgs args) {
+        return getDatabaseLogSubscriptionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a log subscription for a cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscription = CloudProjectDatabaseFunctions.getDatabaseLogSubscription(GetDatabaseLogSubscriptionArgs.builder()
+     *             .serviceName("VVV")
+     *             .engine("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("subscriptionLdpName", subscription.applyValue(getDatabaseLogSubscriptionResult -> getDatabaseLogSubscriptionResult.ldpServiceName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseLogSubscriptionResult> getDatabaseLogSubscription(GetDatabaseLogSubscriptionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", TypeShape.of(GetDatabaseLogSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a log subscription for a cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscription = CloudProjectDatabaseFunctions.getDatabaseLogSubscription(GetDatabaseLogSubscriptionArgs.builder()
+     *             .serviceName("VVV")
+     *             .engine("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("subscriptionLdpName", subscription.applyValue(getDatabaseLogSubscriptionResult -> getDatabaseLogSubscriptionResult.ldpServiceName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDatabaseLogSubscriptionResult> getDatabaseLogSubscriptionPlain(GetDatabaseLogSubscriptionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", TypeShape.of(GetDatabaseLogSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscriptions = CloudProjectDatabaseFunctions.getDatabaseLogSubscriptions(GetDatabaseLogSubscriptionsArgs.builder()
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("subscriptionIds", subscriptions.applyValue(getDatabaseLogSubscriptionsResult -> getDatabaseLogSubscriptionsResult.subscriptionIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseLogSubscriptionsResult> getDatabaseLogSubscriptions(GetDatabaseLogSubscriptionsArgs args) {
+        return getDatabaseLogSubscriptions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscriptions = CloudProjectDatabaseFunctions.getDatabaseLogSubscriptions(GetDatabaseLogSubscriptionsArgs.builder()
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("subscriptionIds", subscriptions.applyValue(getDatabaseLogSubscriptionsResult -> getDatabaseLogSubscriptionsResult.subscriptionIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDatabaseLogSubscriptionsResult> getDatabaseLogSubscriptionsPlain(GetDatabaseLogSubscriptionsPlainArgs args) {
+        return getDatabaseLogSubscriptionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscriptions = CloudProjectDatabaseFunctions.getDatabaseLogSubscriptions(GetDatabaseLogSubscriptionsArgs.builder()
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("subscriptionIds", subscriptions.applyValue(getDatabaseLogSubscriptionsResult -> getDatabaseLogSubscriptionsResult.subscriptionIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseLogSubscriptionsResult> getDatabaseLogSubscriptions(GetDatabaseLogSubscriptionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseLogSubscriptions:getDatabaseLogSubscriptions", TypeShape.of(GetDatabaseLogSubscriptionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscriptions = CloudProjectDatabaseFunctions.getDatabaseLogSubscriptions(GetDatabaseLogSubscriptionsArgs.builder()
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("subscriptionIds", subscriptions.applyValue(getDatabaseLogSubscriptionsResult -> getDatabaseLogSubscriptionsResult.subscriptionIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDatabaseLogSubscriptionsResult> getDatabaseLogSubscriptionsPlain(GetDatabaseLogSubscriptionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabaseLogSubscriptions:getDatabaseLogSubscriptions", TypeShape.of(GetDatabaseLogSubscriptionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabasePostgreSQLConnectionPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testPools = CloudProjectDatabaseFunctions.getDatabasePostgreSQLConnectionPools(GetDatabasePostgreSQLConnectionPoolsArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .build());
+     * 
+     *         ctx.export("connectionPoolIds", testPools.applyValue(getDatabasePostgreSQLConnectionPoolsResult -> getDatabasePostgreSQLConnectionPoolsResult.connectionPoolIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabasePostgreSQLConnectionPoolsResult> getDatabasePostgreSQLConnectionPools(GetDatabasePostgreSQLConnectionPoolsArgs args) {
+        return getDatabasePostgreSQLConnectionPools(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabasePostgreSQLConnectionPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testPools = CloudProjectDatabaseFunctions.getDatabasePostgreSQLConnectionPools(GetDatabasePostgreSQLConnectionPoolsArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .build());
+     * 
+     *         ctx.export("connectionPoolIds", testPools.applyValue(getDatabasePostgreSQLConnectionPoolsResult -> getDatabasePostgreSQLConnectionPoolsResult.connectionPoolIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDatabasePostgreSQLConnectionPoolsResult> getDatabasePostgreSQLConnectionPoolsPlain(GetDatabasePostgreSQLConnectionPoolsPlainArgs args) {
+        return getDatabasePostgreSQLConnectionPoolsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabasePostgreSQLConnectionPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testPools = CloudProjectDatabaseFunctions.getDatabasePostgreSQLConnectionPools(GetDatabasePostgreSQLConnectionPoolsArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .build());
+     * 
+     *         ctx.export("connectionPoolIds", testPools.applyValue(getDatabasePostgreSQLConnectionPoolsResult -> getDatabasePostgreSQLConnectionPoolsResult.connectionPoolIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabasePostgreSQLConnectionPoolsResult> getDatabasePostgreSQLConnectionPools(GetDatabasePostgreSQLConnectionPoolsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", TypeShape.of(GetDatabasePostgreSQLConnectionPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabasePostgreSQLConnectionPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testPools = CloudProjectDatabaseFunctions.getDatabasePostgreSQLConnectionPools(GetDatabasePostgreSQLConnectionPoolsArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .build());
+     * 
+     *         ctx.export("connectionPoolIds", testPools.applyValue(getDatabasePostgreSQLConnectionPoolsResult -> getDatabasePostgreSQLConnectionPoolsResult.connectionPoolIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDatabasePostgreSQLConnectionPoolsResult> getDatabasePostgreSQLConnectionPoolsPlain(GetDatabasePostgreSQLConnectionPoolsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", TypeShape.of(GetDatabasePostgreSQLConnectionPoolsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the list of managed databases of a public cloud project.
@@ -1126,6 +1750,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of database clusters service for a given engine:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1158,6 +1784,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args) {
@@ -1169,6 +1796,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of database clusters service for a given engine:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1201,6 +1830,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args) {
@@ -1212,6 +1842,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of database clusters service for a given engine:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1244,6 +1876,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOptions options) {
@@ -1255,6 +1888,8 @@ public final class CloudProjectDatabaseFunctions {
      * ## Example Usage
      * 
      * To get the list of database clusters service for a given engine:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1287,17 +1922,22 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use the list of IP restrictions associated with a public cloud project.
+     * Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+     * 
+     * Use this data source to get the list of IP restrictions associated with a public cloud project.
      * 
      * ## Example Usage
      * 
      * To get the list of IP restriction on a database cluster service:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1331,17 +1971,22 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpRestrictionsResult> getIpRestrictions(GetIpRestrictionsArgs args) {
         return getIpRestrictions(args, InvokeOptions.Empty);
     }
     /**
-     * Use the list of IP restrictions associated with a public cloud project.
+     * Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+     * 
+     * Use this data source to get the list of IP restrictions associated with a public cloud project.
      * 
      * ## Example Usage
      * 
      * To get the list of IP restriction on a database cluster service:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1375,17 +2020,22 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpRestrictionsResult> getIpRestrictionsPlain(GetIpRestrictionsPlainArgs args) {
         return getIpRestrictionsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use the list of IP restrictions associated with a public cloud project.
+     * Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+     * 
+     * Use this data source to get the list of IP restrictions associated with a public cloud project.
      * 
      * ## Example Usage
      * 
      * To get the list of IP restriction on a database cluster service:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1419,17 +2069,22 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpRestrictionsResult> getIpRestrictions(GetIpRestrictionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", TypeShape.of(GetIpRestrictionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use the list of IP restrictions associated with a public cloud project.
+     * Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+     * 
+     * Use this data source to get the list of IP restrictions associated with a public cloud project.
      * 
      * ## Example Usage
      * 
      * To get the list of IP restriction on a database cluster service:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1463,6 +2118,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpRestrictionsResult> getIpRestrictionsPlain(GetIpRestrictionsPlainArgs args, InvokeOptions options) {
@@ -1472,6 +2128,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1505,6 +2163,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaAclResult> getKafkaAcl(GetKafkaAclArgs args) {
@@ -1514,6 +2173,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1547,6 +2208,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaAclResult> getKafkaAclPlain(GetKafkaAclPlainArgs args) {
@@ -1556,6 +2218,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1589,6 +2253,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaAclResult> getKafkaAcl(GetKafkaAclArgs args, InvokeOptions options) {
@@ -1598,6 +2263,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1631,6 +2298,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaAclResult> getKafkaAclPlain(GetKafkaAclPlainArgs args, InvokeOptions options) {
@@ -1640,6 +2308,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1672,6 +2342,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaAclsResult> getKafkaAcls(GetKafkaAclsArgs args) {
@@ -1681,6 +2352,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1713,6 +2386,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaAclsResult> getKafkaAclsPlain(GetKafkaAclsPlainArgs args) {
@@ -1722,6 +2396,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1754,6 +2430,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaAclsResult> getKafkaAcls(GetKafkaAclsArgs args, InvokeOptions options) {
@@ -1763,6 +2440,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1795,6 +2474,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaAclsResult> getKafkaAclsPlain(GetKafkaAclsPlainArgs args, InvokeOptions options) {
@@ -1804,6 +2484,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1837,6 +2519,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs args) {
@@ -1846,6 +2529,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1879,6 +2564,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAclPlain(GetKafkaSchemaRegistryAclPlainArgs args) {
@@ -1888,6 +2574,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1921,6 +2609,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs args, InvokeOptions options) {
@@ -1930,6 +2619,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1963,6 +2654,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAclPlain(GetKafkaSchemaRegistryAclPlainArgs args, InvokeOptions options) {
@@ -1972,6 +2664,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2004,6 +2698,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclsResult> getKafkaSchemaRegistryAcls(GetKafkaSchemaRegistryAclsArgs args) {
@@ -2013,6 +2708,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2045,6 +2742,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaSchemaRegistryAclsResult> getKafkaSchemaRegistryAclsPlain(GetKafkaSchemaRegistryAclsPlainArgs args) {
@@ -2054,6 +2752,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2086,6 +2786,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclsResult> getKafkaSchemaRegistryAcls(GetKafkaSchemaRegistryAclsArgs args, InvokeOptions options) {
@@ -2095,6 +2796,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2127,6 +2830,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaSchemaRegistryAclsResult> getKafkaSchemaRegistryAclsPlain(GetKafkaSchemaRegistryAclsPlainArgs args, InvokeOptions options) {
@@ -2136,6 +2840,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2169,6 +2875,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaTopicResult> getKafkaTopic(GetKafkaTopicArgs args) {
@@ -2178,6 +2885,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2211,6 +2920,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaTopicResult> getKafkaTopicPlain(GetKafkaTopicPlainArgs args) {
@@ -2220,6 +2930,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2253,6 +2965,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaTopicResult> getKafkaTopic(GetKafkaTopicArgs args, InvokeOptions options) {
@@ -2262,6 +2975,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2295,6 +3010,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaTopicResult> getKafkaTopicPlain(GetKafkaTopicPlainArgs args, InvokeOptions options) {
@@ -2304,6 +3020,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2336,6 +3054,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaTopicsResult> getKafkaTopics(GetKafkaTopicsArgs args) {
@@ -2345,6 +3064,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2377,6 +3098,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaTopicsResult> getKafkaTopicsPlain(GetKafkaTopicsPlainArgs args) {
@@ -2386,6 +3108,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2418,6 +3142,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaTopicsResult> getKafkaTopics(GetKafkaTopicsArgs args, InvokeOptions options) {
@@ -2427,6 +3152,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2459,6 +3186,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaTopicsResult> getKafkaTopicsPlain(GetKafkaTopicsPlainArgs args, InvokeOptions options) {
@@ -2468,6 +3196,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2501,6 +3231,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaUserAccessResult> getKafkaUserAccess(GetKafkaUserAccessArgs args) {
@@ -2510,6 +3241,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2543,6 +3276,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaUserAccessResult> getKafkaUserAccessPlain(GetKafkaUserAccessPlainArgs args) {
@@ -2552,6 +3286,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2585,6 +3321,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaUserAccessResult> getKafkaUserAccess(GetKafkaUserAccessArgs args, InvokeOptions options) {
@@ -2594,6 +3331,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2627,15 +3366,198 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaUserAccessResult> getKafkaUserAccessPlain(GetKafkaUserAccessPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", TypeShape.of(GetKafkaUserAccessResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get information about a connection pool of a postgresql cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetPostgresSqlConnectionPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testPoolPostgresSqlConnectionPool = CloudProjectDatabaseFunctions.getPostgresSqlConnectionPool(GetPostgresSqlConnectionPoolArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("testPool", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPostgresSqlConnectionPoolResult> getPostgresSqlConnectionPool(GetPostgresSqlConnectionPoolArgs args) {
+        return getPostgresSqlConnectionPool(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a connection pool of a postgresql cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetPostgresSqlConnectionPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testPoolPostgresSqlConnectionPool = CloudProjectDatabaseFunctions.getPostgresSqlConnectionPool(GetPostgresSqlConnectionPoolArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("testPool", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPostgresSqlConnectionPoolResult> getPostgresSqlConnectionPoolPlain(GetPostgresSqlConnectionPoolPlainArgs args) {
+        return getPostgresSqlConnectionPoolPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a connection pool of a postgresql cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetPostgresSqlConnectionPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testPoolPostgresSqlConnectionPool = CloudProjectDatabaseFunctions.getPostgresSqlConnectionPool(GetPostgresSqlConnectionPoolArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("testPool", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPostgresSqlConnectionPoolResult> getPostgresSqlConnectionPool(GetPostgresSqlConnectionPoolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", TypeShape.of(GetPostgresSqlConnectionPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a connection pool of a postgresql cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
+     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetPostgresSqlConnectionPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testPoolPostgresSqlConnectionPool = CloudProjectDatabaseFunctions.getPostgresSqlConnectionPool(GetPostgresSqlConnectionPoolArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("testPool", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPostgresSqlConnectionPoolResult> getPostgresSqlConnectionPoolPlain(GetPostgresSqlConnectionPoolPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", TypeShape.of(GetPostgresSqlConnectionPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2669,6 +3591,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPostgresSqlUserResult> getPostgresSqlUser(GetPostgresSqlUserArgs args) {
@@ -2678,6 +3601,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2711,6 +3636,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPostgresSqlUserResult> getPostgresSqlUserPlain(GetPostgresSqlUserPlainArgs args) {
@@ -2720,6 +3646,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2753,6 +3681,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPostgresSqlUserResult> getPostgresSqlUser(GetPostgresSqlUserArgs args, InvokeOptions options) {
@@ -2762,6 +3691,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2795,6 +3726,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPostgresSqlUserResult> getPostgresSqlUserPlain(GetPostgresSqlUserPlainArgs args, InvokeOptions options) {
@@ -2804,6 +3736,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2838,6 +3772,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
@@ -2847,6 +3782,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2881,6 +3818,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -2890,6 +3828,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2924,6 +3864,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
@@ -2933,6 +3874,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get information about a user of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2967,6 +3910,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
@@ -2976,6 +3920,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of users of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3009,6 +3955,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
@@ -3018,6 +3965,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of users of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3051,6 +4000,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
@@ -3060,6 +4010,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of users of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3093,6 +4045,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
@@ -3102,6 +4055,8 @@ public final class CloudProjectDatabaseFunctions {
      * Use this data source to get the list of users of a database cluster associated with a public cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3135,6 +4090,7 @@ public final class CloudProjectDatabaseFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {

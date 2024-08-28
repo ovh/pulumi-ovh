@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Creates a user for a container registry associated with a public cloud project.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -47,7 +49,7 @@ import javax.annotation.Nullable;
  *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
  *             .build());
  * 
- *         var user = new ContainerRegistryUser("user", ContainerRegistryUserArgs.builder()        
+ *         var user = new ContainerRegistryUser("user", ContainerRegistryUserArgs.builder()
  *             .serviceName(ovh_cloud_project_containerregistry.registry().service_name())
  *             .registryId(ovh_cloud_project_containerregistry.registry().id())
  *             .email("foo{@literal @}bar.com")
@@ -58,6 +60,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:CloudProject/containerRegistryUser:ContainerRegistryUser")
@@ -171,11 +174,18 @@ public class ContainerRegistryUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ContainerRegistryUser(String name, ContainerRegistryUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/containerRegistryUser:ContainerRegistryUser", name, args == null ? ContainerRegistryUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/containerRegistryUser:ContainerRegistryUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ContainerRegistryUser(String name, Output<String> id, @Nullable ContainerRegistryUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/containerRegistryUser:ContainerRegistryUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ContainerRegistryUserArgs makeArgs(ContainerRegistryUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ContainerRegistryUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

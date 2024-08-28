@@ -18,10 +18,12 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
  * ```
  * 
  */
@@ -112,14 +114,14 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.keys);
     }
     /**
-     * Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+     * Name of the user.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+     * @return Name of the user.
      * 
      */
     public Output<String> name() {
@@ -206,11 +208,18 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RedisUser(String name, RedisUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/redisUser:RedisUser", name, args == null ? RedisUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/redisUser:RedisUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RedisUser(String name, Output<String> id, @Nullable RedisUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/redisUser:RedisUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RedisUserArgs makeArgs(RedisUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RedisUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

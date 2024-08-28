@@ -13,38 +13,38 @@ import java.util.Objects;
 @CustomType
 public final class KubeNodePoolTemplateMetadata {
     /**
-     * @return Annotations to apply to each node
+     * @return annotations
      * 
      */
     private Map<String,String> annotations;
     /**
-     * @return Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+     * @return finalizers
      * 
      */
     private List<String> finalizers;
     /**
-     * @return Labels to apply to each node
+     * @return labels
      * 
      */
     private Map<String,String> labels;
 
     private KubeNodePoolTemplateMetadata() {}
     /**
-     * @return Annotations to apply to each node
+     * @return annotations
      * 
      */
     public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
-     * @return Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+     * @return finalizers
      * 
      */
     public List<String> finalizers() {
         return this.finalizers;
     }
     /**
-     * @return Labels to apply to each node
+     * @return labels
      * 
      */
     public Map<String,String> labels() {

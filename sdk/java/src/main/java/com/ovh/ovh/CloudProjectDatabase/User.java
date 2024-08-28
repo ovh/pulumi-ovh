@@ -18,10 +18,12 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/user:User my_user service_name/engine/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/user:User my_user service_name/engine/cluster_id/id
  * ```
  * 
  */
@@ -72,14 +74,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.engine;
     }
     /**
-     * Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
+     * Name of the user. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
+     * @return Name of the user. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user. The &#34;Grafana&#34; engine only allows the &#34;avnadmin&#34; mapping.
      * 
      */
     public Output<String> name() {
@@ -166,11 +168,18 @@ public class User extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public User(String name, UserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/user:User", name, args == null ? UserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/user:User", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private User(String name, Output<String> id, @Nullable UserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/user:User", name, state, makeResourceOptions(options, id));
+    }
+
+    private static UserArgs makeArgs(UserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

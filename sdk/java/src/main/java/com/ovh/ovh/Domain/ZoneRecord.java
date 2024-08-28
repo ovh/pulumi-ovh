@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -39,7 +41,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new ZoneRecord("test", ZoneRecordArgs.builder()        
+ *         // Add a record to a sub-domain
+ *         var test = new ZoneRecord("test", ZoneRecordArgs.builder()
  *             .fieldtype("A")
  *             .subdomain("test")
  *             .target("0.0.0.0")
@@ -51,13 +54,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by &#34;.&#34; E.g., bash
+ * OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by &#34;.&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone
+ * $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone
  * ```
  * 
  */
@@ -156,11 +162,18 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ZoneRecord(String name, ZoneRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Domain/zoneRecord:ZoneRecord", name, args == null ? ZoneRecordArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Domain/zoneRecord:ZoneRecord", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ZoneRecord(String name, Output<String> id, @Nullable ZoneRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Domain/zoneRecord:ZoneRecord", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ZoneRecordArgs makeArgs(ZoneRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ZoneRecordArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
