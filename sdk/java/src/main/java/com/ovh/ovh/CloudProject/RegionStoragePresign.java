@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * &gt; __NOTE__ This resource is only compatible with the `High Performance - S3` solution for object storage.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -42,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var presignedUrlRegionStoragePresign = new RegionStoragePresign("presignedUrlRegionStoragePresign", RegionStoragePresignArgs.builder()        
+ *         var presignedUrlRegionStoragePresign = new RegionStoragePresign("presignedUrlRegionStoragePresign", RegionStoragePresignArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxx")
  *             .regionName("GRA")
  *             .expire(3600)
@@ -55,6 +57,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:CloudProject/regionStoragePresign:RegionStoragePresign")
@@ -184,11 +187,18 @@ public class RegionStoragePresign extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionStoragePresign(String name, RegionStoragePresignArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/regionStoragePresign:RegionStoragePresign", name, args == null ? RegionStoragePresignArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/regionStoragePresign:RegionStoragePresign", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionStoragePresign(String name, Output<String> id, @Nullable RegionStoragePresignState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/regionStoragePresign:RegionStoragePresign", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionStoragePresignArgs makeArgs(RegionStoragePresignArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionStoragePresignArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides an OVHcloud IAM resource group.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -42,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myResourceGroup = new ResourceGroup("myResourceGroup", ResourceGroupArgs.builder()        
+ *         var myResourceGroup = new ResourceGroup("myResourceGroup", ResourceGroupArgs.builder()
  *             .resources(            
  *                 "urn:v1:eu:resource:service1:service1-id",
  *                 "urn:v1:eu:resource:service2:service2-id")
@@ -52,6 +54,13 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * Resource groups can be imported by using their id.
+ * 
+ * &gt; Read only resource groups cannot be imported
  * 
  */
 @ResourceType(type="ovh:Iam/resourceGroup:ResourceGroup")
@@ -177,11 +186,18 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ResourceGroup(String name, @Nullable ResourceGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Iam/resourceGroup:ResourceGroup", name, args == null ? ResourceGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Iam/resourceGroup:ResourceGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ResourceGroup(String name, Output<String> id, @Nullable ResourceGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Iam/resourceGroup:ResourceGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ResourceGroupArgs makeArgs(@Nullable ResourceGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ResourceGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -8,7 +8,7 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
 }
 
-group = "com.ovh"
+group = "com.ovh.pulumi"
 
 def resolvedVersion = System.getenv("PACKAGE_VERSION") ?:
     (project.version == "unspecified"
@@ -44,7 +44,7 @@ repositories {
 dependencies {
     implementation("com.google.code.findbugs:jsr305:3.0.2")
     implementation("com.google.code.gson:gson:2.8.9")
-    implementation("com.pulumi:pulumi:0.12.0")
+    implementation("com.pulumi:pulumi:0.13.0")
 }
 
 task sourcesJar(type: Jar) {
@@ -68,6 +68,7 @@ def genPulumiResources = tasks.register('genPulumiResources') {
         def info = new Object()
         info.metaClass.resource = true
         info.metaClass.name = "ovh"
+        info.metaClass.server = "github://api.github.com/ovh/pulumi-ovh"
         info.metaClass.version = resolvedVersion
         def infoJson = new groovy.json.JsonBuilder(info).toPrettyString()
         new File(outDir, "plugin.json").text = infoJson
@@ -81,7 +82,7 @@ jar.configure {
 publishing {
     publications {
         mainPublication(MavenPublication) {
-            groupId = "com.ovh"
+            groupId = "com.ovh.pulumi"
             artifactId = "ovh"
             version = resolvedVersion
             from components.java
@@ -89,8 +90,8 @@ publishing {
             artifact javadocJar
 
             pom {
-                inceptionYear = ""
-                name = ""
+                inceptionYear = "2022"
+                name = "pulumi-ovh"
                 packaging = "jar"
                 description = "A Pulumi package for creating and managing OVH resources."
 
@@ -111,9 +112,9 @@ publishing {
 
                 developers {
                     developer {
-                        id = ""
-                        name = ""
-                        email = ""
+                        id = "pulumi"
+                        name = "Pulumi"
+                        email = "support@pulumi.com"
                     }
                 }
             }

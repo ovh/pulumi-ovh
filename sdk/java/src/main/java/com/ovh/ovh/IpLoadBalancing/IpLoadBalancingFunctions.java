@@ -21,6 +21,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -52,6 +54,7 @@ public final class IpLoadBalancingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpLoadBalancingResult> getIpLoadBalancing() {
@@ -61,6 +64,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -92,6 +97,7 @@ public final class IpLoadBalancingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpLoadBalancingResult> getIpLoadBalancingPlain() {
@@ -101,6 +107,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -132,6 +140,7 @@ public final class IpLoadBalancingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpLoadBalancingResult> getIpLoadBalancing(GetIpLoadBalancingArgs args) {
@@ -141,6 +150,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -172,6 +183,7 @@ public final class IpLoadBalancingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpLoadBalancingResult> getIpLoadBalancingPlain(GetIpLoadBalancingPlainArgs args) {
@@ -181,6 +193,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -212,6 +226,7 @@ public final class IpLoadBalancingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpLoadBalancingResult> getIpLoadBalancing(GetIpLoadBalancingArgs args, InvokeOptions options) {
@@ -221,6 +236,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to retrieve information about an IP Load Balancing product
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -252,6 +269,7 @@ public final class IpLoadBalancingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpLoadBalancingResult> getIpLoadBalancingPlain(GetIpLoadBalancingPlainArgs args, InvokeOptions options) {
@@ -261,6 +279,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -292,6 +312,7 @@ public final class IpLoadBalancingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVrackNetworkResult> getVrackNetwork(GetVrackNetworkArgs args) {
@@ -301,6 +322,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -332,6 +355,7 @@ public final class IpLoadBalancingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVrackNetworkResult> getVrackNetworkPlain(GetVrackNetworkPlainArgs args) {
@@ -341,6 +365,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -372,6 +398,7 @@ public final class IpLoadBalancingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVrackNetworkResult> getVrackNetwork(GetVrackNetworkArgs args, InvokeOptions options) {
@@ -381,6 +408,8 @@ public final class IpLoadBalancingFunctions {
      * Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -412,6 +441,7 @@ public final class IpLoadBalancingFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVrackNetworkResult> getVrackNetworkPlain(GetVrackNetworkPlainArgs args, InvokeOptions options) {

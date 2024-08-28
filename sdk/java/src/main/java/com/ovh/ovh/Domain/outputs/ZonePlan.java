@@ -20,7 +20,7 @@ public final class ZonePlan {
      */
     private @Nullable String catalogName;
     /**
-     * @return Representation of a configuration item for personalizing product
+     * @return Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
      * 
      */
     private @Nullable List<ZonePlanConfiguration> configurations;
@@ -49,7 +49,7 @@ public final class ZonePlan {
         return Optional.ofNullable(this.catalogName);
     }
     /**
-     * @return Representation of a configuration item for personalizing product
+     * @return Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
      * 
      */
     public List<ZonePlanConfiguration> configurations() {

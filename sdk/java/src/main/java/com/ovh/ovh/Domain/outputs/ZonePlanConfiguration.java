@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class ZonePlanConfiguration {
     /**
-     * @return Identifier of the resource
+     * @return Identifier of the resource : `zone` or `template`
      * 
      */
     private String label;
     /**
-     * @return Path to the resource in API.OVH.COM
+     * @return For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
      * 
      */
     private String value;
 
     private ZonePlanConfiguration() {}
     /**
-     * @return Identifier of the resource
+     * @return Identifier of the resource : `zone` or `template`
      * 
      */
     public String label() {
         return this.label;
     }
     /**
-     * @return Path to the resource in API.OVH.COM
+     * @return For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
      * 
      */
     public String value() {

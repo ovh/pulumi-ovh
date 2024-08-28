@@ -17,6 +17,8 @@ public final class VrackFunctions {
      * Use this data source to get the list of Vrack IDs available for your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -44,6 +46,7 @@ public final class VrackFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVracksResult> getVracks() {
@@ -53,6 +56,8 @@ public final class VrackFunctions {
      * Use this data source to get the list of Vrack IDs available for your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -80,6 +85,7 @@ public final class VrackFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVracksResult> getVracksPlain() {
@@ -89,6 +95,8 @@ public final class VrackFunctions {
      * Use this data source to get the list of Vrack IDs available for your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -116,6 +124,7 @@ public final class VrackFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVracksResult> getVracks(InvokeArgs args) {
@@ -125,6 +134,8 @@ public final class VrackFunctions {
      * Use this data source to get the list of Vrack IDs available for your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -152,6 +163,7 @@ public final class VrackFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVracksResult> getVracksPlain(InvokeArgs args) {
@@ -161,6 +173,8 @@ public final class VrackFunctions {
      * Use this data source to get the list of Vrack IDs available for your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -188,6 +202,7 @@ public final class VrackFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVracksResult> getVracks(InvokeArgs args, InvokeOptions options) {
@@ -197,6 +212,8 @@ public final class VrackFunctions {
      * Use this data source to get the list of Vrack IDs available for your OVHcloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -224,6 +241,7 @@ public final class VrackFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVracksResult> getVracksPlain(InvokeArgs args, InvokeOptions options) {

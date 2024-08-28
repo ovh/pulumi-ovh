@@ -4,8 +4,6 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,15 +11,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstallationTemplateCustomization {
-    /**
-     * @return Template change log details.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    private @Nullable String changeLog;
     /**
      * @return Set up the server using the provided hostname instead of the default hostname.
      * 
@@ -37,38 +26,8 @@ public final class InstallationTemplateCustomization {
      * 
      */
     private @Nullable String postInstallationScriptReturn;
-    /**
-     * @return Rating.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    private @Nullable Integer rating;
-    /**
-     * @return Name of the ssh key that should be installed. Password login will be disabled.
-     * 
-     */
-    private @Nullable String sshKeyName;
-    /**
-     * @return Use the distribution&#39;s native kernel instead of the recommended OV
-     * 
-     */
-    private @Nullable Boolean useDistributionKernel;
 
     private InstallationTemplateCustomization() {}
-    /**
-     * @return Template change log details.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    public Optional<String> changeLog() {
-        return Optional.ofNullable(this.changeLog);
-    }
     /**
      * @return Set up the server using the provided hostname instead of the default hostname.
      * 
@@ -90,31 +49,6 @@ public final class InstallationTemplateCustomization {
     public Optional<String> postInstallationScriptReturn() {
         return Optional.ofNullable(this.postInstallationScriptReturn);
     }
-    /**
-     * @return Rating.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    public Optional<Integer> rating() {
-        return Optional.ofNullable(this.rating);
-    }
-    /**
-     * @return Name of the ssh key that should be installed. Password login will be disabled.
-     * 
-     */
-    public Optional<String> sshKeyName() {
-        return Optional.ofNullable(this.sshKeyName);
-    }
-    /**
-     * @return Use the distribution&#39;s native kernel instead of the recommended OV
-     * 
-     */
-    public Optional<Boolean> useDistributionKernel() {
-        return Optional.ofNullable(this.useDistributionKernel);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -125,31 +59,17 @@ public final class InstallationTemplateCustomization {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String changeLog;
         private @Nullable String customHostname;
         private @Nullable String postInstallationScriptLink;
         private @Nullable String postInstallationScriptReturn;
-        private @Nullable Integer rating;
-        private @Nullable String sshKeyName;
-        private @Nullable Boolean useDistributionKernel;
         public Builder() {}
         public Builder(InstallationTemplateCustomization defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.changeLog = defaults.changeLog;
     	      this.customHostname = defaults.customHostname;
     	      this.postInstallationScriptLink = defaults.postInstallationScriptLink;
     	      this.postInstallationScriptReturn = defaults.postInstallationScriptReturn;
-    	      this.rating = defaults.rating;
-    	      this.sshKeyName = defaults.sshKeyName;
-    	      this.useDistributionKernel = defaults.useDistributionKernel;
         }
 
-        @CustomType.Setter
-        public Builder changeLog(@Nullable String changeLog) {
-
-            this.changeLog = changeLog;
-            return this;
-        }
         @CustomType.Setter
         public Builder customHostname(@Nullable String customHostname) {
 
@@ -168,33 +88,11 @@ public final class InstallationTemplateCustomization {
             this.postInstallationScriptReturn = postInstallationScriptReturn;
             return this;
         }
-        @CustomType.Setter
-        public Builder rating(@Nullable Integer rating) {
-
-            this.rating = rating;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder sshKeyName(@Nullable String sshKeyName) {
-
-            this.sshKeyName = sshKeyName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder useDistributionKernel(@Nullable Boolean useDistributionKernel) {
-
-            this.useDistributionKernel = useDistributionKernel;
-            return this;
-        }
         public InstallationTemplateCustomization build() {
             final var _resultValue = new InstallationTemplateCustomization();
-            _resultValue.changeLog = changeLog;
             _resultValue.customHostname = customHostname;
             _resultValue.postInstallationScriptLink = postInstallationScriptLink;
             _resultValue.postInstallationScriptReturn = postInstallationScriptReturn;
-            _resultValue.rating = rating;
-            _resultValue.sshKeyName = sshKeyName;
-            _resultValue.useDistributionKernel = useDistributionKernel;
             return _resultValue;
         }
     }

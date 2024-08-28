@@ -24,56 +24,98 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:ovh")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * The OVH API Application Key.
+     * The OVH API Access Token
+     * 
+     */
+    @Export(name="accessToken", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accessToken;
+
+    /**
+     * @return The OVH API Access Token
+     * 
+     */
+    public Output<Optional<String>> accessToken() {
+        return Codegen.optional(this.accessToken);
+    }
+    /**
+     * The OVH API Application Key
      * 
      */
     @Export(name="applicationKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> applicationKey;
 
     /**
-     * @return The OVH API Application Key.
+     * @return The OVH API Application Key
      * 
      */
     public Output<Optional<String>> applicationKey() {
         return Codegen.optional(this.applicationKey);
     }
     /**
-     * The OVH API Application Secret.
+     * The OVH API Application Secret
      * 
      */
     @Export(name="applicationSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> applicationSecret;
 
     /**
-     * @return The OVH API Application Secret.
+     * @return The OVH API Application Secret
      * 
      */
     public Output<Optional<String>> applicationSecret() {
         return Codegen.optional(this.applicationSecret);
     }
     /**
-     * The OVH API Consumer key.
+     * OAuth 2.0 application&#39;s ID
+     * 
+     */
+    @Export(name="clientId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> clientId;
+
+    /**
+     * @return OAuth 2.0 application&#39;s ID
+     * 
+     */
+    public Output<Optional<String>> clientId() {
+        return Codegen.optional(this.clientId);
+    }
+    /**
+     * OAuth 2.0 application&#39;s secret
+     * 
+     */
+    @Export(name="clientSecret", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> clientSecret;
+
+    /**
+     * @return OAuth 2.0 application&#39;s secret
+     * 
+     */
+    public Output<Optional<String>> clientSecret() {
+        return Codegen.optional(this.clientSecret);
+    }
+    /**
+     * The OVH API Consumer Key
      * 
      */
     @Export(name="consumerKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> consumerKey;
 
     /**
-     * @return The OVH API Consumer key.
+     * @return The OVH API Consumer Key
      * 
      */
     public Output<Optional<String>> consumerKey() {
         return Codegen.optional(this.consumerKey);
     }
     /**
-     * The OVH API endpoint to target (ex: &#34;ovh-eu&#34;).
+     * The OVH API endpoint to target (ex: &#34;ovh-eu&#34;)
      * 
      */
     @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpoint;
 
     /**
-     * @return The OVH API endpoint to target (ex: &#34;ovh-eu&#34;).
+     * @return The OVH API endpoint to target (ex: &#34;ovh-eu&#34;)
      * 
      */
     public Output<Optional<String>> endpoint() {
@@ -102,7 +144,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Provider(String name, @Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh", name, args == null ? ProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    }
+
+    private static ProviderArgs makeArgs(@Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProviderArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -15,16 +15,32 @@ public final class GetKubeNodePoolTemplate extends com.pulumi.resources.InvokeAr
 
     public static final GetKubeNodePoolTemplate Empty = new GetKubeNodePoolTemplate();
 
+    /**
+     * metadata
+     * 
+     */
     @Import(name="metadata")
     private @Nullable GetKubeNodePoolTemplateMetadata metadata;
 
+    /**
+     * @return metadata
+     * 
+     */
     public Optional<GetKubeNodePoolTemplateMetadata> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
+    /**
+     * spec
+     * 
+     */
     @Import(name="spec")
     private @Nullable GetKubeNodePoolTemplateSpec spec;
 
+    /**
+     * @return spec
+     * 
+     */
     public Optional<GetKubeNodePoolTemplateSpec> spec() {
         return Optional.ofNullable(this.spec);
     }
@@ -54,11 +70,23 @@ public final class GetKubeNodePoolTemplate extends com.pulumi.resources.InvokeAr
             $ = new GetKubeNodePoolTemplate(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param metadata metadata
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(@Nullable GetKubeNodePoolTemplateMetadata metadata) {
             $.metadata = metadata;
             return this;
         }
 
+        /**
+         * @param spec spec
+         * 
+         * @return builder
+         * 
+         */
         public Builder spec(@Nullable GetKubeNodePoolTemplateSpec spec) {
             $.spec = spec;
             return this;

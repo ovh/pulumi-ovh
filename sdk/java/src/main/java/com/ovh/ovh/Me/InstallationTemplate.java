@@ -6,6 +6,7 @@ package com.ovh.ovh.Me;
 import com.ovh.ovh.Me.InstallationTemplateArgs;
 import com.ovh.ovh.Me.inputs.InstallationTemplateState;
 import com.ovh.ovh.Me.outputs.InstallationTemplateCustomization;
+import com.ovh.ovh.Me.outputs.InstallationTemplateInput;
 import com.ovh.ovh.Utilities;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -22,64 +23,23 @@ import javax.annotation.Nullable;
  * Use this resource to create a custom installation template available for dedicated servers.
  * 
  * ## Example Usage
- * <pre>
- * {@code
- * package generated_program;
  * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.ovh.Me.InstallationTemplate;
- * import com.pulumi.ovh.Me.InstallationTemplateArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var mytemplate = new InstallationTemplate("mytemplate", InstallationTemplateArgs.builder()        
- *             .baseTemplateName("centos7_64")
- *             .defaultLanguage("en")
- *             .templateName("mytemplate")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by &#34;/&#34; E.g., bash
+ * Custom installation template available for dedicated servers can be imported using the `base_template_name`, `template_name` of the cluster, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name
+ * $ pulumi import ovh:Me/installationTemplate:InstallationTemplate mytemplate base_template_name/template_name
  * ```
  * 
  */
 @ResourceType(type="ovh:Me/installationTemplate:InstallationTemplate")
 public class InstallationTemplate extends com.pulumi.resources.CustomResource {
-    /**
-     * List of all language available for this template.
-     * 
-     */
-    @Export(name="availableLanguages", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> availableLanguages;
-
-    /**
-     * @return List of all language available for this template.
-     * 
-     */
-    public Output<List<String>> availableLanguages() {
-        return this.availableLanguages;
-    }
     /**
      * The name of an existing installation template, choose one among the list given by `ovh.getInstallationTemplates` datasource.
      * 
@@ -93,20 +53,6 @@ public class InstallationTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> baseTemplateName() {
         return this.baseTemplateName;
-    }
-    /**
-     * This distribution is new and, although tested and functional, may still display odd behaviour.
-     * 
-     */
-    @Export(name="beta", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> beta;
-
-    /**
-     * @return This distribution is new and, although tested and functional, may still display odd behaviour.
-     * 
-     */
-    public Output<Boolean> beta() {
-        return this.beta;
     }
     /**
      * This template bit format (32 or 64).
@@ -143,34 +89,6 @@ public class InstallationTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customization);
     }
     /**
-     * The default language of this template.
-     * 
-     */
-    @Export(name="defaultLanguage", refs={String.class}, tree="[0]")
-    private Output<String> defaultLanguage;
-
-    /**
-     * @return The default language of this template.
-     * 
-     */
-    public Output<String> defaultLanguage() {
-        return this.defaultLanguage;
-    }
-    /**
-     * is this distribution deprecated.
-     * 
-     */
-    @Export(name="deprecated", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> deprecated;
-
-    /**
-     * @return is this distribution deprecated.
-     * 
-     */
-    public Output<Boolean> deprecated() {
-        return this.deprecated;
-    }
-    /**
      * information about this template.
      * 
      */
@@ -199,74 +117,98 @@ public class InstallationTemplate extends com.pulumi.resources.CustomResource {
         return this.distribution;
     }
     /**
-     * this template family type (bsd,linux,solaris,windows).
+     * after this date, install of this template will not be possible at OVH
+     * 
+     */
+    @Export(name="endOfInstall", refs={String.class}, tree="[0]")
+    private Output<String> endOfInstall;
+
+    /**
+     * @return after this date, install of this template will not be possible at OVH
+     * 
+     */
+    public Output<String> endOfInstall() {
+        return this.endOfInstall;
+    }
+    /**
+     * this template family type.
      * 
      */
     @Export(name="family", refs={String.class}, tree="[0]")
     private Output<String> family;
 
     /**
-     * @return this template family type (bsd,linux,solaris,windows).
+     * @return this template family type.
      * 
      */
     public Output<String> family() {
         return this.family;
     }
     /**
-     * Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+     * Filesystems available.
      * 
      */
     @Export(name="filesystems", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> filesystems;
 
     /**
-     * @return Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+     * @return Filesystems available.
      * 
      */
     public Output<List<String>> filesystems() {
         return this.filesystems;
     }
     /**
-     * This distribution supports hardware raid configuration through the OVHcloud API.
+     * This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
+     * 
+     * @deprecated
+     * This will be deprecated in the next release
      * 
      */
+    @Deprecated /* This will be deprecated in the next release */
     @Export(name="hardRaidConfiguration", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hardRaidConfiguration;
 
     /**
-     * @return This distribution supports hardware raid configuration through the OVHcloud API.
+     * @return This distribution supports hardware raid configuration through the OVHcloud API. Deprecated, will be removed in next release.
      * 
      */
     public Output<Boolean> hardRaidConfiguration() {
         return this.hardRaidConfiguration;
     }
-    /**
-     * Date of last modification of the base image.
-     * 
-     */
-    @Export(name="lastModification", refs={String.class}, tree="[0]")
-    private Output<String> lastModification;
+    @Export(name="inputs", refs={List.class,InstallationTemplateInput.class}, tree="[0,1]")
+    private Output<List<InstallationTemplateInput>> inputs;
 
-    /**
-     * @return Date of last modification of the base image.
-     * 
-     */
-    public Output<String> lastModification() {
-        return this.lastModification;
+    public Output<List<InstallationTemplateInput>> inputs() {
+        return this.inputs;
     }
     /**
-     * This distribution supports Logical Volumes (Linux LVM)
+     * Whether this distribution supports Logical Volumes (Linux LVM)
      * 
      */
     @Export(name="lvmReady", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> lvmReady;
 
     /**
-     * @return This distribution supports Logical Volumes (Linux LVM)
+     * @return Whether this distribution supports Logical Volumes (Linux LVM)
      * 
      */
     public Output<Boolean> lvmReady() {
         return this.lvmReady;
+    }
+    /**
+     * Partitioning customization is not available for this OS template
+     * 
+     */
+    @Export(name="noPartitioning", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> noPartitioning;
+
+    /**
+     * @return Partitioning customization is not available for this OS template
+     * 
+     */
+    public Output<Boolean> noPartitioning() {
+        return this.noPartitioning;
     }
     /**
      * Remove default partition schemes at creation.
@@ -283,46 +225,32 @@ public class InstallationTemplate extends com.pulumi.resources.CustomResource {
         return this.removeDefaultPartitionSchemes;
     }
     /**
-     * This distribution supports installation using the distribution&#39;s native kernel instead of the recommended OVHcloud kernel.
+     * Partitioning customization is available but limited to mirroring for this OS template
      * 
      */
-    @Export(name="supportsDistributionKernel", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> supportsDistributionKernel;
+    @Export(name="softRaidOnlyMirroring", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> softRaidOnlyMirroring;
 
     /**
-     * @return This distribution supports installation using the distribution&#39;s native kernel instead of the recommended OVHcloud kernel.
+     * @return Partitioning customization is available but limited to mirroring for this OS template
      * 
      */
-    public Output<Boolean> supportsDistributionKernel() {
-        return this.supportsDistributionKernel;
+    public Output<Boolean> softRaidOnlyMirroring() {
+        return this.softRaidOnlyMirroring;
     }
     /**
-     * This distribution supports RTM software.
+     * this template subfamily type
      * 
      */
-    @Export(name="supportsRtm", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> supportsRtm;
+    @Export(name="subfamily", refs={String.class}, tree="[0]")
+    private Output<String> subfamily;
 
     /**
-     * @return This distribution supports RTM software.
+     * @return this template subfamily type
      * 
      */
-    public Output<Boolean> supportsRtm() {
-        return this.supportsRtm;
-    }
-    /**
-     * This distribution supports the microsoft SQL server.
-     * 
-     */
-    @Export(name="supportsSqlServer", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> supportsSqlServer;
-
-    /**
-     * @return This distribution supports the microsoft SQL server.
-     * 
-     */
-    public Output<Boolean> supportsSqlServer() {
-        return this.supportsSqlServer;
+    public Output<String> subfamily() {
+        return this.subfamily;
     }
     /**
      * This template name.
@@ -361,11 +289,18 @@ public class InstallationTemplate extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public InstallationTemplate(String name, InstallationTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/installationTemplate:InstallationTemplate", name, args == null ? InstallationTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Me/installationTemplate:InstallationTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private InstallationTemplate(String name, Output<String> id, @Nullable InstallationTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Me/installationTemplate:InstallationTemplate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InstallationTemplateArgs makeArgs(InstallationTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstallationTemplateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

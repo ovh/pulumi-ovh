@@ -107,14 +107,14 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+     * Name of the user.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+     * @return Name of the user.
      * 
      */
     public Optional<Output<String>> name() {
@@ -384,7 +384,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+         * @param name Name of the user.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the user. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+         * @param name Name of the user.
          * 
          * @return builder
          * 

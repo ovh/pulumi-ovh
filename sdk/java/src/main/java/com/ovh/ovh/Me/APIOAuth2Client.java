@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -43,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myOauth2ClientAuthCode = new APIOAuth2Client("myOauth2ClientAuthCode", APIOAuth2ClientArgs.builder()        
+ *         var myOauth2ClientAuthCode = new APIOAuth2Client("myOauth2ClientAuthCode", APIOAuth2ClientArgs.builder()
  *             .callbackUrls("https://my-app.com/callback")
  *             .description("An OAuth2 client using the authorization code flow for my-app.com")
  *             .flow("AUTHORIZATION_CODE")
@@ -53,8 +55,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -77,7 +82,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myOauth2ClientClientCreds = new APIOAuth2Client("myOauth2ClientClientCreds", APIOAuth2ClientArgs.builder()        
+ *         var myOauth2ClientClientCreds = new APIOAuth2Client("myOauth2ClientClientCreds", APIOAuth2ClientArgs.builder()
  *             .description("An OAuth2 client using the client credentials flow for my app")
  *             .flow("CLIENT_CREDENTIALS")
  *             .build());
@@ -86,19 +91,24 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OAuth2 clients can be imported using their `client_id`bash
+ * OAuth2 clients can be imported using their `client_id`:
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id
+ * $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id
  * ```
  * 
- *  Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separatorbash
+ * Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separator:
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client &#39;client_id|client_secret&#39;
+ * $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client &#39;client_id|client_secret&#39;
  * ```
  * 
  */
@@ -225,11 +235,18 @@ public class APIOAuth2Client extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public APIOAuth2Client(String name, APIOAuth2ClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/aPIOAuth2Client:APIOAuth2Client", name, args == null ? APIOAuth2ClientArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Me/aPIOAuth2Client:APIOAuth2Client", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private APIOAuth2Client(String name, Output<String> id, @Nullable APIOAuth2ClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Me/aPIOAuth2Client:APIOAuth2Client", name, state, makeResourceOptions(options, id));
+    }
+
+    private static APIOAuth2ClientArgs makeArgs(APIOAuth2ClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? APIOAuth2ClientArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

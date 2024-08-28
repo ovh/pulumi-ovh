@@ -15,26 +15,26 @@ import java.util.Objects;
 @CustomType
 public final class KubeNodePoolTemplateSpec {
     /**
-     * @return Taints to apply to each node
+     * @return taints
      * 
      */
     private List<Map<String,Object>> taints;
     /**
-     * @return If true, set nodes as un-schedulable
+     * @return unschedulable
      * 
      */
     private Boolean unschedulable;
 
     private KubeNodePoolTemplateSpec() {}
     /**
-     * @return Taints to apply to each node
+     * @return taints
      * 
      */
     public List<Map<String,Object>> taints() {
         return this.taints;
     }
     /**
-     * @return If true, set nodes as un-schedulable
+     * @return unschedulable
      * 
      */
     public Boolean unschedulable() {

@@ -15,9 +15,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Deprecated: Use ip_restriction field in cloud_project_database resource instead.
+ * Continuing to use the ovh.CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply
+ * 
  * Apply IP restrictions to an OVHcloud Managed Database cluster.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -48,7 +53,7 @@ import javax.annotation.Nullable;
  *             .id("ZZZZ")
  *             .build());
  * 
- *         var iprestriction = new IpRestriction("iprestriction", IpRestrictionArgs.builder()        
+ *         var iprestriction = new IpRestriction("iprestriction", IpRestrictionArgs.builder()
  *             .serviceName(db.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
  *             .engine(db.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
  *             .clusterId(db.applyValue(getDatabaseResult -> getDatabaseResult.id()))
@@ -59,13 +64,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
+ * $ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24
  * ```
  * 
  */
@@ -182,11 +190,18 @@ public class IpRestriction extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IpRestriction(String name, IpRestrictionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/ipRestriction:IpRestriction", name, args == null ? IpRestrictionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/ipRestriction:IpRestriction", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IpRestriction(String name, Output<String> id, @Nullable IpRestrictionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/ipRestriction:IpRestriction", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IpRestrictionArgs makeArgs(IpRestrictionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IpRestrictionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

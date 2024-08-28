@@ -33,14 +33,14 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
     }
 
     /**
-     * Cold storage compression method
+     * Cold storage compression method. One of &#34;LZMA&#34;, &#34;GZIP&#34;, &#34;DEFLATED&#34;, &#34;ZSTD&#34;
      * 
      */
     @Import(name="coldStorageCompression")
     private @Nullable Output<String> coldStorageCompression;
 
     /**
-     * @return Cold storage compression method
+     * @return Cold storage compression method. One of &#34;LZMA&#34;, &#34;GZIP&#34;, &#34;DEFLATED&#34;, &#34;ZSTD&#34;
      * 
      */
     public Optional<Output<String>> coldStorageCompression() {
@@ -48,14 +48,14 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
     }
 
     /**
-     * ColdStorage content
+     * ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
      * 
      */
     @Import(name="coldStorageContent")
     private @Nullable Output<String> coldStorageContent;
 
     /**
-     * @return ColdStorage content
+     * @return ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
      * 
      */
     public Optional<Output<String>> coldStorageContent() {
@@ -108,14 +108,14 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
     }
 
     /**
-     * ColdStorage destination
+     * ColdStorage destination. One of &#34;PCA&#34;, &#34;PCS&#34;
      * 
      */
     @Import(name="coldStorageTarget")
     private @Nullable Output<String> coldStorageTarget;
 
     /**
-     * @return ColdStorage destination
+     * @return ColdStorage destination. One of &#34;PCA&#34;, &#34;PCS&#34;
      * 
      */
     public Optional<Output<String>> coldStorageTarget() {
@@ -243,14 +243,14 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
     }
 
     /**
-     * Number of coldstored archives
+     * Number of coldstored archivesr
      * 
      */
     @Import(name="nbArchive")
     private @Nullable Output<Integer> nbArchive;
 
     /**
-     * @return Number of coldstored archives
+     * @return Number of coldstored archivesr
      * 
      */
     public Optional<Output<Integer>> nbArchive() {
@@ -348,14 +348,14 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
     }
 
     /**
-     * Stream last update
+     * Stream last updater
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return Stream last update
+     * @return Stream last updater
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -375,6 +375,21 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
      */
     public Optional<Output<Boolean>> webSocketEnabled() {
         return Optional.ofNullable(this.webSocketEnabled);
+    }
+
+    /**
+     * Write token of the stream (empty if the caller is not the owner of the stream)
+     * 
+     */
+    @Import(name="writeToken")
+    private @Nullable Output<String> writeToken;
+
+    /**
+     * @return Write token of the stream (empty if the caller is not the owner of the stream)
+     * 
+     */
+    public Optional<Output<String>> writeToken() {
+        return Optional.ofNullable(this.writeToken);
     }
 
     private LogsOutputGraylogStreamState() {}
@@ -404,6 +419,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         this.title = $.title;
         this.updatedAt = $.updatedAt;
         this.webSocketEnabled = $.webSocketEnabled;
+        this.writeToken = $.writeToken;
     }
 
     public static Builder builder() {
@@ -446,7 +462,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param coldStorageCompression Cold storage compression method
+         * @param coldStorageCompression Cold storage compression method. One of &#34;LZMA&#34;, &#34;GZIP&#34;, &#34;DEFLATED&#34;, &#34;ZSTD&#34;
          * 
          * @return builder
          * 
@@ -457,7 +473,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param coldStorageCompression Cold storage compression method
+         * @param coldStorageCompression Cold storage compression method. One of &#34;LZMA&#34;, &#34;GZIP&#34;, &#34;DEFLATED&#34;, &#34;ZSTD&#34;
          * 
          * @return builder
          * 
@@ -467,7 +483,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param coldStorageContent ColdStorage content
+         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
          * 
          * @return builder
          * 
@@ -478,7 +494,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param coldStorageContent ColdStorage content
+         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
          * 
          * @return builder
          * 
@@ -551,7 +567,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param coldStorageTarget ColdStorage destination
+         * @param coldStorageTarget ColdStorage destination. One of &#34;PCA&#34;, &#34;PCS&#34;
          * 
          * @return builder
          * 
@@ -562,7 +578,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param coldStorageTarget ColdStorage destination
+         * @param coldStorageTarget ColdStorage destination. One of &#34;PCA&#34;, &#34;PCS&#34;
          * 
          * @return builder
          * 
@@ -740,7 +756,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param nbArchive Number of coldstored archives
+         * @param nbArchive Number of coldstored archivesr
          * 
          * @return builder
          * 
@@ -751,7 +767,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param nbArchive Number of coldstored archives
+         * @param nbArchive Number of coldstored archivesr
          * 
          * @return builder
          * 
@@ -887,7 +903,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param updatedAt Stream last update
+         * @param updatedAt Stream last updater
          * 
          * @return builder
          * 
@@ -898,7 +914,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param updatedAt Stream last update
+         * @param updatedAt Stream last updater
          * 
          * @return builder
          * 
@@ -926,6 +942,27 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
          */
         public Builder webSocketEnabled(Boolean webSocketEnabled) {
             return webSocketEnabled(Output.of(webSocketEnabled));
+        }
+
+        /**
+         * @param writeToken Write token of the stream (empty if the caller is not the owner of the stream)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writeToken(@Nullable Output<String> writeToken) {
+            $.writeToken = writeToken;
+            return this;
+        }
+
+        /**
+         * @param writeToken Write token of the stream (empty if the caller is not the owner of the stream)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writeToken(String writeToken) {
+            return writeToken(Output.of(writeToken));
         }
 
         public LogsOutputGraylogStreamState build() {

@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class KubeNodePoolTemplate {
     /**
-     * @return Metadata of each node in the pool
+     * @return metadata
      * 
      */
     private KubeNodePoolTemplateMetadata metadata;
     /**
-     * @return Spec of each node in the pool
+     * @return spec
      * 
      */
     private KubeNodePoolTemplateSpec spec;
 
     private KubeNodePoolTemplate() {}
     /**
-     * @return Metadata of each node in the pool
+     * @return metadata
      * 
      */
     public KubeNodePoolTemplateMetadata metadata() {
         return this.metadata;
     }
     /**
-     * @return Spec of each node in the pool
+     * @return spec
      * 
      */
     public KubeNodePoolTemplateSpec spec() {

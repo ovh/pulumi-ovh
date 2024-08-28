@@ -18,6 +18,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
     /**
      * The IP block
+     * * `continentCode` - The Ip continent
      * 
      */
     @Import(name="block")
@@ -25,6 +26,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The IP block
+     * * `continentCode` - The Ip continent
      * 
      */
     public Optional<Output<String>> block() {
@@ -78,6 +80,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
     /**
      * Current operation progress in percent
+     * * `routedTo` - Instance where ip is routed to
      * 
      */
     @Import(name="progress")
@@ -85,6 +88,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Current operation progress in percent
+     * * `routedTo` - Instance where ip is routed to
      * 
      */
     public Optional<Output<Integer>> progress() {
@@ -125,6 +129,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
     /**
      * Ip status, can be `ok` or `operationPending`
+     * * `subType` - IP sub type, can be `cloud` or `ovh`
      * 
      */
     @Import(name="status")
@@ -132,6 +137,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Ip status, can be `ok` or `operationPending`
+     * * `subType` - IP sub type, can be `cloud` or `ovh`
      * 
      */
     public Optional<Output<String>> status() {
@@ -187,6 +193,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param block The IP block
+         * * `continentCode` - The Ip continent
          * 
          * @return builder
          * 
@@ -198,6 +205,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param block The IP block
+         * * `continentCode` - The Ip continent
          * 
          * @return builder
          * 
@@ -271,6 +279,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param progress Current operation progress in percent
+         * * `routedTo` - Instance where ip is routed to
          * 
          * @return builder
          * 
@@ -282,6 +291,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param progress Current operation progress in percent
+         * * `routedTo` - Instance where ip is routed to
          * 
          * @return builder
          * 
@@ -336,6 +346,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param status Ip status, can be `ok` or `operationPending`
+         * * `subType` - IP sub type, can be `cloud` or `ovh`
          * 
          * @return builder
          * 
@@ -347,6 +358,7 @@ public final class FailoverIpAttachState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param status Ip status, can be `ok` or `operationPending`
+         * * `subType` - IP sub type, can be `cloud` or `ovh`
          * 
          * @return builder
          * 

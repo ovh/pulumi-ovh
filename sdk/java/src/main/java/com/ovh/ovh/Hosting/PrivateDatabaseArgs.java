@@ -3,6 +3,7 @@
 
 package com.ovh.ovh.Hosting;
 
+import com.ovh.ovh.Hosting.inputs.PrivateDatabaseOrderArgs;
 import com.ovh.ovh.Hosting.inputs.PrivateDatabasePlanArgs;
 import com.ovh.ovh.Hosting.inputs.PrivateDatabasePlanOptionArgs;
 import com.pulumi.core.Output;
@@ -32,6 +33,21 @@ public final class PrivateDatabaseArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Details about your Order
+     * 
+     */
+    @Import(name="orders")
+    private @Nullable Output<List<PrivateDatabaseOrderArgs>> orders;
+
+    /**
+     * @return Details about your Order
+     * 
+     */
+    public Optional<Output<List<PrivateDatabaseOrderArgs>>> orders() {
+        return Optional.ofNullable(this.orders);
     }
 
     /**
@@ -121,6 +137,7 @@ public final class PrivateDatabaseArgs extends com.pulumi.resources.ResourceArgs
 
     private PrivateDatabaseArgs(PrivateDatabaseArgs $) {
         this.displayName = $.displayName;
+        this.orders = $.orders;
         this.ovhSubsidiary = $.ovhSubsidiary;
         this.paymentMean = $.paymentMean;
         this.plan = $.plan;
@@ -165,6 +182,37 @@ public final class PrivateDatabaseArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param orders Details about your Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(@Nullable Output<List<PrivateDatabaseOrderArgs>> orders) {
+            $.orders = orders;
+            return this;
+        }
+
+        /**
+         * @param orders Details about your Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(List<PrivateDatabaseOrderArgs> orders) {
+            return orders(Output.of(orders));
+        }
+
+        /**
+         * @param orders Details about your Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(PrivateDatabaseOrderArgs... orders) {
+            return orders(List.of(orders));
         }
 
         /**

@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class ServerNetworkingInterface {
+    /**
+     * @return Interface Mac address
+     * 
+     */
     private List<String> macs;
+    /**
+     * @return Interface type
+     * 
+     */
     private String type;
 
     private ServerNetworkingInterface() {}
+    /**
+     * @return Interface Mac address
+     * 
+     */
     public List<String> macs() {
         return this.macs;
     }
+    /**
+     * @return Interface type
+     * 
+     */
     public String type() {
         return this.type;
     }

@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Attach an IP block to a VRack.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -62,7 +64,7 @@ import javax.annotation.Nullable;
  *             .planCode("vrack")
  *             .build());
  * 
- *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()        
+ *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()
  *             .description(mycart.applyValue(getCartResult -> getCartResult.description()))
  *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
  *             .plan(VrackPlanArgs.builder()
@@ -79,7 +81,7 @@ import javax.annotation.Nullable;
  *             .planCode("ip-v4-s30-ripe")
  *             .build());
  * 
- *         var ipblockIpService = new IpService("ipblockIpService", IpServiceArgs.builder()        
+ *         var ipblockIpService = new IpService("ipblockIpService", IpServiceArgs.builder()
  *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
  *             .description(mycart.applyValue(getCartResult -> getCartResult.description()))
  *             .plan(IpServicePlanArgs.builder()
@@ -93,7 +95,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var vrackblock = new IpAddress("vrackblock", IpAddressArgs.builder()        
+ *         var vrackblock = new IpAddress("vrackblock", IpAddressArgs.builder()
  *             .serviceName(vrackVrack.serviceName())
  *             .block(ipblockIpService.ip())
  *             .build());
@@ -102,6 +104,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:Vrack/ipAddress:IpAddress")
@@ -199,11 +202,18 @@ public class IpAddress extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IpAddress(String name, IpAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/ipAddress:IpAddress", name, args == null ? IpAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Vrack/ipAddress:IpAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IpAddress(String name, Output<String> id, @Nullable IpAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Vrack/ipAddress:IpAddress", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IpAddressArgs makeArgs(IpAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IpAddressArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

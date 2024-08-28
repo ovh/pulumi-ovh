@@ -3,6 +3,7 @@
 
 package com.ovh.ovh.Vrack;
 
+import com.ovh.ovh.Vrack.inputs.VrackOrderArgs;
 import com.ovh.ovh.Vrack.inputs.VrackPlanArgs;
 import com.ovh.ovh.Vrack.inputs.VrackPlanOptionArgs;
 import com.pulumi.core.Output;
@@ -47,6 +48,21 @@ public final class VrackArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Details about an Order
+     * 
+     */
+    @Import(name="orders")
+    private @Nullable Output<List<VrackOrderArgs>> orders;
+
+    /**
+     * @return Details about an Order
+     * 
+     */
+    public Optional<Output<List<VrackOrderArgs>>> orders() {
+        return Optional.ofNullable(this.orders);
     }
 
     /**
@@ -122,6 +138,7 @@ public final class VrackArgs extends com.pulumi.resources.ResourceArgs {
     private VrackArgs(VrackArgs $) {
         this.description = $.description;
         this.name = $.name;
+        this.orders = $.orders;
         this.ovhSubsidiary = $.ovhSubsidiary;
         this.paymentMean = $.paymentMean;
         this.plan = $.plan;
@@ -186,6 +203,37 @@ public final class VrackArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(@Nullable Output<List<VrackOrderArgs>> orders) {
+            $.orders = orders;
+            return this;
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(List<VrackOrderArgs> orders) {
+            return orders(Output.of(orders));
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(VrackOrderArgs... orders) {
+            return orders(List.of(orders));
         }
 
         /**

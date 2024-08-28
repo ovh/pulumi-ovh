@@ -34,14 +34,14 @@ public final class ZonePlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Representation of a configuration item for personalizing product
+     * Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
      * 
      */
     @Import(name="configurations")
     private @Nullable Output<List<ZonePlanConfigurationArgs>> configurations;
 
     /**
-     * @return Representation of a configuration item for personalizing product
+     * @return Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
      * 
      */
     public Optional<Output<List<ZonePlanConfigurationArgs>>> configurations() {
@@ -143,7 +143,7 @@ public final class ZonePlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations Representation of a configuration item for personalizing product
+         * @param configurations Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ZonePlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations Representation of a configuration item for personalizing product
+         * @param configurations Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class ZonePlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations Representation of a configuration item for personalizing product
+         * @param configurations Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
          * 
          * @return builder
          * 

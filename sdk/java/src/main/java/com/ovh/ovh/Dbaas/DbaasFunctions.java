@@ -7,12 +7,15 @@ import com.ovh.ovh.Dbaas.inputs.GetLogsClusterArgs;
 import com.ovh.ovh.Dbaas.inputs.GetLogsClusterPlainArgs;
 import com.ovh.ovh.Dbaas.inputs.GetLogsClustersArgs;
 import com.ovh.ovh.Dbaas.inputs.GetLogsClustersPlainArgs;
+import com.ovh.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+import com.ovh.ovh.Dbaas.inputs.GetLogsClustersRetentionPlainArgs;
 import com.ovh.ovh.Dbaas.inputs.GetLogsInputEngineArgs;
 import com.ovh.ovh.Dbaas.inputs.GetLogsInputEnginePlainArgs;
 import com.ovh.ovh.Dbaas.inputs.GetLogsOutputGraylogStreamArgs;
 import com.ovh.ovh.Dbaas.inputs.GetLogsOutputGraylogStreamPlainArgs;
 import com.ovh.ovh.Dbaas.outputs.GetLogsClusterResult;
 import com.ovh.ovh.Dbaas.outputs.GetLogsClustersResult;
+import com.ovh.ovh.Dbaas.outputs.GetLogsClustersRetentionResult;
 import com.ovh.ovh.Dbaas.outputs.GetLogsInputEngineResult;
 import com.ovh.ovh.Dbaas.outputs.GetLogsOutputGraylogStreamResult;
 import com.ovh.ovh.Utilities;
@@ -27,6 +30,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve informations about a DBaas logs cluster tenant.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -58,6 +63,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLogsClusterResult> getLogsCluster(GetLogsClusterArgs args) {
@@ -67,6 +73,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve informations about a DBaas logs cluster tenant.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -98,6 +106,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLogsClusterResult> getLogsClusterPlain(GetLogsClusterPlainArgs args) {
@@ -107,6 +116,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve informations about a DBaas logs cluster tenant.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -138,6 +149,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLogsClusterResult> getLogsCluster(GetLogsClusterArgs args, InvokeOptions options) {
@@ -147,6 +159,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve informations about a DBaas logs cluster tenant.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -178,6 +192,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLogsClusterResult> getLogsClusterPlain(GetLogsClusterPlainArgs args, InvokeOptions options) {
@@ -187,6 +202,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve UUIDs of DBaas logs clusters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -217,6 +234,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLogsClustersResult> getLogsClusters(GetLogsClustersArgs args) {
@@ -226,6 +244,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve UUIDs of DBaas logs clusters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -256,6 +276,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLogsClustersResult> getLogsClustersPlain(GetLogsClustersPlainArgs args) {
@@ -265,6 +286,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve UUIDs of DBaas logs clusters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -295,6 +318,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLogsClustersResult> getLogsClusters(GetLogsClustersArgs args, InvokeOptions options) {
@@ -304,6 +328,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve UUIDs of DBaas logs clusters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -334,15 +360,342 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLogsClustersResult> getLogsClustersPlain(GetLogsClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Dbaas/getLogsClusters:getLogsClusters", TypeShape.of(GetLogsClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to retrieve information about a DBaas logs cluster retention.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .retentionId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * It is also possible to retrieve a retention using its duration:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .duration("P14D")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLogsClustersRetentionResult> getLogsClustersRetention(GetLogsClustersRetentionArgs args) {
+        return getLogsClustersRetention(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a DBaas logs cluster retention.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .retentionId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * It is also possible to retrieve a retention using its duration:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .duration("P14D")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLogsClustersRetentionResult> getLogsClustersRetentionPlain(GetLogsClustersRetentionPlainArgs args) {
+        return getLogsClustersRetentionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a DBaas logs cluster retention.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .retentionId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * It is also possible to retrieve a retention using its duration:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .duration("P14D")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLogsClustersRetentionResult> getLogsClustersRetention(GetLogsClustersRetentionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", TypeShape.of(GetLogsClustersRetentionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a DBaas logs cluster retention.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .retentionId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * It is also possible to retrieve a retention using its duration:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .duration("P14D")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLogsClustersRetentionResult> getLogsClustersRetentionPlain(GetLogsClustersRetentionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", TypeShape.of(GetLogsClustersRetentionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to retrieve information about a DBaas logs input engine.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -376,6 +729,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLogsInputEngineResult> getLogsInputEngine(GetLogsInputEngineArgs args) {
@@ -385,6 +739,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs input engine.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -418,6 +774,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLogsInputEngineResult> getLogsInputEnginePlain(GetLogsInputEnginePlainArgs args) {
@@ -427,6 +784,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs input engine.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -460,6 +819,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLogsInputEngineResult> getLogsInputEngine(GetLogsInputEngineArgs args, InvokeOptions options) {
@@ -469,6 +829,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs input engine.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -502,6 +864,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLogsInputEngineResult> getLogsInputEnginePlain(GetLogsInputEnginePlainArgs args, InvokeOptions options) {
@@ -511,6 +874,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs output graylog stream.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -542,6 +907,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLogsOutputGraylogStreamResult> getLogsOutputGraylogStream(GetLogsOutputGraylogStreamArgs args) {
@@ -551,6 +917,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs output graylog stream.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -582,6 +950,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLogsOutputGraylogStreamResult> getLogsOutputGraylogStreamPlain(GetLogsOutputGraylogStreamPlainArgs args) {
@@ -591,6 +960,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs output graylog stream.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -622,6 +993,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLogsOutputGraylogStreamResult> getLogsOutputGraylogStream(GetLogsOutputGraylogStreamArgs args, InvokeOptions options) {
@@ -631,6 +1003,8 @@ public final class DbaasFunctions {
      * Use this data source to retrieve information about a DBaas logs output graylog stream.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -662,6 +1036,7 @@ public final class DbaasFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLogsOutputGraylogStreamResult> getLogsOutputGraylogStreamPlain(GetLogsOutputGraylogStreamPlainArgs args, InvokeOptions options) {

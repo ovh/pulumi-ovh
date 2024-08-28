@@ -14,9 +14,14 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Attach a Dedicated Server Network Interface to a VRack.
+ * Attach a Dedicated Server Network Interface to a vRack.
+ * 
+ * &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.&lt;br /&gt;
+ * Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServer` instead.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -45,7 +50,7 @@ import javax.annotation.Nullable;
  *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
  *             .build());
  * 
- *         var vdsi = new DedicatedServerInterface("vdsi", DedicatedServerInterfaceArgs.builder()        
+ *         var vdsi = new DedicatedServerInterface("vdsi", DedicatedServerInterfaceArgs.builder()
  *             .serviceName("pn-xxxxxxx")
  *             .interfaceId(server.applyValue(getServerResult -> getServerResult.enabledVrackVnis()[0]))
  *             .build());
@@ -54,6 +59,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface")
@@ -111,11 +117,18 @@ public class DedicatedServerInterface extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public DedicatedServerInterface(String name, DedicatedServerInterfaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface", name, args == null ? DedicatedServerInterfaceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DedicatedServerInterface(String name, Output<String> id, @Nullable DedicatedServerInterfaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DedicatedServerInterfaceArgs makeArgs(DedicatedServerInterfaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DedicatedServerInterfaceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

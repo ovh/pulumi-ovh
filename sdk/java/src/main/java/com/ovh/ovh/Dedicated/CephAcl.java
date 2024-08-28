@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Add a new access ACL for the given network/mask.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -45,7 +47,7 @@ import javax.annotation.Nullable;
  *             .serviceName("94d423da-0e55-45f2-9812-836460a19939")
  *             .build());
  * 
- *         var my_acl = new CephAcl("my-acl", CephAclArgs.builder()        
+ *         var my_acl = new CephAcl("my-acl", CephAclArgs.builder()
  *             .serviceName(my_ceph.id())
  *             .network("1.2.3.4")
  *             .netmask("255.255.255.255")
@@ -55,6 +57,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:Dedicated/cephAcl:CephAcl")
@@ -138,11 +141,18 @@ public class CephAcl extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CephAcl(String name, CephAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/cephAcl:CephAcl", name, args == null ? CephAclArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Dedicated/cephAcl:CephAcl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CephAcl(String name, Output<String> id, @Nullable CephAclState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Dedicated/cephAcl:CephAcl", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CephAclArgs makeArgs(CephAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CephAclArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

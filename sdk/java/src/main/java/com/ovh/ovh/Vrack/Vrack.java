@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -60,7 +62,7 @@ import javax.annotation.Nullable;
  *             .planCode("vrack")
  *             .build());
  * 
- *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()        
+ *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()
  *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
  *             .description("my vrack")
  *             .plan(VrackPlanArgs.builder()
@@ -74,15 +76,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * vRack can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders).
+ * vRack can be imported using the `service_name`.
  * 
  * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Vrack/vrack:Vrack vrack order_id
+ * $ pulumi import ovh:Vrack/vrack:Vrack vrack service_name
  * ```
  * 
  */
@@ -241,11 +244,18 @@ public class Vrack extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Vrack(String name, VrackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/vrack:Vrack", name, args == null ? VrackArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Vrack/vrack:Vrack", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Vrack(String name, Output<String> id, @Nullable VrackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Vrack/vrack:Vrack", name, state, makeResourceOptions(options, id));
+    }
+
+    private static VrackArgs makeArgs(VrackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VrackArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

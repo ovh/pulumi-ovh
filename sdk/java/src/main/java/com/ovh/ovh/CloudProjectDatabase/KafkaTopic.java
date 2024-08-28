@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Creates a topic for a kafka cluster associated with a public cloud project.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -48,7 +50,7 @@ import javax.annotation.Nullable;
  *             .id("ZZZ")
  *             .build());
  * 
- *         var topic = new KafkaTopic("topic", KafkaTopicArgs.builder()        
+ *         var topic = new KafkaTopic("topic", KafkaTopicArgs.builder()
  *             .serviceName(kafka.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
  *             .clusterId(kafka.applyValue(getDatabaseResult -> getDatabaseResult.id()))
  *             .minInsyncReplicas(1)
@@ -62,13 +64,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
  * ```
  * 
  */
@@ -211,11 +216,18 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KafkaTopic(String name, KafkaTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic", name, args == null ? KafkaTopicArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KafkaTopic(String name, Output<String> id, @Nullable KafkaTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KafkaTopicArgs makeArgs(KafkaTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KafkaTopicArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

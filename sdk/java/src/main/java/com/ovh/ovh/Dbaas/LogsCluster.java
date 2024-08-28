@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -40,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ldp = new LogsCluster("ldp", LogsClusterArgs.builder()        
+ *         var ldp = new LogsCluster("ldp", LogsClusterArgs.builder()
  *             .archiveAllowedNetworks("10.0.0.0/16")
  *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
  *             .directInputAllowedNetworks("10.0.0.0/16")
@@ -52,13 +54,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by &#34;/&#34; E.g., bash
+ * OVHcloud DBaaS Log Data Platform clusters can be imported using the `service_name` and `cluster_id` of the cluster, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id
+ * $ pulumi import ovh:Dbaas/logsCluster:LogsCluster ldp service_name/cluster_id
  * ```
  * 
  */
@@ -297,11 +302,18 @@ public class LogsCluster extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LogsCluster(String name, LogsClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dbaas/logsCluster:LogsCluster", name, args == null ? LogsClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Dbaas/logsCluster:LogsCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LogsCluster(String name, Output<String> id, @Nullable LogsClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Dbaas/logsCluster:LogsCluster", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LogsClusterArgs makeArgs(LogsClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LogsClusterArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -7,6 +7,7 @@ import com.ovh.ovh.CloudProject.inputs.KubeNodePoolTemplateArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -35,7 +36,6 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Enable auto-scaling for the pool. Default to `false`.
-     * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      * 
      */
     @Import(name="autoscale")
@@ -43,11 +43,63 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Enable auto-scaling for the pool. Default to `false`.
-     * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      * 
      */
     public Optional<Output<Boolean>> autoscale() {
         return Optional.ofNullable(this.autoscale);
+    }
+
+    /**
+     * scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
+     * 
+     */
+    @Import(name="autoscalingScaleDownUnneededTimeSeconds")
+    private @Nullable Output<Integer> autoscalingScaleDownUnneededTimeSeconds;
+
+    /**
+     * @return scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
+     * 
+     */
+    public Optional<Output<Integer>> autoscalingScaleDownUnneededTimeSeconds() {
+        return Optional.ofNullable(this.autoscalingScaleDownUnneededTimeSeconds);
+    }
+
+    /**
+     * scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
+     * 
+     */
+    @Import(name="autoscalingScaleDownUnreadyTimeSeconds")
+    private @Nullable Output<Integer> autoscalingScaleDownUnreadyTimeSeconds;
+
+    /**
+     * @return scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
+     * 
+     */
+    public Optional<Output<Integer>> autoscalingScaleDownUnreadyTimeSeconds() {
+        return Optional.ofNullable(this.autoscalingScaleDownUnreadyTimeSeconds);
+    }
+
+    /**
+     * scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+     * 
+     */
+    @Import(name="autoscalingScaleDownUtilizationThreshold")
+    private @Nullable Output<Double> autoscalingScaleDownUtilizationThreshold;
+
+    /**
+     * @return scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+     * 
+     */
+    public Optional<Output<Double>> autoscalingScaleDownUtilizationThreshold() {
+        return Optional.ofNullable(this.autoscalingScaleDownUtilizationThreshold);
     }
 
     /**
@@ -327,6 +379,9 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
     private KubeNodePoolState(KubeNodePoolState $) {
         this.antiAffinity = $.antiAffinity;
         this.autoscale = $.autoscale;
+        this.autoscalingScaleDownUnneededTimeSeconds = $.autoscalingScaleDownUnneededTimeSeconds;
+        this.autoscalingScaleDownUnreadyTimeSeconds = $.autoscalingScaleDownUnreadyTimeSeconds;
+        this.autoscalingScaleDownUtilizationThreshold = $.autoscalingScaleDownUtilizationThreshold;
         this.availableNodes = $.availableNodes;
         this.createdAt = $.createdAt;
         this.currentNodes = $.currentNodes;
@@ -388,7 +443,6 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoscale Enable auto-scaling for the pool. Default to `false`.
-         * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
          * 
          * @return builder
          * 
@@ -400,13 +454,83 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoscale Enable auto-scaling for the pool. Default to `false`.
-         * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
          * 
          * @return builder
          * 
          */
         public Builder autoscale(Boolean autoscale) {
             return autoscale(Output.of(autoscale));
+        }
+
+        /**
+         * @param autoscalingScaleDownUnneededTimeSeconds scaleDownUnneededTimeSeconds autoscaling parameter
+         * How long a node should be unneeded before it is eligible for scale down
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingScaleDownUnneededTimeSeconds(@Nullable Output<Integer> autoscalingScaleDownUnneededTimeSeconds) {
+            $.autoscalingScaleDownUnneededTimeSeconds = autoscalingScaleDownUnneededTimeSeconds;
+            return this;
+        }
+
+        /**
+         * @param autoscalingScaleDownUnneededTimeSeconds scaleDownUnneededTimeSeconds autoscaling parameter
+         * How long a node should be unneeded before it is eligible for scale down
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingScaleDownUnneededTimeSeconds(Integer autoscalingScaleDownUnneededTimeSeconds) {
+            return autoscalingScaleDownUnneededTimeSeconds(Output.of(autoscalingScaleDownUnneededTimeSeconds));
+        }
+
+        /**
+         * @param autoscalingScaleDownUnreadyTimeSeconds scaleDownUnreadyTimeSeconds autoscaling parameter
+         * How long an unready node should be unneeded before it is eligible for scale down
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingScaleDownUnreadyTimeSeconds(@Nullable Output<Integer> autoscalingScaleDownUnreadyTimeSeconds) {
+            $.autoscalingScaleDownUnreadyTimeSeconds = autoscalingScaleDownUnreadyTimeSeconds;
+            return this;
+        }
+
+        /**
+         * @param autoscalingScaleDownUnreadyTimeSeconds scaleDownUnreadyTimeSeconds autoscaling parameter
+         * How long an unready node should be unneeded before it is eligible for scale down
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingScaleDownUnreadyTimeSeconds(Integer autoscalingScaleDownUnreadyTimeSeconds) {
+            return autoscalingScaleDownUnreadyTimeSeconds(Output.of(autoscalingScaleDownUnreadyTimeSeconds));
+        }
+
+        /**
+         * @param autoscalingScaleDownUtilizationThreshold scaleDownUtilizationThreshold autoscaling parameter
+         * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+         * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingScaleDownUtilizationThreshold(@Nullable Output<Double> autoscalingScaleDownUtilizationThreshold) {
+            $.autoscalingScaleDownUtilizationThreshold = autoscalingScaleDownUtilizationThreshold;
+            return this;
+        }
+
+        /**
+         * @param autoscalingScaleDownUtilizationThreshold scaleDownUtilizationThreshold autoscaling parameter
+         * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+         * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingScaleDownUtilizationThreshold(Double autoscalingScaleDownUtilizationThreshold) {
+            return autoscalingScaleDownUtilizationThreshold(Output.of(autoscalingScaleDownUtilizationThreshold));
         }
 
         /**

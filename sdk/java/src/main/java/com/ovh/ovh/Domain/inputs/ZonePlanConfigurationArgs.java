@@ -15,14 +15,14 @@ public final class ZonePlanConfigurationArgs extends com.pulumi.resources.Resour
     public static final ZonePlanConfigurationArgs Empty = new ZonePlanConfigurationArgs();
 
     /**
-     * Identifier of the resource
+     * Identifier of the resource : `zone` or `template`
      * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
-     * @return Identifier of the resource
+     * @return Identifier of the resource : `zone` or `template`
      * 
      */
     public Output<String> label() {
@@ -30,14 +30,14 @@ public final class ZonePlanConfigurationArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Path to the resource in API.OVH.COM
+     * For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Path to the resource in API.OVH.COM
+     * @return For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
      * 
      */
     public Output<String> value() {
@@ -70,7 +70,7 @@ public final class ZonePlanConfigurationArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param label Identifier of the resource
+         * @param label Identifier of the resource : `zone` or `template`
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ZonePlanConfigurationArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param label Identifier of the resource
+         * @param label Identifier of the resource : `zone` or `template`
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class ZonePlanConfigurationArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param value Path to the resource in API.OVH.COM
+         * @param value For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ZonePlanConfigurationArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param value Path to the resource in API.OVH.COM
+         * @param value For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
          * 
          * @return builder
          * 

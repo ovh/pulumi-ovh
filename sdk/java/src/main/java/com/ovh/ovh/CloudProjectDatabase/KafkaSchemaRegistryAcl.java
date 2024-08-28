@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Creates a schema registry ACL for a Kafka cluster associated with a public cloud project.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -47,7 +49,7 @@ import javax.annotation.Nullable;
  *             .id("ZZZ")
  *             .build());
  * 
- *         var schemaRegistryAcl = new KafkaSchemaRegistryAcl("schemaRegistryAcl", KafkaSchemaRegistryAclArgs.builder()        
+ *         var schemaRegistryAcl = new KafkaSchemaRegistryAcl("schemaRegistryAcl", KafkaSchemaRegistryAclArgs.builder()
  *             .serviceName(kafka.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
  *             .clusterId(kafka.applyValue(getDatabaseResult -> getDatabaseResult.id()))
  *             .permission("schema_registry_read")
@@ -59,13 +61,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed Kafka clusters schema registry ACLs can be imported using the `service_name`, `cluster_id` and `id` of the schema registry ACL, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl my_schemaRegistryAcl service_name/cluster_id/id
  * ```
  * 
  */
@@ -168,11 +173,18 @@ public class KafkaSchemaRegistryAcl extends com.pulumi.resources.CustomResource 
      * @param options A bag of options that control this resource's behavior.
      */
     public KafkaSchemaRegistryAcl(String name, KafkaSchemaRegistryAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl", name, args == null ? KafkaSchemaRegistryAclArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KafkaSchemaRegistryAcl(String name, Output<String> id, @Nullable KafkaSchemaRegistryAclState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KafkaSchemaRegistryAclArgs makeArgs(KafkaSchemaRegistryAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KafkaSchemaRegistryAclArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

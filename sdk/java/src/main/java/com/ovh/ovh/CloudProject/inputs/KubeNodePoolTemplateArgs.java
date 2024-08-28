@@ -16,14 +16,14 @@ public final class KubeNodePoolTemplateArgs extends com.pulumi.resources.Resourc
     public static final KubeNodePoolTemplateArgs Empty = new KubeNodePoolTemplateArgs();
 
     /**
-     * Metadata of each node in the pool
+     * metadata
      * 
      */
     @Import(name="metadata", required=true)
     private Output<KubeNodePoolTemplateMetadataArgs> metadata;
 
     /**
-     * @return Metadata of each node in the pool
+     * @return metadata
      * 
      */
     public Output<KubeNodePoolTemplateMetadataArgs> metadata() {
@@ -31,14 +31,14 @@ public final class KubeNodePoolTemplateArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Spec of each node in the pool
+     * spec
      * 
      */
     @Import(name="spec", required=true)
     private Output<KubeNodePoolTemplateSpecArgs> spec;
 
     /**
-     * @return Spec of each node in the pool
+     * @return spec
      * 
      */
     public Output<KubeNodePoolTemplateSpecArgs> spec() {
@@ -71,7 +71,7 @@ public final class KubeNodePoolTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param metadata Metadata of each node in the pool
+         * @param metadata metadata
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class KubeNodePoolTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param metadata Metadata of each node in the pool
+         * @param metadata metadata
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class KubeNodePoolTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param spec Spec of each node in the pool
+         * @param spec spec
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class KubeNodePoolTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param spec Spec of each node in the pool
+         * @param spec spec
          * 
          * @return builder
          * 

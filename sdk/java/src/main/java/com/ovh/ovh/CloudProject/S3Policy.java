@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Set the S3 Policy of a public cloud project user.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -44,18 +46,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .serviceName("XXX")
  *             .description("my user")
  *             .roleNames("objectstore_operator")
  *             .build());
  * 
- *         var myS3Credentials = new S3Credential("myS3Credentials", S3CredentialArgs.builder()        
+ *         var myS3Credentials = new S3Credential("myS3Credentials", S3CredentialArgs.builder()
  *             .serviceName(user.serviceName())
  *             .userId(user.id())
  *             .build());
  * 
- *         var policy = new S3Policy("policy", S3PolicyArgs.builder()        
+ *         var policy = new S3Policy("policy", S3PolicyArgs.builder()
  *             .serviceName(user.serviceName())
  *             .userId(user.id())
  *             .policy(serializeJson(
@@ -85,13 +87,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by &#34;/&#34; E.g., bash
+ * OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
+ * $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
  * ```
  * 
  */
@@ -164,11 +169,18 @@ public class S3Policy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public S3Policy(String name, S3PolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/s3Policy:S3Policy", name, args == null ? S3PolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/s3Policy:S3Policy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private S3Policy(String name, Output<String> id, @Nullable S3PolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/s3Policy:S3Policy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static S3PolicyArgs makeArgs(S3PolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? S3PolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

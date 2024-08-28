@@ -17,14 +17,14 @@ public final class KubeNodePoolTemplateMetadataArgs extends com.pulumi.resources
     public static final KubeNodePoolTemplateMetadataArgs Empty = new KubeNodePoolTemplateMetadataArgs();
 
     /**
-     * Annotations to apply to each node
+     * annotations
      * 
      */
     @Import(name="annotations", required=true)
     private Output<Map<String,String>> annotations;
 
     /**
-     * @return Annotations to apply to each node
+     * @return annotations
      * 
      */
     public Output<Map<String,String>> annotations() {
@@ -32,14 +32,14 @@ public final class KubeNodePoolTemplateMetadataArgs extends com.pulumi.resources
     }
 
     /**
-     * Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+     * finalizers
      * 
      */
     @Import(name="finalizers", required=true)
     private Output<List<String>> finalizers;
 
     /**
-     * @return Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+     * @return finalizers
      * 
      */
     public Output<List<String>> finalizers() {
@@ -47,14 +47,14 @@ public final class KubeNodePoolTemplateMetadataArgs extends com.pulumi.resources
     }
 
     /**
-     * Labels to apply to each node
+     * labels
      * 
      */
     @Import(name="labels", required=true)
     private Output<Map<String,String>> labels;
 
     /**
-     * @return Labels to apply to each node
+     * @return labels
      * 
      */
     public Output<Map<String,String>> labels() {
@@ -88,7 +88,7 @@ public final class KubeNodePoolTemplateMetadataArgs extends com.pulumi.resources
         }
 
         /**
-         * @param annotations Annotations to apply to each node
+         * @param annotations annotations
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class KubeNodePoolTemplateMetadataArgs extends com.pulumi.resources
         }
 
         /**
-         * @param annotations Annotations to apply to each node
+         * @param annotations annotations
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class KubeNodePoolTemplateMetadataArgs extends com.pulumi.resources
         }
 
         /**
-         * @param finalizers Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+         * @param finalizers finalizers
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class KubeNodePoolTemplateMetadataArgs extends com.pulumi.resources
         }
 
         /**
-         * @param finalizers Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+         * @param finalizers finalizers
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class KubeNodePoolTemplateMetadataArgs extends com.pulumi.resources
         }
 
         /**
-         * @param finalizers Finalizers to apply to each node. A finalizer name must be fully qualified, e.g. kubernetes.io/pv-protection , where you prefix it with hostname of your service which is related to the controller responsible for the finalizer.
+         * @param finalizers finalizers
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class KubeNodePoolTemplateMetadataArgs extends com.pulumi.resources
         }
 
         /**
-         * @param labels Labels to apply to each node
+         * @param labels labels
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class KubeNodePoolTemplateMetadataArgs extends com.pulumi.resources
         }
 
         /**
-         * @param labels Labels to apply to each node
+         * @param labels labels
          * 
          * @return builder
          * 

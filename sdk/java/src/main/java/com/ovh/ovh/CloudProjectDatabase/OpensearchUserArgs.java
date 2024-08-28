@@ -49,14 +49,14 @@ public final class OpensearchUserArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Username affected by this acl. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+     * Username affected by this acl. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Username affected by this acl. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+     * @return Username affected by this acl. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user.
      * 
      */
     public Optional<Output<String>> name() {
@@ -176,7 +176,7 @@ public final class OpensearchUserArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Username affected by this acl. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+         * @param name Username affected by this acl. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class OpensearchUserArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Username affected by this acl. A user named &#34;avnadmin&#34; is map with already created admin user and reset his password instead of create a new user.
+         * @param name Username affected by this acl. A user named &#34;avnadmin&#34; is mapped with already created admin user and reset his password instead of creating a new user.
          * 
          * @return builder
          * 

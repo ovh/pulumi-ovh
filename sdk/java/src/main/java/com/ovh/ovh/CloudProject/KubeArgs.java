@@ -90,6 +90,21 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Openstack private network (or vRack) ID to use for load balancers.
+     * 
+     */
+    @Import(name="loadBalancersSubnetId")
+    private @Nullable Output<String> loadBalancersSubnetId;
+
+    /**
+     * @return Openstack private network (or vRack) ID to use for load balancers.
+     * 
+     */
+    public Optional<Output<String>> loadBalancersSubnetId() {
+        return Optional.ofNullable(this.loadBalancersSubnetId);
+    }
+
+    /**
      * The name of the kubernetes cluster.
      * 
      */
@@ -105,14 +120,29 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The private network configuration
+     * Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+     * 
+     */
+    @Import(name="nodesSubnetId")
+    private @Nullable Output<String> nodesSubnetId;
+
+    /**
+     * @return Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+     * 
+     */
+    public Optional<Output<String>> nodesSubnetId() {
+        return Optional.ofNullable(this.nodesSubnetId);
+    }
+
+    /**
+     * The private network configuration. If this is set then the 2 parameters below shall be defined.
      * 
      */
     @Import(name="privateNetworkConfiguration")
     private @Nullable Output<KubePrivateNetworkConfigurationArgs> privateNetworkConfiguration;
 
     /**
-     * @return The private network configuration
+     * @return The private network configuration. If this is set then the 2 parameters below shall be defined.
      * 
      */
     public Optional<Output<KubePrivateNetworkConfigurationArgs>> privateNetworkConfiguration() {
@@ -205,7 +235,9 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         this.customizationKubeProxy = $.customizationKubeProxy;
         this.customizations = $.customizations;
         this.kubeProxyMode = $.kubeProxyMode;
+        this.loadBalancersSubnetId = $.loadBalancersSubnetId;
         this.name = $.name;
+        this.nodesSubnetId = $.nodesSubnetId;
         this.privateNetworkConfiguration = $.privateNetworkConfiguration;
         this.privateNetworkId = $.privateNetworkId;
         this.region = $.region;
@@ -349,6 +381,27 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param loadBalancersSubnetId Openstack private network (or vRack) ID to use for load balancers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancersSubnetId(@Nullable Output<String> loadBalancersSubnetId) {
+            $.loadBalancersSubnetId = loadBalancersSubnetId;
+            return this;
+        }
+
+        /**
+         * @param loadBalancersSubnetId Openstack private network (or vRack) ID to use for load balancers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancersSubnetId(String loadBalancersSubnetId) {
+            return loadBalancersSubnetId(Output.of(loadBalancersSubnetId));
+        }
+
+        /**
          * @param name The name of the kubernetes cluster.
          * 
          * @return builder
@@ -370,7 +423,28 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateNetworkConfiguration The private network configuration
+         * @param nodesSubnetId Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodesSubnetId(@Nullable Output<String> nodesSubnetId) {
+            $.nodesSubnetId = nodesSubnetId;
+            return this;
+        }
+
+        /**
+         * @param nodesSubnetId Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodesSubnetId(String nodesSubnetId) {
+            return nodesSubnetId(Output.of(nodesSubnetId));
+        }
+
+        /**
+         * @param privateNetworkConfiguration The private network configuration. If this is set then the 2 parameters below shall be defined.
          * 
          * @return builder
          * 
@@ -381,7 +455,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateNetworkConfiguration The private network configuration
+         * @param privateNetworkConfiguration The private network configuration. If this is set then the 2 parameters below shall be defined.
          * 
          * @return builder
          * 

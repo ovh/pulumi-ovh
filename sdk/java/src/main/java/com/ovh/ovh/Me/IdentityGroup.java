@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Creates an identity group.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -41,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myGroup = new IdentityGroup("myGroup", IdentityGroupArgs.builder()        
+ *         var myGroup = new IdentityGroup("myGroup", IdentityGroupArgs.builder()
  *             .description("Some custom description")
  *             .role("NONE")
  *             .build());
@@ -50,6 +52,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:Me/identityGroup:IdentityGroup")
@@ -175,11 +178,18 @@ public class IdentityGroup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IdentityGroup(String name, @Nullable IdentityGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/identityGroup:IdentityGroup", name, args == null ? IdentityGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Me/identityGroup:IdentityGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IdentityGroup(String name, Output<String> id, @Nullable IdentityGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Me/identityGroup:IdentityGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IdentityGroupArgs makeArgs(@Nullable IdentityGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IdentityGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

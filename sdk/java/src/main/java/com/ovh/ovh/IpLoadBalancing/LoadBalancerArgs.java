@@ -3,6 +3,7 @@
 
 package com.ovh.ovh.IpLoadBalancing;
 
+import com.ovh.ovh.IpLoadBalancing.inputs.LoadBalancerOrderArgs;
 import com.ovh.ovh.IpLoadBalancing.inputs.LoadBalancerPlanArgs;
 import com.ovh.ovh.IpLoadBalancing.inputs.LoadBalancerPlanOptionArgs;
 import com.pulumi.core.Output;
@@ -32,6 +33,21 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Details about an Order
+     * 
+     */
+    @Import(name="orders")
+    private @Nullable Output<List<LoadBalancerOrderArgs>> orders;
+
+    /**
+     * @return Details about an Order
+     * 
+     */
+    public Optional<Output<List<LoadBalancerOrderArgs>>> orders() {
+        return Optional.ofNullable(this.orders);
     }
 
     /**
@@ -121,6 +137,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
 
     private LoadBalancerArgs(LoadBalancerArgs $) {
         this.displayName = $.displayName;
+        this.orders = $.orders;
         this.ovhSubsidiary = $.ovhSubsidiary;
         this.paymentMean = $.paymentMean;
         this.plan = $.plan;
@@ -165,6 +182,37 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(@Nullable Output<List<LoadBalancerOrderArgs>> orders) {
+            $.orders = orders;
+            return this;
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(List<LoadBalancerOrderArgs> orders) {
+            return orders(Output.of(orders));
+        }
+
+        /**
+         * @param orders Details about an Order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(LoadBalancerOrderArgs... orders) {
+            return orders(List.of(orders));
         }
 
         /**

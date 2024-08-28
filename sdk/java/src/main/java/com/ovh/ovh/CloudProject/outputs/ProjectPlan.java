@@ -30,7 +30,7 @@ public final class ProjectPlan {
      */
     private String duration;
     /**
-     * @return Plan code
+     * @return Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It&#39;s `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
      * 
      */
     private String planCode;
@@ -63,7 +63,7 @@ public final class ProjectPlan {
         return this.duration;
     }
     /**
-     * @return Plan code
+     * @return Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It&#39;s `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
      * 
      */
     public String planCode() {

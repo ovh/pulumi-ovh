@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Creates a pattern for a opensearch cluster associated with a public cloud project.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -49,7 +51,7 @@ import javax.annotation.Nullable;
  *             .id("ZZZ")
  *             .build());
  * 
- *         var pattern = new OpensearchPattern("pattern", OpensearchPatternArgs.builder()        
+ *         var pattern = new OpensearchPattern("pattern", OpensearchPatternArgs.builder()
  *             .serviceName(opensearch.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
  *             .clusterId(opensearch.applyValue(getDatabaseResult -> getDatabaseResult.id()))
  *             .maxIndexCount(2)
@@ -60,13 +62,16 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by &#34;/&#34; E.g., bash
+ * OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
  * ```
  * 
  */
@@ -153,11 +158,18 @@ public class OpensearchPattern extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OpensearchPattern(String name, OpensearchPatternArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern", name, args == null ? OpensearchPatternArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OpensearchPattern(String name, Output<String> id, @Nullable OpensearchPatternState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OpensearchPatternArgs makeArgs(OpensearchPatternArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OpensearchPatternArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

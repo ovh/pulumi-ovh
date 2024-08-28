@@ -14,14 +14,14 @@ public final class GetInstallationTemplatePlainArgs extends com.pulumi.resources
     public static final GetInstallationTemplatePlainArgs Empty = new GetInstallationTemplatePlainArgs();
 
     /**
-     * This template name
+     * Template name.
      * 
      */
     @Import(name="templateName", required=true)
     private String templateName;
 
     /**
-     * @return This template name
+     * @return Template name.
      * 
      */
     public String templateName() {
@@ -53,7 +53,7 @@ public final class GetInstallationTemplatePlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param templateName This template name
+         * @param templateName Template name.
          * 
          * @return builder
          * 

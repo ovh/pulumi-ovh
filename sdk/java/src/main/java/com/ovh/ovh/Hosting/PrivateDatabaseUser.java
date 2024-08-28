@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Create a new user on your private cloud database instance.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -40,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user = new PrivateDatabaseUser("user", PrivateDatabaseUserArgs.builder()        
+ *         var user = new PrivateDatabaseUser("user", PrivateDatabaseUserArgs.builder()
  *             .password("XXXXXX")
  *             .serviceName("XXXXXX")
  *             .userName("XXXXXX")
@@ -50,13 +52,14 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by &#34;/&#34; E.g.,
  * 
  * ```sh
- *  $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
+ * $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
  * ```
  * 
  */
@@ -127,11 +130,18 @@ public class PrivateDatabaseUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public PrivateDatabaseUser(String name, PrivateDatabaseUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser", name, args == null ? PrivateDatabaseUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PrivateDatabaseUser(String name, Output<String> id, @Nullable PrivateDatabaseUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PrivateDatabaseUserArgs makeArgs(PrivateDatabaseUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PrivateDatabaseUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

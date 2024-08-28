@@ -4,10 +4,12 @@
 package com.ovh.ovh.Dedicated.inputs;
 
 import com.ovh.ovh.Dedicated.inputs.ServerInstallTaskDetailsArgs;
+import com.ovh.ovh.Dedicated.inputs.ServerInstallTaskUserMetadataArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -182,6 +184,21 @@ public final class ServerInstallTaskState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.templateName);
     }
 
+    /**
+     * see `user_metadata` block below.
+     * 
+     */
+    @Import(name="userMetadatas")
+    private @Nullable Output<List<ServerInstallTaskUserMetadataArgs>> userMetadatas;
+
+    /**
+     * @return see `user_metadata` block below.
+     * 
+     */
+    public Optional<Output<List<ServerInstallTaskUserMetadataArgs>>> userMetadatas() {
+        return Optional.ofNullable(this.userMetadatas);
+    }
+
     private ServerInstallTaskState() {}
 
     private ServerInstallTaskState(ServerInstallTaskState $) {
@@ -196,6 +213,7 @@ public final class ServerInstallTaskState extends com.pulumi.resources.ResourceA
         this.startDate = $.startDate;
         this.status = $.status;
         this.templateName = $.templateName;
+        this.userMetadatas = $.userMetadatas;
     }
 
     public static Builder builder() {
@@ -445,6 +463,37 @@ public final class ServerInstallTaskState extends com.pulumi.resources.ResourceA
          */
         public Builder templateName(String templateName) {
             return templateName(Output.of(templateName));
+        }
+
+        /**
+         * @param userMetadatas see `user_metadata` block below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userMetadatas(@Nullable Output<List<ServerInstallTaskUserMetadataArgs>> userMetadatas) {
+            $.userMetadatas = userMetadatas;
+            return this;
+        }
+
+        /**
+         * @param userMetadatas see `user_metadata` block below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userMetadatas(List<ServerInstallTaskUserMetadataArgs> userMetadatas) {
+            return userMetadatas(Output.of(userMetadatas));
+        }
+
+        /**
+         * @param userMetadatas see `user_metadata` block below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userMetadatas(ServerInstallTaskUserMetadataArgs... userMetadatas) {
+            return userMetadatas(List.of(userMetadatas));
         }
 
         public ServerInstallTaskState build() {

@@ -62,6 +62,11 @@ public final class GetKubeResult {
      */
     private @Nullable String kubeProxyMode;
     /**
+     * @return Openstack private network (or vRack) ID to use for load balancers.
+     * 
+     */
+    private String loadBalancersSubnetId;
+    /**
      * @return The name of the managed kubernetes cluster.
      * 
      */
@@ -71,6 +76,11 @@ public final class GetKubeResult {
      * 
      */
     private List<String> nextUpgradeVersions;
+    /**
+     * @return Openstack private network (or vRack) ID to use for nodes.
+     * 
+     */
+    private String nodesSubnetId;
     /**
      * @return Cluster nodes URL.
      * 
@@ -174,6 +184,13 @@ public final class GetKubeResult {
         return Optional.ofNullable(this.kubeProxyMode);
     }
     /**
+     * @return Openstack private network (or vRack) ID to use for load balancers.
+     * 
+     */
+    public String loadBalancersSubnetId() {
+        return this.loadBalancersSubnetId;
+    }
+    /**
      * @return The name of the managed kubernetes cluster.
      * 
      */
@@ -186,6 +203,13 @@ public final class GetKubeResult {
      */
     public List<String> nextUpgradeVersions() {
         return this.nextUpgradeVersions;
+    }
+    /**
+     * @return Openstack private network (or vRack) ID to use for nodes.
+     * 
+     */
+    public String nodesSubnetId() {
+        return this.nodesSubnetId;
     }
     /**
      * @return Cluster nodes URL.
@@ -261,8 +285,10 @@ public final class GetKubeResult {
         private Boolean isUpToDate;
         private String kubeId;
         private @Nullable String kubeProxyMode;
+        private String loadBalancersSubnetId;
         private @Nullable String name;
         private List<String> nextUpgradeVersions;
+        private String nodesSubnetId;
         private String nodesUrl;
         private String privateNetworkId;
         private @Nullable String region;
@@ -282,8 +308,10 @@ public final class GetKubeResult {
     	      this.isUpToDate = defaults.isUpToDate;
     	      this.kubeId = defaults.kubeId;
     	      this.kubeProxyMode = defaults.kubeProxyMode;
+    	      this.loadBalancersSubnetId = defaults.loadBalancersSubnetId;
     	      this.name = defaults.name;
     	      this.nextUpgradeVersions = defaults.nextUpgradeVersions;
+    	      this.nodesSubnetId = defaults.nodesSubnetId;
     	      this.nodesUrl = defaults.nodesUrl;
     	      this.privateNetworkId = defaults.privateNetworkId;
     	      this.region = defaults.region;
@@ -361,6 +389,14 @@ public final class GetKubeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder loadBalancersSubnetId(String loadBalancersSubnetId) {
+            if (loadBalancersSubnetId == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "loadBalancersSubnetId");
+            }
+            this.loadBalancersSubnetId = loadBalancersSubnetId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
@@ -376,6 +412,14 @@ public final class GetKubeResult {
         }
         public Builder nextUpgradeVersions(String... nextUpgradeVersions) {
             return nextUpgradeVersions(List.of(nextUpgradeVersions));
+        }
+        @CustomType.Setter
+        public Builder nodesSubnetId(String nodesSubnetId) {
+            if (nodesSubnetId == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "nodesSubnetId");
+            }
+            this.nodesSubnetId = nodesSubnetId;
+            return this;
         }
         @CustomType.Setter
         public Builder nodesUrl(String nodesUrl) {
@@ -445,8 +489,10 @@ public final class GetKubeResult {
             _resultValue.isUpToDate = isUpToDate;
             _resultValue.kubeId = kubeId;
             _resultValue.kubeProxyMode = kubeProxyMode;
+            _resultValue.loadBalancersSubnetId = loadBalancersSubnetId;
             _resultValue.name = name;
             _resultValue.nextUpgradeVersions = nextUpgradeVersions;
+            _resultValue.nodesSubnetId = nodesSubnetId;
             _resultValue.nodesUrl = nodesUrl;
             _resultValue.privateNetworkId = privateNetworkId;
             _resultValue.region = region;

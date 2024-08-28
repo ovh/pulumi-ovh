@@ -16,14 +16,29 @@ public final class NasHAPartitionAccessState extends com.pulumi.resources.Resour
     public static final NasHAPartitionAccessState Empty = new NasHAPartitionAccessState();
 
     /**
-     * ip block in x.x.x.x/x format
+     * A brief description of the acl
+     * 
+     */
+    @Import(name="aclDescription")
+    private @Nullable Output<String> aclDescription;
+
+    /**
+     * @return A brief description of the acl
+     * 
+     */
+    public Optional<Output<String>> aclDescription() {
+        return Optional.ofNullable(this.aclDescription);
+    }
+
+    /**
+     * IP block in x.x.x.x/x format
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return ip block in x.x.x.x/x format
+     * @return IP block in x.x.x.x/x format
      * 
      */
     public Optional<Output<String>> ip() {
@@ -31,14 +46,14 @@ public final class NasHAPartitionAccessState extends com.pulumi.resources.Resour
     }
 
     /**
-     * name of the partition
+     * Name of the partition
      * 
      */
     @Import(name="partitionName")
     private @Nullable Output<String> partitionName;
 
     /**
-     * @return name of the partition
+     * @return Name of the partition
      * 
      */
     public Optional<Output<String>> partitionName() {
@@ -61,14 +76,14 @@ public final class NasHAPartitionAccessState extends com.pulumi.resources.Resour
     }
 
     /**
-     * one of &#34;readwrite&#34;, &#34;readonly&#34;
+     * One of &#34;readwrite&#34;, &#34;readonly&#34;
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return one of &#34;readwrite&#34;, &#34;readonly&#34;
+     * @return One of &#34;readwrite&#34;, &#34;readonly&#34;
      * 
      */
     public Optional<Output<String>> type() {
@@ -78,6 +93,7 @@ public final class NasHAPartitionAccessState extends com.pulumi.resources.Resour
     private NasHAPartitionAccessState() {}
 
     private NasHAPartitionAccessState(NasHAPartitionAccessState $) {
+        this.aclDescription = $.aclDescription;
         this.ip = $.ip;
         this.partitionName = $.partitionName;
         this.serviceName = $.serviceName;
@@ -103,7 +119,28 @@ public final class NasHAPartitionAccessState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ip ip block in x.x.x.x/x format
+         * @param aclDescription A brief description of the acl
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclDescription(@Nullable Output<String> aclDescription) {
+            $.aclDescription = aclDescription;
+            return this;
+        }
+
+        /**
+         * @param aclDescription A brief description of the acl
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclDescription(String aclDescription) {
+            return aclDescription(Output.of(aclDescription));
+        }
+
+        /**
+         * @param ip IP block in x.x.x.x/x format
          * 
          * @return builder
          * 
@@ -114,7 +151,7 @@ public final class NasHAPartitionAccessState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ip ip block in x.x.x.x/x format
+         * @param ip IP block in x.x.x.x/x format
          * 
          * @return builder
          * 
@@ -124,7 +161,7 @@ public final class NasHAPartitionAccessState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param partitionName name of the partition
+         * @param partitionName Name of the partition
          * 
          * @return builder
          * 
@@ -135,7 +172,7 @@ public final class NasHAPartitionAccessState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param partitionName name of the partition
+         * @param partitionName Name of the partition
          * 
          * @return builder
          * 
@@ -166,7 +203,7 @@ public final class NasHAPartitionAccessState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type one of &#34;readwrite&#34;, &#34;readonly&#34;
+         * @param type One of &#34;readwrite&#34;, &#34;readonly&#34;
          * 
          * @return builder
          * 
@@ -177,7 +214,7 @@ public final class NasHAPartitionAccessState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type one of &#34;readwrite&#34;, &#34;readonly&#34;
+         * @param type One of &#34;readwrite&#34;, &#34;readonly&#34;
          * 
          * @return builder
          * 

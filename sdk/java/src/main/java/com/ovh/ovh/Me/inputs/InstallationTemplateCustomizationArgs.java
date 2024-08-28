@@ -5,8 +5,6 @@ package com.ovh.ovh.Me.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,29 +14,6 @@ import javax.annotation.Nullable;
 public final class InstallationTemplateCustomizationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstallationTemplateCustomizationArgs Empty = new InstallationTemplateCustomizationArgs();
-
-    /**
-     * Template change log details.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    @Import(name="changeLog")
-    private @Nullable Output<String> changeLog;
-
-    /**
-     * @return Template change log details.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    public Optional<Output<String>> changeLog() {
-        return Optional.ofNullable(this.changeLog);
-    }
 
     /**
      * Set up the server using the provided hostname instead of the default hostname.
@@ -85,69 +60,12 @@ public final class InstallationTemplateCustomizationArgs extends com.pulumi.reso
         return Optional.ofNullable(this.postInstallationScriptReturn);
     }
 
-    /**
-     * Rating.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    @Import(name="rating")
-    private @Nullable Output<Integer> rating;
-
-    /**
-     * @return Rating.
-     * 
-     * @deprecated
-     * field is not used anymore
-     * 
-     */
-    @Deprecated /* field is not used anymore */
-    public Optional<Output<Integer>> rating() {
-        return Optional.ofNullable(this.rating);
-    }
-
-    /**
-     * Name of the ssh key that should be installed. Password login will be disabled.
-     * 
-     */
-    @Import(name="sshKeyName")
-    private @Nullable Output<String> sshKeyName;
-
-    /**
-     * @return Name of the ssh key that should be installed. Password login will be disabled.
-     * 
-     */
-    public Optional<Output<String>> sshKeyName() {
-        return Optional.ofNullable(this.sshKeyName);
-    }
-
-    /**
-     * Use the distribution&#39;s native kernel instead of the recommended OV
-     * 
-     */
-    @Import(name="useDistributionKernel")
-    private @Nullable Output<Boolean> useDistributionKernel;
-
-    /**
-     * @return Use the distribution&#39;s native kernel instead of the recommended OV
-     * 
-     */
-    public Optional<Output<Boolean>> useDistributionKernel() {
-        return Optional.ofNullable(this.useDistributionKernel);
-    }
-
     private InstallationTemplateCustomizationArgs() {}
 
     private InstallationTemplateCustomizationArgs(InstallationTemplateCustomizationArgs $) {
-        this.changeLog = $.changeLog;
         this.customHostname = $.customHostname;
         this.postInstallationScriptLink = $.postInstallationScriptLink;
         this.postInstallationScriptReturn = $.postInstallationScriptReturn;
-        this.rating = $.rating;
-        this.sshKeyName = $.sshKeyName;
-        this.useDistributionKernel = $.useDistributionKernel;
     }
 
     public static Builder builder() {
@@ -166,35 +84,6 @@ public final class InstallationTemplateCustomizationArgs extends com.pulumi.reso
 
         public Builder(InstallationTemplateCustomizationArgs defaults) {
             $ = new InstallationTemplateCustomizationArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param changeLog Template change log details.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * field is not used anymore
-         * 
-         */
-        @Deprecated /* field is not used anymore */
-        public Builder changeLog(@Nullable Output<String> changeLog) {
-            $.changeLog = changeLog;
-            return this;
-        }
-
-        /**
-         * @param changeLog Template change log details.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * field is not used anymore
-         * 
-         */
-        @Deprecated /* field is not used anymore */
-        public Builder changeLog(String changeLog) {
-            return changeLog(Output.of(changeLog));
         }
 
         /**
@@ -258,77 +147,6 @@ public final class InstallationTemplateCustomizationArgs extends com.pulumi.reso
          */
         public Builder postInstallationScriptReturn(String postInstallationScriptReturn) {
             return postInstallationScriptReturn(Output.of(postInstallationScriptReturn));
-        }
-
-        /**
-         * @param rating Rating.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * field is not used anymore
-         * 
-         */
-        @Deprecated /* field is not used anymore */
-        public Builder rating(@Nullable Output<Integer> rating) {
-            $.rating = rating;
-            return this;
-        }
-
-        /**
-         * @param rating Rating.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * field is not used anymore
-         * 
-         */
-        @Deprecated /* field is not used anymore */
-        public Builder rating(Integer rating) {
-            return rating(Output.of(rating));
-        }
-
-        /**
-         * @param sshKeyName Name of the ssh key that should be installed. Password login will be disabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sshKeyName(@Nullable Output<String> sshKeyName) {
-            $.sshKeyName = sshKeyName;
-            return this;
-        }
-
-        /**
-         * @param sshKeyName Name of the ssh key that should be installed. Password login will be disabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sshKeyName(String sshKeyName) {
-            return sshKeyName(Output.of(sshKeyName));
-        }
-
-        /**
-         * @param useDistributionKernel Use the distribution&#39;s native kernel instead of the recommended OV
-         * 
-         * @return builder
-         * 
-         */
-        public Builder useDistributionKernel(@Nullable Output<Boolean> useDistributionKernel) {
-            $.useDistributionKernel = useDistributionKernel;
-            return this;
-        }
-
-        /**
-         * @param useDistributionKernel Use the distribution&#39;s native kernel instead of the recommended OV
-         * 
-         * @return builder
-         * 
-         */
-        public Builder useDistributionKernel(Boolean useDistributionKernel) {
-            return useDistributionKernel(Output.of(useDistributionKernel));
         }
 
         public InstallationTemplateCustomizationArgs build() {

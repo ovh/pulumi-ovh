@@ -19,6 +19,34 @@ public final class KubePrivateNetworkConfiguration {
     /**
      * @return Defines whether routing should default to using the nodes&#39; private interface, instead of their public interface. Default is false.
      * 
+     * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     private Boolean privateNetworkRoutingAsDefault;
 
@@ -32,6 +60,34 @@ public final class KubePrivateNetworkConfiguration {
     }
     /**
      * @return Defines whether routing should default to using the nodes&#39; private interface, instead of their public interface. Default is false.
+     * 
+     * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Boolean privateNetworkRoutingAsDefault() {

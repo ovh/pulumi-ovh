@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPolicyResult {
     /**
-     * @return List of actions allowed by the policy.
+     * @return Set of actions allowed by the policy.
      * 
      */
     private @Nullable List<String> allows;
@@ -25,7 +25,7 @@ public final class GetPolicyResult {
      */
     private String createdAt;
     /**
-     * @return List of actions that will be denied no matter what policy exists.
+     * @return Set of actions that will be denied no matter what policy exists.
      * 
      */
     private @Nullable List<String> denies;
@@ -35,13 +35,13 @@ public final class GetPolicyResult {
      */
     private @Nullable String description;
     /**
-     * @return List of actions that will be subtracted from the `allow` list.
+     * @return Set of actions that will be subtracted from the `allow` list.
      * 
      */
     private @Nullable List<String> excepts;
     private String id;
     /**
-     * @return List of identities affected by the policy.
+     * @return Set of identities affected by the policy.
      * 
      */
     private List<String> identities;
@@ -56,12 +56,17 @@ public final class GetPolicyResult {
      */
     private String owner;
     /**
+     * @return Set of permissions groups that apply to the policy.
+     * 
+     */
+    private @Nullable List<String> permissionsGroups;
+    /**
      * @return Indicates that the policy is a default one.
      * 
      */
     private Boolean readOnly;
     /**
-     * @return List of resources affected by the policy.
+     * @return Set of resources affected by the policy.
      * 
      */
     private List<String> resources;
@@ -73,7 +78,7 @@ public final class GetPolicyResult {
 
     private GetPolicyResult() {}
     /**
-     * @return List of actions allowed by the policy.
+     * @return Set of actions allowed by the policy.
      * 
      */
     public List<String> allows() {
@@ -87,7 +92,7 @@ public final class GetPolicyResult {
         return this.createdAt;
     }
     /**
-     * @return List of actions that will be denied no matter what policy exists.
+     * @return Set of actions that will be denied no matter what policy exists.
      * 
      */
     public List<String> denies() {
@@ -101,7 +106,7 @@ public final class GetPolicyResult {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return List of actions that will be subtracted from the `allow` list.
+     * @return Set of actions that will be subtracted from the `allow` list.
      * 
      */
     public List<String> excepts() {
@@ -111,7 +116,7 @@ public final class GetPolicyResult {
         return this.id;
     }
     /**
-     * @return List of identities affected by the policy.
+     * @return Set of identities affected by the policy.
      * 
      */
     public List<String> identities() {
@@ -132,6 +137,13 @@ public final class GetPolicyResult {
         return this.owner;
     }
     /**
+     * @return Set of permissions groups that apply to the policy.
+     * 
+     */
+    public List<String> permissionsGroups() {
+        return this.permissionsGroups == null ? List.of() : this.permissionsGroups;
+    }
+    /**
      * @return Indicates that the policy is a default one.
      * 
      */
@@ -139,7 +151,7 @@ public final class GetPolicyResult {
         return this.readOnly;
     }
     /**
-     * @return List of resources affected by the policy.
+     * @return Set of resources affected by the policy.
      * 
      */
     public List<String> resources() {
@@ -171,6 +183,7 @@ public final class GetPolicyResult {
         private List<String> identities;
         private String name;
         private String owner;
+        private @Nullable List<String> permissionsGroups;
         private Boolean readOnly;
         private List<String> resources;
         private String updatedAt;
@@ -186,6 +199,7 @@ public final class GetPolicyResult {
     	      this.identities = defaults.identities;
     	      this.name = defaults.name;
     	      this.owner = defaults.owner;
+    	      this.permissionsGroups = defaults.permissionsGroups;
     	      this.readOnly = defaults.readOnly;
     	      this.resources = defaults.resources;
     	      this.updatedAt = defaults.updatedAt;
@@ -268,6 +282,15 @@ public final class GetPolicyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder permissionsGroups(@Nullable List<String> permissionsGroups) {
+
+            this.permissionsGroups = permissionsGroups;
+            return this;
+        }
+        public Builder permissionsGroups(String... permissionsGroups) {
+            return permissionsGroups(List.of(permissionsGroups));
+        }
+        @CustomType.Setter
         public Builder readOnly(Boolean readOnly) {
             if (readOnly == null) {
               throw new MissingRequiredPropertyException("GetPolicyResult", "readOnly");
@@ -305,6 +328,7 @@ public final class GetPolicyResult {
             _resultValue.identities = identities;
             _resultValue.name = name;
             _resultValue.owner = owner;
+            _resultValue.permissionsGroups = permissionsGroups;
             _resultValue.readOnly = readOnly;
             _resultValue.resources = resources;
             _resultValue.updatedAt = updatedAt;

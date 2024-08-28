@@ -4,6 +4,7 @@
 package com.ovh.ovh.Me.outputs;
 
 import com.ovh.ovh.Me.outputs.GetInstallationTemplateCustomization;
+import com.ovh.ovh.Me.outputs.GetInstallationTemplateInput;
 import com.ovh.ovh.Me.outputs.GetInstallationTemplatePartitionScheme;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -16,60 +17,49 @@ import java.util.Objects;
 @CustomType
 public final class GetInstallationTemplateResult {
     /**
-     * @return List of all language available for this template.
-     * 
-     */
-    private List<String> availableLanguages;
-    /**
-     * @return This distribution is new and, although tested and functional, may still display odd behaviour.
-     * 
-     */
-    private Boolean beta;
-    /**
-     * @return This template bit format (32 or 64).
+     * @return Template bit format (32 or 64).
      * 
      */
     private Integer bitFormat;
     /**
-     * @return Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+     * @return Category of this template (informative only).
      * 
      */
     private String category;
     private List<GetInstallationTemplateCustomization> customizations;
     /**
-     * @return The default language of this template.
-     * 
-     */
-    private String defaultLanguage;
-    /**
-     * @return is this distribution deprecated.
-     * 
-     */
-    private Boolean deprecated;
-    /**
-     * @return information about this template.
+     * @return Information about this template.
      * 
      */
     private String description;
     /**
-     * @return the distribution this template is based on.
+     * @return Distribution this template is based on.
      * 
      */
     private String distribution;
     /**
-     * @return this template family type (bsd,linux,solaris,windows).
+     * @return End of install date of the template.
+     * 
+     */
+    private String endOfInstall;
+    /**
+     * @return Template family type (bsd,linux,solaris,windows).
      * 
      */
     private String family;
     /**
-     * @return Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+     * @return Filesystems available.
      * 
      */
     private List<String> filesystems;
     /**
-     * @return This distribution supports hardware raid configuration through the OVHcloud API.
+     * @return Distribution supports hardware raid configuration through the OVHcloud API.
+     * 
+     * @deprecated
+     * This will be deprecated in the next release
      * 
      */
+    @Deprecated /* This will be deprecated in the next release */
     private Boolean hardRaidConfiguration;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -77,53 +67,43 @@ public final class GetInstallationTemplateResult {
      */
     private String id;
     /**
-     * @return Date of last modification of the base image.
+     * @return Represents the questions of the expected answers in the userMetadata field.
      * 
      */
-    private String lastModification;
+    private List<GetInstallationTemplateInput> inputs;
+    /**
+     * @return Whether this template supports LVM.
+     * 
+     */
     private Boolean lvmReady;
+    /**
+     * @return Partitioning customization is not available for this OS template.
+     * 
+     */
+    private Boolean noPartitioning;
     private List<GetInstallationTemplatePartitionScheme> partitionSchemes;
     /**
-     * @return This distribution supports installation using the distribution&#39;s native kernel instead of the recommended OVHcloud kernel.
+     * @return Template supports RAID0 and RAID1 on 2 disks.
      * 
      */
-    private Boolean supportsDistributionKernel;
+    private Boolean softRaidOnlyMirroring;
     /**
-     * @return This distribution supports RTM software.
+     * @return Subfamily of the template.
      * 
      */
-    private Boolean supportsRtm;
-    /**
-     * @return This distribution supports the microsoft SQL server.
-     * 
-     */
-    private Boolean supportsSqlServer;
+    private String subfamily;
     private String templateName;
 
     private GetInstallationTemplateResult() {}
     /**
-     * @return List of all language available for this template.
-     * 
-     */
-    public List<String> availableLanguages() {
-        return this.availableLanguages;
-    }
-    /**
-     * @return This distribution is new and, although tested and functional, may still display odd behaviour.
-     * 
-     */
-    public Boolean beta() {
-        return this.beta;
-    }
-    /**
-     * @return This template bit format (32 or 64).
+     * @return Template bit format (32 or 64).
      * 
      */
     public Integer bitFormat() {
         return this.bitFormat;
     }
     /**
-     * @return Category of this template (informative only). (basic, customer, hosting, other, readyToUse, virtualisation).
+     * @return Category of this template (informative only).
      * 
      */
     public String category() {
@@ -133,51 +113,48 @@ public final class GetInstallationTemplateResult {
         return this.customizations;
     }
     /**
-     * @return The default language of this template.
-     * 
-     */
-    public String defaultLanguage() {
-        return this.defaultLanguage;
-    }
-    /**
-     * @return is this distribution deprecated.
-     * 
-     */
-    public Boolean deprecated() {
-        return this.deprecated;
-    }
-    /**
-     * @return information about this template.
+     * @return Information about this template.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return the distribution this template is based on.
+     * @return Distribution this template is based on.
      * 
      */
     public String distribution() {
         return this.distribution;
     }
     /**
-     * @return this template family type (bsd,linux,solaris,windows).
+     * @return End of install date of the template.
+     * 
+     */
+    public String endOfInstall() {
+        return this.endOfInstall;
+    }
+    /**
+     * @return Template family type (bsd,linux,solaris,windows).
      * 
      */
     public String family() {
         return this.family;
     }
     /**
-     * @return Filesystems available (btrfs,ext3,ext4,ntfs,reiserfs,swap,ufs,xfs,zfs).
+     * @return Filesystems available.
      * 
      */
     public List<String> filesystems() {
         return this.filesystems;
     }
     /**
-     * @return This distribution supports hardware raid configuration through the OVHcloud API.
+     * @return Distribution supports hardware raid configuration through the OVHcloud API.
+     * 
+     * @deprecated
+     * This will be deprecated in the next release
      * 
      */
+    @Deprecated /* This will be deprecated in the next release */
     public Boolean hardRaidConfiguration() {
         return this.hardRaidConfiguration;
     }
@@ -189,38 +166,42 @@ public final class GetInstallationTemplateResult {
         return this.id;
     }
     /**
-     * @return Date of last modification of the base image.
+     * @return Represents the questions of the expected answers in the userMetadata field.
      * 
      */
-    public String lastModification() {
-        return this.lastModification;
+    public List<GetInstallationTemplateInput> inputs() {
+        return this.inputs;
     }
+    /**
+     * @return Whether this template supports LVM.
+     * 
+     */
     public Boolean lvmReady() {
         return this.lvmReady;
+    }
+    /**
+     * @return Partitioning customization is not available for this OS template.
+     * 
+     */
+    public Boolean noPartitioning() {
+        return this.noPartitioning;
     }
     public List<GetInstallationTemplatePartitionScheme> partitionSchemes() {
         return this.partitionSchemes;
     }
     /**
-     * @return This distribution supports installation using the distribution&#39;s native kernel instead of the recommended OVHcloud kernel.
+     * @return Template supports RAID0 and RAID1 on 2 disks.
      * 
      */
-    public Boolean supportsDistributionKernel() {
-        return this.supportsDistributionKernel;
+    public Boolean softRaidOnlyMirroring() {
+        return this.softRaidOnlyMirroring;
     }
     /**
-     * @return This distribution supports RTM software.
+     * @return Subfamily of the template.
      * 
      */
-    public Boolean supportsRtm() {
-        return this.supportsRtm;
-    }
-    /**
-     * @return This distribution supports the microsoft SQL server.
-     * 
-     */
-    public Boolean supportsSqlServer() {
-        return this.supportsSqlServer;
+    public String subfamily() {
+        return this.subfamily;
     }
     public String templateName() {
         return this.templateName;
@@ -235,70 +216,45 @@ public final class GetInstallationTemplateResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> availableLanguages;
-        private Boolean beta;
         private Integer bitFormat;
         private String category;
         private List<GetInstallationTemplateCustomization> customizations;
-        private String defaultLanguage;
-        private Boolean deprecated;
         private String description;
         private String distribution;
+        private String endOfInstall;
         private String family;
         private List<String> filesystems;
         private Boolean hardRaidConfiguration;
         private String id;
-        private String lastModification;
+        private List<GetInstallationTemplateInput> inputs;
         private Boolean lvmReady;
+        private Boolean noPartitioning;
         private List<GetInstallationTemplatePartitionScheme> partitionSchemes;
-        private Boolean supportsDistributionKernel;
-        private Boolean supportsRtm;
-        private Boolean supportsSqlServer;
+        private Boolean softRaidOnlyMirroring;
+        private String subfamily;
         private String templateName;
         public Builder() {}
         public Builder(GetInstallationTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.availableLanguages = defaults.availableLanguages;
-    	      this.beta = defaults.beta;
     	      this.bitFormat = defaults.bitFormat;
     	      this.category = defaults.category;
     	      this.customizations = defaults.customizations;
-    	      this.defaultLanguage = defaults.defaultLanguage;
-    	      this.deprecated = defaults.deprecated;
     	      this.description = defaults.description;
     	      this.distribution = defaults.distribution;
+    	      this.endOfInstall = defaults.endOfInstall;
     	      this.family = defaults.family;
     	      this.filesystems = defaults.filesystems;
     	      this.hardRaidConfiguration = defaults.hardRaidConfiguration;
     	      this.id = defaults.id;
-    	      this.lastModification = defaults.lastModification;
+    	      this.inputs = defaults.inputs;
     	      this.lvmReady = defaults.lvmReady;
+    	      this.noPartitioning = defaults.noPartitioning;
     	      this.partitionSchemes = defaults.partitionSchemes;
-    	      this.supportsDistributionKernel = defaults.supportsDistributionKernel;
-    	      this.supportsRtm = defaults.supportsRtm;
-    	      this.supportsSqlServer = defaults.supportsSqlServer;
+    	      this.softRaidOnlyMirroring = defaults.softRaidOnlyMirroring;
+    	      this.subfamily = defaults.subfamily;
     	      this.templateName = defaults.templateName;
         }
 
-        @CustomType.Setter
-        public Builder availableLanguages(List<String> availableLanguages) {
-            if (availableLanguages == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "availableLanguages");
-            }
-            this.availableLanguages = availableLanguages;
-            return this;
-        }
-        public Builder availableLanguages(String... availableLanguages) {
-            return availableLanguages(List.of(availableLanguages));
-        }
-        @CustomType.Setter
-        public Builder beta(Boolean beta) {
-            if (beta == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "beta");
-            }
-            this.beta = beta;
-            return this;
-        }
         @CustomType.Setter
         public Builder bitFormat(Integer bitFormat) {
             if (bitFormat == null) {
@@ -327,22 +283,6 @@ public final class GetInstallationTemplateResult {
             return customizations(List.of(customizations));
         }
         @CustomType.Setter
-        public Builder defaultLanguage(String defaultLanguage) {
-            if (defaultLanguage == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "defaultLanguage");
-            }
-            this.defaultLanguage = defaultLanguage;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder deprecated(Boolean deprecated) {
-            if (deprecated == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "deprecated");
-            }
-            this.deprecated = deprecated;
-            return this;
-        }
-        @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
               throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "description");
@@ -356,6 +296,14 @@ public final class GetInstallationTemplateResult {
               throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "distribution");
             }
             this.distribution = distribution;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder endOfInstall(String endOfInstall) {
+            if (endOfInstall == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "endOfInstall");
+            }
+            this.endOfInstall = endOfInstall;
             return this;
         }
         @CustomType.Setter
@@ -394,12 +342,15 @@ public final class GetInstallationTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder lastModification(String lastModification) {
-            if (lastModification == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "lastModification");
+        public Builder inputs(List<GetInstallationTemplateInput> inputs) {
+            if (inputs == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "inputs");
             }
-            this.lastModification = lastModification;
+            this.inputs = inputs;
             return this;
+        }
+        public Builder inputs(GetInstallationTemplateInput... inputs) {
+            return inputs(List.of(inputs));
         }
         @CustomType.Setter
         public Builder lvmReady(Boolean lvmReady) {
@@ -407,6 +358,14 @@ public final class GetInstallationTemplateResult {
               throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "lvmReady");
             }
             this.lvmReady = lvmReady;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder noPartitioning(Boolean noPartitioning) {
+            if (noPartitioning == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "noPartitioning");
+            }
+            this.noPartitioning = noPartitioning;
             return this;
         }
         @CustomType.Setter
@@ -421,27 +380,19 @@ public final class GetInstallationTemplateResult {
             return partitionSchemes(List.of(partitionSchemes));
         }
         @CustomType.Setter
-        public Builder supportsDistributionKernel(Boolean supportsDistributionKernel) {
-            if (supportsDistributionKernel == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "supportsDistributionKernel");
+        public Builder softRaidOnlyMirroring(Boolean softRaidOnlyMirroring) {
+            if (softRaidOnlyMirroring == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "softRaidOnlyMirroring");
             }
-            this.supportsDistributionKernel = supportsDistributionKernel;
+            this.softRaidOnlyMirroring = softRaidOnlyMirroring;
             return this;
         }
         @CustomType.Setter
-        public Builder supportsRtm(Boolean supportsRtm) {
-            if (supportsRtm == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "supportsRtm");
+        public Builder subfamily(String subfamily) {
+            if (subfamily == null) {
+              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "subfamily");
             }
-            this.supportsRtm = supportsRtm;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder supportsSqlServer(Boolean supportsSqlServer) {
-            if (supportsSqlServer == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateResult", "supportsSqlServer");
-            }
-            this.supportsSqlServer = supportsSqlServer;
+            this.subfamily = subfamily;
             return this;
         }
         @CustomType.Setter
@@ -454,25 +405,22 @@ public final class GetInstallationTemplateResult {
         }
         public GetInstallationTemplateResult build() {
             final var _resultValue = new GetInstallationTemplateResult();
-            _resultValue.availableLanguages = availableLanguages;
-            _resultValue.beta = beta;
             _resultValue.bitFormat = bitFormat;
             _resultValue.category = category;
             _resultValue.customizations = customizations;
-            _resultValue.defaultLanguage = defaultLanguage;
-            _resultValue.deprecated = deprecated;
             _resultValue.description = description;
             _resultValue.distribution = distribution;
+            _resultValue.endOfInstall = endOfInstall;
             _resultValue.family = family;
             _resultValue.filesystems = filesystems;
             _resultValue.hardRaidConfiguration = hardRaidConfiguration;
             _resultValue.id = id;
-            _resultValue.lastModification = lastModification;
+            _resultValue.inputs = inputs;
             _resultValue.lvmReady = lvmReady;
+            _resultValue.noPartitioning = noPartitioning;
             _resultValue.partitionSchemes = partitionSchemes;
-            _resultValue.supportsDistributionKernel = supportsDistributionKernel;
-            _resultValue.supportsRtm = supportsRtm;
-            _resultValue.supportsSqlServer = supportsSqlServer;
+            _resultValue.softRaidOnlyMirroring = softRaidOnlyMirroring;
+            _resultValue.subfamily = subfamily;
             _resultValue.templateName = templateName;
             return _resultValue;
         }

@@ -13,6 +13,7 @@ import java.util.Objects;
 public final class GetFailoverIpAttachResult {
     /**
      * @return The IP block
+     * * `continentCode` - The Ip continent
      * 
      */
     private String block;
@@ -30,6 +31,7 @@ public final class GetFailoverIpAttachResult {
     private String ip;
     /**
      * @return Current operation progress in percent
+     * * `routedTo` - Instance where ip is routed to
      * 
      */
     private Integer progress;
@@ -37,6 +39,7 @@ public final class GetFailoverIpAttachResult {
     private String serviceName;
     /**
      * @return Ip status, can be `ok` or `operationPending`
+     * * `subType` - IP sub type, can be `cloud` or `ovh`
      * 
      */
     private String status;
@@ -45,6 +48,7 @@ public final class GetFailoverIpAttachResult {
     private GetFailoverIpAttachResult() {}
     /**
      * @return The IP block
+     * * `continentCode` - The Ip continent
      * 
      */
     public String block() {
@@ -72,6 +76,7 @@ public final class GetFailoverIpAttachResult {
     }
     /**
      * @return Current operation progress in percent
+     * * `routedTo` - Instance where ip is routed to
      * 
      */
     public Integer progress() {
@@ -85,6 +90,7 @@ public final class GetFailoverIpAttachResult {
     }
     /**
      * @return Ip status, can be `ok` or `operationPending`
+     * * `subType` - IP sub type, can be `cloud` or `ovh`
      * 
      */
     public String status() {

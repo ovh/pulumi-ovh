@@ -25,12 +25,12 @@ public final class PrivateDatabasePlanOption {
      */
     private @Nullable List<PrivateDatabasePlanOptionConfiguration> configurations;
     /**
-     * @return duration.
+     * @return Service duration
      * 
      */
     private String duration;
     /**
-     * @return Plan code.
+     * @return Plan code
      * 
      */
     private String planCode;
@@ -56,14 +56,14 @@ public final class PrivateDatabasePlanOption {
         return this.configurations == null ? List.of() : this.configurations;
     }
     /**
-     * @return duration.
+     * @return Service duration
      * 
      */
     public String duration() {
         return this.duration;
     }
     /**
-     * @return Plan code.
+     * @return Plan code
      * 
      */
     public String planCode() {

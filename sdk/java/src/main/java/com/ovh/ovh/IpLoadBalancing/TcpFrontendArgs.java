@@ -80,6 +80,21 @@ public final class TcpFrontendArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+     * 
+     */
+    @Import(name="deniedSources")
+    private @Nullable Output<List<String>> deniedSources;
+
+    /**
+     * @return Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+     * 
+     */
+    public Optional<Output<List<String>>> deniedSources() {
+        return Optional.ofNullable(this.deniedSources);
+    }
+
+    /**
      * Disable your frontend. Default: &#39;false&#39;
      * 
      */
@@ -180,6 +195,7 @@ public final class TcpFrontendArgs extends com.pulumi.resources.ResourceArgs {
         this.dedicatedIpfos = $.dedicatedIpfos;
         this.defaultFarmId = $.defaultFarmId;
         this.defaultSslId = $.defaultSslId;
+        this.deniedSources = $.deniedSources;
         this.disabled = $.disabled;
         this.displayName = $.displayName;
         this.port = $.port;
@@ -308,6 +324,37 @@ public final class TcpFrontendArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultSslId(Integer defaultSslId) {
             return defaultSslId(Output.of(defaultSslId));
+        }
+
+        /**
+         * @param deniedSources Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deniedSources(@Nullable Output<List<String>> deniedSources) {
+            $.deniedSources = deniedSources;
+            return this;
+        }
+
+        /**
+         * @param deniedSources Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deniedSources(List<String> deniedSources) {
+            return deniedSources(Output.of(deniedSources));
+        }
+
+        /**
+         * @param deniedSources Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deniedSources(String... deniedSources) {
+            return deniedSources(List.of(deniedSources));
         }
 
         /**

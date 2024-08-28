@@ -19,16 +19,32 @@ public final class GetKubeNodePoolTemplateSpecArgs extends com.pulumi.resources.
 
     public static final GetKubeNodePoolTemplateSpecArgs Empty = new GetKubeNodePoolTemplateSpecArgs();
 
+    /**
+     * taints
+     * 
+     */
     @Import(name="taints")
     private @Nullable Output<List<Map<String,Object>>> taints;
 
+    /**
+     * @return taints
+     * 
+     */
     public Optional<Output<List<Map<String,Object>>>> taints() {
         return Optional.ofNullable(this.taints);
     }
 
+    /**
+     * unschedulable
+     * 
+     */
     @Import(name="unschedulable")
     private @Nullable Output<Boolean> unschedulable;
 
+    /**
+     * @return unschedulable
+     * 
+     */
     public Optional<Output<Boolean>> unschedulable() {
         return Optional.ofNullable(this.unschedulable);
     }
@@ -58,24 +74,54 @@ public final class GetKubeNodePoolTemplateSpecArgs extends com.pulumi.resources.
             $ = new GetKubeNodePoolTemplateSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param taints taints
+         * 
+         * @return builder
+         * 
+         */
         public Builder taints(@Nullable Output<List<Map<String,Object>>> taints) {
             $.taints = taints;
             return this;
         }
 
+        /**
+         * @param taints taints
+         * 
+         * @return builder
+         * 
+         */
         public Builder taints(List<Map<String,Object>> taints) {
             return taints(Output.of(taints));
         }
 
+        /**
+         * @param taints taints
+         * 
+         * @return builder
+         * 
+         */
         public Builder taints(Map<String,Object>... taints) {
             return taints(List.of(taints));
         }
 
+        /**
+         * @param unschedulable unschedulable
+         * 
+         * @return builder
+         * 
+         */
         public Builder unschedulable(@Nullable Output<Boolean> unschedulable) {
             $.unschedulable = unschedulable;
             return this;
         }
 
+        /**
+         * @param unschedulable unschedulable
+         * 
+         * @return builder
+         * 
+         */
         public Builder unschedulable(Boolean unschedulable) {
             return unschedulable(Output.of(unschedulable));
         }

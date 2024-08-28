@@ -19,10 +19,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by &#34;/&#34; E.g., bash
+ * OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
  * 
  * ```sh
- *  $ pulumi import ovh:CloudProject/s3Credential:S3Credential s3_credential service_name/user_id/access_key_id
+ * $ pulumi import ovh:CloudProject/s3Credential:S3Credential s3_credential service_name/user_id/access_key_id
  * ```
  * 
  */
@@ -115,11 +117,18 @@ public class S3Credential extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public S3Credential(String name, S3CredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/s3Credential:S3Credential", name, args == null ? S3CredentialArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:CloudProject/s3Credential:S3Credential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private S3Credential(String name, Output<String> id, @Nullable S3CredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/s3Credential:S3Credential", name, state, makeResourceOptions(options, id));
+    }
+
+    private static S3CredentialArgs makeArgs(S3CredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? S3CredentialArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -3,6 +3,7 @@
 
 package com.ovh.ovh.CloudProject;
 
+import com.ovh.ovh.CloudProject.inputs.ProjectOrderArgs;
 import com.ovh.ovh.CloudProject.inputs.ProjectPlanArgs;
 import com.ovh.ovh.CloudProject.inputs.ProjectPlanOptionArgs;
 import com.pulumi.core.Output;
@@ -32,6 +33,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Details about the order that was used to create the public cloud project
+     * 
+     */
+    @Import(name="orders")
+    private @Nullable Output<List<ProjectOrderArgs>> orders;
+
+    /**
+     * @return Details about the order that was used to create the public cloud project
+     * 
+     */
+    public Optional<Output<List<ProjectOrderArgs>>> orders() {
+        return Optional.ofNullable(this.orders);
     }
 
     /**
@@ -106,6 +122,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
     private ProjectArgs(ProjectArgs $) {
         this.description = $.description;
+        this.orders = $.orders;
         this.ovhSubsidiary = $.ovhSubsidiary;
         this.paymentMean = $.paymentMean;
         this.plan = $.plan;
@@ -149,6 +166,37 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param orders Details about the order that was used to create the public cloud project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(@Nullable Output<List<ProjectOrderArgs>> orders) {
+            $.orders = orders;
+            return this;
+        }
+
+        /**
+         * @param orders Details about the order that was used to create the public cloud project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(List<ProjectOrderArgs> orders) {
+            return orders(Output.of(orders));
+        }
+
+        /**
+         * @param orders Details about the order that was used to create the public cloud project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orders(ProjectOrderArgs... orders) {
+            return orders(List.of(orders));
         }
 
         /**

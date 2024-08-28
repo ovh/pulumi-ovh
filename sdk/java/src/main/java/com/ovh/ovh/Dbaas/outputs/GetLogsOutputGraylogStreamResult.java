@@ -125,6 +125,11 @@ public final class GetLogsOutputGraylogStreamResult {
      * 
      */
     private Boolean webSocketEnabled;
+    /**
+     * @return Write token of the stream (empty if the caller is not the owner of the stream)
+     * 
+     */
+    private String writeToken;
 
     private GetLogsOutputGraylogStreamResult() {}
     public Boolean canAlert() {
@@ -290,6 +295,13 @@ public final class GetLogsOutputGraylogStreamResult {
     public Boolean webSocketEnabled() {
         return this.webSocketEnabled;
     }
+    /**
+     * @return Write token of the stream (empty if the caller is not the owner of the stream)
+     * 
+     */
+    public String writeToken() {
+        return this.writeToken;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -325,6 +337,7 @@ public final class GetLogsOutputGraylogStreamResult {
         private String title;
         private String updatedAt;
         private Boolean webSocketEnabled;
+        private String writeToken;
         public Builder() {}
         public Builder(GetLogsOutputGraylogStreamResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -353,6 +366,7 @@ public final class GetLogsOutputGraylogStreamResult {
     	      this.title = defaults.title;
     	      this.updatedAt = defaults.updatedAt;
     	      this.webSocketEnabled = defaults.webSocketEnabled;
+    	      this.writeToken = defaults.writeToken;
         }
 
         @CustomType.Setter
@@ -555,6 +569,14 @@ public final class GetLogsOutputGraylogStreamResult {
             this.webSocketEnabled = webSocketEnabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder writeToken(String writeToken) {
+            if (writeToken == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "writeToken");
+            }
+            this.writeToken = writeToken;
+            return this;
+        }
         public GetLogsOutputGraylogStreamResult build() {
             final var _resultValue = new GetLogsOutputGraylogStreamResult();
             _resultValue.canAlert = canAlert;
@@ -582,6 +604,7 @@ public final class GetLogsOutputGraylogStreamResult {
             _resultValue.title = title;
             _resultValue.updatedAt = updatedAt;
             _resultValue.webSocketEnabled = webSocketEnabled;
+            _resultValue.writeToken = writeToken;
             return _resultValue;
         }
     }

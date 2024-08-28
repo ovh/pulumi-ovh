@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Creates a dbaas logs input.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -54,13 +56,13 @@ import javax.annotation.Nullable;
  *             .version("7.x")
  *             .build());
  * 
- *         var stream = new LogsOutputGraylogStream("stream", LogsOutputGraylogStreamArgs.builder()        
+ *         var stream = new LogsOutputGraylogStream("stream", LogsOutputGraylogStreamArgs.builder()
  *             .serviceName("....")
  *             .title("my stream")
  *             .description("my graylog stream")
  *             .build());
  * 
- *         var input = new LogsInput("input", LogsInputArgs.builder()        
+ *         var input = new LogsInput("input", LogsInputArgs.builder()
  *             .serviceName(stream.serviceName())
  *             .description(stream.description())
  *             .title(stream.title())
@@ -87,6 +89,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="ovh:Dbaas/logsInput:LogsInput")
@@ -352,11 +355,18 @@ public class LogsInput extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LogsInput(String name, LogsInputArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dbaas/logsInput:LogsInput", name, args == null ? LogsInputArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:Dbaas/logsInput:LogsInput", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LogsInput(String name, Output<String> id, @Nullable LogsInputState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Dbaas/logsInput:LogsInput", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LogsInputArgs makeArgs(LogsInputArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LogsInputArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

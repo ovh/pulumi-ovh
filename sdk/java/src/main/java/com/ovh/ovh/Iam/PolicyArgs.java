@@ -33,14 +33,14 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of actions that will be denied no matter what policy exists.
+     * List of actions that will always be denied even if also allowed by this policy or another one.
      * 
      */
     @Import(name="denies")
     private @Nullable Output<List<String>> denies;
 
     /**
-     * @return List of actions that will be denied no matter what policy exists.
+     * @return List of actions that will always be denied even if also allowed by this policy or another one.
      * 
      */
     public Optional<Output<List<String>>> denies() {
@@ -108,6 +108,21 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+     * 
+     */
+    @Import(name="permissionsGroups")
+    private @Nullable Output<List<String>> permissionsGroups;
+
+    /**
+     * @return Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+     * 
+     */
+    public Optional<Output<List<String>>> permissionsGroups() {
+        return Optional.ofNullable(this.permissionsGroups);
+    }
+
+    /**
      * List of resources affected by the policy
      * 
      */
@@ -131,6 +146,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         this.excepts = $.excepts;
         this.identities = $.identities;
         this.name = $.name;
+        this.permissionsGroups = $.permissionsGroups;
         this.resources = $.resources;
     }
 
@@ -184,7 +200,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param denies List of actions that will be denied no matter what policy exists.
+         * @param denies List of actions that will always be denied even if also allowed by this policy or another one.
          * 
          * @return builder
          * 
@@ -195,7 +211,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param denies List of actions that will be denied no matter what policy exists.
+         * @param denies List of actions that will always be denied even if also allowed by this policy or another one.
          * 
          * @return builder
          * 
@@ -205,7 +221,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param denies List of actions that will be denied no matter what policy exists.
+         * @param denies List of actions that will always be denied even if also allowed by this policy or another one.
          * 
          * @return builder
          * 
@@ -316,6 +332,37 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param permissionsGroups Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissionsGroups(@Nullable Output<List<String>> permissionsGroups) {
+            $.permissionsGroups = permissionsGroups;
+            return this;
+        }
+
+        /**
+         * @param permissionsGroups Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissionsGroups(List<String> permissionsGroups) {
+            return permissionsGroups(Output.of(permissionsGroups));
+        }
+
+        /**
+         * @param permissionsGroups Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissionsGroups(String... permissionsGroups) {
+            return permissionsGroups(List.of(permissionsGroups));
         }
 
         /**

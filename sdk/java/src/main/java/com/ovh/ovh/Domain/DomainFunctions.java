@@ -4,7 +4,10 @@
 package com.ovh.ovh.Domain;
 
 import com.ovh.ovh.Domain.inputs.GetZoneArgs;
+import com.ovh.ovh.Domain.inputs.GetZoneDNSSecArgs;
+import com.ovh.ovh.Domain.inputs.GetZoneDNSSecPlainArgs;
 import com.ovh.ovh.Domain.inputs.GetZonePlainArgs;
+import com.ovh.ovh.Domain.outputs.GetZoneDNSSecResult;
 import com.ovh.ovh.Domain.outputs.GetZoneResult;
 import com.ovh.ovh.Utilities;
 import com.pulumi.core.Output;
@@ -18,6 +21,8 @@ public final class DomainFunctions {
      * Use this data source to retrieve information about a domain zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -48,6 +53,7 @@ public final class DomainFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneResult> getZone(GetZoneArgs args) {
@@ -57,6 +63,8 @@ public final class DomainFunctions {
      * Use this data source to retrieve information about a domain zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -87,6 +95,7 @@ public final class DomainFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args) {
@@ -96,6 +105,8 @@ public final class DomainFunctions {
      * Use this data source to retrieve information about a domain zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -126,6 +137,7 @@ public final class DomainFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneResult> getZone(GetZoneArgs args, InvokeOptions options) {
@@ -135,6 +147,8 @@ public final class DomainFunctions {
      * Use this data source to retrieve information about a domain zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -165,9 +179,178 @@ public final class DomainFunctions {
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Domain/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a domain zone DNSSEC status.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Domain.DomainFunctions;
+     * import com.pulumi.ovh.Domain.inputs.GetZoneDNSSecArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dnssec = DomainFunctions.getZoneDNSSec(GetZoneDNSSecArgs.builder()
+     *             .zoneName("mysite.ovh")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZoneDNSSecResult> getZoneDNSSec(GetZoneDNSSecArgs args) {
+        return getZoneDNSSec(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a domain zone DNSSEC status.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Domain.DomainFunctions;
+     * import com.pulumi.ovh.Domain.inputs.GetZoneDNSSecArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dnssec = DomainFunctions.getZoneDNSSec(GetZoneDNSSecArgs.builder()
+     *             .zoneName("mysite.ovh")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZoneDNSSecResult> getZoneDNSSecPlain(GetZoneDNSSecPlainArgs args) {
+        return getZoneDNSSecPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a domain zone DNSSEC status.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Domain.DomainFunctions;
+     * import com.pulumi.ovh.Domain.inputs.GetZoneDNSSecArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dnssec = DomainFunctions.getZoneDNSSec(GetZoneDNSSecArgs.builder()
+     *             .zoneName("mysite.ovh")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZoneDNSSecResult> getZoneDNSSec(GetZoneDNSSecArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Domain/getZoneDNSSec:getZoneDNSSec", TypeShape.of(GetZoneDNSSecResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a domain zone DNSSEC status.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Domain.DomainFunctions;
+     * import com.pulumi.ovh.Domain.inputs.GetZoneDNSSecArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dnssec = DomainFunctions.getZoneDNSSec(GetZoneDNSSecArgs.builder()
+     *             .zoneName("mysite.ovh")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZoneDNSSecResult> getZoneDNSSecPlain(GetZoneDNSSecPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Domain/getZoneDNSSec:getZoneDNSSec", TypeShape.of(GetZoneDNSSecResult.class), args, Utilities.withVersion(options));
     }
 }

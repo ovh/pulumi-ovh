@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Route which redirect all url to https.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -47,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var httpsredirect = new HttpRoute("httpsredirect", HttpRouteArgs.builder()        
+ *         var httpsredirect = new HttpRoute("httpsredirect", HttpRouteArgs.builder()
  *             .action(HttpRouteActionArgs.builder()
  *                 .status(302)
  *                 .target("https://${host}${path}${arguments}")
@@ -62,6 +64,11 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * HTTP route can be imported using the following format `service_name` and the `id` of the route separated by &#34;/&#34; e.g.
  * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/httpRoute:HttpRoute")
@@ -137,14 +144,14 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * HTTP status code for &#34;redirect&#34; and &#34;reject&#34; actions
+     * Route status. Routes in &#34;ok&#34; state are ready to operate
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return HTTP status code for &#34;redirect&#34; and &#34;reject&#34; actions
+     * @return Route status. Routes in &#34;ok&#34; state are ready to operate
      * 
      */
     public Output<String> status() {
@@ -187,11 +194,18 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HttpRoute(String name, HttpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/httpRoute:HttpRoute", name, args == null ? HttpRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("ovh:IpLoadBalancing/httpRoute:HttpRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HttpRoute(String name, Output<String> id, @Nullable HttpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/httpRoute:HttpRoute", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HttpRouteArgs makeArgs(HttpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HttpRouteArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

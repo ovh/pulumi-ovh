@@ -19,14 +19,14 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
     public static final LogsOutputGraylogStreamArgs Empty = new LogsOutputGraylogStreamArgs();
 
     /**
-     * Cold storage compression method
+     * Cold storage compression method. One of &#34;LZMA&#34;, &#34;GZIP&#34;, &#34;DEFLATED&#34;, &#34;ZSTD&#34;
      * 
      */
     @Import(name="coldStorageCompression")
     private @Nullable Output<String> coldStorageCompression;
 
     /**
-     * @return Cold storage compression method
+     * @return Cold storage compression method. One of &#34;LZMA&#34;, &#34;GZIP&#34;, &#34;DEFLATED&#34;, &#34;ZSTD&#34;
      * 
      */
     public Optional<Output<String>> coldStorageCompression() {
@@ -34,14 +34,14 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * ColdStorage content
+     * ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
      * 
      */
     @Import(name="coldStorageContent")
     private @Nullable Output<String> coldStorageContent;
 
     /**
-     * @return ColdStorage content
+     * @return ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
      * 
      */
     public Optional<Output<String>> coldStorageContent() {
@@ -94,14 +94,14 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * ColdStorage destination
+     * ColdStorage destination. One of &#34;PCA&#34;, &#34;PCS&#34;
      * 
      */
     @Import(name="coldStorageTarget")
     private @Nullable Output<String> coldStorageTarget;
 
     /**
-     * @return ColdStorage destination
+     * @return ColdStorage destination. One of &#34;PCA&#34;, &#34;PCS&#34;
      * 
      */
     public Optional<Output<String>> coldStorageTarget() {
@@ -298,7 +298,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coldStorageCompression Cold storage compression method
+         * @param coldStorageCompression Cold storage compression method. One of &#34;LZMA&#34;, &#34;GZIP&#34;, &#34;DEFLATED&#34;, &#34;ZSTD&#34;
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coldStorageCompression Cold storage compression method
+         * @param coldStorageCompression Cold storage compression method. One of &#34;LZMA&#34;, &#34;GZIP&#34;, &#34;DEFLATED&#34;, &#34;ZSTD&#34;
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coldStorageContent ColdStorage content
+         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coldStorageContent ColdStorage content
+         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coldStorageTarget ColdStorage destination
+         * @param coldStorageTarget ColdStorage destination. One of &#34;PCA&#34;, &#34;PCS&#34;
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coldStorageTarget ColdStorage destination
+         * @param coldStorageTarget ColdStorage destination. One of &#34;PCA&#34;, &#34;PCS&#34;
          * 
          * @return builder
          * 
