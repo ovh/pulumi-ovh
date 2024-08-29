@@ -10,12 +10,14 @@ PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 JAVA_GEN 		 := pulumi-java-gen
-JAVA_GEN_VERSION := v0.13.0
+JAVA_GEN_VERSION := v0.15.0
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
 JAVA_GROUP_ID    := com.${ORG}.pulumi
 JAVA_ARTIFACT_ID := ${ORG}
+
+PLATFORM := linux-amd64
 
 TESTPARALLELISM := 4
 
@@ -23,6 +25,11 @@ WORKING_DIR     := $(shell pwd)
 
 OS := $(shell uname)
 EMPTY_TO_AVOID_SED := ""
+
+SED := sed -i
+ifeq ($(OS), Darwin)
+        SED += ''
+endif
 
 ensure::
 	cd provider && go mod tidy
@@ -99,24 +106,29 @@ build_go:: install_plugins tfgen # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
-build_java:: $(WORKING_DIR)/bin/$(JAVA_GEN)
+build_java:: bin/pulumi-java-gen
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
 	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
-	echo "update java version in build.gradle" && cd ./sdk/java/ && sed -i '' -e 's/of(11)/of(21)/g' build.gradle
-	echo "update meta info in build.gradle" && cd ./sdk/java/ && sed -i '' -e 's/info.metaClass.name = .*/info.metaClass.name = "$(JAVA_ARTIFACT_ID)"/g' build.gradle && \
-	sed -i '' -e 's/group = .*/group = "$(JAVA_GROUP_ID)"/g' build.gradle && \
-  sed -i '' -e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' build.gradle && \
-  sed -i '' -e 's/artifactId = .*/artifactId = "$(JAVA_ARTIFACT_ID)"/g' build.gradle && \
-  sed -i '' -e 's/description = .*/description = "A Pulumi package for creating and managing OVH resources."/g' build.gradle
-								
-	echo "update rootProject in settings.gradle" && cd ./sdk/java && sed -i '' -e 's/rootProject.name = .*/rootProject.name = "$(JAVA_GROUP_ID)"/g' settings.gradle
-	
+
+	echo "update java version in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/of(11)/of(21)/g' build.gradle
+	echo "update meta info in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/info.metaClass.name = .*/info.metaClass.name = "$(JAVA_ARTIFACT_ID)"/g' build.gradle && \
+	${SED} -e 's/group = .*/group = "$(JAVA_GROUP_ID)"/g' build.gradle && \
+	${SED} -e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' build.gradle && \
+	${SED} -e 's/artifactId = .*/artifactId = "$(JAVA_ARTIFACT_ID)"/g' build.gradle && \
+	${SED} -e 's/description = .*/description = "A Pulumi package for creating and managing OVH resources."/g' build.gradle
+							
+	echo "update rootProject in settings.gradle" && cd ./sdk/java && ${SED} -e 's/rootProject.name = .*/rootProject.name = "$(JAVA_GROUP_ID)"/g' settings.gradle
+
+
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
 		gradle --console=plain build
 
-$(WORKING_DIR)/bin/$(JAVA_GEN)::
-	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
+bin/pulumi-java-gen::
+	@mkdir -p bin
+	wget https://github.com/pulumi/pulumi-java/releases/download/${JAVA_GEN_VERSION}/pulumi-language-java-${JAVA_GEN_VERSION}-${PLATFORM}.tar.gz -O /tmp/pulumi-language-java-${JAVA_GEN_VERSION}-${PLATFORM}.tar.gz
+	tar -xf /tmp/pulumi-language-java-${JAVA_GEN_VERSION}-${PLATFORM}.tar.gz -C /tmp
+	mv /tmp/pulumi-java-gen bin
 
 lint_provider:: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
