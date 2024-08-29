@@ -20,6 +20,11 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT 1
 # Allow newer dotnet version (e.g. 6) to build projects targeting older frameworks (v3.1)
 ENV DOTNET_ROLL_FORWARD Major
 
+# Install Java
+RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && \
+    sdk install java 21.0.4-tem && \
+    sdk default java 21.0.4-tem"
+
 # install python?
 
 # install JS?
