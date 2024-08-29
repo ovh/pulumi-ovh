@@ -90,7 +90,7 @@ publishing {
             artifact javadocJar
 
             pom {
-                inceptionYear = "2022"
+                inceptionYear = "2024"
                 name = "pulumi-ovh"
                 packaging = "jar"
                 description = "A Pulumi package for creating and managing OVH resources."

@@ -111,6 +111,8 @@ build_java:: bin/pulumi-java-gen
 	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
 
 	echo "update java version in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/of(11)/of(21)/g' build.gradle
+	echo "update inceptionYear in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/inceptionYear = .*/inceptionYear = "2024"/g' build.gradle
+
 	echo "update meta info in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/info.metaClass.name = .*/info.metaClass.name = "$(JAVA_ARTIFACT_ID)"/g' build.gradle && \
 	${SED} -e 's/group = .*/group = "$(JAVA_GROUP_ID)"/g' build.gradle && \
 	${SED} -e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' build.gradle && \
