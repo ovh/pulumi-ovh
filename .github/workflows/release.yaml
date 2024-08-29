@@ -21,6 +21,12 @@ env:
   PYPI_USERNAME: "__token__"
   PUBLISH_REPO_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
   PUBLISH_REPO_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+  # Include only last 8 hex digits of the key ID included, due tolimitations of gradle.
+  SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
+  # Obtained by `gpg --armor --export-secret-key support@pulumi.com`.
+  SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+  # Aka passphrase for the GPG key.
+  SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
   PUBLISH_PYPI: true
   PUBLISH_NPM: true
   PUBLISH_NUGET: true
@@ -145,7 +151,7 @@ jobs:
           $GITHUB_ENV
       - if: ${{ matrix.language == 'java' && env.PUBLISH_NRM == 'true' }}
         name: Publish Java SDK
-        uses: gradle/gradle-build-action@9bca466e2722baf9e77b4f929bbe0af18848791f
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository
           build-root-directory: ./sdk/java
