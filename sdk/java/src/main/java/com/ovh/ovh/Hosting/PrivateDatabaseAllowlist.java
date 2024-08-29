@@ -141,7 +141,7 @@ public class PrivateDatabaseAllowlist extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PrivateDatabaseAllowlist(String name) {
+    public PrivateDatabaseAllowlist(java.lang.String name) {
         this(name, PrivateDatabaseAllowlistArgs.Empty);
     }
     /**
@@ -149,7 +149,7 @@ public class PrivateDatabaseAllowlist extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PrivateDatabaseAllowlist(String name, PrivateDatabaseAllowlistArgs args) {
+    public PrivateDatabaseAllowlist(java.lang.String name, PrivateDatabaseAllowlistArgs args) {
         this(name, args, null);
     }
     /**
@@ -158,12 +158,12 @@ public class PrivateDatabaseAllowlist extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PrivateDatabaseAllowlist(String name, PrivateDatabaseAllowlistArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public PrivateDatabaseAllowlist(java.lang.String name, PrivateDatabaseAllowlistArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PrivateDatabaseAllowlist(String name, Output<String> id, @Nullable PrivateDatabaseAllowlistState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist", name, state, makeResourceOptions(options, id));
+    private PrivateDatabaseAllowlist(java.lang.String name, Output<java.lang.String> id, @Nullable PrivateDatabaseAllowlistState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist", name, state, makeResourceOptions(options, id), false);
     }
 
     private static PrivateDatabaseAllowlistArgs makeArgs(PrivateDatabaseAllowlistArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -173,7 +173,7 @@ public class PrivateDatabaseAllowlist extends com.pulumi.resources.CustomResourc
         return args == null ? PrivateDatabaseAllowlistArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -189,7 +189,7 @@ public class PrivateDatabaseAllowlist extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PrivateDatabaseAllowlist get(String name, Output<String> id, @Nullable PrivateDatabaseAllowlistState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PrivateDatabaseAllowlist get(java.lang.String name, Output<java.lang.String> id, @Nullable PrivateDatabaseAllowlistState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PrivateDatabaseAllowlist(name, id, state, options);
     }
 }

@@ -3561,21 +3561,21 @@ public final class CloudProjectFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var mongouser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
-     *             .name("ZZZ{@literal @}admin")
+     *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
      *         ctx.export("mongouserRoles", mongouser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3606,21 +3606,21 @@ public final class CloudProjectFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var mongouser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
-     *             .name("ZZZ{@literal @}admin")
+     *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
      *         ctx.export("mongouserRoles", mongouser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3651,21 +3651,21 @@ public final class CloudProjectFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var mongouser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
-     *             .name("ZZZ{@literal @}admin")
+     *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
      *         ctx.export("mongouserRoles", mongouser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3696,21 +3696,21 @@ public final class CloudProjectFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var mongouser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
-     *             .name("ZZZ{@literal @}admin")
+     *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
      *         ctx.export("mongouserRoles", mongouser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

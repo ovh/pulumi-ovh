@@ -162,7 +162,7 @@ public class ZoneRedirection extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ZoneRedirection(String name) {
+    public ZoneRedirection(java.lang.String name) {
         this(name, ZoneRedirectionArgs.Empty);
     }
     /**
@@ -170,7 +170,7 @@ public class ZoneRedirection extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ZoneRedirection(String name, ZoneRedirectionArgs args) {
+    public ZoneRedirection(java.lang.String name, ZoneRedirectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -179,12 +179,12 @@ public class ZoneRedirection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ZoneRedirection(String name, ZoneRedirectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Domain/zoneRedirection:ZoneRedirection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ZoneRedirection(java.lang.String name, ZoneRedirectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Domain/zoneRedirection:ZoneRedirection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ZoneRedirection(String name, Output<String> id, @Nullable ZoneRedirectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Domain/zoneRedirection:ZoneRedirection", name, state, makeResourceOptions(options, id));
+    private ZoneRedirection(java.lang.String name, Output<java.lang.String> id, @Nullable ZoneRedirectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Domain/zoneRedirection:ZoneRedirection", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ZoneRedirectionArgs makeArgs(ZoneRedirectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -194,7 +194,7 @@ public class ZoneRedirection extends com.pulumi.resources.CustomResource {
         return args == null ? ZoneRedirectionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -210,7 +210,7 @@ public class ZoneRedirection extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ZoneRedirection get(String name, Output<String> id, @Nullable ZoneRedirectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ZoneRedirection get(java.lang.String name, Output<java.lang.String> id, @Nullable ZoneRedirectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ZoneRedirection(name, id, state, options);
     }
 }

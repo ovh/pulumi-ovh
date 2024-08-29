@@ -172,7 +172,7 @@ public class IpRestriction extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IpRestriction(String name) {
+    public IpRestriction(java.lang.String name) {
         this(name, IpRestrictionArgs.Empty);
     }
     /**
@@ -180,7 +180,7 @@ public class IpRestriction extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IpRestriction(String name, IpRestrictionArgs args) {
+    public IpRestriction(java.lang.String name, IpRestrictionArgs args) {
         this(name, args, null);
     }
     /**
@@ -189,12 +189,12 @@ public class IpRestriction extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IpRestriction(String name, IpRestrictionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/ipRestriction:IpRestriction", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IpRestriction(java.lang.String name, IpRestrictionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/ipRestriction:IpRestriction", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IpRestriction(String name, Output<String> id, @Nullable IpRestrictionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/ipRestriction:IpRestriction", name, state, makeResourceOptions(options, id));
+    private IpRestriction(java.lang.String name, Output<java.lang.String> id, @Nullable IpRestrictionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/ipRestriction:IpRestriction", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IpRestrictionArgs makeArgs(IpRestrictionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -204,7 +204,7 @@ public class IpRestriction extends com.pulumi.resources.CustomResource {
         return args == null ? IpRestrictionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -220,7 +220,7 @@ public class IpRestriction extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IpRestriction get(String name, Output<String> id, @Nullable IpRestrictionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IpRestriction get(java.lang.String name, Output<java.lang.String> id, @Nullable IpRestrictionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IpRestriction(name, id, state, options);
     }
 }

@@ -134,7 +134,7 @@ public class PrivateDatabaseUserGrant extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PrivateDatabaseUserGrant(String name) {
+    public PrivateDatabaseUserGrant(java.lang.String name) {
         this(name, PrivateDatabaseUserGrantArgs.Empty);
     }
     /**
@@ -142,7 +142,7 @@ public class PrivateDatabaseUserGrant extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PrivateDatabaseUserGrant(String name, PrivateDatabaseUserGrantArgs args) {
+    public PrivateDatabaseUserGrant(java.lang.String name, PrivateDatabaseUserGrantArgs args) {
         this(name, args, null);
     }
     /**
@@ -151,12 +151,12 @@ public class PrivateDatabaseUserGrant extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PrivateDatabaseUserGrant(String name, PrivateDatabaseUserGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public PrivateDatabaseUserGrant(java.lang.String name, PrivateDatabaseUserGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PrivateDatabaseUserGrant(String name, Output<String> id, @Nullable PrivateDatabaseUserGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant", name, state, makeResourceOptions(options, id));
+    private PrivateDatabaseUserGrant(java.lang.String name, Output<java.lang.String> id, @Nullable PrivateDatabaseUserGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant", name, state, makeResourceOptions(options, id), false);
     }
 
     private static PrivateDatabaseUserGrantArgs makeArgs(PrivateDatabaseUserGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -166,7 +166,7 @@ public class PrivateDatabaseUserGrant extends com.pulumi.resources.CustomResourc
         return args == null ? PrivateDatabaseUserGrantArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -182,7 +182,7 @@ public class PrivateDatabaseUserGrant extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PrivateDatabaseUserGrant get(String name, Output<String> id, @Nullable PrivateDatabaseUserGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PrivateDatabaseUserGrant get(java.lang.String name, Output<java.lang.String> id, @Nullable PrivateDatabaseUserGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PrivateDatabaseUserGrant(name, id, state, options);
     }
 }

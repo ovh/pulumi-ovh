@@ -209,7 +209,7 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkPrivate(String name) {
+    public NetworkPrivate(java.lang.String name) {
         this(name, NetworkPrivateArgs.Empty);
     }
     /**
@@ -217,7 +217,7 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkPrivate(String name, NetworkPrivateArgs args) {
+    public NetworkPrivate(java.lang.String name, NetworkPrivateArgs args) {
         this(name, args, null);
     }
     /**
@@ -226,12 +226,12 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkPrivate(String name, NetworkPrivateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/networkPrivate:NetworkPrivate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NetworkPrivate(java.lang.String name, NetworkPrivateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/networkPrivate:NetworkPrivate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkPrivate(String name, Output<String> id, @Nullable NetworkPrivateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/networkPrivate:NetworkPrivate", name, state, makeResourceOptions(options, id));
+    private NetworkPrivate(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkPrivateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/networkPrivate:NetworkPrivate", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NetworkPrivateArgs makeArgs(NetworkPrivateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -241,7 +241,7 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
         return args == null ? NetworkPrivateArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -257,7 +257,7 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkPrivate get(String name, Output<String> id, @Nullable NetworkPrivateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkPrivate get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkPrivateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkPrivate(name, id, state, options);
     }
 }

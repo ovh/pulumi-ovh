@@ -224,7 +224,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Integration(String name) {
+    public Integration(java.lang.String name) {
         this(name, IntegrationArgs.Empty);
     }
     /**
@@ -232,7 +232,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Integration(String name, IntegrationArgs args) {
+    public Integration(java.lang.String name, IntegrationArgs args) {
         this(name, args, null);
     }
     /**
@@ -241,12 +241,12 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Integration(String name, IntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/integration:Integration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Integration(java.lang.String name, IntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/integration:Integration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Integration(String name, Output<String> id, @Nullable IntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/integration:Integration", name, state, makeResourceOptions(options, id));
+    private Integration(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/integration:Integration", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IntegrationArgs makeArgs(IntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -256,7 +256,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return args == null ? IntegrationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -272,7 +272,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Integration get(String name, Output<String> id, @Nullable IntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Integration get(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Integration(name, id, state, options);
     }
 }

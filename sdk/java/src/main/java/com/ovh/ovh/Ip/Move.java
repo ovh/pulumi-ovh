@@ -246,7 +246,7 @@ public class Move extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Move(String name) {
+    public Move(java.lang.String name) {
         this(name, MoveArgs.Empty);
     }
     /**
@@ -254,7 +254,7 @@ public class Move extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Move(String name, MoveArgs args) {
+    public Move(java.lang.String name, MoveArgs args) {
         this(name, args, null);
     }
     /**
@@ -263,12 +263,12 @@ public class Move extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Move(String name, MoveArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Ip/move:Move", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Move(java.lang.String name, MoveArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Ip/move:Move", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Move(String name, Output<String> id, @Nullable MoveState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Ip/move:Move", name, state, makeResourceOptions(options, id));
+    private Move(java.lang.String name, Output<java.lang.String> id, @Nullable MoveState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Ip/move:Move", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MoveArgs makeArgs(MoveArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -278,7 +278,7 @@ public class Move extends com.pulumi.resources.CustomResource {
         return args == null ? MoveArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -294,7 +294,7 @@ public class Move extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Move get(String name, Output<String> id, @Nullable MoveState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Move get(java.lang.String name, Output<java.lang.String> id, @Nullable MoveState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Move(name, id, state, options);
     }
 }

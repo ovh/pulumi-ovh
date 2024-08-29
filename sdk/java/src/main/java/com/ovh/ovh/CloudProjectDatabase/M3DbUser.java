@@ -148,7 +148,7 @@ public class M3DbUser extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public M3DbUser(String name) {
+    public M3DbUser(java.lang.String name) {
         this(name, M3DbUserArgs.Empty);
     }
     /**
@@ -156,7 +156,7 @@ public class M3DbUser extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public M3DbUser(String name, M3DbUserArgs args) {
+    public M3DbUser(java.lang.String name, M3DbUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -165,12 +165,12 @@ public class M3DbUser extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public M3DbUser(String name, M3DbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/m3DbUser:M3DbUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public M3DbUser(java.lang.String name, M3DbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/m3DbUser:M3DbUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private M3DbUser(String name, Output<String> id, @Nullable M3DbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/m3DbUser:M3DbUser", name, state, makeResourceOptions(options, id));
+    private M3DbUser(java.lang.String name, Output<java.lang.String> id, @Nullable M3DbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/m3DbUser:M3DbUser", name, state, makeResourceOptions(options, id), false);
     }
 
     private static M3DbUserArgs makeArgs(M3DbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -180,7 +180,7 @@ public class M3DbUser extends com.pulumi.resources.CustomResource {
         return args == null ? M3DbUserArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -199,7 +199,7 @@ public class M3DbUser extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static M3DbUser get(String name, Output<String> id, @Nullable M3DbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static M3DbUser get(java.lang.String name, Output<java.lang.String> id, @Nullable M3DbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new M3DbUser(name, id, state, options);
     }
 }

@@ -271,7 +271,7 @@ public class InstallationTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstallationTemplate(String name) {
+    public InstallationTemplate(java.lang.String name) {
         this(name, InstallationTemplateArgs.Empty);
     }
     /**
@@ -279,7 +279,7 @@ public class InstallationTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstallationTemplate(String name, InstallationTemplateArgs args) {
+    public InstallationTemplate(java.lang.String name, InstallationTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -288,12 +288,12 @@ public class InstallationTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstallationTemplate(String name, InstallationTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/installationTemplate:InstallationTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InstallationTemplate(java.lang.String name, InstallationTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Me/installationTemplate:InstallationTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstallationTemplate(String name, Output<String> id, @Nullable InstallationTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/installationTemplate:InstallationTemplate", name, state, makeResourceOptions(options, id));
+    private InstallationTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable InstallationTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Me/installationTemplate:InstallationTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InstallationTemplateArgs makeArgs(InstallationTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -303,7 +303,7 @@ public class InstallationTemplate extends com.pulumi.resources.CustomResource {
         return args == null ? InstallationTemplateArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -319,7 +319,7 @@ public class InstallationTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstallationTemplate get(String name, Output<String> id, @Nullable InstallationTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstallationTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable InstallationTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstallationTemplate(name, id, state, options);
     }
 }

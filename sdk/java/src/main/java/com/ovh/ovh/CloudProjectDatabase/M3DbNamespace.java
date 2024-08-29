@@ -252,7 +252,7 @@ public class M3DbNamespace extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public M3DbNamespace(String name) {
+    public M3DbNamespace(java.lang.String name) {
         this(name, M3DbNamespaceArgs.Empty);
     }
     /**
@@ -260,7 +260,7 @@ public class M3DbNamespace extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public M3DbNamespace(String name, M3DbNamespaceArgs args) {
+    public M3DbNamespace(java.lang.String name, M3DbNamespaceArgs args) {
         this(name, args, null);
     }
     /**
@@ -269,12 +269,12 @@ public class M3DbNamespace extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public M3DbNamespace(String name, M3DbNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public M3DbNamespace(java.lang.String name, M3DbNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private M3DbNamespace(String name, Output<String> id, @Nullable M3DbNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace", name, state, makeResourceOptions(options, id));
+    private M3DbNamespace(java.lang.String name, Output<java.lang.String> id, @Nullable M3DbNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace", name, state, makeResourceOptions(options, id), false);
     }
 
     private static M3DbNamespaceArgs makeArgs(M3DbNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -284,7 +284,7 @@ public class M3DbNamespace extends com.pulumi.resources.CustomResource {
         return args == null ? M3DbNamespaceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -300,7 +300,7 @@ public class M3DbNamespace extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static M3DbNamespace get(String name, Output<String> id, @Nullable M3DbNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static M3DbNamespace get(java.lang.String name, Output<java.lang.String> id, @Nullable M3DbNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new M3DbNamespace(name, id, state, options);
     }
 }

@@ -284,7 +284,7 @@ public class LogsCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LogsCluster(String name) {
+    public LogsCluster(java.lang.String name) {
         this(name, LogsClusterArgs.Empty);
     }
     /**
@@ -292,7 +292,7 @@ public class LogsCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LogsCluster(String name, LogsClusterArgs args) {
+    public LogsCluster(java.lang.String name, LogsClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -301,12 +301,12 @@ public class LogsCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LogsCluster(String name, LogsClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dbaas/logsCluster:LogsCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LogsCluster(java.lang.String name, LogsClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dbaas/logsCluster:LogsCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LogsCluster(String name, Output<String> id, @Nullable LogsClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dbaas/logsCluster:LogsCluster", name, state, makeResourceOptions(options, id));
+    private LogsCluster(java.lang.String name, Output<java.lang.String> id, @Nullable LogsClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dbaas/logsCluster:LogsCluster", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LogsClusterArgs makeArgs(LogsClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -316,7 +316,7 @@ public class LogsCluster extends com.pulumi.resources.CustomResource {
         return args == null ? LogsClusterArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -339,7 +339,7 @@ public class LogsCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LogsCluster get(String name, Output<String> id, @Nullable LogsClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LogsCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable LogsClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LogsCluster(name, id, state, options);
     }
 }

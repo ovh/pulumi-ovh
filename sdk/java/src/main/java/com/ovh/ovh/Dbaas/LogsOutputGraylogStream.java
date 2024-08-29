@@ -461,7 +461,7 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LogsOutputGraylogStream(String name) {
+    public LogsOutputGraylogStream(java.lang.String name) {
         this(name, LogsOutputGraylogStreamArgs.Empty);
     }
     /**
@@ -469,7 +469,7 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LogsOutputGraylogStream(String name, LogsOutputGraylogStreamArgs args) {
+    public LogsOutputGraylogStream(java.lang.String name, LogsOutputGraylogStreamArgs args) {
         this(name, args, null);
     }
     /**
@@ -478,12 +478,12 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LogsOutputGraylogStream(String name, LogsOutputGraylogStreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LogsOutputGraylogStream(java.lang.String name, LogsOutputGraylogStreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LogsOutputGraylogStream(String name, Output<String> id, @Nullable LogsOutputGraylogStreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream", name, state, makeResourceOptions(options, id));
+    private LogsOutputGraylogStream(java.lang.String name, Output<java.lang.String> id, @Nullable LogsOutputGraylogStreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LogsOutputGraylogStreamArgs makeArgs(LogsOutputGraylogStreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -493,7 +493,7 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
         return args == null ? LogsOutputGraylogStreamArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -512,7 +512,7 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LogsOutputGraylogStream get(String name, Output<String> id, @Nullable LogsOutputGraylogStreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LogsOutputGraylogStream get(java.lang.String name, Output<java.lang.String> id, @Nullable LogsOutputGraylogStreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LogsOutputGraylogStream(name, id, state, options);
     }
 }

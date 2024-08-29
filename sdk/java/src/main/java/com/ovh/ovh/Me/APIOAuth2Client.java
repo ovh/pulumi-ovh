@@ -217,7 +217,7 @@ public class APIOAuth2Client extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public APIOAuth2Client(String name) {
+    public APIOAuth2Client(java.lang.String name) {
         this(name, APIOAuth2ClientArgs.Empty);
     }
     /**
@@ -225,7 +225,7 @@ public class APIOAuth2Client extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public APIOAuth2Client(String name, APIOAuth2ClientArgs args) {
+    public APIOAuth2Client(java.lang.String name, APIOAuth2ClientArgs args) {
         this(name, args, null);
     }
     /**
@@ -234,12 +234,12 @@ public class APIOAuth2Client extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public APIOAuth2Client(String name, APIOAuth2ClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/aPIOAuth2Client:APIOAuth2Client", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public APIOAuth2Client(java.lang.String name, APIOAuth2ClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Me/aPIOAuth2Client:APIOAuth2Client", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private APIOAuth2Client(String name, Output<String> id, @Nullable APIOAuth2ClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/aPIOAuth2Client:APIOAuth2Client", name, state, makeResourceOptions(options, id));
+    private APIOAuth2Client(java.lang.String name, Output<java.lang.String> id, @Nullable APIOAuth2ClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Me/aPIOAuth2Client:APIOAuth2Client", name, state, makeResourceOptions(options, id), false);
     }
 
     private static APIOAuth2ClientArgs makeArgs(APIOAuth2ClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -249,7 +249,7 @@ public class APIOAuth2Client extends com.pulumi.resources.CustomResource {
         return args == null ? APIOAuth2ClientArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -268,7 +268,7 @@ public class APIOAuth2Client extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static APIOAuth2Client get(String name, Output<String> id, @Nullable APIOAuth2ClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static APIOAuth2Client get(java.lang.String name, Output<java.lang.String> id, @Nullable APIOAuth2ClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new APIOAuth2Client(name, id, state, options);
     }
 }

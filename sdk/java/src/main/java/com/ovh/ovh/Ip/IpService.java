@@ -278,7 +278,7 @@ public class IpService extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IpService(String name) {
+    public IpService(java.lang.String name) {
         this(name, IpServiceArgs.Empty);
     }
     /**
@@ -286,7 +286,7 @@ public class IpService extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IpService(String name, IpServiceArgs args) {
+    public IpService(java.lang.String name, IpServiceArgs args) {
         this(name, args, null);
     }
     /**
@@ -295,12 +295,12 @@ public class IpService extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IpService(String name, IpServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Ip/ipService:IpService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IpService(java.lang.String name, IpServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Ip/ipService:IpService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IpService(String name, Output<String> id, @Nullable IpServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Ip/ipService:IpService", name, state, makeResourceOptions(options, id));
+    private IpService(java.lang.String name, Output<java.lang.String> id, @Nullable IpServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Ip/ipService:IpService", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IpServiceArgs makeArgs(IpServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -310,7 +310,7 @@ public class IpService extends com.pulumi.resources.CustomResource {
         return args == null ? IpServiceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -326,7 +326,7 @@ public class IpService extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IpService get(String name, Output<String> id, @Nullable IpServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IpService get(java.lang.String name, Output<java.lang.String> id, @Nullable IpServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IpService(name, id, state, options);
     }
 }

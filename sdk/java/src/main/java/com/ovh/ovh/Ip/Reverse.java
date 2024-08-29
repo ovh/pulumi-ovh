@@ -114,7 +114,7 @@ public class Reverse extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Reverse(String name) {
+    public Reverse(java.lang.String name) {
         this(name, ReverseArgs.Empty);
     }
     /**
@@ -122,7 +122,7 @@ public class Reverse extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Reverse(String name, ReverseArgs args) {
+    public Reverse(java.lang.String name, ReverseArgs args) {
         this(name, args, null);
     }
     /**
@@ -131,12 +131,12 @@ public class Reverse extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Reverse(String name, ReverseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Ip/reverse:Reverse", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Reverse(java.lang.String name, ReverseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Ip/reverse:Reverse", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Reverse(String name, Output<String> id, @Nullable ReverseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Ip/reverse:Reverse", name, state, makeResourceOptions(options, id));
+    private Reverse(java.lang.String name, Output<java.lang.String> id, @Nullable ReverseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Ip/reverse:Reverse", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ReverseArgs makeArgs(ReverseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -146,7 +146,7 @@ public class Reverse extends com.pulumi.resources.CustomResource {
         return args == null ? ReverseArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -162,7 +162,7 @@ public class Reverse extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Reverse get(String name, Output<String> id, @Nullable ReverseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Reverse get(java.lang.String name, Output<java.lang.String> id, @Nullable ReverseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Reverse(name, id, state, options);
     }
 }

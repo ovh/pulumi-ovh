@@ -102,7 +102,7 @@ public class CloudProject extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CloudProject(String name) {
+    public CloudProject(java.lang.String name) {
         this(name, CloudProjectArgs.Empty);
     }
     /**
@@ -110,7 +110,7 @@ public class CloudProject extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CloudProject(String name, CloudProjectArgs args) {
+    public CloudProject(java.lang.String name, CloudProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -119,12 +119,12 @@ public class CloudProject extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CloudProject(String name, CloudProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/cloudProject:CloudProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CloudProject(java.lang.String name, CloudProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Vrack/cloudProject:CloudProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CloudProject(String name, Output<String> id, @Nullable CloudProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/cloudProject:CloudProject", name, state, makeResourceOptions(options, id));
+    private CloudProject(java.lang.String name, Output<java.lang.String> id, @Nullable CloudProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Vrack/cloudProject:CloudProject", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CloudProjectArgs makeArgs(CloudProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -134,7 +134,7 @@ public class CloudProject extends com.pulumi.resources.CustomResource {
         return args == null ? CloudProjectArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -150,7 +150,7 @@ public class CloudProject extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CloudProject get(String name, Output<String> id, @Nullable CloudProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CloudProject get(java.lang.String name, Output<java.lang.String> id, @Nullable CloudProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CloudProject(name, id, state, options);
     }
 }

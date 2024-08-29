@@ -176,7 +176,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HttpRoute(String name) {
+    public HttpRoute(java.lang.String name) {
         this(name, HttpRouteArgs.Empty);
     }
     /**
@@ -184,7 +184,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HttpRoute(String name, HttpRouteArgs args) {
+    public HttpRoute(java.lang.String name, HttpRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -193,12 +193,12 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HttpRoute(String name, HttpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/httpRoute:HttpRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public HttpRoute(java.lang.String name, HttpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:IpLoadBalancing/httpRoute:HttpRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HttpRoute(String name, Output<String> id, @Nullable HttpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/httpRoute:HttpRoute", name, state, makeResourceOptions(options, id));
+    private HttpRoute(java.lang.String name, Output<java.lang.String> id, @Nullable HttpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:IpLoadBalancing/httpRoute:HttpRoute", name, state, makeResourceOptions(options, id), false);
     }
 
     private static HttpRouteArgs makeArgs(HttpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -208,7 +208,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
         return args == null ? HttpRouteArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -224,7 +224,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HttpRoute get(String name, Output<String> id, @Nullable HttpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HttpRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable HttpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HttpRoute(name, id, state, options);
     }
 }

@@ -156,7 +156,7 @@ public class ServerUpdate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServerUpdate(String name) {
+    public ServerUpdate(java.lang.String name) {
         this(name, ServerUpdateArgs.Empty);
     }
     /**
@@ -164,7 +164,7 @@ public class ServerUpdate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServerUpdate(String name, ServerUpdateArgs args) {
+    public ServerUpdate(java.lang.String name, ServerUpdateArgs args) {
         this(name, args, null);
     }
     /**
@@ -173,12 +173,12 @@ public class ServerUpdate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServerUpdate(String name, ServerUpdateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/serverUpdate:ServerUpdate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ServerUpdate(java.lang.String name, ServerUpdateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dedicated/serverUpdate:ServerUpdate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServerUpdate(String name, Output<String> id, @Nullable ServerUpdateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/serverUpdate:ServerUpdate", name, state, makeResourceOptions(options, id));
+    private ServerUpdate(java.lang.String name, Output<java.lang.String> id, @Nullable ServerUpdateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dedicated/serverUpdate:ServerUpdate", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ServerUpdateArgs makeArgs(ServerUpdateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -188,7 +188,7 @@ public class ServerUpdate extends com.pulumi.resources.CustomResource {
         return args == null ? ServerUpdateArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -204,7 +204,7 @@ public class ServerUpdate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServerUpdate get(String name, Output<String> id, @Nullable ServerUpdateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServerUpdate get(java.lang.String name, Output<java.lang.String> id, @Nullable ServerUpdateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServerUpdate(name, id, state, options);
     }
 }

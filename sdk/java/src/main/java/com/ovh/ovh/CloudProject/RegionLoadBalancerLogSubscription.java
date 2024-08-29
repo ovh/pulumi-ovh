@@ -233,7 +233,7 @@ public class RegionLoadBalancerLogSubscription extends com.pulumi.resources.Cust
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionLoadBalancerLogSubscription(String name) {
+    public RegionLoadBalancerLogSubscription(java.lang.String name) {
         this(name, RegionLoadBalancerLogSubscriptionArgs.Empty);
     }
     /**
@@ -241,7 +241,7 @@ public class RegionLoadBalancerLogSubscription extends com.pulumi.resources.Cust
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionLoadBalancerLogSubscription(String name, RegionLoadBalancerLogSubscriptionArgs args) {
+    public RegionLoadBalancerLogSubscription(java.lang.String name, RegionLoadBalancerLogSubscriptionArgs args) {
         this(name, args, null);
     }
     /**
@@ -250,12 +250,12 @@ public class RegionLoadBalancerLogSubscription extends com.pulumi.resources.Cust
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionLoadBalancerLogSubscription(String name, RegionLoadBalancerLogSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RegionLoadBalancerLogSubscription(java.lang.String name, RegionLoadBalancerLogSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionLoadBalancerLogSubscription(String name, Output<String> id, @Nullable RegionLoadBalancerLogSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription", name, state, makeResourceOptions(options, id));
+    private RegionLoadBalancerLogSubscription(java.lang.String name, Output<java.lang.String> id, @Nullable RegionLoadBalancerLogSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RegionLoadBalancerLogSubscriptionArgs makeArgs(RegionLoadBalancerLogSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -265,7 +265,7 @@ public class RegionLoadBalancerLogSubscription extends com.pulumi.resources.Cust
         return args == null ? RegionLoadBalancerLogSubscriptionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -281,7 +281,7 @@ public class RegionLoadBalancerLogSubscription extends com.pulumi.resources.Cust
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionLoadBalancerLogSubscription get(String name, Output<String> id, @Nullable RegionLoadBalancerLogSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionLoadBalancerLogSubscription get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionLoadBalancerLogSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionLoadBalancerLogSubscription(name, id, state, options);
     }
 }

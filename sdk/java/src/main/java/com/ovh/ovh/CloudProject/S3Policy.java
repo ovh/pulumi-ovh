@@ -151,7 +151,7 @@ public class S3Policy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public S3Policy(String name) {
+    public S3Policy(java.lang.String name) {
         this(name, S3PolicyArgs.Empty);
     }
     /**
@@ -159,7 +159,7 @@ public class S3Policy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public S3Policy(String name, S3PolicyArgs args) {
+    public S3Policy(java.lang.String name, S3PolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -168,12 +168,12 @@ public class S3Policy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public S3Policy(String name, S3PolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/s3Policy:S3Policy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public S3Policy(java.lang.String name, S3PolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/s3Policy:S3Policy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private S3Policy(String name, Output<String> id, @Nullable S3PolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/s3Policy:S3Policy", name, state, makeResourceOptions(options, id));
+    private S3Policy(java.lang.String name, Output<java.lang.String> id, @Nullable S3PolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/s3Policy:S3Policy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static S3PolicyArgs makeArgs(S3PolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -183,7 +183,7 @@ public class S3Policy extends com.pulumi.resources.CustomResource {
         return args == null ? S3PolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -199,7 +199,7 @@ public class S3Policy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static S3Policy get(String name, Output<String> id, @Nullable S3PolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static S3Policy get(java.lang.String name, Output<java.lang.String> id, @Nullable S3PolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new S3Policy(name, id, state, options);
     }
 }

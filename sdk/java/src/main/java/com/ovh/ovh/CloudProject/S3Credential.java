@@ -99,7 +99,7 @@ public class S3Credential extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public S3Credential(String name) {
+    public S3Credential(java.lang.String name) {
         this(name, S3CredentialArgs.Empty);
     }
     /**
@@ -107,7 +107,7 @@ public class S3Credential extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public S3Credential(String name, S3CredentialArgs args) {
+    public S3Credential(java.lang.String name, S3CredentialArgs args) {
         this(name, args, null);
     }
     /**
@@ -116,12 +116,12 @@ public class S3Credential extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public S3Credential(String name, S3CredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/s3Credential:S3Credential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public S3Credential(java.lang.String name, S3CredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/s3Credential:S3Credential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private S3Credential(String name, Output<String> id, @Nullable S3CredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/s3Credential:S3Credential", name, state, makeResourceOptions(options, id));
+    private S3Credential(java.lang.String name, Output<java.lang.String> id, @Nullable S3CredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/s3Credential:S3Credential", name, state, makeResourceOptions(options, id), false);
     }
 
     private static S3CredentialArgs makeArgs(S3CredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -131,7 +131,7 @@ public class S3Credential extends com.pulumi.resources.CustomResource {
         return args == null ? S3CredentialArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -150,7 +150,7 @@ public class S3Credential extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static S3Credential get(String name, Output<String> id, @Nullable S3CredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static S3Credential get(java.lang.String name, Output<java.lang.String> id, @Nullable S3CredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new S3Credential(name, id, state, options);
     }
 }

@@ -460,7 +460,7 @@ public class PrivateDatabase extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PrivateDatabase(String name) {
+    public PrivateDatabase(java.lang.String name) {
         this(name, PrivateDatabaseArgs.Empty);
     }
     /**
@@ -468,7 +468,7 @@ public class PrivateDatabase extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PrivateDatabase(String name, PrivateDatabaseArgs args) {
+    public PrivateDatabase(java.lang.String name, PrivateDatabaseArgs args) {
         this(name, args, null);
     }
     /**
@@ -477,12 +477,12 @@ public class PrivateDatabase extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PrivateDatabase(String name, PrivateDatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Hosting/privateDatabase:PrivateDatabase", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public PrivateDatabase(java.lang.String name, PrivateDatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Hosting/privateDatabase:PrivateDatabase", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PrivateDatabase(String name, Output<String> id, @Nullable PrivateDatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Hosting/privateDatabase:PrivateDatabase", name, state, makeResourceOptions(options, id));
+    private PrivateDatabase(java.lang.String name, Output<java.lang.String> id, @Nullable PrivateDatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Hosting/privateDatabase:PrivateDatabase", name, state, makeResourceOptions(options, id), false);
     }
 
     private static PrivateDatabaseArgs makeArgs(PrivateDatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -492,7 +492,7 @@ public class PrivateDatabase extends com.pulumi.resources.CustomResource {
         return args == null ? PrivateDatabaseArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -508,7 +508,7 @@ public class PrivateDatabase extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PrivateDatabase get(String name, Output<String> id, @Nullable PrivateDatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PrivateDatabase get(java.lang.String name, Output<java.lang.String> id, @Nullable PrivateDatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PrivateDatabase(name, id, state, options);
     }
 }

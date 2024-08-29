@@ -187,7 +187,7 @@ public class HttpFarm extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HttpFarm(String name) {
+    public HttpFarm(java.lang.String name) {
         this(name, HttpFarmArgs.Empty);
     }
     /**
@@ -195,7 +195,7 @@ public class HttpFarm extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HttpFarm(String name, HttpFarmArgs args) {
+    public HttpFarm(java.lang.String name, HttpFarmArgs args) {
         this(name, args, null);
     }
     /**
@@ -204,12 +204,12 @@ public class HttpFarm extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HttpFarm(String name, HttpFarmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/httpFarm:HttpFarm", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public HttpFarm(java.lang.String name, HttpFarmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:IpLoadBalancing/httpFarm:HttpFarm", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HttpFarm(String name, Output<String> id, @Nullable HttpFarmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/httpFarm:HttpFarm", name, state, makeResourceOptions(options, id));
+    private HttpFarm(java.lang.String name, Output<java.lang.String> id, @Nullable HttpFarmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:IpLoadBalancing/httpFarm:HttpFarm", name, state, makeResourceOptions(options, id), false);
     }
 
     private static HttpFarmArgs makeArgs(HttpFarmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -219,7 +219,7 @@ public class HttpFarm extends com.pulumi.resources.CustomResource {
         return args == null ? HttpFarmArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -235,7 +235,7 @@ public class HttpFarm extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HttpFarm get(String name, Output<String> id, @Nullable HttpFarmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HttpFarm get(java.lang.String name, Output<java.lang.String> id, @Nullable HttpFarmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HttpFarm(name, id, state, options);
     }
 }

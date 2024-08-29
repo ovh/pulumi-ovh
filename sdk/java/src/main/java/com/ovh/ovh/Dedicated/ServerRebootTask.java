@@ -188,7 +188,7 @@ public class ServerRebootTask extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServerRebootTask(String name) {
+    public ServerRebootTask(java.lang.String name) {
         this(name, ServerRebootTaskArgs.Empty);
     }
     /**
@@ -196,7 +196,7 @@ public class ServerRebootTask extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServerRebootTask(String name, ServerRebootTaskArgs args) {
+    public ServerRebootTask(java.lang.String name, ServerRebootTaskArgs args) {
         this(name, args, null);
     }
     /**
@@ -205,12 +205,12 @@ public class ServerRebootTask extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServerRebootTask(String name, ServerRebootTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/serverRebootTask:ServerRebootTask", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ServerRebootTask(java.lang.String name, ServerRebootTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dedicated/serverRebootTask:ServerRebootTask", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServerRebootTask(String name, Output<String> id, @Nullable ServerRebootTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/serverRebootTask:ServerRebootTask", name, state, makeResourceOptions(options, id));
+    private ServerRebootTask(java.lang.String name, Output<java.lang.String> id, @Nullable ServerRebootTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dedicated/serverRebootTask:ServerRebootTask", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ServerRebootTaskArgs makeArgs(ServerRebootTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -220,7 +220,7 @@ public class ServerRebootTask extends com.pulumi.resources.CustomResource {
         return args == null ? ServerRebootTaskArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -236,7 +236,7 @@ public class ServerRebootTask extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServerRebootTask get(String name, Output<String> id, @Nullable ServerRebootTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServerRebootTask get(java.lang.String name, Output<java.lang.String> id, @Nullable ServerRebootTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServerRebootTask(name, id, state, options);
     }
 }

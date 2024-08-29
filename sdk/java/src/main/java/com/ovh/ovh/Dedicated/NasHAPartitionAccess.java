@@ -142,7 +142,7 @@ public class NasHAPartitionAccess extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NasHAPartitionAccess(String name) {
+    public NasHAPartitionAccess(java.lang.String name) {
         this(name, NasHAPartitionAccessArgs.Empty);
     }
     /**
@@ -150,7 +150,7 @@ public class NasHAPartitionAccess extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NasHAPartitionAccess(String name, NasHAPartitionAccessArgs args) {
+    public NasHAPartitionAccess(java.lang.String name, NasHAPartitionAccessArgs args) {
         this(name, args, null);
     }
     /**
@@ -159,12 +159,12 @@ public class NasHAPartitionAccess extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NasHAPartitionAccess(String name, NasHAPartitionAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NasHAPartitionAccess(java.lang.String name, NasHAPartitionAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NasHAPartitionAccess(String name, Output<String> id, @Nullable NasHAPartitionAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess", name, state, makeResourceOptions(options, id));
+    private NasHAPartitionAccess(java.lang.String name, Output<java.lang.String> id, @Nullable NasHAPartitionAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NasHAPartitionAccessArgs makeArgs(NasHAPartitionAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -174,7 +174,7 @@ public class NasHAPartitionAccess extends com.pulumi.resources.CustomResource {
         return args == null ? NasHAPartitionAccessArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -190,7 +190,7 @@ public class NasHAPartitionAccess extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NasHAPartitionAccess get(String name, Output<String> id, @Nullable NasHAPartitionAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NasHAPartitionAccess get(java.lang.String name, Output<java.lang.String> id, @Nullable NasHAPartitionAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NasHAPartitionAccess(name, id, state, options);
     }
 }

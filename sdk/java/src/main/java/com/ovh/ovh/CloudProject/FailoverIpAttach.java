@@ -196,7 +196,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FailoverIpAttach(String name) {
+    public FailoverIpAttach(java.lang.String name) {
         this(name, FailoverIpAttachArgs.Empty);
     }
     /**
@@ -204,7 +204,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FailoverIpAttach(String name, FailoverIpAttachArgs args) {
+    public FailoverIpAttach(java.lang.String name, FailoverIpAttachArgs args) {
         this(name, args, null);
     }
     /**
@@ -213,12 +213,12 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FailoverIpAttach(String name, FailoverIpAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/failoverIpAttach:FailoverIpAttach", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FailoverIpAttach(java.lang.String name, FailoverIpAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/failoverIpAttach:FailoverIpAttach", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FailoverIpAttach(String name, Output<String> id, @Nullable FailoverIpAttachState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/failoverIpAttach:FailoverIpAttach", name, state, makeResourceOptions(options, id));
+    private FailoverIpAttach(java.lang.String name, Output<java.lang.String> id, @Nullable FailoverIpAttachState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/failoverIpAttach:FailoverIpAttach", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FailoverIpAttachArgs makeArgs(FailoverIpAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -228,7 +228,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
         return args == null ? FailoverIpAttachArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -244,7 +244,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FailoverIpAttach get(String name, Output<String> id, @Nullable FailoverIpAttachState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FailoverIpAttach get(java.lang.String name, Output<java.lang.String> id, @Nullable FailoverIpAttachState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FailoverIpAttach(name, id, state, options);
     }
 }

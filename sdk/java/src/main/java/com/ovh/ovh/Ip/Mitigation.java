@@ -133,7 +133,7 @@ public class Mitigation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Mitigation(String name) {
+    public Mitigation(java.lang.String name) {
         this(name, MitigationArgs.Empty);
     }
     /**
@@ -141,7 +141,7 @@ public class Mitigation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Mitigation(String name, MitigationArgs args) {
+    public Mitigation(java.lang.String name, MitigationArgs args) {
         this(name, args, null);
     }
     /**
@@ -150,12 +150,12 @@ public class Mitigation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Mitigation(String name, MitigationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Ip/mitigation:Mitigation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Mitigation(java.lang.String name, MitigationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Ip/mitigation:Mitigation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Mitigation(String name, Output<String> id, @Nullable MitigationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Ip/mitigation:Mitigation", name, state, makeResourceOptions(options, id));
+    private Mitigation(java.lang.String name, Output<java.lang.String> id, @Nullable MitigationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Ip/mitigation:Mitigation", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MitigationArgs makeArgs(MitigationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -165,7 +165,7 @@ public class Mitigation extends com.pulumi.resources.CustomResource {
         return args == null ? MitigationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -181,7 +181,7 @@ public class Mitigation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Mitigation get(String name, Output<String> id, @Nullable MitigationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Mitigation get(java.lang.String name, Output<java.lang.String> id, @Nullable MitigationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Mitigation(name, id, state, options);
     }
 }

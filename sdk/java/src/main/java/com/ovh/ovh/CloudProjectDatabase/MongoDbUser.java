@@ -184,7 +184,7 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MongoDbUser(String name) {
+    public MongoDbUser(java.lang.String name) {
         this(name, MongoDbUserArgs.Empty);
     }
     /**
@@ -192,7 +192,7 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MongoDbUser(String name, MongoDbUserArgs args) {
+    public MongoDbUser(java.lang.String name, MongoDbUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -201,12 +201,12 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MongoDbUser(String name, MongoDbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MongoDbUser(java.lang.String name, MongoDbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MongoDbUser(String name, Output<String> id, @Nullable MongoDbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser", name, state, makeResourceOptions(options, id));
+    private MongoDbUser(java.lang.String name, Output<java.lang.String> id, @Nullable MongoDbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MongoDbUserArgs makeArgs(MongoDbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -216,7 +216,7 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
         return args == null ? MongoDbUserArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -235,7 +235,7 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MongoDbUser get(String name, Output<String> id, @Nullable MongoDbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MongoDbUser get(java.lang.String name, Output<java.lang.String> id, @Nullable MongoDbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MongoDbUser(name, id, state, options);
     }
 }

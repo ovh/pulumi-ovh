@@ -120,7 +120,7 @@ public class Refresh extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Refresh(String name) {
+    public Refresh(java.lang.String name) {
         this(name, RefreshArgs.Empty);
     }
     /**
@@ -128,7 +128,7 @@ public class Refresh extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Refresh(String name, RefreshArgs args) {
+    public Refresh(java.lang.String name, RefreshArgs args) {
         this(name, args, null);
     }
     /**
@@ -137,12 +137,12 @@ public class Refresh extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Refresh(String name, RefreshArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/refresh:Refresh", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Refresh(java.lang.String name, RefreshArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:IpLoadBalancing/refresh:Refresh", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Refresh(String name, Output<String> id, @Nullable RefreshState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/refresh:Refresh", name, state, makeResourceOptions(options, id));
+    private Refresh(java.lang.String name, Output<java.lang.String> id, @Nullable RefreshState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:IpLoadBalancing/refresh:Refresh", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RefreshArgs makeArgs(RefreshArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -152,7 +152,7 @@ public class Refresh extends com.pulumi.resources.CustomResource {
         return args == null ? RefreshArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -168,7 +168,7 @@ public class Refresh extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Refresh get(String name, Output<String> id, @Nullable RefreshState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Refresh get(java.lang.String name, Output<java.lang.String> id, @Nullable RefreshState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Refresh(name, id, state, options);
     }
 }

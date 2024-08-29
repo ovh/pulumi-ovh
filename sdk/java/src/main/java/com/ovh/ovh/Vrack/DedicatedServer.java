@@ -93,7 +93,7 @@ public class DedicatedServer extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DedicatedServer(String name) {
+    public DedicatedServer(java.lang.String name) {
         this(name, DedicatedServerArgs.Empty);
     }
     /**
@@ -101,7 +101,7 @@ public class DedicatedServer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DedicatedServer(String name, DedicatedServerArgs args) {
+    public DedicatedServer(java.lang.String name, DedicatedServerArgs args) {
         this(name, args, null);
     }
     /**
@@ -110,12 +110,12 @@ public class DedicatedServer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DedicatedServer(String name, DedicatedServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/dedicatedServer:DedicatedServer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DedicatedServer(java.lang.String name, DedicatedServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Vrack/dedicatedServer:DedicatedServer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DedicatedServer(String name, Output<String> id, @Nullable DedicatedServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/dedicatedServer:DedicatedServer", name, state, makeResourceOptions(options, id));
+    private DedicatedServer(java.lang.String name, Output<java.lang.String> id, @Nullable DedicatedServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Vrack/dedicatedServer:DedicatedServer", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DedicatedServerArgs makeArgs(DedicatedServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -125,7 +125,7 @@ public class DedicatedServer extends com.pulumi.resources.CustomResource {
         return args == null ? DedicatedServerArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -141,7 +141,7 @@ public class DedicatedServer extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DedicatedServer get(String name, Output<String> id, @Nullable DedicatedServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DedicatedServer get(java.lang.String name, Output<java.lang.String> id, @Nullable DedicatedServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DedicatedServer(name, id, state, options);
     }
 }

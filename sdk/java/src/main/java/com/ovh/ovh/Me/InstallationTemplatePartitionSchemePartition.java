@@ -250,7 +250,7 @@ public class InstallationTemplatePartitionSchemePartition extends com.pulumi.res
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstallationTemplatePartitionSchemePartition(String name) {
+    public InstallationTemplatePartitionSchemePartition(java.lang.String name) {
         this(name, InstallationTemplatePartitionSchemePartitionArgs.Empty);
     }
     /**
@@ -258,7 +258,7 @@ public class InstallationTemplatePartitionSchemePartition extends com.pulumi.res
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstallationTemplatePartitionSchemePartition(String name, InstallationTemplatePartitionSchemePartitionArgs args) {
+    public InstallationTemplatePartitionSchemePartition(java.lang.String name, InstallationTemplatePartitionSchemePartitionArgs args) {
         this(name, args, null);
     }
     /**
@@ -267,12 +267,12 @@ public class InstallationTemplatePartitionSchemePartition extends com.pulumi.res
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstallationTemplatePartitionSchemePartition(String name, InstallationTemplatePartitionSchemePartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InstallationTemplatePartitionSchemePartition(java.lang.String name, InstallationTemplatePartitionSchemePartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstallationTemplatePartitionSchemePartition(String name, Output<String> id, @Nullable InstallationTemplatePartitionSchemePartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition", name, state, makeResourceOptions(options, id));
+    private InstallationTemplatePartitionSchemePartition(java.lang.String name, Output<java.lang.String> id, @Nullable InstallationTemplatePartitionSchemePartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InstallationTemplatePartitionSchemePartitionArgs makeArgs(InstallationTemplatePartitionSchemePartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -282,7 +282,7 @@ public class InstallationTemplatePartitionSchemePartition extends com.pulumi.res
         return args == null ? InstallationTemplatePartitionSchemePartitionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -298,7 +298,7 @@ public class InstallationTemplatePartitionSchemePartition extends com.pulumi.res
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstallationTemplatePartitionSchemePartition get(String name, Output<String> id, @Nullable InstallationTemplatePartitionSchemePartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstallationTemplatePartitionSchemePartition get(java.lang.String name, Output<java.lang.String> id, @Nullable InstallationTemplatePartitionSchemePartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstallationTemplatePartitionSchemePartition(name, id, state, options);
     }
 }

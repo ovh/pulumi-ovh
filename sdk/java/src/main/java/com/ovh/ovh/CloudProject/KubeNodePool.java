@@ -477,7 +477,7 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KubeNodePool(String name) {
+    public KubeNodePool(java.lang.String name) {
         this(name, KubeNodePoolArgs.Empty);
     }
     /**
@@ -485,7 +485,7 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KubeNodePool(String name, KubeNodePoolArgs args) {
+    public KubeNodePool(java.lang.String name, KubeNodePoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -494,12 +494,12 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KubeNodePool(String name, KubeNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/kubeNodePool:KubeNodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KubeNodePool(java.lang.String name, KubeNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/kubeNodePool:KubeNodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KubeNodePool(String name, Output<String> id, @Nullable KubeNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/kubeNodePool:KubeNodePool", name, state, makeResourceOptions(options, id));
+    private KubeNodePool(java.lang.String name, Output<java.lang.String> id, @Nullable KubeNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/kubeNodePool:KubeNodePool", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KubeNodePoolArgs makeArgs(KubeNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -509,7 +509,7 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
         return args == null ? KubeNodePoolArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -525,7 +525,7 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KubeNodePool get(String name, Output<String> id, @Nullable KubeNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KubeNodePool get(java.lang.String name, Output<java.lang.String> id, @Nullable KubeNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KubeNodePool(name, id, state, options);
     }
 }

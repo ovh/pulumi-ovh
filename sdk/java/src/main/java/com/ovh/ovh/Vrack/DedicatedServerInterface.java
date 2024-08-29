@@ -99,7 +99,7 @@ public class DedicatedServerInterface extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DedicatedServerInterface(String name) {
+    public DedicatedServerInterface(java.lang.String name) {
         this(name, DedicatedServerInterfaceArgs.Empty);
     }
     /**
@@ -107,7 +107,7 @@ public class DedicatedServerInterface extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DedicatedServerInterface(String name, DedicatedServerInterfaceArgs args) {
+    public DedicatedServerInterface(java.lang.String name, DedicatedServerInterfaceArgs args) {
         this(name, args, null);
     }
     /**
@@ -116,12 +116,12 @@ public class DedicatedServerInterface extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DedicatedServerInterface(String name, DedicatedServerInterfaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DedicatedServerInterface(java.lang.String name, DedicatedServerInterfaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DedicatedServerInterface(String name, Output<String> id, @Nullable DedicatedServerInterfaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface", name, state, makeResourceOptions(options, id));
+    private DedicatedServerInterface(java.lang.String name, Output<java.lang.String> id, @Nullable DedicatedServerInterfaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DedicatedServerInterfaceArgs makeArgs(DedicatedServerInterfaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -131,7 +131,7 @@ public class DedicatedServerInterface extends com.pulumi.resources.CustomResourc
         return args == null ? DedicatedServerInterfaceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -147,7 +147,7 @@ public class DedicatedServerInterface extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DedicatedServerInterface get(String name, Output<String> id, @Nullable DedicatedServerInterfaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DedicatedServerInterface get(java.lang.String name, Output<java.lang.String> id, @Nullable DedicatedServerInterfaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DedicatedServerInterface(name, id, state, options);
     }
 }

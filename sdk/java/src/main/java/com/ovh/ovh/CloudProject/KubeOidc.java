@@ -235,7 +235,7 @@ public class KubeOidc extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KubeOidc(String name) {
+    public KubeOidc(java.lang.String name) {
         this(name, KubeOidcArgs.Empty);
     }
     /**
@@ -243,7 +243,7 @@ public class KubeOidc extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KubeOidc(String name, KubeOidcArgs args) {
+    public KubeOidc(java.lang.String name, KubeOidcArgs args) {
         this(name, args, null);
     }
     /**
@@ -252,12 +252,12 @@ public class KubeOidc extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KubeOidc(String name, KubeOidcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/kubeOidc:KubeOidc", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KubeOidc(java.lang.String name, KubeOidcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/kubeOidc:KubeOidc", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KubeOidc(String name, Output<String> id, @Nullable KubeOidcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/kubeOidc:KubeOidc", name, state, makeResourceOptions(options, id));
+    private KubeOidc(java.lang.String name, Output<java.lang.String> id, @Nullable KubeOidcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/kubeOidc:KubeOidc", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KubeOidcArgs makeArgs(KubeOidcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -267,7 +267,7 @@ public class KubeOidc extends com.pulumi.resources.CustomResource {
         return args == null ? KubeOidcArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -283,7 +283,7 @@ public class KubeOidc extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KubeOidc get(String name, Output<String> id, @Nullable KubeOidcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KubeOidc get(java.lang.String name, Output<java.lang.String> id, @Nullable KubeOidcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KubeOidc(name, id, state, options);
     }
 }

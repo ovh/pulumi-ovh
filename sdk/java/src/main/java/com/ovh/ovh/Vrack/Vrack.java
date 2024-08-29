@@ -226,7 +226,7 @@ public class Vrack extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Vrack(String name) {
+    public Vrack(java.lang.String name) {
         this(name, VrackArgs.Empty);
     }
     /**
@@ -234,7 +234,7 @@ public class Vrack extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Vrack(String name, VrackArgs args) {
+    public Vrack(java.lang.String name, VrackArgs args) {
         this(name, args, null);
     }
     /**
@@ -243,12 +243,12 @@ public class Vrack extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Vrack(String name, VrackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/vrack:Vrack", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Vrack(java.lang.String name, VrackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Vrack/vrack:Vrack", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Vrack(String name, Output<String> id, @Nullable VrackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/vrack:Vrack", name, state, makeResourceOptions(options, id));
+    private Vrack(java.lang.String name, Output<java.lang.String> id, @Nullable VrackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Vrack/vrack:Vrack", name, state, makeResourceOptions(options, id), false);
     }
 
     private static VrackArgs makeArgs(VrackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -258,7 +258,7 @@ public class Vrack extends com.pulumi.resources.CustomResource {
         return args == null ? VrackArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -274,7 +274,7 @@ public class Vrack extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Vrack get(String name, Output<String> id, @Nullable VrackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Vrack get(java.lang.String name, Output<java.lang.String> id, @Nullable VrackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Vrack(name, id, state, options);
     }
 }

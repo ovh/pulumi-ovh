@@ -181,7 +181,7 @@ public class WorkflowBackup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkflowBackup(String name) {
+    public WorkflowBackup(java.lang.String name) {
         this(name, WorkflowBackupArgs.Empty);
     }
     /**
@@ -189,7 +189,7 @@ public class WorkflowBackup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkflowBackup(String name, WorkflowBackupArgs args) {
+    public WorkflowBackup(java.lang.String name, WorkflowBackupArgs args) {
         this(name, args, null);
     }
     /**
@@ -198,12 +198,12 @@ public class WorkflowBackup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkflowBackup(String name, WorkflowBackupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/workflowBackup:WorkflowBackup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public WorkflowBackup(java.lang.String name, WorkflowBackupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/workflowBackup:WorkflowBackup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkflowBackup(String name, Output<String> id, @Nullable WorkflowBackupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/workflowBackup:WorkflowBackup", name, state, makeResourceOptions(options, id));
+    private WorkflowBackup(java.lang.String name, Output<java.lang.String> id, @Nullable WorkflowBackupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/workflowBackup:WorkflowBackup", name, state, makeResourceOptions(options, id), false);
     }
 
     private static WorkflowBackupArgs makeArgs(WorkflowBackupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -213,7 +213,7 @@ public class WorkflowBackup extends com.pulumi.resources.CustomResource {
         return args == null ? WorkflowBackupArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -229,7 +229,7 @@ public class WorkflowBackup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkflowBackup get(String name, Output<String> id, @Nullable WorkflowBackupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkflowBackup get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkflowBackupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkflowBackup(name, id, state, options);
     }
 }

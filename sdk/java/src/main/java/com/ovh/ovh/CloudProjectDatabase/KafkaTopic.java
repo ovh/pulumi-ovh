@@ -198,7 +198,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KafkaTopic(String name) {
+    public KafkaTopic(java.lang.String name) {
         this(name, KafkaTopicArgs.Empty);
     }
     /**
@@ -206,7 +206,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KafkaTopic(String name, KafkaTopicArgs args) {
+    public KafkaTopic(java.lang.String name, KafkaTopicArgs args) {
         this(name, args, null);
     }
     /**
@@ -215,12 +215,12 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KafkaTopic(String name, KafkaTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KafkaTopic(java.lang.String name, KafkaTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KafkaTopic(String name, Output<String> id, @Nullable KafkaTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic", name, state, makeResourceOptions(options, id));
+    private KafkaTopic(java.lang.String name, Output<java.lang.String> id, @Nullable KafkaTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KafkaTopicArgs makeArgs(KafkaTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -230,7 +230,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
         return args == null ? KafkaTopicArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -246,7 +246,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KafkaTopic get(String name, Output<String> id, @Nullable KafkaTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KafkaTopic get(java.lang.String name, Output<java.lang.String> id, @Nullable KafkaTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KafkaTopic(name, id, state, options);
     }
 }

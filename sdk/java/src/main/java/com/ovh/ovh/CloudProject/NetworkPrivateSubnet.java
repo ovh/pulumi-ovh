@@ -262,7 +262,7 @@ public class NetworkPrivateSubnet extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkPrivateSubnet(String name) {
+    public NetworkPrivateSubnet(java.lang.String name) {
         this(name, NetworkPrivateSubnetArgs.Empty);
     }
     /**
@@ -270,7 +270,7 @@ public class NetworkPrivateSubnet extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkPrivateSubnet(String name, NetworkPrivateSubnetArgs args) {
+    public NetworkPrivateSubnet(java.lang.String name, NetworkPrivateSubnetArgs args) {
         this(name, args, null);
     }
     /**
@@ -279,12 +279,12 @@ public class NetworkPrivateSubnet extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkPrivateSubnet(String name, NetworkPrivateSubnetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NetworkPrivateSubnet(java.lang.String name, NetworkPrivateSubnetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkPrivateSubnet(String name, Output<String> id, @Nullable NetworkPrivateSubnetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet", name, state, makeResourceOptions(options, id));
+    private NetworkPrivateSubnet(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkPrivateSubnetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NetworkPrivateSubnetArgs makeArgs(NetworkPrivateSubnetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -294,7 +294,7 @@ public class NetworkPrivateSubnet extends com.pulumi.resources.CustomResource {
         return args == null ? NetworkPrivateSubnetArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -310,7 +310,7 @@ public class NetworkPrivateSubnet extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkPrivateSubnet get(String name, Output<String> id, @Nullable NetworkPrivateSubnetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkPrivateSubnet get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkPrivateSubnetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkPrivateSubnet(name, id, state, options);
     }
 }

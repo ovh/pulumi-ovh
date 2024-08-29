@@ -337,7 +337,7 @@ public class LogsInput extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LogsInput(String name) {
+    public LogsInput(java.lang.String name) {
         this(name, LogsInputArgs.Empty);
     }
     /**
@@ -345,7 +345,7 @@ public class LogsInput extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LogsInput(String name, LogsInputArgs args) {
+    public LogsInput(java.lang.String name, LogsInputArgs args) {
         this(name, args, null);
     }
     /**
@@ -354,12 +354,12 @@ public class LogsInput extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LogsInput(String name, LogsInputArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dbaas/logsInput:LogsInput", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LogsInput(java.lang.String name, LogsInputArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dbaas/logsInput:LogsInput", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LogsInput(String name, Output<String> id, @Nullable LogsInputState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Dbaas/logsInput:LogsInput", name, state, makeResourceOptions(options, id));
+    private LogsInput(java.lang.String name, Output<java.lang.String> id, @Nullable LogsInputState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Dbaas/logsInput:LogsInput", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LogsInputArgs makeArgs(LogsInputArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -369,7 +369,7 @@ public class LogsInput extends com.pulumi.resources.CustomResource {
         return args == null ? LogsInputArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -388,7 +388,7 @@ public class LogsInput extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LogsInput get(String name, Output<String> id, @Nullable LogsInputState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LogsInput get(java.lang.String name, Output<java.lang.String> id, @Nullable LogsInputState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LogsInput(name, id, state, options);
     }
 }

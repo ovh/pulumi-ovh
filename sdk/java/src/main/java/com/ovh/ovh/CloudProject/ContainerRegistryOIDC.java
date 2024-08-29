@@ -267,7 +267,7 @@ public class ContainerRegistryOIDC extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ContainerRegistryOIDC(String name) {
+    public ContainerRegistryOIDC(java.lang.String name) {
         this(name, ContainerRegistryOIDCArgs.Empty);
     }
     /**
@@ -275,7 +275,7 @@ public class ContainerRegistryOIDC extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ContainerRegistryOIDC(String name, ContainerRegistryOIDCArgs args) {
+    public ContainerRegistryOIDC(java.lang.String name, ContainerRegistryOIDCArgs args) {
         this(name, args, null);
     }
     /**
@@ -284,12 +284,12 @@ public class ContainerRegistryOIDC extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ContainerRegistryOIDC(String name, ContainerRegistryOIDCArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ContainerRegistryOIDC(java.lang.String name, ContainerRegistryOIDCArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ContainerRegistryOIDC(String name, Output<String> id, @Nullable ContainerRegistryOIDCState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC", name, state, makeResourceOptions(options, id));
+    private ContainerRegistryOIDC(java.lang.String name, Output<java.lang.String> id, @Nullable ContainerRegistryOIDCState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ContainerRegistryOIDCArgs makeArgs(ContainerRegistryOIDCArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -299,7 +299,7 @@ public class ContainerRegistryOIDC extends com.pulumi.resources.CustomResource {
         return args == null ? ContainerRegistryOIDCArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -318,7 +318,7 @@ public class ContainerRegistryOIDC extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ContainerRegistryOIDC get(String name, Output<String> id, @Nullable ContainerRegistryOIDCState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ContainerRegistryOIDC get(java.lang.String name, Output<java.lang.String> id, @Nullable ContainerRegistryOIDCState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ContainerRegistryOIDC(name, id, state, options);
     }
 }

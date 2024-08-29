@@ -171,7 +171,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TcpRoute(String name) {
+    public TcpRoute(java.lang.String name) {
         this(name, TcpRouteArgs.Empty);
     }
     /**
@@ -179,7 +179,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TcpRoute(String name, TcpRouteArgs args) {
+    public TcpRoute(java.lang.String name, TcpRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -188,12 +188,12 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TcpRoute(String name, TcpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/tcpRoute:TcpRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TcpRoute(java.lang.String name, TcpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:IpLoadBalancing/tcpRoute:TcpRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TcpRoute(String name, Output<String> id, @Nullable TcpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:IpLoadBalancing/tcpRoute:TcpRoute", name, state, makeResourceOptions(options, id));
+    private TcpRoute(java.lang.String name, Output<java.lang.String> id, @Nullable TcpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:IpLoadBalancing/tcpRoute:TcpRoute", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TcpRouteArgs makeArgs(TcpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -203,7 +203,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
         return args == null ? TcpRouteArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -219,7 +219,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TcpRoute get(String name, Output<String> id, @Nullable TcpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TcpRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable TcpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TcpRoute(name, id, state, options);
     }
 }

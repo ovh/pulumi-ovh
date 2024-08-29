@@ -116,7 +116,7 @@ public class ContainerRegistryIPRestrictionsManagement extends com.pulumi.resour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ContainerRegistryIPRestrictionsManagement(String name) {
+    public ContainerRegistryIPRestrictionsManagement(java.lang.String name) {
         this(name, ContainerRegistryIPRestrictionsManagementArgs.Empty);
     }
     /**
@@ -124,7 +124,7 @@ public class ContainerRegistryIPRestrictionsManagement extends com.pulumi.resour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ContainerRegistryIPRestrictionsManagement(String name, ContainerRegistryIPRestrictionsManagementArgs args) {
+    public ContainerRegistryIPRestrictionsManagement(java.lang.String name, ContainerRegistryIPRestrictionsManagementArgs args) {
         this(name, args, null);
     }
     /**
@@ -133,12 +133,12 @@ public class ContainerRegistryIPRestrictionsManagement extends com.pulumi.resour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ContainerRegistryIPRestrictionsManagement(String name, ContainerRegistryIPRestrictionsManagementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ContainerRegistryIPRestrictionsManagement(java.lang.String name, ContainerRegistryIPRestrictionsManagementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ContainerRegistryIPRestrictionsManagement(String name, Output<String> id, @Nullable ContainerRegistryIPRestrictionsManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement", name, state, makeResourceOptions(options, id));
+    private ContainerRegistryIPRestrictionsManagement(java.lang.String name, Output<java.lang.String> id, @Nullable ContainerRegistryIPRestrictionsManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ContainerRegistryIPRestrictionsManagementArgs makeArgs(ContainerRegistryIPRestrictionsManagementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -148,7 +148,7 @@ public class ContainerRegistryIPRestrictionsManagement extends com.pulumi.resour
         return args == null ? ContainerRegistryIPRestrictionsManagementArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -164,7 +164,7 @@ public class ContainerRegistryIPRestrictionsManagement extends com.pulumi.resour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ContainerRegistryIPRestrictionsManagement get(String name, Output<String> id, @Nullable ContainerRegistryIPRestrictionsManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ContainerRegistryIPRestrictionsManagement get(java.lang.String name, Output<java.lang.String> id, @Nullable ContainerRegistryIPRestrictionsManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ContainerRegistryIPRestrictionsManagement(name, id, state, options);
     }
 }

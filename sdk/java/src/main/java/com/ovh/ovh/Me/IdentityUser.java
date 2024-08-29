@@ -37,22 +37,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var myUser = new IdentityUser("myUser", IdentityUserArgs.builder()
  *             .description("Some custom description")
- *             .email("my_login{@literal @}example.com")
+ *             .email("my_login}{@literal @}{@code example.com")
  *             .group("DEFAULT")
  *             .login("my_login")
  *             .password("super-s3cr3t!password")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -205,7 +205,7 @@ public class IdentityUser extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IdentityUser(String name) {
+    public IdentityUser(java.lang.String name) {
         this(name, IdentityUserArgs.Empty);
     }
     /**
@@ -213,7 +213,7 @@ public class IdentityUser extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IdentityUser(String name, IdentityUserArgs args) {
+    public IdentityUser(java.lang.String name, IdentityUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -222,12 +222,12 @@ public class IdentityUser extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IdentityUser(String name, IdentityUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/identityUser:IdentityUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IdentityUser(java.lang.String name, IdentityUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Me/identityUser:IdentityUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IdentityUser(String name, Output<String> id, @Nullable IdentityUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/identityUser:IdentityUser", name, state, makeResourceOptions(options, id));
+    private IdentityUser(java.lang.String name, Output<java.lang.String> id, @Nullable IdentityUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Me/identityUser:IdentityUser", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IdentityUserArgs makeArgs(IdentityUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -237,7 +237,7 @@ public class IdentityUser extends com.pulumi.resources.CustomResource {
         return args == null ? IdentityUserArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -256,7 +256,7 @@ public class IdentityUser extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IdentityUser get(String name, Output<String> id, @Nullable IdentityUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IdentityUser get(java.lang.String name, Output<java.lang.String> id, @Nullable IdentityUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IdentityUser(name, id, state, options);
     }
 }

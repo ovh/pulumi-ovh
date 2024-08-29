@@ -175,7 +175,7 @@ public class InstallationTemplatePartitionSchemeHardwareRaid extends com.pulumi.
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstallationTemplatePartitionSchemeHardwareRaid(String name) {
+    public InstallationTemplatePartitionSchemeHardwareRaid(java.lang.String name) {
         this(name, InstallationTemplatePartitionSchemeHardwareRaidArgs.Empty);
     }
     /**
@@ -183,7 +183,7 @@ public class InstallationTemplatePartitionSchemeHardwareRaid extends com.pulumi.
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstallationTemplatePartitionSchemeHardwareRaid(String name, InstallationTemplatePartitionSchemeHardwareRaidArgs args) {
+    public InstallationTemplatePartitionSchemeHardwareRaid(java.lang.String name, InstallationTemplatePartitionSchemeHardwareRaidArgs args) {
         this(name, args, null);
     }
     /**
@@ -192,12 +192,12 @@ public class InstallationTemplatePartitionSchemeHardwareRaid extends com.pulumi.
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstallationTemplatePartitionSchemeHardwareRaid(String name, InstallationTemplatePartitionSchemeHardwareRaidArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InstallationTemplatePartitionSchemeHardwareRaid(java.lang.String name, InstallationTemplatePartitionSchemeHardwareRaidArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstallationTemplatePartitionSchemeHardwareRaid(String name, Output<String> id, @Nullable InstallationTemplatePartitionSchemeHardwareRaidState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid", name, state, makeResourceOptions(options, id));
+    private InstallationTemplatePartitionSchemeHardwareRaid(java.lang.String name, Output<java.lang.String> id, @Nullable InstallationTemplatePartitionSchemeHardwareRaidState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InstallationTemplatePartitionSchemeHardwareRaidArgs makeArgs(InstallationTemplatePartitionSchemeHardwareRaidArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -207,7 +207,7 @@ public class InstallationTemplatePartitionSchemeHardwareRaid extends com.pulumi.
         return args == null ? InstallationTemplatePartitionSchemeHardwareRaidArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -223,7 +223,7 @@ public class InstallationTemplatePartitionSchemeHardwareRaid extends com.pulumi.
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstallationTemplatePartitionSchemeHardwareRaid get(String name, Output<String> id, @Nullable InstallationTemplatePartitionSchemeHardwareRaidState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstallationTemplatePartitionSchemeHardwareRaid get(java.lang.String name, Output<java.lang.String> id, @Nullable InstallationTemplatePartitionSchemeHardwareRaidState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstallationTemplatePartitionSchemeHardwareRaid(name, id, state, options);
     }
 }
