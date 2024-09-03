@@ -20,7 +20,7 @@ env:
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
   PYPI_USERNAME: "__token__"
   PUBLISH_REPO_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-  PUBLISH_REPO_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+  PUBLISH_REPO_USERNAME: ${{ vars.SONATYPE_USERNAME }}
   # Include only last 8 hex digits of the key ID included, due tolimitations of gradle.
   SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
   # Obtained by `gpg --armor --export-secret-key support@pulumi.com`.
