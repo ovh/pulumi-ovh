@@ -14,7 +14,7 @@ JAVA_GEN_VERSION := v0.15.0
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
-JAVA_GROUP_ID    := com.${ORG}.pulumi
+JAVA_GROUP_ID    := com.ovhcloud.pulumi
 JAVA_ARTIFACT_ID := ${ORG}
 
 PLATFORM := linux-amd64

@@ -10,5 +10,5 @@ pluginManagement {
   }
 }
 
-rootProject.name = "com.ovh.pulumi"
+rootProject.name = "com.ovhcloud.pulumi"
 include("lib")

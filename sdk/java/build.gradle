@@ -8,7 +8,7 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
 }
 
-group = "com.ovh.pulumi"
+group = "com.ovhcloud.pulumi"
 
 def resolvedVersion = System.getenv("PACKAGE_VERSION") ?:
     (project.version == "unspecified"
@@ -82,7 +82,7 @@ jar.configure {
 publishing {
     publications {
         mainPublication(MavenPublication) {
-            groupId = "com.ovh.pulumi"
+            groupId = "com.ovhcloud.pulumi"
             artifactId = "ovh"
             version = resolvedVersion
             from components.java
