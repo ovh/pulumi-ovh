@@ -388,7 +388,7 @@ export namespace CloudProject {
         /**
          * taints
          */
-        taints?: {[key: string]: any}[];
+        taints?: {[key: string]: string}[];
         /**
          * unschedulable
          */
@@ -399,7 +399,7 @@ export namespace CloudProject {
         /**
          * taints
          */
-        taints?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        taints?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
          * unschedulable
          */
@@ -531,7 +531,7 @@ export namespace CloudProject {
         /**
          * taints
          */
-        taints: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        taints: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
          * unschedulable
          */

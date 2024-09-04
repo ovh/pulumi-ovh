@@ -81,11 +81,11 @@ import (
 //						},
 //					},
 //					Spec: &cloudproject.KubeNodePoolTemplateSpecArgs{
-//						Taints: pulumi.MapArray{
-//							pulumi.Map{
-//								"effect": pulumi.Any("PreferNoSchedule"),
-//								"key":    pulumi.Any("k"),
-//								"value":  pulumi.Any("v"),
+//						Taints: pulumi.StringMapArray{
+//							pulumi.StringMap{
+//								"effect": pulumi.String("PreferNoSchedule"),
+//								"key":    pulumi.String("k"),
+//								"value":  pulumi.String("v"),
 //							},
 //						},
 //						Unschedulable: pulumi.Bool(false),

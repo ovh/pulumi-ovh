@@ -292,11 +292,11 @@ class Zone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneOrderArgs', 'ZoneOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['ZonePlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZonePlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['ZonePlanArgs', 'ZonePlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZonePlanOptionArgs', 'ZonePlanOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -313,21 +313,21 @@ class Zone(pulumi.CustomResource):
             plan_code="zone")
         zone_zone = ovh.domain.Zone("zoneZone",
             ovh_subsidiary=mycart.ovh_subsidiary,
-            plan=ovh.domain.ZonePlanArgs(
-                duration=zone_cart_product_plan.selected_prices[0].duration,
-                plan_code=zone_cart_product_plan.plan_code,
-                pricing_mode=zone_cart_product_plan.selected_prices[0].pricing_mode,
-                configurations=[
-                    ovh.domain.ZonePlanConfigurationArgs(
-                        label="zone",
-                        value="myzone.mydomain.com",
-                    ),
-                    ovh.domain.ZonePlanConfigurationArgs(
-                        label="template",
-                        value="minimized",
-                    ),
+            plan={
+                "duration": zone_cart_product_plan.selected_prices[0].duration,
+                "plan_code": zone_cart_product_plan.plan_code,
+                "pricing_mode": zone_cart_product_plan.selected_prices[0].pricing_mode,
+                "configurations": [
+                    {
+                        "label": "zone",
+                        "value": "myzone.mydomain.com",
+                    },
+                    {
+                        "label": "template",
+                        "value": "minimized",
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -342,11 +342,11 @@ class Zone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneOrderArgs']]]] orders: Details about an Order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneOrderArgs', 'ZoneOrderArgsDict']]]] orders: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['ZonePlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZonePlanOptionArgs']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Union['ZonePlanArgs', 'ZonePlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZonePlanOptionArgs', 'ZonePlanOptionArgsDict']]]] plan_options: Product Plan to order
         """
         ...
     @overload
@@ -369,21 +369,21 @@ class Zone(pulumi.CustomResource):
             plan_code="zone")
         zone_zone = ovh.domain.Zone("zoneZone",
             ovh_subsidiary=mycart.ovh_subsidiary,
-            plan=ovh.domain.ZonePlanArgs(
-                duration=zone_cart_product_plan.selected_prices[0].duration,
-                plan_code=zone_cart_product_plan.plan_code,
-                pricing_mode=zone_cart_product_plan.selected_prices[0].pricing_mode,
-                configurations=[
-                    ovh.domain.ZonePlanConfigurationArgs(
-                        label="zone",
-                        value="myzone.mydomain.com",
-                    ),
-                    ovh.domain.ZonePlanConfigurationArgs(
-                        label="template",
-                        value="minimized",
-                    ),
+            plan={
+                "duration": zone_cart_product_plan.selected_prices[0].duration,
+                "plan_code": zone_cart_product_plan.plan_code,
+                "pricing_mode": zone_cart_product_plan.selected_prices[0].pricing_mode,
+                "configurations": [
+                    {
+                        "label": "zone",
+                        "value": "myzone.mydomain.com",
+                    },
+                    {
+                        "label": "template",
+                        "value": "minimized",
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -411,11 +411,11 @@ class Zone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneOrderArgs', 'ZoneOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['ZonePlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZonePlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['ZonePlanArgs', 'ZonePlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZonePlanOptionArgs', 'ZonePlanOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -456,11 +456,11 @@ class Zone(pulumi.CustomResource):
             last_update: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneOrderArgs']]]]] = None,
+            orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneOrderArgs', 'ZoneOrderArgsDict']]]]] = None,
             ovh_subsidiary: Optional[pulumi.Input[str]] = None,
             payment_mean: Optional[pulumi.Input[str]] = None,
-            plan: Optional[pulumi.Input[pulumi.InputType['ZonePlanArgs']]] = None,
-            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZonePlanOptionArgs']]]]] = None) -> 'Zone':
+            plan: Optional[pulumi.Input[Union['ZonePlanArgs', 'ZonePlanArgsDict']]] = None,
+            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZonePlanOptionArgs', 'ZonePlanOptionArgsDict']]]]] = None) -> 'Zone':
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -473,11 +473,11 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] last_update: Last update date of the DNS zone
         :param pulumi.Input[str] name: Zone name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Name servers that host the DNS zone
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneOrderArgs']]]] orders: Details about an Order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneOrderArgs', 'ZoneOrderArgsDict']]]] orders: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['ZonePlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZonePlanOptionArgs']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Union['ZonePlanArgs', 'ZonePlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZonePlanOptionArgs', 'ZonePlanOptionArgsDict']]]] plan_options: Product Plan to order
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -647,10 +647,10 @@ class Database(pulumi.CustomResource):
                  disk_size: Optional[pulumi.Input[int]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  flavor: Optional[pulumi.Input[str]] = None,
-                 ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]]] = None,
+                 ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
                  kafka_schema_registry: Optional[pulumi.Input[bool]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]]] = None,
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -672,15 +672,15 @@ class Database(pulumi.CustomResource):
             version="4.0",
             plan="essential",
             nodes=[
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="BHS",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="BHS",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="BHS",
-                ),
+                {
+                    "region": "BHS",
+                },
+                {
+                    "region": "BHS",
+                },
+                {
+                    "region": "BHS",
+                },
             ],
             flavor="db1-4")
         kafkadb = ovh.cloud_project.Database("kafkadb",
@@ -692,15 +692,15 @@ class Database(pulumi.CustomResource):
             kafka_rest_api=True,
             kafka_schema_registry=True,
             nodes=[
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="DE",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="DE",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="DE",
-                ),
+                {
+                    "region": "DE",
+                },
+                {
+                    "region": "DE",
+                },
+                {
+                    "region": "DE",
+                },
             ],
             flavor="db1-4")
         m3db = ovh.cloud_project.Database("m3db",
@@ -709,9 +709,9 @@ class Database(pulumi.CustomResource):
             engine="m3db",
             version="1.2",
             plan="essential",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="BHS",
-            )],
+            nodes=[{
+                "region": "BHS",
+            }],
             flavor="db1-7")
         mongodb = ovh.cloud_project.Database("mongodb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -719,9 +719,9 @@ class Database(pulumi.CustomResource):
             engine="mongodb",
             version="5.0",
             plan="discovery",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="GRA",
-            )],
+            nodes=[{
+                "region": "GRA",
+            }],
             flavor="db1-2")
         mysqldb = ovh.cloud_project.Database("mysqldb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -729,9 +729,9 @@ class Database(pulumi.CustomResource):
             engine="mysql",
             version="8",
             plan="essential",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="SBG",
-            )],
+            nodes=[{
+                "region": "SBG",
+            }],
             flavor="db1-4",
             advanced_configuration={
                 "mysql.sql_mode": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES",
@@ -744,9 +744,9 @@ class Database(pulumi.CustomResource):
             version="1",
             plan="essential",
             opensearch_acls_enabled=True,
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="UK",
-            )],
+            nodes=[{
+                "region": "UK",
+            }],
             flavor="db1-4")
         pgsqldb = ovh.cloud_project.Database("pgsqldb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -754,19 +754,19 @@ class Database(pulumi.CustomResource):
             engine="postgresql",
             version="14",
             plan="essential",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="WAW",
-            )],
+            nodes=[{
+                "region": "WAW",
+            }],
             flavor="db1-4",
             ip_restrictions=[
-                ovh.cloud_project.DatabaseIpRestrictionArgs(
-                    description="ip 1",
-                    ip="178.97.6.0/24",
-                ),
-                ovh.cloud_project.DatabaseIpRestrictionArgs(
-                    description="ip 2",
-                    ip="178.97.7.0/24",
-                ),
+                {
+                    "description": "ip 1",
+                    "ip": "178.97.6.0/24",
+                },
+                {
+                    "description": "ip 2",
+                    "ip": "178.97.7.0/24",
+                },
             ])
         redisdb = ovh.cloud_project.Database("redisdb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -774,9 +774,9 @@ class Database(pulumi.CustomResource):
             engine="redis",
             version="6.2",
             plan="essential",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="BHS",
-            )],
+            nodes=[{
+                "region": "BHS",
+            }],
             flavor="db1-4")
         grafana = ovh.cloud_project.Database("grafana",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -784,9 +784,9 @@ class Database(pulumi.CustomResource):
             engine="grafana",
             version="9.1",
             plan="essential",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="GRA",
-            )],
+            nodes=[{
+                "region": "GRA",
+            }],
             flavor="db1-4")
         ```
 
@@ -801,12 +801,12 @@ class Database(pulumi.CustomResource):
             engine="postgresql",
             flavor="db1-15",
             nodes=[
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="GRA",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="GRA",
-                ),
+                {
+                    "region": "GRA",
+                },
+                {
+                    "region": "GRA",
+                },
             ],
             plan="business",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -824,21 +824,21 @@ class Database(pulumi.CustomResource):
             engine="mongodb",
             flavor="db1-30",
             nodes=[
-                ovh.cloud_project.DatabaseNodeArgs(
-                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                    region="SBG",
-                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                    region="SBG",
-                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                    region="SBG",
-                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                ),
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
             ],
             plan="production",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -867,10 +867,10 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
                Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
                You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]] nodes: List of nodes object.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object.
                Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[str] plan: Plan of the cluster.
@@ -904,15 +904,15 @@ class Database(pulumi.CustomResource):
             version="4.0",
             plan="essential",
             nodes=[
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="BHS",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="BHS",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="BHS",
-                ),
+                {
+                    "region": "BHS",
+                },
+                {
+                    "region": "BHS",
+                },
+                {
+                    "region": "BHS",
+                },
             ],
             flavor="db1-4")
         kafkadb = ovh.cloud_project.Database("kafkadb",
@@ -924,15 +924,15 @@ class Database(pulumi.CustomResource):
             kafka_rest_api=True,
             kafka_schema_registry=True,
             nodes=[
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="DE",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="DE",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="DE",
-                ),
+                {
+                    "region": "DE",
+                },
+                {
+                    "region": "DE",
+                },
+                {
+                    "region": "DE",
+                },
             ],
             flavor="db1-4")
         m3db = ovh.cloud_project.Database("m3db",
@@ -941,9 +941,9 @@ class Database(pulumi.CustomResource):
             engine="m3db",
             version="1.2",
             plan="essential",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="BHS",
-            )],
+            nodes=[{
+                "region": "BHS",
+            }],
             flavor="db1-7")
         mongodb = ovh.cloud_project.Database("mongodb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -951,9 +951,9 @@ class Database(pulumi.CustomResource):
             engine="mongodb",
             version="5.0",
             plan="discovery",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="GRA",
-            )],
+            nodes=[{
+                "region": "GRA",
+            }],
             flavor="db1-2")
         mysqldb = ovh.cloud_project.Database("mysqldb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -961,9 +961,9 @@ class Database(pulumi.CustomResource):
             engine="mysql",
             version="8",
             plan="essential",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="SBG",
-            )],
+            nodes=[{
+                "region": "SBG",
+            }],
             flavor="db1-4",
             advanced_configuration={
                 "mysql.sql_mode": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES",
@@ -976,9 +976,9 @@ class Database(pulumi.CustomResource):
             version="1",
             plan="essential",
             opensearch_acls_enabled=True,
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="UK",
-            )],
+            nodes=[{
+                "region": "UK",
+            }],
             flavor="db1-4")
         pgsqldb = ovh.cloud_project.Database("pgsqldb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -986,19 +986,19 @@ class Database(pulumi.CustomResource):
             engine="postgresql",
             version="14",
             plan="essential",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="WAW",
-            )],
+            nodes=[{
+                "region": "WAW",
+            }],
             flavor="db1-4",
             ip_restrictions=[
-                ovh.cloud_project.DatabaseIpRestrictionArgs(
-                    description="ip 1",
-                    ip="178.97.6.0/24",
-                ),
-                ovh.cloud_project.DatabaseIpRestrictionArgs(
-                    description="ip 2",
-                    ip="178.97.7.0/24",
-                ),
+                {
+                    "description": "ip 1",
+                    "ip": "178.97.6.0/24",
+                },
+                {
+                    "description": "ip 2",
+                    "ip": "178.97.7.0/24",
+                },
             ])
         redisdb = ovh.cloud_project.Database("redisdb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -1006,9 +1006,9 @@ class Database(pulumi.CustomResource):
             engine="redis",
             version="6.2",
             plan="essential",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="BHS",
-            )],
+            nodes=[{
+                "region": "BHS",
+            }],
             flavor="db1-4")
         grafana = ovh.cloud_project.Database("grafana",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -1016,9 +1016,9 @@ class Database(pulumi.CustomResource):
             engine="grafana",
             version="9.1",
             plan="essential",
-            nodes=[ovh.cloud_project.DatabaseNodeArgs(
-                region="GRA",
-            )],
+            nodes=[{
+                "region": "GRA",
+            }],
             flavor="db1-4")
         ```
 
@@ -1033,12 +1033,12 @@ class Database(pulumi.CustomResource):
             engine="postgresql",
             flavor="db1-15",
             nodes=[
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="GRA",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    region="GRA",
-                ),
+                {
+                    "region": "GRA",
+                },
+                {
+                    "region": "GRA",
+                },
             ],
             plan="business",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -1056,21 +1056,21 @@ class Database(pulumi.CustomResource):
             engine="mongodb",
             flavor="db1-30",
             nodes=[
-                ovh.cloud_project.DatabaseNodeArgs(
-                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                    region="SBG",
-                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                    region="SBG",
-                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                ),
-                ovh.cloud_project.DatabaseNodeArgs(
-                    network_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                    region="SBG",
-                    subnet_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-                ),
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
             ],
             plan="production",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -1109,10 +1109,10 @@ class Database(pulumi.CustomResource):
                  disk_size: Optional[pulumi.Input[int]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  flavor: Optional[pulumi.Input[str]] = None,
-                 ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]]] = None,
+                 ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
                  kafka_schema_registry: Optional[pulumi.Input[bool]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]]] = None,
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -1176,15 +1176,15 @@ class Database(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
             disk_type: Optional[pulumi.Input[str]] = None,
-            endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseEndpointArgs']]]]] = None,
+            endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseEndpointArgs', 'DatabaseEndpointArgsDict']]]]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             flavor: Optional[pulumi.Input[str]] = None,
-            ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]]] = None,
+            ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]]] = None,
             kafka_rest_api: Optional[pulumi.Input[bool]] = None,
             kafka_schema_registry: Optional[pulumi.Input[bool]] = None,
             maintenance_time: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]]] = None,
+            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]]] = None,
             opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None,
             plan: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
@@ -1204,18 +1204,18 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[str] disk_type: Defines the disk type of the database service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseEndpointArgs']]]] endpoints: List of all endpoints objects of the service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseEndpointArgs', 'DatabaseEndpointArgsDict']]]] endpoints: List of all endpoints objects of the service.
         :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
                [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
                Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
                You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseIpRestrictionArgs']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
         :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
         :param pulumi.Input[str] network_type: Type of network of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseNodeArgs']]]] nodes: List of nodes object.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object.
                Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[str] plan: Plan of the cluster.

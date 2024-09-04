@@ -457,11 +457,11 @@ class LoadBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerOrderArgs', 'LoadBalancerOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['LoadBalancerPlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['LoadBalancerPlanArgs', 'LoadBalancerPlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPlanOptionArgs', 'LoadBalancerPlanOptionArgsDict']]]]] = None,
                  ssl_configuration: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -485,26 +485,26 @@ class LoadBalancer(pulumi.CustomResource):
         iplb_lb1 = ovh.ip_load_balancing.LoadBalancer("iplb-lb1",
             ovh_subsidiary=mycart.ovh_subsidiary,
             display_name="my ip loadbalancing",
-            plan=ovh.ip_load_balancing.LoadBalancerPlanArgs(
-                duration=iplb.selected_prices[0].duration,
-                plan_code=iplb.plan_code,
-                pricing_mode=iplb.selected_prices[0].pricing_mode,
-            ),
-            plan_options=[ovh.ip_load_balancing.LoadBalancerPlanOptionArgs(
-                duration=bhs.selected_prices[0].duration,
-                plan_code=bhs.plan_code,
-                pricing_mode=bhs.selected_prices[0].pricing_mode,
-            )])
+            plan={
+                "duration": iplb.selected_prices[0].duration,
+                "plan_code": iplb.plan_code,
+                "pricing_mode": iplb.selected_prices[0].pricing_mode,
+            },
+            plan_options=[{
+                "duration": bhs.selected_prices[0].duration,
+                "plan_code": bhs.plan_code,
+                "pricing_mode": bhs.selected_prices[0].pricing_mode,
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Set the name displayed in ManagerV6 for your iplb (max 50 chars)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderArgs']]]] orders: Details about an Order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerOrderArgs', 'LoadBalancerOrderArgsDict']]]] orders: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['LoadBalancerPlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPlanOptionArgs']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Union['LoadBalancerPlanArgs', 'LoadBalancerPlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPlanOptionArgs', 'LoadBalancerPlanOptionArgsDict']]]] plan_options: Product Plan to order
         :param pulumi.Input[str] ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
         """
         ...
@@ -534,16 +534,16 @@ class LoadBalancer(pulumi.CustomResource):
         iplb_lb1 = ovh.ip_load_balancing.LoadBalancer("iplb-lb1",
             ovh_subsidiary=mycart.ovh_subsidiary,
             display_name="my ip loadbalancing",
-            plan=ovh.ip_load_balancing.LoadBalancerPlanArgs(
-                duration=iplb.selected_prices[0].duration,
-                plan_code=iplb.plan_code,
-                pricing_mode=iplb.selected_prices[0].pricing_mode,
-            ),
-            plan_options=[ovh.ip_load_balancing.LoadBalancerPlanOptionArgs(
-                duration=bhs.selected_prices[0].duration,
-                plan_code=bhs.plan_code,
-                pricing_mode=bhs.selected_prices[0].pricing_mode,
-            )])
+            plan={
+                "duration": iplb.selected_prices[0].duration,
+                "plan_code": iplb.plan_code,
+                "pricing_mode": iplb.selected_prices[0].pricing_mode,
+            },
+            plan_options=[{
+                "duration": bhs.selected_prices[0].duration,
+                "plan_code": bhs.plan_code,
+                "pricing_mode": bhs.selected_prices[0].pricing_mode,
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -562,11 +562,11 @@ class LoadBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerOrderArgs', 'LoadBalancerOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['LoadBalancerPlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['LoadBalancerPlanArgs', 'LoadBalancerPlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPlanOptionArgs', 'LoadBalancerPlanOptionArgsDict']]]]] = None,
                  ssl_configuration: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -619,12 +619,12 @@ class LoadBalancer(pulumi.CustomResource):
             ipv6: Optional[pulumi.Input[str]] = None,
             metrics_token: Optional[pulumi.Input[str]] = None,
             offer: Optional[pulumi.Input[str]] = None,
-            orderable_zones: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderableZoneArgs']]]]] = None,
-            orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderArgs']]]]] = None,
+            orderable_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerOrderableZoneArgs', 'LoadBalancerOrderableZoneArgsDict']]]]] = None,
+            orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerOrderArgs', 'LoadBalancerOrderArgsDict']]]]] = None,
             ovh_subsidiary: Optional[pulumi.Input[str]] = None,
             payment_mean: Optional[pulumi.Input[str]] = None,
-            plan: Optional[pulumi.Input[pulumi.InputType['LoadBalancerPlanArgs']]] = None,
-            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPlanOptionArgs']]]]] = None,
+            plan: Optional[pulumi.Input[Union['LoadBalancerPlanArgs', 'LoadBalancerPlanArgsDict']]] = None,
+            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPlanOptionArgs', 'LoadBalancerPlanOptionArgsDict']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             ssl_configuration: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
@@ -645,12 +645,12 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6: The IPV6 associated to your IP load balancing. DEPRECATED.
         :param pulumi.Input[str] metrics_token: The metrics token associated with your IP load balancing
         :param pulumi.Input[str] offer: The offer of your IP load balancing
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderableZoneArgs']]]] orderable_zones: Available additional zone for your Load Balancer
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerOrderArgs']]]] orders: Details about an Order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerOrderableZoneArgs', 'LoadBalancerOrderableZoneArgsDict']]]] orderable_zones: Available additional zone for your Load Balancer
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerOrderArgs', 'LoadBalancerOrderArgsDict']]]] orders: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['LoadBalancerPlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPlanOptionArgs']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Union['LoadBalancerPlanArgs', 'LoadBalancerPlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPlanOptionArgs', 'LoadBalancerPlanOptionArgsDict']]]] plan_options: Product Plan to order
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
         :param pulumi.Input[str] state: Current state of your IP

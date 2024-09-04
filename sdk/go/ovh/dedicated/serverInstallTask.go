@@ -133,7 +133,7 @@ import (
 //					},
 //					&dedicated.ServerInstallTaskUserMetadataArgs{
 //						Key: pulumi.String("configDriveUserData"),
-//						Value: pulumi.String(fmt.Sprintf(`#cloud-config
+//						Value: pulumi.Sprintf(`#cloud-config
 //
 // ssh_authorized_keys:
 //   - %v
@@ -153,7 +153,7 @@ import (
 //   - tree
 //
 // final_message: The system is finally up, after $UPTIME seconds
-// `, data.Ovh_me_ssh_key.Mykey.Key, data.Ovh_me_ssh_key.Mykey.Key)),
+// `, data.Ovh_me_ssh_key.Mykey.Key, data.Ovh_me_ssh_key.Mykey.Key),
 //
 //					},
 //				},

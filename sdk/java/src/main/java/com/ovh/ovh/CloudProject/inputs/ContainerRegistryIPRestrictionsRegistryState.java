@@ -5,7 +5,6 @@ package com.ovh.ovh.CloudProject.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,13 +22,13 @@ public final class ContainerRegistryIPRestrictionsRegistryState extends com.pulu
      * 
      */
     @Import(name="ipRestrictions")
-    private @Nullable Output<List<Map<String,Object>>> ipRestrictions;
+    private @Nullable Output<List<Map<String,String>>> ipRestrictions;
 
     /**
      * @return IP restrictions applied on artifact manager component.
      * 
      */
-    public Optional<Output<List<Map<String,Object>>>> ipRestrictions() {
+    public Optional<Output<List<Map<String,String>>>> ipRestrictions() {
         return Optional.ofNullable(this.ipRestrictions);
     }
 
@@ -95,7 +94,7 @@ public final class ContainerRegistryIPRestrictionsRegistryState extends com.pulu
          * @return builder
          * 
          */
-        public Builder ipRestrictions(@Nullable Output<List<Map<String,Object>>> ipRestrictions) {
+        public Builder ipRestrictions(@Nullable Output<List<Map<String,String>>> ipRestrictions) {
             $.ipRestrictions = ipRestrictions;
             return this;
         }
@@ -106,7 +105,7 @@ public final class ContainerRegistryIPRestrictionsRegistryState extends com.pulu
          * @return builder
          * 
          */
-        public Builder ipRestrictions(List<Map<String,Object>> ipRestrictions) {
+        public Builder ipRestrictions(List<Map<String,String>> ipRestrictions) {
             return ipRestrictions(Output.of(ipRestrictions));
         }
 
@@ -116,7 +115,7 @@ public final class ContainerRegistryIPRestrictionsRegistryState extends com.pulu
          * @return builder
          * 
          */
-        public Builder ipRestrictions(Map<String,Object>... ipRestrictions) {
+        public Builder ipRestrictions(Map<String,String>... ipRestrictions) {
             return ipRestrictions(List.of(ipRestrictions));
         }
 

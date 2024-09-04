@@ -6,7 +6,6 @@ package com.ovh.ovh.CloudProject.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +17,7 @@ public final class KubeNodePoolTemplateSpec {
      * @return taints
      * 
      */
-    private List<Map<String,Object>> taints;
+    private List<Map<String,String>> taints;
     /**
      * @return unschedulable
      * 
@@ -30,7 +29,7 @@ public final class KubeNodePoolTemplateSpec {
      * @return taints
      * 
      */
-    public List<Map<String,Object>> taints() {
+    public List<Map<String,String>> taints() {
         return this.taints;
     }
     /**
@@ -50,7 +49,7 @@ public final class KubeNodePoolTemplateSpec {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<Map<String,Object>> taints;
+        private List<Map<String,String>> taints;
         private Boolean unschedulable;
         public Builder() {}
         public Builder(KubeNodePoolTemplateSpec defaults) {
@@ -60,7 +59,7 @@ public final class KubeNodePoolTemplateSpec {
         }
 
         @CustomType.Setter
-        public Builder taints(List<Map<String,Object>> taints) {
+        public Builder taints(List<Map<String,String>> taints) {
             if (taints == null) {
               throw new MissingRequiredPropertyException("KubeNodePoolTemplateSpec", "taints");
             }

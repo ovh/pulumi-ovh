@@ -592,14 +592,14 @@ class Kube(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 customization_apiservers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeCustomizationApiserverArgs']]]]] = None,
-                 customization_kube_proxy: Optional[pulumi.Input[pulumi.InputType['KubeCustomizationKubeProxyArgs']]] = None,
-                 customizations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeCustomizationArgs']]]]] = None,
+                 customization_apiservers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationApiserverArgs', 'KubeCustomizationApiserverArgsDict']]]]] = None,
+                 customization_kube_proxy: Optional[pulumi.Input[Union['KubeCustomizationKubeProxyArgs', 'KubeCustomizationKubeProxyArgsDict']]] = None,
+                 customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationArgs', 'KubeCustomizationArgsDict']]]]] = None,
                  kube_proxy_mode: Optional[pulumi.Input[str]] = None,
                  load_balancers_subnet_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nodes_subnet_id: Optional[pulumi.Input[str]] = None,
-                 private_network_configuration: Optional[pulumi.Input[pulumi.InputType['KubePrivateNetworkConfigurationArgs']]] = None,
+                 private_network_configuration: Optional[pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']]] = None,
                  private_network_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -619,14 +619,14 @@ class Kube(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeCustomizationApiserverArgs']]]] customization_apiservers: Kubernetes API server customization
-        :param pulumi.Input[pulumi.InputType['KubeCustomizationKubeProxyArgs']] customization_kube_proxy: Kubernetes kube-proxy customization
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeCustomizationArgs']]]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationApiserverArgs', 'KubeCustomizationApiserverArgsDict']]]] customization_apiservers: Kubernetes API server customization
+        :param pulumi.Input[Union['KubeCustomizationKubeProxyArgs', 'KubeCustomizationKubeProxyArgsDict']] customization_kube_proxy: Kubernetes kube-proxy customization
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationArgs', 'KubeCustomizationArgsDict']]]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
         :param pulumi.Input[str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
         :param pulumi.Input[str] load_balancers_subnet_id: Openstack private network (or vRack) ID to use for load balancers.
         :param pulumi.Input[str] name: The name of the kubernetes cluster.
         :param pulumi.Input[str] nodes_subnet_id: Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
-        :param pulumi.Input[pulumi.InputType['KubePrivateNetworkConfigurationArgs']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
+        :param pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[str] private_network_id: OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
@@ -667,14 +667,14 @@ class Kube(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 customization_apiservers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeCustomizationApiserverArgs']]]]] = None,
-                 customization_kube_proxy: Optional[pulumi.Input[pulumi.InputType['KubeCustomizationKubeProxyArgs']]] = None,
-                 customizations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeCustomizationArgs']]]]] = None,
+                 customization_apiservers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationApiserverArgs', 'KubeCustomizationApiserverArgsDict']]]]] = None,
+                 customization_kube_proxy: Optional[pulumi.Input[Union['KubeCustomizationKubeProxyArgs', 'KubeCustomizationKubeProxyArgsDict']]] = None,
+                 customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationArgs', 'KubeCustomizationArgsDict']]]]] = None,
                  kube_proxy_mode: Optional[pulumi.Input[str]] = None,
                  load_balancers_subnet_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nodes_subnet_id: Optional[pulumi.Input[str]] = None,
-                 private_network_configuration: Optional[pulumi.Input[pulumi.InputType['KubePrivateNetworkConfigurationArgs']]] = None,
+                 private_network_configuration: Optional[pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']]] = None,
                  private_network_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -727,19 +727,19 @@ class Kube(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             control_plane_is_up_to_date: Optional[pulumi.Input[bool]] = None,
-            customization_apiservers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeCustomizationApiserverArgs']]]]] = None,
-            customization_kube_proxy: Optional[pulumi.Input[pulumi.InputType['KubeCustomizationKubeProxyArgs']]] = None,
-            customizations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeCustomizationArgs']]]]] = None,
+            customization_apiservers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationApiserverArgs', 'KubeCustomizationApiserverArgsDict']]]]] = None,
+            customization_kube_proxy: Optional[pulumi.Input[Union['KubeCustomizationKubeProxyArgs', 'KubeCustomizationKubeProxyArgsDict']]] = None,
+            customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationArgs', 'KubeCustomizationArgsDict']]]]] = None,
             is_up_to_date: Optional[pulumi.Input[bool]] = None,
             kube_proxy_mode: Optional[pulumi.Input[str]] = None,
             kubeconfig: Optional[pulumi.Input[str]] = None,
-            kubeconfig_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeKubeconfigAttributeArgs']]]]] = None,
+            kubeconfig_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeKubeconfigAttributeArgs', 'KubeKubeconfigAttributeArgsDict']]]]] = None,
             load_balancers_subnet_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             next_upgrade_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             nodes_subnet_id: Optional[pulumi.Input[str]] = None,
             nodes_url: Optional[pulumi.Input[str]] = None,
-            private_network_configuration: Optional[pulumi.Input[pulumi.InputType['KubePrivateNetworkConfigurationArgs']]] = None,
+            private_network_configuration: Optional[pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']]] = None,
             private_network_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
@@ -755,19 +755,19 @@ class Kube(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] control_plane_is_up_to_date: True if control-plane is up-to-date.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeCustomizationApiserverArgs']]]] customization_apiservers: Kubernetes API server customization
-        :param pulumi.Input[pulumi.InputType['KubeCustomizationKubeProxyArgs']] customization_kube_proxy: Kubernetes kube-proxy customization
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeCustomizationArgs']]]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationApiserverArgs', 'KubeCustomizationApiserverArgsDict']]]] customization_apiservers: Kubernetes API server customization
+        :param pulumi.Input[Union['KubeCustomizationKubeProxyArgs', 'KubeCustomizationKubeProxyArgsDict']] customization_kube_proxy: Kubernetes kube-proxy customization
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationArgs', 'KubeCustomizationArgsDict']]]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
         :param pulumi.Input[bool] is_up_to_date: True if all nodes and control-plane are up-to-date.
         :param pulumi.Input[str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
         :param pulumi.Input[str] kubeconfig: The kubeconfig file. Use this file to connect to your kubernetes cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubeKubeconfigAttributeArgs']]]] kubeconfig_attributes: The kubeconfig file attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubeKubeconfigAttributeArgs', 'KubeKubeconfigAttributeArgsDict']]]] kubeconfig_attributes: The kubeconfig file attributes.
         :param pulumi.Input[str] load_balancers_subnet_id: Openstack private network (or vRack) ID to use for load balancers.
         :param pulumi.Input[str] name: The name of the kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] next_upgrade_versions: Kubernetes versions available for upgrade.
         :param pulumi.Input[str] nodes_subnet_id: Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
         :param pulumi.Input[str] nodes_url: Cluster nodes URL.
-        :param pulumi.Input[pulumi.InputType['KubePrivateNetworkConfigurationArgs']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
+        :param pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[str] private_network_id: OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.

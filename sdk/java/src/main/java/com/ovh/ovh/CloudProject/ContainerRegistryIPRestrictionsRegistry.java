@@ -10,7 +10,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -73,14 +72,14 @@ public class ContainerRegistryIPRestrictionsRegistry extends com.pulumi.resource
      * IP restrictions applied on artifact manager component.
      * 
      */
-    @Export(name="ipRestrictions", refs={List.class,Map.class,String.class,Object.class}, tree="[0,[1,2,3]]")
-    private Output<List<Map<String,Object>>> ipRestrictions;
+    @Export(name="ipRestrictions", refs={List.class,Map.class,String.class}, tree="[0,[1,2,2]]")
+    private Output<List<Map<String,String>>> ipRestrictions;
 
     /**
      * @return IP restrictions applied on artifact manager component.
      * 
      */
-    public Output<List<Map<String,Object>>> ipRestrictions() {
+    public Output<List<Map<String,String>>> ipRestrictions() {
         return this.ipRestrictions;
     }
     /**

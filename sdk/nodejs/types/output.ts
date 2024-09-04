@@ -678,7 +678,7 @@ export namespace CloudProject {
         /**
          * taints
          */
-        taints?: {[key: string]: any}[];
+        taints?: {[key: string]: string}[];
         /**
          * unschedulable
          */
@@ -1023,7 +1023,7 @@ export namespace CloudProject {
         /**
          * taints
          */
-        taints: {[key: string]: any}[];
+        taints: {[key: string]: string}[];
         /**
          * unschedulable
          */

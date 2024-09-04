@@ -572,14 +572,14 @@ class Vps(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  keymap: Optional[pulumi.Input[str]] = None,
                  memory_limit: Optional[pulumi.Input[float]] = None,
-                 model: Optional[pulumi.Input[pulumi.InputType['VpsModelArgs']]] = None,
+                 model: Optional[pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']]] = None,
                  monitoring_ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netboot_mode: Optional[pulumi.Input[str]] = None,
                  offer_type: Optional[pulumi.Input[str]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpsPlanOptionArgs']]]]] = None,
-                 plans: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpsPlanArgs']]]]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]]] = None,
+                 plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]]] = None,
                  sla_monitoring: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  vcore: Optional[pulumi.Input[float]] = None,
@@ -593,14 +593,14 @@ class Vps(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Custom display name
         :param pulumi.Input[str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[float] memory_limit: RAM of this VPS
-        :param pulumi.Input[pulumi.InputType['VpsModelArgs']] model: Structure describing characteristics of a VPS model
+        :param pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']] model: Structure describing characteristics of a VPS model
         :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_ip_blocks: IP blocks for OVH monitoring servers
         :param pulumi.Input[str] name: Name of the VPS
         :param pulumi.Input[str] netboot_mode: VPS netboot mode (local┃rescue)
         :param pulumi.Input[str] offer_type: All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpsPlanOptionArgs']]]] plan_options: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpsPlanArgs']]]] plans: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]] plans: Product Plan to order
         :param pulumi.Input[str] state: State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
         :param pulumi.Input[float] vcore: Number of vcores
         :param pulumi.Input[str] zone: OpenStask region where the VPS is located
@@ -632,14 +632,14 @@ class Vps(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  keymap: Optional[pulumi.Input[str]] = None,
                  memory_limit: Optional[pulumi.Input[float]] = None,
-                 model: Optional[pulumi.Input[pulumi.InputType['VpsModelArgs']]] = None,
+                 model: Optional[pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']]] = None,
                  monitoring_ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netboot_mode: Optional[pulumi.Input[str]] = None,
                  offer_type: Optional[pulumi.Input[str]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpsPlanOptionArgs']]]]] = None,
-                 plans: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpsPlanArgs']]]]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]]] = None,
+                 plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]]] = None,
                  sla_monitoring: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  vcore: Optional[pulumi.Input[float]] = None,
@@ -686,18 +686,18 @@ class Vps(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            iam: Optional[pulumi.Input[pulumi.InputType['VpsIamArgs']]] = None,
+            iam: Optional[pulumi.Input[Union['VpsIamArgs', 'VpsIamArgsDict']]] = None,
             keymap: Optional[pulumi.Input[str]] = None,
             memory_limit: Optional[pulumi.Input[float]] = None,
-            model: Optional[pulumi.Input[pulumi.InputType['VpsModelArgs']]] = None,
+            model: Optional[pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']]] = None,
             monitoring_ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             netboot_mode: Optional[pulumi.Input[str]] = None,
             offer_type: Optional[pulumi.Input[str]] = None,
-            order: Optional[pulumi.Input[pulumi.InputType['VpsOrderArgs']]] = None,
+            order: Optional[pulumi.Input[Union['VpsOrderArgs', 'VpsOrderArgsDict']]] = None,
             ovh_subsidiary: Optional[pulumi.Input[str]] = None,
-            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpsPlanOptionArgs']]]]] = None,
-            plans: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpsPlanArgs']]]]] = None,
+            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]]] = None,
+            plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             sla_monitoring: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
@@ -712,18 +712,18 @@ class Vps(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: VPS cluster
         :param pulumi.Input[str] display_name: Custom display name
-        :param pulumi.Input[pulumi.InputType['VpsIamArgs']] iam: IAM resource information
+        :param pulumi.Input[Union['VpsIamArgs', 'VpsIamArgsDict']] iam: IAM resource information
         :param pulumi.Input[str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[float] memory_limit: RAM of this VPS
-        :param pulumi.Input[pulumi.InputType['VpsModelArgs']] model: Structure describing characteristics of a VPS model
+        :param pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']] model: Structure describing characteristics of a VPS model
         :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_ip_blocks: IP blocks for OVH monitoring servers
         :param pulumi.Input[str] name: Name of the VPS
         :param pulumi.Input[str] netboot_mode: VPS netboot mode (local┃rescue)
         :param pulumi.Input[str] offer_type: All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
-        :param pulumi.Input[pulumi.InputType['VpsOrderArgs']] order: Details about an Order
+        :param pulumi.Input[Union['VpsOrderArgs', 'VpsOrderArgsDict']] order: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpsPlanOptionArgs']]]] plan_options: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpsPlanArgs']]]] plans: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]] plans: Product Plan to order
         :param pulumi.Input[str] service_name: The internal name of your VPS offer
         :param pulumi.Input[str] state: State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
         :param pulumi.Input[float] vcore: Number of vcores

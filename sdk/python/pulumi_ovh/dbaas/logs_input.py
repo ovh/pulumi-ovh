@@ -445,7 +445,7 @@ class LogsInput(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['LogsInputConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  engine_id: Optional[pulumi.Input[str]] = None,
                  exposed_port: Optional[pulumi.Input[str]] = None,
@@ -478,23 +478,23 @@ class LogsInput(pulumi.CustomResource):
             allowed_networks=["10.0.0.0/16"],
             exposed_port="6154",
             nb_instance=2,
-            configuration=ovh.dbaas.LogsInputConfigurationArgs(
-                logstash=ovh.dbaas.LogsInputConfigurationLogstashArgs(
-                    input_section=\"\"\"  beats {
+            configuration={
+                "logstash": {
+                    "input_section": \"\"\"  beats {
             port => 6514
             ssl => true
             ssl_certificate => "/etc/ssl/private/server.crt"
             ssl_key => "/etc/ssl/private/server.key"
           }
         \"\"\",
-                ),
-            ))
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: List of IP blocks
-        :param pulumi.Input[pulumi.InputType['LogsInputConfigurationArgs']] configuration: Input configuration
+        :param pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']] configuration: Input configuration
         :param pulumi.Input[str] description: Input description
         :param pulumi.Input[str] engine_id: Input engine ID
         :param pulumi.Input[str] exposed_port: Port
@@ -533,17 +533,17 @@ class LogsInput(pulumi.CustomResource):
             allowed_networks=["10.0.0.0/16"],
             exposed_port="6154",
             nb_instance=2,
-            configuration=ovh.dbaas.LogsInputConfigurationArgs(
-                logstash=ovh.dbaas.LogsInputConfigurationLogstashArgs(
-                    input_section=\"\"\"  beats {
+            configuration={
+                "logstash": {
+                    "input_section": \"\"\"  beats {
             port => 6514
             ssl => true
             ssl_certificate => "/etc/ssl/private/server.crt"
             ssl_key => "/etc/ssl/private/server.key"
           }
         \"\"\",
-                ),
-            ))
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -562,7 +562,7 @@ class LogsInput(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['LogsInputConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  engine_id: Optional[pulumi.Input[str]] = None,
                  exposed_port: Optional[pulumi.Input[str]] = None,
@@ -621,7 +621,7 @@ class LogsInput(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            configuration: Optional[pulumi.Input[pulumi.InputType['LogsInputConfigurationArgs']]] = None,
+            configuration: Optional[pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             engine_id: Optional[pulumi.Input[str]] = None,
@@ -645,7 +645,7 @@ class LogsInput(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: List of IP blocks
-        :param pulumi.Input[pulumi.InputType['LogsInputConfigurationArgs']] configuration: Input configuration
+        :param pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']] configuration: Input configuration
         :param pulumi.Input[str] created_at: Input creation
         :param pulumi.Input[str] description: Input description
         :param pulumi.Input[str] engine_id: Input engine ID

@@ -11,7 +11,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -92,15 +91,15 @@ public class User extends com.pulumi.resources.CustomResource {
      * Note: no password nor sensitive token is set in this map.
      * 
      */
-    @Export(name="openstackRc", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> openstackRc;
+    @Export(name="openstackRc", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> openstackRc;
 
     /**
      * @return a convenient map representing an openstack_rc file.
      * Note: no password nor sensitive token is set in this map.
      * 
      */
-    public Output<Map<String,Object>> openstackRc() {
+    public Output<Map<String,String>> openstackRc() {
         return this.openstackRc;
     }
     /**

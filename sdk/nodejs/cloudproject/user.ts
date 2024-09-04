@@ -58,7 +58,7 @@ export class User extends pulumi.CustomResource {
      * a convenient map representing an openstackRc file.
      * Note: no password nor sensitive token is set in this map.
      */
-    public readonly openstackRc!: pulumi.Output<{[key: string]: any}>;
+    public readonly openstackRc!: pulumi.Output<{[key: string]: string}>;
     /**
      * (Sensitive) the password generated for the user. The password can
      * be used with the Openstack API. This attribute is sensitive and will only be
@@ -166,7 +166,7 @@ export interface UserState {
      * a convenient map representing an openstackRc file.
      * Note: no password nor sensitive token is set in this map.
      */
-    openstackRc?: pulumi.Input<{[key: string]: any}>;
+    openstackRc?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Sensitive) the password generated for the user. The password can
      * be used with the Openstack API. This attribute is sensitive and will only be
@@ -225,7 +225,7 @@ export interface UserArgs {
      * a convenient map representing an openstackRc file.
      * Note: no password nor sensitive token is set in this map.
      */
-    openstackRc?: pulumi.Input<{[key: string]: any}>;
+    openstackRc?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of a role. See `roleNames`.
      */

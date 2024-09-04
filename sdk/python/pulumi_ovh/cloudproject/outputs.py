@@ -1111,10 +1111,10 @@ class KubeNodePoolTemplateMetadata(dict):
 @pulumi.output_type
 class KubeNodePoolTemplateSpec(dict):
     def __init__(__self__, *,
-                 taints: Sequence[Mapping[str, Any]],
+                 taints: Sequence[Mapping[str, str]],
                  unschedulable: bool):
         """
-        :param Sequence[Mapping[str, Any]] taints: taints
+        :param Sequence[Mapping[str, str]] taints: taints
         :param bool unschedulable: unschedulable
         """
         pulumi.set(__self__, "taints", taints)
@@ -1122,7 +1122,7 @@ class KubeNodePoolTemplateSpec(dict):
 
     @property
     @pulumi.getter
-    def taints(self) -> Sequence[Mapping[str, Any]]:
+    def taints(self) -> Sequence[Mapping[str, str]]:
         """
         taints
         """
@@ -2550,10 +2550,10 @@ class GetKubeNodePoolTemplateMetadataResult(dict):
 @pulumi.output_type
 class GetKubeNodePoolTemplateSpecResult(dict):
     def __init__(__self__, *,
-                 taints: Optional[Sequence[Mapping[str, Any]]] = None,
+                 taints: Optional[Sequence[Mapping[str, str]]] = None,
                  unschedulable: Optional[bool] = None):
         """
-        :param Sequence[Mapping[str, Any]] taints: taints
+        :param Sequence[Mapping[str, str]] taints: taints
         :param bool unschedulable: unschedulable
         """
         if taints is not None:
@@ -2563,7 +2563,7 @@ class GetKubeNodePoolTemplateSpecResult(dict):
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[Sequence[Mapping[str, Any]]]:
+    def taints(self) -> Optional[Sequence[Mapping[str, str]]]:
         """
         taints
         """

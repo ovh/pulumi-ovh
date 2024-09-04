@@ -291,7 +291,7 @@ class HttpFarm(pulumi.CustomResource):
                  balance: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 probe: Optional[pulumi.Input[pulumi.InputType['HttpFarmProbeArgs']]] = None,
+                 probe: Optional[pulumi.Input[Union['HttpFarmProbeArgs', 'HttpFarmProbeArgsDict']]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  stickiness: Optional[pulumi.Input[str]] = None,
                  vrack_network_id: Optional[pulumi.Input[int]] = None,
@@ -323,7 +323,7 @@ class HttpFarm(pulumi.CustomResource):
         :param pulumi.Input[str] balance: Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
         :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
         :param pulumi.Input[int] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
-        :param pulumi.Input[pulumi.InputType['HttpFarmProbeArgs']] probe: define a backend healthcheck probe
+        :param pulumi.Input[Union['HttpFarmProbeArgs', 'HttpFarmProbeArgsDict']] probe: define a backend healthcheck probe
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] stickiness: Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
         :param pulumi.Input[int] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
@@ -374,7 +374,7 @@ class HttpFarm(pulumi.CustomResource):
                  balance: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 probe: Optional[pulumi.Input[pulumi.InputType['HttpFarmProbeArgs']]] = None,
+                 probe: Optional[pulumi.Input[Union['HttpFarmProbeArgs', 'HttpFarmProbeArgsDict']]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  stickiness: Optional[pulumi.Input[str]] = None,
                  vrack_network_id: Optional[pulumi.Input[int]] = None,
@@ -413,7 +413,7 @@ class HttpFarm(pulumi.CustomResource):
             balance: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
-            probe: Optional[pulumi.Input[pulumi.InputType['HttpFarmProbeArgs']]] = None,
+            probe: Optional[pulumi.Input[Union['HttpFarmProbeArgs', 'HttpFarmProbeArgsDict']]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             stickiness: Optional[pulumi.Input[str]] = None,
             vrack_network_id: Optional[pulumi.Input[int]] = None,
@@ -428,7 +428,7 @@ class HttpFarm(pulumi.CustomResource):
         :param pulumi.Input[str] balance: Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
         :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
         :param pulumi.Input[int] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
-        :param pulumi.Input[pulumi.InputType['HttpFarmProbeArgs']] probe: define a backend healthcheck probe
+        :param pulumi.Input[Union['HttpFarmProbeArgs', 'HttpFarmProbeArgsDict']] probe: define a backend healthcheck probe
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] stickiness: Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
         :param pulumi.Input[int] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack

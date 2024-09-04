@@ -246,7 +246,7 @@ class Move(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
-                 routed_to: Optional[pulumi.Input[pulumi.InputType['MoveRoutedToArgs']]] = None,
+                 routed_to: Optional[pulumi.Input[Union['MoveRoutedToArgs', 'MoveRoutedToArgsDict']]] = None,
                  __props__=None):
         """
         Moves a given IP to a different service, or inversely, parks it if empty service is given
@@ -259,9 +259,9 @@ class Move(pulumi.CustomResource):
 
         move_ip_to_load_balancer_xxxxx = ovh.ip.Move("moveIpToLoadBalancerXxxxx",
             ip="1.2.3.4",
-            routed_to=ovh.ip.MoveRoutedToArgs(
-                service_name="loadbalancer-XXXXX",
-            ))
+            routed_to={
+                "service_name": "loadbalancer-XXXXX",
+            })
         ```
 
         ## Park IP/Detach IP `1.2.3.4` from any service
@@ -272,16 +272,16 @@ class Move(pulumi.CustomResource):
 
         park_ip = ovh.ip.Move("parkIp",
             ip="1.2.3.4",
-            routed_to=ovh.ip.MoveRoutedToArgs(
-                service_name="",
-            ))
+            routed_to={
+                "service_name": "",
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description attached to the IP
         :param pulumi.Input[str] ip: IP block that we want to attach to a different service
-        :param pulumi.Input[pulumi.InputType['MoveRoutedToArgs']] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        :param pulumi.Input[Union['MoveRoutedToArgs', 'MoveRoutedToArgsDict']] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
                instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         """
         ...
@@ -301,9 +301,9 @@ class Move(pulumi.CustomResource):
 
         move_ip_to_load_balancer_xxxxx = ovh.ip.Move("moveIpToLoadBalancerXxxxx",
             ip="1.2.3.4",
-            routed_to=ovh.ip.MoveRoutedToArgs(
-                service_name="loadbalancer-XXXXX",
-            ))
+            routed_to={
+                "service_name": "loadbalancer-XXXXX",
+            })
         ```
 
         ## Park IP/Detach IP `1.2.3.4` from any service
@@ -314,9 +314,9 @@ class Move(pulumi.CustomResource):
 
         park_ip = ovh.ip.Move("parkIp",
             ip="1.2.3.4",
-            routed_to=ovh.ip.MoveRoutedToArgs(
-                service_name="",
-            ))
+            routed_to={
+                "service_name": "",
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -336,7 +336,7 @@ class Move(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
-                 routed_to: Optional[pulumi.Input[pulumi.InputType['MoveRoutedToArgs']]] = None,
+                 routed_to: Optional[pulumi.Input[Union['MoveRoutedToArgs', 'MoveRoutedToArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -375,7 +375,7 @@ class Move(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             ip: Optional[pulumi.Input[str]] = None,
             organisation_id: Optional[pulumi.Input[str]] = None,
-            routed_to: Optional[pulumi.Input[pulumi.InputType['MoveRoutedToArgs']]] = None,
+            routed_to: Optional[pulumi.Input[Union['MoveRoutedToArgs', 'MoveRoutedToArgsDict']]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             task_start_date: Optional[pulumi.Input[str]] = None,
             task_status: Optional[pulumi.Input[str]] = None,
@@ -392,7 +392,7 @@ class Move(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description attached to the IP
         :param pulumi.Input[str] ip: IP block that we want to attach to a different service
         :param pulumi.Input[str] organisation_id: IP block organisation Id
-        :param pulumi.Input[pulumi.InputType['MoveRoutedToArgs']] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        :param pulumi.Input[Union['MoveRoutedToArgs', 'MoveRoutedToArgsDict']] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
                instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         :param pulumi.Input[str] service_name: Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
         :param pulumi.Input[str] task_start_date: Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to

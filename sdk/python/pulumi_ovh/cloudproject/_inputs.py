@@ -1116,10 +1116,10 @@ class KubeNodePoolTemplateMetadataArgs:
 @pulumi.input_type
 class KubeNodePoolTemplateSpecArgs:
     def __init__(__self__, *,
-                 taints: pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]],
+                 taints: pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]],
                  unschedulable: pulumi.Input[bool]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] taints: taints
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] taints: taints
         :param pulumi.Input[bool] unschedulable: unschedulable
         """
         pulumi.set(__self__, "taints", taints)
@@ -1127,14 +1127,14 @@ class KubeNodePoolTemplateSpecArgs:
 
     @property
     @pulumi.getter
-    def taints(self) -> pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]:
+    def taints(self) -> pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]:
         """
         taints
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]):
+    def taints(self, value: pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]):
         pulumi.set(self, "taints", value)
 
     @property
@@ -2194,10 +2194,10 @@ class GetKubeNodePoolTemplateMetadataArgs:
 @pulumi.input_type
 class GetKubeNodePoolTemplateSpecArgs:
     def __init__(__self__, *,
-                 taints: Optional[Sequence[Mapping[str, Any]]] = None,
+                 taints: Optional[Sequence[Mapping[str, str]]] = None,
                  unschedulable: Optional[bool] = None):
         """
-        :param Sequence[Mapping[str, Any]] taints: taints
+        :param Sequence[Mapping[str, str]] taints: taints
         :param bool unschedulable: unschedulable
         """
         if taints is not None:
@@ -2207,14 +2207,14 @@ class GetKubeNodePoolTemplateSpecArgs:
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[Sequence[Mapping[str, Any]]]:
+    def taints(self) -> Optional[Sequence[Mapping[str, str]]]:
         """
         taints
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[Sequence[Mapping[str, Any]]]):
+    def taints(self, value: Optional[Sequence[Mapping[str, str]]]):
         pulumi.set(self, "taints", value)
 
     @property

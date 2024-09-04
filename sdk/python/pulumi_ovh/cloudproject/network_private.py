@@ -376,8 +376,8 @@ class NetworkPrivate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            regions_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPrivateRegionsAttributeArgs']]]]] = None,
-            regions_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPrivateRegionsStatusArgs']]]]] = None,
+            regions_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateRegionsAttributeArgs', 'NetworkPrivateRegionsAttributeArgsDict']]]]] = None,
+            regions_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateRegionsStatusArgs', 'NetworkPrivateRegionsStatusArgsDict']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -392,11 +392,11 @@ class NetworkPrivate(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: an array of valid OVHcloud public cloud region ID in which the network
                will be available. Ex.: "GRA1". Defaults to all public cloud regions.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPrivateRegionsAttributeArgs']]]] regions_attributes: A map representing information about the region.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateRegionsAttributeArgs', 'NetworkPrivateRegionsAttributeArgsDict']]]] regions_attributes: A map representing information about the region.
                * `regions_attributes/region` - The id of the region.
                * `regions_attributes/status` - The status of the network in the region.
                * `regions_attributes/openstackid` - The private network id in the region.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPrivateRegionsStatusArgs']]]] regions_statuses: (Deprecated) A map representing the status of the network per region.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateRegionsStatusArgs', 'NetworkPrivateRegionsStatusArgsDict']]]] regions_statuses: (Deprecated) A map representing the status of the network per region.
                * `regions_status/region` - (Deprecated) The id of the region.
                * `regions_status/status` - (Deprecated) The status of the network in the region.
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,

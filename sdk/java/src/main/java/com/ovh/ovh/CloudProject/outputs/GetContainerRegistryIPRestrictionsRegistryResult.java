@@ -5,7 +5,6 @@ package com.ovh.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ public final class GetContainerRegistryIPRestrictionsRegistryResult {
      * @return IP restrictions applied on artifact manager component.
      * 
      */
-    private List<Map<String,Object>> ipRestrictions;
+    private List<Map<String,String>> ipRestrictions;
     /**
      * @return The ID of the Managed Private Registry.
      * 
@@ -46,7 +45,7 @@ public final class GetContainerRegistryIPRestrictionsRegistryResult {
      * @return IP restrictions applied on artifact manager component.
      * 
      */
-    public List<Map<String,Object>> ipRestrictions() {
+    public List<Map<String,String>> ipRestrictions() {
         return this.ipRestrictions;
     }
     /**
@@ -74,7 +73,7 @@ public final class GetContainerRegistryIPRestrictionsRegistryResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private List<Map<String,Object>> ipRestrictions;
+        private List<Map<String,String>> ipRestrictions;
         private String registryId;
         private String serviceName;
         public Builder() {}
@@ -95,7 +94,7 @@ public final class GetContainerRegistryIPRestrictionsRegistryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder ipRestrictions(List<Map<String,Object>> ipRestrictions) {
+        public Builder ipRestrictions(List<Map<String,String>> ipRestrictions) {
             if (ipRestrictions == null) {
               throw new MissingRequiredPropertyException("GetContainerRegistryIPRestrictionsRegistryResult", "ipRestrictions");
             }
