@@ -119,3 +119,15 @@ $ make build
 ```
 
 * When everything is done, create a new git tag
+
+# Pre-requisites
+
+```bash
+apt install zip
+curl -s "https://get.sdkman.io" | bash
+source "/root/.sdkman/bin/sdkman-init.sh"
+
+sdk install java 21.0.4-tem
+sdk default java 21.0.4-tem
+java -version
+```
