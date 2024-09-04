@@ -30,7 +30,7 @@
             "generateExtraInputTypes": true
         },
         "java": {
-            "basePackage": "com.ovh",
+            "basePackage": "com.ovhcloud.pulumi",
             "buildFiles": "",
             "gradleNexusPublishPluginVersion": "",
             "gradleTest": ""
