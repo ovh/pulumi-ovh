@@ -20,4 +20,10 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/g
 RUN sudo apt update
 RUN sudo apt install gh -y
 
+# Install Java 21
+#RUN curl -s "https://get.sdkman.io" | sh
+#RUN source "$HOME/.sdkman/bin/sdkman-init.sh" && \
+#    sdk install java 21.0.4-tem && \
+#    sdk default java 21.0.4-tem
+
 RUN go install github.com/pulumi/upgrade-provider@main
