@@ -124,10 +124,15 @@ $ make build
 
 ```bash
 apt install zip
+
+# Install Java 21
 curl -s "https://get.sdkman.io" | bash
 source "/root/.sdkman/bin/sdkman-init.sh"
-
 sdk install java 21.0.4-tem
 sdk default java 21.0.4-tem
 java -version
+
+# Install Gradle 8
+sdk install gradle 8.8
+gradle -v
 ```
