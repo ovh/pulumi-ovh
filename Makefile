@@ -14,7 +14,7 @@ JAVA_GEN_VERSION := v0.15.0
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
-JAVA_GROUP_ID    := com.ovhcloud.pulumi
+JAVA_GROUP_ID   := com.ovhcloud.pulumi.ovh
 JAVA_ARTIFACT_ID := ${ORG}
 
 PLATFORM := linux-amd64
@@ -108,7 +108,6 @@ build_go:: install_plugins tfgen # build the go sdk
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
 build_java:: bin/pulumi-java-gen
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
-	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
 
 	echo "update java version in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/of(11)/of(21)/g' build.gradle
 	echo "update inceptionYear in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/inceptionYear = .*/inceptionYear = "2024"/g' build.gradle
@@ -120,7 +119,6 @@ build_java:: bin/pulumi-java-gen
 	${SED} -e 's/description = .*/description = "A Pulumi package for creating and managing OVH resources."/g' build.gradle
 							
 	echo "update rootProject in settings.gradle" && cd ./sdk/java && ${SED} -e 's/rootProject.name = .*/rootProject.name = "$(JAVA_GROUP_ID)"/g' settings.gradle
-
 
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \

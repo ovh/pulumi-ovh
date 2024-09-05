@@ -933,7 +933,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Java: &tfbridge.JavaInfo{
-			BasePackage: "com.ovh",
+			//BasePackage: "com.ovh",
+			BasePackage: "com.ovhcloud",
 		},
 	}
 
