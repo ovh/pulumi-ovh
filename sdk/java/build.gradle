@@ -67,7 +67,7 @@ def genPulumiResources = tasks.register('genPulumiResources') {
         new File(outDir, "version.txt").text = resolvedVersion
         def info = new Object()
         info.metaClass.resource = true
-        info.metaClass.name = "ovh"
+        info.metaClass.name = "pulumi-ovh"
         info.metaClass.server = "github://api.github.com/ovh/pulumi-ovh"
         info.metaClass.version = resolvedVersion
         def infoJson = new groovy.json.JsonBuilder(info).toPrettyString()
@@ -83,7 +83,7 @@ publishing {
     publications {
         mainPublication(MavenPublication) {
             groupId = "com.ovhcloud.pulumi.ovh"
-            artifactId = "ovh"
+            artifactId = "pulumi-ovh"
             version = resolvedVersion
             from components.java
             artifact sourcesJar
