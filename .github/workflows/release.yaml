@@ -164,10 +164,10 @@ jobs:
         goversion:
           - 1.21.x
         language:
-#          - nodejs
-#          - python
-#          - go
-#          - dotnet
+          - nodejs
+          - python
+          - go
+          - dotnet
           - java
         nodeversion:
           - 18.x
