@@ -7,7 +7,7 @@ The OVH Resource Provider lets you manage [OVHcloud](https://www.ovhcloud.com/en
 [![NPM version](https://badge.fury.io/js/@ovhcloud%2Fpulumi-ovh.svg)](https://badge.fury.io/js/@ovhcloud%2Fpulumi-ovh)
 [![PyPI version](https://badge.fury.io/py/pulumi-ovh.svg)](https://badge.fury.io/py/pulumi-ovh)
 [![NuGet version](https://badge.fury.io/nu/Pulumi.Ovh.svg)](https://badge.fury.io/nu/Pulumi.Ovh)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.ovhcloud.pulumi/ovh/badge.svg)](https://s01.oss.sonatype.org/#nexus-search;quick~com.ovhcloud.pulumi)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.ovhcloud.pulumi.ovh/ovh/badge.svg)](https://s01.oss.sonatype.org/#nexus-search;quick~com.ovhcloud.pulumi.ovh)
 <a href="https://gitpod.io/#https://github.com/ovh/pulumi-ovh"><img src="https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod" alt="Contribute with Gitpod"/></a>
 
 ## Usage
@@ -58,9 +58,9 @@ To use from Java, add the dependency below to your `pom.xml` file:
 
 ```bash
 <dependency>
-    <groupId>com.ovh.pulumi</groupId>
+    <groupId>com.ovhcloud.pulumi.ovh</groupId>
     <artifactId>ovh</artifactId>
-    <version>[0.48.7,)</version>
+    <version>[0.48.8,)</version>
 </dependency>
 ```
 
