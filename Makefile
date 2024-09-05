@@ -15,7 +15,7 @@ TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
 JAVA_GROUP_ID   := com.ovhcloud.pulumi.ovh
-JAVA_ARTIFACT_ID := ${ORG}
+JAVA_ARTIFACT_ID := pulumi-ovh
 
 PLATFORM := linux-amd64
 
