@@ -231,7 +231,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: ovhResource(cloudProjectMod, "Gateway"),
 			},
 			"ovh_cloud_project_gateway_interface": {
-				Tok: ovhResource(cloudProjectMod, "GatewayInterface"),
+				Tok:       ovhResource(cloudProjectMod, "GatewayInterface"),
+				ComputeID: delegateID("id"),
 			},
 			"ovh_cloud_project_kube": {
 				Tok: ovhResource(cloudProjectMod, "Kube"),
@@ -284,6 +285,10 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_dedicated_nasha_partition_snapshot": {
 				Tok: ovhResource(dedicatedMod, "NasHAPartitionSnapshot"),
 			},
+			"ovh_dedicated_server": {
+				Tok:       ovhResource(dedicatedMod, "Server"),
+				ComputeID: delegateID("display_name"),
+			},
 			"ovh_dedicated_server_install_task": {
 				Tok: ovhResource(dedicatedMod, "ServerInstallTask"),
 			},
@@ -310,6 +315,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_domain_zone_record": {
 				Tok: ovhResource(domainMod, "ZoneRecord"),
+			},
+			"ovh_domain_zone_import": {
+				Tok:       ovhResource(domainMod, "ZoneImport"),
+				ComputeID: delegateID("zone_name"),
 			},
 			"ovh_domain_zone_redirection": {
 				Tok: ovhResource(domainMod, "ZoneRedirection"),
