@@ -10,7 +10,7 @@ PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 JAVA_GEN 		 := pulumi-java-gen
-JAVA_GEN_VERSION := v0.15.0
+JAVA_GEN_VERSION := v0.16.0
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
