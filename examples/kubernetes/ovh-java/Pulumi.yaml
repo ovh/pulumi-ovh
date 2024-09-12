@@ -1,0 +1,7 @@
+name: pulumi-java
+runtime: java
+description: A minimal Java Pulumi program with Maven builds
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: java

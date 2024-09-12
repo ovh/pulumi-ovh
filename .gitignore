@@ -42,5 +42,5 @@ provider/**/schema-embed.json
 **/nuget
 **/dist
 
-## Java configuration
+## Java projects configuration
 target/
