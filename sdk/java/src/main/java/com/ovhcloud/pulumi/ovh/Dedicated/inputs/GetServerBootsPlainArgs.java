@@ -16,14 +16,14 @@ public final class GetServerBootsPlainArgs extends com.pulumi.resources.InvokeAr
     public static final GetServerBootsPlainArgs Empty = new GetServerBootsPlainArgs();
 
     /**
-     * Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
+     * Filter the value of bootType property (harddisk, rescue, internal, network)
      * 
      */
     @Import(name="bootType")
     private @Nullable String bootType;
 
     /**
-     * @return Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
+     * @return Filter the value of bootType property (harddisk, rescue, internal, network)
      * 
      */
     public Optional<String> bootType() {
@@ -87,7 +87,7 @@ public final class GetServerBootsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param bootType Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
+         * @param bootType Filter the value of bootType property (harddisk, rescue, internal, network)
          * 
          * @return builder
          * 

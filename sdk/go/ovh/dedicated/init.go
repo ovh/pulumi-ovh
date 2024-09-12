@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NasHAPartitionAccess{}
 	case "ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot":
 		r = &NasHAPartitionSnapshot{}
+	case "ovh:Dedicated/server:Server":
+		r = &Server{}
 	case "ovh:Dedicated/serverInstallTask:ServerInstallTask":
 		r = &ServerInstallTask{}
 	case "ovh:Dedicated/serverNetworking:ServerNetworking":
@@ -68,6 +70,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Dedicated/nasHAPartitionSnapshot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Dedicated/server",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

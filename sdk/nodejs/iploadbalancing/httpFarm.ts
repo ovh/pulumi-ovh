@@ -60,7 +60,7 @@ export class HttpFarm extends pulumi.CustomResource {
     }
 
     /**
-     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
      */
     public readonly balance!: pulumi.Output<string | undefined>;
     /**
@@ -140,7 +140,7 @@ export class HttpFarm extends pulumi.CustomResource {
  */
 export interface HttpFarmState {
     /**
-     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
      */
     balance?: pulumi.Input<string>;
     /**
@@ -178,7 +178,7 @@ export interface HttpFarmState {
  */
 export interface HttpFarmArgs {
     /**
-     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
      */
     balance?: pulumi.Input<string>;
     /**

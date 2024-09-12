@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,13 +22,13 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
      * 
      */
     @Import(name="taints", required=true)
-    private Output<List<Map<String,Object>>> taints;
+    private Output<List<Map<String,String>>> taints;
 
     /**
      * @return taints
      * 
      */
-    public Output<List<Map<String,Object>>> taints() {
+    public Output<List<Map<String,String>>> taints() {
         return this.taints;
     }
 
@@ -79,7 +78,7 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder taints(Output<List<Map<String,Object>>> taints) {
+        public Builder taints(Output<List<Map<String,String>>> taints) {
             $.taints = taints;
             return this;
         }
@@ -90,7 +89,7 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder taints(List<Map<String,Object>> taints) {
+        public Builder taints(List<Map<String,String>> taints) {
             return taints(Output.of(taints));
         }
 
@@ -100,7 +99,7 @@ public final class KubeNodePoolTemplateSpecArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder taints(Map<String,Object>... taints) {
+        public Builder taints(Map<String,String>... taints) {
             return taints(List.of(taints));
         }
 

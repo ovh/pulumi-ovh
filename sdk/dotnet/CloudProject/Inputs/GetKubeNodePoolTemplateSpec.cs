@@ -13,14 +13,14 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class GetKubeNodePoolTemplateSpecArgs : global::Pulumi.InvokeArgs
     {
         [Input("taints")]
-        private List<ImmutableDictionary<string, object>>? _taints;
+        private List<ImmutableDictionary<string, string>>? _taints;
 
         /// <summary>
         /// taints
         /// </summary>
-        public List<ImmutableDictionary<string, object>> Taints
+        public List<ImmutableDictionary<string, string>> Taints
         {
-            get => _taints ?? (_taints = new List<ImmutableDictionary<string, object>>());
+            get => _taints ?? (_taints = new List<ImmutableDictionary<string, string>>());
             set => _taints = value;
         }
 

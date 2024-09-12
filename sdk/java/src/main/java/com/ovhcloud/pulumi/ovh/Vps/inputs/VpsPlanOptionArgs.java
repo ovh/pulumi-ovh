@@ -50,21 +50,6 @@ public final class VpsPlanOptionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cart item to be linked
-     * 
-     */
-    @Import(name="itemId", required=true)
-    private Output<Double> itemId;
-
-    /**
-     * @return Cart item to be linked
-     * 
-     */
-    public Output<Double> itemId() {
-        return this.itemId;
-    }
-
-    /**
      * Plan code
      * 
      */
@@ -114,7 +99,6 @@ public final class VpsPlanOptionArgs extends com.pulumi.resources.ResourceArgs {
     private VpsPlanOptionArgs(VpsPlanOptionArgs $) {
         this.configurations = $.configurations;
         this.duration = $.duration;
-        this.itemId = $.itemId;
         this.planCode = $.planCode;
         this.pricingMode = $.pricingMode;
         this.quantity = $.quantity;
@@ -191,27 +175,6 @@ public final class VpsPlanOptionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param itemId Cart item to be linked
-         * 
-         * @return builder
-         * 
-         */
-        public Builder itemId(Output<Double> itemId) {
-            $.itemId = itemId;
-            return this;
-        }
-
-        /**
-         * @param itemId Cart item to be linked
-         * 
-         * @return builder
-         * 
-         */
-        public Builder itemId(Double itemId) {
-            return itemId(Output.of(itemId));
-        }
-
-        /**
          * @param planCode Plan code
          * 
          * @return builder
@@ -277,9 +240,6 @@ public final class VpsPlanOptionArgs extends com.pulumi.resources.ResourceArgs {
         public VpsPlanOptionArgs build() {
             if ($.duration == null) {
                 throw new MissingRequiredPropertyException("VpsPlanOptionArgs", "duration");
-            }
-            if ($.itemId == null) {
-                throw new MissingRequiredPropertyException("VpsPlanOptionArgs", "itemId");
             }
             if ($.planCode == null) {
                 throw new MissingRequiredPropertyException("VpsPlanOptionArgs", "planCode");

@@ -1048,8 +1048,6 @@ type VpsPlanOption struct {
 	Configurations []VpsPlanOptionConfiguration `pulumi:"configurations"`
 	// duration
 	Duration string `pulumi:"duration"`
-	// Cart item to be linked
-	ItemId float64 `pulumi:"itemId"`
 	// Plan code
 	PlanCode string `pulumi:"planCode"`
 	// Pricing model identifier
@@ -1074,8 +1072,6 @@ type VpsPlanOptionArgs struct {
 	Configurations VpsPlanOptionConfigurationArrayInput `pulumi:"configurations"`
 	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
-	// Cart item to be linked
-	ItemId pulumi.Float64Input `pulumi:"itemId"`
 	// Plan code
 	PlanCode pulumi.StringInput `pulumi:"planCode"`
 	// Pricing model identifier
@@ -1143,11 +1139,6 @@ func (o VpsPlanOptionOutput) Configurations() VpsPlanOptionConfigurationArrayOut
 // duration
 func (o VpsPlanOptionOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanOption) string { return v.Duration }).(pulumi.StringOutput)
-}
-
-// Cart item to be linked
-func (o VpsPlanOptionOutput) ItemId() pulumi.Float64Output {
-	return o.ApplyT(func(v VpsPlanOption) float64 { return v.ItemId }).(pulumi.Float64Output)
 }
 
 // Plan code

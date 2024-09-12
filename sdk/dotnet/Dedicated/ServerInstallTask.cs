@@ -33,8 +33,7 @@ namespace Pulumi.Ovh.Dedicated
     ///         TemplateName = "mydebian12",
     ///         Customization = new Ovh.Me.Inputs.InstallationTemplateCustomizationArgs
     ///         {
-    ///             PostInstallationScriptLink = "http://test",
-    ///             PostInstallationScriptReturn = "ok",
+    ///             CustomHostname = "mytest",
     ///         },
     ///     });
     /// 
@@ -53,6 +52,15 @@ namespace Pulumi.Ovh.Dedicated
     ///             {
     ///                 Key = "sshKey",
     ///                 Value = "ssh-ed25519 AAAAC3...",
+    ///             },
+    ///             new Ovh.Dedicated.Inputs.ServerInstallTaskUserMetadataArgs
+    ///             {
+    ///                 Key = "postInstallationScript",
+    ///                 Value = @"#!/bin/bash
+    ///   echo ""coucou postInstallationScript"" &gt; /opt/coucou
+    ///   cat /etc/machine-id  &gt;&gt; /opt/coucou
+    ///   date ""+%Y-%m-%d %H:%M:%S"" --utc &gt;&gt; /opt/coucou
+    /// ",
     ///             },
     ///         },
     ///     });
@@ -186,6 +194,14 @@ namespace Pulumi.Ovh.Dedicated
     ///             {
     ///                 Key = "language",
     ///                 Value = "fr-fr",
+    ///             },
+    ///             new Ovh.Dedicated.Inputs.ServerInstallTaskUserMetadataArgs
+    ///             {
+    ///                 Key = "postInstallationScript",
+    ///                 Value = @"coucou postInstallationScriptPowerShell"" | Out-File -FilePath ""c:\ovhupd\script\coucou.txt""
+    ///       (Get-ItemProperty -LiteralPath ""Registry::HKLM\SOFTWARE\Microsoft\Cryptography"" -Name ""MachineGuid"").MachineGuid | Out-File -FilePath ""c:\ovhupd\script\coucou.txt"" -Append
+    ///       (Get-Date).ToUniversalTime().ToString(""yyyy-MM-dd HH:mm:ss"") | Out-File -FilePath ""c:\ovhupd\script\coucou.txt"" -Append
+    /// ",
     ///             },
     ///         },
     ///     });

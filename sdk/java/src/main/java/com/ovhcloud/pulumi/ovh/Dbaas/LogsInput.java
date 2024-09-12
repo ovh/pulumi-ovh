@@ -15,6 +15,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -109,6 +110,20 @@ public class LogsInput extends com.pulumi.resources.CustomResource {
         return this.allowedNetworks;
     }
     /**
+     * Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+     * 
+     */
+    @Export(name="autoscale", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoscale;
+
+    /**
+     * @return Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+     * 
+     */
+    public Output<Optional<Boolean>> autoscale() {
+        return Codegen.optional(this.autoscale);
+    }
+    /**
      * Input configuration
      * 
      */
@@ -135,6 +150,20 @@ public class LogsInput extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    /**
+     * Number of instance running (returned by the API)
+     * 
+     */
+    @Export(name="currentNbInstance", refs={Integer.class}, tree="[0]")
+    private Output<Integer> currentNbInstance;
+
+    /**
+     * @return Number of instance running (returned by the API)
+     * 
+     */
+    public Output<Integer> currentNbInstance() {
+        return this.currentNbInstance;
     }
     /**
      * Input description
@@ -221,18 +250,46 @@ public class LogsInput extends com.pulumi.resources.CustomResource {
         return this.isRestartRequired;
     }
     /**
-     * Number of instance running
+     * Maximum number of instances in auto-scaled mode
+     * 
+     */
+    @Export(name="maxScaleInstance", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxScaleInstance;
+
+    /**
+     * @return Maximum number of instances in auto-scaled mode
+     * 
+     */
+    public Output<Optional<Integer>> maxScaleInstance() {
+        return Codegen.optional(this.maxScaleInstance);
+    }
+    /**
+     * Minimum number of instances in auto-scaled mode
+     * 
+     */
+    @Export(name="minScaleInstance", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> minScaleInstance;
+
+    /**
+     * @return Minimum number of instances in auto-scaled mode
+     * 
+     */
+    public Output<Optional<Integer>> minScaleInstance() {
+        return Codegen.optional(this.minScaleInstance);
+    }
+    /**
+     * Number of instance running (input, mutually exclusive with parameter `autoscale`)
      * 
      */
     @Export(name="nbInstance", refs={Integer.class}, tree="[0]")
-    private Output<Integer> nbInstance;
+    private Output</* @Nullable */ Integer> nbInstance;
 
     /**
-     * @return Number of instance running
+     * @return Number of instance running (input, mutually exclusive with parameter `autoscale`)
      * 
      */
-    public Output<Integer> nbInstance() {
-        return this.nbInstance;
+    public Output<Optional<Integer>> nbInstance() {
+        return Codegen.optional(this.nbInstance);
     }
     /**
      * Input IP address

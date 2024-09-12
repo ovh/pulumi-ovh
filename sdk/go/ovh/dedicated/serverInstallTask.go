@@ -39,8 +39,7 @@ import (
 //				BaseTemplateName: pulumi.String("debian12_64"),
 //				TemplateName:     pulumi.String("mydebian12"),
 //				Customization: &me.InstallationTemplateCustomizationArgs{
-//					PostInstallationScriptLink:   pulumi.String("http://test"),
-//					PostInstallationScriptReturn: pulumi.String("ok"),
+//					CustomHostname: pulumi.String("mytest"),
 //				},
 //			})
 //			if err != nil {
@@ -57,6 +56,10 @@ import (
 //					&dedicated.ServerInstallTaskUserMetadataArgs{
 //						Key:   pulumi.String("sshKey"),
 //						Value: pulumi.String("ssh-ed25519 AAAAC3..."),
+//					},
+//					&dedicated.ServerInstallTaskUserMetadataArgs{
+//						Key:   pulumi.String("postInstallationScript"),
+//						Value: pulumi.String("#!/bin/bash\n  echo \"coucou postInstallationScript\" > /opt/coucou\n  cat /etc/machine-id  >> /opt/coucou\n  date \"+%Y-%m-%d %H:%M:%S\" --utc >> /opt/coucou\n"),
 //					},
 //				},
 //			})
@@ -133,7 +136,7 @@ import (
 //					},
 //					&dedicated.ServerInstallTaskUserMetadataArgs{
 //						Key: pulumi.String("configDriveUserData"),
-//						Value: pulumi.String(fmt.Sprintf(`#cloud-config
+//						Value: pulumi.Sprintf(`#cloud-config
 //
 // ssh_authorized_keys:
 //   - %v
@@ -153,7 +156,7 @@ import (
 //   - tree
 //
 // final_message: The system is finally up, after $UPTIME seconds
-// `, data.Ovh_me_ssh_key.Mykey.Key, data.Ovh_me_ssh_key.Mykey.Key)),
+// `, data.Ovh_me_ssh_key.Mykey.Key, data.Ovh_me_ssh_key.Mykey.Key),
 //
 //					},
 //				},
@@ -206,6 +209,10 @@ import (
 //					&dedicated.ServerInstallTaskUserMetadataArgs{
 //						Key:   pulumi.String("language"),
 //						Value: pulumi.String("fr-fr"),
+//					},
+//					&dedicated.ServerInstallTaskUserMetadataArgs{
+//						Key:   pulumi.String("postInstallationScript"),
+//						Value: pulumi.String("coucou postInstallationScriptPowerShell\" | Out-File -FilePath \"c:\\ovhupd\\script\\coucou.txt\"\n      (Get-ItemProperty -LiteralPath \"Registry::HKLM\\SOFTWARE\\Microsoft\\Cryptography\" -Name \"MachineGuid\").MachineGuid | Out-File -FilePath \"c:\\ovhupd\\script\\coucou.txt\" -Append\n      (Get-Date).ToUniversalTime().ToString(\"yyyy-MM-dd HH:mm:ss\") | Out-File -FilePath \"c:\\ovhupd\\script\\coucou.txt\" -Append\n"),
 //					},
 //				},
 //			})

@@ -29,16 +29,6 @@ public final class ServerInstallTaskDetails {
      */
     private @Nullable Boolean noRaid;
     /**
-     * @return Indicate the URL where your postinstall customisation script is located.
-     * 
-     */
-    private @Nullable String postInstallationScriptLink;
-    /**
-     * @return Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-     * 
-     */
-    private @Nullable String postInstallationScriptReturn;
-    /**
      * @return soft raid devices.
      * 
      */
@@ -67,20 +57,6 @@ public final class ServerInstallTaskDetails {
         return Optional.ofNullable(this.noRaid);
     }
     /**
-     * @return Indicate the URL where your postinstall customisation script is located.
-     * 
-     */
-    public Optional<String> postInstallationScriptLink() {
-        return Optional.ofNullable(this.postInstallationScriptLink);
-    }
-    /**
-     * @return Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-     * 
-     */
-    public Optional<String> postInstallationScriptReturn() {
-        return Optional.ofNullable(this.postInstallationScriptReturn);
-    }
-    /**
      * @return soft raid devices.
      * 
      */
@@ -100,8 +76,6 @@ public final class ServerInstallTaskDetails {
         private @Nullable String customHostname;
         private @Nullable Integer diskGroupId;
         private @Nullable Boolean noRaid;
-        private @Nullable String postInstallationScriptLink;
-        private @Nullable String postInstallationScriptReturn;
         private @Nullable Integer softRaidDevices;
         public Builder() {}
         public Builder(ServerInstallTaskDetails defaults) {
@@ -109,8 +83,6 @@ public final class ServerInstallTaskDetails {
     	      this.customHostname = defaults.customHostname;
     	      this.diskGroupId = defaults.diskGroupId;
     	      this.noRaid = defaults.noRaid;
-    	      this.postInstallationScriptLink = defaults.postInstallationScriptLink;
-    	      this.postInstallationScriptReturn = defaults.postInstallationScriptReturn;
     	      this.softRaidDevices = defaults.softRaidDevices;
         }
 
@@ -133,18 +105,6 @@ public final class ServerInstallTaskDetails {
             return this;
         }
         @CustomType.Setter
-        public Builder postInstallationScriptLink(@Nullable String postInstallationScriptLink) {
-
-            this.postInstallationScriptLink = postInstallationScriptLink;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder postInstallationScriptReturn(@Nullable String postInstallationScriptReturn) {
-
-            this.postInstallationScriptReturn = postInstallationScriptReturn;
-            return this;
-        }
-        @CustomType.Setter
         public Builder softRaidDevices(@Nullable Integer softRaidDevices) {
 
             this.softRaidDevices = softRaidDevices;
@@ -155,8 +115,6 @@ public final class ServerInstallTaskDetails {
             _resultValue.customHostname = customHostname;
             _resultValue.diskGroupId = diskGroupId;
             _resultValue.noRaid = noRaid;
-            _resultValue.postInstallationScriptLink = postInstallationScriptLink;
-            _resultValue.postInstallationScriptReturn = postInstallationScriptReturn;
             _resultValue.softRaidDevices = softRaidDevices;
             return _resultValue;
         }

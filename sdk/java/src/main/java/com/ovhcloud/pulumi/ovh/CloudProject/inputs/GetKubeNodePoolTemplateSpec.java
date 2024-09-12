@@ -5,7 +5,6 @@ package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,13 +22,13 @@ public final class GetKubeNodePoolTemplateSpec extends com.pulumi.resources.Invo
      * 
      */
     @Import(name="taints")
-    private @Nullable List<Map<String,Object>> taints;
+    private @Nullable List<Map<String,String>> taints;
 
     /**
      * @return taints
      * 
      */
-    public Optional<List<Map<String,Object>>> taints() {
+    public Optional<List<Map<String,String>>> taints() {
         return Optional.ofNullable(this.taints);
     }
 
@@ -79,7 +78,7 @@ public final class GetKubeNodePoolTemplateSpec extends com.pulumi.resources.Invo
          * @return builder
          * 
          */
-        public Builder taints(@Nullable List<Map<String,Object>> taints) {
+        public Builder taints(@Nullable List<Map<String,String>> taints) {
             $.taints = taints;
             return this;
         }
@@ -90,7 +89,7 @@ public final class GetKubeNodePoolTemplateSpec extends com.pulumi.resources.Invo
          * @return builder
          * 
          */
-        public Builder taints(Map<String,Object>... taints) {
+        public Builder taints(Map<String,String>... taints) {
             return taints(List.of(taints));
         }
 

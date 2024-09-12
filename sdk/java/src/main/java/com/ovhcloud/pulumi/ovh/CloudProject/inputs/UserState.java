@@ -6,7 +6,6 @@ package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.UserRoleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -55,14 +54,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="openstackRc")
-    private @Nullable Output<Map<String,Object>> openstackRc;
+    private @Nullable Output<Map<String,String>> openstackRc;
 
     /**
      * @return a convenient map representing an openstack_rc file.
      * Note: no password nor sensitive token is set in this map.
      * 
      */
-    public Optional<Output<Map<String,Object>>> openstackRc() {
+    public Optional<Output<Map<String,String>>> openstackRc() {
         return Optional.ofNullable(this.openstackRc);
     }
 
@@ -285,7 +284,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder openstackRc(@Nullable Output<Map<String,Object>> openstackRc) {
+        public Builder openstackRc(@Nullable Output<Map<String,String>> openstackRc) {
             $.openstackRc = openstackRc;
             return this;
         }
@@ -297,7 +296,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder openstackRc(Map<String,Object> openstackRc) {
+        public Builder openstackRc(Map<String,String> openstackRc) {
             return openstackRc(Output.of(openstackRc));
         }
 

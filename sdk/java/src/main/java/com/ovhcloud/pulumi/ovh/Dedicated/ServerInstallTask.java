@@ -61,8 +61,7 @@ import javax.annotation.Nullable;
  *             .baseTemplateName("debian12_64")
  *             .templateName("mydebian12")
  *             .customization(InstallationTemplateCustomizationArgs.builder()
- *                 .postInstallationScriptLink("http://test")
- *                 .postInstallationScriptReturn("ok")
+ *                 .customHostname("mytest")
  *                 .build())
  *             .build());
  * 
@@ -73,10 +72,20 @@ import javax.annotation.Nullable;
  *             .details(ServerInstallTaskDetailsArgs.builder()
  *                 .customHostname("mytest")
  *                 .build())
- *             .userMetadatas(ServerInstallTaskUserMetadataArgs.builder()
- *                 .key("sshKey")
- *                 .value("ssh-ed25519 AAAAC3...")
- *                 .build())
+ *             .userMetadatas(            
+ *                 ServerInstallTaskUserMetadataArgs.builder()
+ *                     .key("sshKey")
+ *                     .value("ssh-ed25519 AAAAC3...")
+ *                     .build(),
+ *                 ServerInstallTaskUserMetadataArgs.builder()
+ *                     .key("postInstallationScript")
+ *                     .value("""
+ * #!/bin/bash
+ *   echo "coucou postInstallationScript" > /opt/coucou
+ *   cat /etc/machine-id  >> /opt/coucou
+ *   date "+%Y-%m-%d %H:%M:%S" --utc >> /opt/coucou
+ *                     """)
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -234,10 +243,19 @@ import javax.annotation.Nullable;
  *             .details(ServerInstallTaskDetailsArgs.builder()
  *                 .customHostname("mytest")
  *                 .build())
- *             .userMetadatas(ServerInstallTaskUserMetadataArgs.builder()
- *                 .key("language")
- *                 .value("fr-fr")
- *                 .build())
+ *             .userMetadatas(            
+ *                 ServerInstallTaskUserMetadataArgs.builder()
+ *                     .key("language")
+ *                     .value("fr-fr")
+ *                     .build(),
+ *                 ServerInstallTaskUserMetadataArgs.builder()
+ *                     .key("postInstallationScript")
+ *                     .value("""
+ * coucou postInstallationScriptPowerShell" | Out-File -FilePath "c:\ovhupd\script\coucou.txt"
+ *       (Get-ItemProperty -LiteralPath "Registry::HKLM\SOFTWARE\Microsoft\Cryptography" -Name "MachineGuid").MachineGuid | Out-File -FilePath "c:\ovhupd\script\coucou.txt" -Append
+ *       (Get-Date).ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") | Out-File -FilePath "c:\ovhupd\script\coucou.txt" -Append
+ *                     """)
+ *                     .build())
  *             .build());
  * 
  *     }

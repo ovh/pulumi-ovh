@@ -300,7 +300,7 @@ class Alerting(pulumi.CustomResource):
             creation_date: Optional[pulumi.Input[str]] = None,
             delay: Optional[pulumi.Input[float]] = None,
             email: Optional[pulumi.Input[str]] = None,
-            formatted_monthly_threshold: Optional[pulumi.Input[pulumi.InputType['AlertingFormattedMonthlyThresholdArgs']]] = None,
+            formatted_monthly_threshold: Optional[pulumi.Input[Union['AlertingFormattedMonthlyThresholdArgs', 'AlertingFormattedMonthlyThresholdArgsDict']]] = None,
             monthly_threshold: Optional[pulumi.Input[float]] = None,
             service_name: Optional[pulumi.Input[str]] = None) -> 'Alerting':
         """
@@ -313,7 +313,7 @@ class Alerting(pulumi.CustomResource):
         :param pulumi.Input[str] creation_date: Alerting creation date
         :param pulumi.Input[float] delay: Delay between two alerts in seconds
         :param pulumi.Input[str] email: Email to contact
-        :param pulumi.Input[pulumi.InputType['AlertingFormattedMonthlyThresholdArgs']] formatted_monthly_threshold: Formatted monthly threshold for this alerting
+        :param pulumi.Input[Union['AlertingFormattedMonthlyThresholdArgs', 'AlertingFormattedMonthlyThresholdArgsDict']] formatted_monthly_threshold: Formatted monthly threshold for this alerting
         :param pulumi.Input[float] monthly_threshold: Monthly threshold for this alerting in currency
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.

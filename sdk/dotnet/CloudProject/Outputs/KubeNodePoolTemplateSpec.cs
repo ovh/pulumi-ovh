@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// <summary>
         /// taints
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, object>> Taints;
+        public readonly ImmutableArray<ImmutableDictionary<string, string>> Taints;
         /// <summary>
         /// unschedulable
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
 
         [OutputConstructor]
         private KubeNodePoolTemplateSpec(
-            ImmutableArray<ImmutableDictionary<string, object>> taints,
+            ImmutableArray<ImmutableDictionary<string, string>> taints,
 
             bool unschedulable)
         {

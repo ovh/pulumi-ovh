@@ -17,26 +17,11 @@ namespace Pulumi.Ovh.Me.Outputs
         /// Set up the server using the provided hostname instead of the default hostname.
         /// </summary>
         public readonly string? CustomHostname;
-        /// <summary>
-        /// Indicate the URL where your postinstall customisation script is located.
-        /// </summary>
-        public readonly string? PostInstallationScriptLink;
-        /// <summary>
-        /// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        /// </summary>
-        public readonly string? PostInstallationScriptReturn;
 
         [OutputConstructor]
-        private InstallationTemplateCustomization(
-            string? customHostname,
-
-            string? postInstallationScriptLink,
-
-            string? postInstallationScriptReturn)
+        private InstallationTemplateCustomization(string? customHostname)
         {
             CustomHostname = customHostname;
-            PostInstallationScriptLink = postInstallationScriptLink;
-            PostInstallationScriptReturn = postInstallationScriptReturn;
         }
     }
 }

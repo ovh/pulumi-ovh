@@ -14,6 +14,7 @@ from .get_server_specifications_network import *
 from .nas_ha_partition import *
 from .nas_ha_partition_access import *
 from .nas_ha_partition_snapshot import *
+from .server import *
 from .server_install_task import *
 from .server_networking import *
 from .server_reboot_task import *

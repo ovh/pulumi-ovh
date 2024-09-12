@@ -298,11 +298,11 @@ class Vrack(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VrackOrderArgs', 'VrackOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['VrackPlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackPlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['VrackPlanArgs', 'VrackPlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VrackPlanOptionArgs', 'VrackPlanOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -320,11 +320,11 @@ class Vrack(pulumi.CustomResource):
         vrack_vrack = ovh.vrack.Vrack("vrackVrack",
             ovh_subsidiary=mycart.ovh_subsidiary,
             description="my vrack",
-            plan=ovh.vrack.VrackPlanArgs(
-                duration=vrack_cart_product_plan.selected_prices[0].duration,
-                plan_code=vrack_cart_product_plan.plan_code,
-                pricing_mode=vrack_cart_product_plan.selected_prices[0].pricing_mode,
-            ))
+            plan={
+                "duration": vrack_cart_product_plan.selected_prices[0].duration,
+                "plan_code": vrack_cart_product_plan.plan_code,
+                "pricing_mode": vrack_cart_product_plan.selected_prices[0].pricing_mode,
+            })
         ```
 
         ## Import
@@ -341,11 +341,11 @@ class Vrack(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: yourvrackdescription
         :param pulumi.Input[str] name: yourvrackname
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackOrderArgs']]]] orders: Details about an Order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VrackOrderArgs', 'VrackOrderArgsDict']]]] orders: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['VrackPlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackPlanOptionArgs']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Union['VrackPlanArgs', 'VrackPlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VrackPlanOptionArgs', 'VrackPlanOptionArgsDict']]]] plan_options: Product Plan to order
         """
         ...
     @overload
@@ -369,11 +369,11 @@ class Vrack(pulumi.CustomResource):
         vrack_vrack = ovh.vrack.Vrack("vrackVrack",
             ovh_subsidiary=mycart.ovh_subsidiary,
             description="my vrack",
-            plan=ovh.vrack.VrackPlanArgs(
-                duration=vrack_cart_product_plan.selected_prices[0].duration,
-                plan_code=vrack_cart_product_plan.plan_code,
-                pricing_mode=vrack_cart_product_plan.selected_prices[0].pricing_mode,
-            ))
+            plan={
+                "duration": vrack_cart_product_plan.selected_prices[0].duration,
+                "plan_code": vrack_cart_product_plan.plan_code,
+                "pricing_mode": vrack_cart_product_plan.selected_prices[0].pricing_mode,
+            })
         ```
 
         ## Import
@@ -403,11 +403,11 @@ class Vrack(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VrackOrderArgs', 'VrackOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['VrackPlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackPlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['VrackPlanArgs', 'VrackPlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VrackPlanOptionArgs', 'VrackPlanOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -443,11 +443,11 @@ class Vrack(pulumi.CustomResource):
             vrack_urn: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackOrderArgs']]]]] = None,
+            orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VrackOrderArgs', 'VrackOrderArgsDict']]]]] = None,
             ovh_subsidiary: Optional[pulumi.Input[str]] = None,
             payment_mean: Optional[pulumi.Input[str]] = None,
-            plan: Optional[pulumi.Input[pulumi.InputType['VrackPlanArgs']]] = None,
-            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackPlanOptionArgs']]]]] = None,
+            plan: Optional[pulumi.Input[Union['VrackPlanArgs', 'VrackPlanArgsDict']]] = None,
+            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VrackPlanOptionArgs', 'VrackPlanOptionArgsDict']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None) -> 'Vrack':
         """
         Get an existing Vrack resource's state with the given name, id, and optional extra
@@ -459,11 +459,11 @@ class Vrack(pulumi.CustomResource):
         :param pulumi.Input[str] vrack_urn: The URN of the vrack, used with IAM permissions
         :param pulumi.Input[str] description: yourvrackdescription
         :param pulumi.Input[str] name: yourvrackname
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackOrderArgs']]]] orders: Details about an Order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VrackOrderArgs', 'VrackOrderArgsDict']]]] orders: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['VrackPlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VrackPlanOptionArgs']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Union['VrackPlanArgs', 'VrackPlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VrackPlanOptionArgs', 'VrackPlanOptionArgsDict']]]] plan_options: Product Plan to order
         :param pulumi.Input[str] service_name: The internal name of your vrack
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

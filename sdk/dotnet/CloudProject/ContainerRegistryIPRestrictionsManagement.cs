@@ -52,7 +52,7 @@ namespace Pulumi.Ovh.CloudProject
         /// IP restrictions applied on Harbor UI and API.
         /// </summary>
         [Output("ipRestrictions")]
-        public Output<ImmutableArray<ImmutableDictionary<string, object>>> IpRestrictions { get; private set; } = null!;
+        public Output<ImmutableArray<ImmutableDictionary<string, string>>> IpRestrictions { get; private set; } = null!;
 
         /// <summary>
         /// The id of the Managed Private Registry.
@@ -114,14 +114,14 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class ContainerRegistryIPRestrictionsManagementArgs : global::Pulumi.ResourceArgs
     {
         [Input("ipRestrictions", required: true)]
-        private InputList<ImmutableDictionary<string, object>>? _ipRestrictions;
+        private InputList<ImmutableDictionary<string, string>>? _ipRestrictions;
 
         /// <summary>
         /// IP restrictions applied on Harbor UI and API.
         /// </summary>
-        public InputList<ImmutableDictionary<string, object>> IpRestrictions
+        public InputList<ImmutableDictionary<string, string>> IpRestrictions
         {
-            get => _ipRestrictions ?? (_ipRestrictions = new InputList<ImmutableDictionary<string, object>>());
+            get => _ipRestrictions ?? (_ipRestrictions = new InputList<ImmutableDictionary<string, string>>());
             set => _ipRestrictions = value;
         }
 
@@ -146,14 +146,14 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class ContainerRegistryIPRestrictionsManagementState : global::Pulumi.ResourceArgs
     {
         [Input("ipRestrictions")]
-        private InputList<ImmutableDictionary<string, object>>? _ipRestrictions;
+        private InputList<ImmutableDictionary<string, string>>? _ipRestrictions;
 
         /// <summary>
         /// IP restrictions applied on Harbor UI and API.
         /// </summary>
-        public InputList<ImmutableDictionary<string, object>> IpRestrictions
+        public InputList<ImmutableDictionary<string, string>> IpRestrictions
         {
-            get => _ipRestrictions ?? (_ipRestrictions = new InputList<ImmutableDictionary<string, object>>());
+            get => _ipRestrictions ?? (_ipRestrictions = new InputList<ImmutableDictionary<string, string>>());
             set => _ipRestrictions = value;
         }
 

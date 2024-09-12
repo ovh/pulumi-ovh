@@ -38,10 +38,10 @@ import (
 //			_, err = CloudProject.NewContainerRegistryIPRestrictionsRegistry(ctx, "my-registry-iprestrictions", &CloudProject.ContainerRegistryIPRestrictionsRegistryArgs{
 //				ServiceName: pulumi.Any(ovh_cloud_project_containerregistry.Registry.Service_name),
 //				RegistryId:  pulumi.Any(ovh_cloud_project_containerregistry.Registry.Id),
-//				IpRestrictions: pulumi.MapArray{
-//					pulumi.Map{
-//						"ip_block":    pulumi.Any("xxx.xxx.xxx.xxx/xx"),
-//						"description": pulumi.Any("xxxxxxx"),
+//				IpRestrictions: pulumi.StringMapArray{
+//					pulumi.StringMap{
+//						"ip_block":    pulumi.String("xxx.xxx.xxx.xxx/xx"),
+//						"description": pulumi.String("xxxxxxx"),
 //					},
 //				},
 //			})
@@ -57,7 +57,7 @@ type ContainerRegistryIPRestrictionsRegistry struct {
 	pulumi.CustomResourceState
 
 	// IP restrictions applied on artifact manager component.
-	IpRestrictions pulumi.MapArrayOutput `pulumi:"ipRestrictions"`
+	IpRestrictions pulumi.StringMapArrayOutput `pulumi:"ipRestrictions"`
 	// The id of the Managed Private Registry.
 	RegistryId pulumi.StringOutput `pulumi:"registryId"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -104,7 +104,7 @@ func GetContainerRegistryIPRestrictionsRegistry(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ContainerRegistryIPRestrictionsRegistry resources.
 type containerRegistryIPRestrictionsRegistryState struct {
 	// IP restrictions applied on artifact manager component.
-	IpRestrictions []map[string]interface{} `pulumi:"ipRestrictions"`
+	IpRestrictions []map[string]string `pulumi:"ipRestrictions"`
 	// The id of the Managed Private Registry.
 	RegistryId *string `pulumi:"registryId"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -113,7 +113,7 @@ type containerRegistryIPRestrictionsRegistryState struct {
 
 type ContainerRegistryIPRestrictionsRegistryState struct {
 	// IP restrictions applied on artifact manager component.
-	IpRestrictions pulumi.MapArrayInput
+	IpRestrictions pulumi.StringMapArrayInput
 	// The id of the Managed Private Registry.
 	RegistryId pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -126,7 +126,7 @@ func (ContainerRegistryIPRestrictionsRegistryState) ElementType() reflect.Type {
 
 type containerRegistryIPRestrictionsRegistryArgs struct {
 	// IP restrictions applied on artifact manager component.
-	IpRestrictions []map[string]interface{} `pulumi:"ipRestrictions"`
+	IpRestrictions []map[string]string `pulumi:"ipRestrictions"`
 	// The id of the Managed Private Registry.
 	RegistryId string `pulumi:"registryId"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -136,7 +136,7 @@ type containerRegistryIPRestrictionsRegistryArgs struct {
 // The set of arguments for constructing a ContainerRegistryIPRestrictionsRegistry resource.
 type ContainerRegistryIPRestrictionsRegistryArgs struct {
 	// IP restrictions applied on artifact manager component.
-	IpRestrictions pulumi.MapArrayInput
+	IpRestrictions pulumi.StringMapArrayInput
 	// The id of the Managed Private Registry.
 	RegistryId pulumi.StringInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -231,8 +231,8 @@ func (o ContainerRegistryIPRestrictionsRegistryOutput) ToContainerRegistryIPRest
 }
 
 // IP restrictions applied on artifact manager component.
-func (o ContainerRegistryIPRestrictionsRegistryOutput) IpRestrictions() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v *ContainerRegistryIPRestrictionsRegistry) pulumi.MapArrayOutput { return v.IpRestrictions }).(pulumi.MapArrayOutput)
+func (o ContainerRegistryIPRestrictionsRegistryOutput) IpRestrictions() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *ContainerRegistryIPRestrictionsRegistry) pulumi.StringMapArrayOutput { return v.IpRestrictions }).(pulumi.StringMapArrayOutput)
 }
 
 // The id of the Managed Private Registry.

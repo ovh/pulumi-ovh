@@ -13,6 +13,394 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ServerDetails struct {
+	// Personnal hostname to use in server reinstallation
+	CustomHostname *string `pulumi:"customHostname"`
+	// Disk group id to process install on (only available for some templates)
+	DiskGroupId *float64 `pulumi:"diskGroupId"`
+	// true if you want to install only on the first disk
+	NoRaid *bool `pulumi:"noRaid"`
+	// Number of devices to use for system's software RAID
+	SoftRaidDevices *float64 `pulumi:"softRaidDevices"`
+}
+
+// ServerDetailsInput is an input type that accepts ServerDetailsArgs and ServerDetailsOutput values.
+// You can construct a concrete instance of `ServerDetailsInput` via:
+//
+//	ServerDetailsArgs{...}
+type ServerDetailsInput interface {
+	pulumi.Input
+
+	ToServerDetailsOutput() ServerDetailsOutput
+	ToServerDetailsOutputWithContext(context.Context) ServerDetailsOutput
+}
+
+type ServerDetailsArgs struct {
+	// Personnal hostname to use in server reinstallation
+	CustomHostname pulumi.StringPtrInput `pulumi:"customHostname"`
+	// Disk group id to process install on (only available for some templates)
+	DiskGroupId pulumi.Float64PtrInput `pulumi:"diskGroupId"`
+	// true if you want to install only on the first disk
+	NoRaid pulumi.BoolPtrInput `pulumi:"noRaid"`
+	// Number of devices to use for system's software RAID
+	SoftRaidDevices pulumi.Float64PtrInput `pulumi:"softRaidDevices"`
+}
+
+func (ServerDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerDetails)(nil)).Elem()
+}
+
+func (i ServerDetailsArgs) ToServerDetailsOutput() ServerDetailsOutput {
+	return i.ToServerDetailsOutputWithContext(context.Background())
+}
+
+func (i ServerDetailsArgs) ToServerDetailsOutputWithContext(ctx context.Context) ServerDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerDetailsOutput)
+}
+
+func (i ServerDetailsArgs) ToServerDetailsPtrOutput() ServerDetailsPtrOutput {
+	return i.ToServerDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i ServerDetailsArgs) ToServerDetailsPtrOutputWithContext(ctx context.Context) ServerDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerDetailsOutput).ToServerDetailsPtrOutputWithContext(ctx)
+}
+
+// ServerDetailsPtrInput is an input type that accepts ServerDetailsArgs, ServerDetailsPtr and ServerDetailsPtrOutput values.
+// You can construct a concrete instance of `ServerDetailsPtrInput` via:
+//
+//	        ServerDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerDetailsPtrInput interface {
+	pulumi.Input
+
+	ToServerDetailsPtrOutput() ServerDetailsPtrOutput
+	ToServerDetailsPtrOutputWithContext(context.Context) ServerDetailsPtrOutput
+}
+
+type serverDetailsPtrType ServerDetailsArgs
+
+func ServerDetailsPtr(v *ServerDetailsArgs) ServerDetailsPtrInput {
+	return (*serverDetailsPtrType)(v)
+}
+
+func (*serverDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerDetails)(nil)).Elem()
+}
+
+func (i *serverDetailsPtrType) ToServerDetailsPtrOutput() ServerDetailsPtrOutput {
+	return i.ToServerDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *serverDetailsPtrType) ToServerDetailsPtrOutputWithContext(ctx context.Context) ServerDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerDetailsPtrOutput)
+}
+
+type ServerDetailsOutput struct{ *pulumi.OutputState }
+
+func (ServerDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerDetails)(nil)).Elem()
+}
+
+func (o ServerDetailsOutput) ToServerDetailsOutput() ServerDetailsOutput {
+	return o
+}
+
+func (o ServerDetailsOutput) ToServerDetailsOutputWithContext(ctx context.Context) ServerDetailsOutput {
+	return o
+}
+
+func (o ServerDetailsOutput) ToServerDetailsPtrOutput() ServerDetailsPtrOutput {
+	return o.ToServerDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o ServerDetailsOutput) ToServerDetailsPtrOutputWithContext(ctx context.Context) ServerDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerDetails) *ServerDetails {
+		return &v
+	}).(ServerDetailsPtrOutput)
+}
+
+// Personnal hostname to use in server reinstallation
+func (o ServerDetailsOutput) CustomHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerDetails) *string { return v.CustomHostname }).(pulumi.StringPtrOutput)
+}
+
+// Disk group id to process install on (only available for some templates)
+func (o ServerDetailsOutput) DiskGroupId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerDetails) *float64 { return v.DiskGroupId }).(pulumi.Float64PtrOutput)
+}
+
+// true if you want to install only on the first disk
+func (o ServerDetailsOutput) NoRaid() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerDetails) *bool { return v.NoRaid }).(pulumi.BoolPtrOutput)
+}
+
+// Number of devices to use for system's software RAID
+func (o ServerDetailsOutput) SoftRaidDevices() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerDetails) *float64 { return v.SoftRaidDevices }).(pulumi.Float64PtrOutput)
+}
+
+type ServerDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerDetails)(nil)).Elem()
+}
+
+func (o ServerDetailsPtrOutput) ToServerDetailsPtrOutput() ServerDetailsPtrOutput {
+	return o
+}
+
+func (o ServerDetailsPtrOutput) ToServerDetailsPtrOutputWithContext(ctx context.Context) ServerDetailsPtrOutput {
+	return o
+}
+
+func (o ServerDetailsPtrOutput) Elem() ServerDetailsOutput {
+	return o.ApplyT(func(v *ServerDetails) ServerDetails {
+		if v != nil {
+			return *v
+		}
+		var ret ServerDetails
+		return ret
+	}).(ServerDetailsOutput)
+}
+
+// Personnal hostname to use in server reinstallation
+func (o ServerDetailsPtrOutput) CustomHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomHostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Disk group id to process install on (only available for some templates)
+func (o ServerDetailsPtrOutput) DiskGroupId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ServerDetails) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiskGroupId
+	}).(pulumi.Float64PtrOutput)
+}
+
+// true if you want to install only on the first disk
+func (o ServerDetailsPtrOutput) NoRaid() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoRaid
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of devices to use for system's software RAID
+func (o ServerDetailsPtrOutput) SoftRaidDevices() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ServerDetails) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SoftRaidDevices
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ServerIam struct {
+	// Resource display name
+	DisplayName *string `pulumi:"displayName"`
+	// Unique identifier of the resource in the IAM
+	Id *string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
+	Tags map[string]string `pulumi:"tags"`
+	// URN of the private database, used when writing IAM policies
+	Urn *string `pulumi:"urn"`
+}
+
+// ServerIamInput is an input type that accepts ServerIamArgs and ServerIamOutput values.
+// You can construct a concrete instance of `ServerIamInput` via:
+//
+//	ServerIamArgs{...}
+type ServerIamInput interface {
+	pulumi.Input
+
+	ToServerIamOutput() ServerIamOutput
+	ToServerIamOutputWithContext(context.Context) ServerIamOutput
+}
+
+type ServerIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Unique identifier of the resource in the IAM
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// URN of the private database, used when writing IAM policies
+	Urn pulumi.StringPtrInput `pulumi:"urn"`
+}
+
+func (ServerIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerIam)(nil)).Elem()
+}
+
+func (i ServerIamArgs) ToServerIamOutput() ServerIamOutput {
+	return i.ToServerIamOutputWithContext(context.Background())
+}
+
+func (i ServerIamArgs) ToServerIamOutputWithContext(ctx context.Context) ServerIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerIamOutput)
+}
+
+func (i ServerIamArgs) ToServerIamPtrOutput() ServerIamPtrOutput {
+	return i.ToServerIamPtrOutputWithContext(context.Background())
+}
+
+func (i ServerIamArgs) ToServerIamPtrOutputWithContext(ctx context.Context) ServerIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerIamOutput).ToServerIamPtrOutputWithContext(ctx)
+}
+
+// ServerIamPtrInput is an input type that accepts ServerIamArgs, ServerIamPtr and ServerIamPtrOutput values.
+// You can construct a concrete instance of `ServerIamPtrInput` via:
+//
+//	        ServerIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerIamPtrInput interface {
+	pulumi.Input
+
+	ToServerIamPtrOutput() ServerIamPtrOutput
+	ToServerIamPtrOutputWithContext(context.Context) ServerIamPtrOutput
+}
+
+type serverIamPtrType ServerIamArgs
+
+func ServerIamPtr(v *ServerIamArgs) ServerIamPtrInput {
+	return (*serverIamPtrType)(v)
+}
+
+func (*serverIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerIam)(nil)).Elem()
+}
+
+func (i *serverIamPtrType) ToServerIamPtrOutput() ServerIamPtrOutput {
+	return i.ToServerIamPtrOutputWithContext(context.Background())
+}
+
+func (i *serverIamPtrType) ToServerIamPtrOutputWithContext(ctx context.Context) ServerIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerIamPtrOutput)
+}
+
+type ServerIamOutput struct{ *pulumi.OutputState }
+
+func (ServerIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerIam)(nil)).Elem()
+}
+
+func (o ServerIamOutput) ToServerIamOutput() ServerIamOutput {
+	return o
+}
+
+func (o ServerIamOutput) ToServerIamOutputWithContext(ctx context.Context) ServerIamOutput {
+	return o
+}
+
+func (o ServerIamOutput) ToServerIamPtrOutput() ServerIamPtrOutput {
+	return o.ToServerIamPtrOutputWithContext(context.Background())
+}
+
+func (o ServerIamOutput) ToServerIamPtrOutputWithContext(ctx context.Context) ServerIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerIam) *ServerIam {
+		return &v
+	}).(ServerIamPtrOutput)
+}
+
+// Resource display name
+func (o ServerIamOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerIam) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the resource in the IAM
+func (o ServerIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with `ovh:`
+func (o ServerIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServerIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// URN of the private database, used when writing IAM policies
+func (o ServerIamOutput) Urn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerIam) *string { return v.Urn }).(pulumi.StringPtrOutput)
+}
+
+type ServerIamPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerIam)(nil)).Elem()
+}
+
+func (o ServerIamPtrOutput) ToServerIamPtrOutput() ServerIamPtrOutput {
+	return o
+}
+
+func (o ServerIamPtrOutput) ToServerIamPtrOutputWithContext(ctx context.Context) ServerIamPtrOutput {
+	return o
+}
+
+func (o ServerIamPtrOutput) Elem() ServerIamOutput {
+	return o.ApplyT(func(v *ServerIam) ServerIam {
+		if v != nil {
+			return *v
+		}
+		var ret ServerIam
+		return ret
+	}).(ServerIamOutput)
+}
+
+// Resource display name
+func (o ServerIamPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the resource in the IAM
+func (o ServerIamPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with `ovh:`
+func (o ServerIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// URN of the private database, used when writing IAM policies
+func (o ServerIamPtrOutput) Urn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Urn
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServerInstallTaskDetails struct {
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname *string `pulumi:"customHostname"`
@@ -20,10 +408,6 @@ type ServerInstallTaskDetails struct {
 	DiskGroupId *int `pulumi:"diskGroupId"`
 	// Set to true to disable RAID.
 	NoRaid *bool `pulumi:"noRaid"`
-	// Indicate the URL where your postinstall customisation script is located.
-	PostInstallationScriptLink *string `pulumi:"postInstallationScriptLink"`
-	// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-	PostInstallationScriptReturn *string `pulumi:"postInstallationScriptReturn"`
 	// soft raid devices.
 	SoftRaidDevices *int `pulumi:"softRaidDevices"`
 }
@@ -46,10 +430,6 @@ type ServerInstallTaskDetailsArgs struct {
 	DiskGroupId pulumi.IntPtrInput `pulumi:"diskGroupId"`
 	// Set to true to disable RAID.
 	NoRaid pulumi.BoolPtrInput `pulumi:"noRaid"`
-	// Indicate the URL where your postinstall customisation script is located.
-	PostInstallationScriptLink pulumi.StringPtrInput `pulumi:"postInstallationScriptLink"`
-	// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-	PostInstallationScriptReturn pulumi.StringPtrInput `pulumi:"postInstallationScriptReturn"`
 	// soft raid devices.
 	SoftRaidDevices pulumi.IntPtrInput `pulumi:"softRaidDevices"`
 }
@@ -146,16 +526,6 @@ func (o ServerInstallTaskDetailsOutput) NoRaid() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.NoRaid }).(pulumi.BoolPtrOutput)
 }
 
-// Indicate the URL where your postinstall customisation script is located.
-func (o ServerInstallTaskDetailsOutput) PostInstallationScriptLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.PostInstallationScriptLink }).(pulumi.StringPtrOutput)
-}
-
-// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-func (o ServerInstallTaskDetailsOutput) PostInstallationScriptReturn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.PostInstallationScriptReturn }).(pulumi.StringPtrOutput)
-}
-
 // soft raid devices.
 func (o ServerInstallTaskDetailsOutput) SoftRaidDevices() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerInstallTaskDetails) *int { return v.SoftRaidDevices }).(pulumi.IntPtrOutput)
@@ -213,26 +583,6 @@ func (o ServerInstallTaskDetailsPtrOutput) NoRaid() pulumi.BoolPtrOutput {
 		}
 		return v.NoRaid
 	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicate the URL where your postinstall customisation script is located.
-func (o ServerInstallTaskDetailsPtrOutput) PostInstallationScriptLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PostInstallationScriptLink
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-func (o ServerInstallTaskDetailsPtrOutput) PostInstallationScriptReturn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PostInstallationScriptReturn
-	}).(pulumi.StringPtrOutput)
 }
 
 // soft raid devices.
@@ -455,6 +805,890 @@ func (o ServerNetworkingInterfaceArrayOutput) Index(i pulumi.IntInput) ServerNet
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerNetworkingInterface {
 		return vs[0].([]ServerNetworkingInterface)[vs[1].(int)]
 	}).(ServerNetworkingInterfaceOutput)
+}
+
+type ServerOrder struct {
+	Date *string `pulumi:"date"`
+	// Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+	Details        []ServerOrderDetail `pulumi:"details"`
+	ExpirationDate *string             `pulumi:"expirationDate"`
+	OrderId        *float64            `pulumi:"orderId"`
+}
+
+// ServerOrderInput is an input type that accepts ServerOrderArgs and ServerOrderOutput values.
+// You can construct a concrete instance of `ServerOrderInput` via:
+//
+//	ServerOrderArgs{...}
+type ServerOrderInput interface {
+	pulumi.Input
+
+	ToServerOrderOutput() ServerOrderOutput
+	ToServerOrderOutputWithContext(context.Context) ServerOrderOutput
+}
+
+type ServerOrderArgs struct {
+	Date pulumi.StringPtrInput `pulumi:"date"`
+	// Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+	Details        ServerOrderDetailArrayInput `pulumi:"details"`
+	ExpirationDate pulumi.StringPtrInput       `pulumi:"expirationDate"`
+	OrderId        pulumi.Float64PtrInput      `pulumi:"orderId"`
+}
+
+func (ServerOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerOrder)(nil)).Elem()
+}
+
+func (i ServerOrderArgs) ToServerOrderOutput() ServerOrderOutput {
+	return i.ToServerOrderOutputWithContext(context.Background())
+}
+
+func (i ServerOrderArgs) ToServerOrderOutputWithContext(ctx context.Context) ServerOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerOrderOutput)
+}
+
+func (i ServerOrderArgs) ToServerOrderPtrOutput() ServerOrderPtrOutput {
+	return i.ToServerOrderPtrOutputWithContext(context.Background())
+}
+
+func (i ServerOrderArgs) ToServerOrderPtrOutputWithContext(ctx context.Context) ServerOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerOrderOutput).ToServerOrderPtrOutputWithContext(ctx)
+}
+
+// ServerOrderPtrInput is an input type that accepts ServerOrderArgs, ServerOrderPtr and ServerOrderPtrOutput values.
+// You can construct a concrete instance of `ServerOrderPtrInput` via:
+//
+//	        ServerOrderArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerOrderPtrInput interface {
+	pulumi.Input
+
+	ToServerOrderPtrOutput() ServerOrderPtrOutput
+	ToServerOrderPtrOutputWithContext(context.Context) ServerOrderPtrOutput
+}
+
+type serverOrderPtrType ServerOrderArgs
+
+func ServerOrderPtr(v *ServerOrderArgs) ServerOrderPtrInput {
+	return (*serverOrderPtrType)(v)
+}
+
+func (*serverOrderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerOrder)(nil)).Elem()
+}
+
+func (i *serverOrderPtrType) ToServerOrderPtrOutput() ServerOrderPtrOutput {
+	return i.ToServerOrderPtrOutputWithContext(context.Background())
+}
+
+func (i *serverOrderPtrType) ToServerOrderPtrOutputWithContext(ctx context.Context) ServerOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerOrderPtrOutput)
+}
+
+type ServerOrderOutput struct{ *pulumi.OutputState }
+
+func (ServerOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerOrder)(nil)).Elem()
+}
+
+func (o ServerOrderOutput) ToServerOrderOutput() ServerOrderOutput {
+	return o
+}
+
+func (o ServerOrderOutput) ToServerOrderOutputWithContext(ctx context.Context) ServerOrderOutput {
+	return o
+}
+
+func (o ServerOrderOutput) ToServerOrderPtrOutput() ServerOrderPtrOutput {
+	return o.ToServerOrderPtrOutputWithContext(context.Background())
+}
+
+func (o ServerOrderOutput) ToServerOrderPtrOutputWithContext(ctx context.Context) ServerOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerOrder) *ServerOrder {
+		return &v
+	}).(ServerOrderPtrOutput)
+}
+
+func (o ServerOrderOutput) Date() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerOrder) *string { return v.Date }).(pulumi.StringPtrOutput)
+}
+
+// Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+func (o ServerOrderOutput) Details() ServerOrderDetailArrayOutput {
+	return o.ApplyT(func(v ServerOrder) []ServerOrderDetail { return v.Details }).(ServerOrderDetailArrayOutput)
+}
+
+func (o ServerOrderOutput) ExpirationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerOrder) *string { return v.ExpirationDate }).(pulumi.StringPtrOutput)
+}
+
+func (o ServerOrderOutput) OrderId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerOrder) *float64 { return v.OrderId }).(pulumi.Float64PtrOutput)
+}
+
+type ServerOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerOrder)(nil)).Elem()
+}
+
+func (o ServerOrderPtrOutput) ToServerOrderPtrOutput() ServerOrderPtrOutput {
+	return o
+}
+
+func (o ServerOrderPtrOutput) ToServerOrderPtrOutputWithContext(ctx context.Context) ServerOrderPtrOutput {
+	return o
+}
+
+func (o ServerOrderPtrOutput) Elem() ServerOrderOutput {
+	return o.ApplyT(func(v *ServerOrder) ServerOrder {
+		if v != nil {
+			return *v
+		}
+		var ret ServerOrder
+		return ret
+	}).(ServerOrderOutput)
+}
+
+func (o ServerOrderPtrOutput) Date() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Date
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+func (o ServerOrderPtrOutput) Details() ServerOrderDetailArrayOutput {
+	return o.ApplyT(func(v *ServerOrder) []ServerOrderDetail {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(ServerOrderDetailArrayOutput)
+}
+
+func (o ServerOrderPtrOutput) ExpirationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationDate
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServerOrderPtrOutput) OrderId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ServerOrder) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.OrderId
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ServerOrderDetail struct {
+	Description *string `pulumi:"description"`
+	// Product type of item in order
+	DetailType    *string  `pulumi:"detailType"`
+	Domain        *string  `pulumi:"domain"`
+	OrderDetailId *float64 `pulumi:"orderDetailId"`
+	Quantity      *string  `pulumi:"quantity"`
+}
+
+// ServerOrderDetailInput is an input type that accepts ServerOrderDetailArgs and ServerOrderDetailOutput values.
+// You can construct a concrete instance of `ServerOrderDetailInput` via:
+//
+//	ServerOrderDetailArgs{...}
+type ServerOrderDetailInput interface {
+	pulumi.Input
+
+	ToServerOrderDetailOutput() ServerOrderDetailOutput
+	ToServerOrderDetailOutputWithContext(context.Context) ServerOrderDetailOutput
+}
+
+type ServerOrderDetailArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Product type of item in order
+	DetailType    pulumi.StringPtrInput  `pulumi:"detailType"`
+	Domain        pulumi.StringPtrInput  `pulumi:"domain"`
+	OrderDetailId pulumi.Float64PtrInput `pulumi:"orderDetailId"`
+	Quantity      pulumi.StringPtrInput  `pulumi:"quantity"`
+}
+
+func (ServerOrderDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerOrderDetail)(nil)).Elem()
+}
+
+func (i ServerOrderDetailArgs) ToServerOrderDetailOutput() ServerOrderDetailOutput {
+	return i.ToServerOrderDetailOutputWithContext(context.Background())
+}
+
+func (i ServerOrderDetailArgs) ToServerOrderDetailOutputWithContext(ctx context.Context) ServerOrderDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerOrderDetailOutput)
+}
+
+// ServerOrderDetailArrayInput is an input type that accepts ServerOrderDetailArray and ServerOrderDetailArrayOutput values.
+// You can construct a concrete instance of `ServerOrderDetailArrayInput` via:
+//
+//	ServerOrderDetailArray{ ServerOrderDetailArgs{...} }
+type ServerOrderDetailArrayInput interface {
+	pulumi.Input
+
+	ToServerOrderDetailArrayOutput() ServerOrderDetailArrayOutput
+	ToServerOrderDetailArrayOutputWithContext(context.Context) ServerOrderDetailArrayOutput
+}
+
+type ServerOrderDetailArray []ServerOrderDetailInput
+
+func (ServerOrderDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerOrderDetail)(nil)).Elem()
+}
+
+func (i ServerOrderDetailArray) ToServerOrderDetailArrayOutput() ServerOrderDetailArrayOutput {
+	return i.ToServerOrderDetailArrayOutputWithContext(context.Background())
+}
+
+func (i ServerOrderDetailArray) ToServerOrderDetailArrayOutputWithContext(ctx context.Context) ServerOrderDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerOrderDetailArrayOutput)
+}
+
+type ServerOrderDetailOutput struct{ *pulumi.OutputState }
+
+func (ServerOrderDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerOrderDetail)(nil)).Elem()
+}
+
+func (o ServerOrderDetailOutput) ToServerOrderDetailOutput() ServerOrderDetailOutput {
+	return o
+}
+
+func (o ServerOrderDetailOutput) ToServerOrderDetailOutputWithContext(ctx context.Context) ServerOrderDetailOutput {
+	return o
+}
+
+func (o ServerOrderDetailOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerOrderDetail) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Product type of item in order
+func (o ServerOrderDetailOutput) DetailType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerOrderDetail) *string { return v.DetailType }).(pulumi.StringPtrOutput)
+}
+
+func (o ServerOrderDetailOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerOrderDetail) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+func (o ServerOrderDetailOutput) OrderDetailId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerOrderDetail) *float64 { return v.OrderDetailId }).(pulumi.Float64PtrOutput)
+}
+
+func (o ServerOrderDetailOutput) Quantity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerOrderDetail) *string { return v.Quantity }).(pulumi.StringPtrOutput)
+}
+
+type ServerOrderDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerOrderDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerOrderDetail)(nil)).Elem()
+}
+
+func (o ServerOrderDetailArrayOutput) ToServerOrderDetailArrayOutput() ServerOrderDetailArrayOutput {
+	return o
+}
+
+func (o ServerOrderDetailArrayOutput) ToServerOrderDetailArrayOutputWithContext(ctx context.Context) ServerOrderDetailArrayOutput {
+	return o
+}
+
+func (o ServerOrderDetailArrayOutput) Index(i pulumi.IntInput) ServerOrderDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerOrderDetail {
+		return vs[0].([]ServerOrderDetail)[vs[1].(int)]
+	}).(ServerOrderDetailOutput)
+}
+
+type ServerPlan struct {
+	Configurations []ServerPlanConfiguration `pulumi:"configurations"`
+	// Duration selected for the purchase of the product
+	Duration string `pulumi:"duration"`
+	// Cart item to be linked
+	ItemId *float64 `pulumi:"itemId"`
+	// Identifier of the option offer
+	PlanCode string `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode string `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity *float64 `pulumi:"quantity"`
+}
+
+// ServerPlanInput is an input type that accepts ServerPlanArgs and ServerPlanOutput values.
+// You can construct a concrete instance of `ServerPlanInput` via:
+//
+//	ServerPlanArgs{...}
+type ServerPlanInput interface {
+	pulumi.Input
+
+	ToServerPlanOutput() ServerPlanOutput
+	ToServerPlanOutputWithContext(context.Context) ServerPlanOutput
+}
+
+type ServerPlanArgs struct {
+	Configurations ServerPlanConfigurationArrayInput `pulumi:"configurations"`
+	// Duration selected for the purchase of the product
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Cart item to be linked
+	ItemId pulumi.Float64PtrInput `pulumi:"itemId"`
+	// Identifier of the option offer
+	PlanCode pulumi.StringInput `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity pulumi.Float64PtrInput `pulumi:"quantity"`
+}
+
+func (ServerPlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerPlan)(nil)).Elem()
+}
+
+func (i ServerPlanArgs) ToServerPlanOutput() ServerPlanOutput {
+	return i.ToServerPlanOutputWithContext(context.Background())
+}
+
+func (i ServerPlanArgs) ToServerPlanOutputWithContext(ctx context.Context) ServerPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerPlanOutput)
+}
+
+// ServerPlanArrayInput is an input type that accepts ServerPlanArray and ServerPlanArrayOutput values.
+// You can construct a concrete instance of `ServerPlanArrayInput` via:
+//
+//	ServerPlanArray{ ServerPlanArgs{...} }
+type ServerPlanArrayInput interface {
+	pulumi.Input
+
+	ToServerPlanArrayOutput() ServerPlanArrayOutput
+	ToServerPlanArrayOutputWithContext(context.Context) ServerPlanArrayOutput
+}
+
+type ServerPlanArray []ServerPlanInput
+
+func (ServerPlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerPlan)(nil)).Elem()
+}
+
+func (i ServerPlanArray) ToServerPlanArrayOutput() ServerPlanArrayOutput {
+	return i.ToServerPlanArrayOutputWithContext(context.Background())
+}
+
+func (i ServerPlanArray) ToServerPlanArrayOutputWithContext(ctx context.Context) ServerPlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerPlanArrayOutput)
+}
+
+type ServerPlanOutput struct{ *pulumi.OutputState }
+
+func (ServerPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerPlan)(nil)).Elem()
+}
+
+func (o ServerPlanOutput) ToServerPlanOutput() ServerPlanOutput {
+	return o
+}
+
+func (o ServerPlanOutput) ToServerPlanOutputWithContext(ctx context.Context) ServerPlanOutput {
+	return o
+}
+
+func (o ServerPlanOutput) Configurations() ServerPlanConfigurationArrayOutput {
+	return o.ApplyT(func(v ServerPlan) []ServerPlanConfiguration { return v.Configurations }).(ServerPlanConfigurationArrayOutput)
+}
+
+// Duration selected for the purchase of the product
+func (o ServerPlanOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPlan) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Cart item to be linked
+func (o ServerPlanOutput) ItemId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerPlan) *float64 { return v.ItemId }).(pulumi.Float64PtrOutput)
+}
+
+// Identifier of the option offer
+func (o ServerPlanOutput) PlanCode() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPlan) string { return v.PlanCode }).(pulumi.StringOutput)
+}
+
+// Pricing mode selected for the purchase of the product
+func (o ServerPlanOutput) PricingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPlan) string { return v.PricingMode }).(pulumi.StringOutput)
+}
+
+// Quantity of product desired
+func (o ServerPlanOutput) Quantity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerPlan) *float64 { return v.Quantity }).(pulumi.Float64PtrOutput)
+}
+
+type ServerPlanArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerPlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerPlan)(nil)).Elem()
+}
+
+func (o ServerPlanArrayOutput) ToServerPlanArrayOutput() ServerPlanArrayOutput {
+	return o
+}
+
+func (o ServerPlanArrayOutput) ToServerPlanArrayOutputWithContext(ctx context.Context) ServerPlanArrayOutput {
+	return o
+}
+
+func (o ServerPlanArrayOutput) Index(i pulumi.IntInput) ServerPlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerPlan {
+		return vs[0].([]ServerPlan)[vs[1].(int)]
+	}).(ServerPlanOutput)
+}
+
+type ServerPlanConfiguration struct {
+	// Label for your configuration item
+	Label string `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value string `pulumi:"value"`
+}
+
+// ServerPlanConfigurationInput is an input type that accepts ServerPlanConfigurationArgs and ServerPlanConfigurationOutput values.
+// You can construct a concrete instance of `ServerPlanConfigurationInput` via:
+//
+//	ServerPlanConfigurationArgs{...}
+type ServerPlanConfigurationInput interface {
+	pulumi.Input
+
+	ToServerPlanConfigurationOutput() ServerPlanConfigurationOutput
+	ToServerPlanConfigurationOutputWithContext(context.Context) ServerPlanConfigurationOutput
+}
+
+type ServerPlanConfigurationArgs struct {
+	// Label for your configuration item
+	Label pulumi.StringInput `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ServerPlanConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerPlanConfiguration)(nil)).Elem()
+}
+
+func (i ServerPlanConfigurationArgs) ToServerPlanConfigurationOutput() ServerPlanConfigurationOutput {
+	return i.ToServerPlanConfigurationOutputWithContext(context.Background())
+}
+
+func (i ServerPlanConfigurationArgs) ToServerPlanConfigurationOutputWithContext(ctx context.Context) ServerPlanConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerPlanConfigurationOutput)
+}
+
+// ServerPlanConfigurationArrayInput is an input type that accepts ServerPlanConfigurationArray and ServerPlanConfigurationArrayOutput values.
+// You can construct a concrete instance of `ServerPlanConfigurationArrayInput` via:
+//
+//	ServerPlanConfigurationArray{ ServerPlanConfigurationArgs{...} }
+type ServerPlanConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToServerPlanConfigurationArrayOutput() ServerPlanConfigurationArrayOutput
+	ToServerPlanConfigurationArrayOutputWithContext(context.Context) ServerPlanConfigurationArrayOutput
+}
+
+type ServerPlanConfigurationArray []ServerPlanConfigurationInput
+
+func (ServerPlanConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerPlanConfiguration)(nil)).Elem()
+}
+
+func (i ServerPlanConfigurationArray) ToServerPlanConfigurationArrayOutput() ServerPlanConfigurationArrayOutput {
+	return i.ToServerPlanConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i ServerPlanConfigurationArray) ToServerPlanConfigurationArrayOutputWithContext(ctx context.Context) ServerPlanConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerPlanConfigurationArrayOutput)
+}
+
+type ServerPlanConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ServerPlanConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerPlanConfiguration)(nil)).Elem()
+}
+
+func (o ServerPlanConfigurationOutput) ToServerPlanConfigurationOutput() ServerPlanConfigurationOutput {
+	return o
+}
+
+func (o ServerPlanConfigurationOutput) ToServerPlanConfigurationOutputWithContext(ctx context.Context) ServerPlanConfigurationOutput {
+	return o
+}
+
+// Label for your configuration item
+func (o ServerPlanConfigurationOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPlanConfiguration) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Value or resource URL on API.OVH.COM of your configuration item
+func (o ServerPlanConfigurationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPlanConfiguration) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ServerPlanConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerPlanConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerPlanConfiguration)(nil)).Elem()
+}
+
+func (o ServerPlanConfigurationArrayOutput) ToServerPlanConfigurationArrayOutput() ServerPlanConfigurationArrayOutput {
+	return o
+}
+
+func (o ServerPlanConfigurationArrayOutput) ToServerPlanConfigurationArrayOutputWithContext(ctx context.Context) ServerPlanConfigurationArrayOutput {
+	return o
+}
+
+func (o ServerPlanConfigurationArrayOutput) Index(i pulumi.IntInput) ServerPlanConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerPlanConfiguration {
+		return vs[0].([]ServerPlanConfiguration)[vs[1].(int)]
+	}).(ServerPlanConfigurationOutput)
+}
+
+type ServerPlanOption struct {
+	Configurations []ServerPlanOptionConfiguration `pulumi:"configurations"`
+	// Duration selected for the purchase of the product
+	Duration string `pulumi:"duration"`
+	// Identifier of the option offer
+	PlanCode string `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode string `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity float64 `pulumi:"quantity"`
+}
+
+// ServerPlanOptionInput is an input type that accepts ServerPlanOptionArgs and ServerPlanOptionOutput values.
+// You can construct a concrete instance of `ServerPlanOptionInput` via:
+//
+//	ServerPlanOptionArgs{...}
+type ServerPlanOptionInput interface {
+	pulumi.Input
+
+	ToServerPlanOptionOutput() ServerPlanOptionOutput
+	ToServerPlanOptionOutputWithContext(context.Context) ServerPlanOptionOutput
+}
+
+type ServerPlanOptionArgs struct {
+	Configurations ServerPlanOptionConfigurationArrayInput `pulumi:"configurations"`
+	// Duration selected for the purchase of the product
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Identifier of the option offer
+	PlanCode pulumi.StringInput `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity pulumi.Float64Input `pulumi:"quantity"`
+}
+
+func (ServerPlanOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerPlanOption)(nil)).Elem()
+}
+
+func (i ServerPlanOptionArgs) ToServerPlanOptionOutput() ServerPlanOptionOutput {
+	return i.ToServerPlanOptionOutputWithContext(context.Background())
+}
+
+func (i ServerPlanOptionArgs) ToServerPlanOptionOutputWithContext(ctx context.Context) ServerPlanOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerPlanOptionOutput)
+}
+
+// ServerPlanOptionArrayInput is an input type that accepts ServerPlanOptionArray and ServerPlanOptionArrayOutput values.
+// You can construct a concrete instance of `ServerPlanOptionArrayInput` via:
+//
+//	ServerPlanOptionArray{ ServerPlanOptionArgs{...} }
+type ServerPlanOptionArrayInput interface {
+	pulumi.Input
+
+	ToServerPlanOptionArrayOutput() ServerPlanOptionArrayOutput
+	ToServerPlanOptionArrayOutputWithContext(context.Context) ServerPlanOptionArrayOutput
+}
+
+type ServerPlanOptionArray []ServerPlanOptionInput
+
+func (ServerPlanOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerPlanOption)(nil)).Elem()
+}
+
+func (i ServerPlanOptionArray) ToServerPlanOptionArrayOutput() ServerPlanOptionArrayOutput {
+	return i.ToServerPlanOptionArrayOutputWithContext(context.Background())
+}
+
+func (i ServerPlanOptionArray) ToServerPlanOptionArrayOutputWithContext(ctx context.Context) ServerPlanOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerPlanOptionArrayOutput)
+}
+
+type ServerPlanOptionOutput struct{ *pulumi.OutputState }
+
+func (ServerPlanOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerPlanOption)(nil)).Elem()
+}
+
+func (o ServerPlanOptionOutput) ToServerPlanOptionOutput() ServerPlanOptionOutput {
+	return o
+}
+
+func (o ServerPlanOptionOutput) ToServerPlanOptionOutputWithContext(ctx context.Context) ServerPlanOptionOutput {
+	return o
+}
+
+func (o ServerPlanOptionOutput) Configurations() ServerPlanOptionConfigurationArrayOutput {
+	return o.ApplyT(func(v ServerPlanOption) []ServerPlanOptionConfiguration { return v.Configurations }).(ServerPlanOptionConfigurationArrayOutput)
+}
+
+// Duration selected for the purchase of the product
+func (o ServerPlanOptionOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPlanOption) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Identifier of the option offer
+func (o ServerPlanOptionOutput) PlanCode() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPlanOption) string { return v.PlanCode }).(pulumi.StringOutput)
+}
+
+// Pricing mode selected for the purchase of the product
+func (o ServerPlanOptionOutput) PricingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPlanOption) string { return v.PricingMode }).(pulumi.StringOutput)
+}
+
+// Quantity of product desired
+func (o ServerPlanOptionOutput) Quantity() pulumi.Float64Output {
+	return o.ApplyT(func(v ServerPlanOption) float64 { return v.Quantity }).(pulumi.Float64Output)
+}
+
+type ServerPlanOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerPlanOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerPlanOption)(nil)).Elem()
+}
+
+func (o ServerPlanOptionArrayOutput) ToServerPlanOptionArrayOutput() ServerPlanOptionArrayOutput {
+	return o
+}
+
+func (o ServerPlanOptionArrayOutput) ToServerPlanOptionArrayOutputWithContext(ctx context.Context) ServerPlanOptionArrayOutput {
+	return o
+}
+
+func (o ServerPlanOptionArrayOutput) Index(i pulumi.IntInput) ServerPlanOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerPlanOption {
+		return vs[0].([]ServerPlanOption)[vs[1].(int)]
+	}).(ServerPlanOptionOutput)
+}
+
+type ServerPlanOptionConfiguration struct {
+	// Label for your configuration item
+	Label string `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value string `pulumi:"value"`
+}
+
+// ServerPlanOptionConfigurationInput is an input type that accepts ServerPlanOptionConfigurationArgs and ServerPlanOptionConfigurationOutput values.
+// You can construct a concrete instance of `ServerPlanOptionConfigurationInput` via:
+//
+//	ServerPlanOptionConfigurationArgs{...}
+type ServerPlanOptionConfigurationInput interface {
+	pulumi.Input
+
+	ToServerPlanOptionConfigurationOutput() ServerPlanOptionConfigurationOutput
+	ToServerPlanOptionConfigurationOutputWithContext(context.Context) ServerPlanOptionConfigurationOutput
+}
+
+type ServerPlanOptionConfigurationArgs struct {
+	// Label for your configuration item
+	Label pulumi.StringInput `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ServerPlanOptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerPlanOptionConfiguration)(nil)).Elem()
+}
+
+func (i ServerPlanOptionConfigurationArgs) ToServerPlanOptionConfigurationOutput() ServerPlanOptionConfigurationOutput {
+	return i.ToServerPlanOptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i ServerPlanOptionConfigurationArgs) ToServerPlanOptionConfigurationOutputWithContext(ctx context.Context) ServerPlanOptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerPlanOptionConfigurationOutput)
+}
+
+// ServerPlanOptionConfigurationArrayInput is an input type that accepts ServerPlanOptionConfigurationArray and ServerPlanOptionConfigurationArrayOutput values.
+// You can construct a concrete instance of `ServerPlanOptionConfigurationArrayInput` via:
+//
+//	ServerPlanOptionConfigurationArray{ ServerPlanOptionConfigurationArgs{...} }
+type ServerPlanOptionConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToServerPlanOptionConfigurationArrayOutput() ServerPlanOptionConfigurationArrayOutput
+	ToServerPlanOptionConfigurationArrayOutputWithContext(context.Context) ServerPlanOptionConfigurationArrayOutput
+}
+
+type ServerPlanOptionConfigurationArray []ServerPlanOptionConfigurationInput
+
+func (ServerPlanOptionConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerPlanOptionConfiguration)(nil)).Elem()
+}
+
+func (i ServerPlanOptionConfigurationArray) ToServerPlanOptionConfigurationArrayOutput() ServerPlanOptionConfigurationArrayOutput {
+	return i.ToServerPlanOptionConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i ServerPlanOptionConfigurationArray) ToServerPlanOptionConfigurationArrayOutputWithContext(ctx context.Context) ServerPlanOptionConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerPlanOptionConfigurationArrayOutput)
+}
+
+type ServerPlanOptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ServerPlanOptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerPlanOptionConfiguration)(nil)).Elem()
+}
+
+func (o ServerPlanOptionConfigurationOutput) ToServerPlanOptionConfigurationOutput() ServerPlanOptionConfigurationOutput {
+	return o
+}
+
+func (o ServerPlanOptionConfigurationOutput) ToServerPlanOptionConfigurationOutputWithContext(ctx context.Context) ServerPlanOptionConfigurationOutput {
+	return o
+}
+
+// Label for your configuration item
+func (o ServerPlanOptionConfigurationOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPlanOptionConfiguration) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Value or resource URL on API.OVH.COM of your configuration item
+func (o ServerPlanOptionConfigurationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPlanOptionConfiguration) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ServerPlanOptionConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerPlanOptionConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerPlanOptionConfiguration)(nil)).Elem()
+}
+
+func (o ServerPlanOptionConfigurationArrayOutput) ToServerPlanOptionConfigurationArrayOutput() ServerPlanOptionConfigurationArrayOutput {
+	return o
+}
+
+func (o ServerPlanOptionConfigurationArrayOutput) ToServerPlanOptionConfigurationArrayOutputWithContext(ctx context.Context) ServerPlanOptionConfigurationArrayOutput {
+	return o
+}
+
+func (o ServerPlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) ServerPlanOptionConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerPlanOptionConfiguration {
+		return vs[0].([]ServerPlanOptionConfiguration)[vs[1].(int)]
+	}).(ServerPlanOptionConfigurationOutput)
+}
+
+type ServerUserMetadata struct {
+	Key   *string `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// ServerUserMetadataInput is an input type that accepts ServerUserMetadataArgs and ServerUserMetadataOutput values.
+// You can construct a concrete instance of `ServerUserMetadataInput` via:
+//
+//	ServerUserMetadataArgs{...}
+type ServerUserMetadataInput interface {
+	pulumi.Input
+
+	ToServerUserMetadataOutput() ServerUserMetadataOutput
+	ToServerUserMetadataOutputWithContext(context.Context) ServerUserMetadataOutput
+}
+
+type ServerUserMetadataArgs struct {
+	Key   pulumi.StringPtrInput `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ServerUserMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerUserMetadata)(nil)).Elem()
+}
+
+func (i ServerUserMetadataArgs) ToServerUserMetadataOutput() ServerUserMetadataOutput {
+	return i.ToServerUserMetadataOutputWithContext(context.Background())
+}
+
+func (i ServerUserMetadataArgs) ToServerUserMetadataOutputWithContext(ctx context.Context) ServerUserMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerUserMetadataOutput)
+}
+
+// ServerUserMetadataArrayInput is an input type that accepts ServerUserMetadataArray and ServerUserMetadataArrayOutput values.
+// You can construct a concrete instance of `ServerUserMetadataArrayInput` via:
+//
+//	ServerUserMetadataArray{ ServerUserMetadataArgs{...} }
+type ServerUserMetadataArrayInput interface {
+	pulumi.Input
+
+	ToServerUserMetadataArrayOutput() ServerUserMetadataArrayOutput
+	ToServerUserMetadataArrayOutputWithContext(context.Context) ServerUserMetadataArrayOutput
+}
+
+type ServerUserMetadataArray []ServerUserMetadataInput
+
+func (ServerUserMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerUserMetadata)(nil)).Elem()
+}
+
+func (i ServerUserMetadataArray) ToServerUserMetadataArrayOutput() ServerUserMetadataArrayOutput {
+	return i.ToServerUserMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i ServerUserMetadataArray) ToServerUserMetadataArrayOutputWithContext(ctx context.Context) ServerUserMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerUserMetadataArrayOutput)
+}
+
+type ServerUserMetadataOutput struct{ *pulumi.OutputState }
+
+func (ServerUserMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerUserMetadata)(nil)).Elem()
+}
+
+func (o ServerUserMetadataOutput) ToServerUserMetadataOutput() ServerUserMetadataOutput {
+	return o
+}
+
+func (o ServerUserMetadataOutput) ToServerUserMetadataOutputWithContext(ctx context.Context) ServerUserMetadataOutput {
+	return o
+}
+
+func (o ServerUserMetadataOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerUserMetadata) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o ServerUserMetadataOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerUserMetadata) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ServerUserMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerUserMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerUserMetadata)(nil)).Elem()
+}
+
+func (o ServerUserMetadataArrayOutput) ToServerUserMetadataArrayOutput() ServerUserMetadataArrayOutput {
+	return o
+}
+
+func (o ServerUserMetadataArrayOutput) ToServerUserMetadataArrayOutputWithContext(ctx context.Context) ServerUserMetadataArrayOutput {
+	return o
+}
+
+func (o ServerUserMetadataArrayOutput) Index(i pulumi.IntInput) ServerUserMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerUserMetadata {
+		return vs[0].([]ServerUserMetadata)[vs[1].(int)]
+	}).(ServerUserMetadataOutput)
 }
 
 type GetServerSpecificationsHardwareDefaultHardwareRaidSize struct {
@@ -2405,12 +3639,30 @@ func (o GetServerSpecificationsNetworkVrackBandwidthOutput) Value() pulumi.Float
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerDetailsInput)(nil)).Elem(), ServerDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerDetailsPtrInput)(nil)).Elem(), ServerDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerIamInput)(nil)).Elem(), ServerIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerIamPtrInput)(nil)).Elem(), ServerIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskDetailsInput)(nil)).Elem(), ServerInstallTaskDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskDetailsPtrInput)(nil)).Elem(), ServerInstallTaskDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskUserMetadataInput)(nil)).Elem(), ServerInstallTaskUserMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskUserMetadataArrayInput)(nil)).Elem(), ServerInstallTaskUserMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerNetworkingInterfaceInput)(nil)).Elem(), ServerNetworkingInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerNetworkingInterfaceArrayInput)(nil)).Elem(), ServerNetworkingInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerOrderInput)(nil)).Elem(), ServerOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerOrderPtrInput)(nil)).Elem(), ServerOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerOrderDetailInput)(nil)).Elem(), ServerOrderDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerOrderDetailArrayInput)(nil)).Elem(), ServerOrderDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerPlanInput)(nil)).Elem(), ServerPlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerPlanArrayInput)(nil)).Elem(), ServerPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerPlanConfigurationInput)(nil)).Elem(), ServerPlanConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerPlanConfigurationArrayInput)(nil)).Elem(), ServerPlanConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerPlanOptionInput)(nil)).Elem(), ServerPlanOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerPlanOptionArrayInput)(nil)).Elem(), ServerPlanOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerPlanOptionConfigurationInput)(nil)).Elem(), ServerPlanOptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerPlanOptionConfigurationArrayInput)(nil)).Elem(), ServerPlanOptionConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerUserMetadataInput)(nil)).Elem(), ServerUserMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerUserMetadataArrayInput)(nil)).Elem(), ServerUserMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDefaultHardwareRaidSizeInput)(nil)).Elem(), GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupArrayInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupArray{})
@@ -2443,12 +3695,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkVmacInput)(nil)).Elem(), GetServerSpecificationsNetworkVmacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkVrackInput)(nil)).Elem(), GetServerSpecificationsNetworkVrackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkVrackBandwidthInput)(nil)).Elem(), GetServerSpecificationsNetworkVrackBandwidthArgs{})
+	pulumi.RegisterOutputType(ServerDetailsOutput{})
+	pulumi.RegisterOutputType(ServerDetailsPtrOutput{})
+	pulumi.RegisterOutputType(ServerIamOutput{})
+	pulumi.RegisterOutputType(ServerIamPtrOutput{})
 	pulumi.RegisterOutputType(ServerInstallTaskDetailsOutput{})
 	pulumi.RegisterOutputType(ServerInstallTaskDetailsPtrOutput{})
 	pulumi.RegisterOutputType(ServerInstallTaskUserMetadataOutput{})
 	pulumi.RegisterOutputType(ServerInstallTaskUserMetadataArrayOutput{})
 	pulumi.RegisterOutputType(ServerNetworkingInterfaceOutput{})
 	pulumi.RegisterOutputType(ServerNetworkingInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ServerOrderOutput{})
+	pulumi.RegisterOutputType(ServerOrderPtrOutput{})
+	pulumi.RegisterOutputType(ServerOrderDetailOutput{})
+	pulumi.RegisterOutputType(ServerOrderDetailArrayOutput{})
+	pulumi.RegisterOutputType(ServerPlanOutput{})
+	pulumi.RegisterOutputType(ServerPlanArrayOutput{})
+	pulumi.RegisterOutputType(ServerPlanConfigurationOutput{})
+	pulumi.RegisterOutputType(ServerPlanConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(ServerPlanOptionOutput{})
+	pulumi.RegisterOutputType(ServerPlanOptionArrayOutput{})
+	pulumi.RegisterOutputType(ServerPlanOptionConfigurationOutput{})
+	pulumi.RegisterOutputType(ServerPlanOptionConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(ServerUserMetadataOutput{})
+	pulumi.RegisterOutputType(ServerUserMetadataArrayOutput{})
 	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput{})
 	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupOutput{})
 	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupArrayOutput{})

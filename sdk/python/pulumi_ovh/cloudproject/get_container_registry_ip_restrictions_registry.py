@@ -45,7 +45,7 @@ class GetContainerRegistryIPRestrictionsRegistryResult:
 
     @property
     @pulumi.getter(name="ipRestrictions")
-    def ip_restrictions(self) -> Sequence[Mapping[str, Any]]:
+    def ip_restrictions(self) -> Sequence[Mapping[str, str]]:
         """
         IP restrictions applied on artifact manager component.
         """

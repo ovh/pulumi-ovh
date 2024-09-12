@@ -25,11 +25,6 @@ public final class VpsPlanOption {
      */
     private String duration;
     /**
-     * @return Cart item to be linked
-     * 
-     */
-    private Double itemId;
-    /**
      * @return Plan code
      * 
      */
@@ -59,13 +54,6 @@ public final class VpsPlanOption {
      */
     public String duration() {
         return this.duration;
-    }
-    /**
-     * @return Cart item to be linked
-     * 
-     */
-    public Double itemId() {
-        return this.itemId;
     }
     /**
      * @return Plan code
@@ -100,7 +88,6 @@ public final class VpsPlanOption {
     public static final class Builder {
         private @Nullable List<VpsPlanOptionConfiguration> configurations;
         private String duration;
-        private Double itemId;
         private String planCode;
         private String pricingMode;
         private Double quantity;
@@ -109,7 +96,6 @@ public final class VpsPlanOption {
     	      Objects.requireNonNull(defaults);
     	      this.configurations = defaults.configurations;
     	      this.duration = defaults.duration;
-    	      this.itemId = defaults.itemId;
     	      this.planCode = defaults.planCode;
     	      this.pricingMode = defaults.pricingMode;
     	      this.quantity = defaults.quantity;
@@ -130,14 +116,6 @@ public final class VpsPlanOption {
               throw new MissingRequiredPropertyException("VpsPlanOption", "duration");
             }
             this.duration = duration;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder itemId(Double itemId) {
-            if (itemId == null) {
-              throw new MissingRequiredPropertyException("VpsPlanOption", "itemId");
-            }
-            this.itemId = itemId;
             return this;
         }
         @CustomType.Setter
@@ -168,7 +146,6 @@ public final class VpsPlanOption {
             final var _resultValue = new VpsPlanOption();
             _resultValue.configurations = configurations;
             _resultValue.duration = duration;
-            _resultValue.itemId = itemId;
             _resultValue.planCode = planCode;
             _resultValue.pricingMode = pricingMode;
             _resultValue.quantity = quantity;

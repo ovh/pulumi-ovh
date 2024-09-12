@@ -31,18 +31,6 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         public Input<bool>? NoRaid { get; set; }
 
         /// <summary>
-        /// Indicate the URL where your postinstall customisation script is located.
-        /// </summary>
-        [Input("postInstallationScriptLink")]
-        public Input<string>? PostInstallationScriptLink { get; set; }
-
-        /// <summary>
-        /// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        /// </summary>
-        [Input("postInstallationScriptReturn")]
-        public Input<string>? PostInstallationScriptReturn { get; set; }
-
-        /// <summary>
         /// soft raid devices.
         /// </summary>
         [Input("softRaidDevices")]

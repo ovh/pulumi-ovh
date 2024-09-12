@@ -542,7 +542,7 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
             dhcp: Optional[pulumi.Input[bool]] = None,
             end: Optional[pulumi.Input[str]] = None,
             gateway_ip: Optional[pulumi.Input[str]] = None,
-            ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPrivateSubnetIpPoolArgs']]]]] = None,
+            ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetIpPoolArgs', 'NetworkPrivateSubnetIpPoolArgsDict']]]]] = None,
             network: Optional[pulumi.Input[str]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
             no_gateway: Optional[pulumi.Input[bool]] = None,
@@ -563,7 +563,7 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
         :param pulumi.Input[str] end: Last ip for this region.
                Changing this value recreates the subnet.
         :param pulumi.Input[str] gateway_ip: The IP of the gateway
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPrivateSubnetIpPoolArgs']]]] ip_pools: List of ip pools allocated in the subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetIpPoolArgs', 'NetworkPrivateSubnetIpPoolArgsDict']]]] ip_pools: List of ip pools allocated in the subnet.
                * `ip_pools/network` - Global network with cidr.
                * `ip_pools/region` - Region where this subnet is created.
                * `ip_pools/dhcp` - DHCP enabled.

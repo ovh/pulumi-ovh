@@ -408,7 +408,7 @@ class ContainerRegistry(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             plan_id: Optional[pulumi.Input[str]] = None,
-            plans: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRegistryPlanArgs']]]]] = None,
+            plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerRegistryPlanArgs', 'ContainerRegistryPlanArgsDict']]]]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
@@ -427,7 +427,7 @@ class ContainerRegistry(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: Plan creation date
         :param pulumi.Input[str] name: Registry name
         :param pulumi.Input[str] plan_id: Plan ID of the registry
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRegistryPlanArgs']]]] plans: Plan of the registry
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerRegistryPlanArgs', 'ContainerRegistryPlanArgsDict']]]] plans: Plan of the registry
         :param pulumi.Input[str] project_id: Project ID of your registry
         :param pulumi.Input[str] region: Region of the registry
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,

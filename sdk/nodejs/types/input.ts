@@ -388,7 +388,7 @@ export namespace CloudProject {
         /**
          * taints
          */
-        taints?: {[key: string]: any}[];
+        taints?: {[key: string]: string}[];
         /**
          * unschedulable
          */
@@ -399,7 +399,7 @@ export namespace CloudProject {
         /**
          * taints
          */
-        taints?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        taints?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
          * unschedulable
          */
@@ -531,7 +531,7 @@ export namespace CloudProject {
         /**
          * taints
          */
-        taints: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        taints: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
          * unschedulable
          */
@@ -780,6 +780,44 @@ export namespace Dbaas {
 }
 
 export namespace Dedicated {
+    export interface ServerDetails {
+        /**
+         * Personnal hostname to use in server reinstallation
+         */
+        customHostname?: pulumi.Input<string>;
+        /**
+         * Disk group id to process install on (only available for some templates)
+         */
+        diskGroupId?: pulumi.Input<number>;
+        /**
+         * true if you want to install only on the first disk
+         */
+        noRaid?: pulumi.Input<boolean>;
+        /**
+         * Number of devices to use for system's software RAID
+         */
+        softRaidDevices?: pulumi.Input<number>;
+    }
+
+    export interface ServerIam {
+        /**
+         * Resource display name
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn?: pulumi.Input<string>;
+    }
+
     export interface ServerInstallTaskDetails {
         /**
          * Set up the server using the provided hostname instead of the default hostname.
@@ -793,14 +831,6 @@ export namespace Dedicated {
          * Set to true to disable RAID.
          */
         noRaid?: pulumi.Input<boolean>;
-        /**
-         * Indicate the URL where your postinstall customisation script is located.
-         */
-        postInstallationScriptLink?: pulumi.Input<string>;
-        /**
-         * Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-         */
-        postInstallationScriptReturn?: pulumi.Input<string>;
         /**
          * soft raid devices.
          */
@@ -827,6 +857,98 @@ export namespace Dedicated {
          * Interface type
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface ServerOrder {
+        date?: pulumi.Input<string>;
+        /**
+         * Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+         */
+        details?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerOrderDetail>[]>;
+        expirationDate?: pulumi.Input<string>;
+        orderId?: pulumi.Input<number>;
+    }
+
+    export interface ServerOrderDetail {
+        description?: pulumi.Input<string>;
+        /**
+         * Product type of item in order
+         */
+        detailType?: pulumi.Input<string>;
+        domain?: pulumi.Input<string>;
+        orderDetailId?: pulumi.Input<number>;
+        quantity?: pulumi.Input<string>;
+    }
+
+    export interface ServerPlan {
+        configurations?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerPlanConfiguration>[]>;
+        /**
+         * Duration selected for the purchase of the product
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Cart item to be linked
+         */
+        itemId?: pulumi.Input<number>;
+        /**
+         * Identifier of the option offer
+         */
+        planCode: pulumi.Input<string>;
+        /**
+         * Pricing mode selected for the purchase of the product
+         */
+        pricingMode: pulumi.Input<string>;
+        /**
+         * Quantity of product desired
+         */
+        quantity?: pulumi.Input<number>;
+    }
+
+    export interface ServerPlanConfiguration {
+        /**
+         * Label for your configuration item
+         */
+        label: pulumi.Input<string>;
+        /**
+         * Value or resource URL on API.OVH.COM of your configuration item
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ServerPlanOption {
+        configurations?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerPlanOptionConfiguration>[]>;
+        /**
+         * Duration selected for the purchase of the product
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Identifier of the option offer
+         */
+        planCode: pulumi.Input<string>;
+        /**
+         * Pricing mode selected for the purchase of the product
+         */
+        pricingMode: pulumi.Input<string>;
+        /**
+         * Quantity of product desired
+         */
+        quantity: pulumi.Input<number>;
+    }
+
+    export interface ServerPlanOptionConfiguration {
+        /**
+         * Label for your configuration item
+         */
+        label: pulumi.Input<string>;
+        /**
+         * Value or resource URL on API.OVH.COM of your configuration item
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ServerUserMetadata {
+        key?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
     }
 }
 
@@ -1456,14 +1578,6 @@ export namespace Me {
          * Set up the server using the provided hostname instead of the default hostname.
          */
         customHostname?: pulumi.Input<string>;
-        /**
-         * Indicate the URL where your postinstall customisation script is located.
-         */
-        postInstallationScriptLink?: pulumi.Input<string>;
-        /**
-         * indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-         */
-        postInstallationScriptReturn?: pulumi.Input<string>;
     }
 
     export interface InstallationTemplateInput {
@@ -1606,10 +1720,6 @@ export namespace Vps {
          * duration
          */
         duration: pulumi.Input<string>;
-        /**
-         * Cart item to be linked
-         */
-        itemId: pulumi.Input<number>;
         /**
          * Plan code
          */
