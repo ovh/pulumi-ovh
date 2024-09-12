@@ -6,7 +6,6 @@ package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,13 +23,13 @@ public final class GetKubeNodePoolTemplateSpecArgs extends com.pulumi.resources.
      * 
      */
     @Import(name="taints")
-    private @Nullable Output<List<Map<String,Object>>> taints;
+    private @Nullable Output<List<Map<String,String>>> taints;
 
     /**
      * @return taints
      * 
      */
-    public Optional<Output<List<Map<String,Object>>>> taints() {
+    public Optional<Output<List<Map<String,String>>>> taints() {
         return Optional.ofNullable(this.taints);
     }
 
@@ -80,7 +79,7 @@ public final class GetKubeNodePoolTemplateSpecArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder taints(@Nullable Output<List<Map<String,Object>>> taints) {
+        public Builder taints(@Nullable Output<List<Map<String,String>>> taints) {
             $.taints = taints;
             return this;
         }
@@ -91,7 +90,7 @@ public final class GetKubeNodePoolTemplateSpecArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder taints(List<Map<String,Object>> taints) {
+        public Builder taints(List<Map<String,String>> taints) {
             return taints(Output.of(taints));
         }
 
@@ -101,7 +100,7 @@ public final class GetKubeNodePoolTemplateSpecArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder taints(Map<String,Object>... taints) {
+        public Builder taints(Map<String,String>... taints) {
             return taints(List.of(taints));
         }
 

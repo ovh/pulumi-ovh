@@ -15,16 +15,6 @@ public final class GetInstallationTemplateCustomization {
      * 
      */
     private String customHostname;
-    /**
-     * @return Indicate the URL where your postinstall customisation script is located.
-     * 
-     */
-    private String postInstallationScriptLink;
-    /**
-     * @return Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-     * 
-     */
-    private String postInstallationScriptReturn;
 
     private GetInstallationTemplateCustomization() {}
     /**
@@ -33,20 +23,6 @@ public final class GetInstallationTemplateCustomization {
      */
     public String customHostname() {
         return this.customHostname;
-    }
-    /**
-     * @return Indicate the URL where your postinstall customisation script is located.
-     * 
-     */
-    public String postInstallationScriptLink() {
-        return this.postInstallationScriptLink;
-    }
-    /**
-     * @return Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-     * 
-     */
-    public String postInstallationScriptReturn() {
-        return this.postInstallationScriptReturn;
     }
 
     public static Builder builder() {
@@ -59,14 +35,10 @@ public final class GetInstallationTemplateCustomization {
     @CustomType.Builder
     public static final class Builder {
         private String customHostname;
-        private String postInstallationScriptLink;
-        private String postInstallationScriptReturn;
         public Builder() {}
         public Builder(GetInstallationTemplateCustomization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customHostname = defaults.customHostname;
-    	      this.postInstallationScriptLink = defaults.postInstallationScriptLink;
-    	      this.postInstallationScriptReturn = defaults.postInstallationScriptReturn;
         }
 
         @CustomType.Setter
@@ -77,27 +49,9 @@ public final class GetInstallationTemplateCustomization {
             this.customHostname = customHostname;
             return this;
         }
-        @CustomType.Setter
-        public Builder postInstallationScriptLink(String postInstallationScriptLink) {
-            if (postInstallationScriptLink == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "postInstallationScriptLink");
-            }
-            this.postInstallationScriptLink = postInstallationScriptLink;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder postInstallationScriptReturn(String postInstallationScriptReturn) {
-            if (postInstallationScriptReturn == null) {
-              throw new MissingRequiredPropertyException("GetInstallationTemplateCustomization", "postInstallationScriptReturn");
-            }
-            this.postInstallationScriptReturn = postInstallationScriptReturn;
-            return this;
-        }
         public GetInstallationTemplateCustomization build() {
             final var _resultValue = new GetInstallationTemplateCustomization();
             _resultValue.customHostname = customHostname;
-            _resultValue.postInstallationScriptLink = postInstallationScriptLink;
-            _resultValue.postInstallationScriptReturn = postInstallationScriptReturn;
             return _resultValue;
         }
     }

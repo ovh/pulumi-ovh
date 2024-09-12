@@ -41,7 +41,7 @@ export interface GetContainerRegistryIPRestrictionsManagementResult {
     /**
      * IP restrictions applied on Harbor UI and API.
      */
-    readonly ipRestrictions: {[key: string]: any}[];
+    readonly ipRestrictions: {[key: string]: string}[];
     /**
      * The ID of the Managed Private Registry.
      */

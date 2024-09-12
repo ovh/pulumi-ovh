@@ -6,7 +6,6 @@ package com.ovhcloud.pulumi.ovh.CloudProject;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -22,13 +21,13 @@ public final class ContainerRegistryIPRestrictionsRegistryArgs extends com.pulum
      * 
      */
     @Import(name="ipRestrictions", required=true)
-    private Output<List<Map<String,Object>>> ipRestrictions;
+    private Output<List<Map<String,String>>> ipRestrictions;
 
     /**
      * @return IP restrictions applied on artifact manager component.
      * 
      */
-    public Output<List<Map<String,Object>>> ipRestrictions() {
+    public Output<List<Map<String,String>>> ipRestrictions() {
         return this.ipRestrictions;
     }
 
@@ -94,7 +93,7 @@ public final class ContainerRegistryIPRestrictionsRegistryArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder ipRestrictions(Output<List<Map<String,Object>>> ipRestrictions) {
+        public Builder ipRestrictions(Output<List<Map<String,String>>> ipRestrictions) {
             $.ipRestrictions = ipRestrictions;
             return this;
         }
@@ -105,7 +104,7 @@ public final class ContainerRegistryIPRestrictionsRegistryArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder ipRestrictions(List<Map<String,Object>> ipRestrictions) {
+        public Builder ipRestrictions(List<Map<String,String>> ipRestrictions) {
             return ipRestrictions(Output.of(ipRestrictions));
         }
 
@@ -115,7 +114,7 @@ public final class ContainerRegistryIPRestrictionsRegistryArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder ipRestrictions(Map<String,Object>... ipRestrictions) {
+        public Builder ipRestrictions(Map<String,String>... ipRestrictions) {
             return ipRestrictions(List.of(ipRestrictions));
         }
 

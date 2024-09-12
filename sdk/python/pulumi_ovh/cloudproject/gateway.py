@@ -376,8 +376,8 @@ class Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            external_informations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GatewayExternalInformationArgs']]]]] = None,
-            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GatewayInterfaceArgs']]]]] = None,
+            external_informations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayExternalInformationArgs', 'GatewayExternalInformationArgsDict']]]]] = None,
+            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayInterfaceArgs', 'GatewayInterfaceArgsDict']]]]] = None,
             model: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
@@ -392,8 +392,8 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GatewayExternalInformationArgs']]]] external_informations: List of External Information of the gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GatewayInterfaceArgs']]]] interfaces: Interfaces list of the gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayExternalInformationArgs', 'GatewayExternalInformationArgsDict']]]] external_informations: List of External Information of the gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayInterfaceArgs', 'GatewayInterfaceArgsDict']]]] interfaces: Interfaces list of the gateway.
         :param pulumi.Input[str] model: Model of the gateway.
         :param pulumi.Input[str] name: Name of the gateway.
         :param pulumi.Input[str] network_id: ID of the private network.

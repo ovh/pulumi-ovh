@@ -50,7 +50,7 @@ namespace Pulumi.Ovh.CloudProject
         /// Note: no password nor sensitive token is set in this map.
         /// </summary>
         [Output("openstackRc")]
-        public Output<ImmutableDictionary<string, object>> OpenstackRc { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> OpenstackRc { get; private set; } = null!;
 
         /// <summary>
         /// (Sensitive) the password generated for the user. The password can
@@ -168,15 +168,15 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Description { get; set; }
 
         [Input("openstackRc")]
-        private InputMap<object>? _openstackRc;
+        private InputMap<string>? _openstackRc;
 
         /// <summary>
         /// a convenient map representing an openstack_rc file.
         /// Note: no password nor sensitive token is set in this map.
         /// </summary>
-        public InputMap<object> OpenstackRc
+        public InputMap<string> OpenstackRc
         {
-            get => _openstackRc ?? (_openstackRc = new InputMap<object>());
+            get => _openstackRc ?? (_openstackRc = new InputMap<string>());
             set => _openstackRc = value;
         }
 
@@ -238,15 +238,15 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Description { get; set; }
 
         [Input("openstackRc")]
-        private InputMap<object>? _openstackRc;
+        private InputMap<string>? _openstackRc;
 
         /// <summary>
         /// a convenient map representing an openstack_rc file.
         /// Note: no password nor sensitive token is set in this map.
         /// </summary>
-        public InputMap<object> OpenstackRc
+        public InputMap<string> OpenstackRc
         {
-            get => _openstackRc ?? (_openstackRc = new InputMap<object>());
+            get => _openstackRc ?? (_openstackRc = new InputMap<string>());
             set => _openstackRc = value;
         }
 

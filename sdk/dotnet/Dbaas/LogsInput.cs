@@ -76,6 +76,12 @@ namespace Pulumi.Ovh.Dbaas
         public Output<ImmutableArray<string>> AllowedNetworks { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        /// </summary>
+        [Output("autoscale")]
+        public Output<bool?> Autoscale { get; private set; } = null!;
+
+        /// <summary>
         /// Input configuration
         /// </summary>
         [Output("configuration")]
@@ -86,6 +92,12 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of instance running (returned by the API)
+        /// </summary>
+        [Output("currentNbInstance")]
+        public Output<int> CurrentNbInstance { get; private set; } = null!;
 
         /// <summary>
         /// Input description
@@ -124,10 +136,22 @@ namespace Pulumi.Ovh.Dbaas
         public Output<bool> IsRestartRequired { get; private set; } = null!;
 
         /// <summary>
-        /// Number of instance running
+        /// Maximum number of instances in auto-scaled mode
+        /// </summary>
+        [Output("maxScaleInstance")]
+        public Output<int?> MaxScaleInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum number of instances in auto-scaled mode
+        /// </summary>
+        [Output("minScaleInstance")]
+        public Output<int?> MinScaleInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of instance running (input, mutually exclusive with parameter `autoscale`)
         /// </summary>
         [Output("nbInstance")]
-        public Output<int> NbInstance { get; private set; } = null!;
+        public Output<int?> NbInstance { get; private set; } = null!;
 
         /// <summary>
         /// Input IP address
@@ -235,6 +259,12 @@ namespace Pulumi.Ovh.Dbaas
         }
 
         /// <summary>
+        /// Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        /// </summary>
+        [Input("autoscale")]
+        public Input<bool>? Autoscale { get; set; }
+
+        /// <summary>
         /// Input configuration
         /// </summary>
         [Input("configuration", required: true)]
@@ -259,7 +289,19 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? ExposedPort { get; set; }
 
         /// <summary>
-        /// Number of instance running
+        /// Maximum number of instances in auto-scaled mode
+        /// </summary>
+        [Input("maxScaleInstance")]
+        public Input<int>? MaxScaleInstance { get; set; }
+
+        /// <summary>
+        /// Minimum number of instances in auto-scaled mode
+        /// </summary>
+        [Input("minScaleInstance")]
+        public Input<int>? MinScaleInstance { get; set; }
+
+        /// <summary>
+        /// Number of instance running (input, mutually exclusive with parameter `autoscale`)
         /// </summary>
         [Input("nbInstance")]
         public Input<int>? NbInstance { get; set; }
@@ -303,6 +345,12 @@ namespace Pulumi.Ovh.Dbaas
         }
 
         /// <summary>
+        /// Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        /// </summary>
+        [Input("autoscale")]
+        public Input<bool>? Autoscale { get; set; }
+
+        /// <summary>
         /// Input configuration
         /// </summary>
         [Input("configuration")]
@@ -313,6 +361,12 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Number of instance running (returned by the API)
+        /// </summary>
+        [Input("currentNbInstance")]
+        public Input<int>? CurrentNbInstance { get; set; }
 
         /// <summary>
         /// Input description
@@ -351,7 +405,19 @@ namespace Pulumi.Ovh.Dbaas
         public Input<bool>? IsRestartRequired { get; set; }
 
         /// <summary>
-        /// Number of instance running
+        /// Maximum number of instances in auto-scaled mode
+        /// </summary>
+        [Input("maxScaleInstance")]
+        public Input<int>? MaxScaleInstance { get; set; }
+
+        /// <summary>
+        /// Minimum number of instances in auto-scaled mode
+        /// </summary>
+        [Input("minScaleInstance")]
+        public Input<int>? MinScaleInstance { get; set; }
+
+        /// <summary>
+        /// Number of instance running (input, mutually exclusive with parameter `autoscale`)
         /// </summary>
         [Input("nbInstance")]
         public Input<int>? NbInstance { get; set; }

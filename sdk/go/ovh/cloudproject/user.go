@@ -48,7 +48,7 @@ type User struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// a convenient map representing an openstackRc file.
 	// Note: no password nor sensitive token is set in this map.
-	OpenstackRc pulumi.MapOutput `pulumi:"openstackRc"`
+	OpenstackRc pulumi.StringMapOutput `pulumi:"openstackRc"`
 	// (Sensitive) the password generated for the user. The password can
 	// be used with the Openstack API. This attribute is sensitive and will only be
 	// retrieve once during creation.
@@ -124,7 +124,7 @@ type userState struct {
 	Description *string `pulumi:"description"`
 	// a convenient map representing an openstackRc file.
 	// Note: no password nor sensitive token is set in this map.
-	OpenstackRc map[string]interface{} `pulumi:"openstackRc"`
+	OpenstackRc map[string]string `pulumi:"openstackRc"`
 	// (Sensitive) the password generated for the user. The password can
 	// be used with the Openstack API. This attribute is sensitive and will only be
 	// retrieve once during creation.
@@ -164,7 +164,7 @@ type UserState struct {
 	Description pulumi.StringPtrInput
 	// a convenient map representing an openstackRc file.
 	// Note: no password nor sensitive token is set in this map.
-	OpenstackRc pulumi.MapInput
+	OpenstackRc pulumi.StringMapInput
 	// (Sensitive) the password generated for the user. The password can
 	// be used with the Openstack API. This attribute is sensitive and will only be
 	// retrieve once during creation.
@@ -206,7 +206,7 @@ type userArgs struct {
 	Description *string `pulumi:"description"`
 	// a convenient map representing an openstackRc file.
 	// Note: no password nor sensitive token is set in this map.
-	OpenstackRc map[string]interface{} `pulumi:"openstackRc"`
+	OpenstackRc map[string]string `pulumi:"openstackRc"`
 	// The name of a role. See `roleNames`.
 	RoleName *string `pulumi:"roleName"`
 	// A list of role names. Values can be:
@@ -234,7 +234,7 @@ type UserArgs struct {
 	Description pulumi.StringPtrInput
 	// a convenient map representing an openstackRc file.
 	// Note: no password nor sensitive token is set in this map.
-	OpenstackRc pulumi.MapInput
+	OpenstackRc pulumi.StringMapInput
 	// The name of a role. See `roleNames`.
 	RoleName pulumi.StringPtrInput
 	// A list of role names. Values can be:
@@ -355,8 +355,8 @@ func (o UserOutput) Description() pulumi.StringPtrOutput {
 
 // a convenient map representing an openstackRc file.
 // Note: no password nor sensitive token is set in this map.
-func (o UserOutput) OpenstackRc() pulumi.MapOutput {
-	return o.ApplyT(func(v *User) pulumi.MapOutput { return v.OpenstackRc }).(pulumi.MapOutput)
+func (o UserOutput) OpenstackRc() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *User) pulumi.StringMapOutput { return v.OpenstackRc }).(pulumi.StringMapOutput)
 }
 
 // (Sensitive) the password generated for the user. The password can

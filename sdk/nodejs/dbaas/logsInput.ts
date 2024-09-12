@@ -81,6 +81,10 @@ export class LogsInput extends pulumi.CustomResource {
      */
     public readonly allowedNetworks!: pulumi.Output<string[]>;
     /**
+     * Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
+     */
+    public readonly autoscale!: pulumi.Output<boolean | undefined>;
+    /**
      * Input configuration
      */
     public readonly configuration!: pulumi.Output<outputs.Dbaas.LogsInputConfiguration>;
@@ -88,6 +92,10 @@ export class LogsInput extends pulumi.CustomResource {
      * Input creation
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Number of instance running (returned by the API)
+     */
+    public /*out*/ readonly currentNbInstance!: pulumi.Output<number>;
     /**
      * Input description
      */
@@ -113,9 +121,17 @@ export class LogsInput extends pulumi.CustomResource {
      */
     public /*out*/ readonly isRestartRequired!: pulumi.Output<boolean>;
     /**
-     * Number of instance running
+     * Maximum number of instances in auto-scaled mode
      */
-    public readonly nbInstance!: pulumi.Output<number>;
+    public readonly maxScaleInstance!: pulumi.Output<number | undefined>;
+    /**
+     * Minimum number of instances in auto-scaled mode
+     */
+    public readonly minScaleInstance!: pulumi.Output<number | undefined>;
+    /**
+     * Number of instance running (input, mutually exclusive with parameter `autoscale`)
+     */
+    public readonly nbInstance!: pulumi.Output<number | undefined>;
     /**
      * Input IP address
      */
@@ -159,14 +175,18 @@ export class LogsInput extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as LogsInputState | undefined;
             resourceInputs["allowedNetworks"] = state ? state.allowedNetworks : undefined;
+            resourceInputs["autoscale"] = state ? state.autoscale : undefined;
             resourceInputs["configuration"] = state ? state.configuration : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["currentNbInstance"] = state ? state.currentNbInstance : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["engineId"] = state ? state.engineId : undefined;
             resourceInputs["exposedPort"] = state ? state.exposedPort : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["inputId"] = state ? state.inputId : undefined;
             resourceInputs["isRestartRequired"] = state ? state.isRestartRequired : undefined;
+            resourceInputs["maxScaleInstance"] = state ? state.maxScaleInstance : undefined;
+            resourceInputs["minScaleInstance"] = state ? state.minScaleInstance : undefined;
             resourceInputs["nbInstance"] = state ? state.nbInstance : undefined;
             resourceInputs["publicAddress"] = state ? state.publicAddress : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
@@ -196,15 +216,19 @@ export class LogsInput extends pulumi.CustomResource {
                 throw new Error("Missing required property 'title'");
             }
             resourceInputs["allowedNetworks"] = args ? args.allowedNetworks : undefined;
+            resourceInputs["autoscale"] = args ? args.autoscale : undefined;
             resourceInputs["configuration"] = args ? args.configuration : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["engineId"] = args ? args.engineId : undefined;
             resourceInputs["exposedPort"] = args ? args.exposedPort : undefined;
+            resourceInputs["maxScaleInstance"] = args ? args.maxScaleInstance : undefined;
+            resourceInputs["minScaleInstance"] = args ? args.minScaleInstance : undefined;
             resourceInputs["nbInstance"] = args ? args.nbInstance : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["streamId"] = args ? args.streamId : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["currentNbInstance"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
             resourceInputs["inputId"] = undefined /*out*/;
             resourceInputs["isRestartRequired"] = undefined /*out*/;
@@ -229,6 +253,10 @@ export interface LogsInputState {
      */
     allowedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
+     */
+    autoscale?: pulumi.Input<boolean>;
+    /**
      * Input configuration
      */
     configuration?: pulumi.Input<inputs.Dbaas.LogsInputConfiguration>;
@@ -236,6 +264,10 @@ export interface LogsInputState {
      * Input creation
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * Number of instance running (returned by the API)
+     */
+    currentNbInstance?: pulumi.Input<number>;
     /**
      * Input description
      */
@@ -261,7 +293,15 @@ export interface LogsInputState {
      */
     isRestartRequired?: pulumi.Input<boolean>;
     /**
-     * Number of instance running
+     * Maximum number of instances in auto-scaled mode
+     */
+    maxScaleInstance?: pulumi.Input<number>;
+    /**
+     * Minimum number of instances in auto-scaled mode
+     */
+    minScaleInstance?: pulumi.Input<number>;
+    /**
+     * Number of instance running (input, mutually exclusive with parameter `autoscale`)
      */
     nbInstance?: pulumi.Input<number>;
     /**
@@ -303,6 +343,10 @@ export interface LogsInputArgs {
      */
     allowedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
+     */
+    autoscale?: pulumi.Input<boolean>;
+    /**
      * Input configuration
      */
     configuration: pulumi.Input<inputs.Dbaas.LogsInputConfiguration>;
@@ -319,7 +363,15 @@ export interface LogsInputArgs {
      */
     exposedPort?: pulumi.Input<string>;
     /**
-     * Number of instance running
+     * Maximum number of instances in auto-scaled mode
+     */
+    maxScaleInstance?: pulumi.Input<number>;
+    /**
+     * Minimum number of instances in auto-scaled mode
+     */
+    minScaleInstance?: pulumi.Input<number>;
+    /**
+     * Number of instance running (input, mutually exclusive with parameter `autoscale`)
      */
     nbInstance?: pulumi.Input<number>;
     /**

@@ -553,11 +553,11 @@ class PrivateDatabase(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabaseOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabaseOrderArgs', 'PrivateDatabaseOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['PrivateDatabasePlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabasePlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['PrivateDatabasePlanArgs', 'PrivateDatabasePlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabasePlanOptionArgs', 'PrivateDatabasePlanOptionArgsDict']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -576,21 +576,21 @@ class PrivateDatabase(pulumi.CustomResource):
         database_private_database = ovh.hosting.PrivateDatabase("databasePrivateDatabase",
             ovh_subsidiary=mycart.ovh_subsidiary,
             display_name="Postgresql-12",
-            plan=ovh.hosting.PrivateDatabasePlanArgs(
-                duration=database_cart_product_plan.prices[3].duration,
-                plan_code=database_cart_product_plan.plan_code,
-                pricing_mode=database_cart_product_plan.selected_prices[0].pricing_mode,
-                configurations=[
-                    ovh.hosting.PrivateDatabasePlanConfigurationArgs(
-                        label="dc",
-                        value="gra3",
-                    ),
-                    ovh.hosting.PrivateDatabasePlanConfigurationArgs(
-                        label="engine",
-                        value="postgresql_12",
-                    ),
+            plan={
+                "duration": database_cart_product_plan.prices[3].duration,
+                "plan_code": database_cart_product_plan.plan_code,
+                "pricing_mode": database_cart_product_plan.selected_prices[0].pricing_mode,
+                "configurations": [
+                    {
+                        "label": "dc",
+                        "value": "gra3",
+                    },
+                    {
+                        "label": "engine",
+                        "value": "postgresql_12",
+                    },
                 ],
-            ))
+            })
         pulumi.export("privatedatabaseServiceName", database_private_database.service_name)
         ```
 
@@ -605,11 +605,11 @@ class PrivateDatabase(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name displayed in customer panel for your private database
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabaseOrderArgs']]]] orders: Details about your Order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabaseOrderArgs', 'PrivateDatabaseOrderArgsDict']]]] orders: Details about your Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['PrivateDatabasePlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabasePlanOptionArgs']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Union['PrivateDatabasePlanArgs', 'PrivateDatabasePlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabasePlanOptionArgs', 'PrivateDatabasePlanOptionArgsDict']]]] plan_options: Product Plan to order
         :param pulumi.Input[str] service_name: Service name
         """
         ...
@@ -634,21 +634,21 @@ class PrivateDatabase(pulumi.CustomResource):
         database_private_database = ovh.hosting.PrivateDatabase("databasePrivateDatabase",
             ovh_subsidiary=mycart.ovh_subsidiary,
             display_name="Postgresql-12",
-            plan=ovh.hosting.PrivateDatabasePlanArgs(
-                duration=database_cart_product_plan.prices[3].duration,
-                plan_code=database_cart_product_plan.plan_code,
-                pricing_mode=database_cart_product_plan.selected_prices[0].pricing_mode,
-                configurations=[
-                    ovh.hosting.PrivateDatabasePlanConfigurationArgs(
-                        label="dc",
-                        value="gra3",
-                    ),
-                    ovh.hosting.PrivateDatabasePlanConfigurationArgs(
-                        label="engine",
-                        value="postgresql_12",
-                    ),
+            plan={
+                "duration": database_cart_product_plan.prices[3].duration,
+                "plan_code": database_cart_product_plan.plan_code,
+                "pricing_mode": database_cart_product_plan.selected_prices[0].pricing_mode,
+                "configurations": [
+                    {
+                        "label": "dc",
+                        "value": "gra3",
+                    },
+                    {
+                        "label": "engine",
+                        "value": "postgresql_12",
+                    },
                 ],
-            ))
+            })
         pulumi.export("privatedatabaseServiceName", database_private_database.service_name)
         ```
 
@@ -676,11 +676,11 @@ class PrivateDatabase(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabaseOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabaseOrderArgs', 'PrivateDatabaseOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['PrivateDatabasePlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabasePlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['PrivateDatabasePlanArgs', 'PrivateDatabasePlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabasePlanOptionArgs', 'PrivateDatabasePlanOptionArgsDict']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -738,11 +738,11 @@ class PrivateDatabase(pulumi.CustomResource):
             hostname_ftp: Optional[pulumi.Input[str]] = None,
             infrastructure: Optional[pulumi.Input[str]] = None,
             offer: Optional[pulumi.Input[str]] = None,
-            orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabaseOrderArgs']]]]] = None,
+            orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabaseOrderArgs', 'PrivateDatabaseOrderArgsDict']]]]] = None,
             ovh_subsidiary: Optional[pulumi.Input[str]] = None,
             payment_mean: Optional[pulumi.Input[str]] = None,
-            plan: Optional[pulumi.Input[pulumi.InputType['PrivateDatabasePlanArgs']]] = None,
-            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabasePlanOptionArgs']]]]] = None,
+            plan: Optional[pulumi.Input[Union['PrivateDatabasePlanArgs', 'PrivateDatabasePlanArgsDict']]] = None,
+            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabasePlanOptionArgs', 'PrivateDatabasePlanOptionArgsDict']]]]] = None,
             port: Optional[pulumi.Input[int]] = None,
             port_ftp: Optional[pulumi.Input[int]] = None,
             quota_size: Optional[pulumi.Input[int]] = None,
@@ -770,11 +770,11 @@ class PrivateDatabase(pulumi.CustomResource):
         :param pulumi.Input[str] hostname_ftp: Private database FTP hostname
         :param pulumi.Input[str] infrastructure: Infrastructure where service was stored
         :param pulumi.Input[str] offer: Type of the private database offer
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabaseOrderArgs']]]] orders: Details about your Order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabaseOrderArgs', 'PrivateDatabaseOrderArgsDict']]]] orders: Details about your Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['PrivateDatabasePlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateDatabasePlanOptionArgs']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Union['PrivateDatabasePlanArgs', 'PrivateDatabasePlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabasePlanOptionArgs', 'PrivateDatabasePlanOptionArgsDict']]]] plan_options: Product Plan to order
         :param pulumi.Input[int] port: Private database service port
         :param pulumi.Input[int] port_ftp: Private database FTP port
         :param pulumi.Input[int] quota_size: Space allowed (in MB) on your private database

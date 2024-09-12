@@ -55,7 +55,7 @@ import (
 type HttpFarm struct {
 	pulumi.CustomResourceState
 
-	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
 	Balance pulumi.StringPtrOutput `pulumi:"balance"`
 	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -109,7 +109,7 @@ func GetHttpFarm(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HttpFarm resources.
 type httpFarmState struct {
-	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
 	Balance *string `pulumi:"balance"`
 	// Readable label for loadbalancer farm
 	DisplayName *string `pulumi:"displayName"`
@@ -128,7 +128,7 @@ type httpFarmState struct {
 }
 
 type HttpFarmState struct {
-	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
 	Balance pulumi.StringPtrInput
 	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrInput
@@ -151,7 +151,7 @@ func (HttpFarmState) ElementType() reflect.Type {
 }
 
 type httpFarmArgs struct {
-	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
 	Balance *string `pulumi:"balance"`
 	// Readable label for loadbalancer farm
 	DisplayName *string `pulumi:"displayName"`
@@ -171,7 +171,7 @@ type httpFarmArgs struct {
 
 // The set of arguments for constructing a HttpFarm resource.
 type HttpFarmArgs struct {
-	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
 	Balance pulumi.StringPtrInput
 	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrInput
@@ -276,7 +276,7 @@ func (o HttpFarmOutput) ToHttpFarmOutputWithContext(ctx context.Context) HttpFar
 	return o
 }
 
-// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
 func (o HttpFarmOutput) Balance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpFarm) pulumi.StringPtrOutput { return v.Balance }).(pulumi.StringPtrOutput)
 }

@@ -71,14 +71,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="ovh:IpLoadBalancing/httpFarm:HttpFarm")
 public class HttpFarm extends com.pulumi.resources.CustomResource {
     /**
-     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
      * 
      */
     @Export(name="balance", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> balance;
 
     /**
-     * @return Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+     * @return Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
      * 
      */
     public Output<Optional<String>> balance() {

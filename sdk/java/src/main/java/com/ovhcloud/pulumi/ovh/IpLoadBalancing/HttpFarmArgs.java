@@ -19,14 +19,14 @@ public final class HttpFarmArgs extends com.pulumi.resources.ResourceArgs {
     public static final HttpFarmArgs Empty = new HttpFarmArgs();
 
     /**
-     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
      * 
      */
     @Import(name="balance")
     private @Nullable Output<String> balance;
 
     /**
-     * @return Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+     * @return Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
      * 
      */
     public Optional<Output<String>> balance() {
@@ -170,7 +170,7 @@ public final class HttpFarmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param balance Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+         * @param balance Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class HttpFarmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param balance Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+         * @param balance Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
          * 
          * @return builder
          * 

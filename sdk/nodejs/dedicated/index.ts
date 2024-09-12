@@ -50,6 +50,11 @@ export type NasHAPartitionSnapshot = import("./nasHAPartitionSnapshot").NasHAPar
 export const NasHAPartitionSnapshot: typeof import("./nasHAPartitionSnapshot").NasHAPartitionSnapshot = null as any;
 utilities.lazyLoad(exports, ["NasHAPartitionSnapshot"], () => require("./nasHAPartitionSnapshot"));
 
+export { ServerArgs, ServerState } from "./server";
+export type Server = import("./server").Server;
+export const Server: typeof import("./server").Server = null as any;
+utilities.lazyLoad(exports, ["Server"], () => require("./server"));
+
 export { ServerInstallTaskArgs, ServerInstallTaskState } from "./serverInstallTask";
 export type ServerInstallTask = import("./serverInstallTask").ServerInstallTask;
 export const ServerInstallTask: typeof import("./serverInstallTask").ServerInstallTask = null as any;
@@ -83,6 +88,8 @@ const _module = {
                 return new NasHAPartitionAccess(name, <any>undefined, { urn })
             case "ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot":
                 return new NasHAPartitionSnapshot(name, <any>undefined, { urn })
+            case "ovh:Dedicated/server:Server":
+                return new Server(name, <any>undefined, { urn })
             case "ovh:Dedicated/serverInstallTask:ServerInstallTask":
                 return new ServerInstallTask(name, <any>undefined, { urn })
             case "ovh:Dedicated/serverNetworking:ServerNetworking":
@@ -100,6 +107,7 @@ pulumi.runtime.registerResourceModule("ovh", "Dedicated/cephAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/nasHAPartition", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/nasHAPartitionAccess", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/nasHAPartitionSnapshot", _module)
+pulumi.runtime.registerResourceModule("ovh", "Dedicated/server", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/serverInstallTask", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/serverNetworking", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/serverRebootTask", _module)

@@ -25,6 +25,11 @@ export type ZoneDNSSec = import("./zoneDNSSec").ZoneDNSSec;
 export const ZoneDNSSec: typeof import("./zoneDNSSec").ZoneDNSSec = null as any;
 utilities.lazyLoad(exports, ["ZoneDNSSec"], () => require("./zoneDNSSec"));
 
+export { ZoneImportArgs, ZoneImportState } from "./zoneImport";
+export type ZoneImport = import("./zoneImport").ZoneImport;
+export const ZoneImport: typeof import("./zoneImport").ZoneImport = null as any;
+utilities.lazyLoad(exports, ["ZoneImport"], () => require("./zoneImport"));
+
 export { ZoneRecordArgs, ZoneRecordState } from "./zoneRecord";
 export type ZoneRecord = import("./zoneRecord").ZoneRecord;
 export const ZoneRecord: typeof import("./zoneRecord").ZoneRecord = null as any;
@@ -44,6 +49,8 @@ const _module = {
                 return new Zone(name, <any>undefined, { urn })
             case "ovh:Domain/zoneDNSSec:ZoneDNSSec":
                 return new ZoneDNSSec(name, <any>undefined, { urn })
+            case "ovh:Domain/zoneImport:ZoneImport":
+                return new ZoneImport(name, <any>undefined, { urn })
             case "ovh:Domain/zoneRecord:ZoneRecord":
                 return new ZoneRecord(name, <any>undefined, { urn })
             case "ovh:Domain/zoneRedirection:ZoneRedirection":
@@ -55,5 +62,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("ovh", "Domain/zone", _module)
 pulumi.runtime.registerResourceModule("ovh", "Domain/zoneDNSSec", _module)
+pulumi.runtime.registerResourceModule("ovh", "Domain/zoneImport", _module)
 pulumi.runtime.registerResourceModule("ovh", "Domain/zoneRecord", _module)
 pulumi.runtime.registerResourceModule("ovh", "Domain/zoneRedirection", _module)

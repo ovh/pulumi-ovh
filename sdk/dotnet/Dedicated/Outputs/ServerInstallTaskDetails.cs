@@ -26,14 +26,6 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly bool? NoRaid;
         /// <summary>
-        /// Indicate the URL where your postinstall customisation script is located.
-        /// </summary>
-        public readonly string? PostInstallationScriptLink;
-        /// <summary>
-        /// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        /// </summary>
-        public readonly string? PostInstallationScriptReturn;
-        /// <summary>
         /// soft raid devices.
         /// </summary>
         public readonly int? SoftRaidDevices;
@@ -46,17 +38,11 @@ namespace Pulumi.Ovh.Dedicated.Outputs
 
             bool? noRaid,
 
-            string? postInstallationScriptLink,
-
-            string? postInstallationScriptReturn,
-
             int? softRaidDevices)
         {
             CustomHostname = customHostname;
             DiskGroupId = diskGroupId;
             NoRaid = noRaid;
-            PostInstallationScriptLink = postInstallationScriptLink;
-            PostInstallationScriptReturn = postInstallationScriptReturn;
             SoftRaidDevices = softRaidDevices;
         }
     }

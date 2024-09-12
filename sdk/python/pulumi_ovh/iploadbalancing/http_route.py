@@ -224,7 +224,7 @@ class HttpRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[pulumi.InputType['HttpRouteActionArgs']]] = None,
+                 action: Optional[pulumi.Input[Union['HttpRouteActionArgs', 'HttpRouteActionArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  frontend_id: Optional[pulumi.Input[int]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -242,11 +242,11 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         httpsredirect = ovh.ip_load_balancing.HttpRoute("httpsredirect",
-            action=ovh.ip_load_balancing.HttpRouteActionArgs(
-                status=302,
-                target="https://${host}${path}${arguments}",
-                type="redirect",
-            ),
+            action={
+                "status": 302,
+                "target": "https://${host}${path}${arguments}",
+                "type": "redirect",
+            },
             display_name="Redirect to HTTPS",
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             weight=1)
@@ -258,7 +258,7 @@ class HttpRoute(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['HttpRouteActionArgs']] action: Action triggered when all rules match
+        :param pulumi.Input[Union['HttpRouteActionArgs', 'HttpRouteActionArgsDict']] action: Action triggered when all rules match
         :param pulumi.Input[str] display_name: Human readable name for your route, this field is for you
         :param pulumi.Input[int] frontend_id: Route traffic for this frontend
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
@@ -282,11 +282,11 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         httpsredirect = ovh.ip_load_balancing.HttpRoute("httpsredirect",
-            action=ovh.ip_load_balancing.HttpRouteActionArgs(
-                status=302,
-                target="https://${host}${path}${arguments}",
-                type="redirect",
-            ),
+            action={
+                "status": 302,
+                "target": "https://${host}${path}${arguments}",
+                "type": "redirect",
+            },
             display_name="Redirect to HTTPS",
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             weight=1)
@@ -311,7 +311,7 @@ class HttpRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[pulumi.InputType['HttpRouteActionArgs']]] = None,
+                 action: Optional[pulumi.Input[Union['HttpRouteActionArgs', 'HttpRouteActionArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  frontend_id: Optional[pulumi.Input[int]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -346,10 +346,10 @@ class HttpRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[pulumi.InputType['HttpRouteActionArgs']]] = None,
+            action: Optional[pulumi.Input[Union['HttpRouteActionArgs', 'HttpRouteActionArgsDict']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             frontend_id: Optional[pulumi.Input[int]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             weight: Optional[pulumi.Input[int]] = None) -> 'HttpRoute':
@@ -360,10 +360,10 @@ class HttpRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['HttpRouteActionArgs']] action: Action triggered when all rules match
+        :param pulumi.Input[Union['HttpRouteActionArgs', 'HttpRouteActionArgsDict']] action: Action triggered when all rules match
         :param pulumi.Input[str] display_name: Human readable name for your route, this field is for you
         :param pulumi.Input[int] frontend_id: Route traffic for this frontend
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]] rules: List of rules to match to trigger action
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]] rules: List of rules to match to trigger action
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] status: Route status. Routes in "ok" state are ready to operate
         :param pulumi.Input[int] weight: Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action

@@ -63,36 +63,6 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Indicate the URL where your postinstall customisation script is located.
-     * 
-     */
-    @Import(name="postInstallationScriptLink")
-    private @Nullable Output<String> postInstallationScriptLink;
-
-    /**
-     * @return Indicate the URL where your postinstall customisation script is located.
-     * 
-     */
-    public Optional<Output<String>> postInstallationScriptLink() {
-        return Optional.ofNullable(this.postInstallationScriptLink);
-    }
-
-    /**
-     * Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-     * 
-     */
-    @Import(name="postInstallationScriptReturn")
-    private @Nullable Output<String> postInstallationScriptReturn;
-
-    /**
-     * @return Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-     * 
-     */
-    public Optional<Output<String>> postInstallationScriptReturn() {
-        return Optional.ofNullable(this.postInstallationScriptReturn);
-    }
-
-    /**
      * soft raid devices.
      * 
      */
@@ -113,8 +83,6 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
         this.customHostname = $.customHostname;
         this.diskGroupId = $.diskGroupId;
         this.noRaid = $.noRaid;
-        this.postInstallationScriptLink = $.postInstallationScriptLink;
-        this.postInstallationScriptReturn = $.postInstallationScriptReturn;
         this.softRaidDevices = $.softRaidDevices;
     }
 
@@ -197,48 +165,6 @@ public final class ServerInstallTaskDetailsArgs extends com.pulumi.resources.Res
          */
         public Builder noRaid(Boolean noRaid) {
             return noRaid(Output.of(noRaid));
-        }
-
-        /**
-         * @param postInstallationScriptLink Indicate the URL where your postinstall customisation script is located.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder postInstallationScriptLink(@Nullable Output<String> postInstallationScriptLink) {
-            $.postInstallationScriptLink = postInstallationScriptLink;
-            return this;
-        }
-
-        /**
-         * @param postInstallationScriptLink Indicate the URL where your postinstall customisation script is located.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder postInstallationScriptLink(String postInstallationScriptLink) {
-            return postInstallationScriptLink(Output.of(postInstallationScriptLink));
-        }
-
-        /**
-         * @param postInstallationScriptReturn Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder postInstallationScriptReturn(@Nullable Output<String> postInstallationScriptReturn) {
-            $.postInstallationScriptReturn = postInstallationScriptReturn;
-            return this;
-        }
-
-        /**
-         * @param postInstallationScriptReturn Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder postInstallationScriptReturn(String postInstallationScriptReturn) {
-            return postInstallationScriptReturn(Output.of(postInstallationScriptReturn));
         }
 
         /**

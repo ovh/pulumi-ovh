@@ -23,7 +23,10 @@ class LogsInputArgs:
                  stream_id: pulumi.Input[str],
                  title: pulumi.Input[str],
                  allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 autoscale: Optional[pulumi.Input[bool]] = None,
                  exposed_port: Optional[pulumi.Input[str]] = None,
+                 max_scale_instance: Optional[pulumi.Input[int]] = None,
+                 min_scale_instance: Optional[pulumi.Input[int]] = None,
                  nb_instance: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a LogsInput resource.
@@ -34,8 +37,11 @@ class LogsInputArgs:
         :param pulumi.Input[str] stream_id: Associated Graylog stream
         :param pulumi.Input[str] title: Input title
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: List of IP blocks
+        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
         :param pulumi.Input[str] exposed_port: Port
-        :param pulumi.Input[int] nb_instance: Number of instance running
+        :param pulumi.Input[int] max_scale_instance: Maximum number of instances in auto-scaled mode
+        :param pulumi.Input[int] min_scale_instance: Minimum number of instances in auto-scaled mode
+        :param pulumi.Input[int] nb_instance: Number of instance running (input, mutually exclusive with parameter `autoscale`)
         """
         pulumi.set(__self__, "configuration", configuration)
         pulumi.set(__self__, "description", description)
@@ -45,8 +51,14 @@ class LogsInputArgs:
         pulumi.set(__self__, "title", title)
         if allowed_networks is not None:
             pulumi.set(__self__, "allowed_networks", allowed_networks)
+        if autoscale is not None:
+            pulumi.set(__self__, "autoscale", autoscale)
         if exposed_port is not None:
             pulumi.set(__self__, "exposed_port", exposed_port)
+        if max_scale_instance is not None:
+            pulumi.set(__self__, "max_scale_instance", max_scale_instance)
+        if min_scale_instance is not None:
+            pulumi.set(__self__, "min_scale_instance", min_scale_instance)
         if nb_instance is not None:
             pulumi.set(__self__, "nb_instance", nb_instance)
 
@@ -135,6 +147,18 @@ class LogsInputArgs:
         pulumi.set(self, "allowed_networks", value)
 
     @property
+    @pulumi.getter
+    def autoscale(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        """
+        return pulumi.get(self, "autoscale")
+
+    @autoscale.setter
+    def autoscale(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "autoscale", value)
+
+    @property
     @pulumi.getter(name="exposedPort")
     def exposed_port(self) -> Optional[pulumi.Input[str]]:
         """
@@ -147,10 +171,34 @@ class LogsInputArgs:
         pulumi.set(self, "exposed_port", value)
 
     @property
+    @pulumi.getter(name="maxScaleInstance")
+    def max_scale_instance(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of instances in auto-scaled mode
+        """
+        return pulumi.get(self, "max_scale_instance")
+
+    @max_scale_instance.setter
+    def max_scale_instance(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_scale_instance", value)
+
+    @property
+    @pulumi.getter(name="minScaleInstance")
+    def min_scale_instance(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of instances in auto-scaled mode
+        """
+        return pulumi.get(self, "min_scale_instance")
+
+    @min_scale_instance.setter
+    def min_scale_instance(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_scale_instance", value)
+
+    @property
     @pulumi.getter(name="nbInstance")
     def nb_instance(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of instance running
+        Number of instance running (input, mutually exclusive with parameter `autoscale`)
         """
         return pulumi.get(self, "nb_instance")
 
@@ -163,14 +211,18 @@ class LogsInputArgs:
 class _LogsInputState:
     def __init__(__self__, *,
                  allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 autoscale: Optional[pulumi.Input[bool]] = None,
                  configuration: Optional[pulumi.Input['LogsInputConfigurationArgs']] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 current_nb_instance: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  engine_id: Optional[pulumi.Input[str]] = None,
                  exposed_port: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  input_id: Optional[pulumi.Input[str]] = None,
                  is_restart_required: Optional[pulumi.Input[bool]] = None,
+                 max_scale_instance: Optional[pulumi.Input[int]] = None,
+                 min_scale_instance: Optional[pulumi.Input[int]] = None,
                  nb_instance: Optional[pulumi.Input[int]] = None,
                  public_address: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -182,15 +234,19 @@ class _LogsInputState:
         """
         Input properties used for looking up and filtering LogsInput resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: List of IP blocks
+        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
         :param pulumi.Input['LogsInputConfigurationArgs'] configuration: Input configuration
         :param pulumi.Input[str] created_at: Input creation
+        :param pulumi.Input[int] current_nb_instance: Number of instance running (returned by the API)
         :param pulumi.Input[str] description: Input description
         :param pulumi.Input[str] engine_id: Input engine ID
         :param pulumi.Input[str] exposed_port: Port
         :param pulumi.Input[str] hostname: Hostname
         :param pulumi.Input[str] input_id: Input ID
         :param pulumi.Input[bool] is_restart_required: Indicate if input need to be restarted
-        :param pulumi.Input[int] nb_instance: Number of instance running
+        :param pulumi.Input[int] max_scale_instance: Maximum number of instances in auto-scaled mode
+        :param pulumi.Input[int] min_scale_instance: Minimum number of instances in auto-scaled mode
+        :param pulumi.Input[int] nb_instance: Number of instance running (input, mutually exclusive with parameter `autoscale`)
         :param pulumi.Input[str] public_address: Input IP address
         :param pulumi.Input[str] service_name: service name
         :param pulumi.Input[str] ssl_certificate: Input SSL certificate
@@ -201,10 +257,14 @@ class _LogsInputState:
         """
         if allowed_networks is not None:
             pulumi.set(__self__, "allowed_networks", allowed_networks)
+        if autoscale is not None:
+            pulumi.set(__self__, "autoscale", autoscale)
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if current_nb_instance is not None:
+            pulumi.set(__self__, "current_nb_instance", current_nb_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if engine_id is not None:
@@ -217,6 +277,10 @@ class _LogsInputState:
             pulumi.set(__self__, "input_id", input_id)
         if is_restart_required is not None:
             pulumi.set(__self__, "is_restart_required", is_restart_required)
+        if max_scale_instance is not None:
+            pulumi.set(__self__, "max_scale_instance", max_scale_instance)
+        if min_scale_instance is not None:
+            pulumi.set(__self__, "min_scale_instance", min_scale_instance)
         if nb_instance is not None:
             pulumi.set(__self__, "nb_instance", nb_instance)
         if public_address is not None:
@@ -248,6 +312,18 @@ class _LogsInputState:
 
     @property
     @pulumi.getter
+    def autoscale(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        """
+        return pulumi.get(self, "autoscale")
+
+    @autoscale.setter
+    def autoscale(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "autoscale", value)
+
+    @property
+    @pulumi.getter
     def configuration(self) -> Optional[pulumi.Input['LogsInputConfigurationArgs']]:
         """
         Input configuration
@@ -269,6 +345,18 @@ class _LogsInputState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="currentNbInstance")
+    def current_nb_instance(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of instance running (returned by the API)
+        """
+        return pulumi.get(self, "current_nb_instance")
+
+    @current_nb_instance.setter
+    def current_nb_instance(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "current_nb_instance", value)
 
     @property
     @pulumi.getter
@@ -343,10 +431,34 @@ class _LogsInputState:
         pulumi.set(self, "is_restart_required", value)
 
     @property
+    @pulumi.getter(name="maxScaleInstance")
+    def max_scale_instance(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of instances in auto-scaled mode
+        """
+        return pulumi.get(self, "max_scale_instance")
+
+    @max_scale_instance.setter
+    def max_scale_instance(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_scale_instance", value)
+
+    @property
+    @pulumi.getter(name="minScaleInstance")
+    def min_scale_instance(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of instances in auto-scaled mode
+        """
+        return pulumi.get(self, "min_scale_instance")
+
+    @min_scale_instance.setter
+    def min_scale_instance(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_scale_instance", value)
+
+    @property
     @pulumi.getter(name="nbInstance")
     def nb_instance(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of instance running
+        Number of instance running (input, mutually exclusive with parameter `autoscale`)
         """
         return pulumi.get(self, "nb_instance")
 
@@ -445,10 +557,13 @@ class LogsInput(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['LogsInputConfigurationArgs']]] = None,
+                 autoscale: Optional[pulumi.Input[bool]] = None,
+                 configuration: Optional[pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  engine_id: Optional[pulumi.Input[str]] = None,
                  exposed_port: Optional[pulumi.Input[str]] = None,
+                 max_scale_instance: Optional[pulumi.Input[int]] = None,
+                 min_scale_instance: Optional[pulumi.Input[int]] = None,
                  nb_instance: Optional[pulumi.Input[int]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  stream_id: Optional[pulumi.Input[str]] = None,
@@ -478,27 +593,30 @@ class LogsInput(pulumi.CustomResource):
             allowed_networks=["10.0.0.0/16"],
             exposed_port="6154",
             nb_instance=2,
-            configuration=ovh.dbaas.LogsInputConfigurationArgs(
-                logstash=ovh.dbaas.LogsInputConfigurationLogstashArgs(
-                    input_section=\"\"\"  beats {
+            configuration={
+                "logstash": {
+                    "input_section": \"\"\"  beats {
             port => 6514
             ssl => true
             ssl_certificate => "/etc/ssl/private/server.crt"
             ssl_key => "/etc/ssl/private/server.key"
           }
         \"\"\",
-                ),
-            ))
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: List of IP blocks
-        :param pulumi.Input[pulumi.InputType['LogsInputConfigurationArgs']] configuration: Input configuration
+        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        :param pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']] configuration: Input configuration
         :param pulumi.Input[str] description: Input description
         :param pulumi.Input[str] engine_id: Input engine ID
         :param pulumi.Input[str] exposed_port: Port
-        :param pulumi.Input[int] nb_instance: Number of instance running
+        :param pulumi.Input[int] max_scale_instance: Maximum number of instances in auto-scaled mode
+        :param pulumi.Input[int] min_scale_instance: Minimum number of instances in auto-scaled mode
+        :param pulumi.Input[int] nb_instance: Number of instance running (input, mutually exclusive with parameter `autoscale`)
         :param pulumi.Input[str] service_name: service name
         :param pulumi.Input[str] stream_id: Associated Graylog stream
         :param pulumi.Input[str] title: Input title
@@ -533,17 +651,17 @@ class LogsInput(pulumi.CustomResource):
             allowed_networks=["10.0.0.0/16"],
             exposed_port="6154",
             nb_instance=2,
-            configuration=ovh.dbaas.LogsInputConfigurationArgs(
-                logstash=ovh.dbaas.LogsInputConfigurationLogstashArgs(
-                    input_section=\"\"\"  beats {
+            configuration={
+                "logstash": {
+                    "input_section": \"\"\"  beats {
             port => 6514
             ssl => true
             ssl_certificate => "/etc/ssl/private/server.crt"
             ssl_key => "/etc/ssl/private/server.key"
           }
         \"\"\",
-                ),
-            ))
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -562,10 +680,13 @@ class LogsInput(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['LogsInputConfigurationArgs']]] = None,
+                 autoscale: Optional[pulumi.Input[bool]] = None,
+                 configuration: Optional[pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  engine_id: Optional[pulumi.Input[str]] = None,
                  exposed_port: Optional[pulumi.Input[str]] = None,
+                 max_scale_instance: Optional[pulumi.Input[int]] = None,
+                 min_scale_instance: Optional[pulumi.Input[int]] = None,
                  nb_instance: Optional[pulumi.Input[int]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  stream_id: Optional[pulumi.Input[str]] = None,
@@ -580,6 +701,7 @@ class LogsInput(pulumi.CustomResource):
             __props__ = LogsInputArgs.__new__(LogsInputArgs)
 
             __props__.__dict__["allowed_networks"] = allowed_networks
+            __props__.__dict__["autoscale"] = autoscale
             if configuration is None and not opts.urn:
                 raise TypeError("Missing required property 'configuration'")
             __props__.__dict__["configuration"] = configuration
@@ -590,6 +712,8 @@ class LogsInput(pulumi.CustomResource):
                 raise TypeError("Missing required property 'engine_id'")
             __props__.__dict__["engine_id"] = engine_id
             __props__.__dict__["exposed_port"] = exposed_port
+            __props__.__dict__["max_scale_instance"] = max_scale_instance
+            __props__.__dict__["min_scale_instance"] = min_scale_instance
             __props__.__dict__["nb_instance"] = nb_instance
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
@@ -601,6 +725,7 @@ class LogsInput(pulumi.CustomResource):
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["current_nb_instance"] = None
             __props__.__dict__["hostname"] = None
             __props__.__dict__["input_id"] = None
             __props__.__dict__["is_restart_required"] = None
@@ -621,14 +746,18 @@ class LogsInput(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allowed_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            configuration: Optional[pulumi.Input[pulumi.InputType['LogsInputConfigurationArgs']]] = None,
+            autoscale: Optional[pulumi.Input[bool]] = None,
+            configuration: Optional[pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            current_nb_instance: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             engine_id: Optional[pulumi.Input[str]] = None,
             exposed_port: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             input_id: Optional[pulumi.Input[str]] = None,
             is_restart_required: Optional[pulumi.Input[bool]] = None,
+            max_scale_instance: Optional[pulumi.Input[int]] = None,
+            min_scale_instance: Optional[pulumi.Input[int]] = None,
             nb_instance: Optional[pulumi.Input[int]] = None,
             public_address: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
@@ -645,15 +774,19 @@ class LogsInput(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: List of IP blocks
-        :param pulumi.Input[pulumi.InputType['LogsInputConfigurationArgs']] configuration: Input configuration
+        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        :param pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']] configuration: Input configuration
         :param pulumi.Input[str] created_at: Input creation
+        :param pulumi.Input[int] current_nb_instance: Number of instance running (returned by the API)
         :param pulumi.Input[str] description: Input description
         :param pulumi.Input[str] engine_id: Input engine ID
         :param pulumi.Input[str] exposed_port: Port
         :param pulumi.Input[str] hostname: Hostname
         :param pulumi.Input[str] input_id: Input ID
         :param pulumi.Input[bool] is_restart_required: Indicate if input need to be restarted
-        :param pulumi.Input[int] nb_instance: Number of instance running
+        :param pulumi.Input[int] max_scale_instance: Maximum number of instances in auto-scaled mode
+        :param pulumi.Input[int] min_scale_instance: Minimum number of instances in auto-scaled mode
+        :param pulumi.Input[int] nb_instance: Number of instance running (input, mutually exclusive with parameter `autoscale`)
         :param pulumi.Input[str] public_address: Input IP address
         :param pulumi.Input[str] service_name: service name
         :param pulumi.Input[str] ssl_certificate: Input SSL certificate
@@ -667,14 +800,18 @@ class LogsInput(pulumi.CustomResource):
         __props__ = _LogsInputState.__new__(_LogsInputState)
 
         __props__.__dict__["allowed_networks"] = allowed_networks
+        __props__.__dict__["autoscale"] = autoscale
         __props__.__dict__["configuration"] = configuration
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["current_nb_instance"] = current_nb_instance
         __props__.__dict__["description"] = description
         __props__.__dict__["engine_id"] = engine_id
         __props__.__dict__["exposed_port"] = exposed_port
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["input_id"] = input_id
         __props__.__dict__["is_restart_required"] = is_restart_required
+        __props__.__dict__["max_scale_instance"] = max_scale_instance
+        __props__.__dict__["min_scale_instance"] = min_scale_instance
         __props__.__dict__["nb_instance"] = nb_instance
         __props__.__dict__["public_address"] = public_address
         __props__.__dict__["service_name"] = service_name
@@ -695,6 +832,14 @@ class LogsInput(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def autoscale(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        """
+        return pulumi.get(self, "autoscale")
+
+    @property
+    @pulumi.getter
     def configuration(self) -> pulumi.Output['outputs.LogsInputConfiguration']:
         """
         Input configuration
@@ -708,6 +853,14 @@ class LogsInput(pulumi.CustomResource):
         Input creation
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="currentNbInstance")
+    def current_nb_instance(self) -> pulumi.Output[int]:
+        """
+        Number of instance running (returned by the API)
+        """
+        return pulumi.get(self, "current_nb_instance")
 
     @property
     @pulumi.getter
@@ -758,10 +911,26 @@ class LogsInput(pulumi.CustomResource):
         return pulumi.get(self, "is_restart_required")
 
     @property
-    @pulumi.getter(name="nbInstance")
-    def nb_instance(self) -> pulumi.Output[int]:
+    @pulumi.getter(name="maxScaleInstance")
+    def max_scale_instance(self) -> pulumi.Output[Optional[int]]:
         """
-        Number of instance running
+        Maximum number of instances in auto-scaled mode
+        """
+        return pulumi.get(self, "max_scale_instance")
+
+    @property
+    @pulumi.getter(name="minScaleInstance")
+    def min_scale_instance(self) -> pulumi.Output[Optional[int]]:
+        """
+        Minimum number of instances in auto-scaled mode
+        """
+        return pulumi.get(self, "min_scale_instance")
+
+    @property
+    @pulumi.getter(name="nbInstance")
+    def nb_instance(self) -> pulumi.Output[Optional[int]]:
+        """
+        Number of instance running (input, mutually exclusive with parameter `autoscale`)
         """
         return pulumi.get(self, "nb_instance")
 

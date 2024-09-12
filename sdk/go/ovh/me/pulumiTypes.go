@@ -16,10 +16,6 @@ var _ = internal.GetEnvOrDefault
 type InstallationTemplateCustomization struct {
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname *string `pulumi:"customHostname"`
-	// Indicate the URL where your postinstall customisation script is located.
-	PostInstallationScriptLink *string `pulumi:"postInstallationScriptLink"`
-	// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-	PostInstallationScriptReturn *string `pulumi:"postInstallationScriptReturn"`
 }
 
 // InstallationTemplateCustomizationInput is an input type that accepts InstallationTemplateCustomizationArgs and InstallationTemplateCustomizationOutput values.
@@ -36,10 +32,6 @@ type InstallationTemplateCustomizationInput interface {
 type InstallationTemplateCustomizationArgs struct {
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname pulumi.StringPtrInput `pulumi:"customHostname"`
-	// Indicate the URL where your postinstall customisation script is located.
-	PostInstallationScriptLink pulumi.StringPtrInput `pulumi:"postInstallationScriptLink"`
-	// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-	PostInstallationScriptReturn pulumi.StringPtrInput `pulumi:"postInstallationScriptReturn"`
 }
 
 func (InstallationTemplateCustomizationArgs) ElementType() reflect.Type {
@@ -124,16 +116,6 @@ func (o InstallationTemplateCustomizationOutput) CustomHostname() pulumi.StringP
 	return o.ApplyT(func(v InstallationTemplateCustomization) *string { return v.CustomHostname }).(pulumi.StringPtrOutput)
 }
 
-// Indicate the URL where your postinstall customisation script is located.
-func (o InstallationTemplateCustomizationOutput) PostInstallationScriptLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstallationTemplateCustomization) *string { return v.PostInstallationScriptLink }).(pulumi.StringPtrOutput)
-}
-
-// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-func (o InstallationTemplateCustomizationOutput) PostInstallationScriptReturn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstallationTemplateCustomization) *string { return v.PostInstallationScriptReturn }).(pulumi.StringPtrOutput)
-}
-
 type InstallationTemplateCustomizationPtrOutput struct{ *pulumi.OutputState }
 
 func (InstallationTemplateCustomizationPtrOutput) ElementType() reflect.Type {
@@ -165,26 +147,6 @@ func (o InstallationTemplateCustomizationPtrOutput) CustomHostname() pulumi.Stri
 			return nil
 		}
 		return v.CustomHostname
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicate the URL where your postinstall customisation script is located.
-func (o InstallationTemplateCustomizationPtrOutput) PostInstallationScriptLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstallationTemplateCustomization) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PostInstallationScriptLink
-	}).(pulumi.StringPtrOutput)
-}
-
-// indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-func (o InstallationTemplateCustomizationPtrOutput) PostInstallationScriptReturn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstallationTemplateCustomization) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PostInstallationScriptReturn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -318,10 +280,6 @@ func (o InstallationTemplateInputTypeArrayOutput) Index(i pulumi.IntInput) Insta
 type GetInstallationTemplateCustomization struct {
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname string `pulumi:"customHostname"`
-	// Indicate the URL where your postinstall customisation script is located.
-	PostInstallationScriptLink string `pulumi:"postInstallationScriptLink"`
-	// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-	PostInstallationScriptReturn string `pulumi:"postInstallationScriptReturn"`
 }
 
 // GetInstallationTemplateCustomizationInput is an input type that accepts GetInstallationTemplateCustomizationArgs and GetInstallationTemplateCustomizationOutput values.
@@ -338,10 +296,6 @@ type GetInstallationTemplateCustomizationInput interface {
 type GetInstallationTemplateCustomizationArgs struct {
 	// Set up the server using the provided hostname instead of the default hostname.
 	CustomHostname pulumi.StringInput `pulumi:"customHostname"`
-	// Indicate the URL where your postinstall customisation script is located.
-	PostInstallationScriptLink pulumi.StringInput `pulumi:"postInstallationScriptLink"`
-	// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-	PostInstallationScriptReturn pulumi.StringInput `pulumi:"postInstallationScriptReturn"`
 }
 
 func (GetInstallationTemplateCustomizationArgs) ElementType() reflect.Type {
@@ -398,16 +352,6 @@ func (o GetInstallationTemplateCustomizationOutput) ToGetInstallationTemplateCus
 // Set up the server using the provided hostname instead of the default hostname.
 func (o GetInstallationTemplateCustomizationOutput) CustomHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateCustomization) string { return v.CustomHostname }).(pulumi.StringOutput)
-}
-
-// Indicate the URL where your postinstall customisation script is located.
-func (o GetInstallationTemplateCustomizationOutput) PostInstallationScriptLink() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateCustomization) string { return v.PostInstallationScriptLink }).(pulumi.StringOutput)
-}
-
-// Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-func (o GetInstallationTemplateCustomizationOutput) PostInstallationScriptReturn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateCustomization) string { return v.PostInstallationScriptReturn }).(pulumi.StringOutput)
 }
 
 type GetInstallationTemplateCustomizationArrayOutput struct{ *pulumi.OutputState }

@@ -11,9 +11,18 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ServerDetails',
+    'ServerIam',
     'ServerInstallTaskDetails',
     'ServerInstallTaskUserMetadata',
     'ServerNetworkingInterface',
+    'ServerOrder',
+    'ServerOrderDetail',
+    'ServerPlan',
+    'ServerPlanConfiguration',
+    'ServerPlanOption',
+    'ServerPlanOptionConfiguration',
+    'ServerUserMetadata',
     'GetServerSpecificationsHardwareDefaultHardwareRaidSizeResult',
     'GetServerSpecificationsHardwareDiskGroupResult',
     'GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeResult',
@@ -44,6 +53,156 @@ __all__ = [
 ]
 
 @pulumi.output_type
+class ServerDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customHostname":
+            suggest = "custom_hostname"
+        elif key == "diskGroupId":
+            suggest = "disk_group_id"
+        elif key == "noRaid":
+            suggest = "no_raid"
+        elif key == "softRaidDevices":
+            suggest = "soft_raid_devices"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_hostname: Optional[str] = None,
+                 disk_group_id: Optional[float] = None,
+                 no_raid: Optional[bool] = None,
+                 soft_raid_devices: Optional[float] = None):
+        """
+        :param str custom_hostname: Personnal hostname to use in server reinstallation
+        :param float disk_group_id: Disk group id to process install on (only available for some templates)
+        :param bool no_raid: true if you want to install only on the first disk
+        :param float soft_raid_devices: Number of devices to use for system's software RAID
+        """
+        if custom_hostname is not None:
+            pulumi.set(__self__, "custom_hostname", custom_hostname)
+        if disk_group_id is not None:
+            pulumi.set(__self__, "disk_group_id", disk_group_id)
+        if no_raid is not None:
+            pulumi.set(__self__, "no_raid", no_raid)
+        if soft_raid_devices is not None:
+            pulumi.set(__self__, "soft_raid_devices", soft_raid_devices)
+
+    @property
+    @pulumi.getter(name="customHostname")
+    def custom_hostname(self) -> Optional[str]:
+        """
+        Personnal hostname to use in server reinstallation
+        """
+        return pulumi.get(self, "custom_hostname")
+
+    @property
+    @pulumi.getter(name="diskGroupId")
+    def disk_group_id(self) -> Optional[float]:
+        """
+        Disk group id to process install on (only available for some templates)
+        """
+        return pulumi.get(self, "disk_group_id")
+
+    @property
+    @pulumi.getter(name="noRaid")
+    def no_raid(self) -> Optional[bool]:
+        """
+        true if you want to install only on the first disk
+        """
+        return pulumi.get(self, "no_raid")
+
+    @property
+    @pulumi.getter(name="softRaidDevices")
+    def soft_raid_devices(self) -> Optional[float]:
+        """
+        Number of devices to use for system's software RAID
+        """
+        return pulumi.get(self, "soft_raid_devices")
+
+
+@pulumi.output_type
+class ServerIam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerIam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerIam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerIam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[str] = None,
+                 id: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 urn: Optional[str] = None):
+        """
+        :param str display_name: Resource display name
+        :param str id: Unique identifier of the resource in the IAM
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        :param str urn: URN of the private database, used when writing IAM policies
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if urn is not None:
+            pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the resource in the IAM
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> Optional[str]:
+        """
+        URN of the private database, used when writing IAM policies
+        """
+        return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
 class ServerInstallTaskDetails(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -54,10 +213,6 @@ class ServerInstallTaskDetails(dict):
             suggest = "disk_group_id"
         elif key == "noRaid":
             suggest = "no_raid"
-        elif key == "postInstallationScriptLink":
-            suggest = "post_installation_script_link"
-        elif key == "postInstallationScriptReturn":
-            suggest = "post_installation_script_return"
         elif key == "softRaidDevices":
             suggest = "soft_raid_devices"
 
@@ -76,15 +231,11 @@ class ServerInstallTaskDetails(dict):
                  custom_hostname: Optional[str] = None,
                  disk_group_id: Optional[int] = None,
                  no_raid: Optional[bool] = None,
-                 post_installation_script_link: Optional[str] = None,
-                 post_installation_script_return: Optional[str] = None,
                  soft_raid_devices: Optional[int] = None):
         """
         :param str custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param int disk_group_id: Disk group id.
         :param bool no_raid: Set to true to disable RAID.
-        :param str post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
-        :param str post_installation_script_return: Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         :param int soft_raid_devices: soft raid devices.
         """
         if custom_hostname is not None:
@@ -93,10 +244,6 @@ class ServerInstallTaskDetails(dict):
             pulumi.set(__self__, "disk_group_id", disk_group_id)
         if no_raid is not None:
             pulumi.set(__self__, "no_raid", no_raid)
-        if post_installation_script_link is not None:
-            pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
-        if post_installation_script_return is not None:
-            pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
         if soft_raid_devices is not None:
             pulumi.set(__self__, "soft_raid_devices", soft_raid_devices)
 
@@ -123,22 +270,6 @@ class ServerInstallTaskDetails(dict):
         Set to true to disable RAID.
         """
         return pulumi.get(self, "no_raid")
-
-    @property
-    @pulumi.getter(name="postInstallationScriptLink")
-    def post_installation_script_link(self) -> Optional[str]:
-        """
-        Indicate the URL where your postinstall customisation script is located.
-        """
-        return pulumi.get(self, "post_installation_script_link")
-
-    @property
-    @pulumi.getter(name="postInstallationScriptReturn")
-    def post_installation_script_return(self) -> Optional[str]:
-        """
-        Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        """
-        return pulumi.get(self, "post_installation_script_return")
 
     @property
     @pulumi.getter(name="softRaidDevices")
@@ -205,6 +336,388 @@ class ServerNetworkingInterface(dict):
         Interface type
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ServerOrder(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationDate":
+            suggest = "expiration_date"
+        elif key == "orderId":
+            suggest = "order_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerOrder. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerOrder.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerOrder.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 date: Optional[str] = None,
+                 details: Optional[Sequence['outputs.ServerOrderDetail']] = None,
+                 expiration_date: Optional[str] = None,
+                 order_id: Optional[float] = None):
+        """
+        :param Sequence['ServerOrderDetailArgs'] details: Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+        """
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if expiration_date is not None:
+            pulumi.set(__self__, "expiration_date", expiration_date)
+        if order_id is not None:
+            pulumi.set(__self__, "order_id", order_id)
+
+    @property
+    @pulumi.getter
+    def date(self) -> Optional[str]:
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[Sequence['outputs.ServerOrderDetail']]:
+        """
+        Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> Optional[str]:
+        return pulumi.get(self, "expiration_date")
+
+    @property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> Optional[float]:
+        return pulumi.get(self, "order_id")
+
+
+@pulumi.output_type
+class ServerOrderDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "detailType":
+            suggest = "detail_type"
+        elif key == "orderDetailId":
+            suggest = "order_detail_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerOrderDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerOrderDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerOrderDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 detail_type: Optional[str] = None,
+                 domain: Optional[str] = None,
+                 order_detail_id: Optional[float] = None,
+                 quantity: Optional[str] = None):
+        """
+        :param str detail_type: Product type of item in order
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if detail_type is not None:
+            pulumi.set(__self__, "detail_type", detail_type)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if order_detail_id is not None:
+            pulumi.set(__self__, "order_detail_id", order_detail_id)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="detailType")
+    def detail_type(self) -> Optional[str]:
+        """
+        Product type of item in order
+        """
+        return pulumi.get(self, "detail_type")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="orderDetailId")
+    def order_detail_id(self) -> Optional[float]:
+        return pulumi.get(self, "order_detail_id")
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[str]:
+        return pulumi.get(self, "quantity")
+
+
+@pulumi.output_type
+class ServerPlan(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "planCode":
+            suggest = "plan_code"
+        elif key == "pricingMode":
+            suggest = "pricing_mode"
+        elif key == "itemId":
+            suggest = "item_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerPlan. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerPlan.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerPlan.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: str,
+                 plan_code: str,
+                 pricing_mode: str,
+                 configurations: Optional[Sequence['outputs.ServerPlanConfiguration']] = None,
+                 item_id: Optional[float] = None,
+                 quantity: Optional[float] = None):
+        """
+        :param str duration: Duration selected for the purchase of the product
+        :param str plan_code: Identifier of the option offer
+        :param str pricing_mode: Pricing mode selected for the purchase of the product
+        :param float item_id: Cart item to be linked
+        :param float quantity: Quantity of product desired
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "pricing_mode", pricing_mode)
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+        if item_id is not None:
+            pulumi.set(__self__, "item_id", item_id)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        Duration selected for the purchase of the product
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> str:
+        """
+        Identifier of the option offer
+        """
+        return pulumi.get(self, "plan_code")
+
+    @property
+    @pulumi.getter(name="pricingMode")
+    def pricing_mode(self) -> str:
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        return pulumi.get(self, "pricing_mode")
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[Sequence['outputs.ServerPlanConfiguration']]:
+        return pulumi.get(self, "configurations")
+
+    @property
+    @pulumi.getter(name="itemId")
+    def item_id(self) -> Optional[float]:
+        """
+        Cart item to be linked
+        """
+        return pulumi.get(self, "item_id")
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[float]:
+        """
+        Quantity of product desired
+        """
+        return pulumi.get(self, "quantity")
+
+
+@pulumi.output_type
+class ServerPlanConfiguration(dict):
+    def __init__(__self__, *,
+                 label: str,
+                 value: str):
+        """
+        :param str label: Label for your configuration item
+        :param str value: Value or resource URL on API.OVH.COM of your configuration item
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        Label for your configuration item
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ServerPlanOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "planCode":
+            suggest = "plan_code"
+        elif key == "pricingMode":
+            suggest = "pricing_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerPlanOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerPlanOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerPlanOption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: str,
+                 plan_code: str,
+                 pricing_mode: str,
+                 quantity: float,
+                 configurations: Optional[Sequence['outputs.ServerPlanOptionConfiguration']] = None):
+        """
+        :param str duration: Duration selected for the purchase of the product
+        :param str plan_code: Identifier of the option offer
+        :param str pricing_mode: Pricing mode selected for the purchase of the product
+        :param float quantity: Quantity of product desired
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "pricing_mode", pricing_mode)
+        pulumi.set(__self__, "quantity", quantity)
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        Duration selected for the purchase of the product
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> str:
+        """
+        Identifier of the option offer
+        """
+        return pulumi.get(self, "plan_code")
+
+    @property
+    @pulumi.getter(name="pricingMode")
+    def pricing_mode(self) -> str:
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        return pulumi.get(self, "pricing_mode")
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> float:
+        """
+        Quantity of product desired
+        """
+        return pulumi.get(self, "quantity")
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[Sequence['outputs.ServerPlanOptionConfiguration']]:
+        return pulumi.get(self, "configurations")
+
+
+@pulumi.output_type
+class ServerPlanOptionConfiguration(dict):
+    def __init__(__self__, *,
+                 label: str,
+                 value: str):
+        """
+        :param str label: Label for your configuration item
+        :param str value: Value or resource URL on API.OVH.COM of your configuration item
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        Label for your configuration item
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ServerUserMetadata(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

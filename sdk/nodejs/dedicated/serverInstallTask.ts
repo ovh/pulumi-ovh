@@ -23,8 +23,7 @@ import * as utilities from "../utilities";
  *     baseTemplateName: "debian12_64",
  *     templateName: "mydebian12",
  *     customization: {
- *         postInstallationScriptLink: "http://test",
- *         postInstallationScriptReturn: "ok",
+ *         customHostname: "mytest",
  *     },
  * });
  * const serverInstall = new ovh.dedicated.ServerInstallTask("serverInstall", {
@@ -34,10 +33,20 @@ import * as utilities from "../utilities";
  *     details: {
  *         customHostname: "mytest",
  *     },
- *     userMetadatas: [{
- *         key: "sshKey",
- *         value: "ssh-ed25519 AAAAC3...",
- *     }],
+ *     userMetadatas: [
+ *         {
+ *             key: "sshKey",
+ *             value: "ssh-ed25519 AAAAC3...",
+ *         },
+ *         {
+ *             key: "postInstallationScript",
+ *             value: `#!/bin/bash
+ *   echo "coucou postInstallationScript" > /opt/coucou
+ *   cat /etc/machine-id  >> /opt/coucou
+ *   date "+%Y-%m-%d %H:%M:%S" --utc >> /opt/coucou
+ * `,
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -133,10 +142,19 @@ import * as utilities from "../utilities";
  *     details: {
  *         customHostname: "mytest",
  *     },
- *     userMetadatas: [{
- *         key: "language",
- *         value: "fr-fr",
- *     }],
+ *     userMetadatas: [
+ *         {
+ *             key: "language",
+ *             value: "fr-fr",
+ *         },
+ *         {
+ *             key: "postInstallationScript",
+ *             value: `coucou postInstallationScriptPowerShell" | Out-File -FilePath "c:\\ovhupd\\script\\coucou.txt"
+ *       (Get-ItemProperty -LiteralPath "Registry::HKLM\\SOFTWARE\\Microsoft\\Cryptography" -Name "MachineGuid").MachineGuid | Out-File -FilePath "c:\\ovhupd\\script\\coucou.txt" -Append
+ *       (Get-Date).ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") | Out-File -FilePath "c:\\ovhupd\\script\\coucou.txt" -Append
+ * `,
+ *         },
+ *     ],
  * });
  * ```
  *

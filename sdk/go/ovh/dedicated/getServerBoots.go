@@ -51,7 +51,7 @@ func GetServerBoots(ctx *pulumi.Context, args *GetServerBootsArgs, opts ...pulum
 
 // A collection of arguments for invoking getServerBoots.
 type GetServerBootsArgs struct {
-	// Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
+	// Filter the value of bootType property (harddisk, rescue, internal, network)
 	BootType *string `pulumi:"bootType"`
 	// Filter the value of kernel property (iPXE script name)
 	Kernel *string `pulumi:"kernel"`
@@ -85,7 +85,7 @@ func GetServerBootsOutput(ctx *pulumi.Context, args GetServerBootsOutputArgs, op
 
 // A collection of arguments for invoking getServerBoots.
 type GetServerBootsOutputArgs struct {
-	// Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
+	// Filter the value of bootType property (harddisk, rescue, internal, network)
 	BootType pulumi.StringPtrInput `pulumi:"bootType"`
 	// Filter the value of kernel property (iPXE script name)
 	Kernel pulumi.StringPtrInput `pulumi:"kernel"`

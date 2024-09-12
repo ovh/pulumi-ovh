@@ -59,7 +59,7 @@ export class ContainerRegistryIPRestrictionsRegistry extends pulumi.CustomResour
     /**
      * IP restrictions applied on artifact manager component.
      */
-    public readonly ipRestrictions!: pulumi.Output<{[key: string]: any}[]>;
+    public readonly ipRestrictions!: pulumi.Output<{[key: string]: string}[]>;
     /**
      * The id of the Managed Private Registry.
      */
@@ -112,7 +112,7 @@ export interface ContainerRegistryIPRestrictionsRegistryState {
     /**
      * IP restrictions applied on artifact manager component.
      */
-    ipRestrictions?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    ipRestrictions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * The id of the Managed Private Registry.
      */
@@ -130,7 +130,7 @@ export interface ContainerRegistryIPRestrictionsRegistryArgs {
     /**
      * IP restrictions applied on artifact manager component.
      */
-    ipRestrictions: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    ipRestrictions: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * The id of the Managed Private Registry.
      */

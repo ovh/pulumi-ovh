@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Zone{}
 	case "ovh:Domain/zoneDNSSec:ZoneDNSSec":
 		r = &ZoneDNSSec{}
+	case "ovh:Domain/zoneImport:ZoneImport":
+		r = &ZoneImport{}
 	case "ovh:Domain/zoneRecord:ZoneRecord":
 		r = &ZoneRecord{}
 	case "ovh:Domain/zoneRedirection:ZoneRedirection":
@@ -50,6 +52,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Domain/zoneDNSSec",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Domain/zoneImport",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

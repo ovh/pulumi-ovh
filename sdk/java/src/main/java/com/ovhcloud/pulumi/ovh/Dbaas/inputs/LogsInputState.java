@@ -35,6 +35,21 @@ public final class LogsInputState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+     * 
+     */
+    @Import(name="autoscale")
+    private @Nullable Output<Boolean> autoscale;
+
+    /**
+     * @return Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+     * 
+     */
+    public Optional<Output<Boolean>> autoscale() {
+        return Optional.ofNullable(this.autoscale);
+    }
+
+    /**
      * Input configuration
      * 
      */
@@ -62,6 +77,21 @@ public final class LogsInputState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * Number of instance running (returned by the API)
+     * 
+     */
+    @Import(name="currentNbInstance")
+    private @Nullable Output<Integer> currentNbInstance;
+
+    /**
+     * @return Number of instance running (returned by the API)
+     * 
+     */
+    public Optional<Output<Integer>> currentNbInstance() {
+        return Optional.ofNullable(this.currentNbInstance);
     }
 
     /**
@@ -155,14 +185,44 @@ public final class LogsInputState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of instance running
+     * Maximum number of instances in auto-scaled mode
+     * 
+     */
+    @Import(name="maxScaleInstance")
+    private @Nullable Output<Integer> maxScaleInstance;
+
+    /**
+     * @return Maximum number of instances in auto-scaled mode
+     * 
+     */
+    public Optional<Output<Integer>> maxScaleInstance() {
+        return Optional.ofNullable(this.maxScaleInstance);
+    }
+
+    /**
+     * Minimum number of instances in auto-scaled mode
+     * 
+     */
+    @Import(name="minScaleInstance")
+    private @Nullable Output<Integer> minScaleInstance;
+
+    /**
+     * @return Minimum number of instances in auto-scaled mode
+     * 
+     */
+    public Optional<Output<Integer>> minScaleInstance() {
+        return Optional.ofNullable(this.minScaleInstance);
+    }
+
+    /**
+     * Number of instance running (input, mutually exclusive with parameter `autoscale`)
      * 
      */
     @Import(name="nbInstance")
     private @Nullable Output<Integer> nbInstance;
 
     /**
-     * @return Number of instance running
+     * @return Number of instance running (input, mutually exclusive with parameter `autoscale`)
      * 
      */
     public Optional<Output<Integer>> nbInstance() {
@@ -278,14 +338,18 @@ public final class LogsInputState extends com.pulumi.resources.ResourceArgs {
 
     private LogsInputState(LogsInputState $) {
         this.allowedNetworks = $.allowedNetworks;
+        this.autoscale = $.autoscale;
         this.configuration = $.configuration;
         this.createdAt = $.createdAt;
+        this.currentNbInstance = $.currentNbInstance;
         this.description = $.description;
         this.engineId = $.engineId;
         this.exposedPort = $.exposedPort;
         this.hostname = $.hostname;
         this.inputId = $.inputId;
         this.isRestartRequired = $.isRestartRequired;
+        this.maxScaleInstance = $.maxScaleInstance;
+        this.minScaleInstance = $.minScaleInstance;
         this.nbInstance = $.nbInstance;
         this.publicAddress = $.publicAddress;
         this.serviceName = $.serviceName;
@@ -346,6 +410,27 @@ public final class LogsInputState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param autoscale Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscale(@Nullable Output<Boolean> autoscale) {
+            $.autoscale = autoscale;
+            return this;
+        }
+
+        /**
+         * @param autoscale Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscale(Boolean autoscale) {
+            return autoscale(Output.of(autoscale));
+        }
+
+        /**
          * @param configuration Input configuration
          * 
          * @return builder
@@ -385,6 +470,27 @@ public final class LogsInputState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param currentNbInstance Number of instance running (returned by the API)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentNbInstance(@Nullable Output<Integer> currentNbInstance) {
+            $.currentNbInstance = currentNbInstance;
+            return this;
+        }
+
+        /**
+         * @param currentNbInstance Number of instance running (returned by the API)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentNbInstance(Integer currentNbInstance) {
+            return currentNbInstance(Output.of(currentNbInstance));
         }
 
         /**
@@ -514,7 +620,49 @@ public final class LogsInputState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nbInstance Number of instance running
+         * @param maxScaleInstance Maximum number of instances in auto-scaled mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxScaleInstance(@Nullable Output<Integer> maxScaleInstance) {
+            $.maxScaleInstance = maxScaleInstance;
+            return this;
+        }
+
+        /**
+         * @param maxScaleInstance Maximum number of instances in auto-scaled mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxScaleInstance(Integer maxScaleInstance) {
+            return maxScaleInstance(Output.of(maxScaleInstance));
+        }
+
+        /**
+         * @param minScaleInstance Minimum number of instances in auto-scaled mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minScaleInstance(@Nullable Output<Integer> minScaleInstance) {
+            $.minScaleInstance = minScaleInstance;
+            return this;
+        }
+
+        /**
+         * @param minScaleInstance Minimum number of instances in auto-scaled mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minScaleInstance(Integer minScaleInstance) {
+            return minScaleInstance(Output.of(minScaleInstance));
+        }
+
+        /**
+         * @param nbInstance Number of instance running (input, mutually exclusive with parameter `autoscale`)
          * 
          * @return builder
          * 
@@ -525,7 +673,7 @@ public final class LogsInputState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nbInstance Number of instance running
+         * @param nbInstance Number of instance running (input, mutually exclusive with parameter `autoscale`)
          * 
          * @return builder
          * 

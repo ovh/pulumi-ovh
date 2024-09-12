@@ -484,9 +484,7 @@ class VpsPlanOption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "itemId":
-            suggest = "item_id"
-        elif key == "planCode":
+        if key == "planCode":
             suggest = "plan_code"
         elif key == "pricingMode":
             suggest = "pricing_mode"
@@ -504,21 +502,18 @@ class VpsPlanOption(dict):
 
     def __init__(__self__, *,
                  duration: str,
-                 item_id: float,
                  plan_code: str,
                  pricing_mode: str,
                  quantity: float,
                  configurations: Optional[Sequence['outputs.VpsPlanOptionConfiguration']] = None):
         """
         :param str duration: duration
-        :param float item_id: Cart item to be linked
         :param str plan_code: Plan code
         :param str pricing_mode: Pricing model identifier
         :param float quantity: Quantity of product desired
         :param Sequence['VpsPlanOptionConfigurationArgs'] configurations: Representation of a configuration item for personalizing product
         """
         pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "item_id", item_id)
         pulumi.set(__self__, "plan_code", plan_code)
         pulumi.set(__self__, "pricing_mode", pricing_mode)
         pulumi.set(__self__, "quantity", quantity)
@@ -532,14 +527,6 @@ class VpsPlanOption(dict):
         duration
         """
         return pulumi.get(self, "duration")
-
-    @property
-    @pulumi.getter(name="itemId")
-    def item_id(self) -> float:
-        """
-        Cart item to be linked
-        """
-        return pulumi.get(self, "item_id")
 
     @property
     @pulumi.getter(name="planCode")

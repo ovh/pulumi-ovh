@@ -31,12 +31,6 @@ namespace Pulumi.Ovh.Vps.Inputs
         public Input<string> Duration { get; set; } = null!;
 
         /// <summary>
-        /// Cart item to be linked
-        /// </summary>
-        [Input("itemId", required: true)]
-        public Input<double> ItemId { get; set; } = null!;
-
-        /// <summary>
         /// Plan code
         /// </summary>
         [Input("planCode", required: true)]

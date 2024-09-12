@@ -678,7 +678,7 @@ export namespace CloudProject {
         /**
          * taints
          */
-        taints?: {[key: string]: any}[];
+        taints?: {[key: string]: string}[];
         /**
          * unschedulable
          */
@@ -1023,7 +1023,7 @@ export namespace CloudProject {
         /**
          * taints
          */
-        taints: {[key: string]: any}[];
+        taints: {[key: string]: string}[];
         /**
          * unschedulable
          */
@@ -1681,6 +1681,44 @@ export namespace Dedicated {
         value: number;
     }
 
+    export interface ServerDetails {
+        /**
+         * Personnal hostname to use in server reinstallation
+         */
+        customHostname?: string;
+        /**
+         * Disk group id to process install on (only available for some templates)
+         */
+        diskGroupId?: number;
+        /**
+         * true if you want to install only on the first disk
+         */
+        noRaid?: boolean;
+        /**
+         * Number of devices to use for system's software RAID
+         */
+        softRaidDevices?: number;
+    }
+
+    export interface ServerIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags: {[key: string]: string};
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn: string;
+    }
+
     export interface ServerInstallTaskDetails {
         /**
          * Set up the server using the provided hostname instead of the default hostname.
@@ -1694,14 +1732,6 @@ export namespace Dedicated {
          * Set to true to disable RAID.
          */
         noRaid?: boolean;
-        /**
-         * Indicate the URL where your postinstall customisation script is located.
-         */
-        postInstallationScriptLink?: string;
-        /**
-         * Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-         */
-        postInstallationScriptReturn?: string;
         /**
          * soft raid devices.
          */
@@ -1728,6 +1758,98 @@ export namespace Dedicated {
          * Interface type
          */
         type: string;
+    }
+
+    export interface ServerOrder {
+        date: string;
+        /**
+         * Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+         */
+        details: outputs.Dedicated.ServerOrderDetail[];
+        expirationDate: string;
+        orderId: number;
+    }
+
+    export interface ServerOrderDetail {
+        description: string;
+        /**
+         * Product type of item in order
+         */
+        detailType: string;
+        domain: string;
+        orderDetailId: number;
+        quantity: string;
+    }
+
+    export interface ServerPlan {
+        configurations: outputs.Dedicated.ServerPlanConfiguration[];
+        /**
+         * Duration selected for the purchase of the product
+         */
+        duration: string;
+        /**
+         * Cart item to be linked
+         */
+        itemId?: number;
+        /**
+         * Identifier of the option offer
+         */
+        planCode: string;
+        /**
+         * Pricing mode selected for the purchase of the product
+         */
+        pricingMode: string;
+        /**
+         * Quantity of product desired
+         */
+        quantity?: number;
+    }
+
+    export interface ServerPlanConfiguration {
+        /**
+         * Label for your configuration item
+         */
+        label: string;
+        /**
+         * Value or resource URL on API.OVH.COM of your configuration item
+         */
+        value: string;
+    }
+
+    export interface ServerPlanOption {
+        configurations?: outputs.Dedicated.ServerPlanOptionConfiguration[];
+        /**
+         * Duration selected for the purchase of the product
+         */
+        duration: string;
+        /**
+         * Identifier of the option offer
+         */
+        planCode: string;
+        /**
+         * Pricing mode selected for the purchase of the product
+         */
+        pricingMode: string;
+        /**
+         * Quantity of product desired
+         */
+        quantity: number;
+    }
+
+    export interface ServerPlanOptionConfiguration {
+        /**
+         * Label for your configuration item
+         */
+        label: string;
+        /**
+         * Value or resource URL on API.OVH.COM of your configuration item
+         */
+        value: string;
+    }
+
+    export interface ServerUserMetadata {
+        key?: string;
+        value?: string;
     }
 
 }
@@ -2421,14 +2543,6 @@ export namespace Me {
          * Set up the server using the provided hostname instead of the default hostname.
          */
         customHostname: string;
-        /**
-         * Indicate the URL where your postinstall customisation script is located.
-         */
-        postInstallationScriptLink: string;
-        /**
-         * Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-         */
-        postInstallationScriptReturn: string;
     }
 
     export interface GetInstallationTemplateInput {
@@ -2528,14 +2642,6 @@ export namespace Me {
          * Set up the server using the provided hostname instead of the default hostname.
          */
         customHostname?: string;
-        /**
-         * Indicate the URL where your postinstall customisation script is located.
-         */
-        postInstallationScriptLink?: string;
-        /**
-         * indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-         */
-        postInstallationScriptReturn?: string;
     }
 
     export interface InstallationTemplateInput {
@@ -3120,15 +3226,11 @@ export namespace Vps {
         /**
          * Representation of a configuration item for personalizing product
          */
-        configurations: outputs.Vps.VpsPlanOptionConfiguration[];
+        configurations?: outputs.Vps.VpsPlanOptionConfiguration[];
         /**
          * duration
          */
         duration: string;
-        /**
-         * Cart item to be linked
-         */
-        itemId: number;
         /**
          * Plan code
          */

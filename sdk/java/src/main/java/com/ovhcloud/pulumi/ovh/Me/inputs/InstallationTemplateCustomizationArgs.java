@@ -30,42 +30,10 @@ public final class InstallationTemplateCustomizationArgs extends com.pulumi.reso
         return Optional.ofNullable(this.customHostname);
     }
 
-    /**
-     * Indicate the URL where your postinstall customisation script is located.
-     * 
-     */
-    @Import(name="postInstallationScriptLink")
-    private @Nullable Output<String> postInstallationScriptLink;
-
-    /**
-     * @return Indicate the URL where your postinstall customisation script is located.
-     * 
-     */
-    public Optional<Output<String>> postInstallationScriptLink() {
-        return Optional.ofNullable(this.postInstallationScriptLink);
-    }
-
-    /**
-     * indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-     * 
-     */
-    @Import(name="postInstallationScriptReturn")
-    private @Nullable Output<String> postInstallationScriptReturn;
-
-    /**
-     * @return indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-     * 
-     */
-    public Optional<Output<String>> postInstallationScriptReturn() {
-        return Optional.ofNullable(this.postInstallationScriptReturn);
-    }
-
     private InstallationTemplateCustomizationArgs() {}
 
     private InstallationTemplateCustomizationArgs(InstallationTemplateCustomizationArgs $) {
         this.customHostname = $.customHostname;
-        this.postInstallationScriptLink = $.postInstallationScriptLink;
-        this.postInstallationScriptReturn = $.postInstallationScriptReturn;
     }
 
     public static Builder builder() {
@@ -105,48 +73,6 @@ public final class InstallationTemplateCustomizationArgs extends com.pulumi.reso
          */
         public Builder customHostname(String customHostname) {
             return customHostname(Output.of(customHostname));
-        }
-
-        /**
-         * @param postInstallationScriptLink Indicate the URL where your postinstall customisation script is located.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder postInstallationScriptLink(@Nullable Output<String> postInstallationScriptLink) {
-            $.postInstallationScriptLink = postInstallationScriptLink;
-            return this;
-        }
-
-        /**
-         * @param postInstallationScriptLink Indicate the URL where your postinstall customisation script is located.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder postInstallationScriptLink(String postInstallationScriptLink) {
-            return postInstallationScriptLink(Output.of(postInstallationScriptLink));
-        }
-
-        /**
-         * @param postInstallationScriptReturn indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder postInstallationScriptReturn(@Nullable Output<String> postInstallationScriptReturn) {
-            $.postInstallationScriptReturn = postInstallationScriptReturn;
-            return this;
-        }
-
-        /**
-         * @param postInstallationScriptReturn indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is &#39;loh1Xee7eo OK OK OK UGh8Ang1Gu&#39;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder postInstallationScriptReturn(String postInstallationScriptReturn) {
-            return postInstallationScriptReturn(Output.of(postInstallationScriptReturn));
         }
 
         public InstallationTemplateCustomizationArgs build() {

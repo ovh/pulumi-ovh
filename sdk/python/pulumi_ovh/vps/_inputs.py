@@ -507,21 +507,18 @@ class VpsPlanConfigurationArgs:
 class VpsPlanOptionArgs:
     def __init__(__self__, *,
                  duration: pulumi.Input[str],
-                 item_id: pulumi.Input[float],
                  plan_code: pulumi.Input[str],
                  pricing_mode: pulumi.Input[str],
                  quantity: pulumi.Input[float],
                  configurations: Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionConfigurationArgs']]]] = None):
         """
         :param pulumi.Input[str] duration: duration
-        :param pulumi.Input[float] item_id: Cart item to be linked
         :param pulumi.Input[str] plan_code: Plan code
         :param pulumi.Input[str] pricing_mode: Pricing model identifier
         :param pulumi.Input[float] quantity: Quantity of product desired
         :param pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product
         """
         pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "item_id", item_id)
         pulumi.set(__self__, "plan_code", plan_code)
         pulumi.set(__self__, "pricing_mode", pricing_mode)
         pulumi.set(__self__, "quantity", quantity)
@@ -539,18 +536,6 @@ class VpsPlanOptionArgs:
     @duration.setter
     def duration(self, value: pulumi.Input[str]):
         pulumi.set(self, "duration", value)
-
-    @property
-    @pulumi.getter(name="itemId")
-    def item_id(self) -> pulumi.Input[float]:
-        """
-        Cart item to be linked
-        """
-        return pulumi.get(self, "item_id")
-
-    @item_id.setter
-    def item_id(self, value: pulumi.Input[float]):
-        pulumi.set(self, "item_id", value)
 
     @property
     @pulumi.getter(name="planCode")
