@@ -345,11 +345,11 @@ class IpService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServiceOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpServiceOrderArgs', 'IpServiceOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['IpServicePlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServicePlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['IpServicePlanArgs', 'IpServicePlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpServicePlanOptionArgs', 'IpServicePlanOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -367,25 +367,25 @@ class IpService(pulumi.CustomResource):
         ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
             ovh_subsidiary=mycart.ovh_subsidiary,
             description="my ip block",
-            plan=ovh.ip.IpServicePlanArgs(
-                duration=ipblock_cart_product_plan.selected_prices[0].duration,
-                plan_code=ipblock_cart_product_plan.plan_code,
-                pricing_mode=ipblock_cart_product_plan.selected_prices[0].pricing_mode,
-                configurations=[ovh.ip.IpServicePlanConfigurationArgs(
-                    label="country",
-                    value="FR",
-                )],
-            ))
+            plan={
+                "duration": ipblock_cart_product_plan.selected_prices[0].duration,
+                "plan_code": ipblock_cart_product_plan.plan_code,
+                "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
+                "configurations": [{
+                    "label": "country",
+                    "value": "FR",
+                }],
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Custom description on your ip.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServiceOrderArgs']]]] orders: Details about an Order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpServiceOrderArgs', 'IpServiceOrderArgsDict']]]] orders: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['IpServicePlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServicePlanOptionArgs']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Union['IpServicePlanArgs', 'IpServicePlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpServicePlanOptionArgs', 'IpServicePlanOptionArgsDict']]]] plan_options: Product Plan to order
         """
         ...
     @overload
@@ -409,15 +409,15 @@ class IpService(pulumi.CustomResource):
         ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
             ovh_subsidiary=mycart.ovh_subsidiary,
             description="my ip block",
-            plan=ovh.ip.IpServicePlanArgs(
-                duration=ipblock_cart_product_plan.selected_prices[0].duration,
-                plan_code=ipblock_cart_product_plan.plan_code,
-                pricing_mode=ipblock_cart_product_plan.selected_prices[0].pricing_mode,
-                configurations=[ovh.ip.IpServicePlanConfigurationArgs(
-                    label="country",
-                    value="FR",
-                )],
-            ))
+            plan={
+                "duration": ipblock_cart_product_plan.selected_prices[0].duration,
+                "plan_code": ipblock_cart_product_plan.plan_code,
+                "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
+                "configurations": [{
+                    "label": "country",
+                    "value": "FR",
+                }],
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -436,11 +436,11 @@ class IpService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServiceOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpServiceOrderArgs', 'IpServiceOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['IpServicePlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServicePlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['IpServicePlanArgs', 'IpServicePlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpServicePlanOptionArgs', 'IpServicePlanOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -481,13 +481,13 @@ class IpService(pulumi.CustomResource):
             country: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             ip: Optional[pulumi.Input[str]] = None,
-            orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServiceOrderArgs']]]]] = None,
+            orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpServiceOrderArgs', 'IpServiceOrderArgsDict']]]]] = None,
             organisation_id: Optional[pulumi.Input[str]] = None,
             ovh_subsidiary: Optional[pulumi.Input[str]] = None,
             payment_mean: Optional[pulumi.Input[str]] = None,
-            plan: Optional[pulumi.Input[pulumi.InputType['IpServicePlanArgs']]] = None,
-            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServicePlanOptionArgs']]]]] = None,
-            routed_tos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServiceRoutedToArgs']]]]] = None,
+            plan: Optional[pulumi.Input[Union['IpServicePlanArgs', 'IpServicePlanArgsDict']]] = None,
+            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpServicePlanOptionArgs', 'IpServicePlanOptionArgsDict']]]]] = None,
+            routed_tos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpServiceRoutedToArgs', 'IpServiceRoutedToArgsDict']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'IpService':
         """
@@ -501,13 +501,13 @@ class IpService(pulumi.CustomResource):
         :param pulumi.Input[str] country: country
         :param pulumi.Input[str] description: Custom description on your ip.
         :param pulumi.Input[str] ip: ip block
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServiceOrderArgs']]]] orders: Details about an Order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpServiceOrderArgs', 'IpServiceOrderArgsDict']]]] orders: Details about an Order
         :param pulumi.Input[str] organisation_id: IP block organisation Id
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['IpServicePlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServicePlanOptionArgs']]]] plan_options: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpServiceRoutedToArgs']]]] routed_tos: Routage information
+        :param pulumi.Input[Union['IpServicePlanArgs', 'IpServicePlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpServicePlanOptionArgs', 'IpServicePlanOptionArgsDict']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpServiceRoutedToArgs', 'IpServiceRoutedToArgsDict']]]] routed_tos: Routage information
         :param pulumi.Input[str] service_name: service name
         :param pulumi.Input[str] type: Possible values for ip type
         """

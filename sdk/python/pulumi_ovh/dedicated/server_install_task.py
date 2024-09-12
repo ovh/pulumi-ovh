@@ -321,11 +321,11 @@ class ServerInstallTask(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bootid_on_destroy: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[pulumi.InputType['ServerInstallTaskDetailsArgs']]] = None,
+                 details: Optional[pulumi.Input[Union['ServerInstallTaskDetailsArgs', 'ServerInstallTaskDetailsArgsDict']]] = None,
                  partition_scheme_name: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
-                 user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerInstallTaskUserMetadataArgs']]]]] = None,
+                 user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerInstallTaskUserMetadataArgs', 'ServerInstallTaskUserMetadataArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -340,21 +340,30 @@ class ServerInstallTask(pulumi.CustomResource):
         debian = ovh.me.InstallationTemplate("debian",
             base_template_name="debian12_64",
             template_name="mydebian12",
-            customization=ovh.me.InstallationTemplateCustomizationArgs(
-                post_installation_script_link="http://test",
-                post_installation_script_return="ok",
-            ))
+            customization={
+                "custom_hostname": "mytest",
+            })
         server_install = ovh.dedicated.ServerInstallTask("serverInstall",
             service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
             template_name=debian.template_name,
             bootid_on_destroy=rescue.results[0],
-            details=ovh.dedicated.ServerInstallTaskDetailsArgs(
-                custom_hostname="mytest",
-            ),
-            user_metadatas=[ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                key="sshKey",
-                value="ssh-ed25519 AAAAC3...",
-            )])
+            details={
+                "custom_hostname": "mytest",
+            },
+            user_metadatas=[
+                {
+                    "key": "sshKey",
+                    "value": "ssh-ed25519 AAAAC3...",
+                },
+                {
+                    "key": "postInstallationScript",
+                    "value": \"\"\"#!/bin/bash
+          echo "coucou postInstallationScript" > /opt/coucou
+          cat /etc/machine-id  >> /opt/coucou
+          date "+%Y-%m-%d %H:%M:%S" --utc >> /opt/coucou
+        \"\"\",
+                },
+            ])
         ```
 
         Using a BringYourOwnLinux (BYOLinux) template (with userMetadata)
@@ -370,37 +379,37 @@ class ServerInstallTask(pulumi.CustomResource):
             service_name=server.service_name,
             template_name="byolinux_64",
             bootid_on_destroy=rescue.results[0],
-            details=ovh.dedicated.ServerInstallTaskDetailsArgs(
-                custom_hostname="mytest",
-            ),
+            details={
+                "custom_hostname": "mytest",
+            },
             user_metadatas=[
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="imageURL",
-                    value="https://myimage.qcow2",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="imageType",
-                    value="qcow2",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="httpHeaders0Key",
-                    value="Authorization",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="httpHeaders0Value",
-                    value="Basic bG9naW46xxxxxxx=",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="imageChecksumType",
-                    value="sha512",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="imageCheckSum",
-                    value="047122c9ff4d2a69512212104b06c678f5a9cdb22b75467353613ff87ccd03b57b38967e56d810e61366f9d22d6bd39ac0addf4e00a4c6445112a2416af8f225",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="configDriveUserData",
-                    value=f\"\"\"#cloud-config
+                {
+                    "key": "imageURL",
+                    "value": "https://myimage.qcow2",
+                },
+                {
+                    "key": "imageType",
+                    "value": "qcow2",
+                },
+                {
+                    "key": "httpHeaders0Key",
+                    "value": "Authorization",
+                },
+                {
+                    "key": "httpHeaders0Value",
+                    "value": "Basic bG9naW46xxxxxxx=",
+                },
+                {
+                    "key": "imageChecksumType",
+                    "value": "sha512",
+                },
+                {
+                    "key": "imageCheckSum",
+                    "value": "047122c9ff4d2a69512212104b06c678f5a9cdb22b75467353613ff87ccd03b57b38967e56d810e61366f9d22d6bd39ac0addf4e00a4c6445112a2416af8f225",
+                },
+                {
+                    "key": "configDriveUserData",
+                    "value": f\"\"\"#cloud-config
         ssh_authorized_keys:
           - {data["ovh_me_ssh_key"]["mykey"]["key"]}
 
@@ -418,7 +427,7 @@ class ServerInstallTask(pulumi.CustomResource):
           - tree
         final_message: The system is finally up, after $UPTIME seconds
         \"\"\",
-                ),
+                },
             ])
         ```
 
@@ -435,13 +444,22 @@ class ServerInstallTask(pulumi.CustomResource):
             service_name=server.service_name,
             template_name="win2019-std_64",
             bootid_on_destroy=rescue.results[0],
-            details=ovh.dedicated.ServerInstallTaskDetailsArgs(
-                custom_hostname="mytest",
-            ),
-            user_metadatas=[ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                key="language",
-                value="fr-fr",
-            )])
+            details={
+                "custom_hostname": "mytest",
+            },
+            user_metadatas=[
+                {
+                    "key": "language",
+                    "value": "fr-fr",
+                },
+                {
+                    "key": "postInstallationScript",
+                    "value": \"\"\"coucou postInstallationScriptPowerShell" | Out-File -FilePath "c:\\ovhupd\\script\\coucou.txt"
+              (Get-ItemProperty -LiteralPath "Registry::HKLM\\SOFTWARE\\Microsoft\\Cryptography" -Name "MachineGuid").MachineGuid | Out-File -FilePath "c:\\ovhupd\\script\\coucou.txt" -Append
+              (Get-Date).ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") | Out-File -FilePath "c:\\ovhupd\\script\\coucou.txt" -Append
+        \"\"\",
+                },
+            ])
         ```
 
         ## Import
@@ -457,11 +475,11 @@ class ServerInstallTask(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase.
-        :param pulumi.Input[pulumi.InputType['ServerInstallTaskDetailsArgs']] details: see `details` block below.
+        :param pulumi.Input[Union['ServerInstallTaskDetailsArgs', 'ServerInstallTaskDetailsArgsDict']] details: see `details` block below.
         :param pulumi.Input[str] partition_scheme_name: Partition scheme name.
         :param pulumi.Input[str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[str] template_name: Template name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerInstallTaskUserMetadataArgs']]]] user_metadatas: see `user_metadata` block below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerInstallTaskUserMetadataArgs', 'ServerInstallTaskUserMetadataArgsDict']]]] user_metadatas: see `user_metadata` block below.
         """
         ...
     @overload
@@ -482,21 +500,30 @@ class ServerInstallTask(pulumi.CustomResource):
         debian = ovh.me.InstallationTemplate("debian",
             base_template_name="debian12_64",
             template_name="mydebian12",
-            customization=ovh.me.InstallationTemplateCustomizationArgs(
-                post_installation_script_link="http://test",
-                post_installation_script_return="ok",
-            ))
+            customization={
+                "custom_hostname": "mytest",
+            })
         server_install = ovh.dedicated.ServerInstallTask("serverInstall",
             service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
             template_name=debian.template_name,
             bootid_on_destroy=rescue.results[0],
-            details=ovh.dedicated.ServerInstallTaskDetailsArgs(
-                custom_hostname="mytest",
-            ),
-            user_metadatas=[ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                key="sshKey",
-                value="ssh-ed25519 AAAAC3...",
-            )])
+            details={
+                "custom_hostname": "mytest",
+            },
+            user_metadatas=[
+                {
+                    "key": "sshKey",
+                    "value": "ssh-ed25519 AAAAC3...",
+                },
+                {
+                    "key": "postInstallationScript",
+                    "value": \"\"\"#!/bin/bash
+          echo "coucou postInstallationScript" > /opt/coucou
+          cat /etc/machine-id  >> /opt/coucou
+          date "+%Y-%m-%d %H:%M:%S" --utc >> /opt/coucou
+        \"\"\",
+                },
+            ])
         ```
 
         Using a BringYourOwnLinux (BYOLinux) template (with userMetadata)
@@ -512,37 +539,37 @@ class ServerInstallTask(pulumi.CustomResource):
             service_name=server.service_name,
             template_name="byolinux_64",
             bootid_on_destroy=rescue.results[0],
-            details=ovh.dedicated.ServerInstallTaskDetailsArgs(
-                custom_hostname="mytest",
-            ),
+            details={
+                "custom_hostname": "mytest",
+            },
             user_metadatas=[
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="imageURL",
-                    value="https://myimage.qcow2",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="imageType",
-                    value="qcow2",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="httpHeaders0Key",
-                    value="Authorization",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="httpHeaders0Value",
-                    value="Basic bG9naW46xxxxxxx=",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="imageChecksumType",
-                    value="sha512",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="imageCheckSum",
-                    value="047122c9ff4d2a69512212104b06c678f5a9cdb22b75467353613ff87ccd03b57b38967e56d810e61366f9d22d6bd39ac0addf4e00a4c6445112a2416af8f225",
-                ),
-                ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                    key="configDriveUserData",
-                    value=f\"\"\"#cloud-config
+                {
+                    "key": "imageURL",
+                    "value": "https://myimage.qcow2",
+                },
+                {
+                    "key": "imageType",
+                    "value": "qcow2",
+                },
+                {
+                    "key": "httpHeaders0Key",
+                    "value": "Authorization",
+                },
+                {
+                    "key": "httpHeaders0Value",
+                    "value": "Basic bG9naW46xxxxxxx=",
+                },
+                {
+                    "key": "imageChecksumType",
+                    "value": "sha512",
+                },
+                {
+                    "key": "imageCheckSum",
+                    "value": "047122c9ff4d2a69512212104b06c678f5a9cdb22b75467353613ff87ccd03b57b38967e56d810e61366f9d22d6bd39ac0addf4e00a4c6445112a2416af8f225",
+                },
+                {
+                    "key": "configDriveUserData",
+                    "value": f\"\"\"#cloud-config
         ssh_authorized_keys:
           - {data["ovh_me_ssh_key"]["mykey"]["key"]}
 
@@ -560,7 +587,7 @@ class ServerInstallTask(pulumi.CustomResource):
           - tree
         final_message: The system is finally up, after $UPTIME seconds
         \"\"\",
-                ),
+                },
             ])
         ```
 
@@ -577,13 +604,22 @@ class ServerInstallTask(pulumi.CustomResource):
             service_name=server.service_name,
             template_name="win2019-std_64",
             bootid_on_destroy=rescue.results[0],
-            details=ovh.dedicated.ServerInstallTaskDetailsArgs(
-                custom_hostname="mytest",
-            ),
-            user_metadatas=[ovh.dedicated.ServerInstallTaskUserMetadataArgs(
-                key="language",
-                value="fr-fr",
-            )])
+            details={
+                "custom_hostname": "mytest",
+            },
+            user_metadatas=[
+                {
+                    "key": "language",
+                    "value": "fr-fr",
+                },
+                {
+                    "key": "postInstallationScript",
+                    "value": \"\"\"coucou postInstallationScriptPowerShell" | Out-File -FilePath "c:\\ovhupd\\script\\coucou.txt"
+              (Get-ItemProperty -LiteralPath "Registry::HKLM\\SOFTWARE\\Microsoft\\Cryptography" -Name "MachineGuid").MachineGuid | Out-File -FilePath "c:\\ovhupd\\script\\coucou.txt" -Append
+              (Get-Date).ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") | Out-File -FilePath "c:\\ovhupd\\script\\coucou.txt" -Append
+        \"\"\",
+                },
+            ])
         ```
 
         ## Import
@@ -612,11 +648,11 @@ class ServerInstallTask(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bootid_on_destroy: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[pulumi.InputType['ServerInstallTaskDetailsArgs']]] = None,
+                 details: Optional[pulumi.Input[Union['ServerInstallTaskDetailsArgs', 'ServerInstallTaskDetailsArgsDict']]] = None,
                  partition_scheme_name: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
-                 user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerInstallTaskUserMetadataArgs']]]]] = None,
+                 user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerInstallTaskUserMetadataArgs', 'ServerInstallTaskUserMetadataArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -654,7 +690,7 @@ class ServerInstallTask(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bootid_on_destroy: Optional[pulumi.Input[int]] = None,
             comment: Optional[pulumi.Input[str]] = None,
-            details: Optional[pulumi.Input[pulumi.InputType['ServerInstallTaskDetailsArgs']]] = None,
+            details: Optional[pulumi.Input[Union['ServerInstallTaskDetailsArgs', 'ServerInstallTaskDetailsArgsDict']]] = None,
             done_date: Optional[pulumi.Input[str]] = None,
             function: Optional[pulumi.Input[str]] = None,
             last_update: Optional[pulumi.Input[str]] = None,
@@ -663,7 +699,7 @@ class ServerInstallTask(pulumi.CustomResource):
             start_date: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             template_name: Optional[pulumi.Input[str]] = None,
-            user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerInstallTaskUserMetadataArgs']]]]] = None) -> 'ServerInstallTask':
+            user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerInstallTaskUserMetadataArgs', 'ServerInstallTaskUserMetadataArgsDict']]]]] = None) -> 'ServerInstallTask':
         """
         Get an existing ServerInstallTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -673,7 +709,7 @@ class ServerInstallTask(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase.
         :param pulumi.Input[str] comment: Details of this task. (should be `Install asked`)
-        :param pulumi.Input[pulumi.InputType['ServerInstallTaskDetailsArgs']] details: see `details` block below.
+        :param pulumi.Input[Union['ServerInstallTaskDetailsArgs', 'ServerInstallTaskDetailsArgsDict']] details: see `details` block below.
         :param pulumi.Input[str] done_date: Completion date in RFC3339 format.
         :param pulumi.Input[str] function: Function name (should be `hardInstall`).
         :param pulumi.Input[str] last_update: Last update in RFC3339 format.
@@ -682,7 +718,7 @@ class ServerInstallTask(pulumi.CustomResource):
         :param pulumi.Input[str] start_date: Task creation date in RFC3339 format.
         :param pulumi.Input[str] status: Task status (should be `done`)
         :param pulumi.Input[str] template_name: Template name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerInstallTaskUserMetadataArgs']]]] user_metadatas: see `user_metadata` block below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerInstallTaskUserMetadataArgs', 'ServerInstallTaskUserMetadataArgsDict']]]] user_metadatas: see `user_metadata` block below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

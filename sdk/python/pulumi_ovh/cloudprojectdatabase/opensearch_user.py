@@ -244,7 +244,7 @@ class OpensearchUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpensearchUserAclArgs']]]]] = None,
+                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpensearchUserAclArgs', 'OpensearchUserAclArgsDict']]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password_reset: Optional[pulumi.Input[str]] = None,
@@ -263,7 +263,7 @@ class OpensearchUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpensearchUserAclArgs']]]] acls: Acls of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OpensearchUserAclArgs', 'OpensearchUserAclArgsDict']]]] acls: Acls of the user.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
@@ -302,7 +302,7 @@ class OpensearchUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpensearchUserAclArgs']]]]] = None,
+                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpensearchUserAclArgs', 'OpensearchUserAclArgsDict']]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password_reset: Optional[pulumi.Input[str]] = None,
@@ -340,7 +340,7 @@ class OpensearchUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpensearchUserAclArgs']]]]] = None,
+            acls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpensearchUserAclArgs', 'OpensearchUserAclArgsDict']]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -355,7 +355,7 @@ class OpensearchUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpensearchUserAclArgs']]]] acls: Acls of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OpensearchUserAclArgs', 'OpensearchUserAclArgsDict']]]] acls: Acls of the user.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
         :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.

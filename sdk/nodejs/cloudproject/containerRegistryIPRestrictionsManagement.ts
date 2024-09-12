@@ -59,7 +59,7 @@ export class ContainerRegistryIPRestrictionsManagement extends pulumi.CustomReso
     /**
      * IP restrictions applied on Harbor UI and API.
      */
-    public readonly ipRestrictions!: pulumi.Output<{[key: string]: any}[]>;
+    public readonly ipRestrictions!: pulumi.Output<{[key: string]: string}[]>;
     /**
      * The id of the Managed Private Registry.
      */
@@ -112,7 +112,7 @@ export interface ContainerRegistryIPRestrictionsManagementState {
     /**
      * IP restrictions applied on Harbor UI and API.
      */
-    ipRestrictions?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    ipRestrictions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * The id of the Managed Private Registry.
      */
@@ -130,7 +130,7 @@ export interface ContainerRegistryIPRestrictionsManagementArgs {
     /**
      * IP restrictions applied on Harbor UI and API.
      */
-    ipRestrictions: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    ipRestrictions: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * The id of the Managed Private Registry.
      */

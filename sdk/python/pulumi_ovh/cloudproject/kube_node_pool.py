@@ -656,7 +656,7 @@ class KubeNodePool(pulumi.CustomResource):
                  monthly_billed: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['KubeNodePoolTemplateArgs']]] = None,
+                 template: Optional[pulumi.Input[Union['KubeNodePoolTemplateArgs', 'KubeNodePoolTemplateArgsDict']]] = None,
                  __props__=None):
         """
         Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.
@@ -691,27 +691,27 @@ class KubeNodePool(pulumi.CustomResource):
             max_nodes=3,
             min_nodes=3,
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            template=ovh.cloud_project.KubeNodePoolTemplateArgs(
-                metadata=ovh.cloud_project.KubeNodePoolTemplateMetadataArgs(
-                    annotations={
+            template={
+                "metadata": {
+                    "annotations": {
                         "k1": "v1",
                         "k2": "v2",
                     },
-                    finalizers=[],
-                    labels={
+                    "finalizers": [],
+                    "labels": {
                         "k3": "v3",
                         "k4": "v4",
                     },
-                ),
-                spec=ovh.cloud_project.KubeNodePoolTemplateSpecArgs(
-                    taints=[{
+                },
+                "spec": {
+                    "taints": [{
                         "effect": "PreferNoSchedule",
                         "key": "k",
                         "value": "v",
                     }],
-                    unschedulable=False,
-                ),
-            ))
+                    "unschedulable": False,
+                },
+            })
         ```
 
         ## Import
@@ -744,7 +744,7 @@ class KubeNodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] monthly_billed: should the nodes be billed on a monthly basis. Default to `false`. **Changing this value recreates the resource.**
         :param pulumi.Input[str] name: The name of the nodepool. Warning: `_` char is not allowed! **Changing this value recreates the resource.**
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
-        :param pulumi.Input[pulumi.InputType['KubeNodePoolTemplateArgs']] template: Node pool template
+        :param pulumi.Input[Union['KubeNodePoolTemplateArgs', 'KubeNodePoolTemplateArgsDict']] template: Node pool template
         """
         ...
     @overload
@@ -785,27 +785,27 @@ class KubeNodePool(pulumi.CustomResource):
             max_nodes=3,
             min_nodes=3,
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            template=ovh.cloud_project.KubeNodePoolTemplateArgs(
-                metadata=ovh.cloud_project.KubeNodePoolTemplateMetadataArgs(
-                    annotations={
+            template={
+                "metadata": {
+                    "annotations": {
                         "k1": "v1",
                         "k2": "v2",
                     },
-                    finalizers=[],
-                    labels={
+                    "finalizers": [],
+                    "labels": {
                         "k3": "v3",
                         "k4": "v4",
                     },
-                ),
-                spec=ovh.cloud_project.KubeNodePoolTemplateSpecArgs(
-                    taints=[{
+                },
+                "spec": {
+                    "taints": [{
                         "effect": "PreferNoSchedule",
                         "key": "k",
                         "value": "v",
                     }],
-                    unschedulable=False,
-                ),
-            ))
+                    "unschedulable": False,
+                },
+            })
         ```
 
         ## Import
@@ -846,7 +846,7 @@ class KubeNodePool(pulumi.CustomResource):
                  monthly_billed: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['KubeNodePoolTemplateArgs']]] = None,
+                 template: Optional[pulumi.Input[Union['KubeNodePoolTemplateArgs', 'KubeNodePoolTemplateArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -915,7 +915,7 @@ class KubeNodePool(pulumi.CustomResource):
             service_name: Optional[pulumi.Input[str]] = None,
             size_status: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            template: Optional[pulumi.Input[pulumi.InputType['KubeNodePoolTemplateArgs']]] = None,
+            template: Optional[pulumi.Input[Union['KubeNodePoolTemplateArgs', 'KubeNodePoolTemplateArgsDict']]] = None,
             up_to_date_nodes: Optional[pulumi.Input[int]] = None,
             updated_at: Optional[pulumi.Input[str]] = None) -> 'KubeNodePool':
         """
@@ -950,7 +950,7 @@ class KubeNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[str] size_status: Status describing the state between number of nodes wanted and available ones
         :param pulumi.Input[str] status: Current status
-        :param pulumi.Input[pulumi.InputType['KubeNodePoolTemplateArgs']] template: Node pool template
+        :param pulumi.Input[Union['KubeNodePoolTemplateArgs', 'KubeNodePoolTemplateArgsDict']] template: Node pool template
         :param pulumi.Input[int] up_to_date_nodes: Number of nodes with the latest version installed in the pool
         :param pulumi.Input[str] updated_at: Last update date
         """

@@ -17,20 +17,12 @@ __all__ = [
 @pulumi.input_type
 class InstallationTemplateCustomizationArgs:
     def __init__(__self__, *,
-                 custom_hostname: Optional[pulumi.Input[str]] = None,
-                 post_installation_script_link: Optional[pulumi.Input[str]] = None,
-                 post_installation_script_return: Optional[pulumi.Input[str]] = None):
+                 custom_hostname: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] custom_hostname: Set up the server using the provided hostname instead of the default hostname.
-        :param pulumi.Input[str] post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
-        :param pulumi.Input[str] post_installation_script_return: indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         """
         if custom_hostname is not None:
             pulumi.set(__self__, "custom_hostname", custom_hostname)
-        if post_installation_script_link is not None:
-            pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
-        if post_installation_script_return is not None:
-            pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
 
     @property
     @pulumi.getter(name="customHostname")
@@ -43,30 +35,6 @@ class InstallationTemplateCustomizationArgs:
     @custom_hostname.setter
     def custom_hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_hostname", value)
-
-    @property
-    @pulumi.getter(name="postInstallationScriptLink")
-    def post_installation_script_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        Indicate the URL where your postinstall customisation script is located.
-        """
-        return pulumi.get(self, "post_installation_script_link")
-
-    @post_installation_script_link.setter
-    def post_installation_script_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "post_installation_script_link", value)
-
-    @property
-    @pulumi.getter(name="postInstallationScriptReturn")
-    def post_installation_script_return(self) -> Optional[pulumi.Input[str]]:
-        """
-        indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        """
-        return pulumi.get(self, "post_installation_script_return")
-
-    @post_installation_script_return.setter
-    def post_installation_script_return(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "post_installation_script_return", value)
 
 
 @pulumi.input_type

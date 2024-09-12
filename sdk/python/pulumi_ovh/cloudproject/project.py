@@ -309,11 +309,11 @@ class Project(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectOrderArgs', 'ProjectOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['ProjectPlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectPlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['ProjectPlanArgs', 'ProjectPlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectPlanOptionArgs', 'ProjectPlanOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Import
@@ -329,11 +329,11 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description associated with the user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectOrderArgs']]]] orders: Details about the order that was used to create the public cloud project
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectOrderArgs', 'ProjectOrderArgsDict']]]] orders: Details about the order that was used to create the public cloud project
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['ProjectPlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectPlanOptionArgs']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Union['ProjectPlanArgs', 'ProjectPlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectPlanOptionArgs', 'ProjectPlanOptionArgsDict']]]] plan_options: Product Plan to order
         """
         ...
     @overload
@@ -368,11 +368,11 @@ class Project(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectOrderArgs', 'ProjectOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[pulumi.InputType['ProjectPlanArgs']]] = None,
-                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectPlanOptionArgs']]]]] = None,
+                 plan: Optional[pulumi.Input[Union['ProjectPlanArgs', 'ProjectPlanArgsDict']]] = None,
+                 plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectPlanOptionArgs', 'ProjectPlanOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -410,11 +410,11 @@ class Project(pulumi.CustomResource):
             project_urn: Optional[pulumi.Input[str]] = None,
             access: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectOrderArgs']]]]] = None,
+            orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectOrderArgs', 'ProjectOrderArgsDict']]]]] = None,
             ovh_subsidiary: Optional[pulumi.Input[str]] = None,
             payment_mean: Optional[pulumi.Input[str]] = None,
-            plan: Optional[pulumi.Input[pulumi.InputType['ProjectPlanArgs']]] = None,
-            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectPlanOptionArgs']]]]] = None,
+            plan: Optional[pulumi.Input[Union['ProjectPlanArgs', 'ProjectPlanArgsDict']]] = None,
+            plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectPlanOptionArgs', 'ProjectPlanOptionArgsDict']]]]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             project_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'Project':
@@ -427,11 +427,11 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project_urn: The URN of the cloud project
         :param pulumi.Input[str] description: A description associated with the user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectOrderArgs']]]] orders: Details about the order that was used to create the public cloud project
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectOrderArgs', 'ProjectOrderArgsDict']]]] orders: Details about the order that was used to create the public cloud project
         :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
-        :param pulumi.Input[pulumi.InputType['ProjectPlanArgs']] plan: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectPlanOptionArgs']]]] plan_options: Product Plan to order
+        :param pulumi.Input[Union['ProjectPlanArgs', 'ProjectPlanArgsDict']] plan: Product Plan to order
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectPlanOptionArgs', 'ProjectPlanOptionArgsDict']]]] plan_options: Product Plan to order
         :param pulumi.Input[str] project_id: openstack project id
         :param pulumi.Input[str] project_name: openstack project name
         :param pulumi.Input[str] status: project status

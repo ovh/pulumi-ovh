@@ -46,7 +46,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     public partial class HttpFarm : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+        /// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
         /// </summary>
         [Output("balance")]
         public Output<string?> Balance { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     public sealed class HttpFarmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+        /// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
         /// </summary>
         [Input("balance")]
         public Input<string>? Balance { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     public sealed class HttpFarmState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+        /// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
         /// </summary>
         [Input("balance")]
         public Input<string>? Balance { get; set; }

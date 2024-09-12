@@ -76,7 +76,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// IP restrictions applied on Harbor UI and API.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, object>> IpRestrictions;
+        public readonly ImmutableArray<ImmutableDictionary<string, string>> IpRestrictions;
         /// <summary>
         /// The ID of the Managed Private Registry.
         /// </summary>
@@ -90,7 +90,7 @@ namespace Pulumi.Ovh.CloudProject
         private GetContainerRegistryIPRestrictionsManagementResult(
             string id,
 
-            ImmutableArray<ImmutableDictionary<string, object>> ipRestrictions,
+            ImmutableArray<ImmutableDictionary<string, string>> ipRestrictions,
 
             string registryId,
 

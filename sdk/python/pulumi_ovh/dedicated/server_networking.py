@@ -128,14 +128,14 @@ class ServerNetworking(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerNetworkingInterfaceArgs']]]]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerNetworkingInterfaceArgs', 'ServerNetworkingInterfaceArgsDict']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a ServerNetworking resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerNetworkingInterfaceArgs']]]] interfaces: Interface or interfaces aggregation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerNetworkingInterfaceArgs', 'ServerNetworkingInterfaceArgsDict']]]] interfaces: Interface or interfaces aggregation.
         :param pulumi.Input[str] service_name: The internal name of your dedicated server.
         """
         ...
@@ -161,7 +161,7 @@ class ServerNetworking(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerNetworkingInterfaceArgs']]]]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerNetworkingInterfaceArgs', 'ServerNetworkingInterfaceArgsDict']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -191,7 +191,7 @@ class ServerNetworking(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerNetworkingInterfaceArgs']]]]] = None,
+            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerNetworkingInterfaceArgs', 'ServerNetworkingInterfaceArgsDict']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'ServerNetworking':
         """
@@ -202,7 +202,7 @@ class ServerNetworking(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Operation description
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerNetworkingInterfaceArgs']]]] interfaces: Interface or interfaces aggregation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerNetworkingInterfaceArgs', 'ServerNetworkingInterfaceArgsDict']]]] interfaces: Interface or interfaces aggregation.
         :param pulumi.Input[str] service_name: The internal name of your dedicated server.
         :param pulumi.Input[str] status: Operation status
         """

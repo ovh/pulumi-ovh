@@ -66,7 +66,7 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class GetServerBootsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
+        /// Filter the value of bootType property (harddisk, rescue, internal, network)
         /// </summary>
         [Input("bootType")]
         public string? BootType { get; set; }
@@ -92,7 +92,7 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class GetServerBootsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
+        /// Filter the value of bootType property (harddisk, rescue, internal, network)
         /// </summary>
         [Input("bootType")]
         public Input<string>? BootType { get; set; }

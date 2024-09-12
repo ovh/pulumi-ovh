@@ -331,7 +331,7 @@ class AwaitableGetKubeNodePoolResult(GetKubeNodePoolResult):
 def get_kube_node_pool(kube_id: Optional[str] = None,
                        name: Optional[str] = None,
                        service_name: Optional[str] = None,
-                       template: Optional[pulumi.InputType['GetKubeNodePoolTemplateArgs']] = None,
+                       template: Optional[Union['GetKubeNodePoolTemplateArgs', 'GetKubeNodePoolTemplateArgsDict']] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubeNodePoolResult:
     """
     Use this data source to get a OVHcloud Managed Kubernetes node pool.
@@ -393,7 +393,7 @@ def get_kube_node_pool(kube_id: Optional[str] = None,
 def get_kube_node_pool_output(kube_id: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[str]] = None,
                               service_name: Optional[pulumi.Input[str]] = None,
-                              template: Optional[pulumi.Input[Optional[pulumi.InputType['GetKubeNodePoolTemplateArgs']]]] = None,
+                              template: Optional[pulumi.Input[Optional[Union['GetKubeNodePoolTemplateArgs', 'GetKubeNodePoolTemplateArgsDict']]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubeNodePoolResult]:
     """
     Use this data source to get a OVHcloud Managed Kubernetes node pool.

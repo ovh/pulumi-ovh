@@ -10,10 +10,161 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'ServerDetailsArgs',
+    'ServerIamArgs',
     'ServerInstallTaskDetailsArgs',
     'ServerInstallTaskUserMetadataArgs',
     'ServerNetworkingInterfaceArgs',
+    'ServerOrderArgs',
+    'ServerOrderDetailArgs',
+    'ServerPlanArgs',
+    'ServerPlanConfigurationArgs',
+    'ServerPlanOptionArgs',
+    'ServerPlanOptionConfigurationArgs',
+    'ServerUserMetadataArgs',
 ]
+
+@pulumi.input_type
+class ServerDetailsArgs:
+    def __init__(__self__, *,
+                 custom_hostname: Optional[pulumi.Input[str]] = None,
+                 disk_group_id: Optional[pulumi.Input[float]] = None,
+                 no_raid: Optional[pulumi.Input[bool]] = None,
+                 soft_raid_devices: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[str] custom_hostname: Personnal hostname to use in server reinstallation
+        :param pulumi.Input[float] disk_group_id: Disk group id to process install on (only available for some templates)
+        :param pulumi.Input[bool] no_raid: true if you want to install only on the first disk
+        :param pulumi.Input[float] soft_raid_devices: Number of devices to use for system's software RAID
+        """
+        if custom_hostname is not None:
+            pulumi.set(__self__, "custom_hostname", custom_hostname)
+        if disk_group_id is not None:
+            pulumi.set(__self__, "disk_group_id", disk_group_id)
+        if no_raid is not None:
+            pulumi.set(__self__, "no_raid", no_raid)
+        if soft_raid_devices is not None:
+            pulumi.set(__self__, "soft_raid_devices", soft_raid_devices)
+
+    @property
+    @pulumi.getter(name="customHostname")
+    def custom_hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Personnal hostname to use in server reinstallation
+        """
+        return pulumi.get(self, "custom_hostname")
+
+    @custom_hostname.setter
+    def custom_hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_hostname", value)
+
+    @property
+    @pulumi.getter(name="diskGroupId")
+    def disk_group_id(self) -> Optional[pulumi.Input[float]]:
+        """
+        Disk group id to process install on (only available for some templates)
+        """
+        return pulumi.get(self, "disk_group_id")
+
+    @disk_group_id.setter
+    def disk_group_id(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "disk_group_id", value)
+
+    @property
+    @pulumi.getter(name="noRaid")
+    def no_raid(self) -> Optional[pulumi.Input[bool]]:
+        """
+        true if you want to install only on the first disk
+        """
+        return pulumi.get(self, "no_raid")
+
+    @no_raid.setter
+    def no_raid(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_raid", value)
+
+    @property
+    @pulumi.getter(name="softRaidDevices")
+    def soft_raid_devices(self) -> Optional[pulumi.Input[float]]:
+        """
+        Number of devices to use for system's software RAID
+        """
+        return pulumi.get(self, "soft_raid_devices")
+
+    @soft_raid_devices.setter
+    def soft_raid_devices(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "soft_raid_devices", value)
+
+
+@pulumi.input_type
+class ServerIamArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 urn: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] id: Unique identifier of the resource in the IAM
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        :param pulumi.Input[str] urn: URN of the private database, used when writing IAM policies
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if urn is not None:
+            pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique identifier of the resource in the IAM
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        URN of the private database, used when writing IAM policies
+        """
+        return pulumi.get(self, "urn")
+
+    @urn.setter
+    def urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "urn", value)
+
 
 @pulumi.input_type
 class ServerInstallTaskDetailsArgs:
@@ -21,15 +172,11 @@ class ServerInstallTaskDetailsArgs:
                  custom_hostname: Optional[pulumi.Input[str]] = None,
                  disk_group_id: Optional[pulumi.Input[int]] = None,
                  no_raid: Optional[pulumi.Input[bool]] = None,
-                 post_installation_script_link: Optional[pulumi.Input[str]] = None,
-                 post_installation_script_return: Optional[pulumi.Input[str]] = None,
                  soft_raid_devices: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] custom_hostname: Set up the server using the provided hostname instead of the default hostname.
         :param pulumi.Input[int] disk_group_id: Disk group id.
         :param pulumi.Input[bool] no_raid: Set to true to disable RAID.
-        :param pulumi.Input[str] post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
-        :param pulumi.Input[str] post_installation_script_return: Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         :param pulumi.Input[int] soft_raid_devices: soft raid devices.
         """
         if custom_hostname is not None:
@@ -38,10 +185,6 @@ class ServerInstallTaskDetailsArgs:
             pulumi.set(__self__, "disk_group_id", disk_group_id)
         if no_raid is not None:
             pulumi.set(__self__, "no_raid", no_raid)
-        if post_installation_script_link is not None:
-            pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
-        if post_installation_script_return is not None:
-            pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
         if soft_raid_devices is not None:
             pulumi.set(__self__, "soft_raid_devices", soft_raid_devices)
 
@@ -80,30 +223,6 @@ class ServerInstallTaskDetailsArgs:
     @no_raid.setter
     def no_raid(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "no_raid", value)
-
-    @property
-    @pulumi.getter(name="postInstallationScriptLink")
-    def post_installation_script_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        Indicate the URL where your postinstall customisation script is located.
-        """
-        return pulumi.get(self, "post_installation_script_link")
-
-    @post_installation_script_link.setter
-    def post_installation_script_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "post_installation_script_link", value)
-
-    @property
-    @pulumi.getter(name="postInstallationScriptReturn")
-    def post_installation_script_return(self) -> Optional[pulumi.Input[str]]:
-        """
-        Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        """
-        return pulumi.get(self, "post_installation_script_return")
-
-    @post_installation_script_return.setter
-    def post_installation_script_return(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "post_installation_script_return", value)
 
     @property
     @pulumi.getter(name="softRaidDevices")
@@ -190,5 +309,413 @@ class ServerNetworkingInterfaceArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ServerOrderArgs:
+    def __init__(__self__, *,
+                 date: Optional[pulumi.Input[str]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input['ServerOrderDetailArgs']]]] = None,
+                 expiration_date: Optional[pulumi.Input[str]] = None,
+                 order_id: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServerOrderDetailArgs']]] details: Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+        """
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if expiration_date is not None:
+            pulumi.set(__self__, "expiration_date", expiration_date)
+        if order_id is not None:
+            pulumi.set(__self__, "order_id", order_id)
+
+    @property
+    @pulumi.getter
+    def date(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "date")
+
+    @date.setter
+    def date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "date", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerOrderDetailArgs']]]]:
+        """
+        Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerOrderDetailArgs']]]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "expiration_date")
+
+    @expiration_date.setter
+    def expiration_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_date", value)
+
+    @property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "order_id")
+
+    @order_id.setter
+    def order_id(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "order_id", value)
+
+
+@pulumi.input_type
+class ServerOrderDetailArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 detail_type: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 order_detail_id: Optional[pulumi.Input[float]] = None,
+                 quantity: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] detail_type: Product type of item in order
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if detail_type is not None:
+            pulumi.set(__self__, "detail_type", detail_type)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if order_detail_id is not None:
+            pulumi.set(__self__, "order_detail_id", order_detail_id)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="detailType")
+    def detail_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Product type of item in order
+        """
+        return pulumi.get(self, "detail_type")
+
+    @detail_type.setter
+    def detail_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "detail_type", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="orderDetailId")
+    def order_detail_id(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "order_detail_id")
+
+    @order_detail_id.setter
+    def order_detail_id(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "order_detail_id", value)
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "quantity")
+
+    @quantity.setter
+    def quantity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "quantity", value)
+
+
+@pulumi.input_type
+class ServerPlanArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[str],
+                 plan_code: pulumi.Input[str],
+                 pricing_mode: pulumi.Input[str],
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanConfigurationArgs']]]] = None,
+                 item_id: Optional[pulumi.Input[float]] = None,
+                 quantity: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[str] duration: Duration selected for the purchase of the product
+        :param pulumi.Input[str] plan_code: Identifier of the option offer
+        :param pulumi.Input[str] pricing_mode: Pricing mode selected for the purchase of the product
+        :param pulumi.Input[float] item_id: Cart item to be linked
+        :param pulumi.Input[float] quantity: Quantity of product desired
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "pricing_mode", pricing_mode)
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+        if item_id is not None:
+            pulumi.set(__self__, "item_id", item_id)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[str]:
+        """
+        Duration selected for the purchase of the product
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> pulumi.Input[str]:
+        """
+        Identifier of the option offer
+        """
+        return pulumi.get(self, "plan_code")
+
+    @plan_code.setter
+    def plan_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plan_code", value)
+
+    @property
+    @pulumi.getter(name="pricingMode")
+    def pricing_mode(self) -> pulumi.Input[str]:
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        return pulumi.get(self, "pricing_mode")
+
+    @pricing_mode.setter
+    def pricing_mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pricing_mode", value)
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanConfigurationArgs']]]]:
+        return pulumi.get(self, "configurations")
+
+    @configurations.setter
+    def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanConfigurationArgs']]]]):
+        pulumi.set(self, "configurations", value)
+
+    @property
+    @pulumi.getter(name="itemId")
+    def item_id(self) -> Optional[pulumi.Input[float]]:
+        """
+        Cart item to be linked
+        """
+        return pulumi.get(self, "item_id")
+
+    @item_id.setter
+    def item_id(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "item_id", value)
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[pulumi.Input[float]]:
+        """
+        Quantity of product desired
+        """
+        return pulumi.get(self, "quantity")
+
+    @quantity.setter
+    def quantity(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "quantity", value)
+
+
+@pulumi.input_type
+class ServerPlanConfigurationArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] label: Label for your configuration item
+        :param pulumi.Input[str] value: Value or resource URL on API.OVH.COM of your configuration item
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        Label for your configuration item
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ServerPlanOptionArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[str],
+                 plan_code: pulumi.Input[str],
+                 pricing_mode: pulumi.Input[str],
+                 quantity: pulumi.Input[float],
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanOptionConfigurationArgs']]]] = None):
+        """
+        :param pulumi.Input[str] duration: Duration selected for the purchase of the product
+        :param pulumi.Input[str] plan_code: Identifier of the option offer
+        :param pulumi.Input[str] pricing_mode: Pricing mode selected for the purchase of the product
+        :param pulumi.Input[float] quantity: Quantity of product desired
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "pricing_mode", pricing_mode)
+        pulumi.set(__self__, "quantity", quantity)
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[str]:
+        """
+        Duration selected for the purchase of the product
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> pulumi.Input[str]:
+        """
+        Identifier of the option offer
+        """
+        return pulumi.get(self, "plan_code")
+
+    @plan_code.setter
+    def plan_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plan_code", value)
+
+    @property
+    @pulumi.getter(name="pricingMode")
+    def pricing_mode(self) -> pulumi.Input[str]:
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        return pulumi.get(self, "pricing_mode")
+
+    @pricing_mode.setter
+    def pricing_mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pricing_mode", value)
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> pulumi.Input[float]:
+        """
+        Quantity of product desired
+        """
+        return pulumi.get(self, "quantity")
+
+    @quantity.setter
+    def quantity(self, value: pulumi.Input[float]):
+        pulumi.set(self, "quantity", value)
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanOptionConfigurationArgs']]]]:
+        return pulumi.get(self, "configurations")
+
+    @configurations.setter
+    def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanOptionConfigurationArgs']]]]):
+        pulumi.set(self, "configurations", value)
+
+
+@pulumi.input_type
+class ServerPlanOptionConfigurationArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] label: Label for your configuration item
+        :param pulumi.Input[str] value: Value or resource URL on API.OVH.COM of your configuration item
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        Label for your configuration item
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ServerUserMetadataArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 

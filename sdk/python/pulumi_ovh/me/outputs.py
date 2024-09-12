@@ -28,10 +28,6 @@ class InstallationTemplateCustomization(dict):
         suggest = None
         if key == "customHostname":
             suggest = "custom_hostname"
-        elif key == "postInstallationScriptLink":
-            suggest = "post_installation_script_link"
-        elif key == "postInstallationScriptReturn":
-            suggest = "post_installation_script_return"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstallationTemplateCustomization. Access the value via the '{suggest}' property getter instead.")
@@ -45,20 +41,12 @@ class InstallationTemplateCustomization(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 custom_hostname: Optional[str] = None,
-                 post_installation_script_link: Optional[str] = None,
-                 post_installation_script_return: Optional[str] = None):
+                 custom_hostname: Optional[str] = None):
         """
         :param str custom_hostname: Set up the server using the provided hostname instead of the default hostname.
-        :param str post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
-        :param str post_installation_script_return: indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         """
         if custom_hostname is not None:
             pulumi.set(__self__, "custom_hostname", custom_hostname)
-        if post_installation_script_link is not None:
-            pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
-        if post_installation_script_return is not None:
-            pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
 
     @property
     @pulumi.getter(name="customHostname")
@@ -67,22 +55,6 @@ class InstallationTemplateCustomization(dict):
         Set up the server using the provided hostname instead of the default hostname.
         """
         return pulumi.get(self, "custom_hostname")
-
-    @property
-    @pulumi.getter(name="postInstallationScriptLink")
-    def post_installation_script_link(self) -> Optional[str]:
-        """
-        Indicate the URL where your postinstall customisation script is located.
-        """
-        return pulumi.get(self, "post_installation_script_link")
-
-    @property
-    @pulumi.getter(name="postInstallationScriptReturn")
-    def post_installation_script_return(self) -> Optional[str]:
-        """
-        indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        """
-        return pulumi.get(self, "post_installation_script_return")
 
 
 @pulumi.output_type
@@ -147,17 +119,11 @@ class InstallationTemplateInput(dict):
 @pulumi.output_type
 class GetInstallationTemplateCustomizationResult(dict):
     def __init__(__self__, *,
-                 custom_hostname: str,
-                 post_installation_script_link: str,
-                 post_installation_script_return: str):
+                 custom_hostname: str):
         """
         :param str custom_hostname: Set up the server using the provided hostname instead of the default hostname.
-        :param str post_installation_script_link: Indicate the URL where your postinstall customisation script is located.
-        :param str post_installation_script_return: Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
         """
         pulumi.set(__self__, "custom_hostname", custom_hostname)
-        pulumi.set(__self__, "post_installation_script_link", post_installation_script_link)
-        pulumi.set(__self__, "post_installation_script_return", post_installation_script_return)
 
     @property
     @pulumi.getter(name="customHostname")
@@ -166,22 +132,6 @@ class GetInstallationTemplateCustomizationResult(dict):
         Set up the server using the provided hostname instead of the default hostname.
         """
         return pulumi.get(self, "custom_hostname")
-
-    @property
-    @pulumi.getter(name="postInstallationScriptLink")
-    def post_installation_script_link(self) -> str:
-        """
-        Indicate the URL where your postinstall customisation script is located.
-        """
-        return pulumi.get(self, "post_installation_script_link")
-
-    @property
-    @pulumi.getter(name="postInstallationScriptReturn")
-    def post_installation_script_return(self) -> str:
-        """
-        Indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is 'loh1Xee7eo OK OK OK UGh8Ang1Gu'.
-        """
-        return pulumi.get(self, "post_installation_script_return")
 
 
 @pulumi.output_type

@@ -41,7 +41,7 @@ export interface GetContainerRegistryIPRestrictionsRegistryResult {
     /**
      * IP restrictions applied on artifact manager component.
      */
-    readonly ipRestrictions: {[key: string]: any}[];
+    readonly ipRestrictions: {[key: string]: string}[];
     /**
      * The ID of the Managed Private Registry.
      */

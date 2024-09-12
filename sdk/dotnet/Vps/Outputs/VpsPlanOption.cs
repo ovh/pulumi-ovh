@@ -22,10 +22,6 @@ namespace Pulumi.Ovh.Vps.Outputs
         /// </summary>
         public readonly string Duration;
         /// <summary>
-        /// Cart item to be linked
-        /// </summary>
-        public readonly double ItemId;
-        /// <summary>
         /// Plan code
         /// </summary>
         public readonly string PlanCode;
@@ -44,8 +40,6 @@ namespace Pulumi.Ovh.Vps.Outputs
 
             string duration,
 
-            double itemId,
-
             string planCode,
 
             string pricingMode,
@@ -54,7 +48,6 @@ namespace Pulumi.Ovh.Vps.Outputs
         {
             Configurations = configurations;
             Duration = duration;
-            ItemId = itemId;
             PlanCode = planCode;
             PricingMode = pricingMode;
             Quantity = quantity;

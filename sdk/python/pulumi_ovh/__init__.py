@@ -443,6 +443,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Dedicated/server",
+  "fqn": "pulumi_ovh.dedicated",
+  "classes": {
+   "ovh:Dedicated/server:Server": "Server"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Dedicated/serverInstallTask",
   "fqn": "pulumi_ovh.dedicated",
   "classes": {
@@ -487,6 +495,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.domain",
   "classes": {
    "ovh:Domain/zoneDNSSec:ZoneDNSSec": "ZoneDNSSec"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Domain/zoneImport",
+  "fqn": "pulumi_ovh.domain",
+  "classes": {
+   "ovh:Domain/zoneImport:ZoneImport": "ZoneImport"
   }
  },
  {

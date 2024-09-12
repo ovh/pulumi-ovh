@@ -35,7 +35,7 @@ type LookupContainerRegistryIPRestrictionsRegistryResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// IP restrictions applied on artifact manager component.
-	IpRestrictions []map[string]interface{} `pulumi:"ipRestrictions"`
+	IpRestrictions []map[string]string `pulumi:"ipRestrictions"`
 	// The ID of the Managed Private Registry.
 	RegistryId string `pulumi:"registryId"`
 	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -88,10 +88,10 @@ func (o LookupContainerRegistryIPRestrictionsRegistryResultOutput) Id() pulumi.S
 }
 
 // IP restrictions applied on artifact manager component.
-func (o LookupContainerRegistryIPRestrictionsRegistryResultOutput) IpRestrictions() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v LookupContainerRegistryIPRestrictionsRegistryResult) []map[string]interface{} {
+func (o LookupContainerRegistryIPRestrictionsRegistryResultOutput) IpRestrictions() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v LookupContainerRegistryIPRestrictionsRegistryResult) []map[string]string {
 		return v.IpRestrictions
-	}).(pulumi.MapArrayOutput)
+	}).(pulumi.StringMapArrayOutput)
 }
 
 // The ID of the Managed Private Registry.

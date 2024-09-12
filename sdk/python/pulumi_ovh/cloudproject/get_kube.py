@@ -275,9 +275,9 @@ class AwaitableGetKubeResult(GetKubeResult):
             version=self.version)
 
 
-def get_kube(customization_apiservers: Optional[Sequence[pulumi.InputType['GetKubeCustomizationApiserverArgs']]] = None,
-             customization_kube_proxy: Optional[pulumi.InputType['GetKubeCustomizationKubeProxyArgs']] = None,
-             customizations: Optional[Sequence[pulumi.InputType['GetKubeCustomizationArgs']]] = None,
+def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomizationApiserverArgs', 'GetKubeCustomizationApiserverArgsDict']]] = None,
+             customization_kube_proxy: Optional[Union['GetKubeCustomizationKubeProxyArgs', 'GetKubeCustomizationKubeProxyArgsDict']] = None,
+             customizations: Optional[Sequence[Union['GetKubeCustomizationArgs', 'GetKubeCustomizationArgsDict']]] = None,
              kube_id: Optional[str] = None,
              kube_proxy_mode: Optional[str] = None,
              name: Optional[str] = None,
@@ -301,9 +301,9 @@ def get_kube(customization_apiservers: Optional[Sequence[pulumi.InputType['GetKu
     ```
 
 
-    :param Sequence[pulumi.InputType['GetKubeCustomizationApiserverArgs']] customization_apiservers: Kubernetes API server customization
-    :param pulumi.InputType['GetKubeCustomizationKubeProxyArgs'] customization_kube_proxy: Kubernetes kube-proxy customization
-    :param Sequence[pulumi.InputType['GetKubeCustomizationArgs']] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+    :param Sequence[Union['GetKubeCustomizationApiserverArgs', 'GetKubeCustomizationApiserverArgsDict']] customization_apiservers: Kubernetes API server customization
+    :param Union['GetKubeCustomizationKubeProxyArgs', 'GetKubeCustomizationKubeProxyArgsDict'] customization_kube_proxy: Kubernetes kube-proxy customization
+    :param Sequence[Union['GetKubeCustomizationArgs', 'GetKubeCustomizationArgsDict']] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
     :param str kube_id: The id of the managed kubernetes cluster.
     :param str kube_proxy_mode: Selected mode for kube-proxy.
     :param str name: The name of the managed kubernetes cluster.
@@ -350,9 +350,9 @@ def get_kube(customization_apiservers: Optional[Sequence[pulumi.InputType['GetKu
 
 
 @_utilities.lift_output_func(get_kube)
-def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKubeCustomizationApiserverArgs']]]]] = None,
-                    customization_kube_proxy: Optional[pulumi.Input[Optional[pulumi.InputType['GetKubeCustomizationKubeProxyArgs']]]] = None,
-                    customizations: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKubeCustomizationArgs']]]]] = None,
+def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Sequence[Union['GetKubeCustomizationApiserverArgs', 'GetKubeCustomizationApiserverArgsDict']]]]] = None,
+                    customization_kube_proxy: Optional[pulumi.Input[Optional[Union['GetKubeCustomizationKubeProxyArgs', 'GetKubeCustomizationKubeProxyArgsDict']]]] = None,
+                    customizations: Optional[pulumi.Input[Optional[Sequence[Union['GetKubeCustomizationArgs', 'GetKubeCustomizationArgsDict']]]]] = None,
                     kube_id: Optional[pulumi.Input[str]] = None,
                     kube_proxy_mode: Optional[pulumi.Input[Optional[str]]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -376,9 +376,9 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
     ```
 
 
-    :param Sequence[pulumi.InputType['GetKubeCustomizationApiserverArgs']] customization_apiservers: Kubernetes API server customization
-    :param pulumi.InputType['GetKubeCustomizationKubeProxyArgs'] customization_kube_proxy: Kubernetes kube-proxy customization
-    :param Sequence[pulumi.InputType['GetKubeCustomizationArgs']] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+    :param Sequence[Union['GetKubeCustomizationApiserverArgs', 'GetKubeCustomizationApiserverArgsDict']] customization_apiservers: Kubernetes API server customization
+    :param Union['GetKubeCustomizationKubeProxyArgs', 'GetKubeCustomizationKubeProxyArgsDict'] customization_kube_proxy: Kubernetes kube-proxy customization
+    :param Sequence[Union['GetKubeCustomizationArgs', 'GetKubeCustomizationArgsDict']] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
     :param str kube_id: The id of the managed kubernetes cluster.
     :param str kube_proxy_mode: Selected mode for kube-proxy.
     :param str name: The name of the managed kubernetes cluster.

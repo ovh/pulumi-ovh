@@ -81,10 +81,14 @@ type LogsInput struct {
 
 	// List of IP blocks
 	AllowedNetworks pulumi.StringArrayOutput `pulumi:"allowedNetworks"`
+	// Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
+	Autoscale pulumi.BoolPtrOutput `pulumi:"autoscale"`
 	// Input configuration
 	Configuration LogsInputConfigurationOutput `pulumi:"configuration"`
 	// Input creation
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Number of instance running (returned by the API)
+	CurrentNbInstance pulumi.IntOutput `pulumi:"currentNbInstance"`
 	// Input description
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Input engine ID
@@ -97,8 +101,12 @@ type LogsInput struct {
 	InputId pulumi.StringOutput `pulumi:"inputId"`
 	// Indicate if input need to be restarted
 	IsRestartRequired pulumi.BoolOutput `pulumi:"isRestartRequired"`
-	// Number of instance running
-	NbInstance pulumi.IntOutput `pulumi:"nbInstance"`
+	// Maximum number of instances in auto-scaled mode
+	MaxScaleInstance pulumi.IntPtrOutput `pulumi:"maxScaleInstance"`
+	// Minimum number of instances in auto-scaled mode
+	MinScaleInstance pulumi.IntPtrOutput `pulumi:"minScaleInstance"`
+	// Number of instance running (input, mutually exclusive with parameter `autoscale`)
+	NbInstance pulumi.IntPtrOutput `pulumi:"nbInstance"`
 	// Input IP address
 	PublicAddress pulumi.StringOutput `pulumi:"publicAddress"`
 	// service name
@@ -169,10 +177,14 @@ func GetLogsInput(ctx *pulumi.Context,
 type logsInputState struct {
 	// List of IP blocks
 	AllowedNetworks []string `pulumi:"allowedNetworks"`
+	// Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
+	Autoscale *bool `pulumi:"autoscale"`
 	// Input configuration
 	Configuration *LogsInputConfiguration `pulumi:"configuration"`
 	// Input creation
 	CreatedAt *string `pulumi:"createdAt"`
+	// Number of instance running (returned by the API)
+	CurrentNbInstance *int `pulumi:"currentNbInstance"`
 	// Input description
 	Description *string `pulumi:"description"`
 	// Input engine ID
@@ -185,7 +197,11 @@ type logsInputState struct {
 	InputId *string `pulumi:"inputId"`
 	// Indicate if input need to be restarted
 	IsRestartRequired *bool `pulumi:"isRestartRequired"`
-	// Number of instance running
+	// Maximum number of instances in auto-scaled mode
+	MaxScaleInstance *int `pulumi:"maxScaleInstance"`
+	// Minimum number of instances in auto-scaled mode
+	MinScaleInstance *int `pulumi:"minScaleInstance"`
+	// Number of instance running (input, mutually exclusive with parameter `autoscale`)
 	NbInstance *int `pulumi:"nbInstance"`
 	// Input IP address
 	PublicAddress *string `pulumi:"publicAddress"`
@@ -206,10 +222,14 @@ type logsInputState struct {
 type LogsInputState struct {
 	// List of IP blocks
 	AllowedNetworks pulumi.StringArrayInput
+	// Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
+	Autoscale pulumi.BoolPtrInput
 	// Input configuration
 	Configuration LogsInputConfigurationPtrInput
 	// Input creation
 	CreatedAt pulumi.StringPtrInput
+	// Number of instance running (returned by the API)
+	CurrentNbInstance pulumi.IntPtrInput
 	// Input description
 	Description pulumi.StringPtrInput
 	// Input engine ID
@@ -222,7 +242,11 @@ type LogsInputState struct {
 	InputId pulumi.StringPtrInput
 	// Indicate if input need to be restarted
 	IsRestartRequired pulumi.BoolPtrInput
-	// Number of instance running
+	// Maximum number of instances in auto-scaled mode
+	MaxScaleInstance pulumi.IntPtrInput
+	// Minimum number of instances in auto-scaled mode
+	MinScaleInstance pulumi.IntPtrInput
+	// Number of instance running (input, mutually exclusive with parameter `autoscale`)
 	NbInstance pulumi.IntPtrInput
 	// Input IP address
 	PublicAddress pulumi.StringPtrInput
@@ -247,6 +271,8 @@ func (LogsInputState) ElementType() reflect.Type {
 type logsInputArgs struct {
 	// List of IP blocks
 	AllowedNetworks []string `pulumi:"allowedNetworks"`
+	// Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
+	Autoscale *bool `pulumi:"autoscale"`
 	// Input configuration
 	Configuration LogsInputConfiguration `pulumi:"configuration"`
 	// Input description
@@ -255,7 +281,11 @@ type logsInputArgs struct {
 	EngineId string `pulumi:"engineId"`
 	// Port
 	ExposedPort *string `pulumi:"exposedPort"`
-	// Number of instance running
+	// Maximum number of instances in auto-scaled mode
+	MaxScaleInstance *int `pulumi:"maxScaleInstance"`
+	// Minimum number of instances in auto-scaled mode
+	MinScaleInstance *int `pulumi:"minScaleInstance"`
+	// Number of instance running (input, mutually exclusive with parameter `autoscale`)
 	NbInstance *int `pulumi:"nbInstance"`
 	// service name
 	ServiceName string `pulumi:"serviceName"`
@@ -269,6 +299,8 @@ type logsInputArgs struct {
 type LogsInputArgs struct {
 	// List of IP blocks
 	AllowedNetworks pulumi.StringArrayInput
+	// Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
+	Autoscale pulumi.BoolPtrInput
 	// Input configuration
 	Configuration LogsInputConfigurationInput
 	// Input description
@@ -277,7 +309,11 @@ type LogsInputArgs struct {
 	EngineId pulumi.StringInput
 	// Port
 	ExposedPort pulumi.StringPtrInput
-	// Number of instance running
+	// Maximum number of instances in auto-scaled mode
+	MaxScaleInstance pulumi.IntPtrInput
+	// Minimum number of instances in auto-scaled mode
+	MinScaleInstance pulumi.IntPtrInput
+	// Number of instance running (input, mutually exclusive with parameter `autoscale`)
 	NbInstance pulumi.IntPtrInput
 	// service name
 	ServiceName pulumi.StringInput
@@ -379,6 +415,11 @@ func (o LogsInputOutput) AllowedNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LogsInput) pulumi.StringArrayOutput { return v.AllowedNetworks }).(pulumi.StringArrayOutput)
 }
 
+// Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
+func (o LogsInputOutput) Autoscale() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogsInput) pulumi.BoolPtrOutput { return v.Autoscale }).(pulumi.BoolPtrOutput)
+}
+
 // Input configuration
 func (o LogsInputOutput) Configuration() LogsInputConfigurationOutput {
 	return o.ApplyT(func(v *LogsInput) LogsInputConfigurationOutput { return v.Configuration }).(LogsInputConfigurationOutput)
@@ -387,6 +428,11 @@ func (o LogsInputOutput) Configuration() LogsInputConfigurationOutput {
 // Input creation
 func (o LogsInputOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsInput) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Number of instance running (returned by the API)
+func (o LogsInputOutput) CurrentNbInstance() pulumi.IntOutput {
+	return o.ApplyT(func(v *LogsInput) pulumi.IntOutput { return v.CurrentNbInstance }).(pulumi.IntOutput)
 }
 
 // Input description
@@ -419,9 +465,19 @@ func (o LogsInputOutput) IsRestartRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LogsInput) pulumi.BoolOutput { return v.IsRestartRequired }).(pulumi.BoolOutput)
 }
 
-// Number of instance running
-func (o LogsInputOutput) NbInstance() pulumi.IntOutput {
-	return o.ApplyT(func(v *LogsInput) pulumi.IntOutput { return v.NbInstance }).(pulumi.IntOutput)
+// Maximum number of instances in auto-scaled mode
+func (o LogsInputOutput) MaxScaleInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogsInput) pulumi.IntPtrOutput { return v.MaxScaleInstance }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of instances in auto-scaled mode
+func (o LogsInputOutput) MinScaleInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogsInput) pulumi.IntPtrOutput { return v.MinScaleInstance }).(pulumi.IntPtrOutput)
+}
+
+// Number of instance running (input, mutually exclusive with parameter `autoscale`)
+func (o LogsInputOutput) NbInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogsInput) pulumi.IntPtrOutput { return v.NbInstance }).(pulumi.IntPtrOutput)
 }
 
 // Input IP address

@@ -34,7 +34,7 @@ export function getServerBoots(args: GetServerBootsArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetServerBootsArgs {
     /**
-     * Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
+     * Filter the value of bootType property (harddisk, rescue, internal, network)
      */
     bootType?: string;
     /**
@@ -87,7 +87,7 @@ export function getServerBootsOutput(args: GetServerBootsOutputArgs, opts?: pulu
  */
 export interface GetServerBootsOutputArgs {
     /**
-     * Filter the value of bootType property (harddisk, rescue, ipxeCustomerScript, internal, network)
+     * Filter the value of bootType property (harddisk, rescue, internal, network)
      */
     bootType?: pulumi.Input<string>;
     /**
