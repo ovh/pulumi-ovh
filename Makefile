@@ -107,6 +107,8 @@ build_go:: install_plugins tfgen # build the go sdk
 
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
 build_java:: bin/pulumi-java-gen
+	${SED} -e 's/com.ovhcloud/com.ovhcloud.pulumi/g' provider/cmd/$(PROVIDER)/schema.json
+
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
 
 	echo "update java version in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/of(11)/of(21)/g' build.gradle
