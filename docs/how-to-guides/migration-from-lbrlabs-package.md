@@ -44,6 +44,13 @@ After switching the package, update the import statements in your Pulumi infrast
 +  import pulumi_ovh as ovh
 ```
 
+Some package has changed, and you'll have to update it as well, for example:
+
+```diff
+- ovh.DomainZoneRecord
++ ovh.domain.ZoneRecord
+```
+
 {{% /choosable %}}
 
 {{% choosable language go %}}
