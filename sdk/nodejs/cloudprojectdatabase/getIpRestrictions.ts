@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIpRestrictions(args: GetIpRestrictionsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpRestrictionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", {
         "clusterId": args.clusterId,
@@ -102,7 +101,12 @@ export interface GetIpRestrictionsResult {
  * ```
  */
 export function getIpRestrictionsOutput(args: GetIpRestrictionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpRestrictionsResult> {
-    return pulumi.output(args).apply((a: any) => getIpRestrictions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", {
+        "clusterId": args.clusterId,
+        "engine": args.engine,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

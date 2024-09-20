@@ -47,6 +47,12 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetM3dbUserArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetM3dbUserPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetMongoDbUserArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetMongoDbUserPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetNetworkPrivatePlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateSubnetsArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateSubnetsPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetNetworkPrivatesArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetNetworkPrivatesPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetOpenSearchPatternArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetOpenSearchPatternPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetOpenSearchPatternsArgs;
@@ -97,6 +103,9 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetM3dbNamespaceResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetM3dbNamespacesResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetM3dbUserResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetMongoDbUserResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetNetworkPrivateResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetNetworkPrivateSubnetsResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetNetworkPrivatesResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetOpenSearchPatternResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetOpenSearchPatternsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetOpenSearchUserResult;
@@ -3718,6 +3727,530 @@ public final class CloudProjectFunctions {
      */
     public static CompletableFuture<GetMongoDbUserResult> getMongoDbUserPlain(GetMongoDbUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getMongoDbUser:getMongoDbUser", TypeShape.of(GetMongoDbUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the details of a public cloud project private network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivate = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .networkId("XXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkPrivateResult> getNetworkPrivate(GetNetworkPrivateArgs args) {
+        return getNetworkPrivate(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the details of a public cloud project private network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivate = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .networkId("XXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNetworkPrivateResult> getNetworkPrivatePlain(GetNetworkPrivatePlainArgs args) {
+        return getNetworkPrivatePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the details of a public cloud project private network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivate = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .networkId("XXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkPrivateResult> getNetworkPrivate(GetNetworkPrivateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getNetworkPrivate:getNetworkPrivate", TypeShape.of(GetNetworkPrivateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the details of a public cloud project private network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivate = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .networkId("XXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNetworkPrivateResult> getNetworkPrivatePlain(GetNetworkPrivatePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getNetworkPrivate:getNetworkPrivate", TypeShape.of(GetNetworkPrivateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List public cloud project subnets of a private network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateSubnetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivateSubnets = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .networkId("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkPrivateSubnetsResult> getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs args) {
+        return getNetworkPrivateSubnets(args, InvokeOptions.Empty);
+    }
+    /**
+     * List public cloud project subnets of a private network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateSubnetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivateSubnets = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .networkId("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNetworkPrivateSubnetsResult> getNetworkPrivateSubnetsPlain(GetNetworkPrivateSubnetsPlainArgs args) {
+        return getNetworkPrivateSubnetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List public cloud project subnets of a private network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateSubnetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivateSubnets = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .networkId("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkPrivateSubnetsResult> getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getNetworkPrivateSubnets:getNetworkPrivateSubnets", TypeShape.of(GetNetworkPrivateSubnetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List public cloud project subnets of a private network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateSubnetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivateSubnets = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .networkId("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNetworkPrivateSubnetsResult> getNetworkPrivateSubnetsPlain(GetNetworkPrivateSubnetsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getNetworkPrivateSubnets:getNetworkPrivateSubnets", TypeShape.of(GetNetworkPrivateSubnetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List public cloud project private networks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivates = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkPrivatesResult> getNetworkPrivates(GetNetworkPrivatesArgs args) {
+        return getNetworkPrivates(args, InvokeOptions.Empty);
+    }
+    /**
+     * List public cloud project private networks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivates = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNetworkPrivatesResult> getNetworkPrivatesPlain(GetNetworkPrivatesPlainArgs args) {
+        return getNetworkPrivatesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List public cloud project private networks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivates = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkPrivatesResult> getNetworkPrivates(GetNetworkPrivatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getNetworkPrivates:getNetworkPrivates", TypeShape.of(GetNetworkPrivatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List public cloud project private networks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var privateNetworkPrivates = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNetworkPrivatesResult> getNetworkPrivatesPlain(GetNetworkPrivatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getNetworkPrivates:getNetworkPrivates", TypeShape.of(GetNetworkPrivatesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get information about a pattern of a opensearch cluster associated with a public cloud project.

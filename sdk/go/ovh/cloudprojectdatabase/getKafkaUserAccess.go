@@ -80,14 +80,20 @@ type GetKafkaUserAccessResult struct {
 
 func GetKafkaUserAccessOutput(ctx *pulumi.Context, args GetKafkaUserAccessOutputArgs, opts ...pulumi.InvokeOption) GetKafkaUserAccessResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetKafkaUserAccessResult, error) {
+		ApplyT(func(v interface{}) (GetKafkaUserAccessResultOutput, error) {
 			args := v.(GetKafkaUserAccessArgs)
-			r, err := GetKafkaUserAccess(ctx, &args, opts...)
-			var s GetKafkaUserAccessResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetKafkaUserAccessResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", args, &rv, "", opts...)
+			if err != nil {
+				return GetKafkaUserAccessResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetKafkaUserAccessResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetKafkaUserAccessResultOutput), nil
+			}
+			return output, nil
 		}).(GetKafkaUserAccessResultOutput)
 }
 

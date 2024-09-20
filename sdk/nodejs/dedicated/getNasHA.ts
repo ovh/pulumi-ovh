@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNasHA(args: GetNasHAArgs, opts?: pulumi.InvokeOptions): Promise<GetNasHAResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dedicated/getNasHA:getNasHA", {
         "serviceName": args.serviceName,
@@ -100,7 +99,10 @@ export interface GetNasHAResult {
  * ```
  */
 export function getNasHAOutput(args: GetNasHAOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasHAResult> {
-    return pulumi.output(args).apply((a: any) => getNasHA(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Dedicated/getNasHA:getNasHA", {
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

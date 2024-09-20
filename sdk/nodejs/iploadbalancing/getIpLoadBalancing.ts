@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  */
 export function getIpLoadBalancing(args?: GetIpLoadBalancingArgs, opts?: pulumi.InvokeOptions): Promise<GetIpLoadBalancingResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing", {
         "displayName": args.displayName,
@@ -145,7 +144,21 @@ export interface GetIpLoadBalancingResult {
  * ```
  */
 export function getIpLoadBalancingOutput(args?: GetIpLoadBalancingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpLoadBalancingResult> {
-    return pulumi.output(args).apply((a: any) => getIpLoadBalancing(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing", {
+        "displayName": args.displayName,
+        "ipLoadbalancing": args.ipLoadbalancing,
+        "ipv4": args.ipv4,
+        "ipv6": args.ipv6,
+        "offer": args.offer,
+        "serviceName": args.serviceName,
+        "sslConfiguration": args.sslConfiguration,
+        "state": args.state,
+        "vrackEligibility": args.vrackEligibility,
+        "vrackName": args.vrackName,
+        "zones": args.zones,
+    }, opts);
 }
 
 /**

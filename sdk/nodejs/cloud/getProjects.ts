@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getProjects(opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Cloud/getProjects:getProjects", {
     }, opts);
@@ -48,5 +47,7 @@ export interface GetProjectsResult {
  * ```
  */
 export function getProjectsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
-    return pulumi.output(getProjects(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Cloud/getProjects:getProjects", {
+    }, opts);
 }

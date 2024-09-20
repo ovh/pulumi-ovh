@@ -165,6 +165,21 @@ export const getMongoDbUser: typeof import("./getMongoDbUser").getMongoDbUser = 
 export const getMongoDbUserOutput: typeof import("./getMongoDbUser").getMongoDbUserOutput = null as any;
 utilities.lazyLoad(exports, ["getMongoDbUser","getMongoDbUserOutput"], () => require("./getMongoDbUser"));
 
+export { GetNetworkPrivateArgs, GetNetworkPrivateResult, GetNetworkPrivateOutputArgs } from "./getNetworkPrivate";
+export const getNetworkPrivate: typeof import("./getNetworkPrivate").getNetworkPrivate = null as any;
+export const getNetworkPrivateOutput: typeof import("./getNetworkPrivate").getNetworkPrivateOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkPrivate","getNetworkPrivateOutput"], () => require("./getNetworkPrivate"));
+
+export { GetNetworkPrivateSubnetsArgs, GetNetworkPrivateSubnetsResult, GetNetworkPrivateSubnetsOutputArgs } from "./getNetworkPrivateSubnets";
+export const getNetworkPrivateSubnets: typeof import("./getNetworkPrivateSubnets").getNetworkPrivateSubnets = null as any;
+export const getNetworkPrivateSubnetsOutput: typeof import("./getNetworkPrivateSubnets").getNetworkPrivateSubnetsOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkPrivateSubnets","getNetworkPrivateSubnetsOutput"], () => require("./getNetworkPrivateSubnets"));
+
+export { GetNetworkPrivatesArgs, GetNetworkPrivatesResult, GetNetworkPrivatesOutputArgs } from "./getNetworkPrivates";
+export const getNetworkPrivates: typeof import("./getNetworkPrivates").getNetworkPrivates = null as any;
+export const getNetworkPrivatesOutput: typeof import("./getNetworkPrivates").getNetworkPrivatesOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkPrivates","getNetworkPrivatesOutput"], () => require("./getNetworkPrivates"));
+
 export { GetOpenSearchPatternArgs, GetOpenSearchPatternResult, GetOpenSearchPatternOutputArgs } from "./getOpenSearchPattern";
 export const getOpenSearchPattern: typeof import("./getOpenSearchPattern").getOpenSearchPattern = null as any;
 export const getOpenSearchPatternOutput: typeof import("./getOpenSearchPattern").getOpenSearchPatternOutput = null as any;

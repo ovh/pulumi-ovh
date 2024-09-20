@@ -64,6 +64,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * UDP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by &#34;/&#34; e.g.
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:IpLoadBalancing/udpFrontend:UdpFrontend testfrontend service_name/frontend_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/udpFrontend:UdpFrontend")
 public class UdpFrontend extends com.pulumi.resources.CustomResource {

@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKubeOidc(args: GetKubeOidcArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeOidcResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getKubeOidc:getKubeOidc", {
         "clientId": args.clientId,
@@ -167,7 +166,20 @@ export interface GetKubeOidcResult {
  * ```
  */
 export function getKubeOidcOutput(args: GetKubeOidcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeOidcResult> {
-    return pulumi.output(args).apply((a: any) => getKubeOidc(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeOidc:getKubeOidc", {
+        "clientId": args.clientId,
+        "issuerUrl": args.issuerUrl,
+        "kubeId": args.kubeId,
+        "oidcCaContent": args.oidcCaContent,
+        "oidcGroupsClaims": args.oidcGroupsClaims,
+        "oidcGroupsPrefix": args.oidcGroupsPrefix,
+        "oidcRequiredClaims": args.oidcRequiredClaims,
+        "oidcSigningAlgs": args.oidcSigningAlgs,
+        "oidcUsernameClaim": args.oidcUsernameClaim,
+        "oidcUsernamePrefix": args.oidcUsernamePrefix,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

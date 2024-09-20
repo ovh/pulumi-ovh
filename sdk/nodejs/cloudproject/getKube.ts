@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKube(args: GetKubeArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getKube:getKube", {
         "customizationApiservers": args.customizationApiservers,
@@ -191,7 +190,19 @@ export interface GetKubeResult {
  * ```
  */
 export function getKubeOutput(args: GetKubeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeResult> {
-    return pulumi.output(args).apply((a: any) => getKube(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getKube:getKube", {
+        "customizationApiservers": args.customizationApiservers,
+        "customizationKubeProxy": args.customizationKubeProxy,
+        "customizations": args.customizations,
+        "kubeId": args.kubeId,
+        "kubeProxyMode": args.kubeProxyMode,
+        "name": args.name,
+        "region": args.region,
+        "serviceName": args.serviceName,
+        "updatePolicy": args.updatePolicy,
+        "version": args.version,
+    }, opts);
 }
 
 /**

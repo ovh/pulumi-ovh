@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getInstallationTemplate(args: GetInstallationTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstallationTemplateResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:index/getInstallationTemplate:getInstallationTemplate", {
         "templateName": args.templateName,
@@ -122,7 +121,10 @@ export interface GetInstallationTemplateResult {
  * ```
  */
 export function getInstallationTemplateOutput(args: GetInstallationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstallationTemplateResult> {
-    return pulumi.output(args).apply((a: any) => getInstallationTemplate(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:index/getInstallationTemplate:getInstallationTemplate", {
+        "templateName": args.templateName,
+    }, opts);
 }
 
 /**

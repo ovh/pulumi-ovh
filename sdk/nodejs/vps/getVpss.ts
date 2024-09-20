@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVpss(opts?: pulumi.InvokeOptions): Promise<GetVpssResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Vps/getVpss:getVpss", {
     }, opts);
@@ -49,5 +48,7 @@ export interface GetVpssResult {
  * ```
  */
 export function getVpssOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVpssResult> {
-    return pulumi.output(getVpss(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Vps/getVpss:getVpss", {
+    }, opts);
 }

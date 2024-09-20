@@ -39,6 +39,8 @@ if typing.TYPE_CHECKING:
     iploadbalancing = __iploadbalancing
     import pulumi_ovh.me as __me
     me = __me
+    import pulumi_ovh.okms as __okms
+    okms = __okms
     import pulumi_ovh.order as __order
     order = __order
     import pulumi_ovh.vps as __vps
@@ -58,6 +60,7 @@ else:
     ip = _utilities.lazy_import('pulumi_ovh.ip')
     iploadbalancing = _utilities.lazy_import('pulumi_ovh.iploadbalancing')
     me = _utilities.lazy_import('pulumi_ovh.me')
+    okms = _utilities.lazy_import('pulumi_ovh.okms')
     order = _utilities.lazy_import('pulumi_ovh.order')
     vps = _utilities.lazy_import('pulumi_ovh.vps')
     vrack = _utilities.lazy_import('pulumi_ovh.vrack')
@@ -691,6 +694,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "IpLoadBalancing/ssl",
+  "fqn": "pulumi_ovh.iploadbalancing",
+  "classes": {
+   "ovh:IpLoadBalancing/ssl:Ssl": "Ssl"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "IpLoadBalancing/tcpFarm",
   "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
@@ -727,6 +738,22 @@ _utilities.register(
   "fqn": "pulumi_ovh.iploadbalancing",
   "classes": {
    "ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule": "TcpRouteRule"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "IpLoadBalancing/udpFarm",
+  "fqn": "pulumi_ovh.iploadbalancing",
+  "classes": {
+   "ovh:IpLoadBalancing/udpFarm:UdpFarm": "UdpFarm"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "IpLoadBalancing/udpFarmServer",
+  "fqn": "pulumi_ovh.iploadbalancing",
+  "classes": {
+   "ovh:IpLoadBalancing/udpFarmServer:UdpFarmServer": "UdpFarmServer"
   }
  },
  {
@@ -799,6 +826,30 @@ _utilities.register(
   "fqn": "pulumi_ovh.me",
   "classes": {
    "ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition": "InstallationTemplatePartitionSchemePartition"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Okms/credential",
+  "fqn": "pulumi_ovh.okms",
+  "classes": {
+   "ovh:Okms/credential:Credential": "Credential"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Okms/okms",
+  "fqn": "pulumi_ovh.okms",
+  "classes": {
+   "ovh:Okms/okms:Okms": "Okms"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Okms/serviceKey",
+  "fqn": "pulumi_ovh.okms",
+  "classes": {
+   "ovh:Okms/serviceKey:ServiceKey": "ServiceKey"
   }
  },
  {

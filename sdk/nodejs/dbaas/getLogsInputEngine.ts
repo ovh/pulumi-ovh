@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getLogsInputEngine(args: GetLogsInputEngineArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsInputEngineResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", {
         "isDeprecated": args.isDeprecated,
@@ -85,7 +84,13 @@ export interface GetLogsInputEngineResult {
  * ```
  */
 export function getLogsInputEngineOutput(args: GetLogsInputEngineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsInputEngineResult> {
-    return pulumi.output(args).apply((a: any) => getLogsInputEngine(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", {
+        "isDeprecated": args.isDeprecated,
+        "name": args.name,
+        "serviceName": args.serviceName,
+        "version": args.version,
+    }, opts);
 }
 
 /**

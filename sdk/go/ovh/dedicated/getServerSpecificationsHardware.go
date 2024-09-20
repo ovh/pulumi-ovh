@@ -93,14 +93,20 @@ type GetServerSpecificationsHardwareResult struct {
 
 func GetServerSpecificationsHardwareOutput(ctx *pulumi.Context, args GetServerSpecificationsHardwareOutputArgs, opts ...pulumi.InvokeOption) GetServerSpecificationsHardwareResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServerSpecificationsHardwareResult, error) {
+		ApplyT(func(v interface{}) (GetServerSpecificationsHardwareResultOutput, error) {
 			args := v.(GetServerSpecificationsHardwareArgs)
-			r, err := GetServerSpecificationsHardware(ctx, &args, opts...)
-			var s GetServerSpecificationsHardwareResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServerSpecificationsHardwareResult
+			secret, err := ctx.InvokePackageRaw("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", args, &rv, "", opts...)
+			if err != nil {
+				return GetServerSpecificationsHardwareResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServerSpecificationsHardwareResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServerSpecificationsHardwareResultOutput), nil
+			}
+			return output, nil
 		}).(GetServerSpecificationsHardwareResultOutput)
 }
 

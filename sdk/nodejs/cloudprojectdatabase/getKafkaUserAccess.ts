@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKafkaUserAccess(args: GetKafkaUserAccessArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaUserAccessResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", {
         "clusterId": args.clusterId,
@@ -97,7 +96,12 @@ export interface GetKafkaUserAccessResult {
  * ```
  */
 export function getKafkaUserAccessOutput(args: GetKafkaUserAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaUserAccessResult> {
-    return pulumi.output(args).apply((a: any) => getKafkaUserAccess(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", {
+        "clusterId": args.clusterId,
+        "serviceName": args.serviceName,
+        "userId": args.userId,
+    }, opts);
 }
 
 /**

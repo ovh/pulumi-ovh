@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getUserS3Credentials(args: GetUserS3CredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserS3CredentialsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getUserS3Credentials:getUserS3Credentials", {
         "serviceName": args.serviceName,
@@ -76,7 +75,11 @@ export interface GetUserS3CredentialsResult {
  * ```
  */
 export function getUserS3CredentialsOutput(args: GetUserS3CredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserS3CredentialsResult> {
-    return pulumi.output(args).apply((a: any) => getUserS3Credentials(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getUserS3Credentials:getUserS3Credentials", {
+        "serviceName": args.serviceName,
+        "userId": args.userId,
+    }, opts);
 }
 
 /**

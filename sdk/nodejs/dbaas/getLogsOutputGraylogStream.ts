@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getLogsOutputGraylogStream(args: GetLogsOutputGraylogStreamArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsOutputGraylogStreamResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", {
         "serviceName": args.serviceName,
@@ -158,7 +157,11 @@ export interface GetLogsOutputGraylogStreamResult {
  * ```
  */
 export function getLogsOutputGraylogStreamOutput(args: GetLogsOutputGraylogStreamOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsOutputGraylogStreamResult> {
-    return pulumi.output(args).apply((a: any) => getLogsOutputGraylogStream(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", {
+        "serviceName": args.serviceName,
+        "title": args.title,
+    }, opts);
 }
 
 /**

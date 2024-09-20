@@ -98,14 +98,20 @@ type GetCartProductPlanResult struct {
 
 func GetCartProductPlanOutput(ctx *pulumi.Context, args GetCartProductPlanOutputArgs, opts ...pulumi.InvokeOption) GetCartProductPlanResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCartProductPlanResult, error) {
+		ApplyT(func(v interface{}) (GetCartProductPlanResultOutput, error) {
 			args := v.(GetCartProductPlanArgs)
-			r, err := GetCartProductPlan(ctx, &args, opts...)
-			var s GetCartProductPlanResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCartProductPlanResult
+			secret, err := ctx.InvokePackageRaw("ovh:Order/getCartProductPlan:getCartProductPlan", args, &rv, "", opts...)
+			if err != nil {
+				return GetCartProductPlanResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCartProductPlanResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCartProductPlanResultOutput), nil
+			}
+			return output, nil
 		}).(GetCartProductPlanResultOutput)
 }
 

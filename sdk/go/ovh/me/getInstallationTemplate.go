@@ -93,14 +93,20 @@ type LookupInstallationTemplateResult struct {
 
 func LookupInstallationTemplateOutput(ctx *pulumi.Context, args LookupInstallationTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupInstallationTemplateResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupInstallationTemplateResult, error) {
+		ApplyT(func(v interface{}) (LookupInstallationTemplateResultOutput, error) {
 			args := v.(LookupInstallationTemplateArgs)
-			r, err := LookupInstallationTemplate(ctx, &args, opts...)
-			var s LookupInstallationTemplateResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupInstallationTemplateResult
+			secret, err := ctx.InvokePackageRaw("ovh:Me/getInstallationTemplate:getInstallationTemplate", args, &rv, "", opts...)
+			if err != nil {
+				return LookupInstallationTemplateResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupInstallationTemplateResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupInstallationTemplateResultOutput), nil
+			}
+			return output, nil
 		}).(LookupInstallationTemplateResultOutput)
 }
 

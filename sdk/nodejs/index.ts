@@ -49,6 +49,7 @@ import * as iam from "./iam";
 import * as ip from "./ip";
 import * as iploadbalancing from "./iploadbalancing";
 import * as me from "./me";
+import * as okms from "./okms";
 import * as order from "./order";
 import * as types from "./types";
 import * as vps from "./vps";
@@ -67,6 +68,7 @@ export {
     ip,
     iploadbalancing,
     me,
+    okms,
     order,
     types,
     vps,

@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getServerBoots(args: GetServerBootsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerBootsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dedicated/getServerBoots:getServerBoots", {
         "bootType": args.bootType,
@@ -79,7 +78,12 @@ export interface GetServerBootsResult {
  * ```
  */
 export function getServerBootsOutput(args: GetServerBootsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerBootsResult> {
-    return pulumi.output(args).apply((a: any) => getServerBoots(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Dedicated/getServerBoots:getServerBoots", {
+        "bootType": args.bootType,
+        "kernel": args.kernel,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

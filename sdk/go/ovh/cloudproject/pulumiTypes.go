@@ -7260,6 +7260,644 @@ func (o GetLoadBalancersLoadbalancerFloatingIpOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancerFloatingIp) string { return v.Ip }).(pulumi.StringOutput)
 }
 
+type GetNetworkPrivateRegion struct {
+	// Network ID on openstack region
+	OpenstackId string `pulumi:"openstackId"`
+	// Name of the region
+	Region string `pulumi:"region"`
+	// Status of the network
+	Status string `pulumi:"status"`
+}
+
+// GetNetworkPrivateRegionInput is an input type that accepts GetNetworkPrivateRegionArgs and GetNetworkPrivateRegionOutput values.
+// You can construct a concrete instance of `GetNetworkPrivateRegionInput` via:
+//
+//	GetNetworkPrivateRegionArgs{...}
+type GetNetworkPrivateRegionInput interface {
+	pulumi.Input
+
+	ToGetNetworkPrivateRegionOutput() GetNetworkPrivateRegionOutput
+	ToGetNetworkPrivateRegionOutputWithContext(context.Context) GetNetworkPrivateRegionOutput
+}
+
+type GetNetworkPrivateRegionArgs struct {
+	// Network ID on openstack region
+	OpenstackId pulumi.StringInput `pulumi:"openstackId"`
+	// Name of the region
+	Region pulumi.StringInput `pulumi:"region"`
+	// Status of the network
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetNetworkPrivateRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPrivateRegion)(nil)).Elem()
+}
+
+func (i GetNetworkPrivateRegionArgs) ToGetNetworkPrivateRegionOutput() GetNetworkPrivateRegionOutput {
+	return i.ToGetNetworkPrivateRegionOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPrivateRegionArgs) ToGetNetworkPrivateRegionOutputWithContext(ctx context.Context) GetNetworkPrivateRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPrivateRegionOutput)
+}
+
+// GetNetworkPrivateRegionArrayInput is an input type that accepts GetNetworkPrivateRegionArray and GetNetworkPrivateRegionArrayOutput values.
+// You can construct a concrete instance of `GetNetworkPrivateRegionArrayInput` via:
+//
+//	GetNetworkPrivateRegionArray{ GetNetworkPrivateRegionArgs{...} }
+type GetNetworkPrivateRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkPrivateRegionArrayOutput() GetNetworkPrivateRegionArrayOutput
+	ToGetNetworkPrivateRegionArrayOutputWithContext(context.Context) GetNetworkPrivateRegionArrayOutput
+}
+
+type GetNetworkPrivateRegionArray []GetNetworkPrivateRegionInput
+
+func (GetNetworkPrivateRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPrivateRegion)(nil)).Elem()
+}
+
+func (i GetNetworkPrivateRegionArray) ToGetNetworkPrivateRegionArrayOutput() GetNetworkPrivateRegionArrayOutput {
+	return i.ToGetNetworkPrivateRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPrivateRegionArray) ToGetNetworkPrivateRegionArrayOutputWithContext(ctx context.Context) GetNetworkPrivateRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPrivateRegionArrayOutput)
+}
+
+type GetNetworkPrivateRegionOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPrivateRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPrivateRegion)(nil)).Elem()
+}
+
+func (o GetNetworkPrivateRegionOutput) ToGetNetworkPrivateRegionOutput() GetNetworkPrivateRegionOutput {
+	return o
+}
+
+func (o GetNetworkPrivateRegionOutput) ToGetNetworkPrivateRegionOutputWithContext(ctx context.Context) GetNetworkPrivateRegionOutput {
+	return o
+}
+
+// Network ID on openstack region
+func (o GetNetworkPrivateRegionOutput) OpenstackId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivateRegion) string { return v.OpenstackId }).(pulumi.StringOutput)
+}
+
+// Name of the region
+func (o GetNetworkPrivateRegionOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivateRegion) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Status of the network
+func (o GetNetworkPrivateRegionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivateRegion) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetNetworkPrivateRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPrivateRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPrivateRegion)(nil)).Elem()
+}
+
+func (o GetNetworkPrivateRegionArrayOutput) ToGetNetworkPrivateRegionArrayOutput() GetNetworkPrivateRegionArrayOutput {
+	return o
+}
+
+func (o GetNetworkPrivateRegionArrayOutput) ToGetNetworkPrivateRegionArrayOutputWithContext(ctx context.Context) GetNetworkPrivateRegionArrayOutput {
+	return o
+}
+
+func (o GetNetworkPrivateRegionArrayOutput) Index(i pulumi.IntInput) GetNetworkPrivateRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkPrivateRegion {
+		return vs[0].([]GetNetworkPrivateRegion)[vs[1].(int)]
+	}).(GetNetworkPrivateRegionOutput)
+}
+
+type GetNetworkPrivateSubnetsSubnet struct {
+	// CIDR of the subnet
+	Cidr string `pulumi:"cidr"`
+	// Whether or not if DHCP is enabled for the subnet
+	DhcpEnabled bool `pulumi:"dhcpEnabled"`
+	// Gateway IP of the subnet
+	GatewayIp string `pulumi:"gatewayIp"`
+	// ID of the subnet
+	Id string `pulumi:"id"`
+	// List of ip pools allocated in the subnet
+	IpPools []GetNetworkPrivateSubnetsSubnetIpPool `pulumi:"ipPools"`
+}
+
+// GetNetworkPrivateSubnetsSubnetInput is an input type that accepts GetNetworkPrivateSubnetsSubnetArgs and GetNetworkPrivateSubnetsSubnetOutput values.
+// You can construct a concrete instance of `GetNetworkPrivateSubnetsSubnetInput` via:
+//
+//	GetNetworkPrivateSubnetsSubnetArgs{...}
+type GetNetworkPrivateSubnetsSubnetInput interface {
+	pulumi.Input
+
+	ToGetNetworkPrivateSubnetsSubnetOutput() GetNetworkPrivateSubnetsSubnetOutput
+	ToGetNetworkPrivateSubnetsSubnetOutputWithContext(context.Context) GetNetworkPrivateSubnetsSubnetOutput
+}
+
+type GetNetworkPrivateSubnetsSubnetArgs struct {
+	// CIDR of the subnet
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Whether or not if DHCP is enabled for the subnet
+	DhcpEnabled pulumi.BoolInput `pulumi:"dhcpEnabled"`
+	// Gateway IP of the subnet
+	GatewayIp pulumi.StringInput `pulumi:"gatewayIp"`
+	// ID of the subnet
+	Id pulumi.StringInput `pulumi:"id"`
+	// List of ip pools allocated in the subnet
+	IpPools GetNetworkPrivateSubnetsSubnetIpPoolArrayInput `pulumi:"ipPools"`
+}
+
+func (GetNetworkPrivateSubnetsSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPrivateSubnetsSubnet)(nil)).Elem()
+}
+
+func (i GetNetworkPrivateSubnetsSubnetArgs) ToGetNetworkPrivateSubnetsSubnetOutput() GetNetworkPrivateSubnetsSubnetOutput {
+	return i.ToGetNetworkPrivateSubnetsSubnetOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPrivateSubnetsSubnetArgs) ToGetNetworkPrivateSubnetsSubnetOutputWithContext(ctx context.Context) GetNetworkPrivateSubnetsSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPrivateSubnetsSubnetOutput)
+}
+
+// GetNetworkPrivateSubnetsSubnetArrayInput is an input type that accepts GetNetworkPrivateSubnetsSubnetArray and GetNetworkPrivateSubnetsSubnetArrayOutput values.
+// You can construct a concrete instance of `GetNetworkPrivateSubnetsSubnetArrayInput` via:
+//
+//	GetNetworkPrivateSubnetsSubnetArray{ GetNetworkPrivateSubnetsSubnetArgs{...} }
+type GetNetworkPrivateSubnetsSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkPrivateSubnetsSubnetArrayOutput() GetNetworkPrivateSubnetsSubnetArrayOutput
+	ToGetNetworkPrivateSubnetsSubnetArrayOutputWithContext(context.Context) GetNetworkPrivateSubnetsSubnetArrayOutput
+}
+
+type GetNetworkPrivateSubnetsSubnetArray []GetNetworkPrivateSubnetsSubnetInput
+
+func (GetNetworkPrivateSubnetsSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPrivateSubnetsSubnet)(nil)).Elem()
+}
+
+func (i GetNetworkPrivateSubnetsSubnetArray) ToGetNetworkPrivateSubnetsSubnetArrayOutput() GetNetworkPrivateSubnetsSubnetArrayOutput {
+	return i.ToGetNetworkPrivateSubnetsSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPrivateSubnetsSubnetArray) ToGetNetworkPrivateSubnetsSubnetArrayOutputWithContext(ctx context.Context) GetNetworkPrivateSubnetsSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPrivateSubnetsSubnetArrayOutput)
+}
+
+type GetNetworkPrivateSubnetsSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPrivateSubnetsSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPrivateSubnetsSubnet)(nil)).Elem()
+}
+
+func (o GetNetworkPrivateSubnetsSubnetOutput) ToGetNetworkPrivateSubnetsSubnetOutput() GetNetworkPrivateSubnetsSubnetOutput {
+	return o
+}
+
+func (o GetNetworkPrivateSubnetsSubnetOutput) ToGetNetworkPrivateSubnetsSubnetOutputWithContext(ctx context.Context) GetNetworkPrivateSubnetsSubnetOutput {
+	return o
+}
+
+// CIDR of the subnet
+func (o GetNetworkPrivateSubnetsSubnetOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Whether or not if DHCP is enabled for the subnet
+func (o GetNetworkPrivateSubnetsSubnetOutput) DhcpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) bool { return v.DhcpEnabled }).(pulumi.BoolOutput)
+}
+
+// Gateway IP of the subnet
+func (o GetNetworkPrivateSubnetsSubnetOutput) GatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) string { return v.GatewayIp }).(pulumi.StringOutput)
+}
+
+// ID of the subnet
+func (o GetNetworkPrivateSubnetsSubnetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of ip pools allocated in the subnet
+func (o GetNetworkPrivateSubnetsSubnetOutput) IpPools() GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput {
+	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) []GetNetworkPrivateSubnetsSubnetIpPool { return v.IpPools }).(GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput)
+}
+
+type GetNetworkPrivateSubnetsSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPrivateSubnetsSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPrivateSubnetsSubnet)(nil)).Elem()
+}
+
+func (o GetNetworkPrivateSubnetsSubnetArrayOutput) ToGetNetworkPrivateSubnetsSubnetArrayOutput() GetNetworkPrivateSubnetsSubnetArrayOutput {
+	return o
+}
+
+func (o GetNetworkPrivateSubnetsSubnetArrayOutput) ToGetNetworkPrivateSubnetsSubnetArrayOutputWithContext(ctx context.Context) GetNetworkPrivateSubnetsSubnetArrayOutput {
+	return o
+}
+
+func (o GetNetworkPrivateSubnetsSubnetArrayOutput) Index(i pulumi.IntInput) GetNetworkPrivateSubnetsSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkPrivateSubnetsSubnet {
+		return vs[0].([]GetNetworkPrivateSubnetsSubnet)[vs[1].(int)]
+	}).(GetNetworkPrivateSubnetsSubnetOutput)
+}
+
+type GetNetworkPrivateSubnetsSubnetIpPool struct {
+	// Whether or not if DHCP is enabled
+	Dhcp bool `pulumi:"dhcp"`
+	// Last IP for this region (eg: 192.168.1.24)
+	End string `pulumi:"end"`
+	// Global network with cidr (eg: 192.168.1.0/24)
+	Network string `pulumi:"network"`
+	// Region associated to the subnet
+	Region string `pulumi:"region"`
+	// First IP for this region (eg: 192.168.1.12)
+	Start string `pulumi:"start"`
+}
+
+// GetNetworkPrivateSubnetsSubnetIpPoolInput is an input type that accepts GetNetworkPrivateSubnetsSubnetIpPoolArgs and GetNetworkPrivateSubnetsSubnetIpPoolOutput values.
+// You can construct a concrete instance of `GetNetworkPrivateSubnetsSubnetIpPoolInput` via:
+//
+//	GetNetworkPrivateSubnetsSubnetIpPoolArgs{...}
+type GetNetworkPrivateSubnetsSubnetIpPoolInput interface {
+	pulumi.Input
+
+	ToGetNetworkPrivateSubnetsSubnetIpPoolOutput() GetNetworkPrivateSubnetsSubnetIpPoolOutput
+	ToGetNetworkPrivateSubnetsSubnetIpPoolOutputWithContext(context.Context) GetNetworkPrivateSubnetsSubnetIpPoolOutput
+}
+
+type GetNetworkPrivateSubnetsSubnetIpPoolArgs struct {
+	// Whether or not if DHCP is enabled
+	Dhcp pulumi.BoolInput `pulumi:"dhcp"`
+	// Last IP for this region (eg: 192.168.1.24)
+	End pulumi.StringInput `pulumi:"end"`
+	// Global network with cidr (eg: 192.168.1.0/24)
+	Network pulumi.StringInput `pulumi:"network"`
+	// Region associated to the subnet
+	Region pulumi.StringInput `pulumi:"region"`
+	// First IP for this region (eg: 192.168.1.12)
+	Start pulumi.StringInput `pulumi:"start"`
+}
+
+func (GetNetworkPrivateSubnetsSubnetIpPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPrivateSubnetsSubnetIpPool)(nil)).Elem()
+}
+
+func (i GetNetworkPrivateSubnetsSubnetIpPoolArgs) ToGetNetworkPrivateSubnetsSubnetIpPoolOutput() GetNetworkPrivateSubnetsSubnetIpPoolOutput {
+	return i.ToGetNetworkPrivateSubnetsSubnetIpPoolOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPrivateSubnetsSubnetIpPoolArgs) ToGetNetworkPrivateSubnetsSubnetIpPoolOutputWithContext(ctx context.Context) GetNetworkPrivateSubnetsSubnetIpPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPrivateSubnetsSubnetIpPoolOutput)
+}
+
+// GetNetworkPrivateSubnetsSubnetIpPoolArrayInput is an input type that accepts GetNetworkPrivateSubnetsSubnetIpPoolArray and GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput values.
+// You can construct a concrete instance of `GetNetworkPrivateSubnetsSubnetIpPoolArrayInput` via:
+//
+//	GetNetworkPrivateSubnetsSubnetIpPoolArray{ GetNetworkPrivateSubnetsSubnetIpPoolArgs{...} }
+type GetNetworkPrivateSubnetsSubnetIpPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkPrivateSubnetsSubnetIpPoolArrayOutput() GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput
+	ToGetNetworkPrivateSubnetsSubnetIpPoolArrayOutputWithContext(context.Context) GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput
+}
+
+type GetNetworkPrivateSubnetsSubnetIpPoolArray []GetNetworkPrivateSubnetsSubnetIpPoolInput
+
+func (GetNetworkPrivateSubnetsSubnetIpPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPrivateSubnetsSubnetIpPool)(nil)).Elem()
+}
+
+func (i GetNetworkPrivateSubnetsSubnetIpPoolArray) ToGetNetworkPrivateSubnetsSubnetIpPoolArrayOutput() GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput {
+	return i.ToGetNetworkPrivateSubnetsSubnetIpPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPrivateSubnetsSubnetIpPoolArray) ToGetNetworkPrivateSubnetsSubnetIpPoolArrayOutputWithContext(ctx context.Context) GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput)
+}
+
+type GetNetworkPrivateSubnetsSubnetIpPoolOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPrivateSubnetsSubnetIpPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPrivateSubnetsSubnetIpPool)(nil)).Elem()
+}
+
+func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) ToGetNetworkPrivateSubnetsSubnetIpPoolOutput() GetNetworkPrivateSubnetsSubnetIpPoolOutput {
+	return o
+}
+
+func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) ToGetNetworkPrivateSubnetsSubnetIpPoolOutputWithContext(ctx context.Context) GetNetworkPrivateSubnetsSubnetIpPoolOutput {
+	return o
+}
+
+// Whether or not if DHCP is enabled
+func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) Dhcp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnetIpPool) bool { return v.Dhcp }).(pulumi.BoolOutput)
+}
+
+// Last IP for this region (eg: 192.168.1.24)
+func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnetIpPool) string { return v.End }).(pulumi.StringOutput)
+}
+
+// Global network with cidr (eg: 192.168.1.0/24)
+func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnetIpPool) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Region associated to the subnet
+func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnetIpPool) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// First IP for this region (eg: 192.168.1.12)
+func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnetIpPool) string { return v.Start }).(pulumi.StringOutput)
+}
+
+type GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPrivateSubnetsSubnetIpPool)(nil)).Elem()
+}
+
+func (o GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput) ToGetNetworkPrivateSubnetsSubnetIpPoolArrayOutput() GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput {
+	return o
+}
+
+func (o GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput) ToGetNetworkPrivateSubnetsSubnetIpPoolArrayOutputWithContext(ctx context.Context) GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput {
+	return o
+}
+
+func (o GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput) Index(i pulumi.IntInput) GetNetworkPrivateSubnetsSubnetIpPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkPrivateSubnetsSubnetIpPool {
+		return vs[0].([]GetNetworkPrivateSubnetsSubnetIpPool)[vs[1].(int)]
+	}).(GetNetworkPrivateSubnetsSubnetIpPoolOutput)
+}
+
+type GetNetworkPrivatesNetwork struct {
+	// ID of the network
+	Id string `pulumi:"id"`
+	// Name of the network
+	Name string `pulumi:"name"`
+	// Information about the private network in the openstack region
+	Regions []GetNetworkPrivatesNetworkRegion `pulumi:"regions"`
+	// Status of the network
+	Status string `pulumi:"status"`
+	// Type of the network
+	Type string `pulumi:"type"`
+	// VLAN ID of the network
+	VlanId float64 `pulumi:"vlanId"`
+}
+
+// GetNetworkPrivatesNetworkInput is an input type that accepts GetNetworkPrivatesNetworkArgs and GetNetworkPrivatesNetworkOutput values.
+// You can construct a concrete instance of `GetNetworkPrivatesNetworkInput` via:
+//
+//	GetNetworkPrivatesNetworkArgs{...}
+type GetNetworkPrivatesNetworkInput interface {
+	pulumi.Input
+
+	ToGetNetworkPrivatesNetworkOutput() GetNetworkPrivatesNetworkOutput
+	ToGetNetworkPrivatesNetworkOutputWithContext(context.Context) GetNetworkPrivatesNetworkOutput
+}
+
+type GetNetworkPrivatesNetworkArgs struct {
+	// ID of the network
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the network
+	Name pulumi.StringInput `pulumi:"name"`
+	// Information about the private network in the openstack region
+	Regions GetNetworkPrivatesNetworkRegionArrayInput `pulumi:"regions"`
+	// Status of the network
+	Status pulumi.StringInput `pulumi:"status"`
+	// Type of the network
+	Type pulumi.StringInput `pulumi:"type"`
+	// VLAN ID of the network
+	VlanId pulumi.Float64Input `pulumi:"vlanId"`
+}
+
+func (GetNetworkPrivatesNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPrivatesNetwork)(nil)).Elem()
+}
+
+func (i GetNetworkPrivatesNetworkArgs) ToGetNetworkPrivatesNetworkOutput() GetNetworkPrivatesNetworkOutput {
+	return i.ToGetNetworkPrivatesNetworkOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPrivatesNetworkArgs) ToGetNetworkPrivatesNetworkOutputWithContext(ctx context.Context) GetNetworkPrivatesNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPrivatesNetworkOutput)
+}
+
+// GetNetworkPrivatesNetworkArrayInput is an input type that accepts GetNetworkPrivatesNetworkArray and GetNetworkPrivatesNetworkArrayOutput values.
+// You can construct a concrete instance of `GetNetworkPrivatesNetworkArrayInput` via:
+//
+//	GetNetworkPrivatesNetworkArray{ GetNetworkPrivatesNetworkArgs{...} }
+type GetNetworkPrivatesNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkPrivatesNetworkArrayOutput() GetNetworkPrivatesNetworkArrayOutput
+	ToGetNetworkPrivatesNetworkArrayOutputWithContext(context.Context) GetNetworkPrivatesNetworkArrayOutput
+}
+
+type GetNetworkPrivatesNetworkArray []GetNetworkPrivatesNetworkInput
+
+func (GetNetworkPrivatesNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPrivatesNetwork)(nil)).Elem()
+}
+
+func (i GetNetworkPrivatesNetworkArray) ToGetNetworkPrivatesNetworkArrayOutput() GetNetworkPrivatesNetworkArrayOutput {
+	return i.ToGetNetworkPrivatesNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPrivatesNetworkArray) ToGetNetworkPrivatesNetworkArrayOutputWithContext(ctx context.Context) GetNetworkPrivatesNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPrivatesNetworkArrayOutput)
+}
+
+type GetNetworkPrivatesNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPrivatesNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPrivatesNetwork)(nil)).Elem()
+}
+
+func (o GetNetworkPrivatesNetworkOutput) ToGetNetworkPrivatesNetworkOutput() GetNetworkPrivatesNetworkOutput {
+	return o
+}
+
+func (o GetNetworkPrivatesNetworkOutput) ToGetNetworkPrivatesNetworkOutputWithContext(ctx context.Context) GetNetworkPrivatesNetworkOutput {
+	return o
+}
+
+// ID of the network
+func (o GetNetworkPrivatesNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the network
+func (o GetNetworkPrivatesNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Information about the private network in the openstack region
+func (o GetNetworkPrivatesNetworkOutput) Regions() GetNetworkPrivatesNetworkRegionArrayOutput {
+	return o.ApplyT(func(v GetNetworkPrivatesNetwork) []GetNetworkPrivatesNetworkRegion { return v.Regions }).(GetNetworkPrivatesNetworkRegionArrayOutput)
+}
+
+// Status of the network
+func (o GetNetworkPrivatesNetworkOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Type of the network
+func (o GetNetworkPrivatesNetworkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// VLAN ID of the network
+func (o GetNetworkPrivatesNetworkOutput) VlanId() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNetworkPrivatesNetwork) float64 { return v.VlanId }).(pulumi.Float64Output)
+}
+
+type GetNetworkPrivatesNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPrivatesNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPrivatesNetwork)(nil)).Elem()
+}
+
+func (o GetNetworkPrivatesNetworkArrayOutput) ToGetNetworkPrivatesNetworkArrayOutput() GetNetworkPrivatesNetworkArrayOutput {
+	return o
+}
+
+func (o GetNetworkPrivatesNetworkArrayOutput) ToGetNetworkPrivatesNetworkArrayOutputWithContext(ctx context.Context) GetNetworkPrivatesNetworkArrayOutput {
+	return o
+}
+
+func (o GetNetworkPrivatesNetworkArrayOutput) Index(i pulumi.IntInput) GetNetworkPrivatesNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkPrivatesNetwork {
+		return vs[0].([]GetNetworkPrivatesNetwork)[vs[1].(int)]
+	}).(GetNetworkPrivatesNetworkOutput)
+}
+
+type GetNetworkPrivatesNetworkRegion struct {
+	// Network ID on openstack region
+	OpenstackId string `pulumi:"openstackId"`
+	// Name of the region
+	Region string `pulumi:"region"`
+	// Status of the network
+	Status string `pulumi:"status"`
+}
+
+// GetNetworkPrivatesNetworkRegionInput is an input type that accepts GetNetworkPrivatesNetworkRegionArgs and GetNetworkPrivatesNetworkRegionOutput values.
+// You can construct a concrete instance of `GetNetworkPrivatesNetworkRegionInput` via:
+//
+//	GetNetworkPrivatesNetworkRegionArgs{...}
+type GetNetworkPrivatesNetworkRegionInput interface {
+	pulumi.Input
+
+	ToGetNetworkPrivatesNetworkRegionOutput() GetNetworkPrivatesNetworkRegionOutput
+	ToGetNetworkPrivatesNetworkRegionOutputWithContext(context.Context) GetNetworkPrivatesNetworkRegionOutput
+}
+
+type GetNetworkPrivatesNetworkRegionArgs struct {
+	// Network ID on openstack region
+	OpenstackId pulumi.StringInput `pulumi:"openstackId"`
+	// Name of the region
+	Region pulumi.StringInput `pulumi:"region"`
+	// Status of the network
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetNetworkPrivatesNetworkRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPrivatesNetworkRegion)(nil)).Elem()
+}
+
+func (i GetNetworkPrivatesNetworkRegionArgs) ToGetNetworkPrivatesNetworkRegionOutput() GetNetworkPrivatesNetworkRegionOutput {
+	return i.ToGetNetworkPrivatesNetworkRegionOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPrivatesNetworkRegionArgs) ToGetNetworkPrivatesNetworkRegionOutputWithContext(ctx context.Context) GetNetworkPrivatesNetworkRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPrivatesNetworkRegionOutput)
+}
+
+// GetNetworkPrivatesNetworkRegionArrayInput is an input type that accepts GetNetworkPrivatesNetworkRegionArray and GetNetworkPrivatesNetworkRegionArrayOutput values.
+// You can construct a concrete instance of `GetNetworkPrivatesNetworkRegionArrayInput` via:
+//
+//	GetNetworkPrivatesNetworkRegionArray{ GetNetworkPrivatesNetworkRegionArgs{...} }
+type GetNetworkPrivatesNetworkRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkPrivatesNetworkRegionArrayOutput() GetNetworkPrivatesNetworkRegionArrayOutput
+	ToGetNetworkPrivatesNetworkRegionArrayOutputWithContext(context.Context) GetNetworkPrivatesNetworkRegionArrayOutput
+}
+
+type GetNetworkPrivatesNetworkRegionArray []GetNetworkPrivatesNetworkRegionInput
+
+func (GetNetworkPrivatesNetworkRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPrivatesNetworkRegion)(nil)).Elem()
+}
+
+func (i GetNetworkPrivatesNetworkRegionArray) ToGetNetworkPrivatesNetworkRegionArrayOutput() GetNetworkPrivatesNetworkRegionArrayOutput {
+	return i.ToGetNetworkPrivatesNetworkRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPrivatesNetworkRegionArray) ToGetNetworkPrivatesNetworkRegionArrayOutputWithContext(ctx context.Context) GetNetworkPrivatesNetworkRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPrivatesNetworkRegionArrayOutput)
+}
+
+type GetNetworkPrivatesNetworkRegionOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPrivatesNetworkRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPrivatesNetworkRegion)(nil)).Elem()
+}
+
+func (o GetNetworkPrivatesNetworkRegionOutput) ToGetNetworkPrivatesNetworkRegionOutput() GetNetworkPrivatesNetworkRegionOutput {
+	return o
+}
+
+func (o GetNetworkPrivatesNetworkRegionOutput) ToGetNetworkPrivatesNetworkRegionOutputWithContext(ctx context.Context) GetNetworkPrivatesNetworkRegionOutput {
+	return o
+}
+
+// Network ID on openstack region
+func (o GetNetworkPrivatesNetworkRegionOutput) OpenstackId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivatesNetworkRegion) string { return v.OpenstackId }).(pulumi.StringOutput)
+}
+
+// Name of the region
+func (o GetNetworkPrivatesNetworkRegionOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivatesNetworkRegion) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Status of the network
+func (o GetNetworkPrivatesNetworkRegionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPrivatesNetworkRegion) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetNetworkPrivatesNetworkRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPrivatesNetworkRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPrivatesNetworkRegion)(nil)).Elem()
+}
+
+func (o GetNetworkPrivatesNetworkRegionArrayOutput) ToGetNetworkPrivatesNetworkRegionArrayOutput() GetNetworkPrivatesNetworkRegionArrayOutput {
+	return o
+}
+
+func (o GetNetworkPrivatesNetworkRegionArrayOutput) ToGetNetworkPrivatesNetworkRegionArrayOutputWithContext(ctx context.Context) GetNetworkPrivatesNetworkRegionArrayOutput {
+	return o
+}
+
+func (o GetNetworkPrivatesNetworkRegionArrayOutput) Index(i pulumi.IntInput) GetNetworkPrivatesNetworkRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkPrivatesNetworkRegion {
+		return vs[0].([]GetNetworkPrivatesNetworkRegion)[vs[1].(int)]
+	}).(GetNetworkPrivatesNetworkRegionOutput)
+}
+
 type GetOpenSearchUserAcl struct {
 	// Pattern of the ACL.
 	Pattern string `pulumi:"pattern"`
@@ -7973,6 +8611,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadbalancerInput)(nil)).Elem(), GetLoadBalancersLoadbalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadbalancerArrayInput)(nil)).Elem(), GetLoadBalancersLoadbalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadbalancerFloatingIpInput)(nil)).Elem(), GetLoadBalancersLoadbalancerFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPrivateRegionInput)(nil)).Elem(), GetNetworkPrivateRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPrivateRegionArrayInput)(nil)).Elem(), GetNetworkPrivateRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPrivateSubnetsSubnetInput)(nil)).Elem(), GetNetworkPrivateSubnetsSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPrivateSubnetsSubnetArrayInput)(nil)).Elem(), GetNetworkPrivateSubnetsSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPrivateSubnetsSubnetIpPoolInput)(nil)).Elem(), GetNetworkPrivateSubnetsSubnetIpPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPrivateSubnetsSubnetIpPoolArrayInput)(nil)).Elem(), GetNetworkPrivateSubnetsSubnetIpPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPrivatesNetworkInput)(nil)).Elem(), GetNetworkPrivatesNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPrivatesNetworkArrayInput)(nil)).Elem(), GetNetworkPrivatesNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPrivatesNetworkRegionInput)(nil)).Elem(), GetNetworkPrivatesNetworkRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPrivatesNetworkRegionArrayInput)(nil)).Elem(), GetNetworkPrivatesNetworkRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchUserAclInput)(nil)).Elem(), GetOpenSearchUserAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchUserAclArrayInput)(nil)).Elem(), GetOpenSearchUserAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionServiceInput)(nil)).Elem(), GetRegionServiceArgs{})
@@ -8087,6 +8735,16 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadBalancersLoadbalancerOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersLoadbalancerArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersLoadbalancerFloatingIpOutput{})
+	pulumi.RegisterOutputType(GetNetworkPrivateRegionOutput{})
+	pulumi.RegisterOutputType(GetNetworkPrivateRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkPrivateSubnetsSubnetOutput{})
+	pulumi.RegisterOutputType(GetNetworkPrivateSubnetsSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkPrivateSubnetsSubnetIpPoolOutput{})
+	pulumi.RegisterOutputType(GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkPrivatesNetworkOutput{})
+	pulumi.RegisterOutputType(GetNetworkPrivatesNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkPrivatesNetworkRegionOutput{})
+	pulumi.RegisterOutputType(GetNetworkPrivatesNetworkRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchUserAclOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchUserAclArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionServiceOutput{})

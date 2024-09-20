@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAPIOAuth2Client(args: GetAPIOAuth2ClientArgs, opts?: pulumi.InvokeOptions): Promise<GetAPIOAuth2ClientResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", {
         "clientId": args.clientId,
@@ -81,7 +80,10 @@ export interface GetAPIOAuth2ClientResult {
  * ```
  */
 export function getAPIOAuth2ClientOutput(args: GetAPIOAuth2ClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAPIOAuth2ClientResult> {
-    return pulumi.output(args).apply((a: any) => getAPIOAuth2Client(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", {
+        "clientId": args.clientId,
+    }, opts);
 }
 
 /**

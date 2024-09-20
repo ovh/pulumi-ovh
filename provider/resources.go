@@ -51,6 +51,7 @@ const (
 	orderMod           = "Order"
 	vpsMod             = "Vps"
 	iamMod             = "Iam"
+	okmsMod            = "Okms"
 )
 
 // ovhDataSource manufactures a standard resource token given a module and resource name.
@@ -398,6 +399,10 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_iploadbalancing_refresh": {
 				Tok: ovhResource(ipLoadBalancingMod, "Refresh"),
 			},
+			"ovh_iploadbalancing_ssl": {
+				Tok:       ovhResource(ipLoadBalancingMod, "Ssl"),
+				ComputeID: delegateID("display_name"),
+			},
 			"ovh_iploadbalancing_tcp_farm": {
 				Tok: ovhResource(ipLoadBalancingMod, "TcpFarm"),
 			},
@@ -412,6 +417,14 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_iploadbalancing_tcp_route_rule": {
 				Tok: ovhResource(ipLoadBalancingMod, "TcpRouteRule"),
+			},
+			"ovh_iploadbalancing_udp_farm": {
+				Tok:       ovhResource(ipLoadBalancingMod, "UdpFarm"),
+				ComputeID: delegateID("display_name"),
+			},
+			"ovh_iploadbalancing_udp_farm_server": {
+				Tok:       ovhResource(ipLoadBalancingMod, "UdpFarmServer"),
+				ComputeID: delegateID("display_name"),
 			},
 			"ovh_iploadbalancing_udp_frontend": {
 				Tok:       ovhResource(ipLoadBalancingMod, "UdpFrontend"),
@@ -439,6 +452,15 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_me_installation_template_partition_scheme_partition": {
 				Tok: ovhResource(meMod, "InstallationTemplatePartitionSchemePartition"),
+			},
+			"ovh_okms": {
+				Tok: ovhResource(okmsMod, "Okms"),
+			},
+			"ovh_okms_credential": {
+				Tok: ovhResource(okmsMod, "Credential"),
+			},
+			"ovh_okms_service_key": {
+				Tok: ovhResource(okmsMod, "ServiceKey"),
 			},
 			"ovh_vrack": {
 				Tok: ovhResource(vrackMod, "Vrack"),
@@ -662,6 +684,15 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_region": {
 				Tok: ovhDataSource(cloudProjectMod, "getRegion"),
 			},
+			"ovh_cloud_project_network_private": {
+				Tok: ovhDataSource(cloudProjectMod, "getNetworkPrivate"),
+			},
+			"ovh_cloud_project_network_privates": {
+				Tok: ovhDataSource(cloudProjectMod, "getNetworkPrivates"),
+			},
+			"ovh_cloud_project_network_private_subnets": {
+				Tok: ovhDataSource(cloudProjectMod, "getNetworkPrivateSubnets"),
+			},
 			"ovh_cloud_project_regions": {
 				Tok: ovhDataSource(cloudProjectMod, "getRegions"),
 			},
@@ -792,6 +823,18 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_iploadbalancing_vrack_networks": {
 				Tok: ovhDataSource(ovhMod, "getVrackNetworks"),
+			},
+			"ovh_okms_credential": {
+				Tok: ovhDataSource(okmsMod, "getOkmsCredential"),
+			},
+			"ovh_okms_resource": {
+				Tok: ovhDataSource(okmsMod, "getOkmsResource"),
+			},
+			"ovh_okms_service_key": {
+				Tok: ovhDataSource(okmsMod, "getOkmsServiceKey"),
+			},
+			"ovh_okms_service_key_jwk": {
+				Tok: ovhDataSource(okmsMod, "getOkmsServiceKeyJwk"),
 			},
 			"ovh_me": {
 				Tok: ovhDataSource(meMod, "getMe"),

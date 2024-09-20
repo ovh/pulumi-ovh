@@ -75,14 +75,20 @@ type LookupIdentityGroupResult struct {
 
 func LookupIdentityGroupOutput(ctx *pulumi.Context, args LookupIdentityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupIdentityGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIdentityGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupIdentityGroupResultOutput, error) {
 			args := v.(LookupIdentityGroupArgs)
-			r, err := LookupIdentityGroup(ctx, &args, opts...)
-			var s LookupIdentityGroupResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupIdentityGroupResult
+			secret, err := ctx.InvokePackageRaw("ovh:Me/getIdentityGroup:getIdentityGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIdentityGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIdentityGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIdentityGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIdentityGroupResultOutput)
 }
 

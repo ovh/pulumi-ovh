@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDatabasePostgreSQLConnectionPools(args: GetDatabasePostgreSQLConnectionPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasePostgreSQLConnectionPoolsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", {
         "clusterId": args.clusterId,
@@ -82,7 +81,11 @@ export interface GetDatabasePostgreSQLConnectionPoolsResult {
  * ```
  */
 export function getDatabasePostgreSQLConnectionPoolsOutput(args: GetDatabasePostgreSQLConnectionPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasePostgreSQLConnectionPoolsResult> {
-    return pulumi.output(args).apply((a: any) => getDatabasePostgreSQLConnectionPools(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", {
+        "clusterId": args.clusterId,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

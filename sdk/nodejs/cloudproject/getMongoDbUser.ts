@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMongoDbUser(args: GetMongoDbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoDbUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getMongoDbUser:getMongoDbUser", {
         "clusterId": args.clusterId,
@@ -101,7 +100,12 @@ export interface GetMongoDbUserResult {
  * ```
  */
 export function getMongoDbUserOutput(args: GetMongoDbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoDbUserResult> {
-    return pulumi.output(args).apply((a: any) => getMongoDbUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getMongoDbUser:getMongoDbUser", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

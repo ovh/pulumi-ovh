@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVRack(args: GetVRackArgs, opts?: pulumi.InvokeOptions): Promise<GetVRackResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getVRack:getVRack", {
         "serviceName": args.serviceName,
@@ -72,7 +71,10 @@ export interface GetVRackResult {
  * ```
  */
 export function getVRackOutput(args: GetVRackOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVRackResult> {
-    return pulumi.output(args).apply((a: any) => getVRack(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getVRack:getVRack", {
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

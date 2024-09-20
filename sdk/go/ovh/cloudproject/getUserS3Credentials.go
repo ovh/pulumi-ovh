@@ -71,14 +71,20 @@ type GetUserS3CredentialsResult struct {
 
 func GetUserS3CredentialsOutput(ctx *pulumi.Context, args GetUserS3CredentialsOutputArgs, opts ...pulumi.InvokeOption) GetUserS3CredentialsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetUserS3CredentialsResult, error) {
+		ApplyT(func(v interface{}) (GetUserS3CredentialsResultOutput, error) {
 			args := v.(GetUserS3CredentialsArgs)
-			r, err := GetUserS3Credentials(ctx, &args, opts...)
-			var s GetUserS3CredentialsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetUserS3CredentialsResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getUserS3Credentials:getUserS3Credentials", args, &rv, "", opts...)
+			if err != nil {
+				return GetUserS3CredentialsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetUserS3CredentialsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetUserS3CredentialsResultOutput), nil
+			}
+			return output, nil
 		}).(GetUserS3CredentialsResultOutput)
 }
 

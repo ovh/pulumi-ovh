@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getM3dbNamespace(args: GetM3dbNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetM3dbNamespaceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getM3dbNamespace:getM3dbNamespace", {
         "clusterId": args.clusterId,
@@ -125,7 +124,12 @@ export interface GetM3dbNamespaceResult {
  * ```
  */
 export function getM3dbNamespaceOutput(args: GetM3dbNamespaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbNamespaceResult> {
-    return pulumi.output(args).apply((a: any) => getM3dbNamespace(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getM3dbNamespace:getM3dbNamespace", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

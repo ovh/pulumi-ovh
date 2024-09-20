@@ -47,14 +47,20 @@ type LookupPermissionsGroupResult struct {
 
 func LookupPermissionsGroupOutput(ctx *pulumi.Context, args LookupPermissionsGroupOutputArgs, opts ...pulumi.InvokeOption) LookupPermissionsGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPermissionsGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupPermissionsGroupResultOutput, error) {
 			args := v.(LookupPermissionsGroupArgs)
-			r, err := LookupPermissionsGroup(ctx, &args, opts...)
-			var s LookupPermissionsGroupResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPermissionsGroupResult
+			secret, err := ctx.InvokePackageRaw("ovh:Iam/getPermissionsGroup:getPermissionsGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPermissionsGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPermissionsGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPermissionsGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPermissionsGroupResultOutput)
 }
 

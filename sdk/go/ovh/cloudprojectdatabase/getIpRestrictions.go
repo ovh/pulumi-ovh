@@ -83,14 +83,20 @@ type GetIpRestrictionsResult struct {
 
 func GetIpRestrictionsOutput(ctx *pulumi.Context, args GetIpRestrictionsOutputArgs, opts ...pulumi.InvokeOption) GetIpRestrictionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpRestrictionsResult, error) {
+		ApplyT(func(v interface{}) (GetIpRestrictionsResultOutput, error) {
 			args := v.(GetIpRestrictionsArgs)
-			r, err := GetIpRestrictions(ctx, &args, opts...)
-			var s GetIpRestrictionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIpRestrictionsResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpRestrictionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpRestrictionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpRestrictionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpRestrictionsResultOutput)
 }
 

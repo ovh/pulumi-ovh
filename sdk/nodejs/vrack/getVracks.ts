@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVracks(opts?: pulumi.InvokeOptions): Promise<GetVracksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Vrack/getVracks:getVracks", {
     }, opts);
@@ -49,5 +48,7 @@ export interface GetVracksResult {
  * ```
  */
 export function getVracksOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVracksResult> {
-    return pulumi.output(getVracks(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Vrack/getVracks:getVracks", {
+    }, opts);
 }

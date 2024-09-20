@@ -55,13 +55,19 @@ type GetPoliciesResult struct {
 }
 
 func GetPoliciesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPoliciesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetPoliciesResult, error) {
-		r, err := GetPolicies(ctx, opts...)
-		var s GetPoliciesResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetPoliciesResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetPoliciesResult
+		secret, err := ctx.InvokePackageRaw("ovh:Iam/getPolicies:getPolicies", nil, &rv, "", opts...)
+		if err != nil {
+			return GetPoliciesResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetPoliciesResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetPoliciesResultOutput), nil
+		}
+		return output, nil
 	}).(GetPoliciesResultOutput)
 }
 

@@ -80,14 +80,20 @@ type LookupKafkaAclResult struct {
 
 func LookupKafkaAclOutput(ctx *pulumi.Context, args LookupKafkaAclOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaAclResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKafkaAclResult, error) {
+		ApplyT(func(v interface{}) (LookupKafkaAclResultOutput, error) {
 			args := v.(LookupKafkaAclArgs)
-			r, err := LookupKafkaAcl(ctx, &args, opts...)
-			var s LookupKafkaAclResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupKafkaAclResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getKafkaAcl:getKafkaAcl", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKafkaAclResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKafkaAclResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKafkaAclResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKafkaAclResultOutput)
 }
 

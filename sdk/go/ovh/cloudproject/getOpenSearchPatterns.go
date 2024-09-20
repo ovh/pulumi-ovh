@@ -73,14 +73,20 @@ type GetOpenSearchPatternsResult struct {
 
 func GetOpenSearchPatternsOutput(ctx *pulumi.Context, args GetOpenSearchPatternsOutputArgs, opts ...pulumi.InvokeOption) GetOpenSearchPatternsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOpenSearchPatternsResult, error) {
+		ApplyT(func(v interface{}) (GetOpenSearchPatternsResultOutput, error) {
 			args := v.(GetOpenSearchPatternsArgs)
-			r, err := GetOpenSearchPatterns(ctx, &args, opts...)
-			var s GetOpenSearchPatternsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetOpenSearchPatternsResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getOpenSearchPatterns:getOpenSearchPatterns", args, &rv, "", opts...)
+			if err != nil {
+				return GetOpenSearchPatternsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetOpenSearchPatternsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetOpenSearchPatternsResultOutput), nil
+			}
+			return output, nil
 		}).(GetOpenSearchPatternsResultOutput)
 }
 

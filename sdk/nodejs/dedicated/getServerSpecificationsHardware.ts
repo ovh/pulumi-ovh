@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getServerSpecificationsHardware(args: GetServerSpecificationsHardwareArgs, opts?: pulumi.InvokeOptions): Promise<GetServerSpecificationsHardwareResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", {
         "serviceName": args.serviceName,
@@ -123,7 +122,10 @@ export interface GetServerSpecificationsHardwareResult {
  * ```
  */
 export function getServerSpecificationsHardwareOutput(args: GetServerSpecificationsHardwareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerSpecificationsHardwareResult> {
-    return pulumi.output(args).apply((a: any) => getServerSpecificationsHardware(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", {
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

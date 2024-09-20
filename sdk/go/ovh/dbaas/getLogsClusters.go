@@ -66,14 +66,20 @@ type GetLogsClustersResult struct {
 
 func GetLogsClustersOutput(ctx *pulumi.Context, args GetLogsClustersOutputArgs, opts ...pulumi.InvokeOption) GetLogsClustersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLogsClustersResult, error) {
+		ApplyT(func(v interface{}) (GetLogsClustersResultOutput, error) {
 			args := v.(GetLogsClustersArgs)
-			r, err := GetLogsClusters(ctx, &args, opts...)
-			var s GetLogsClustersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetLogsClustersResult
+			secret, err := ctx.InvokePackageRaw("ovh:Dbaas/getLogsClusters:getLogsClusters", args, &rv, "", opts...)
+			if err != nil {
+				return GetLogsClustersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLogsClustersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLogsClustersResultOutput), nil
+			}
+			return output, nil
 		}).(GetLogsClustersResultOutput)
 }
 

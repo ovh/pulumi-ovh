@@ -79,14 +79,20 @@ type GetUserS3PolicyResult struct {
 
 func GetUserS3PolicyOutput(ctx *pulumi.Context, args GetUserS3PolicyOutputArgs, opts ...pulumi.InvokeOption) GetUserS3PolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetUserS3PolicyResult, error) {
+		ApplyT(func(v interface{}) (GetUserS3PolicyResultOutput, error) {
 			args := v.(GetUserS3PolicyArgs)
-			r, err := GetUserS3Policy(ctx, &args, opts...)
-			var s GetUserS3PolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetUserS3PolicyResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getUserS3Policy:getUserS3Policy", args, &rv, "", opts...)
+			if err != nil {
+				return GetUserS3PolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetUserS3PolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetUserS3PolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetUserS3PolicyResultOutput)
 }
 

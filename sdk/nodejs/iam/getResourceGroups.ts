@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getResourceGroups(opts?: pulumi.InvokeOptions): Promise<GetResourceGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getResourceGroups:getResourceGroups", {
     }, opts);
@@ -49,5 +48,7 @@ export interface GetResourceGroupsResult {
  * ```
  */
 export function getResourceGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupsResult> {
-    return pulumi.output(getResourceGroups(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Iam/getResourceGroups:getResourceGroups", {
+    }, opts);
 }

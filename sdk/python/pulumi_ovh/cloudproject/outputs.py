@@ -64,6 +64,11 @@ __all__ = [
     'GetLoadBalancerFloatingIpResult',
     'GetLoadBalancersLoadbalancerResult',
     'GetLoadBalancersLoadbalancerFloatingIpResult',
+    'GetNetworkPrivateRegionResult',
+    'GetNetworkPrivateSubnetsSubnetResult',
+    'GetNetworkPrivateSubnetsSubnetIpPoolResult',
+    'GetNetworkPrivatesNetworkResult',
+    'GetNetworkPrivatesNetworkRegionResult',
     'GetOpenSearchUserAclResult',
     'GetRegionServiceResult',
     'GetUserRoleResult',
@@ -2912,6 +2917,283 @@ class GetLoadBalancersLoadbalancerFloatingIpResult(dict):
         Value of the floating IP
         """
         return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class GetNetworkPrivateRegionResult(dict):
+    def __init__(__self__, *,
+                 openstack_id: str,
+                 region: str,
+                 status: str):
+        """
+        :param str openstack_id: Network ID on openstack region
+        :param str region: Name of the region
+        :param str status: Status of the network
+        """
+        pulumi.set(__self__, "openstack_id", openstack_id)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="openstackId")
+    def openstack_id(self) -> str:
+        """
+        Network ID on openstack region
+        """
+        return pulumi.get(self, "openstack_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Name of the region
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Status of the network
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetNetworkPrivateSubnetsSubnetResult(dict):
+    def __init__(__self__, *,
+                 cidr: str,
+                 dhcp_enabled: bool,
+                 gateway_ip: str,
+                 id: str,
+                 ip_pools: Sequence['outputs.GetNetworkPrivateSubnetsSubnetIpPoolResult']):
+        """
+        :param str cidr: CIDR of the subnet
+        :param bool dhcp_enabled: Whether or not if DHCP is enabled for the subnet
+        :param str gateway_ip: Gateway IP of the subnet
+        :param str id: ID of the subnet
+        :param Sequence['GetNetworkPrivateSubnetsSubnetIpPoolArgs'] ip_pools: List of ip pools allocated in the subnet
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
+        pulumi.set(__self__, "gateway_ip", gateway_ip)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_pools", ip_pools)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> str:
+        """
+        CIDR of the subnet
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter(name="dhcpEnabled")
+    def dhcp_enabled(self) -> bool:
+        """
+        Whether or not if DHCP is enabled for the subnet
+        """
+        return pulumi.get(self, "dhcp_enabled")
+
+    @property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> str:
+        """
+        Gateway IP of the subnet
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the subnet
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipPools")
+    def ip_pools(self) -> Sequence['outputs.GetNetworkPrivateSubnetsSubnetIpPoolResult']:
+        """
+        List of ip pools allocated in the subnet
+        """
+        return pulumi.get(self, "ip_pools")
+
+
+@pulumi.output_type
+class GetNetworkPrivateSubnetsSubnetIpPoolResult(dict):
+    def __init__(__self__, *,
+                 dhcp: bool,
+                 end: str,
+                 network: str,
+                 region: str,
+                 start: str):
+        """
+        :param bool dhcp: Whether or not if DHCP is enabled
+        :param str end: Last IP for this region (eg: 192.168.1.24)
+        :param str network: Global network with cidr (eg: 192.168.1.0/24)
+        :param str region: Region associated to the subnet
+        :param str start: First IP for this region (eg: 192.168.1.12)
+        """
+        pulumi.set(__self__, "dhcp", dhcp)
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def dhcp(self) -> bool:
+        """
+        Whether or not if DHCP is enabled
+        """
+        return pulumi.get(self, "dhcp")
+
+    @property
+    @pulumi.getter
+    def end(self) -> str:
+        """
+        Last IP for this region (eg: 192.168.1.24)
+        """
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Global network with cidr (eg: 192.168.1.0/24)
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region associated to the subnet
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def start(self) -> str:
+        """
+        First IP for this region (eg: 192.168.1.12)
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class GetNetworkPrivatesNetworkResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str,
+                 regions: Sequence['outputs.GetNetworkPrivatesNetworkRegionResult'],
+                 status: str,
+                 type: str,
+                 vlan_id: float):
+        """
+        :param str id: ID of the network
+        :param str name: Name of the network
+        :param Sequence['GetNetworkPrivatesNetworkRegionArgs'] regions: Information about the private network in the openstack region
+        :param str status: Status of the network
+        :param str type: Type of the network
+        :param float vlan_id: VLAN ID of the network
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "regions", regions)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the network
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the network
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Sequence['outputs.GetNetworkPrivatesNetworkRegionResult']:
+        """
+        Information about the private network in the openstack region
+        """
+        return pulumi.get(self, "regions")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Status of the network
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the network
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> float:
+        """
+        VLAN ID of the network
+        """
+        return pulumi.get(self, "vlan_id")
+
+
+@pulumi.output_type
+class GetNetworkPrivatesNetworkRegionResult(dict):
+    def __init__(__self__, *,
+                 openstack_id: str,
+                 region: str,
+                 status: str):
+        """
+        :param str openstack_id: Network ID on openstack region
+        :param str region: Name of the region
+        :param str status: Status of the network
+        """
+        pulumi.set(__self__, "openstack_id", openstack_id)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="openstackId")
+    def openstack_id(self) -> str:
+        """
+        Network ID on openstack region
+        """
+        return pulumi.get(self, "openstack_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Name of the region
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Status of the network
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

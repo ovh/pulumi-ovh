@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIdentityUsers(opts?: pulumi.InvokeOptions): Promise<GetIdentityUsersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Me/getIdentityUsers:getIdentityUsers", {
     }, opts);
@@ -49,5 +48,7 @@ export interface GetIdentityUsersResult {
  * ```
  */
 export function getIdentityUsersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityUsersResult> {
-    return pulumi.output(getIdentityUsers(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Me/getIdentityUsers:getIdentityUsers", {
+    }, opts);
 }

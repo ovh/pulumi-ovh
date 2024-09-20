@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getContainerRegistryUsers(args: GetContainerRegistryUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryUsersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers", {
         "registryId": args.registryId,
@@ -84,7 +83,11 @@ export interface GetContainerRegistryUsersResult {
  * ```
  */
 export function getContainerRegistryUsersOutput(args: GetContainerRegistryUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryUsersResult> {
-    return pulumi.output(args).apply((a: any) => getContainerRegistryUsers(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers", {
+        "registryId": args.registryId,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

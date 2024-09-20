@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
  */
 export function getContainerRegistryIPRestrictionsRegistry(args: GetContainerRegistryIPRestrictionsRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryIPRestrictionsRegistryResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", {
         "registryId": args.registryId,
@@ -55,7 +54,11 @@ export interface GetContainerRegistryIPRestrictionsRegistryResult {
  * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
  */
 export function getContainerRegistryIPRestrictionsRegistryOutput(args: GetContainerRegistryIPRestrictionsRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryIPRestrictionsRegistryResult> {
-    return pulumi.output(args).apply((a: any) => getContainerRegistryIPRestrictionsRegistry(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", {
+        "registryId": args.registryId,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

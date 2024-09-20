@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getPermissionsGroup(args: GetPermissionsGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetPermissionsGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getPermissionsGroup:getPermissionsGroup", {
         "allows": args.allows,
@@ -45,7 +44,15 @@ export interface GetPermissionsGroupResult {
     readonly urn: string;
 }
 export function getPermissionsGroupOutput(args: GetPermissionsGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionsGroupResult> {
-    return pulumi.output(args).apply((a: any) => getPermissionsGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Iam/getPermissionsGroup:getPermissionsGroup", {
+        "allows": args.allows,
+        "denies": args.denies,
+        "description": args.description,
+        "excepts": args.excepts,
+        "updatedAt": args.updatedAt,
+        "urn": args.urn,
+    }, opts);
 }
 
 /**

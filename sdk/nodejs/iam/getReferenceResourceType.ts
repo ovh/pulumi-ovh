@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getReferenceResourceType(opts?: pulumi.InvokeOptions): Promise<GetReferenceResourceTypeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getReferenceResourceType:getReferenceResourceType", {
     }, opts);
@@ -49,5 +48,7 @@ export interface GetReferenceResourceTypeResult {
  * ```
  */
 export function getReferenceResourceTypeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceResourceTypeResult> {
-    return pulumi.output(getReferenceResourceType(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Iam/getReferenceResourceType:getReferenceResourceType", {
+    }, opts);
 }

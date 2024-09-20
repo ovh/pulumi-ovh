@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
  */
 export function getContainerRegistryIPRestrictionsManagement(args: GetContainerRegistryIPRestrictionsManagementArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryIPRestrictionsManagementResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement", {
         "registryId": args.registryId,
@@ -55,7 +54,11 @@ export interface GetContainerRegistryIPRestrictionsManagementResult {
  * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
  */
 export function getContainerRegistryIPRestrictionsManagementOutput(args: GetContainerRegistryIPRestrictionsManagementOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryIPRestrictionsManagementResult> {
-    return pulumi.output(args).apply((a: any) => getContainerRegistryIPRestrictionsManagement(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement", {
+        "registryId": args.registryId,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

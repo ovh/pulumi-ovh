@@ -49,6 +49,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// UDP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:IpLoadBalancing/udpFrontend:UdpFrontend testfrontend service_name/frontend_id
+// ```
 type UdpFrontend struct {
 	pulumi.CustomResourceState
 

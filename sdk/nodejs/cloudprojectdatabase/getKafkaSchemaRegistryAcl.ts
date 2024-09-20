@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKafkaSchemaRegistryAcl(args: GetKafkaSchemaRegistryAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaRegistryAclResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", {
         "clusterId": args.clusterId,
@@ -97,7 +96,12 @@ export interface GetKafkaSchemaRegistryAclResult {
  * ```
  */
 export function getKafkaSchemaRegistryAclOutput(args: GetKafkaSchemaRegistryAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaRegistryAclResult> {
-    return pulumi.output(args).apply((a: any) => getKafkaSchemaRegistryAcl(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", {
+        "clusterId": args.clusterId,
+        "id": args.id,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

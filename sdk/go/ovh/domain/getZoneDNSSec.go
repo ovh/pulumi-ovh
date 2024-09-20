@@ -65,14 +65,20 @@ type LookupZoneDNSSecResult struct {
 
 func LookupZoneDNSSecOutput(ctx *pulumi.Context, args LookupZoneDNSSecOutputArgs, opts ...pulumi.InvokeOption) LookupZoneDNSSecResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupZoneDNSSecResult, error) {
+		ApplyT(func(v interface{}) (LookupZoneDNSSecResultOutput, error) {
 			args := v.(LookupZoneDNSSecArgs)
-			r, err := LookupZoneDNSSec(ctx, &args, opts...)
-			var s LookupZoneDNSSecResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupZoneDNSSecResult
+			secret, err := ctx.InvokePackageRaw("ovh:Domain/getZoneDNSSec:getZoneDNSSec", args, &rv, "", opts...)
+			if err != nil {
+				return LookupZoneDNSSecResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupZoneDNSSecResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupZoneDNSSecResultOutput), nil
+			}
+			return output, nil
 		}).(LookupZoneDNSSecResultOutput)
 }
 

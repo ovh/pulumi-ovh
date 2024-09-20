@@ -79,14 +79,20 @@ type LookupPrivateDatabaseAllowlistResult struct {
 
 func LookupPrivateDatabaseAllowlistOutput(ctx *pulumi.Context, args LookupPrivateDatabaseAllowlistOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateDatabaseAllowlistResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateDatabaseAllowlistResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateDatabaseAllowlistResultOutput, error) {
 			args := v.(LookupPrivateDatabaseAllowlistArgs)
-			r, err := LookupPrivateDatabaseAllowlist(ctx, &args, opts...)
-			var s LookupPrivateDatabaseAllowlistResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateDatabaseAllowlistResult
+			secret, err := ctx.InvokePackageRaw("ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateDatabaseAllowlistResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateDatabaseAllowlistResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateDatabaseAllowlistResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateDatabaseAllowlistResultOutput)
 }
 

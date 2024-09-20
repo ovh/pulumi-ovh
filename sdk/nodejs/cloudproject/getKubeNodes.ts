@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKubeNodes(args: GetKubeNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeNodesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getKubeNodes:getKubeNodes", {
         "kubeId": args.kubeId,
@@ -84,7 +83,11 @@ export interface GetKubeNodesResult {
  * ```
  */
 export function getKubeNodesOutput(args: GetKubeNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeNodesResult> {
-    return pulumi.output(args).apply((a: any) => getKubeNodes(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeNodes:getKubeNodes", {
+        "kubeId": args.kubeId,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

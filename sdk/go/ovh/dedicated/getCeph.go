@@ -93,14 +93,20 @@ type GetCephResult struct {
 
 func GetCephOutput(ctx *pulumi.Context, args GetCephOutputArgs, opts ...pulumi.InvokeOption) GetCephResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCephResult, error) {
+		ApplyT(func(v interface{}) (GetCephResultOutput, error) {
 			args := v.(GetCephArgs)
-			r, err := GetCeph(ctx, &args, opts...)
-			var s GetCephResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCephResult
+			secret, err := ctx.InvokePackageRaw("ovh:Dedicated/getCeph:getCeph", args, &rv, "", opts...)
+			if err != nil {
+				return GetCephResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCephResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCephResultOutput), nil
+			}
+			return output, nil
 		}).(GetCephResultOutput)
 }
 

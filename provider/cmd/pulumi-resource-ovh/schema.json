@@ -1763,6 +1763,182 @@
                 }
             }
         },
+        "ovh:CloudProject/getNetworkPrivateRegion:getNetworkPrivateRegion": {
+            "properties": {
+                "openstackId": {
+                    "type": "string",
+                    "description": "Network ID on openstack region\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Name of the region\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the network\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "openstackId",
+                "region",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:CloudProject/getNetworkPrivateSubnetsSubnet:getNetworkPrivateSubnetsSubnet": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "CIDR of the subnet\n"
+                },
+                "dhcpEnabled": {
+                    "type": "boolean",
+                    "description": "Whether or not if DHCP is enabled for the subnet\n"
+                },
+                "gatewayIp": {
+                    "type": "string",
+                    "description": "Gateway IP of the subnet\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the subnet\n"
+                },
+                "ipPools": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:CloudProject/getNetworkPrivateSubnetsSubnetIpPool:getNetworkPrivateSubnetsSubnetIpPool"
+                    },
+                    "description": "List of ip pools allocated in the subnet\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidr",
+                "dhcpEnabled",
+                "gatewayIp",
+                "id",
+                "ipPools"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:CloudProject/getNetworkPrivateSubnetsSubnetIpPool:getNetworkPrivateSubnetsSubnetIpPool": {
+            "properties": {
+                "dhcp": {
+                    "type": "boolean",
+                    "description": "Whether or not if DHCP is enabled\n"
+                },
+                "end": {
+                    "type": "string",
+                    "description": "Last IP for this region (eg: 192.168.1.24)\n"
+                },
+                "network": {
+                    "type": "string",
+                    "description": "Global network with cidr (eg: 192.168.1.0/24)\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region associated to the subnet\n"
+                },
+                "start": {
+                    "type": "string",
+                    "description": "First IP for this region (eg: 192.168.1.12)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "dhcp",
+                "end",
+                "network",
+                "region",
+                "start"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:CloudProject/getNetworkPrivatesNetwork:getNetworkPrivatesNetwork": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of the network\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the network\n"
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:CloudProject/getNetworkPrivatesNetworkRegion:getNetworkPrivatesNetworkRegion"
+                    },
+                    "description": "Information about the private network in the openstack region\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the network\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the network\n"
+                },
+                "vlanId": {
+                    "type": "number",
+                    "description": "VLAN ID of the network\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "regions",
+                "status",
+                "type",
+                "vlanId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:CloudProject/getNetworkPrivatesNetworkRegion:getNetworkPrivatesNetworkRegion": {
+            "properties": {
+                "openstackId": {
+                    "type": "string",
+                    "description": "Network ID on openstack region\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Name of the region\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the network\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "openstackId",
+                "region",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "ovh:CloudProject/getOpenSearchUserAcl:getOpenSearchUserAcl": {
             "properties": {
                 "pattern": {
@@ -4468,6 +4644,140 @@
             "required": [
                 "code",
                 "symbol"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:Okms/OkmsIam:OkmsIam": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "(String) Resource display name\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "(String) Unique identifier of the resource\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "(Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:\n"
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "(String) Unique resource name used in policies\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "displayName",
+                        "id",
+                        "tags",
+                        "urn"
+                    ]
+                }
+            }
+        },
+        "ovh:Okms/getOkmsResourceIam:getOkmsResourceIam": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "(String) Resource display name\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Should be set to the ID of your KMS\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "(Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:\n"
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "(String) Unique resource name used in policies\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayName",
+                "id",
+                "tags",
+                "urn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:Okms/getOkmsServiceKeyJwkKey:getOkmsServiceKeyJwkKey": {
+            "properties": {
+                "alg": {
+                    "type": "string",
+                    "description": "The algorithm intended to be used with the key\n"
+                },
+                "crv": {
+                    "type": "string",
+                    "description": "The cryptographic curve used with the key\n"
+                },
+                "e": {
+                    "type": "string",
+                    "description": "The exponent value for the RSA public key\n"
+                },
+                "keyOps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The operation for which the key is intended to be used\n"
+                },
+                "kid": {
+                    "type": "string",
+                    "description": "key ID parameter used to match a specific key\n"
+                },
+                "kty": {
+                    "type": "string",
+                    "description": "Key type parameter identifies the cryptographic algorithm family used with the key, such as RSA or EC\n"
+                },
+                "n": {
+                    "type": "string",
+                    "description": "The modulus value for the RSA public key\n"
+                },
+                "use": {
+                    "type": "string",
+                    "description": "The intended use of the public key\n"
+                },
+                "x": {
+                    "type": "string",
+                    "description": "The x coordinate for the Elliptic Curve point\n"
+                },
+                "y": {
+                    "type": "string",
+                    "description": "The y coordinate for the Elliptic Curve point\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "alg",
+                "crv",
+                "e",
+                "keyOps",
+                "kid",
+                "kty",
+                "n",
+                "use",
+                "x",
+                "y"
             ],
             "language": {
                 "nodejs": {
@@ -16819,6 +17129,154 @@
                 "type": "object"
             }
         },
+        "ovh:IpLoadBalancing/ssl:Ssl": {
+            "description": "Creates a new custom SSL certificate on your IP Load Balancing\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst lb = ovh.IpLoadBalancing.getIpLoadBalancing({\n    serviceName: \"ip-1.2.3.4\",\n    state: \"ok\",\n});\nconst sslname = new ovh.iploadbalancing.Ssl(\"sslname\", {\n    certificate: \"...\",\n    chain: \"...\",\n    displayName: \"test\",\n    key: \"...\",\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nlb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name=\"ip-1.2.3.4\",\n    state=\"ok\")\nsslname = ovh.ip_load_balancing.Ssl(\"sslname\",\n    certificate=\"...\",\n    chain=\"...\",\n    display_name=\"test\",\n    key=\"...\",\n    service_name=lb.service_name)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()\n    {\n        ServiceName = \"ip-1.2.3.4\",\n        State = \"ok\",\n    });\n\n    var sslname = new Ovh.IpLoadBalancing.Ssl(\"sslname\", new()\n    {\n        Certificate = \"...\",\n        Chain = \"...\",\n        DisplayName = \"test\",\n        Key = \"...\",\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tlb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, \u0026iploadbalancing.GetIpLoadBalancingArgs{\n\t\t\tServiceName: pulumi.StringRef(\"ip-1.2.3.4\"),\n\t\t\tState:       pulumi.StringRef(\"ok\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = IpLoadBalancing.NewSsl(ctx, \"sslname\", \u0026IpLoadBalancing.SslArgs{\n\t\t\tCertificate: pulumi.String(\"...\"),\n\t\t\tChain:       pulumi.String(\"...\"),\n\t\t\tDisplayName: pulumi.String(\"test\"),\n\t\t\tKey:         pulumi.String(\"...\"),\n\t\t\tServiceName: pulumi.String(lb.ServiceName),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;\nimport com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;\nimport com.pulumi.ovh.IpLoadBalancing.Ssl;\nimport com.pulumi.ovh.IpLoadBalancing.SslArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()\n            .serviceName(\"ip-1.2.3.4\")\n            .state(\"ok\")\n            .build());\n\n        var sslname = new Ssl(\"sslname\", SslArgs.builder()\n            .certificate(\"...\")\n            .chain(\"...\")\n            .displayName(\"test\")\n            .key(\"...\")\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sslname:\n    type: ovh:IpLoadBalancing:Ssl\n    properties:\n      certificate: '...'\n      chain: '...'\n      displayName: test\n      key: '...'\n      serviceName: ${lb.serviceName}\nvariables:\n  lb:\n    fn::invoke:\n      Function: ovh:IpLoadBalancing:getIpLoadBalancing\n      Arguments:\n        serviceName: ip-1.2.3.4\n        state: ok\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nSSL can be imported using the following format `service_name` and the `id` of the ssl, separated by \"/\" e.g.\n\nbash\n\n```sh\n$ pulumi import ovh:IpLoadBalancing/ssl:Ssl sslname service_name/ssl_id\n```\n\n",
+            "properties": {
+                "certificate": {
+                    "type": "string",
+                    "description": "Certificate\n"
+                },
+                "chain": {
+                    "type": "string",
+                    "description": "Certificate chain\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Readable label for loadbalancer ssl\n"
+                },
+                "expireDate": {
+                    "type": "string",
+                    "description": "Expire date of your SSL certificate.\n"
+                },
+                "fingerprint": {
+                    "type": "string",
+                    "description": "Fingerprint of your SSL certificate.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Certificate key\n",
+                    "secret": true
+                },
+                "sans": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Subject Alternative Name of your SSL certificate.\n"
+                },
+                "serial": {
+                    "type": "string",
+                    "description": "Serial of your SSL certificate (Deprecated, use fingerprint instead !)\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The internal name of your IP load balancing\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Subject of your SSL certificate.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.\n"
+                }
+            },
+            "required": [
+                "certificate",
+                "chain",
+                "displayName",
+                "expireDate",
+                "fingerprint",
+                "key",
+                "sans",
+                "serial",
+                "serviceName",
+                "subject",
+                "type"
+            ],
+            "inputProperties": {
+                "certificate": {
+                    "type": "string",
+                    "description": "Certificate\n"
+                },
+                "chain": {
+                    "type": "string",
+                    "description": "Certificate chain\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Readable label for loadbalancer ssl\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Certificate key\n",
+                    "secret": true
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The internal name of your IP load balancing\n"
+                }
+            },
+            "requiredInputs": [
+                "certificate",
+                "key",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Ssl resources.\n",
+                "properties": {
+                    "certificate": {
+                        "type": "string",
+                        "description": "Certificate\n"
+                    },
+                    "chain": {
+                        "type": "string",
+                        "description": "Certificate chain\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Readable label for loadbalancer ssl\n"
+                    },
+                    "expireDate": {
+                        "type": "string",
+                        "description": "Expire date of your SSL certificate.\n"
+                    },
+                    "fingerprint": {
+                        "type": "string",
+                        "description": "Fingerprint of your SSL certificate.\n"
+                    },
+                    "key": {
+                        "type": "string",
+                        "description": "Certificate key\n",
+                        "secret": true
+                    },
+                    "sans": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Subject Alternative Name of your SSL certificate.\n"
+                    },
+                    "serial": {
+                        "type": "string",
+                        "description": "Serial of your SSL certificate (Deprecated, use fingerprint instead !)\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The internal name of your IP load balancing\n"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "Subject of your SSL certificate.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "ovh:IpLoadBalancing/tcpFarm:TcpFarm": {
             "description": "Creates a backend server group (farm) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst lb = ovh.IpLoadBalancing.getIpLoadBalancing({\n    serviceName: \"ip-1.2.3.4\",\n    state: \"ok\",\n});\nconst farmname = new ovh.iploadbalancing.TcpFarm(\"farmname\", {\n    displayName: \"ingress-8080-gra\",\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n    zone: \"GRA\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nlb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name=\"ip-1.2.3.4\",\n    state=\"ok\")\nfarmname = ovh.ip_load_balancing.TcpFarm(\"farmname\",\n    display_name=\"ingress-8080-gra\",\n    service_name=lb.service_name,\n    zone=\"GRA\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()\n    {\n        ServiceName = \"ip-1.2.3.4\",\n        State = \"ok\",\n    });\n\n    var farmname = new Ovh.IpLoadBalancing.TcpFarm(\"farmname\", new()\n    {\n        DisplayName = \"ingress-8080-gra\",\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n        Zone = \"GRA\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tlb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, \u0026iploadbalancing.GetIpLoadBalancingArgs{\n\t\t\tServiceName: pulumi.StringRef(\"ip-1.2.3.4\"),\n\t\t\tState:       pulumi.StringRef(\"ok\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = IpLoadBalancing.NewTcpFarm(ctx, \"farmname\", \u0026IpLoadBalancing.TcpFarmArgs{\n\t\t\tDisplayName: pulumi.String(\"ingress-8080-gra\"),\n\t\t\tServiceName: pulumi.String(lb.ServiceName),\n\t\t\tZone:        pulumi.String(\"GRA\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;\nimport com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;\nimport com.pulumi.ovh.IpLoadBalancing.TcpFarm;\nimport com.pulumi.ovh.IpLoadBalancing.TcpFarmArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()\n            .serviceName(\"ip-1.2.3.4\")\n            .state(\"ok\")\n            .build());\n\n        var farmname = new TcpFarm(\"farmname\", TcpFarmArgs.builder()\n            .displayName(\"ingress-8080-gra\")\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .zone(\"GRA\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  farmname:\n    type: ovh:IpLoadBalancing:TcpFarm\n    properties:\n      displayName: ingress-8080-gra\n      serviceName: ${lb.serviceName}\n      zone: GRA\nvariables:\n  lb:\n    fn::invoke:\n      Function: ovh:IpLoadBalancing:getIpLoadBalancing\n      Arguments:\n        serviceName: ip-1.2.3.4\n        state: ok\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import \n\nTCP Farm can be imported using the following format `service_name` and the `id` of the farm, separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_tcp_farm.farmname service_name/farm_id\n```\n",
             "properties": {
@@ -17545,8 +18003,219 @@
                 "type": "object"
             }
         },
+        "ovh:IpLoadBalancing/udpFarm:UdpFarm": {
+            "description": "Creates a backend server group (farm) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst lb = ovh.IpLoadBalancing.getIpLoadBalancing({\n    serviceName: \"ip-1.2.3.4\",\n    state: \"ok\",\n});\nconst farmname = new ovh.iploadbalancing.UdpFarm(\"farmname\", {\n    displayName: \"ingress-8080-gra\",\n    port: 80,\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n    zone: \"gra\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nlb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name=\"ip-1.2.3.4\",\n    state=\"ok\")\nfarmname = ovh.ip_load_balancing.UdpFarm(\"farmname\",\n    display_name=\"ingress-8080-gra\",\n    port=80,\n    service_name=lb.service_name,\n    zone=\"gra\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()\n    {\n        ServiceName = \"ip-1.2.3.4\",\n        State = \"ok\",\n    });\n\n    var farmname = new Ovh.IpLoadBalancing.UdpFarm(\"farmname\", new()\n    {\n        DisplayName = \"ingress-8080-gra\",\n        Port = 80,\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n        Zone = \"gra\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tlb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, \u0026iploadbalancing.GetIpLoadBalancingArgs{\n\t\t\tServiceName: pulumi.StringRef(\"ip-1.2.3.4\"),\n\t\t\tState:       pulumi.StringRef(\"ok\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = IpLoadBalancing.NewUdpFarm(ctx, \"farmname\", \u0026IpLoadBalancing.UdpFarmArgs{\n\t\t\tDisplayName: pulumi.String(\"ingress-8080-gra\"),\n\t\t\tPort:        pulumi.Float64(80),\n\t\t\tServiceName: pulumi.String(lb.ServiceName),\n\t\t\tZone:        pulumi.String(\"gra\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;\nimport com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;\nimport com.pulumi.ovh.IpLoadBalancing.UdpFarm;\nimport com.pulumi.ovh.IpLoadBalancing.UdpFarmArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()\n            .serviceName(\"ip-1.2.3.4\")\n            .state(\"ok\")\n            .build());\n\n        var farmname = new UdpFarm(\"farmname\", UdpFarmArgs.builder()\n            .displayName(\"ingress-8080-gra\")\n            .port(80)\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .zone(\"gra\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  farmname:\n    type: ovh:IpLoadBalancing:UdpFarm\n    properties:\n      displayName: ingress-8080-gra\n      port: 80\n      serviceName: ${lb.serviceName}\n      zone: gra\nvariables:\n  lb:\n    fn::invoke:\n      Function: ovh:IpLoadBalancing:getIpLoadBalancing\n      Arguments:\n        serviceName: ip-1.2.3.4\n        state: ok\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUDP Farm can be imported using the following format `service_name` and the `id` of the farm, separated by \"/\" e.g.\n\nbash\n\n```sh\n$ pulumi import ovh:IpLoadBalancing/udpFarm:UdpFarm farmname service_name/farm_id\n```\n\n",
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Readable label for loadbalancer farm\n"
+                },
+                "farmId": {
+                    "type": "number",
+                    "description": "Id of your farm.\n"
+                },
+                "port": {
+                    "type": "number",
+                    "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The internal name of your IP load balancing\n"
+                },
+                "vrackNetworkId": {
+                    "type": "number",
+                    "description": "Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)\n"
+                }
+            },
+            "required": [
+                "displayName",
+                "farmId",
+                "port",
+                "serviceName",
+                "vrackNetworkId",
+                "zone"
+            ],
+            "inputProperties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Readable label for loadbalancer farm\n"
+                },
+                "port": {
+                    "type": "number",
+                    "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The internal name of your IP load balancing\n"
+                },
+                "vrackNetworkId": {
+                    "type": "number",
+                    "description": "Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)\n"
+                }
+            },
+            "requiredInputs": [
+                "port",
+                "serviceName",
+                "zone"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UdpFarm resources.\n",
+                "properties": {
+                    "displayName": {
+                        "type": "string",
+                        "description": "Readable label for loadbalancer farm\n"
+                    },
+                    "farmId": {
+                        "type": "number",
+                        "description": "Id of your farm.\n"
+                    },
+                    "port": {
+                        "type": "number",
+                        "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The internal name of your IP load balancing\n"
+                    },
+                    "vrackNetworkId": {
+                        "type": "number",
+                        "description": "Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:IpLoadBalancing/udpFarmServer:UdpFarmServer": {
+            "description": "Creates a backend server entry linked to loadbalancing group (farm)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst lb = ovh.IpLoadBalancing.getIpLoadBalancing({\n    serviceName: \"ip-1.2.3.4\",\n    state: \"ok\",\n});\nconst farmname = new ovh.iploadbalancing.UdpFarm(\"farmname\", {\n    displayName: \"ingress-8080-gra\",\n    port: 80,\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n    zone: \"gra\",\n});\nconst backend = new ovh.iploadbalancing.UdpFarmServer(\"backend\", {\n    address: \"4.5.6.7\",\n    displayName: \"mybackend\",\n    farmId: farmname.farmId,\n    port: 80,\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n    status: \"active\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nlb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name=\"ip-1.2.3.4\",\n    state=\"ok\")\nfarmname = ovh.ip_load_balancing.UdpFarm(\"farmname\",\n    display_name=\"ingress-8080-gra\",\n    port=80,\n    service_name=lb.service_name,\n    zone=\"gra\")\nbackend = ovh.ip_load_balancing.UdpFarmServer(\"backend\",\n    address=\"4.5.6.7\",\n    display_name=\"mybackend\",\n    farm_id=farmname.farm_id,\n    port=80,\n    service_name=lb.service_name,\n    status=\"active\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()\n    {\n        ServiceName = \"ip-1.2.3.4\",\n        State = \"ok\",\n    });\n\n    var farmname = new Ovh.IpLoadBalancing.UdpFarm(\"farmname\", new()\n    {\n        DisplayName = \"ingress-8080-gra\",\n        Port = 80,\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n        Zone = \"gra\",\n    });\n\n    var backend = new Ovh.IpLoadBalancing.UdpFarmServer(\"backend\", new()\n    {\n        Address = \"4.5.6.7\",\n        DisplayName = \"mybackend\",\n        FarmId = farmname.FarmId,\n        Port = 80,\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n        Status = \"active\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tlb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, \u0026iploadbalancing.GetIpLoadBalancingArgs{\n\t\t\tServiceName: pulumi.StringRef(\"ip-1.2.3.4\"),\n\t\t\tState:       pulumi.StringRef(\"ok\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfarmname, err := IpLoadBalancing.NewUdpFarm(ctx, \"farmname\", \u0026IpLoadBalancing.UdpFarmArgs{\n\t\t\tDisplayName: pulumi.String(\"ingress-8080-gra\"),\n\t\t\tPort:        pulumi.Float64(80),\n\t\t\tServiceName: pulumi.String(lb.ServiceName),\n\t\t\tZone:        pulumi.String(\"gra\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = IpLoadBalancing.NewUdpFarmServer(ctx, \"backend\", \u0026IpLoadBalancing.UdpFarmServerArgs{\n\t\t\tAddress:     pulumi.String(\"4.5.6.7\"),\n\t\t\tDisplayName: pulumi.String(\"mybackend\"),\n\t\t\tFarmId:      farmname.FarmId,\n\t\t\tPort:        pulumi.Float64(80),\n\t\t\tServiceName: pulumi.String(lb.ServiceName),\n\t\t\tStatus:      pulumi.String(\"active\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;\nimport com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;\nimport com.pulumi.ovh.IpLoadBalancing.UdpFarm;\nimport com.pulumi.ovh.IpLoadBalancing.UdpFarmArgs;\nimport com.pulumi.ovh.IpLoadBalancing.UdpFarmServer;\nimport com.pulumi.ovh.IpLoadBalancing.UdpFarmServerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()\n            .serviceName(\"ip-1.2.3.4\")\n            .state(\"ok\")\n            .build());\n\n        var farmname = new UdpFarm(\"farmname\", UdpFarmArgs.builder()\n            .displayName(\"ingress-8080-gra\")\n            .port(80)\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .zone(\"gra\")\n            .build());\n\n        var backend = new UdpFarmServer(\"backend\", UdpFarmServerArgs.builder()\n            .address(\"4.5.6.7\")\n            .displayName(\"mybackend\")\n            .farmId(farmname.farmId())\n            .port(80)\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .status(\"active\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  farmname:\n    type: ovh:IpLoadBalancing:UdpFarm\n    properties:\n      displayName: ingress-8080-gra\n      port: 80\n      serviceName: ${lb.serviceName}\n      zone: gra\n  backend:\n    type: ovh:IpLoadBalancing:UdpFarmServer\n    properties:\n      address: 4.5.6.7\n      displayName: mybackend\n      farmId: ${farmname.farmId}\n      port: 80\n      serviceName: ${lb.serviceName}\n      status: active\nvariables:\n  lb:\n    fn::invoke:\n      Function: ovh:IpLoadBalancing:getIpLoadBalancing\n      Arguments:\n        serviceName: ip-1.2.3.4\n        state: ok\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import \n\nUDP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_iploadbalancing_udp_farm_server.backend service_name/farm_id/server_id\n```\n",
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "Address of the backend server (IP from either internal or OVHcloud network)\n"
+                },
+                "backendId": {
+                    "type": "number",
+                    "description": "Synonym for `farm_id`.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Label for the server\n"
+                },
+                "farmId": {
+                    "type": "number",
+                    "description": "ID of the farm this server is attached to\n"
+                },
+                "port": {
+                    "type": "number",
+                    "description": "Port that backend will respond on\n"
+                },
+                "serverId": {
+                    "type": "number",
+                    "description": "Id of your server.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The internal name of your IP load balancing\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "backend status - `active` or `inactive`\n"
+                }
+            },
+            "required": [
+                "address",
+                "backendId",
+                "displayName",
+                "farmId",
+                "port",
+                "serverId",
+                "serviceName",
+                "status"
+            ],
+            "inputProperties": {
+                "address": {
+                    "type": "string",
+                    "description": "Address of the backend server (IP from either internal or OVHcloud network)\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Label for the server\n"
+                },
+                "farmId": {
+                    "type": "number",
+                    "description": "ID of the farm this server is attached to\n"
+                },
+                "port": {
+                    "type": "number",
+                    "description": "Port that backend will respond on\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The internal name of your IP load balancing\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "backend status - `active` or `inactive`\n"
+                }
+            },
+            "requiredInputs": [
+                "address",
+                "farmId",
+                "serviceName",
+                "status"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UdpFarmServer resources.\n",
+                "properties": {
+                    "address": {
+                        "type": "string",
+                        "description": "Address of the backend server (IP from either internal or OVHcloud network)\n"
+                    },
+                    "backendId": {
+                        "type": "number",
+                        "description": "Synonym for `farm_id`.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Label for the server\n"
+                    },
+                    "farmId": {
+                        "type": "number",
+                        "description": "ID of the farm this server is attached to\n"
+                    },
+                    "port": {
+                        "type": "number",
+                        "description": "Port that backend will respond on\n"
+                    },
+                    "serverId": {
+                        "type": "number",
+                        "description": "Id of your server.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The internal name of your IP load balancing\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "backend status - `active` or `inactive`\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "ovh:IpLoadBalancing/udpFrontend:UdpFrontend": {
-            "description": "Creates a backend server group (frontend) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst lb = ovh.IpLoadBalancing.getIpLoadBalancing({\n    serviceName: \"ip-1.2.3.4\",\n    state: \"ok\",\n});\nconst testfrontend = new ovh.iploadbalancing.UdpFrontend(\"testfrontend\", {\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n    displayName: \"ingress-8080-gra\",\n    zone: \"all\",\n    port: \"10,11\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nlb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name=\"ip-1.2.3.4\",\n    state=\"ok\")\ntestfrontend = ovh.ip_load_balancing.UdpFrontend(\"testfrontend\",\n    service_name=lb.service_name,\n    display_name=\"ingress-8080-gra\",\n    zone=\"all\",\n    port=\"10,11\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()\n    {\n        ServiceName = \"ip-1.2.3.4\",\n        State = \"ok\",\n    });\n\n    var testfrontend = new Ovh.IpLoadBalancing.UdpFrontend(\"testfrontend\", new()\n    {\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n        DisplayName = \"ingress-8080-gra\",\n        Zone = \"all\",\n        Port = \"10,11\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tlb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, \u0026iploadbalancing.GetIpLoadBalancingArgs{\n\t\t\tServiceName: pulumi.StringRef(\"ip-1.2.3.4\"),\n\t\t\tState:       pulumi.StringRef(\"ok\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = IpLoadBalancing.NewUdpFrontend(ctx, \"testfrontend\", \u0026IpLoadBalancing.UdpFrontendArgs{\n\t\t\tServiceName: pulumi.String(lb.ServiceName),\n\t\t\tDisplayName: pulumi.String(\"ingress-8080-gra\"),\n\t\t\tZone:        pulumi.String(\"all\"),\n\t\t\tPort:        pulumi.String(\"10,11\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;\nimport com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;\nimport com.pulumi.ovh.IpLoadBalancing.UdpFrontend;\nimport com.pulumi.ovh.IpLoadBalancing.UdpFrontendArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()\n            .serviceName(\"ip-1.2.3.4\")\n            .state(\"ok\")\n            .build());\n\n        var testfrontend = new UdpFrontend(\"testfrontend\", UdpFrontendArgs.builder()\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .displayName(\"ingress-8080-gra\")\n            .zone(\"all\")\n            .port(\"10,11\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testfrontend:\n    type: ovh:IpLoadBalancing:UdpFrontend\n    properties:\n      serviceName: ${lb.serviceName}\n      displayName: ingress-8080-gra\n      zone: all\n      port: 10,11\nvariables:\n  lb:\n    fn::invoke:\n      Function: ovh:IpLoadBalancing:getIpLoadBalancing\n      Arguments:\n        serviceName: ip-1.2.3.4\n        state: ok\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Creates a backend server group (frontend) to be used by loadbalancing frontend(s)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst lb = ovh.IpLoadBalancing.getIpLoadBalancing({\n    serviceName: \"ip-1.2.3.4\",\n    state: \"ok\",\n});\nconst testfrontend = new ovh.iploadbalancing.UdpFrontend(\"testfrontend\", {\n    serviceName: lb.then(lb =\u003e lb.serviceName),\n    displayName: \"ingress-8080-gra\",\n    zone: \"all\",\n    port: \"10,11\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nlb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name=\"ip-1.2.3.4\",\n    state=\"ok\")\ntestfrontend = ovh.ip_load_balancing.UdpFrontend(\"testfrontend\",\n    service_name=lb.service_name,\n    display_name=\"ingress-8080-gra\",\n    zone=\"all\",\n    port=\"10,11\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()\n    {\n        ServiceName = \"ip-1.2.3.4\",\n        State = \"ok\",\n    });\n\n    var testfrontend = new Ovh.IpLoadBalancing.UdpFrontend(\"testfrontend\", new()\n    {\n        ServiceName = lb.Apply(getIpLoadBalancingResult =\u003e getIpLoadBalancingResult.ServiceName),\n        DisplayName = \"ingress-8080-gra\",\n        Zone = \"all\",\n        Port = \"10,11\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tlb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, \u0026iploadbalancing.GetIpLoadBalancingArgs{\n\t\t\tServiceName: pulumi.StringRef(\"ip-1.2.3.4\"),\n\t\t\tState:       pulumi.StringRef(\"ok\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = IpLoadBalancing.NewUdpFrontend(ctx, \"testfrontend\", \u0026IpLoadBalancing.UdpFrontendArgs{\n\t\t\tServiceName: pulumi.String(lb.ServiceName),\n\t\t\tDisplayName: pulumi.String(\"ingress-8080-gra\"),\n\t\t\tZone:        pulumi.String(\"all\"),\n\t\t\tPort:        pulumi.String(\"10,11\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;\nimport com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;\nimport com.pulumi.ovh.IpLoadBalancing.UdpFrontend;\nimport com.pulumi.ovh.IpLoadBalancing.UdpFrontendArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()\n            .serviceName(\"ip-1.2.3.4\")\n            .state(\"ok\")\n            .build());\n\n        var testfrontend = new UdpFrontend(\"testfrontend\", UdpFrontendArgs.builder()\n            .serviceName(lb.applyValue(getIpLoadBalancingResult -\u003e getIpLoadBalancingResult.serviceName()))\n            .displayName(\"ingress-8080-gra\")\n            .zone(\"all\")\n            .port(\"10,11\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testfrontend:\n    type: ovh:IpLoadBalancing:UdpFrontend\n    properties:\n      serviceName: ${lb.serviceName}\n      displayName: ingress-8080-gra\n      zone: all\n      port: 10,11\nvariables:\n  lb:\n    fn::invoke:\n      Function: ovh:IpLoadBalancing:getIpLoadBalancing\n      Arguments:\n        serviceName: ip-1.2.3.4\n        state: ok\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUDP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by \"/\" e.g.\n\nbash\n\n```sh\n$ pulumi import ovh:IpLoadBalancing/udpFrontend:UdpFrontend testfrontend service_name/frontend_id\n```\n\n",
             "properties": {
                 "dedicatedIpfos": {
                     "type": "array",
@@ -18628,6 +19297,418 @@
                     "volumeName": {
                         "type": "string",
                         "description": "The volume name needed for proxmox distribution\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:Okms/credential:Credential": {
+            "description": "Creates a credential for an OVHcloud KMS.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fs from \"fs\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst myaccount = ovh.Me.getMe({});\nconst credNoCsr = new ovh.okms.Credential(\"credNoCsr\", {\n    okmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    identityUrns: [`urn:v1:eu:identity:account:${data.ovh_me.current_account.nichandle}`],\n    description: \"Credential without CSR\",\n});\nconst credFromCsr = new ovh.okms.Credential(\"credFromCsr\", {\n    okmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    identityUrns: [`urn:v1:eu:identity:account:${data.ovh_me.current_account.nichandle}`],\n    csr: fs.readFileSync(\"cred.csr\", \"utf8\"),\n    description: \"Credential from CSR\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmyaccount = ovh.Me.get_me()\ncred_no_csr = ovh.okms.Credential(\"credNoCsr\",\n    okms_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    identity_urns=[f\"urn:v1:eu:identity:account:{data['ovh_me']['current_account']['nichandle']}\"],\n    description=\"Credential without CSR\")\ncred_from_csr = ovh.okms.Credential(\"credFromCsr\",\n    okms_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    identity_urns=[f\"urn:v1:eu:identity:account:{data['ovh_me']['current_account']['nichandle']}\"],\n    csr=(lambda path: open(path).read())(\"cred.csr\"),\n    description=\"Credential from CSR\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.IO;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myaccount = Ovh.Me.GetMe.Invoke();\n\n    var credNoCsr = new Ovh.Okms.Credential(\"credNoCsr\", new()\n    {\n        OkmsId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        IdentityUrns = new[]\n        {\n            $\"urn:v1:eu:identity:account:{data.Ovh_me.Current_account.Nichandle}\",\n        },\n        Description = \"Credential without CSR\",\n    });\n\n    var credFromCsr = new Ovh.Okms.Credential(\"credFromCsr\", new()\n    {\n        OkmsId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        IdentityUrns = new[]\n        {\n            $\"urn:v1:eu:identity:account:{data.Ovh_me.Current_account.Nichandle}\",\n        },\n        Csr = File.ReadAllText(\"cred.csr\"),\n        Description = \"Credential from CSR\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\t\"os\"\n\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me\"\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Okms\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc readFileOrPanic(path string) pulumi.StringPtrInput {\n\tdata, err := os.ReadFile(path)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\treturn pulumi.String(string(data))\n}\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Me.GetMe(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Okms.NewCredential(ctx, \"credNoCsr\", \u0026Okms.CredentialArgs{\n\t\t\tOkmsId: pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tIdentityUrns: pulumi.StringArray{\n\t\t\t\tpulumi.Sprintf(\"urn:v1:eu:identity:account:%v\", data.Ovh_me.Current_account.Nichandle),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Credential without CSR\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = Okms.NewCredential(ctx, \"credFromCsr\", \u0026Okms.CredentialArgs{\n\t\t\tOkmsId: pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tIdentityUrns: pulumi.StringArray{\n\t\t\t\tpulumi.Sprintf(\"urn:v1:eu:identity:account:%v\", data.Ovh_me.Current_account.Nichandle),\n\t\t\t},\n\t\t\tCsr:         pulumi.String(readFileOrPanic(\"cred.csr\")),\n\t\t\tDescription: pulumi.String(\"Credential from CSR\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.MeFunctions;\nimport com.pulumi.ovh.Okms.Credential;\nimport com.pulumi.ovh.Okms.CredentialArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myaccount = MeFunctions.getMe();\n\n        var credNoCsr = new Credential(\"credNoCsr\", CredentialArgs.builder()\n            .okmsId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .identityUrns(String.format(\"urn:v1:eu:identity:account:%s\", data.ovh_me().current_account().nichandle()))\n            .description(\"Credential without CSR\")\n            .build());\n\n        var credFromCsr = new Credential(\"credFromCsr\", CredentialArgs.builder()\n            .okmsId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .identityUrns(String.format(\"urn:v1:eu:identity:account:%s\", data.ovh_me().current_account().nichandle()))\n            .csr(Files.readString(Paths.get(\"cred.csr\")))\n            .description(\"Credential from CSR\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  credNoCsr:\n    type: ovh:Okms:Credential\n    properties:\n      okmsId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      identityUrns:\n        - urn:v1:eu:identity:account:${data.ovh_me.current_account.nichandle}\n      description: Credential without CSR\n  credFromCsr:\n    type: ovh:Okms:Credential\n    properties:\n      okmsId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      identityUrns:\n        - urn:v1:eu:identity:account:${data.ovh_me.current_account.nichandle}\n      csr:\n        fn::readFile: cred.csr\n      description: Credential from CSR\nvariables:\n  myaccount:\n    fn::invoke:\n      Function: ovh:Me:getMe\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "certificatePem": {
+                    "type": "string",
+                    "description": "(String) Certificate PEM of the credential.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "(String) Creation time of the credential\n"
+                },
+                "csr": {
+                    "type": "string",
+                    "description": "Valid Certificate Signing Request\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the credential (max 200)\n"
+                },
+                "expiredAt": {
+                    "type": "string",
+                    "description": "(String) Expiration time of the credential\n"
+                },
+                "fromCsr": {
+                    "type": "boolean",
+                    "description": "(Boolean) Whether the credential was generated from a CSR\n"
+                },
+                "identityUrns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of identity URNs associated with the credential (max 25)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the credential (max 50)\n"
+                },
+                "okmsId": {
+                    "type": "string",
+                    "description": "Okms ID\n"
+                },
+                "privateKeyPem": {
+                    "type": "string",
+                    "description": "(String, Sensitive) Private Key PEM of the credential if no CSR is provided\n",
+                    "secret": true
+                },
+                "status": {
+                    "type": "string",
+                    "description": "(String) Status of the credential\n"
+                },
+                "validity": {
+                    "type": "number",
+                    "description": "Validity in days (default 365, max 365)\n"
+                }
+            },
+            "required": [
+                "certificatePem",
+                "createdAt",
+                "csr",
+                "description",
+                "expiredAt",
+                "fromCsr",
+                "identityUrns",
+                "name",
+                "okmsId",
+                "privateKeyPem",
+                "status",
+                "validity"
+            ],
+            "inputProperties": {
+                "csr": {
+                    "type": "string",
+                    "description": "Valid Certificate Signing Request\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the credential (max 200)\n"
+                },
+                "identityUrns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of identity URNs associated with the credential (max 25)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the credential (max 50)\n"
+                },
+                "okmsId": {
+                    "type": "string",
+                    "description": "Okms ID\n"
+                },
+                "validity": {
+                    "type": "number",
+                    "description": "Validity in days (default 365, max 365)\n"
+                }
+            },
+            "requiredInputs": [
+                "identityUrns",
+                "okmsId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Credential resources.\n",
+                "properties": {
+                    "certificatePem": {
+                        "type": "string",
+                        "description": "(String) Certificate PEM of the credential.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "(String) Creation time of the credential\n"
+                    },
+                    "csr": {
+                        "type": "string",
+                        "description": "Valid Certificate Signing Request\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the credential (max 200)\n"
+                    },
+                    "expiredAt": {
+                        "type": "string",
+                        "description": "(String) Expiration time of the credential\n"
+                    },
+                    "fromCsr": {
+                        "type": "boolean",
+                        "description": "(Boolean) Whether the credential was generated from a CSR\n"
+                    },
+                    "identityUrns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of identity URNs associated with the credential (max 25)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the credential (max 50)\n"
+                    },
+                    "okmsId": {
+                        "type": "string",
+                        "description": "Okms ID\n"
+                    },
+                    "privateKeyPem": {
+                        "type": "string",
+                        "description": "(String, Sensitive) Private Key PEM of the credential if no CSR is provided\n",
+                        "secret": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "(String) Status of the credential\n"
+                    },
+                    "validity": {
+                        "type": "number",
+                        "description": "Validity in days (default 365, max 365)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:Okms/okms:Okms": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst newkms = new ovh.okms.Okms(\"newkms\", {\n    displayName: \"terraformed KMS\",\n    ovhSubsidiary: \"FR\",\n    region: \"EU_WEST_RBX\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnewkms = ovh.okms.Okms(\"newkms\",\n    display_name=\"terraformed KMS\",\n    ovh_subsidiary=\"FR\",\n    region=\"EU_WEST_RBX\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var newkms = new Ovh.Okms.Okms(\"newkms\", new()\n    {\n        DisplayName = \"terraformed KMS\",\n        OvhSubsidiary = \"FR\",\n        Region = \"EU_WEST_RBX\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Okms\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Okms.NewOkms(ctx, \"newkms\", \u0026Okms.OkmsArgs{\n\t\t\tDisplayName:   pulumi.String(\"terraformed KMS\"),\n\t\t\tOvhSubsidiary: pulumi.String(\"FR\"),\n\t\t\tRegion:        pulumi.String(\"EU_WEST_RBX\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Okms.Okms;\nimport com.pulumi.ovh.Okms.OkmsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var newkms = new Okms(\"newkms\", OkmsArgs.builder()\n            .displayName(\"terraformed KMS\")\n            .ovhSubsidiary(\"FR\")\n            .region(\"EU_WEST_RBX\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  newkms:\n    type: ovh:Okms:Okms\n    properties:\n      displayName: terraformed KMS\n      ovhSubsidiary: FR\n      region: EU_WEST_RBX\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "(String) Resource display name\n"
+                },
+                "iam": {
+                    "$ref": "#/types/ovh:Okms/OkmsIam:OkmsIam",
+                    "description": "(Attributes) IAM resource metadata (see below for nested schema)\n"
+                },
+                "kmipEndpoint": {
+                    "type": "string",
+                    "description": "(String) KMS kmip API endpoint\n"
+                },
+                "ovhSubsidiary": {
+                    "type": "string",
+                    "description": "OVH subsidiaries\n"
+                },
+                "publicCa": {
+                    "type": "string",
+                    "description": "(String) KMS public CA (Certificate Authority)\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "KMS region\n"
+                },
+                "restEndpoint": {
+                    "type": "string",
+                    "description": "(String) KMS rest API endpoint\n"
+                },
+                "swaggerEndpoint": {
+                    "type": "string",
+                    "description": "(String) KMS rest API swagger UI\n"
+                }
+            },
+            "required": [
+                "displayName",
+                "iam",
+                "kmipEndpoint",
+                "ovhSubsidiary",
+                "publicCa",
+                "region",
+                "restEndpoint",
+                "swaggerEndpoint"
+            ],
+            "inputProperties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "(String) Resource display name\n"
+                },
+                "ovhSubsidiary": {
+                    "type": "string",
+                    "description": "OVH subsidiaries\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "KMS region\n"
+                }
+            },
+            "requiredInputs": [
+                "ovhSubsidiary",
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Okms resources.\n",
+                "properties": {
+                    "displayName": {
+                        "type": "string",
+                        "description": "(String) Resource display name\n"
+                    },
+                    "iam": {
+                        "$ref": "#/types/ovh:Okms/OkmsIam:OkmsIam",
+                        "description": "(Attributes) IAM resource metadata (see below for nested schema)\n"
+                    },
+                    "kmipEndpoint": {
+                        "type": "string",
+                        "description": "(String) KMS kmip API endpoint\n"
+                    },
+                    "ovhSubsidiary": {
+                        "type": "string",
+                        "description": "OVH subsidiaries\n"
+                    },
+                    "publicCa": {
+                        "type": "string",
+                        "description": "(String) KMS public CA (Certificate Authority)\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "KMS region\n"
+                    },
+                    "restEndpoint": {
+                        "type": "string",
+                        "description": "(String) KMS rest API endpoint\n"
+                    },
+                    "swaggerEndpoint": {
+                        "type": "string",
+                        "description": "(String) KMS rest API swagger UI\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:Okms/serviceKey:ServiceKey": {
+            "description": "Creates a Service Key in an OVHcloud KMS.\n\n",
+            "properties": {
+                "context": {
+                    "type": "string",
+                    "description": "Context of the key\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Creation time of the key\n"
+                },
+                "curve": {
+                    "type": "string",
+                    "description": "Curve type for Elliptic Curve (EC) keys\n"
+                },
+                "deactivationReason": {
+                    "type": "string",
+                    "description": "Key deactivation reason\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Key name\n"
+                },
+                "okmsId": {
+                    "type": "string",
+                    "description": "Okms ID\n"
+                },
+                "operations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The operations for which the key is intended to be used\n"
+                },
+                "size": {
+                    "type": "number",
+                    "description": "Size of the key to be created\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the key\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the key to be created\n"
+                }
+            },
+            "required": [
+                "context",
+                "createdAt",
+                "curve",
+                "deactivationReason",
+                "name",
+                "okmsId",
+                "operations",
+                "size",
+                "state",
+                "type"
+            ],
+            "inputProperties": {
+                "context": {
+                    "type": "string",
+                    "description": "Context of the key\n"
+                },
+                "curve": {
+                    "type": "string",
+                    "description": "Curve type for Elliptic Curve (EC) keys\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Key name\n"
+                },
+                "okmsId": {
+                    "type": "string",
+                    "description": "Okms ID\n"
+                },
+                "operations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The operations for which the key is intended to be used\n"
+                },
+                "size": {
+                    "type": "number",
+                    "description": "Size of the key to be created\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the key to be created\n"
+                }
+            },
+            "requiredInputs": [
+                "okmsId",
+                "operations",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServiceKey resources.\n",
+                "properties": {
+                    "context": {
+                        "type": "string",
+                        "description": "Context of the key\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Creation time of the key\n"
+                    },
+                    "curve": {
+                        "type": "string",
+                        "description": "Curve type for Elliptic Curve (EC) keys\n"
+                    },
+                    "deactivationReason": {
+                        "type": "string",
+                        "description": "Key deactivation reason\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Key name\n"
+                    },
+                    "okmsId": {
+                        "type": "string",
+                        "description": "Okms ID\n"
+                    },
+                    "operations": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The operations for which the key is intended to be used\n"
+                    },
+                    "size": {
+                        "type": "number",
+                        "description": "Size of the key to be created\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State of the key\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the key to be created\n"
                     }
                 },
                 "type": "object"
@@ -21219,6 +22300,172 @@
                     "roles",
                     "serviceName",
                     "status",
+                    "id"
+                ]
+            }
+        },
+        "ovh:CloudProject/getNetworkPrivate:getNetworkPrivate": {
+            "description": "Get the details of a public cloud project private network.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nexport = async () =\u003e {\n    const privateNetworkPrivate = await ovh.CloudProject.getNetworkPrivate({\n        serviceName: \"XXXXXX\",\n        networkId: \"XXX\",\n    });\n    return {\n        \"private\": privateNetworkPrivate,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nprivate_network_private = ovh.CloudProject.get_network_private(service_name=\"XXXXXX\",\n    network_id=\"XXX\")\npulumi.export(\"private\", private_network_private)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var privateNetworkPrivate = Ovh.CloudProject.GetNetworkPrivate.Invoke(new()\n    {\n        ServiceName = \"XXXXXX\",\n        NetworkId = \"XXX\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"private\"] = privateNetworkPrivate,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprivateNetworkPrivate, err := CloudProject.GetNetworkPrivate(ctx, \u0026cloudproject.GetNetworkPrivateArgs{\n\t\t\tServiceName: \"XXXXXX\",\n\t\t\tNetworkId:   \"XXX\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"private\", privateNetworkPrivate)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.CloudProjectFunctions;\nimport com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var privateNetworkPrivate = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()\n            .serviceName(\"XXXXXX\")\n            .networkId(\"XXX\")\n            .build());\n\n        ctx.export(\"private\", privateNetworkPrivate.applyValue(getNetworkPrivateResult -\u003e getNetworkPrivateResult));\n    }\n}\n```\n```yaml\nvariables:\n  privateNetworkPrivate:\n    fn::invoke:\n      Function: ovh:CloudProject:getNetworkPrivate\n      Arguments:\n        serviceName: XXXXXX\n        networkId: XXX\noutputs:\n  private: ${privateNetworkPrivate}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNetworkPrivate.\n",
+                "properties": {
+                    "networkId": {
+                        "type": "string",
+                        "description": "ID of the network\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The ID of the public cloud project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "networkId",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNetworkPrivate.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the network\n"
+                    },
+                    "networkId": {
+                        "type": "string",
+                        "description": "ID of the network\n"
+                    },
+                    "regions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:CloudProject/getNetworkPrivateRegion:getNetworkPrivateRegion"
+                        },
+                        "description": "Information about the private network in the openstack region\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "ID of the public cloud project\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the network\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the network\n"
+                    },
+                    "vlanId": {
+                        "type": "number",
+                        "description": "VLAN ID of the network\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "networkId",
+                    "regions",
+                    "serviceName",
+                    "status",
+                    "type",
+                    "vlanId",
+                    "id"
+                ]
+            }
+        },
+        "ovh:CloudProject/getNetworkPrivateSubnets:getNetworkPrivateSubnets": {
+            "description": "List public cloud project subnets of a private network.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nexport = async () =\u003e {\n    const privateNetworkPrivateSubnets = await ovh.CloudProject.getNetworkPrivateSubnets({\n        serviceName: \"XXXXXX\",\n        networkId: \"XXXXXX\",\n    });\n    return {\n        \"private\": privateNetworkPrivateSubnets,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nprivate_network_private_subnets = ovh.CloudProject.get_network_private_subnets(service_name=\"XXXXXX\",\n    network_id=\"XXXXXX\")\npulumi.export(\"private\", private_network_private_subnets)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var privateNetworkPrivateSubnets = Ovh.CloudProject.GetNetworkPrivateSubnets.Invoke(new()\n    {\n        ServiceName = \"XXXXXX\",\n        NetworkId = \"XXXXXX\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"private\"] = privateNetworkPrivateSubnets,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprivateNetworkPrivateSubnets, err := CloudProject.GetNetworkPrivateSubnets(ctx, \u0026cloudproject.GetNetworkPrivateSubnetsArgs{\n\t\t\tServiceName: \"XXXXXX\",\n\t\t\tNetworkId:   \"XXXXXX\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"private\", privateNetworkPrivateSubnets)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.CloudProjectFunctions;\nimport com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateSubnetsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var privateNetworkPrivateSubnets = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()\n            .serviceName(\"XXXXXX\")\n            .networkId(\"XXXXXX\")\n            .build());\n\n        ctx.export(\"private\", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -\u003e getNetworkPrivateSubnetsResult));\n    }\n}\n```\n```yaml\nvariables:\n  privateNetworkPrivateSubnets:\n    fn::invoke:\n      Function: ovh:CloudProject:getNetworkPrivateSubnets\n      Arguments:\n        serviceName: XXXXXX\n        networkId: XXXXXX\noutputs:\n  private: ${privateNetworkPrivateSubnets}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNetworkPrivateSubnets.\n",
+                "properties": {
+                    "networkId": {
+                        "type": "string",
+                        "description": "ID of the network\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The ID of the public cloud project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "networkId",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNetworkPrivateSubnets.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "networkId": {
+                        "type": "string",
+                        "description": "ID of the network\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "ID of the public cloud project\n"
+                    },
+                    "subnets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:CloudProject/getNetworkPrivateSubnetsSubnet:getNetworkPrivateSubnetsSubnet"
+                        },
+                        "description": "List of subnets\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "networkId",
+                    "serviceName",
+                    "subnets",
+                    "id"
+                ]
+            }
+        },
+        "ovh:CloudProject/getNetworkPrivates:getNetworkPrivates": {
+            "description": "List public cloud project private networks.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nexport = async () =\u003e {\n    const privateNetworkPrivates = await ovh.CloudProject.getNetworkPrivates({\n        serviceName: \"XXXXXX\",\n    });\n    return {\n        \"private\": privateNetworkPrivates,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nprivate_network_privates = ovh.CloudProject.get_network_privates(service_name=\"XXXXXX\")\npulumi.export(\"private\", private_network_privates)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var privateNetworkPrivates = Ovh.CloudProject.GetNetworkPrivates.Invoke(new()\n    {\n        ServiceName = \"XXXXXX\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"private\"] = privateNetworkPrivates,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprivateNetworkPrivates, err := CloudProject.GetNetworkPrivates(ctx, \u0026cloudproject.GetNetworkPrivatesArgs{\n\t\t\tServiceName: \"XXXXXX\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"private\", privateNetworkPrivates)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.CloudProjectFunctions;\nimport com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivatesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var privateNetworkPrivates = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()\n            .serviceName(\"XXXXXX\")\n            .build());\n\n        ctx.export(\"private\", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -\u003e getNetworkPrivatesResult));\n    }\n}\n```\n```yaml\nvariables:\n  privateNetworkPrivates:\n    fn::invoke:\n      Function: ovh:CloudProject:getNetworkPrivates\n      Arguments:\n        serviceName: XXXXXX\noutputs:\n  private: ${privateNetworkPrivates}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNetworkPrivates.\n",
+                "properties": {
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The ID of the public cloud project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNetworkPrivates.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "networks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:CloudProject/getNetworkPrivatesNetwork:getNetworkPrivatesNetwork"
+                        },
+                        "description": "List of network\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "ID of the public cloud project\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "networks",
+                    "serviceName",
                     "id"
                 ]
             }
@@ -26675,6 +27922,277 @@
                     "description",
                     "state",
                     "id"
+                ]
+            }
+        },
+        "ovh:Okms/getOkmsCredential:getOkmsCredential": {
+            "description": "Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Okms.OkmsFunctions;\nimport com.pulumi.ovh.Okms.inputs.GetOkmsResourceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var kms = OkmsFunctions.getOkmsResource(GetOkmsResourceArgs.builder()\n            .id(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .okmsId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  kms:\n    fn::invoke:\n      Function: ovh:Okms:getOkmsResource\n      Arguments:\n        id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n        okmsId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOkmsCredential.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of the credential\n"
+                    },
+                    "okmsId": {
+                        "type": "string",
+                        "description": "ID of the KMS\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "okmsId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOkmsCredential.\n",
+                "properties": {
+                    "certificatePem": {
+                        "type": "string",
+                        "description": "(String) PEM encoded certificate of the credential\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "(String) Creation time of the credential\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "(String) Description of the credential\n"
+                    },
+                    "expiredAt": {
+                        "type": "string",
+                        "description": "(String) Expiration time of the credential\n"
+                    },
+                    "fromCsr": {
+                        "type": "boolean",
+                        "description": "(Boolean) Is the credential generated from CSR\n"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "identityUrns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "(List of String) List of identity URNs associated with the credential\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "(String) Name of the credential\n"
+                    },
+                    "okmsId": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "(String) Status of the credential\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "certificatePem",
+                    "createdAt",
+                    "description",
+                    "expiredAt",
+                    "fromCsr",
+                    "id",
+                    "identityUrns",
+                    "name",
+                    "okmsId",
+                    "status"
+                ]
+            }
+        },
+        "ovh:Okms/getOkmsResource:getOkmsResource": {
+            "description": "Use this data source to retrieve information about a KMS associated with this account\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst kms = ovh.Okms.getOkmsResource({\n    id: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nkms = ovh.Okms.get_okms_resource(id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var kms = Ovh.Okms.GetOkmsResource.Invoke(new()\n    {\n        Id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Okms\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Okms.GetOkmsResource(ctx, \u0026okms.GetOkmsResourceArgs{\n\t\t\tId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Okms.OkmsFunctions;\nimport com.pulumi.ovh.Okms.inputs.GetOkmsResourceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var kms = OkmsFunctions.getOkmsResource(GetOkmsResourceArgs.builder()\n            .id(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  kms:\n    fn::invoke:\n      Function: ovh:Okms:getOkmsResource\n      Arguments:\n        id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOkmsResource.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Should be set to the ID of your KMS\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOkmsResource.\n",
+                "properties": {
+                    "iam": {
+                        "$ref": "#/types/ovh:Okms/getOkmsResourceIam:getOkmsResourceIam",
+                        "description": "(Attributes) IAM resource metadata (see below for nested schema)\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "(String) Unique identifier of the resource\n"
+                    },
+                    "kmipEndpoint": {
+                        "type": "string",
+                        "description": "(String) KMS kmip API endpoint\n"
+                    },
+                    "publicCa": {
+                        "type": "string",
+                        "description": "(String) KMS public CA (Certificate Authority)\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "(String) Region\n"
+                    },
+                    "restEndpoint": {
+                        "type": "string",
+                        "description": "(String) KMS rest API endpoint\n"
+                    },
+                    "swaggerEndpoint": {
+                        "type": "string",
+                        "description": "(String) KMS rest API swagger UI\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "iam",
+                    "id",
+                    "kmipEndpoint",
+                    "publicCa",
+                    "region",
+                    "restEndpoint",
+                    "swaggerEndpoint"
+                ]
+            }
+        },
+        "ovh:Okms/getOkmsServiceKey:getOkmsServiceKey": {
+            "description": "Use this data source to retrieve information about a KMS service key.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst keyInfo = ovh.Okms.getOkmsServiceKey({\n    id: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    okmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nkey_info = ovh.Okms.get_okms_service_key(id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    okms_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var keyInfo = Ovh.Okms.GetOkmsServiceKey.Invoke(new()\n    {\n        Id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        OkmsId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Okms\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Okms.GetOkmsServiceKey(ctx, \u0026okms.GetOkmsServiceKeyArgs{\n\t\t\tId:     \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t\tOkmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Okms.OkmsFunctions;\nimport com.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var keyInfo = OkmsFunctions.getOkmsServiceKey(GetOkmsServiceKeyArgs.builder()\n            .id(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .okmsId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  keyInfo:\n    fn::invoke:\n      Function: ovh:Okms:getOkmsServiceKey\n      Arguments:\n        id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n        okmsId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOkmsServiceKey.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of the service key\n"
+                    },
+                    "okmsId": {
+                        "type": "string",
+                        "description": "ID of the KMS\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "okmsId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOkmsServiceKey.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "curve": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "okmsId": {
+                        "type": "string"
+                    },
+                    "operations": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "size": {
+                        "type": "number"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "createdAt",
+                    "curve",
+                    "id",
+                    "name",
+                    "okmsId",
+                    "operations",
+                    "size",
+                    "state",
+                    "type"
+                ]
+            }
+        },
+        "ovh:Okms/getOkmsServiceKeyJwk:getOkmsServiceKeyJwk": {
+            "description": "Use this data source to retrieve information about a KMS service key, in the JWK format.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst keyInfo = ovh.Okms.getOkmsServiceKey({\n    id: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    okmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nkey_info = ovh.Okms.get_okms_service_key(id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    okms_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var keyInfo = Ovh.Okms.GetOkmsServiceKey.Invoke(new()\n    {\n        Id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        OkmsId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/Okms\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := Okms.GetOkmsServiceKey(ctx, \u0026okms.GetOkmsServiceKeyArgs{\n\t\t\tId:     \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t\tOkmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Okms.OkmsFunctions;\nimport com.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var keyInfo = OkmsFunctions.getOkmsServiceKey(GetOkmsServiceKeyArgs.builder()\n            .id(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .okmsId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  keyInfo:\n    fn::invoke:\n      Function: ovh:Okms:getOkmsServiceKey\n      Arguments:\n        id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n        okmsId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOkmsServiceKeyJwk.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of the service key\n"
+                    },
+                    "okmsId": {
+                        "type": "string",
+                        "description": "ID of the KMS\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "okmsId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOkmsServiceKeyJwk.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "keys": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:Okms/getOkmsServiceKeyJwkKey:getOkmsServiceKeyJwkKey"
+                        }
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "okmsId": {
+                        "type": "string"
+                    },
+                    "size": {
+                        "type": "number"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "createdAt",
+                    "id",
+                    "keys",
+                    "name",
+                    "okmsId",
+                    "size",
+                    "state",
+                    "type"
                 ]
             }
         },

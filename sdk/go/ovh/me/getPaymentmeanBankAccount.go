@@ -81,14 +81,20 @@ type GetPaymentmeanBankAccountResult struct {
 
 func GetPaymentmeanBankAccountOutput(ctx *pulumi.Context, args GetPaymentmeanBankAccountOutputArgs, opts ...pulumi.InvokeOption) GetPaymentmeanBankAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPaymentmeanBankAccountResult, error) {
+		ApplyT(func(v interface{}) (GetPaymentmeanBankAccountResultOutput, error) {
 			args := v.(GetPaymentmeanBankAccountArgs)
-			r, err := GetPaymentmeanBankAccount(ctx, &args, opts...)
-			var s GetPaymentmeanBankAccountResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPaymentmeanBankAccountResult
+			secret, err := ctx.InvokePackageRaw("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", args, &rv, "", opts...)
+			if err != nil {
+				return GetPaymentmeanBankAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPaymentmeanBankAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPaymentmeanBankAccountResultOutput), nil
+			}
+			return output, nil
 		}).(GetPaymentmeanBankAccountResultOutput)
 }
 

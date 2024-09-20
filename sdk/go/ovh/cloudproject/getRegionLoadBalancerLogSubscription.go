@@ -93,14 +93,20 @@ type LookupRegionLoadBalancerLogSubscriptionResult struct {
 
 func LookupRegionLoadBalancerLogSubscriptionOutput(ctx *pulumi.Context, args LookupRegionLoadBalancerLogSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupRegionLoadBalancerLogSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRegionLoadBalancerLogSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (LookupRegionLoadBalancerLogSubscriptionResultOutput, error) {
 			args := v.(LookupRegionLoadBalancerLogSubscriptionArgs)
-			r, err := LookupRegionLoadBalancerLogSubscription(ctx, &args, opts...)
-			var s LookupRegionLoadBalancerLogSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRegionLoadBalancerLogSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getRegionLoadBalancerLogSubscription:getRegionLoadBalancerLogSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRegionLoadBalancerLogSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRegionLoadBalancerLogSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRegionLoadBalancerLogSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRegionLoadBalancerLogSubscriptionResultOutput)
 }
 

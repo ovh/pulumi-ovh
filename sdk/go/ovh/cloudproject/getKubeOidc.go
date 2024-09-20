@@ -107,14 +107,20 @@ type LookupKubeOidcResult struct {
 
 func LookupKubeOidcOutput(ctx *pulumi.Context, args LookupKubeOidcOutputArgs, opts ...pulumi.InvokeOption) LookupKubeOidcResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKubeOidcResult, error) {
+		ApplyT(func(v interface{}) (LookupKubeOidcResultOutput, error) {
 			args := v.(LookupKubeOidcArgs)
-			r, err := LookupKubeOidc(ctx, &args, opts...)
-			var s LookupKubeOidcResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupKubeOidcResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getKubeOidc:getKubeOidc", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKubeOidcResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKubeOidcResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKubeOidcResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKubeOidcResultOutput)
 }
 
