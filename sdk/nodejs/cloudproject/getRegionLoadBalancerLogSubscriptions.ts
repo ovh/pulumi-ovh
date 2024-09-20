@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRegionLoadBalancerLogSubscriptions(args: GetRegionLoadBalancerLogSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionLoadBalancerLogSubscriptionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions", {
         "kind": args.kind,
@@ -99,7 +98,13 @@ export interface GetRegionLoadBalancerLogSubscriptionsResult {
  * ```
  */
 export function getRegionLoadBalancerLogSubscriptionsOutput(args: GetRegionLoadBalancerLogSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionLoadBalancerLogSubscriptionsResult> {
-    return pulumi.output(args).apply((a: any) => getRegionLoadBalancerLogSubscriptions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions", {
+        "kind": args.kind,
+        "loadbalancerId": args.loadbalancerId,
+        "regionName": args.regionName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

@@ -112,14 +112,20 @@ type LookupLogsOutputGraylogStreamResult struct {
 
 func LookupLogsOutputGraylogStreamOutput(ctx *pulumi.Context, args LookupLogsOutputGraylogStreamOutputArgs, opts ...pulumi.InvokeOption) LookupLogsOutputGraylogStreamResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLogsOutputGraylogStreamResult, error) {
+		ApplyT(func(v interface{}) (LookupLogsOutputGraylogStreamResultOutput, error) {
 			args := v.(LookupLogsOutputGraylogStreamArgs)
-			r, err := LookupLogsOutputGraylogStream(ctx, &args, opts...)
-			var s LookupLogsOutputGraylogStreamResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupLogsOutputGraylogStreamResult
+			secret, err := ctx.InvokePackageRaw("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLogsOutputGraylogStreamResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLogsOutputGraylogStreamResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLogsOutputGraylogStreamResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLogsOutputGraylogStreamResultOutput)
 }
 

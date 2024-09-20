@@ -83,14 +83,20 @@ type LookupGatewayInterfaceResult struct {
 
 func LookupGatewayInterfaceOutput(ctx *pulumi.Context, args LookupGatewayInterfaceOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayInterfaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGatewayInterfaceResult, error) {
+		ApplyT(func(v interface{}) (LookupGatewayInterfaceResultOutput, error) {
 			args := v.(LookupGatewayInterfaceArgs)
-			r, err := LookupGatewayInterface(ctx, &args, opts...)
-			var s LookupGatewayInterfaceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupGatewayInterfaceResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getGatewayInterface:getGatewayInterface", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGatewayInterfaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGatewayInterfaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGatewayInterfaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGatewayInterfaceResultOutput)
 }
 

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPrivateDatabase(args: GetPrivateDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Hosting/getPrivateDatabase:getPrivateDatabase", {
         "serviceName": args.serviceName,
@@ -134,7 +133,10 @@ export interface GetPrivateDatabaseResult {
  * ```
  */
 export function getPrivateDatabaseOutput(args: GetPrivateDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateDatabase(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Hosting/getPrivateDatabase:getPrivateDatabase", {
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

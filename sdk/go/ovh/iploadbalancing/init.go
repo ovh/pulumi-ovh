@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LoadBalancer{}
 	case "ovh:IpLoadBalancing/refresh:Refresh":
 		r = &Refresh{}
+	case "ovh:IpLoadBalancing/ssl:Ssl":
+		r = &Ssl{}
 	case "ovh:IpLoadBalancing/tcpFarm:TcpFarm":
 		r = &TcpFarm{}
 	case "ovh:IpLoadBalancing/tcpFarmServer:TcpFarmServer":
@@ -45,6 +47,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TcpRoute{}
 	case "ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule":
 		r = &TcpRouteRule{}
+	case "ovh:IpLoadBalancing/udpFarm:UdpFarm":
+		r = &UdpFarm{}
+	case "ovh:IpLoadBalancing/udpFarmServer:UdpFarmServer":
+		r = &UdpFarmServer{}
 	case "ovh:IpLoadBalancing/udpFrontend:UdpFrontend":
 		r = &UdpFrontend{}
 	case "ovh:IpLoadBalancing/vrackNetwork:VrackNetwork":
@@ -99,6 +105,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"IpLoadBalancing/ssl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"IpLoadBalancing/tcpFarm",
 		&module{version},
 	)
@@ -120,6 +131,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"IpLoadBalancing/tcpRouteRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"IpLoadBalancing/udpFarm",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"IpLoadBalancing/udpFarmServer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

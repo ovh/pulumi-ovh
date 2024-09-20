@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getOpenSearchUser(args: GetOpenSearchUserArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", {
         "clusterId": args.clusterId,
@@ -103,7 +102,12 @@ export interface GetOpenSearchUserResult {
  * ```
  */
 export function getOpenSearchUserOutput(args: GetOpenSearchUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchUserResult> {
-    return pulumi.output(args).apply((a: any) => getOpenSearchUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

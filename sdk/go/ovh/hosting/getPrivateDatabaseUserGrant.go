@@ -75,14 +75,20 @@ type LookupPrivateDatabaseUserGrantResult struct {
 
 func LookupPrivateDatabaseUserGrantOutput(ctx *pulumi.Context, args LookupPrivateDatabaseUserGrantOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateDatabaseUserGrantResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateDatabaseUserGrantResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateDatabaseUserGrantResultOutput, error) {
 			args := v.(LookupPrivateDatabaseUserGrantArgs)
-			r, err := LookupPrivateDatabaseUserGrant(ctx, &args, opts...)
-			var s LookupPrivateDatabaseUserGrantResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateDatabaseUserGrantResult
+			secret, err := ctx.InvokePackageRaw("ovh:Hosting/getPrivateDatabaseUserGrant:getPrivateDatabaseUserGrant", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateDatabaseUserGrantResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateDatabaseUserGrantResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateDatabaseUserGrantResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateDatabaseUserGrantResultOutput)
 }
 

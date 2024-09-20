@@ -1593,6 +1593,27 @@ export namespace Me {
     }
 }
 
+export namespace Okms {
+    export interface OkmsIam {
+        /**
+         * (String) Resource display name
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * (String) Unique identifier of the resource
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * (String) Unique resource name used in policies
+         */
+        urn?: pulumi.Input<string>;
+    }
+}
+
 export namespace Order {
 }
 

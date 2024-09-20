@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCart(args: GetCartArgs, opts?: pulumi.InvokeOptions): Promise<GetCartResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Order/getCart:getCart", {
         "assign": args.assign,
@@ -93,7 +92,13 @@ export interface GetCartResult {
  * ```
  */
 export function getCartOutput(args: GetCartOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCartResult> {
-    return pulumi.output(args).apply((a: any) => getCart(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Order/getCart:getCart", {
+        "assign": args.assign,
+        "description": args.description,
+        "expire": args.expire,
+        "ovhSubsidiary": args.ovhSubsidiary,
+    }, opts);
 }
 
 /**

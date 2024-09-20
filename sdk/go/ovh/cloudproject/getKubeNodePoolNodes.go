@@ -78,14 +78,20 @@ type GetKubeNodePoolNodesResult struct {
 
 func GetKubeNodePoolNodesOutput(ctx *pulumi.Context, args GetKubeNodePoolNodesOutputArgs, opts ...pulumi.InvokeOption) GetKubeNodePoolNodesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetKubeNodePoolNodesResult, error) {
+		ApplyT(func(v interface{}) (GetKubeNodePoolNodesResultOutput, error) {
 			args := v.(GetKubeNodePoolNodesArgs)
-			r, err := GetKubeNodePoolNodes(ctx, &args, opts...)
-			var s GetKubeNodePoolNodesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetKubeNodePoolNodesResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getKubeNodePoolNodes:getKubeNodePoolNodes", args, &rv, "", opts...)
+			if err != nil {
+				return GetKubeNodePoolNodesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetKubeNodePoolNodesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetKubeNodePoolNodesResultOutput), nil
+			}
+			return output, nil
 		}).(GetKubeNodePoolNodesResultOutput)
 }
 

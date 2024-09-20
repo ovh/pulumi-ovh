@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPolicies(opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getPolicies:getPolicies", {
     }, opts);
@@ -49,5 +48,7 @@ export interface GetPoliciesResult {
  * ```
  */
 export function getPoliciesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
-    return pulumi.output(getPolicies(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Iam/getPolicies:getPolicies", {
+    }, opts);
 }

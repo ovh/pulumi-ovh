@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getLogsCluster(args: GetLogsClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dbaas/getLogsCluster:getLogsCluster", {
         "clusterId": args.clusterId,
@@ -113,7 +112,11 @@ export interface GetLogsClusterResult {
  * ```
  */
 export function getLogsClusterOutput(args: GetLogsClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsClusterResult> {
-    return pulumi.output(args).apply((a: any) => getLogsCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsCluster:getLogsCluster", {
+        "clusterId": args.clusterId,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

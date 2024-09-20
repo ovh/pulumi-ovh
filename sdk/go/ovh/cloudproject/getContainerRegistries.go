@@ -66,14 +66,20 @@ type LookupContainerRegistriesResult struct {
 
 func LookupContainerRegistriesOutput(ctx *pulumi.Context, args LookupContainerRegistriesOutputArgs, opts ...pulumi.InvokeOption) LookupContainerRegistriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupContainerRegistriesResult, error) {
+		ApplyT(func(v interface{}) (LookupContainerRegistriesResultOutput, error) {
 			args := v.(LookupContainerRegistriesArgs)
-			r, err := LookupContainerRegistries(ctx, &args, opts...)
-			var s LookupContainerRegistriesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupContainerRegistriesResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getContainerRegistries:getContainerRegistries", args, &rv, "", opts...)
+			if err != nil {
+				return LookupContainerRegistriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupContainerRegistriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupContainerRegistriesResultOutput), nil
+			}
+			return output, nil
 		}).(LookupContainerRegistriesResultOutput)
 }
 

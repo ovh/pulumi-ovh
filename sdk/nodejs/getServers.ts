@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getServers(opts?: pulumi.InvokeOptions): Promise<GetServersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:index/getServers:getServers", {
     }, opts);
@@ -49,5 +48,7 @@ export interface GetServersResult {
  * ```
  */
 export function getServersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetServersResult> {
-    return pulumi.output(getServers(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:index/getServers:getServers", {
+    }, opts);
 }

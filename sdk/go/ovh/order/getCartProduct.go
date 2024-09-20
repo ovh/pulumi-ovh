@@ -80,14 +80,20 @@ type LookupCartProductResult struct {
 
 func LookupCartProductOutput(ctx *pulumi.Context, args LookupCartProductOutputArgs, opts ...pulumi.InvokeOption) LookupCartProductResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCartProductResult, error) {
+		ApplyT(func(v interface{}) (LookupCartProductResultOutput, error) {
 			args := v.(LookupCartProductArgs)
-			r, err := LookupCartProduct(ctx, &args, opts...)
-			var s LookupCartProductResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupCartProductResult
+			secret, err := ctx.InvokePackageRaw("ovh:Order/getCartProduct:getCartProduct", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCartProductResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCartProductResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCartProductResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCartProductResultOutput)
 }
 

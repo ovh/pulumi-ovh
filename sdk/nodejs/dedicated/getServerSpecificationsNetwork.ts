@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getServerSpecificationsNetwork(args: GetServerSpecificationsNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetServerSpecificationsNetworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", {
         "serviceName": args.serviceName,
@@ -95,7 +94,10 @@ export interface GetServerSpecificationsNetworkResult {
  * ```
  */
 export function getServerSpecificationsNetworkOutput(args: GetServerSpecificationsNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerSpecificationsNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getServerSpecificationsNetwork(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", {
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

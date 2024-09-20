@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getDatabaseInstance:getDatabaseInstance", {
         "clusterId": args.clusterId,
@@ -106,7 +105,13 @@ export interface GetDatabaseInstanceResult {
  * ```
  */
 export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseInstance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabaseInstance:getDatabaseInstance", {
+        "clusterId": args.clusterId,
+        "engine": args.engine,
+        "name": args.name,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

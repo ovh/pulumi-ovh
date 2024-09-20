@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getLoadBalancers(args: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getLoadBalancers:getLoadBalancers", {
         "regionName": args.regionName,
@@ -84,7 +83,11 @@ export interface GetLoadBalancersResult {
  * ```
  */
 export function getLoadBalancersOutput(args: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
-    return pulumi.output(args).apply((a: any) => getLoadBalancers(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getLoadBalancers:getLoadBalancers", {
+        "regionName": args.regionName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

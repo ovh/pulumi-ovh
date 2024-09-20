@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getKafkaTopic:getKafkaTopic", {
         "clusterId": args.clusterId,
@@ -109,7 +108,12 @@ export interface GetKafkaTopicResult {
  * ```
  */
 export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaTopicResult> {
-    return pulumi.output(args).apply((a: any) => getKafkaTopic(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getKafkaTopic:getKafkaTopic", {
+        "clusterId": args.clusterId,
+        "id": args.id,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

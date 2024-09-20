@@ -82,14 +82,20 @@ type GetMongoDbUserResult struct {
 
 func GetMongoDbUserOutput(ctx *pulumi.Context, args GetMongoDbUserOutputArgs, opts ...pulumi.InvokeOption) GetMongoDbUserResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMongoDbUserResult, error) {
+		ApplyT(func(v interface{}) (GetMongoDbUserResultOutput, error) {
 			args := v.(GetMongoDbUserArgs)
-			r, err := GetMongoDbUser(ctx, &args, opts...)
-			var s GetMongoDbUserResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMongoDbUserResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getMongoDbUser:getMongoDbUser", args, &rv, "", opts...)
+			if err != nil {
+				return GetMongoDbUserResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMongoDbUserResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMongoDbUserResultOutput), nil
+			}
+			return output, nil
 		}).(GetMongoDbUserResultOutput)
 }
 

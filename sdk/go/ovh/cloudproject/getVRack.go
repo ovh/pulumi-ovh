@@ -69,14 +69,20 @@ type GetVRackResult struct {
 
 func GetVRackOutput(ctx *pulumi.Context, args GetVRackOutputArgs, opts ...pulumi.InvokeOption) GetVRackResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVRackResult, error) {
+		ApplyT(func(v interface{}) (GetVRackResultOutput, error) {
 			args := v.(GetVRackArgs)
-			r, err := GetVRack(ctx, &args, opts...)
-			var s GetVRackResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetVRackResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getVRack:getVRack", args, &rv, "", opts...)
+			if err != nil {
+				return GetVRackResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVRackResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVRackResultOutput), nil
+			}
+			return output, nil
 		}).(GetVRackResultOutput)
 }
 

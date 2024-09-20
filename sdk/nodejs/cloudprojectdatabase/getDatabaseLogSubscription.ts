@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDatabaseLogSubscription(args: GetDatabaseLogSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseLogSubscriptionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", {
         "clusterId": args.clusterId,
@@ -125,7 +124,13 @@ export interface GetDatabaseLogSubscriptionResult {
  * ```
  */
 export function getDatabaseLogSubscriptionOutput(args: GetDatabaseLogSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseLogSubscriptionResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseLogSubscription(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", {
+        "clusterId": args.clusterId,
+        "engine": args.engine,
+        "id": args.id,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

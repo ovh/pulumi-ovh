@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIdentityGroups(opts?: pulumi.InvokeOptions): Promise<GetIdentityGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Me/getIdentityGroups:getIdentityGroups", {
     }, opts);
@@ -49,5 +48,7 @@ export interface GetIdentityGroupsResult {
  * ```
  */
 export function getIdentityGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityGroupsResult> {
-    return pulumi.output(getIdentityGroups(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Me/getIdentityGroups:getIdentityGroups", {
+    }, opts);
 }

@@ -47,14 +47,20 @@ type GetCapabilitiesResult struct {
 
 func GetCapabilitiesOutput(ctx *pulumi.Context, args GetCapabilitiesOutputArgs, opts ...pulumi.InvokeOption) GetCapabilitiesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCapabilitiesResult, error) {
+		ApplyT(func(v interface{}) (GetCapabilitiesResultOutput, error) {
 			args := v.(GetCapabilitiesArgs)
-			r, err := GetCapabilities(ctx, &args, opts...)
-			var s GetCapabilitiesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCapabilitiesResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", args, &rv, "", opts...)
+			if err != nil {
+				return GetCapabilitiesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCapabilitiesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCapabilitiesResultOutput), nil
+			}
+			return output, nil
 		}).(GetCapabilitiesResultOutput)
 }
 

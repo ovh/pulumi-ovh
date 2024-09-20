@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getUserS3Policy(args: GetUserS3PolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetUserS3PolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getUserS3Policy:getUserS3Policy", {
         "serviceName": args.serviceName,
@@ -86,7 +85,11 @@ export interface GetUserS3PolicyResult {
  * ```
  */
 export function getUserS3PolicyOutput(args: GetUserS3PolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserS3PolicyResult> {
-    return pulumi.output(args).apply((a: any) => getUserS3Policy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getUserS3Policy:getUserS3Policy", {
+        "serviceName": args.serviceName,
+        "userId": args.userId,
+    }, opts);
 }
 
 /**

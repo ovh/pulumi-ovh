@@ -55,13 +55,19 @@ type GetIdentityGroupsResult struct {
 }
 
 func GetIdentityGroupsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetIdentityGroupsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetIdentityGroupsResult, error) {
-		r, err := GetIdentityGroups(ctx, opts...)
-		var s GetIdentityGroupsResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetIdentityGroupsResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetIdentityGroupsResult
+		secret, err := ctx.InvokePackageRaw("ovh:Me/getIdentityGroups:getIdentityGroups", nil, &rv, "", opts...)
+		if err != nil {
+			return GetIdentityGroupsResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetIdentityGroupsResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetIdentityGroupsResultOutput), nil
+		}
+		return output, nil
 	}).(GetIdentityGroupsResultOutput)
 }
 

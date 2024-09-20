@@ -102,14 +102,20 @@ type LookupPostgresSqlConnectionPoolResult struct {
 
 func LookupPostgresSqlConnectionPoolOutput(ctx *pulumi.Context, args LookupPostgresSqlConnectionPoolOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresSqlConnectionPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPostgresSqlConnectionPoolResult, error) {
+		ApplyT(func(v interface{}) (LookupPostgresSqlConnectionPoolResultOutput, error) {
 			args := v.(LookupPostgresSqlConnectionPoolArgs)
-			r, err := LookupPostgresSqlConnectionPool(ctx, &args, opts...)
-			var s LookupPostgresSqlConnectionPoolResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPostgresSqlConnectionPoolResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPostgresSqlConnectionPoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPostgresSqlConnectionPoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPostgresSqlConnectionPoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPostgresSqlConnectionPoolResultOutput)
 }
 

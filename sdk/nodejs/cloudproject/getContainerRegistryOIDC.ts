@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getContainerRegistryOIDC(args: GetContainerRegistryOIDCArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryOIDCResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", {
         "oidcAdminGroup": args.oidcAdminGroup,
@@ -166,7 +165,20 @@ export interface GetContainerRegistryOIDCResult {
  * ```
  */
 export function getContainerRegistryOIDCOutput(args: GetContainerRegistryOIDCOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryOIDCResult> {
-    return pulumi.output(args).apply((a: any) => getContainerRegistryOIDC(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", {
+        "oidcAdminGroup": args.oidcAdminGroup,
+        "oidcAutoOnboard": args.oidcAutoOnboard,
+        "oidcClientId": args.oidcClientId,
+        "oidcEndpoint": args.oidcEndpoint,
+        "oidcGroupsClaim": args.oidcGroupsClaim,
+        "oidcName": args.oidcName,
+        "oidcScope": args.oidcScope,
+        "oidcUserClaim": args.oidcUserClaim,
+        "oidcVerifyCert": args.oidcVerifyCert,
+        "registryId": args.registryId,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

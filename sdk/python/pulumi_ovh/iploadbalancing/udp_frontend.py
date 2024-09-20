@@ -303,6 +303,16 @@ class UdpFrontend(pulumi.CustomResource):
             port="10,11")
         ```
 
+        ## Import
+
+        UDP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/udpFrontend:UdpFrontend testfrontend service_name/frontend_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dedicated_ipfos: Only attach frontend on these ip. No restriction if null. List of Ip blocks.
@@ -337,6 +347,16 @@ class UdpFrontend(pulumi.CustomResource):
             display_name="ingress-8080-gra",
             zone="all",
             port="10,11")
+        ```
+
+        ## Import
+
+        UDP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/udpFrontend:UdpFrontend testfrontend service_name/frontend_id
         ```
 
         :param str resource_name: The name of the resource.

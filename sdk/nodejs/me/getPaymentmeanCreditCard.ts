@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  */
 export function getPaymentmeanCreditCard(args?: GetPaymentmeanCreditCardArgs, opts?: pulumi.InvokeOptions): Promise<GetPaymentmeanCreditCardResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", {
         "descriptionRegexp": args.descriptionRegexp,
@@ -98,7 +97,14 @@ export interface GetPaymentmeanCreditCardResult {
  * ```
  */
 export function getPaymentmeanCreditCardOutput(args?: GetPaymentmeanCreditCardOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPaymentmeanCreditCardResult> {
-    return pulumi.output(args).apply((a: any) => getPaymentmeanCreditCard(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", {
+        "descriptionRegexp": args.descriptionRegexp,
+        "states": args.states,
+        "useDefault": args.useDefault,
+        "useLastToExpire": args.useLastToExpire,
+    }, opts);
 }
 
 /**

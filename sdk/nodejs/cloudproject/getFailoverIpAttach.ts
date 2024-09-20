@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFailoverIpAttach(args: GetFailoverIpAttachArgs, opts?: pulumi.InvokeOptions): Promise<GetFailoverIpAttachResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach", {
         "block": args.block,
@@ -104,7 +103,15 @@ export interface GetFailoverIpAttachResult {
  * ```
  */
 export function getFailoverIpAttachOutput(args: GetFailoverIpAttachOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFailoverIpAttachResult> {
-    return pulumi.output(args).apply((a: any) => getFailoverIpAttach(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach", {
+        "block": args.block,
+        "continentCode": args.continentCode,
+        "geoLoc": args.geoLoc,
+        "ip": args.ip,
+        "routedTo": args.routedTo,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCartProductPlan(args: GetCartProductPlanArgs, opts?: pulumi.InvokeOptions): Promise<GetCartProductPlanResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Order/getCartProductPlan:getCartProductPlan", {
         "cartId": args.cartId,
@@ -120,7 +119,14 @@ export interface GetCartProductPlanResult {
  * ```
  */
 export function getCartProductPlanOutput(args: GetCartProductPlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCartProductPlanResult> {
-    return pulumi.output(args).apply((a: any) => getCartProductPlan(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Order/getCartProductPlan:getCartProductPlan", {
+        "cartId": args.cartId,
+        "catalogName": args.catalogName,
+        "planCode": args.planCode,
+        "priceCapacity": args.priceCapacity,
+        "product": args.product,
+    }, opts);
 }
 
 /**

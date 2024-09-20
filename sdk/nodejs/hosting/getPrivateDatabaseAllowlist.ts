@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPrivateDatabaseAllowlist(args: GetPrivateDatabaseAllowlistArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseAllowlistResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist", {
         "ip": args.ip,
@@ -93,7 +92,11 @@ export interface GetPrivateDatabaseAllowlistResult {
  * ```
  */
 export function getPrivateDatabaseAllowlistOutput(args: GetPrivateDatabaseAllowlistOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseAllowlistResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateDatabaseAllowlist(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist", {
+        "ip": args.ip,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

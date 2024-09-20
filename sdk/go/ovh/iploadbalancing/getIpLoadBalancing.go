@@ -107,14 +107,20 @@ type GetIpLoadBalancingResult struct {
 
 func GetIpLoadBalancingOutput(ctx *pulumi.Context, args GetIpLoadBalancingOutputArgs, opts ...pulumi.InvokeOption) GetIpLoadBalancingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpLoadBalancingResult, error) {
+		ApplyT(func(v interface{}) (GetIpLoadBalancingResultOutput, error) {
 			args := v.(GetIpLoadBalancingArgs)
-			r, err := GetIpLoadBalancing(ctx, &args, opts...)
-			var s GetIpLoadBalancingResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIpLoadBalancingResult
+			secret, err := ctx.InvokePackageRaw("ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpLoadBalancingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpLoadBalancingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpLoadBalancingResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpLoadBalancingResultOutput)
 }
 

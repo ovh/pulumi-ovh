@@ -82,14 +82,20 @@ type LookupPostgresSqlUserResult struct {
 
 func LookupPostgresSqlUserOutput(ctx *pulumi.Context, args LookupPostgresSqlUserOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresSqlUserResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPostgresSqlUserResult, error) {
+		ApplyT(func(v interface{}) (LookupPostgresSqlUserResultOutput, error) {
 			args := v.(LookupPostgresSqlUserArgs)
-			r, err := LookupPostgresSqlUser(ctx, &args, opts...)
-			var s LookupPostgresSqlUserResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPostgresSqlUserResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPostgresSqlUserResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPostgresSqlUserResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPostgresSqlUserResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPostgresSqlUserResultOutput)
 }
 

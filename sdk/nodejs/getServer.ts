@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getServer(args: GetServerArgs, opts?: pulumi.InvokeOptions): Promise<GetServerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:index/getServer:getServer", {
         "serviceName": args.serviceName,
@@ -159,7 +158,10 @@ export interface GetServerResult {
  * ```
  */
 export function getServerOutput(args: GetServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerResult> {
-    return pulumi.output(args).apply((a: any) => getServer(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:index/getServer:getServer", {
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRedisUser(args: GetRedisUserArgs, opts?: pulumi.InvokeOptions): Promise<GetRedisUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getRedisUser:getRedisUser", {
         "clusterId": args.clusterId,
@@ -113,7 +112,12 @@ export interface GetRedisUserResult {
  * ```
  */
 export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRedisUserResult> {
-    return pulumi.output(args).apply((a: any) => getRedisUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getRedisUser:getRedisUser", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

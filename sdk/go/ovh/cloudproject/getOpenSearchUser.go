@@ -82,14 +82,20 @@ type GetOpenSearchUserResult struct {
 
 func GetOpenSearchUserOutput(ctx *pulumi.Context, args GetOpenSearchUserOutputArgs, opts ...pulumi.InvokeOption) GetOpenSearchUserResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOpenSearchUserResult, error) {
+		ApplyT(func(v interface{}) (GetOpenSearchUserResultOutput, error) {
 			args := v.(GetOpenSearchUserArgs)
-			r, err := GetOpenSearchUser(ctx, &args, opts...)
-			var s GetOpenSearchUserResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetOpenSearchUserResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", args, &rv, "", opts...)
+			if err != nil {
+				return GetOpenSearchUserResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetOpenSearchUserResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetOpenSearchUserResultOutput), nil
+			}
+			return output, nil
 		}).(GetOpenSearchUserResultOutput)
 }
 

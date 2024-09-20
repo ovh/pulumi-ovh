@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRegions(args: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getRegions:getRegions", {
         "hasServicesUps": args.hasServicesUps,
@@ -76,7 +75,11 @@ export interface GetRegionsResult {
  * ```
  */
 export function getRegionsOutput(args: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
-    return pulumi.output(args).apply((a: any) => getRegions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getRegions:getRegions", {
+        "hasServicesUps": args.hasServicesUps,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

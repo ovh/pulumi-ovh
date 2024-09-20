@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPrivateDatabaseUserGrant(args: GetPrivateDatabaseUserGrantArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseUserGrantResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Hosting/getPrivateDatabaseUserGrant:getPrivateDatabaseUserGrant", {
         "databaseName": args.databaseName,
@@ -85,7 +84,12 @@ export interface GetPrivateDatabaseUserGrantResult {
  * ```
  */
 export function getPrivateDatabaseUserGrantOutput(args: GetPrivateDatabaseUserGrantOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseUserGrantResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateDatabaseUserGrant(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Hosting/getPrivateDatabaseUserGrant:getPrivateDatabaseUserGrant", {
+        "databaseName": args.databaseName,
+        "serviceName": args.serviceName,
+        "userName": args.userName,
+    }, opts);
 }
 
 /**

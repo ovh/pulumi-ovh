@@ -88,14 +88,20 @@ type GetRedisUserResult struct {
 
 func GetRedisUserOutput(ctx *pulumi.Context, args GetRedisUserOutputArgs, opts ...pulumi.InvokeOption) GetRedisUserResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRedisUserResult, error) {
+		ApplyT(func(v interface{}) (GetRedisUserResultOutput, error) {
 			args := v.(GetRedisUserArgs)
-			r, err := GetRedisUser(ctx, &args, opts...)
-			var s GetRedisUserResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRedisUserResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getRedisUser:getRedisUser", args, &rv, "", opts...)
+			if err != nil {
+				return GetRedisUserResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRedisUserResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRedisUserResultOutput), nil
+			}
+			return output, nil
 		}).(GetRedisUserResultOutput)
 }
 

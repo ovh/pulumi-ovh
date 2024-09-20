@@ -809,6 +809,109 @@ export namespace CloudProject {
         ip: string;
     }
 
+    export interface GetNetworkPrivateRegion {
+        /**
+         * Network ID on openstack region
+         */
+        openstackId: string;
+        /**
+         * Name of the region
+         */
+        region: string;
+        /**
+         * Status of the network
+         */
+        status: string;
+    }
+
+    export interface GetNetworkPrivateSubnetsSubnet {
+        /**
+         * CIDR of the subnet
+         */
+        cidr: string;
+        /**
+         * Whether or not if DHCP is enabled for the subnet
+         */
+        dhcpEnabled: boolean;
+        /**
+         * Gateway IP of the subnet
+         */
+        gatewayIp: string;
+        /**
+         * ID of the subnet
+         */
+        id: string;
+        /**
+         * List of ip pools allocated in the subnet
+         */
+        ipPools: outputs.CloudProject.GetNetworkPrivateSubnetsSubnetIpPool[];
+    }
+
+    export interface GetNetworkPrivateSubnetsSubnetIpPool {
+        /**
+         * Whether or not if DHCP is enabled
+         */
+        dhcp: boolean;
+        /**
+         * Last IP for this region (eg: 192.168.1.24)
+         */
+        end: string;
+        /**
+         * Global network with cidr (eg: 192.168.1.0/24)
+         */
+        network: string;
+        /**
+         * Region associated to the subnet
+         */
+        region: string;
+        /**
+         * First IP for this region (eg: 192.168.1.12)
+         */
+        start: string;
+    }
+
+    export interface GetNetworkPrivatesNetwork {
+        /**
+         * ID of the network
+         */
+        id: string;
+        /**
+         * Name of the network
+         */
+        name: string;
+        /**
+         * Information about the private network in the openstack region
+         */
+        regions: outputs.CloudProject.GetNetworkPrivatesNetworkRegion[];
+        /**
+         * Status of the network
+         */
+        status: string;
+        /**
+         * Type of the network
+         */
+        type: string;
+        /**
+         * VLAN ID of the network
+         */
+        vlanId: number;
+    }
+
+    export interface GetNetworkPrivatesNetworkRegion {
+        /**
+         * Network ID on openstack region
+         */
+        openstackId: string;
+        /**
+         * Name of the region
+         */
+        region: string;
+        /**
+         * Status of the network
+         */
+        status: string;
+    }
+
     export interface GetOpenSearchUserAcl {
         /**
          * Pattern of the ACL.
@@ -2654,6 +2757,90 @@ export namespace Me {
         mandatory: boolean;
         name: string;
         type: string;
+    }
+
+}
+
+export namespace Okms {
+    export interface GetOkmsResourceIam {
+        /**
+         * (String) Resource display name
+         */
+        displayName: string;
+        /**
+         * Should be set to the ID of your KMS
+         */
+        id: string;
+        /**
+         * (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags: {[key: string]: string};
+        /**
+         * (String) Unique resource name used in policies
+         */
+        urn: string;
+    }
+
+    export interface GetOkmsServiceKeyJwkKey {
+        /**
+         * The algorithm intended to be used with the key
+         */
+        alg: string;
+        /**
+         * The cryptographic curve used with the key
+         */
+        crv: string;
+        /**
+         * The exponent value for the RSA public key
+         */
+        e: string;
+        /**
+         * The operation for which the key is intended to be used
+         */
+        keyOps: string[];
+        /**
+         * key ID parameter used to match a specific key
+         */
+        kid: string;
+        /**
+         * Key type parameter identifies the cryptographic algorithm family used with the key, such as RSA or EC
+         */
+        kty: string;
+        /**
+         * The modulus value for the RSA public key
+         */
+        n: string;
+        /**
+         * The intended use of the public key
+         */
+        use: string;
+        /**
+         * The x coordinate for the Elliptic Curve point
+         */
+        x: string;
+        /**
+         * The y coordinate for the Elliptic Curve point
+         */
+        y: string;
+    }
+
+    export interface OkmsIam {
+        /**
+         * (String) Resource display name
+         */
+        displayName: string;
+        /**
+         * (String) Unique identifier of the resource
+         */
+        id: string;
+        /**
+         * (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags: {[key: string]: string};
+        /**
+         * (String) Unique resource name used in policies
+         */
+        urn: string;
     }
 
 }

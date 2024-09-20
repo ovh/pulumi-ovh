@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Use this data source to list the IAM action associated with a resource type.
  */
 export function getReferenceActions(args: GetReferenceActionsArgs, opts?: pulumi.InvokeOptions): Promise<GetReferenceActionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getReferenceActions:getReferenceActions", {
         "type": args.type,
@@ -45,7 +44,10 @@ export interface GetReferenceActionsResult {
  * Use this data source to list the IAM action associated with a resource type.
  */
 export function getReferenceActionsOutput(args: GetReferenceActionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceActionsResult> {
-    return pulumi.output(args).apply((a: any) => getReferenceActions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Iam/getReferenceActions:getReferenceActions", {
+        "type": args.type,
+    }, opts);
 }
 
 /**

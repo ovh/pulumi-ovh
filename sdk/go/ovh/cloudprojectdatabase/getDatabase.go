@@ -114,14 +114,20 @@ type GetDatabaseResult struct {
 
 func GetDatabaseOutput(ctx *pulumi.Context, args GetDatabaseOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDatabaseResult, error) {
+		ApplyT(func(v interface{}) (GetDatabaseResultOutput, error) {
 			args := v.(GetDatabaseArgs)
-			r, err := GetDatabase(ctx, &args, opts...)
-			var s GetDatabaseResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDatabaseResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getDatabase:getDatabase", args, &rv, "", opts...)
+			if err != nil {
+				return GetDatabaseResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDatabaseResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDatabaseResultOutput), nil
+			}
+			return output, nil
 		}).(GetDatabaseResultOutput)
 }
 

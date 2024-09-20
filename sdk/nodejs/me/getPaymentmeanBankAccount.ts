@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  */
 export function getPaymentmeanBankAccount(args?: GetPaymentmeanBankAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetPaymentmeanBankAccountResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", {
         "descriptionRegexp": args.descriptionRegexp,
@@ -94,7 +93,14 @@ export interface GetPaymentmeanBankAccountResult {
  * ```
  */
 export function getPaymentmeanBankAccountOutput(args?: GetPaymentmeanBankAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPaymentmeanBankAccountResult> {
-    return pulumi.output(args).apply((a: any) => getPaymentmeanBankAccount(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", {
+        "descriptionRegexp": args.descriptionRegexp,
+        "state": args.state,
+        "useDefault": args.useDefault,
+        "useOldest": args.useOldest,
+    }, opts);
 }
 
 /**

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getZoneDNSSec(args: GetZoneDNSSecArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDNSSecResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Domain/getZoneDNSSec:getZoneDNSSec", {
         "zoneName": args.zoneName,
@@ -65,7 +64,10 @@ export interface GetZoneDNSSecResult {
  * ```
  */
 export function getZoneDNSSecOutput(args: GetZoneDNSSecOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneDNSSecResult> {
-    return pulumi.output(args).apply((a: any) => getZoneDNSSec(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Domain/getZoneDNSSec:getZoneDNSSec", {
+        "zoneName": args.zoneName,
+    }, opts);
 }
 
 /**

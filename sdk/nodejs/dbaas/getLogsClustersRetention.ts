@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getLogsClustersRetention(args: GetLogsClustersRetentionArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsClustersRetentionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", {
         "clusterId": args.clusterId,
@@ -119,7 +118,13 @@ export interface GetLogsClustersRetentionResult {
  * ```
  */
 export function getLogsClustersRetentionOutput(args: GetLogsClustersRetentionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsClustersRetentionResult> {
-    return pulumi.output(args).apply((a: any) => getLogsClustersRetention(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", {
+        "clusterId": args.clusterId,
+        "duration": args.duration,
+        "retentionId": args.retentionId,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

@@ -33,7 +33,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPostgresSqlConnectionPool(args: GetPostgresSqlConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresSqlConnectionPoolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", {
         "clusterId": args.clusterId,
@@ -140,7 +139,12 @@ export interface GetPostgresSqlConnectionPoolResult {
  * ```
  */
 export function getPostgresSqlConnectionPoolOutput(args: GetPostgresSqlConnectionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPostgresSqlConnectionPoolResult> {
-    return pulumi.output(args).apply((a: any) => getPostgresSqlConnectionPool(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

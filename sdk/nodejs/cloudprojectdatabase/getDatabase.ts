@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getDatabase:getDatabase", {
         "engine": args.engine,
@@ -165,7 +164,12 @@ export interface GetDatabaseResult {
  * ```
  */
 export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
-    return pulumi.output(args).apply((a: any) => getDatabase(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabase:getDatabase", {
+        "engine": args.engine,
+        "id": args.id,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

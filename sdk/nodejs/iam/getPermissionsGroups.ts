@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPermissionsGroups(opts?: pulumi.InvokeOptions): Promise<GetPermissionsGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getPermissionsGroups:getPermissionsGroups", {
     }, opts);
@@ -50,5 +49,7 @@ export interface GetPermissionsGroupsResult {
  * ```
  */
 export function getPermissionsGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionsGroupsResult> {
-    return pulumi.output(getPermissionsGroups(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Iam/getPermissionsGroups:getPermissionsGroups", {
+    }, opts);
 }

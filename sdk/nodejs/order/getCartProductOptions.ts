@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCartProductOptions(args: GetCartProductOptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetCartProductOptionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Order/getCartProductOptions:getCartProductOptions", {
         "cartId": args.cartId,
@@ -100,7 +99,13 @@ export interface GetCartProductOptionsResult {
  * ```
  */
 export function getCartProductOptionsOutput(args: GetCartProductOptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCartProductOptionsResult> {
-    return pulumi.output(args).apply((a: any) => getCartProductOptions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Order/getCartProductOptions:getCartProductOptions", {
+        "cartId": args.cartId,
+        "catalogName": args.catalogName,
+        "planCode": args.planCode,
+        "product": args.product,
+    }, opts);
 }
 
 /**

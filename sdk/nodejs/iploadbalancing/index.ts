@@ -50,6 +50,11 @@ export type Refresh = import("./refresh").Refresh;
 export const Refresh: typeof import("./refresh").Refresh = null as any;
 utilities.lazyLoad(exports, ["Refresh"], () => require("./refresh"));
 
+export { SslArgs, SslState } from "./ssl";
+export type Ssl = import("./ssl").Ssl;
+export const Ssl: typeof import("./ssl").Ssl = null as any;
+utilities.lazyLoad(exports, ["Ssl"], () => require("./ssl"));
+
 export { TcpFarmArgs, TcpFarmState } from "./tcpFarm";
 export type TcpFarm = import("./tcpFarm").TcpFarm;
 export const TcpFarm: typeof import("./tcpFarm").TcpFarm = null as any;
@@ -74,6 +79,16 @@ export { TcpRouteRuleArgs, TcpRouteRuleState } from "./tcpRouteRule";
 export type TcpRouteRule = import("./tcpRouteRule").TcpRouteRule;
 export const TcpRouteRule: typeof import("./tcpRouteRule").TcpRouteRule = null as any;
 utilities.lazyLoad(exports, ["TcpRouteRule"], () => require("./tcpRouteRule"));
+
+export { UdpFarmArgs, UdpFarmState } from "./udpFarm";
+export type UdpFarm = import("./udpFarm").UdpFarm;
+export const UdpFarm: typeof import("./udpFarm").UdpFarm = null as any;
+utilities.lazyLoad(exports, ["UdpFarm"], () => require("./udpFarm"));
+
+export { UdpFarmServerArgs, UdpFarmServerState } from "./udpFarmServer";
+export type UdpFarmServer = import("./udpFarmServer").UdpFarmServer;
+export const UdpFarmServer: typeof import("./udpFarmServer").UdpFarmServer = null as any;
+utilities.lazyLoad(exports, ["UdpFarmServer"], () => require("./udpFarmServer"));
 
 export { UdpFrontendArgs, UdpFrontendState } from "./udpFrontend";
 export type UdpFrontend = import("./udpFrontend").UdpFrontend;
@@ -104,6 +119,8 @@ const _module = {
                 return new LoadBalancer(name, <any>undefined, { urn })
             case "ovh:IpLoadBalancing/refresh:Refresh":
                 return new Refresh(name, <any>undefined, { urn })
+            case "ovh:IpLoadBalancing/ssl:Ssl":
+                return new Ssl(name, <any>undefined, { urn })
             case "ovh:IpLoadBalancing/tcpFarm:TcpFarm":
                 return new TcpFarm(name, <any>undefined, { urn })
             case "ovh:IpLoadBalancing/tcpFarmServer:TcpFarmServer":
@@ -114,6 +131,10 @@ const _module = {
                 return new TcpRoute(name, <any>undefined, { urn })
             case "ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule":
                 return new TcpRouteRule(name, <any>undefined, { urn })
+            case "ovh:IpLoadBalancing/udpFarm:UdpFarm":
+                return new UdpFarm(name, <any>undefined, { urn })
+            case "ovh:IpLoadBalancing/udpFarmServer:UdpFarmServer":
+                return new UdpFarmServer(name, <any>undefined, { urn })
             case "ovh:IpLoadBalancing/udpFrontend:UdpFrontend":
                 return new UdpFrontend(name, <any>undefined, { urn })
             case "ovh:IpLoadBalancing/vrackNetwork:VrackNetwork":
@@ -130,10 +151,13 @@ pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/httpRoute", _modul
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/httpRouteRule", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/refresh", _module)
+pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/ssl", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/tcpFarm", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/tcpFarmServer", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/tcpFrontend", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/tcpRoute", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/tcpRouteRule", _module)
+pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/udpFarm", _module)
+pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/udpFarmServer", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/udpFrontend", _module)
 pulumi.runtime.registerResourceModule("ovh", "IpLoadBalancing/vrackNetwork", _module)

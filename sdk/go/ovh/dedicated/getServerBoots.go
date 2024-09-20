@@ -72,14 +72,20 @@ type GetServerBootsResult struct {
 
 func GetServerBootsOutput(ctx *pulumi.Context, args GetServerBootsOutputArgs, opts ...pulumi.InvokeOption) GetServerBootsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServerBootsResult, error) {
+		ApplyT(func(v interface{}) (GetServerBootsResultOutput, error) {
 			args := v.(GetServerBootsArgs)
-			r, err := GetServerBoots(ctx, &args, opts...)
-			var s GetServerBootsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServerBootsResult
+			secret, err := ctx.InvokePackageRaw("ovh:Dedicated/getServerBoots:getServerBoots", args, &rv, "", opts...)
+			if err != nil {
+				return GetServerBootsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServerBootsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServerBootsResultOutput), nil
+			}
+			return output, nil
 		}).(GetServerBootsResultOutput)
 }
 

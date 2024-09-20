@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPostgresSqlUser(args: GetPostgresSqlUserArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresSqlUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", {
         "clusterId": args.clusterId,
@@ -101,7 +100,12 @@ export interface GetPostgresSqlUserResult {
  * ```
  */
 export function getPostgresSqlUserOutput(args: GetPostgresSqlUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPostgresSqlUserResult> {
-    return pulumi.output(args).apply((a: any) => getPostgresSqlUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

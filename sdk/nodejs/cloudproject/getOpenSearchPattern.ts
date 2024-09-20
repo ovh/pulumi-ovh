@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getOpenSearchPattern(args: GetOpenSearchPatternArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchPatternResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getOpenSearchPattern:getOpenSearchPattern", {
         "clusterId": args.clusterId,
@@ -93,7 +92,12 @@ export interface GetOpenSearchPatternResult {
  * ```
  */
 export function getOpenSearchPatternOutput(args: GetOpenSearchPatternOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchPatternResult> {
-    return pulumi.output(args).apply((a: any) => getOpenSearchPattern(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getOpenSearchPattern:getOpenSearchPattern", {
+        "clusterId": args.clusterId,
+        "id": args.id,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

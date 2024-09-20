@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCapabilitiesContainerFilter(args: GetCapabilitiesContainerFilterArgs, opts?: pulumi.InvokeOptions): Promise<GetCapabilitiesContainerFilterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter", {
         "planName": args.planName,
@@ -104,7 +103,12 @@ export interface GetCapabilitiesContainerFilterResult {
  * ```
  */
 export function getCapabilitiesContainerFilterOutput(args: GetCapabilitiesContainerFilterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapabilitiesContainerFilterResult> {
-    return pulumi.output(args).apply((a: any) => getCapabilitiesContainerFilter(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter", {
+        "planName": args.planName,
+        "region": args.region,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

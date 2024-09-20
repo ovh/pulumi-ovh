@@ -73,14 +73,20 @@ type LookupKubeIpRestrictionsResult struct {
 
 func LookupKubeIpRestrictionsOutput(ctx *pulumi.Context, args LookupKubeIpRestrictionsOutputArgs, opts ...pulumi.InvokeOption) LookupKubeIpRestrictionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKubeIpRestrictionsResult, error) {
+		ApplyT(func(v interface{}) (LookupKubeIpRestrictionsResultOutput, error) {
 			args := v.(LookupKubeIpRestrictionsArgs)
-			r, err := LookupKubeIpRestrictions(ctx, &args, opts...)
-			var s LookupKubeIpRestrictionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupKubeIpRestrictionsResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getKubeIpRestrictions:getKubeIpRestrictions", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKubeIpRestrictionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKubeIpRestrictionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKubeIpRestrictionsResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKubeIpRestrictionsResultOutput)
 }
 

@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getVrackNetworks(args: GetVrackNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetVrackNetworksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:index/getVrackNetworks:getVrackNetworks", {
         "serviceName": args.serviceName,
@@ -79,7 +78,12 @@ export interface GetVrackNetworksResult {
  * ```
  */
 export function getVrackNetworksOutput(args: GetVrackNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVrackNetworksResult> {
-    return pulumi.output(args).apply((a: any) => getVrackNetworks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:index/getVrackNetworks:getVrackNetworks", {
+        "serviceName": args.serviceName,
+        "subnet": args.subnet,
+        "vlanId": args.vlanId,
+    }, opts);
 }
 
 /**

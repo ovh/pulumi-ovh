@@ -55,13 +55,19 @@ type GetVpssResult struct {
 }
 
 func GetVpssOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVpssResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetVpssResult, error) {
-		r, err := GetVpss(ctx, opts...)
-		var s GetVpssResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetVpssResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetVpssResult
+		secret, err := ctx.InvokePackageRaw("ovh:Vps/getVpss:getVpss", nil, &rv, "", opts...)
+		if err != nil {
+			return GetVpssResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetVpssResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetVpssResultOutput), nil
+		}
+		return output, nil
 	}).(GetVpssResultOutput)
 }
 

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCeph(args: GetCephArgs, opts?: pulumi.InvokeOptions): Promise<GetCephResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dedicated/getCeph:getCeph", {
         "cephVersion": args.cephVersion,
@@ -115,7 +114,12 @@ export interface GetCephResult {
  * ```
  */
 export function getCephOutput(args: GetCephOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCephResult> {
-    return pulumi.output(args).apply((a: any) => getCeph(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Dedicated/getCeph:getCeph", {
+        "cephVersion": args.cephVersion,
+        "serviceName": args.serviceName,
+        "status": args.status,
+    }, opts);
 }
 
 /**

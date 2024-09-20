@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getContainerRegistries(args: GetContainerRegistriesArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getContainerRegistries:getContainerRegistries", {
         "serviceName": args.serviceName,
@@ -68,7 +67,10 @@ export interface GetContainerRegistriesResult {
  * ```
  */
 export function getContainerRegistriesOutput(args: GetContainerRegistriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistriesResult> {
-    return pulumi.output(args).apply((a: any) => getContainerRegistries(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getContainerRegistries:getContainerRegistries", {
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

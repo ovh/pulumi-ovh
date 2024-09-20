@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGatewayInterface(args: GetGatewayInterfaceArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayInterfaceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getGatewayInterface:getGatewayInterface", {
         "id": args.id,
@@ -105,7 +104,13 @@ export interface GetGatewayInterfaceResult {
  * ```
  */
 export function getGatewayInterfaceOutput(args: GetGatewayInterfaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayInterfaceResult> {
-    return pulumi.output(args).apply((a: any) => getGatewayInterface(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getGatewayInterface:getGatewayInterface", {
+        "id": args.id,
+        "interfaceId": args.interfaceId,
+        "region": args.region,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

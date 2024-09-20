@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getPolicy:getPolicy", {
         "allows": args.allows,
@@ -130,7 +129,15 @@ export interface GetPolicyResult {
  * ```
  */
 export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Iam/getPolicy:getPolicy", {
+        "allows": args.allows,
+        "denies": args.denies,
+        "description": args.description,
+        "excepts": args.excepts,
+        "id": args.id,
+        "permissionsGroups": args.permissionsGroups,
+    }, opts);
 }
 
 /**

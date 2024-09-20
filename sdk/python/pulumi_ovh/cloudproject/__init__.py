@@ -37,6 +37,9 @@ from .get_m3db_namespace import *
 from .get_m3db_namespaces import *
 from .get_m3db_user import *
 from .get_mongo_db_user import *
+from .get_network_private import *
+from .get_network_private_subnets import *
+from .get_network_privates import *
 from .get_open_search_pattern import *
 from .get_open_search_patterns import *
 from .get_open_search_user import *

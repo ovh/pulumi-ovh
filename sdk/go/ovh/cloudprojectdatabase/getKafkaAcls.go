@@ -73,14 +73,20 @@ type GetKafkaAclsResult struct {
 
 func GetKafkaAclsOutput(ctx *pulumi.Context, args GetKafkaAclsOutputArgs, opts ...pulumi.InvokeOption) GetKafkaAclsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetKafkaAclsResult, error) {
+		ApplyT(func(v interface{}) (GetKafkaAclsResultOutput, error) {
 			args := v.(GetKafkaAclsArgs)
-			r, err := GetKafkaAcls(ctx, &args, opts...)
-			var s GetKafkaAclsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetKafkaAclsResult
+			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getKafkaAcls:getKafkaAcls", args, &rv, "", opts...)
+			if err != nil {
+				return GetKafkaAclsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetKafkaAclsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetKafkaAclsResultOutput), nil
+			}
+			return output, nil
 		}).(GetKafkaAclsResultOutput)
 }
 

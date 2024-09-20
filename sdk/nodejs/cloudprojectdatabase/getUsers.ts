@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getUsers:getUsers", {
         "clusterId": args.clusterId,
@@ -94,7 +93,12 @@ export interface GetUsersResult {
  * ```
  */
 export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
-    return pulumi.output(args).apply((a: any) => getUsers(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getUsers:getUsers", {
+        "clusterId": args.clusterId,
+        "engine": args.engine,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

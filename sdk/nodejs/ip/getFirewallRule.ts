@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFirewallRule(args: GetFirewallRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Ip/getFirewallRule:getFirewallRule", {
         "ip": args.ip,
@@ -130,7 +129,12 @@ export interface GetFirewallRuleResult {
  * ```
  */
 export function getFirewallRuleOutput(args: GetFirewallRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallRuleResult> {
-    return pulumi.output(args).apply((a: any) => getFirewallRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Ip/getFirewallRule:getFirewallRule", {
+        "ip": args.ip,
+        "ipOnFirewall": args.ipOnFirewall,
+        "sequence": args.sequence,
+    }, opts);
 }
 
 /**

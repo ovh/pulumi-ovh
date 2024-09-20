@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKubeNodePool(args: GetKubeNodePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeNodePoolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getKubeNodePool:getKubeNodePool", {
         "kubeId": args.kubeId,
@@ -179,7 +178,13 @@ export interface GetKubeNodePoolResult {
  * ```
  */
 export function getKubeNodePoolOutput(args: GetKubeNodePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeNodePoolResult> {
-    return pulumi.output(args).apply((a: any) => getKubeNodePool(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeNodePool:getKubeNodePool", {
+        "kubeId": args.kubeId,
+        "name": args.name,
+        "serviceName": args.serviceName,
+        "template": args.template,
+    }, opts);
 }
 
 /**

@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getM3dbUser(args: GetM3dbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetM3dbUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getM3dbUser:getM3dbUser", {
         "clusterId": args.clusterId,
@@ -101,7 +100,12 @@ export interface GetM3dbUserResult {
  * ```
  */
 export function getM3dbUserOutput(args: GetM3dbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbUserResult> {
-    return pulumi.output(args).apply((a: any) => getM3dbUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:CloudProject/getM3dbUser:getM3dbUser", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

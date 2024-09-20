@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMitigation(args: GetMitigationArgs, opts?: pulumi.InvokeOptions): Promise<GetMitigationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Ip/getMitigation:getMitigation", {
         "ip": args.ip,
@@ -85,7 +84,11 @@ export interface GetMitigationResult {
  * ```
  */
 export function getMitigationOutput(args: GetMitigationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMitigationResult> {
-    return pulumi.output(args).apply((a: any) => getMitigation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Ip/getMitigation:getMitigation", {
+        "ip": args.ip,
+        "ipOnMitigation": args.ipOnMitigation,
+    }, opts);
 }
 
 /**

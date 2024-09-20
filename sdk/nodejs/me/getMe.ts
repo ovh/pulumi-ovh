@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMe(opts?: pulumi.InvokeOptions): Promise<GetMeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Me/getMe:getMe", {
     }, opts);
@@ -164,5 +163,7 @@ export interface GetMeResult {
  * ```
  */
 export function getMeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetMeResult> {
-    return pulumi.output(getMe(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("ovh:Me/getMe:getMe", {
+    }, opts);
 }
