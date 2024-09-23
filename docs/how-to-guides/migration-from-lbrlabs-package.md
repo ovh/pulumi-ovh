@@ -51,6 +51,13 @@ Some package has changed, and you'll have to update it as well, for example:
 + ovh.domain.ZoneRecord
 ```
 
+Or:
+
+```diff
+- ovh.CloudProjectUser
++ ovh.cloudproject.User
+```
+
 {{% /choosable %}}
 
 {{% choosable language go %}}
