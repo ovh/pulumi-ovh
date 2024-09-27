@@ -8,9 +8,9 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/ovh/terraform-provider-ovh v0.50.0
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.44.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.0
-	github.com/pulumi/pulumi/sdk/v3 v3.133.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.44.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.1
+	github.com/pulumi/pulumi/sdk/v3 v3.134.1
 )
 
 require (
@@ -85,7 +85,7 @@ require (
 	github.com/gofrs/uuid v4.2.0+incompatible // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
-	github.com/golang/glog v1.2.1 // indirect
+	github.com/golang/glog v1.2.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
@@ -231,7 +231,7 @@ require (
 	golang.org/x/net v0.27.0 // indirect
 	golang.org/x/oauth2 v0.21.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
-	golang.org/x/sys v0.23.0 // indirect
+	golang.org/x/sys v0.25.0 // indirect
 	golang.org/x/term v0.23.0 // indirect
 	golang.org/x/text v0.17.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
