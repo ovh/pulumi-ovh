@@ -4,19 +4,53 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ZoneOrderArgs',
+    'ZoneOrderArgsDict',
     'ZoneOrderDetailArgs',
+    'ZoneOrderDetailArgsDict',
     'ZonePlanArgs',
+    'ZonePlanArgsDict',
     'ZonePlanConfigurationArgs',
+    'ZonePlanConfigurationArgsDict',
     'ZonePlanOptionArgs',
+    'ZonePlanOptionArgsDict',
     'ZonePlanOptionConfigurationArgs',
+    'ZonePlanOptionConfigurationArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ZoneOrderArgsDict(TypedDict):
+        date: NotRequired[pulumi.Input[str]]
+        """
+        date
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZoneOrderDetailArgsDict']]]]
+        """
+        Information about a Bill entry
+        """
+        expiration_date: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_id: NotRequired[pulumi.Input[int]]
+        """
+        order id
+        """
+elif False:
+    ZoneOrderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZoneOrderArgs:
@@ -89,6 +123,27 @@ class ZoneOrderArgs:
         pulumi.set(self, "order_id", value)
 
 
+if not MYPY:
+    class ZoneOrderDetailArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        description
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_detail_id: NotRequired[pulumi.Input[int]]
+        """
+        order detail id
+        """
+        quantity: NotRequired[pulumi.Input[str]]
+        """
+        quantity
+        """
+elif False:
+    ZoneOrderDetailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZoneOrderDetailArgs:
     def __init__(__self__, *,
@@ -159,6 +214,31 @@ class ZoneOrderDetailArgs:
     def quantity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "quantity", value)
 
+
+if not MYPY:
+    class ZonePlanArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        duration
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
+        """
+elif False:
+    ZonePlanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZonePlanArgs:
@@ -244,6 +324,19 @@ class ZonePlanArgs:
         pulumi.set(self, "configurations", value)
 
 
+if not MYPY:
+    class ZonePlanConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource : `zone` or `template`
+        """
+        value: pulumi.Input[str]
+        """
+        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        """
+elif False:
+    ZonePlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZonePlanConfigurationArgs:
     def __init__(__self__, *,
@@ -280,6 +373,31 @@ class ZonePlanConfigurationArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ZonePlanOptionArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        duration
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product
+        """
+elif False:
+    ZonePlanOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZonePlanOptionArgs:
@@ -364,6 +482,19 @@ class ZonePlanOptionArgs:
     def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionConfigurationArgs']]]]):
         pulumi.set(self, "configurations", value)
 
+
+if not MYPY:
+    class ZonePlanOptionConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource
+        """
+        value: pulumi.Input[str]
+        """
+        Path to the resource in API.OVH.COM
+        """
+elif False:
+    ZonePlanOptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZonePlanOptionConfigurationArgs:

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -188,9 +193,6 @@ def get_failover_ip_attach(block: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         status=pulumi.get(__ret__, 'status'),
         sub_type=pulumi.get(__ret__, 'sub_type'))
-
-
-@_utilities.lift_output_func(get_failover_ip_attach)
 def get_failover_ip_attach_output(block: Optional[pulumi.Input[Optional[str]]] = None,
                                   continent_code: Optional[pulumi.Input[Optional[str]]] = None,
                                   geo_loc: Optional[pulumi.Input[Optional[str]]] = None,
@@ -218,4 +220,23 @@ def get_failover_ip_attach_output(block: Optional[pulumi.Input[Optional[str]]] =
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['block'] = block
+    __args__['continentCode'] = continent_code
+    __args__['geoLoc'] = geo_loc
+    __args__['ip'] = ip
+    __args__['routedTo'] = routed_to
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach', __args__, opts=opts, typ=GetFailoverIpAttachResult)
+    return __ret__.apply(lambda __response__: GetFailoverIpAttachResult(
+        block=pulumi.get(__response__, 'block'),
+        continent_code=pulumi.get(__response__, 'continent_code'),
+        geo_loc=pulumi.get(__response__, 'geo_loc'),
+        id=pulumi.get(__response__, 'id'),
+        ip=pulumi.get(__response__, 'ip'),
+        progress=pulumi.get(__response__, 'progress'),
+        routed_to=pulumi.get(__response__, 'routed_to'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        status=pulumi.get(__response__, 'status'),
+        sub_type=pulumi.get(__response__, 'sub_type')))

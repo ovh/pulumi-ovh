@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -76,9 +81,6 @@ def get_identity_users(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
     return AwaitableGetIdentityUsersResult(
         id=pulumi.get(__ret__, 'id'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_identity_users)
 def get_identity_users_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdentityUsersResult]:
     """
     Use this data source to retrieve list of user logins of the account's identity users.
@@ -92,4 +94,9 @@ def get_identity_users_output(opts: Optional[pulumi.InvokeOptions] = None) -> pu
     users = ovh.Me.get_identity_users()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Me/getIdentityUsers:getIdentityUsers', __args__, opts=opts, typ=GetIdentityUsersResult)
+    return __ret__.apply(lambda __response__: GetIdentityUsersResult(
+        id=pulumi.get(__response__, 'id'),
+        users=pulumi.get(__response__, 'users')))

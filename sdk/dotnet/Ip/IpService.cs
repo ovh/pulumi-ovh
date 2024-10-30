@@ -57,6 +57,30 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The resource can be imported using its `service_name`, E.g.,
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_ip_service.ipblock
+    /// 
+    ///   id = "ip-xx.xx.xx.xx"
+    /// 
+    /// }
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=ipblock.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:Ip/ipService:IpService")]
     public partial class IpService : global::Pulumi.CustomResource
@@ -147,7 +171,7 @@ namespace Pulumi.Ovh.Ip
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public IpService(string name, IpServiceArgs args, CustomResourceOptions? options = null)
+        public IpService(string name, IpServiceArgs? args = null, CustomResourceOptions? options = null)
             : base("ovh:Ip/ipService:IpService", name, args ?? new IpServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -207,8 +231,8 @@ namespace Pulumi.Ovh.Ip
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
-        [Input("ovhSubsidiary", required: true)]
-        public Input<string> OvhSubsidiary { get; set; } = null!;
+        [Input("ovhSubsidiary")]
+        public Input<string>? OvhSubsidiary { get; set; }
 
         /// <summary>
         /// Ovh payment mode
@@ -219,8 +243,8 @@ namespace Pulumi.Ovh.Ip
         /// <summary>
         /// Product Plan to order
         /// </summary>
-        [Input("plan", required: true)]
-        public Input<Inputs.IpServicePlanArgs> Plan { get; set; } = null!;
+        [Input("plan")]
+        public Input<Inputs.IpServicePlanArgs>? Plan { get; set; }
 
         [Input("planOptions")]
         private InputList<Inputs.IpServicePlanOptionArgs>? _planOptions;

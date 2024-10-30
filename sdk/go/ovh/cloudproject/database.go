@@ -54,7 +54,8 @@ import (
 //				ServiceName:         pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description:         pulumi.String("my-first-kafka"),
 //				Engine:              pulumi.String("kafka"),
-//				Version:             pulumi.String("3.4"),
+//				Version:             pulumi.String("3.8"),
+//				Flavor:              pulumi.String("db1-4"),
 //				Plan:                pulumi.String("business"),
 //				KafkaRestApi:        pulumi.Bool(true),
 //				KafkaSchemaRegistry: pulumi.Bool(true),
@@ -69,7 +70,6 @@ import (
 //						Region: pulumi.String("DE"),
 //					},
 //				},
-//				Flavor: pulumi.String("db1-4"),
 //			})
 //			if err != nil {
 //				return err
@@ -310,7 +310,7 @@ type Database struct {
 	AdvancedConfiguration pulumi.StringMapOutput `pulumi:"advancedConfiguration"`
 	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
 	BackupRegions pulumi.StringArrayOutput `pulumi:"backupRegions"`
-	// Time on which backups start every day.
+	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -411,7 +411,7 @@ type databaseState struct {
 	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
 	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
 	BackupRegions []string `pulumi:"backupRegions"`
-	// Time on which backups start every day.
+	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
 	BackupTime *string `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -465,7 +465,7 @@ type DatabaseState struct {
 	AdvancedConfiguration pulumi.StringMapInput
 	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
 	BackupRegions pulumi.StringArrayInput
-	// Time on which backups start every day.
+	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
 	BackupTime pulumi.StringPtrInput
 	// Date of the creation of the cluster.
 	CreatedAt pulumi.StringPtrInput
@@ -523,7 +523,7 @@ type databaseArgs struct {
 	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
 	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
 	BackupRegions []string `pulumi:"backupRegions"`
-	// Time on which backups start every day.
+	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
 	BackupTime *string `pulumi:"backupTime"`
 	// Small description of the database service.
 	Description *string `pulumi:"description"`
@@ -542,6 +542,8 @@ type databaseArgs struct {
 	KafkaRestApi *bool `pulumi:"kafkaRestApi"`
 	// Defines whether the schema registry is enabled on a Kafka cluster
 	KafkaSchemaRegistry *bool `pulumi:"kafkaSchemaRegistry"`
+	// Time on which maintenances can start every day.
+	MaintenanceTime *string `pulumi:"maintenanceTime"`
 	// List of nodes object.
 	// Multi region cluster are not yet available, all node should be identical.
 	Nodes []DatabaseNode `pulumi:"nodes"`
@@ -566,7 +568,7 @@ type DatabaseArgs struct {
 	AdvancedConfiguration pulumi.StringMapInput
 	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
 	BackupRegions pulumi.StringArrayInput
-	// Time on which backups start every day.
+	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
 	BackupTime pulumi.StringPtrInput
 	// Small description of the database service.
 	Description pulumi.StringPtrInput
@@ -585,6 +587,8 @@ type DatabaseArgs struct {
 	KafkaRestApi pulumi.BoolPtrInput
 	// Defines whether the schema registry is enabled on a Kafka cluster
 	KafkaSchemaRegistry pulumi.BoolPtrInput
+	// Time on which maintenances can start every day.
+	MaintenanceTime pulumi.StringPtrInput
 	// List of nodes object.
 	// Multi region cluster are not yet available, all node should be identical.
 	Nodes DatabaseNodeArrayInput
@@ -700,7 +704,7 @@ func (o DatabaseOutput) BackupRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringArrayOutput { return v.BackupRegions }).(pulumi.StringArrayOutput)
 }
 
-// Time on which backups start every day.
+// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
 func (o DatabaseOutput) BackupTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.BackupTime }).(pulumi.StringOutput)
 }

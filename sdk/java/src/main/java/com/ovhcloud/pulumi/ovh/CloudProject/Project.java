@@ -21,13 +21,31 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.
+ * Cloud project can be imported using the `project_id`.
+ * 
+ * Using the following configuration:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = ovh_cloud_project.my_cloud_project
+ * 
+ *   id = &#34;&lt;project ID&gt;&#34;
+ * 
+ * }
+ * 
+ * You can then run:
  * 
  * bash
  * 
- * ```sh
- * $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
- * ```
+ * $ pulumi preview -generate-config-out=cloudproject.tf
+ * 
+ * $ pulumi up
+ * 
+ * The file `cloudproject.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
+ * 
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:CloudProject/project:Project")
@@ -195,7 +213,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Project(java.lang.String name, ProjectArgs args) {
+    public Project(java.lang.String name, @Nullable ProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -204,7 +222,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Project(java.lang.String name, ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Project(java.lang.String name, @Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/project:Project", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -212,7 +230,7 @@ public class Project extends com.pulumi.resources.CustomResource {
         super("ovh:CloudProject/project:Project", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ProjectArgs makeArgs(ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ProjectArgs makeArgs(@Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

@@ -89,13 +89,31 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Zone can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the zone.
+ * Zone can be imported using its `name`.
+ * 
+ * Using the following configuration:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = ovh_domain_zone.zone
+ * 
+ *   id = &#34;&lt;zone name&gt;&#34;
+ * 
+ * }
+ * 
+ * You can then run:
  * 
  * bash
  * 
- * ```sh
- * $ pulumi import ovh:Domain/zone:Zone zone order_id
- * ```
+ * $ pulumi preview -generate-config-out=zone.tf
+ * 
+ * $ pulumi up
+ * 
+ * The file `zone.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
+ * 
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:Domain/zone:Zone")
@@ -263,7 +281,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Zone(java.lang.String name, ZoneArgs args) {
+    public Zone(java.lang.String name, @Nullable ZoneArgs args) {
         this(name, args, null);
     }
     /**
@@ -272,7 +290,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Zone(java.lang.String name, ZoneArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Zone(java.lang.String name, @Nullable ZoneArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Domain/zone:Zone", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -280,7 +298,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
         super("ovh:Domain/zone:Zone", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ZoneArgs makeArgs(ZoneArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ZoneArgs makeArgs(@Nullable ZoneArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

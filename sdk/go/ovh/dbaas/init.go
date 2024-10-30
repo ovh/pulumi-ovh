@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogsInput{}
 	case "ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream":
 		r = &LogsOutputGraylogStream{}
+	case "ovh:Dbaas/logsOutputOpenSearchAlias:LogsOutputOpenSearchAlias":
+		r = &LogsOutputOpenSearchAlias{}
+	case "ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex":
+		r = &LogsOutputOpenSearchIndex{}
 	case "ovh:Dbaas/logsToken:LogsToken":
 		r = &LogsToken{}
 	default:
@@ -55,6 +59,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Dbaas/logsOutputGraylogStream",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Dbaas/logsOutputOpenSearchAlias",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Dbaas/logsOutputOpenSearchIndex",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

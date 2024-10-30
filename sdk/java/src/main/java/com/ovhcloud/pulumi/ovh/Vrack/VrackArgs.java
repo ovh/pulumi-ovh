@@ -8,7 +8,6 @@ import com.ovhcloud.pulumi.ovh.Vrack.inputs.VrackPlanArgs;
 import com.ovhcloud.pulumi.ovh.Vrack.inputs.VrackPlanOptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -69,15 +68,15 @@ public final class VrackArgs extends com.pulumi.resources.ResourceArgs {
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you&#39;ll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      * 
      */
-    @Import(name="ovhSubsidiary", required=true)
-    private Output<String> ovhSubsidiary;
+    @Import(name="ovhSubsidiary")
+    private @Nullable Output<String> ovhSubsidiary;
 
     /**
      * @return OVHcloud Subsidiary. Country of OVHcloud legal entity you&#39;ll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      * 
      */
-    public Output<String> ovhSubsidiary() {
-        return this.ovhSubsidiary;
+    public Optional<Output<String>> ovhSubsidiary() {
+        return Optional.ofNullable(this.ovhSubsidiary);
     }
 
     /**
@@ -107,15 +106,15 @@ public final class VrackArgs extends com.pulumi.resources.ResourceArgs {
      * Product Plan to order
      * 
      */
-    @Import(name="plan", required=true)
-    private Output<VrackPlanArgs> plan;
+    @Import(name="plan")
+    private @Nullable Output<VrackPlanArgs> plan;
 
     /**
      * @return Product Plan to order
      * 
      */
-    public Output<VrackPlanArgs> plan() {
-        return this.plan;
+    public Optional<Output<VrackPlanArgs>> plan() {
+        return Optional.ofNullable(this.plan);
     }
 
     /**
@@ -242,7 +241,7 @@ public final class VrackArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder ovhSubsidiary(Output<String> ovhSubsidiary) {
+        public Builder ovhSubsidiary(@Nullable Output<String> ovhSubsidiary) {
             $.ovhSubsidiary = ovhSubsidiary;
             return this;
         }
@@ -292,7 +291,7 @@ public final class VrackArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder plan(Output<VrackPlanArgs> plan) {
+        public Builder plan(@Nullable Output<VrackPlanArgs> plan) {
             $.plan = plan;
             return this;
         }
@@ -339,12 +338,6 @@ public final class VrackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VrackArgs build() {
-            if ($.ovhSubsidiary == null) {
-                throw new MissingRequiredPropertyException("VrackArgs", "ovhSubsidiary");
-            }
-            if ($.plan == null) {
-                throw new MissingRequiredPropertyException("VrackArgs", "plan");
-            }
             return $;
         }
     }

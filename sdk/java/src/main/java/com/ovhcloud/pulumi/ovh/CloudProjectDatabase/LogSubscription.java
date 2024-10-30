@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Creates a log subscrition for a cluster associated with a public cloud project.
+ * Creates a log subscription for a cluster associated with a public cloud project.
  * 
  * ## Example Usage
  * 

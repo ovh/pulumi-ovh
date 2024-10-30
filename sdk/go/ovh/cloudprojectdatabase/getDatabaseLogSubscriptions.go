@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+// Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
 //
 // ## Example Usage
 //

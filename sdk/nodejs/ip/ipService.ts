@@ -38,6 +38,30 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The resource can be imported using its `service_name`, E.g.,
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = ovh_ip_service.ipblock
+ *
+ *   id = "ip-xx.xx.xx.xx"
+ *
+ * }
+ *
+ * bash
+ *
+ * $ pulumi preview -generate-config-out=ipblock.tf
+ *
+ * $ pulumi up
+ *
+ * The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  */
 export class IpService extends pulumi.CustomResource {
     /**
@@ -129,7 +153,7 @@ export class IpService extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: IpServiceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: IpServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IpServiceArgs | IpServiceState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -150,12 +174,6 @@ export class IpService extends pulumi.CustomResource {
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as IpServiceArgs | undefined;
-            if ((!args || args.ovhSubsidiary === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ovhSubsidiary'");
-            }
-            if ((!args || args.plan === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'plan'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
@@ -250,7 +268,7 @@ export interface IpServiceArgs {
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
-    ovhSubsidiary: pulumi.Input<string>;
+    ovhSubsidiary?: pulumi.Input<string>;
     /**
      * Ovh payment mode
      *
@@ -260,7 +278,7 @@ export interface IpServiceArgs {
     /**
      * Product Plan to order
      */
-    plan: pulumi.Input<inputs.Ip.IpServicePlan>;
+    plan?: pulumi.Input<inputs.Ip.IpServicePlan>;
     /**
      * Product Plan to order
      */

@@ -54,12 +54,15 @@ from .get_user_s3_credentials import *
 from .get_user_s3_policy import *
 from .get_users import *
 from .get_v_rack import *
+from .get_volume import *
+from .get_volumes import *
 from .kube import *
 from .kube_ip_restrictions import *
 from .kube_node_pool import *
 from .kube_oidc import *
 from .network_private import *
 from .network_private_subnet import *
+from .network_private_subnet_v2 import *
 from .project import *
 from .region_load_balancer_log_subscription import *
 from .region_storage_presign import *

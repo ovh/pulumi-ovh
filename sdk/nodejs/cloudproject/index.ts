@@ -250,6 +250,16 @@ export const getVRack: typeof import("./getVRack").getVRack = null as any;
 export const getVRackOutput: typeof import("./getVRack").getVRackOutput = null as any;
 utilities.lazyLoad(exports, ["getVRack","getVRackOutput"], () => require("./getVRack"));
 
+export { GetVolumeArgs, GetVolumeResult, GetVolumeOutputArgs } from "./getVolume";
+export const getVolume: typeof import("./getVolume").getVolume = null as any;
+export const getVolumeOutput: typeof import("./getVolume").getVolumeOutput = null as any;
+utilities.lazyLoad(exports, ["getVolume","getVolumeOutput"], () => require("./getVolume"));
+
+export { GetVolumesArgs, GetVolumesResult, GetVolumesOutputArgs } from "./getVolumes";
+export const getVolumes: typeof import("./getVolumes").getVolumes = null as any;
+export const getVolumesOutput: typeof import("./getVolumes").getVolumesOutput = null as any;
+utilities.lazyLoad(exports, ["getVolumes","getVolumesOutput"], () => require("./getVolumes"));
+
 export { KubeArgs, KubeState } from "./kube";
 export type Kube = import("./kube").Kube;
 export const Kube: typeof import("./kube").Kube = null as any;
@@ -279,6 +289,11 @@ export { NetworkPrivateSubnetArgs, NetworkPrivateSubnetState } from "./networkPr
 export type NetworkPrivateSubnet = import("./networkPrivateSubnet").NetworkPrivateSubnet;
 export const NetworkPrivateSubnet: typeof import("./networkPrivateSubnet").NetworkPrivateSubnet = null as any;
 utilities.lazyLoad(exports, ["NetworkPrivateSubnet"], () => require("./networkPrivateSubnet"));
+
+export { NetworkPrivateSubnetV2Args, NetworkPrivateSubnetV2State } from "./networkPrivateSubnetV2";
+export type NetworkPrivateSubnetV2 = import("./networkPrivateSubnetV2").NetworkPrivateSubnetV2;
+export const NetworkPrivateSubnetV2: typeof import("./networkPrivateSubnetV2").NetworkPrivateSubnetV2 = null as any;
+utilities.lazyLoad(exports, ["NetworkPrivateSubnetV2"], () => require("./networkPrivateSubnetV2"));
 
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
@@ -352,6 +367,8 @@ const _module = {
                 return new NetworkPrivate(name, <any>undefined, { urn })
             case "ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet":
                 return new NetworkPrivateSubnet(name, <any>undefined, { urn })
+            case "ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2":
+                return new NetworkPrivateSubnetV2(name, <any>undefined, { urn })
             case "ovh:CloudProject/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription":
@@ -387,6 +404,7 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeNodePool", _modul
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeOidc", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivate", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivateSubnet", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivateSubnetV2", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/project", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/regionLoadBalancerLogSubscription", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/regionStoragePresign", _module)

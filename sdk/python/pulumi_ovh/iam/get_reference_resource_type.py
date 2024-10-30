@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -76,9 +81,6 @@ def get_reference_resource_type(opts: Optional[pulumi.InvokeOptions] = None) -> 
     return AwaitableGetReferenceResourceTypeResult(
         id=pulumi.get(__ret__, 'id'),
         types=pulumi.get(__ret__, 'types'))
-
-
-@_utilities.lift_output_func(get_reference_resource_type)
 def get_reference_resource_type_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReferenceResourceTypeResult]:
     """
     Use this data source to list all the IAM resource types.
@@ -92,4 +94,9 @@ def get_reference_resource_type_output(opts: Optional[pulumi.InvokeOptions] = No
     types = ovh.Iam.get_reference_resource_type()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getReferenceResourceType:getReferenceResourceType', __args__, opts=opts, typ=GetReferenceResourceTypeResult)
+    return __ret__.apply(lambda __response__: GetReferenceResourceTypeResult(
+        id=pulumi.get(__response__, 'id'),
+        types=pulumi.get(__response__, 'types')))

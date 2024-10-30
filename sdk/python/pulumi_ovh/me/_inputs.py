@@ -4,15 +4,33 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstallationTemplateCustomizationArgs',
+    'InstallationTemplateCustomizationArgsDict',
     'InstallationTemplateInputArgs',
+    'InstallationTemplateInputArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstallationTemplateCustomizationArgsDict(TypedDict):
+        custom_hostname: NotRequired[pulumi.Input[str]]
+        """
+        Set up the server using the provided hostname instead of the default hostname.
+        """
+elif False:
+    InstallationTemplateCustomizationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstallationTemplateCustomizationArgs:
@@ -36,6 +54,20 @@ class InstallationTemplateCustomizationArgs:
     def custom_hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_hostname", value)
 
+
+if not MYPY:
+    class InstallationTemplateInputArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[str]]
+        description: NotRequired[pulumi.Input[str]]
+        """
+        information about this template.
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        mandatory: NotRequired[pulumi.Input[bool]]
+        name: NotRequired[pulumi.Input[str]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    InstallationTemplateInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstallationTemplateInputArgs:

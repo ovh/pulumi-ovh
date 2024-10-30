@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a log subscrition for a cluster associated with a public cloud project.
+ * Creates a log subscription for a cluster associated with a public cloud project.
  *
  * ## Example Usage
  *

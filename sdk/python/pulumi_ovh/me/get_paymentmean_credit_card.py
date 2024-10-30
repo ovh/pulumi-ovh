@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -161,9 +166,6 @@ def get_paymentmean_credit_card(description_regexp: Optional[str] = None,
         states=pulumi.get(__ret__, 'states'),
         use_default=pulumi.get(__ret__, 'use_default'),
         use_last_to_expire=pulumi.get(__ret__, 'use_last_to_expire'))
-
-
-@_utilities.lift_output_func(get_paymentmean_credit_card)
 def get_paymentmean_credit_card_output(description_regexp: Optional[pulumi.Input[Optional[str]]] = None,
                                        states: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                        use_default: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -191,4 +193,19 @@ def get_paymentmean_credit_card_output(description_regexp: Optional[pulumi.Input
     :param bool use_last_to_expire: Retrieve the credit card that will be the last
            to expire according to its expiration date.
     """
-    ...
+    __args__ = dict()
+    __args__['descriptionRegexp'] = description_regexp
+    __args__['states'] = states
+    __args__['useDefault'] = use_default
+    __args__['useLastToExpire'] = use_last_to_expire
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard', __args__, opts=opts, typ=GetPaymentmeanCreditCardResult)
+    return __ret__.apply(lambda __response__: GetPaymentmeanCreditCardResult(
+        default=pulumi.get(__response__, 'default'),
+        description=pulumi.get(__response__, 'description'),
+        description_regexp=pulumi.get(__response__, 'description_regexp'),
+        id=pulumi.get(__response__, 'id'),
+        state=pulumi.get(__response__, 'state'),
+        states=pulumi.get(__response__, 'states'),
+        use_default=pulumi.get(__response__, 'use_default'),
+        use_last_to_expire=pulumi.get(__response__, 'use_last_to_expire')))

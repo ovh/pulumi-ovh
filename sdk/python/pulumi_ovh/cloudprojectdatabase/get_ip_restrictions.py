@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -135,9 +140,6 @@ def get_ip_restrictions(cluster_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         ips=pulumi.get(__ret__, 'ips'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_ip_restrictions)
 def get_ip_restrictions_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                engine: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
@@ -168,4 +170,15 @@ def get_ip_restrictions_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['engine'] = engine
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions', __args__, opts=opts, typ=GetIpRestrictionsResult)
+    return __ret__.apply(lambda __response__: GetIpRestrictionsResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        engine=pulumi.get(__response__, 'engine'),
+        id=pulumi.get(__response__, 'id'),
+        ips=pulumi.get(__response__, 'ips'),
+        service_name=pulumi.get(__response__, 'service_name')))

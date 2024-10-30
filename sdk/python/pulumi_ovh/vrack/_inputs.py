@@ -4,19 +4,53 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'VrackOrderArgs',
+    'VrackOrderArgsDict',
     'VrackOrderDetailArgs',
+    'VrackOrderDetailArgsDict',
     'VrackPlanArgs',
+    'VrackPlanArgsDict',
     'VrackPlanConfigurationArgs',
+    'VrackPlanConfigurationArgsDict',
     'VrackPlanOptionArgs',
+    'VrackPlanOptionArgsDict',
     'VrackPlanOptionConfigurationArgs',
+    'VrackPlanOptionConfigurationArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class VrackOrderArgsDict(TypedDict):
+        date: NotRequired[pulumi.Input[str]]
+        """
+        date
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input['VrackOrderDetailArgsDict']]]]
+        """
+        Information about a Bill entry
+        """
+        expiration_date: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_id: NotRequired[pulumi.Input[int]]
+        """
+        order id
+        """
+elif False:
+    VrackOrderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VrackOrderArgs:
@@ -89,6 +123,27 @@ class VrackOrderArgs:
         pulumi.set(self, "order_id", value)
 
 
+if not MYPY:
+    class VrackOrderDetailArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        yourvrackdescription
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_detail_id: NotRequired[pulumi.Input[int]]
+        """
+        order detail id
+        """
+        quantity: NotRequired[pulumi.Input[str]]
+        """
+        quantity
+        """
+elif False:
+    VrackOrderDetailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VrackOrderDetailArgs:
     def __init__(__self__, *,
@@ -159,6 +214,31 @@ class VrackOrderDetailArgs:
     def quantity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "quantity", value)
 
+
+if not MYPY:
+    class VrackPlanArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        duration
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['VrackPlanConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product
+        """
+elif False:
+    VrackPlanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VrackPlanArgs:
@@ -244,6 +324,19 @@ class VrackPlanArgs:
         pulumi.set(self, "configurations", value)
 
 
+if not MYPY:
+    class VrackPlanConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource
+        """
+        value: pulumi.Input[str]
+        """
+        Path to the resource in API.OVH.COM
+        """
+elif False:
+    VrackPlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VrackPlanConfigurationArgs:
     def __init__(__self__, *,
@@ -280,6 +373,31 @@ class VrackPlanConfigurationArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class VrackPlanOptionArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        duration
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['VrackPlanOptionConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product
+        """
+elif False:
+    VrackPlanOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VrackPlanOptionArgs:
@@ -364,6 +482,19 @@ class VrackPlanOptionArgs:
     def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VrackPlanOptionConfigurationArgs']]]]):
         pulumi.set(self, "configurations", value)
 
+
+if not MYPY:
+    class VrackPlanOptionConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource
+        """
+        value: pulumi.Input[str]
+        """
+        Path to the resource in API.OVH.COM
+        """
+elif False:
+    VrackPlanOptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VrackPlanOptionConfigurationArgs:

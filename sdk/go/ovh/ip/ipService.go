@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Me.GetMe(ctx, nil, nil)
+//			_, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -70,6 +69,30 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// The resource can be imported using its `service_name`, E.g.,
+//
+// hcl
+//
+// import {
+//
+//	to = ovh_ip_service.ipblock
+//
+//	id = "ip-xx.xx.xx.xx"
+//
+// }
+//
+// bash
+//
+// $ pulumi preview -generate-config-out=ipblock.tf
+//
+// $ pulumi up
+//
+// The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+//
+// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type IpService struct {
 	pulumi.CustomResourceState
 
@@ -107,15 +130,9 @@ type IpService struct {
 func NewIpService(ctx *pulumi.Context,
 	name string, args *IpServiceArgs, opts ...pulumi.ResourceOption) (*IpService, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &IpServiceArgs{}
 	}
 
-	if args.OvhSubsidiary == nil {
-		return nil, errors.New("invalid value for required argument 'OvhSubsidiary'")
-	}
-	if args.Plan == nil {
-		return nil, errors.New("invalid value for required argument 'Plan'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IpService
 	err := ctx.RegisterResource("ovh:Ip/ipService:IpService", name, args, &resource, opts...)
@@ -210,13 +227,13 @@ type ipServiceArgs struct {
 	// Details about an Order
 	Orders []IpServiceOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
+	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
 	// Deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.
 	PaymentMean *string `pulumi:"paymentMean"`
 	// Product Plan to order
-	Plan IpServicePlan `pulumi:"plan"`
+	Plan *IpServicePlan `pulumi:"plan"`
 	// Product Plan to order
 	PlanOptions []IpServicePlanOption `pulumi:"planOptions"`
 }
@@ -228,13 +245,13 @@ type IpServiceArgs struct {
 	// Details about an Order
 	Orders IpServiceOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-	OvhSubsidiary pulumi.StringInput
+	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
 	// Deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.
 	PaymentMean pulumi.StringPtrInput
 	// Product Plan to order
-	Plan IpServicePlanInput
+	Plan IpServicePlanPtrInput
 	// Product Plan to order
 	PlanOptions IpServicePlanOptionArrayInput
 }

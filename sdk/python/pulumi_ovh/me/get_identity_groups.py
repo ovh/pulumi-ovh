@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -76,9 +81,6 @@ def get_identity_groups(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     return AwaitableGetIdentityGroupsResult(
         groups=pulumi.get(__ret__, 'groups'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_identity_groups)
 def get_identity_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdentityGroupsResult]:
     """
     Use this data source to retrieve the list of the account's identity groups
@@ -92,4 +94,9 @@ def get_identity_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
     groups = ovh.Me.get_identity_groups()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Me/getIdentityGroups:getIdentityGroups', __args__, opts=opts, typ=GetIdentityGroupsResult)
+    return __ret__.apply(lambda __response__: GetIdentityGroupsResult(
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id')))

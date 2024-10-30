@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -236,9 +241,6 @@ def get_policy(allows: Optional[Sequence[str]] = None,
         read_only=pulumi.get(__ret__, 'read_only'),
         resources=pulumi.get(__ret__, 'resources'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-
-
-@_utilities.lift_output_func(get_policy)
 def get_policy_output(allows: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       denies: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       description: Optional[pulumi.Input[Optional[str]]] = None,
@@ -266,4 +268,26 @@ def get_policy_output(allows: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     :param str id: UUID of the policy.
     :param Sequence[str] permissions_groups: Set of permissions groups that apply to the policy.
     """
-    ...
+    __args__ = dict()
+    __args__['allows'] = allows
+    __args__['denies'] = denies
+    __args__['description'] = description
+    __args__['excepts'] = excepts
+    __args__['id'] = id
+    __args__['permissionsGroups'] = permissions_groups
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getPolicy:getPolicy', __args__, opts=opts, typ=GetPolicyResult)
+    return __ret__.apply(lambda __response__: GetPolicyResult(
+        allows=pulumi.get(__response__, 'allows'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        denies=pulumi.get(__response__, 'denies'),
+        description=pulumi.get(__response__, 'description'),
+        excepts=pulumi.get(__response__, 'excepts'),
+        id=pulumi.get(__response__, 'id'),
+        identities=pulumi.get(__response__, 'identities'),
+        name=pulumi.get(__response__, 'name'),
+        owner=pulumi.get(__response__, 'owner'),
+        permissions_groups=pulumi.get(__response__, 'permissions_groups'),
+        read_only=pulumi.get(__response__, 'read_only'),
+        resources=pulumi.get(__response__, 'resources'),
+        updated_at=pulumi.get(__response__, 'updated_at')))

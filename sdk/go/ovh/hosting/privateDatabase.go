@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := Me.GetMe(ctx, nil, nil)
+//			myaccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -78,11 +77,31 @@ import (
 //
 // ## Import
 //
-// OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
+// OVHcloud Webhosting database can be imported using the `service_name`.
 //
-// ```sh
-// $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
-// ```
+// Using the following configuration:
+//
+// hcl
+//
+// import {
+//
+//	to = ovh_hosting_privatedatabase.database
+//
+//	id = "<service name>"
+//
+// }
+//
+// You can then run:
+//
+// bash
+//
+// $ pulumi preview -generate-config-out=database.tf
+//
+// $ pulumi up
+//
+// The file `database.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+//
+// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type PrivateDatabase struct {
 	pulumi.CustomResourceState
 
@@ -144,15 +163,9 @@ type PrivateDatabase struct {
 func NewPrivateDatabase(ctx *pulumi.Context,
 	name string, args *PrivateDatabaseArgs, opts ...pulumi.ResourceOption) (*PrivateDatabase, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &PrivateDatabaseArgs{}
 	}
 
-	if args.OvhSubsidiary == nil {
-		return nil, errors.New("invalid value for required argument 'OvhSubsidiary'")
-	}
-	if args.Plan == nil {
-		return nil, errors.New("invalid value for required argument 'Plan'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PrivateDatabase
 	err := ctx.RegisterResource("ovh:Hosting/privateDatabase:PrivateDatabase", name, args, &resource, opts...)
@@ -295,13 +308,13 @@ type privateDatabaseArgs struct {
 	// Details about your Order
 	Orders []PrivateDatabaseOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
+	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
 	// Deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.
 	PaymentMean *string `pulumi:"paymentMean"`
 	// Product Plan to order
-	Plan PrivateDatabasePlan `pulumi:"plan"`
+	Plan *PrivateDatabasePlan `pulumi:"plan"`
 	// Product Plan to order
 	PlanOptions []PrivateDatabasePlanOption `pulumi:"planOptions"`
 	// Service name
@@ -315,13 +328,13 @@ type PrivateDatabaseArgs struct {
 	// Details about your Order
 	Orders PrivateDatabaseOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-	OvhSubsidiary pulumi.StringInput
+	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
 	// Deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.
 	PaymentMean pulumi.StringPtrInput
 	// Product Plan to order
-	Plan PrivateDatabasePlanInput
+	Plan PrivateDatabasePlanPtrInput
 	// Product Plan to order
 	PlanOptions PrivateDatabasePlanOptionArrayInput
 	// Service name

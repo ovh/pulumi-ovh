@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -118,9 +123,6 @@ def get_server_boots(boot_type: Optional[str] = None,
         kernel=pulumi.get(__ret__, 'kernel'),
         results=pulumi.get(__ret__, 'results'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_server_boots)
 def get_server_boots_output(boot_type: Optional[pulumi.Input[Optional[str]]] = None,
                             kernel: Optional[pulumi.Input[Optional[str]]] = None,
                             service_name: Optional[pulumi.Input[str]] = None,
@@ -143,4 +145,15 @@ def get_server_boots_output(boot_type: Optional[pulumi.Input[Optional[str]]] = N
     :param str kernel: Filter the value of kernel property (iPXE script name)
     :param str service_name: The internal name of your dedicated server.
     """
-    ...
+    __args__ = dict()
+    __args__['bootType'] = boot_type
+    __args__['kernel'] = kernel
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Dedicated/getServerBoots:getServerBoots', __args__, opts=opts, typ=GetServerBootsResult)
+    return __ret__.apply(lambda __response__: GetServerBootsResult(
+        boot_type=pulumi.get(__response__, 'boot_type'),
+        id=pulumi.get(__response__, 'id'),
+        kernel=pulumi.get(__response__, 'kernel'),
+        results=pulumi.get(__response__, 'results'),
+        service_name=pulumi.get(__response__, 'service_name')))

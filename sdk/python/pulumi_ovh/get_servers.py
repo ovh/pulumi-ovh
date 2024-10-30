@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -76,9 +81,6 @@ def get_servers(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServ
     return AwaitableGetServersResult(
         id=pulumi.get(__ret__, 'id'),
         results=pulumi.get(__ret__, 'results'))
-
-
-@_utilities.lift_output_func(get_servers)
 def get_servers_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServersResult]:
     """
     Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
@@ -92,4 +94,9 @@ def get_servers_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
     servers = ovh.get_servers()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:index/getServers:getServers', __args__, opts=opts, typ=GetServersResult)
+    return __ret__.apply(lambda __response__: GetServersResult(
+        id=pulumi.get(__response__, 'id'),
+        results=pulumi.get(__response__, 'results')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -235,9 +240,6 @@ def get_logs_cluster(cluster_id: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         service_name=pulumi.get(__ret__, 'service_name'),
         urn=pulumi.get(__ret__, 'urn'))
-
-
-@_utilities.lift_output_func(get_logs_cluster)
 def get_logs_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
                             service_name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogsClusterResult]:
@@ -258,4 +260,23 @@ def get_logs_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = 
     :param str cluster_id: Cluster ID. If not provided, the default cluster_id is returned
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsCluster:getLogsCluster', __args__, opts=opts, typ=GetLogsClusterResult)
+    return __ret__.apply(lambda __response__: GetLogsClusterResult(
+        archive_allowed_networks=pulumi.get(__response__, 'archive_allowed_networks'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        cluster_type=pulumi.get(__response__, 'cluster_type'),
+        dedicated_input_pem=pulumi.get(__response__, 'dedicated_input_pem'),
+        direct_input_allowed_networks=pulumi.get(__response__, 'direct_input_allowed_networks'),
+        direct_input_pem=pulumi.get(__response__, 'direct_input_pem'),
+        hostname=pulumi.get(__response__, 'hostname'),
+        id=pulumi.get(__response__, 'id'),
+        is_default=pulumi.get(__response__, 'is_default'),
+        is_unlocked=pulumi.get(__response__, 'is_unlocked'),
+        query_allowed_networks=pulumi.get(__response__, 'query_allowed_networks'),
+        region=pulumi.get(__response__, 'region'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        urn=pulumi.get(__response__, 'urn')))

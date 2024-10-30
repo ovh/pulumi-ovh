@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -96,9 +101,6 @@ def get_network_privates(service_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         networks=pulumi.get(__ret__, 'networks'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_network_privates)
 def get_network_privates_output(service_name: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkPrivatesResult]:
     """
@@ -117,4 +119,11 @@ def get_network_privates_output(service_name: Optional[pulumi.Input[str]] = None
 
     :param str service_name: The ID of the public cloud project.
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getNetworkPrivates:getNetworkPrivates', __args__, opts=opts, typ=GetNetworkPrivatesResult)
+    return __ret__.apply(lambda __response__: GetNetworkPrivatesResult(
+        id=pulumi.get(__response__, 'id'),
+        networks=pulumi.get(__response__, 'networks'),
+        service_name=pulumi.get(__response__, 'service_name')))

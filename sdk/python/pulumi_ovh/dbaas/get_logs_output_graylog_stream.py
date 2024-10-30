@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -388,9 +393,6 @@ def get_logs_output_graylog_stream(service_name: Optional[str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         web_socket_enabled=pulumi.get(__ret__, 'web_socket_enabled'),
         write_token=pulumi.get(__ret__, 'write_token'))
-
-
-@_utilities.lift_output_func(get_logs_output_graylog_stream)
 def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[str]] = None,
                                           title: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogsOutputGraylogStreamResult]:
@@ -411,4 +413,35 @@ def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[st
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
     :param str title: Stream description
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    __args__['title'] = title
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream', __args__, opts=opts, typ=GetLogsOutputGraylogStreamResult)
+    return __ret__.apply(lambda __response__: GetLogsOutputGraylogStreamResult(
+        can_alert=pulumi.get(__response__, 'can_alert'),
+        cold_storage_compression=pulumi.get(__response__, 'cold_storage_compression'),
+        cold_storage_content=pulumi.get(__response__, 'cold_storage_content'),
+        cold_storage_enabled=pulumi.get(__response__, 'cold_storage_enabled'),
+        cold_storage_notify_enabled=pulumi.get(__response__, 'cold_storage_notify_enabled'),
+        cold_storage_retention=pulumi.get(__response__, 'cold_storage_retention'),
+        cold_storage_target=pulumi.get(__response__, 'cold_storage_target'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        indexing_enabled=pulumi.get(__response__, 'indexing_enabled'),
+        indexing_max_size=pulumi.get(__response__, 'indexing_max_size'),
+        indexing_notify_enabled=pulumi.get(__response__, 'indexing_notify_enabled'),
+        is_editable=pulumi.get(__response__, 'is_editable'),
+        is_shareable=pulumi.get(__response__, 'is_shareable'),
+        nb_alert_condition=pulumi.get(__response__, 'nb_alert_condition'),
+        nb_archive=pulumi.get(__response__, 'nb_archive'),
+        parent_stream_id=pulumi.get(__response__, 'parent_stream_id'),
+        pause_indexing_on_max_size=pulumi.get(__response__, 'pause_indexing_on_max_size'),
+        retention_id=pulumi.get(__response__, 'retention_id'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        stream_id=pulumi.get(__response__, 'stream_id'),
+        title=pulumi.get(__response__, 'title'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        web_socket_enabled=pulumi.get(__response__, 'web_socket_enabled'),
+        write_token=pulumi.get(__response__, 'write_token')))

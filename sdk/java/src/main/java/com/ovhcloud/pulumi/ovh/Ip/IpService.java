@@ -84,6 +84,30 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * The resource can be imported using its `service_name`, E.g.,
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = ovh_ip_service.ipblock
+ * 
+ *   id = &#34;ip-xx.xx.xx.xx&#34;
+ * 
+ * }
+ * 
+ * bash
+ * 
+ * $ pulumi preview -generate-config-out=ipblock.tf
+ * 
+ * $ pulumi up
+ * 
+ * The file `ipblock.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
+ * 
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * 
  */
 @ResourceType(type="ovh:Ip/ipService:IpService")
 public class IpService extends com.pulumi.resources.CustomResource {
@@ -286,7 +310,7 @@ public class IpService extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IpService(java.lang.String name, IpServiceArgs args) {
+    public IpService(java.lang.String name, @Nullable IpServiceArgs args) {
         this(name, args, null);
     }
     /**
@@ -295,7 +319,7 @@ public class IpService extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IpService(java.lang.String name, IpServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public IpService(java.lang.String name, @Nullable IpServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Ip/ipService:IpService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -303,7 +327,7 @@ public class IpService extends com.pulumi.resources.CustomResource {
         super("ovh:Ip/ipService:IpService", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static IpServiceArgs makeArgs(IpServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static IpServiceArgs makeArgs(@Nullable IpServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

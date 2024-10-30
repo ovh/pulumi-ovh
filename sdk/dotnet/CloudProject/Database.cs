@@ -52,7 +52,8 @@ namespace Pulumi.Ovh.CloudProject
     ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         Description = "my-first-kafka",
     ///         Engine = "kafka",
-    ///         Version = "3.4",
+    ///         Version = "3.8",
+    ///         Flavor = "db1-4",
     ///         Plan = "business",
     ///         KafkaRestApi = true,
     ///         KafkaSchemaRegistry = true,
@@ -71,7 +72,6 @@ namespace Pulumi.Ovh.CloudProject
     ///                 Region = "DE",
     ///             },
     ///         },
-    ///         Flavor = "db1-4",
     ///     });
     /// 
     ///     var m3db = new Ovh.CloudProject.Database("m3db", new()
@@ -319,7 +319,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<string>> BackupRegions { get; private set; } = null!;
 
         /// <summary>
-        /// Time on which backups start every day.
+        /// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         /// </summary>
         [Output("backupTime")]
         public Output<string> BackupTime { get; private set; } = null!;
@@ -513,7 +513,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Time on which backups start every day.
+        /// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
@@ -568,6 +568,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("kafkaSchemaRegistry")]
         public Input<bool>? KafkaSchemaRegistry { get; set; }
+
+        /// <summary>
+        /// Time on which maintenances can start every day.
+        /// </summary>
+        [Input("maintenanceTime")]
+        public Input<string>? MaintenanceTime { get; set; }
 
         [Input("nodes", required: true)]
         private InputList<Inputs.DatabaseNodeArgs>? _nodes;
@@ -644,7 +650,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Time on which backups start every day.
+        /// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }

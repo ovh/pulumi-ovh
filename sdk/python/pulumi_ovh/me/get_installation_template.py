@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -269,9 +274,6 @@ def get_installation_template(template_name: Optional[str] = None,
         soft_raid_only_mirroring=pulumi.get(__ret__, 'soft_raid_only_mirroring'),
         subfamily=pulumi.get(__ret__, 'subfamily'),
         template_name=pulumi.get(__ret__, 'template_name'))
-
-
-@_utilities.lift_output_func(get_installation_template)
 def get_installation_template_output(template_name: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstallationTemplateResult]:
     """
@@ -289,4 +291,25 @@ def get_installation_template_output(template_name: Optional[pulumi.Input[str]] 
 
     :param str template_name: Template name.
     """
-    ...
+    __args__ = dict()
+    __args__['templateName'] = template_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Me/getInstallationTemplate:getInstallationTemplate', __args__, opts=opts, typ=GetInstallationTemplateResult)
+    return __ret__.apply(lambda __response__: GetInstallationTemplateResult(
+        bit_format=pulumi.get(__response__, 'bit_format'),
+        category=pulumi.get(__response__, 'category'),
+        customizations=pulumi.get(__response__, 'customizations'),
+        description=pulumi.get(__response__, 'description'),
+        distribution=pulumi.get(__response__, 'distribution'),
+        end_of_install=pulumi.get(__response__, 'end_of_install'),
+        family=pulumi.get(__response__, 'family'),
+        filesystems=pulumi.get(__response__, 'filesystems'),
+        hard_raid_configuration=pulumi.get(__response__, 'hard_raid_configuration'),
+        id=pulumi.get(__response__, 'id'),
+        inputs=pulumi.get(__response__, 'inputs'),
+        lvm_ready=pulumi.get(__response__, 'lvm_ready'),
+        no_partitioning=pulumi.get(__response__, 'no_partitioning'),
+        partition_schemes=pulumi.get(__response__, 'partition_schemes'),
+        soft_raid_only_mirroring=pulumi.get(__response__, 'soft_raid_only_mirroring'),
+        subfamily=pulumi.get(__response__, 'subfamily'),
+        template_name=pulumi.get(__response__, 'template_name')))

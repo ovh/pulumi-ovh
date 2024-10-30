@@ -90,14 +90,14 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Openstack private network (or vRack) ID to use for load balancers.
+     * Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&amp;sysparm_article=KB0062873) for more information.
      * 
      */
     @Import(name="loadBalancersSubnetId")
     private @Nullable Output<String> loadBalancersSubnetId;
 
     /**
-     * @return Openstack private network (or vRack) ID to use for load balancers.
+     * @return Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&amp;sysparm_article=KB0062873) for more information.
      * 
      */
     public Optional<Output<String>> loadBalancersSubnetId() {
@@ -120,14 +120,14 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+     * Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
      * 
      */
     @Import(name="nodesSubnetId")
     private @Nullable Output<String> nodesSubnetId;
 
     /**
-     * @return Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+     * @return Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
      * 
      */
     public Optional<Output<String>> nodesSubnetId() {
@@ -150,7 +150,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+     * Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
      * 
      * &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
      * 
@@ -159,7 +159,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> privateNetworkId;
 
     /**
-     * @return OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+     * @return Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
      * 
      * &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
      * 
@@ -381,7 +381,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancersSubnetId Openstack private network (or vRack) ID to use for load balancers.
+         * @param loadBalancersSubnetId Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&amp;sysparm_article=KB0062873) for more information.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancersSubnetId Openstack private network (or vRack) ID to use for load balancers.
+         * @param loadBalancersSubnetId Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&amp;sysparm_article=KB0062873) for more information.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodesSubnetId Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+         * @param nodesSubnetId Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodesSubnetId Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+         * @param nodesSubnetId Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateNetworkId OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+         * @param privateNetworkId Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
          * 
          * &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
          * 
@@ -478,7 +478,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateNetworkId OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+         * @param privateNetworkId Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
          * 
          * &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
          * 

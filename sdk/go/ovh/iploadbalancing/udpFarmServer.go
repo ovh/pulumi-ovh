@@ -72,11 +72,11 @@ type UdpFarmServer struct {
 	// Synonym for `farmId`.
 	BackendId pulumi.Float64Output `pulumi:"backendId"`
 	// Label for the server
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// ID of the farm this server is attached to
 	FarmId pulumi.Float64Output `pulumi:"farmId"`
 	// Port that backend will respond on
-	Port pulumi.Float64Output `pulumi:"port"`
+	Port pulumi.Float64PtrOutput `pulumi:"port"`
 	// Id of your server.
 	ServerId pulumi.Float64Output `pulumi:"serverId"`
 	// The internal name of your IP load balancing
@@ -297,8 +297,8 @@ func (o UdpFarmServerOutput) BackendId() pulumi.Float64Output {
 }
 
 // Label for the server
-func (o UdpFarmServerOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v *UdpFarmServer) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+func (o UdpFarmServerOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UdpFarmServer) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // ID of the farm this server is attached to
@@ -307,8 +307,8 @@ func (o UdpFarmServerOutput) FarmId() pulumi.Float64Output {
 }
 
 // Port that backend will respond on
-func (o UdpFarmServerOutput) Port() pulumi.Float64Output {
-	return o.ApplyT(func(v *UdpFarmServer) pulumi.Float64Output { return v.Port }).(pulumi.Float64Output)
+func (o UdpFarmServerOutput) Port() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *UdpFarmServer) pulumi.Float64PtrOutput { return v.Port }).(pulumi.Float64PtrOutput)
 }
 
 // Id of your server.

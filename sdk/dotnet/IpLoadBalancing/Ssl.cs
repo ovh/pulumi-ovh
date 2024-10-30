@@ -63,13 +63,13 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// Certificate chain
         /// </summary>
         [Output("chain")]
-        public Output<string> Chain { get; private set; } = null!;
+        public Output<string?> Chain { get; private set; } = null!;
 
         /// <summary>
         /// Readable label for loadbalancer ssl
         /// </summary>
         [Output("displayName")]
-        public Output<string> DisplayName { get; private set; } = null!;
+        public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// Expire date of your SSL certificate.

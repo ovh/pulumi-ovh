@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -451,9 +456,6 @@ def get_me(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMeResult:
         state=pulumi.get(__ret__, 'state'),
         vat=pulumi.get(__ret__, 'vat'),
         zip=pulumi.get(__ret__, 'zip'))
-
-
-@_utilities.lift_output_func(get_me)
 def get_me_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMeResult]:
     """
     Use this data source to get information about the current OVHcloud account.
@@ -467,4 +469,38 @@ def get_me_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[
     myaccount = ovh.Me.get_me()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Me/getMe:getMe', __args__, opts=opts, typ=GetMeResult)
+    return __ret__.apply(lambda __response__: GetMeResult(
+        account_urn=pulumi.get(__response__, 'account_urn'),
+        address=pulumi.get(__response__, 'address'),
+        area=pulumi.get(__response__, 'area'),
+        birth_city=pulumi.get(__response__, 'birth_city'),
+        birth_day=pulumi.get(__response__, 'birth_day'),
+        city=pulumi.get(__response__, 'city'),
+        company_national_identification_number=pulumi.get(__response__, 'company_national_identification_number'),
+        corporation_type=pulumi.get(__response__, 'corporation_type'),
+        country=pulumi.get(__response__, 'country'),
+        currencies=pulumi.get(__response__, 'currencies'),
+        customer_code=pulumi.get(__response__, 'customer_code'),
+        email=pulumi.get(__response__, 'email'),
+        fax=pulumi.get(__response__, 'fax'),
+        firstname=pulumi.get(__response__, 'firstname'),
+        id=pulumi.get(__response__, 'id'),
+        italian_sdi=pulumi.get(__response__, 'italian_sdi'),
+        language=pulumi.get(__response__, 'language'),
+        legalform=pulumi.get(__response__, 'legalform'),
+        name=pulumi.get(__response__, 'name'),
+        national_identification_number=pulumi.get(__response__, 'national_identification_number'),
+        nichandle=pulumi.get(__response__, 'nichandle'),
+        organisation=pulumi.get(__response__, 'organisation'),
+        ovh_company=pulumi.get(__response__, 'ovh_company'),
+        ovh_subsidiary=pulumi.get(__response__, 'ovh_subsidiary'),
+        phone=pulumi.get(__response__, 'phone'),
+        phone_country=pulumi.get(__response__, 'phone_country'),
+        sex=pulumi.get(__response__, 'sex'),
+        spare_email=pulumi.get(__response__, 'spare_email'),
+        state=pulumi.get(__response__, 'state'),
+        vat=pulumi.get(__response__, 'vat'),
+        zip=pulumi.get(__response__, 'zip')))

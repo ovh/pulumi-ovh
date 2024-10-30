@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
     /// <summary>
-    /// Creates a log subscrition for a cluster associated with a public cloud project.
+    /// Creates a log subscription for a cluster associated with a public cloud project.
     /// 
     /// ## Example Usage
     /// 

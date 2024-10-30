@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -113,9 +118,6 @@ def get_m3db_namespaces(cluster_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         namespace_ids=pulumi.get(__ret__, 'namespace_ids'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_m3db_namespaces)
 def get_m3db_namespaces_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetM3dbNamespacesResult]:
@@ -138,4 +140,13 @@ def get_m3db_namespaces_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces', __args__, opts=opts, typ=GetM3dbNamespacesResult)
+    return __ret__.apply(lambda __response__: GetM3dbNamespacesResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        id=pulumi.get(__response__, 'id'),
+        namespace_ids=pulumi.get(__response__, 'namespace_ids'),
+        service_name=pulumi.get(__response__, 'service_name')))

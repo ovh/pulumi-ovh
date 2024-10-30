@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -157,9 +162,6 @@ def get_open_search_user(cluster_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         service_name=pulumi.get(__ret__, 'service_name'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_open_search_user)
 def get_open_search_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                 name: Optional[pulumi.Input[str]] = None,
                                 service_name: Optional[pulumi.Input[str]] = None,
@@ -185,4 +187,17 @@ def get_open_search_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['name'] = name
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getOpenSearchUser:getOpenSearchUser', __args__, opts=opts, typ=GetOpenSearchUserResult)
+    return __ret__.apply(lambda __response__: GetOpenSearchUserResult(
+        acls=pulumi.get(__response__, 'acls'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        status=pulumi.get(__response__, 'status')))

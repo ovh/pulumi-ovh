@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -209,9 +214,6 @@ def get_ceph(ceph_version: Optional[str] = None,
         size=pulumi.get(__ret__, 'size'),
         state=pulumi.get(__ret__, 'state'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_ceph)
 def get_ceph_output(ceph_version: Optional[pulumi.Input[Optional[str]]] = None,
                     service_name: Optional[pulumi.Input[str]] = None,
                     status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -233,4 +235,21 @@ def get_ceph_output(ceph_version: Optional[pulumi.Input[Optional[str]]] = None,
     :param str service_name: The service name of the dedicated CEPH cluster.
     :param str status: the status of the service
     """
-    ...
+    __args__ = dict()
+    __args__['cephVersion'] = ceph_version
+    __args__['serviceName'] = service_name
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Dedicated/getCeph:getCeph', __args__, opts=opts, typ=GetCephResult)
+    return __ret__.apply(lambda __response__: GetCephResult(
+        ceph_urn=pulumi.get(__response__, 'ceph_urn'),
+        ceph_mons=pulumi.get(__response__, 'ceph_mons'),
+        ceph_version=pulumi.get(__response__, 'ceph_version'),
+        crush_tunables=pulumi.get(__response__, 'crush_tunables'),
+        id=pulumi.get(__response__, 'id'),
+        label=pulumi.get(__response__, 'label'),
+        region=pulumi.get(__response__, 'region'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        size=pulumi.get(__response__, 'size'),
+        state=pulumi.get(__response__, 'state'),
+        status=pulumi.get(__response__, 'status')))

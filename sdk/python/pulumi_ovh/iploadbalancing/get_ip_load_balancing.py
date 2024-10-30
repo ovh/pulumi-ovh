@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -256,9 +261,6 @@ def get_ip_load_balancing(display_name: Optional[str] = None,
         vrack_eligibility=pulumi.get(__ret__, 'vrack_eligibility'),
         vrack_name=pulumi.get(__ret__, 'vrack_name'),
         zones=pulumi.get(__ret__, 'zones'))
-
-
-@_utilities.lift_output_func(get_ip_load_balancing)
 def get_ip_load_balancing_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                  ip_loadbalancing: Optional[pulumi.Input[Optional[str]]] = None,
                                  ipv4: Optional[pulumi.Input[Optional[str]]] = None,
@@ -303,4 +305,33 @@ def get_ip_load_balancing_output(display_name: Optional[pulumi.Input[Optional[st
            attached to, as it is named on vRack product
     :param Sequence[str] zones: Location where your service is. This takes an array of values.
     """
-    ...
+    __args__ = dict()
+    __args__['displayName'] = display_name
+    __args__['ipLoadbalancing'] = ip_loadbalancing
+    __args__['ipv4'] = ipv4
+    __args__['ipv6'] = ipv6
+    __args__['offer'] = offer
+    __args__['serviceName'] = service_name
+    __args__['sslConfiguration'] = ssl_configuration
+    __args__['state'] = state
+    __args__['vrackEligibility'] = vrack_eligibility
+    __args__['vrackName'] = vrack_name
+    __args__['zones'] = zones
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing', __args__, opts=opts, typ=GetIpLoadBalancingResult)
+    return __ret__.apply(lambda __response__: GetIpLoadBalancingResult(
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        ip_loadbalancing=pulumi.get(__response__, 'ip_loadbalancing'),
+        ipv4=pulumi.get(__response__, 'ipv4'),
+        ipv6=pulumi.get(__response__, 'ipv6'),
+        metrics_token=pulumi.get(__response__, 'metrics_token'),
+        offer=pulumi.get(__response__, 'offer'),
+        orderable_zones=pulumi.get(__response__, 'orderable_zones'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        ssl_configuration=pulumi.get(__response__, 'ssl_configuration'),
+        state=pulumi.get(__response__, 'state'),
+        urn=pulumi.get(__response__, 'urn'),
+        vrack_eligibility=pulumi.get(__response__, 'vrack_eligibility'),
+        vrack_name=pulumi.get(__response__, 'vrack_name'),
+        zones=pulumi.get(__response__, 'zones')))

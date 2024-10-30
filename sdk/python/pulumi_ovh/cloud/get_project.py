@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -239,9 +244,6 @@ def get_project(service_name: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         status=pulumi.get(__ret__, 'status'),
         unleash=pulumi.get(__ret__, 'unleash'))
-
-
-@_utilities.lift_output_func(get_project)
 def get_project_output(service_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
@@ -260,4 +262,22 @@ def get_project_output(service_name: Optional[pulumi.Input[str]] = None,
     :param str service_name: The ID of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Cloud/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
+    return __ret__.apply(lambda __response__: GetProjectResult(
+        access=pulumi.get(__response__, 'access'),
+        creation_date=pulumi.get(__response__, 'creation_date'),
+        description=pulumi.get(__response__, 'description'),
+        expiration=pulumi.get(__response__, 'expiration'),
+        iam=pulumi.get(__response__, 'iam'),
+        id=pulumi.get(__response__, 'id'),
+        manual_quota=pulumi.get(__response__, 'manual_quota'),
+        order_id=pulumi.get(__response__, 'order_id'),
+        plan_code=pulumi.get(__response__, 'plan_code'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        project_name=pulumi.get(__response__, 'project_name'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        status=pulumi.get(__response__, 'status'),
+        unleash=pulumi.get(__response__, 'unleash')))

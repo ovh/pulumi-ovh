@@ -52,13 +52,31 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// ## Import
     /// 
-    /// vRack can be imported using the `service_name`.
+    /// A vRack can be imported using the `service_name`.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_vrack.vrack
+    /// 
+    ///   id = "&lt;service name&gt;"
+    /// 
+    /// }
+    /// 
+    /// You can then run:
     /// 
     /// bash
     /// 
-    /// ```sh
-    /// $ pulumi import ovh:Vrack/vrack:Vrack vrack service_name
-    /// ```
+    /// $ pulumi preview -generate-config-out=vrack.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `vrack.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:Vrack/vrack:Vrack")]
     public partial class Vrack : global::Pulumi.CustomResource
@@ -125,7 +143,7 @@ namespace Pulumi.Ovh.Vrack
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Vrack(string name, VrackArgs args, CustomResourceOptions? options = null)
+        public Vrack(string name, VrackArgs? args = null, CustomResourceOptions? options = null)
             : base("ovh:Vrack/vrack:Vrack", name, args ?? new VrackArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -191,8 +209,8 @@ namespace Pulumi.Ovh.Vrack
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
-        [Input("ovhSubsidiary", required: true)]
-        public Input<string> OvhSubsidiary { get; set; } = null!;
+        [Input("ovhSubsidiary")]
+        public Input<string>? OvhSubsidiary { get; set; }
 
         /// <summary>
         /// Ovh payment mode
@@ -203,8 +221,8 @@ namespace Pulumi.Ovh.Vrack
         /// <summary>
         /// Product Plan to order
         /// </summary>
-        [Input("plan", required: true)]
-        public Input<Inputs.VrackPlanArgs> Plan { get; set; } = null!;
+        [Input("plan")]
+        public Input<Inputs.VrackPlanArgs>? Plan { get; set; }
 
         [Input("planOptions")]
         private InputList<Inputs.VrackPlanOptionArgs>? _planOptions;

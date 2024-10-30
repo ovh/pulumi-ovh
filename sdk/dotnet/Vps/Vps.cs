@@ -85,7 +85,7 @@ namespace Pulumi.Ovh.Vps
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&amp;branch=v1#get-/me)
         /// </summary>
         [Output("ovhSubsidiary")]
-        public Output<string> OvhSubsidiary { get; private set; } = null!;
+        public Output<string?> OvhSubsidiary { get; private set; } = null!;
 
         /// <summary>
         /// Product Plan to order
@@ -134,7 +134,7 @@ namespace Pulumi.Ovh.Vps
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Vps(string name, VpsArgs args, CustomResourceOptions? options = null)
+        public Vps(string name, VpsArgs? args = null, CustomResourceOptions? options = null)
             : base("ovh:Vps/vps:Vps", name, args ?? new VpsArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -230,8 +230,8 @@ namespace Pulumi.Ovh.Vps
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&amp;branch=v1#get-/me)
         /// </summary>
-        [Input("ovhSubsidiary", required: true)]
-        public Input<string> OvhSubsidiary { get; set; } = null!;
+        [Input("ovhSubsidiary")]
+        public Input<string>? OvhSubsidiary { get; set; }
 
         [Input("planOptions")]
         private InputList<Inputs.VpsPlanOptionArgs>? _planOptions;

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -234,9 +239,6 @@ def get_m3db_namespace(cluster_id: Optional[str] = None,
         snapshot_enabled=pulumi.get(__ret__, 'snapshot_enabled'),
         type=pulumi.get(__ret__, 'type'),
         writes_to_commit_log_enabled=pulumi.get(__ret__, 'writes_to_commit_log_enabled'))
-
-
-@_utilities.lift_output_func(get_m3db_namespace)
 def get_m3db_namespace_output(cluster_id: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[str]] = None,
                               service_name: Optional[pulumi.Input[str]] = None,
@@ -262,4 +264,23 @@ def get_m3db_namespace_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['name'] = name
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getM3dbNamespace:getM3dbNamespace', __args__, opts=opts, typ=GetM3dbNamespaceResult)
+    return __ret__.apply(lambda __response__: GetM3dbNamespaceResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        resolution=pulumi.get(__response__, 'resolution'),
+        retention_block_data_expiration_duration=pulumi.get(__response__, 'retention_block_data_expiration_duration'),
+        retention_block_size_duration=pulumi.get(__response__, 'retention_block_size_duration'),
+        retention_buffer_future_duration=pulumi.get(__response__, 'retention_buffer_future_duration'),
+        retention_buffer_past_duration=pulumi.get(__response__, 'retention_buffer_past_duration'),
+        retention_period_duration=pulumi.get(__response__, 'retention_period_duration'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        snapshot_enabled=pulumi.get(__response__, 'snapshot_enabled'),
+        type=pulumi.get(__response__, 'type'),
+        writes_to_commit_log_enabled=pulumi.get(__response__, 'writes_to_commit_log_enabled')))

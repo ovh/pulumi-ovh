@@ -26,13 +26,31 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Dedicated servers can be imported using the `service_name`, e.g.:
+ * Dedicated servers can be imported using the `service_name`.
+ * 
+ * Using the following configuration:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = ovh_dedicated_server.server
+ * 
+ *   id = &#34;&lt;service name&gt;&#34;
+ * 
+ * }
+ * 
+ * You can then run:
  * 
  * bash
  * 
- * ```sh
- * $ pulumi import ovh:Dedicated/server:Server server service_name
- * ```
+ * $ pulumi preview -generate-config-out=dedicated.tf
+ * 
+ * $ pulumi up
+ * 
+ * The file `dedicated.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
+ * 
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:Dedicated/server:Server")
@@ -258,14 +276,14 @@ public class Server extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ovhSubsidiary", refs={String.class}, tree="[0]")
-    private Output<String> ovhSubsidiary;
+    private Output</* @Nullable */ String> ovhSubsidiary;
 
     /**
      * @return OVH subsidiaries
      * 
      */
-    public Output<String> ovhSubsidiary() {
-        return this.ovhSubsidiary;
+    public Output<Optional<String>> ovhSubsidiary() {
+        return Codegen.optional(this.ovhSubsidiary);
     }
     /**
      * Partition scheme name
@@ -502,7 +520,7 @@ public class Server extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Server(java.lang.String name, ServerArgs args) {
+    public Server(java.lang.String name, @Nullable ServerArgs args) {
         this(name, args, null);
     }
     /**
@@ -511,7 +529,7 @@ public class Server extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Server(java.lang.String name, ServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Server(java.lang.String name, @Nullable ServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Dedicated/server:Server", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -519,7 +537,7 @@ public class Server extends com.pulumi.resources.CustomResource {
         super("ovh:Dedicated/server:Server", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ServerArgs makeArgs(ServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ServerArgs makeArgs(@Nullable ServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

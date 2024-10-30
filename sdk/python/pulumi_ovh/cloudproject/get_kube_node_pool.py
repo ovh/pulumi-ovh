@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -387,9 +392,6 @@ def get_kube_node_pool(kube_id: Optional[str] = None,
         template=pulumi.get(__ret__, 'template'),
         up_to_date_nodes=pulumi.get(__ret__, 'up_to_date_nodes'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-
-
-@_utilities.lift_output_func(get_kube_node_pool)
 def get_kube_node_pool_output(kube_id: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[str]] = None,
                               service_name: Optional[pulumi.Input[str]] = None,
@@ -416,4 +418,35 @@ def get_kube_node_pool_output(kube_id: Optional[pulumi.Input[str]] = None,
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['kubeId'] = kube_id
+    __args__['name'] = name
+    __args__['serviceName'] = service_name
+    __args__['template'] = template
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getKubeNodePool:getKubeNodePool', __args__, opts=opts, typ=GetKubeNodePoolResult)
+    return __ret__.apply(lambda __response__: GetKubeNodePoolResult(
+        anti_affinity=pulumi.get(__response__, 'anti_affinity'),
+        autoscale=pulumi.get(__response__, 'autoscale'),
+        autoscaling_scale_down_unneeded_time_seconds=pulumi.get(__response__, 'autoscaling_scale_down_unneeded_time_seconds'),
+        autoscaling_scale_down_unready_time_seconds=pulumi.get(__response__, 'autoscaling_scale_down_unready_time_seconds'),
+        autoscaling_scale_down_utilization_threshold=pulumi.get(__response__, 'autoscaling_scale_down_utilization_threshold'),
+        available_nodes=pulumi.get(__response__, 'available_nodes'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        current_nodes=pulumi.get(__response__, 'current_nodes'),
+        desired_nodes=pulumi.get(__response__, 'desired_nodes'),
+        flavor=pulumi.get(__response__, 'flavor'),
+        flavor_name=pulumi.get(__response__, 'flavor_name'),
+        id=pulumi.get(__response__, 'id'),
+        kube_id=pulumi.get(__response__, 'kube_id'),
+        max_nodes=pulumi.get(__response__, 'max_nodes'),
+        min_nodes=pulumi.get(__response__, 'min_nodes'),
+        monthly_billed=pulumi.get(__response__, 'monthly_billed'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        size_status=pulumi.get(__response__, 'size_status'),
+        status=pulumi.get(__response__, 'status'),
+        template=pulumi.get(__response__, 'template'),
+        up_to_date_nodes=pulumi.get(__response__, 'up_to_date_nodes'),
+        updated_at=pulumi.get(__response__, 'updated_at')))

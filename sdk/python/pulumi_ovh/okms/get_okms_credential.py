@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -173,9 +178,6 @@ def get_okms_credential(id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         okms_id=pulumi.get(__ret__, 'okms_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_okms_credential)
 def get_okms_credential_output(id: Optional[pulumi.Input[str]] = None,
                                okms_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOkmsCredentialResult]:
@@ -186,4 +188,19 @@ def get_okms_credential_output(id: Optional[pulumi.Input[str]] = None,
     :param str id: ID of the credential
     :param str okms_id: ID of the KMS
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['okmsId'] = okms_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Okms/getOkmsCredential:getOkmsCredential', __args__, opts=opts, typ=GetOkmsCredentialResult)
+    return __ret__.apply(lambda __response__: GetOkmsCredentialResult(
+        certificate_pem=pulumi.get(__response__, 'certificate_pem'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        expired_at=pulumi.get(__response__, 'expired_at'),
+        from_csr=pulumi.get(__response__, 'from_csr'),
+        id=pulumi.get(__response__, 'id'),
+        identity_urns=pulumi.get(__response__, 'identity_urns'),
+        name=pulumi.get(__response__, 'name'),
+        okms_id=pulumi.get(__response__, 'okms_id'),
+        status=pulumi.get(__response__, 'status')))

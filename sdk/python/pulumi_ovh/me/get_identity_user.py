@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -195,9 +200,6 @@ def get_identity_user(user: Optional[str] = None,
         password_last_update=pulumi.get(__ret__, 'password_last_update'),
         status=pulumi.get(__ret__, 'status'),
         user=pulumi.get(__ret__, 'user'))
-
-
-@_utilities.lift_output_func(get_identity_user)
 def get_identity_user_output(user: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdentityUserResult]:
     """
@@ -215,4 +217,19 @@ def get_identity_user_output(user: Optional[pulumi.Input[str]] = None,
 
     :param str user: User's login.
     """
-    ...
+    __args__ = dict()
+    __args__['user'] = user
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Me/getIdentityUser:getIdentityUser', __args__, opts=opts, typ=GetIdentityUserResult)
+    return __ret__.apply(lambda __response__: GetIdentityUserResult(
+        user_urn=pulumi.get(__response__, 'user_urn'),
+        creation=pulumi.get(__response__, 'creation'),
+        description=pulumi.get(__response__, 'description'),
+        email=pulumi.get(__response__, 'email'),
+        group=pulumi.get(__response__, 'group'),
+        id=pulumi.get(__response__, 'id'),
+        last_update=pulumi.get(__response__, 'last_update'),
+        login=pulumi.get(__response__, 'login'),
+        password_last_update=pulumi.get(__response__, 'password_last_update'),
+        status=pulumi.get(__response__, 'status'),
+        user=pulumi.get(__response__, 'user')))

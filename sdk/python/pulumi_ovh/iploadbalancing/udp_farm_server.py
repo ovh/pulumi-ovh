@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['UdpFarmServerArgs', 'UdpFarmServer']
@@ -444,7 +449,7 @@ class UdpFarmServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Output[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Label for the server
         """
@@ -460,7 +465,7 @@ class UdpFarmServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         """
         Port that backend will respond on
         """

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -149,9 +154,6 @@ def get_logs_clusters_retention(cluster_id: Optional[str] = None,
         is_supported=pulumi.get(__ret__, 'is_supported'),
         retention_id=pulumi.get(__ret__, 'retention_id'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_logs_clusters_retention)
 def get_logs_clusters_retention_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                        duration: Optional[pulumi.Input[Optional[str]]] = None,
                                        retention_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -188,4 +190,17 @@ def get_logs_clusters_retention_output(cluster_id: Optional[pulumi.Input[str]] =
     :param str retention_id: ID of the retention object
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['duration'] = duration
+    __args__['retentionId'] = retention_id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention', __args__, opts=opts, typ=GetLogsClustersRetentionResult)
+    return __ret__.apply(lambda __response__: GetLogsClustersRetentionResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        duration=pulumi.get(__response__, 'duration'),
+        id=pulumi.get(__response__, 'id'),
+        is_supported=pulumi.get(__response__, 'is_supported'),
+        retention_id=pulumi.get(__response__, 'retention_id'),
+        service_name=pulumi.get(__response__, 'service_name')))

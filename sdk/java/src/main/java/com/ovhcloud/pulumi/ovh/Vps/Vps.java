@@ -19,6 +19,7 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -186,14 +187,14 @@ public class Vps extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ovhSubsidiary", refs={String.class}, tree="[0]")
-    private Output<String> ovhSubsidiary;
+    private Output</* @Nullable */ String> ovhSubsidiary;
 
     /**
      * @return OVHcloud Subsidiary. Country of OVHcloud legal entity you&#39;ll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&amp;branch=v1#get-/me)
      * 
      */
-    public Output<String> ovhSubsidiary() {
-        return this.ovhSubsidiary;
+    public Output<Optional<String>> ovhSubsidiary() {
+        return Codegen.optional(this.ovhSubsidiary);
     }
     /**
      * Product Plan to order
@@ -298,7 +299,7 @@ public class Vps extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Vps(java.lang.String name, VpsArgs args) {
+    public Vps(java.lang.String name, @Nullable VpsArgs args) {
         this(name, args, null);
     }
     /**
@@ -307,7 +308,7 @@ public class Vps extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Vps(java.lang.String name, VpsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Vps(java.lang.String name, @Nullable VpsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Vps/vps:Vps", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -315,7 +316,7 @@ public class Vps extends com.pulumi.resources.CustomResource {
         super("ovh:Vps/vps:Vps", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static VpsArgs makeArgs(VpsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static VpsArgs makeArgs(@Nullable VpsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

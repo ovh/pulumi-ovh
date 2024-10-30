@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -107,9 +112,6 @@ def get_user_s3_credentials(service_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         service_name=pulumi.get(__ret__, 'service_name'),
         user_id=pulumi.get(__ret__, 'user_id'))
-
-
-@_utilities.lift_output_func(get_user_s3_credentials)
 def get_user_s3_credentials_output(service_name: Optional[pulumi.Input[str]] = None,
                                    user_id: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserS3CredentialsResult]:
@@ -132,4 +134,13 @@ def get_user_s3_credentials_output(service_name: Optional[pulumi.Input[str]] = N
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     :param str user_id: The ID of a public cloud project's user.
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    __args__['userId'] = user_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getUserS3Credentials:getUserS3Credentials', __args__, opts=opts, typ=GetUserS3CredentialsResult)
+    return __ret__.apply(lambda __response__: GetUserS3CredentialsResult(
+        access_key_ids=pulumi.get(__response__, 'access_key_ids'),
+        id=pulumi.get(__response__, 'id'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        user_id=pulumi.get(__response__, 'user_id')))

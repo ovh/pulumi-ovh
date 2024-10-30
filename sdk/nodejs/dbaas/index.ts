@@ -30,6 +30,11 @@ export const getLogsOutputGraylogStream: typeof import("./getLogsOutputGraylogSt
 export const getLogsOutputGraylogStreamOutput: typeof import("./getLogsOutputGraylogStream").getLogsOutputGraylogStreamOutput = null as any;
 utilities.lazyLoad(exports, ["getLogsOutputGraylogStream","getLogsOutputGraylogStreamOutput"], () => require("./getLogsOutputGraylogStream"));
 
+export { GetLogsOutputOpenSearchIndexArgs, GetLogsOutputOpenSearchIndexResult, GetLogsOutputOpenSearchIndexOutputArgs } from "./getLogsOutputOpenSearchIndex";
+export const getLogsOutputOpenSearchIndex: typeof import("./getLogsOutputOpenSearchIndex").getLogsOutputOpenSearchIndex = null as any;
+export const getLogsOutputOpenSearchIndexOutput: typeof import("./getLogsOutputOpenSearchIndex").getLogsOutputOpenSearchIndexOutput = null as any;
+utilities.lazyLoad(exports, ["getLogsOutputOpenSearchIndex","getLogsOutputOpenSearchIndexOutput"], () => require("./getLogsOutputOpenSearchIndex"));
+
 export { LogsClusterArgs, LogsClusterState } from "./logsCluster";
 export type LogsCluster = import("./logsCluster").LogsCluster;
 export const LogsCluster: typeof import("./logsCluster").LogsCluster = null as any;
@@ -44,6 +49,16 @@ export { LogsOutputGraylogStreamArgs, LogsOutputGraylogStreamState } from "./log
 export type LogsOutputGraylogStream = import("./logsOutputGraylogStream").LogsOutputGraylogStream;
 export const LogsOutputGraylogStream: typeof import("./logsOutputGraylogStream").LogsOutputGraylogStream = null as any;
 utilities.lazyLoad(exports, ["LogsOutputGraylogStream"], () => require("./logsOutputGraylogStream"));
+
+export { LogsOutputOpenSearchAliasArgs, LogsOutputOpenSearchAliasState } from "./logsOutputOpenSearchAlias";
+export type LogsOutputOpenSearchAlias = import("./logsOutputOpenSearchAlias").LogsOutputOpenSearchAlias;
+export const LogsOutputOpenSearchAlias: typeof import("./logsOutputOpenSearchAlias").LogsOutputOpenSearchAlias = null as any;
+utilities.lazyLoad(exports, ["LogsOutputOpenSearchAlias"], () => require("./logsOutputOpenSearchAlias"));
+
+export { LogsOutputOpenSearchIndexArgs, LogsOutputOpenSearchIndexState } from "./logsOutputOpenSearchIndex";
+export type LogsOutputOpenSearchIndex = import("./logsOutputOpenSearchIndex").LogsOutputOpenSearchIndex;
+export const LogsOutputOpenSearchIndex: typeof import("./logsOutputOpenSearchIndex").LogsOutputOpenSearchIndex = null as any;
+utilities.lazyLoad(exports, ["LogsOutputOpenSearchIndex"], () => require("./logsOutputOpenSearchIndex"));
 
 export { LogsTokenArgs, LogsTokenState } from "./logsToken";
 export type LogsToken = import("./logsToken").LogsToken;
@@ -61,6 +76,10 @@ const _module = {
                 return new LogsInput(name, <any>undefined, { urn })
             case "ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream":
                 return new LogsOutputGraylogStream(name, <any>undefined, { urn })
+            case "ovh:Dbaas/logsOutputOpenSearchAlias:LogsOutputOpenSearchAlias":
+                return new LogsOutputOpenSearchAlias(name, <any>undefined, { urn })
+            case "ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex":
+                return new LogsOutputOpenSearchIndex(name, <any>undefined, { urn })
             case "ovh:Dbaas/logsToken:LogsToken":
                 return new LogsToken(name, <any>undefined, { urn })
             default:
@@ -71,4 +90,6 @@ const _module = {
 pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsCluster", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsInput", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsOutputGraylogStream", _module)
+pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsOutputOpenSearchAlias", _module)
+pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsOutputOpenSearchIndex", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsToken", _module)

@@ -67,7 +67,7 @@ export class UdpFarm extends pulumi.CustomResource {
     /**
      * Readable label for loadbalancer farm
      */
-    public readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Id of your farm.
      */
@@ -83,7 +83,7 @@ export class UdpFarm extends pulumi.CustomResource {
     /**
      * Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
      */
-    public readonly vrackNetworkId!: pulumi.Output<number>;
+    public readonly vrackNetworkId!: pulumi.Output<number | undefined>;
     /**
      * Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
      */

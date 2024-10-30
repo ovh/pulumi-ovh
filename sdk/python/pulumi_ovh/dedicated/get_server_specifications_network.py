@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -183,9 +188,6 @@ def get_server_specifications_network(service_name: Optional[str] = None,
         traffic=pulumi.get(__ret__, 'traffic'),
         vmac=pulumi.get(__ret__, 'vmac'),
         vrack=pulumi.get(__ret__, 'vrack'))
-
-
-@_utilities.lift_output_func(get_server_specifications_network)
 def get_server_specifications_network_output(service_name: Optional[pulumi.Input[str]] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerSpecificationsNetworkResult]:
     """
@@ -203,4 +205,18 @@ def get_server_specifications_network_output(service_name: Optional[pulumi.Input
 
     :param str service_name: The internal name of your dedicated server.
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork', __args__, opts=opts, typ=GetServerSpecificationsNetworkResult)
+    return __ret__.apply(lambda __response__: GetServerSpecificationsNetworkResult(
+        bandwidth=pulumi.get(__response__, 'bandwidth'),
+        connection_val=pulumi.get(__response__, 'connection_val'),
+        id=pulumi.get(__response__, 'id'),
+        ola=pulumi.get(__response__, 'ola'),
+        routing=pulumi.get(__response__, 'routing'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        switching=pulumi.get(__response__, 'switching'),
+        traffic=pulumi.get(__response__, 'traffic'),
+        vmac=pulumi.get(__response__, 'vmac'),
+        vrack=pulumi.get(__response__, 'vrack')))

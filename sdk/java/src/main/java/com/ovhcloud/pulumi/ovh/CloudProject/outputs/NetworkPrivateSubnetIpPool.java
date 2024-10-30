@@ -15,7 +15,6 @@ public final class NetworkPrivateSubnetIpPool {
     /**
      * @return Enable DHCP.
      * Changing this forces a new resource to be created. Defaults to false.
-     * _
      * 
      */
     private @Nullable Boolean dhcp;
@@ -48,7 +47,6 @@ public final class NetworkPrivateSubnetIpPool {
     /**
      * @return Enable DHCP.
      * Changing this forces a new resource to be created. Defaults to false.
-     * _
      * 
      */
     public Optional<Boolean> dhcp() {

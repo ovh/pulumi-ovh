@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -352,9 +357,6 @@ def get_database(engine: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         status=pulumi.get(__ret__, 'status'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_database)
 def get_database_output(engine: Optional[pulumi.Input[str]] = None,
                         id: Optional[pulumi.Input[str]] = None,
                         service_name: Optional[pulumi.Input[str]] = None,
@@ -383,4 +385,32 @@ def get_database_output(engine: Optional[pulumi.Input[str]] = None,
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['engine'] = engine
+    __args__['id'] = id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getDatabase:getDatabase', __args__, opts=opts, typ=GetDatabaseResult)
+    return __ret__.apply(lambda __response__: GetDatabaseResult(
+        advanced_configuration=pulumi.get(__response__, 'advanced_configuration'),
+        backup_regions=pulumi.get(__response__, 'backup_regions'),
+        backup_time=pulumi.get(__response__, 'backup_time'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        disk_size=pulumi.get(__response__, 'disk_size'),
+        disk_type=pulumi.get(__response__, 'disk_type'),
+        endpoints=pulumi.get(__response__, 'endpoints'),
+        engine=pulumi.get(__response__, 'engine'),
+        flavor=pulumi.get(__response__, 'flavor'),
+        id=pulumi.get(__response__, 'id'),
+        ip_restrictions=pulumi.get(__response__, 'ip_restrictions'),
+        kafka_rest_api=pulumi.get(__response__, 'kafka_rest_api'),
+        kafka_schema_registry=pulumi.get(__response__, 'kafka_schema_registry'),
+        maintenance_time=pulumi.get(__response__, 'maintenance_time'),
+        network_type=pulumi.get(__response__, 'network_type'),
+        nodes=pulumi.get(__response__, 'nodes'),
+        opensearch_acls_enabled=pulumi.get(__response__, 'opensearch_acls_enabled'),
+        plan=pulumi.get(__response__, 'plan'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        status=pulumi.get(__response__, 'status'),
+        version=pulumi.get(__response__, 'version')))

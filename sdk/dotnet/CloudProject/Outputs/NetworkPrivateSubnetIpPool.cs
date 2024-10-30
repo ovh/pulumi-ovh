@@ -16,7 +16,6 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// <summary>
         /// Enable DHCP.
         /// Changing this forces a new resource to be created. Defaults to false.
-        /// _
         /// </summary>
         public readonly bool? Dhcp;
         /// <summary>

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Cloud.GetProjects(ctx, nil, nil)
+//			_, err := Cloud.GetProjects(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

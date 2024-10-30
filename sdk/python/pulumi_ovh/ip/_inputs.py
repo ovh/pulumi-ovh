@@ -4,21 +4,57 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'IpServiceOrderArgs',
+    'IpServiceOrderArgsDict',
     'IpServiceOrderDetailArgs',
+    'IpServiceOrderDetailArgsDict',
     'IpServicePlanArgs',
+    'IpServicePlanArgsDict',
     'IpServicePlanConfigurationArgs',
+    'IpServicePlanConfigurationArgsDict',
     'IpServicePlanOptionArgs',
+    'IpServicePlanOptionArgsDict',
     'IpServicePlanOptionConfigurationArgs',
+    'IpServicePlanOptionConfigurationArgsDict',
     'IpServiceRoutedToArgs',
+    'IpServiceRoutedToArgsDict',
     'MoveRoutedToArgs',
+    'MoveRoutedToArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class IpServiceOrderArgsDict(TypedDict):
+        date: NotRequired[pulumi.Input[str]]
+        """
+        date
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input['IpServiceOrderDetailArgsDict']]]]
+        """
+        Information about a Bill entry
+        """
+        expiration_date: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_id: NotRequired[pulumi.Input[int]]
+        """
+        order id
+        """
+elif False:
+    IpServiceOrderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IpServiceOrderArgs:
@@ -91,6 +127,27 @@ class IpServiceOrderArgs:
         pulumi.set(self, "order_id", value)
 
 
+if not MYPY:
+    class IpServiceOrderDetailArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Custom description on your ip.
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_detail_id: NotRequired[pulumi.Input[int]]
+        """
+        order detail id
+        """
+        quantity: NotRequired[pulumi.Input[str]]
+        """
+        quantity
+        """
+elif False:
+    IpServiceOrderDetailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IpServiceOrderDetailArgs:
     def __init__(__self__, *,
@@ -161,6 +218,31 @@ class IpServiceOrderDetailArgs:
     def quantity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "quantity", value)
 
+
+if not MYPY:
+    class IpServicePlanArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        duration
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['IpServicePlanConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product
+        """
+elif False:
+    IpServicePlanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IpServicePlanArgs:
@@ -246,6 +328,19 @@ class IpServicePlanArgs:
         pulumi.set(self, "configurations", value)
 
 
+if not MYPY:
+    class IpServicePlanConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource
+        """
+        value: pulumi.Input[str]
+        """
+        Path to the resource in API.OVH.COM
+        """
+elif False:
+    IpServicePlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IpServicePlanConfigurationArgs:
     def __init__(__self__, *,
@@ -282,6 +377,31 @@ class IpServicePlanConfigurationArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class IpServicePlanOptionArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        duration
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product
+        """
+elif False:
+    IpServicePlanOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IpServicePlanOptionArgs:
@@ -367,6 +487,19 @@ class IpServicePlanOptionArgs:
         pulumi.set(self, "configurations", value)
 
 
+if not MYPY:
+    class IpServicePlanOptionConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource
+        """
+        value: pulumi.Input[str]
+        """
+        Path to the resource in API.OVH.COM
+        """
+elif False:
+    IpServicePlanOptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IpServicePlanOptionConfigurationArgs:
     def __init__(__self__, *,
@@ -404,6 +537,15 @@ class IpServicePlanOptionConfigurationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class IpServiceRoutedToArgsDict(TypedDict):
+        service_name: NotRequired[pulumi.Input[str]]
+        """
+        service name
+        """
+elif False:
+    IpServiceRoutedToArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IpServiceRoutedToArgs:
     def __init__(__self__, *,
@@ -426,6 +568,15 @@ class IpServiceRoutedToArgs:
     def service_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_name", value)
 
+
+if not MYPY:
+    class MoveRoutedToArgsDict(TypedDict):
+        service_name: pulumi.Input[str]
+        """
+        Name of the service to route the IP to. IP will be parked if this value is an empty string
+        """
+elif False:
+    MoveRoutedToArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MoveRoutedToArgs:

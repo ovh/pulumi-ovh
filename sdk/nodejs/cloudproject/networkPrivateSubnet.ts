@@ -72,7 +72,6 @@ export class NetworkPrivateSubnet extends pulumi.CustomResource {
     /**
      * Enable DHCP.
      * Changing this forces a new resource to be created. Defaults to false.
-     * _
      */
     public readonly dhcp!: pulumi.Output<boolean | undefined>;
     /**
@@ -196,7 +195,6 @@ export interface NetworkPrivateSubnetState {
     /**
      * Enable DHCP.
      * Changing this forces a new resource to be created. Defaults to false.
-     * _
      */
     dhcp?: pulumi.Input<boolean>;
     /**
@@ -256,7 +254,6 @@ export interface NetworkPrivateSubnetArgs {
     /**
      * Enable DHCP.
      * Changing this forces a new resource to be created. Defaults to false.
-     * _
      */
     dhcp?: pulumi.Input<boolean>;
     /**

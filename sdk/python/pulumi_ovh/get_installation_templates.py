@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -76,9 +81,6 @@ def get_installation_templates(opts: Optional[pulumi.InvokeOptions] = None) -> A
     return AwaitableGetInstallationTemplatesResult(
         id=pulumi.get(__ret__, 'id'),
         results=pulumi.get(__ret__, 'results'))
-
-
-@_utilities.lift_output_func(get_installation_templates)
 def get_installation_templates_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstallationTemplatesResult]:
     """
     Use this data source to get the list of installation templates available for dedicated servers.
@@ -92,4 +94,9 @@ def get_installation_templates_output(opts: Optional[pulumi.InvokeOptions] = Non
     templates = ovh.get_installation_templates()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:index/getInstallationTemplates:getInstallationTemplates', __args__, opts=opts, typ=GetInstallationTemplatesResult)
+    return __ret__.apply(lambda __response__: GetInstallationTemplatesResult(
+        id=pulumi.get(__response__, 'id'),
+        results=pulumi.get(__response__, 'results')))

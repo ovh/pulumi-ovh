@@ -9,13 +9,31 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.
+ * Cloud project can be imported using the `project_id`.
+ *
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = ovh_cloud_project.my_cloud_project
+ *
+ *   id = "<project ID>"
+ *
+ * }
+ *
+ * You can then run:
  *
  * bash
  *
- * ```sh
- * $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
- * ```
+ * $ pulumi preview -generate-config-out=cloudproject.tf
+ *
+ * $ pulumi up
+ *
+ * The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -96,7 +114,7 @@ export class Project extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProjectArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -115,12 +133,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.ovhSubsidiary === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ovhSubsidiary'");
-            }
-            if ((!args || args.plan === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'plan'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
@@ -202,7 +214,7 @@ export interface ProjectArgs {
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
-    ovhSubsidiary: pulumi.Input<string>;
+    ovhSubsidiary?: pulumi.Input<string>;
     /**
      * Ovh payment mode
      *
@@ -212,7 +224,7 @@ export interface ProjectArgs {
     /**
      * Product Plan to order
      */
-    plan: pulumi.Input<inputs.CloudProject.ProjectPlan>;
+    plan?: pulumi.Input<inputs.CloudProject.ProjectPlan>;
     /**
      * Product Plan to order
      */

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -187,9 +192,6 @@ def get_database_integration(cluster_id: Optional[str] = None,
         source_service_id=pulumi.get(__ret__, 'source_service_id'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_database_integration)
 def get_database_integration_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                     engine: Optional[pulumi.Input[str]] = None,
                                     id: Optional[pulumi.Input[str]] = None,
@@ -219,4 +221,20 @@ def get_database_integration_output(cluster_id: Optional[pulumi.Input[str]] = No
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['engine'] = engine
+    __args__['id'] = id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration', __args__, opts=opts, typ=GetDatabaseIntegrationResult)
+    return __ret__.apply(lambda __response__: GetDatabaseIntegrationResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        destination_service_id=pulumi.get(__response__, 'destination_service_id'),
+        engine=pulumi.get(__response__, 'engine'),
+        id=pulumi.get(__response__, 'id'),
+        parameters=pulumi.get(__response__, 'parameters'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        source_service_id=pulumi.get(__response__, 'source_service_id'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type')))

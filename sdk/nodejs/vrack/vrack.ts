@@ -37,13 +37,31 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * vRack can be imported using the `service_name`.
+ * A vRack can be imported using the `service_name`.
+ *
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = ovh_vrack.vrack
+ *
+ *   id = "<service name>"
+ *
+ * }
+ *
+ * You can then run:
  *
  * bash
  *
- * ```sh
- * $ pulumi import ovh:Vrack/vrack:Vrack vrack service_name
- * ```
+ * $ pulumi preview -generate-config-out=vrack.tf
+ *
+ * $ pulumi up
+ *
+ * The file `vrack.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  */
 export class Vrack extends pulumi.CustomResource {
     /**
@@ -119,7 +137,7 @@ export class Vrack extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: VrackArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: VrackArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VrackArgs | VrackState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -136,12 +154,6 @@ export class Vrack extends pulumi.CustomResource {
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as VrackArgs | undefined;
-            if ((!args || args.ovhSubsidiary === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ovhSubsidiary'");
-            }
-            if ((!args || args.plan === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'plan'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orders"] = args ? args.orders : undefined;
@@ -220,7 +232,7 @@ export interface VrackArgs {
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
-    ovhSubsidiary: pulumi.Input<string>;
+    ovhSubsidiary?: pulumi.Input<string>;
     /**
      * Ovh payment mode
      *
@@ -230,7 +242,7 @@ export interface VrackArgs {
     /**
      * Product Plan to order
      */
-    plan: pulumi.Input<inputs.Vrack.VrackPlan>;
+    plan?: pulumi.Input<inputs.Vrack.VrackPlan>;
     /**
      * Product Plan to order
      */

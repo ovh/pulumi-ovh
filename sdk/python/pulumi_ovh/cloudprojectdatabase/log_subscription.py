@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['LogSubscriptionArgs', 'LogSubscription']
@@ -282,7 +287,7 @@ class LogSubscription(pulumi.CustomResource):
                  stream_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a log subscrition for a cluster associated with a public cloud project.
+        Creates a log subscription for a cluster associated with a public cloud project.
 
         ## Example Usage
 
@@ -330,7 +335,7 @@ class LogSubscription(pulumi.CustomResource):
                  args: LogSubscriptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a log subscrition for a cluster associated with a public cloud project.
+        Creates a log subscription for a cluster associated with a public cloud project.
 
         ## Example Usage
 

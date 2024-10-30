@@ -38,7 +38,8 @@ import * as utilities from "../utilities";
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     description: "my-first-kafka",
  *     engine: "kafka",
- *     version: "3.4",
+ *     version: "3.8",
+ *     flavor: "db1-4",
  *     plan: "business",
  *     kafkaRestApi: true,
  *     kafkaSchemaRegistry: true,
@@ -53,7 +54,6 @@ import * as utilities from "../utilities";
  *             region: "DE",
  *         },
  *     ],
- *     flavor: "db1-4",
  * });
  * const m3db = new ovh.cloudproject.Database("m3db", {
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -253,7 +253,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly backupRegions!: pulumi.Output<string[]>;
     /**
-     * Time on which backups start every day.
+     * Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
      */
     public readonly backupTime!: pulumi.Output<string>;
     /**
@@ -302,7 +302,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * Time on which maintenances can start every day.
      */
-    public /*out*/ readonly maintenanceTime!: pulumi.Output<string>;
+    public readonly maintenanceTime!: pulumi.Output<string>;
     /**
      * Type of network of the cluster.
      */
@@ -402,6 +402,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["ipRestrictions"] = args ? args.ipRestrictions : undefined;
             resourceInputs["kafkaRestApi"] = args ? args.kafkaRestApi : undefined;
             resourceInputs["kafkaSchemaRegistry"] = args ? args.kafkaSchemaRegistry : undefined;
+            resourceInputs["maintenanceTime"] = args ? args.maintenanceTime : undefined;
             resourceInputs["nodes"] = args ? args.nodes : undefined;
             resourceInputs["opensearchAclsEnabled"] = args ? args.opensearchAclsEnabled : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
@@ -410,7 +411,6 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["diskType"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
-            resourceInputs["maintenanceTime"] = undefined /*out*/;
             resourceInputs["networkType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -432,7 +432,7 @@ export interface DatabaseState {
      */
     backupRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Time on which backups start every day.
+     * Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
      */
     backupTime?: pulumi.Input<string>;
     /**
@@ -531,7 +531,7 @@ export interface DatabaseArgs {
      */
     backupRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Time on which backups start every day.
+     * Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
      */
     backupTime?: pulumi.Input<string>;
     /**
@@ -565,6 +565,10 @@ export interface DatabaseArgs {
      * Defines whether the schema registry is enabled on a Kafka cluster
      */
     kafkaSchemaRegistry?: pulumi.Input<boolean>;
+    /**
+     * Time on which maintenances can start every day.
+     */
+    maintenanceTime?: pulumi.Input<string>;
     /**
      * List of nodes object.
      * Multi region cluster are not yet available, all node should be identical.

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -322,9 +327,6 @@ def get_private_database(service_name: Optional[str] = None,
         version=pulumi.get(__ret__, 'version'),
         version_label=pulumi.get(__ret__, 'version_label'),
         version_number=pulumi.get(__ret__, 'version_number'))
-
-
-@_utilities.lift_output_func(get_private_database)
 def get_private_database_output(service_name: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateDatabaseResult]:
     """
@@ -342,4 +344,29 @@ def get_private_database_output(service_name: Optional[pulumi.Input[str]] = None
 
     :param str service_name: The internal name of your private database
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Hosting/getPrivateDatabase:getPrivateDatabase', __args__, opts=opts, typ=GetPrivateDatabaseResult)
+    return __ret__.apply(lambda __response__: GetPrivateDatabaseResult(
+        cpu=pulumi.get(__response__, 'cpu'),
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        hostname=pulumi.get(__response__, 'hostname'),
+        hostname_ftp=pulumi.get(__response__, 'hostname_ftp'),
+        id=pulumi.get(__response__, 'id'),
+        infrastructure=pulumi.get(__response__, 'infrastructure'),
+        offer=pulumi.get(__response__, 'offer'),
+        port=pulumi.get(__response__, 'port'),
+        port_ftp=pulumi.get(__response__, 'port_ftp'),
+        quota_size=pulumi.get(__response__, 'quota_size'),
+        quota_used=pulumi.get(__response__, 'quota_used'),
+        ram=pulumi.get(__response__, 'ram'),
+        server=pulumi.get(__response__, 'server'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        urn=pulumi.get(__response__, 'urn'),
+        version=pulumi.get(__response__, 'version'),
+        version_label=pulumi.get(__response__, 'version_label'),
+        version_number=pulumi.get(__response__, 'version_number')))

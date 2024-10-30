@@ -72,11 +72,11 @@ export class Ssl extends pulumi.CustomResource {
     /**
      * Certificate chain
      */
-    public readonly chain!: pulumi.Output<string>;
+    public readonly chain!: pulumi.Output<string | undefined>;
     /**
      * Readable label for loadbalancer ssl
      */
-    public readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Expire date of your SSL certificate.
      */

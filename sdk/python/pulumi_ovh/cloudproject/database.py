@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,6 +35,7 @@ class DatabaseArgs:
                  ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
                  kafka_schema_registry: Optional[pulumi.Input[bool]] = None,
+                 maintenance_time: Optional[pulumi.Input[str]] = None,
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Database resource.
@@ -50,12 +56,13 @@ class DatabaseArgs:
         :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
-        :param pulumi.Input[str] backup_time: Time on which backups start every day.
+        :param pulumi.Input[str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
+        :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         """
         pulumi.set(__self__, "engine", engine)
@@ -80,6 +87,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "kafka_rest_api", kafka_rest_api)
         if kafka_schema_registry is not None:
             pulumi.set(__self__, "kafka_schema_registry", kafka_schema_registry)
+        if maintenance_time is not None:
+            pulumi.set(__self__, "maintenance_time", maintenance_time)
         if opensearch_acls_enabled is not None:
             pulumi.set(__self__, "opensearch_acls_enabled", opensearch_acls_enabled)
 
@@ -192,7 +201,7 @@ class DatabaseArgs:
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time on which backups start every day.
+        Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         """
         return pulumi.get(self, "backup_time")
 
@@ -261,6 +270,18 @@ class DatabaseArgs:
         pulumi.set(self, "kafka_schema_registry", value)
 
     @property
+    @pulumi.getter(name="maintenanceTime")
+    def maintenance_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time on which maintenances can start every day.
+        """
+        return pulumi.get(self, "maintenance_time")
+
+    @maintenance_time.setter
+    def maintenance_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_time", value)
+
+    @property
     @pulumi.getter(name="opensearchAclsEnabled")
     def opensearch_acls_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -301,7 +322,7 @@ class _DatabaseState:
         Input properties used for looking up and filtering Database resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
-        :param pulumi.Input[str] backup_time: Time on which backups start every day.
+        :param pulumi.Input[str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         :param pulumi.Input[str] created_at: Date of the creation of the cluster.
         :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
@@ -401,7 +422,7 @@ class _DatabaseState:
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time on which backups start every day.
+        Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         """
         return pulumi.get(self, "backup_time")
 
@@ -650,6 +671,7 @@ class Database(pulumi.CustomResource):
                  ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
                  kafka_schema_registry: Optional[pulumi.Input[bool]] = None,
+                 maintenance_time: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]]] = None,
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -687,7 +709,8 @@ class Database(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-kafka",
             engine="kafka",
-            version="3.4",
+            version="3.8",
+            flavor="db1-4",
             plan="business",
             kafka_rest_api=True,
             kafka_schema_registry=True,
@@ -701,8 +724,7 @@ class Database(pulumi.CustomResource):
                 {
                     "region": "DE",
                 },
-            ],
-            flavor="db1-4")
+            ])
         m3db = ovh.cloud_project.Database("m3db",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-m3db",
@@ -859,7 +881,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
-        :param pulumi.Input[str] backup_time: Time on which backups start every day.
+        :param pulumi.Input[str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
@@ -870,6 +892,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
+        :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object.
                Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
@@ -919,7 +942,8 @@ class Database(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-kafka",
             engine="kafka",
-            version="3.4",
+            version="3.8",
+            flavor="db1-4",
             plan="business",
             kafka_rest_api=True,
             kafka_schema_registry=True,
@@ -933,8 +957,7 @@ class Database(pulumi.CustomResource):
                 {
                     "region": "DE",
                 },
-            ],
-            flavor="db1-4")
+            ])
         m3db = ovh.cloud_project.Database("m3db",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-m3db",
@@ -1112,6 +1135,7 @@ class Database(pulumi.CustomResource):
                  ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]]] = None,
                  kafka_rest_api: Optional[pulumi.Input[bool]] = None,
                  kafka_schema_registry: Optional[pulumi.Input[bool]] = None,
+                 maintenance_time: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]]] = None,
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -1140,6 +1164,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["ip_restrictions"] = ip_restrictions
             __props__.__dict__["kafka_rest_api"] = kafka_rest_api
             __props__.__dict__["kafka_schema_registry"] = kafka_schema_registry
+            __props__.__dict__["maintenance_time"] = maintenance_time
             if nodes is None and not opts.urn:
                 raise TypeError("Missing required property 'nodes'")
             __props__.__dict__["nodes"] = nodes
@@ -1156,7 +1181,6 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["disk_type"] = None
             __props__.__dict__["endpoints"] = None
-            __props__.__dict__["maintenance_time"] = None
             __props__.__dict__["network_type"] = None
             __props__.__dict__["status"] = None
         super(Database, __self__).__init__(
@@ -1199,7 +1223,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
-        :param pulumi.Input[str] backup_time: Time on which backups start every day.
+        :param pulumi.Input[str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         :param pulumi.Input[str] created_at: Date of the creation of the cluster.
         :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
@@ -1275,7 +1299,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> pulumi.Output[str]:
         """
-        Time on which backups start every day.
+        Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         """
         return pulumi.get(self, "backup_time")
 

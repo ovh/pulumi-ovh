@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -198,9 +203,6 @@ def get_nas_ha(service_name: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         zpool_capacity=pulumi.get(__ret__, 'zpool_capacity'),
         zpool_size=pulumi.get(__ret__, 'zpool_size'))
-
-
-@_utilities.lift_output_func(get_nas_ha)
 def get_nas_ha_output(service_name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNasHAResult]:
     """
@@ -218,4 +220,19 @@ def get_nas_ha_output(service_name: Optional[pulumi.Input[str]] = None,
 
     :param str service_name: The service_name of your dedicated HA-NAS.
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Dedicated/getNasHA:getNasHA', __args__, opts=opts, typ=GetNasHAResult)
+    return __ret__.apply(lambda __response__: GetNasHAResult(
+        nas_haurn=pulumi.get(__response__, 'nas_haurn'),
+        can_create_partition=pulumi.get(__response__, 'can_create_partition'),
+        custom_name=pulumi.get(__response__, 'custom_name'),
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        disk_type=pulumi.get(__response__, 'disk_type'),
+        id=pulumi.get(__response__, 'id'),
+        ip=pulumi.get(__response__, 'ip'),
+        monitored=pulumi.get(__response__, 'monitored'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        zpool_capacity=pulumi.get(__response__, 'zpool_capacity'),
+        zpool_size=pulumi.get(__response__, 'zpool_size')))

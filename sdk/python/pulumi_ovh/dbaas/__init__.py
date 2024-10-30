@@ -10,9 +10,12 @@ from .get_logs_clusters import *
 from .get_logs_clusters_retention import *
 from .get_logs_input_engine import *
 from .get_logs_output_graylog_stream import *
+from .get_logs_output_open_search_index import *
 from .logs_cluster import *
 from .logs_input import *
 from .logs_output_graylog_stream import *
+from .logs_output_open_search_alias import *
+from .logs_output_open_search_index import *
 from .logs_token import *
 from ._inputs import *
 from . import outputs

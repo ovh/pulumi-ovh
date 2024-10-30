@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -235,9 +240,6 @@ def get_load_balancer(id: Optional[str] = None,
         vip_address=pulumi.get(__ret__, 'vip_address'),
         vip_network_id=pulumi.get(__ret__, 'vip_network_id'),
         vip_subnet_id=pulumi.get(__ret__, 'vip_subnet_id'))
-
-
-@_utilities.lift_output_func(get_load_balancer)
 def get_load_balancer_output(id: Optional[pulumi.Input[str]] = None,
                              region_name: Optional[pulumi.Input[str]] = None,
                              service_name: Optional[pulumi.Input[str]] = None,
@@ -263,4 +265,23 @@ def get_load_balancer_output(id: Optional[pulumi.Input[str]] = None,
     :param str service_name: The ID of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['regionName'] = region_name
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getLoadBalancer:getLoadBalancer', __args__, opts=opts, typ=GetLoadBalancerResult)
+    return __ret__.apply(lambda __response__: GetLoadBalancerResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        flavor_id=pulumi.get(__response__, 'flavor_id'),
+        floating_ip=pulumi.get(__response__, 'floating_ip'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        operating_status=pulumi.get(__response__, 'operating_status'),
+        provisioning_status=pulumi.get(__response__, 'provisioning_status'),
+        region_name=pulumi.get(__response__, 'region_name'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        vip_address=pulumi.get(__response__, 'vip_address'),
+        vip_network_id=pulumi.get(__response__, 'vip_network_id'),
+        vip_subnet_id=pulumi.get(__response__, 'vip_subnet_id')))

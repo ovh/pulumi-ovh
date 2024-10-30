@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -258,9 +263,6 @@ def get_firewall_rule(ip: Optional[str] = None,
         source_port=pulumi.get(__ret__, 'source_port'),
         state=pulumi.get(__ret__, 'state'),
         tcp_option=pulumi.get(__ret__, 'tcp_option'))
-
-
-@_utilities.lift_output_func(get_firewall_rule)
 def get_firewall_rule_output(ip: Optional[pulumi.Input[str]] = None,
                              ip_on_firewall: Optional[pulumi.Input[str]] = None,
                              sequence: Optional[pulumi.Input[float]] = None,
@@ -284,4 +286,25 @@ def get_firewall_rule_output(ip: Optional[pulumi.Input[str]] = None,
     :param str ip_on_firewall: IPv4 address
     :param float sequence: Rule position in the rules array
     """
-    ...
+    __args__ = dict()
+    __args__['ip'] = ip
+    __args__['ipOnFirewall'] = ip_on_firewall
+    __args__['sequence'] = sequence
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Ip/getFirewallRule:getFirewallRule', __args__, opts=opts, typ=GetFirewallRuleResult)
+    return __ret__.apply(lambda __response__: GetFirewallRuleResult(
+        action=pulumi.get(__response__, 'action'),
+        creation_date=pulumi.get(__response__, 'creation_date'),
+        destination=pulumi.get(__response__, 'destination'),
+        destination_port=pulumi.get(__response__, 'destination_port'),
+        fragments=pulumi.get(__response__, 'fragments'),
+        id=pulumi.get(__response__, 'id'),
+        ip=pulumi.get(__response__, 'ip'),
+        ip_on_firewall=pulumi.get(__response__, 'ip_on_firewall'),
+        protocol=pulumi.get(__response__, 'protocol'),
+        rule=pulumi.get(__response__, 'rule'),
+        sequence=pulumi.get(__response__, 'sequence'),
+        source=pulumi.get(__response__, 'source'),
+        source_port=pulumi.get(__response__, 'source_port'),
+        state=pulumi.get(__response__, 'state'),
+        tcp_option=pulumi.get(__response__, 'tcp_option')))

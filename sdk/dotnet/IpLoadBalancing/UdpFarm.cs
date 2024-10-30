@@ -56,7 +56,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// Readable label for loadbalancer farm
         /// </summary>
         [Output("displayName")]
-        public Output<string> DisplayName { get; private set; } = null!;
+        public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// Id of your farm.
@@ -80,7 +80,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
         /// </summary>
         [Output("vrackNetworkId")]
-        public Output<double> VrackNetworkId { get; private set; } = null!;
+        public Output<double?> VrackNetworkId { get; private set; } = null!;
 
         /// <summary>
         /// Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -91,9 +96,6 @@ def get_zone_dns_sec(zone_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-
-
-@_utilities.lift_output_func(get_zone_dns_sec)
 def get_zone_dns_sec_output(zone_name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneDNSSecResult]:
     """
@@ -111,4 +113,11 @@ def get_zone_dns_sec_output(zone_name: Optional[pulumi.Input[str]] = None,
 
     :param str zone_name: The name of the domain zone
     """
-    ...
+    __args__ = dict()
+    __args__['zoneName'] = zone_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Domain/getZoneDNSSec:getZoneDNSSec', __args__, opts=opts, typ=GetZoneDNSSecResult)
+    return __ret__.apply(lambda __response__: GetZoneDNSSecResult(
+        id=pulumi.get(__response__, 'id'),
+        status=pulumi.get(__response__, 'status'),
+        zone_name=pulumi.get(__response__, 'zone_name')))

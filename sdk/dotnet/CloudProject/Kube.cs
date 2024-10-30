@@ -72,7 +72,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<Outputs.KubeKubeconfigAttribute>> KubeconfigAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// Openstack private network (or vRack) ID to use for load balancers.
+        /// Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&amp;sysparm_article=KB0062873) for more information.
         /// </summary>
         [Output("loadBalancersSubnetId")]
         public Output<string?> LoadBalancersSubnetId { get; private set; } = null!;
@@ -90,7 +90,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<string>> NextUpgradeVersions { get; private set; } = null!;
 
         /// <summary>
-        /// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        /// Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         /// </summary>
         [Output("nodesSubnetId")]
         public Output<string> NodesSubnetId { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<Outputs.KubePrivateNetworkConfiguration?> PrivateNetworkConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        /// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
         /// 
         /// &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
         /// </summary>
@@ -241,7 +241,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? KubeProxyMode { get; set; }
 
         /// <summary>
-        /// Openstack private network (or vRack) ID to use for load balancers.
+        /// Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&amp;sysparm_article=KB0062873) for more information.
         /// </summary>
         [Input("loadBalancersSubnetId")]
         public Input<string>? LoadBalancersSubnetId { get; set; }
@@ -253,7 +253,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        /// Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         /// </summary>
         [Input("nodesSubnetId")]
         public Input<string>? NodesSubnetId { get; set; }
@@ -265,7 +265,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<Inputs.KubePrivateNetworkConfigurationArgs>? PrivateNetworkConfiguration { get; set; }
 
         /// <summary>
-        /// OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        /// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
         /// 
         /// &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
         /// </summary>
@@ -386,7 +386,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Openstack private network (or vRack) ID to use for load balancers.
+        /// Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&amp;sysparm_article=KB0062873) for more information.
         /// </summary>
         [Input("loadBalancersSubnetId")]
         public Input<string>? LoadBalancersSubnetId { get; set; }
@@ -410,7 +410,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        /// Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         /// </summary>
         [Input("nodesSubnetId")]
         public Input<string>? NodesSubnetId { get; set; }
@@ -428,7 +428,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<Inputs.KubePrivateNetworkConfigurationGetArgs>? PrivateNetworkConfiguration { get; set; }
 
         /// <summary>
-        /// OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        /// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
         /// 
         /// &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
         /// </summary>
