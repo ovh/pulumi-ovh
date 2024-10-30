@@ -253,6 +253,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_network_private_subnet": {
 				Tok: ovhResource(cloudProjectMod, "NetworkPrivateSubnet"),
 			},
+			"ovh_cloud_project_network_private_subnet_v2": {
+				Tok: ovhResource(cloudProjectMod, "NetworkPrivateSubnetV2"),
+			},
 			"ovh_cloud_project_region_storage_presign": {
 				Tok: ovhResource(cloudProjectMod, "RegionStoragePresign"),
 			},
@@ -273,6 +276,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dbaas_logs_output_graylog_stream": {
 				Tok: ovhResource(dbaasMod, "LogsOutputGraylogStream"),
+			},
+			"ovh_dbaas_logs_output_opensearch_alias": {
+				Tok: ovhResource(dbaasMod, "LogsOutputOpenSearchAlias"),
+			},
+			"ovh_dbaas_logs_output_opensearch_index": {
+				Tok: ovhResource(dbaasMod, "LogsOutputOpenSearchIndex"),
 			},
 			"ovh_dedicated_ceph_acl": {
 				Tok: ovhResource(dedicatedMod, "CephAcl"),
@@ -720,6 +729,12 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_vrack": {
 				Tok: ovhDataSource(cloudProjectMod, "getVRack"),
 			},
+			"ovh_cloud_project_volume": {
+				Tok: ovhDataSource(cloudProjectMod, "getVolume"),
+			},
+			"ovh_cloud_project_volumes": {
+				Tok: ovhDataSource(cloudProjectMod, "getVolumes"),
+			},
 			"ovh_cloud_projects": {
 				Tok: ovhDataSource(cloudMod, "getProjects"),
 			},
@@ -734,6 +749,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dbaas_logs_output_graylog_stream": {
 				Tok: ovhDataSource(dbaasMod, "getLogsOutputGraylogStream"),
+			},
+			"ovh_dbaas_logs_output_opensearch_index": {
+				Tok: ovhDataSource(dbaasMod, "getLogsOutputOpenSearchIndex"),
 			},
 			"ovh_dedicated_ceph": {
 				Tok: ovhDataSource(dedicatedMod, "getCeph"),
