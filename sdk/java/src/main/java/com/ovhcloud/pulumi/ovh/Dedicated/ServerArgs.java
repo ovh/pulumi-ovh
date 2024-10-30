@@ -9,7 +9,6 @@ import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerPlanOptionArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerUserMetadataArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -117,15 +116,15 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
      * OVH subsidiaries
      * 
      */
-    @Import(name="ovhSubsidiary", required=true)
-    private Output<String> ovhSubsidiary;
+    @Import(name="ovhSubsidiary")
+    private @Nullable Output<String> ovhSubsidiary;
 
     /**
      * @return OVH subsidiaries
      * 
      */
-    public Output<String> ovhSubsidiary() {
-        return this.ovhSubsidiary;
+    public Optional<Output<String>> ovhSubsidiary() {
+        return Optional.ofNullable(this.ovhSubsidiary);
     }
 
     /**
@@ -418,7 +417,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder ovhSubsidiary(Output<String> ovhSubsidiary) {
+        public Builder ovhSubsidiary(@Nullable Output<String> ovhSubsidiary) {
             $.ovhSubsidiary = ovhSubsidiary;
             return this;
         }
@@ -617,9 +616,6 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ServerArgs build() {
-            if ($.ovhSubsidiary == null) {
-                throw new MissingRequiredPropertyException("ServerArgs", "ovhSubsidiary");
-            }
             return $;
         }
     }

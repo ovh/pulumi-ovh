@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -144,9 +149,6 @@ def get_region_load_balancer_log_subscriptions(kind: Optional[str] = None,
         region_name=pulumi.get(__ret__, 'region_name'),
         service_name=pulumi.get(__ret__, 'service_name'),
         subscription_ids=pulumi.get(__ret__, 'subscription_ids'))
-
-
-@_utilities.lift_output_func(get_region_load_balancer_log_subscriptions)
 def get_region_load_balancer_log_subscriptions_output(kind: Optional[pulumi.Input[Optional[str]]] = None,
                                                       loadbalancer_id: Optional[pulumi.Input[str]] = None,
                                                       region_name: Optional[pulumi.Input[str]] = None,
@@ -172,4 +174,17 @@ def get_region_load_balancer_log_subscriptions_output(kind: Optional[pulumi.Inpu
     :param str region_name: A valid OVHcloud public cloud region name in which the loadbalancer is available. Ex.: "GRA11".
     :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['kind'] = kind
+    __args__['loadbalancerId'] = loadbalancer_id
+    __args__['regionName'] = region_name
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions', __args__, opts=opts, typ=GetRegionLoadBalancerLogSubscriptionsResult)
+    return __ret__.apply(lambda __response__: GetRegionLoadBalancerLogSubscriptionsResult(
+        id=pulumi.get(__response__, 'id'),
+        kind=pulumi.get(__response__, 'kind'),
+        loadbalancer_id=pulumi.get(__response__, 'loadbalancer_id'),
+        region_name=pulumi.get(__response__, 'region_name'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        subscription_ids=pulumi.get(__response__, 'subscription_ids')))

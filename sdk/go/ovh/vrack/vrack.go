@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := Me.GetMe(ctx, nil, nil)
+//			myaccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -67,13 +66,31 @@ import (
 //
 // ## Import
 //
-// vRack can be imported using the `service_name`.
+// A vRack can be imported using the `service_name`.
+//
+// Using the following configuration:
+//
+// hcl
+//
+// import {
+//
+//	to = ovh_vrack.vrack
+//
+//	id = "<service name>"
+//
+// }
+//
+// You can then run:
 //
 // bash
 //
-// ```sh
-// $ pulumi import ovh:Vrack/vrack:Vrack vrack service_name
-// ```
+// $ pulumi preview -generate-config-out=vrack.tf
+//
+// $ pulumi up
+//
+// The file `vrack.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+//
+// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Vrack struct {
 	pulumi.CustomResourceState
 
@@ -103,15 +120,9 @@ type Vrack struct {
 func NewVrack(ctx *pulumi.Context,
 	name string, args *VrackArgs, opts ...pulumi.ResourceOption) (*Vrack, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &VrackArgs{}
 	}
 
-	if args.OvhSubsidiary == nil {
-		return nil, errors.New("invalid value for required argument 'OvhSubsidiary'")
-	}
-	if args.Plan == nil {
-		return nil, errors.New("invalid value for required argument 'Plan'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Vrack
 	err := ctx.RegisterResource("ovh:Vrack/vrack:Vrack", name, args, &resource, opts...)
@@ -192,13 +203,13 @@ type vrackArgs struct {
 	// Details about an Order
 	Orders []VrackOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
+	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
 	// Deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.
 	PaymentMean *string `pulumi:"paymentMean"`
 	// Product Plan to order
-	Plan VrackPlan `pulumi:"plan"`
+	Plan *VrackPlan `pulumi:"plan"`
 	// Product Plan to order
 	PlanOptions []VrackPlanOption `pulumi:"planOptions"`
 }
@@ -212,13 +223,13 @@ type VrackArgs struct {
 	// Details about an Order
 	Orders VrackOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-	OvhSubsidiary pulumi.StringInput
+	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
 	// Deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.
 	PaymentMean pulumi.StringPtrInput
 	// Product Plan to order
-	Plan VrackPlanInput
+	Plan VrackPlanPtrInput
 	// Product Plan to order
 	PlanOptions VrackPlanOptionArrayInput
 }

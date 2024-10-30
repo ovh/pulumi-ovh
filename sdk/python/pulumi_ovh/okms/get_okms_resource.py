@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -147,9 +152,6 @@ def get_okms_resource(id: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         rest_endpoint=pulumi.get(__ret__, 'rest_endpoint'),
         swagger_endpoint=pulumi.get(__ret__, 'swagger_endpoint'))
-
-
-@_utilities.lift_output_func(get_okms_resource)
 def get_okms_resource_output(id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOkmsResourceResult]:
     """
@@ -167,4 +169,15 @@ def get_okms_resource_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: Should be set to the ID of your KMS
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Okms/getOkmsResource:getOkmsResource', __args__, opts=opts, typ=GetOkmsResourceResult)
+    return __ret__.apply(lambda __response__: GetOkmsResourceResult(
+        iam=pulumi.get(__response__, 'iam'),
+        id=pulumi.get(__response__, 'id'),
+        kmip_endpoint=pulumi.get(__response__, 'kmip_endpoint'),
+        public_ca=pulumi.get(__response__, 'public_ca'),
+        region=pulumi.get(__response__, 'region'),
+        rest_endpoint=pulumi.get(__response__, 'rest_endpoint'),
+        swagger_endpoint=pulumi.get(__response__, 'swagger_endpoint')))

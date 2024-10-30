@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -347,9 +352,6 @@ def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomiza
         update_policy=pulumi.get(__ret__, 'update_policy'),
         url=pulumi.get(__ret__, 'url'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_kube)
 def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Sequence[Union['GetKubeCustomizationApiserverArgs', 'GetKubeCustomizationApiserverArgsDict']]]]] = None,
                     customization_kube_proxy: Optional[pulumi.Input[Optional[Union['GetKubeCustomizationKubeProxyArgs', 'GetKubeCustomizationKubeProxyArgsDict']]]] = None,
                     customizations: Optional[pulumi.Input[Optional[Sequence[Union['GetKubeCustomizationArgs', 'GetKubeCustomizationArgsDict']]]]] = None,
@@ -387,4 +389,37 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
     :param str update_policy: Cluster update policy. Choose between [ALWAYS_UPDATE,MINIMAL_DOWNTIME,NEVER_UPDATE]'.
     :param str version: Kubernetes version of the managed kubernetes cluster.
     """
-    ...
+    __args__ = dict()
+    __args__['customizationApiservers'] = customization_apiservers
+    __args__['customizationKubeProxy'] = customization_kube_proxy
+    __args__['customizations'] = customizations
+    __args__['kubeId'] = kube_id
+    __args__['kubeProxyMode'] = kube_proxy_mode
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['serviceName'] = service_name
+    __args__['updatePolicy'] = update_policy
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getKube:getKube', __args__, opts=opts, typ=GetKubeResult)
+    return __ret__.apply(lambda __response__: GetKubeResult(
+        control_plane_is_up_to_date=pulumi.get(__response__, 'control_plane_is_up_to_date'),
+        customization_apiservers=pulumi.get(__response__, 'customization_apiservers'),
+        customization_kube_proxy=pulumi.get(__response__, 'customization_kube_proxy'),
+        customizations=pulumi.get(__response__, 'customizations'),
+        id=pulumi.get(__response__, 'id'),
+        is_up_to_date=pulumi.get(__response__, 'is_up_to_date'),
+        kube_id=pulumi.get(__response__, 'kube_id'),
+        kube_proxy_mode=pulumi.get(__response__, 'kube_proxy_mode'),
+        load_balancers_subnet_id=pulumi.get(__response__, 'load_balancers_subnet_id'),
+        name=pulumi.get(__response__, 'name'),
+        next_upgrade_versions=pulumi.get(__response__, 'next_upgrade_versions'),
+        nodes_subnet_id=pulumi.get(__response__, 'nodes_subnet_id'),
+        nodes_url=pulumi.get(__response__, 'nodes_url'),
+        private_network_id=pulumi.get(__response__, 'private_network_id'),
+        region=pulumi.get(__response__, 'region'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        status=pulumi.get(__response__, 'status'),
+        update_policy=pulumi.get(__response__, 'update_policy'),
+        url=pulumi.get(__response__, 'url'),
+        version=pulumi.get(__response__, 'version')))

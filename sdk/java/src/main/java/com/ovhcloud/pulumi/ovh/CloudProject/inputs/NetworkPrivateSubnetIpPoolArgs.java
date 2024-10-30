@@ -19,7 +19,6 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
     /**
      * Enable DHCP.
      * Changing this forces a new resource to be created. Defaults to false.
-     * _
      * 
      */
     @Import(name="dhcp")
@@ -28,7 +27,6 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
     /**
      * @return Enable DHCP.
      * Changing this forces a new resource to be created. Defaults to false.
-     * _
      * 
      */
     public Optional<Output<Boolean>> dhcp() {
@@ -134,7 +132,6 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         /**
          * @param dhcp Enable DHCP.
          * Changing this forces a new resource to be created. Defaults to false.
-         * _
          * 
          * @return builder
          * 
@@ -147,7 +144,6 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         /**
          * @param dhcp Enable DHCP.
          * Changing this forces a new resource to be created. Defaults to false.
-         * _
          * 
          * @return builder
          * 

@@ -64,13 +64,31 @@ namespace Pulumi.Ovh.Domain
     /// 
     /// ## Import
     /// 
-    /// Zone can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the zone.
+    /// Zone can be imported using its `name`.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_domain_zone.zone
+    /// 
+    ///   id = "&lt;zone name&gt;"
+    /// 
+    /// }
+    /// 
+    /// You can then run:
     /// 
     /// bash
     /// 
-    /// ```sh
-    /// $ pulumi import ovh:Domain/zone:Zone zone order_id
-    /// ```
+    /// $ pulumi preview -generate-config-out=zone.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `zone.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:Domain/zone:Zone")]
     public partial class Zone : global::Pulumi.CustomResource
@@ -146,7 +164,7 @@ namespace Pulumi.Ovh.Domain
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Zone(string name, ZoneArgs args, CustomResourceOptions? options = null)
+        public Zone(string name, ZoneArgs? args = null, CustomResourceOptions? options = null)
             : base("ovh:Domain/zone:Zone", name, args ?? new ZoneArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -200,8 +218,8 @@ namespace Pulumi.Ovh.Domain
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
-        [Input("ovhSubsidiary", required: true)]
-        public Input<string> OvhSubsidiary { get; set; } = null!;
+        [Input("ovhSubsidiary")]
+        public Input<string>? OvhSubsidiary { get; set; }
 
         /// <summary>
         /// Ovh payment mode
@@ -212,8 +230,8 @@ namespace Pulumi.Ovh.Domain
         /// <summary>
         /// Product Plan to order
         /// </summary>
-        [Input("plan", required: true)]
-        public Input<Inputs.ZonePlanArgs> Plan { get; set; } = null!;
+        [Input("plan")]
+        public Input<Inputs.ZonePlanArgs>? Plan { get; set; }
 
         [Input("planOptions")]
         private InputList<Inputs.ZonePlanOptionArgs>? _planOptions;

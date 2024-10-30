@@ -8,7 +8,6 @@ import com.ovhcloud.pulumi.ovh.Vps.inputs.VpsPlanArgs;
 import com.ovhcloud.pulumi.ovh.Vps.inputs.VpsPlanOptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -146,15 +145,15 @@ public final class VpsArgs extends com.pulumi.resources.ResourceArgs {
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you&#39;ll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&amp;branch=v1#get-/me)
      * 
      */
-    @Import(name="ovhSubsidiary", required=true)
-    private Output<String> ovhSubsidiary;
+    @Import(name="ovhSubsidiary")
+    private @Nullable Output<String> ovhSubsidiary;
 
     /**
      * @return OVHcloud Subsidiary. Country of OVHcloud legal entity you&#39;ll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&amp;branch=v1#get-/me)
      * 
      */
-    public Output<String> ovhSubsidiary() {
-        return this.ovhSubsidiary;
+    public Optional<Output<String>> ovhSubsidiary() {
+        return Optional.ofNullable(this.ovhSubsidiary);
     }
 
     /**
@@ -461,7 +460,7 @@ public final class VpsArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder ovhSubsidiary(Output<String> ovhSubsidiary) {
+        public Builder ovhSubsidiary(@Nullable Output<String> ovhSubsidiary) {
             $.ovhSubsidiary = ovhSubsidiary;
             return this;
         }
@@ -611,9 +610,6 @@ public final class VpsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VpsArgs build() {
-            if ($.ovhSubsidiary == null) {
-                throw new MissingRequiredPropertyException("VpsArgs", "ovhSubsidiary");
-            }
             return $;
         }
     }

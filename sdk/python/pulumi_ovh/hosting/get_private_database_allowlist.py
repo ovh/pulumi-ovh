@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -170,9 +175,6 @@ def get_private_database_allowlist(ip: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         sftp=pulumi.get(__ret__, 'sftp'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_private_database_allowlist)
 def get_private_database_allowlist_output(ip: Optional[pulumi.Input[Optional[str]]] = None,
                                           service_name: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateDatabaseAllowlistResult]:
@@ -193,4 +195,18 @@ def get_private_database_allowlist_output(ip: Optional[pulumi.Input[Optional[str
     :param str ip: The whitelisted IP in your instance
     :param str service_name: The internal name of your private database
     """
-    ...
+    __args__ = dict()
+    __args__['ip'] = ip
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist', __args__, opts=opts, typ=GetPrivateDatabaseAllowlistResult)
+    return __ret__.apply(lambda __response__: GetPrivateDatabaseAllowlistResult(
+        creation_date=pulumi.get(__response__, 'creation_date'),
+        id=pulumi.get(__response__, 'id'),
+        ip=pulumi.get(__response__, 'ip'),
+        last_update=pulumi.get(__response__, 'last_update'),
+        name=pulumi.get(__response__, 'name'),
+        service=pulumi.get(__response__, 'service'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        sftp=pulumi.get(__response__, 'sftp'),
+        status=pulumi.get(__response__, 'status')))

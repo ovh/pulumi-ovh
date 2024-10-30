@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -114,9 +119,6 @@ def get_kube_nodes(kube_id: Optional[str] = None,
         kube_id=pulumi.get(__ret__, 'kube_id'),
         nodes=pulumi.get(__ret__, 'nodes'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_kube_nodes)
 def get_kube_nodes_output(kube_id: Optional[pulumi.Input[str]] = None,
                           service_name: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubeNodesResult]:
@@ -139,4 +141,13 @@ def get_kube_nodes_output(kube_id: Optional[pulumi.Input[str]] = None,
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['kubeId'] = kube_id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getKubeNodes:getKubeNodes', __args__, opts=opts, typ=GetKubeNodesResult)
+    return __ret__.apply(lambda __response__: GetKubeNodesResult(
+        id=pulumi.get(__response__, 'id'),
+        kube_id=pulumi.get(__response__, 'kube_id'),
+        nodes=pulumi.get(__response__, 'nodes'),
+        service_name=pulumi.get(__response__, 'service_name')))

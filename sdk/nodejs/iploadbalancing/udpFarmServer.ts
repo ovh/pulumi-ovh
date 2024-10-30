@@ -77,7 +77,7 @@ export class UdpFarmServer extends pulumi.CustomResource {
     /**
      * Label for the server
      */
-    public readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * ID of the farm this server is attached to
      */
@@ -85,7 +85,7 @@ export class UdpFarmServer extends pulumi.CustomResource {
     /**
      * Port that backend will respond on
      */
-    public readonly port!: pulumi.Output<number>;
+    public readonly port!: pulumi.Output<number | undefined>;
     /**
      * Id of your server.
      */

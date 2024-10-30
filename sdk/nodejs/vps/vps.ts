@@ -84,7 +84,7 @@ export class Vps extends pulumi.CustomResource {
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
      */
-    public readonly ovhSubsidiary!: pulumi.Output<string>;
+    public readonly ovhSubsidiary!: pulumi.Output<string | undefined>;
     /**
      * Product Plan to order
      */
@@ -118,7 +118,7 @@ export class Vps extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: VpsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: VpsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpsArgs | VpsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -145,9 +145,6 @@ export class Vps extends pulumi.CustomResource {
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as VpsArgs | undefined;
-            if ((!args || args.ovhSubsidiary === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ovhSubsidiary'");
-            }
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["keymap"] = args ? args.keymap : undefined;
             resourceInputs["memoryLimit"] = args ? args.memoryLimit : undefined;
@@ -291,7 +288,7 @@ export interface VpsArgs {
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
      */
-    ovhSubsidiary: pulumi.Input<string>;
+    ovhSubsidiary?: pulumi.Input<string>;
     /**
      * Product Plan to order
      */

@@ -63,7 +63,7 @@ type UdpFarm struct {
 	pulumi.CustomResourceState
 
 	// Readable label for loadbalancer farm
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Id of your farm.
 	FarmId pulumi.Float64Output `pulumi:"farmId"`
 	// Port attached to your farm ([1..49151]). Inherited from frontend if null
@@ -71,7 +71,7 @@ type UdpFarm struct {
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
-	VrackNetworkId pulumi.Float64Output `pulumi:"vrackNetworkId"`
+	VrackNetworkId pulumi.Float64PtrOutput `pulumi:"vrackNetworkId"`
 	// Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -263,8 +263,8 @@ func (o UdpFarmOutput) ToUdpFarmOutputWithContext(ctx context.Context) UdpFarmOu
 }
 
 // Readable label for loadbalancer farm
-func (o UdpFarmOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v *UdpFarm) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+func (o UdpFarmOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UdpFarm) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Id of your farm.
@@ -283,8 +283,8 @@ func (o UdpFarmOutput) ServiceName() pulumi.StringOutput {
 }
 
 // Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
-func (o UdpFarmOutput) VrackNetworkId() pulumi.Float64Output {
-	return o.ApplyT(func(v *UdpFarm) pulumi.Float64Output { return v.VrackNetworkId }).(pulumi.Float64Output)
+func (o UdpFarmOutput) VrackNetworkId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *UdpFarm) pulumi.Float64PtrOutput { return v.VrackNetworkId }).(pulumi.Float64PtrOutput)
 }
 
 // Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)

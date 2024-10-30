@@ -46,6 +46,34 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * OVHcloud IP load balancing services can be imported using its `service_name`.
+ *
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = ovh_iploadbalancing.iplb
+ *
+ *   id = "<service name>"
+ *
+ * }
+ *
+ * You can then run:
+ *
+ * bash
+ *
+ * $ pulumi preview -generate-config-out=iplb.tf
+ *
+ * $ pulumi up
+ *
+ * The file `iplb.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**
@@ -161,7 +189,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -188,12 +216,6 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if ((!args || args.ovhSubsidiary === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ovhSubsidiary'");
-            }
-            if ((!args || args.plan === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'plan'");
-            }
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
@@ -320,7 +342,7 @@ export interface LoadBalancerArgs {
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
-    ovhSubsidiary: pulumi.Input<string>;
+    ovhSubsidiary?: pulumi.Input<string>;
     /**
      * Ovh payment mode
      *
@@ -330,7 +352,7 @@ export interface LoadBalancerArgs {
     /**
      * Product Plan to order
      */
-    plan: pulumi.Input<inputs.IpLoadBalancing.LoadBalancerPlan>;
+    plan?: pulumi.Input<inputs.IpLoadBalancing.LoadBalancerPlan>;
     /**
      * Product Plan to order
      */

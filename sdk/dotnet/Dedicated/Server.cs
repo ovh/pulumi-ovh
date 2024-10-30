@@ -12,13 +12,31 @@ namespace Pulumi.Ovh.Dedicated
     /// <summary>
     /// ## Import
     /// 
-    /// Dedicated servers can be imported using the `service_name`, e.g.:
+    /// Dedicated servers can be imported using the `service_name`.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_dedicated_server.server
+    /// 
+    ///   id = "&lt;service name&gt;"
+    /// 
+    /// }
+    /// 
+    /// You can then run:
     /// 
     /// bash
     /// 
-    /// ```sh
-    /// $ pulumi import ovh:Dedicated/server:Server server service_name
-    /// ```
+    /// $ pulumi preview -generate-config-out=dedicated.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:Dedicated/server:Server")]
     public partial class Server : global::Pulumi.CustomResource
@@ -120,7 +138,7 @@ namespace Pulumi.Ovh.Dedicated
         /// OVH subsidiaries
         /// </summary>
         [Output("ovhSubsidiary")]
-        public Output<string> OvhSubsidiary { get; private set; } = null!;
+        public Output<string?> OvhSubsidiary { get; private set; } = null!;
 
         /// <summary>
         /// Partition scheme name
@@ -226,7 +244,7 @@ namespace Pulumi.Ovh.Dedicated
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Server(string name, ServerArgs args, CustomResourceOptions? options = null)
+        public Server(string name, ServerArgs? args = null, CustomResourceOptions? options = null)
             : base("ovh:Dedicated/server:Server", name, args ?? new ServerArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -304,8 +322,8 @@ namespace Pulumi.Ovh.Dedicated
         /// <summary>
         /// OVH subsidiaries
         /// </summary>
-        [Input("ovhSubsidiary", required: true)]
-        public Input<string> OvhSubsidiary { get; set; } = null!;
+        [Input("ovhSubsidiary")]
+        public Input<string>? OvhSubsidiary { get; set; }
 
         /// <summary>
         /// Partition scheme name

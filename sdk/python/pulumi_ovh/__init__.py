@@ -198,6 +198,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProject/networkPrivateSubnetV2",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2": "NetworkPrivateSubnetV2"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProject/project",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
@@ -402,6 +410,22 @@ _utilities.register(
   "fqn": "pulumi_ovh.dbaas",
   "classes": {
    "ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream": "LogsOutputGraylogStream"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Dbaas/logsOutputOpenSearchAlias",
+  "fqn": "pulumi_ovh.dbaas",
+  "classes": {
+   "ovh:Dbaas/logsOutputOpenSearchAlias:LogsOutputOpenSearchAlias": "LogsOutputOpenSearchAlias"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Dbaas/logsOutputOpenSearchIndex",
+  "fqn": "pulumi_ovh.dbaas",
+  "classes": {
+   "ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex": "LogsOutputOpenSearchIndex"
   }
  },
  {

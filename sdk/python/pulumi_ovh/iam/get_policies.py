@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -76,9 +81,6 @@ def get_policies(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPol
     return AwaitableGetPoliciesResult(
         id=pulumi.get(__ret__, 'id'),
         policies=pulumi.get(__ret__, 'policies'))
-
-
-@_utilities.lift_output_func(get_policies)
 def get_policies_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoliciesResult]:
     """
     Use this data source to list the existing IAM policies of an account.
@@ -92,4 +94,9 @@ def get_policies_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
     my_policies = ovh.Iam.get_policies()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getPolicies:getPolicies', __args__, opts=opts, typ=GetPoliciesResult)
+    return __ret__.apply(lambda __response__: GetPoliciesResult(
+        id=pulumi.get(__response__, 'id'),
+        policies=pulumi.get(__response__, 'policies')))

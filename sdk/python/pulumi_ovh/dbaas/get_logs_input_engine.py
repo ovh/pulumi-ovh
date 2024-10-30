@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -120,9 +125,6 @@ def get_logs_input_engine(is_deprecated: Optional[bool] = None,
         name=pulumi.get(__ret__, 'name'),
         service_name=pulumi.get(__ret__, 'service_name'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_logs_input_engine)
 def get_logs_input_engine_output(is_deprecated: Optional[pulumi.Input[Optional[bool]]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
                                  service_name: Optional[pulumi.Input[str]] = None,
@@ -149,4 +151,16 @@ def get_logs_input_engine_output(is_deprecated: Optional[pulumi.Input[Optional[b
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
     :param str version: Software version
     """
-    ...
+    __args__ = dict()
+    __args__['isDeprecated'] = is_deprecated
+    __args__['name'] = name
+    __args__['serviceName'] = service_name
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsInputEngine:getLogsInputEngine', __args__, opts=opts, typ=GetLogsInputEngineResult)
+    return __ret__.apply(lambda __response__: GetLogsInputEngineResult(
+        id=pulumi.get(__response__, 'id'),
+        is_deprecated=pulumi.get(__response__, 'is_deprecated'),
+        name=pulumi.get(__response__, 'name'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        version=pulumi.get(__response__, 'version')))

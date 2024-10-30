@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+ * Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
  *
  * ## Example Usage
  *
@@ -76,7 +76,7 @@ export interface GetDatabaseLogSubscriptionsResult {
     readonly subscriptionIds: string[];
 }
 /**
- * Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+ * Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
  *
  * ## Example Usage
  *

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -213,9 +218,6 @@ def get_database_log_subscription(cluster_id: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         stream_id=pulumi.get(__ret__, 'stream_id'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-
-
-@_utilities.lift_output_func(get_database_log_subscription)
 def get_database_log_subscription_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                          engine: Optional[pulumi.Input[str]] = None,
                                          id: Optional[pulumi.Input[str]] = None,
@@ -245,4 +247,22 @@ def get_database_log_subscription_output(cluster_id: Optional[pulumi.Input[str]]
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['engine'] = engine
+    __args__['id'] = id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription', __args__, opts=opts, typ=GetDatabaseLogSubscriptionResult)
+    return __ret__.apply(lambda __response__: GetDatabaseLogSubscriptionResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        engine=pulumi.get(__response__, 'engine'),
+        id=pulumi.get(__response__, 'id'),
+        kind=pulumi.get(__response__, 'kind'),
+        ldp_service_name=pulumi.get(__response__, 'ldp_service_name'),
+        resource_name=pulumi.get(__response__, 'resource_name'),
+        resource_type=pulumi.get(__response__, 'resource_type'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        stream_id=pulumi.get(__response__, 'stream_id'),
+        updated_at=pulumi.get(__response__, 'updated_at')))

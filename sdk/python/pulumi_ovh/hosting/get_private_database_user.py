@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -119,9 +124,6 @@ def get_private_database_user(service_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         service_name=pulumi.get(__ret__, 'service_name'),
         user_name=pulumi.get(__ret__, 'user_name'))
-
-
-@_utilities.lift_output_func(get_private_database_user)
 def get_private_database_user_output(service_name: Optional[pulumi.Input[str]] = None,
                                      user_name: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateDatabaseUserResult]:
@@ -142,4 +144,14 @@ def get_private_database_user_output(service_name: Optional[pulumi.Input[str]] =
     :param str service_name: The internal name of your private database
     :param str user_name: User name
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    __args__['userName'] = user_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser', __args__, opts=opts, typ=GetPrivateDatabaseUserResult)
+    return __ret__.apply(lambda __response__: GetPrivateDatabaseUserResult(
+        creation_date=pulumi.get(__response__, 'creation_date'),
+        databases=pulumi.get(__response__, 'databases'),
+        id=pulumi.get(__response__, 'id'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        user_name=pulumi.get(__response__, 'user_name')))

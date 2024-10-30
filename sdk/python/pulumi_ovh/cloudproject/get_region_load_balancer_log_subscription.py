@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -223,9 +228,6 @@ def get_region_load_balancer_log_subscription(loadbalancer_id: Optional[str] = N
         stream_id=pulumi.get(__ret__, 'stream_id'),
         subscription_id=pulumi.get(__ret__, 'subscription_id'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-
-
-@_utilities.lift_output_func(get_region_load_balancer_log_subscription)
 def get_region_load_balancer_log_subscription_output(loadbalancer_id: Optional[pulumi.Input[str]] = None,
                                                      region_name: Optional[pulumi.Input[str]] = None,
                                                      service_name: Optional[pulumi.Input[str]] = None,
@@ -252,4 +254,23 @@ def get_region_load_balancer_log_subscription_output(loadbalancer_id: Optional[p
     :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     :param str subscription_id: Subscription id
     """
-    ...
+    __args__ = dict()
+    __args__['loadbalancerId'] = loadbalancer_id
+    __args__['regionName'] = region_name
+    __args__['serviceName'] = service_name
+    __args__['subscriptionId'] = subscription_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getRegionLoadBalancerLogSubscription:getRegionLoadBalancerLogSubscription', __args__, opts=opts, typ=GetRegionLoadBalancerLogSubscriptionResult)
+    return __ret__.apply(lambda __response__: GetRegionLoadBalancerLogSubscriptionResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        id=pulumi.get(__response__, 'id'),
+        kind=pulumi.get(__response__, 'kind'),
+        ldp_service_name=pulumi.get(__response__, 'ldp_service_name'),
+        loadbalancer_id=pulumi.get(__response__, 'loadbalancer_id'),
+        region_name=pulumi.get(__response__, 'region_name'),
+        resource_name=pulumi.get(__response__, 'resource_name'),
+        resource_type=pulumi.get(__response__, 'resource_type'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        stream_id=pulumi.get(__response__, 'stream_id'),
+        subscription_id=pulumi.get(__response__, 'subscription_id'),
+        updated_at=pulumi.get(__response__, 'updated_at')))

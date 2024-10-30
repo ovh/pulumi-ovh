@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -283,9 +288,6 @@ def get_vps(service_name: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         vcore=pulumi.get(__ret__, 'vcore'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_vps)
 def get_vps_output(service_name: Optional[pulumi.Input[str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpsResult]:
     """
@@ -303,4 +305,26 @@ def get_vps_output(service_name: Optional[pulumi.Input[str]] = None,
 
     :param str service_name: The service_name of your dedicated server.
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Vps/getVps:getVps', __args__, opts=opts, typ=GetVpsResult)
+    return __ret__.apply(lambda __response__: GetVpsResult(
+        vps_urn=pulumi.get(__response__, 'vps_urn'),
+        cluster=pulumi.get(__response__, 'cluster'),
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        displayname=pulumi.get(__response__, 'displayname'),
+        id=pulumi.get(__response__, 'id'),
+        ips=pulumi.get(__response__, 'ips'),
+        keymap=pulumi.get(__response__, 'keymap'),
+        memory=pulumi.get(__response__, 'memory'),
+        model=pulumi.get(__response__, 'model'),
+        name=pulumi.get(__response__, 'name'),
+        netbootmode=pulumi.get(__response__, 'netbootmode'),
+        offertype=pulumi.get(__response__, 'offertype'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        slamonitoring=pulumi.get(__response__, 'slamonitoring'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        vcore=pulumi.get(__response__, 'vcore'),
+        zone=pulumi.get(__response__, 'zone')))

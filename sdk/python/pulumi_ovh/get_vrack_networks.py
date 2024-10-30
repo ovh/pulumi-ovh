@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -118,9 +123,6 @@ def get_vrack_networks(service_name: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         subnet=pulumi.get(__ret__, 'subnet'),
         vlan_id=pulumi.get(__ret__, 'vlan_id'))
-
-
-@_utilities.lift_output_func(get_vrack_networks)
 def get_vrack_networks_output(service_name: Optional[pulumi.Input[str]] = None,
                               subnet: Optional[pulumi.Input[Optional[str]]] = None,
                               vlan_id: Optional[pulumi.Input[Optional[int]]] = None,
@@ -143,4 +145,15 @@ def get_vrack_networks_output(service_name: Optional[pulumi.Input[str]] = None,
     :param str subnet: Filters networks on the subnet.
     :param int vlan_id: Filters networks on the vlan id.
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    __args__['subnet'] = subnet
+    __args__['vlanId'] = vlan_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:index/getVrackNetworks:getVrackNetworks', __args__, opts=opts, typ=GetVrackNetworksResult)
+    return __ret__.apply(lambda __response__: GetVrackNetworksResult(
+        id=pulumi.get(__response__, 'id'),
+        results=pulumi.get(__response__, 'results'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        subnet=pulumi.get(__response__, 'subnet'),
+        vlan_id=pulumi.get(__response__, 'vlan_id')))

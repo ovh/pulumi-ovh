@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -144,9 +149,6 @@ def get_vrack_network(service_name: Optional[str] = None,
         subnet=pulumi.get(__ret__, 'subnet'),
         vlan=pulumi.get(__ret__, 'vlan'),
         vrack_network_id=pulumi.get(__ret__, 'vrack_network_id'))
-
-
-@_utilities.lift_output_func(get_vrack_network)
 def get_vrack_network_output(service_name: Optional[pulumi.Input[str]] = None,
                              vrack_network_id: Optional[pulumi.Input[int]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVrackNetworkResult]:
@@ -167,4 +169,16 @@ def get_vrack_network_output(service_name: Optional[pulumi.Input[str]] = None,
     :param str service_name: The internal name of your IP load balancing
     :param int vrack_network_id: Internal Load Balancer identifier of the vRack private network
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    __args__['vrackNetworkId'] = vrack_network_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork', __args__, opts=opts, typ=GetVrackNetworkResult)
+    return __ret__.apply(lambda __response__: GetVrackNetworkResult(
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        nat_ip=pulumi.get(__response__, 'nat_ip'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        subnet=pulumi.get(__response__, 'subnet'),
+        vlan=pulumi.get(__response__, 'vlan'),
+        vrack_network_id=pulumi.get(__response__, 'vrack_network_id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,11 +42,11 @@ class KubeArgs:
         :param pulumi.Input['KubeCustomizationKubeProxyArgs'] customization_kube_proxy: Kubernetes kube-proxy customization
         :param pulumi.Input[Sequence[pulumi.Input['KubeCustomizationArgs']]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
         :param pulumi.Input[str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
-        :param pulumi.Input[str] load_balancers_subnet_id: Openstack private network (or vRack) ID to use for load balancers.
+        :param pulumi.Input[str] load_balancers_subnet_id: Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
         :param pulumi.Input[str] name: The name of the kubernetes cluster.
-        :param pulumi.Input[str] nodes_subnet_id: Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        :param pulumi.Input[str] nodes_subnet_id: Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         :param pulumi.Input['KubePrivateNetworkConfigurationArgs'] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
-        :param pulumi.Input[str] private_network_id: OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        :param pulumi.Input[str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
         :param pulumi.Input[str] update_policy: Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
@@ -152,7 +157,7 @@ class KubeArgs:
     @pulumi.getter(name="loadBalancersSubnetId")
     def load_balancers_subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Openstack private network (or vRack) ID to use for load balancers.
+        Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
         """
         return pulumi.get(self, "load_balancers_subnet_id")
 
@@ -176,7 +181,7 @@ class KubeArgs:
     @pulumi.getter(name="nodesSubnetId")
     def nodes_subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         """
         return pulumi.get(self, "nodes_subnet_id")
 
@@ -200,7 +205,7 @@ class KubeArgs:
     @pulumi.getter(name="privateNetworkId")
     def private_network_id(self) -> Optional[pulumi.Input[str]]:
         """
-        OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 
         > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
         """
@@ -269,13 +274,13 @@ class _KubeState:
         :param pulumi.Input[str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
         :param pulumi.Input[str] kubeconfig: The kubeconfig file. Use this file to connect to your kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input['KubeKubeconfigAttributeArgs']]] kubeconfig_attributes: The kubeconfig file attributes.
-        :param pulumi.Input[str] load_balancers_subnet_id: Openstack private network (or vRack) ID to use for load balancers.
+        :param pulumi.Input[str] load_balancers_subnet_id: Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
         :param pulumi.Input[str] name: The name of the kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] next_upgrade_versions: Kubernetes versions available for upgrade.
-        :param pulumi.Input[str] nodes_subnet_id: Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        :param pulumi.Input[str] nodes_subnet_id: Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         :param pulumi.Input[str] nodes_url: Cluster nodes URL.
         :param pulumi.Input['KubePrivateNetworkConfigurationArgs'] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
-        :param pulumi.Input[str] private_network_id: OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        :param pulumi.Input[str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
         :param pulumi.Input[str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
@@ -432,7 +437,7 @@ class _KubeState:
     @pulumi.getter(name="loadBalancersSubnetId")
     def load_balancers_subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Openstack private network (or vRack) ID to use for load balancers.
+        Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
         """
         return pulumi.get(self, "load_balancers_subnet_id")
 
@@ -468,7 +473,7 @@ class _KubeState:
     @pulumi.getter(name="nodesSubnetId")
     def nodes_subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         """
         return pulumi.get(self, "nodes_subnet_id")
 
@@ -504,7 +509,7 @@ class _KubeState:
     @pulumi.getter(name="privateNetworkId")
     def private_network_id(self) -> Optional[pulumi.Input[str]]:
         """
-        OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 
         > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
         """
@@ -623,11 +628,11 @@ class Kube(pulumi.CustomResource):
         :param pulumi.Input[Union['KubeCustomizationKubeProxyArgs', 'KubeCustomizationKubeProxyArgsDict']] customization_kube_proxy: Kubernetes kube-proxy customization
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationArgs', 'KubeCustomizationArgsDict']]]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
         :param pulumi.Input[str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
-        :param pulumi.Input[str] load_balancers_subnet_id: Openstack private network (or vRack) ID to use for load balancers.
+        :param pulumi.Input[str] load_balancers_subnet_id: Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
         :param pulumi.Input[str] name: The name of the kubernetes cluster.
-        :param pulumi.Input[str] nodes_subnet_id: Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        :param pulumi.Input[str] nodes_subnet_id: Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         :param pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
-        :param pulumi.Input[str] private_network_id: OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        :param pulumi.Input[str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
         :param pulumi.Input[str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
@@ -762,13 +767,13 @@ class Kube(pulumi.CustomResource):
         :param pulumi.Input[str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
         :param pulumi.Input[str] kubeconfig: The kubeconfig file. Use this file to connect to your kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubeKubeconfigAttributeArgs', 'KubeKubeconfigAttributeArgsDict']]]] kubeconfig_attributes: The kubeconfig file attributes.
-        :param pulumi.Input[str] load_balancers_subnet_id: Openstack private network (or vRack) ID to use for load balancers.
+        :param pulumi.Input[str] load_balancers_subnet_id: Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
         :param pulumi.Input[str] name: The name of the kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] next_upgrade_versions: Kubernetes versions available for upgrade.
-        :param pulumi.Input[str] nodes_subnet_id: Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        :param pulumi.Input[str] nodes_subnet_id: Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         :param pulumi.Input[str] nodes_url: Cluster nodes URL.
         :param pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
-        :param pulumi.Input[str] private_network_id: OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        :param pulumi.Input[str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
         :param pulumi.Input[str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
@@ -874,7 +879,7 @@ class Kube(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancersSubnetId")
     def load_balancers_subnet_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Openstack private network (or vRack) ID to use for load balancers.
+        Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
         """
         return pulumi.get(self, "load_balancers_subnet_id")
 
@@ -898,7 +903,7 @@ class Kube(pulumi.CustomResource):
     @pulumi.getter(name="nodesSubnetId")
     def nodes_subnet_id(self) -> pulumi.Output[str]:
         """
-        Openstack private network (or vRack) ID to use for nodes. **Cannot be updated, it can only be used at cluster creation or reset.**
+        Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         """
         return pulumi.get(self, "nodes_subnet_id")
 
@@ -922,7 +927,7 @@ class Kube(pulumi.CustomResource):
     @pulumi.getter(name="privateNetworkId")
     def private_network_id(self) -> pulumi.Output[Optional[str]]:
         """
-        OpenStack private network (or vRack) ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 
         > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
         """

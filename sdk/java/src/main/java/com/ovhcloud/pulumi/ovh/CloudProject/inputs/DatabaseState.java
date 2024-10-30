@@ -53,14 +53,14 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time on which backups start every day.
+     * Time on which backups start every day (this parameter is not usable on the following engines: &#34;m3db&#34;, &#34;grafana&#34;, &#34;kafka&#34;, &#34;kafkaconnect&#34;, &#34;kafkamirrormaker&#34;, &#34;opensearch&#34;, &#34;m3aggregator&#34;).
      * 
      */
     @Import(name="backupTime")
     private @Nullable Output<String> backupTime;
 
     /**
-     * @return Time on which backups start every day.
+     * @return Time on which backups start every day (this parameter is not usable on the following engines: &#34;m3db&#34;, &#34;grafana&#34;, &#34;kafka&#34;, &#34;kafkaconnect&#34;, &#34;kafkamirrormaker&#34;, &#34;opensearch&#34;, &#34;m3aggregator&#34;).
      * 
      */
     public Optional<Output<String>> backupTime() {
@@ -452,7 +452,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupTime Time on which backups start every day.
+         * @param backupTime Time on which backups start every day (this parameter is not usable on the following engines: &#34;m3db&#34;, &#34;grafana&#34;, &#34;kafka&#34;, &#34;kafkaconnect&#34;, &#34;kafkamirrormaker&#34;, &#34;opensearch&#34;, &#34;m3aggregator&#34;).
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupTime Time on which backups start every day.
+         * @param backupTime Time on which backups start every day (this parameter is not usable on the following engines: &#34;m3db&#34;, &#34;grafana&#34;, &#34;kafka&#34;, &#34;kafkaconnect&#34;, &#34;kafkamirrormaker&#34;, &#34;opensearch&#34;, &#34;m3aggregator&#34;).
          * 
          * @return builder
          * 

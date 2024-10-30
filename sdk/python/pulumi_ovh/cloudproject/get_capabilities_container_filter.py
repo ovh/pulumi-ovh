@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -186,9 +191,6 @@ def get_capabilities_container_filter(plan_name: Optional[str] = None,
         registry_limits=pulumi.get(__ret__, 'registry_limits'),
         service_name=pulumi.get(__ret__, 'service_name'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-
-
-@_utilities.lift_output_func(get_capabilities_container_filter)
 def get_capabilities_container_filter_output(plan_name: Optional[pulumi.Input[str]] = None,
                                              region: Optional[pulumi.Input[str]] = None,
                                              service_name: Optional[pulumi.Input[str]] = None,
@@ -213,4 +215,20 @@ def get_capabilities_container_filter_output(plan_name: Optional[pulumi.Input[st
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['planName'] = plan_name
+    __args__['region'] = region
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter', __args__, opts=opts, typ=GetCapabilitiesContainerFilterResult)
+    return __ret__.apply(lambda __response__: GetCapabilitiesContainerFilterResult(
+        code=pulumi.get(__response__, 'code'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        features=pulumi.get(__response__, 'features'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        plan_name=pulumi.get(__response__, 'plan_name'),
+        region=pulumi.get(__response__, 'region'),
+        registry_limits=pulumi.get(__response__, 'registry_limits'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        updated_at=pulumi.get(__response__, 'updated_at')))

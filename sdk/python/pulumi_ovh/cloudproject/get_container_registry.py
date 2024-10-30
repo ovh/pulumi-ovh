@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -210,9 +215,6 @@ def get_container_registry(registry_id: Optional[str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         url=pulumi.get(__ret__, 'url'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_container_registry)
 def get_container_registry_output(registry_id: Optional[pulumi.Input[str]] = None,
                                   service_name: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRegistryResult]:
@@ -234,4 +236,21 @@ def get_container_registry_output(registry_id: Optional[pulumi.Input[str]] = Non
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['registryId'] = registry_id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getContainerRegistry:getContainerRegistry', __args__, opts=opts, typ=GetContainerRegistryResult)
+    return __ret__.apply(lambda __response__: GetContainerRegistryResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        registry_id=pulumi.get(__response__, 'registry_id'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        size=pulumi.get(__response__, 'size'),
+        status=pulumi.get(__response__, 'status'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        url=pulumi.get(__response__, 'url'),
+        version=pulumi.get(__response__, 'version')))

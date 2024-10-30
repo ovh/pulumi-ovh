@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Iam.GetReferenceResourceType(ctx, nil, nil)
+//			_, err := Iam.GetReferenceResourceType(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

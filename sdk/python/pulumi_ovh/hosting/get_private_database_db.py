@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -145,9 +150,6 @@ def get_private_database_db(database_name: Optional[str] = None,
         quota_used=pulumi.get(__ret__, 'quota_used'),
         service_name=pulumi.get(__ret__, 'service_name'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_private_database_db)
 def get_private_database_db_output(database_name: Optional[pulumi.Input[str]] = None,
                                    service_name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateDatabaseDbResult]:
@@ -168,4 +170,16 @@ def get_private_database_db_output(database_name: Optional[pulumi.Input[str]] = 
     :param str database_name: Database name
     :param str service_name: The internal name of your private database
     """
-    ...
+    __args__ = dict()
+    __args__['databaseName'] = database_name
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Hosting/getPrivateDatabaseDb:getPrivateDatabaseDb', __args__, opts=opts, typ=GetPrivateDatabaseDbResult)
+    return __ret__.apply(lambda __response__: GetPrivateDatabaseDbResult(
+        backup_time=pulumi.get(__response__, 'backup_time'),
+        creation_date=pulumi.get(__response__, 'creation_date'),
+        database_name=pulumi.get(__response__, 'database_name'),
+        id=pulumi.get(__response__, 'id'),
+        quota_used=pulumi.get(__response__, 'quota_used'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        users=pulumi.get(__response__, 'users')))

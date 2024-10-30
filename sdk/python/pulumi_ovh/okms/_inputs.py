@@ -4,14 +4,43 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'OkmsIamArgs',
+    'OkmsIamArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class OkmsIamArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        (String) Resource display name
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        (String) Unique identifier of the resource
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        urn: NotRequired[pulumi.Input[str]]
+        """
+        (String) Unique resource name used in policies
+        """
+elif False:
+    OkmsIamArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OkmsIamArgs:

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,7 +45,6 @@ class NetworkPrivateSubnetArgs:
                Changing this value recreates the subnet.
         :param pulumi.Input[bool] dhcp: Enable DHCP.
                Changing this forces a new resource to be created. Defaults to false.
-               _
         :param pulumi.Input[bool] no_gateway: Set to true if you don't want to set a default gateway IP.
                Changing this value recreates the resource. Defaults to false.
         """
@@ -139,7 +143,6 @@ class NetworkPrivateSubnetArgs:
         """
         Enable DHCP.
         Changing this forces a new resource to be created. Defaults to false.
-        _
         """
         return pulumi.get(self, "dhcp")
 
@@ -180,7 +183,6 @@ class _NetworkPrivateSubnetState:
         :param pulumi.Input[str] cidr: Ip Block representing the subnet cidr.
         :param pulumi.Input[bool] dhcp: Enable DHCP.
                Changing this forces a new resource to be created. Defaults to false.
-               _
         :param pulumi.Input[str] end: Last ip for this region.
                Changing this value recreates the subnet.
         :param pulumi.Input[str] gateway_ip: The IP of the gateway
@@ -244,7 +246,6 @@ class _NetworkPrivateSubnetState:
         """
         Enable DHCP.
         Changing this forces a new resource to be created. Defaults to false.
-        _
         """
         return pulumi.get(self, "dhcp")
 
@@ -421,7 +422,6 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dhcp: Enable DHCP.
                Changing this forces a new resource to be created. Defaults to false.
-               _
         :param pulumi.Input[str] end: Last ip for this region.
                Changing this value recreates the subnet.
         :param pulumi.Input[str] network: Global network in CIDR format.
@@ -559,7 +559,6 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
         :param pulumi.Input[str] cidr: Ip Block representing the subnet cidr.
         :param pulumi.Input[bool] dhcp: Enable DHCP.
                Changing this forces a new resource to be created. Defaults to false.
-               _
         :param pulumi.Input[str] end: Last ip for this region.
                Changing this value recreates the subnet.
         :param pulumi.Input[str] gateway_ip: The IP of the gateway
@@ -613,7 +612,6 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
         """
         Enable DHCP.
         Changing this forces a new resource to be created. Defaults to false.
-        _
         """
         return pulumi.get(self, "dhcp")
 

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -76,9 +81,6 @@ def get_apio_auth2_clients(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     return AwaitableGetAPIOAuth2ClientsResult(
         client_ids=pulumi.get(__ret__, 'client_ids'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_apio_auth2_clients)
 def get_apio_auth2_clients_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAPIOAuth2ClientsResult]:
     """
     Use this data source to retrieve information the list of existing OAuth2 service account IDs.
@@ -92,4 +94,9 @@ def get_apio_auth2_clients_output(opts: Optional[pulumi.InvokeOptions] = None) -
     my_oauth2_clients = ovh.Me.get_apio_auth2_client()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Me/getAPIOAuth2Clients:getAPIOAuth2Clients', __args__, opts=opts, typ=GetAPIOAuth2ClientsResult)
+    return __ret__.apply(lambda __response__: GetAPIOAuth2ClientsResult(
+        client_ids=pulumi.get(__response__, 'client_ids'),
+        id=pulumi.get(__response__, 'id')))

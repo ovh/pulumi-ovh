@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -173,9 +178,6 @@ def get_service(service_name: Optional[str] = None,
         routed_tos=pulumi.get(__ret__, 'routed_tos'),
         service_name=pulumi.get(__ret__, 'service_name'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_service)
 def get_service_output(service_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
     """
@@ -193,4 +195,17 @@ def get_service_output(service_name: Optional[pulumi.Input[str]] = None,
 
     :param str service_name: The service name
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Ip/getService:getService', __args__, opts=opts, typ=GetServiceResult)
+    return __ret__.apply(lambda __response__: GetServiceResult(
+        can_be_terminated=pulumi.get(__response__, 'can_be_terminated'),
+        country=pulumi.get(__response__, 'country'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        ip=pulumi.get(__response__, 'ip'),
+        organisation_id=pulumi.get(__response__, 'organisation_id'),
+        routed_tos=pulumi.get(__response__, 'routed_tos'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        type=pulumi.get(__response__, 'type')))

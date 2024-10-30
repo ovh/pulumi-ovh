@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -243,9 +248,6 @@ def get_container_registry_oidc(oidc_admin_group: Optional[str] = None,
         oidc_verify_cert=pulumi.get(__ret__, 'oidc_verify_cert'),
         registry_id=pulumi.get(__ret__, 'registry_id'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_container_registry_oidc)
 def get_container_registry_oidc_output(oidc_admin_group: Optional[pulumi.Input[Optional[str]]] = None,
                                        oidc_auto_onboard: Optional[pulumi.Input[Optional[bool]]] = None,
                                        oidc_client_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -285,4 +287,30 @@ def get_container_registry_oidc_output(oidc_admin_group: Optional[pulumi.Input[O
     :param str registry_id: The id of the Managed Private Registry.
     :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['oidcAdminGroup'] = oidc_admin_group
+    __args__['oidcAutoOnboard'] = oidc_auto_onboard
+    __args__['oidcClientId'] = oidc_client_id
+    __args__['oidcEndpoint'] = oidc_endpoint
+    __args__['oidcGroupsClaim'] = oidc_groups_claim
+    __args__['oidcName'] = oidc_name
+    __args__['oidcScope'] = oidc_scope
+    __args__['oidcUserClaim'] = oidc_user_claim
+    __args__['oidcVerifyCert'] = oidc_verify_cert
+    __args__['registryId'] = registry_id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC', __args__, opts=opts, typ=GetContainerRegistryOIDCResult)
+    return __ret__.apply(lambda __response__: GetContainerRegistryOIDCResult(
+        id=pulumi.get(__response__, 'id'),
+        oidc_admin_group=pulumi.get(__response__, 'oidc_admin_group'),
+        oidc_auto_onboard=pulumi.get(__response__, 'oidc_auto_onboard'),
+        oidc_client_id=pulumi.get(__response__, 'oidc_client_id'),
+        oidc_endpoint=pulumi.get(__response__, 'oidc_endpoint'),
+        oidc_groups_claim=pulumi.get(__response__, 'oidc_groups_claim'),
+        oidc_name=pulumi.get(__response__, 'oidc_name'),
+        oidc_scope=pulumi.get(__response__, 'oidc_scope'),
+        oidc_user_claim=pulumi.get(__response__, 'oidc_user_claim'),
+        oidc_verify_cert=pulumi.get(__response__, 'oidc_verify_cert'),
+        registry_id=pulumi.get(__response__, 'registry_id'),
+        service_name=pulumi.get(__response__, 'service_name')))

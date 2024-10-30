@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -101,9 +106,6 @@ def get_container_registry_ip_restrictions_management(registry_id: Optional[str]
         ip_restrictions=pulumi.get(__ret__, 'ip_restrictions'),
         registry_id=pulumi.get(__ret__, 'registry_id'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_container_registry_ip_restrictions_management)
 def get_container_registry_ip_restrictions_management_output(registry_id: Optional[pulumi.Input[str]] = None,
                                                              service_name: Optional[pulumi.Input[str]] = None,
                                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRegistryIPRestrictionsManagementResult]:
@@ -114,4 +116,13 @@ def get_container_registry_ip_restrictions_management_output(registry_id: Option
     :param str registry_id: The id of the Managed Private Registry.
     :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['registryId'] = registry_id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement', __args__, opts=opts, typ=GetContainerRegistryIPRestrictionsManagementResult)
+    return __ret__.apply(lambda __response__: GetContainerRegistryIPRestrictionsManagementResult(
+        id=pulumi.get(__response__, 'id'),
+        ip_restrictions=pulumi.get(__response__, 'ip_restrictions'),
+        registry_id=pulumi.get(__response__, 'registry_id'),
+        service_name=pulumi.get(__response__, 'service_name')))

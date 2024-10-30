@@ -575,7 +575,6 @@ export namespace CloudProject {
         /**
          * Enable DHCP.
          * Changing this forces a new resource to be created. Defaults to false.
-         * _
          */
         dhcp?: pulumi.Input<boolean>;
         /**
@@ -598,6 +597,16 @@ export namespace CloudProject {
          * Changing this value recreates the subnet.
          */
         start?: pulumi.Input<string>;
+    }
+
+    export interface NetworkPrivateSubnetV2AllocationPool {
+        end: pulumi.Input<string>;
+        start: pulumi.Input<string>;
+    }
+
+    export interface NetworkPrivateSubnetV2HostRoute {
+        destination: pulumi.Input<string>;
+        nexthop: pulumi.Input<string>;
     }
 
     export interface ProjectOrder {

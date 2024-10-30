@@ -72,7 +72,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// Label for the server
         /// </summary>
         [Output("displayName")]
-        public Output<string> DisplayName { get; private set; } = null!;
+        public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// ID of the farm this server is attached to
@@ -84,7 +84,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// Port that backend will respond on
         /// </summary>
         [Output("port")]
-        public Output<double> Port { get; private set; } = null!;
+        public Output<double?> Port { get; private set; } = null!;
 
         /// <summary>
         /// Id of your server.

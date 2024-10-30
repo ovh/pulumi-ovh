@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -130,9 +135,6 @@ def get_open_search_pattern(cluster_id: Optional[str] = None,
         max_index_count=pulumi.get(__ret__, 'max_index_count'),
         pattern=pulumi.get(__ret__, 'pattern'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_open_search_pattern)
 def get_open_search_pattern_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                    id: Optional[pulumi.Input[str]] = None,
                                    service_name: Optional[pulumi.Input[str]] = None,
@@ -158,4 +160,15 @@ def get_open_search_pattern_output(cluster_id: Optional[pulumi.Input[str]] = Non
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['id'] = id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getOpenSearchPattern:getOpenSearchPattern', __args__, opts=opts, typ=GetOpenSearchPatternResult)
+    return __ret__.apply(lambda __response__: GetOpenSearchPatternResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        id=pulumi.get(__response__, 'id'),
+        max_index_count=pulumi.get(__response__, 'max_index_count'),
+        pattern=pulumi.get(__response__, 'pattern'),
+        service_name=pulumi.get(__response__, 'service_name')))

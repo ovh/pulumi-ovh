@@ -4,16 +4,39 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'LogsInputConfigurationArgs',
+    'LogsInputConfigurationArgsDict',
     'LogsInputConfigurationFlowggerArgs',
+    'LogsInputConfigurationFlowggerArgsDict',
     'LogsInputConfigurationLogstashArgs',
+    'LogsInputConfigurationLogstashArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class LogsInputConfigurationArgsDict(TypedDict):
+        flowgger: NotRequired[pulumi.Input['LogsInputConfigurationFlowggerArgsDict']]
+        """
+        Flowgger configuration
+        """
+        logstash: NotRequired[pulumi.Input['LogsInputConfigurationLogstashArgsDict']]
+        """
+        Logstash configuration
+        """
+elif False:
+    LogsInputConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogsInputConfigurationArgs:
@@ -54,6 +77,19 @@ class LogsInputConfigurationArgs:
         pulumi.set(self, "logstash", value)
 
 
+if not MYPY:
+    class LogsInputConfigurationFlowggerArgsDict(TypedDict):
+        log_format: pulumi.Input[str]
+        """
+        Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
+        """
+        log_framing: pulumi.Input[str]
+        """
+        Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
+        """
+elif False:
+    LogsInputConfigurationFlowggerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogsInputConfigurationFlowggerArgs:
     def __init__(__self__, *,
@@ -90,6 +126,23 @@ class LogsInputConfigurationFlowggerArgs:
     def log_framing(self, value: pulumi.Input[str]):
         pulumi.set(self, "log_framing", value)
 
+
+if not MYPY:
+    class LogsInputConfigurationLogstashArgsDict(TypedDict):
+        input_section: pulumi.Input[str]
+        """
+        The filter section of logstash.conf
+        """
+        filter_section: NotRequired[pulumi.Input[str]]
+        """
+        The filter section of logstash.conf
+        """
+        pattern_section: NotRequired[pulumi.Input[str]]
+        """
+        The list of customs Grok patterns
+        """
+elif False:
+    LogsInputConfigurationLogstashArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogsInputConfigurationLogstashArgs:

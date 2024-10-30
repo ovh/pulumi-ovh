@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -16,7 +21,6 @@ __all__ = ['VpsArgs', 'Vps']
 @pulumi.input_type
 class VpsArgs:
     def __init__(__self__, *,
-                 ovh_subsidiary: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  keymap: Optional[pulumi.Input[str]] = None,
                  memory_limit: Optional[pulumi.Input[float]] = None,
@@ -25,6 +29,7 @@ class VpsArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  netboot_mode: Optional[pulumi.Input[str]] = None,
                  offer_type: Optional[pulumi.Input[str]] = None,
+                 ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionArgs']]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanArgs']]]] = None,
                  sla_monitoring: Optional[pulumi.Input[bool]] = None,
@@ -33,7 +38,6 @@ class VpsArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Vps resource.
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
         :param pulumi.Input[str] display_name: Custom display name
         :param pulumi.Input[str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[float] memory_limit: RAM of this VPS
@@ -42,13 +46,13 @@ class VpsArgs:
         :param pulumi.Input[str] name: Name of the VPS
         :param pulumi.Input[str] netboot_mode: VPS netboot mode (local┃rescue)
         :param pulumi.Input[str] offer_type: All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
         :param pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionArgs']]] plan_options: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['VpsPlanArgs']]] plans: Product Plan to order
         :param pulumi.Input[str] state: State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
         :param pulumi.Input[float] vcore: Number of vcores
         :param pulumi.Input[str] zone: OpenStask region where the VPS is located
         """
-        pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if keymap is not None:
@@ -65,6 +69,8 @@ class VpsArgs:
             pulumi.set(__self__, "netboot_mode", netboot_mode)
         if offer_type is not None:
             pulumi.set(__self__, "offer_type", offer_type)
+        if ovh_subsidiary is not None:
+            pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
         if plan_options is not None:
             pulumi.set(__self__, "plan_options", plan_options)
         if plans is not None:
@@ -77,18 +83,6 @@ class VpsArgs:
             pulumi.set(__self__, "vcore", vcore)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter(name="ovhSubsidiary")
-    def ovh_subsidiary(self) -> pulumi.Input[str]:
-        """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
-        """
-        return pulumi.get(self, "ovh_subsidiary")
-
-    @ovh_subsidiary.setter
-    def ovh_subsidiary(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ovh_subsidiary", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -185,6 +179,18 @@ class VpsArgs:
     @offer_type.setter
     def offer_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "offer_type", value)
+
+    @property
+    @pulumi.getter(name="ovhSubsidiary")
+    def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
+        """
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
+        """
+        return pulumi.get(self, "ovh_subsidiary")
+
+    @ovh_subsidiary.setter
+    def ovh_subsidiary(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ovh_subsidiary", value)
 
     @property
     @pulumi.getter(name="planOptions")
@@ -609,7 +615,7 @@ class Vps(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: VpsArgs,
+                 args: Optional[VpsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -661,8 +667,6 @@ class Vps(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["netboot_mode"] = netboot_mode
             __props__.__dict__["offer_type"] = offer_type
-            if ovh_subsidiary is None and not opts.urn:
-                raise TypeError("Missing required property 'ovh_subsidiary'")
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
             __props__.__dict__["plan_options"] = plan_options
             __props__.__dict__["plans"] = plans
@@ -844,7 +848,7 @@ class Vps(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ovhSubsidiary")
-    def ovh_subsidiary(self) -> pulumi.Output[str]:
+    def ovh_subsidiary(self) -> pulumi.Output[Optional[str]]:
         """
         OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
         """

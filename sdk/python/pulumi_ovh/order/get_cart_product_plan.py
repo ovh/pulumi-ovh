@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -191,9 +196,6 @@ def get_cart_product_plan(cart_id: Optional[str] = None,
         product_name=pulumi.get(__ret__, 'product_name'),
         product_type=pulumi.get(__ret__, 'product_type'),
         selected_prices=pulumi.get(__ret__, 'selected_prices'))
-
-
-@_utilities.lift_output_func(get_cart_product_plan)
 def get_cart_product_plan_output(cart_id: Optional[pulumi.Input[str]] = None,
                                  catalog_name: Optional[pulumi.Input[Optional[str]]] = None,
                                  plan_code: Optional[pulumi.Input[str]] = None,
@@ -224,4 +226,22 @@ def get_cart_product_plan_output(cart_id: Optional[pulumi.Input[str]] = None,
     :param str price_capacity: Capacity of the pricing (type of pricing)
     :param str product: Product
     """
-    ...
+    __args__ = dict()
+    __args__['cartId'] = cart_id
+    __args__['catalogName'] = catalog_name
+    __args__['planCode'] = plan_code
+    __args__['priceCapacity'] = price_capacity
+    __args__['product'] = product
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Order/getCartProductPlan:getCartProductPlan', __args__, opts=opts, typ=GetCartProductPlanResult)
+    return __ret__.apply(lambda __response__: GetCartProductPlanResult(
+        cart_id=pulumi.get(__response__, 'cart_id'),
+        catalog_name=pulumi.get(__response__, 'catalog_name'),
+        id=pulumi.get(__response__, 'id'),
+        plan_code=pulumi.get(__response__, 'plan_code'),
+        price_capacity=pulumi.get(__response__, 'price_capacity'),
+        prices=pulumi.get(__response__, 'prices'),
+        product=pulumi.get(__response__, 'product'),
+        product_name=pulumi.get(__response__, 'product_name'),
+        product_type=pulumi.get(__response__, 'product_type'),
+        selected_prices=pulumi.get(__response__, 'selected_prices')))

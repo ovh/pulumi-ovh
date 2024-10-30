@@ -4,25 +4,65 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ServerDetailsArgs',
+    'ServerDetailsArgsDict',
     'ServerIamArgs',
+    'ServerIamArgsDict',
     'ServerInstallTaskDetailsArgs',
+    'ServerInstallTaskDetailsArgsDict',
     'ServerInstallTaskUserMetadataArgs',
+    'ServerInstallTaskUserMetadataArgsDict',
     'ServerNetworkingInterfaceArgs',
+    'ServerNetworkingInterfaceArgsDict',
     'ServerOrderArgs',
+    'ServerOrderArgsDict',
     'ServerOrderDetailArgs',
+    'ServerOrderDetailArgsDict',
     'ServerPlanArgs',
+    'ServerPlanArgsDict',
     'ServerPlanConfigurationArgs',
+    'ServerPlanConfigurationArgsDict',
     'ServerPlanOptionArgs',
+    'ServerPlanOptionArgsDict',
     'ServerPlanOptionConfigurationArgs',
+    'ServerPlanOptionConfigurationArgsDict',
     'ServerUserMetadataArgs',
+    'ServerUserMetadataArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ServerDetailsArgsDict(TypedDict):
+        custom_hostname: NotRequired[pulumi.Input[str]]
+        """
+        Personnal hostname to use in server reinstallation
+        """
+        disk_group_id: NotRequired[pulumi.Input[float]]
+        """
+        Disk group id to process install on (only available for some templates)
+        """
+        no_raid: NotRequired[pulumi.Input[bool]]
+        """
+        true if you want to install only on the first disk
+        """
+        soft_raid_devices: NotRequired[pulumi.Input[float]]
+        """
+        Number of devices to use for system's software RAID
+        """
+elif False:
+    ServerDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServerDetailsArgs:
@@ -95,6 +135,27 @@ class ServerDetailsArgs:
         pulumi.set(self, "soft_raid_devices", value)
 
 
+if not MYPY:
+    class ServerIamArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Resource display name
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique identifier of the resource in the IAM
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        """
+        urn: NotRequired[pulumi.Input[str]]
+        """
+        URN of the private database, used when writing IAM policies
+        """
+elif False:
+    ServerIamArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServerIamArgs:
     def __init__(__self__, *,
@@ -165,6 +226,27 @@ class ServerIamArgs:
     def urn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "urn", value)
 
+
+if not MYPY:
+    class ServerInstallTaskDetailsArgsDict(TypedDict):
+        custom_hostname: NotRequired[pulumi.Input[str]]
+        """
+        Set up the server using the provided hostname instead of the default hostname.
+        """
+        disk_group_id: NotRequired[pulumi.Input[int]]
+        """
+        Disk group id.
+        """
+        no_raid: NotRequired[pulumi.Input[bool]]
+        """
+        Set to true to disable RAID.
+        """
+        soft_raid_devices: NotRequired[pulumi.Input[int]]
+        """
+        soft raid devices.
+        """
+elif False:
+    ServerInstallTaskDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServerInstallTaskDetailsArgs:
@@ -237,6 +319,19 @@ class ServerInstallTaskDetailsArgs:
         pulumi.set(self, "soft_raid_devices", value)
 
 
+if not MYPY:
+    class ServerInstallTaskUserMetadataArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The key for the user_metadata
+        """
+        value: pulumi.Input[str]
+        """
+        The value for the user_metadata
+        """
+elif False:
+    ServerInstallTaskUserMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServerInstallTaskUserMetadataArgs:
     def __init__(__self__, *,
@@ -274,6 +369,19 @@ class ServerInstallTaskUserMetadataArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ServerNetworkingInterfaceArgsDict(TypedDict):
+        macs: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Interface Mac address
+        """
+        type: pulumi.Input[str]
+        """
+        Interface type
+        """
+elif False:
+    ServerNetworkingInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServerNetworkingInterfaceArgs:
     def __init__(__self__, *,
@@ -310,6 +418,18 @@ class ServerNetworkingInterfaceArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ServerOrderArgsDict(TypedDict):
+        date: NotRequired[pulumi.Input[str]]
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerOrderDetailArgsDict']]]]
+        """
+        Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+        """
+        expiration_date: NotRequired[pulumi.Input[str]]
+        order_id: NotRequired[pulumi.Input[float]]
+elif False:
+    ServerOrderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServerOrderArgs:
@@ -369,6 +489,19 @@ class ServerOrderArgs:
     def order_id(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "order_id", value)
 
+
+if not MYPY:
+    class ServerOrderDetailArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        detail_type: NotRequired[pulumi.Input[str]]
+        """
+        Product type of item in order
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        order_detail_id: NotRequired[pulumi.Input[float]]
+        quantity: NotRequired[pulumi.Input[str]]
+elif False:
+    ServerOrderDetailArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServerOrderDetailArgs:
@@ -440,6 +573,32 @@ class ServerOrderDetailArgs:
     def quantity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "quantity", value)
 
+
+if not MYPY:
+    class ServerPlanArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        Duration selected for the purchase of the product
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Identifier of the option offer
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerPlanConfigurationArgsDict']]]]
+        item_id: NotRequired[pulumi.Input[float]]
+        """
+        Cart item to be linked
+        """
+        quantity: NotRequired[pulumi.Input[float]]
+        """
+        Quantity of product desired
+        """
+elif False:
+    ServerPlanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServerPlanArgs:
@@ -537,6 +696,19 @@ class ServerPlanArgs:
         pulumi.set(self, "quantity", value)
 
 
+if not MYPY:
+    class ServerPlanConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Label for your configuration item
+        """
+        value: pulumi.Input[str]
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+elif False:
+    ServerPlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServerPlanConfigurationArgs:
     def __init__(__self__, *,
@@ -573,6 +745,28 @@ class ServerPlanConfigurationArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ServerPlanOptionArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        Duration selected for the purchase of the product
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Identifier of the option offer
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        quantity: pulumi.Input[float]
+        """
+        Quantity of product desired
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerPlanOptionConfigurationArgsDict']]]]
+elif False:
+    ServerPlanOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServerPlanOptionArgs:
@@ -653,6 +847,19 @@ class ServerPlanOptionArgs:
         pulumi.set(self, "configurations", value)
 
 
+if not MYPY:
+    class ServerPlanOptionConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Label for your configuration item
+        """
+        value: pulumi.Input[str]
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+elif False:
+    ServerPlanOptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServerPlanOptionConfigurationArgs:
     def __init__(__self__, *,
@@ -689,6 +896,13 @@ class ServerPlanOptionConfigurationArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ServerUserMetadataArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ServerUserMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServerUserMetadataArgs:

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -157,9 +162,6 @@ def get_cart(assign: Optional[bool] = None,
         items=pulumi.get(__ret__, 'items'),
         ovh_subsidiary=pulumi.get(__ret__, 'ovh_subsidiary'),
         read_only=pulumi.get(__ret__, 'read_only'))
-
-
-@_utilities.lift_output_func(get_cart)
 def get_cart_output(assign: Optional[pulumi.Input[Optional[bool]]] = None,
                     description: Optional[pulumi.Input[Optional[str]]] = None,
                     expire: Optional[pulumi.Input[Optional[str]]] = None,
@@ -184,4 +186,19 @@ def get_cart_output(assign: Optional[pulumi.Input[Optional[bool]]] = None,
     :param str expire: Expiration time (format: 2006-01-02T15:04:05+00:00)
     :param str ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
     """
-    ...
+    __args__ = dict()
+    __args__['assign'] = assign
+    __args__['description'] = description
+    __args__['expire'] = expire
+    __args__['ovhSubsidiary'] = ovh_subsidiary
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Order/getCart:getCart', __args__, opts=opts, typ=GetCartResult)
+    return __ret__.apply(lambda __response__: GetCartResult(
+        assign=pulumi.get(__response__, 'assign'),
+        cart_id=pulumi.get(__response__, 'cart_id'),
+        description=pulumi.get(__response__, 'description'),
+        expire=pulumi.get(__response__, 'expire'),
+        id=pulumi.get(__response__, 'id'),
+        items=pulumi.get(__response__, 'items'),
+        ovh_subsidiary=pulumi.get(__response__, 'ovh_subsidiary'),
+        read_only=pulumi.get(__response__, 'read_only')))

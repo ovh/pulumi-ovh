@@ -1389,7 +1389,7 @@ public final class CloudProjectDatabaseFunctions {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", TypeShape.of(GetDatabaseLogSubscriptionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+     * Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
      * 
      * ## Example Usage
      * 
@@ -1434,7 +1434,7 @@ public final class CloudProjectDatabaseFunctions {
         return getDatabaseLogSubscriptions(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+     * Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
      * 
      * ## Example Usage
      * 
@@ -1479,7 +1479,7 @@ public final class CloudProjectDatabaseFunctions {
         return getDatabaseLogSubscriptionsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+     * Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
      * 
      * ## Example Usage
      * 
@@ -1524,7 +1524,7 @@ public final class CloudProjectDatabaseFunctions {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseLogSubscriptions:getDatabaseLogSubscriptions", TypeShape.of(GetDatabaseLogSubscriptionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+     * Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
      * 
      * ## Example Usage
      * 

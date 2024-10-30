@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -16,62 +21,40 @@ __all__ = ['LoadBalancerArgs', 'LoadBalancer']
 @pulumi.input_type
 class LoadBalancerArgs:
     def __init__(__self__, *,
-                 ovh_subsidiary: pulumi.Input[str],
-                 plan: pulumi.Input['LoadBalancerPlanArgs'],
                  display_name: Optional[pulumi.Input[str]] = None,
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerOrderArgs']]]] = None,
+                 ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
+                 plan: Optional[pulumi.Input['LoadBalancerPlanArgs']] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPlanOptionArgs']]]] = None,
                  ssl_configuration: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-        :param pulumi.Input['LoadBalancerPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[str] display_name: Set the name displayed in ManagerV6 for your iplb (max 50 chars)
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerOrderArgs']]] orders: Details about an Order
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
+        :param pulumi.Input['LoadBalancerPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPlanOptionArgs']]] plan_options: Product Plan to order
         :param pulumi.Input[str] ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
         """
-        pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
-        pulumi.set(__self__, "plan", plan)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if orders is not None:
             pulumi.set(__self__, "orders", orders)
+        if ovh_subsidiary is not None:
+            pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
         if payment_mean is not None:
             warnings.warn("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""", DeprecationWarning)
             pulumi.log.warn("""payment_mean is deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
         if payment_mean is not None:
             pulumi.set(__self__, "payment_mean", payment_mean)
+        if plan is not None:
+            pulumi.set(__self__, "plan", plan)
         if plan_options is not None:
             pulumi.set(__self__, "plan_options", plan_options)
         if ssl_configuration is not None:
             pulumi.set(__self__, "ssl_configuration", ssl_configuration)
-
-    @property
-    @pulumi.getter(name="ovhSubsidiary")
-    def ovh_subsidiary(self) -> pulumi.Input[str]:
-        """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-        """
-        return pulumi.get(self, "ovh_subsidiary")
-
-    @ovh_subsidiary.setter
-    def ovh_subsidiary(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ovh_subsidiary", value)
-
-    @property
-    @pulumi.getter
-    def plan(self) -> pulumi.Input['LoadBalancerPlanArgs']:
-        """
-        Product Plan to order
-        """
-        return pulumi.get(self, "plan")
-
-    @plan.setter
-    def plan(self, value: pulumi.Input['LoadBalancerPlanArgs']):
-        pulumi.set(self, "plan", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -98,6 +81,18 @@ class LoadBalancerArgs:
         pulumi.set(self, "orders", value)
 
     @property
+    @pulumi.getter(name="ovhSubsidiary")
+    def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
+        """
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        """
+        return pulumi.get(self, "ovh_subsidiary")
+
+    @ovh_subsidiary.setter
+    def ovh_subsidiary(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ovh_subsidiary", value)
+
+    @property
     @pulumi.getter(name="paymentMean")
     @_utilities.deprecated("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
     def payment_mean(self) -> Optional[pulumi.Input[str]]:
@@ -109,6 +104,18 @@ class LoadBalancerArgs:
     @payment_mean.setter
     def payment_mean(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "payment_mean", value)
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[pulumi.Input['LoadBalancerPlanArgs']]:
+        """
+        Product Plan to order
+        """
+        return pulumi.get(self, "plan")
+
+    @plan.setter
+    def plan(self, value: Optional[pulumi.Input['LoadBalancerPlanArgs']]):
+        pulumi.set(self, "plan", value)
 
     @property
     @pulumi.getter(name="planOptions")
@@ -497,6 +504,34 @@ class LoadBalancer(pulumi.CustomResource):
             }])
         ```
 
+        ## Import
+
+        OVHcloud IP load balancing services can be imported using its `service_name`.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          to = ovh_iploadbalancing.iplb
+
+          id = "<service name>"
+
+        }
+
+        You can then run:
+
+        bash
+
+        $ pulumi preview -generate-config-out=iplb.tf
+
+        $ pulumi up
+
+        The file `iplb.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Set the name displayed in ManagerV6 for your iplb (max 50 chars)
@@ -511,7 +546,7 @@ class LoadBalancer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LoadBalancerArgs,
+                 args: Optional[LoadBalancerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -546,6 +581,34 @@ class LoadBalancer(pulumi.CustomResource):
             }])
         ```
 
+        ## Import
+
+        OVHcloud IP load balancing services can be imported using its `service_name`.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          to = ovh_iploadbalancing.iplb
+
+          id = "<service name>"
+
+        }
+
+        You can then run:
+
+        bash
+
+        $ pulumi preview -generate-config-out=iplb.tf
+
+        $ pulumi up
+
+        The file `iplb.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+
         :param str resource_name: The name of the resource.
         :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -579,12 +642,8 @@ class LoadBalancer(pulumi.CustomResource):
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["orders"] = orders
-            if ovh_subsidiary is None and not opts.urn:
-                raise TypeError("Missing required property 'ovh_subsidiary'")
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
             __props__.__dict__["payment_mean"] = payment_mean
-            if plan is None and not opts.urn:
-                raise TypeError("Missing required property 'plan'")
             __props__.__dict__["plan"] = plan
             __props__.__dict__["plan_options"] = plan_options
             __props__.__dict__["ssl_configuration"] = ssl_configuration

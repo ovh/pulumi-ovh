@@ -48,11 +48,31 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
+ * OVHcloud Webhosting database can be imported using the `service_name`.
  *
- * ```sh
- * $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
- * ```
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = ovh_hosting_privatedatabase.database
+ *
+ *   id = "<service name>"
+ *
+ * }
+ *
+ * You can then run:
+ *
+ * bash
+ *
+ * $ pulumi preview -generate-config-out=database.tf
+ *
+ * $ pulumi up
+ *
+ * The file `database.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  */
 export class PrivateDatabase extends pulumi.CustomResource {
     /**
@@ -192,7 +212,7 @@ export class PrivateDatabase extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: PrivateDatabaseArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: PrivateDatabaseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PrivateDatabaseArgs | PrivateDatabaseState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -225,12 +245,6 @@ export class PrivateDatabase extends pulumi.CustomResource {
             resourceInputs["versionNumber"] = state ? state.versionNumber : undefined;
         } else {
             const args = argsOrState as PrivateDatabaseArgs | undefined;
-            if ((!args || args.ovhSubsidiary === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ovhSubsidiary'");
-            }
-            if ((!args || args.plan === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'plan'");
-            }
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
@@ -385,7 +399,7 @@ export interface PrivateDatabaseArgs {
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
-    ovhSubsidiary: pulumi.Input<string>;
+    ovhSubsidiary?: pulumi.Input<string>;
     /**
      * Ovh payment mode
      *
@@ -395,7 +409,7 @@ export interface PrivateDatabaseArgs {
     /**
      * Product Plan to order
      */
-    plan: pulumi.Input<inputs.Hosting.PrivateDatabasePlan>;
+    plan?: pulumi.Input<inputs.Hosting.PrivateDatabasePlan>;
     /**
      * Product Plan to order
      */

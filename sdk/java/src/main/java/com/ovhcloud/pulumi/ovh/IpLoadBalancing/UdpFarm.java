@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -80,14 +81,14 @@ public class UdpFarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
-    private Output<String> displayName;
+    private Output</* @Nullable */ String> displayName;
 
     /**
      * @return Readable label for loadbalancer farm
      * 
      */
-    public Output<String> displayName() {
-        return this.displayName;
+    public Output<Optional<String>> displayName() {
+        return Codegen.optional(this.displayName);
     }
     /**
      * Id of your farm.
@@ -136,14 +137,14 @@ public class UdpFarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vrackNetworkId", refs={Double.class}, tree="[0]")
-    private Output<Double> vrackNetworkId;
+    private Output</* @Nullable */ Double> vrackNetworkId;
 
     /**
      * @return Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
      * 
      */
-    public Output<Double> vrackNetworkId() {
-        return this.vrackNetworkId;
+    public Output<Optional<Double>> vrackNetworkId() {
+        return Codegen.optional(this.vrackNetworkId);
     }
     /**
      * Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)

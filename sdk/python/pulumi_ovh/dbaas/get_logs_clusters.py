@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -101,9 +106,6 @@ def get_logs_clusters(service_name: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         urn=pulumi.get(__ret__, 'urn'),
         uuids=pulumi.get(__ret__, 'uuids'))
-
-
-@_utilities.lift_output_func(get_logs_clusters)
 def get_logs_clusters_output(service_name: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogsClustersResult]:
     """
@@ -121,4 +123,12 @@ def get_logs_clusters_output(service_name: Optional[pulumi.Input[str]] = None,
 
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsClusters:getLogsClusters', __args__, opts=opts, typ=GetLogsClustersResult)
+    return __ret__.apply(lambda __response__: GetLogsClustersResult(
+        id=pulumi.get(__response__, 'id'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        urn=pulumi.get(__response__, 'urn'),
+        uuids=pulumi.get(__response__, 'uuids')))

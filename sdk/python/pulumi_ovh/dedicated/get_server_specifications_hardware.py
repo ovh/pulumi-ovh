@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -274,9 +279,6 @@ def get_server_specifications_hardware(service_name: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         threads_per_processor=pulumi.get(__ret__, 'threads_per_processor'),
         usb_keys=pulumi.get(__ret__, 'usb_keys'))
-
-
-@_utilities.lift_output_func(get_server_specifications_hardware)
 def get_server_specifications_hardware_output(service_name: Optional[pulumi.Input[str]] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerSpecificationsHardwareResult]:
     """
@@ -294,4 +296,25 @@ def get_server_specifications_hardware_output(service_name: Optional[pulumi.Inpu
 
     :param str service_name: The internal name of your dedicated server.
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware', __args__, opts=opts, typ=GetServerSpecificationsHardwareResult)
+    return __ret__.apply(lambda __response__: GetServerSpecificationsHardwareResult(
+        boot_mode=pulumi.get(__response__, 'boot_mode'),
+        cores_per_processor=pulumi.get(__response__, 'cores_per_processor'),
+        default_hardware_raid_size=pulumi.get(__response__, 'default_hardware_raid_size'),
+        default_hardware_raid_type=pulumi.get(__response__, 'default_hardware_raid_type'),
+        description=pulumi.get(__response__, 'description'),
+        disk_groups=pulumi.get(__response__, 'disk_groups'),
+        expansion_cards=pulumi.get(__response__, 'expansion_cards'),
+        form_factor=pulumi.get(__response__, 'form_factor'),
+        id=pulumi.get(__response__, 'id'),
+        memory_size=pulumi.get(__response__, 'memory_size'),
+        motherboard=pulumi.get(__response__, 'motherboard'),
+        number_of_processors=pulumi.get(__response__, 'number_of_processors'),
+        processor_architecture=pulumi.get(__response__, 'processor_architecture'),
+        processor_name=pulumi.get(__response__, 'processor_name'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        threads_per_processor=pulumi.get(__response__, 'threads_per_processor'),
+        usb_keys=pulumi.get(__response__, 'usb_keys')))

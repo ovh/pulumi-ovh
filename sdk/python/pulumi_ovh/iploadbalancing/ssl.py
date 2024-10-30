@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['SslArgs', 'Ssl']
@@ -478,7 +483,7 @@ class Ssl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def chain(self) -> pulumi.Output[str]:
+    def chain(self) -> pulumi.Output[Optional[str]]:
         """
         Certificate chain
         """
@@ -486,7 +491,7 @@ class Ssl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Output[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Readable label for loadbalancer ssl
         """

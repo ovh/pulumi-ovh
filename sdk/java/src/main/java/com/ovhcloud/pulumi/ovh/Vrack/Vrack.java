@@ -80,13 +80,31 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * vRack can be imported using the `service_name`.
+ * A vRack can be imported using the `service_name`.
+ * 
+ * Using the following configuration:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = ovh_vrack.vrack
+ * 
+ *   id = &#34;&lt;service name&gt;&#34;
+ * 
+ * }
+ * 
+ * You can then run:
  * 
  * bash
  * 
- * ```sh
- * $ pulumi import ovh:Vrack/vrack:Vrack vrack service_name
- * ```
+ * $ pulumi preview -generate-config-out=vrack.tf
+ * 
+ * $ pulumi up
+ * 
+ * The file `vrack.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
+ * 
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:Vrack/vrack:Vrack")
@@ -234,7 +252,7 @@ public class Vrack extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Vrack(java.lang.String name, VrackArgs args) {
+    public Vrack(java.lang.String name, @Nullable VrackArgs args) {
         this(name, args, null);
     }
     /**
@@ -243,7 +261,7 @@ public class Vrack extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Vrack(java.lang.String name, VrackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Vrack(java.lang.String name, @Nullable VrackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Vrack/vrack:Vrack", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -251,7 +269,7 @@ public class Vrack extends com.pulumi.resources.CustomResource {
         super("ovh:Vrack/vrack:Vrack", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static VrackArgs makeArgs(VrackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static VrackArgs makeArgs(@Nullable VrackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

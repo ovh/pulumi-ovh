@@ -4,19 +4,53 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'PrivateDatabaseOrderArgs',
+    'PrivateDatabaseOrderArgsDict',
     'PrivateDatabaseOrderDetailArgs',
+    'PrivateDatabaseOrderDetailArgsDict',
     'PrivateDatabasePlanArgs',
+    'PrivateDatabasePlanArgsDict',
     'PrivateDatabasePlanConfigurationArgs',
+    'PrivateDatabasePlanConfigurationArgsDict',
     'PrivateDatabasePlanOptionArgs',
+    'PrivateDatabasePlanOptionArgsDict',
     'PrivateDatabasePlanOptionConfigurationArgs',
+    'PrivateDatabasePlanOptionConfigurationArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class PrivateDatabaseOrderArgsDict(TypedDict):
+        date: NotRequired[pulumi.Input[str]]
+        """
+        date
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input['PrivateDatabaseOrderDetailArgsDict']]]]
+        """
+        Information about a Bill entry
+        """
+        expiration_date: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_id: NotRequired[pulumi.Input[int]]
+        """
+        order id
+        """
+elif False:
+    PrivateDatabaseOrderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PrivateDatabaseOrderArgs:
@@ -89,6 +123,27 @@ class PrivateDatabaseOrderArgs:
         pulumi.set(self, "order_id", value)
 
 
+if not MYPY:
+    class PrivateDatabaseOrderDetailArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Custom description on your privatedatabase order.
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_detail_id: NotRequired[pulumi.Input[int]]
+        """
+        order detail id
+        """
+        quantity: NotRequired[pulumi.Input[str]]
+        """
+        quantity
+        """
+elif False:
+    PrivateDatabaseOrderDetailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PrivateDatabaseOrderDetailArgs:
     def __init__(__self__, *,
@@ -159,6 +214,31 @@ class PrivateDatabaseOrderDetailArgs:
     def quantity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "quantity", value)
 
+
+if not MYPY:
+    class PrivateDatabasePlanArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        duration.
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code.
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['PrivateDatabasePlanConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product
+        """
+elif False:
+    PrivateDatabasePlanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PrivateDatabasePlanArgs:
@@ -244,6 +324,21 @@ class PrivateDatabasePlanArgs:
         pulumi.set(self, "configurations", value)
 
 
+if not MYPY:
+    class PrivateDatabasePlanConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource
+        """
+        value: pulumi.Input[str]
+        """
+        Path to the resource in API.OVH.COM
+
+        Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
+        """
+elif False:
+    PrivateDatabasePlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PrivateDatabasePlanConfigurationArgs:
     def __init__(__self__, *,
@@ -284,6 +379,31 @@ class PrivateDatabasePlanConfigurationArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class PrivateDatabasePlanOptionArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        Service duration
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['PrivateDatabasePlanOptionConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product
+        """
+elif False:
+    PrivateDatabasePlanOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PrivateDatabasePlanOptionArgs:
@@ -368,6 +488,19 @@ class PrivateDatabasePlanOptionArgs:
     def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateDatabasePlanOptionConfigurationArgs']]]]):
         pulumi.set(self, "configurations", value)
 
+
+if not MYPY:
+    class PrivateDatabasePlanOptionConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource
+        """
+        value: pulumi.Input[str]
+        """
+        Path to the resource in API.OVH.COM
+        """
+elif False:
+    PrivateDatabasePlanOptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PrivateDatabasePlanOptionConfigurationArgs:

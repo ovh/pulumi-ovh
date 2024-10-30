@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -148,9 +153,6 @@ def get_paymentmean_bank_account(description_regexp: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         use_default=pulumi.get(__ret__, 'use_default'),
         use_oldest=pulumi.get(__ret__, 'use_oldest'))
-
-
-@_utilities.lift_output_func(get_paymentmean_bank_account)
 def get_paymentmean_bank_account_output(description_regexp: Optional[pulumi.Input[Optional[str]]] = None,
                                         state: Optional[pulumi.Input[Optional[str]]] = None,
                                         use_default: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -178,4 +180,18 @@ def get_paymentmean_bank_account_output(description_regexp: Optional[pulumi.Inpu
     :param bool use_oldest: Retrieve oldest bank account.
            project.
     """
-    ...
+    __args__ = dict()
+    __args__['descriptionRegexp'] = description_regexp
+    __args__['state'] = state
+    __args__['useDefault'] = use_default
+    __args__['useOldest'] = use_oldest
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount', __args__, opts=opts, typ=GetPaymentmeanBankAccountResult)
+    return __ret__.apply(lambda __response__: GetPaymentmeanBankAccountResult(
+        default=pulumi.get(__response__, 'default'),
+        description=pulumi.get(__response__, 'description'),
+        description_regexp=pulumi.get(__response__, 'description_regexp'),
+        id=pulumi.get(__response__, 'id'),
+        state=pulumi.get(__response__, 'state'),
+        use_default=pulumi.get(__response__, 'use_default'),
+        use_oldest=pulumi.get(__response__, 'use_oldest')))

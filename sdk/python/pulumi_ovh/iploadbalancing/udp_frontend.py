@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['UdpFrontendArgs', 'UdpFrontend']
@@ -456,7 +461,7 @@ class UdpFrontend(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dedicatedIpfos")
-    def dedicated_ipfos(self) -> pulumi.Output[Sequence[str]]:
+    def dedicated_ipfos(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Only attach frontend on these ip. No restriction if null. List of Ip blocks.
         """
@@ -464,7 +469,7 @@ class UdpFrontend(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultFarmId")
-    def default_farm_id(self) -> pulumi.Output[float]:
+    def default_farm_id(self) -> pulumi.Output[Optional[float]]:
         """
         Default UDP Farm of your frontend
         """
@@ -480,7 +485,7 @@ class UdpFrontend(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Output[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Human readable name for your frontend
         """

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -165,9 +170,6 @@ def get_network_private(network_id: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'),
         vlan_id=pulumi.get(__ret__, 'vlan_id'))
-
-
-@_utilities.lift_output_func(get_network_private)
 def get_network_private_output(network_id: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkPrivateResult]:
@@ -189,4 +191,17 @@ def get_network_private_output(network_id: Optional[pulumi.Input[str]] = None,
     :param str network_id: ID of the network
     :param str service_name: The ID of the public cloud project.
     """
-    ...
+    __args__ = dict()
+    __args__['networkId'] = network_id
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getNetworkPrivate:getNetworkPrivate', __args__, opts=opts, typ=GetNetworkPrivateResult)
+    return __ret__.apply(lambda __response__: GetNetworkPrivateResult(
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        network_id=pulumi.get(__response__, 'network_id'),
+        regions=pulumi.get(__response__, 'regions'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type'),
+        vlan_id=pulumi.get(__response__, 'vlan_id')))

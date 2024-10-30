@@ -62,7 +62,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// Default UDP Farm of your frontend
         /// </summary>
         [Output("defaultFarmId")]
-        public Output<double> DefaultFarmId { get; private set; } = null!;
+        public Output<double?> DefaultFarmId { get; private set; } = null!;
 
         /// <summary>
         /// Disable your frontend. Default: 'false'
@@ -74,7 +74,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         /// Human readable name for your frontend
         /// </summary>
         [Output("displayName")]
-        public Output<string> DisplayName { get; private set; } = null!;
+        public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// Id of your frontend

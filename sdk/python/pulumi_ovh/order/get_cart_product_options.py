@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -138,9 +143,6 @@ def get_cart_product_options(cart_id: Optional[str] = None,
         plan_code=pulumi.get(__ret__, 'plan_code'),
         product=pulumi.get(__ret__, 'product'),
         results=pulumi.get(__ret__, 'results'))
-
-
-@_utilities.lift_output_func(get_cart_product_options)
 def get_cart_product_options_output(cart_id: Optional[pulumi.Input[str]] = None,
                                     catalog_name: Optional[pulumi.Input[Optional[str]]] = None,
                                     plan_code: Optional[pulumi.Input[str]] = None,
@@ -168,4 +170,17 @@ def get_cart_product_options_output(cart_id: Optional[pulumi.Input[str]] = None,
     :param str plan_code: Product offer identifier
     :param str product: Product
     """
-    ...
+    __args__ = dict()
+    __args__['cartId'] = cart_id
+    __args__['catalogName'] = catalog_name
+    __args__['planCode'] = plan_code
+    __args__['product'] = product
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Order/getCartProductOptions:getCartProductOptions', __args__, opts=opts, typ=GetCartProductOptionsResult)
+    return __ret__.apply(lambda __response__: GetCartProductOptionsResult(
+        cart_id=pulumi.get(__response__, 'cart_id'),
+        catalog_name=pulumi.get(__response__, 'catalog_name'),
+        id=pulumi.get(__response__, 'id'),
+        plan_code=pulumi.get(__response__, 'plan_code'),
+        product=pulumi.get(__response__, 'product'),
+        results=pulumi.get(__response__, 'results')))

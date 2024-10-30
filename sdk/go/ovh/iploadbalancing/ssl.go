@@ -66,9 +66,9 @@ type Ssl struct {
 	// Certificate
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// Certificate chain
-	Chain pulumi.StringOutput `pulumi:"chain"`
+	Chain pulumi.StringPtrOutput `pulumi:"chain"`
 	// Readable label for loadbalancer ssl
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Expire date of your SSL certificate.
 	ExpireDate pulumi.StringOutput `pulumi:"expireDate"`
 	// Fingerprint of your SSL certificate.
@@ -306,13 +306,13 @@ func (o SslOutput) Certificate() pulumi.StringOutput {
 }
 
 // Certificate chain
-func (o SslOutput) Chain() pulumi.StringOutput {
-	return o.ApplyT(func(v *Ssl) pulumi.StringOutput { return v.Chain }).(pulumi.StringOutput)
+func (o SslOutput) Chain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ssl) pulumi.StringPtrOutput { return v.Chain }).(pulumi.StringPtrOutput)
 }
 
 // Readable label for loadbalancer ssl
-func (o SslOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v *Ssl) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+func (o SslOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ssl) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Expire date of your SSL certificate.

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -139,9 +144,6 @@ def get_region(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         service_name=pulumi.get(__ret__, 'service_name'),
         services=pulumi.get(__ret__, 'services'))
-
-
-@_utilities.lift_output_func(get_region)
 def get_region_output(name: Optional[pulumi.Input[str]] = None,
                       service_name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionResult]:
@@ -164,4 +166,15 @@ def get_region_output(name: Optional[pulumi.Input[str]] = None,
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult)
+    return __ret__.apply(lambda __response__: GetRegionResult(
+        continent_code=pulumi.get(__response__, 'continent_code'),
+        datacenter_location=pulumi.get(__response__, 'datacenter_location'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        services=pulumi.get(__response__, 'services')))

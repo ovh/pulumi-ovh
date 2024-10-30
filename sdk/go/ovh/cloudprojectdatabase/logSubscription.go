@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a log subscrition for a cluster associated with a public cloud project.
+// Creates a log subscription for a cluster associated with a public cloud project.
 //
 // ## Example Usage
 //

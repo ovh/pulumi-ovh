@@ -1001,6 +1001,21 @@ export namespace CloudProject {
         permissions: string[];
     }
 
+    export interface GetVolumesVolume {
+        /**
+         * The id of the volume
+         */
+        id: string;
+        /**
+         * The name of the volume
+         */
+        name: string;
+        /**
+         * The size of the volume
+         */
+        size: number;
+    }
+
     export interface KubeCustomization {
         /**
          * Kubernetes API server customization
@@ -1170,7 +1185,6 @@ export namespace CloudProject {
         /**
          * Enable DHCP.
          * Changing this forces a new resource to be created. Defaults to false.
-         * _
          */
         dhcp: boolean;
         /**
@@ -1193,6 +1207,16 @@ export namespace CloudProject {
          * Changing this value recreates the subnet.
          */
         start: string;
+    }
+
+    export interface NetworkPrivateSubnetV2AllocationPool {
+        end: string;
+        start: string;
+    }
+
+    export interface NetworkPrivateSubnetV2HostRoute {
+        destination: string;
+        nexthop: string;
     }
 
     export interface ProjectOrder {

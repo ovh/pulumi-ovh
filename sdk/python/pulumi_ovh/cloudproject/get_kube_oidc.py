@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -244,9 +249,6 @@ def get_kube_oidc(client_id: Optional[str] = None,
         oidc_username_claim=pulumi.get(__ret__, 'oidc_username_claim'),
         oidc_username_prefix=pulumi.get(__ret__, 'oidc_username_prefix'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_kube_oidc)
 def get_kube_oidc_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
                          issuer_url: Optional[pulumi.Input[Optional[str]]] = None,
                          kube_id: Optional[pulumi.Input[str]] = None,
@@ -287,4 +289,30 @@ def get_kube_oidc_output(client_id: Optional[pulumi.Input[Optional[str]]] = None
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['clientId'] = client_id
+    __args__['issuerUrl'] = issuer_url
+    __args__['kubeId'] = kube_id
+    __args__['oidcCaContent'] = oidc_ca_content
+    __args__['oidcGroupsClaims'] = oidc_groups_claims
+    __args__['oidcGroupsPrefix'] = oidc_groups_prefix
+    __args__['oidcRequiredClaims'] = oidc_required_claims
+    __args__['oidcSigningAlgs'] = oidc_signing_algs
+    __args__['oidcUsernameClaim'] = oidc_username_claim
+    __args__['oidcUsernamePrefix'] = oidc_username_prefix
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getKubeOidc:getKubeOidc', __args__, opts=opts, typ=GetKubeOidcResult)
+    return __ret__.apply(lambda __response__: GetKubeOidcResult(
+        client_id=pulumi.get(__response__, 'client_id'),
+        id=pulumi.get(__response__, 'id'),
+        issuer_url=pulumi.get(__response__, 'issuer_url'),
+        kube_id=pulumi.get(__response__, 'kube_id'),
+        oidc_ca_content=pulumi.get(__response__, 'oidc_ca_content'),
+        oidc_groups_claims=pulumi.get(__response__, 'oidc_groups_claims'),
+        oidc_groups_prefix=pulumi.get(__response__, 'oidc_groups_prefix'),
+        oidc_required_claims=pulumi.get(__response__, 'oidc_required_claims'),
+        oidc_signing_algs=pulumi.get(__response__, 'oidc_signing_algs'),
+        oidc_username_claim=pulumi.get(__response__, 'oidc_username_claim'),
+        oidc_username_prefix=pulumi.get(__response__, 'oidc_username_prefix'),
+        service_name=pulumi.get(__response__, 'service_name')))

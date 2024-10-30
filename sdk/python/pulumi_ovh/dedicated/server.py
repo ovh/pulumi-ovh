@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -16,13 +21,13 @@ __all__ = ['ServerArgs', 'Server']
 @pulumi.input_type
 class ServerArgs:
     def __init__(__self__, *,
-                 ovh_subsidiary: pulumi.Input[str],
                  boot_id: Optional[pulumi.Input[float]] = None,
                  boot_script: Optional[pulumi.Input[str]] = None,
                  details: Optional[pulumi.Input['ServerDetailsArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  no_intervention: Optional[pulumi.Input[bool]] = None,
+                 ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  partition_scheme_name: Optional[pulumi.Input[str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanOptionArgs']]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanArgs']]]] = None,
@@ -34,13 +39,13 @@ class ServerArgs:
                  user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ServerUserMetadataArgs']]]] = None):
         """
         The set of arguments for constructing a Server resource.
-        :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input[float] boot_id: Boot id of the server
         :param pulumi.Input[str] boot_script: Boot script of the server
         :param pulumi.Input['ServerDetailsArgs'] details: A structure describing informations about installation custom
         :param pulumi.Input[str] display_name: Resource display name
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[bool] no_intervention: Prevent datacenter intervention
+        :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input[str] partition_scheme_name: Partition scheme name
         :param pulumi.Input[str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[str] rescue_ssh_key: Public SSH Key used in the rescue mode
@@ -49,7 +54,6 @@ class ServerArgs:
         :param pulumi.Input[str] template_name: Template name
         :param pulumi.Input[Sequence[pulumi.Input['ServerUserMetadataArgs']]] user_metadatas: Metadata
         """
-        pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
         if boot_id is not None:
             pulumi.set(__self__, "boot_id", boot_id)
         if boot_script is not None:
@@ -62,6 +66,8 @@ class ServerArgs:
             pulumi.set(__self__, "monitoring", monitoring)
         if no_intervention is not None:
             pulumi.set(__self__, "no_intervention", no_intervention)
+        if ovh_subsidiary is not None:
+            pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
         if partition_scheme_name is not None:
             pulumi.set(__self__, "partition_scheme_name", partition_scheme_name)
         if plan_options is not None:
@@ -80,18 +86,6 @@ class ServerArgs:
             pulumi.set(__self__, "template_name", template_name)
         if user_metadatas is not None:
             pulumi.set(__self__, "user_metadatas", user_metadatas)
-
-    @property
-    @pulumi.getter(name="ovhSubsidiary")
-    def ovh_subsidiary(self) -> pulumi.Input[str]:
-        """
-        OVH subsidiaries
-        """
-        return pulumi.get(self, "ovh_subsidiary")
-
-    @ovh_subsidiary.setter
-    def ovh_subsidiary(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ovh_subsidiary", value)
 
     @property
     @pulumi.getter(name="bootId")
@@ -164,6 +158,18 @@ class ServerArgs:
     @no_intervention.setter
     def no_intervention(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "no_intervention", value)
+
+    @property
+    @pulumi.getter(name="ovhSubsidiary")
+    def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
+        """
+        OVH subsidiaries
+        """
+        return pulumi.get(self, "ovh_subsidiary")
+
+    @ovh_subsidiary.setter
+    def ovh_subsidiary(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ovh_subsidiary", value)
 
     @property
     @pulumi.getter(name="partitionSchemeName")
@@ -833,13 +839,31 @@ class Server(pulumi.CustomResource):
         """
         ## Import
 
-        Dedicated servers can be imported using the `service_name`, e.g.:
+        Dedicated servers can be imported using the `service_name`.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          to = ovh_dedicated_server.server
+
+          id = "<service name>"
+
+        }
+
+        You can then run:
 
         bash
 
-        ```sh
-        $ pulumi import ovh:Dedicated/server:Server server service_name
-        ```
+        $ pulumi preview -generate-config-out=dedicated.tf
+
+        $ pulumi up
+
+        The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -862,18 +886,36 @@ class Server(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServerArgs,
+                 args: Optional[ServerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
 
-        Dedicated servers can be imported using the `service_name`, e.g.:
+        Dedicated servers can be imported using the `service_name`.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          to = ovh_dedicated_server.server
+
+          id = "<service name>"
+
+        }
+
+        You can then run:
 
         bash
 
-        ```sh
-        $ pulumi import ovh:Dedicated/server:Server server service_name
-        ```
+        $ pulumi preview -generate-config-out=dedicated.tf
+
+        $ pulumi up
+
+        The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param ServerArgs args: The arguments to use to populate this resource's properties.
@@ -921,8 +963,6 @@ class Server(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["no_intervention"] = no_intervention
-            if ovh_subsidiary is None and not opts.urn:
-                raise TypeError("Missing required property 'ovh_subsidiary'")
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
             __props__.__dict__["partition_scheme_name"] = partition_scheme_name
             __props__.__dict__["plan_options"] = plan_options
@@ -1201,7 +1241,7 @@ class Server(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ovhSubsidiary")
-    def ovh_subsidiary(self) -> pulumi.Output[str]:
+    def ovh_subsidiary(self) -> pulumi.Output[Optional[str]]:
         """
         OVH subsidiaries
         """

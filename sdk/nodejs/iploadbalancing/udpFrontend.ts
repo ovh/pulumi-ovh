@@ -67,11 +67,11 @@ export class UdpFrontend extends pulumi.CustomResource {
     /**
      * Only attach frontend on these ip. No restriction if null. List of Ip blocks.
      */
-    public readonly dedicatedIpfos!: pulumi.Output<string[]>;
+    public readonly dedicatedIpfos!: pulumi.Output<string[] | undefined>;
     /**
      * Default UDP Farm of your frontend
      */
-    public readonly defaultFarmId!: pulumi.Output<number>;
+    public readonly defaultFarmId!: pulumi.Output<number | undefined>;
     /**
      * Disable your frontend. Default: 'false'
      */
@@ -79,7 +79,7 @@ export class UdpFrontend extends pulumi.CustomResource {
     /**
      * Human readable name for your frontend
      */
-    public readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Id of your frontend
      */

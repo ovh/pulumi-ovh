@@ -4,53 +4,121 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AlertingFormattedMonthlyThresholdArgs',
+    'AlertingFormattedMonthlyThresholdArgsDict',
     'ContainerRegistryPlanArgs',
+    'ContainerRegistryPlanArgsDict',
     'ContainerRegistryPlanFeatureArgs',
+    'ContainerRegistryPlanFeatureArgsDict',
     'ContainerRegistryPlanRegistryLimitArgs',
+    'ContainerRegistryPlanRegistryLimitArgsDict',
     'DatabaseEndpointArgs',
+    'DatabaseEndpointArgsDict',
     'DatabaseIpRestrictionArgs',
+    'DatabaseIpRestrictionArgsDict',
     'DatabaseNodeArgs',
+    'DatabaseNodeArgsDict',
     'GatewayExternalInformationArgs',
+    'GatewayExternalInformationArgsDict',
     'GatewayExternalInformationIpArgs',
+    'GatewayExternalInformationIpArgsDict',
     'GatewayInterfaceArgs',
+    'GatewayInterfaceArgsDict',
     'KubeCustomizationArgs',
+    'KubeCustomizationArgsDict',
     'KubeCustomizationApiserverArgs',
+    'KubeCustomizationApiserverArgsDict',
     'KubeCustomizationApiserverAdmissionpluginArgs',
+    'KubeCustomizationApiserverAdmissionpluginArgsDict',
     'KubeCustomizationKubeProxyArgs',
+    'KubeCustomizationKubeProxyArgsDict',
     'KubeCustomizationKubeProxyIptablesArgs',
+    'KubeCustomizationKubeProxyIptablesArgsDict',
     'KubeCustomizationKubeProxyIpvsArgs',
+    'KubeCustomizationKubeProxyIpvsArgsDict',
     'KubeKubeconfigAttributeArgs',
+    'KubeKubeconfigAttributeArgsDict',
     'KubeNodePoolTemplateArgs',
+    'KubeNodePoolTemplateArgsDict',
     'KubeNodePoolTemplateMetadataArgs',
+    'KubeNodePoolTemplateMetadataArgsDict',
     'KubeNodePoolTemplateSpecArgs',
+    'KubeNodePoolTemplateSpecArgsDict',
     'KubePrivateNetworkConfigurationArgs',
+    'KubePrivateNetworkConfigurationArgsDict',
     'NetworkPrivateRegionsAttributeArgs',
+    'NetworkPrivateRegionsAttributeArgsDict',
     'NetworkPrivateRegionsStatusArgs',
+    'NetworkPrivateRegionsStatusArgsDict',
     'NetworkPrivateSubnetIpPoolArgs',
+    'NetworkPrivateSubnetIpPoolArgsDict',
+    'NetworkPrivateSubnetV2AllocationPoolArgs',
+    'NetworkPrivateSubnetV2AllocationPoolArgsDict',
+    'NetworkPrivateSubnetV2HostRouteArgs',
+    'NetworkPrivateSubnetV2HostRouteArgsDict',
     'ProjectOrderArgs',
+    'ProjectOrderArgsDict',
     'ProjectOrderDetailArgs',
+    'ProjectOrderDetailArgsDict',
     'ProjectPlanArgs',
+    'ProjectPlanArgsDict',
     'ProjectPlanConfigurationArgs',
+    'ProjectPlanConfigurationArgsDict',
     'ProjectPlanOptionArgs',
+    'ProjectPlanOptionArgsDict',
     'ProjectPlanOptionConfigurationArgs',
+    'ProjectPlanOptionConfigurationArgsDict',
     'UserRoleArgs',
+    'UserRoleArgsDict',
     'GetKubeCustomizationArgs',
+    'GetKubeCustomizationArgsDict',
     'GetKubeCustomizationApiserverArgs',
+    'GetKubeCustomizationApiserverArgsDict',
     'GetKubeCustomizationApiserverAdmissionpluginArgs',
+    'GetKubeCustomizationApiserverAdmissionpluginArgsDict',
     'GetKubeCustomizationKubeProxyArgs',
+    'GetKubeCustomizationKubeProxyArgsDict',
     'GetKubeCustomizationKubeProxyIptablesArgs',
+    'GetKubeCustomizationKubeProxyIptablesArgsDict',
     'GetKubeCustomizationKubeProxyIpvsArgs',
+    'GetKubeCustomizationKubeProxyIpvsArgsDict',
     'GetKubeNodePoolTemplateArgs',
+    'GetKubeNodePoolTemplateArgsDict',
     'GetKubeNodePoolTemplateMetadataArgs',
+    'GetKubeNodePoolTemplateMetadataArgsDict',
     'GetKubeNodePoolTemplateSpecArgs',
+    'GetKubeNodePoolTemplateSpecArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AlertingFormattedMonthlyThresholdArgsDict(TypedDict):
+        currency_code: NotRequired[pulumi.Input[str]]
+        """
+        Currency of the monthly threshold
+        """
+        text: NotRequired[pulumi.Input[str]]
+        """
+        Text representation of the monthly threshold
+        """
+        value: NotRequired[pulumi.Input[float]]
+        """
+        Value of the monthly threshold
+        """
+elif False:
+    AlertingFormattedMonthlyThresholdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertingFormattedMonthlyThresholdArgs:
@@ -106,6 +174,39 @@ class AlertingFormattedMonthlyThresholdArgs:
     def value(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ContainerRegistryPlanArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        Plan code from the catalog
+        """
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        Plan creation date
+        """
+        features: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerRegistryPlanFeatureArgsDict']]]]
+        """
+        Features of the plan
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Plan ID
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Registry name
+        """
+        registry_limits: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerRegistryPlanRegistryLimitArgsDict']]]]
+        """
+        Container registry limits
+        """
+        updated_at: NotRequired[pulumi.Input[str]]
+        """
+        Registry last update date
+        """
+elif False:
+    ContainerRegistryPlanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerRegistryPlanArgs:
@@ -226,6 +327,15 @@ class ContainerRegistryPlanArgs:
         pulumi.set(self, "updated_at", value)
 
 
+if not MYPY:
+    class ContainerRegistryPlanFeatureArgsDict(TypedDict):
+        vulnerability: NotRequired[pulumi.Input[bool]]
+        """
+        Vulnerability scanning
+        """
+elif False:
+    ContainerRegistryPlanFeatureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerRegistryPlanFeatureArgs:
     def __init__(__self__, *,
@@ -248,6 +358,19 @@ class ContainerRegistryPlanFeatureArgs:
     def vulnerability(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "vulnerability", value)
 
+
+if not MYPY:
+    class ContainerRegistryPlanRegistryLimitArgsDict(TypedDict):
+        image_storage: NotRequired[pulumi.Input[int]]
+        """
+        Docker image storage limits in bytes
+        """
+        parallel_request: NotRequired[pulumi.Input[int]]
+        """
+        Parallel requests on Docker image API (/v2 Docker registry API)
+        """
+elif False:
+    ContainerRegistryPlanRegistryLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerRegistryPlanRegistryLimitArgs:
@@ -287,6 +410,43 @@ class ContainerRegistryPlanRegistryLimitArgs:
     def parallel_request(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "parallel_request", value)
 
+
+if not MYPY:
+    class DatabaseEndpointArgsDict(TypedDict):
+        component: NotRequired[pulumi.Input[str]]
+        """
+        Type of component the URI relates to.
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Domain of the cluster.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path of the endpoint.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Connection port for the endpoint.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme used to generate the URI.
+        """
+        ssl: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the endpoint uses SSL.
+        """
+        ssl_mode: NotRequired[pulumi.Input[str]]
+        """
+        SSL mode used to connect to the service if the SSL is enabled.
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        URI of the endpoint.
+        """
+elif False:
+    DatabaseEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseEndpointArgs:
@@ -423,6 +583,23 @@ class DatabaseEndpointArgs:
         pulumi.set(self, "uri", value)
 
 
+if not MYPY:
+    class DatabaseIpRestrictionArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the IP restriction
+        """
+        ip: NotRequired[pulumi.Input[str]]
+        """
+        Authorized IP
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Current status of the cluster.
+        """
+elif False:
+    DatabaseIpRestrictionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabaseIpRestrictionArgs:
     def __init__(__self__, *,
@@ -477,6 +654,24 @@ class DatabaseIpRestrictionArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class DatabaseNodeArgsDict(TypedDict):
+        region: pulumi.Input[str]
+        """
+        Public cloud region in which the node should be deployed.
+        Ex: "GRA'.
+        """
+        network_id: NotRequired[pulumi.Input[str]]
+        """
+        Private network id in which the node should be deployed. It's the regional openstackId of the private network
+        """
+        subnet_id: NotRequired[pulumi.Input[str]]
+        """
+        Private subnet ID in which the node is.
+        """
+elif False:
+    DatabaseNodeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseNodeArgs:
@@ -534,6 +729,19 @@ class DatabaseNodeArgs:
         pulumi.set(self, "subnet_id", value)
 
 
+if not MYPY:
+    class GatewayExternalInformationArgsDict(TypedDict):
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input['GatewayExternalInformationIpArgsDict']]]]
+        """
+        List of external ips of the gateway.
+        """
+        network_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the private network.
+        """
+elif False:
+    GatewayExternalInformationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GatewayExternalInformationArgs:
     def __init__(__self__, *,
@@ -573,6 +781,19 @@ class GatewayExternalInformationArgs:
         pulumi.set(self, "network_id", value)
 
 
+if not MYPY:
+    class GatewayExternalInformationIpArgsDict(TypedDict):
+        ip: NotRequired[pulumi.Input[str]]
+        """
+        IP of the interface.
+        """
+        subnet_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the subnet.
+        """
+elif False:
+    GatewayExternalInformationIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GatewayExternalInformationIpArgs:
     def __init__(__self__, *,
@@ -611,6 +832,27 @@ class GatewayExternalInformationIpArgs:
     def subnet_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnet_id", value)
 
+
+if not MYPY:
+    class GatewayInterfaceArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the interface.
+        """
+        ip: NotRequired[pulumi.Input[str]]
+        """
+        IP of the interface.
+        """
+        network_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the private network.
+        """
+        subnet_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the subnet.
+        """
+elif False:
+    GatewayInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GatewayInterfaceArgs:
@@ -683,6 +925,15 @@ class GatewayInterfaceArgs:
         pulumi.set(self, "subnet_id", value)
 
 
+if not MYPY:
+    class KubeCustomizationArgsDict(TypedDict):
+        apiservers: NotRequired[pulumi.Input[Sequence[pulumi.Input['KubeCustomizationApiserverArgsDict']]]]
+        """
+        Kubernetes API server customization
+        """
+elif False:
+    KubeCustomizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubeCustomizationArgs:
     def __init__(__self__, *,
@@ -710,6 +961,15 @@ class KubeCustomizationArgs:
         pulumi.set(self, "apiservers", value)
 
 
+if not MYPY:
+    class KubeCustomizationApiserverArgsDict(TypedDict):
+        admissionplugins: NotRequired[pulumi.Input[Sequence[pulumi.Input['KubeCustomizationApiserverAdmissionpluginArgsDict']]]]
+        """
+        Kubernetes API server admission plugins customization
+        """
+elif False:
+    KubeCustomizationApiserverArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubeCustomizationApiserverArgs:
     def __init__(__self__, *,
@@ -732,6 +992,19 @@ class KubeCustomizationApiserverArgs:
     def admissionplugins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubeCustomizationApiserverAdmissionpluginArgs']]]]):
         pulumi.set(self, "admissionplugins", value)
 
+
+if not MYPY:
+    class KubeCustomizationApiserverAdmissionpluginArgsDict(TypedDict):
+        disableds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+        """
+        enableds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+        """
+elif False:
+    KubeCustomizationApiserverAdmissionpluginArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubeCustomizationApiserverAdmissionpluginArgs:
@@ -772,6 +1045,19 @@ class KubeCustomizationApiserverAdmissionpluginArgs:
         pulumi.set(self, "enableds", value)
 
 
+if not MYPY:
+    class KubeCustomizationKubeProxyArgsDict(TypedDict):
+        iptables: NotRequired[pulumi.Input['KubeCustomizationKubeProxyIptablesArgsDict']]
+        """
+        Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
+        """
+        ipvs: NotRequired[pulumi.Input['KubeCustomizationKubeProxyIpvsArgsDict']]
+        """
+        Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
+        """
+elif False:
+    KubeCustomizationKubeProxyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubeCustomizationKubeProxyArgs:
     def __init__(__self__, *,
@@ -811,6 +1097,19 @@ class KubeCustomizationKubeProxyArgs:
         pulumi.set(self, "ipvs", value)
 
 
+if not MYPY:
+    class KubeCustomizationKubeProxyIptablesArgsDict(TypedDict):
+        min_sync_period: NotRequired[pulumi.Input[str]]
+        """
+        Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
+        """
+        sync_period: NotRequired[pulumi.Input[str]]
+        """
+        Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+        """
+elif False:
+    KubeCustomizationKubeProxyIptablesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubeCustomizationKubeProxyIptablesArgs:
     def __init__(__self__, *,
@@ -849,6 +1148,35 @@ class KubeCustomizationKubeProxyIptablesArgs:
     def sync_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sync_period", value)
 
+
+if not MYPY:
+    class KubeCustomizationKubeProxyIpvsArgsDict(TypedDict):
+        min_sync_period: NotRequired[pulumi.Input[str]]
+        """
+        Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+        """
+        scheduler: NotRequired[pulumi.Input[str]]
+        """
+        IPVS scheduler.
+        """
+        sync_period: NotRequired[pulumi.Input[str]]
+        """
+        Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+        """
+        tcp_fin_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        """
+        tcp_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        """
+        udp_timeout: NotRequired[pulumi.Input[str]]
+        """
+        timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+        """
+elif False:
+    KubeCustomizationKubeProxyIpvsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubeCustomizationKubeProxyIpvsArgs:
@@ -953,6 +1281,27 @@ class KubeCustomizationKubeProxyIpvsArgs:
         pulumi.set(self, "udp_timeout", value)
 
 
+if not MYPY:
+    class KubeKubeconfigAttributeArgsDict(TypedDict):
+        client_certificate: NotRequired[pulumi.Input[str]]
+        """
+        The kubernetes API server client certificate.
+        """
+        client_key: NotRequired[pulumi.Input[str]]
+        """
+        The kubernetes API server client key.
+        """
+        cluster_ca_certificate: NotRequired[pulumi.Input[str]]
+        """
+        The kubernetes API server CA certificate.
+        """
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The kubernetes API server URL.
+        """
+elif False:
+    KubeKubeconfigAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubeKubeconfigAttributeArgs:
     def __init__(__self__, *,
@@ -1024,6 +1373,19 @@ class KubeKubeconfigAttributeArgs:
         pulumi.set(self, "host", value)
 
 
+if not MYPY:
+    class KubeNodePoolTemplateArgsDict(TypedDict):
+        metadata: pulumi.Input['KubeNodePoolTemplateMetadataArgsDict']
+        """
+        metadata
+        """
+        spec: pulumi.Input['KubeNodePoolTemplateSpecArgsDict']
+        """
+        spec
+        """
+elif False:
+    KubeNodePoolTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubeNodePoolTemplateArgs:
     def __init__(__self__, *,
@@ -1060,6 +1422,23 @@ class KubeNodePoolTemplateArgs:
     def spec(self, value: pulumi.Input['KubeNodePoolTemplateSpecArgs']):
         pulumi.set(self, "spec", value)
 
+
+if not MYPY:
+    class KubeNodePoolTemplateMetadataArgsDict(TypedDict):
+        annotations: pulumi.Input[Mapping[str, pulumi.Input[str]]]
+        """
+        annotations
+        """
+        finalizers: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        finalizers
+        """
+        labels: pulumi.Input[Mapping[str, pulumi.Input[str]]]
+        """
+        labels
+        """
+elif False:
+    KubeNodePoolTemplateMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubeNodePoolTemplateMetadataArgs:
@@ -1113,6 +1492,19 @@ class KubeNodePoolTemplateMetadataArgs:
         pulumi.set(self, "labels", value)
 
 
+if not MYPY:
+    class KubeNodePoolTemplateSpecArgsDict(TypedDict):
+        taints: pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]
+        """
+        taints
+        """
+        unschedulable: pulumi.Input[bool]
+        """
+        unschedulable
+        """
+elif False:
+    KubeNodePoolTemplateSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubeNodePoolTemplateSpecArgs:
     def __init__(__self__, *,
@@ -1149,6 +1541,24 @@ class KubeNodePoolTemplateSpecArgs:
     def unschedulable(self, value: pulumi.Input[bool]):
         pulumi.set(self, "unschedulable", value)
 
+
+if not MYPY:
+    class KubePrivateNetworkConfigurationArgsDict(TypedDict):
+        default_vrack_gateway: pulumi.Input[str]
+        """
+        If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
+        """
+        private_network_routing_as_default: pulumi.Input[bool]
+        """
+        Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+
+        In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+        ```python
+        import pulumi
+        ```
+        """
+elif False:
+    KubePrivateNetworkConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubePrivateNetworkConfigurationArgs:
@@ -1197,6 +1607,17 @@ class KubePrivateNetworkConfigurationArgs:
         pulumi.set(self, "private_network_routing_as_default", value)
 
 
+if not MYPY:
+    class NetworkPrivateRegionsAttributeArgsDict(TypedDict):
+        status: pulumi.Input[str]
+        """
+        the status of the network. should be normally set to 'ACTIVE'.
+        """
+        openstackid: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    NetworkPrivateRegionsAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkPrivateRegionsAttributeArgs:
     def __init__(__self__, *,
@@ -1243,6 +1664,16 @@ class NetworkPrivateRegionsAttributeArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class NetworkPrivateRegionsStatusArgsDict(TypedDict):
+        status: pulumi.Input[str]
+        """
+        the status of the network. should be normally set to 'ACTIVE'.
+        """
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    NetworkPrivateRegionsStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkPrivateRegionsStatusArgs:
     def __init__(__self__, *,
@@ -1277,6 +1708,36 @@ class NetworkPrivateRegionsStatusArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class NetworkPrivateSubnetIpPoolArgsDict(TypedDict):
+        dhcp: NotRequired[pulumi.Input[bool]]
+        """
+        Enable DHCP.
+        Changing this forces a new resource to be created. Defaults to false.
+        """
+        end: NotRequired[pulumi.Input[str]]
+        """
+        Last ip for this region.
+        Changing this value recreates the subnet.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        Global network in CIDR format.
+        Changing this value recreates the subnet
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The region in which the network subnet will be created.
+        Ex.: "GRA1". Changing this value recreates the resource.
+        """
+        start: NotRequired[pulumi.Input[str]]
+        """
+        First ip for this region.
+        Changing this value recreates the subnet.
+        """
+elif False:
+    NetworkPrivateSubnetIpPoolArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkPrivateSubnetIpPoolArgs:
     def __init__(__self__, *,
@@ -1288,7 +1749,6 @@ class NetworkPrivateSubnetIpPoolArgs:
         """
         :param pulumi.Input[bool] dhcp: Enable DHCP.
                Changing this forces a new resource to be created. Defaults to false.
-               _
         :param pulumi.Input[str] end: Last ip for this region.
                Changing this value recreates the subnet.
         :param pulumi.Input[str] network: Global network in CIDR format.
@@ -1315,7 +1775,6 @@ class NetworkPrivateSubnetIpPoolArgs:
         """
         Enable DHCP.
         Changing this forces a new resource to be created. Defaults to false.
-        _
         """
         return pulumi.get(self, "dhcp")
 
@@ -1375,6 +1834,95 @@ class NetworkPrivateSubnetIpPoolArgs:
     def start(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start", value)
 
+
+if not MYPY:
+    class NetworkPrivateSubnetV2AllocationPoolArgsDict(TypedDict):
+        end: pulumi.Input[str]
+        start: pulumi.Input[str]
+elif False:
+    NetworkPrivateSubnetV2AllocationPoolArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkPrivateSubnetV2AllocationPoolArgs:
+    def __init__(__self__, *,
+                 end: pulumi.Input[str],
+                 start: pulumi.Input[str]):
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: pulumi.Input[str]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start", value)
+
+
+if not MYPY:
+    class NetworkPrivateSubnetV2HostRouteArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        nexthop: pulumi.Input[str]
+elif False:
+    NetworkPrivateSubnetV2HostRouteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkPrivateSubnetV2HostRouteArgs:
+    def __init__(__self__, *,
+                 destination: pulumi.Input[str],
+                 nexthop: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "nexthop", nexthop)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter
+    def nexthop(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "nexthop")
+
+    @nexthop.setter
+    def nexthop(self, value: pulumi.Input[str]):
+        pulumi.set(self, "nexthop", value)
+
+
+if not MYPY:
+    class ProjectOrderArgsDict(TypedDict):
+        date: NotRequired[pulumi.Input[str]]
+        """
+        date
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProjectOrderDetailArgsDict']]]]
+        """
+        Information about a Bill entry
+        """
+        expiration_date: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_id: NotRequired[pulumi.Input[int]]
+        """
+        order id, the same as the `id`
+        """
+elif False:
+    ProjectOrderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectOrderArgs:
@@ -1447,6 +1995,27 @@ class ProjectOrderArgs:
         pulumi.set(self, "order_id", value)
 
 
+if not MYPY:
+    class ProjectOrderDetailArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description associated with the user.
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_detail_id: NotRequired[pulumi.Input[int]]
+        """
+        order detail id
+        """
+        quantity: NotRequired[pulumi.Input[str]]
+        """
+        quantity
+        """
+elif False:
+    ProjectOrderDetailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectOrderDetailArgs:
     def __init__(__self__, *,
@@ -1517,6 +2086,31 @@ class ProjectOrderDetailArgs:
     def quantity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "quantity", value)
 
+
+if not MYPY:
+    class ProjectPlanArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        duration
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProjectPlanConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product
+        """
+elif False:
+    ProjectPlanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectPlanArgs:
@@ -1602,6 +2196,19 @@ class ProjectPlanArgs:
         pulumi.set(self, "configurations", value)
 
 
+if not MYPY:
+    class ProjectPlanConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource
+        """
+        value: pulumi.Input[str]
+        """
+        Path to the resource in API.OVH.COM
+        """
+elif False:
+    ProjectPlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectPlanConfigurationArgs:
     def __init__(__self__, *,
@@ -1638,6 +2245,31 @@ class ProjectPlanConfigurationArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ProjectPlanOptionArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        duration
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProjectPlanOptionConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product
+        """
+elif False:
+    ProjectPlanOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectPlanOptionArgs:
@@ -1723,6 +2355,19 @@ class ProjectPlanOptionArgs:
         pulumi.set(self, "configurations", value)
 
 
+if not MYPY:
+    class ProjectPlanOptionConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource
+        """
+        value: pulumi.Input[str]
+        """
+        Path to the resource in API.OVH.COM
+        """
+elif False:
+    ProjectPlanOptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectPlanOptionConfigurationArgs:
     def __init__(__self__, *,
@@ -1759,6 +2404,27 @@ class ProjectPlanOptionConfigurationArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class UserRoleArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description associated with the user.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the role
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the role
+        """
+        permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        list of permissions associated with the role
+        """
+elif False:
+    UserRoleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UserRoleArgs:
@@ -1831,6 +2497,15 @@ class UserRoleArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class GetKubeCustomizationArgsDict(TypedDict):
+        apiservers: Sequence['GetKubeCustomizationApiserverArgsDict']
+        """
+        Kubernetes API server customization
+        """
+elif False:
+    GetKubeCustomizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetKubeCustomizationArgs:
     def __init__(__self__, *,
@@ -1857,6 +2532,15 @@ class GetKubeCustomizationArgs:
         pulumi.set(self, "apiservers", value)
 
 
+if not MYPY:
+    class GetKubeCustomizationApiserverArgsDict(TypedDict):
+        admissionplugins: Sequence['GetKubeCustomizationApiserverAdmissionpluginArgsDict']
+        """
+        Kubernetes API server admission plugins customization
+        """
+elif False:
+    GetKubeCustomizationApiserverArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetKubeCustomizationApiserverArgs:
     def __init__(__self__, *,
@@ -1878,6 +2562,19 @@ class GetKubeCustomizationApiserverArgs:
     def admissionplugins(self, value: Sequence['GetKubeCustomizationApiserverAdmissionpluginArgs']):
         pulumi.set(self, "admissionplugins", value)
 
+
+if not MYPY:
+    class GetKubeCustomizationApiserverAdmissionpluginArgsDict(TypedDict):
+        disableds: Sequence[str]
+        """
+        Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+        """
+        enableds: Sequence[str]
+        """
+        Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+        """
+elif False:
+    GetKubeCustomizationApiserverAdmissionpluginArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetKubeCustomizationApiserverAdmissionpluginArgs:
@@ -1915,6 +2612,19 @@ class GetKubeCustomizationApiserverAdmissionpluginArgs:
     def enableds(self, value: Sequence[str]):
         pulumi.set(self, "enableds", value)
 
+
+if not MYPY:
+    class GetKubeCustomizationKubeProxyArgsDict(TypedDict):
+        iptables: NotRequired['GetKubeCustomizationKubeProxyIptablesArgsDict']
+        """
+        Kubernetes cluster kube-proxy customization of iptables specific config.
+        """
+        ipvs: NotRequired['GetKubeCustomizationKubeProxyIpvsArgsDict']
+        """
+        Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+        """
+elif False:
+    GetKubeCustomizationKubeProxyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetKubeCustomizationKubeProxyArgs:
@@ -1955,6 +2665,19 @@ class GetKubeCustomizationKubeProxyArgs:
         pulumi.set(self, "ipvs", value)
 
 
+if not MYPY:
+    class GetKubeCustomizationKubeProxyIptablesArgsDict(TypedDict):
+        min_sync_period: NotRequired[str]
+        """
+        Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+        """
+        sync_period: NotRequired[str]
+        """
+        Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+        """
+elif False:
+    GetKubeCustomizationKubeProxyIptablesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetKubeCustomizationKubeProxyIptablesArgs:
     def __init__(__self__, *,
@@ -1993,6 +2716,35 @@ class GetKubeCustomizationKubeProxyIptablesArgs:
     def sync_period(self, value: Optional[str]):
         pulumi.set(self, "sync_period", value)
 
+
+if not MYPY:
+    class GetKubeCustomizationKubeProxyIpvsArgsDict(TypedDict):
+        min_sync_period: NotRequired[str]
+        """
+        Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+        """
+        scheduler: NotRequired[str]
+        """
+        IPVS scheduler.
+        """
+        sync_period: NotRequired[str]
+        """
+        Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+        """
+        tcp_fin_timeout: NotRequired[str]
+        """
+        Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
+        """
+        tcp_timeout: NotRequired[str]
+        """
+        Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+        """
+        udp_timeout: NotRequired[str]
+        """
+        timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+        """
+elif False:
+    GetKubeCustomizationKubeProxyIpvsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetKubeCustomizationKubeProxyIpvsArgs:
@@ -2097,6 +2849,19 @@ class GetKubeCustomizationKubeProxyIpvsArgs:
         pulumi.set(self, "udp_timeout", value)
 
 
+if not MYPY:
+    class GetKubeNodePoolTemplateArgsDict(TypedDict):
+        metadata: NotRequired['GetKubeNodePoolTemplateMetadataArgsDict']
+        """
+        metadata
+        """
+        spec: NotRequired['GetKubeNodePoolTemplateSpecArgsDict']
+        """
+        spec
+        """
+elif False:
+    GetKubeNodePoolTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetKubeNodePoolTemplateArgs:
     def __init__(__self__, *,
@@ -2135,6 +2900,23 @@ class GetKubeNodePoolTemplateArgs:
     def spec(self, value: Optional['GetKubeNodePoolTemplateSpecArgs']):
         pulumi.set(self, "spec", value)
 
+
+if not MYPY:
+    class GetKubeNodePoolTemplateMetadataArgsDict(TypedDict):
+        annotations: NotRequired[Mapping[str, str]]
+        """
+        annotations
+        """
+        finalizers: NotRequired[Sequence[str]]
+        """
+        finalizers
+        """
+        labels: NotRequired[Mapping[str, str]]
+        """
+        labels
+        """
+elif False:
+    GetKubeNodePoolTemplateMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetKubeNodePoolTemplateMetadataArgs:
@@ -2190,6 +2972,19 @@ class GetKubeNodePoolTemplateMetadataArgs:
     def labels(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "labels", value)
 
+
+if not MYPY:
+    class GetKubeNodePoolTemplateSpecArgsDict(TypedDict):
+        taints: NotRequired[Sequence[Mapping[str, str]]]
+        """
+        taints
+        """
+        unschedulable: NotRequired[bool]
+        """
+        unschedulable
+        """
+elif False:
+    GetKubeNodePoolTemplateSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetKubeNodePoolTemplateSpecArgs:

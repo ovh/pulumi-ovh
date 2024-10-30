@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -39,7 +38,7 @@ type Vps struct {
 	// Details about an Order
 	Order VpsOrderOutput `pulumi:"order"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
-	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
+	OvhSubsidiary pulumi.StringPtrOutput `pulumi:"ovhSubsidiary"`
 	// Product Plan to order
 	PlanOptions VpsPlanOptionArrayOutput `pulumi:"planOptions"`
 	// Product Plan to order
@@ -59,12 +58,9 @@ type Vps struct {
 func NewVps(ctx *pulumi.Context,
 	name string, args *VpsArgs, opts ...pulumi.ResourceOption) (*Vps, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &VpsArgs{}
 	}
 
-	if args.OvhSubsidiary == nil {
-		return nil, errors.New("invalid value for required argument 'OvhSubsidiary'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Vps
 	err := ctx.RegisterResource("ovh:Vps/vps:Vps", name, args, &resource, opts...)
@@ -189,7 +185,7 @@ type vpsArgs struct {
 	// All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
 	OfferType *string `pulumi:"offerType"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
-	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
+	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Product Plan to order
 	PlanOptions []VpsPlanOption `pulumi:"planOptions"`
 	// Product Plan to order
@@ -222,7 +218,7 @@ type VpsArgs struct {
 	// All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
 	OfferType pulumi.StringPtrInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
-	OvhSubsidiary pulumi.StringInput
+	OvhSubsidiary pulumi.StringPtrInput
 	// Product Plan to order
 	PlanOptions VpsPlanOptionArrayInput
 	// Product Plan to order
@@ -379,8 +375,8 @@ func (o VpsOutput) Order() VpsOrderOutput {
 }
 
 // OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
-func (o VpsOutput) OvhSubsidiary() pulumi.StringOutput {
-	return o.ApplyT(func(v *Vps) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
+func (o VpsOutput) OvhSubsidiary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vps) pulumi.StringPtrOutput { return v.OvhSubsidiary }).(pulumi.StringPtrOutput)
 }
 
 // Product Plan to order

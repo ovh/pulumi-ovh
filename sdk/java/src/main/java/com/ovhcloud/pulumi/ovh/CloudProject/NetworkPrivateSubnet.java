@@ -92,7 +92,6 @@ public class NetworkPrivateSubnet extends com.pulumi.resources.CustomResource {
     /**
      * Enable DHCP.
      * Changing this forces a new resource to be created. Defaults to false.
-     * _
      * 
      */
     @Export(name="dhcp", refs={Boolean.class}, tree="[0]")
@@ -101,7 +100,6 @@ public class NetworkPrivateSubnet extends com.pulumi.resources.CustomResource {
     /**
      * @return Enable DHCP.
      * Changing this forces a new resource to be created. Defaults to false.
-     * _
      * 
      */
     public Output<Optional<Boolean>> dhcp() {

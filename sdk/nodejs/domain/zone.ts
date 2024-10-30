@@ -46,13 +46,31 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Zone can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the zone.
+ * Zone can be imported using its `name`.
+ *
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = ovh_domain_zone.zone
+ *
+ *   id = "<zone name>"
+ *
+ * }
+ *
+ * You can then run:
  *
  * bash
  *
- * ```sh
- * $ pulumi import ovh:Domain/zone:Zone zone order_id
- * ```
+ * $ pulumi preview -generate-config-out=zone.tf
+ *
+ * $ pulumi up
+ *
+ * The file `zone.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  */
 export class Zone extends pulumi.CustomResource {
     /**
@@ -133,7 +151,7 @@ export class Zone extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ZoneArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ZoneArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneArgs | ZoneState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -152,12 +170,6 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["planOptions"] = state ? state.planOptions : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
-            if ((!args || args.ovhSubsidiary === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ovhSubsidiary'");
-            }
-            if ((!args || args.plan === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'plan'");
-            }
             resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
             resourceInputs["paymentMean"] = args ? args.paymentMean : undefined;
@@ -235,7 +247,7 @@ export interface ZoneArgs {
     /**
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
-    ovhSubsidiary: pulumi.Input<string>;
+    ovhSubsidiary?: pulumi.Input<string>;
     /**
      * Ovh payment mode
      *
@@ -245,7 +257,7 @@ export interface ZoneArgs {
     /**
      * Product Plan to order
      */
-    plan: pulumi.Input<inputs.Domain.ZonePlan>;
+    plan?: pulumi.Input<inputs.Domain.ZonePlan>;
     /**
      * Product Plan to order
      */

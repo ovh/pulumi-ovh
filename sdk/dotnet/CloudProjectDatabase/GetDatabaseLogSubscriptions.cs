@@ -12,7 +12,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public static class GetDatabaseLogSubscriptions
     {
         /// <summary>
-        /// Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+        /// Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseLogSubscriptionsResult>("ovh:CloudProjectDatabase/getDatabaseLogSubscriptions:getDatabaseLogSubscriptions", args ?? new GetDatabaseLogSubscriptionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+        /// Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
         /// 
         /// ## Example Usage
         /// 

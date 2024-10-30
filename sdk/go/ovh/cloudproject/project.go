@@ -7,20 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ## Import
 //
-// Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.
+// Cloud project can be imported using the `project_id`.
+//
+// Using the following configuration:
+//
+// hcl
+//
+// import {
+//
+//	to = ovh_cloud_project.my_cloud_project
+//
+//	id = "<project ID>"
+//
+// }
+//
+// You can then run:
 //
 // bash
 //
-// ```sh
-// $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
-// ```
+// $ pulumi preview -generate-config-out=cloudproject.tf
+//
+// $ pulumi up
+//
+// The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+//
+// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -53,15 +70,9 @@ type Project struct {
 func NewProject(ctx *pulumi.Context,
 	name string, args *ProjectArgs, opts ...pulumi.ResourceOption) (*Project, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProjectArgs{}
 	}
 
-	if args.OvhSubsidiary == nil {
-		return nil, errors.New("invalid value for required argument 'OvhSubsidiary'")
-	}
-	if args.Plan == nil {
-		return nil, errors.New("invalid value for required argument 'Plan'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Project
 	err := ctx.RegisterResource("ovh:CloudProject/project:Project", name, args, &resource, opts...)
@@ -146,13 +157,13 @@ type projectArgs struct {
 	// Details about the order that was used to create the public cloud project
 	Orders []ProjectOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
+	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
 	// Deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.
 	PaymentMean *string `pulumi:"paymentMean"`
 	// Product Plan to order
-	Plan ProjectPlan `pulumi:"plan"`
+	Plan *ProjectPlan `pulumi:"plan"`
 	// Product Plan to order
 	PlanOptions []ProjectPlanOption `pulumi:"planOptions"`
 }
@@ -164,13 +175,13 @@ type ProjectArgs struct {
 	// Details about the order that was used to create the public cloud project
 	Orders ProjectOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-	OvhSubsidiary pulumi.StringInput
+	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
 	// Deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.
 	PaymentMean pulumi.StringPtrInput
 	// Product Plan to order
-	Plan ProjectPlanInput
+	Plan ProjectPlanPtrInput
 	// Product Plan to order
 	PlanOptions ProjectPlanOptionArrayInput
 }

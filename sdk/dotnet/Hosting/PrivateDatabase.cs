@@ -69,11 +69,31 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// ## Import
     /// 
-    /// OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
+    /// OVHcloud Webhosting database can be imported using the `service_name`.
     /// 
-    /// ```sh
-    /// $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
-    /// ```
+    /// Using the following configuration:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_hosting_privatedatabase.database
+    /// 
+    ///   id = "&lt;service name&gt;"
+    /// 
+    /// }
+    /// 
+    /// You can then run:
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=database.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `database.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabase:PrivateDatabase")]
     public partial class PrivateDatabase : global::Pulumi.CustomResource
@@ -236,7 +256,7 @@ namespace Pulumi.Ovh.Hosting
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public PrivateDatabase(string name, PrivateDatabaseArgs args, CustomResourceOptions? options = null)
+        public PrivateDatabase(string name, PrivateDatabaseArgs? args = null, CustomResourceOptions? options = null)
             : base("ovh:Hosting/privateDatabase:PrivateDatabase", name, args ?? new PrivateDatabaseArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -296,8 +316,8 @@ namespace Pulumi.Ovh.Hosting
         /// <summary>
         /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
-        [Input("ovhSubsidiary", required: true)]
-        public Input<string> OvhSubsidiary { get; set; } = null!;
+        [Input("ovhSubsidiary")]
+        public Input<string>? OvhSubsidiary { get; set; }
 
         /// <summary>
         /// Ovh payment mode
@@ -308,8 +328,8 @@ namespace Pulumi.Ovh.Hosting
         /// <summary>
         /// Product Plan to order
         /// </summary>
-        [Input("plan", required: true)]
-        public Input<Inputs.PrivateDatabasePlanArgs> Plan { get; set; } = null!;
+        [Input("plan")]
+        public Input<Inputs.PrivateDatabasePlanArgs>? Plan { get; set; }
 
         [Input("planOptions")]
         private InputList<Inputs.PrivateDatabasePlanOptionArgs>? _planOptions;

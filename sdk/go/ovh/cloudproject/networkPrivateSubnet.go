@@ -63,7 +63,6 @@ type NetworkPrivateSubnet struct {
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
 	// Enable DHCP.
 	// Changing this forces a new resource to be created. Defaults to false.
-	// _
 	Dhcp pulumi.BoolPtrOutput `pulumi:"dhcp"`
 	// Last ip for this region.
 	// Changing this value recreates the subnet.
@@ -149,7 +148,6 @@ type networkPrivateSubnetState struct {
 	Cidr *string `pulumi:"cidr"`
 	// Enable DHCP.
 	// Changing this forces a new resource to be created. Defaults to false.
-	// _
 	Dhcp *bool `pulumi:"dhcp"`
 	// Last ip for this region.
 	// Changing this value recreates the subnet.
@@ -188,7 +186,6 @@ type NetworkPrivateSubnetState struct {
 	Cidr pulumi.StringPtrInput
 	// Enable DHCP.
 	// Changing this forces a new resource to be created. Defaults to false.
-	// _
 	Dhcp pulumi.BoolPtrInput
 	// Last ip for this region.
 	// Changing this value recreates the subnet.
@@ -229,7 +226,6 @@ func (NetworkPrivateSubnetState) ElementType() reflect.Type {
 type networkPrivateSubnetArgs struct {
 	// Enable DHCP.
 	// Changing this forces a new resource to be created. Defaults to false.
-	// _
 	Dhcp *bool `pulumi:"dhcp"`
 	// Last ip for this region.
 	// Changing this value recreates the subnet.
@@ -258,7 +254,6 @@ type networkPrivateSubnetArgs struct {
 type NetworkPrivateSubnetArgs struct {
 	// Enable DHCP.
 	// Changing this forces a new resource to be created. Defaults to false.
-	// _
 	Dhcp pulumi.BoolPtrInput
 	// Last ip for this region.
 	// Changing this value recreates the subnet.
@@ -377,7 +372,6 @@ func (o NetworkPrivateSubnetOutput) Cidr() pulumi.StringOutput {
 
 // Enable DHCP.
 // Changing this forces a new resource to be created. Defaults to false.
-// _
 func (o NetworkPrivateSubnetOutput) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnet) pulumi.BoolPtrOutput { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }

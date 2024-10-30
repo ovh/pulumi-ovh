@@ -4,26 +4,87 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'HttpFarmProbeArgs',
+    'HttpFarmProbeArgsDict',
     'HttpRouteActionArgs',
+    'HttpRouteActionArgsDict',
     'HttpRouteRuleArgs',
+    'HttpRouteRuleArgsDict',
     'LoadBalancerOrderArgs',
+    'LoadBalancerOrderArgsDict',
     'LoadBalancerOrderDetailArgs',
+    'LoadBalancerOrderDetailArgsDict',
     'LoadBalancerOrderableZoneArgs',
+    'LoadBalancerOrderableZoneArgsDict',
     'LoadBalancerPlanArgs',
+    'LoadBalancerPlanArgsDict',
     'LoadBalancerPlanConfigurationArgs',
+    'LoadBalancerPlanConfigurationArgsDict',
     'LoadBalancerPlanOptionArgs',
+    'LoadBalancerPlanOptionArgsDict',
     'LoadBalancerPlanOptionConfigurationArgs',
+    'LoadBalancerPlanOptionConfigurationArgsDict',
     'TcpFarmProbeArgs',
+    'TcpFarmProbeArgsDict',
     'TcpRouteActionArgs',
+    'TcpRouteActionArgsDict',
     'TcpRouteRuleArgs',
+    'TcpRouteRuleArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class HttpFarmProbeArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        """
+        force_ssl: NotRequired[pulumi.Input[bool]]
+        """
+        Force use of SSL (TLS)
+        """
+        interval: NotRequired[pulumi.Input[int]]
+        """
+        probe interval, Value between 30 and 3600 seconds, default 30
+        """
+        match: NotRequired[pulumi.Input[str]]
+        """
+        What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        """
+        negate: NotRequired[pulumi.Input[bool]]
+        """
+        Negate probe result
+        """
+        pattern: NotRequired[pulumi.Input[str]]
+        """
+        Pattern to match against `match`
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Port for backends to receive traffic on.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        URL for HTTP probe type.
+        """
+elif False:
+    HttpFarmProbeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HttpFarmProbeArgs:
@@ -175,6 +236,23 @@ class HttpFarmProbeArgs:
         pulumi.set(self, "url", value)
 
 
+if not MYPY:
+    class HttpRouteActionArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Action to trigger if all the rules of this route matches
+        """
+        status: NotRequired[pulumi.Input[int]]
+        """
+        HTTP status code for "redirect" and "reject" actions
+        """
+        target: NotRequired[pulumi.Input[str]]
+        """
+        Farm ID for "farm" action type or URL template for "redirect" action. You may use ${uri}, ${protocol}, ${host}, ${port} and ${path} variables in redirect target
+        """
+elif False:
+    HttpRouteActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HttpRouteActionArgs:
     def __init__(__self__, *,
@@ -228,6 +306,35 @@ class HttpRouteActionArgs:
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
 
+
+if not MYPY:
+    class HttpRouteRuleArgsDict(TypedDict):
+        field: NotRequired[pulumi.Input[str]]
+        """
+        Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        """
+        match: NotRequired[pulumi.Input[str]]
+        """
+        Matching operator. Not all operators are available for all fields. See "availableRules"
+        """
+        negate: NotRequired[pulumi.Input[bool]]
+        """
+        Invert the matching operator effect
+        """
+        pattern: NotRequired[pulumi.Input[str]]
+        """
+        Value to match against this match. Interpretation if this field depends on the match and field
+        """
+        rule_id: NotRequired[pulumi.Input[int]]
+        """
+        Id of your rule
+        """
+        sub_field: NotRequired[pulumi.Input[str]]
+        """
+        Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+        """
+elif False:
+    HttpRouteRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HttpRouteRuleArgs:
@@ -332,6 +439,27 @@ class HttpRouteRuleArgs:
         pulumi.set(self, "sub_field", value)
 
 
+if not MYPY:
+    class LoadBalancerOrderArgsDict(TypedDict):
+        date: NotRequired[pulumi.Input[str]]
+        """
+        date
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerOrderDetailArgsDict']]]]
+        """
+        Information about a Bill entry
+        """
+        expiration_date: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_id: NotRequired[pulumi.Input[int]]
+        """
+        order id
+        """
+elif False:
+    LoadBalancerOrderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerOrderArgs:
     def __init__(__self__, *,
@@ -402,6 +530,27 @@ class LoadBalancerOrderArgs:
     def order_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "order_id", value)
 
+
+if not MYPY:
+    class LoadBalancerOrderDetailArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        description
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        expiration date
+        """
+        order_detail_id: NotRequired[pulumi.Input[int]]
+        """
+        order detail id
+        """
+        quantity: NotRequired[pulumi.Input[str]]
+        """
+        quantity
+        """
+elif False:
+    LoadBalancerOrderDetailArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerOrderDetailArgs:
@@ -474,6 +623,19 @@ class LoadBalancerOrderDetailArgs:
         pulumi.set(self, "quantity", value)
 
 
+if not MYPY:
+    class LoadBalancerOrderableZoneArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The zone three letter code
+        """
+        plan_code: NotRequired[pulumi.Input[str]]
+        """
+        The billing planCode for this zone
+        """
+elif False:
+    LoadBalancerOrderableZoneArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerOrderableZoneArgs:
     def __init__(__self__, *,
@@ -512,6 +674,31 @@ class LoadBalancerOrderableZoneArgs:
     def plan_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "plan_code", value)
 
+
+if not MYPY:
+    class LoadBalancerPlanArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        duration
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPlanConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product
+        """
+elif False:
+    LoadBalancerPlanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerPlanArgs:
@@ -597,6 +784,19 @@ class LoadBalancerPlanArgs:
         pulumi.set(self, "configurations", value)
 
 
+if not MYPY:
+    class LoadBalancerPlanConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource
+        """
+        value: pulumi.Input[str]
+        """
+        Path to the resource in API.OVH.COM
+        """
+elif False:
+    LoadBalancerPlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerPlanConfigurationArgs:
     def __init__(__self__, *,
@@ -633,6 +833,31 @@ class LoadBalancerPlanConfigurationArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class LoadBalancerPlanOptionArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        duration
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Plan code
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing model identifier
+        """
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        Catalog name
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPlanOptionConfigurationArgsDict']]]]
+        """
+        Representation of a configuration item for personalizing product
+        """
+elif False:
+    LoadBalancerPlanOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerPlanOptionArgs:
@@ -718,6 +943,19 @@ class LoadBalancerPlanOptionArgs:
         pulumi.set(self, "configurations", value)
 
 
+if not MYPY:
+    class LoadBalancerPlanOptionConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Identifier of the resource
+        """
+        value: pulumi.Input[str]
+        """
+        Path to the resource in API.OVH.COM
+        """
+elif False:
+    LoadBalancerPlanOptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerPlanOptionConfigurationArgs:
     def __init__(__self__, *,
@@ -754,6 +992,47 @@ class LoadBalancerPlanOptionConfigurationArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class TcpFarmProbeArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        """
+        force_ssl: NotRequired[pulumi.Input[bool]]
+        """
+        Force use of SSL (TLS)
+        """
+        interval: NotRequired[pulumi.Input[int]]
+        """
+        probe interval, Value between 30 and 3600 seconds, default 30
+        """
+        match: NotRequired[pulumi.Input[str]]
+        """
+        What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        """
+        negate: NotRequired[pulumi.Input[bool]]
+        """
+        Negate probe result
+        """
+        pattern: NotRequired[pulumi.Input[str]]
+        """
+        Pattern to match against `match`
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Port for backends to receive traffic on.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        URL for HTTP probe type.
+        """
+elif False:
+    TcpFarmProbeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TcpFarmProbeArgs:
@@ -905,6 +1184,19 @@ class TcpFarmProbeArgs:
         pulumi.set(self, "url", value)
 
 
+if not MYPY:
+    class TcpRouteActionArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Action to trigger if all the rules of this route matches
+        """
+        target: NotRequired[pulumi.Input[str]]
+        """
+        Farm ID for "farm" action type, empty for others.
+        """
+elif False:
+    TcpRouteActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TcpRouteActionArgs:
     def __init__(__self__, *,
@@ -942,6 +1234,35 @@ class TcpRouteActionArgs:
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
 
+
+if not MYPY:
+    class TcpRouteRuleArgsDict(TypedDict):
+        field: NotRequired[pulumi.Input[str]]
+        """
+        Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        """
+        match: NotRequired[pulumi.Input[str]]
+        """
+        Matching operator. Not all operators are available for all fields. See "availableRules"
+        """
+        negate: NotRequired[pulumi.Input[bool]]
+        """
+        Invert the matching operator effect
+        """
+        pattern: NotRequired[pulumi.Input[str]]
+        """
+        Value to match against this match. Interpretation if this field depends on the match and field
+        """
+        rule_id: NotRequired[pulumi.Input[int]]
+        """
+        Id of your rule
+        """
+        sub_field: NotRequired[pulumi.Input[str]]
+        """
+        Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+        """
+elif False:
+    TcpRouteRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TcpRouteRuleArgs:

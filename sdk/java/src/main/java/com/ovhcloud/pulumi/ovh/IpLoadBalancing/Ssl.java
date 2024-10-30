@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -95,28 +96,28 @@ public class Ssl extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="chain", refs={String.class}, tree="[0]")
-    private Output<String> chain;
+    private Output</* @Nullable */ String> chain;
 
     /**
      * @return Certificate chain
      * 
      */
-    public Output<String> chain() {
-        return this.chain;
+    public Output<Optional<String>> chain() {
+        return Codegen.optional(this.chain);
     }
     /**
      * Readable label for loadbalancer ssl
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
-    private Output<String> displayName;
+    private Output</* @Nullable */ String> displayName;
 
     /**
      * @return Readable label for loadbalancer ssl
      * 
      */
-    public Output<String> displayName() {
-        return this.displayName;
+    public Output<Optional<String>> displayName() {
+        return Codegen.optional(this.displayName);
     }
     /**
      * Expire date of your SSL certificate.

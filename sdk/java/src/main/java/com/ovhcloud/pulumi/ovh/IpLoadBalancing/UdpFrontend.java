@@ -14,6 +14,7 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -82,28 +83,28 @@ public class UdpFrontend extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dedicatedIpfos", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> dedicatedIpfos;
+    private Output</* @Nullable */ List<String>> dedicatedIpfos;
 
     /**
      * @return Only attach frontend on these ip. No restriction if null. List of Ip blocks.
      * 
      */
-    public Output<List<String>> dedicatedIpfos() {
-        return this.dedicatedIpfos;
+    public Output<Optional<List<String>>> dedicatedIpfos() {
+        return Codegen.optional(this.dedicatedIpfos);
     }
     /**
      * Default UDP Farm of your frontend
      * 
      */
     @Export(name="defaultFarmId", refs={Double.class}, tree="[0]")
-    private Output<Double> defaultFarmId;
+    private Output</* @Nullable */ Double> defaultFarmId;
 
     /**
      * @return Default UDP Farm of your frontend
      * 
      */
-    public Output<Double> defaultFarmId() {
-        return this.defaultFarmId;
+    public Output<Optional<Double>> defaultFarmId() {
+        return Codegen.optional(this.defaultFarmId);
     }
     /**
      * Disable your frontend. Default: &#39;false&#39;
@@ -124,14 +125,14 @@ public class UdpFrontend extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
-    private Output<String> displayName;
+    private Output</* @Nullable */ String> displayName;
 
     /**
      * @return Human readable name for your frontend
      * 
      */
-    public Output<String> displayName() {
-        return this.displayName;
+    public Output<Optional<String>> displayName() {
+        return Codegen.optional(this.displayName);
     }
     /**
      * Id of your frontend

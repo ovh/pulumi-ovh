@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := Me.GetMe(ctx, nil, nil)
+//			myaccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -76,13 +75,31 @@ import (
 //
 // ## Import
 //
-// Zone can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the zone.
+// Zone can be imported using its `name`.
+//
+// Using the following configuration:
+//
+// hcl
+//
+// import {
+//
+//	to = ovh_domain_zone.zone
+//
+//	id = "<zone name>"
+//
+// }
+//
+// You can then run:
 //
 // bash
 //
-// ```sh
-// $ pulumi import ovh:Domain/zone:Zone zone order_id
-// ```
+// $ pulumi preview -generate-config-out=zone.tf
+//
+// $ pulumi up
+//
+// The file `zone.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+//
+// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Zone struct {
 	pulumi.CustomResourceState
 
@@ -115,15 +132,9 @@ type Zone struct {
 func NewZone(ctx *pulumi.Context,
 	name string, args *ZoneArgs, opts ...pulumi.ResourceOption) (*Zone, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ZoneArgs{}
 	}
 
-	if args.OvhSubsidiary == nil {
-		return nil, errors.New("invalid value for required argument 'OvhSubsidiary'")
-	}
-	if args.Plan == nil {
-		return nil, errors.New("invalid value for required argument 'Plan'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Zone
 	err := ctx.RegisterResource("ovh:Domain/zone:Zone", name, args, &resource, opts...)
@@ -206,13 +217,13 @@ type zoneArgs struct {
 	// Details about an Order
 	Orders []ZoneOrder `pulumi:"orders"`
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
+	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
 	// Deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.
 	PaymentMean *string `pulumi:"paymentMean"`
 	// Product Plan to order
-	Plan ZonePlan `pulumi:"plan"`
+	Plan *ZonePlan `pulumi:"plan"`
 	// Product Plan to order
 	PlanOptions []ZonePlanOption `pulumi:"planOptions"`
 }
@@ -222,13 +233,13 @@ type ZoneArgs struct {
 	// Details about an Order
 	Orders ZoneOrderArrayInput
 	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-	OvhSubsidiary pulumi.StringInput
+	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
 	// Deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.
 	PaymentMean pulumi.StringPtrInput
 	// Product Plan to order
-	Plan ZonePlanInput
+	Plan ZonePlanPtrInput
 	// Product Plan to order
 	PlanOptions ZonePlanOptionArrayInput
 }

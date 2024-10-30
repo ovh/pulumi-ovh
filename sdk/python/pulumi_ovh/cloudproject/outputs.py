@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -35,6 +40,8 @@ __all__ = [
     'NetworkPrivateRegionsAttribute',
     'NetworkPrivateRegionsStatus',
     'NetworkPrivateSubnetIpPool',
+    'NetworkPrivateSubnetV2AllocationPool',
+    'NetworkPrivateSubnetV2HostRoute',
     'ProjectOrder',
     'ProjectOrderDetail',
     'ProjectPlan',
@@ -74,6 +81,7 @@ __all__ = [
     'GetUserRoleResult',
     'GetUsersUserResult',
     'GetUsersUserRoleResult',
+    'GetVolumesVolumeResult',
 ]
 
 @pulumi.output_type
@@ -1271,7 +1279,6 @@ class NetworkPrivateSubnetIpPool(dict):
         """
         :param bool dhcp: Enable DHCP.
                Changing this forces a new resource to be created. Defaults to false.
-               _
         :param str end: Last ip for this region.
                Changing this value recreates the subnet.
         :param str network: Global network in CIDR format.
@@ -1298,7 +1305,6 @@ class NetworkPrivateSubnetIpPool(dict):
         """
         Enable DHCP.
         Changing this forces a new resource to be created. Defaults to false.
-        _
         """
         return pulumi.get(self, "dhcp")
 
@@ -1337,6 +1343,44 @@ class NetworkPrivateSubnetIpPool(dict):
         Changing this value recreates the subnet.
         """
         return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class NetworkPrivateSubnetV2AllocationPool(dict):
+    def __init__(__self__, *,
+                 end: str,
+                 start: str):
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> str:
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter
+    def start(self) -> str:
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class NetworkPrivateSubnetV2HostRoute(dict):
+    def __init__(__self__, *,
+                 destination: str,
+                 nexthop: str):
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "nexthop", nexthop)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def nexthop(self) -> str:
+        return pulumi.get(self, "nexthop")
 
 
 @pulumi.output_type
@@ -3431,5 +3475,45 @@ class GetUsersUserRoleResult(dict):
         list of permissions associated with the role
         """
         return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetVolumesVolumeResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str,
+                 size: float):
+        """
+        :param str id: The id of the volume
+        :param str name: The name of the volume
+        :param float size: The size of the volume
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the volume
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the volume
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        The size of the volume
+        """
+        return pulumi.get(self, "size")
 
 

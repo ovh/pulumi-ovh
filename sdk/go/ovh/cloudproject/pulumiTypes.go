@@ -3171,7 +3171,6 @@ func (o NetworkPrivateRegionsStatusArrayOutput) Index(i pulumi.IntInput) Network
 type NetworkPrivateSubnetIpPool struct {
 	// Enable DHCP.
 	// Changing this forces a new resource to be created. Defaults to false.
-	// _
 	Dhcp *bool `pulumi:"dhcp"`
 	// Last ip for this region.
 	// Changing this value recreates the subnet.
@@ -3201,7 +3200,6 @@ type NetworkPrivateSubnetIpPoolInput interface {
 type NetworkPrivateSubnetIpPoolArgs struct {
 	// Enable DHCP.
 	// Changing this forces a new resource to be created. Defaults to false.
-	// _
 	Dhcp pulumi.BoolPtrInput `pulumi:"dhcp"`
 	// Last ip for this region.
 	// Changing this value recreates the subnet.
@@ -3270,7 +3268,6 @@ func (o NetworkPrivateSubnetIpPoolOutput) ToNetworkPrivateSubnetIpPoolOutputWith
 
 // Enable DHCP.
 // Changing this forces a new resource to be created. Defaults to false.
-// _
 func (o NetworkPrivateSubnetIpPoolOutput) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
@@ -3317,6 +3314,206 @@ func (o NetworkPrivateSubnetIpPoolArrayOutput) Index(i pulumi.IntInput) NetworkP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkPrivateSubnetIpPool {
 		return vs[0].([]NetworkPrivateSubnetIpPool)[vs[1].(int)]
 	}).(NetworkPrivateSubnetIpPoolOutput)
+}
+
+type NetworkPrivateSubnetV2AllocationPool struct {
+	End   string `pulumi:"end"`
+	Start string `pulumi:"start"`
+}
+
+// NetworkPrivateSubnetV2AllocationPoolInput is an input type that accepts NetworkPrivateSubnetV2AllocationPoolArgs and NetworkPrivateSubnetV2AllocationPoolOutput values.
+// You can construct a concrete instance of `NetworkPrivateSubnetV2AllocationPoolInput` via:
+//
+//	NetworkPrivateSubnetV2AllocationPoolArgs{...}
+type NetworkPrivateSubnetV2AllocationPoolInput interface {
+	pulumi.Input
+
+	ToNetworkPrivateSubnetV2AllocationPoolOutput() NetworkPrivateSubnetV2AllocationPoolOutput
+	ToNetworkPrivateSubnetV2AllocationPoolOutputWithContext(context.Context) NetworkPrivateSubnetV2AllocationPoolOutput
+}
+
+type NetworkPrivateSubnetV2AllocationPoolArgs struct {
+	End   pulumi.StringInput `pulumi:"end"`
+	Start pulumi.StringInput `pulumi:"start"`
+}
+
+func (NetworkPrivateSubnetV2AllocationPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPrivateSubnetV2AllocationPool)(nil)).Elem()
+}
+
+func (i NetworkPrivateSubnetV2AllocationPoolArgs) ToNetworkPrivateSubnetV2AllocationPoolOutput() NetworkPrivateSubnetV2AllocationPoolOutput {
+	return i.ToNetworkPrivateSubnetV2AllocationPoolOutputWithContext(context.Background())
+}
+
+func (i NetworkPrivateSubnetV2AllocationPoolArgs) ToNetworkPrivateSubnetV2AllocationPoolOutputWithContext(ctx context.Context) NetworkPrivateSubnetV2AllocationPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPrivateSubnetV2AllocationPoolOutput)
+}
+
+// NetworkPrivateSubnetV2AllocationPoolArrayInput is an input type that accepts NetworkPrivateSubnetV2AllocationPoolArray and NetworkPrivateSubnetV2AllocationPoolArrayOutput values.
+// You can construct a concrete instance of `NetworkPrivateSubnetV2AllocationPoolArrayInput` via:
+//
+//	NetworkPrivateSubnetV2AllocationPoolArray{ NetworkPrivateSubnetV2AllocationPoolArgs{...} }
+type NetworkPrivateSubnetV2AllocationPoolArrayInput interface {
+	pulumi.Input
+
+	ToNetworkPrivateSubnetV2AllocationPoolArrayOutput() NetworkPrivateSubnetV2AllocationPoolArrayOutput
+	ToNetworkPrivateSubnetV2AllocationPoolArrayOutputWithContext(context.Context) NetworkPrivateSubnetV2AllocationPoolArrayOutput
+}
+
+type NetworkPrivateSubnetV2AllocationPoolArray []NetworkPrivateSubnetV2AllocationPoolInput
+
+func (NetworkPrivateSubnetV2AllocationPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkPrivateSubnetV2AllocationPool)(nil)).Elem()
+}
+
+func (i NetworkPrivateSubnetV2AllocationPoolArray) ToNetworkPrivateSubnetV2AllocationPoolArrayOutput() NetworkPrivateSubnetV2AllocationPoolArrayOutput {
+	return i.ToNetworkPrivateSubnetV2AllocationPoolArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkPrivateSubnetV2AllocationPoolArray) ToNetworkPrivateSubnetV2AllocationPoolArrayOutputWithContext(ctx context.Context) NetworkPrivateSubnetV2AllocationPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPrivateSubnetV2AllocationPoolArrayOutput)
+}
+
+type NetworkPrivateSubnetV2AllocationPoolOutput struct{ *pulumi.OutputState }
+
+func (NetworkPrivateSubnetV2AllocationPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPrivateSubnetV2AllocationPool)(nil)).Elem()
+}
+
+func (o NetworkPrivateSubnetV2AllocationPoolOutput) ToNetworkPrivateSubnetV2AllocationPoolOutput() NetworkPrivateSubnetV2AllocationPoolOutput {
+	return o
+}
+
+func (o NetworkPrivateSubnetV2AllocationPoolOutput) ToNetworkPrivateSubnetV2AllocationPoolOutputWithContext(ctx context.Context) NetworkPrivateSubnetV2AllocationPoolOutput {
+	return o
+}
+
+func (o NetworkPrivateSubnetV2AllocationPoolOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkPrivateSubnetV2AllocationPool) string { return v.End }).(pulumi.StringOutput)
+}
+
+func (o NetworkPrivateSubnetV2AllocationPoolOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkPrivateSubnetV2AllocationPool) string { return v.Start }).(pulumi.StringOutput)
+}
+
+type NetworkPrivateSubnetV2AllocationPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkPrivateSubnetV2AllocationPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkPrivateSubnetV2AllocationPool)(nil)).Elem()
+}
+
+func (o NetworkPrivateSubnetV2AllocationPoolArrayOutput) ToNetworkPrivateSubnetV2AllocationPoolArrayOutput() NetworkPrivateSubnetV2AllocationPoolArrayOutput {
+	return o
+}
+
+func (o NetworkPrivateSubnetV2AllocationPoolArrayOutput) ToNetworkPrivateSubnetV2AllocationPoolArrayOutputWithContext(ctx context.Context) NetworkPrivateSubnetV2AllocationPoolArrayOutput {
+	return o
+}
+
+func (o NetworkPrivateSubnetV2AllocationPoolArrayOutput) Index(i pulumi.IntInput) NetworkPrivateSubnetV2AllocationPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkPrivateSubnetV2AllocationPool {
+		return vs[0].([]NetworkPrivateSubnetV2AllocationPool)[vs[1].(int)]
+	}).(NetworkPrivateSubnetV2AllocationPoolOutput)
+}
+
+type NetworkPrivateSubnetV2HostRoute struct {
+	Destination string `pulumi:"destination"`
+	Nexthop     string `pulumi:"nexthop"`
+}
+
+// NetworkPrivateSubnetV2HostRouteInput is an input type that accepts NetworkPrivateSubnetV2HostRouteArgs and NetworkPrivateSubnetV2HostRouteOutput values.
+// You can construct a concrete instance of `NetworkPrivateSubnetV2HostRouteInput` via:
+//
+//	NetworkPrivateSubnetV2HostRouteArgs{...}
+type NetworkPrivateSubnetV2HostRouteInput interface {
+	pulumi.Input
+
+	ToNetworkPrivateSubnetV2HostRouteOutput() NetworkPrivateSubnetV2HostRouteOutput
+	ToNetworkPrivateSubnetV2HostRouteOutputWithContext(context.Context) NetworkPrivateSubnetV2HostRouteOutput
+}
+
+type NetworkPrivateSubnetV2HostRouteArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+	Nexthop     pulumi.StringInput `pulumi:"nexthop"`
+}
+
+func (NetworkPrivateSubnetV2HostRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPrivateSubnetV2HostRoute)(nil)).Elem()
+}
+
+func (i NetworkPrivateSubnetV2HostRouteArgs) ToNetworkPrivateSubnetV2HostRouteOutput() NetworkPrivateSubnetV2HostRouteOutput {
+	return i.ToNetworkPrivateSubnetV2HostRouteOutputWithContext(context.Background())
+}
+
+func (i NetworkPrivateSubnetV2HostRouteArgs) ToNetworkPrivateSubnetV2HostRouteOutputWithContext(ctx context.Context) NetworkPrivateSubnetV2HostRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPrivateSubnetV2HostRouteOutput)
+}
+
+// NetworkPrivateSubnetV2HostRouteArrayInput is an input type that accepts NetworkPrivateSubnetV2HostRouteArray and NetworkPrivateSubnetV2HostRouteArrayOutput values.
+// You can construct a concrete instance of `NetworkPrivateSubnetV2HostRouteArrayInput` via:
+//
+//	NetworkPrivateSubnetV2HostRouteArray{ NetworkPrivateSubnetV2HostRouteArgs{...} }
+type NetworkPrivateSubnetV2HostRouteArrayInput interface {
+	pulumi.Input
+
+	ToNetworkPrivateSubnetV2HostRouteArrayOutput() NetworkPrivateSubnetV2HostRouteArrayOutput
+	ToNetworkPrivateSubnetV2HostRouteArrayOutputWithContext(context.Context) NetworkPrivateSubnetV2HostRouteArrayOutput
+}
+
+type NetworkPrivateSubnetV2HostRouteArray []NetworkPrivateSubnetV2HostRouteInput
+
+func (NetworkPrivateSubnetV2HostRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkPrivateSubnetV2HostRoute)(nil)).Elem()
+}
+
+func (i NetworkPrivateSubnetV2HostRouteArray) ToNetworkPrivateSubnetV2HostRouteArrayOutput() NetworkPrivateSubnetV2HostRouteArrayOutput {
+	return i.ToNetworkPrivateSubnetV2HostRouteArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkPrivateSubnetV2HostRouteArray) ToNetworkPrivateSubnetV2HostRouteArrayOutputWithContext(ctx context.Context) NetworkPrivateSubnetV2HostRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPrivateSubnetV2HostRouteArrayOutput)
+}
+
+type NetworkPrivateSubnetV2HostRouteOutput struct{ *pulumi.OutputState }
+
+func (NetworkPrivateSubnetV2HostRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPrivateSubnetV2HostRoute)(nil)).Elem()
+}
+
+func (o NetworkPrivateSubnetV2HostRouteOutput) ToNetworkPrivateSubnetV2HostRouteOutput() NetworkPrivateSubnetV2HostRouteOutput {
+	return o
+}
+
+func (o NetworkPrivateSubnetV2HostRouteOutput) ToNetworkPrivateSubnetV2HostRouteOutputWithContext(ctx context.Context) NetworkPrivateSubnetV2HostRouteOutput {
+	return o
+}
+
+func (o NetworkPrivateSubnetV2HostRouteOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkPrivateSubnetV2HostRoute) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+func (o NetworkPrivateSubnetV2HostRouteOutput) Nexthop() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkPrivateSubnetV2HostRoute) string { return v.Nexthop }).(pulumi.StringOutput)
+}
+
+type NetworkPrivateSubnetV2HostRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkPrivateSubnetV2HostRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkPrivateSubnetV2HostRoute)(nil)).Elem()
+}
+
+func (o NetworkPrivateSubnetV2HostRouteArrayOutput) ToNetworkPrivateSubnetV2HostRouteArrayOutput() NetworkPrivateSubnetV2HostRouteArrayOutput {
+	return o
+}
+
+func (o NetworkPrivateSubnetV2HostRouteArrayOutput) ToNetworkPrivateSubnetV2HostRouteArrayOutputWithContext(ctx context.Context) NetworkPrivateSubnetV2HostRouteArrayOutput {
+	return o
+}
+
+func (o NetworkPrivateSubnetV2HostRouteArrayOutput) Index(i pulumi.IntInput) NetworkPrivateSubnetV2HostRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkPrivateSubnetV2HostRoute {
+		return vs[0].([]NetworkPrivateSubnetV2HostRoute)[vs[1].(int)]
+	}).(NetworkPrivateSubnetV2HostRouteOutput)
 }
 
 type ProjectOrder struct {
@@ -8506,6 +8703,121 @@ func (o GetUsersUserRoleArrayOutput) Index(i pulumi.IntInput) GetUsersUserRoleOu
 	}).(GetUsersUserRoleOutput)
 }
 
+type GetVolumesVolume struct {
+	// The id of the volume
+	Id string `pulumi:"id"`
+	// The name of the volume
+	Name string `pulumi:"name"`
+	// The size of the volume
+	Size float64 `pulumi:"size"`
+}
+
+// GetVolumesVolumeInput is an input type that accepts GetVolumesVolumeArgs and GetVolumesVolumeOutput values.
+// You can construct a concrete instance of `GetVolumesVolumeInput` via:
+//
+//	GetVolumesVolumeArgs{...}
+type GetVolumesVolumeInput interface {
+	pulumi.Input
+
+	ToGetVolumesVolumeOutput() GetVolumesVolumeOutput
+	ToGetVolumesVolumeOutputWithContext(context.Context) GetVolumesVolumeOutput
+}
+
+type GetVolumesVolumeArgs struct {
+	// The id of the volume
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the volume
+	Name pulumi.StringInput `pulumi:"name"`
+	// The size of the volume
+	Size pulumi.Float64Input `pulumi:"size"`
+}
+
+func (GetVolumesVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumesVolume)(nil)).Elem()
+}
+
+func (i GetVolumesVolumeArgs) ToGetVolumesVolumeOutput() GetVolumesVolumeOutput {
+	return i.ToGetVolumesVolumeOutputWithContext(context.Background())
+}
+
+func (i GetVolumesVolumeArgs) ToGetVolumesVolumeOutputWithContext(ctx context.Context) GetVolumesVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumesVolumeOutput)
+}
+
+// GetVolumesVolumeArrayInput is an input type that accepts GetVolumesVolumeArray and GetVolumesVolumeArrayOutput values.
+// You can construct a concrete instance of `GetVolumesVolumeArrayInput` via:
+//
+//	GetVolumesVolumeArray{ GetVolumesVolumeArgs{...} }
+type GetVolumesVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetVolumesVolumeArrayOutput() GetVolumesVolumeArrayOutput
+	ToGetVolumesVolumeArrayOutputWithContext(context.Context) GetVolumesVolumeArrayOutput
+}
+
+type GetVolumesVolumeArray []GetVolumesVolumeInput
+
+func (GetVolumesVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumesVolume)(nil)).Elem()
+}
+
+func (i GetVolumesVolumeArray) ToGetVolumesVolumeArrayOutput() GetVolumesVolumeArrayOutput {
+	return i.ToGetVolumesVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetVolumesVolumeArray) ToGetVolumesVolumeArrayOutputWithContext(ctx context.Context) GetVolumesVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumesVolumeArrayOutput)
+}
+
+type GetVolumesVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetVolumesVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumesVolume)(nil)).Elem()
+}
+
+func (o GetVolumesVolumeOutput) ToGetVolumesVolumeOutput() GetVolumesVolumeOutput {
+	return o
+}
+
+func (o GetVolumesVolumeOutput) ToGetVolumesVolumeOutputWithContext(ctx context.Context) GetVolumesVolumeOutput {
+	return o
+}
+
+// The id of the volume
+func (o GetVolumesVolumeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumesVolume) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the volume
+func (o GetVolumesVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumesVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The size of the volume
+func (o GetVolumesVolumeOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVolumesVolume) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+type GetVolumesVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVolumesVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumesVolume)(nil)).Elem()
+}
+
+func (o GetVolumesVolumeArrayOutput) ToGetVolumesVolumeArrayOutput() GetVolumesVolumeArrayOutput {
+	return o
+}
+
+func (o GetVolumesVolumeArrayOutput) ToGetVolumesVolumeArrayOutputWithContext(ctx context.Context) GetVolumesVolumeArrayOutput {
+	return o
+}
+
+func (o GetVolumesVolumeArrayOutput) Index(i pulumi.IntInput) GetVolumesVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVolumesVolume {
+		return vs[0].([]GetVolumesVolume)[vs[1].(int)]
+	}).(GetVolumesVolumeOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertingFormattedMonthlyThresholdInput)(nil)).Elem(), AlertingFormattedMonthlyThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertingFormattedMonthlyThresholdPtrInput)(nil)).Elem(), AlertingFormattedMonthlyThresholdArgs{})
@@ -8555,6 +8867,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateRegionsStatusArrayInput)(nil)).Elem(), NetworkPrivateRegionsStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateSubnetIpPoolInput)(nil)).Elem(), NetworkPrivateSubnetIpPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateSubnetIpPoolArrayInput)(nil)).Elem(), NetworkPrivateSubnetIpPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateSubnetV2AllocationPoolInput)(nil)).Elem(), NetworkPrivateSubnetV2AllocationPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateSubnetV2AllocationPoolArrayInput)(nil)).Elem(), NetworkPrivateSubnetV2AllocationPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateSubnetV2HostRouteInput)(nil)).Elem(), NetworkPrivateSubnetV2HostRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateSubnetV2HostRouteArrayInput)(nil)).Elem(), NetworkPrivateSubnetV2HostRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectOrderInput)(nil)).Elem(), ProjectOrderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectOrderArrayInput)(nil)).Elem(), ProjectOrderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectOrderDetailInput)(nil)).Elem(), ProjectOrderDetailArgs{})
@@ -8631,6 +8947,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserRoleInput)(nil)).Elem(), GetUsersUserRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserRoleArrayInput)(nil)).Elem(), GetUsersUserRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesVolumeInput)(nil)).Elem(), GetVolumesVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesVolumeArrayInput)(nil)).Elem(), GetVolumesVolumeArray{})
 	pulumi.RegisterOutputType(AlertingFormattedMonthlyThresholdOutput{})
 	pulumi.RegisterOutputType(AlertingFormattedMonthlyThresholdPtrOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryPlanOutput{})
@@ -8679,6 +8997,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworkPrivateRegionsStatusArrayOutput{})
 	pulumi.RegisterOutputType(NetworkPrivateSubnetIpPoolOutput{})
 	pulumi.RegisterOutputType(NetworkPrivateSubnetIpPoolArrayOutput{})
+	pulumi.RegisterOutputType(NetworkPrivateSubnetV2AllocationPoolOutput{})
+	pulumi.RegisterOutputType(NetworkPrivateSubnetV2AllocationPoolArrayOutput{})
+	pulumi.RegisterOutputType(NetworkPrivateSubnetV2HostRouteOutput{})
+	pulumi.RegisterOutputType(NetworkPrivateSubnetV2HostRouteArrayOutput{})
 	pulumi.RegisterOutputType(ProjectOrderOutput{})
 	pulumi.RegisterOutputType(ProjectOrderArrayOutput{})
 	pulumi.RegisterOutputType(ProjectOrderDetailOutput{})
@@ -8755,4 +9077,6 @@ func init() {
 	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserRoleOutput{})
 	pulumi.RegisterOutputType(GetUsersUserRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetVolumesVolumeOutput{})
+	pulumi.RegisterOutputType(GetVolumesVolumeArrayOutput{})
 }

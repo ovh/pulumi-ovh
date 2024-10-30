@@ -9,13 +9,31 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * Dedicated servers can be imported using the `service_name`, e.g.:
+ * Dedicated servers can be imported using the `service_name`.
+ *
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = ovh_dedicated_server.server
+ *
+ *   id = "<service name>"
+ *
+ * }
+ *
+ * You can then run:
  *
  * bash
  *
- * ```sh
- * $ pulumi import ovh:Dedicated/server:Server server service_name
- * ```
+ * $ pulumi preview -generate-config-out=dedicated.tf
+ *
+ * $ pulumi up
+ *
+ * The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  */
 export class Server extends pulumi.CustomResource {
     /**
@@ -109,7 +127,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * OVH subsidiaries
      */
-    public readonly ovhSubsidiary!: pulumi.Output<string>;
+    public readonly ovhSubsidiary!: pulumi.Output<string | undefined>;
     /**
      * Partition scheme name
      */
@@ -180,7 +198,7 @@ export class Server extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ServerArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ServerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerArgs | ServerState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -222,9 +240,6 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["userMetadatas"] = state ? state.userMetadatas : undefined;
         } else {
             const args = argsOrState as ServerArgs | undefined;
-            if ((!args || args.ovhSubsidiary === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ovhSubsidiary'");
-            }
             resourceInputs["bootId"] = args ? args.bootId : undefined;
             resourceInputs["bootScript"] = args ? args.bootScript : undefined;
             resourceInputs["details"] = args ? args.details : undefined;
@@ -429,7 +444,7 @@ export interface ServerArgs {
     /**
      * OVH subsidiaries
      */
-    ovhSubsidiary: pulumi.Input<string>;
+    ovhSubsidiary?: pulumi.Input<string>;
     /**
      * Partition scheme name
      */

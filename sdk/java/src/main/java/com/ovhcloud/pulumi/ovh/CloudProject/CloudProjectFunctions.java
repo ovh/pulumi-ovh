@@ -81,6 +81,10 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetUsersPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetVRackArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetVRackPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetVolumeArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetVolumePlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetVolumesArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetVolumesPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetCapabilitiesContainerFilterResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetCapabilitiesContainerRegistryInvokeResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetContainerRegistriesInvokeResult;
@@ -120,6 +124,8 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetUserS3CredentialsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetUserS3PolicyResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetUsersResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetVRackResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetVolumeResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetVolumesResult;
 import com.ovhcloud.pulumi.ovh.Utilities;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -6879,5 +6885,353 @@ public final class CloudProjectFunctions {
      */
     public static CompletableFuture<GetVRackResult> getVRackPlain(GetVRackPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getVRack:getVRack", TypeShape.of(GetVRackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a volume in a public cloud project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = CloudProjectFunctions.getVolume(GetVolumeArgs.builder()
+     *             .regionName("xxx")
+     *             .serviceName("yyy")
+     *             .volumeId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVolumeResult> getVolume(GetVolumeArgs args) {
+        return getVolume(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a volume in a public cloud project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = CloudProjectFunctions.getVolume(GetVolumeArgs.builder()
+     *             .regionName("xxx")
+     *             .serviceName("yyy")
+     *             .volumeId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args) {
+        return getVolumePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a volume in a public cloud project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = CloudProjectFunctions.getVolume(GetVolumeArgs.builder()
+     *             .regionName("xxx")
+     *             .serviceName("yyy")
+     *             .volumeId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a volume in a public cloud project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = CloudProjectFunctions.getVolume(GetVolumeArgs.builder()
+     *             .regionName("xxx")
+     *             .serviceName("yyy")
+     *             .volumeId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get all the volume from a region of a public cloud project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = CloudProjectFunctions.getVolume(GetVolumeArgs.builder()
+     *             .regionName("xxx")
+     *             .serviceName("yyy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVolumesResult> getVolumes(GetVolumesArgs args) {
+        return getVolumes(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get all the volume from a region of a public cloud project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = CloudProjectFunctions.getVolume(GetVolumeArgs.builder()
+     *             .regionName("xxx")
+     *             .serviceName("yyy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVolumesResult> getVolumesPlain(GetVolumesPlainArgs args) {
+        return getVolumesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get all the volume from a region of a public cloud project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = CloudProjectFunctions.getVolume(GetVolumeArgs.builder()
+     *             .regionName("xxx")
+     *             .serviceName("yyy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVolumesResult> getVolumes(GetVolumesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get all the volume from a region of a public cloud project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = CloudProjectFunctions.getVolume(GetVolumeArgs.builder()
+     *             .regionName("xxx")
+     *             .serviceName("yyy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVolumesResult> getVolumesPlain(GetVolumesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
 }

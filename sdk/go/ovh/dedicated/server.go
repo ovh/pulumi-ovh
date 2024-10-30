@@ -7,20 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ## Import
 //
-// Dedicated servers can be imported using the `service_name`, e.g.:
+// Dedicated servers can be imported using the `service_name`.
+//
+// Using the following configuration:
+//
+// hcl
+//
+// import {
+//
+//	to = ovh_dedicated_server.server
+//
+//	id = "<service name>"
+//
+// }
+//
+// You can then run:
 //
 // bash
 //
-// ```sh
-// $ pulumi import ovh:Dedicated/server:Server server service_name
-// ```
+// $ pulumi preview -generate-config-out=dedicated.tf
+//
+// $ pulumi up
+//
+// The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+//
+// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Server struct {
 	pulumi.CustomResourceState
 
@@ -56,7 +73,7 @@ type Server struct {
 	// Operating system
 	Os pulumi.StringOutput `pulumi:"os"`
 	// OVH subsidiaries
-	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
+	OvhSubsidiary pulumi.StringPtrOutput `pulumi:"ovhSubsidiary"`
 	// Partition scheme name
 	PartitionSchemeName pulumi.StringPtrOutput      `pulumi:"partitionSchemeName"`
 	PlanOptions         ServerPlanOptionArrayOutput `pulumi:"planOptions"`
@@ -95,12 +112,9 @@ type Server struct {
 func NewServer(ctx *pulumi.Context,
 	name string, args *ServerArgs, opts ...pulumi.ResourceOption) (*Server, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ServerArgs{}
 	}
 
-	if args.OvhSubsidiary == nil {
-		return nil, errors.New("invalid value for required argument 'OvhSubsidiary'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Server
 	err := ctx.RegisterResource("ovh:Dedicated/server:Server", name, args, &resource, opts...)
@@ -277,7 +291,7 @@ type serverArgs struct {
 	// Prevent datacenter intervention
 	NoIntervention *bool `pulumi:"noIntervention"`
 	// OVH subsidiaries
-	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
+	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Partition scheme name
 	PartitionSchemeName *string            `pulumi:"partitionSchemeName"`
 	PlanOptions         []ServerPlanOption `pulumi:"planOptions"`
@@ -311,7 +325,7 @@ type ServerArgs struct {
 	// Prevent datacenter intervention
 	NoIntervention pulumi.BoolPtrInput
 	// OVH subsidiaries
-	OvhSubsidiary pulumi.StringInput
+	OvhSubsidiary pulumi.StringPtrInput
 	// Partition scheme name
 	PartitionSchemeName pulumi.StringPtrInput
 	PlanOptions         ServerPlanOptionArrayInput
@@ -497,8 +511,8 @@ func (o ServerOutput) Os() pulumi.StringOutput {
 }
 
 // OVH subsidiaries
-func (o ServerOutput) OvhSubsidiary() pulumi.StringOutput {
-	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
+func (o ServerOutput) OvhSubsidiary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.OvhSubsidiary }).(pulumi.StringPtrOutput)
 }
 
 // Partition scheme name

@@ -95,6 +95,34 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * OVHcloud IP load balancing services can be imported using its `service_name`.
+ * 
+ * Using the following configuration:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = ovh_iploadbalancing.iplb
+ * 
+ *   id = &#34;&lt;service name&gt;&#34;
+ * 
+ * }
+ * 
+ * You can then run:
+ * 
+ * bash
+ * 
+ * $ pulumi preview -generate-config-out=iplb.tf
+ * 
+ * $ pulumi up
+ * 
+ * The file `iplb.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
+ * 
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
@@ -381,7 +409,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LoadBalancer(java.lang.String name, LoadBalancerArgs args) {
+    public LoadBalancer(java.lang.String name, @Nullable LoadBalancerArgs args) {
         this(name, args, null);
     }
     /**
@@ -390,7 +418,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LoadBalancer(java.lang.String name, LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public LoadBalancer(java.lang.String name, @Nullable LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:IpLoadBalancing/loadBalancer:LoadBalancer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -398,7 +426,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         super("ovh:IpLoadBalancing/loadBalancer:LoadBalancer", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static LoadBalancerArgs makeArgs(LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static LoadBalancerArgs makeArgs(@Nullable LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

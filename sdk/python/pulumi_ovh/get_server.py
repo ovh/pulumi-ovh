@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -391,9 +396,6 @@ def get_server(service_name: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         support_level=pulumi.get(__ret__, 'support_level'),
         vnis=pulumi.get(__ret__, 'vnis'))
-
-
-@_utilities.lift_output_func(get_server)
 def get_server_output(service_name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerResult]:
     """
@@ -411,4 +413,34 @@ def get_server_output(service_name: Optional[pulumi.Input[str]] = None,
 
     :param str service_name: The service_name of your dedicated server.
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:index/getServer:getServer', __args__, opts=opts, typ=GetServerResult)
+    return __ret__.apply(lambda __response__: GetServerResult(
+        server_urn=pulumi.get(__response__, 'server_urn'),
+        boot_id=pulumi.get(__response__, 'boot_id'),
+        boot_script=pulumi.get(__response__, 'boot_script'),
+        commercial_range=pulumi.get(__response__, 'commercial_range'),
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        enabled_public_vnis=pulumi.get(__response__, 'enabled_public_vnis'),
+        enabled_vrack_aggregation_vnis=pulumi.get(__response__, 'enabled_vrack_aggregation_vnis'),
+        enabled_vrack_vnis=pulumi.get(__response__, 'enabled_vrack_vnis'),
+        id=pulumi.get(__response__, 'id'),
+        ip=pulumi.get(__response__, 'ip'),
+        ips=pulumi.get(__response__, 'ips'),
+        link_speed=pulumi.get(__response__, 'link_speed'),
+        monitoring=pulumi.get(__response__, 'monitoring'),
+        name=pulumi.get(__response__, 'name'),
+        os=pulumi.get(__response__, 'os'),
+        professional_use=pulumi.get(__response__, 'professional_use'),
+        rack=pulumi.get(__response__, 'rack'),
+        rescue_mail=pulumi.get(__response__, 'rescue_mail'),
+        reverse=pulumi.get(__response__, 'reverse'),
+        root_device=pulumi.get(__response__, 'root_device'),
+        server_id=pulumi.get(__response__, 'server_id'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        state=pulumi.get(__response__, 'state'),
+        support_level=pulumi.get(__response__, 'support_level'),
+        vnis=pulumi.get(__response__, 'vnis')))

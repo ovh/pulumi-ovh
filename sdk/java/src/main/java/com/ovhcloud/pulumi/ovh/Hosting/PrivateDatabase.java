@@ -92,11 +92,31 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * OVHcloud Webhosting database can be imported using the `service_name`, E.g.,
+ * OVHcloud Webhosting database can be imported using the `service_name`.
  * 
- * ```sh
- * $ pulumi import ovh:Hosting/privateDatabase:PrivateDatabase database service_name
- * ```
+ * Using the following configuration:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = ovh_hosting_privatedatabase.database
+ * 
+ *   id = &#34;&lt;service name&gt;&#34;
+ * 
+ * }
+ * 
+ * You can then run:
+ * 
+ * bash
+ * 
+ * $ pulumi preview -generate-config-out=database.tf
+ * 
+ * $ pulumi up
+ * 
+ * The file `database.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
+ * 
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:Hosting/privateDatabase:PrivateDatabase")
@@ -468,7 +488,7 @@ public class PrivateDatabase extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PrivateDatabase(java.lang.String name, PrivateDatabaseArgs args) {
+    public PrivateDatabase(java.lang.String name, @Nullable PrivateDatabaseArgs args) {
         this(name, args, null);
     }
     /**
@@ -477,7 +497,7 @@ public class PrivateDatabase extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PrivateDatabase(java.lang.String name, PrivateDatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public PrivateDatabase(java.lang.String name, @Nullable PrivateDatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Hosting/privateDatabase:PrivateDatabase", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -485,7 +505,7 @@ public class PrivateDatabase extends com.pulumi.resources.CustomResource {
         super("ovh:Hosting/privateDatabase:PrivateDatabase", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static PrivateDatabaseArgs makeArgs(PrivateDatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static PrivateDatabaseArgs makeArgs(@Nullable PrivateDatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

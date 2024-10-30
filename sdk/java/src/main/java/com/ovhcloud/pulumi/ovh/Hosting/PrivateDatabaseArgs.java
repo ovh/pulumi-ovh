@@ -8,7 +8,6 @@ import com.ovhcloud.pulumi.ovh.Hosting.inputs.PrivateDatabasePlanArgs;
 import com.ovhcloud.pulumi.ovh.Hosting.inputs.PrivateDatabasePlanOptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -54,15 +53,15 @@ public final class PrivateDatabaseArgs extends com.pulumi.resources.ResourceArgs
      * OVHcloud Subsidiary. Country of OVHcloud legal entity you&#39;ll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      * 
      */
-    @Import(name="ovhSubsidiary", required=true)
-    private Output<String> ovhSubsidiary;
+    @Import(name="ovhSubsidiary")
+    private @Nullable Output<String> ovhSubsidiary;
 
     /**
      * @return OVHcloud Subsidiary. Country of OVHcloud legal entity you&#39;ll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      * 
      */
-    public Output<String> ovhSubsidiary() {
-        return this.ovhSubsidiary;
+    public Optional<Output<String>> ovhSubsidiary() {
+        return Optional.ofNullable(this.ovhSubsidiary);
     }
 
     /**
@@ -92,15 +91,15 @@ public final class PrivateDatabaseArgs extends com.pulumi.resources.ResourceArgs
      * Product Plan to order
      * 
      */
-    @Import(name="plan", required=true)
-    private Output<PrivateDatabasePlanArgs> plan;
+    @Import(name="plan")
+    private @Nullable Output<PrivateDatabasePlanArgs> plan;
 
     /**
      * @return Product Plan to order
      * 
      */
-    public Output<PrivateDatabasePlanArgs> plan() {
-        return this.plan;
+    public Optional<Output<PrivateDatabasePlanArgs>> plan() {
+        return Optional.ofNullable(this.plan);
     }
 
     /**
@@ -221,7 +220,7 @@ public final class PrivateDatabaseArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder ovhSubsidiary(Output<String> ovhSubsidiary) {
+        public Builder ovhSubsidiary(@Nullable Output<String> ovhSubsidiary) {
             $.ovhSubsidiary = ovhSubsidiary;
             return this;
         }
@@ -271,7 +270,7 @@ public final class PrivateDatabaseArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder plan(Output<PrivateDatabasePlanArgs> plan) {
+        public Builder plan(@Nullable Output<PrivateDatabasePlanArgs> plan) {
             $.plan = plan;
             return this;
         }
@@ -339,12 +338,6 @@ public final class PrivateDatabaseArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public PrivateDatabaseArgs build() {
-            if ($.ovhSubsidiary == null) {
-                throw new MissingRequiredPropertyException("PrivateDatabaseArgs", "ovhSubsidiary");
-            }
-            if ($.plan == null) {
-                throw new MissingRequiredPropertyException("PrivateDatabaseArgs", "plan");
-            }
             return $;
         }
     }

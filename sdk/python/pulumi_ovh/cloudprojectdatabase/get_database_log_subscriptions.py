@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -97,7 +102,7 @@ def get_database_log_subscriptions(cluster_id: Optional[str] = None,
                                    service_name: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseLogSubscriptionsResult:
     """
-    Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+    Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
 
     ## Example Usage
 
@@ -131,15 +136,12 @@ def get_database_log_subscriptions(cluster_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         service_name=pulumi.get(__ret__, 'service_name'),
         subscription_ids=pulumi.get(__ret__, 'subscription_ids'))
-
-
-@_utilities.lift_output_func(get_database_log_subscriptions)
 def get_database_log_subscriptions_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                           engine: Optional[pulumi.Input[str]] = None,
                                           service_name: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseLogSubscriptionsResult]:
     """
-    Use this data source to get the list of log subscrition for a cluster associated with a public cloud project.
+    Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
 
     ## Example Usage
 
@@ -160,4 +162,15 @@ def get_database_log_subscriptions_output(cluster_id: Optional[pulumi.Input[str]
     :param str service_name: The id of the public cloud project. If omitted,
            the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['engine'] = engine
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getDatabaseLogSubscriptions:getDatabaseLogSubscriptions', __args__, opts=opts, typ=GetDatabaseLogSubscriptionsResult)
+    return __ret__.apply(lambda __response__: GetDatabaseLogSubscriptionsResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        engine=pulumi.get(__response__, 'engine'),
+        id=pulumi.get(__response__, 'id'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        subscription_ids=pulumi.get(__response__, 'subscription_ids')))

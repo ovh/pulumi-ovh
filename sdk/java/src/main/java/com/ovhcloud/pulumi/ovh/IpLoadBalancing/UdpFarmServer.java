@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -113,14 +114,14 @@ public class UdpFarmServer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
-    private Output<String> displayName;
+    private Output</* @Nullable */ String> displayName;
 
     /**
      * @return Label for the server
      * 
      */
-    public Output<String> displayName() {
-        return this.displayName;
+    public Output<Optional<String>> displayName() {
+        return Codegen.optional(this.displayName);
     }
     /**
      * ID of the farm this server is attached to
@@ -141,14 +142,14 @@ public class UdpFarmServer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="port", refs={Double.class}, tree="[0]")
-    private Output<Double> port;
+    private Output</* @Nullable */ Double> port;
 
     /**
      * @return Port that backend will respond on
      * 
      */
-    public Output<Double> port() {
-        return this.port;
+    public Output<Optional<Double>> port() {
+        return Codegen.optional(this.port);
     }
     /**
      * Id of your server.

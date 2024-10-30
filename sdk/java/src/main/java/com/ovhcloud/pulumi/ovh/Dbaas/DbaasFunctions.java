@@ -13,11 +13,14 @@ import com.ovhcloud.pulumi.ovh.Dbaas.inputs.GetLogsInputEngineArgs;
 import com.ovhcloud.pulumi.ovh.Dbaas.inputs.GetLogsInputEnginePlainArgs;
 import com.ovhcloud.pulumi.ovh.Dbaas.inputs.GetLogsOutputGraylogStreamArgs;
 import com.ovhcloud.pulumi.ovh.Dbaas.inputs.GetLogsOutputGraylogStreamPlainArgs;
+import com.ovhcloud.pulumi.ovh.Dbaas.inputs.GetLogsOutputOpenSearchIndexArgs;
+import com.ovhcloud.pulumi.ovh.Dbaas.inputs.GetLogsOutputOpenSearchIndexPlainArgs;
 import com.ovhcloud.pulumi.ovh.Dbaas.outputs.GetLogsClusterResult;
 import com.ovhcloud.pulumi.ovh.Dbaas.outputs.GetLogsClustersResult;
 import com.ovhcloud.pulumi.ovh.Dbaas.outputs.GetLogsClustersRetentionResult;
 import com.ovhcloud.pulumi.ovh.Dbaas.outputs.GetLogsInputEngineResult;
 import com.ovhcloud.pulumi.ovh.Dbaas.outputs.GetLogsOutputGraylogStreamResult;
+import com.ovhcloud.pulumi.ovh.Dbaas.outputs.GetLogsOutputOpenSearchIndexResult;
 import com.ovhcloud.pulumi.ovh.Utilities;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -1041,5 +1044,177 @@ public final class DbaasFunctions {
      */
     public static CompletableFuture<GetLogsOutputGraylogStreamResult> getLogsOutputGraylogStreamPlain(GetLogsOutputGraylogStreamPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", TypeShape.of(GetLogsOutputGraylogStreamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a DBaas logs output opensearch index.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsOutputOpenSearchIndexArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var index = DbaasFunctions.getLogsOutputOpenSearchIndex(GetLogsOutputOpenSearchIndexArgs.builder()
+     *             .name("index-name")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLogsOutputOpenSearchIndexResult> getLogsOutputOpenSearchIndex(GetLogsOutputOpenSearchIndexArgs args) {
+        return getLogsOutputOpenSearchIndex(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a DBaas logs output opensearch index.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsOutputOpenSearchIndexArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var index = DbaasFunctions.getLogsOutputOpenSearchIndex(GetLogsOutputOpenSearchIndexArgs.builder()
+     *             .name("index-name")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLogsOutputOpenSearchIndexResult> getLogsOutputOpenSearchIndexPlain(GetLogsOutputOpenSearchIndexPlainArgs args) {
+        return getLogsOutputOpenSearchIndexPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a DBaas logs output opensearch index.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsOutputOpenSearchIndexArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var index = DbaasFunctions.getLogsOutputOpenSearchIndex(GetLogsOutputOpenSearchIndexArgs.builder()
+     *             .name("index-name")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLogsOutputOpenSearchIndexResult> getLogsOutputOpenSearchIndex(GetLogsOutputOpenSearchIndexArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dbaas/getLogsOutputOpenSearchIndex:getLogsOutputOpenSearchIndex", TypeShape.of(GetLogsOutputOpenSearchIndexResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a DBaas logs output opensearch index.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsOutputOpenSearchIndexArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var index = DbaasFunctions.getLogsOutputOpenSearchIndex(GetLogsOutputOpenSearchIndexArgs.builder()
+     *             .name("index-name")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLogsOutputOpenSearchIndexResult> getLogsOutputOpenSearchIndexPlain(GetLogsOutputOpenSearchIndexPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Dbaas/getLogsOutputOpenSearchIndex:getLogsOutputOpenSearchIndex", TypeShape.of(GetLogsOutputOpenSearchIndexResult.class), args, Utilities.withVersion(options));
     }
 }

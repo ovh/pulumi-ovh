@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -16,58 +21,36 @@ __all__ = ['ProjectArgs', 'Project']
 @pulumi.input_type
 class ProjectArgs:
     def __init__(__self__, *,
-                 ovh_subsidiary: pulumi.Input[str],
-                 plan: pulumi.Input['ProjectPlanArgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectOrderArgs']]]] = None,
+                 ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                  payment_mean: Optional[pulumi.Input[str]] = None,
+                 plan: Optional[pulumi.Input['ProjectPlanArgs']] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectPlanOptionArgs']]]] = None):
         """
         The set of arguments for constructing a Project resource.
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-        :param pulumi.Input['ProjectPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[str] description: A description associated with the user.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectOrderArgs']]] orders: Details about the order that was used to create the public cloud project
+        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         :param pulumi.Input[str] payment_mean: Ovh payment mode
+        :param pulumi.Input['ProjectPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['ProjectPlanOptionArgs']]] plan_options: Product Plan to order
         """
-        pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
-        pulumi.set(__self__, "plan", plan)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if orders is not None:
             pulumi.set(__self__, "orders", orders)
+        if ovh_subsidiary is not None:
+            pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
         if payment_mean is not None:
             warnings.warn("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""", DeprecationWarning)
             pulumi.log.warn("""payment_mean is deprecated: This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
         if payment_mean is not None:
             pulumi.set(__self__, "payment_mean", payment_mean)
+        if plan is not None:
+            pulumi.set(__self__, "plan", plan)
         if plan_options is not None:
             pulumi.set(__self__, "plan_options", plan_options)
-
-    @property
-    @pulumi.getter(name="ovhSubsidiary")
-    def ovh_subsidiary(self) -> pulumi.Input[str]:
-        """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
-        """
-        return pulumi.get(self, "ovh_subsidiary")
-
-    @ovh_subsidiary.setter
-    def ovh_subsidiary(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ovh_subsidiary", value)
-
-    @property
-    @pulumi.getter
-    def plan(self) -> pulumi.Input['ProjectPlanArgs']:
-        """
-        Product Plan to order
-        """
-        return pulumi.get(self, "plan")
-
-    @plan.setter
-    def plan(self, value: pulumi.Input['ProjectPlanArgs']):
-        pulumi.set(self, "plan", value)
 
     @property
     @pulumi.getter
@@ -94,6 +77,18 @@ class ProjectArgs:
         pulumi.set(self, "orders", value)
 
     @property
+    @pulumi.getter(name="ovhSubsidiary")
+    def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
+        """
+        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        """
+        return pulumi.get(self, "ovh_subsidiary")
+
+    @ovh_subsidiary.setter
+    def ovh_subsidiary(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ovh_subsidiary", value)
+
+    @property
     @pulumi.getter(name="paymentMean")
     @_utilities.deprecated("""This field is not anymore used since the API has been deprecated in favor of /payment/mean. Now, the default payment mean is used.""")
     def payment_mean(self) -> Optional[pulumi.Input[str]]:
@@ -105,6 +100,18 @@ class ProjectArgs:
     @payment_mean.setter
     def payment_mean(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "payment_mean", value)
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[pulumi.Input['ProjectPlanArgs']]:
+        """
+        Product Plan to order
+        """
+        return pulumi.get(self, "plan")
+
+    @plan.setter
+    def plan(self, value: Optional[pulumi.Input['ProjectPlanArgs']]):
+        pulumi.set(self, "plan", value)
 
     @property
     @pulumi.getter(name="planOptions")
@@ -318,13 +325,31 @@ class Project(pulumi.CustomResource):
         """
         ## Import
 
-        Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.
+        Cloud project can be imported using the `project_id`.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          to = ovh_cloud_project.my_cloud_project
+
+          id = "<project ID>"
+
+        }
+
+        You can then run:
 
         bash
 
-        ```sh
-        $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
-        ```
+        $ pulumi preview -generate-config-out=cloudproject.tf
+
+        $ pulumi up
+
+        The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -339,18 +364,36 @@ class Project(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProjectArgs,
+                 args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
 
-        Cloud project can be imported using the `order_id` that can be retrieved in the [order page](https://www.ovh.com/manager/#/dedicated/billing/orders/orders) at the creation time of the Public Cloud project.
+        Cloud project can be imported using the `project_id`.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          to = ovh_cloud_project.my_cloud_project
+
+          id = "<project ID>"
+
+        }
+
+        You can then run:
 
         bash
 
-        ```sh
-        $ pulumi import ovh:CloudProject/project:Project my_cloud_project order_id
-        ```
+        $ pulumi preview -generate-config-out=cloudproject.tf
+
+        $ pulumi up
+
+        The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
@@ -384,12 +427,8 @@ class Project(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["orders"] = orders
-            if ovh_subsidiary is None and not opts.urn:
-                raise TypeError("Missing required property 'ovh_subsidiary'")
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
             __props__.__dict__["payment_mean"] = payment_mean
-            if plan is None and not opts.urn:
-                raise TypeError("Missing required property 'plan'")
             __props__.__dict__["plan"] = plan
             __props__.__dict__["plan_options"] = plan_options
             __props__.__dict__["project_urn"] = None

@@ -65,11 +65,11 @@ type UdpFrontend struct {
 	// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
 	DedicatedIpfos pulumi.StringArrayOutput `pulumi:"dedicatedIpfos"`
 	// Default UDP Farm of your frontend
-	DefaultFarmId pulumi.Float64Output `pulumi:"defaultFarmId"`
+	DefaultFarmId pulumi.Float64PtrOutput `pulumi:"defaultFarmId"`
 	// Disable your frontend. Default: 'false'
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// Human readable name for your frontend
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Id of your frontend
 	FrontendId pulumi.Float64Output `pulumi:"frontendId"`
 	// Port(s) attached to your frontend. Supports single port (numerical value),
@@ -298,8 +298,8 @@ func (o UdpFrontendOutput) DedicatedIpfos() pulumi.StringArrayOutput {
 }
 
 // Default UDP Farm of your frontend
-func (o UdpFrontendOutput) DefaultFarmId() pulumi.Float64Output {
-	return o.ApplyT(func(v *UdpFrontend) pulumi.Float64Output { return v.DefaultFarmId }).(pulumi.Float64Output)
+func (o UdpFrontendOutput) DefaultFarmId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *UdpFrontend) pulumi.Float64PtrOutput { return v.DefaultFarmId }).(pulumi.Float64PtrOutput)
 }
 
 // Disable your frontend. Default: 'false'
@@ -308,8 +308,8 @@ func (o UdpFrontendOutput) Disabled() pulumi.BoolOutput {
 }
 
 // Human readable name for your frontend
-func (o UdpFrontendOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v *UdpFrontend) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+func (o UdpFrontendOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UdpFrontend) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Id of your frontend

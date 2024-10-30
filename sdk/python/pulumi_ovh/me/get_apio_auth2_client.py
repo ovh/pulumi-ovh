@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -143,9 +148,6 @@ def get_apio_auth2_client(client_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         identity=pulumi.get(__ret__, 'identity'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_apio_auth2_client)
 def get_apio_auth2_client_output(client_id: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAPIOAuth2ClientResult]:
     """
@@ -163,4 +165,15 @@ def get_apio_auth2_client_output(client_id: Optional[pulumi.Input[str]] = None,
 
     :param str client_id: Client ID of an existing OAuth2 service account.
     """
-    ...
+    __args__ = dict()
+    __args__['clientId'] = client_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client', __args__, opts=opts, typ=GetAPIOAuth2ClientResult)
+    return __ret__.apply(lambda __response__: GetAPIOAuth2ClientResult(
+        callback_urls=pulumi.get(__response__, 'callback_urls'),
+        client_id=pulumi.get(__response__, 'client_id'),
+        description=pulumi.get(__response__, 'description'),
+        flow=pulumi.get(__response__, 'flow'),
+        id=pulumi.get(__response__, 'id'),
+        identity=pulumi.get(__response__, 'identity'),
+        name=pulumi.get(__response__, 'name')))

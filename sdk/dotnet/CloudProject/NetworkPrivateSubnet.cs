@@ -59,7 +59,6 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Enable DHCP.
         /// Changing this forces a new resource to be created. Defaults to false.
-        /// _
         /// </summary>
         [Output("dhcp")]
         public Output<bool?> Dhcp { get; private set; } = null!;
@@ -180,7 +179,6 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Enable DHCP.
         /// Changing this forces a new resource to be created. Defaults to false.
-        /// _
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }
@@ -251,7 +249,6 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Enable DHCP.
         /// Changing this forces a new resource to be created. Defaults to false.
-        /// _
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }

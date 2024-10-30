@@ -15,7 +15,6 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         /// <summary>
         /// Enable DHCP.
         /// Changing this forces a new resource to be created. Defaults to false.
-        /// _
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }

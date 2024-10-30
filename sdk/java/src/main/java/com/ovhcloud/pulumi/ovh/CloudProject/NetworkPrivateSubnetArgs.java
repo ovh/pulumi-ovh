@@ -20,7 +20,6 @@ public final class NetworkPrivateSubnetArgs extends com.pulumi.resources.Resourc
     /**
      * Enable DHCP.
      * Changing this forces a new resource to be created. Defaults to false.
-     * _
      * 
      */
     @Import(name="dhcp")
@@ -29,7 +28,6 @@ public final class NetworkPrivateSubnetArgs extends com.pulumi.resources.Resourc
     /**
      * @return Enable DHCP.
      * Changing this forces a new resource to be created. Defaults to false.
-     * _
      * 
      */
     public Optional<Output<Boolean>> dhcp() {
@@ -189,7 +187,6 @@ public final class NetworkPrivateSubnetArgs extends com.pulumi.resources.Resourc
         /**
          * @param dhcp Enable DHCP.
          * Changing this forces a new resource to be created. Defaults to false.
-         * _
          * 
          * @return builder
          * 
@@ -202,7 +199,6 @@ public final class NetworkPrivateSubnetArgs extends com.pulumi.resources.Resourc
         /**
          * @param dhcp Enable DHCP.
          * Changing this forces a new resource to be created. Defaults to false.
-         * _
          * 
          * @return builder
          * 
