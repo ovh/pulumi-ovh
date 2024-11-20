@@ -17,12 +17,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const iprestrictions = ovh.CloudProjectDatabase.getIpRestrictions({
+ * const ipRestrictions = ovh.CloudProjectDatabase.getIpRestrictions({
  *     serviceName: "XXXXXX",
  *     engine: "YYYY",
  *     clusterId: "ZZZZ",
  * });
- * export const ips = iprestrictions.then(iprestrictions => iprestrictions.ips);
+ * export const ips = ipRestrictions.then(ipRestrictions => ipRestrictions.ips);
  * ```
  */
 export function getIpRestrictions(args: GetIpRestrictionsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpRestrictionsResult> {
@@ -92,12 +92,12 @@ export interface GetIpRestrictionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const iprestrictions = ovh.CloudProjectDatabase.getIpRestrictions({
+ * const ipRestrictions = ovh.CloudProjectDatabase.getIpRestrictions({
  *     serviceName: "XXXXXX",
  *     engine: "YYYY",
  *     clusterId: "ZZZZ",
  * });
- * export const ips = iprestrictions.then(iprestrictions => iprestrictions.ips);
+ * export const ips = ipRestrictions.then(ipRestrictions => ipRestrictions.ips);
  * ```
  */
 export function getIpRestrictionsOutput(args: GetIpRestrictionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpRestrictionsResult> {

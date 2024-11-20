@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			iprestrictions, err := CloudProjectDatabase.GetIpRestrictions(ctx, &cloudprojectdatabase.GetIpRestrictionsArgs{
+//			ipRestrictions, err := CloudProjectDatabase.GetIpRestrictions(ctx, &cloudprojectdatabase.GetIpRestrictionsArgs{
 //				ServiceName: "XXXXXX",
 //				Engine:      "YYYY",
 //				ClusterId:   "ZZZZ",
@@ -39,7 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("ips", iprestrictions.Ips)
+//			ctx.Export("ips", ipRestrictions.Ips)
 //			return nil
 //		})
 //	}

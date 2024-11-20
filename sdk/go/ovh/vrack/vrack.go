@@ -27,18 +27,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
+//			myAccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
-//				OvhSubsidiary: myaccount.OvhSubsidiary,
+//			myCart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: myAccount.OvhSubsidiary,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			vrackCartProductPlan, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
-//				CartId:        mycart.Id,
+//				CartId:        myCart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "vrack",
 //				PlanCode:      "vrack",
@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = Vrack.NewVrack(ctx, "vrackVrack", &Vrack.VrackArgs{
-//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
+//				OvhSubsidiary: pulumi.String(myCart.OvhSubsidiary),
 //				Description:   pulumi.String("my vrack"),
 //				Plan: &vrack.VrackPlanArgs{
 //					Duration:    pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),

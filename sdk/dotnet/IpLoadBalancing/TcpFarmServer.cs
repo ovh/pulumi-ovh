@@ -28,7 +28,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         State = "ok",
     ///     });
     /// 
-    ///     var farmname = new Ovh.IpLoadBalancing.TcpFarm("farmname", new()
+    ///     var farmName = new Ovh.IpLoadBalancing.TcpFarm("farmName", new()
     ///     {
     ///         Port = 8080,
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
@@ -40,7 +40,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         Address = "4.5.6.7",
     ///         Backup = true,
     ///         DisplayName = "mybackend",
-    ///         FarmId = farmname.Id,
+    ///         FarmId = farmName.Id,
     ///         Port = 80,
     ///         Probe = true,
     ///         ProxyProtocolVersion = "v2",

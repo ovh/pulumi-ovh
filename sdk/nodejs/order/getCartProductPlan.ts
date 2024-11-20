@@ -15,12 +15,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const myaccount = ovh.Me.getMe({});
- * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
- *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * const myAccount = ovh.Me.getMe({});
+ * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myAccount.ovhSubsidiary,
  * }));
- * const plan = mycart.then(mycart => ovh.Order.getCartProductPlan({
- *     cartId: mycart.id,
+ * const plan = myCart.then(myCart => ovh.Order.getCartProductPlan({
+ *     cartId: myCart.id,
  *     priceCapacity: "renew",
  *     product: "cloud",
  *     planCode: "project",
@@ -106,12 +106,12 @@ export interface GetCartProductPlanResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const myaccount = ovh.Me.getMe({});
- * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
- *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * const myAccount = ovh.Me.getMe({});
+ * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myAccount.ovhSubsidiary,
  * }));
- * const plan = mycart.then(mycart => ovh.Order.getCartProductPlan({
- *     cartId: mycart.id,
+ * const plan = myCart.then(myCart => ovh.Order.getCartProductPlan({
+ *     cartId: myCart.id,
  *     priceCapacity: "renew",
  *     product: "cloud",
  *     planCode: "project",

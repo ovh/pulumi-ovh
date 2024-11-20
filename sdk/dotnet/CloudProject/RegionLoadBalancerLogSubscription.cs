@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var createLogSubscription = new Ovh.CloudProject.RegionLoadBalancerLogSubscription("createLogSubscription", new()
+    ///     var subscription = new Ovh.CloudProject.RegionLoadBalancerLogSubscription("subscription", new()
     ///     {
     ///         Kind = "haproxy",
     ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",

@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_partition = new NasHAPartitionSnapshot("my-partition", NasHAPartitionSnapshotArgs.builder()
+ *         var myPartition = new NasHAPartitionSnapshot("myPartition", NasHAPartitionSnapshotArgs.builder()
  *             .partitionName("my-partition")
  *             .serviceName("zpool-12345")
  *             .type("day-3")

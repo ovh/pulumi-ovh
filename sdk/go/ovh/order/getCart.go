@@ -28,12 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
+//			myAccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = Order.GetCart(ctx, &order.GetCartArgs{
-//				OvhSubsidiary: myaccount.OvhSubsidiary,
+//				OvhSubsidiary: myAccount.OvhSubsidiary,
 //			}, nil)
 //			if err != nil {
 //				return err

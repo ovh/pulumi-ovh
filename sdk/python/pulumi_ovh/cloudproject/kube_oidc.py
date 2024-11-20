@@ -406,7 +406,7 @@ class KubeOidc(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_oidc = ovh.cloud_project.KubeOidc("my-oidc",
+        my_oidc = ovh.cloud_project.KubeOidc("myOidc",
             service_name=var["projectid"],
             kube_id=ovh_cloud_project_kube["mykube"]["id"],
             client_id="xxx",
@@ -459,7 +459,7 @@ class KubeOidc(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_oidc = ovh.cloud_project.KubeOidc("my-oidc",
+        my_oidc = ovh.cloud_project.KubeOidc("myOidc",
             service_name=var["projectid"],
             kube_id=ovh_cloud_project_kube["mykube"]["id"],
             client_id="xxx",

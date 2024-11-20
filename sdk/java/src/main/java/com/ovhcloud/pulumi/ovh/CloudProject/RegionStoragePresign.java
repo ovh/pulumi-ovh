@@ -17,8 +17,6 @@ import javax.annotation.Nullable;
 /**
  * Generates a temporary presigned S3 URLs to download or upload an object.
  * 
- * &gt; __NOTE__ This resource is only compatible with the `High Performance - S3` solution for object storage.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -63,28 +61,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="ovh:CloudProject/regionStoragePresign:RegionStoragePresign")
 public class RegionStoragePresign extends com.pulumi.resources.CustomResource {
     /**
-     * Define, in seconds, for how long your URL will be valid.
+     * Define, in seconds, for how long your URL will be
+     * valid.
      * 
      */
     @Export(name="expire", refs={Integer.class}, tree="[0]")
     private Output<Integer> expire;
 
     /**
-     * @return Define, in seconds, for how long your URL will be valid.
+     * @return Define, in seconds, for how long your URL will be
+     * valid.
      * 
      */
     public Output<Integer> expire() {
         return this.expire;
     }
     /**
-     * The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+     * The method you want to use to interact with your
+     * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
      * 
      */
     @Export(name="method", refs={String.class}, tree="[0]")
     private Output<String> method;
 
     /**
-     * @return The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+     * @return The method you want to use to interact with your
+     * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
      * 
      */
     public Output<String> method() {
@@ -119,16 +121,16 @@ public class RegionStoragePresign extends com.pulumi.resources.CustomResource {
         return this.object;
     }
     /**
-     * The region in which your storage is located.
-     * Ex.: &#34;GRA&#34;.
+     * The region in which your storage is located. Must
+     * be in **uppercase**. Ex.: &#34;GRA&#34;.
      * 
      */
     @Export(name="regionName", refs={String.class}, tree="[0]")
     private Output<String> regionName;
 
     /**
-     * @return The region in which your storage is located.
-     * Ex.: &#34;GRA&#34;.
+     * @return The region in which your storage is located. Must
+     * be in **uppercase**. Ex.: &#34;GRA&#34;.
      * 
      */
     public Output<String> regionName() {

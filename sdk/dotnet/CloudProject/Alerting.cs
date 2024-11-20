@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_alert = new Ovh.CloudProject.Alerting("my-alert", new()
+    ///     var myAlert = new Ovh.CloudProject.Alerting("myAlert", new()
     ///     {
     ///         Delay = 3600,
     ///         Email = "aaa.bbb@domain.com",

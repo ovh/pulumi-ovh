@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const my_alert = new ovh.cloudproject.Alerting("my-alert", {
+ * const myAlert = new ovh.cloudproject.Alerting("myAlert", {
  *     delay: 3600,
  *     email: "aaa.bbb@domain.com",
  *     monthlyThreshold: 1000,

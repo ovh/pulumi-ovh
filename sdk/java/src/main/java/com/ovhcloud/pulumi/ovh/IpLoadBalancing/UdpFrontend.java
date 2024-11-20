@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .state("ok")
  *             .build());
  * 
- *         var testfrontend = new UdpFrontend("testfrontend", UdpFrontendArgs.builder()
+ *         var testFrontend = new UdpFrontend("testFrontend", UdpFrontendArgs.builder()
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .displayName("ingress-8080-gra")
  *             .zone("all")

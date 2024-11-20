@@ -417,7 +417,7 @@ def get_me(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMeResult:
     import pulumi
     import pulumi_ovh as ovh
 
-    myaccount = ovh.Me.get_me()
+    my_account = ovh.Me.get_me()
     ```
     """
     __args__ = dict()
@@ -466,7 +466,7 @@ def get_me_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[
     import pulumi
     import pulumi_ovh as ovh
 
-    myaccount = ovh.Me.get_me()
+    my_account = ovh.Me.get_me()
     ```
     """
     __args__ = dict()

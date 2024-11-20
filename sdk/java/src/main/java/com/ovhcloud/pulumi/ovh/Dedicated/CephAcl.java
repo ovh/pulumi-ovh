@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var my-ceph = DedicatedFunctions.getCeph(GetCephArgs.builder()
+ *         final var myCeph = DedicatedFunctions.getCeph(GetCephArgs.builder()
  *             .serviceName("94d423da-0e55-45f2-9812-836460a19939")
  *             .build());
  * 
  *         var my_acl = new CephAcl("my-acl", CephAclArgs.builder()
- *             .serviceName(my_ceph.id())
+ *             .serviceName(myCeph.applyValue(getCephResult -> getCephResult.id()))
  *             .network("1.2.3.4")
  *             .netmask("255.255.255.255")
  *             .build());

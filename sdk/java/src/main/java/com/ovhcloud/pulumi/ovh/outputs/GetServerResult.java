@@ -20,6 +20,11 @@ public final class GetServerResult {
      */
     private String ServerURN;
     /**
+     * @return Dedicated AZ localisation
+     * 
+     */
+    private String availabilityZone;
+    /**
      * @return Boot id of the server
      * 
      */
@@ -89,11 +94,22 @@ public final class GetServerResult {
      * 
      */
     private String name;
+    private Boolean newUpgradeSystem;
+    /**
+     * @return Prevent datacenter intervention
+     * 
+     */
+    private Boolean noIntervention;
     /**
      * @return Operating system
      * 
      */
     private String os;
+    /**
+     * @return Power state of the server (poweroff, poweron)
+     * 
+     */
+    private String powerState;
     /**
      * @return Does this server have professional use option
      * 
@@ -105,10 +121,20 @@ public final class GetServerResult {
      */
     private String rack;
     /**
+     * @return Dedicated region localisation
+     * 
+     */
+    private String region;
+    /**
      * @return Rescue mail of the server
      * 
      */
     private String rescueMail;
+    /**
+     * @return Public SSH Key used in the rescue mode
+     * 
+     */
+    private String rescueSshKey;
     /**
      * @return Dedicated server reverse
      * 
@@ -148,6 +174,13 @@ public final class GetServerResult {
      */
     public String ServerURN() {
         return this.ServerURN;
+    }
+    /**
+     * @return Dedicated AZ localisation
+     * 
+     */
+    public String availabilityZone() {
+        return this.availabilityZone;
     }
     /**
      * @return Boot id of the server
@@ -247,12 +280,29 @@ public final class GetServerResult {
     public String name() {
         return this.name;
     }
+    public Boolean newUpgradeSystem() {
+        return this.newUpgradeSystem;
+    }
+    /**
+     * @return Prevent datacenter intervention
+     * 
+     */
+    public Boolean noIntervention() {
+        return this.noIntervention;
+    }
     /**
      * @return Operating system
      * 
      */
     public String os() {
         return this.os;
+    }
+    /**
+     * @return Power state of the server (poweroff, poweron)
+     * 
+     */
+    public String powerState() {
+        return this.powerState;
     }
     /**
      * @return Does this server have professional use option
@@ -269,11 +319,25 @@ public final class GetServerResult {
         return this.rack;
     }
     /**
+     * @return Dedicated region localisation
+     * 
+     */
+    public String region() {
+        return this.region;
+    }
+    /**
      * @return Rescue mail of the server
      * 
      */
     public String rescueMail() {
         return this.rescueMail;
+    }
+    /**
+     * @return Public SSH Key used in the rescue mode
+     * 
+     */
+    public String rescueSshKey() {
+        return this.rescueSshKey;
     }
     /**
      * @return Dedicated server reverse
@@ -331,6 +395,7 @@ public final class GetServerResult {
     @CustomType.Builder
     public static final class Builder {
         private String ServerURN;
+        private String availabilityZone;
         private Integer bootId;
         private String bootScript;
         private String commercialRange;
@@ -345,10 +410,15 @@ public final class GetServerResult {
         private Integer linkSpeed;
         private Boolean monitoring;
         private String name;
+        private Boolean newUpgradeSystem;
+        private Boolean noIntervention;
         private String os;
+        private String powerState;
         private Boolean professionalUse;
         private String rack;
+        private String region;
         private String rescueMail;
+        private String rescueSshKey;
         private String reverse;
         private String rootDevice;
         private Integer serverId;
@@ -360,6 +430,7 @@ public final class GetServerResult {
         public Builder(GetServerResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ServerURN = defaults.ServerURN;
+    	      this.availabilityZone = defaults.availabilityZone;
     	      this.bootId = defaults.bootId;
     	      this.bootScript = defaults.bootScript;
     	      this.commercialRange = defaults.commercialRange;
@@ -374,10 +445,15 @@ public final class GetServerResult {
     	      this.linkSpeed = defaults.linkSpeed;
     	      this.monitoring = defaults.monitoring;
     	      this.name = defaults.name;
+    	      this.newUpgradeSystem = defaults.newUpgradeSystem;
+    	      this.noIntervention = defaults.noIntervention;
     	      this.os = defaults.os;
+    	      this.powerState = defaults.powerState;
     	      this.professionalUse = defaults.professionalUse;
     	      this.rack = defaults.rack;
+    	      this.region = defaults.region;
     	      this.rescueMail = defaults.rescueMail;
+    	      this.rescueSshKey = defaults.rescueSshKey;
     	      this.reverse = defaults.reverse;
     	      this.rootDevice = defaults.rootDevice;
     	      this.serverId = defaults.serverId;
@@ -393,6 +469,14 @@ public final class GetServerResult {
               throw new MissingRequiredPropertyException("GetServerResult", "ServerURN");
             }
             this.ServerURN = ServerURN;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder availabilityZone(String availabilityZone) {
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
@@ -520,11 +604,35 @@ public final class GetServerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder newUpgradeSystem(Boolean newUpgradeSystem) {
+            if (newUpgradeSystem == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "newUpgradeSystem");
+            }
+            this.newUpgradeSystem = newUpgradeSystem;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder noIntervention(Boolean noIntervention) {
+            if (noIntervention == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "noIntervention");
+            }
+            this.noIntervention = noIntervention;
+            return this;
+        }
+        @CustomType.Setter
         public Builder os(String os) {
             if (os == null) {
               throw new MissingRequiredPropertyException("GetServerResult", "os");
             }
             this.os = os;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder powerState(String powerState) {
+            if (powerState == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "powerState");
+            }
+            this.powerState = powerState;
             return this;
         }
         @CustomType.Setter
@@ -544,11 +652,27 @@ public final class GetServerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "region");
+            }
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rescueMail(String rescueMail) {
             if (rescueMail == null) {
               throw new MissingRequiredPropertyException("GetServerResult", "rescueMail");
             }
             this.rescueMail = rescueMail;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rescueSshKey(String rescueSshKey) {
+            if (rescueSshKey == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "rescueSshKey");
+            }
+            this.rescueSshKey = rescueSshKey;
             return this;
         }
         @CustomType.Setter
@@ -613,6 +737,7 @@ public final class GetServerResult {
         public GetServerResult build() {
             final var _resultValue = new GetServerResult();
             _resultValue.ServerURN = ServerURN;
+            _resultValue.availabilityZone = availabilityZone;
             _resultValue.bootId = bootId;
             _resultValue.bootScript = bootScript;
             _resultValue.commercialRange = commercialRange;
@@ -627,10 +752,15 @@ public final class GetServerResult {
             _resultValue.linkSpeed = linkSpeed;
             _resultValue.monitoring = monitoring;
             _resultValue.name = name;
+            _resultValue.newUpgradeSystem = newUpgradeSystem;
+            _resultValue.noIntervention = noIntervention;
             _resultValue.os = os;
+            _resultValue.powerState = powerState;
             _resultValue.professionalUse = professionalUse;
             _resultValue.rack = rack;
+            _resultValue.region = region;
             _resultValue.rescueMail = rescueMail;
+            _resultValue.rescueSshKey = rescueSshKey;
             _resultValue.reverse = reverse;
             _resultValue.rootDevice = rootDevice;
             _resultValue.serverId = serverId;

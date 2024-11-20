@@ -13,6 +13,62 @@ import (
 )
 
 // Creates a Service Key in an OVHcloud KMS.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Okms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := Okms.NewServiceKey(ctx, "keySymetric", &Okms.ServiceKeyArgs{
+//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Operations: pulumi.StringArray{
+//					pulumi.String("encrypt"),
+//					pulumi.String("decrypt"),
+//				},
+//				Size: pulumi.Float64(256),
+//				Type: pulumi.String("oct"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Okms.NewServiceKey(ctx, "keyRsa", &Okms.ServiceKeyArgs{
+//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Operations: pulumi.StringArray{
+//					pulumi.String("sign"),
+//					pulumi.String("verify"),
+//				},
+//				Size: pulumi.Float64(2048),
+//				Type: pulumi.String("RSA"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = Okms.NewServiceKey(ctx, "keyEcdsa", &Okms.ServiceKeyArgs{
+//				Curve:  pulumi.String("P-256"),
+//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Operations: pulumi.StringArray{
+//					pulumi.String("sign"),
+//					pulumi.String("verify"),
+//				},
+//				Type: pulumi.String("EC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ServiceKey struct {
 	pulumi.CustomResourceState
 

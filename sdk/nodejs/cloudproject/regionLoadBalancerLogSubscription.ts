@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const createLogSubscription = new ovh.cloudproject.RegionLoadBalancerLogSubscription("createLogSubscription", {
+ * const subscription = new ovh.cloudproject.RegionLoadBalancerLogSubscription("subscription", {
  *     kind: "haproxy",
  *     loadbalancerId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
  *     regionName: "yyyy",

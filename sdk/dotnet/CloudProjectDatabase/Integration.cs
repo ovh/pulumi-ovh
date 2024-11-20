@@ -28,14 +28,14 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbpostgresql = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     var dbPostgresql = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
     ///     {
     ///         ServiceName = "XXXX",
     ///         Engine = "postgresql",
     ///         Id = "ZZZZ",
     ///     });
     /// 
-    ///     var dbopensearch = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     var dbOpensearch = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
     ///     {
     ///         ServiceName = "XXXX",
     ///         Engine = "opensearch",
@@ -44,11 +44,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     ///     var integration = new Ovh.CloudProjectDatabase.Integration("integration", new()
     ///     {
-    ///         ServiceName = dbpostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
-    ///         Engine = dbpostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.Engine),
-    ///         ClusterId = dbpostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
-    ///         SourceServiceId = dbpostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
-    ///         DestinationServiceId = dbopensearch.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         ServiceName = dbPostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         Engine = dbPostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.Engine),
+    ///         ClusterId = dbPostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         SourceServiceId = dbPostgresql.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         DestinationServiceId = dbOpensearch.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
     ///         Type = "opensearchLogs",
     ///     });
     /// 

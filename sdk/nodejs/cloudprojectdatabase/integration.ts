@@ -20,22 +20,22 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  * import * as ovh from "@pulumi/ovh";
  *
- * const dbpostgresql = ovh.CloudProjectDatabase.getDatabase({
+ * const dbPostgresql = ovh.CloudProjectDatabase.getDatabase({
  *     serviceName: "XXXX",
  *     engine: "postgresql",
  *     id: "ZZZZ",
  * });
- * const dbopensearch = ovh.CloudProjectDatabase.getDatabase({
+ * const dbOpensearch = ovh.CloudProjectDatabase.getDatabase({
  *     serviceName: "XXXX",
  *     engine: "opensearch",
  *     id: "ZZZZ",
  * });
  * const integration = new ovh.cloudprojectdatabase.Integration("integration", {
- *     serviceName: dbpostgresql.then(dbpostgresql => dbpostgresql.serviceName),
- *     engine: dbpostgresql.then(dbpostgresql => dbpostgresql.engine),
- *     clusterId: dbpostgresql.then(dbpostgresql => dbpostgresql.id),
- *     sourceServiceId: dbpostgresql.then(dbpostgresql => dbpostgresql.id),
- *     destinationServiceId: dbopensearch.then(dbopensearch => dbopensearch.id),
+ *     serviceName: dbPostgresql.then(dbPostgresql => dbPostgresql.serviceName),
+ *     engine: dbPostgresql.then(dbPostgresql => dbPostgresql.engine),
+ *     clusterId: dbPostgresql.then(dbPostgresql => dbPostgresql.id),
+ *     sourceServiceId: dbPostgresql.then(dbPostgresql => dbPostgresql.id),
+ *     destinationServiceId: dbOpensearch.then(dbOpensearch => dbOpensearch.id),
  *     type: "opensearchLogs",
  * });
  * ```

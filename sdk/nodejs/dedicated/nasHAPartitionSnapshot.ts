@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const my_partition = new ovh.dedicated.NasHAPartitionSnapshot("my-partition", {
+ * const myPartition = new ovh.dedicated.NasHAPartitionSnapshot("myPartition", {
  *     partitionName: "my-partition",
  *     serviceName: "zpool-12345",
  *     type: "day-3",

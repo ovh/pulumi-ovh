@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const myfailoverip = ovh.CloudProject.getFailoverIpAttach({
+ * const myFailoverIp = ovh.CloudProject.getFailoverIpAttach({
  *     ip: "XXXXXX",
  *     serviceName: "XXXXXX",
  * });
@@ -96,7 +96,7 @@ export interface GetFailoverIpAttachResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const myfailoverip = ovh.CloudProject.getFailoverIpAttach({
+ * const myFailoverIp = ovh.CloudProject.getFailoverIpAttach({
  *     ip: "XXXXXX",
  *     serviceName: "XXXXXX",
  * });

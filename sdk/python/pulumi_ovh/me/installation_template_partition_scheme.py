@@ -144,11 +144,11 @@ class InstallationTemplatePartitionScheme(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        mytemplate = ovh.me.InstallationTemplate("mytemplate",
+        my_template = ovh.me.InstallationTemplate("myTemplate",
             base_template_name="debian12_64",
             template_name="mytemplate")
         scheme = ovh.me.InstallationTemplatePartitionScheme("scheme",
-            template_name=mytemplate.template_name,
+            template_name=my_template.template_name,
             priority=1)
         ```
 
@@ -183,11 +183,11 @@ class InstallationTemplatePartitionScheme(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        mytemplate = ovh.me.InstallationTemplate("mytemplate",
+        my_template = ovh.me.InstallationTemplate("myTemplate",
             base_template_name="debian12_64",
             template_name="mytemplate")
         scheme = ovh.me.InstallationTemplatePartitionScheme("scheme",
-            template_name=mytemplate.template_name,
+            template_name=my_template.template_name,
             priority=1)
         ```
 

@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var my_alert = new Alerting("my-alert", AlertingArgs.builder()
+ *         var myAlert = new Alerting("myAlert", AlertingArgs.builder()
  *             .delay(3600)
  *             .email("aaa.bbb}{@literal @}{@code domain.com")
  *             .monthlyThreshold(1000)

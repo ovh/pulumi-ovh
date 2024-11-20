@@ -157,7 +157,7 @@ def get_service(service_name: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    myip = ovh.Ip.get_service(service_name="XXXXXX")
+    my_ip = ovh.Ip.get_service(service_name="XXXXXX")
     ```
 
 
@@ -189,7 +189,7 @@ def get_service_output(service_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    myip = ovh.Ip.get_service(service_name="XXXXXX")
+    my_ip = ovh.Ip.get_service(service_name="XXXXXX")
     ```
 
 

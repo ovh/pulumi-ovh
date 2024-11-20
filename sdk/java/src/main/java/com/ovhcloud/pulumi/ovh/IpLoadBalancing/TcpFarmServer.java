@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .state("ok")
  *             .build());
  * 
- *         var farmname = new TcpFarm("farmname", TcpFarmArgs.builder()
+ *         var farmName = new TcpFarm("farmName", TcpFarmArgs.builder()
  *             .port(8080)
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .zone("all")
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .address("4.5.6.7")
  *             .backup(true)
  *             .displayName("mybackend")
- *             .farmId(farmname.id())
+ *             .farmId(farmName.id())
  *             .port(80)
  *             .probe(true)
  *             .proxyProtocolVersion("v2")

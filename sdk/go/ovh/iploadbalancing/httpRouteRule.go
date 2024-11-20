@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			httpsredirect, err := IpLoadBalancing.NewHttpRoute(ctx, "httpsredirect", &IpLoadBalancing.HttpRouteArgs{
+//			httpsRedirect, err := IpLoadBalancing.NewHttpRoute(ctx, "httpsRedirect", &IpLoadBalancing.HttpRouteArgs{
 //				Action: &iploadbalancing.HttpRouteActionArgs{
 //					Status: pulumi.Int(302),
 //					Target: pulumi.String("https://${host}${path}${arguments}"),
@@ -44,13 +44,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = IpLoadBalancing.NewHttpRouteRule(ctx, "examplerule", &IpLoadBalancing.HttpRouteRuleArgs{
+//			_, err = IpLoadBalancing.NewHttpRouteRule(ctx, "exampleRule", &IpLoadBalancing.HttpRouteRuleArgs{
 //				DisplayName: pulumi.String("Match example.com host"),
 //				Field:       pulumi.String("host"),
 //				Match:       pulumi.String("is"),
 //				Negate:      pulumi.Bool(false),
 //				Pattern:     pulumi.String("example.com"),
-//				RouteId:     httpsredirect.ID(),
+//				RouteId:     httpsRedirect.ID(),
 //				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
 //			})
 //			if err != nil {
@@ -76,13 +76,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := IpLoadBalancing.NewHttpRouteRule(ctx, "examplerule", &IpLoadBalancing.HttpRouteRuleArgs{
+//			_, err := IpLoadBalancing.NewHttpRouteRule(ctx, "exampleRule", &IpLoadBalancing.HttpRouteRuleArgs{
 //				DisplayName: pulumi.String("Match example.com Host header"),
 //				Field:       pulumi.String("headers"),
 //				Match:       pulumi.String("is"),
 //				Negate:      pulumi.Bool(false),
 //				Pattern:     pulumi.String("example.com"),
-//				RouteId:     pulumi.Any(ovh_iploadbalancing_http_route.Httpsredirect.Id),
+//				RouteId:     pulumi.Any(ovh_iploadbalancing_http_route.Https_redirect.Id),
 //				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
 //				SubField:    pulumi.String("Host"),
 //			})

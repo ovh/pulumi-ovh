@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.Me
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myaccount = Ovh.Me.GetMe.Invoke();
+        ///     var myAccount = Ovh.Me.GetMe.Invoke();
         /// 
         /// });
         /// ```
@@ -45,7 +45,7 @@ namespace Pulumi.Ovh.Me
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myaccount = Ovh.Me.GetMe.Invoke();
+        ///     var myAccount = Ovh.Me.GetMe.Invoke();
         /// 
         /// });
         /// ```

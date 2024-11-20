@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Dedicated.NewNasHAPartitionSnapshot(ctx, "my-partition", &Dedicated.NasHAPartitionSnapshotArgs{
+//			_, err := Dedicated.NewNasHAPartitionSnapshot(ctx, "myPartition", &Dedicated.NasHAPartitionSnapshotArgs{
 //				PartitionName: pulumi.String("my-partition"),
 //				ServiceName:   pulumi.String("zpool-12345"),
 //				Type:          pulumi.String("day-3"),

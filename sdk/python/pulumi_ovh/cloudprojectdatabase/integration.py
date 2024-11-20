@@ -327,18 +327,18 @@ class Integration(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        dbpostgresql = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+        db_postgresql = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
             engine="postgresql",
             id="ZZZZ")
-        dbopensearch = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+        db_opensearch = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
             engine="opensearch",
             id="ZZZZ")
         integration = ovh.cloud_project_database.Integration("integration",
-            service_name=dbpostgresql.service_name,
-            engine=dbpostgresql.engine,
-            cluster_id=dbpostgresql.id,
-            source_service_id=dbpostgresql.id,
-            destination_service_id=dbopensearch.id,
+            service_name=db_postgresql.service_name,
+            engine=db_postgresql.engine,
+            cluster_id=db_postgresql.id,
+            source_service_id=db_postgresql.id,
+            destination_service_id=db_opensearch.id,
             type="opensearchLogs")
         ```
 
@@ -391,18 +391,18 @@ class Integration(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        dbpostgresql = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+        db_postgresql = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
             engine="postgresql",
             id="ZZZZ")
-        dbopensearch = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
+        db_opensearch = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
             engine="opensearch",
             id="ZZZZ")
         integration = ovh.cloud_project_database.Integration("integration",
-            service_name=dbpostgresql.service_name,
-            engine=dbpostgresql.engine,
-            cluster_id=dbpostgresql.id,
-            source_service_id=dbpostgresql.id,
-            destination_service_id=dbopensearch.id,
+            service_name=db_postgresql.service_name,
+            engine=db_postgresql.engine,
+            cluster_id=db_postgresql.id,
+            source_service_id=db_postgresql.id,
+            destination_service_id=db_opensearch.id,
             type="opensearchLogs")
         ```
 

@@ -301,7 +301,7 @@ class UdpFrontend(pulumi.CustomResource):
 
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
-        testfrontend = ovh.ip_load_balancing.UdpFrontend("testfrontend",
+        test_frontend = ovh.ip_load_balancing.UdpFrontend("testFrontend",
             service_name=lb.service_name,
             display_name="ingress-8080-gra",
             zone="all",
@@ -347,7 +347,7 @@ class UdpFrontend(pulumi.CustomResource):
 
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
-        testfrontend = ovh.ip_load_balancing.UdpFrontend("testfrontend",
+        test_frontend = ovh.ip_load_balancing.UdpFrontend("testFrontend",
             service_name=lb.service_name,
             display_name="ingress-8080-gra",
             zone="all",

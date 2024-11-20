@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Dedicated.NewNasHAPartitionAccess(ctx, "my-partition", &Dedicated.NasHAPartitionAccessArgs{
+//			_, err := Dedicated.NewNasHAPartitionAccess(ctx, "myPartition", &Dedicated.NasHAPartitionAccessArgs{
 //				AclDescription: pulumi.String("Description of the ACL"),
 //				Ip:             pulumi.String("123.123.123.123/32"),
 //				PartitionName:  pulumi.String("my-partition"),

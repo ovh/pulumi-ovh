@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewRegionLoadBalancerLogSubscription(ctx, "createLogSubscription", &CloudProject.RegionLoadBalancerLogSubscriptionArgs{
+//			_, err := CloudProject.NewRegionLoadBalancerLogSubscription(ctx, "subscription", &CloudProject.RegionLoadBalancerLogSubscriptionArgs{
 //				Kind:           pulumi.String("haproxy"),
 //				LoadbalancerId: pulumi.String("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
 //				RegionName:     pulumi.String("yyyy"),

@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *             .state("ok")
  *             .build());
  * 
- *         var farmname = new UdpFarm("farmname", UdpFarmArgs.builder()
+ *         var farmName = new UdpFarm("farmName", UdpFarmArgs.builder()
  *             .displayName("ingress-8080-gra")
  *             .port(80)
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))

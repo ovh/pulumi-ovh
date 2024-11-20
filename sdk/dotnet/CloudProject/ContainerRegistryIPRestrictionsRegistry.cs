@@ -28,7 +28,7 @@ namespace Pulumi.Ovh.CloudProject
     ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
     ///     });
     /// 
-    ///     var my_registry_iprestrictions = new Ovh.CloudProject.ContainerRegistryIPRestrictionsRegistry("my-registry-iprestrictions", new()
+    ///     var myRegistryIprestrictions = new Ovh.CloudProject.ContainerRegistryIPRestrictionsRegistry("myRegistryIprestrictions", new()
     ///     {
     ///         ServiceName = ovh_cloud_project_containerregistry.Registry.Service_name,
     ///         RegistryId = ovh_cloud_project_containerregistry.Registry.Id,

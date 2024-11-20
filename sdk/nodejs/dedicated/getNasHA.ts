@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const my-nas-ha = ovh.Dedicated.getNasHA({
+ * const myNasHa = ovh.Dedicated.getNasHA({
  *     serviceName: "zpool-12345",
  * });
  * ```
@@ -93,7 +93,7 @@ export interface GetNasHAResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const my-nas-ha = ovh.Dedicated.getNasHA({
+ * const myNasHa = ovh.Dedicated.getNasHA({
  *     serviceName: "zpool-12345",
  * });
  * ```

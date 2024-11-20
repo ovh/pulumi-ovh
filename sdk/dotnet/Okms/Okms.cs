@@ -20,11 +20,11 @@ namespace Pulumi.Ovh.Okms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var newkms = new Ovh.Okms.Okms("newkms", new()
+    ///     var newKms = new Ovh.Okms.Okms("newKms", new()
     ///     {
     ///         DisplayName = "terraformed KMS",
     ///         OvhSubsidiary = "FR",
-    ///         Region = "EU_WEST_RBX",
+    ///         Region = "eu-west-rbx",
     ///     });
     /// 
     /// });

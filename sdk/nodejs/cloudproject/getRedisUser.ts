@@ -13,12 +13,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const redisuser = ovh.CloudProject.getRedisUser({
+ * const redisUser = ovh.CloudProject.getRedisUser({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ",
  * });
- * export const redisuserCommands = redisuser.then(redisuser => redisuser.commands);
+ * export const redisUserCommands = redisUser.then(redisUser => redisUser.commands);
  * ```
  */
 export function getRedisUser(args: GetRedisUserArgs, opts?: pulumi.InvokeOptions): Promise<GetRedisUserResult> {
@@ -103,12 +103,12 @@ export interface GetRedisUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const redisuser = ovh.CloudProject.getRedisUser({
+ * const redisUser = ovh.CloudProject.getRedisUser({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ",
  * });
- * export const redisuserCommands = redisuser.then(redisuser => redisuser.commands);
+ * export const redisUserCommands = redisUser.then(redisUser => redisUser.commands);
  * ```
  */
 export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRedisUserResult> {

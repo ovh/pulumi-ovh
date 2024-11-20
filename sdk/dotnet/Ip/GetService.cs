@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.Ip
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myip = Ovh.Ip.GetService.Invoke(new()
+        ///     var myIp = Ovh.Ip.GetService.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Ovh.Ip
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myip = Ovh.Ip.GetService.Invoke(new()
+        ///     var myIp = Ovh.Ip.GetService.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///     });

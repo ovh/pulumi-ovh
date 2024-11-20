@@ -213,7 +213,7 @@ class Alerting(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_alert = ovh.cloud_project.Alerting("my-alert",
+        my_alert = ovh.cloud_project.Alerting("myAlert",
             delay=3600,
             email="aaa.bbb@domain.com",
             monthly_threshold=1000,
@@ -243,7 +243,7 @@ class Alerting(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_alert = ovh.cloud_project.Alerting("my-alert",
+        my_alert = ovh.cloud_project.Alerting("myAlert",
             delay=3600,
             email="aaa.bbb@domain.com",
             monthly_threshold=1000,

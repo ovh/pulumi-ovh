@@ -314,7 +314,7 @@ class ContainerRegistry(pulumi.CustomResource):
         regcap = ovh.CloudProject.get_capabilities_container_filter(service_name="XXXXXX",
             plan_name="SMALL",
             region="GRA")
-        my_registry = ovh.cloud_project.ContainerRegistry("my-registry",
+        my_registry = ovh.cloud_project.ContainerRegistry("myRegistry",
             service_name=regcap.service_name,
             plan_id=regcap.id,
             region=regcap.region)
@@ -348,7 +348,7 @@ class ContainerRegistry(pulumi.CustomResource):
         regcap = ovh.CloudProject.get_capabilities_container_filter(service_name="XXXXXX",
             plan_name="SMALL",
             region="GRA")
-        my_registry = ovh.cloud_project.ContainerRegistry("my-registry",
+        my_registry = ovh.cloud_project.ContainerRegistry("myRegistry",
             service_name=regcap.service_name,
             plan_id=regcap.id,
             region=regcap.region)

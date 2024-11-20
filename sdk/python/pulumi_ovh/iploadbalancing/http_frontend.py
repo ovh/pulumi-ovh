@@ -488,7 +488,7 @@ class HttpFrontend(pulumi.CustomResource):
             port=80,
             service_name=lb.service_name,
             zone="all")
-        testfrontend = ovh.ip_load_balancing.HttpFrontend("testfrontend",
+        test_frontend = ovh.ip_load_balancing.HttpFrontend("testFrontend",
             default_farm_id=farm80.id,
             display_name="ingress-8080-gra",
             port="80,443",
@@ -509,7 +509,7 @@ class HttpFrontend(pulumi.CustomResource):
             port=80,
             service_name=lb.service_name,
             zone="all")
-        testfrontend = ovh.ip_load_balancing.HttpFrontend("testfrontend",
+        test_frontend = ovh.ip_load_balancing.HttpFrontend("testFrontend",
             default_farm_id=farm80.id,
             display_name="ingress-8080-gra",
             http_headers=[
@@ -565,7 +565,7 @@ class HttpFrontend(pulumi.CustomResource):
             port=80,
             service_name=lb.service_name,
             zone="all")
-        testfrontend = ovh.ip_load_balancing.HttpFrontend("testfrontend",
+        test_frontend = ovh.ip_load_balancing.HttpFrontend("testFrontend",
             default_farm_id=farm80.id,
             display_name="ingress-8080-gra",
             port="80,443",
@@ -586,7 +586,7 @@ class HttpFrontend(pulumi.CustomResource):
             port=80,
             service_name=lb.service_name,
             zone="all")
-        testfrontend = ovh.ip_load_balancing.HttpFrontend("testfrontend",
+        test_frontend = ovh.ip_load_balancing.HttpFrontend("testFrontend",
             default_farm_id=farm80.id,
             display_name="ingress-8080-gra",
             http_headers=[

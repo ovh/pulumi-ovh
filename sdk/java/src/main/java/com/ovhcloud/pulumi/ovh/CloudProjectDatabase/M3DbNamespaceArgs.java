@@ -33,14 +33,14 @@ public final class M3DbNamespaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the namespace.
+     * Name of the namespace. A namespace named &#34;default&#34; is mapped with already created default namespace instead of creating a new namespace.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the namespace.
+     * @return Name of the namespace. A namespace named &#34;default&#34; is mapped with already created default namespace instead of creating a new namespace.
      * 
      */
     public Optional<Output<String>> name() {
@@ -126,15 +126,15 @@ public final class M3DbNamespaceArgs extends com.pulumi.resources.ResourceArgs {
      * Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
      * 
      */
-    @Import(name="retentionPeriodDuration", required=true)
-    private Output<String> retentionPeriodDuration;
+    @Import(name="retentionPeriodDuration")
+    private @Nullable Output<String> retentionPeriodDuration;
 
     /**
      * @return Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
      * 
      */
-    public Output<String> retentionPeriodDuration() {
-        return this.retentionPeriodDuration;
+    public Optional<Output<String>> retentionPeriodDuration() {
+        return Optional.ofNullable(this.retentionPeriodDuration);
     }
 
     /**
@@ -240,7 +240,7 @@ public final class M3DbNamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the namespace.
+         * @param name Name of the namespace. A namespace named &#34;default&#34; is mapped with already created default namespace instead of creating a new namespace.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class M3DbNamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the namespace.
+         * @param name Name of the namespace. A namespace named &#34;default&#34; is mapped with already created default namespace instead of creating a new namespace.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class M3DbNamespaceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder retentionPeriodDuration(Output<String> retentionPeriodDuration) {
+        public Builder retentionPeriodDuration(@Nullable Output<String> retentionPeriodDuration) {
             $.retentionPeriodDuration = retentionPeriodDuration;
             return this;
         }
@@ -457,9 +457,6 @@ public final class M3DbNamespaceArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.resolution == null) {
                 throw new MissingRequiredPropertyException("M3DbNamespaceArgs", "resolution");
-            }
-            if ($.retentionPeriodDuration == null) {
-                throw new MissingRequiredPropertyException("M3DbNamespaceArgs", "retentionPeriodDuration");
             }
             if ($.serviceName == null) {
                 throw new MissingRequiredPropertyException("M3DbNamespaceArgs", "serviceName");

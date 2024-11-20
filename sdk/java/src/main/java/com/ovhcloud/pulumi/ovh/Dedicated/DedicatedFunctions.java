@@ -54,7 +54,7 @@ public final class DedicatedFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-ceph = DedicatedFunctions.getCeph(GetCephArgs.builder()
+     *         final var myCeph = DedicatedFunctions.getCeph(GetCephArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
@@ -96,7 +96,7 @@ public final class DedicatedFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-ceph = DedicatedFunctions.getCeph(GetCephArgs.builder()
+     *         final var myCeph = DedicatedFunctions.getCeph(GetCephArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
@@ -138,7 +138,7 @@ public final class DedicatedFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-ceph = DedicatedFunctions.getCeph(GetCephArgs.builder()
+     *         final var myCeph = DedicatedFunctions.getCeph(GetCephArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
@@ -180,7 +180,7 @@ public final class DedicatedFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-ceph = DedicatedFunctions.getCeph(GetCephArgs.builder()
+     *         final var myCeph = DedicatedFunctions.getCeph(GetCephArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
@@ -222,7 +222,7 @@ public final class DedicatedFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-nas-ha = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
+     *         final var myNasHa = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
      *             .serviceName("zpool-12345")
      *             .build());
      * 
@@ -264,7 +264,7 @@ public final class DedicatedFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-nas-ha = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
+     *         final var myNasHa = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
      *             .serviceName("zpool-12345")
      *             .build());
      * 
@@ -306,7 +306,7 @@ public final class DedicatedFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-nas-ha = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
+     *         final var myNasHa = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
      *             .serviceName("zpool-12345")
      *             .build());
      * 
@@ -348,7 +348,7 @@ public final class DedicatedFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-nas-ha = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
+     *         final var myNasHa = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
      *             .serviceName("zpool-12345")
      *             .build());
      * 

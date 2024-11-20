@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myfirewallrule = new FirewallRule("myfirewallrule", FirewallRuleArgs.builder()
+ *         var myFirewallRule = new FirewallRule("myFirewallRule", FirewallRuleArgs.builder()
  *             .action("deny")
  *             .ip("XXXXXX")
  *             .ipOnFirewall("XXXXXX")

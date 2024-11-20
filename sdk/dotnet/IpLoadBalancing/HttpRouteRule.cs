@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var httpsredirect = new Ovh.IpLoadBalancing.HttpRoute("httpsredirect", new()
+    ///     var httpsRedirect = new Ovh.IpLoadBalancing.HttpRoute("httpsRedirect", new()
     ///     {
     ///         Action = new Ovh.IpLoadBalancing.Inputs.HttpRouteActionArgs
     ///         {
@@ -38,14 +38,14 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         Weight = 1,
     ///     });
     /// 
-    ///     var examplerule = new Ovh.IpLoadBalancing.HttpRouteRule("examplerule", new()
+    ///     var exampleRule = new Ovh.IpLoadBalancing.HttpRouteRule("exampleRule", new()
     ///     {
     ///         DisplayName = "Match example.com host",
     ///         Field = "host",
     ///         Match = "is",
     ///         Negate = false,
     ///         Pattern = "example.com",
-    ///         RouteId = httpsredirect.Id,
+    ///         RouteId = httpsRedirect.Id,
     ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
     ///     });
     /// 
@@ -62,14 +62,14 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplerule = new Ovh.IpLoadBalancing.HttpRouteRule("examplerule", new()
+    ///     var exampleRule = new Ovh.IpLoadBalancing.HttpRouteRule("exampleRule", new()
     ///     {
     ///         DisplayName = "Match example.com Host header",
     ///         Field = "headers",
     ///         Match = "is",
     ///         Negate = false,
     ///         Pattern = "example.com",
-    ///         RouteId = ovh_iploadbalancing_http_route.Httpsredirect.Id,
+    ///         RouteId = ovh_iploadbalancing_http_route.Https_redirect.Id,
     ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
     ///         SubField = "Host",
     ///     });

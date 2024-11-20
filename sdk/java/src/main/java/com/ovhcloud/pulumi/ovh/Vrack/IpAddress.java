@@ -51,22 +51,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myaccount = MeFunctions.getMe();
+ *         final var myAccount = MeFunctions.getMe();
  * 
- *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
- *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+ *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+ *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
  *             .build());
  * 
  *         final var vrackCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
  *             .priceCapacity("renew")
  *             .product("vrack")
  *             .planCode("vrack")
  *             .build());
  * 
  *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()
- *             .description(mycart.applyValue(getCartResult -> getCartResult.description()))
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .description(myCart.applyValue(getCartResult -> getCartResult.description()))
+ *             .ovhSubsidiary(myCart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
  *             .plan(VrackPlanArgs.builder()
  *                 .duration(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
  *                 .planCode(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
@@ -75,15 +75,15 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var ipblockCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
  *             .priceCapacity("renew")
  *             .product("ip")
  *             .planCode("ip-v4-s30-ripe")
  *             .build());
  * 
  *         var ipblockIpService = new IpService("ipblockIpService", IpServiceArgs.builder()
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
- *             .description(mycart.applyValue(getCartResult -> getCartResult.description()))
+ *             .ovhSubsidiary(myCart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .description(myCart.applyValue(getCartResult -> getCartResult.description()))
  *             .plan(IpServicePlanArgs.builder()
  *                 .duration(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
  *                 .planCode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var vrackblock = new IpAddress("vrackblock", IpAddressArgs.builder()
+ *         var vrackBlock = new IpAddress("vrackBlock", IpAddressArgs.builder()
  *             .serviceName(vrackVrack.serviceName())
  *             .block(ipblockIpService.ip())
  *             .build());

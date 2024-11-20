@@ -318,14 +318,14 @@ class Vrack(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        myaccount = ovh.Me.get_me()
-        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
-        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+        my_account = ovh.Me.get_me()
+        my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
+        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
             price_capacity="renew",
             product="vrack",
             plan_code="vrack")
         vrack_vrack = ovh.vrack.Vrack("vrackVrack",
-            ovh_subsidiary=mycart.ovh_subsidiary,
+            ovh_subsidiary=my_cart.ovh_subsidiary,
             description="my vrack",
             plan={
                 "duration": vrack_cart_product_plan.selected_prices[0].duration,
@@ -385,14 +385,14 @@ class Vrack(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        myaccount = ovh.Me.get_me()
-        mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
-        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+        my_account = ovh.Me.get_me()
+        my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
+        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
             price_capacity="renew",
             product="vrack",
             plan_code="vrack")
         vrack_vrack = ovh.vrack.Vrack("vrackVrack",
-            ovh_subsidiary=mycart.ovh_subsidiary,
+            ovh_subsidiary=my_cart.ovh_subsidiary,
             description="my vrack",
             plan={
                 "duration": vrack_cart_product_plan.selected_prices[0].duration,

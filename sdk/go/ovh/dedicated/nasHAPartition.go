@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Dedicated.NewNasHAPartition(ctx, "my-partition", &Dedicated.NasHAPartitionArgs{
+//			_, err := Dedicated.NewNasHAPartition(ctx, "myPartition", &Dedicated.NasHAPartitionArgs{
 //				Protocol:    pulumi.String("NFS"),
 //				ServiceName: pulumi.String("zpool-12345"),
 //				Size:        pulumi.Int(20),

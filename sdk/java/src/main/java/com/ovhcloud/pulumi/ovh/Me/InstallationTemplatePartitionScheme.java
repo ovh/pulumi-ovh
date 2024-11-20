@@ -44,13 +44,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytemplate = new InstallationTemplate("mytemplate", InstallationTemplateArgs.builder()
+ *         var myTemplate = new InstallationTemplate("myTemplate", InstallationTemplateArgs.builder()
  *             .baseTemplateName("debian12_64")
  *             .templateName("mytemplate")
  *             .build());
  * 
  *         var scheme = new InstallationTemplatePartitionScheme("scheme", InstallationTemplatePartitionSchemeArgs.builder()
- *             .templateName(mytemplate.templateName())
+ *             .templateName(myTemplate.templateName())
  *             .priority(1)
  *             .build());
  * 

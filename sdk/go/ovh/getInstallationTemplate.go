@@ -27,13 +27,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ovhtemplate, err := ovh.GetInstallationTemplate(ctx, &ovh.GetInstallationTemplateArgs{
+//			ovhTemplate, err := ovh.GetInstallationTemplate(ctx, &ovh.GetInstallationTemplateArgs{
 //				TemplateName: "debian12_64",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("template", ovhtemplate)
+//			ctx.Export("template", ovhTemplate)
 //			return nil
 //		})
 //	}

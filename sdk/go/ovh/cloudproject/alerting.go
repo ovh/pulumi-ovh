@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewAlerting(ctx, "my-alert", &CloudProject.AlertingArgs{
+//			_, err := CloudProject.NewAlerting(ctx, "myAlert", &CloudProject.AlertingArgs{
 //				Delay:            pulumi.Float64(3600),
 //				Email:            pulumi.String("aaa.bbb@domain.com"),
 //				MonthlyThreshold: pulumi.Float64(1000),

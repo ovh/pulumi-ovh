@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pguser = Ovh.CloudProjectDatabase.GetPostgresSqlUser.Invoke(new()
+        ///     var pgUser = Ovh.CloudProjectDatabase.GetPostgresSqlUser.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -33,7 +33,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["pguserRoles"] = pguser.Apply(getPostgresSqlUserResult =&gt; getPostgresSqlUserResult.Roles),
+        ///         ["pgUserRoles"] = pgUser.Apply(getPostgresSqlUserResult =&gt; getPostgresSqlUserResult.Roles),
         ///     };
         /// });
         /// ```
@@ -54,7 +54,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pguser = Ovh.CloudProjectDatabase.GetPostgresSqlUser.Invoke(new()
+        ///     var pgUser = Ovh.CloudProjectDatabase.GetPostgresSqlUser.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -63,7 +63,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["pguserRoles"] = pguser.Apply(getPostgresSqlUserResult =&gt; getPostgresSqlUserResult.Roles),
+        ///         ["pgUserRoles"] = pgUser.Apply(getPostgresSqlUserResult =&gt; getPostgresSqlUserResult.Roles),
         ///     };
         /// });
         /// ```

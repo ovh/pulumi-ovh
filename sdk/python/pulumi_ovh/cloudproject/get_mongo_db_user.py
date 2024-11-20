@@ -134,10 +134,10 @@ def get_mongo_db_user(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    mongouser = ovh.CloudProject.get_mongo_db_user(service_name="XXX",
+    mongo_user = ovh.CloudProject.get_mongo_db_user(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ@admin")
-    pulumi.export("mongouserRoles", mongouser.roles)
+    pulumi.export("mongoUserRoles", mongo_user.roles)
     ```
 
 
@@ -174,10 +174,10 @@ def get_mongo_db_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    mongouser = ovh.CloudProject.get_mongo_db_user(service_name="XXX",
+    mongo_user = ovh.CloudProject.get_mongo_db_user(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ@admin")
-    pulumi.export("mongouserRoles", mongouser.roles)
+    pulumi.export("mongoUserRoles", mongo_user.roles)
     ```
 
 

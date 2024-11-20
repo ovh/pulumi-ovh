@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var redisuser = Ovh.CloudProject.GetRedisUser.Invoke(new()
+        ///     var redisUser = Ovh.CloudProject.GetRedisUser.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -33,7 +33,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["redisuserCommands"] = redisuser.Apply(getRedisUserResult =&gt; getRedisUserResult.Commands),
+        ///         ["redisUserCommands"] = redisUser.Apply(getRedisUserResult =&gt; getRedisUserResult.Commands),
         ///     };
         /// });
         /// ```
@@ -54,7 +54,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var redisuser = Ovh.CloudProject.GetRedisUser.Invoke(new()
+        ///     var redisUser = Ovh.CloudProject.GetRedisUser.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -63,7 +63,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["redisuserCommands"] = redisuser.Apply(getRedisUserResult =&gt; getRedisUserResult.Commands),
+        ///         ["redisUserCommands"] = redisUser.Apply(getRedisUserResult =&gt; getRedisUserResult.Commands),
         ///     };
         /// });
         /// ```

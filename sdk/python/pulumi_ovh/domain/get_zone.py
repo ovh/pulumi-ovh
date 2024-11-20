@@ -129,7 +129,7 @@ def get_zone(name: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    rootzone = ovh.Domain.get_zone(name="mysite.ovh")
+    root_zone = ovh.Domain.get_zone(name="mysite.ovh")
     ```
 
 
@@ -159,7 +159,7 @@ def get_zone_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    rootzone = ovh.Domain.get_zone(name="mysite.ovh")
+    root_zone = ovh.Domain.get_zone(name="mysite.ovh")
     ```
 
 

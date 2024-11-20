@@ -1275,7 +1275,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytemplate = MeFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *         final var myTemplate = MeFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
      *             .templateName("mytemplate")
      *             .build());
      * 
@@ -1317,7 +1317,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytemplate = MeFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *         final var myTemplate = MeFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
      *             .templateName("mytemplate")
      *             .build());
      * 
@@ -1359,7 +1359,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytemplate = MeFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *         final var myTemplate = MeFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
      *             .templateName("mytemplate")
      *             .build());
      * 
@@ -1401,7 +1401,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytemplate = MeFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *         final var myTemplate = MeFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
      *             .templateName("mytemplate")
      *             .build());
      * 
@@ -1676,7 +1676,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
      *     }
      * }
@@ -1715,7 +1715,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
      *     }
      * }
@@ -1754,7 +1754,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
      *     }
      * }
@@ -1793,7 +1793,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
      *     }
      * }
@@ -1832,7 +1832,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
      *     }
      * }
@@ -1871,7 +1871,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
      *     }
      * }

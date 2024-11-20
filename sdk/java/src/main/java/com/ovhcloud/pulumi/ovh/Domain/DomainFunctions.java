@@ -45,7 +45,7 @@ public final class DomainFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var rootzone = DomainFunctions.getZone(GetZoneArgs.builder()
+     *         final var rootZone = DomainFunctions.getZone(GetZoneArgs.builder()
      *             .name("mysite.ovh")
      *             .build());
      * 
@@ -87,7 +87,7 @@ public final class DomainFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var rootzone = DomainFunctions.getZone(GetZoneArgs.builder()
+     *         final var rootZone = DomainFunctions.getZone(GetZoneArgs.builder()
      *             .name("mysite.ovh")
      *             .build());
      * 
@@ -129,7 +129,7 @@ public final class DomainFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var rootzone = DomainFunctions.getZone(GetZoneArgs.builder()
+     *         final var rootZone = DomainFunctions.getZone(GetZoneArgs.builder()
      *             .name("mysite.ovh")
      *             .build());
      * 
@@ -171,7 +171,7 @@ public final class DomainFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var rootzone = DomainFunctions.getZone(GetZoneArgs.builder()
+     *         final var rootZone = DomainFunctions.getZone(GetZoneArgs.builder()
      *             .name("mysite.ovh")
      *             .build());
      * 

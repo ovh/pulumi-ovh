@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_oidc = new KubeOidc("my-oidc", KubeOidcArgs.builder()
+ *         var myOidc = new KubeOidc("myOidc", KubeOidcArgs.builder()
  *             .serviceName(var_.projectid())
  *             .kubeId(ovh_cloud_project_kube.mykube().id())
  *             .clientId("xxx")

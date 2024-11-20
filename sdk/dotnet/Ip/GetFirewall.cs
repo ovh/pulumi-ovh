@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.Ip
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myfirewall = Ovh.Ip.GetFirewall.Invoke(new()
+        ///     var myFirewall = Ovh.Ip.GetFirewall.Invoke(new()
         ///     {
         ///         Ip = "XXXXXX",
         ///         IpOnFirewall = "XXXXXX",
@@ -49,7 +49,7 @@ namespace Pulumi.Ovh.Ip
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myfirewall = Ovh.Ip.GetFirewall.Invoke(new()
+        ///     var myFirewall = Ovh.Ip.GetFirewall.Invoke(new()
         ///     {
         ///         Ip = "XXXXXX",
         ///         IpOnFirewall = "XXXXXX",

@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_nas_ha = Ovh.Dedicated.GetNasHA.Invoke(new()
+        ///     var myNasHa = Ovh.Dedicated.GetNasHA.Invoke(new()
         ///     {
         ///         ServiceName = "zpool-12345",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_nas_ha = Ovh.Dedicated.GetNasHA.Invoke(new()
+        ///     var myNasHa = Ovh.Dedicated.GetNasHA.Invoke(new()
         ///     {
         ///         ServiceName = "zpool-12345",
         ///     });

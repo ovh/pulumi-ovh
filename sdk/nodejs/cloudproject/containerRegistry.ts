@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     planName: "SMALL",
  *     region: "GRA",
  * });
- * const my_registry = new ovh.cloudproject.ContainerRegistry("my-registry", {
+ * const myRegistry = new ovh.cloudproject.ContainerRegistry("myRegistry", {
  *     serviceName: regcap.then(regcap => regcap.serviceName),
  *     planId: regcap.then(regcap => regcap.id),
  *     region: regcap.then(regcap => regcap.region),

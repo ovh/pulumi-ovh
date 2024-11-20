@@ -224,10 +224,10 @@ class Okms(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        newkms = ovh.okms.Okms("newkms",
+        new_kms = ovh.okms.Okms("newKms",
             display_name="terraformed KMS",
             ovh_subsidiary="FR",
-            region="EU_WEST_RBX")
+            region="eu-west-rbx")
         ```
 
         :param str resource_name: The name of the resource.
@@ -249,10 +249,10 @@ class Okms(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        newkms = ovh.okms.Okms("newkms",
+        new_kms = ovh.okms.Okms("newKms",
             display_name="terraformed KMS",
             ovh_subsidiary="FR",
-            region="EU_WEST_RBX")
+            region="eu-west-rbx")
         ```
 
         :param str resource_name: The name of the resource.

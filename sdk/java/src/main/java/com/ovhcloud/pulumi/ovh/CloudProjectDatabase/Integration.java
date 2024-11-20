@@ -51,24 +51,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var dbpostgresql = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
+ *         final var dbPostgresql = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
  *             .serviceName("XXXX")
  *             .engine("postgresql")
  *             .id("ZZZZ")
  *             .build());
  * 
- *         final var dbopensearch = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
+ *         final var dbOpensearch = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
  *             .serviceName("XXXX")
  *             .engine("opensearch")
  *             .id("ZZZZ")
  *             .build());
  * 
  *         var integration = new Integration("integration", IntegrationArgs.builder()
- *             .serviceName(dbpostgresql.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
- *             .engine(dbpostgresql.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
- *             .clusterId(dbpostgresql.applyValue(getDatabaseResult -> getDatabaseResult.id()))
- *             .sourceServiceId(dbpostgresql.applyValue(getDatabaseResult -> getDatabaseResult.id()))
- *             .destinationServiceId(dbopensearch.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .serviceName(dbPostgresql.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
+ *             .engine(dbPostgresql.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
+ *             .clusterId(dbPostgresql.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .sourceServiceId(dbPostgresql.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .destinationServiceId(dbOpensearch.applyValue(getDatabaseResult -> getDatabaseResult.id()))
  *             .type("opensearchLogs")
  *             .build());
  * 

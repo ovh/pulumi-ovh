@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Me
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mytemplate = new Ovh.Me.InstallationTemplate("mytemplate", new()
+    ///     var myTemplate = new Ovh.Me.InstallationTemplate("myTemplate", new()
     ///     {
     ///         BaseTemplateName = "debian12_64",
     ///         TemplateName = "mytemplate",
@@ -30,7 +30,7 @@ namespace Pulumi.Ovh.Me
     /// 
     ///     var scheme = new Ovh.Me.InstallationTemplatePartitionScheme("scheme", new()
     ///     {
-    ///         TemplateName = mytemplate.TemplateName,
+    ///         TemplateName = myTemplate.TemplateName,
     ///         Priority = 1,
     ///     });
     /// 

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myfirewallrule = new ovh.ip.FirewallRule("myfirewallrule", {
+ * const myFirewallRule = new ovh.ip.FirewallRule("myFirewallRule", {
  *     action: "deny",
  *     ip: "XXXXXX",
  *     ipOnFirewall: "XXXXXX",

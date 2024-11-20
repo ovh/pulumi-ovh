@@ -14,18 +14,18 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  * import * as ovh from "@pulumi/ovh";
  *
- * const myaccount = ovh.Me.getMe({});
- * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
- *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * const myAccount = ovh.Me.getMe({});
+ * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myAccount.ovhSubsidiary,
  * }));
- * const vrackCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
- *     cartId: mycart.id,
+ * const vrackCartProductPlan = myCart.then(myCart => ovh.Order.getCartProductPlan({
+ *     cartId: myCart.id,
  *     priceCapacity: "renew",
  *     product: "vrack",
  *     planCode: "vrack",
  * }));
  * const vrackVrack = new ovh.vrack.Vrack("vrackVrack", {
- *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
+ *     ovhSubsidiary: myCart.then(myCart => myCart.ovhSubsidiary),
  *     description: "my vrack",
  *     plan: {
  *         duration: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.duration),

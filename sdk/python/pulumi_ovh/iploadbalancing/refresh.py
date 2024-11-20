@@ -113,7 +113,7 @@ class Refresh(pulumi.CustomResource):
 
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
-        farmname = ovh.ip_load_balancing.TcpFarm("farmname",
+        farm_name = ovh.ip_load_balancing.TcpFarm("farmName",
             port=8080,
             service_name=lb.service_name,
             zone="all")
@@ -121,7 +121,7 @@ class Refresh(pulumi.CustomResource):
             address="4.5.6.7",
             backup=True,
             display_name="mybackend",
-            farm_id=farmname.id,
+            farm_id=farm_name.id,
             port=80,
             probe=True,
             proxy_protocol_version="v2",
@@ -156,7 +156,7 @@ class Refresh(pulumi.CustomResource):
 
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
-        farmname = ovh.ip_load_balancing.TcpFarm("farmname",
+        farm_name = ovh.ip_load_balancing.TcpFarm("farmName",
             port=8080,
             service_name=lb.service_name,
             zone="all")
@@ -164,7 +164,7 @@ class Refresh(pulumi.CustomResource):
             address="4.5.6.7",
             backup=True,
             display_name="mybackend",
-            farm_id=farmname.id,
+            farm_id=farm_name.id,
             port=80,
             probe=True,
             proxy_protocol_version="v2",

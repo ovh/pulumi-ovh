@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var osuser = Ovh.CloudProject.GetOpenSearchUser.Invoke(new()
+        ///     var osUser = Ovh.CloudProject.GetOpenSearchUser.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -33,7 +33,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["osuserAcls"] = osuser.Apply(getOpenSearchUserResult =&gt; getOpenSearchUserResult.Acls),
+        ///         ["osUserAcls"] = osUser.Apply(getOpenSearchUserResult =&gt; getOpenSearchUserResult.Acls),
         ///     };
         /// });
         /// ```
@@ -54,7 +54,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var osuser = Ovh.CloudProject.GetOpenSearchUser.Invoke(new()
+        ///     var osUser = Ovh.CloudProject.GetOpenSearchUser.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -63,7 +63,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["osuserAcls"] = osuser.Apply(getOpenSearchUserResult =&gt; getOpenSearchUserResult.Acls),
+        ///         ["osUserAcls"] = osUser.Apply(getOpenSearchUserResult =&gt; getOpenSearchUserResult.Acls),
         ///     };
         /// });
         /// ```

@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_oidc = new Ovh.CloudProject.ContainerRegistryOIDC("my-oidc", new()
+    ///     var myOidc = new Ovh.CloudProject.ContainerRegistryOIDC("myOidc", new()
     ///     {
     ///         ServiceName = "XXXXXX",
     ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
@@ -41,7 +41,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["oidcClientSecret"] = my_oidc.OidcClientSecret,
+    ///         ["oidcClientSecret"] = myOidc.OidcClientSecret,
     ///     };
     /// });
     /// ```

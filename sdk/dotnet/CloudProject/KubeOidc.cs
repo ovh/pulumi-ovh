@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_oidc = new Ovh.CloudProject.KubeOidc("my-oidc", new()
+    ///     var myOidc = new Ovh.CloudProject.KubeOidc("myOidc", new()
     ///     {
     ///         ServiceName = @var.Projectid,
     ///         KubeId = ovh_cloud_project_kube.Mykube.Id,

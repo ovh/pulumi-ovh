@@ -36,7 +36,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         Zone = "all",
     ///     });
     /// 
-    ///     var testfrontend = new Ovh.IpLoadBalancing.HttpFrontend("testfrontend", new()
+    ///     var testFrontend = new Ovh.IpLoadBalancing.HttpFrontend("testFrontend", new()
     ///     {
     ///         DefaultFarmId = farm80.Id,
     ///         DisplayName = "ingress-8080-gra",
@@ -72,7 +72,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         Zone = "all",
     ///     });
     /// 
-    ///     var testfrontend = new Ovh.IpLoadBalancing.HttpFrontend("testfrontend", new()
+    ///     var testFrontend = new Ovh.IpLoadBalancing.HttpFrontend("testFrontend", new()
     ///     {
     ///         DefaultFarmId = farm80.Id,
     ///         DisplayName = "ingress-8080-gra",

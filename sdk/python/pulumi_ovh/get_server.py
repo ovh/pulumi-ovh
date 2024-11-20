@@ -27,10 +27,13 @@ class GetServerResult:
     """
     A collection of values returned by getServer.
     """
-    def __init__(__self__, server_urn=None, boot_id=None, boot_script=None, commercial_range=None, datacenter=None, display_name=None, enabled_public_vnis=None, enabled_vrack_aggregation_vnis=None, enabled_vrack_vnis=None, id=None, ip=None, ips=None, link_speed=None, monitoring=None, name=None, os=None, professional_use=None, rack=None, rescue_mail=None, reverse=None, root_device=None, server_id=None, service_name=None, state=None, support_level=None, vnis=None):
+    def __init__(__self__, server_urn=None, availability_zone=None, boot_id=None, boot_script=None, commercial_range=None, datacenter=None, display_name=None, enabled_public_vnis=None, enabled_vrack_aggregation_vnis=None, enabled_vrack_vnis=None, id=None, ip=None, ips=None, link_speed=None, monitoring=None, name=None, new_upgrade_system=None, no_intervention=None, os=None, power_state=None, professional_use=None, rack=None, region=None, rescue_mail=None, rescue_ssh_key=None, reverse=None, root_device=None, server_id=None, service_name=None, state=None, support_level=None, vnis=None):
         if server_urn and not isinstance(server_urn, str):
             raise TypeError("Expected argument 'server_urn' to be a str")
         pulumi.set(__self__, "server_urn", server_urn)
+        if availability_zone and not isinstance(availability_zone, str):
+            raise TypeError("Expected argument 'availability_zone' to be a str")
+        pulumi.set(__self__, "availability_zone", availability_zone)
         if boot_id and not isinstance(boot_id, int):
             raise TypeError("Expected argument 'boot_id' to be a int")
         pulumi.set(__self__, "boot_id", boot_id)
@@ -73,18 +76,33 @@ class GetServerResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if new_upgrade_system and not isinstance(new_upgrade_system, bool):
+            raise TypeError("Expected argument 'new_upgrade_system' to be a bool")
+        pulumi.set(__self__, "new_upgrade_system", new_upgrade_system)
+        if no_intervention and not isinstance(no_intervention, bool):
+            raise TypeError("Expected argument 'no_intervention' to be a bool")
+        pulumi.set(__self__, "no_intervention", no_intervention)
         if os and not isinstance(os, str):
             raise TypeError("Expected argument 'os' to be a str")
         pulumi.set(__self__, "os", os)
+        if power_state and not isinstance(power_state, str):
+            raise TypeError("Expected argument 'power_state' to be a str")
+        pulumi.set(__self__, "power_state", power_state)
         if professional_use and not isinstance(professional_use, bool):
             raise TypeError("Expected argument 'professional_use' to be a bool")
         pulumi.set(__self__, "professional_use", professional_use)
         if rack and not isinstance(rack, str):
             raise TypeError("Expected argument 'rack' to be a str")
         pulumi.set(__self__, "rack", rack)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if rescue_mail and not isinstance(rescue_mail, str):
             raise TypeError("Expected argument 'rescue_mail' to be a str")
         pulumi.set(__self__, "rescue_mail", rescue_mail)
+        if rescue_ssh_key and not isinstance(rescue_ssh_key, str):
+            raise TypeError("Expected argument 'rescue_ssh_key' to be a str")
+        pulumi.set(__self__, "rescue_ssh_key", rescue_ssh_key)
         if reverse and not isinstance(reverse, str):
             raise TypeError("Expected argument 'reverse' to be a str")
         pulumi.set(__self__, "reverse", reverse)
@@ -114,6 +132,14 @@ class GetServerResult:
         URN of the dedicated server instance
         """
         return pulumi.get(self, "server_urn")
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        """
+        Dedicated AZ localisation
+        """
+        return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="bootId")
@@ -228,12 +254,33 @@ class GetServerResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="newUpgradeSystem")
+    def new_upgrade_system(self) -> bool:
+        return pulumi.get(self, "new_upgrade_system")
+
+    @property
+    @pulumi.getter(name="noIntervention")
+    def no_intervention(self) -> bool:
+        """
+        Prevent datacenter intervention
+        """
+        return pulumi.get(self, "no_intervention")
+
+    @property
     @pulumi.getter
     def os(self) -> str:
         """
         Operating system
         """
         return pulumi.get(self, "os")
+
+    @property
+    @pulumi.getter(name="powerState")
+    def power_state(self) -> str:
+        """
+        Power state of the server (poweroff, poweron)
+        """
+        return pulumi.get(self, "power_state")
 
     @property
     @pulumi.getter(name="professionalUse")
@@ -252,12 +299,28 @@ class GetServerResult:
         return pulumi.get(self, "rack")
 
     @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Dedicated region localisation
+        """
+        return pulumi.get(self, "region")
+
+    @property
     @pulumi.getter(name="rescueMail")
     def rescue_mail(self) -> str:
         """
         Rescue mail of the server
         """
         return pulumi.get(self, "rescue_mail")
+
+    @property
+    @pulumi.getter(name="rescueSshKey")
+    def rescue_ssh_key(self) -> str:
+        """
+        Public SSH Key used in the rescue mode
+        """
+        return pulumi.get(self, "rescue_ssh_key")
 
     @property
     @pulumi.getter
@@ -320,6 +383,7 @@ class AwaitableGetServerResult(GetServerResult):
             yield self
         return GetServerResult(
             server_urn=self.server_urn,
+            availability_zone=self.availability_zone,
             boot_id=self.boot_id,
             boot_script=self.boot_script,
             commercial_range=self.commercial_range,
@@ -334,10 +398,15 @@ class AwaitableGetServerResult(GetServerResult):
             link_speed=self.link_speed,
             monitoring=self.monitoring,
             name=self.name,
+            new_upgrade_system=self.new_upgrade_system,
+            no_intervention=self.no_intervention,
             os=self.os,
+            power_state=self.power_state,
             professional_use=self.professional_use,
             rack=self.rack,
+            region=self.region,
             rescue_mail=self.rescue_mail,
+            rescue_ssh_key=self.rescue_ssh_key,
             reverse=self.reverse,
             root_device=self.root_device,
             server_id=self.server_id,
@@ -371,6 +440,7 @@ def get_server(service_name: Optional[str] = None,
 
     return AwaitableGetServerResult(
         server_urn=pulumi.get(__ret__, 'server_urn'),
+        availability_zone=pulumi.get(__ret__, 'availability_zone'),
         boot_id=pulumi.get(__ret__, 'boot_id'),
         boot_script=pulumi.get(__ret__, 'boot_script'),
         commercial_range=pulumi.get(__ret__, 'commercial_range'),
@@ -385,10 +455,15 @@ def get_server(service_name: Optional[str] = None,
         link_speed=pulumi.get(__ret__, 'link_speed'),
         monitoring=pulumi.get(__ret__, 'monitoring'),
         name=pulumi.get(__ret__, 'name'),
+        new_upgrade_system=pulumi.get(__ret__, 'new_upgrade_system'),
+        no_intervention=pulumi.get(__ret__, 'no_intervention'),
         os=pulumi.get(__ret__, 'os'),
+        power_state=pulumi.get(__ret__, 'power_state'),
         professional_use=pulumi.get(__ret__, 'professional_use'),
         rack=pulumi.get(__ret__, 'rack'),
+        region=pulumi.get(__ret__, 'region'),
         rescue_mail=pulumi.get(__ret__, 'rescue_mail'),
+        rescue_ssh_key=pulumi.get(__ret__, 'rescue_ssh_key'),
         reverse=pulumi.get(__ret__, 'reverse'),
         root_device=pulumi.get(__ret__, 'root_device'),
         server_id=pulumi.get(__ret__, 'server_id'),
@@ -419,6 +494,7 @@ def get_server_output(service_name: Optional[pulumi.Input[str]] = None,
     __ret__ = pulumi.runtime.invoke_output('ovh:index/getServer:getServer', __args__, opts=opts, typ=GetServerResult)
     return __ret__.apply(lambda __response__: GetServerResult(
         server_urn=pulumi.get(__response__, 'server_urn'),
+        availability_zone=pulumi.get(__response__, 'availability_zone'),
         boot_id=pulumi.get(__response__, 'boot_id'),
         boot_script=pulumi.get(__response__, 'boot_script'),
         commercial_range=pulumi.get(__response__, 'commercial_range'),
@@ -433,10 +509,15 @@ def get_server_output(service_name: Optional[pulumi.Input[str]] = None,
         link_speed=pulumi.get(__response__, 'link_speed'),
         monitoring=pulumi.get(__response__, 'monitoring'),
         name=pulumi.get(__response__, 'name'),
+        new_upgrade_system=pulumi.get(__response__, 'new_upgrade_system'),
+        no_intervention=pulumi.get(__response__, 'no_intervention'),
         os=pulumi.get(__response__, 'os'),
+        power_state=pulumi.get(__response__, 'power_state'),
         professional_use=pulumi.get(__response__, 'professional_use'),
         rack=pulumi.get(__response__, 'rack'),
+        region=pulumi.get(__response__, 'region'),
         rescue_mail=pulumi.get(__response__, 'rescue_mail'),
+        rescue_ssh_key=pulumi.get(__response__, 'rescue_ssh_key'),
         reverse=pulumi.get(__response__, 'reverse'),
         root_device=pulumi.get(__response__, 'root_device'),
         server_id=pulumi.get(__response__, 'server_id'),

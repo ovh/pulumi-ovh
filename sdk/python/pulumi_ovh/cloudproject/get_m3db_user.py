@@ -134,10 +134,10 @@ def get_m3db_user(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    m3dbuser = ovh.CloudProject.get_m3db_user(service_name="XXX",
+    m3db_user = ovh.CloudProject.get_m3db_user(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
-    pulumi.export("m3dbuserGroup", m3dbuser.group)
+    pulumi.export("m3dbUserGroup", m3db_user.group)
     ```
 
 
@@ -174,10 +174,10 @@ def get_m3db_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    m3dbuser = ovh.CloudProject.get_m3db_user(service_name="XXX",
+    m3db_user = ovh.CloudProject.get_m3db_user(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
-    pulumi.export("m3dbuserGroup", m3dbuser.group)
+    pulumi.export("m3dbUserGroup", m3db_user.group)
     ```
 
 

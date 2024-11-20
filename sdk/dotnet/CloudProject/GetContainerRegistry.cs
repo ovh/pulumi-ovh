@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_registry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
+        ///     var myRegistry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
         ///     {
         ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         ///         ServiceName = "XXXXXX",
@@ -49,7 +49,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_registry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
+        ///     var myRegistry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
         ///     {
         ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         ///         ServiceName = "XXXXXX",

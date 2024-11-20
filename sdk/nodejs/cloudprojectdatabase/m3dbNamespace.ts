@@ -70,7 +70,7 @@ export class M3DbNamespace extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Name of the namespace.
+     * Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -105,7 +105,7 @@ export class M3DbNamespace extends pulumi.CustomResource {
     /**
      * Defines whether M3DB will create snapshot files for this namespace.
      */
-    public readonly snapshotEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly snapshotEnabled!: pulumi.Output<boolean>;
     /**
      * Type of namespace.
      */
@@ -113,7 +113,7 @@ export class M3DbNamespace extends pulumi.CustomResource {
     /**
      * Defines whether M3DB will include writes to this namespace in the commit log.
      */
-    public readonly writesToCommitLogEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly writesToCommitLogEnabled!: pulumi.Output<boolean>;
 
     /**
      * Create a M3DbNamespace resource with the given unique name, arguments, and options.
@@ -148,9 +148,6 @@ export class M3DbNamespace extends pulumi.CustomResource {
             if ((!args || args.resolution === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resolution'");
             }
-            if ((!args || args.retentionPeriodDuration === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'retentionPeriodDuration'");
-            }
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
@@ -181,7 +178,7 @@ export interface M3DbNamespaceState {
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Name of the namespace.
+     * Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
      */
     name?: pulumi.Input<string>;
     /**
@@ -236,7 +233,7 @@ export interface M3DbNamespaceArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Name of the namespace.
+     * Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
      */
     name?: pulumi.Input<string>;
     /**
@@ -262,7 +259,7 @@ export interface M3DbNamespaceArgs {
     /**
      * Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
      */
-    retentionPeriodDuration: pulumi.Input<string>;
+    retentionPeriodDuration?: pulumi.Input<string>;
     /**
      * The id of the public cloud project. If omitted,
      * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.

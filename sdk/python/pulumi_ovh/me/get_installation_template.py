@@ -245,7 +245,7 @@ def get_installation_template(template_name: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    mytemplate = ovh.Me.get_installation_template(template_name="mytemplate")
+    my_template = ovh.Me.get_installation_template(template_name="mytemplate")
     ```
 
 
@@ -285,7 +285,7 @@ def get_installation_template_output(template_name: Optional[pulumi.Input[str]] 
     import pulumi
     import pulumi_ovh as ovh
 
-    mytemplate = ovh.Me.get_installation_template(template_name="mytemplate")
+    my_template = ovh.Me.get_installation_template(template_name="mytemplate")
     ```
 
 

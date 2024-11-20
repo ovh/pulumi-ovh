@@ -98,6 +98,10 @@ namespace Pulumi.Ovh
         /// </summary>
         public readonly string ServerURN;
         /// <summary>
+        /// Dedicated AZ localisation
+        /// </summary>
+        public readonly string AvailabilityZone;
+        /// <summary>
         /// Boot id of the server
         /// </summary>
         public readonly int BootId;
@@ -153,10 +157,19 @@ namespace Pulumi.Ovh
         /// User defined VirtualNetworkInterface name
         /// </summary>
         public readonly string Name;
+        public readonly bool NewUpgradeSystem;
+        /// <summary>
+        /// Prevent datacenter intervention
+        /// </summary>
+        public readonly bool NoIntervention;
         /// <summary>
         /// Operating system
         /// </summary>
         public readonly string Os;
+        /// <summary>
+        /// Power state of the server (poweroff, poweron)
+        /// </summary>
+        public readonly string PowerState;
         /// <summary>
         /// Does this server have professional use option
         /// </summary>
@@ -166,9 +179,17 @@ namespace Pulumi.Ovh
         /// </summary>
         public readonly string Rack;
         /// <summary>
+        /// Dedicated region localisation
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// Rescue mail of the server
         /// </summary>
         public readonly string RescueMail;
+        /// <summary>
+        /// Public SSH Key used in the rescue mode
+        /// </summary>
+        public readonly string RescueSshKey;
         /// <summary>
         /// Dedicated server reverse
         /// </summary>
@@ -199,6 +220,8 @@ namespace Pulumi.Ovh
         private GetServerResult(
             string ServerURN,
 
+            string availabilityZone,
+
             int bootId,
 
             string bootScript,
@@ -227,13 +250,23 @@ namespace Pulumi.Ovh
 
             string name,
 
+            bool newUpgradeSystem,
+
+            bool noIntervention,
+
             string os,
+
+            string powerState,
 
             bool professionalUse,
 
             string rack,
 
+            string region,
+
             string rescueMail,
+
+            string rescueSshKey,
 
             string reverse,
 
@@ -250,6 +283,7 @@ namespace Pulumi.Ovh
             ImmutableArray<Outputs.GetServerVniResult> vnis)
         {
             this.ServerURN = ServerURN;
+            AvailabilityZone = availabilityZone;
             BootId = bootId;
             BootScript = bootScript;
             CommercialRange = commercialRange;
@@ -264,10 +298,15 @@ namespace Pulumi.Ovh
             LinkSpeed = linkSpeed;
             Monitoring = monitoring;
             Name = name;
+            NewUpgradeSystem = newUpgradeSystem;
+            NoIntervention = noIntervention;
             Os = os;
+            PowerState = powerState;
             ProfessionalUse = professionalUse;
             Rack = rack;
+            Region = region;
             RescueMail = rescueMail;
+            RescueSshKey = rescueSshKey;
             Reverse = reverse;
             RootDevice = rootDevice;
             ServerId = serverId;

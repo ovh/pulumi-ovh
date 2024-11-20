@@ -28,7 +28,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var iprestrictions = Ovh.CloudProjectDatabase.GetIpRestrictions.Invoke(new()
+        ///     var ipRestrictions = Ovh.CloudProjectDatabase.GetIpRestrictions.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         Engine = "YYYY",
@@ -37,7 +37,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["ips"] = iprestrictions.Apply(getIpRestrictionsResult =&gt; getIpRestrictionsResult.Ips),
+        ///         ["ips"] = ipRestrictions.Apply(getIpRestrictionsResult =&gt; getIpRestrictionsResult.Ips),
         ///     };
         /// });
         /// ```
@@ -62,7 +62,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var iprestrictions = Ovh.CloudProjectDatabase.GetIpRestrictions.Invoke(new()
+        ///     var ipRestrictions = Ovh.CloudProjectDatabase.GetIpRestrictions.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         Engine = "YYYY",
@@ -71,7 +71,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["ips"] = iprestrictions.Apply(getIpRestrictionsResult =&gt; getIpRestrictionsResult.Ips),
+        ///         ["ips"] = ipRestrictions.Apply(getIpRestrictionsResult =&gt; getIpRestrictionsResult.Ips),
         ///     };
         /// });
         /// ```

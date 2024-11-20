@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewContainerRegistryOIDC(ctx, "my-oidc", &CloudProject.ContainerRegistryOIDCArgs{
+//			myOidc, err := CloudProject.NewContainerRegistryOIDC(ctx, "myOidc", &CloudProject.ContainerRegistryOIDCArgs{
 //				ServiceName:      pulumi.String("XXXXXX"),
 //				RegistryId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"),
 //				OidcName:         pulumi.String("my-oidc-provider"),
@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("oidcClientSecret", my_oidc.OidcClientSecret)
+//			ctx.Export("oidcClientSecret", myOidc.OidcClientSecret)
 //			return nil
 //		})
 //	}

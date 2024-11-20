@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var iprestrictions = Ovh.CloudProject.GetKubeIpRestrictions.Invoke(new()
+        ///     var ipRestrictions = Ovh.CloudProject.GetKubeIpRestrictions.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
@@ -32,7 +32,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["ips"] = iprestrictions.Apply(getKubeIpRestrictionsResult =&gt; getKubeIpRestrictionsResult.Ips),
+        ///         ["ips"] = ipRestrictions.Apply(getKubeIpRestrictionsResult =&gt; getKubeIpRestrictionsResult.Ips),
         ///     };
         /// });
         /// ```
@@ -53,7 +53,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var iprestrictions = Ovh.CloudProject.GetKubeIpRestrictions.Invoke(new()
+        ///     var ipRestrictions = Ovh.CloudProject.GetKubeIpRestrictions.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
@@ -61,7 +61,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["ips"] = iprestrictions.Apply(getKubeIpRestrictionsResult =&gt; getKubeIpRestrictionsResult.Ips),
+        ///         ["ips"] = ipRestrictions.Apply(getKubeIpRestrictionsResult =&gt; getKubeIpRestrictionsResult.Ips),
         ///     };
         /// });
         /// ```

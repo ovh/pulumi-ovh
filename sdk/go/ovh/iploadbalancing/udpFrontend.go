@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = IpLoadBalancing.NewUdpFrontend(ctx, "testfrontend", &IpLoadBalancing.UdpFrontendArgs{
+//			_, err = IpLoadBalancing.NewUdpFrontend(ctx, "testFrontend", &IpLoadBalancing.UdpFrontendArgs{
 //				ServiceName: pulumi.String(lb.ServiceName),
 //				DisplayName: pulumi.String("ingress-8080-gra"),
 //				Zone:        pulumi.String("all"),

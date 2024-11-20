@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			redisuser, err := CloudProject.GetRedisUser(ctx, &cloudproject.GetRedisUserArgs{
+//			redisUser, err := CloudProject.GetRedisUser(ctx, &cloudproject.GetRedisUserArgs{
 //				ServiceName: "XXX",
 //				ClusterId:   "YYY",
 //				Name:        "ZZZ",
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("redisuserCommands", redisuser.Commands)
+//			ctx.Export("redisUserCommands", redisUser.Commands)
 //			return nil
 //		})
 //	}

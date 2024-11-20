@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			m3dbnamespace, err := CloudProject.GetM3dbNamespace(ctx, &cloudproject.GetM3dbNamespaceArgs{
+//			m3dbNamespace, err := CloudProject.GetM3dbNamespace(ctx, &cloudproject.GetM3dbNamespaceArgs{
 //				ServiceName: "XXX",
 //				ClusterId:   "YYY",
 //				Name:        "ZZZ",
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("m3dbnamespaceType", m3dbnamespace.Type)
+//			ctx.Export("m3dbnamespaceType", m3dbNamespace.Type)
 //			return nil
 //		})
 //	}

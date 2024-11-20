@@ -468,7 +468,7 @@ class FirewallRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        myfirewallrule = ovh.ip.FirewallRule("myfirewallrule",
+        my_firewall_rule = ovh.ip.FirewallRule("myFirewallRule",
             action="deny",
             ip="XXXXXX",
             ip_on_firewall="XXXXXX",
@@ -504,7 +504,7 @@ class FirewallRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        myfirewallrule = ovh.ip.FirewallRule("myfirewallrule",
+        my_firewall_rule = ovh.ip.FirewallRule("myFirewallRule",
             action="deny",
             ip="XXXXXX",
             ip_on_firewall="XXXXXX",

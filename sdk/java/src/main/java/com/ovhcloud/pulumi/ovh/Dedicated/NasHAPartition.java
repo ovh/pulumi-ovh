@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_partition = new NasHAPartition("my-partition", NasHAPartitionArgs.builder()
+ *         var myPartition = new NasHAPartition("myPartition", NasHAPartitionArgs.builder()
  *             .protocol("NFS")
  *             .serviceName("zpool-12345")
  *             .size(20)

@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := IpLoadBalancing.NewTcpRoute(ctx, "tcpreject", &IpLoadBalancing.TcpRouteArgs{
+//			_, err := IpLoadBalancing.NewTcpRoute(ctx, "tcpReject", &IpLoadBalancing.TcpRouteArgs{
 //				Action: &iploadbalancing.TcpRouteActionArgs{
 //					Type: pulumi.String("reject"),
 //				},

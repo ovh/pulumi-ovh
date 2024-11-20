@@ -39,7 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProjectDatabase.NewIpRestriction(ctx, "iprestriction", &CloudProjectDatabase.IpRestrictionArgs{
+//			_, err = CloudProjectDatabase.NewIpRestriction(ctx, "ipRestriction", &CloudProjectDatabase.IpRestrictionArgs{
 //				ServiceName: pulumi.String(db.ServiceName),
 //				Engine:      pulumi.String(db.Engine),
 //				ClusterId:   pulumi.String(db.Id),

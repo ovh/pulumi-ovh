@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_partition = new NasHAPartitionAccess("my-partition", NasHAPartitionAccessArgs.builder()
+ *         var myPartition = new NasHAPartitionAccess("myPartition", NasHAPartitionAccessArgs.builder()
  *             .aclDescription("Description of the ACL")
  *             .ip("123.123.123.123/32")
  *             .partitionName("my-partition")

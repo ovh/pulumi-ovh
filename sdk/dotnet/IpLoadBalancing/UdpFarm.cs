@@ -28,7 +28,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         State = "ok",
     ///     });
     /// 
-    ///     var farmname = new Ovh.IpLoadBalancing.UdpFarm("farmname", new()
+    ///     var farmName = new Ovh.IpLoadBalancing.UdpFarm("farmName", new()
     ///     {
     ///         DisplayName = "ingress-8080-gra",
     ///         Port = 80,

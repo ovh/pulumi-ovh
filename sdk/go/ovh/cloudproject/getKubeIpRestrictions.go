@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			iprestrictions, err := CloudProject.GetKubeIpRestrictions(ctx, &cloudproject.GetKubeIpRestrictionsArgs{
+//			ipRestrictions, err := CloudProject.GetKubeIpRestrictions(ctx, &cloudproject.GetKubeIpRestrictionsArgs{
 //				ServiceName: "XXXXXX",
 //				KubeId:      "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("ips", iprestrictions.Ips)
+//			ctx.Export("ips", ipRestrictions.Ips)
 //			return nil
 //		})
 //	}

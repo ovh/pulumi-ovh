@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var httpsredirect = new Ovh.IpLoadBalancing.HttpRoute("httpsredirect", new()
+    ///     var httpsRedirect = new Ovh.IpLoadBalancing.HttpRoute("httpsRedirect", new()
     ///     {
     ///         Action = new Ovh.IpLoadBalancing.Inputs.HttpRouteActionArgs
     ///         {

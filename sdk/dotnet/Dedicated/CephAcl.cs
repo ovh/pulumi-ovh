@@ -22,14 +22,14 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_ceph = Ovh.Dedicated.GetCeph.Invoke(new()
+    ///     var myCeph = Ovh.Dedicated.GetCeph.Invoke(new()
     ///     {
     ///         ServiceName = "94d423da-0e55-45f2-9812-836460a19939",
     ///     });
     /// 
     ///     var my_acl = new Ovh.Dedicated.CephAcl("my-acl", new()
     ///     {
-    ///         ServiceName = my_ceph.Apply(my_ceph =&gt; my_ceph.Apply(getCephResult =&gt; getCephResult.Id)),
+    ///         ServiceName = myCeph.Apply(getCephResult =&gt; getCephResult.Id),
     ///         Network = "1.2.3.4",
     ///         Netmask = "255.255.255.255",
     ///     });

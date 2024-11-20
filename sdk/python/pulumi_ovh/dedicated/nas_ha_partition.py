@@ -241,7 +241,7 @@ class NasHAPartition(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_partition = ovh.dedicated.NasHAPartition("my-partition",
+        my_partition = ovh.dedicated.NasHAPartition("myPartition",
             protocol="NFS",
             service_name="zpool-12345",
             size=20)
@@ -278,7 +278,7 @@ class NasHAPartition(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_partition = ovh.dedicated.NasHAPartition("my-partition",
+        my_partition = ovh.dedicated.NasHAPartition("myPartition",
             protocol="NFS",
             service_name="zpool-12345",
             size=20)

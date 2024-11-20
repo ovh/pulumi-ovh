@@ -92,14 +92,14 @@ public class M3DbNamespace extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * Name of the namespace.
+     * Name of the namespace. A namespace named &#34;default&#34; is mapped with already created default namespace instead of creating a new namespace.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the namespace.
+     * @return Name of the namespace. A namespace named &#34;default&#34; is mapped with already created default namespace instead of creating a new namespace.
      * 
      */
     public Output<String> name() {
@@ -210,14 +210,14 @@ public class M3DbNamespace extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="snapshotEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> snapshotEnabled;
+    private Output<Boolean> snapshotEnabled;
 
     /**
      * @return Defines whether M3DB will create snapshot files for this namespace.
      * 
      */
-    public Output<Optional<Boolean>> snapshotEnabled() {
-        return Codegen.optional(this.snapshotEnabled);
+    public Output<Boolean> snapshotEnabled() {
+        return this.snapshotEnabled;
     }
     /**
      * Type of namespace.
@@ -238,14 +238,14 @@ public class M3DbNamespace extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="writesToCommitLogEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> writesToCommitLogEnabled;
+    private Output<Boolean> writesToCommitLogEnabled;
 
     /**
      * @return Defines whether M3DB will include writes to this namespace in the commit log.
      * 
      */
-    public Output<Optional<Boolean>> writesToCommitLogEnabled() {
-        return Codegen.optional(this.writesToCommitLogEnabled);
+    public Output<Boolean> writesToCommitLogEnabled() {
+        return this.writesToCommitLogEnabled;
     }
 
     /**

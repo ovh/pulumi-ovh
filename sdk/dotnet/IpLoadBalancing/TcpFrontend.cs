@@ -36,7 +36,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         Zone = "all",
     ///     });
     /// 
-    ///     var testfrontend = new Ovh.IpLoadBalancing.TcpFrontend("testfrontend", new()
+    ///     var testFrontend = new Ovh.IpLoadBalancing.TcpFrontend("testFrontend", new()
     ///     {
     ///         DefaultFarmId = farm80.Id,
     ///         DisplayName = "ingress-8080-gra",

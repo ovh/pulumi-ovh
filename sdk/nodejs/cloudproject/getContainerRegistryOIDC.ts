@@ -14,12 +14,12 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * export = async () => {
- *     const my-oidc = await ovh.CloudProject.getContainerRegistryOIDC({
+ *     const myOidc = await ovh.CloudProject.getContainerRegistryOIDC({
  *         serviceName: "XXXXXX",
  *         registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  *     });
  *     return {
- *         "oidc-client-id": my_oidc.oidcClientId,
+ *         "oidc-client-id": myOidc.oidcClientId,
  *     };
  * }
  * ```
@@ -154,12 +154,12 @@ export interface GetContainerRegistryOIDCResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * export = async () => {
- *     const my-oidc = await ovh.CloudProject.getContainerRegistryOIDC({
+ *     const myOidc = await ovh.CloudProject.getContainerRegistryOIDC({
  *         serviceName: "XXXXXX",
  *         registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  *     });
  *     return {
- *         "oidc-client-id": my_oidc.oidcClientId,
+ *         "oidc-client-id": myOidc.oidcClientId,
  *     };
  * }
  * ```

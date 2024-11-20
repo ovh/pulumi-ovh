@@ -134,10 +134,10 @@ def get_postgres_sql_user(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    pguser = ovh.CloudProjectDatabase.get_postgres_sql_user(service_name="XXX",
+    pg_user = ovh.CloudProjectDatabase.get_postgres_sql_user(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
-    pulumi.export("pguserRoles", pguser.roles)
+    pulumi.export("pgUserRoles", pg_user.roles)
     ```
 
 
@@ -174,10 +174,10 @@ def get_postgres_sql_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    pguser = ovh.CloudProjectDatabase.get_postgres_sql_user(service_name="XXX",
+    pg_user = ovh.CloudProjectDatabase.get_postgres_sql_user(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
-    pulumi.export("pguserRoles", pguser.roles)
+    pulumi.export("pgUserRoles", pg_user.roles)
     ```
 
 

@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .zone("all")
  *             .build());
  * 
- *         var testfrontend = new HttpFrontend("testfrontend", HttpFrontendArgs.builder()
+ *         var testFrontend = new HttpFrontend("testFrontend", HttpFrontendArgs.builder()
  *             .defaultFarmId(farm80.id())
  *             .displayName("ingress-8080-gra")
  *             .port("80,443")
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *             .zone("all")
  *             .build());
  * 
- *         var testfrontend = new HttpFrontend("testfrontend", HttpFrontendArgs.builder()
+ *         var testFrontend = new HttpFrontend("testFrontend", HttpFrontendArgs.builder()
  *             .defaultFarmId(farm80.id())
  *             .displayName("ingress-8080-gra")
  *             .httpHeaders(            

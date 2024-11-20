@@ -60,7 +60,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the namespace.
+        /// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// Defines whether M3DB will create snapshot files for this namespace.
         /// </summary>
         [Output("snapshotEnabled")]
-        public Output<bool?> SnapshotEnabled { get; private set; } = null!;
+        public Output<bool> SnapshotEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Type of namespace.
@@ -124,7 +124,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// Defines whether M3DB will include writes to this namespace in the commit log.
         /// </summary>
         [Output("writesToCommitLogEnabled")]
-        public Output<bool?> WritesToCommitLogEnabled { get; private set; } = null!;
+        public Output<bool> WritesToCommitLogEnabled { get; private set; } = null!;
 
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the namespace.
+        /// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -218,8 +218,8 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
         /// </summary>
-        [Input("retentionPeriodDuration", required: true)]
-        public Input<string> RetentionPeriodDuration { get; set; } = null!;
+        [Input("retentionPeriodDuration")]
+        public Input<string>? RetentionPeriodDuration { get; set; }
 
         /// <summary>
         /// The id of the public cloud project. If omitted,
@@ -255,7 +255,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Name of the namespace.
+        /// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
