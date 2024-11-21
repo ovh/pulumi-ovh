@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewKubeOidc(ctx, "my-oidc", &CloudProject.KubeOidcArgs{
+//			_, err := CloudProject.NewKubeOidc(ctx, "myOidc", &CloudProject.KubeOidcArgs{
 //				ServiceName:        pulumi.Any(_var.Projectid),
 //				KubeId:             pulumi.Any(ovh_cloud_project_kube.Mykube.Id),
 //				ClientId:           pulumi.String("xxx"),

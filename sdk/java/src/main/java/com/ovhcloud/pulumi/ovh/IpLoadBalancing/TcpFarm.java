@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .state("ok")
  *             .build());
  * 
- *         var farmname = new TcpFarm("farmname", TcpFarmArgs.builder()
+ *         var farmName = new TcpFarm("farmName", TcpFarmArgs.builder()
  *             .displayName("ingress-8080-gra")
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .zone("GRA")

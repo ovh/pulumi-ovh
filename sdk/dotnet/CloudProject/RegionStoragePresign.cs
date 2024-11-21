@@ -12,8 +12,6 @@ namespace Pulumi.Ovh.CloudProject
     /// <summary>
     /// Generates a temporary presigned S3 URLs to download or upload an object.
     /// 
-    /// &gt; __NOTE__ This resource is only compatible with the `High Performance - S3` solution for object storage.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -44,13 +42,15 @@ namespace Pulumi.Ovh.CloudProject
     public partial class RegionStoragePresign : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Define, in seconds, for how long your URL will be valid.
+        /// Define, in seconds, for how long your URL will be
+        /// valid.
         /// </summary>
         [Output("expire")]
         public Output<int> Expire { get; private set; } = null!;
 
         /// <summary>
-        /// The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
+        /// The method you want to use to interact with your
+        /// object. Can be either 'GET' or 'PUT'.
         /// </summary>
         [Output("method")]
         public Output<string> Method { get; private set; } = null!;
@@ -68,8 +68,8 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Object { get; private set; } = null!;
 
         /// <summary>
-        /// The region in which your storage is located.
-        /// Ex.: "GRA".
+        /// The region in which your storage is located. Must
+        /// be in **uppercase**. Ex.: "GRA".
         /// </summary>
         [Output("regionName")]
         public Output<string> RegionName { get; private set; } = null!;
@@ -135,13 +135,15 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class RegionStoragePresignArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Define, in seconds, for how long your URL will be valid.
+        /// Define, in seconds, for how long your URL will be
+        /// valid.
         /// </summary>
         [Input("expire", required: true)]
         public Input<int> Expire { get; set; } = null!;
 
         /// <summary>
-        /// The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
+        /// The method you want to use to interact with your
+        /// object. Can be either 'GET' or 'PUT'.
         /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;
@@ -159,8 +161,8 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> Object { get; set; } = null!;
 
         /// <summary>
-        /// The region in which your storage is located.
-        /// Ex.: "GRA".
+        /// The region in which your storage is located. Must
+        /// be in **uppercase**. Ex.: "GRA".
         /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
@@ -181,13 +183,15 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class RegionStoragePresignState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Define, in seconds, for how long your URL will be valid.
+        /// Define, in seconds, for how long your URL will be
+        /// valid.
         /// </summary>
         [Input("expire")]
         public Input<int>? Expire { get; set; }
 
         /// <summary>
-        /// The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
+        /// The method you want to use to interact with your
+        /// object. Can be either 'GET' or 'PUT'.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
@@ -205,8 +209,8 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Object { get; set; }
 
         /// <summary>
-        /// The region in which your storage is located.
-        /// Ex.: "GRA".
+        /// The region in which your storage is located. Must
+        /// be in **uppercase**. Ex.: "GRA".
         /// </summary>
         [Input("regionName")]
         public Input<string>? RegionName { get; set; }

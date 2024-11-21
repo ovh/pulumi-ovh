@@ -309,7 +309,7 @@ class HttpRouteRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        httpsredirect = ovh.ip_load_balancing.HttpRoute("httpsredirect",
+        https_redirect = ovh.ip_load_balancing.HttpRoute("httpsRedirect",
             action={
                 "status": 302,
                 "target": "https://${host}${path}${arguments}",
@@ -319,13 +319,13 @@ class HttpRouteRule(pulumi.CustomResource):
             frontend_id=11111,
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             weight=1)
-        examplerule = ovh.ip_load_balancing.HttpRouteRule("examplerule",
+        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
             display_name="Match example.com host",
             field="host",
             match="is",
             negate=False,
             pattern="example.com",
-            route_id=httpsredirect.id,
+            route_id=https_redirect.id,
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
         ```
 
@@ -335,13 +335,13 @@ class HttpRouteRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        examplerule = ovh.ip_load_balancing.HttpRouteRule("examplerule",
+        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
             display_name="Match example.com Host header",
             field="headers",
             match="is",
             negate=False,
             pattern="example.com",
-            route_id=ovh_iploadbalancing_http_route["httpsredirect"]["id"],
+            route_id=ovh_iploadbalancing_http_route["https_redirect"]["id"],
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             sub_field="Host")
         ```
@@ -378,7 +378,7 @@ class HttpRouteRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        httpsredirect = ovh.ip_load_balancing.HttpRoute("httpsredirect",
+        https_redirect = ovh.ip_load_balancing.HttpRoute("httpsRedirect",
             action={
                 "status": 302,
                 "target": "https://${host}${path}${arguments}",
@@ -388,13 +388,13 @@ class HttpRouteRule(pulumi.CustomResource):
             frontend_id=11111,
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             weight=1)
-        examplerule = ovh.ip_load_balancing.HttpRouteRule("examplerule",
+        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
             display_name="Match example.com host",
             field="host",
             match="is",
             negate=False,
             pattern="example.com",
-            route_id=httpsredirect.id,
+            route_id=https_redirect.id,
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
         ```
 
@@ -404,13 +404,13 @@ class HttpRouteRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        examplerule = ovh.ip_load_balancing.HttpRouteRule("examplerule",
+        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
             display_name="Match example.com Host header",
             field="headers",
             match="is",
             negate=False,
             pattern="example.com",
-            route_id=ovh_iploadbalancing_http_route["httpsredirect"]["id"],
+            route_id=ovh_iploadbalancing_http_route["https_redirect"]["id"],
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             sub_field="Host")
         ```

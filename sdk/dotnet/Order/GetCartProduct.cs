@@ -24,16 +24,16 @@ namespace Pulumi.Ovh.Order
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myaccount = Ovh.Me.GetMe.Invoke();
+        ///     var myAccount = Ovh.Me.GetMe.Invoke();
         /// 
-        ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+        ///     var myCart = Ovh.Order.GetCart.Invoke(new()
         ///     {
-        ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
         ///     });
         /// 
         ///     var plans = Ovh.Order.GetCartProduct.Invoke(new()
         ///     {
-        ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+        ///         CartId = myCart.Apply(getCartResult =&gt; getCartResult.Id),
         ///         Product = "...",
         ///     });
         /// 
@@ -56,16 +56,16 @@ namespace Pulumi.Ovh.Order
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myaccount = Ovh.Me.GetMe.Invoke();
+        ///     var myAccount = Ovh.Me.GetMe.Invoke();
         /// 
-        ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+        ///     var myCart = Ovh.Order.GetCart.Invoke(new()
         ///     {
-        ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
         ///     });
         /// 
         ///     var plans = Ovh.Order.GetCartProduct.Invoke(new()
         ///     {
-        ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+        ///         CartId = myCart.Apply(getCartResult =&gt; getCartResult.Id),
         ///         Product = "...",
         ///     });
         /// 

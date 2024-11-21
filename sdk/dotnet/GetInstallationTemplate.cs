@@ -24,14 +24,14 @@ namespace Pulumi.Ovh
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ovhtemplate = Ovh.GetInstallationTemplate.Invoke(new()
+        ///     var ovhTemplate = Ovh.GetInstallationTemplate.Invoke(new()
         ///     {
         ///         TemplateName = "debian12_64",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["template"] = ovhtemplate,
+        ///         ["template"] = ovhTemplate,
         ///     };
         /// });
         /// ```
@@ -52,14 +52,14 @@ namespace Pulumi.Ovh
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ovhtemplate = Ovh.GetInstallationTemplate.Invoke(new()
+        ///     var ovhTemplate = Ovh.GetInstallationTemplate.Invoke(new()
         ///     {
         ///         TemplateName = "debian12_64",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["template"] = ovhtemplate,
+        ///         ["template"] = ovhTemplate,
         ///     };
         /// });
         /// ```

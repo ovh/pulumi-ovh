@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcpreject = new TcpRoute("tcpreject", TcpRouteArgs.builder()
+ *         var tcpReject = new TcpRoute("tcpReject", TcpRouteArgs.builder()
  *             .action(TcpRouteActionArgs.builder()
  *                 .type("reject")
  *                 .build())

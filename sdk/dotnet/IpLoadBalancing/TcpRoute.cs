@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tcpreject = new Ovh.IpLoadBalancing.TcpRoute("tcpreject", new()
+    ///     var tcpReject = new Ovh.IpLoadBalancing.TcpRoute("tcpReject", new()
     ///     {
     ///         Action = new Ovh.IpLoadBalancing.Inputs.TcpRouteActionArgs
     ///         {

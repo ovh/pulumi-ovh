@@ -65,7 +65,7 @@ type M3DbNamespace struct {
 
 	// Cluster ID.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Name of the namespace.
+	// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
 	Resolution pulumi.StringOutput `pulumi:"resolution"`
@@ -83,11 +83,11 @@ type M3DbNamespace struct {
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Defines whether M3DB will create snapshot files for this namespace.
-	SnapshotEnabled pulumi.BoolPtrOutput `pulumi:"snapshotEnabled"`
+	SnapshotEnabled pulumi.BoolOutput `pulumi:"snapshotEnabled"`
 	// Type of namespace.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Defines whether M3DB will include writes to this namespace in the commit log.
-	WritesToCommitLogEnabled pulumi.BoolPtrOutput `pulumi:"writesToCommitLogEnabled"`
+	WritesToCommitLogEnabled pulumi.BoolOutput `pulumi:"writesToCommitLogEnabled"`
 }
 
 // NewM3DbNamespace registers a new resource with the given unique name, arguments, and options.
@@ -102,9 +102,6 @@ func NewM3DbNamespace(ctx *pulumi.Context,
 	}
 	if args.Resolution == nil {
 		return nil, errors.New("invalid value for required argument 'Resolution'")
-	}
-	if args.RetentionPeriodDuration == nil {
-		return nil, errors.New("invalid value for required argument 'RetentionPeriodDuration'")
 	}
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
@@ -134,7 +131,7 @@ func GetM3DbNamespace(ctx *pulumi.Context,
 type m3dbNamespaceState struct {
 	// Cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
-	// Name of the namespace.
+	// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
 	Name *string `pulumi:"name"`
 	// Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
 	Resolution *string `pulumi:"resolution"`
@@ -162,7 +159,7 @@ type m3dbNamespaceState struct {
 type M3DbNamespaceState struct {
 	// Cluster ID.
 	ClusterId pulumi.StringPtrInput
-	// Name of the namespace.
+	// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
 	Name pulumi.StringPtrInput
 	// Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
 	Resolution pulumi.StringPtrInput
@@ -194,7 +191,7 @@ func (M3DbNamespaceState) ElementType() reflect.Type {
 type m3dbNamespaceArgs struct {
 	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// Name of the namespace.
+	// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
 	Name *string `pulumi:"name"`
 	// Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
 	Resolution string `pulumi:"resolution"`
@@ -207,7 +204,7 @@ type m3dbNamespaceArgs struct {
 	// Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
 	RetentionBufferPastDuration *string `pulumi:"retentionBufferPastDuration"`
 	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
-	RetentionPeriodDuration string `pulumi:"retentionPeriodDuration"`
+	RetentionPeriodDuration *string `pulumi:"retentionPeriodDuration"`
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
@@ -221,7 +218,7 @@ type m3dbNamespaceArgs struct {
 type M3DbNamespaceArgs struct {
 	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// Name of the namespace.
+	// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
 	Name pulumi.StringPtrInput
 	// Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
 	Resolution pulumi.StringInput
@@ -234,7 +231,7 @@ type M3DbNamespaceArgs struct {
 	// Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
 	RetentionBufferPastDuration pulumi.StringPtrInput
 	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
-	RetentionPeriodDuration pulumi.StringInput
+	RetentionPeriodDuration pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
@@ -336,7 +333,7 @@ func (o M3DbNamespaceOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Name of the namespace.
+// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
 func (o M3DbNamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -378,8 +375,8 @@ func (o M3DbNamespaceOutput) ServiceName() pulumi.StringOutput {
 }
 
 // Defines whether M3DB will create snapshot files for this namespace.
-func (o M3DbNamespaceOutput) SnapshotEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *M3DbNamespace) pulumi.BoolPtrOutput { return v.SnapshotEnabled }).(pulumi.BoolPtrOutput)
+func (o M3DbNamespaceOutput) SnapshotEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *M3DbNamespace) pulumi.BoolOutput { return v.SnapshotEnabled }).(pulumi.BoolOutput)
 }
 
 // Type of namespace.
@@ -388,8 +385,8 @@ func (o M3DbNamespaceOutput) Type() pulumi.StringOutput {
 }
 
 // Defines whether M3DB will include writes to this namespace in the commit log.
-func (o M3DbNamespaceOutput) WritesToCommitLogEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *M3DbNamespace) pulumi.BoolPtrOutput { return v.WritesToCommitLogEnabled }).(pulumi.BoolPtrOutput)
+func (o M3DbNamespaceOutput) WritesToCommitLogEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *M3DbNamespace) pulumi.BoolOutput { return v.WritesToCommitLogEnabled }).(pulumi.BoolOutput)
 }
 
 type M3DbNamespaceArrayOutput struct{ *pulumi.OutputState }

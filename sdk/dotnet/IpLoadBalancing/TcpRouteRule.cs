@@ -33,7 +33,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         },
     ///     });
     /// 
-    ///     var examplerule = new Ovh.IpLoadBalancing.TcpRouteRule("examplerule", new()
+    ///     var exampleRule = new Ovh.IpLoadBalancing.TcpRouteRule("exampleRule", new()
     ///     {
     ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
     ///         RouteId = reject.Id,

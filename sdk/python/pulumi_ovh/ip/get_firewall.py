@@ -107,7 +107,7 @@ def get_firewall(ip: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    myfirewall = ovh.Ip.get_firewall(ip="XXXXXX",
+    my_firewall = ovh.Ip.get_firewall(ip="XXXXXX",
         ip_on_firewall="XXXXXX")
     ```
 
@@ -139,7 +139,7 @@ def get_firewall_output(ip: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    myfirewall = ovh.Ip.get_firewall(ip="XXXXXX",
+    my_firewall = ovh.Ip.get_firewall(ip="XXXXXX",
         ip_on_firewall="XXXXXX")
     ```
 

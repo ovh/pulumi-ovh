@@ -32,14 +32,14 @@ public final class M3DbNamespaceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the namespace.
+     * Name of the namespace. A namespace named &#34;default&#34; is mapped with already created default namespace instead of creating a new namespace.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the namespace.
+     * @return Name of the namespace. A namespace named &#34;default&#34; is mapped with already created default namespace instead of creating a new namespace.
      * 
      */
     public Optional<Output<String>> name() {
@@ -255,7 +255,7 @@ public final class M3DbNamespaceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the namespace.
+         * @param name Name of the namespace. A namespace named &#34;default&#34; is mapped with already created default namespace instead of creating a new namespace.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class M3DbNamespaceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the namespace.
+         * @param name Name of the namespace. A namespace named &#34;default&#34; is mapped with already created default namespace instead of creating a new namespace.
          * 
          * @return builder
          * 

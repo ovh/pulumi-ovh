@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = IpLoadBalancing.NewHttpFrontend(ctx, "testfrontend", &IpLoadBalancing.HttpFrontendArgs{
+//			_, err = IpLoadBalancing.NewHttpFrontend(ctx, "testFrontend", &IpLoadBalancing.HttpFrontendArgs{
 //				DefaultFarmId: farm80.ID(),
 //				DisplayName:   pulumi.String("ingress-8080-gra"),
 //				Port:          pulumi.String("80,443"),
@@ -90,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = IpLoadBalancing.NewHttpFrontend(ctx, "testfrontend", &IpLoadBalancing.HttpFrontendArgs{
+//			_, err = IpLoadBalancing.NewHttpFrontend(ctx, "testFrontend", &IpLoadBalancing.HttpFrontendArgs{
 //				DefaultFarmId: farm80.ID(),
 //				DisplayName:   pulumi.String("ingress-8080-gra"),
 //				HttpHeaders: pulumi.StringArray{

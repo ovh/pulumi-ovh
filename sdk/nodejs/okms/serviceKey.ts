@@ -6,6 +6,41 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a Service Key in an OVHcloud KMS.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const keySymetric = new ovh.okms.ServiceKey("keySymetric", {
+ *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     operations: [
+ *         "encrypt",
+ *         "decrypt",
+ *     ],
+ *     size: 256,
+ *     type: "oct",
+ * });
+ * const keyRsa = new ovh.okms.ServiceKey("keyRsa", {
+ *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     operations: [
+ *         "sign",
+ *         "verify",
+ *     ],
+ *     size: 2048,
+ *     type: "RSA",
+ * });
+ * const keyEcdsa = new ovh.okms.ServiceKey("keyEcdsa", {
+ *     curve: "P-256",
+ *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     operations: [
+ *         "sign",
+ *         "verify",
+ *     ],
+ *     type: "EC",
+ * });
+ * ```
  */
 export class ServiceKey extends pulumi.CustomResource {
     /**

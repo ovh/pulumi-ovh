@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const ovhtemplate = ovh.getInstallationTemplate({
+ * const ovhTemplate = ovh.getInstallationTemplate({
  *     templateName: "debian12_64",
  * });
- * export const template = ovhtemplate;
+ * export const template = ovhTemplate;
  * ```
  */
 export function getInstallationTemplate(args: GetInstallationTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstallationTemplateResult> {
@@ -114,10 +114,10 @@ export interface GetInstallationTemplateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const ovhtemplate = ovh.getInstallationTemplate({
+ * const ovhTemplate = ovh.getInstallationTemplate({
  *     templateName: "debian12_64",
  * });
- * export const template = ovhtemplate;
+ * export const template = ovhTemplate;
  * ```
  */
 export function getInstallationTemplateOutput(args: GetInstallationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstallationTemplateResult> {

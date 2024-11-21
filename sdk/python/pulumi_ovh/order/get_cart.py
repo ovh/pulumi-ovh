@@ -135,8 +135,8 @@ def get_cart(assign: Optional[bool] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    myaccount = ovh.Me.get_me()
-    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+    my_account = ovh.Me.get_me()
+    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
     ```
 
 
@@ -176,8 +176,8 @@ def get_cart_output(assign: Optional[pulumi.Input[Optional[bool]]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    myaccount = ovh.Me.get_me()
-    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
+    my_account = ovh.Me.get_me()
+    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
     ```
 
 

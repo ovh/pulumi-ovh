@@ -51,7 +51,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
+     *         final var myFirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
      *             .ip("XXXXXX")
      *             .ipOnFirewall("XXXXXX")
      *             .build());
@@ -94,7 +94,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
+     *         final var myFirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
      *             .ip("XXXXXX")
      *             .ipOnFirewall("XXXXXX")
      *             .build());
@@ -137,7 +137,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
+     *         final var myFirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
      *             .ip("XXXXXX")
      *             .ipOnFirewall("XXXXXX")
      *             .build());
@@ -180,7 +180,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
+     *         final var myFirewall = IpFunctions.getFirewall(GetFirewallArgs.builder()
      *             .ip("XXXXXX")
      *             .ipOnFirewall("XXXXXX")
      *             .build());
@@ -223,7 +223,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfirewallrule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
+     *         final var myFirewallRule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
      *             .ip("XXXXXX")
      *             .ipOnFirewall("XXXXXX")
      *             .sequence(0)
@@ -267,7 +267,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfirewallrule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
+     *         final var myFirewallRule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
      *             .ip("XXXXXX")
      *             .ipOnFirewall("XXXXXX")
      *             .sequence(0)
@@ -311,7 +311,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfirewallrule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
+     *         final var myFirewallRule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
      *             .ip("XXXXXX")
      *             .ipOnFirewall("XXXXXX")
      *             .sequence(0)
@@ -355,7 +355,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfirewallrule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
+     *         final var myFirewallRule = IpFunctions.getFirewallRule(GetFirewallRuleArgs.builder()
      *             .ip("XXXXXX")
      *             .ipOnFirewall("XXXXXX")
      *             .sequence(0)
@@ -571,7 +571,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myip = IpFunctions.getService(GetServiceArgs.builder()
+     *         final var myIp = IpFunctions.getService(GetServiceArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
@@ -613,7 +613,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myip = IpFunctions.getService(GetServiceArgs.builder()
+     *         final var myIp = IpFunctions.getService(GetServiceArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
@@ -655,7 +655,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myip = IpFunctions.getService(GetServiceArgs.builder()
+     *         final var myIp = IpFunctions.getService(GetServiceArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
@@ -697,7 +697,7 @@ public final class IpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myip = IpFunctions.getService(GetServiceArgs.builder()
+     *         final var myIp = IpFunctions.getService(GetServiceArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 

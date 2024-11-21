@@ -29,7 +29,7 @@ namespace Pulumi.Ovh.CloudProject
     ///         Region = "GRA",
     ///     });
     /// 
-    ///     var my_registry = new Ovh.CloudProject.ContainerRegistry("my-registry", new()
+    ///     var myRegistry = new Ovh.CloudProject.ContainerRegistry("myRegistry", new()
     ///     {
     ///         ServiceName = regcap.Apply(getCapabilitiesContainerFilterResult =&gt; getCapabilitiesContainerFilterResult.ServiceName),
     ///         PlanId = regcap.Apply(getCapabilitiesContainerFilterResult =&gt; getCapabilitiesContainerFilterResult.Id),

@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_ceph = Ovh.Dedicated.GetCeph.Invoke(new()
+        ///     var myCeph = Ovh.Dedicated.GetCeph.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Ovh.Dedicated
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_ceph = Ovh.Dedicated.GetCeph.Invoke(new()
+        ///     var myCeph = Ovh.Dedicated.GetCeph.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///     });

@@ -206,10 +206,10 @@ def get_m3db_namespace(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    m3dbnamespace = ovh.CloudProject.get_m3db_namespace(service_name="XXX",
+    m3db_namespace = ovh.CloudProject.get_m3db_namespace(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
-    pulumi.export("m3dbnamespaceType", m3dbnamespace.type)
+    pulumi.export("m3dbnamespaceType", m3db_namespace.type)
     ```
 
 
@@ -252,10 +252,10 @@ def get_m3db_namespace_output(cluster_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    m3dbnamespace = ovh.CloudProject.get_m3db_namespace(service_name="XXX",
+    m3db_namespace = ovh.CloudProject.get_m3db_namespace(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
-    pulumi.export("m3dbnamespaceType", m3dbnamespace.type)
+    pulumi.export("m3dbnamespaceType", m3db_namespace.type)
     ```
 
 

@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const myaccount = ovh.Me.getMe({});
+ * const myAccount = ovh.Me.getMe({});
  * ```
  */
 export function getMe(opts?: pulumi.InvokeOptions): Promise<GetMeResult> {
@@ -159,7 +159,7 @@ export interface GetMeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const myaccount = ovh.Me.getMe({});
+ * const myAccount = ovh.Me.getMe({});
  * ```
  */
 export function getMeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetMeResult> {

@@ -156,7 +156,7 @@ class Firewall(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        myfirewall = ovh.ip.Firewall("myfirewall",
+        my_firewall = ovh.ip.Firewall("myFirewall",
             ip="XXXXXX",
             ip_on_firewall="XXXXXX")
         ```
@@ -182,7 +182,7 @@ class Firewall(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        myfirewall = ovh.ip.Firewall("myfirewall",
+        my_firewall = ovh.ip.Firewall("myFirewall",
             ip="XXXXXX",
             ip_on_firewall="XXXXXX")
         ```

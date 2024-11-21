@@ -58,6 +58,8 @@ type GetServerArgs struct {
 type GetServerResult struct {
 	// URN of the dedicated server instance
 	ServerURN string `pulumi:"ServerURN"`
+	// Dedicated AZ localisation
+	AvailabilityZone string `pulumi:"availabilityZone"`
 	// Boot id of the server
 	BootId int `pulumi:"bootId"`
 	// Boot script of the server
@@ -85,15 +87,24 @@ type GetServerResult struct {
 	// Icmp monitoring state
 	Monitoring bool `pulumi:"monitoring"`
 	// User defined VirtualNetworkInterface name
-	Name string `pulumi:"name"`
+	Name             string `pulumi:"name"`
+	NewUpgradeSystem bool   `pulumi:"newUpgradeSystem"`
+	// Prevent datacenter intervention
+	NoIntervention bool `pulumi:"noIntervention"`
 	// Operating system
 	Os string `pulumi:"os"`
+	// Power state of the server (poweroff, poweron)
+	PowerState string `pulumi:"powerState"`
 	// Does this server have professional use option
 	ProfessionalUse bool `pulumi:"professionalUse"`
 	// Rack id of the server
 	Rack string `pulumi:"rack"`
+	// Dedicated region localisation
+	Region string `pulumi:"region"`
 	// Rescue mail of the server
 	RescueMail string `pulumi:"rescueMail"`
+	// Public SSH Key used in the rescue mode
+	RescueSshKey string `pulumi:"rescueSshKey"`
 	// Dedicated server reverse
 	Reverse string `pulumi:"reverse"`
 	// Root device of the server
@@ -156,6 +167,11 @@ func (o GetServerResultOutput) ToGetServerResultOutputWithContext(ctx context.Co
 // URN of the dedicated server instance
 func (o GetServerResultOutput) ServerURN() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.ServerURN }).(pulumi.StringOutput)
+}
+
+// Dedicated AZ localisation
+func (o GetServerResultOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // Boot id of the server
@@ -228,9 +244,23 @@ func (o GetServerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o GetServerResultOutput) NewUpgradeSystem() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerResult) bool { return v.NewUpgradeSystem }).(pulumi.BoolOutput)
+}
+
+// Prevent datacenter intervention
+func (o GetServerResultOutput) NoIntervention() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerResult) bool { return v.NoIntervention }).(pulumi.BoolOutput)
+}
+
 // Operating system
 func (o GetServerResultOutput) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.Os }).(pulumi.StringOutput)
+}
+
+// Power state of the server (poweroff, poweron)
+func (o GetServerResultOutput) PowerState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.PowerState }).(pulumi.StringOutput)
 }
 
 // Does this server have professional use option
@@ -243,9 +273,19 @@ func (o GetServerResultOutput) Rack() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.Rack }).(pulumi.StringOutput)
 }
 
+// Dedicated region localisation
+func (o GetServerResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
 // Rescue mail of the server
 func (o GetServerResultOutput) RescueMail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.RescueMail }).(pulumi.StringOutput)
+}
+
+// Public SSH Key used in the rescue mode
+func (o GetServerResultOutput) RescueSshKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.RescueSshKey }).(pulumi.StringOutput)
 }
 
 // Dedicated server reverse

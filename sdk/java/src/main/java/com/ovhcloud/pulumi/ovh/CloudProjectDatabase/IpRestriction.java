@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .id("ZZZZ")
  *             .build());
  * 
- *         var iprestriction = new IpRestriction("iprestriction", IpRestrictionArgs.builder()
+ *         var ipRestriction = new IpRestriction("ipRestriction", IpRestrictionArgs.builder()
  *             .serviceName(db.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
  *             .engine(db.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
  *             .clusterId(db.applyValue(getDatabaseResult -> getDatabaseResult.id()))

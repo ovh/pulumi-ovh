@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.Me
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mytemplate = Ovh.Me.GetInstallationTemplate.Invoke(new()
+        ///     var myTemplate = Ovh.Me.GetInstallationTemplate.Invoke(new()
         ///     {
         ///         TemplateName = "mytemplate",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Ovh.Me
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mytemplate = Ovh.Me.GetInstallationTemplate.Invoke(new()
+        ///     var myTemplate = Ovh.Me.GetInstallationTemplate.Invoke(new()
         ///     {
         ///         TemplateName = "mytemplate",
         ///     });

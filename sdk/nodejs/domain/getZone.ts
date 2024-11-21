@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const rootzone = ovh.Domain.getZone({
+ * const rootZone = ovh.Domain.getZone({
  *     name: "mysite.ovh",
  * });
  * ```
@@ -74,7 +74,7 @@ export interface GetZoneResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const rootzone = ovh.Domain.getZone({
+ * const rootZone = ovh.Domain.getZone({
  *     name: "mysite.ovh",
  * });
  * ```

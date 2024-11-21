@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			my_oidc, err := CloudProject.GetContainerRegistryOIDC(ctx, &cloudproject.GetContainerRegistryOIDCArgs{
+//			myOidc, err := CloudProject.GetContainerRegistryOIDC(ctx, &cloudproject.GetContainerRegistryOIDCArgs{
 //				ServiceName: "XXXXXX",
 //				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("oidc-client-id", my_oidc.OidcClientId)
+//			ctx.Export("oidc-client-id", myOidc.OidcClientId)
 //			return nil
 //		})
 //	}

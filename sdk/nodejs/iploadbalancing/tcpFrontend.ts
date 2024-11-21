@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     serviceName: lb.then(lb => lb.serviceName),
  *     zone: "all",
  * });
- * const testfrontend = new ovh.iploadbalancing.TcpFrontend("testfrontend", {
+ * const testFrontend = new ovh.iploadbalancing.TcpFrontend("testFrontend", {
  *     defaultFarmId: farm80.id,
  *     displayName: "ingress-8080-gra",
  *     port: "80,443",

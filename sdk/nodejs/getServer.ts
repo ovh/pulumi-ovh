@@ -46,6 +46,10 @@ export interface GetServerResult {
      */
     readonly ServerURN: string;
     /**
+     * Dedicated AZ localisation
+     */
+    readonly availabilityZone: string;
+    /**
      * Boot id of the server
      */
     readonly bootId: number;
@@ -101,10 +105,19 @@ export interface GetServerResult {
      * User defined VirtualNetworkInterface name
      */
     readonly name: string;
+    readonly newUpgradeSystem: boolean;
+    /**
+     * Prevent datacenter intervention
+     */
+    readonly noIntervention: boolean;
     /**
      * Operating system
      */
     readonly os: string;
+    /**
+     * Power state of the server (poweroff, poweron)
+     */
+    readonly powerState: string;
     /**
      * Does this server have professional use option
      */
@@ -114,9 +127,17 @@ export interface GetServerResult {
      */
     readonly rack: string;
     /**
+     * Dedicated region localisation
+     */
+    readonly region: string;
+    /**
      * Rescue mail of the server
      */
     readonly rescueMail: string;
+    /**
+     * Public SSH Key used in the rescue mode
+     */
+    readonly rescueSshKey: string;
     /**
      * Dedicated server reverse
      */

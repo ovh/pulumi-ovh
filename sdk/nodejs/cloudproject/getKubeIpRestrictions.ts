@@ -13,11 +13,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const iprestrictions = ovh.CloudProject.getKubeIpRestrictions({
+ * const ipRestrictions = ovh.CloudProject.getKubeIpRestrictions({
  *     serviceName: "XXXXXX",
  *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
- * export const ips = iprestrictions.then(iprestrictions => iprestrictions.ips);
+ * export const ips = ipRestrictions.then(ipRestrictions => ipRestrictions.ips);
  * ```
  */
 export function getKubeIpRestrictions(args: GetKubeIpRestrictionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeIpRestrictionsResult> {
@@ -73,11 +73,11 @@ export interface GetKubeIpRestrictionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const iprestrictions = ovh.CloudProject.getKubeIpRestrictions({
+ * const ipRestrictions = ovh.CloudProject.getKubeIpRestrictions({
  *     serviceName: "XXXXXX",
  *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
- * export const ips = iprestrictions.then(iprestrictions => iprestrictions.ips);
+ * export const ips = ipRestrictions.then(ipRestrictions => ipRestrictions.ips);
  * ```
  */
 export function getKubeIpRestrictionsOutput(args: GetKubeIpRestrictionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeIpRestrictionsResult> {

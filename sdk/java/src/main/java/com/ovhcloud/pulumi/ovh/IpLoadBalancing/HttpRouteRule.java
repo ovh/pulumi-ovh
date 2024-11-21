@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var httpsredirect = new HttpRoute("httpsredirect", HttpRouteArgs.builder()
+ *         var httpsRedirect = new HttpRoute("httpsRedirect", HttpRouteArgs.builder()
  *             .action(HttpRouteActionArgs.builder()
  *                 .status(302)
  *                 .target("https://${host}${path}${arguments}")
@@ -60,13 +60,13 @@ import javax.annotation.Nullable;
  *             .weight(1)
  *             .build());
  * 
- *         var examplerule = new HttpRouteRule("examplerule", HttpRouteRuleArgs.builder()
+ *         var exampleRule = new HttpRouteRule("exampleRule", HttpRouteRuleArgs.builder()
  *             .displayName("Match example.com host")
  *             .field("host")
  *             .match("is")
  *             .negate(false)
  *             .pattern("example.com")
- *             .routeId(httpsredirect.id())
+ *             .routeId(httpsRedirect.id())
  *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .build());
  * 
@@ -101,13 +101,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplerule = new HttpRouteRule("examplerule", HttpRouteRuleArgs.builder()
+ *         var exampleRule = new HttpRouteRule("exampleRule", HttpRouteRuleArgs.builder()
  *             .displayName("Match example.com Host header")
  *             .field("headers")
  *             .match("is")
  *             .negate(false)
  *             .pattern("example.com")
- *             .routeId(ovh_iploadbalancing_http_route.httpsredirect().id())
+ *             .routeId(ovh_iploadbalancing_http_route.https_redirect().id())
  *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .subField("Host")
  *             .build());

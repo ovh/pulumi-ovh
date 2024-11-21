@@ -244,7 +244,7 @@ class TcpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        tcpreject = ovh.ip_load_balancing.TcpRoute("tcpreject",
+        tcp_reject = ovh.ip_load_balancing.TcpRoute("tcpReject",
             action={
                 "type": "reject",
             },
@@ -279,7 +279,7 @@ class TcpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        tcpreject = ovh.ip_load_balancing.TcpRoute("tcpreject",
+        tcp_reject = ovh.ip_load_balancing.TcpRoute("tcpReject",
             action={
                 "type": "reject",
             },

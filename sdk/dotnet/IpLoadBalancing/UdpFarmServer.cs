@@ -28,7 +28,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         State = "ok",
     ///     });
     /// 
-    ///     var farmname = new Ovh.IpLoadBalancing.UdpFarm("farmname", new()
+    ///     var farmName = new Ovh.IpLoadBalancing.UdpFarm("farmName", new()
     ///     {
     ///         DisplayName = "ingress-8080-gra",
     ///         Port = 80,
@@ -40,7 +40,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///     {
     ///         Address = "4.5.6.7",
     ///         DisplayName = "mybackend",
-    ///         FarmId = farmname.FarmId,
+    ///         FarmId = farmName.FarmId,
     ///         Port = 80,
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
     ///         Status = "active",

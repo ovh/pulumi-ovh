@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     serviceName: "ip-1.2.3.4",
  *     state: "ok",
  * });
- * const farmname = new ovh.iploadbalancing.UdpFarm("farmname", {
+ * const farmName = new ovh.iploadbalancing.UdpFarm("farmName", {
  *     displayName: "ingress-8080-gra",
  *     port: 80,
  *     serviceName: lb.then(lb => lb.serviceName),

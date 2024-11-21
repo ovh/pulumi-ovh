@@ -13,12 +13,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const mongouser = ovh.CloudProject.getMongoDbUser({
+ * const mongoUser = ovh.CloudProject.getMongoDbUser({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ@admin",
  * });
- * export const mongouserRoles = mongouser.then(mongouser => mongouser.roles);
+ * export const mongoUserRoles = mongoUser.then(mongoUser => mongoUser.roles);
  * ```
  */
 export function getMongoDbUser(args: GetMongoDbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoDbUserResult> {
@@ -91,12 +91,12 @@ export interface GetMongoDbUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const mongouser = ovh.CloudProject.getMongoDbUser({
+ * const mongoUser = ovh.CloudProject.getMongoDbUser({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ@admin",
  * });
- * export const mongouserRoles = mongouser.then(mongouser => mongouser.roles);
+ * export const mongoUserRoles = mongoUser.then(mongoUser => mongoUser.roles);
  * ```
  */
 export function getMongoDbUserOutput(args: GetMongoDbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoDbUserResult> {

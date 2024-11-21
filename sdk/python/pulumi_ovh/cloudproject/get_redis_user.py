@@ -170,10 +170,10 @@ def get_redis_user(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    redisuser = ovh.CloudProject.get_redis_user(service_name="XXX",
+    redis_user = ovh.CloudProject.get_redis_user(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
-    pulumi.export("redisuserCommands", redisuser.commands)
+    pulumi.export("redisUserCommands", redis_user.commands)
     ```
 
 
@@ -213,10 +213,10 @@ def get_redis_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    redisuser = ovh.CloudProject.get_redis_user(service_name="XXX",
+    redis_user = ovh.CloudProject.get_redis_user(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
-    pulumi.export("redisuserCommands", redisuser.commands)
+    pulumi.export("redisUserCommands", redis_user.commands)
     ```
 
 

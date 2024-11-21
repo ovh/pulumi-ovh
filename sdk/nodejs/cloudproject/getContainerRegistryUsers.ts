@@ -15,13 +15,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const my-registry = ovh.CloudProject.getContainerRegistry({
+ * const myRegistry = ovh.CloudProject.getContainerRegistry({
  *     serviceName: "XXXXXX",
  *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
  * const users = ovh.CloudProject.getContainerRegistryUsers({
- *     serviceName: ovh_cloud_project_containerregistry.registry.service_name,
- *     registryId: ovh_cloud_project_containerregistry.registry.id,
+ *     serviceName: ovh_cloud_project_containerregistry.my_registry.service_name,
+ *     registryId: ovh_cloud_project_containerregistry.my_registry.id,
  * });
  * ```
  */
@@ -72,13 +72,13 @@ export interface GetContainerRegistryUsersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const my-registry = ovh.CloudProject.getContainerRegistry({
+ * const myRegistry = ovh.CloudProject.getContainerRegistry({
  *     serviceName: "XXXXXX",
  *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
  * const users = ovh.CloudProject.getContainerRegistryUsers({
- *     serviceName: ovh_cloud_project_containerregistry.registry.service_name,
- *     registryId: ovh_cloud_project_containerregistry.registry.id,
+ *     serviceName: ovh_cloud_project_containerregistry.my_registry.service_name,
+ *     registryId: ovh_cloud_project_containerregistry.my_registry.id,
  * });
  * ```
  */

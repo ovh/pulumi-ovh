@@ -26,10 +26,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Okms.NewOkms(ctx, "newkms", &Okms.OkmsArgs{
+//			_, err := Okms.NewOkms(ctx, "newKms", &Okms.OkmsArgs{
 //				DisplayName:   pulumi.String("terraformed KMS"),
 //				OvhSubsidiary: pulumi.String("FR"),
-//				Region:        pulumi.String("EU_WEST_RBX"),
+//				Region:        pulumi.String("eu-west-rbx"),
 //			})
 //			if err != nil {
 //				return err

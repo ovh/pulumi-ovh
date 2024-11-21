@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const my_oidc = new ovh.cloudproject.KubeOidc("my-oidc", {
+ * const myOidc = new ovh.cloudproject.KubeOidc("myOidc", {
  *     serviceName: _var.projectid,
  *     kubeId: ovh_cloud_project_kube.mykube.id,
  *     clientId: "xxx",

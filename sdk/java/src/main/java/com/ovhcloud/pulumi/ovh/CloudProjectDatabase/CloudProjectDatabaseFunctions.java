@@ -1960,13 +1960,13 @@ public final class CloudProjectDatabaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var iprestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
+     *         final var ipRestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .engine("YYYY")
      *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("ips", iprestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
      *     }
      * }
      * }
@@ -2009,13 +2009,13 @@ public final class CloudProjectDatabaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var iprestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
+     *         final var ipRestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .engine("YYYY")
      *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("ips", iprestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
      *     }
      * }
      * }
@@ -2058,13 +2058,13 @@ public final class CloudProjectDatabaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var iprestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
+     *         final var ipRestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .engine("YYYY")
      *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("ips", iprestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
      *     }
      * }
      * }
@@ -2107,13 +2107,13 @@ public final class CloudProjectDatabaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var iprestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
+     *         final var ipRestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .engine("YYYY")
      *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("ips", iprestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
      *     }
      * }
      * }
@@ -3580,13 +3580,13 @@ public final class CloudProjectDatabaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pguser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
+     *         final var pgUser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("pguserRoles", pguser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
+     *         ctx.export("pgUserRoles", pgUser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
      *     }
      * }
      * }
@@ -3625,13 +3625,13 @@ public final class CloudProjectDatabaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pguser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
+     *         final var pgUser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("pguserRoles", pguser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
+     *         ctx.export("pgUserRoles", pgUser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
      *     }
      * }
      * }
@@ -3670,13 +3670,13 @@ public final class CloudProjectDatabaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pguser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
+     *         final var pgUser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("pguserRoles", pguser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
+     *         ctx.export("pgUserRoles", pgUser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
      *     }
      * }
      * }
@@ -3715,13 +3715,13 @@ public final class CloudProjectDatabaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pguser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
+     *         final var pgUser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("pguserRoles", pguser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
+     *         ctx.export("pgUserRoles", pgUser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
      *     }
      * }
      * }

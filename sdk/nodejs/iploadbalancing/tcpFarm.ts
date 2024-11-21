@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     serviceName: "ip-1.2.3.4",
  *     state: "ok",
  * });
- * const farmname = new ovh.iploadbalancing.TcpFarm("farmname", {
+ * const farmName = new ovh.iploadbalancing.TcpFarm("farmName", {
  *     displayName: "ingress-8080-gra",
  *     serviceName: lb.then(lb => lb.serviceName),
  *     zone: "GRA",

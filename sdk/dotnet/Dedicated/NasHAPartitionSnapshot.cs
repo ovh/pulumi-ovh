@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_partition = new Ovh.Dedicated.NasHAPartitionSnapshot("my-partition", new()
+    ///     var myPartition = new Ovh.Dedicated.NasHAPartitionSnapshot("myPartition", new()
     ///     {
     ///         PartitionName = "my-partition",
     ///         ServiceName = "zpool-12345",

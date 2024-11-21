@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
  *             .build());
  * 
- *         var my_registry_iprestrictions = new ContainerRegistryIPRestrictionsRegistry("my-registry-iprestrictions", ContainerRegistryIPRestrictionsRegistryArgs.builder()
+ *         var myRegistryIprestrictions = new ContainerRegistryIPRestrictionsRegistry("myRegistryIprestrictions", ContainerRegistryIPRestrictionsRegistryArgs.builder()
  *             .serviceName(ovh_cloud_project_containerregistry.registry().service_name())
  *             .registryId(ovh_cloud_project_containerregistry.registry().id())
  *             .ipRestrictions(Map.ofEntries(

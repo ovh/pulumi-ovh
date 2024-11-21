@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Ip.NewFirewall(ctx, "myfirewall", &Ip.FirewallArgs{
+//			_, err := Ip.NewFirewall(ctx, "myFirewall", &Ip.FirewallArgs{
 //				Ip:           pulumi.String("XXXXXX"),
 //				IpOnFirewall: pulumi.String("XXXXXX"),
 //			})

@@ -35,8 +35,8 @@ import (
 //				return err
 //			}
 //			_, err = CloudProject.GetContainerRegistryUsers(ctx, &cloudproject.GetContainerRegistryUsersArgs{
-//				ServiceName: ovh_cloud_project_containerregistry.Registry.Service_name,
-//				RegistryId:  ovh_cloud_project_containerregistry.Registry.Id,
+//				ServiceName: ovh_cloud_project_containerregistry.My_registry.Service_name,
+//				RegistryId:  ovh_cloud_project_containerregistry.My_registry.Id,
 //			}, nil)
 //			if err != nil {
 //				return err

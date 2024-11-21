@@ -28,14 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			my_ceph, err := Dedicated.GetCeph(ctx, &dedicated.GetCephArgs{
+//			myCeph, err := Dedicated.GetCeph(ctx, &dedicated.GetCephArgs{
 //				ServiceName: "94d423da-0e55-45f2-9812-836460a19939",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = Dedicated.NewCephAcl(ctx, "my-acl", &Dedicated.CephAclArgs{
-//				ServiceName: pulumi.String(my_ceph.Id),
+//				ServiceName: pulumi.String(myCeph.Id),
 //				Network:     pulumi.String("1.2.3.4"),
 //				Netmask:     pulumi.String("255.255.255.255"),
 //			})

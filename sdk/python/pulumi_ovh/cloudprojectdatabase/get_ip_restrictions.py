@@ -114,10 +114,10 @@ def get_ip_restrictions(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    iprestrictions = ovh.CloudProjectDatabase.get_ip_restrictions(service_name="XXXXXX",
+    ip_restrictions = ovh.CloudProjectDatabase.get_ip_restrictions(service_name="XXXXXX",
         engine="YYYY",
         cluster_id="ZZZZ")
-    pulumi.export("ips", iprestrictions.ips)
+    pulumi.export("ips", ip_restrictions.ips)
     ```
 
 
@@ -157,10 +157,10 @@ def get_ip_restrictions_output(cluster_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    iprestrictions = ovh.CloudProjectDatabase.get_ip_restrictions(service_name="XXXXXX",
+    ip_restrictions = ovh.CloudProjectDatabase.get_ip_restrictions(service_name="XXXXXX",
         engine="YYYY",
         cluster_id="ZZZZ")
-    pulumi.export("ips", iprestrictions.ips)
+    pulumi.export("ips", ip_restrictions.ips)
     ```
 
 

@@ -674,7 +674,7 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-registry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+     *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .serviceName("XXXXXX")
      *             .build());
@@ -717,7 +717,7 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-registry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+     *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .serviceName("XXXXXX")
      *             .build());
@@ -760,7 +760,7 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-registry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+     *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .serviceName("XXXXXX")
      *             .build());
@@ -803,7 +803,7 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-registry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+     *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .serviceName("XXXXXX")
      *             .build());
@@ -902,12 +902,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-oidc = CloudProjectFunctions.getContainerRegistryOIDC(GetContainerRegistryOIDCArgs.builder()
+     *         final var myOidc = CloudProjectFunctions.getContainerRegistryOIDC(GetContainerRegistryOIDCArgs.builder()
      *             .serviceName("XXXXXX")
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-client-id", my_oidc.oidcClientId());
+     *         ctx.export("oidc-client-id", myOidc.applyValue(getContainerRegistryOIDCResult -> getContainerRegistryOIDCResult.oidcClientId()));
      *     }
      * }
      * }
@@ -946,12 +946,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-oidc = CloudProjectFunctions.getContainerRegistryOIDC(GetContainerRegistryOIDCArgs.builder()
+     *         final var myOidc = CloudProjectFunctions.getContainerRegistryOIDC(GetContainerRegistryOIDCArgs.builder()
      *             .serviceName("XXXXXX")
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-client-id", my_oidc.oidcClientId());
+     *         ctx.export("oidc-client-id", myOidc.applyValue(getContainerRegistryOIDCResult -> getContainerRegistryOIDCResult.oidcClientId()));
      *     }
      * }
      * }
@@ -990,12 +990,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-oidc = CloudProjectFunctions.getContainerRegistryOIDC(GetContainerRegistryOIDCArgs.builder()
+     *         final var myOidc = CloudProjectFunctions.getContainerRegistryOIDC(GetContainerRegistryOIDCArgs.builder()
      *             .serviceName("XXXXXX")
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-client-id", my_oidc.oidcClientId());
+     *         ctx.export("oidc-client-id", myOidc.applyValue(getContainerRegistryOIDCResult -> getContainerRegistryOIDCResult.oidcClientId()));
      *     }
      * }
      * }
@@ -1034,12 +1034,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-oidc = CloudProjectFunctions.getContainerRegistryOIDC(GetContainerRegistryOIDCArgs.builder()
+     *         final var myOidc = CloudProjectFunctions.getContainerRegistryOIDC(GetContainerRegistryOIDCArgs.builder()
      *             .serviceName("XXXXXX")
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-client-id", my_oidc.oidcClientId());
+     *         ctx.export("oidc-client-id", myOidc.applyValue(getContainerRegistryOIDCResult -> getContainerRegistryOIDCResult.oidcClientId()));
      *     }
      * }
      * }
@@ -1079,14 +1079,14 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-registry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+     *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
      *             .serviceName("XXXXXX")
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
      *         final var users = CloudProjectFunctions.getContainerRegistryUsers(GetContainerRegistryUsersArgs.builder()
-     *             .serviceName(ovh_cloud_project_containerregistry.registry().service_name())
-     *             .registryId(ovh_cloud_project_containerregistry.registry().id())
+     *             .serviceName(ovh_cloud_project_containerregistry.my_registry().service_name())
+     *             .registryId(ovh_cloud_project_containerregistry.my_registry().id())
      *             .build());
      * 
      *     }
@@ -1128,14 +1128,14 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-registry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+     *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
      *             .serviceName("XXXXXX")
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
      *         final var users = CloudProjectFunctions.getContainerRegistryUsers(GetContainerRegistryUsersArgs.builder()
-     *             .serviceName(ovh_cloud_project_containerregistry.registry().service_name())
-     *             .registryId(ovh_cloud_project_containerregistry.registry().id())
+     *             .serviceName(ovh_cloud_project_containerregistry.my_registry().service_name())
+     *             .registryId(ovh_cloud_project_containerregistry.my_registry().id())
      *             .build());
      * 
      *     }
@@ -1177,14 +1177,14 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-registry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+     *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
      *             .serviceName("XXXXXX")
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
      *         final var users = CloudProjectFunctions.getContainerRegistryUsers(GetContainerRegistryUsersArgs.builder()
-     *             .serviceName(ovh_cloud_project_containerregistry.registry().service_name())
-     *             .registryId(ovh_cloud_project_containerregistry.registry().id())
+     *             .serviceName(ovh_cloud_project_containerregistry.my_registry().service_name())
+     *             .registryId(ovh_cloud_project_containerregistry.my_registry().id())
      *             .build());
      * 
      *     }
@@ -1226,14 +1226,14 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-registry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+     *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
      *             .serviceName("XXXXXX")
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
      *         final var users = CloudProjectFunctions.getContainerRegistryUsers(GetContainerRegistryUsersArgs.builder()
-     *             .serviceName(ovh_cloud_project_containerregistry.registry().service_name())
-     *             .registryId(ovh_cloud_project_containerregistry.registry().id())
+     *             .serviceName(ovh_cloud_project_containerregistry.my_registry().service_name())
+     *             .registryId(ovh_cloud_project_containerregistry.my_registry().id())
      *             .build());
      * 
      *     }
@@ -1274,7 +1274,7 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfailoverip = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
+     *         final var myFailoverIp = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
      *             .ip("XXXXXX")
      *             .serviceName("XXXXXX")
      *             .build());
@@ -1317,7 +1317,7 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfailoverip = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
+     *         final var myFailoverIp = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
      *             .ip("XXXXXX")
      *             .serviceName("XXXXXX")
      *             .build());
@@ -1360,7 +1360,7 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfailoverip = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
+     *         final var myFailoverIp = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
      *             .ip("XXXXXX")
      *             .serviceName("XXXXXX")
      *             .build());
@@ -1403,7 +1403,7 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myfailoverip = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
+     *         final var myFailoverIp = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
      *             .ip("XXXXXX")
      *             .serviceName("XXXXXX")
      *             .build());
@@ -1802,12 +1802,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var iprestrictions = CloudProjectFunctions.getKubeIpRestrictions(GetKubeIpRestrictionsArgs.builder()
+     *         final var ipRestrictions = CloudProjectFunctions.getKubeIpRestrictions(GetKubeIpRestrictionsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("ips", iprestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
      *     }
      * }
      * }
@@ -1846,12 +1846,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var iprestrictions = CloudProjectFunctions.getKubeIpRestrictions(GetKubeIpRestrictionsArgs.builder()
+     *         final var ipRestrictions = CloudProjectFunctions.getKubeIpRestrictions(GetKubeIpRestrictionsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("ips", iprestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
      *     }
      * }
      * }
@@ -1890,12 +1890,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var iprestrictions = CloudProjectFunctions.getKubeIpRestrictions(GetKubeIpRestrictionsArgs.builder()
+     *         final var ipRestrictions = CloudProjectFunctions.getKubeIpRestrictions(GetKubeIpRestrictionsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("ips", iprestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
      *     }
      * }
      * }
@@ -1934,12 +1934,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var iprestrictions = CloudProjectFunctions.getKubeIpRestrictions(GetKubeIpRestrictionsArgs.builder()
+     *         final var ipRestrictions = CloudProjectFunctions.getKubeIpRestrictions(GetKubeIpRestrictionsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("ips", iprestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
      *     }
      * }
      * }
@@ -3046,13 +3046,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3dbnamespace = CloudProjectFunctions.getM3dbNamespace(GetM3dbNamespaceArgs.builder()
+     *         final var m3dbNamespace = CloudProjectFunctions.getM3dbNamespace(GetM3dbNamespaceArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbnamespaceType", m3dbnamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
+     *         ctx.export("m3dbnamespaceType", m3dbNamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
      *     }
      * }
      * }
@@ -3091,13 +3091,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3dbnamespace = CloudProjectFunctions.getM3dbNamespace(GetM3dbNamespaceArgs.builder()
+     *         final var m3dbNamespace = CloudProjectFunctions.getM3dbNamespace(GetM3dbNamespaceArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbnamespaceType", m3dbnamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
+     *         ctx.export("m3dbnamespaceType", m3dbNamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
      *     }
      * }
      * }
@@ -3136,13 +3136,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3dbnamespace = CloudProjectFunctions.getM3dbNamespace(GetM3dbNamespaceArgs.builder()
+     *         final var m3dbNamespace = CloudProjectFunctions.getM3dbNamespace(GetM3dbNamespaceArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbnamespaceType", m3dbnamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
+     *         ctx.export("m3dbnamespaceType", m3dbNamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
      *     }
      * }
      * }
@@ -3181,13 +3181,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3dbnamespace = CloudProjectFunctions.getM3dbNamespace(GetM3dbNamespaceArgs.builder()
+     *         final var m3dbNamespace = CloudProjectFunctions.getM3dbNamespace(GetM3dbNamespaceArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbnamespaceType", m3dbnamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
+     *         ctx.export("m3dbnamespaceType", m3dbNamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
      *     }
      * }
      * }
@@ -3402,13 +3402,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3dbuser = CloudProjectFunctions.getM3dbUser(GetM3dbUserArgs.builder()
+     *         final var m3dbUser = CloudProjectFunctions.getM3dbUser(GetM3dbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbuserGroup", m3dbuser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
+     *         ctx.export("m3dbUserGroup", m3dbUser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
      *     }
      * }
      * }
@@ -3447,13 +3447,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3dbuser = CloudProjectFunctions.getM3dbUser(GetM3dbUserArgs.builder()
+     *         final var m3dbUser = CloudProjectFunctions.getM3dbUser(GetM3dbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbuserGroup", m3dbuser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
+     *         ctx.export("m3dbUserGroup", m3dbUser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
      *     }
      * }
      * }
@@ -3492,13 +3492,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3dbuser = CloudProjectFunctions.getM3dbUser(GetM3dbUserArgs.builder()
+     *         final var m3dbUser = CloudProjectFunctions.getM3dbUser(GetM3dbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbuserGroup", m3dbuser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
+     *         ctx.export("m3dbUserGroup", m3dbUser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
      *     }
      * }
      * }
@@ -3537,13 +3537,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3dbuser = CloudProjectFunctions.getM3dbUser(GetM3dbUserArgs.builder()
+     *         final var m3dbUser = CloudProjectFunctions.getM3dbUser(GetM3dbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbuserGroup", m3dbuser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
+     *         ctx.export("m3dbUserGroup", m3dbUser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
      *     }
      * }
      * }
@@ -3582,13 +3582,13 @@ public final class CloudProjectFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var mongouser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
+     *         final var mongoUser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
-     *         ctx.export("mongouserRoles", mongouser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
+     *         ctx.export("mongoUserRoles", mongoUser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
      *     }}{@code
      * }}{@code
      * }
@@ -3627,13 +3627,13 @@ public final class CloudProjectFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var mongouser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
+     *         final var mongoUser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
-     *         ctx.export("mongouserRoles", mongouser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
+     *         ctx.export("mongoUserRoles", mongoUser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
      *     }}{@code
      * }}{@code
      * }
@@ -3672,13 +3672,13 @@ public final class CloudProjectFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var mongouser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
+     *         final var mongoUser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
-     *         ctx.export("mongouserRoles", mongouser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
+     *         ctx.export("mongoUserRoles", mongoUser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
      *     }}{@code
      * }}{@code
      * }
@@ -3717,13 +3717,13 @@ public final class CloudProjectFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var mongouser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
+     *         final var mongoUser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
-     *         ctx.export("mongouserRoles", mongouser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
+     *         ctx.export("mongoUserRoles", mongoUser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
      *     }}{@code
      * }}{@code
      * }
@@ -4642,13 +4642,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var osuser = CloudProjectFunctions.getOpenSearchUser(GetOpenSearchUserArgs.builder()
+     *         final var osUser = CloudProjectFunctions.getOpenSearchUser(GetOpenSearchUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("osuserAcls", osuser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
+     *         ctx.export("osUserAcls", osUser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
      *     }
      * }
      * }
@@ -4687,13 +4687,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var osuser = CloudProjectFunctions.getOpenSearchUser(GetOpenSearchUserArgs.builder()
+     *         final var osUser = CloudProjectFunctions.getOpenSearchUser(GetOpenSearchUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("osuserAcls", osuser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
+     *         ctx.export("osUserAcls", osUser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
      *     }
      * }
      * }
@@ -4732,13 +4732,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var osuser = CloudProjectFunctions.getOpenSearchUser(GetOpenSearchUserArgs.builder()
+     *         final var osUser = CloudProjectFunctions.getOpenSearchUser(GetOpenSearchUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("osuserAcls", osuser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
+     *         ctx.export("osUserAcls", osUser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
      *     }
      * }
      * }
@@ -4777,13 +4777,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var osuser = CloudProjectFunctions.getOpenSearchUser(GetOpenSearchUserArgs.builder()
+     *         final var osUser = CloudProjectFunctions.getOpenSearchUser(GetOpenSearchUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("osuserAcls", osuser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
+     *         ctx.export("osUserAcls", osUser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
      *     }
      * }
      * }
@@ -4822,13 +4822,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var redisuser = CloudProjectFunctions.getRedisUser(GetRedisUserArgs.builder()
+     *         final var redisUser = CloudProjectFunctions.getRedisUser(GetRedisUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("redisuserCommands", redisuser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
+     *         ctx.export("redisUserCommands", redisUser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
      *     }
      * }
      * }
@@ -4867,13 +4867,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var redisuser = CloudProjectFunctions.getRedisUser(GetRedisUserArgs.builder()
+     *         final var redisUser = CloudProjectFunctions.getRedisUser(GetRedisUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("redisuserCommands", redisuser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
+     *         ctx.export("redisUserCommands", redisUser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
      *     }
      * }
      * }
@@ -4912,13 +4912,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var redisuser = CloudProjectFunctions.getRedisUser(GetRedisUserArgs.builder()
+     *         final var redisUser = CloudProjectFunctions.getRedisUser(GetRedisUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("redisuserCommands", redisuser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
+     *         ctx.export("redisUserCommands", redisUser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
      *     }
      * }
      * }
@@ -4957,13 +4957,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var redisuser = CloudProjectFunctions.getRedisUser(GetRedisUserArgs.builder()
+     *         final var redisUser = CloudProjectFunctions.getRedisUser(GetRedisUserArgs.builder()
      *             .serviceName("XXX")
      *             .clusterId("YYY")
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("redisuserCommands", redisuser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
+     *         ctx.export("redisUserCommands", redisUser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
      *     }
      * }
      * }

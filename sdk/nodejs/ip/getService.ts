@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const myip = ovh.Ip.getService({
+ * const myIp = ovh.Ip.getService({
  *     serviceName: "XXXXXX",
  * });
  * ```
@@ -87,7 +87,7 @@ export interface GetServiceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const myip = ovh.Ip.getService({
+ * const myIp = ovh.Ip.getService({
  *     serviceName: "XXXXXX",
  * });
  * ```

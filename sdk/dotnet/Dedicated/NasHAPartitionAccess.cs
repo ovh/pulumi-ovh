@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_partition = new Ovh.Dedicated.NasHAPartitionAccess("my-partition", new()
+    ///     var myPartition = new Ovh.Dedicated.NasHAPartitionAccess("myPartition", new()
     ///     {
     ///         AclDescription = "Description of the ACL",
     ///         Ip = "123.123.123.123/32",

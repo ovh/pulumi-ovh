@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := IpLoadBalancing.NewHttpRoute(ctx, "httpsredirect", &IpLoadBalancing.HttpRouteArgs{
+//			_, err := IpLoadBalancing.NewHttpRoute(ctx, "httpsRedirect", &IpLoadBalancing.HttpRouteArgs{
 //				Action: &iploadbalancing.HttpRouteActionArgs{
 //					Status: pulumi.Int(302),
 //					Target: pulumi.String("https://${host}${path}${arguments}"),

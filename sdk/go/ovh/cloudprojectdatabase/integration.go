@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dbpostgresql, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//			dbPostgresql, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
 //				ServiceName: "XXXX",
 //				Engine:      "postgresql",
 //				Id:          "ZZZZ",
@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			dbopensearch, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//			dbOpensearch, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
 //				ServiceName: "XXXX",
 //				Engine:      "opensearch",
 //				Id:          "ZZZZ",
@@ -51,11 +51,11 @@ import (
 //				return err
 //			}
 //			_, err = CloudProjectDatabase.NewIntegration(ctx, "integration", &CloudProjectDatabase.IntegrationArgs{
-//				ServiceName:          pulumi.String(dbpostgresql.ServiceName),
-//				Engine:               pulumi.String(dbpostgresql.Engine),
-//				ClusterId:            pulumi.String(dbpostgresql.Id),
-//				SourceServiceId:      pulumi.String(dbpostgresql.Id),
-//				DestinationServiceId: pulumi.String(dbopensearch.Id),
+//				ServiceName:          pulumi.String(dbPostgresql.ServiceName),
+//				Engine:               pulumi.String(dbPostgresql.Engine),
+//				ClusterId:            pulumi.String(dbPostgresql.Id),
+//				SourceServiceId:      pulumi.String(dbPostgresql.Id),
+//				DestinationServiceId: pulumi.String(dbOpensearch.Id),
 //				Type:                 pulumi.String("opensearchLogs"),
 //			})
 //			if err != nil {

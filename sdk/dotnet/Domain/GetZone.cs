@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.Domain
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rootzone = Ovh.Domain.GetZone.Invoke(new()
+        ///     var rootZone = Ovh.Domain.GetZone.Invoke(new()
         ///     {
         ///         Name = "mysite.ovh",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Ovh.Domain
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rootzone = Ovh.Domain.GetZone.Invoke(new()
+        ///     var rootZone = Ovh.Domain.GetZone.Invoke(new()
         ///     {
         ///         Name = "mysite.ovh",
         ///     });

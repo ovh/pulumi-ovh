@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myfirewall = new Firewall("myfirewall", FirewallArgs.builder()
+ *         var myFirewall = new Firewall("myFirewall", FirewallArgs.builder()
  *             .ip("XXXXXX")
  *             .ipOnFirewall("XXXXXX")
  *             .build());

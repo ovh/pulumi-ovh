@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const mytemplate = ovh.Me.getInstallationTemplate({
+ * const myTemplate = ovh.Me.getInstallationTemplate({
  *     templateName: "mytemplate",
  * });
  * ```
@@ -112,7 +112,7 @@ export interface GetInstallationTemplateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const mytemplate = ovh.Me.getInstallationTemplate({
+ * const myTemplate = ovh.Me.getInstallationTemplate({
  *     templateName: "mytemplate",
  * });
  * ```

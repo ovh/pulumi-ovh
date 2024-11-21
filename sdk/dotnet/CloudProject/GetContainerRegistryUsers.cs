@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_registry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
+        ///     var myRegistry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
@@ -32,8 +32,8 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     var users = Ovh.CloudProject.GetContainerRegistryUsers.Invoke(new()
         ///     {
-        ///         ServiceName = ovh_cloud_project_containerregistry.Registry.Service_name,
-        ///         RegistryId = ovh_cloud_project_containerregistry.Registry.Id,
+        ///         ServiceName = ovh_cloud_project_containerregistry.My_registry.Service_name,
+        ///         RegistryId = ovh_cloud_project_containerregistry.My_registry.Id,
         ///     });
         /// 
         /// });
@@ -55,7 +55,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_registry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
+        ///     var myRegistry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
@@ -63,8 +63,8 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     var users = Ovh.CloudProject.GetContainerRegistryUsers.Invoke(new()
         ///     {
-        ///         ServiceName = ovh_cloud_project_containerregistry.Registry.Service_name,
-        ///         RegistryId = ovh_cloud_project_containerregistry.Registry.Id,
+        ///         ServiceName = ovh_cloud_project_containerregistry.My_registry.Service_name,
+        ///         RegistryId = ovh_cloud_project_containerregistry.My_registry.Id,
         ///     });
         /// 
         /// });

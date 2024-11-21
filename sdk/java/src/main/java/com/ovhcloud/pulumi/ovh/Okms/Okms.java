@@ -40,10 +40,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var newkms = new Okms("newkms", OkmsArgs.builder()
+ *         var newKms = new Okms("newKms", OkmsArgs.builder()
  *             .displayName("terraformed KMS")
  *             .ovhSubsidiary("FR")
- *             .region("EU_WEST_RBX")
+ *             .region("eu-west-rbx")
  *             .build());
  * 
  *     }

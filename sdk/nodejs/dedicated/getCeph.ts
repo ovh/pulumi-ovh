@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const my-ceph = ovh.Dedicated.getCeph({
+ * const myCeph = ovh.Dedicated.getCeph({
  *     serviceName: "XXXXXX",
  * });
  * ```
@@ -108,7 +108,7 @@ export interface GetCephResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const my-ceph = ovh.Dedicated.getCeph({
+ * const myCeph = ovh.Dedicated.getCeph({
  *     serviceName: "XXXXXX",
  * });
  * ```

@@ -28,18 +28,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
+//			myAccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
-//				OvhSubsidiary: myaccount.OvhSubsidiary,
+//			myCart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: myAccount.OvhSubsidiary,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
-//				CartId:        mycart.Id,
+//				CartId:        myCart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "cloud",
 //				PlanCode:      "project",

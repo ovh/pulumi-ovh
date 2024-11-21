@@ -207,9 +207,9 @@ def get_cart_product_options_plan(cart_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    myaccount = ovh.Me.get_me()
-    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
-    plan = ovh.Order.get_cart_product_options_plan(cart_id=mycart.id,
+    my_account = ovh.Me.get_me()
+    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
+    plan = ovh.Order.get_cart_product_options_plan(cart_id=my_cart.id,
         price_capacity="renew",
         product="cloud",
         plan_code="project",
@@ -265,9 +265,9 @@ def get_cart_product_options_plan_output(cart_id: Optional[pulumi.Input[str]] = 
     import pulumi
     import pulumi_ovh as ovh
 
-    myaccount = ovh.Me.get_me()
-    mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
-    plan = ovh.Order.get_cart_product_options_plan(cart_id=mycart.id,
+    my_account = ovh.Me.get_me()
+    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
+    plan = ovh.Order.get_cart_product_options_plan(cart_id=my_cart.id,
         price_capacity="renew",
         product="cloud",
         plan_code="project",

@@ -18,14 +18,16 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
     public static final RegionStoragePresignArgs Empty = new RegionStoragePresignArgs();
 
     /**
-     * Define, in seconds, for how long your URL will be valid.
+     * Define, in seconds, for how long your URL will be
+     * valid.
      * 
      */
     @Import(name="expire", required=true)
     private Output<Integer> expire;
 
     /**
-     * @return Define, in seconds, for how long your URL will be valid.
+     * @return Define, in seconds, for how long your URL will be
+     * valid.
      * 
      */
     public Output<Integer> expire() {
@@ -33,14 +35,16 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+     * The method you want to use to interact with your
+     * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
      * 
      */
     @Import(name="method", required=true)
     private Output<String> method;
 
     /**
-     * @return The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+     * @return The method you want to use to interact with your
+     * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
      * 
      */
     public Output<String> method() {
@@ -78,16 +82,16 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The region in which your storage is located.
-     * Ex.: &#34;GRA&#34;.
+     * The region in which your storage is located. Must
+     * be in **uppercase**. Ex.: &#34;GRA&#34;.
      * 
      */
     @Import(name="regionName", required=true)
     private Output<String> regionName;
 
     /**
-     * @return The region in which your storage is located.
-     * Ex.: &#34;GRA&#34;.
+     * @return The region in which your storage is located. Must
+     * be in **uppercase**. Ex.: &#34;GRA&#34;.
      * 
      */
     public Output<String> regionName() {
@@ -141,7 +145,8 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expire Define, in seconds, for how long your URL will be valid.
+         * @param expire Define, in seconds, for how long your URL will be
+         * valid.
          * 
          * @return builder
          * 
@@ -152,7 +157,8 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expire Define, in seconds, for how long your URL will be valid.
+         * @param expire Define, in seconds, for how long your URL will be
+         * valid.
          * 
          * @return builder
          * 
@@ -162,7 +168,8 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param method The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+         * @param method The method you want to use to interact with your
+         * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
          * 
          * @return builder
          * 
@@ -173,7 +180,8 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param method The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+         * @param method The method you want to use to interact with your
+         * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
          * 
          * @return builder
          * 
@@ -225,8 +233,8 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param regionName The region in which your storage is located.
-         * Ex.: &#34;GRA&#34;.
+         * @param regionName The region in which your storage is located. Must
+         * be in **uppercase**. Ex.: &#34;GRA&#34;.
          * 
          * @return builder
          * 
@@ -237,8 +245,8 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param regionName The region in which your storage is located.
-         * Ex.: &#34;GRA&#34;.
+         * @param regionName The region in which your storage is located. Must
+         * be in **uppercase**. Ex.: &#34;GRA&#34;.
          * 
          * @return builder
          * 

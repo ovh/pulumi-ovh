@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mydatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
+        ///     var myDatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
         ///     {
         ///         DatabaseName = "XXXXXX",
         ///         ServiceName = "XXXXXX",
@@ -49,7 +49,7 @@ namespace Pulumi.Ovh.Hosting
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mydatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
+        ///     var myDatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
         ///     {
         ///         DatabaseName = "XXXXXX",
         ///         ServiceName = "XXXXXX",

@@ -18,6 +18,64 @@ import javax.annotation.Nullable;
 /**
  * Creates a Service Key in an OVHcloud KMS.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.ovh.Okms.ServiceKey;
+ * import com.pulumi.ovh.Okms.ServiceKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var keySymetric = new ServiceKey("keySymetric", ServiceKeyArgs.builder()
+ *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .operations(            
+ *                 "encrypt",
+ *                 "decrypt")
+ *             .size(256)
+ *             .type("oct")
+ *             .build());
+ * 
+ *         var keyRsa = new ServiceKey("keyRsa", ServiceKeyArgs.builder()
+ *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .operations(            
+ *                 "sign",
+ *                 "verify")
+ *             .size(2048)
+ *             .type("RSA")
+ *             .build());
+ * 
+ *         var keyEcdsa = new ServiceKey("keyEcdsa", ServiceKeyArgs.builder()
+ *             .curve("P-256")
+ *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .operations(            
+ *                 "sign",
+ *                 "verify")
+ *             .type("EC")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="ovh:Okms/serviceKey:ServiceKey")
 public class ServiceKey extends com.pulumi.resources.CustomResource {

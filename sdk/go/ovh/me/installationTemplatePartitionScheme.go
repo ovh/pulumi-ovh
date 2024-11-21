@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mytemplate, err := Me.NewInstallationTemplate(ctx, "mytemplate", &Me.InstallationTemplateArgs{
+//			myTemplate, err := Me.NewInstallationTemplate(ctx, "myTemplate", &Me.InstallationTemplateArgs{
 //				BaseTemplateName: pulumi.String("debian12_64"),
 //				TemplateName:     pulumi.String("mytemplate"),
 //			})
@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = Me.NewInstallationTemplatePartitionScheme(ctx, "scheme", &Me.InstallationTemplatePartitionSchemeArgs{
-//				TemplateName: mytemplate.TemplateName,
+//				TemplateName: myTemplate.TemplateName,
 //				Priority:     pulumi.Int(1),
 //			})
 //			if err != nil {

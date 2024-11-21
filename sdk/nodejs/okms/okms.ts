@@ -13,10 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const newkms = new ovh.okms.Okms("newkms", {
+ * const newKms = new ovh.okms.Okms("newKms", {
  *     displayName: "terraformed KMS",
  *     ovhSubsidiary: "FR",
- *     region: "EU_WEST_RBX",
+ *     region: "eu-west-rbx",
  * });
  * ```
  */

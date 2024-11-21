@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const myfirewall = ovh.Ip.getFirewall({
+ * const myFirewall = ovh.Ip.getFirewall({
  *     ip: "XXXXXX",
  *     ipOnFirewall: "XXXXXX",
  * });
@@ -73,7 +73,7 @@ export interface GetFirewallResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const myfirewall = ovh.Ip.getFirewall({
+ * const myFirewall = ovh.Ip.getFirewall({
  *     ip: "XXXXXX",
  *     ipOnFirewall: "XXXXXX",
  * });

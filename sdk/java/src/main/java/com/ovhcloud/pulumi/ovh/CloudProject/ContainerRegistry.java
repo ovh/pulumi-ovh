@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .region("GRA")
  *             .build());
  * 
- *         var my_registry = new ContainerRegistry("my-registry", ContainerRegistryArgs.builder()
+ *         var myRegistry = new ContainerRegistry("myRegistry", ContainerRegistryArgs.builder()
  *             .serviceName(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.serviceName()))
  *             .planId(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.id()))
  *             .region(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.region()))

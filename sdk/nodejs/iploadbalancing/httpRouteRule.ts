@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const httpsredirect = new ovh.iploadbalancing.HttpRoute("httpsredirect", {
+ * const httpsRedirect = new ovh.iploadbalancing.HttpRoute("httpsRedirect", {
  *     action: {
  *         status: 302,
  *         target: "https://${host}${path}${arguments}",
@@ -26,13 +26,13 @@ import * as utilities from "../utilities";
  *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
  *     weight: 1,
  * });
- * const examplerule = new ovh.iploadbalancing.HttpRouteRule("examplerule", {
+ * const exampleRule = new ovh.iploadbalancing.HttpRouteRule("exampleRule", {
  *     displayName: "Match example.com host",
  *     field: "host",
  *     match: "is",
  *     negate: false,
  *     pattern: "example.com",
- *     routeId: httpsredirect.id,
+ *     routeId: httpsRedirect.id,
  *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
  * });
  * ```
@@ -43,13 +43,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const examplerule = new ovh.iploadbalancing.HttpRouteRule("examplerule", {
+ * const exampleRule = new ovh.iploadbalancing.HttpRouteRule("exampleRule", {
  *     displayName: "Match example.com Host header",
  *     field: "headers",
  *     match: "is",
  *     negate: false,
  *     pattern: "example.com",
- *     routeId: ovh_iploadbalancing_http_route.httpsredirect.id,
+ *     routeId: ovh_iploadbalancing_http_route.https_redirect.id,
  *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
  *     subField: "Host",
  * });

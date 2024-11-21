@@ -15,12 +15,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const osuser = ovh.CloudProject.getOpenSearchUser({
+ * const osUser = ovh.CloudProject.getOpenSearchUser({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ",
  * });
- * export const osuserAcls = osuser.then(osuser => osuser.acls);
+ * export const osUserAcls = osUser.then(osUser => osUser.acls);
  * ```
  */
 export function getOpenSearchUser(args: GetOpenSearchUserArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchUserResult> {
@@ -93,12 +93,12 @@ export interface GetOpenSearchUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const osuser = ovh.CloudProject.getOpenSearchUser({
+ * const osUser = ovh.CloudProject.getOpenSearchUser({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ",
  * });
- * export const osuserAcls = osuser.then(osuser => osuser.acls);
+ * export const osUserAcls = osUser.then(osUser => osUser.acls);
  * ```
  */
 export function getOpenSearchUserOutput(args: GetOpenSearchUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchUserResult> {

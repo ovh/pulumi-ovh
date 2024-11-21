@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myfailoverip = new FailoverIpAttach("myfailoverip", FailoverIpAttachArgs.builder()
+ *         var myFailoverIp = new FailoverIpAttach("myFailoverIp", FailoverIpAttachArgs.builder()
  *             .ip("XXXXXX")
  *             .routedTo("XXXXXX")
  *             .serviceName("XXXXXX")

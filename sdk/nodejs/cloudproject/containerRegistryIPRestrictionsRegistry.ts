@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXXXX",
  *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
- * const my_registry_iprestrictions = new ovh.cloudproject.ContainerRegistryIPRestrictionsRegistry("my-registry-iprestrictions", {
+ * const myRegistryIprestrictions = new ovh.cloudproject.ContainerRegistryIPRestrictionsRegistry("myRegistryIprestrictions", {
  *     serviceName: ovh_cloud_project_containerregistry.registry.service_name,
  *     registryId: ovh_cloud_project_containerregistry.registry.id,
  *     ipRestrictions: [{

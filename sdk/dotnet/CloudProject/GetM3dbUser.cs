@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var m3dbuser = Ovh.CloudProject.GetM3dbUser.Invoke(new()
+        ///     var m3dbUser = Ovh.CloudProject.GetM3dbUser.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -33,7 +33,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["m3dbuserGroup"] = m3dbuser.Apply(getM3dbUserResult =&gt; getM3dbUserResult.Group),
+        ///         ["m3dbUserGroup"] = m3dbUser.Apply(getM3dbUserResult =&gt; getM3dbUserResult.Group),
         ///     };
         /// });
         /// ```
@@ -54,7 +54,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var m3dbuser = Ovh.CloudProject.GetM3dbUser.Invoke(new()
+        ///     var m3dbUser = Ovh.CloudProject.GetM3dbUser.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -63,7 +63,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["m3dbuserGroup"] = m3dbuser.Apply(getM3dbUserResult =&gt; getM3dbUserResult.Group),
+        ///         ["m3dbUserGroup"] = m3dbUser.Apply(getM3dbUserResult =&gt; getM3dbUserResult.Group),
         ///     };
         /// });
         /// ```

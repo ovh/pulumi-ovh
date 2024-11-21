@@ -20,16 +20,16 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myaccount = Ovh.Me.GetMe.Invoke();
+    ///     var myAccount = Ovh.Me.GetMe.Invoke();
     /// 
-    ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+    ///     var myCart = Ovh.Order.GetCart.Invoke(new()
     ///     {
-    ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+    ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
     ///     });
     /// 
     ///     var vrackCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
     ///     {
-    ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+    ///         CartId = myCart.Apply(getCartResult =&gt; getCartResult.Id),
     ///         PriceCapacity = "renew",
     ///         Product = "vrack",
     ///         PlanCode = "vrack",
@@ -37,7 +37,7 @@ namespace Pulumi.Ovh.Vrack
     /// 
     ///     var vrackVrack = new Ovh.Vrack.Vrack("vrackVrack", new()
     ///     {
-    ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
+    ///         OvhSubsidiary = myCart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
     ///         Description = "my vrack",
     ///         Plan = new Ovh.Vrack.Inputs.VrackPlanArgs
     ///         {

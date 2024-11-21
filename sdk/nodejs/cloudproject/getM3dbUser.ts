@@ -13,12 +13,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const m3dbuser = ovh.CloudProject.getM3dbUser({
+ * const m3dbUser = ovh.CloudProject.getM3dbUser({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ",
  * });
- * export const m3dbuserGroup = m3dbuser.then(m3dbuser => m3dbuser.group);
+ * export const m3dbUserGroup = m3dbUser.then(m3dbUser => m3dbUser.group);
  * ```
  */
 export function getM3dbUser(args: GetM3dbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetM3dbUserResult> {
@@ -91,12 +91,12 @@ export interface GetM3dbUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const m3dbuser = ovh.CloudProject.getM3dbUser({
+ * const m3dbUser = ovh.CloudProject.getM3dbUser({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ",
  * });
- * export const m3dbuserGroup = m3dbuser.then(m3dbuser => m3dbuser.group);
+ * export const m3dbUserGroup = m3dbUser.then(m3dbUser => m3dbUser.group);
  * ```
  */
 export function getM3dbUserOutput(args: GetM3dbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbUserResult> {

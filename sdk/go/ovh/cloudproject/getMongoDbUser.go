@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mongouser, err := CloudProject.GetMongoDbUser(ctx, &cloudproject.GetMongoDbUserArgs{
+//			mongoUser, err := CloudProject.GetMongoDbUser(ctx, &cloudproject.GetMongoDbUserArgs{
 //				ServiceName: "XXX",
 //				ClusterId:   "YYY",
 //				Name:        "ZZZ@admin",
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("mongouserRoles", mongouser.Roles)
+//			ctx.Export("mongoUserRoles", mongoUser.Roles)
 //			return nil
 //		})
 //	}

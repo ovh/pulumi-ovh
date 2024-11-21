@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const httpsredirect = new ovh.iploadbalancing.HttpRoute("httpsredirect", {
+ * const httpsRedirect = new ovh.iploadbalancing.HttpRoute("httpsRedirect", {
  *     action: {
  *         status: 302,
  *         target: "https://${host}${path}${arguments}",

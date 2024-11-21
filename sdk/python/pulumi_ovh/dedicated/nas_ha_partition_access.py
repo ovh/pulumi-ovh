@@ -209,7 +209,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_partition = ovh.dedicated.NasHAPartitionAccess("my-partition",
+        my_partition = ovh.dedicated.NasHAPartitionAccess("myPartition",
             acl_description="Description of the ACL",
             ip="123.123.123.123/32",
             partition_name="my-partition",
@@ -248,7 +248,7 @@ class NasHAPartitionAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_partition = ovh.dedicated.NasHAPartitionAccess("my-partition",
+        my_partition = ovh.dedicated.NasHAPartitionAccess("myPartition",
             acl_description="Description of the ACL",
             ip="123.123.123.123/32",
             partition_name="my-partition",

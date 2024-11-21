@@ -7,8 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Generates a temporary presigned S3 URLs to download or upload an object.
  *
- * > __NOTE__ This resource is only compatible with the `High Performance - S3` solution for object storage.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -54,11 +52,13 @@ export class RegionStoragePresign extends pulumi.CustomResource {
     }
 
     /**
-     * Define, in seconds, for how long your URL will be valid.
+     * Define, in seconds, for how long your URL will be
+     * valid.
      */
     public readonly expire!: pulumi.Output<number>;
     /**
-     * The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
+     * The method you want to use to interact with your
+     * object. Can be either 'GET' or 'PUT'.
      */
     public readonly method!: pulumi.Output<string>;
     /**
@@ -70,8 +70,8 @@ export class RegionStoragePresign extends pulumi.CustomResource {
      */
     public readonly object!: pulumi.Output<string>;
     /**
-     * The region in which your storage is located.
-     * Ex.: "GRA".
+     * The region in which your storage is located. Must
+     * be in **uppercase**. Ex.: "GRA".
      */
     public readonly regionName!: pulumi.Output<string>;
     /**
@@ -139,11 +139,13 @@ export class RegionStoragePresign extends pulumi.CustomResource {
  */
 export interface RegionStoragePresignState {
     /**
-     * Define, in seconds, for how long your URL will be valid.
+     * Define, in seconds, for how long your URL will be
+     * valid.
      */
     expire?: pulumi.Input<number>;
     /**
-     * The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
+     * The method you want to use to interact with your
+     * object. Can be either 'GET' or 'PUT'.
      */
     method?: pulumi.Input<string>;
     /**
@@ -155,8 +157,8 @@ export interface RegionStoragePresignState {
      */
     object?: pulumi.Input<string>;
     /**
-     * The region in which your storage is located.
-     * Ex.: "GRA".
+     * The region in which your storage is located. Must
+     * be in **uppercase**. Ex.: "GRA".
      */
     regionName?: pulumi.Input<string>;
     /**
@@ -175,11 +177,13 @@ export interface RegionStoragePresignState {
  */
 export interface RegionStoragePresignArgs {
     /**
-     * Define, in seconds, for how long your URL will be valid.
+     * Define, in seconds, for how long your URL will be
+     * valid.
      */
     expire: pulumi.Input<number>;
     /**
-     * The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
+     * The method you want to use to interact with your
+     * object. Can be either 'GET' or 'PUT'.
      */
     method: pulumi.Input<string>;
     /**
@@ -191,8 +195,8 @@ export interface RegionStoragePresignArgs {
      */
     object: pulumi.Input<string>;
     /**
-     * The region in which your storage is located.
-     * Ex.: "GRA".
+     * The region in which your storage is located. Must
+     * be in **uppercase**. Ex.: "GRA".
      */
     regionName: pulumi.Input<string>;
     /**

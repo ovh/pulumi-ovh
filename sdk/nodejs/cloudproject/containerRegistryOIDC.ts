@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const my_oidc = new ovh.cloudproject.ContainerRegistryOIDC("my-oidc", {
+ * const myOidc = new ovh.cloudproject.ContainerRegistryOIDC("myOidc", {
  *     serviceName: "XXXXXX",
  *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  *     oidcName: "my-oidc-provider",
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     oidcUserClaim: "preferred_username",
  *     deleteUsers: false,
  * });
- * export const oidcClientSecret = my_oidc.oidcClientSecret;
+ * export const oidcClientSecret = myOidc.oidcClientSecret;
  * ```
  *
  * ## Import

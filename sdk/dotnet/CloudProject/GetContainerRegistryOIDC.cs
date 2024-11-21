@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_oidc = Ovh.CloudProject.GetContainerRegistryOIDC.Invoke(new()
+        ///     var myOidc = Ovh.CloudProject.GetContainerRegistryOIDC.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
@@ -32,7 +32,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["oidc-client-id"] = my_oidc.Apply(my_oidc =&gt; my_oidc.Apply(getContainerRegistryOIDCResult =&gt; getContainerRegistryOIDCResult.OidcClientId)),
+        ///         ["oidc-client-id"] = myOidc.Apply(getContainerRegistryOIDCResult =&gt; getContainerRegistryOIDCResult.OidcClientId),
         ///     };
         /// });
         /// ```
@@ -53,7 +53,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_oidc = Ovh.CloudProject.GetContainerRegistryOIDC.Invoke(new()
+        ///     var myOidc = Ovh.CloudProject.GetContainerRegistryOIDC.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
@@ -61,7 +61,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["oidc-client-id"] = my_oidc.Apply(my_oidc =&gt; my_oidc.Apply(getContainerRegistryOIDCResult =&gt; getContainerRegistryOIDCResult.OidcClientId)),
+        ///         ["oidc-client-id"] = myOidc.Apply(getContainerRegistryOIDCResult =&gt; getContainerRegistryOIDCResult.OidcClientId),
         ///     };
         /// });
         /// ```

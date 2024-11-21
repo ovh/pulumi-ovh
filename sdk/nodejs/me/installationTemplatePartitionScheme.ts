@@ -13,12 +13,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const mytemplate = new ovh.me.InstallationTemplate("mytemplate", {
+ * const myTemplate = new ovh.me.InstallationTemplate("myTemplate", {
  *     baseTemplateName: "debian12_64",
  *     templateName: "mytemplate",
  * });
  * const scheme = new ovh.me.InstallationTemplatePartitionScheme("scheme", {
- *     templateName: mytemplate.templateName,
+ *     templateName: myTemplate.templateName,
  *     priority: 1,
  * });
  * ```

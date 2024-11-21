@@ -97,9 +97,9 @@ def get_kube_ip_restrictions(kube_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    iprestrictions = ovh.CloudProject.get_kube_ip_restrictions(service_name="XXXXXX",
+    ip_restrictions = ovh.CloudProject.get_kube_ip_restrictions(service_name="XXXXXX",
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    pulumi.export("ips", iprestrictions.ips)
+    pulumi.export("ips", ip_restrictions.ips)
     ```
 
 
@@ -130,9 +130,9 @@ def get_kube_ip_restrictions_output(kube_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    iprestrictions = ovh.CloudProject.get_kube_ip_restrictions(service_name="XXXXXX",
+    ip_restrictions = ovh.CloudProject.get_kube_ip_restrictions(service_name="XXXXXX",
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    pulumi.export("ips", iprestrictions.ips)
+    pulumi.export("ips", ip_restrictions.ips)
     ```
 
 

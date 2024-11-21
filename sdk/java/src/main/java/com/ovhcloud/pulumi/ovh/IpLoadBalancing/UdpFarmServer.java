@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .state("ok")
  *             .build());
  * 
- *         var farmname = new UdpFarm("farmname", UdpFarmArgs.builder()
+ *         var farmName = new UdpFarm("farmName", UdpFarmArgs.builder()
  *             .displayName("ingress-8080-gra")
  *             .port(80)
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *         var backend = new UdpFarmServer("backend", UdpFarmServerArgs.builder()
  *             .address("4.5.6.7")
  *             .displayName("mybackend")
- *             .farmId(farmname.farmId())
+ *             .farmId(farmName.farmId())
  *             .port(80)
  *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
  *             .status("active")

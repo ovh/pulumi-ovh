@@ -13,12 +13,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const pguser = ovh.CloudProjectDatabase.getPostgresSqlUser({
+ * const pgUser = ovh.CloudProjectDatabase.getPostgresSqlUser({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ",
  * });
- * export const pguserRoles = pguser.then(pguser => pguser.roles);
+ * export const pgUserRoles = pgUser.then(pgUser => pgUser.roles);
  * ```
  */
 export function getPostgresSqlUser(args: GetPostgresSqlUserArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresSqlUserResult> {
@@ -91,12 +91,12 @@ export interface GetPostgresSqlUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const pguser = ovh.CloudProjectDatabase.getPostgresSqlUser({
+ * const pgUser = ovh.CloudProjectDatabase.getPostgresSqlUser({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ",
  * });
- * export const pguserRoles = pguser.then(pguser => pguser.roles);
+ * export const pgUserRoles = pgUser.then(pgUser => pgUser.roles);
  * ```
  */
 export function getPostgresSqlUserOutput(args: GetPostgresSqlUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPostgresSqlUserResult> {

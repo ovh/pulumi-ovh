@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_oidc = new ContainerRegistryOIDC("my-oidc", ContainerRegistryOIDCArgs.builder()
+ *         var myOidc = new ContainerRegistryOIDC("myOidc", ContainerRegistryOIDCArgs.builder()
  *             .serviceName("XXXXXX")
  *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
  *             .oidcName("my-oidc-provider")
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .deleteUsers(false)
  *             .build());
  * 
- *         ctx.export("oidcClientSecret", my_oidc.oidcClientSecret());
+ *         ctx.export("oidcClientSecret", myOidc.oidcClientSecret());
  *     }
  * }
  * }

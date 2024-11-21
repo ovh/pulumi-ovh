@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			farmname, err := IpLoadBalancing.NewUdpFarm(ctx, "farmname", &IpLoadBalancing.UdpFarmArgs{
+//			farmName, err := IpLoadBalancing.NewUdpFarm(ctx, "farmName", &IpLoadBalancing.UdpFarmArgs{
 //				DisplayName: pulumi.String("ingress-8080-gra"),
 //				Port:        pulumi.Float64(80),
 //				ServiceName: pulumi.String(lb.ServiceName),
@@ -47,7 +47,7 @@ import (
 //			_, err = IpLoadBalancing.NewUdpFarmServer(ctx, "backend", &IpLoadBalancing.UdpFarmServerArgs{
 //				Address:     pulumi.String("4.5.6.7"),
 //				DisplayName: pulumi.String("mybackend"),
-//				FarmId:      farmname.FarmId,
+//				FarmId:      farmName.FarmId,
 //				Port:        pulumi.Float64(80),
 //				ServiceName: pulumi.String(lb.ServiceName),
 //				Status:      pulumi.String("active"),

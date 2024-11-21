@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var createLogSubscription = new RegionLoadBalancerLogSubscription("createLogSubscription", RegionLoadBalancerLogSubscriptionArgs.builder()
+ *         var subscription = new RegionLoadBalancerLogSubscription("subscription", RegionLoadBalancerLogSubscriptionArgs.builder()
  *             .kind("haproxy")
  *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
  *             .regionName("yyyy")

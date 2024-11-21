@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mongouser = Ovh.CloudProject.GetMongoDbUser.Invoke(new()
+        ///     var mongoUser = Ovh.CloudProject.GetMongoDbUser.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -33,7 +33,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["mongouserRoles"] = mongouser.Apply(getMongoDbUserResult =&gt; getMongoDbUserResult.Roles),
+        ///         ["mongoUserRoles"] = mongoUser.Apply(getMongoDbUserResult =&gt; getMongoDbUserResult.Roles),
         ///     };
         /// });
         /// ```
@@ -54,7 +54,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mongouser = Ovh.CloudProject.GetMongoDbUser.Invoke(new()
+        ///     var mongoUser = Ovh.CloudProject.GetMongoDbUser.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -63,7 +63,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["mongouserRoles"] = mongouser.Apply(getMongoDbUserResult =&gt; getMongoDbUserResult.Roles),
+        ///         ["mongoUserRoles"] = mongoUser.Apply(getMongoDbUserResult =&gt; getMongoDbUserResult.Roles),
         ///     };
         /// });
         /// ```

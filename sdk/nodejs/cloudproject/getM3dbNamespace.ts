@@ -13,12 +13,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const m3dbnamespace = ovh.CloudProject.getM3dbNamespace({
+ * const m3dbNamespace = ovh.CloudProject.getM3dbNamespace({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ",
  * });
- * export const m3dbnamespaceType = m3dbnamespace.then(m3dbnamespace => m3dbnamespace.type);
+ * export const m3dbnamespaceType = m3dbNamespace.then(m3dbNamespace => m3dbNamespace.type);
  * ```
  */
 export function getM3dbNamespace(args: GetM3dbNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetM3dbNamespaceResult> {
@@ -115,12 +115,12 @@ export interface GetM3dbNamespaceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const m3dbnamespace = ovh.CloudProject.getM3dbNamespace({
+ * const m3dbNamespace = ovh.CloudProject.getM3dbNamespace({
  *     serviceName: "XXX",
  *     clusterId: "YYY",
  *     name: "ZZZ",
  * });
- * export const m3dbnamespaceType = m3dbnamespace.then(m3dbnamespace => m3dbnamespace.type);
+ * export const m3dbnamespaceType = m3dbNamespace.then(m3dbNamespace => m3dbNamespace.type);
  * ```
  */
 export function getM3dbNamespaceOutput(args: GetM3dbNamespaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbNamespaceResult> {

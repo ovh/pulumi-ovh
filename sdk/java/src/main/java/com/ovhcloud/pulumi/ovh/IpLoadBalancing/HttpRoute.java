@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var httpsredirect = new HttpRoute("httpsredirect", HttpRouteArgs.builder()
+ *         var httpsRedirect = new HttpRoute("httpsRedirect", HttpRouteArgs.builder()
  *             .action(HttpRouteActionArgs.builder()
  *                 .status(302)
  *                 .target("https://${host}${path}${arguments}")

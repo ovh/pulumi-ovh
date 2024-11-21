@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     serviceName: "ip-1.2.3.4",
  *     state: "ok",
  * });
- * const testfrontend = new ovh.iploadbalancing.UdpFrontend("testfrontend", {
+ * const testFrontend = new ovh.iploadbalancing.UdpFrontend("testFrontend", {
  *     serviceName: lb.then(lb => lb.serviceName),
  *     displayName: "ingress-8080-gra",
  *     zone: "all",

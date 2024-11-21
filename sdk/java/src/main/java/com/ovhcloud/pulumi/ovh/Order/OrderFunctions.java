@@ -55,10 +55,10 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *     }
@@ -100,10 +100,10 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *     }
@@ -145,10 +145,10 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *     }
@@ -190,10 +190,10 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *     }
@@ -236,14 +236,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plans = OrderFunctions.getCartProduct(GetCartProductArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .product("...")
      *             .build());
      * 
@@ -287,14 +287,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plans = OrderFunctions.getCartProduct(GetCartProductArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .product("...")
      *             .build());
      * 
@@ -338,14 +338,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plans = OrderFunctions.getCartProduct(GetCartProductArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .product("...")
      *             .build());
      * 
@@ -389,14 +389,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plans = OrderFunctions.getCartProduct(GetCartProductArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .product("...")
      *             .build());
      * 
@@ -440,14 +440,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var options = OrderFunctions.getCartProductOptions(GetCartProductOptionsArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .product("cloud")
      *             .planCode("project")
      *             .build());
@@ -492,14 +492,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var options = OrderFunctions.getCartProductOptions(GetCartProductOptionsArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .product("cloud")
      *             .planCode("project")
      *             .build());
@@ -544,14 +544,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var options = OrderFunctions.getCartProductOptions(GetCartProductOptionsArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .product("cloud")
      *             .planCode("project")
      *             .build());
@@ -596,14 +596,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var options = OrderFunctions.getCartProductOptions(GetCartProductOptionsArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .product("cloud")
      *             .planCode("project")
      *             .build());
@@ -648,14 +648,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductOptionsPlan(GetCartProductOptionsPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .priceCapacity("renew")
      *             .product("cloud")
      *             .planCode("project")
@@ -702,14 +702,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductOptionsPlan(GetCartProductOptionsPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .priceCapacity("renew")
      *             .product("cloud")
      *             .planCode("project")
@@ -756,14 +756,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductOptionsPlan(GetCartProductOptionsPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .priceCapacity("renew")
      *             .product("cloud")
      *             .planCode("project")
@@ -810,14 +810,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductOptionsPlan(GetCartProductOptionsPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .priceCapacity("renew")
      *             .product("cloud")
      *             .planCode("project")
@@ -864,14 +864,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .priceCapacity("renew")
      *             .product("cloud")
      *             .planCode("project")
@@ -917,14 +917,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .priceCapacity("renew")
      *             .product("cloud")
      *             .planCode("project")
@@ -970,14 +970,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .priceCapacity("renew")
      *             .product("cloud")
      *             .planCode("project")
@@ -1023,14 +1023,14 @@ public final class OrderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myaccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe();
      * 
-     *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
-     *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
      *             .build());
      * 
      *         final var plan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
-     *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+     *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
      *             .priceCapacity("renew")
      *             .product("cloud")
      *             .planCode("project")

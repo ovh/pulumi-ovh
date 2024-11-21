@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			osuser, err := CloudProject.GetOpenSearchUser(ctx, &cloudproject.GetOpenSearchUserArgs{
+//			osUser, err := CloudProject.GetOpenSearchUser(ctx, &cloudproject.GetOpenSearchUserArgs{
 //				ServiceName: "XXX",
 //				ClusterId:   "YYY",
 //				Name:        "ZZZ",
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("osuserAcls", osuser.Acls)
+//			ctx.Export("osUserAcls", osUser.Acls)
 //			return nil
 //		})
 //	}

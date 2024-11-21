@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var examplerule = new TcpRouteRule("examplerule", TcpRouteRuleArgs.builder()
+ *         var exampleRule = new TcpRouteRule("exampleRule", TcpRouteRuleArgs.builder()
  *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .routeId(reject.id())
  *             .displayName("Match example.com host")

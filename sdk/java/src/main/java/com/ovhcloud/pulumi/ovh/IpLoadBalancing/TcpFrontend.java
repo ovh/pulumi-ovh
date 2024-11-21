@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .zone("all")
  *             .build());
  * 
- *         var testfrontend = new TcpFrontend("testfrontend", TcpFrontendArgs.builder()
+ *         var testFrontend = new TcpFrontend("testFrontend", TcpFrontendArgs.builder()
  *             .defaultFarmId(farm80.id())
  *             .displayName("ingress-8080-gra")
  *             .port("80,443")

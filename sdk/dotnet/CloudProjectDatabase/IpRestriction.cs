@@ -32,7 +32,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     ///         Id = "ZZZZ",
     ///     });
     /// 
-    ///     var iprestriction = new Ovh.CloudProjectDatabase.IpRestriction("iprestriction", new()
+    ///     var ipRestriction = new Ovh.CloudProjectDatabase.IpRestriction("ipRestriction", new()
     ///     {
     ///         ServiceName = db.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
     ///         Engine = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Engine),

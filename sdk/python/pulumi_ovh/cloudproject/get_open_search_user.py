@@ -135,10 +135,10 @@ def get_open_search_user(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    osuser = ovh.CloudProject.get_open_search_user(service_name="XXX",
+    os_user = ovh.CloudProject.get_open_search_user(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
-    pulumi.export("osuserAcls", osuser.acls)
+    pulumi.export("osUserAcls", os_user.acls)
     ```
 
 
@@ -175,10 +175,10 @@ def get_open_search_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    osuser = ovh.CloudProject.get_open_search_user(service_name="XXX",
+    os_user = ovh.CloudProject.get_open_search_user(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
-    pulumi.export("osuserAcls", osuser.acls)
+    pulumi.export("osUserAcls", os_user.acls)
     ```
 
 

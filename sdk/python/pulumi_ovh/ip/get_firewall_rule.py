@@ -230,7 +230,7 @@ def get_firewall_rule(ip: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    myfirewallrule = ovh.Ip.get_firewall_rule(ip="XXXXXX",
+    my_firewall_rule = ovh.Ip.get_firewall_rule(ip="XXXXXX",
         ip_on_firewall="XXXXXX",
         sequence=0)
     ```
@@ -276,7 +276,7 @@ def get_firewall_rule_output(ip: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    myfirewallrule = ovh.Ip.get_firewall_rule(ip="XXXXXX",
+    my_firewall_rule = ovh.Ip.get_firewall_rule(ip="XXXXXX",
         ip_on_firewall="XXXXXX",
         sequence=0)
     ```

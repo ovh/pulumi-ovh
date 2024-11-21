@@ -394,7 +394,7 @@ public final class HostingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
+     *         final var myDatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
      *             .databaseName("XXXXXX")
      *             .serviceName("XXXXXX")
      *             .build());
@@ -437,7 +437,7 @@ public final class HostingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
+     *         final var myDatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
      *             .databaseName("XXXXXX")
      *             .serviceName("XXXXXX")
      *             .build());
@@ -480,7 +480,7 @@ public final class HostingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
+     *         final var myDatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
      *             .databaseName("XXXXXX")
      *             .serviceName("XXXXXX")
      *             .build());
@@ -523,7 +523,7 @@ public final class HostingFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
+     *         final var myDatabase = HostingFunctions.getPrivateDatabaseDb(GetPrivateDatabaseDbArgs.builder()
      *             .databaseName("XXXXXX")
      *             .serviceName("XXXXXX")
      *             .build());

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     serviceName: "ip-1.2.3.4",
  *     state: "ok",
  * });
- * const farmname = new ovh.iploadbalancing.TcpFarm("farmname", {
+ * const farmName = new ovh.iploadbalancing.TcpFarm("farmName", {
  *     port: 8080,
  *     serviceName: lb.then(lb => lb.serviceName),
  *     zone: "all",
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     address: "4.5.6.7",
  *     backup: true,
  *     displayName: "mybackend",
- *     farmId: farmname.id,
+ *     farmId: farmName.id,
  *     port: 80,
  *     probe: true,
  *     proxyProtocolVersion: "v2",

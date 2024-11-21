@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = IpLoadBalancing.NewTcpFrontend(ctx, "testfrontend", &IpLoadBalancing.TcpFrontendArgs{
+//			_, err = IpLoadBalancing.NewTcpFrontend(ctx, "testFrontend", &IpLoadBalancing.TcpFrontendArgs{
 //				DefaultFarmId: farm80.ID(),
 //				DisplayName:   pulumi.String("ingress-8080-gra"),
 //				Port:          pulumi.String("80,443"),

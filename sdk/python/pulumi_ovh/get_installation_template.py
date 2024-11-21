@@ -247,8 +247,8 @@ def get_installation_template(template_name: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    ovhtemplate = ovh.get_installation_template(template_name="debian12_64")
-    pulumi.export("template", ovhtemplate)
+    ovh_template = ovh.get_installation_template(template_name="debian12_64")
+    pulumi.export("template", ovh_template)
     ```
 
 
@@ -288,8 +288,8 @@ def get_installation_template_output(template_name: Optional[pulumi.Input[str]] 
     import pulumi
     import pulumi_ovh as ovh
 
-    ovhtemplate = ovh.get_installation_template(template_name="debian12_64")
-    pulumi.export("template", ovhtemplate)
+    ovh_template = ovh.get_installation_template(template_name="debian12_64")
+    pulumi.export("template", ovh_template)
     ```
 
 

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			pguser, err := CloudProjectDatabase.GetPostgresSqlUser(ctx, &cloudprojectdatabase.GetPostgresSqlUserArgs{
+//			pgUser, err := CloudProjectDatabase.GetPostgresSqlUser(ctx, &cloudprojectdatabase.GetPostgresSqlUserArgs{
 //				ServiceName: "XXX",
 //				ClusterId:   "YYY",
 //				Name:        "ZZZ",
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("pguserRoles", pguser.Roles)
+//			ctx.Export("pgUserRoles", pgUser.Roles)
 //			return nil
 //		})
 //	}

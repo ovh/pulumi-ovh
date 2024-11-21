@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			m3dbuser, err := CloudProject.GetM3dbUser(ctx, &cloudproject.GetM3dbUserArgs{
+//			m3dbUser, err := CloudProject.GetM3dbUser(ctx, &cloudproject.GetM3dbUserArgs{
 //				ServiceName: "XXX",
 //				ClusterId:   "YYY",
 //				Name:        "ZZZ",
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("m3dbuserGroup", m3dbuser.Group)
+//			ctx.Export("m3dbUserGroup", m3dbUser.Group)
 //			return nil
 //		})
 //	}

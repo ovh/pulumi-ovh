@@ -51,11 +51,11 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ovhtemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *         final var ovhTemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
      *             .templateName("debian12_64")
      *             .build());
      * 
-     *         ctx.export("template", ovhtemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *         ctx.export("template", ovhTemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
      *     }
      * }
      * }
@@ -94,11 +94,11 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ovhtemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *         final var ovhTemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
      *             .templateName("debian12_64")
      *             .build());
      * 
-     *         ctx.export("template", ovhtemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *         ctx.export("template", ovhTemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
      *     }
      * }
      * }
@@ -137,11 +137,11 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ovhtemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *         final var ovhTemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
      *             .templateName("debian12_64")
      *             .build());
      * 
-     *         ctx.export("template", ovhtemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *         ctx.export("template", ovhTemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
      *     }
      * }
      * }
@@ -180,11 +180,11 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ovhtemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *         final var ovhTemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
      *             .templateName("debian12_64")
      *             .build());
      * 
-     *         ctx.export("template", ovhtemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *         ctx.export("template", ovhTemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
      *     }
      * }
      * }
