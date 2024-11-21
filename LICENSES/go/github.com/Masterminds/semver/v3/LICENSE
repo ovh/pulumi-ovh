@@ -1,8 +1,8 @@
-== github.com/mattn/go-localereader ==
+== github.com/Masterminds/semver/v3 ==
 
 The MIT License (MIT)
 
-Copyright (c) 2022 Yasuhiro Matsumoto
+Copyright (C) 2014-2019, Matt Butcher and Matt Farina
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
