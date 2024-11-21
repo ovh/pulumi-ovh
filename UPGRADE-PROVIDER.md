@@ -1,3 +1,20 @@
+# Pre-requisites
+
+```bash
+apt install zip
+
+# Install Java 21
+curl -s "https://get.sdkman.io" | bash
+source "/root/.sdkman/bin/sdkman-init.sh"
+sdk install java 21.0.4-tem
+sdk default java 21.0.4-tem
+java -version
+
+# Install Gradle 8
+sdk install gradle 8.8
+gradle -v
+```
+
 # Upgrading/Sync with existing Terraform provider
 
 * install gh CLI
@@ -108,7 +125,7 @@ or visit https://pulumi.com/docs/install/ for manual instructions and release no
   
 * After approving and merging the PR, create a new tag and push it. A GH action will run and push the packages.
 
-# Changes without upgrade
+## Changes without upgrade
 
 * Edit `provider/resources.go` file for example
 
@@ -119,20 +136,3 @@ $ make build
 ```
 
 * When everything is done, create a new git tag
-
-# Pre-requisites
-
-```bash
-apt install zip
-
-# Install Java 21
-curl -s "https://get.sdkman.io" | bash
-source "/root/.sdkman/bin/sdkman-init.sh"
-sdk install java 21.0.4-tem
-sdk default java 21.0.4-tem
-java -version
-
-# Install Gradle 8
-sdk install gradle 8.8
-gradle -v
-```
