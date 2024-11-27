@@ -39,7 +39,7 @@ return await Deployment.RunAsync(() =>
     // Export some values for use elsewhere
     return new Dictionary<string, object?>
     {
-        ["kubeconfig"] = myKubeCluster.KubeConfig,
+        ["kubeconfig"] = myKubeCluster.Kubeconfig,
         ["nodePoolID"] = nodePool.Id,
     };
 });

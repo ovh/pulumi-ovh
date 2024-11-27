@@ -1,7 +1,0 @@
-name: test-template
-runtime: dotnet
-description: A C# program to deploy a Kubernetes cluster on OVHcloud
-config:
-  pulumi:tags:
-    value:
-      pulumi:template: ../kubernetes-ovh-csharp/
