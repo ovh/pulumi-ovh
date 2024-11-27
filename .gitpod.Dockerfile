@@ -10,7 +10,8 @@ RUN brew install pulumi/tap/pulumictl
 
 # Install dotnet CLI
 
-ARG DOTNET_VERSION="6.0"
+#ARG DOTNET_VERSION="6.0"
+ARG DOTNET_VERSION="8.0"
 
 RUN curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- -channel ${DOTNET_VERSION}
 
