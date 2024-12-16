@@ -5,7 +5,7 @@
         "@types/node": "^16"
     },
     "dependencies": {
-        "@ovh-devrelteam/pulumi-ovh": "^0.34.0",
+        "@ovhcloud/pulumi-ovh": "^1.1.0",
         "@pulumi/pulumi": "^3.0.0"
     }
 }

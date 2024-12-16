@@ -16,14 +16,14 @@ Replace the NPM package in your project first:
 
 ```sh
 $ npm uninstall --save @lbrlabs/pulumi-ovh
-$ npm install --save @ovh-devrelteam/pulumi-ovh
+$ npm install --save @ovhcloud/pulumi-ovh
 ```
 
 After switching the package, update the import statements in your Pulumi infrastructure code:
 
 ```diff
 - import * as ovh from "@lbrlabs/pulumi-ovh";
-+ import * as ovh from "@ovh-devrelteam/pulumi-ovh";
++ import * as ovh from "@ovhcloud/pulumi-ovh";
 ```
 
 {{% /choosable %}}
