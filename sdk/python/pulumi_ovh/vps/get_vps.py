@@ -289,7 +289,7 @@ def get_vps(service_name: Optional[str] = None,
         vcore=pulumi.get(__ret__, 'vcore'),
         zone=pulumi.get(__ret__, 'zone'))
 def get_vps_output(service_name: Optional[pulumi.Input[str]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpsResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpsResult]:
     """
     Use this data source to retrieve information about a vps associated with your OVHcloud Account.
 
@@ -307,7 +307,7 @@ def get_vps_output(service_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Vps/getVps:getVps', __args__, opts=opts, typ=GetVpsResult)
     return __ret__.apply(lambda __response__: GetVpsResult(
         vps_urn=pulumi.get(__response__, 'vps_urn'),

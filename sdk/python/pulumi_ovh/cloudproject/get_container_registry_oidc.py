@@ -259,7 +259,7 @@ def get_container_registry_oidc_output(oidc_admin_group: Optional[pulumi.Input[O
                                        oidc_verify_cert: Optional[pulumi.Input[Optional[bool]]] = None,
                                        registry_id: Optional[pulumi.Input[str]] = None,
                                        service_name: Optional[pulumi.Input[str]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRegistryOIDCResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryOIDCResult]:
     """
     Use this data source to get a OVHcloud Managed Private Registry OIDC.
 
@@ -299,7 +299,7 @@ def get_container_registry_oidc_output(oidc_admin_group: Optional[pulumi.Input[O
     __args__['oidcVerifyCert'] = oidc_verify_cert
     __args__['registryId'] = registry_id
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC', __args__, opts=opts, typ=GetContainerRegistryOIDCResult)
     return __ret__.apply(lambda __response__: GetContainerRegistryOIDCResult(
         id=pulumi.get(__response__, 'id'),

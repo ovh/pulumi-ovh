@@ -59,33 +59,24 @@ type GetOkmsServiceKeyArgs struct {
 
 // A collection of values returned by getOkmsServiceKey.
 type GetOkmsServiceKeyResult struct {
-	CreatedAt  string   `pulumi:"createdAt"`
-	Curve      string   `pulumi:"curve"`
-	Id         string   `pulumi:"id"`
-	Name       string   `pulumi:"name"`
-	OkmsId     string   `pulumi:"okmsId"`
-	Operations []string `pulumi:"operations"`
-	Size       float64  `pulumi:"size"`
-	State      string   `pulumi:"state"`
-	Type       string   `pulumi:"type"`
+	CreatedAt  string               `pulumi:"createdAt"`
+	Curve      string               `pulumi:"curve"`
+	Iam        GetOkmsServiceKeyIam `pulumi:"iam"`
+	Id         string               `pulumi:"id"`
+	Name       string               `pulumi:"name"`
+	OkmsId     string               `pulumi:"okmsId"`
+	Operations []string             `pulumi:"operations"`
+	Size       float64              `pulumi:"size"`
+	State      string               `pulumi:"state"`
+	Type       string               `pulumi:"type"`
 }
 
 func GetOkmsServiceKeyOutput(ctx *pulumi.Context, args GetOkmsServiceKeyOutputArgs, opts ...pulumi.InvokeOption) GetOkmsServiceKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOkmsServiceKeyResultOutput, error) {
 			args := v.(GetOkmsServiceKeyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetOkmsServiceKeyResult
-			secret, err := ctx.InvokePackageRaw("ovh:Okms/getOkmsServiceKey:getOkmsServiceKey", args, &rv, "", opts...)
-			if err != nil {
-				return GetOkmsServiceKeyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOkmsServiceKeyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOkmsServiceKeyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Okms/getOkmsServiceKey:getOkmsServiceKey", args, GetOkmsServiceKeyResultOutput{}, options).(GetOkmsServiceKeyResultOutput), nil
 		}).(GetOkmsServiceKeyResultOutput)
 }
 
@@ -122,6 +113,10 @@ func (o GetOkmsServiceKeyResultOutput) CreatedAt() pulumi.StringOutput {
 
 func (o GetOkmsServiceKeyResultOutput) Curve() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsServiceKeyResult) string { return v.Curve }).(pulumi.StringOutput)
+}
+
+func (o GetOkmsServiceKeyResultOutput) Iam() GetOkmsServiceKeyIamOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyResult) GetOkmsServiceKeyIam { return v.Iam }).(GetOkmsServiceKeyIamOutput)
 }
 
 func (o GetOkmsServiceKeyResultOutput) Id() pulumi.StringOutput {

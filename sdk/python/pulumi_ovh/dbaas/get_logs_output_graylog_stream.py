@@ -395,7 +395,7 @@ def get_logs_output_graylog_stream(service_name: Optional[str] = None,
         write_token=pulumi.get(__ret__, 'write_token'))
 def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[str]] = None,
                                           title: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogsOutputGraylogStreamResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsOutputGraylogStreamResult]:
     """
     Use this data source to retrieve information about a DBaas logs output graylog stream.
 
@@ -416,7 +416,7 @@ def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[st
     __args__ = dict()
     __args__['serviceName'] = service_name
     __args__['title'] = title
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream', __args__, opts=opts, typ=GetLogsOutputGraylogStreamResult)
     return __ret__.apply(lambda __response__: GetLogsOutputGraylogStreamResult(
         can_alert=pulumi.get(__response__, 'can_alert'),

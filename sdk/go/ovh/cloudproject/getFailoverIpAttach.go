@@ -87,21 +87,11 @@ type LookupFailoverIpAttachResult struct {
 }
 
 func LookupFailoverIpAttachOutput(ctx *pulumi.Context, args LookupFailoverIpAttachOutputArgs, opts ...pulumi.InvokeOption) LookupFailoverIpAttachResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFailoverIpAttachResultOutput, error) {
 			args := v.(LookupFailoverIpAttachArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupFailoverIpAttachResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFailoverIpAttachResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFailoverIpAttachResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFailoverIpAttachResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach", args, LookupFailoverIpAttachResultOutput{}, options).(LookupFailoverIpAttachResultOutput), nil
 		}).(LookupFailoverIpAttachResultOutput)
 }
 

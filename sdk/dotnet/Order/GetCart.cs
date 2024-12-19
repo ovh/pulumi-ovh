@@ -62,6 +62,32 @@ namespace Pulumi.Ovh.Order
         /// </summary>
         public static Output<GetCartResult> Invoke(GetCartInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCartResult>("ovh:Order/getCart:getCart", args ?? new GetCartInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to create a temporary order cart to retrieve information order cart products.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myAccount = Ovh.Me.GetMe.Invoke();
+        /// 
+        ///     var myCart = Ovh.Order.GetCart.Invoke(new()
+        ///     {
+        ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCartResult> Invoke(GetCartInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCartResult>("ovh:Order/getCart:getCart", args ?? new GetCartInvokeArgs(), options.WithDefaults());
     }
 
 

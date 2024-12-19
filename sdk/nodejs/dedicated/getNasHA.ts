@@ -98,7 +98,7 @@ export interface GetNasHAResult {
  * });
  * ```
  */
-export function getNasHAOutput(args: GetNasHAOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasHAResult> {
+export function getNasHAOutput(args: GetNasHAOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNasHAResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dedicated/getNasHA:getNasHA", {
         "serviceName": args.serviceName,

@@ -189,7 +189,7 @@ def get_server_specifications_network(service_name: Optional[str] = None,
         vmac=pulumi.get(__ret__, 'vmac'),
         vrack=pulumi.get(__ret__, 'vrack'))
 def get_server_specifications_network_output(service_name: Optional[pulumi.Input[str]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerSpecificationsNetworkResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerSpecificationsNetworkResult]:
     """
     Use this data source to get the network information about a dedicated server associated with your OVHcloud Account.
 
@@ -207,7 +207,7 @@ def get_server_specifications_network_output(service_name: Optional[pulumi.Input
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork', __args__, opts=opts, typ=GetServerSpecificationsNetworkResult)
     return __ret__.apply(lambda __response__: GetServerSpecificationsNetworkResult(
         bandwidth=pulumi.get(__response__, 'bandwidth'),

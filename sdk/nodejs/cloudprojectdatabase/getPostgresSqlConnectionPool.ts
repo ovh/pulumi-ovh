@@ -138,7 +138,7 @@ export interface GetPostgresSqlConnectionPoolResult {
  * };
  * ```
  */
-export function getPostgresSqlConnectionPoolOutput(args: GetPostgresSqlConnectionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPostgresSqlConnectionPoolResult> {
+export function getPostgresSqlConnectionPoolOutput(args: GetPostgresSqlConnectionPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresSqlConnectionPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", {
         "clusterId": args.clusterId,

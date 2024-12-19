@@ -60,6 +60,31 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         public static Output<GetServerBootsResult> Invoke(GetServerBootsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerBootsResult>("ovh:Dedicated/getServerBoots:getServerBoots", args ?? new GetServerBootsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var netboots = Ovh.Dedicated.GetServerBoots.Invoke(new()
+        ///     {
+        ///         BootType = "harddisk",
+        ///         ServiceName = "myserver",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServerBootsResult> Invoke(GetServerBootsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerBootsResult>("ovh:Dedicated/getServerBoots:getServerBoots", args ?? new GetServerBootsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -22,6 +22,12 @@ namespace Pulumi.Ovh.Okms
         /// </summary>
         public static Output<GetOkmsCredentialResult> Invoke(GetOkmsCredentialInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsCredentialResult>("ovh:Okms/getOkmsCredential:getOkmsCredential", args ?? new GetOkmsCredentialInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
+        /// </summary>
+        public static Output<GetOkmsCredentialResult> Invoke(GetOkmsCredentialInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOkmsCredentialResult>("ovh:Okms/getOkmsCredential:getOkmsCredential", args ?? new GetOkmsCredentialInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -80,7 +80,7 @@ export interface GetKafkaAclsResult {
  * export const aclIds = acls.then(acls => acls.aclIds);
  * ```
  */
-export function getKafkaAclsOutput(args: GetKafkaAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaAclsResult> {
+export function getKafkaAclsOutput(args: GetKafkaAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaAclsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getKafkaAcls:getKafkaAcls", {
         "clusterId": args.clusterId,

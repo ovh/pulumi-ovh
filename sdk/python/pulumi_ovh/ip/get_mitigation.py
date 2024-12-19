@@ -142,7 +142,7 @@ def get_mitigation(ip: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'))
 def get_mitigation_output(ip: Optional[pulumi.Input[str]] = None,
                           ip_on_mitigation: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMitigationResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMitigationResult]:
     """
     Use this resource to retrieve information about an IP permanent mitigation.
 
@@ -163,7 +163,7 @@ def get_mitigation_output(ip: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['ip'] = ip
     __args__['ipOnMitigation'] = ip_on_mitigation
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Ip/getMitigation:getMitigation', __args__, opts=opts, typ=GetMitigationResult)
     return __ret__.apply(lambda __response__: GetMitigationResult(
         auto=pulumi.get(__response__, 'auto'),

@@ -171,7 +171,7 @@ def get_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
                     engine: Optional[pulumi.Input[str]] = None,
                     name: Optional[pulumi.Input[str]] = None,
                     service_name: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Use this data source to get information about a user of a database cluster associated with a public cloud project.
 
@@ -202,7 +202,7 @@ def get_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__['engine'] = engine
     __args__['name'] = name
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
     return __ret__.apply(lambda __response__: GetUserResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

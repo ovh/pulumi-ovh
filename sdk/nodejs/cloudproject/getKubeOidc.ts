@@ -165,7 +165,7 @@ export interface GetKubeOidcResult {
  * }
  * ```
  */
-export function getKubeOidcOutput(args: GetKubeOidcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeOidcResult> {
+export function getKubeOidcOutput(args: GetKubeOidcOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeOidcResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeOidc:getKubeOidc", {
         "clientId": args.clientId,

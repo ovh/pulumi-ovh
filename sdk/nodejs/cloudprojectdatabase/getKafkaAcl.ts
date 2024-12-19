@@ -95,7 +95,7 @@ export interface GetKafkaAclResult {
  * export const aclPermission = acl.then(acl => acl.permission);
  * ```
  */
-export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaAclResult> {
+export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaAclResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getKafkaAcl:getKafkaAcl", {
         "clusterId": args.clusterId,

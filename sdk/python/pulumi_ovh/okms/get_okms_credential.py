@@ -180,7 +180,7 @@ def get_okms_credential(id: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'))
 def get_okms_credential_output(id: Optional[pulumi.Input[str]] = None,
                                okms_id: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOkmsCredentialResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOkmsCredentialResult]:
     """
     Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
 
@@ -191,7 +191,7 @@ def get_okms_credential_output(id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['okmsId'] = okms_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Okms/getOkmsCredential:getOkmsCredential', __args__, opts=opts, typ=GetOkmsCredentialResult)
     return __ret__.apply(lambda __response__: GetOkmsCredentialResult(
         certificate_pem=pulumi.get(__response__, 'certificate_pem'),

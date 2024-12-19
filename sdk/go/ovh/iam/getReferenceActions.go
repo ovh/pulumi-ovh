@@ -38,21 +38,11 @@ type GetReferenceActionsResult struct {
 }
 
 func GetReferenceActionsOutput(ctx *pulumi.Context, args GetReferenceActionsOutputArgs, opts ...pulumi.InvokeOption) GetReferenceActionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetReferenceActionsResultOutput, error) {
 			args := v.(GetReferenceActionsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetReferenceActionsResult
-			secret, err := ctx.InvokePackageRaw("ovh:Iam/getReferenceActions:getReferenceActions", args, &rv, "", opts...)
-			if err != nil {
-				return GetReferenceActionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetReferenceActionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetReferenceActionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Iam/getReferenceActions:getReferenceActions", args, GetReferenceActionsResultOutput{}, options).(GetReferenceActionsResultOutput), nil
 		}).(GetReferenceActionsResultOutput)
 }
 

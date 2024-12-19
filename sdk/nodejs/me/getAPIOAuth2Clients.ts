@@ -47,7 +47,7 @@ export interface GetAPIOAuth2ClientsResult {
  * const myOauth2Clients = ovh.Me.getAPIOAuth2Client({});
  * ```
  */
-export function getAPIOAuth2ClientsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAPIOAuth2ClientsResult> {
+export function getAPIOAuth2ClientsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAPIOAuth2ClientsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getAPIOAuth2Clients:getAPIOAuth2Clients", {
     }, opts);

@@ -78,7 +78,7 @@ export interface GetNetworkPrivatesResult {
  * }
  * ```
  */
-export function getNetworkPrivatesOutput(args: GetNetworkPrivatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPrivatesResult> {
+export function getNetworkPrivatesOutput(args: GetNetworkPrivatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkPrivatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getNetworkPrivates:getNetworkPrivates", {
         "serviceName": args.serviceName,

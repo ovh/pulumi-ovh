@@ -120,7 +120,7 @@ export interface GetVpsResult {
  * });
  * ```
  */
-export function getVpsOutput(args: GetVpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpsResult> {
+export function getVpsOutput(args: GetVpsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Vps/getVps:getVps", {
         "serviceName": args.serviceName,

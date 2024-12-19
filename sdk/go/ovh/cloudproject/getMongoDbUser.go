@@ -81,21 +81,11 @@ type GetMongoDbUserResult struct {
 }
 
 func GetMongoDbUserOutput(ctx *pulumi.Context, args GetMongoDbUserOutputArgs, opts ...pulumi.InvokeOption) GetMongoDbUserResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMongoDbUserResultOutput, error) {
 			args := v.(GetMongoDbUserArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetMongoDbUserResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getMongoDbUser:getMongoDbUser", args, &rv, "", opts...)
-			if err != nil {
-				return GetMongoDbUserResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetMongoDbUserResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetMongoDbUserResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getMongoDbUser:getMongoDbUser", args, GetMongoDbUserResultOutput{}, options).(GetMongoDbUserResultOutput), nil
 		}).(GetMongoDbUserResultOutput)
 }
 

@@ -81,7 +81,7 @@ def get_policies(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPol
     return AwaitableGetPoliciesResult(
         id=pulumi.get(__ret__, 'id'),
         policies=pulumi.get(__ret__, 'policies'))
-def get_policies_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoliciesResult]:
+def get_policies_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoliciesResult]:
     """
     Use this data source to list the existing IAM policies of an account.
 
@@ -95,7 +95,7 @@ def get_policies_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getPolicies:getPolicies', __args__, opts=opts, typ=GetPoliciesResult)
     return __ret__.apply(lambda __response__: GetPoliciesResult(
         id=pulumi.get(__response__, 'id'),

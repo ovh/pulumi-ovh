@@ -189,7 +189,7 @@ export interface GetKubeResult {
  * export const version = myKubeCluster.then(myKubeCluster => myKubeCluster.version);
  * ```
  */
-export function getKubeOutput(args: GetKubeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeResult> {
+export function getKubeOutput(args: GetKubeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getKube:getKube", {
         "customizationApiservers": args.customizationApiservers,

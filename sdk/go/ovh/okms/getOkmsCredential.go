@@ -53,21 +53,11 @@ type GetOkmsCredentialResult struct {
 }
 
 func GetOkmsCredentialOutput(ctx *pulumi.Context, args GetOkmsCredentialOutputArgs, opts ...pulumi.InvokeOption) GetOkmsCredentialResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOkmsCredentialResultOutput, error) {
 			args := v.(GetOkmsCredentialArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetOkmsCredentialResult
-			secret, err := ctx.InvokePackageRaw("ovh:Okms/getOkmsCredential:getOkmsCredential", args, &rv, "", opts...)
-			if err != nil {
-				return GetOkmsCredentialResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOkmsCredentialResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOkmsCredentialResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Okms/getOkmsCredential:getOkmsCredential", args, GetOkmsCredentialResultOutput{}, options).(GetOkmsCredentialResultOutput), nil
 		}).(GetOkmsCredentialResultOutput)
 }
 

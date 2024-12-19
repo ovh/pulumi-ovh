@@ -68,6 +68,35 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetNetworkPrivateSubnetsResult> Invoke(GetNetworkPrivateSubnetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPrivateSubnetsResult>("ovh:CloudProject/getNetworkPrivateSubnets:getNetworkPrivateSubnets", args ?? new GetNetworkPrivateSubnetsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// List public cloud project subnets of a private network.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var privateNetworkPrivateSubnets = Ovh.CloudProject.GetNetworkPrivateSubnets.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         NetworkId = "XXXXXX",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["private"] = privateNetworkPrivateSubnets,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworkPrivateSubnetsResult> Invoke(GetNetworkPrivateSubnetsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPrivateSubnetsResult>("ovh:CloudProject/getNetworkPrivateSubnets:getNetworkPrivateSubnets", args ?? new GetNetworkPrivateSubnetsInvokeArgs(), options.WithDefaults());
     }
 
 

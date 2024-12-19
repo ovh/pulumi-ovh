@@ -115,7 +115,7 @@ def get_regions(has_services_ups: Optional[Sequence[str]] = None,
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_regions_output(has_services_ups: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        service_name: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     Use this data source to get the regions of a public cloud project.
 
@@ -139,7 +139,7 @@ def get_regions_output(has_services_ups: Optional[pulumi.Input[Optional[Sequence
     __args__ = dict()
     __args__['hasServicesUps'] = has_services_ups
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult)
     return __ret__.apply(lambda __response__: GetRegionsResult(
         has_services_ups=pulumi.get(__response__, 'has_services_ups'),

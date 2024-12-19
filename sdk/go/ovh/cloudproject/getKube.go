@@ -123,21 +123,11 @@ type LookupKubeResult struct {
 }
 
 func LookupKubeOutput(ctx *pulumi.Context, args LookupKubeOutputArgs, opts ...pulumi.InvokeOption) LookupKubeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKubeResultOutput, error) {
 			args := v.(LookupKubeArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupKubeResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getKube:getKube", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKubeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKubeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKubeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getKube:getKube", args, LookupKubeResultOutput{}, options).(LookupKubeResultOutput), nil
 		}).(LookupKubeResultOutput)
 }
 

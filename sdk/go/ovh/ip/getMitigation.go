@@ -74,21 +74,11 @@ type LookupMitigationResult struct {
 }
 
 func LookupMitigationOutput(ctx *pulumi.Context, args LookupMitigationOutputArgs, opts ...pulumi.InvokeOption) LookupMitigationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMitigationResultOutput, error) {
 			args := v.(LookupMitigationArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupMitigationResult
-			secret, err := ctx.InvokePackageRaw("ovh:Ip/getMitigation:getMitigation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMitigationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMitigationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMitigationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Ip/getMitigation:getMitigation", args, LookupMitigationResultOutput{}, options).(LookupMitigationResultOutput), nil
 		}).(LookupMitigationResultOutput)
 }
 

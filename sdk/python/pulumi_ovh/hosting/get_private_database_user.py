@@ -126,7 +126,7 @@ def get_private_database_user(service_name: Optional[str] = None,
         user_name=pulumi.get(__ret__, 'user_name'))
 def get_private_database_user_output(service_name: Optional[pulumi.Input[str]] = None,
                                      user_name: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateDatabaseUserResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateDatabaseUserResult]:
     """
     Use this data source to retrieve information about an hosting privatedatabase user.
 
@@ -147,7 +147,7 @@ def get_private_database_user_output(service_name: Optional[pulumi.Input[str]] =
     __args__ = dict()
     __args__['serviceName'] = service_name
     __args__['userName'] = user_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser', __args__, opts=opts, typ=GetPrivateDatabaseUserResult)
     return __ret__.apply(lambda __response__: GetPrivateDatabaseUserResult(
         creation_date=pulumi.get(__response__, 'creation_date'),

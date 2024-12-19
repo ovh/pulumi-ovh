@@ -73,21 +73,11 @@ type GetOkmsResourceResult struct {
 }
 
 func GetOkmsResourceOutput(ctx *pulumi.Context, args GetOkmsResourceOutputArgs, opts ...pulumi.InvokeOption) GetOkmsResourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOkmsResourceResultOutput, error) {
 			args := v.(GetOkmsResourceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetOkmsResourceResult
-			secret, err := ctx.InvokePackageRaw("ovh:Okms/getOkmsResource:getOkmsResource", args, &rv, "", opts...)
-			if err != nil {
-				return GetOkmsResourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOkmsResourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOkmsResourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Okms/getOkmsResource:getOkmsResource", args, GetOkmsResourceResultOutput{}, options).(GetOkmsResourceResultOutput), nil
 		}).(GetOkmsResourceResultOutput)
 }
 

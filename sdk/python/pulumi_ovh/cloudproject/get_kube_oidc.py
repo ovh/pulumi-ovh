@@ -260,7 +260,7 @@ def get_kube_oidc_output(client_id: Optional[pulumi.Input[Optional[str]]] = None
                          oidc_username_claim: Optional[pulumi.Input[Optional[str]]] = None,
                          oidc_username_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                          service_name: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubeOidcResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubeOidcResult]:
     """
     Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
 
@@ -301,7 +301,7 @@ def get_kube_oidc_output(client_id: Optional[pulumi.Input[Optional[str]]] = None
     __args__['oidcUsernameClaim'] = oidc_username_claim
     __args__['oidcUsernamePrefix'] = oidc_username_prefix
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getKubeOidc:getKubeOidc', __args__, opts=opts, typ=GetKubeOidcResult)
     return __ret__.apply(lambda __response__: GetKubeOidcResult(
         client_id=pulumi.get(__response__, 'client_id'),

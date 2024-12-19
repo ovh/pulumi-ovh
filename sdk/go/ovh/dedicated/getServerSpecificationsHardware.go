@@ -92,21 +92,11 @@ type GetServerSpecificationsHardwareResult struct {
 }
 
 func GetServerSpecificationsHardwareOutput(ctx *pulumi.Context, args GetServerSpecificationsHardwareOutputArgs, opts ...pulumi.InvokeOption) GetServerSpecificationsHardwareResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServerSpecificationsHardwareResultOutput, error) {
 			args := v.(GetServerSpecificationsHardwareArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServerSpecificationsHardwareResult
-			secret, err := ctx.InvokePackageRaw("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", args, &rv, "", opts...)
-			if err != nil {
-				return GetServerSpecificationsHardwareResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServerSpecificationsHardwareResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServerSpecificationsHardwareResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", args, GetServerSpecificationsHardwareResultOutput{}, options).(GetServerSpecificationsHardwareResultOutput), nil
 		}).(GetServerSpecificationsHardwareResultOutput)
 }
 

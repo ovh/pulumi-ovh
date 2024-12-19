@@ -72,21 +72,11 @@ type GetDatabasePostgreSQLConnectionPoolsResult struct {
 }
 
 func GetDatabasePostgreSQLConnectionPoolsOutput(ctx *pulumi.Context, args GetDatabasePostgreSQLConnectionPoolsOutputArgs, opts ...pulumi.InvokeOption) GetDatabasePostgreSQLConnectionPoolsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDatabasePostgreSQLConnectionPoolsResultOutput, error) {
 			args := v.(GetDatabasePostgreSQLConnectionPoolsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDatabasePostgreSQLConnectionPoolsResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", args, &rv, "", opts...)
-			if err != nil {
-				return GetDatabasePostgreSQLConnectionPoolsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDatabasePostgreSQLConnectionPoolsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDatabasePostgreSQLConnectionPoolsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", args, GetDatabasePostgreSQLConnectionPoolsResultOutput{}, options).(GetDatabasePostgreSQLConnectionPoolsResultOutput), nil
 		}).(GetDatabasePostgreSQLConnectionPoolsResultOutput)
 }
 

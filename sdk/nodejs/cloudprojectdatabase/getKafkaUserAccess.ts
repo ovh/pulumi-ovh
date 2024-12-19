@@ -95,7 +95,7 @@ export interface GetKafkaUserAccessResult {
  * export const accessCert = access.then(access => access.cert);
  * ```
  */
-export function getKafkaUserAccessOutput(args: GetKafkaUserAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaUserAccessResult> {
+export function getKafkaUserAccessOutput(args: GetKafkaUserAccessOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaUserAccessResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", {
         "clusterId": args.clusterId,

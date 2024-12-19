@@ -82,21 +82,11 @@ type GetPaymentmeanCreditCardResult struct {
 }
 
 func GetPaymentmeanCreditCardOutput(ctx *pulumi.Context, args GetPaymentmeanCreditCardOutputArgs, opts ...pulumi.InvokeOption) GetPaymentmeanCreditCardResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPaymentmeanCreditCardResultOutput, error) {
 			args := v.(GetPaymentmeanCreditCardArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPaymentmeanCreditCardResult
-			secret, err := ctx.InvokePackageRaw("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", args, &rv, "", opts...)
-			if err != nil {
-				return GetPaymentmeanCreditCardResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPaymentmeanCreditCardResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPaymentmeanCreditCardResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", args, GetPaymentmeanCreditCardResultOutput{}, options).(GetPaymentmeanCreditCardResultOutput), nil
 		}).(GetPaymentmeanCreditCardResultOutput)
 }
 

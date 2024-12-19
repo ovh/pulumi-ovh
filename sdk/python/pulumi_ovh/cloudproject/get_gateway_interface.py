@@ -167,7 +167,7 @@ def get_gateway_interface_output(id: Optional[pulumi.Input[str]] = None,
                                  interface_id: Optional[pulumi.Input[str]] = None,
                                  region: Optional[pulumi.Input[str]] = None,
                                  service_name: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayInterfaceResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayInterfaceResult]:
     """
     Use this datasource to get a public cloud project Gateway Interface.
 
@@ -194,7 +194,7 @@ def get_gateway_interface_output(id: Optional[pulumi.Input[str]] = None,
     __args__['interfaceId'] = interface_id
     __args__['region'] = region
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getGatewayInterface:getGatewayInterface', __args__, opts=opts, typ=GetGatewayInterfaceResult)
     return __ret__.apply(lambda __response__: GetGatewayInterfaceResult(
         id=pulumi.get(__response__, 'id'),

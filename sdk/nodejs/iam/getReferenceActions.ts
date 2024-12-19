@@ -43,7 +43,7 @@ export interface GetReferenceActionsResult {
 /**
  * Use this data source to list the IAM action associated with a resource type.
  */
-export function getReferenceActionsOutput(args: GetReferenceActionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceActionsResult> {
+export function getReferenceActionsOutput(args: GetReferenceActionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReferenceActionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getReferenceActions:getReferenceActions", {
         "type": args.type,

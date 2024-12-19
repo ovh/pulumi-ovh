@@ -138,7 +138,7 @@ def get_open_search_pattern(cluster_id: Optional[str] = None,
 def get_open_search_pattern_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                    id: Optional[pulumi.Input[str]] = None,
                                    service_name: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenSearchPatternResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenSearchPatternResult]:
     """
     Use this data source to get information about a pattern of a opensearch cluster associated with a public cloud project.
 
@@ -164,7 +164,7 @@ def get_open_search_pattern_output(cluster_id: Optional[pulumi.Input[str]] = Non
     __args__['clusterId'] = cluster_id
     __args__['id'] = id
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getOpenSearchPattern:getOpenSearchPattern', __args__, opts=opts, typ=GetOpenSearchPatternResult)
     return __ret__.apply(lambda __response__: GetOpenSearchPatternResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

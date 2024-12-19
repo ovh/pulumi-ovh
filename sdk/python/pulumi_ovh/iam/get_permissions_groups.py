@@ -78,7 +78,7 @@ def get_permissions_groups(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     return AwaitableGetPermissionsGroupsResult(
         id=pulumi.get(__ret__, 'id'),
         urns=pulumi.get(__ret__, 'urns'))
-def get_permissions_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPermissionsGroupsResult]:
+def get_permissions_groups_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPermissionsGroupsResult]:
     """
     Use this data source to retrieve an IAM permissions group.
 
@@ -92,7 +92,7 @@ def get_permissions_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getPermissionsGroups:getPermissionsGroups', __args__, opts=opts, typ=GetPermissionsGroupsResult)
     return __ret__.apply(lambda __response__: GetPermissionsGroupsResult(
         id=pulumi.get(__response__, 'id'),

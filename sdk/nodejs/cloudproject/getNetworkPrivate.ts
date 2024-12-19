@@ -105,7 +105,7 @@ export interface GetNetworkPrivateResult {
  * }
  * ```
  */
-export function getNetworkPrivateOutput(args: GetNetworkPrivateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPrivateResult> {
+export function getNetworkPrivateOutput(args: GetNetworkPrivateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkPrivateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getNetworkPrivate:getNetworkPrivate", {
         "networkId": args.networkId,

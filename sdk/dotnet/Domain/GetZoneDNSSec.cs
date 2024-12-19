@@ -58,6 +58,30 @@ namespace Pulumi.Ovh.Domain
         /// </summary>
         public static Output<GetZoneDNSSecResult> Invoke(GetZoneDNSSecInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneDNSSecResult>("ovh:Domain/getZoneDNSSec:getZoneDNSSec", args ?? new GetZoneDNSSecInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a domain zone DNSSEC status.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dnssec = Ovh.Domain.GetZoneDNSSec.Invoke(new()
+        ///     {
+        ///         ZoneName = "mysite.ovh",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetZoneDNSSecResult> Invoke(GetZoneDNSSecInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZoneDNSSecResult>("ovh:Domain/getZoneDNSSec:getZoneDNSSec", args ?? new GetZoneDNSSecInvokeArgs(), options.WithDefaults());
     }
 
 

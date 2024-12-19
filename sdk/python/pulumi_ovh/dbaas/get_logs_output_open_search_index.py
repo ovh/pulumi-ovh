@@ -223,7 +223,7 @@ def get_logs_output_open_search_index(name: Optional[str] = None,
 def get_logs_output_open_search_index_output(name: Optional[pulumi.Input[str]] = None,
                                              nb_shard: Optional[pulumi.Input[Optional[int]]] = None,
                                              service_name: Optional[pulumi.Input[str]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogsOutputOpenSearchIndexResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsOutputOpenSearchIndexResult]:
     """
     Use this data source to retrieve information about a DBaas logs output opensearch index.
 
@@ -246,7 +246,7 @@ def get_logs_output_open_search_index_output(name: Optional[pulumi.Input[str]] =
     __args__['name'] = name
     __args__['nbShard'] = nb_shard
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsOutputOpenSearchIndex:getLogsOutputOpenSearchIndex', __args__, opts=opts, typ=GetLogsOutputOpenSearchIndexResult)
     return __ret__.apply(lambda __response__: GetLogsOutputOpenSearchIndexResult(
         alert_notify_enabled=pulumi.get(__response__, 'alert_notify_enabled'),

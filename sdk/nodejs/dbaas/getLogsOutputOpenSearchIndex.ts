@@ -111,7 +111,7 @@ export interface GetLogsOutputOpenSearchIndexResult {
  * });
  * ```
  */
-export function getLogsOutputOpenSearchIndexOutput(args: GetLogsOutputOpenSearchIndexOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsOutputOpenSearchIndexResult> {
+export function getLogsOutputOpenSearchIndexOutput(args: GetLogsOutputOpenSearchIndexOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogsOutputOpenSearchIndexResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsOutputOpenSearchIndex:getLogsOutputOpenSearchIndex", {
         "name": args.name,

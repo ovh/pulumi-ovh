@@ -58,6 +58,30 @@ namespace Pulumi.Ovh.Okms
         /// </summary>
         public static Output<GetOkmsResourceResult> Invoke(GetOkmsResourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsResourceResult>("ovh:Okms/getOkmsResource:getOkmsResource", args ?? new GetOkmsResourceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a KMS associated with this account
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var kms = Ovh.Okms.GetOkmsResource.Invoke(new()
+        ///     {
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOkmsResourceResult> Invoke(GetOkmsResourceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOkmsResourceResult>("ovh:Okms/getOkmsResource:getOkmsResource", args ?? new GetOkmsResourceInvokeArgs(), options.WithDefaults());
     }
 
 

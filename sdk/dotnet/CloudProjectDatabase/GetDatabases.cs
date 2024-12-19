@@ -72,6 +72,37 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("ovh:CloudProjectDatabase/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the list of managed databases of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// To get the list of database clusters service for a given engine:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dbs = Ovh.CloudProjectDatabase.GetDatabases.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         Engine = "YYYY",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["clusterIds"] = dbs.Apply(getDatabasesResult =&gt; getDatabasesResult.ClusterIds),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("ovh:CloudProjectDatabase/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());
     }
 
 

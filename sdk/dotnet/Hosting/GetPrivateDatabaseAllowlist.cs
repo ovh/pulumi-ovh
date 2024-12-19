@@ -60,6 +60,31 @@ namespace Pulumi.Ovh.Hosting
         /// </summary>
         public static Output<GetPrivateDatabaseAllowlistResult> Invoke(GetPrivateDatabaseAllowlistInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseAllowlistResult>("ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist", args ?? new GetPrivateDatabaseAllowlistInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about an hosting privatedatabase whitelist.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var whitelist = Ovh.Hosting.GetPrivateDatabaseAllowlist.Invoke(new()
+        ///     {
+        ///         Ip = "XXXXXX",
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPrivateDatabaseAllowlistResult> Invoke(GetPrivateDatabaseAllowlistInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseAllowlistResult>("ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist", args ?? new GetPrivateDatabaseAllowlistInvokeArgs(), options.WithDefaults());
     }
 
 

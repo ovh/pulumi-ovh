@@ -95,7 +95,7 @@ export interface GetIdentityUserResult {
  * });
  * ```
  */
-export function getIdentityUserOutput(args: GetIdentityUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityUserResult> {
+export function getIdentityUserOutput(args: GetIdentityUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getIdentityUser:getIdentityUser", {
         "user": args.user,

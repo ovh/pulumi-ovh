@@ -204,7 +204,7 @@ def get_nas_ha(service_name: Optional[str] = None,
         zpool_capacity=pulumi.get(__ret__, 'zpool_capacity'),
         zpool_size=pulumi.get(__ret__, 'zpool_size'))
 def get_nas_ha_output(service_name: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNasHAResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNasHAResult]:
     """
     Use this data source to retrieve information about a dedicated HA-NAS.
 
@@ -222,7 +222,7 @@ def get_nas_ha_output(service_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dedicated/getNasHA:getNasHA', __args__, opts=opts, typ=GetNasHAResult)
     return __ret__.apply(lambda __response__: GetNasHAResult(
         nas_haurn=pulumi.get(__response__, 'nas_haurn'),

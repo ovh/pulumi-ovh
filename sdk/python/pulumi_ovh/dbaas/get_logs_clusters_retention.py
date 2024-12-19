@@ -158,7 +158,7 @@ def get_logs_clusters_retention_output(cluster_id: Optional[pulumi.Input[str]] =
                                        duration: Optional[pulumi.Input[Optional[str]]] = None,
                                        retention_id: Optional[pulumi.Input[Optional[str]]] = None,
                                        service_name: Optional[pulumi.Input[str]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogsClustersRetentionResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsClustersRetentionResult]:
     """
     Use this data source to retrieve information about a DBaas logs cluster retention.
 
@@ -195,7 +195,7 @@ def get_logs_clusters_retention_output(cluster_id: Optional[pulumi.Input[str]] =
     __args__['duration'] = duration
     __args__['retentionId'] = retention_id
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention', __args__, opts=opts, typ=GetLogsClustersRetentionResult)
     return __ret__.apply(lambda __response__: GetLogsClustersRetentionResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

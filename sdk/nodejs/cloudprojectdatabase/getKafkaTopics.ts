@@ -80,7 +80,7 @@ export interface GetKafkaTopicsResult {
  * export const topicIds = topics.then(topics => topics.topicIds);
  * ```
  */
-export function getKafkaTopicsOutput(args: GetKafkaTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaTopicsResult> {
+export function getKafkaTopicsOutput(args: GetKafkaTopicsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaTopicsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getKafkaTopics:getKafkaTopics", {
         "clusterId": args.clusterId,

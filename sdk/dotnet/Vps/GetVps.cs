@@ -58,6 +58,30 @@ namespace Pulumi.Ovh.Vps
         /// </summary>
         public static Output<GetVpsResult> Invoke(GetVpsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpsResult>("ovh:Vps/getVps:getVps", args ?? new GetVpsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a vps associated with your OVHcloud Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var server = Ovh.Vps.GetVps.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVpsResult> Invoke(GetVpsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpsResult>("ovh:Vps/getVps:getVps", args ?? new GetVpsInvokeArgs(), options.WithDefaults());
     }
 
 

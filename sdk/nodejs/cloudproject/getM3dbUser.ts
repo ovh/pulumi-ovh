@@ -99,7 +99,7 @@ export interface GetM3dbUserResult {
  * export const m3dbUserGroup = m3dbUser.then(m3dbUser => m3dbUser.group);
  * ```
  */
-export function getM3dbUserOutput(args: GetM3dbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbUserResult> {
+export function getM3dbUserOutput(args: GetM3dbUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetM3dbUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getM3dbUser:getM3dbUser", {
         "clusterId": args.clusterId,

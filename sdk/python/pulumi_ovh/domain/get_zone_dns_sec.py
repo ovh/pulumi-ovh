@@ -97,7 +97,7 @@ def get_zone_dns_sec(zone_name: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
 def get_zone_dns_sec_output(zone_name: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneDNSSecResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneDNSSecResult]:
     """
     Use this data source to retrieve information about a domain zone DNSSEC status.
 
@@ -115,7 +115,7 @@ def get_zone_dns_sec_output(zone_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['zoneName'] = zone_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Domain/getZoneDNSSec:getZoneDNSSec', __args__, opts=opts, typ=GetZoneDNSSecResult)
     return __ret__.apply(lambda __response__: GetZoneDNSSecResult(
         id=pulumi.get(__response__, 'id'),

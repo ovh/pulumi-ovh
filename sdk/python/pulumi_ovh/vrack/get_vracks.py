@@ -81,7 +81,7 @@ def get_vracks(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVrack
     return AwaitableGetVracksResult(
         id=pulumi.get(__ret__, 'id'),
         results=pulumi.get(__ret__, 'results'))
-def get_vracks_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVracksResult]:
+def get_vracks_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVracksResult]:
     """
     Use this data source to get the list of Vrack IDs available for your OVHcloud account.
 
@@ -95,7 +95,7 @@ def get_vracks_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Out
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Vrack/getVracks:getVracks', __args__, opts=opts, typ=GetVracksResult)
     return __ret__.apply(lambda __response__: GetVracksResult(
         id=pulumi.get(__response__, 'id'),

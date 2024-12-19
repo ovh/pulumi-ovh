@@ -58,6 +58,30 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         public static Output<GetNasHAResult> Invoke(GetNasHAInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNasHAResult>("ovh:Dedicated/getNasHA:getNasHA", args ?? new GetNasHAInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a dedicated HA-NAS.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myNasHa = Ovh.Dedicated.GetNasHA.Invoke(new()
+        ///     {
+        ///         ServiceName = "zpool-12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNasHAResult> Invoke(GetNasHAInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNasHAResult>("ovh:Dedicated/getNasHA:getNasHA", args ?? new GetNasHAInvokeArgs(), options.WithDefaults());
     }
 
 

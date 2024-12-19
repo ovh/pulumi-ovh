@@ -68,6 +68,35 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetOpenSearchPatternsResult> Invoke(GetOpenSearchPatternsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchPatternsResult>("ovh:CloudProject/getOpenSearchPatterns:getOpenSearchPatterns", args ?? new GetOpenSearchPatternsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the list of pattern of a opensearch cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var patterns = Ovh.CloudProject.GetOpenSearchPatterns.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["patternIds"] = patterns.Apply(getOpenSearchPatternsResult =&gt; getOpenSearchPatternsResult.PatternIds),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOpenSearchPatternsResult> Invoke(GetOpenSearchPatternsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchPatternsResult>("ovh:CloudProject/getOpenSearchPatterns:getOpenSearchPatterns", args ?? new GetOpenSearchPatternsInvokeArgs(), options.WithDefaults());
     }
 
 

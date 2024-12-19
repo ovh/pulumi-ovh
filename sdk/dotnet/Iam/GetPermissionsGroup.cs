@@ -16,6 +16,9 @@ namespace Pulumi.Ovh.Iam
 
         public static Output<GetPermissionsGroupResult> Invoke(GetPermissionsGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPermissionsGroupResult>("ovh:Iam/getPermissionsGroup:getPermissionsGroup", args ?? new GetPermissionsGroupInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetPermissionsGroupResult> Invoke(GetPermissionsGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPermissionsGroupResult>("ovh:Iam/getPermissionsGroup:getPermissionsGroup", args ?? new GetPermissionsGroupInvokeArgs(), options.WithDefaults());
     }
 
 

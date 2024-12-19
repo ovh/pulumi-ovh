@@ -81,21 +81,11 @@ type GetM3dbUserResult struct {
 }
 
 func GetM3dbUserOutput(ctx *pulumi.Context, args GetM3dbUserOutputArgs, opts ...pulumi.InvokeOption) GetM3dbUserResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetM3dbUserResultOutput, error) {
 			args := v.(GetM3dbUserArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetM3dbUserResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getM3dbUser:getM3dbUser", args, &rv, "", opts...)
-			if err != nil {
-				return GetM3dbUserResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetM3dbUserResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetM3dbUserResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getM3dbUser:getM3dbUser", args, GetM3dbUserResultOutput{}, options).(GetM3dbUserResultOutput), nil
 		}).(GetM3dbUserResultOutput)
 }
 

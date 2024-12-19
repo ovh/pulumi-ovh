@@ -58,6 +58,30 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetCapabilitiesContainerRegistryResult> Invoke(GetCapabilitiesContainerRegistryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesContainerRegistryResult>("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", args ?? new GetCapabilitiesContainerRegistryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the container registry capabilities of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var capabilities = Ovh.CloudProject.GetCapabilitiesContainerRegistry.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCapabilitiesContainerRegistryResult> Invoke(GetCapabilitiesContainerRegistryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesContainerRegistryResult>("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", args ?? new GetCapabilitiesContainerRegistryInvokeArgs(), options.WithDefaults());
     }
 
 

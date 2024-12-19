@@ -72,6 +72,37 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public static Output<GetDatabaseLogSubscriptionResult> Invoke(GetDatabaseLogSubscriptionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseLogSubscriptionResult>("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", args ?? new GetDatabaseLogSubscriptionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about a log subscription for a cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var subscription = Ovh.CloudProjectDatabase.GetDatabaseLogSubscription.Invoke(new()
+        ///     {
+        ///         ServiceName = "VVV",
+        ///         Engine = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Id = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["subscriptionLdpName"] = subscription.Apply(getDatabaseLogSubscriptionResult =&gt; getDatabaseLogSubscriptionResult.LdpServiceName),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabaseLogSubscriptionResult> Invoke(GetDatabaseLogSubscriptionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseLogSubscriptionResult>("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", args ?? new GetDatabaseLogSubscriptionInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -143,7 +143,7 @@ export interface GetIpLoadBalancingResult {
  * });
  * ```
  */
-export function getIpLoadBalancingOutput(args?: GetIpLoadBalancingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpLoadBalancingResult> {
+export function getIpLoadBalancingOutput(args?: GetIpLoadBalancingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpLoadBalancingResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing", {

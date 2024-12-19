@@ -121,21 +121,11 @@ type GetServerResult struct {
 }
 
 func GetServerOutput(ctx *pulumi.Context, args GetServerOutputArgs, opts ...pulumi.InvokeOption) GetServerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServerResultOutput, error) {
 			args := v.(GetServerArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServerResult
-			secret, err := ctx.InvokePackageRaw("ovh:index/getServer:getServer", args, &rv, "", opts...)
-			if err != nil {
-				return GetServerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:index/getServer:getServer", args, GetServerResultOutput{}, options).(GetServerResultOutput), nil
 		}).(GetServerResultOutput)
 }
 

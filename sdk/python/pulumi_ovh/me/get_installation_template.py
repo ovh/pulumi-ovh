@@ -275,7 +275,7 @@ def get_installation_template(template_name: Optional[str] = None,
         subfamily=pulumi.get(__ret__, 'subfamily'),
         template_name=pulumi.get(__ret__, 'template_name'))
 def get_installation_template_output(template_name: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstallationTemplateResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstallationTemplateResult]:
     """
     Use this data source to get a custom installation template available for dedicated servers.
 
@@ -293,7 +293,7 @@ def get_installation_template_output(template_name: Optional[pulumi.Input[str]] 
     """
     __args__ = dict()
     __args__['templateName'] = template_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Me/getInstallationTemplate:getInstallationTemplate', __args__, opts=opts, typ=GetInstallationTemplateResult)
     return __ret__.apply(lambda __response__: GetInstallationTemplateResult(
         bit_format=pulumi.get(__response__, 'bit_format'),

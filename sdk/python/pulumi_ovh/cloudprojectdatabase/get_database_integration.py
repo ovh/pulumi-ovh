@@ -196,7 +196,7 @@ def get_database_integration_output(cluster_id: Optional[pulumi.Input[str]] = No
                                     engine: Optional[pulumi.Input[str]] = None,
                                     id: Optional[pulumi.Input[str]] = None,
                                     service_name: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseIntegrationResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseIntegrationResult]:
     """
     Use this data source to get information about an integration of a database cluster associated with a public cloud project.
 
@@ -226,7 +226,7 @@ def get_database_integration_output(cluster_id: Optional[pulumi.Input[str]] = No
     __args__['engine'] = engine
     __args__['id'] = id
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration', __args__, opts=opts, typ=GetDatabaseIntegrationResult)
     return __ret__.apply(lambda __response__: GetDatabaseIntegrationResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

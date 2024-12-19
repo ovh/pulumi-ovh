@@ -94,6 +94,48 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public static Output<GetPostgresSqlConnectionPoolResult> Invoke(GetPostgresSqlConnectionPoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresSqlConnectionPoolResult>("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", args ?? new GetPostgresSqlConnectionPoolInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about a connection pool of a postgresql cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var testPoolPostgresSqlConnectionPool = Ovh.CloudProjectDatabase.GetPostgresSqlConnectionPool.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["testPool"] = 
+        ///         {
+        ///             { "service_name", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ServiceName) },
+        ///             { "cluster_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ClusterId) },
+        ///             { "name", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Name) },
+        ///             { "database_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.DatabaseId) },
+        ///             { "mode", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Mode) },
+        ///             { "size", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Size) },
+        ///             { "port", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Port) },
+        ///             { "ssl_mode", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.SslMode) },
+        ///             { "uri", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Uri) },
+        ///             { "user_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.UserId) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPostgresSqlConnectionPoolResult> Invoke(GetPostgresSqlConnectionPoolInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPostgresSqlConnectionPoolResult>("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", args ?? new GetPostgresSqlConnectionPoolInvokeArgs(), options.WithDefaults());
     }
 
 

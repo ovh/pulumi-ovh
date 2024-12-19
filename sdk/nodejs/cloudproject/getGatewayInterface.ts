@@ -103,7 +103,7 @@ export interface GetGatewayInterfaceResult {
  * });
  * ```
  */
-export function getGatewayInterfaceOutput(args: GetGatewayInterfaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayInterfaceResult> {
+export function getGatewayInterfaceOutput(args: GetGatewayInterfaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getGatewayInterface:getGatewayInterface", {
         "id": args.id,

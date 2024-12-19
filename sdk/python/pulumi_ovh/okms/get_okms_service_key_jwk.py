@@ -27,10 +27,13 @@ class GetOkmsServiceKeyJwkResult:
     """
     A collection of values returned by getOkmsServiceKeyJwk.
     """
-    def __init__(__self__, created_at=None, id=None, keys=None, name=None, okms_id=None, size=None, state=None, type=None):
+    def __init__(__self__, created_at=None, iam=None, id=None, keys=None, name=None, okms_id=None, size=None, state=None, type=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if iam and not isinstance(iam, dict):
+            raise TypeError("Expected argument 'iam' to be a dict")
+        pulumi.set(__self__, "iam", iam)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -57,6 +60,11 @@ class GetOkmsServiceKeyJwkResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def iam(self) -> 'outputs.GetOkmsServiceKeyJwkIamResult':
+        return pulumi.get(self, "iam")
 
     @property
     @pulumi.getter
@@ -101,6 +109,7 @@ class AwaitableGetOkmsServiceKeyJwkResult(GetOkmsServiceKeyJwkResult):
             yield self
         return GetOkmsServiceKeyJwkResult(
             created_at=self.created_at,
+            iam=self.iam,
             id=self.id,
             keys=self.keys,
             name=self.name,
@@ -138,6 +147,7 @@ def get_okms_service_key_jwk(id: Optional[str] = None,
 
     return AwaitableGetOkmsServiceKeyJwkResult(
         created_at=pulumi.get(__ret__, 'created_at'),
+        iam=pulumi.get(__ret__, 'iam'),
         id=pulumi.get(__ret__, 'id'),
         keys=pulumi.get(__ret__, 'keys'),
         name=pulumi.get(__ret__, 'name'),
@@ -147,7 +157,7 @@ def get_okms_service_key_jwk(id: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'))
 def get_okms_service_key_jwk_output(id: Optional[pulumi.Input[str]] = None,
                                     okms_id: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOkmsServiceKeyJwkResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOkmsServiceKeyJwkResult]:
     """
     Use this data source to retrieve information about a KMS service key, in the JWK format.
 
@@ -168,10 +178,11 @@ def get_okms_service_key_jwk_output(id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['okmsId'] = okms_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Okms/getOkmsServiceKeyJwk:getOkmsServiceKeyJwk', __args__, opts=opts, typ=GetOkmsServiceKeyJwkResult)
     return __ret__.apply(lambda __response__: GetOkmsServiceKeyJwkResult(
         created_at=pulumi.get(__response__, 'created_at'),
+        iam=pulumi.get(__response__, 'iam'),
         id=pulumi.get(__response__, 'id'),
         keys=pulumi.get(__response__, 'keys'),
         name=pulumi.get(__response__, 'name'),

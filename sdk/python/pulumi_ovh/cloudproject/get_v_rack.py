@@ -112,7 +112,7 @@ def get_v_rack(service_name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_v_rack_output(service_name: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVRackResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVRackResult]:
     """
     Use this data source to get the linked vrack on your public cloud project.
 
@@ -132,7 +132,7 @@ def get_v_rack_output(service_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getVRack:getVRack', __args__, opts=opts, typ=GetVRackResult)
     return __ret__.apply(lambda __response__: GetVRackResult(
         description=pulumi.get(__response__, 'description'),

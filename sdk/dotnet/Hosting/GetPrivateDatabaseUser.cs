@@ -60,6 +60,31 @@ namespace Pulumi.Ovh.Hosting
         /// </summary>
         public static Output<GetPrivateDatabaseUserResult> Invoke(GetPrivateDatabaseUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseUserResult>("ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser", args ?? new GetPrivateDatabaseUserInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about an hosting privatedatabase user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var user = Ovh.Hosting.GetPrivateDatabaseUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         UserName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPrivateDatabaseUserResult> Invoke(GetPrivateDatabaseUserInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseUserResult>("ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser", args ?? new GetPrivateDatabaseUserInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -149,7 +149,7 @@ def get_zone(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         name_servers=pulumi.get(__ret__, 'name_servers'))
 def get_zone_output(name: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneResult]:
     """
     Use this data source to retrieve information about a domain zone.
 
@@ -167,7 +167,7 @@ def get_zone_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Domain/getZone:getZone', __args__, opts=opts, typ=GetZoneResult)
     return __ret__.apply(lambda __response__: GetZoneResult(
         zone_urn=pulumi.get(__response__, 'zone_urn'),

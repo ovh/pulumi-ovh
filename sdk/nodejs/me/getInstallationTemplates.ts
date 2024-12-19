@@ -47,7 +47,7 @@ export interface GetInstallationTemplatesResult {
  * const templates = ovh.Me.getInstallationTemplates({});
  * ```
  */
-export function getInstallationTemplatesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetInstallationTemplatesResult> {
+export function getInstallationTemplatesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstallationTemplatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getInstallationTemplates:getInstallationTemplates", {
     }, opts);

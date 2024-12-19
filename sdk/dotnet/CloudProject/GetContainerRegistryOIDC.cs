@@ -68,6 +68,35 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetContainerRegistryOIDCResult> Invoke(GetContainerRegistryOIDCInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryOIDCResult>("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", args ?? new GetContainerRegistryOIDCInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get a OVHcloud Managed Private Registry OIDC.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myOidc = Ovh.CloudProject.GetContainerRegistryOIDC.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidc-client-id"] = myOidc.Apply(getContainerRegistryOIDCResult =&gt; getContainerRegistryOIDCResult.OidcClientId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetContainerRegistryOIDCResult> Invoke(GetContainerRegistryOIDCInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryOIDCResult>("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", args ?? new GetContainerRegistryOIDCInvokeArgs(), options.WithDefaults());
     }
 
 

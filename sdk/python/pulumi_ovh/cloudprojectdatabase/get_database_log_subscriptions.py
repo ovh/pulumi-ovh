@@ -139,7 +139,7 @@ def get_database_log_subscriptions(cluster_id: Optional[str] = None,
 def get_database_log_subscriptions_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                           engine: Optional[pulumi.Input[str]] = None,
                                           service_name: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseLogSubscriptionsResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseLogSubscriptionsResult]:
     """
     Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
 
@@ -166,7 +166,7 @@ def get_database_log_subscriptions_output(cluster_id: Optional[pulumi.Input[str]
     __args__['clusterId'] = cluster_id
     __args__['engine'] = engine
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getDatabaseLogSubscriptions:getDatabaseLogSubscriptions', __args__, opts=opts, typ=GetDatabaseLogSubscriptionsResult)
     return __ret__.apply(lambda __response__: GetDatabaseLogSubscriptionsResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

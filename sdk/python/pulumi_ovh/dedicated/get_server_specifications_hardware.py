@@ -280,7 +280,7 @@ def get_server_specifications_hardware(service_name: Optional[str] = None,
         threads_per_processor=pulumi.get(__ret__, 'threads_per_processor'),
         usb_keys=pulumi.get(__ret__, 'usb_keys'))
 def get_server_specifications_hardware_output(service_name: Optional[pulumi.Input[str]] = None,
-                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerSpecificationsHardwareResult]:
+                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerSpecificationsHardwareResult]:
     """
     Use this data source to get the hardward information about a dedicated server associated with your OVHcloud Account.
 
@@ -298,7 +298,7 @@ def get_server_specifications_hardware_output(service_name: Optional[pulumi.Inpu
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware', __args__, opts=opts, typ=GetServerSpecificationsHardwareResult)
     return __ret__.apply(lambda __response__: GetServerSpecificationsHardwareResult(
         boot_mode=pulumi.get(__response__, 'boot_mode'),

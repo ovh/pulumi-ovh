@@ -66,6 +66,34 @@ namespace Pulumi.Ovh
         /// </summary>
         public static Output<GetInstallationTemplateResult> Invoke(GetInstallationTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstallationTemplateResult>("ovh:index/getInstallationTemplate:getInstallationTemplate", args ?? new GetInstallationTemplateInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a specific OVH dedicated server installation template.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ovhTemplate = Ovh.GetInstallationTemplate.Invoke(new()
+        ///     {
+        ///         TemplateName = "debian12_64",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["template"] = ovhTemplate,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstallationTemplateResult> Invoke(GetInstallationTemplateInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstallationTemplateResult>("ovh:index/getInstallationTemplate:getInstallationTemplate", args ?? new GetInstallationTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

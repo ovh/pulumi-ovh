@@ -47,7 +47,7 @@ export interface GetIdentityUsersResult {
  * const users = ovh.Me.getIdentityUsers({});
  * ```
  */
-export function getIdentityUsersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityUsersResult> {
+export function getIdentityUsersOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getIdentityUsers:getIdentityUsers", {
     }, opts);

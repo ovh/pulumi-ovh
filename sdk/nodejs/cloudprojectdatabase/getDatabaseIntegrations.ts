@@ -93,7 +93,7 @@ export interface GetDatabaseIntegrationsResult {
  * export const integrationIds = integrations.then(integrations => integrations.integrationIds);
  * ```
  */
-export function getDatabaseIntegrationsOutput(args: GetDatabaseIntegrationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseIntegrationsResult> {
+export function getDatabaseIntegrationsOutput(args: GetDatabaseIntegrationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseIntegrationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabaseIntegrations:getDatabaseIntegrations", {
         "clusterId": args.clusterId,

@@ -129,7 +129,7 @@ def get_firewall(ip: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'))
 def get_firewall_output(ip: Optional[pulumi.Input[str]] = None,
                         ip_on_firewall: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallResult]:
     """
     Use this data source to retrieve information about an IP firewall.
 
@@ -150,7 +150,7 @@ def get_firewall_output(ip: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['ip'] = ip
     __args__['ipOnFirewall'] = ip_on_firewall
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Ip/getFirewall:getFirewall', __args__, opts=opts, typ=GetFirewallResult)
     return __ret__.apply(lambda __response__: GetFirewallResult(
         enabled=pulumi.get(__response__, 'enabled'),

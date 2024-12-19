@@ -217,7 +217,7 @@ def get_container_registry(registry_id: Optional[str] = None,
         version=pulumi.get(__ret__, 'version'))
 def get_container_registry_output(registry_id: Optional[pulumi.Input[str]] = None,
                                   service_name: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRegistryResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryResult]:
     """
     Use this data source to get information about a container registry associated with a public cloud project.
 
@@ -239,7 +239,7 @@ def get_container_registry_output(registry_id: Optional[pulumi.Input[str]] = Non
     __args__ = dict()
     __args__['registryId'] = registry_id
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getContainerRegistry:getContainerRegistry', __args__, opts=opts, typ=GetContainerRegistryResult)
     return __ret__.apply(lambda __response__: GetContainerRegistryResult(
         created_at=pulumi.get(__response__, 'created_at'),

@@ -83,7 +83,7 @@ export interface GetLogsInputEngineResult {
  * });
  * ```
  */
-export function getLogsInputEngineOutput(args: GetLogsInputEngineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsInputEngineResult> {
+export function getLogsInputEngineOutput(args: GetLogsInputEngineOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogsInputEngineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", {
         "isDeprecated": args.isDeprecated,

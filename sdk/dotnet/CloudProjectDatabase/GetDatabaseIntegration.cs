@@ -72,6 +72,37 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public static Output<GetDatabaseIntegrationResult> Invoke(GetDatabaseIntegrationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseIntegrationResult>("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", args ?? new GetDatabaseIntegrationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about an integration of a database cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var integration = Ovh.CloudProjectDatabase.GetDatabaseIntegration.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         Engine = "YYY",
+        ///         ClusterId = "ZZZ",
+        ///         Id = "UUU",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["integrationType"] = integration.Apply(getDatabaseIntegrationResult =&gt; getDatabaseIntegrationResult.Type),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabaseIntegrationResult> Invoke(GetDatabaseIntegrationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseIntegrationResult>("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", args ?? new GetDatabaseIntegrationInvokeArgs(), options.WithDefaults());
     }
 
 

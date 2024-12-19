@@ -89,7 +89,7 @@ export interface GetNetworkPrivateSubnetsResult {
  * }
  * ```
  */
-export function getNetworkPrivateSubnetsOutput(args: GetNetworkPrivateSubnetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPrivateSubnetsResult> {
+export function getNetworkPrivateSubnetsOutput(args: GetNetworkPrivateSubnetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkPrivateSubnetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getNetworkPrivateSubnets:getNetworkPrivateSubnets", {
         "networkId": args.networkId,

@@ -171,7 +171,7 @@ def get_user(service_name: Optional[str] = None,
         username=pulumi.get(__ret__, 'username'))
 def get_user_output(service_name: Optional[pulumi.Input[str]] = None,
                     user_id: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Get the user details of a previously created public cloud project user.
 
@@ -197,7 +197,7 @@ def get_user_output(service_name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['serviceName'] = service_name
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
     return __ret__.apply(lambda __response__: GetUserResult(
         creation_date=pulumi.get(__response__, 'creation_date'),

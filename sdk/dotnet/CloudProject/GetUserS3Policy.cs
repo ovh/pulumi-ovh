@@ -86,6 +86,44 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetUserS3PolicyResult> Invoke(GetUserS3PolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserS3PolicyResult>("ovh:CloudProject/getUserS3Policy:getUserS3Policy", args ?? new GetUserS3PolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get the S3 Policy of a public cloud project user. The policy can be set by using the `ovh.CloudProject.S3Policy` resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectUsers = Ovh.CloudProject.GetUsers.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        ///     // Get the user ID of a previously created user with the description "S3-User"
+        ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
+        ///     {
+        ///         return user.UserId;
+        ///     }).ToList();
+        /// 
+        ///     var s3UserId = users[0];
+        /// 
+        ///     var policy = Ovh.CloudProject.GetUserS3Policy.Invoke(new()
+        ///     {
+        ///         ServiceName = projectUsers.Apply(getUsersResult =&gt; getUsersResult.ServiceName),
+        ///         UserId = s3UserId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetUserS3PolicyResult> Invoke(GetUserS3PolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserS3PolicyResult>("ovh:CloudProject/getUserS3Policy:getUserS3Policy", args ?? new GetUserS3PolicyInvokeArgs(), options.WithDefaults());
     }
 
 

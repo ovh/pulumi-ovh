@@ -116,7 +116,7 @@ def get_container_registry_users(registry_id: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_container_registry_users_output(registry_id: Optional[pulumi.Input[str]] = None,
                                         service_name: Optional[pulumi.Input[str]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRegistryUsersResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryUsersResult]:
     """
     Use this data source to get the list of users of a container registry associated with a public cloud project.
 
@@ -140,7 +140,7 @@ def get_container_registry_users_output(registry_id: Optional[pulumi.Input[str]]
     __args__ = dict()
     __args__['registryId'] = registry_id
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers', __args__, opts=opts, typ=GetContainerRegistryUsersResult)
     return __ret__.apply(lambda __response__: GetContainerRegistryUsersResult(
         id=pulumi.get(__response__, 'id'),

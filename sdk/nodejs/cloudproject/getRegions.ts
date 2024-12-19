@@ -74,7 +74,7 @@ export interface GetRegionsResult {
  * });
  * ```
  */
-export function getRegionsOutput(args: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
+export function getRegionsOutput(args: GetRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getRegions:getRegions", {
         "hasServicesUps": args.hasServicesUps,

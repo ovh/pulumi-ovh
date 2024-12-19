@@ -60,6 +60,31 @@ namespace Pulumi.Ovh.Okms
         /// </summary>
         public static Output<GetOkmsServiceKeyResult> Invoke(GetOkmsServiceKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsServiceKeyResult>("ovh:Okms/getOkmsServiceKey:getOkmsServiceKey", args ?? new GetOkmsServiceKeyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a KMS service key.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var keyInfo = Ovh.Okms.GetOkmsServiceKey.Invoke(new()
+        ///     {
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOkmsServiceKeyResult> Invoke(GetOkmsServiceKeyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOkmsServiceKeyResult>("ovh:Okms/getOkmsServiceKey:getOkmsServiceKey", args ?? new GetOkmsServiceKeyInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -109,6 +134,7 @@ namespace Pulumi.Ovh.Okms
     {
         public readonly string CreatedAt;
         public readonly string Curve;
+        public readonly Outputs.GetOkmsServiceKeyIamResult Iam;
         public readonly string Id;
         public readonly string Name;
         public readonly string OkmsId;
@@ -122,6 +148,8 @@ namespace Pulumi.Ovh.Okms
             string createdAt,
 
             string curve,
+
+            Outputs.GetOkmsServiceKeyIamResult iam,
 
             string id,
 
@@ -139,6 +167,7 @@ namespace Pulumi.Ovh.Okms
         {
             CreatedAt = createdAt;
             Curve = curve;
+            Iam = iam;
             Id = id;
             Name = name;
             OkmsId = okmsId;

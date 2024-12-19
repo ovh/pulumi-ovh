@@ -177,7 +177,7 @@ export interface GetKubeNodePoolResult {
  * export const maxNodes = nodepool.then(nodepool => nodepool.maxNodes);
  * ```
  */
-export function getKubeNodePoolOutput(args: GetKubeNodePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeNodePoolResult> {
+export function getKubeNodePoolOutput(args: GetKubeNodePoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeNodePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeNodePool:getKubeNodePool", {
         "kubeId": args.kubeId,

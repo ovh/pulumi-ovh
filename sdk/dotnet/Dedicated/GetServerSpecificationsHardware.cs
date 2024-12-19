@@ -58,6 +58,30 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         public static Output<GetServerSpecificationsHardwareResult> Invoke(GetServerSpecificationsHardwareInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerSpecificationsHardwareResult>("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", args ?? new GetServerSpecificationsHardwareInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the hardward information about a dedicated server associated with your OVHcloud Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var spec = Ovh.Dedicated.GetServerSpecificationsHardware.Invoke(new()
+        ///     {
+        ///         ServiceName = "myserver",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServerSpecificationsHardwareResult> Invoke(GetServerSpecificationsHardwareInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerSpecificationsHardwareResult>("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", args ?? new GetServerSpecificationsHardwareInvokeArgs(), options.WithDefaults());
     }
 
 

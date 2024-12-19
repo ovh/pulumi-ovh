@@ -18,7 +18,7 @@ def readme():
 
 
 setup(name='pulumi_ovh',
-      python_requires='>=3.8',
+      python_requires='>=3.9',
       version=VERSION,
       description="A Pulumi package for creating and managing OVH resources.",
       long_description=readme(),

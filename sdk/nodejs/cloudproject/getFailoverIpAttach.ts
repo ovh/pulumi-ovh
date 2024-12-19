@@ -102,7 +102,7 @@ export interface GetFailoverIpAttachResult {
  * });
  * ```
  */
-export function getFailoverIpAttachOutput(args: GetFailoverIpAttachOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFailoverIpAttachResult> {
+export function getFailoverIpAttachOutput(args: GetFailoverIpAttachOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFailoverIpAttachResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach", {
         "block": args.block,

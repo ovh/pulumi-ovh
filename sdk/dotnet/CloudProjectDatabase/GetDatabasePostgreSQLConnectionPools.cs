@@ -68,6 +68,35 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public static Output<GetDatabasePostgreSQLConnectionPoolsResult> Invoke(GetDatabasePostgreSQLConnectionPoolsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgreSQLConnectionPoolsResult>("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", args ?? new GetDatabasePostgreSQLConnectionPoolsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var testPools = Ovh.CloudProjectDatabase.GetDatabasePostgreSQLConnectionPools.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["connectionPoolIds"] = testPools.Apply(getDatabasePostgreSQLConnectionPoolsResult =&gt; getDatabasePostgreSQLConnectionPoolsResult.ConnectionPoolIds),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabasePostgreSQLConnectionPoolsResult> Invoke(GetDatabasePostgreSQLConnectionPoolsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgreSQLConnectionPoolsResult>("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", args ?? new GetDatabasePostgreSQLConnectionPoolsInvokeArgs(), options.WithDefaults());
     }
 
 

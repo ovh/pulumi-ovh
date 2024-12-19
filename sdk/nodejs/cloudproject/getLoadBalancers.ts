@@ -82,7 +82,7 @@ export interface GetLoadBalancersResult {
  * export const lbs = lbsLoadBalancers;
  * ```
  */
-export function getLoadBalancersOutput(args: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
+export function getLoadBalancersOutput(args: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getLoadBalancers:getLoadBalancers", {
         "regionName": args.regionName,

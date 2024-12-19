@@ -81,7 +81,7 @@ def get_resource_groups(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     return AwaitableGetResourceGroupsResult(
         id=pulumi.get(__ret__, 'id'),
         resource_groups=pulumi.get(__ret__, 'resource_groups'))
-def get_resource_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceGroupsResult]:
+def get_resource_groups_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceGroupsResult]:
     """
     Use this data source to list the existing IAM policies of an account.
 
@@ -95,7 +95,7 @@ def get_resource_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getResourceGroups:getResourceGroups', __args__, opts=opts, typ=GetResourceGroupsResult)
     return __ret__.apply(lambda __response__: GetResourceGroupsResult(
         id=pulumi.get(__response__, 'id'),

@@ -81,21 +81,11 @@ type GetNasHAResult struct {
 }
 
 func GetNasHAOutput(ctx *pulumi.Context, args GetNasHAOutputArgs, opts ...pulumi.InvokeOption) GetNasHAResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNasHAResultOutput, error) {
 			args := v.(GetNasHAArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNasHAResult
-			secret, err := ctx.InvokePackageRaw("ovh:Dedicated/getNasHA:getNasHA", args, &rv, "", opts...)
-			if err != nil {
-				return GetNasHAResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNasHAResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNasHAResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Dedicated/getNasHA:getNasHA", args, GetNasHAResultOutput{}, options).(GetNasHAResultOutput), nil
 		}).(GetNasHAResultOutput)
 }
 

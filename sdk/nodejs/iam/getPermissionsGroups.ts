@@ -48,7 +48,7 @@ export interface GetPermissionsGroupsResult {
  * });
  * ```
  */
-export function getPermissionsGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionsGroupsResult> {
+export function getPermissionsGroupsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPermissionsGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getPermissionsGroups:getPermissionsGroups", {
     }, opts);

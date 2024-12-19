@@ -57,18 +57,8 @@ type GetPermissionsGroupsResult struct {
 
 func GetPermissionsGroupsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPermissionsGroupsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetPermissionsGroupsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetPermissionsGroupsResult
-		secret, err := ctx.InvokePackageRaw("ovh:Iam/getPermissionsGroups:getPermissionsGroups", nil, &rv, "", opts...)
-		if err != nil {
-			return GetPermissionsGroupsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetPermissionsGroupsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetPermissionsGroupsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("ovh:Iam/getPermissionsGroups:getPermissionsGroups", nil, GetPermissionsGroupsResultOutput{}, options).(GetPermissionsGroupsResultOutput), nil
 	}).(GetPermissionsGroupsResultOutput)
 }
 

@@ -120,7 +120,7 @@ def get_kafka_topics(cluster_id: Optional[str] = None,
         topic_ids=pulumi.get(__ret__, 'topic_ids'))
 def get_kafka_topics_output(cluster_id: Optional[pulumi.Input[str]] = None,
                             service_name: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaTopicsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaTopicsResult]:
     """
     Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
 
@@ -143,7 +143,7 @@ def get_kafka_topics_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getKafkaTopics:getKafkaTopics', __args__, opts=opts, typ=GetKafkaTopicsResult)
     return __ret__.apply(lambda __response__: GetKafkaTopicsResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

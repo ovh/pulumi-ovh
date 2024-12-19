@@ -63,7 +63,7 @@ export interface GetZoneDNSSecResult {
  * });
  * ```
  */
-export function getZoneDNSSecOutput(args: GetZoneDNSSecOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneDNSSecResult> {
+export function getZoneDNSSecOutput(args: GetZoneDNSSecOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneDNSSecResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Domain/getZoneDNSSec:getZoneDNSSec", {
         "zoneName": args.zoneName,

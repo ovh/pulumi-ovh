@@ -105,21 +105,11 @@ type GetLogsClustersRetentionResult struct {
 }
 
 func GetLogsClustersRetentionOutput(ctx *pulumi.Context, args GetLogsClustersRetentionOutputArgs, opts ...pulumi.InvokeOption) GetLogsClustersRetentionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLogsClustersRetentionResultOutput, error) {
 			args := v.(GetLogsClustersRetentionArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetLogsClustersRetentionResult
-			secret, err := ctx.InvokePackageRaw("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", args, &rv, "", opts...)
-			if err != nil {
-				return GetLogsClustersRetentionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLogsClustersRetentionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLogsClustersRetentionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", args, GetLogsClustersRetentionResultOutput{}, options).(GetLogsClustersRetentionResultOutput), nil
 		}).(GetLogsClustersRetentionResultOutput)
 }
 

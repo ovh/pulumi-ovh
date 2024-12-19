@@ -201,7 +201,7 @@ def get_identity_user(user: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         user=pulumi.get(__ret__, 'user'))
 def get_identity_user_output(user: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdentityUserResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdentityUserResult]:
     """
     Use this data source to retrieve information about an identity user.
 
@@ -219,7 +219,7 @@ def get_identity_user_output(user: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['user'] = user
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Me/getIdentityUser:getIdentityUser', __args__, opts=opts, typ=GetIdentityUserResult)
     return __ret__.apply(lambda __response__: GetIdentityUserResult(
         user_urn=pulumi.get(__response__, 'user_urn'),

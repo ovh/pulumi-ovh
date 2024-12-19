@@ -66,6 +66,34 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetVRackResult> Invoke(GetVRackInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVRackResult>("ovh:CloudProject/getVRack:getVRack", args ?? new GetVRackInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the linked vrack on your public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vrackVRack = Ovh.CloudProject.GetVRack.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vrack"] = vrackVRack,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVRackResult> Invoke(GetVRackInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVRackResult>("ovh:CloudProject/getVRack:getVRack", args ?? new GetVRackInvokeArgs(), options.WithDefaults());
     }
 
 

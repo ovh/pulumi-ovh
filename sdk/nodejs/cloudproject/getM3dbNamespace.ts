@@ -123,7 +123,7 @@ export interface GetM3dbNamespaceResult {
  * export const m3dbnamespaceType = m3dbNamespace.then(m3dbNamespace => m3dbNamespace.type);
  * ```
  */
-export function getM3dbNamespaceOutput(args: GetM3dbNamespaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbNamespaceResult> {
+export function getM3dbNamespaceOutput(args: GetM3dbNamespaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetM3dbNamespaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getM3dbNamespace:getM3dbNamespace", {
         "clusterId": args.clusterId,

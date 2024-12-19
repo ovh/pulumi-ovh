@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.Okms.outputs;
 
+import com.ovhcloud.pulumi.ovh.Okms.outputs.GetOkmsServiceKeyJwkIam;
 import com.ovhcloud.pulumi.ovh.Okms.outputs.GetOkmsServiceKeyJwkKey;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -14,6 +15,7 @@ import java.util.Objects;
 @CustomType
 public final class GetOkmsServiceKeyJwkResult {
     private String createdAt;
+    private GetOkmsServiceKeyJwkIam iam;
     private String id;
     private List<GetOkmsServiceKeyJwkKey> keys;
     private String name;
@@ -25,6 +27,9 @@ public final class GetOkmsServiceKeyJwkResult {
     private GetOkmsServiceKeyJwkResult() {}
     public String createdAt() {
         return this.createdAt;
+    }
+    public GetOkmsServiceKeyJwkIam iam() {
+        return this.iam;
     }
     public String id() {
         return this.id;
@@ -58,6 +63,7 @@ public final class GetOkmsServiceKeyJwkResult {
     @CustomType.Builder
     public static final class Builder {
         private String createdAt;
+        private GetOkmsServiceKeyJwkIam iam;
         private String id;
         private List<GetOkmsServiceKeyJwkKey> keys;
         private String name;
@@ -69,6 +75,7 @@ public final class GetOkmsServiceKeyJwkResult {
         public Builder(GetOkmsServiceKeyJwkResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
+    	      this.iam = defaults.iam;
     	      this.id = defaults.id;
     	      this.keys = defaults.keys;
     	      this.name = defaults.name;
@@ -84,6 +91,14 @@ public final class GetOkmsServiceKeyJwkResult {
               throw new MissingRequiredPropertyException("GetOkmsServiceKeyJwkResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder iam(GetOkmsServiceKeyJwkIam iam) {
+            if (iam == null) {
+              throw new MissingRequiredPropertyException("GetOkmsServiceKeyJwkResult", "iam");
+            }
+            this.iam = iam;
             return this;
         }
         @CustomType.Setter
@@ -148,6 +163,7 @@ public final class GetOkmsServiceKeyJwkResult {
         public GetOkmsServiceKeyJwkResult build() {
             final var _resultValue = new GetOkmsServiceKeyJwkResult();
             _resultValue.createdAt = createdAt;
+            _resultValue.iam = iam;
             _resultValue.id = id;
             _resultValue.keys = keys;
             _resultValue.name = name;

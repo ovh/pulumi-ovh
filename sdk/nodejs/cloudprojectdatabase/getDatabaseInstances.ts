@@ -93,7 +93,7 @@ export interface GetDatabaseInstancesResult {
  * export const databaseIds = databases.then(databases => databases.databaseIds);
  * ```
  */
-export function getDatabaseInstancesOutput(args: GetDatabaseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstancesResult> {
+export function getDatabaseInstancesOutput(args: GetDatabaseInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseInstancesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabaseInstances:getDatabaseInstances", {
         "clusterId": args.clusterId,

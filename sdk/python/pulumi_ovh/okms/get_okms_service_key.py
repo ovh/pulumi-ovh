@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetOkmsServiceKeyResult',
@@ -26,13 +27,16 @@ class GetOkmsServiceKeyResult:
     """
     A collection of values returned by getOkmsServiceKey.
     """
-    def __init__(__self__, created_at=None, curve=None, id=None, name=None, okms_id=None, operations=None, size=None, state=None, type=None):
+    def __init__(__self__, created_at=None, curve=None, iam=None, id=None, name=None, okms_id=None, operations=None, size=None, state=None, type=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
         if curve and not isinstance(curve, str):
             raise TypeError("Expected argument 'curve' to be a str")
         pulumi.set(__self__, "curve", curve)
+        if iam and not isinstance(iam, dict):
+            raise TypeError("Expected argument 'iam' to be a dict")
+        pulumi.set(__self__, "iam", iam)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -64,6 +68,11 @@ class GetOkmsServiceKeyResult:
     @pulumi.getter
     def curve(self) -> str:
         return pulumi.get(self, "curve")
+
+    @property
+    @pulumi.getter
+    def iam(self) -> 'outputs.GetOkmsServiceKeyIamResult':
+        return pulumi.get(self, "iam")
 
     @property
     @pulumi.getter
@@ -109,6 +118,7 @@ class AwaitableGetOkmsServiceKeyResult(GetOkmsServiceKeyResult):
         return GetOkmsServiceKeyResult(
             created_at=self.created_at,
             curve=self.curve,
+            iam=self.iam,
             id=self.id,
             name=self.name,
             okms_id=self.okms_id,
@@ -147,6 +157,7 @@ def get_okms_service_key(id: Optional[str] = None,
     return AwaitableGetOkmsServiceKeyResult(
         created_at=pulumi.get(__ret__, 'created_at'),
         curve=pulumi.get(__ret__, 'curve'),
+        iam=pulumi.get(__ret__, 'iam'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         okms_id=pulumi.get(__ret__, 'okms_id'),
@@ -156,7 +167,7 @@ def get_okms_service_key(id: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'))
 def get_okms_service_key_output(id: Optional[pulumi.Input[str]] = None,
                                 okms_id: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOkmsServiceKeyResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOkmsServiceKeyResult]:
     """
     Use this data source to retrieve information about a KMS service key.
 
@@ -177,11 +188,12 @@ def get_okms_service_key_output(id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['okmsId'] = okms_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Okms/getOkmsServiceKey:getOkmsServiceKey', __args__, opts=opts, typ=GetOkmsServiceKeyResult)
     return __ret__.apply(lambda __response__: GetOkmsServiceKeyResult(
         created_at=pulumi.get(__response__, 'created_at'),
         curve=pulumi.get(__response__, 'curve'),
+        iam=pulumi.get(__response__, 'iam'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         okms_id=pulumi.get(__response__, 'okms_id'),

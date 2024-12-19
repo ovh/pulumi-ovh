@@ -64,6 +64,33 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetGatewayInterfaceResult> Invoke(GetGatewayInterfaceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayInterfaceResult>("ovh:CloudProject/getGatewayInterface:getGatewayInterface", args ?? new GetGatewayInterfaceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this datasource to get a public cloud project Gateway Interface.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @interface = Ovh.CloudProject.GetGatewayInterface.Invoke(new()
+        ///     {
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///         InterfaceId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
+        ///         Region = "GRA11",
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGatewayInterfaceResult> Invoke(GetGatewayInterfaceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewayInterfaceResult>("ovh:CloudProject/getGatewayInterface:getGatewayInterface", args ?? new GetGatewayInterfaceInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -126,7 +126,7 @@ def get_server_boots(boot_type: Optional[str] = None,
 def get_server_boots_output(boot_type: Optional[pulumi.Input[Optional[str]]] = None,
                             kernel: Optional[pulumi.Input[Optional[str]]] = None,
                             service_name: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerBootsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerBootsResult]:
     """
     Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
 
@@ -149,7 +149,7 @@ def get_server_boots_output(boot_type: Optional[pulumi.Input[Optional[str]]] = N
     __args__['bootType'] = boot_type
     __args__['kernel'] = kernel
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dedicated/getServerBoots:getServerBoots', __args__, opts=opts, typ=GetServerBootsResult)
     return __ret__.apply(lambda __response__: GetServerBootsResult(
         boot_type=pulumi.get(__response__, 'boot_type'),

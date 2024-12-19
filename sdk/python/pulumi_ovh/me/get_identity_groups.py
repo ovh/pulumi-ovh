@@ -81,7 +81,7 @@ def get_identity_groups(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     return AwaitableGetIdentityGroupsResult(
         groups=pulumi.get(__ret__, 'groups'),
         id=pulumi.get(__ret__, 'id'))
-def get_identity_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdentityGroupsResult]:
+def get_identity_groups_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdentityGroupsResult]:
     """
     Use this data source to retrieve the list of the account's identity groups
 
@@ -95,7 +95,7 @@ def get_identity_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Me/getIdentityGroups:getIdentityGroups', __args__, opts=opts, typ=GetIdentityGroupsResult)
     return __ret__.apply(lambda __response__: GetIdentityGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

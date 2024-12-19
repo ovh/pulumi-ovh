@@ -242,7 +242,7 @@ def get_m3db_namespace(cluster_id: Optional[str] = None,
 def get_m3db_namespace_output(cluster_id: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[str]] = None,
                               service_name: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetM3dbNamespaceResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetM3dbNamespaceResult]:
     """
     Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
 
@@ -268,7 +268,7 @@ def get_m3db_namespace_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getM3dbNamespace:getM3dbNamespace', __args__, opts=opts, typ=GetM3dbNamespaceResult)
     return __ret__.apply(lambda __response__: GetM3dbNamespaceResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

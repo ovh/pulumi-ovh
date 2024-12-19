@@ -143,7 +143,7 @@ def get_ip_restrictions(cluster_id: Optional[str] = None,
 def get_ip_restrictions_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                engine: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpRestrictionsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpRestrictionsResult]:
     """
     Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
 
@@ -174,7 +174,7 @@ def get_ip_restrictions_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__['clusterId'] = cluster_id
     __args__['engine'] = engine
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions', __args__, opts=opts, typ=GetIpRestrictionsResult)
     return __ret__.apply(lambda __response__: GetIpRestrictionsResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

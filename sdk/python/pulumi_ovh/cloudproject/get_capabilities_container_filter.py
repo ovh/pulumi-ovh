@@ -194,7 +194,7 @@ def get_capabilities_container_filter(plan_name: Optional[str] = None,
 def get_capabilities_container_filter_output(plan_name: Optional[pulumi.Input[str]] = None,
                                              region: Optional[pulumi.Input[str]] = None,
                                              service_name: Optional[pulumi.Input[str]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCapabilitiesContainerFilterResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCapabilitiesContainerFilterResult]:
     """
     Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
 
@@ -219,7 +219,7 @@ def get_capabilities_container_filter_output(plan_name: Optional[pulumi.Input[st
     __args__['planName'] = plan_name
     __args__['region'] = region
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter', __args__, opts=opts, typ=GetCapabilitiesContainerFilterResult)
     return __ret__.apply(lambda __response__: GetCapabilitiesContainerFilterResult(
         code=pulumi.get(__response__, 'code'),

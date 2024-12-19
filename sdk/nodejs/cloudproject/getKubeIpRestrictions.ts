@@ -80,7 +80,7 @@ export interface GetKubeIpRestrictionsResult {
  * export const ips = ipRestrictions.then(ipRestrictions => ipRestrictions.ips);
  * ```
  */
-export function getKubeIpRestrictionsOutput(args: GetKubeIpRestrictionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeIpRestrictionsResult> {
+export function getKubeIpRestrictionsOutput(args: GetKubeIpRestrictionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeIpRestrictionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeIpRestrictions:getKubeIpRestrictions", {
         "kubeId": args.kubeId,

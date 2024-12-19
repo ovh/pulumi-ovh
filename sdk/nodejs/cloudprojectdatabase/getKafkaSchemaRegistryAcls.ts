@@ -80,7 +80,7 @@ export interface GetKafkaSchemaRegistryAclsResult {
  * export const aclIds = schemaRegistryAcls.then(schemaRegistryAcls => schemaRegistryAcls.aclIds);
  * ```
  */
-export function getKafkaSchemaRegistryAclsOutput(args: GetKafkaSchemaRegistryAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaRegistryAclsResult> {
+export function getKafkaSchemaRegistryAclsOutput(args: GetKafkaSchemaRegistryAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaSchemaRegistryAclsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcls:getKafkaSchemaRegistryAcls", {
         "clusterId": args.clusterId,

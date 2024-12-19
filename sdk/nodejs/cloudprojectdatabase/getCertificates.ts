@@ -93,7 +93,7 @@ export interface GetCertificatesResult {
  * export const certificatesCa = certificates.then(certificates => certificates.ca);
  * ```
  */
-export function getCertificatesOutput(args: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
+export function getCertificatesOutput(args: GetCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCertificatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getCertificates:getCertificates", {
         "clusterId": args.clusterId,

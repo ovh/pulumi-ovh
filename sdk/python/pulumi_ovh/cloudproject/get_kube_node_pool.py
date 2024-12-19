@@ -396,7 +396,7 @@ def get_kube_node_pool_output(kube_id: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[str]] = None,
                               service_name: Optional[pulumi.Input[str]] = None,
                               template: Optional[pulumi.Input[Optional[Union['GetKubeNodePoolTemplateArgs', 'GetKubeNodePoolTemplateArgsDict']]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubeNodePoolResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubeNodePoolResult]:
     """
     Use this data source to get a OVHcloud Managed Kubernetes node pool.
 
@@ -423,7 +423,7 @@ def get_kube_node_pool_output(kube_id: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['serviceName'] = service_name
     __args__['template'] = template
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getKubeNodePool:getKubeNodePool', __args__, opts=opts, typ=GetKubeNodePoolResult)
     return __ret__.apply(lambda __response__: GetKubeNodePoolResult(
         anti_affinity=pulumi.get(__response__, 'anti_affinity'),

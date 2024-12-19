@@ -878,6 +878,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Okms/serviceKeyJWK",
+  "fqn": "pulumi_ovh.okms",
+  "classes": {
+   "ovh:Okms/serviceKeyJWK:ServiceKeyJWK": "ServiceKeyJWK"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Vps/vps",
   "fqn": "pulumi_ovh.vps",
   "classes": {

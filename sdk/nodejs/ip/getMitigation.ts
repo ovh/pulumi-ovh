@@ -83,7 +83,7 @@ export interface GetMitigationResult {
  * });
  * ```
  */
-export function getMitigationOutput(args: GetMitigationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMitigationResult> {
+export function getMitigationOutput(args: GetMitigationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMitigationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Ip/getMitigation:getMitigation", {
         "ip": args.ip,

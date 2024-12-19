@@ -105,21 +105,11 @@ type LookupContainerRegistryOIDCResult struct {
 }
 
 func LookupContainerRegistryOIDCOutput(ctx *pulumi.Context, args LookupContainerRegistryOIDCOutputArgs, opts ...pulumi.InvokeOption) LookupContainerRegistryOIDCResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupContainerRegistryOIDCResultOutput, error) {
 			args := v.(LookupContainerRegistryOIDCArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupContainerRegistryOIDCResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", args, &rv, "", opts...)
-			if err != nil {
-				return LookupContainerRegistryOIDCResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupContainerRegistryOIDCResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupContainerRegistryOIDCResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", args, LookupContainerRegistryOIDCResultOutput{}, options).(LookupContainerRegistryOIDCResultOutput), nil
 		}).(LookupContainerRegistryOIDCResultOutput)
 }
 

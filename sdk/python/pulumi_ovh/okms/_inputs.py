@@ -17,6 +17,10 @@ from .. import _utilities
 __all__ = [
     'OkmsIamArgs',
     'OkmsIamArgsDict',
+    'ServiceKeyJWKIamArgs',
+    'ServiceKeyJWKIamArgsDict',
+    'ServiceKeyJWKKeyArgs',
+    'ServiceKeyJWKKeyArgsDict',
 ]
 
 MYPY = False
@@ -111,5 +115,447 @@ class OkmsIamArgs:
     @urn.setter
     def urn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "urn", value)
+
+
+if not MYPY:
+    class ServiceKeyJWKIamArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Resource display name
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique identifier of the resource
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        urn: NotRequired[pulumi.Input[str]]
+        """
+        Unique resource name used in policies
+        """
+elif False:
+    ServiceKeyJWKIamArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceKeyJWKIamArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 urn: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] id: Unique identifier of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param pulumi.Input[str] urn: Unique resource name used in policies
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if urn is not None:
+            pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+    @urn.setter
+    def urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "urn", value)
+
+
+if not MYPY:
+    class ServiceKeyJWKKeyArgsDict(TypedDict):
+        key_ops: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The operation for which the key is intended to be used
+        """
+        kty: pulumi.Input[str]
+        """
+        Key type parameter identifies the cryptographic algorithm family used with the key, such as RSA or EC
+        """
+        alg: NotRequired[pulumi.Input[str]]
+        """
+        The algorithm intended to be used with the key
+        """
+        crv: NotRequired[pulumi.Input[str]]
+        """
+        The cryptographic curve used with the key
+        """
+        d: NotRequired[pulumi.Input[str]]
+        """
+        The RSA or EC private exponent
+        """
+        dp: NotRequired[pulumi.Input[str]]
+        """
+        The RSA private key's first factor CRT exponent
+        """
+        dq: NotRequired[pulumi.Input[str]]
+        """
+        The RSA private key's second factor CRT exponent
+        """
+        e: NotRequired[pulumi.Input[str]]
+        """
+        The exponent value for the RSA public key
+        """
+        k: NotRequired[pulumi.Input[str]]
+        """
+        The value of the symmetric (or other single-valued) key
+        """
+        kid: NotRequired[pulumi.Input[str]]
+        """
+        key ID parameter used to match a specific key
+        """
+        n: NotRequired[pulumi.Input[str]]
+        """
+        The modulus value for the RSA public key
+        """
+        p: NotRequired[pulumi.Input[str]]
+        """
+        The first prime factor of the RSA private key
+        """
+        q: NotRequired[pulumi.Input[str]]
+        """
+        The second prime factor of the RSA private key
+        """
+        qi: NotRequired[pulumi.Input[str]]
+        """
+        The CRT coefficient of the second factor of the RSA private key
+        """
+        use: NotRequired[pulumi.Input[str]]
+        """
+        The intended use of the public key
+        """
+        x: NotRequired[pulumi.Input[str]]
+        """
+        The x coordinate for the Elliptic Curve point
+        """
+        y: NotRequired[pulumi.Input[str]]
+        """
+        The y coordinate for the Elliptic Curve point
+        """
+elif False:
+    ServiceKeyJWKKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceKeyJWKKeyArgs:
+    def __init__(__self__, *,
+                 key_ops: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 kty: pulumi.Input[str],
+                 alg: Optional[pulumi.Input[str]] = None,
+                 crv: Optional[pulumi.Input[str]] = None,
+                 d: Optional[pulumi.Input[str]] = None,
+                 dp: Optional[pulumi.Input[str]] = None,
+                 dq: Optional[pulumi.Input[str]] = None,
+                 e: Optional[pulumi.Input[str]] = None,
+                 k: Optional[pulumi.Input[str]] = None,
+                 kid: Optional[pulumi.Input[str]] = None,
+                 n: Optional[pulumi.Input[str]] = None,
+                 p: Optional[pulumi.Input[str]] = None,
+                 q: Optional[pulumi.Input[str]] = None,
+                 qi: Optional[pulumi.Input[str]] = None,
+                 use: Optional[pulumi.Input[str]] = None,
+                 x: Optional[pulumi.Input[str]] = None,
+                 y: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] key_ops: The operation for which the key is intended to be used
+        :param pulumi.Input[str] kty: Key type parameter identifies the cryptographic algorithm family used with the key, such as RSA or EC
+        :param pulumi.Input[str] alg: The algorithm intended to be used with the key
+        :param pulumi.Input[str] crv: The cryptographic curve used with the key
+        :param pulumi.Input[str] d: The RSA or EC private exponent
+        :param pulumi.Input[str] dp: The RSA private key's first factor CRT exponent
+        :param pulumi.Input[str] dq: The RSA private key's second factor CRT exponent
+        :param pulumi.Input[str] e: The exponent value for the RSA public key
+        :param pulumi.Input[str] k: The value of the symmetric (or other single-valued) key
+        :param pulumi.Input[str] kid: key ID parameter used to match a specific key
+        :param pulumi.Input[str] n: The modulus value for the RSA public key
+        :param pulumi.Input[str] p: The first prime factor of the RSA private key
+        :param pulumi.Input[str] q: The second prime factor of the RSA private key
+        :param pulumi.Input[str] qi: The CRT coefficient of the second factor of the RSA private key
+        :param pulumi.Input[str] use: The intended use of the public key
+        :param pulumi.Input[str] x: The x coordinate for the Elliptic Curve point
+        :param pulumi.Input[str] y: The y coordinate for the Elliptic Curve point
+        """
+        pulumi.set(__self__, "key_ops", key_ops)
+        pulumi.set(__self__, "kty", kty)
+        if alg is not None:
+            pulumi.set(__self__, "alg", alg)
+        if crv is not None:
+            pulumi.set(__self__, "crv", crv)
+        if d is not None:
+            pulumi.set(__self__, "d", d)
+        if dp is not None:
+            pulumi.set(__self__, "dp", dp)
+        if dq is not None:
+            pulumi.set(__self__, "dq", dq)
+        if e is not None:
+            pulumi.set(__self__, "e", e)
+        if k is not None:
+            pulumi.set(__self__, "k", k)
+        if kid is not None:
+            pulumi.set(__self__, "kid", kid)
+        if n is not None:
+            pulumi.set(__self__, "n", n)
+        if p is not None:
+            pulumi.set(__self__, "p", p)
+        if q is not None:
+            pulumi.set(__self__, "q", q)
+        if qi is not None:
+            pulumi.set(__self__, "qi", qi)
+        if use is not None:
+            pulumi.set(__self__, "use", use)
+        if x is not None:
+            pulumi.set(__self__, "x", x)
+        if y is not None:
+            pulumi.set(__self__, "y", y)
+
+    @property
+    @pulumi.getter(name="keyOps")
+    def key_ops(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The operation for which the key is intended to be used
+        """
+        return pulumi.get(self, "key_ops")
+
+    @key_ops.setter
+    def key_ops(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "key_ops", value)
+
+    @property
+    @pulumi.getter
+    def kty(self) -> pulumi.Input[str]:
+        """
+        Key type parameter identifies the cryptographic algorithm family used with the key, such as RSA or EC
+        """
+        return pulumi.get(self, "kty")
+
+    @kty.setter
+    def kty(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kty", value)
+
+    @property
+    @pulumi.getter
+    def alg(self) -> Optional[pulumi.Input[str]]:
+        """
+        The algorithm intended to be used with the key
+        """
+        return pulumi.get(self, "alg")
+
+    @alg.setter
+    def alg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alg", value)
+
+    @property
+    @pulumi.getter
+    def crv(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cryptographic curve used with the key
+        """
+        return pulumi.get(self, "crv")
+
+    @crv.setter
+    def crv(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "crv", value)
+
+    @property
+    @pulumi.getter
+    def d(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RSA or EC private exponent
+        """
+        return pulumi.get(self, "d")
+
+    @d.setter
+    def d(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "d", value)
+
+    @property
+    @pulumi.getter
+    def dp(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RSA private key's first factor CRT exponent
+        """
+        return pulumi.get(self, "dp")
+
+    @dp.setter
+    def dp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dp", value)
+
+    @property
+    @pulumi.getter
+    def dq(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RSA private key's second factor CRT exponent
+        """
+        return pulumi.get(self, "dq")
+
+    @dq.setter
+    def dq(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dq", value)
+
+    @property
+    @pulumi.getter
+    def e(self) -> Optional[pulumi.Input[str]]:
+        """
+        The exponent value for the RSA public key
+        """
+        return pulumi.get(self, "e")
+
+    @e.setter
+    def e(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "e", value)
+
+    @property
+    @pulumi.getter
+    def k(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the symmetric (or other single-valued) key
+        """
+        return pulumi.get(self, "k")
+
+    @k.setter
+    def k(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "k", value)
+
+    @property
+    @pulumi.getter
+    def kid(self) -> Optional[pulumi.Input[str]]:
+        """
+        key ID parameter used to match a specific key
+        """
+        return pulumi.get(self, "kid")
+
+    @kid.setter
+    def kid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kid", value)
+
+    @property
+    @pulumi.getter
+    def n(self) -> Optional[pulumi.Input[str]]:
+        """
+        The modulus value for the RSA public key
+        """
+        return pulumi.get(self, "n")
+
+    @n.setter
+    def n(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "n", value)
+
+    @property
+    @pulumi.getter
+    def p(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first prime factor of the RSA private key
+        """
+        return pulumi.get(self, "p")
+
+    @p.setter
+    def p(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "p", value)
+
+    @property
+    @pulumi.getter
+    def q(self) -> Optional[pulumi.Input[str]]:
+        """
+        The second prime factor of the RSA private key
+        """
+        return pulumi.get(self, "q")
+
+    @q.setter
+    def q(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "q", value)
+
+    @property
+    @pulumi.getter
+    def qi(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CRT coefficient of the second factor of the RSA private key
+        """
+        return pulumi.get(self, "qi")
+
+    @qi.setter
+    def qi(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "qi", value)
+
+    @property
+    @pulumi.getter
+    def use(self) -> Optional[pulumi.Input[str]]:
+        """
+        The intended use of the public key
+        """
+        return pulumi.get(self, "use")
+
+    @use.setter
+    def use(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "use", value)
+
+    @property
+    @pulumi.getter
+    def x(self) -> Optional[pulumi.Input[str]]:
+        """
+        The x coordinate for the Elliptic Curve point
+        """
+        return pulumi.get(self, "x")
+
+    @x.setter
+    def x(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "x", value)
+
+    @property
+    @pulumi.getter
+    def y(self) -> Optional[pulumi.Input[str]]:
+        """
+        The y coordinate for the Elliptic Curve point
+        """
+        return pulumi.get(self, "y")
+
+    @y.setter
+    def y(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "y", value)
 
 

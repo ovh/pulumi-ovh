@@ -56,18 +56,8 @@ type GetAPIOAuth2ClientsResult struct {
 
 func GetAPIOAuth2ClientsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAPIOAuth2ClientsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetAPIOAuth2ClientsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetAPIOAuth2ClientsResult
-		secret, err := ctx.InvokePackageRaw("ovh:Me/getAPIOAuth2Clients:getAPIOAuth2Clients", nil, &rv, "", opts...)
-		if err != nil {
-			return GetAPIOAuth2ClientsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetAPIOAuth2ClientsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetAPIOAuth2ClientsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("ovh:Me/getAPIOAuth2Clients:getAPIOAuth2Clients", nil, GetAPIOAuth2ClientsResultOutput{}, options).(GetAPIOAuth2ClientsResultOutput), nil
 	}).(GetAPIOAuth2ClientsResultOutput)
 }
 

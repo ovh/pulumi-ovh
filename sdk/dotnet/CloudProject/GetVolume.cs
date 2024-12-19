@@ -62,6 +62,32 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetVolumeResult> Invoke(GetVolumeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeResult>("ovh:CloudProject/getVolume:getVolume", args ?? new GetVolumeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a volume in a public cloud project
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var volume = Ovh.CloudProject.GetVolume.Invoke(new()
+        ///     {
+        ///         RegionName = "xxx",
+        ///         ServiceName = "yyy",
+        ///         VolumeId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVolumeResult> Invoke(GetVolumeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVolumeResult>("ovh:CloudProject/getVolume:getVolume", args ?? new GetVolumeInvokeArgs(), options.WithDefaults());
     }
 
 

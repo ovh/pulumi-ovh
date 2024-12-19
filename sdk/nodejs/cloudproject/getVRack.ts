@@ -70,7 +70,7 @@ export interface GetVRackResult {
  * export const vrack = vrackVRack;
  * ```
  */
-export function getVRackOutput(args: GetVRackOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVRackResult> {
+export function getVRackOutput(args: GetVRackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVRackResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getVRack:getVRack", {
         "serviceName": args.serviceName,

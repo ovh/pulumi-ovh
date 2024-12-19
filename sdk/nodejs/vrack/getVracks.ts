@@ -47,7 +47,7 @@ export interface GetVracksResult {
  * const vracks = ovh.Vrack.getVracks({});
  * ```
  */
-export function getVracksOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVracksResult> {
+export function getVracksOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVracksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Vrack/getVracks:getVracks", {
     }, opts);

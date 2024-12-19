@@ -70,21 +70,11 @@ type LookupPrivateDatabaseUserResult struct {
 }
 
 func LookupPrivateDatabaseUserOutput(ctx *pulumi.Context, args LookupPrivateDatabaseUserOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateDatabaseUserResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateDatabaseUserResultOutput, error) {
 			args := v.(LookupPrivateDatabaseUserArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateDatabaseUserResult
-			secret, err := ctx.InvokePackageRaw("ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateDatabaseUserResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateDatabaseUserResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateDatabaseUserResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser", args, LookupPrivateDatabaseUserResultOutput{}, options).(LookupPrivateDatabaseUserResultOutput), nil
 		}).(LookupPrivateDatabaseUserResultOutput)
 }
 

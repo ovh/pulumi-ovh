@@ -59,7 +59,7 @@ export interface GetCapabilitiesResult {
 /**
  * Use this data source to get information about capabilities of a public cloud project.
  */
-export function getCapabilitiesOutput(args: GetCapabilitiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapabilitiesResult> {
+export function getCapabilitiesOutput(args: GetCapabilitiesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCapabilitiesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", {
         "serviceName": args.serviceName,

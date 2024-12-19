@@ -162,7 +162,7 @@ def get_resource_group(id: Optional[str] = None,
         resources=pulumi.get(__ret__, 'resources'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_resource_group_output(id: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceGroupResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceGroupResult]:
     """
     Use this data source get details about a resource group.
 
@@ -180,7 +180,7 @@ def get_resource_group_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getResourceGroup:getResourceGroup', __args__, opts=opts, typ=GetResourceGroupResult)
     return __ret__.apply(lambda __response__: GetResourceGroupResult(
         group_urn=pulumi.get(__response__, 'group_urn'),

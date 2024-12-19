@@ -91,7 +91,7 @@ export interface GetOpenSearchPatternResult {
  * export const patternPattern = pattern.then(pattern => pattern.pattern);
  * ```
  */
-export function getOpenSearchPatternOutput(args: GetOpenSearchPatternOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchPatternResult> {
+export function getOpenSearchPatternOutput(args: GetOpenSearchPatternOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenSearchPatternResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getOpenSearchPattern:getOpenSearchPattern", {
         "clusterId": args.clusterId,

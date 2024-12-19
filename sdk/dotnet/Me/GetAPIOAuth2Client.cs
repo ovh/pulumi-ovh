@@ -58,6 +58,30 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public static Output<GetAPIOAuth2ClientResult> Invoke(GetAPIOAuth2ClientInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAPIOAuth2ClientResult>("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", args ?? new GetAPIOAuth2ClientInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about an existing OAuth2 service account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myOauth2Client = Ovh.Me.GetAPIOAuth2Client.Invoke(new()
+        ///     {
+        ///         ClientId = "5f8969a993ec8b4b",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAPIOAuth2ClientResult> Invoke(GetAPIOAuth2ClientInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAPIOAuth2ClientResult>("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", args ?? new GetAPIOAuth2ClientInvokeArgs(), options.WithDefaults());
     }
 
 

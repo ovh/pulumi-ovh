@@ -164,7 +164,7 @@ export interface GetContainerRegistryOIDCResult {
  * }
  * ```
  */
-export function getContainerRegistryOIDCOutput(args: GetContainerRegistryOIDCOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryOIDCResult> {
+export function getContainerRegistryOIDCOutput(args: GetContainerRegistryOIDCOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContainerRegistryOIDCResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", {
         "oidcAdminGroup": args.oidcAdminGroup,

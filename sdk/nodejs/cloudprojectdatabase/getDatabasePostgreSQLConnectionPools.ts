@@ -80,7 +80,7 @@ export interface GetDatabasePostgreSQLConnectionPoolsResult {
  * export const connectionPoolIds = testPools.then(testPools => testPools.connectionPoolIds);
  * ```
  */
-export function getDatabasePostgreSQLConnectionPoolsOutput(args: GetDatabasePostgreSQLConnectionPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasePostgreSQLConnectionPoolsResult> {
+export function getDatabasePostgreSQLConnectionPoolsOutput(args: GetDatabasePostgreSQLConnectionPoolsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabasePostgreSQLConnectionPoolsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", {
         "clusterId": args.clusterId,

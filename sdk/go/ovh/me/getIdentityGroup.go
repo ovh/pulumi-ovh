@@ -74,21 +74,11 @@ type LookupIdentityGroupResult struct {
 }
 
 func LookupIdentityGroupOutput(ctx *pulumi.Context, args LookupIdentityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupIdentityGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIdentityGroupResultOutput, error) {
 			args := v.(LookupIdentityGroupArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupIdentityGroupResult
-			secret, err := ctx.InvokePackageRaw("ovh:Me/getIdentityGroup:getIdentityGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIdentityGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIdentityGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIdentityGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Me/getIdentityGroup:getIdentityGroup", args, LookupIdentityGroupResultOutput{}, options).(LookupIdentityGroupResultOutput), nil
 		}).(LookupIdentityGroupResultOutput)
 }
 

@@ -72,21 +72,11 @@ type LookupAPIOAuth2ClientResult struct {
 }
 
 func LookupAPIOAuth2ClientOutput(ctx *pulumi.Context, args LookupAPIOAuth2ClientOutputArgs, opts ...pulumi.InvokeOption) LookupAPIOAuth2ClientResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAPIOAuth2ClientResultOutput, error) {
 			args := v.(LookupAPIOAuth2ClientArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAPIOAuth2ClientResult
-			secret, err := ctx.InvokePackageRaw("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAPIOAuth2ClientResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAPIOAuth2ClientResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAPIOAuth2ClientResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", args, LookupAPIOAuth2ClientResultOutput{}, options).(LookupAPIOAuth2ClientResultOutput), nil
 		}).(LookupAPIOAuth2ClientResultOutput)
 }
 

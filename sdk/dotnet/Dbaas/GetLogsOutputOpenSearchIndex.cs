@@ -60,6 +60,31 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         public static Output<GetLogsOutputOpenSearchIndexResult> Invoke(GetLogsOutputOpenSearchIndexInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsOutputOpenSearchIndexResult>("ovh:Dbaas/getLogsOutputOpenSearchIndex:getLogsOutputOpenSearchIndex", args ?? new GetLogsOutputOpenSearchIndexInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a DBaas logs output opensearch index.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var index = Ovh.Dbaas.GetLogsOutputOpenSearchIndex.Invoke(new()
+        ///     {
+        ///         Name = "index-name",
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLogsOutputOpenSearchIndexResult> Invoke(GetLogsOutputOpenSearchIndexInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLogsOutputOpenSearchIndexResult>("ovh:Dbaas/getLogsOutputOpenSearchIndex:getLogsOutputOpenSearchIndex", args ?? new GetLogsOutputOpenSearchIndexInvokeArgs(), options.WithDefaults());
     }
 
 

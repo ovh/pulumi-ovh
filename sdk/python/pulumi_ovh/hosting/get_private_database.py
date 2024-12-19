@@ -328,7 +328,7 @@ def get_private_database(service_name: Optional[str] = None,
         version_label=pulumi.get(__ret__, 'version_label'),
         version_number=pulumi.get(__ret__, 'version_number'))
 def get_private_database_output(service_name: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateDatabaseResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateDatabaseResult]:
     """
     Use this data source to retrieve information about an hosting database.
 
@@ -346,7 +346,7 @@ def get_private_database_output(service_name: Optional[pulumi.Input[str]] = None
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Hosting/getPrivateDatabase:getPrivateDatabase', __args__, opts=opts, typ=GetPrivateDatabaseResult)
     return __ret__.apply(lambda __response__: GetPrivateDatabaseResult(
         cpu=pulumi.get(__response__, 'cpu'),

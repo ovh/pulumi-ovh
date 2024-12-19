@@ -111,21 +111,11 @@ type LookupLogsOutputGraylogStreamResult struct {
 }
 
 func LookupLogsOutputGraylogStreamOutput(ctx *pulumi.Context, args LookupLogsOutputGraylogStreamOutputArgs, opts ...pulumi.InvokeOption) LookupLogsOutputGraylogStreamResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLogsOutputGraylogStreamResultOutput, error) {
 			args := v.(LookupLogsOutputGraylogStreamArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupLogsOutputGraylogStreamResult
-			secret, err := ctx.InvokePackageRaw("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLogsOutputGraylogStreamResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLogsOutputGraylogStreamResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLogsOutputGraylogStreamResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args, LookupLogsOutputGraylogStreamResultOutput{}, options).(LookupLogsOutputGraylogStreamResultOutput), nil
 		}).(LookupLogsOutputGraylogStreamResultOutput)
 }
 

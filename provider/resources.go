@@ -471,6 +471,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_okms_service_key": {
 				Tok: ovhResource(okmsMod, "ServiceKey"),
 			},
+			"ovh_okms_service_key_jwk": {
+				Tok: ovhResource(okmsMod, "ServiceKeyJWK"),
+			},
 			"ovh_vrack": {
 				Tok: ovhResource(vrackMod, "Vrack"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -853,6 +856,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_okms_service_key_jwk": {
 				Tok: ovhDataSource(okmsMod, "getOkmsServiceKeyJwk"),
+			},
+			"ovh_okms_service_key_pem": {
+				Tok: ovhDataSource(okmsMod, "getOkmsServiceKeyPem"),
 			},
 			"ovh_me": {
 				Tok: ovhDataSource(meMod, "getMe"),

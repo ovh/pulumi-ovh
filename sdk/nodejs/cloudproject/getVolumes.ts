@@ -76,7 +76,7 @@ export interface GetVolumesResult {
  * });
  * ```
  */
-export function getVolumesOutput(args: GetVolumesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumesResult> {
+export function getVolumesOutput(args: GetVolumesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVolumesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getVolumes:getVolumes", {
         "regionName": args.regionName,

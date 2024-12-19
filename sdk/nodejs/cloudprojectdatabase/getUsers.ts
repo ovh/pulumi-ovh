@@ -92,7 +92,7 @@ export interface GetUsersResult {
  * export const userIds = users.then(users => users.userIds);
  * ```
  */
-export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getUsers:getUsers", {
         "clusterId": args.clusterId,

@@ -79,21 +79,11 @@ type LookupKafkaSchemaRegistryAclResult struct {
 }
 
 func LookupKafkaSchemaRegistryAclOutput(ctx *pulumi.Context, args LookupKafkaSchemaRegistryAclOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaSchemaRegistryAclResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKafkaSchemaRegistryAclResultOutput, error) {
 			args := v.(LookupKafkaSchemaRegistryAclArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupKafkaSchemaRegistryAclResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKafkaSchemaRegistryAclResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKafkaSchemaRegistryAclResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKafkaSchemaRegistryAclResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args, LookupKafkaSchemaRegistryAclResultOutput{}, options).(LookupKafkaSchemaRegistryAclResultOutput), nil
 		}).(LookupKafkaSchemaRegistryAclResultOutput)
 }
 

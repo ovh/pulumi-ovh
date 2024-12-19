@@ -48,6 +48,7 @@ export interface GetOkmsServiceKeyJwkArgs {
  */
 export interface GetOkmsServiceKeyJwkResult {
     readonly createdAt: string;
+    readonly iam: outputs.Okms.GetOkmsServiceKeyJwkIam;
     readonly id: string;
     readonly keys: outputs.Okms.GetOkmsServiceKeyJwkKey[];
     readonly name: string;
@@ -71,7 +72,7 @@ export interface GetOkmsServiceKeyJwkResult {
  * });
  * ```
  */
-export function getOkmsServiceKeyJwkOutput(args: GetOkmsServiceKeyJwkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOkmsServiceKeyJwkResult> {
+export function getOkmsServiceKeyJwkOutput(args: GetOkmsServiceKeyJwkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOkmsServiceKeyJwkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Okms/getOkmsServiceKeyJwk:getOkmsServiceKeyJwk", {
         "id": args.id,

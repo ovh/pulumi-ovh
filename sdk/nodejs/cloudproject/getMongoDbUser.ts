@@ -99,7 +99,7 @@ export interface GetMongoDbUserResult {
  * export const mongoUserRoles = mongoUser.then(mongoUser => mongoUser.roles);
  * ```
  */
-export function getMongoDbUserOutput(args: GetMongoDbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoDbUserResult> {
+export function getMongoDbUserOutput(args: GetMongoDbUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMongoDbUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getMongoDbUser:getMongoDbUser", {
         "clusterId": args.clusterId,

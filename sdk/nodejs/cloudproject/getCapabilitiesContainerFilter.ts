@@ -102,7 +102,7 @@ export interface GetCapabilitiesContainerFilterResult {
  * });
  * ```
  */
-export function getCapabilitiesContainerFilterOutput(args: GetCapabilitiesContainerFilterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapabilitiesContainerFilterResult> {
+export function getCapabilitiesContainerFilterOutput(args: GetCapabilitiesContainerFilterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCapabilitiesContainerFilterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter", {
         "planName": args.planName,

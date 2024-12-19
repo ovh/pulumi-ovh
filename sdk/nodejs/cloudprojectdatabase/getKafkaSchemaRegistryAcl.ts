@@ -95,7 +95,7 @@ export interface GetKafkaSchemaRegistryAclResult {
  * export const aclPermission = schemaRegistryAcl.then(schemaRegistryAcl => schemaRegistryAcl.permission);
  * ```
  */
-export function getKafkaSchemaRegistryAclOutput(args: GetKafkaSchemaRegistryAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaRegistryAclResult> {
+export function getKafkaSchemaRegistryAclOutput(args: GetKafkaSchemaRegistryAclOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaSchemaRegistryAclResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", {
         "clusterId": args.clusterId,

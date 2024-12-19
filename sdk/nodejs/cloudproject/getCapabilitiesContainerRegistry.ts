@@ -66,7 +66,7 @@ export interface GetCapabilitiesContainerRegistryResult {
  * });
  * ```
  */
-export function getCapabilitiesContainerRegistryOutput(args: GetCapabilitiesContainerRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapabilitiesContainerRegistryResult> {
+export function getCapabilitiesContainerRegistryOutput(args: GetCapabilitiesContainerRegistryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCapabilitiesContainerRegistryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", {
         "serviceName": args.serviceName,

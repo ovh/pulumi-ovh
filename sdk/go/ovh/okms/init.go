@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Okms{}
 	case "ovh:Okms/serviceKey:ServiceKey":
 		r = &ServiceKey{}
+	case "ovh:Okms/serviceKeyJWK:ServiceKeyJWK":
+		r = &ServiceKeyJWK{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Okms/serviceKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Okms/serviceKeyJWK",
 		&module{version},
 	)
 }

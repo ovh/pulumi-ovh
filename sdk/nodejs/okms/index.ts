@@ -30,6 +30,11 @@ export const getOkmsServiceKeyJwk: typeof import("./getOkmsServiceKeyJwk").getOk
 export const getOkmsServiceKeyJwkOutput: typeof import("./getOkmsServiceKeyJwk").getOkmsServiceKeyJwkOutput = null as any;
 utilities.lazyLoad(exports, ["getOkmsServiceKeyJwk","getOkmsServiceKeyJwkOutput"], () => require("./getOkmsServiceKeyJwk"));
 
+export { GetOkmsServiceKeyPemArgs, GetOkmsServiceKeyPemResult, GetOkmsServiceKeyPemOutputArgs } from "./getOkmsServiceKeyPem";
+export const getOkmsServiceKeyPem: typeof import("./getOkmsServiceKeyPem").getOkmsServiceKeyPem = null as any;
+export const getOkmsServiceKeyPemOutput: typeof import("./getOkmsServiceKeyPem").getOkmsServiceKeyPemOutput = null as any;
+utilities.lazyLoad(exports, ["getOkmsServiceKeyPem","getOkmsServiceKeyPemOutput"], () => require("./getOkmsServiceKeyPem"));
+
 export { OkmsArgs, OkmsState } from "./okms";
 export type Okms = import("./okms").Okms;
 export const Okms: typeof import("./okms").Okms = null as any;
@@ -39,6 +44,11 @@ export { ServiceKeyArgs, ServiceKeyState } from "./serviceKey";
 export type ServiceKey = import("./serviceKey").ServiceKey;
 export const ServiceKey: typeof import("./serviceKey").ServiceKey = null as any;
 utilities.lazyLoad(exports, ["ServiceKey"], () => require("./serviceKey"));
+
+export { ServiceKeyJWKArgs, ServiceKeyJWKState } from "./serviceKeyJWK";
+export type ServiceKeyJWK = import("./serviceKeyJWK").ServiceKeyJWK;
+export const ServiceKeyJWK: typeof import("./serviceKeyJWK").ServiceKeyJWK = null as any;
+utilities.lazyLoad(exports, ["ServiceKeyJWK"], () => require("./serviceKeyJWK"));
 
 
 const _module = {
@@ -51,6 +61,8 @@ const _module = {
                 return new Okms(name, <any>undefined, { urn })
             case "ovh:Okms/serviceKey:ServiceKey":
                 return new ServiceKey(name, <any>undefined, { urn })
+            case "ovh:Okms/serviceKeyJWK:ServiceKeyJWK":
+                return new ServiceKeyJWK(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -59,3 +71,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("ovh", "Okms/credential", _module)
 pulumi.runtime.registerResourceModule("ovh", "Okms/okms", _module)
 pulumi.runtime.registerResourceModule("ovh", "Okms/serviceKey", _module)
+pulumi.runtime.registerResourceModule("ovh", "Okms/serviceKeyJWK", _module)
