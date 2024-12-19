@@ -108,7 +108,7 @@ def get_container_registry_ip_restrictions_management(registry_id: Optional[str]
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_container_registry_ip_restrictions_management_output(registry_id: Optional[pulumi.Input[str]] = None,
                                                              service_name: Optional[pulumi.Input[str]] = None,
-                                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRegistryIPRestrictionsManagementResult]:
+                                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryIPRestrictionsManagementResult]:
     """
     Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
 
@@ -119,7 +119,7 @@ def get_container_registry_ip_restrictions_management_output(registry_id: Option
     __args__ = dict()
     __args__['registryId'] = registry_id
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement', __args__, opts=opts, typ=GetContainerRegistryIPRestrictionsManagementResult)
     return __ret__.apply(lambda __response__: GetContainerRegistryIPRestrictionsManagementResult(
         id=pulumi.get(__response__, 'id'),

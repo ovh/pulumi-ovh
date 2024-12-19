@@ -101,7 +101,7 @@ export interface GetOpenSearchUserResult {
  * export const osUserAcls = osUser.then(osUser => osUser.acls);
  * ```
  */
-export function getOpenSearchUserOutput(args: GetOpenSearchUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchUserResult> {
+export function getOpenSearchUserOutput(args: GetOpenSearchUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenSearchUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", {
         "clusterId": args.clusterId,

@@ -64,7 +64,7 @@ export interface GetLogsClustersResult {
  * });
  * ```
  */
-export function getLogsClustersOutput(args: GetLogsClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsClustersResult> {
+export function getLogsClustersOutput(args: GetLogsClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogsClustersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsClusters:getLogsClusters", {
         "serviceName": args.serviceName,

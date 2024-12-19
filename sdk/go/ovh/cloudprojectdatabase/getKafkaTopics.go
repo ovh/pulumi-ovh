@@ -72,21 +72,11 @@ type GetKafkaTopicsResult struct {
 }
 
 func GetKafkaTopicsOutput(ctx *pulumi.Context, args GetKafkaTopicsOutputArgs, opts ...pulumi.InvokeOption) GetKafkaTopicsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKafkaTopicsResultOutput, error) {
 			args := v.(GetKafkaTopicsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetKafkaTopicsResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getKafkaTopics:getKafkaTopics", args, &rv, "", opts...)
-			if err != nil {
-				return GetKafkaTopicsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetKafkaTopicsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetKafkaTopicsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProjectDatabase/getKafkaTopics:getKafkaTopics", args, GetKafkaTopicsResultOutput{}, options).(GetKafkaTopicsResultOutput), nil
 		}).(GetKafkaTopicsResultOutput)
 }
 

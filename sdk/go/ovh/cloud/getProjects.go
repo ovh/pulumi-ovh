@@ -55,18 +55,8 @@ type GetProjectsResult struct {
 
 func GetProjectsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetProjectsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetProjectsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetProjectsResult
-		secret, err := ctx.InvokePackageRaw("ovh:Cloud/getProjects:getProjects", nil, &rv, "", opts...)
-		if err != nil {
-			return GetProjectsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetProjectsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetProjectsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("ovh:Cloud/getProjects:getProjects", nil, GetProjectsResultOutput{}, options).(GetProjectsResultOutput), nil
 	}).(GetProjectsResultOutput)
 }
 

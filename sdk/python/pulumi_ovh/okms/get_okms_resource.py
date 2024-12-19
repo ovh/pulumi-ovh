@@ -153,7 +153,7 @@ def get_okms_resource(id: Optional[str] = None,
         rest_endpoint=pulumi.get(__ret__, 'rest_endpoint'),
         swagger_endpoint=pulumi.get(__ret__, 'swagger_endpoint'))
 def get_okms_resource_output(id: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOkmsResourceResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOkmsResourceResult]:
     """
     Use this data source to retrieve information about a KMS associated with this account
 
@@ -171,7 +171,7 @@ def get_okms_resource_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Okms/getOkmsResource:getOkmsResource', __args__, opts=opts, typ=GetOkmsResourceResult)
     return __ret__.apply(lambda __response__: GetOkmsResourceResult(
         iam=pulumi.get(__response__, 'iam'),

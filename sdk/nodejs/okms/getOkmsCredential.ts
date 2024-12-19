@@ -71,7 +71,7 @@ export interface GetOkmsCredentialResult {
 /**
  * Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
  */
-export function getOkmsCredentialOutput(args: GetOkmsCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOkmsCredentialResult> {
+export function getOkmsCredentialOutput(args: GetOkmsCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOkmsCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Okms/getOkmsCredential:getOkmsCredential", {
         "id": args.id,

@@ -77,7 +77,7 @@ export interface GetServerBootsResult {
  * });
  * ```
  */
-export function getServerBootsOutput(args: GetServerBootsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerBootsResult> {
+export function getServerBootsOutput(args: GetServerBootsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerBootsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dedicated/getServerBoots:getServerBoots", {
         "bootType": args.bootType,

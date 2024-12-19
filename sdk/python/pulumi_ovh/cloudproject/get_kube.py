@@ -362,7 +362,7 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
                     service_name: Optional[pulumi.Input[str]] = None,
                     update_policy: Optional[pulumi.Input[Optional[str]]] = None,
                     version: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubeResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubeResult]:
     """
     Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
 
@@ -400,7 +400,7 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
     __args__['serviceName'] = service_name
     __args__['updatePolicy'] = update_policy
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getKube:getKube', __args__, opts=opts, typ=GetKubeResult)
     return __ret__.apply(lambda __response__: GetKubeResult(
         control_plane_is_up_to_date=pulumi.get(__response__, 'control_plane_is_up_to_date'),

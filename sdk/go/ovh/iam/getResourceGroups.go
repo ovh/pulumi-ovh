@@ -56,18 +56,8 @@ type GetResourceGroupsResult struct {
 
 func GetResourceGroupsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetResourceGroupsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetResourceGroupsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetResourceGroupsResult
-		secret, err := ctx.InvokePackageRaw("ovh:Iam/getResourceGroups:getResourceGroups", nil, &rv, "", opts...)
-		if err != nil {
-			return GetResourceGroupsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetResourceGroupsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetResourceGroupsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("ovh:Iam/getResourceGroups:getResourceGroups", nil, GetResourceGroupsResultOutput{}, options).(GetResourceGroupsResultOutput), nil
 	}).(GetResourceGroupsResultOutput)
 }
 

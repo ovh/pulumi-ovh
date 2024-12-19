@@ -93,21 +93,11 @@ type GetM3dbNamespaceResult struct {
 }
 
 func GetM3dbNamespaceOutput(ctx *pulumi.Context, args GetM3dbNamespaceOutputArgs, opts ...pulumi.InvokeOption) GetM3dbNamespaceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetM3dbNamespaceResultOutput, error) {
 			args := v.(GetM3dbNamespaceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetM3dbNamespaceResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getM3dbNamespace:getM3dbNamespace", args, &rv, "", opts...)
-			if err != nil {
-				return GetM3dbNamespaceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetM3dbNamespaceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetM3dbNamespaceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getM3dbNamespace:getM3dbNamespace", args, GetM3dbNamespaceResultOutput{}, options).(GetM3dbNamespaceResultOutput), nil
 		}).(GetM3dbNamespaceResultOutput)
 }
 

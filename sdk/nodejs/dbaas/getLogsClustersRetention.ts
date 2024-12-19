@@ -117,7 +117,7 @@ export interface GetLogsClustersRetentionResult {
  * });
  * ```
  */
-export function getLogsClustersRetentionOutput(args: GetLogsClustersRetentionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsClustersRetentionResult> {
+export function getLogsClustersRetentionOutput(args: GetLogsClustersRetentionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogsClustersRetentionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", {
         "clusterId": args.clusterId,

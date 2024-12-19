@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.Okms.outputs;
 
+import com.ovhcloud.pulumi.ovh.Okms.outputs.GetOkmsServiceKeyIam;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
@@ -14,6 +15,7 @@ import java.util.Objects;
 public final class GetOkmsServiceKeyResult {
     private String createdAt;
     private String curve;
+    private GetOkmsServiceKeyIam iam;
     private String id;
     private String name;
     private String okmsId;
@@ -28,6 +30,9 @@ public final class GetOkmsServiceKeyResult {
     }
     public String curve() {
         return this.curve;
+    }
+    public GetOkmsServiceKeyIam iam() {
+        return this.iam;
     }
     public String id() {
         return this.id;
@@ -62,6 +67,7 @@ public final class GetOkmsServiceKeyResult {
     public static final class Builder {
         private String createdAt;
         private String curve;
+        private GetOkmsServiceKeyIam iam;
         private String id;
         private String name;
         private String okmsId;
@@ -74,6 +80,7 @@ public final class GetOkmsServiceKeyResult {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
     	      this.curve = defaults.curve;
+    	      this.iam = defaults.iam;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.okmsId = defaults.okmsId;
@@ -97,6 +104,14 @@ public final class GetOkmsServiceKeyResult {
               throw new MissingRequiredPropertyException("GetOkmsServiceKeyResult", "curve");
             }
             this.curve = curve;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder iam(GetOkmsServiceKeyIam iam) {
+            if (iam == null) {
+              throw new MissingRequiredPropertyException("GetOkmsServiceKeyResult", "iam");
+            }
+            this.iam = iam;
             return this;
         }
         @CustomType.Setter
@@ -162,6 +177,7 @@ public final class GetOkmsServiceKeyResult {
             final var _resultValue = new GetOkmsServiceKeyResult();
             _resultValue.createdAt = createdAt;
             _resultValue.curve = curve;
+            _resultValue.iam = iam;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.okmsId = okmsId;

@@ -472,7 +472,7 @@ def get_server(service_name: Optional[str] = None,
         support_level=pulumi.get(__ret__, 'support_level'),
         vnis=pulumi.get(__ret__, 'vnis'))
 def get_server_output(service_name: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerResult]:
     """
     Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
 
@@ -490,7 +490,7 @@ def get_server_output(service_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:index/getServer:getServer', __args__, opts=opts, typ=GetServerResult)
     return __ret__.apply(lambda __response__: GetServerResult(
         server_urn=pulumi.get(__response__, 'server_urn'),

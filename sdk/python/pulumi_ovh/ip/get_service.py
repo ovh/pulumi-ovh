@@ -179,7 +179,7 @@ def get_service(service_name: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         type=pulumi.get(__ret__, 'type'))
 def get_service_output(service_name: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
     Use this data source to retrieve information about an IP service.
 
@@ -197,7 +197,7 @@ def get_service_output(service_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Ip/getService:getService', __args__, opts=opts, typ=GetServiceResult)
     return __ret__.apply(lambda __response__: GetServiceResult(
         can_be_terminated=pulumi.get(__response__, 'can_be_terminated'),

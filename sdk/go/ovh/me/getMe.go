@@ -113,18 +113,8 @@ type GetMeResult struct {
 
 func GetMeOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetMeResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetMeResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetMeResult
-		secret, err := ctx.InvokePackageRaw("ovh:Me/getMe:getMe", nil, &rv, "", opts...)
-		if err != nil {
-			return GetMeResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetMeResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetMeResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("ovh:Me/getMe:getMe", nil, GetMeResultOutput{}, options).(GetMeResultOutput), nil
 	}).(GetMeResultOutput)
 }
 

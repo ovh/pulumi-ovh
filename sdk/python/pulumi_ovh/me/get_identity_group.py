@@ -162,7 +162,7 @@ def get_identity_group(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         role=pulumi.get(__ret__, 'role'))
 def get_identity_group_output(name: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdentityGroupResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdentityGroupResult]:
     """
     Use this data source to retrieve information about an identity group.
 
@@ -180,7 +180,7 @@ def get_identity_group_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Me/getIdentityGroup:getIdentityGroup', __args__, opts=opts, typ=GetIdentityGroupResult)
     return __ret__.apply(lambda __response__: GetIdentityGroupResult(
         group_urn=pulumi.get(__response__, 'group_urn'),

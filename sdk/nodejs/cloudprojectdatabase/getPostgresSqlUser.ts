@@ -99,7 +99,7 @@ export interface GetPostgresSqlUserResult {
  * export const pgUserRoles = pgUser.then(pgUser => pgUser.roles);
  * ```
  */
-export function getPostgresSqlUserOutput(args: GetPostgresSqlUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPostgresSqlUserResult> {
+export function getPostgresSqlUserOutput(args: GetPostgresSqlUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresSqlUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", {
         "clusterId": args.clusterId,

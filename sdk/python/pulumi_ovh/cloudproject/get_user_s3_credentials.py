@@ -114,7 +114,7 @@ def get_user_s3_credentials(service_name: Optional[str] = None,
         user_id=pulumi.get(__ret__, 'user_id'))
 def get_user_s3_credentials_output(service_name: Optional[pulumi.Input[str]] = None,
                                    user_id: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserS3CredentialsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserS3CredentialsResult]:
     """
     Use this data source to retrieve the list of all the S3 access_key_id associated with a public cloud project's user.
 
@@ -137,7 +137,7 @@ def get_user_s3_credentials_output(service_name: Optional[pulumi.Input[str]] = N
     __args__ = dict()
     __args__['serviceName'] = service_name
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getUserS3Credentials:getUserS3Credentials', __args__, opts=opts, typ=GetUserS3CredentialsResult)
     return __ret__.apply(lambda __response__: GetUserS3CredentialsResult(
         access_key_ids=pulumi.get(__response__, 'access_key_ids'),

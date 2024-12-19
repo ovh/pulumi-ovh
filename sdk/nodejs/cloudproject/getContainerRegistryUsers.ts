@@ -82,7 +82,7 @@ export interface GetContainerRegistryUsersResult {
  * });
  * ```
  */
-export function getContainerRegistryUsersOutput(args: GetContainerRegistryUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryUsersResult> {
+export function getContainerRegistryUsersOutput(args: GetContainerRegistryUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContainerRegistryUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers", {
         "registryId": args.registryId,

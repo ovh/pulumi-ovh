@@ -47,7 +47,7 @@ export interface GetReferenceResourceTypeResult {
  * const types = ovh.Iam.getReferenceResourceType({});
  * ```
  */
-export function getReferenceResourceTypeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceResourceTypeResult> {
+export function getReferenceResourceTypeOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReferenceResourceTypeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getReferenceResourceType:getReferenceResourceType", {
     }, opts);

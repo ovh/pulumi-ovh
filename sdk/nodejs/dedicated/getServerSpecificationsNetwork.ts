@@ -93,7 +93,7 @@ export interface GetServerSpecificationsNetworkResult {
  * });
  * ```
  */
-export function getServerSpecificationsNetworkOutput(args: GetServerSpecificationsNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerSpecificationsNetworkResult> {
+export function getServerSpecificationsNetworkOutput(args: GetServerSpecificationsNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerSpecificationsNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", {
         "serviceName": args.serviceName,

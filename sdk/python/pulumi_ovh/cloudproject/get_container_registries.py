@@ -99,7 +99,7 @@ def get_container_registries(service_name: Optional[str] = None,
         results=pulumi.get(__ret__, 'results'),
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_container_registries_output(service_name: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRegistriesResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistriesResult]:
     """
     Use this data source to get the container registries of a public cloud project.
 
@@ -118,7 +118,7 @@ def get_container_registries_output(service_name: Optional[pulumi.Input[str]] = 
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getContainerRegistries:getContainerRegistries', __args__, opts=opts, typ=GetContainerRegistriesResult)
     return __ret__.apply(lambda __response__: GetContainerRegistriesResult(
         id=pulumi.get(__response__, 'id'),

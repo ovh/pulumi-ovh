@@ -78,21 +78,11 @@ type GetServerSpecificationsNetworkResult struct {
 }
 
 func GetServerSpecificationsNetworkOutput(ctx *pulumi.Context, args GetServerSpecificationsNetworkOutputArgs, opts ...pulumi.InvokeOption) GetServerSpecificationsNetworkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServerSpecificationsNetworkResultOutput, error) {
 			args := v.(GetServerSpecificationsNetworkArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServerSpecificationsNetworkResult
-			secret, err := ctx.InvokePackageRaw("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", args, &rv, "", opts...)
-			if err != nil {
-				return GetServerSpecificationsNetworkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServerSpecificationsNetworkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServerSpecificationsNetworkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", args, GetServerSpecificationsNetworkResultOutput{}, options).(GetServerSpecificationsNetworkResultOutput), nil
 		}).(GetServerSpecificationsNetworkResultOutput)
 }
 

@@ -52,6 +52,27 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public static Output<GetMeResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMeResult>("ovh:Me/getMe:getMe", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about the current OVHcloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myAccount = Ovh.Me.GetMe.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMeResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMeResult>("ovh:Me/getMe:getMe", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

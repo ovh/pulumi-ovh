@@ -60,6 +60,31 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         public static Output<GetLogsClusterResult> Invoke(GetLogsClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsClusterResult>("ovh:Dbaas/getLogsCluster:getLogsCluster", args ?? new GetLogsClusterInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve informations about a DBaas logs cluster tenant.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var logstash = Ovh.Dbaas.GetLogsCluster.Invoke(new()
+        ///     {
+        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLogsClusterResult> Invoke(GetLogsClusterInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLogsClusterResult>("ovh:Dbaas/getLogsCluster:getLogsCluster", args ?? new GetLogsClusterInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -199,7 +199,7 @@ def get_failover_ip_attach_output(block: Optional[pulumi.Input[Optional[str]]] =
                                   ip: Optional[pulumi.Input[Optional[str]]] = None,
                                   routed_to: Optional[pulumi.Input[Optional[str]]] = None,
                                   service_name: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFailoverIpAttachResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFailoverIpAttachResult]:
     """
     Use this data source to get the details of a failover IP address of a service in a public cloud project.
 
@@ -227,7 +227,7 @@ def get_failover_ip_attach_output(block: Optional[pulumi.Input[Optional[str]]] =
     __args__['ip'] = ip
     __args__['routedTo'] = routed_to
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach', __args__, opts=opts, typ=GetFailoverIpAttachResult)
     return __ret__.apply(lambda __response__: GetFailoverIpAttachResult(
         block=pulumi.get(__response__, 'block'),

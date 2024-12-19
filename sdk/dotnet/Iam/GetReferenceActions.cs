@@ -22,6 +22,12 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         public static Output<GetReferenceActionsResult> Invoke(GetReferenceActionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReferenceActionsResult>("ovh:Iam/getReferenceActions:getReferenceActions", args ?? new GetReferenceActionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to list the IAM action associated with a resource type.
+        /// </summary>
+        public static Output<GetReferenceActionsResult> Invoke(GetReferenceActionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetReferenceActionsResult>("ovh:Iam/getReferenceActions:getReferenceActions", args ?? new GetReferenceActionsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -136,7 +136,7 @@ def get_user_s3_credential(access_key_id: Optional[str] = None,
 def get_user_s3_credential_output(access_key_id: Optional[pulumi.Input[str]] = None,
                                   service_name: Optional[pulumi.Input[str]] = None,
                                   user_id: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserS3CredentialResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserS3CredentialResult]:
     """
     Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project's user.
 
@@ -169,7 +169,7 @@ def get_user_s3_credential_output(access_key_id: Optional[pulumi.Input[str]] = N
     __args__['accessKeyId'] = access_key_id
     __args__['serviceName'] = service_name
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getUserS3Credential:getUserS3Credential', __args__, opts=opts, typ=GetUserS3CredentialResult)
     return __ret__.apply(lambda __response__: GetUserS3CredentialResult(
         access_key_id=pulumi.get(__response__, 'access_key_id'),

@@ -102,6 +102,52 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         public static Output<GetLogsClustersRetentionResult> Invoke(GetLogsClustersRetentionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsClustersRetentionResult>("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", args ?? new GetLogsClustersRetentionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a DBaas logs cluster retention.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
+        ///     {
+        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         RetentionId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// It is also possible to retrieve a retention using its duration:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
+        ///     {
+        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Duration = "P14D",
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLogsClustersRetentionResult> Invoke(GetLogsClustersRetentionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLogsClustersRetentionResult>("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", args ?? new GetLogsClustersRetentionInvokeArgs(), options.WithDefaults());
     }
 
 

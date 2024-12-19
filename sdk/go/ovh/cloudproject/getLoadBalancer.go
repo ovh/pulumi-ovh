@@ -93,21 +93,11 @@ type GetLoadBalancerResult struct {
 }
 
 func GetLoadBalancerOutput(ctx *pulumi.Context, args GetLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLoadBalancerResultOutput, error) {
 			args := v.(GetLoadBalancerArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetLoadBalancerResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getLoadBalancer:getLoadBalancer", args, &rv, "", opts...)
-			if err != nil {
-				return GetLoadBalancerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLoadBalancerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLoadBalancerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getLoadBalancer:getLoadBalancer", args, GetLoadBalancerResultOutput{}, options).(GetLoadBalancerResultOutput), nil
 		}).(GetLoadBalancerResultOutput)
 }
 

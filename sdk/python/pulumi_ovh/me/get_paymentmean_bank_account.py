@@ -157,7 +157,7 @@ def get_paymentmean_bank_account_output(description_regexp: Optional[pulumi.Inpu
                                         state: Optional[pulumi.Input[Optional[str]]] = None,
                                         use_default: Optional[pulumi.Input[Optional[bool]]] = None,
                                         use_oldest: Optional[pulumi.Input[Optional[bool]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPaymentmeanBankAccountResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPaymentmeanBankAccountResult]:
     """
     Use this data source to retrieve information about a bank account
     payment mean associated with an OVHcloud account.
@@ -185,7 +185,7 @@ def get_paymentmean_bank_account_output(description_regexp: Optional[pulumi.Inpu
     __args__['state'] = state
     __args__['useDefault'] = use_default
     __args__['useOldest'] = use_oldest
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount', __args__, opts=opts, typ=GetPaymentmeanBankAccountResult)
     return __ret__.apply(lambda __response__: GetPaymentmeanBankAccountResult(
         default=pulumi.get(__response__, 'default'),

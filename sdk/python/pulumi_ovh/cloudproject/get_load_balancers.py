@@ -121,7 +121,7 @@ def get_load_balancers(region_name: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_load_balancers_output(region_name: Optional[pulumi.Input[str]] = None,
                               service_name: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancersResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancersResult]:
     """
     List your public cloud loadbalancers.
 
@@ -144,7 +144,7 @@ def get_load_balancers_output(region_name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['regionName'] = region_name
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getLoadBalancers:getLoadBalancers', __args__, opts=opts, typ=GetLoadBalancersResult)
     return __ret__.apply(lambda __response__: GetLoadBalancersResult(
         id=pulumi.get(__response__, 'id'),

@@ -92,7 +92,7 @@ export interface GetPaymentmeanBankAccountResult {
  * });
  * ```
  */
-export function getPaymentmeanBankAccountOutput(args?: GetPaymentmeanBankAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPaymentmeanBankAccountResult> {
+export function getPaymentmeanBankAccountOutput(args?: GetPaymentmeanBankAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPaymentmeanBankAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", {

@@ -217,7 +217,7 @@ def get_ceph(ceph_version: Optional[str] = None,
 def get_ceph_output(ceph_version: Optional[pulumi.Input[Optional[str]]] = None,
                     service_name: Optional[pulumi.Input[str]] = None,
                     status: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCephResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCephResult]:
     """
     Use this data source to retrieve information about a dedicated CEPH.
 
@@ -239,7 +239,7 @@ def get_ceph_output(ceph_version: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['cephVersion'] = ceph_version
     __args__['serviceName'] = service_name
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dedicated/getCeph:getCeph', __args__, opts=opts, typ=GetCephResult)
     return __ret__.apply(lambda __response__: GetCephResult(
         ceph_urn=pulumi.get(__response__, 'ceph_urn'),

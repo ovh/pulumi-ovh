@@ -121,7 +121,7 @@ export interface GetServerSpecificationsHardwareResult {
  * });
  * ```
  */
-export function getServerSpecificationsHardwareOutput(args: GetServerSpecificationsHardwareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerSpecificationsHardwareResult> {
+export function getServerSpecificationsHardwareOutput(args: GetServerSpecificationsHardwareOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerSpecificationsHardwareResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", {
         "serviceName": args.serviceName,

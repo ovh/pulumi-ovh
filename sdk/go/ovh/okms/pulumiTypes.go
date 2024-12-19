@@ -207,6 +207,441 @@ func (o OkmsIamPtrOutput) Urn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceKeyJWKIam struct {
+	// Resource display name
+	DisplayName *string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id *string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn *string `pulumi:"urn"`
+}
+
+// ServiceKeyJWKIamInput is an input type that accepts ServiceKeyJWKIamArgs and ServiceKeyJWKIamOutput values.
+// You can construct a concrete instance of `ServiceKeyJWKIamInput` via:
+//
+//	ServiceKeyJWKIamArgs{...}
+type ServiceKeyJWKIamInput interface {
+	pulumi.Input
+
+	ToServiceKeyJWKIamOutput() ServiceKeyJWKIamOutput
+	ToServiceKeyJWKIamOutputWithContext(context.Context) ServiceKeyJWKIamOutput
+}
+
+type ServiceKeyJWKIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringPtrInput `pulumi:"urn"`
+}
+
+func (ServiceKeyJWKIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKeyJWKIam)(nil)).Elem()
+}
+
+func (i ServiceKeyJWKIamArgs) ToServiceKeyJWKIamOutput() ServiceKeyJWKIamOutput {
+	return i.ToServiceKeyJWKIamOutputWithContext(context.Background())
+}
+
+func (i ServiceKeyJWKIamArgs) ToServiceKeyJWKIamOutputWithContext(ctx context.Context) ServiceKeyJWKIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKeyJWKIamOutput)
+}
+
+func (i ServiceKeyJWKIamArgs) ToServiceKeyJWKIamPtrOutput() ServiceKeyJWKIamPtrOutput {
+	return i.ToServiceKeyJWKIamPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceKeyJWKIamArgs) ToServiceKeyJWKIamPtrOutputWithContext(ctx context.Context) ServiceKeyJWKIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKeyJWKIamOutput).ToServiceKeyJWKIamPtrOutputWithContext(ctx)
+}
+
+// ServiceKeyJWKIamPtrInput is an input type that accepts ServiceKeyJWKIamArgs, ServiceKeyJWKIamPtr and ServiceKeyJWKIamPtrOutput values.
+// You can construct a concrete instance of `ServiceKeyJWKIamPtrInput` via:
+//
+//	        ServiceKeyJWKIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceKeyJWKIamPtrInput interface {
+	pulumi.Input
+
+	ToServiceKeyJWKIamPtrOutput() ServiceKeyJWKIamPtrOutput
+	ToServiceKeyJWKIamPtrOutputWithContext(context.Context) ServiceKeyJWKIamPtrOutput
+}
+
+type serviceKeyJWKIamPtrType ServiceKeyJWKIamArgs
+
+func ServiceKeyJWKIamPtr(v *ServiceKeyJWKIamArgs) ServiceKeyJWKIamPtrInput {
+	return (*serviceKeyJWKIamPtrType)(v)
+}
+
+func (*serviceKeyJWKIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKeyJWKIam)(nil)).Elem()
+}
+
+func (i *serviceKeyJWKIamPtrType) ToServiceKeyJWKIamPtrOutput() ServiceKeyJWKIamPtrOutput {
+	return i.ToServiceKeyJWKIamPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceKeyJWKIamPtrType) ToServiceKeyJWKIamPtrOutputWithContext(ctx context.Context) ServiceKeyJWKIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKeyJWKIamPtrOutput)
+}
+
+type ServiceKeyJWKIamOutput struct{ *pulumi.OutputState }
+
+func (ServiceKeyJWKIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKeyJWKIam)(nil)).Elem()
+}
+
+func (o ServiceKeyJWKIamOutput) ToServiceKeyJWKIamOutput() ServiceKeyJWKIamOutput {
+	return o
+}
+
+func (o ServiceKeyJWKIamOutput) ToServiceKeyJWKIamOutputWithContext(ctx context.Context) ServiceKeyJWKIamOutput {
+	return o
+}
+
+func (o ServiceKeyJWKIamOutput) ToServiceKeyJWKIamPtrOutput() ServiceKeyJWKIamPtrOutput {
+	return o.ToServiceKeyJWKIamPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceKeyJWKIamOutput) ToServiceKeyJWKIamPtrOutputWithContext(ctx context.Context) ServiceKeyJWKIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceKeyJWKIam) *ServiceKeyJWKIam {
+		return &v
+	}).(ServiceKeyJWKIamPtrOutput)
+}
+
+// Resource display name
+func (o ServiceKeyJWKIamOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKIam) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the resource
+func (o ServiceKeyJWKIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o ServiceKeyJWKIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceKeyJWKIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o ServiceKeyJWKIamOutput) Urn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKIam) *string { return v.Urn }).(pulumi.StringPtrOutput)
+}
+
+type ServiceKeyJWKIamPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceKeyJWKIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKeyJWKIam)(nil)).Elem()
+}
+
+func (o ServiceKeyJWKIamPtrOutput) ToServiceKeyJWKIamPtrOutput() ServiceKeyJWKIamPtrOutput {
+	return o
+}
+
+func (o ServiceKeyJWKIamPtrOutput) ToServiceKeyJWKIamPtrOutputWithContext(ctx context.Context) ServiceKeyJWKIamPtrOutput {
+	return o
+}
+
+func (o ServiceKeyJWKIamPtrOutput) Elem() ServiceKeyJWKIamOutput {
+	return o.ApplyT(func(v *ServiceKeyJWKIam) ServiceKeyJWKIam {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceKeyJWKIam
+		return ret
+	}).(ServiceKeyJWKIamOutput)
+}
+
+// Resource display name
+func (o ServiceKeyJWKIamPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKeyJWKIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the resource
+func (o ServiceKeyJWKIamPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKeyJWKIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o ServiceKeyJWKIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceKeyJWKIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o ServiceKeyJWKIamPtrOutput) Urn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKeyJWKIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Urn
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceKeyJWKKey struct {
+	// The algorithm intended to be used with the key
+	Alg *string `pulumi:"alg"`
+	// The cryptographic curve used with the key
+	Crv *string `pulumi:"crv"`
+	// The RSA or EC private exponent
+	D *string `pulumi:"d"`
+	// The RSA private key's first factor CRT exponent
+	Dp *string `pulumi:"dp"`
+	// The RSA private key's second factor CRT exponent
+	Dq *string `pulumi:"dq"`
+	// The exponent value for the RSA public key
+	E *string `pulumi:"e"`
+	// The value of the symmetric (or other single-valued) key
+	K *string `pulumi:"k"`
+	// The operation for which the key is intended to be used
+	KeyOps []string `pulumi:"keyOps"`
+	// key ID parameter used to match a specific key
+	Kid *string `pulumi:"kid"`
+	// Key type parameter identifies the cryptographic algorithm family used with the key, such as RSA or EC
+	Kty string `pulumi:"kty"`
+	// The modulus value for the RSA public key
+	N *string `pulumi:"n"`
+	// The first prime factor of the RSA private key
+	P *string `pulumi:"p"`
+	// The second prime factor of the RSA private key
+	Q *string `pulumi:"q"`
+	// The CRT coefficient of the second factor of the RSA private key
+	Qi *string `pulumi:"qi"`
+	// The intended use of the public key
+	Use *string `pulumi:"use"`
+	// The x coordinate for the Elliptic Curve point
+	X *string `pulumi:"x"`
+	// The y coordinate for the Elliptic Curve point
+	Y *string `pulumi:"y"`
+}
+
+// ServiceKeyJWKKeyInput is an input type that accepts ServiceKeyJWKKeyArgs and ServiceKeyJWKKeyOutput values.
+// You can construct a concrete instance of `ServiceKeyJWKKeyInput` via:
+//
+//	ServiceKeyJWKKeyArgs{...}
+type ServiceKeyJWKKeyInput interface {
+	pulumi.Input
+
+	ToServiceKeyJWKKeyOutput() ServiceKeyJWKKeyOutput
+	ToServiceKeyJWKKeyOutputWithContext(context.Context) ServiceKeyJWKKeyOutput
+}
+
+type ServiceKeyJWKKeyArgs struct {
+	// The algorithm intended to be used with the key
+	Alg pulumi.StringPtrInput `pulumi:"alg"`
+	// The cryptographic curve used with the key
+	Crv pulumi.StringPtrInput `pulumi:"crv"`
+	// The RSA or EC private exponent
+	D pulumi.StringPtrInput `pulumi:"d"`
+	// The RSA private key's first factor CRT exponent
+	Dp pulumi.StringPtrInput `pulumi:"dp"`
+	// The RSA private key's second factor CRT exponent
+	Dq pulumi.StringPtrInput `pulumi:"dq"`
+	// The exponent value for the RSA public key
+	E pulumi.StringPtrInput `pulumi:"e"`
+	// The value of the symmetric (or other single-valued) key
+	K pulumi.StringPtrInput `pulumi:"k"`
+	// The operation for which the key is intended to be used
+	KeyOps pulumi.StringArrayInput `pulumi:"keyOps"`
+	// key ID parameter used to match a specific key
+	Kid pulumi.StringPtrInput `pulumi:"kid"`
+	// Key type parameter identifies the cryptographic algorithm family used with the key, such as RSA or EC
+	Kty pulumi.StringInput `pulumi:"kty"`
+	// The modulus value for the RSA public key
+	N pulumi.StringPtrInput `pulumi:"n"`
+	// The first prime factor of the RSA private key
+	P pulumi.StringPtrInput `pulumi:"p"`
+	// The second prime factor of the RSA private key
+	Q pulumi.StringPtrInput `pulumi:"q"`
+	// The CRT coefficient of the second factor of the RSA private key
+	Qi pulumi.StringPtrInput `pulumi:"qi"`
+	// The intended use of the public key
+	Use pulumi.StringPtrInput `pulumi:"use"`
+	// The x coordinate for the Elliptic Curve point
+	X pulumi.StringPtrInput `pulumi:"x"`
+	// The y coordinate for the Elliptic Curve point
+	Y pulumi.StringPtrInput `pulumi:"y"`
+}
+
+func (ServiceKeyJWKKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKeyJWKKey)(nil)).Elem()
+}
+
+func (i ServiceKeyJWKKeyArgs) ToServiceKeyJWKKeyOutput() ServiceKeyJWKKeyOutput {
+	return i.ToServiceKeyJWKKeyOutputWithContext(context.Background())
+}
+
+func (i ServiceKeyJWKKeyArgs) ToServiceKeyJWKKeyOutputWithContext(ctx context.Context) ServiceKeyJWKKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKeyJWKKeyOutput)
+}
+
+// ServiceKeyJWKKeyArrayInput is an input type that accepts ServiceKeyJWKKeyArray and ServiceKeyJWKKeyArrayOutput values.
+// You can construct a concrete instance of `ServiceKeyJWKKeyArrayInput` via:
+//
+//	ServiceKeyJWKKeyArray{ ServiceKeyJWKKeyArgs{...} }
+type ServiceKeyJWKKeyArrayInput interface {
+	pulumi.Input
+
+	ToServiceKeyJWKKeyArrayOutput() ServiceKeyJWKKeyArrayOutput
+	ToServiceKeyJWKKeyArrayOutputWithContext(context.Context) ServiceKeyJWKKeyArrayOutput
+}
+
+type ServiceKeyJWKKeyArray []ServiceKeyJWKKeyInput
+
+func (ServiceKeyJWKKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceKeyJWKKey)(nil)).Elem()
+}
+
+func (i ServiceKeyJWKKeyArray) ToServiceKeyJWKKeyArrayOutput() ServiceKeyJWKKeyArrayOutput {
+	return i.ToServiceKeyJWKKeyArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceKeyJWKKeyArray) ToServiceKeyJWKKeyArrayOutputWithContext(ctx context.Context) ServiceKeyJWKKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKeyJWKKeyArrayOutput)
+}
+
+type ServiceKeyJWKKeyOutput struct{ *pulumi.OutputState }
+
+func (ServiceKeyJWKKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKeyJWKKey)(nil)).Elem()
+}
+
+func (o ServiceKeyJWKKeyOutput) ToServiceKeyJWKKeyOutput() ServiceKeyJWKKeyOutput {
+	return o
+}
+
+func (o ServiceKeyJWKKeyOutput) ToServiceKeyJWKKeyOutputWithContext(ctx context.Context) ServiceKeyJWKKeyOutput {
+	return o
+}
+
+// The algorithm intended to be used with the key
+func (o ServiceKeyJWKKeyOutput) Alg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.Alg }).(pulumi.StringPtrOutput)
+}
+
+// The cryptographic curve used with the key
+func (o ServiceKeyJWKKeyOutput) Crv() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.Crv }).(pulumi.StringPtrOutput)
+}
+
+// The RSA or EC private exponent
+func (o ServiceKeyJWKKeyOutput) D() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.D }).(pulumi.StringPtrOutput)
+}
+
+// The RSA private key's first factor CRT exponent
+func (o ServiceKeyJWKKeyOutput) Dp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.Dp }).(pulumi.StringPtrOutput)
+}
+
+// The RSA private key's second factor CRT exponent
+func (o ServiceKeyJWKKeyOutput) Dq() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.Dq }).(pulumi.StringPtrOutput)
+}
+
+// The exponent value for the RSA public key
+func (o ServiceKeyJWKKeyOutput) E() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.E }).(pulumi.StringPtrOutput)
+}
+
+// The value of the symmetric (or other single-valued) key
+func (o ServiceKeyJWKKeyOutput) K() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.K }).(pulumi.StringPtrOutput)
+}
+
+// The operation for which the key is intended to be used
+func (o ServiceKeyJWKKeyOutput) KeyOps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) []string { return v.KeyOps }).(pulumi.StringArrayOutput)
+}
+
+// key ID parameter used to match a specific key
+func (o ServiceKeyJWKKeyOutput) Kid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.Kid }).(pulumi.StringPtrOutput)
+}
+
+// Key type parameter identifies the cryptographic algorithm family used with the key, such as RSA or EC
+func (o ServiceKeyJWKKeyOutput) Kty() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) string { return v.Kty }).(pulumi.StringOutput)
+}
+
+// The modulus value for the RSA public key
+func (o ServiceKeyJWKKeyOutput) N() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.N }).(pulumi.StringPtrOutput)
+}
+
+// The first prime factor of the RSA private key
+func (o ServiceKeyJWKKeyOutput) P() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.P }).(pulumi.StringPtrOutput)
+}
+
+// The second prime factor of the RSA private key
+func (o ServiceKeyJWKKeyOutput) Q() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.Q }).(pulumi.StringPtrOutput)
+}
+
+// The CRT coefficient of the second factor of the RSA private key
+func (o ServiceKeyJWKKeyOutput) Qi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.Qi }).(pulumi.StringPtrOutput)
+}
+
+// The intended use of the public key
+func (o ServiceKeyJWKKeyOutput) Use() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.Use }).(pulumi.StringPtrOutput)
+}
+
+// The x coordinate for the Elliptic Curve point
+func (o ServiceKeyJWKKeyOutput) X() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.X }).(pulumi.StringPtrOutput)
+}
+
+// The y coordinate for the Elliptic Curve point
+func (o ServiceKeyJWKKeyOutput) Y() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKeyJWKKey) *string { return v.Y }).(pulumi.StringPtrOutput)
+}
+
+type ServiceKeyJWKKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceKeyJWKKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceKeyJWKKey)(nil)).Elem()
+}
+
+func (o ServiceKeyJWKKeyArrayOutput) ToServiceKeyJWKKeyArrayOutput() ServiceKeyJWKKeyArrayOutput {
+	return o
+}
+
+func (o ServiceKeyJWKKeyArrayOutput) ToServiceKeyJWKKeyArrayOutputWithContext(ctx context.Context) ServiceKeyJWKKeyArrayOutput {
+	return o
+}
+
+func (o ServiceKeyJWKKeyArrayOutput) Index(i pulumi.IntInput) ServiceKeyJWKKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceKeyJWKKey {
+		return vs[0].([]ServiceKeyJWKKey)[vs[1].(int)]
+	}).(ServiceKeyJWKKeyOutput)
+}
+
 type GetOkmsResourceIam struct {
 	// (String) Resource display name
 	DisplayName string `pulumi:"displayName"`
@@ -284,6 +719,164 @@ func (o GetOkmsResourceIamOutput) Tags() pulumi.StringMapOutput {
 // (String) Unique resource name used in policies
 func (o GetOkmsResourceIamOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsResourceIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetOkmsServiceKeyIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// ID of the service key
+	Id string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetOkmsServiceKeyIamInput is an input type that accepts GetOkmsServiceKeyIamArgs and GetOkmsServiceKeyIamOutput values.
+// You can construct a concrete instance of `GetOkmsServiceKeyIamInput` via:
+//
+//	GetOkmsServiceKeyIamArgs{...}
+type GetOkmsServiceKeyIamInput interface {
+	pulumi.Input
+
+	ToGetOkmsServiceKeyIamOutput() GetOkmsServiceKeyIamOutput
+	ToGetOkmsServiceKeyIamOutputWithContext(context.Context) GetOkmsServiceKeyIamOutput
+}
+
+type GetOkmsServiceKeyIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// ID of the service key
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetOkmsServiceKeyIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsServiceKeyIam)(nil)).Elem()
+}
+
+func (i GetOkmsServiceKeyIamArgs) ToGetOkmsServiceKeyIamOutput() GetOkmsServiceKeyIamOutput {
+	return i.ToGetOkmsServiceKeyIamOutputWithContext(context.Background())
+}
+
+func (i GetOkmsServiceKeyIamArgs) ToGetOkmsServiceKeyIamOutputWithContext(ctx context.Context) GetOkmsServiceKeyIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOkmsServiceKeyIamOutput)
+}
+
+type GetOkmsServiceKeyIamOutput struct{ *pulumi.OutputState }
+
+func (GetOkmsServiceKeyIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsServiceKeyIam)(nil)).Elem()
+}
+
+func (o GetOkmsServiceKeyIamOutput) ToGetOkmsServiceKeyIamOutput() GetOkmsServiceKeyIamOutput {
+	return o
+}
+
+func (o GetOkmsServiceKeyIamOutput) ToGetOkmsServiceKeyIamOutputWithContext(ctx context.Context) GetOkmsServiceKeyIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetOkmsServiceKeyIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// ID of the service key
+func (o GetOkmsServiceKeyIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetOkmsServiceKeyIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o GetOkmsServiceKeyIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetOkmsServiceKeyJwkIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// ID of the service key
+	Id string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetOkmsServiceKeyJwkIamInput is an input type that accepts GetOkmsServiceKeyJwkIamArgs and GetOkmsServiceKeyJwkIamOutput values.
+// You can construct a concrete instance of `GetOkmsServiceKeyJwkIamInput` via:
+//
+//	GetOkmsServiceKeyJwkIamArgs{...}
+type GetOkmsServiceKeyJwkIamInput interface {
+	pulumi.Input
+
+	ToGetOkmsServiceKeyJwkIamOutput() GetOkmsServiceKeyJwkIamOutput
+	ToGetOkmsServiceKeyJwkIamOutputWithContext(context.Context) GetOkmsServiceKeyJwkIamOutput
+}
+
+type GetOkmsServiceKeyJwkIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// ID of the service key
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetOkmsServiceKeyJwkIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsServiceKeyJwkIam)(nil)).Elem()
+}
+
+func (i GetOkmsServiceKeyJwkIamArgs) ToGetOkmsServiceKeyJwkIamOutput() GetOkmsServiceKeyJwkIamOutput {
+	return i.ToGetOkmsServiceKeyJwkIamOutputWithContext(context.Background())
+}
+
+func (i GetOkmsServiceKeyJwkIamArgs) ToGetOkmsServiceKeyJwkIamOutputWithContext(ctx context.Context) GetOkmsServiceKeyJwkIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOkmsServiceKeyJwkIamOutput)
+}
+
+type GetOkmsServiceKeyJwkIamOutput struct{ *pulumi.OutputState }
+
+func (GetOkmsServiceKeyJwkIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsServiceKeyJwkIam)(nil)).Elem()
+}
+
+func (o GetOkmsServiceKeyJwkIamOutput) ToGetOkmsServiceKeyJwkIamOutput() GetOkmsServiceKeyJwkIamOutput {
+	return o
+}
+
+func (o GetOkmsServiceKeyJwkIamOutput) ToGetOkmsServiceKeyJwkIamOutputWithContext(ctx context.Context) GetOkmsServiceKeyJwkIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetOkmsServiceKeyJwkIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyJwkIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// ID of the service key
+func (o GetOkmsServiceKeyJwkIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyJwkIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetOkmsServiceKeyJwkIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyJwkIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o GetOkmsServiceKeyJwkIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyJwkIam) string { return v.Urn }).(pulumi.StringOutput)
 }
 
 type GetOkmsServiceKeyJwkKey struct {
@@ -464,15 +1057,209 @@ func (o GetOkmsServiceKeyJwkKeyArrayOutput) Index(i pulumi.IntInput) GetOkmsServ
 	}).(GetOkmsServiceKeyJwkKeyOutput)
 }
 
+type GetOkmsServiceKeyPemIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetOkmsServiceKeyPemIamInput is an input type that accepts GetOkmsServiceKeyPemIamArgs and GetOkmsServiceKeyPemIamOutput values.
+// You can construct a concrete instance of `GetOkmsServiceKeyPemIamInput` via:
+//
+//	GetOkmsServiceKeyPemIamArgs{...}
+type GetOkmsServiceKeyPemIamInput interface {
+	pulumi.Input
+
+	ToGetOkmsServiceKeyPemIamOutput() GetOkmsServiceKeyPemIamOutput
+	ToGetOkmsServiceKeyPemIamOutputWithContext(context.Context) GetOkmsServiceKeyPemIamOutput
+}
+
+type GetOkmsServiceKeyPemIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetOkmsServiceKeyPemIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsServiceKeyPemIam)(nil)).Elem()
+}
+
+func (i GetOkmsServiceKeyPemIamArgs) ToGetOkmsServiceKeyPemIamOutput() GetOkmsServiceKeyPemIamOutput {
+	return i.ToGetOkmsServiceKeyPemIamOutputWithContext(context.Background())
+}
+
+func (i GetOkmsServiceKeyPemIamArgs) ToGetOkmsServiceKeyPemIamOutputWithContext(ctx context.Context) GetOkmsServiceKeyPemIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOkmsServiceKeyPemIamOutput)
+}
+
+type GetOkmsServiceKeyPemIamOutput struct{ *pulumi.OutputState }
+
+func (GetOkmsServiceKeyPemIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsServiceKeyPemIam)(nil)).Elem()
+}
+
+func (o GetOkmsServiceKeyPemIamOutput) ToGetOkmsServiceKeyPemIamOutput() GetOkmsServiceKeyPemIamOutput {
+	return o
+}
+
+func (o GetOkmsServiceKeyPemIamOutput) ToGetOkmsServiceKeyPemIamOutputWithContext(ctx context.Context) GetOkmsServiceKeyPemIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetOkmsServiceKeyPemIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyPemIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the resource
+func (o GetOkmsServiceKeyPemIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyPemIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetOkmsServiceKeyPemIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyPemIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o GetOkmsServiceKeyPemIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyPemIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetOkmsServiceKeyPemKeysPem struct {
+	// The key in base64 encoded PEM format
+	Pem string `pulumi:"pem"`
+}
+
+// GetOkmsServiceKeyPemKeysPemInput is an input type that accepts GetOkmsServiceKeyPemKeysPemArgs and GetOkmsServiceKeyPemKeysPemOutput values.
+// You can construct a concrete instance of `GetOkmsServiceKeyPemKeysPemInput` via:
+//
+//	GetOkmsServiceKeyPemKeysPemArgs{...}
+type GetOkmsServiceKeyPemKeysPemInput interface {
+	pulumi.Input
+
+	ToGetOkmsServiceKeyPemKeysPemOutput() GetOkmsServiceKeyPemKeysPemOutput
+	ToGetOkmsServiceKeyPemKeysPemOutputWithContext(context.Context) GetOkmsServiceKeyPemKeysPemOutput
+}
+
+type GetOkmsServiceKeyPemKeysPemArgs struct {
+	// The key in base64 encoded PEM format
+	Pem pulumi.StringInput `pulumi:"pem"`
+}
+
+func (GetOkmsServiceKeyPemKeysPemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsServiceKeyPemKeysPem)(nil)).Elem()
+}
+
+func (i GetOkmsServiceKeyPemKeysPemArgs) ToGetOkmsServiceKeyPemKeysPemOutput() GetOkmsServiceKeyPemKeysPemOutput {
+	return i.ToGetOkmsServiceKeyPemKeysPemOutputWithContext(context.Background())
+}
+
+func (i GetOkmsServiceKeyPemKeysPemArgs) ToGetOkmsServiceKeyPemKeysPemOutputWithContext(ctx context.Context) GetOkmsServiceKeyPemKeysPemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOkmsServiceKeyPemKeysPemOutput)
+}
+
+// GetOkmsServiceKeyPemKeysPemArrayInput is an input type that accepts GetOkmsServiceKeyPemKeysPemArray and GetOkmsServiceKeyPemKeysPemArrayOutput values.
+// You can construct a concrete instance of `GetOkmsServiceKeyPemKeysPemArrayInput` via:
+//
+//	GetOkmsServiceKeyPemKeysPemArray{ GetOkmsServiceKeyPemKeysPemArgs{...} }
+type GetOkmsServiceKeyPemKeysPemArrayInput interface {
+	pulumi.Input
+
+	ToGetOkmsServiceKeyPemKeysPemArrayOutput() GetOkmsServiceKeyPemKeysPemArrayOutput
+	ToGetOkmsServiceKeyPemKeysPemArrayOutputWithContext(context.Context) GetOkmsServiceKeyPemKeysPemArrayOutput
+}
+
+type GetOkmsServiceKeyPemKeysPemArray []GetOkmsServiceKeyPemKeysPemInput
+
+func (GetOkmsServiceKeyPemKeysPemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOkmsServiceKeyPemKeysPem)(nil)).Elem()
+}
+
+func (i GetOkmsServiceKeyPemKeysPemArray) ToGetOkmsServiceKeyPemKeysPemArrayOutput() GetOkmsServiceKeyPemKeysPemArrayOutput {
+	return i.ToGetOkmsServiceKeyPemKeysPemArrayOutputWithContext(context.Background())
+}
+
+func (i GetOkmsServiceKeyPemKeysPemArray) ToGetOkmsServiceKeyPemKeysPemArrayOutputWithContext(ctx context.Context) GetOkmsServiceKeyPemKeysPemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOkmsServiceKeyPemKeysPemArrayOutput)
+}
+
+type GetOkmsServiceKeyPemKeysPemOutput struct{ *pulumi.OutputState }
+
+func (GetOkmsServiceKeyPemKeysPemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsServiceKeyPemKeysPem)(nil)).Elem()
+}
+
+func (o GetOkmsServiceKeyPemKeysPemOutput) ToGetOkmsServiceKeyPemKeysPemOutput() GetOkmsServiceKeyPemKeysPemOutput {
+	return o
+}
+
+func (o GetOkmsServiceKeyPemKeysPemOutput) ToGetOkmsServiceKeyPemKeysPemOutputWithContext(ctx context.Context) GetOkmsServiceKeyPemKeysPemOutput {
+	return o
+}
+
+// The key in base64 encoded PEM format
+func (o GetOkmsServiceKeyPemKeysPemOutput) Pem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyPemKeysPem) string { return v.Pem }).(pulumi.StringOutput)
+}
+
+type GetOkmsServiceKeyPemKeysPemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOkmsServiceKeyPemKeysPemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOkmsServiceKeyPemKeysPem)(nil)).Elem()
+}
+
+func (o GetOkmsServiceKeyPemKeysPemArrayOutput) ToGetOkmsServiceKeyPemKeysPemArrayOutput() GetOkmsServiceKeyPemKeysPemArrayOutput {
+	return o
+}
+
+func (o GetOkmsServiceKeyPemKeysPemArrayOutput) ToGetOkmsServiceKeyPemKeysPemArrayOutputWithContext(ctx context.Context) GetOkmsServiceKeyPemKeysPemArrayOutput {
+	return o
+}
+
+func (o GetOkmsServiceKeyPemKeysPemArrayOutput) Index(i pulumi.IntInput) GetOkmsServiceKeyPemKeysPemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOkmsServiceKeyPemKeysPem {
+		return vs[0].([]GetOkmsServiceKeyPemKeysPem)[vs[1].(int)]
+	}).(GetOkmsServiceKeyPemKeysPemOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OkmsIamInput)(nil)).Elem(), OkmsIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OkmsIamPtrInput)(nil)).Elem(), OkmsIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceKeyJWKIamInput)(nil)).Elem(), ServiceKeyJWKIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceKeyJWKIamPtrInput)(nil)).Elem(), ServiceKeyJWKIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceKeyJWKKeyInput)(nil)).Elem(), ServiceKeyJWKKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceKeyJWKKeyArrayInput)(nil)).Elem(), ServiceKeyJWKKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsResourceIamInput)(nil)).Elem(), GetOkmsResourceIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsServiceKeyIamInput)(nil)).Elem(), GetOkmsServiceKeyIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsServiceKeyJwkIamInput)(nil)).Elem(), GetOkmsServiceKeyJwkIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsServiceKeyJwkKeyInput)(nil)).Elem(), GetOkmsServiceKeyJwkKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsServiceKeyJwkKeyArrayInput)(nil)).Elem(), GetOkmsServiceKeyJwkKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsServiceKeyPemIamInput)(nil)).Elem(), GetOkmsServiceKeyPemIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsServiceKeyPemKeysPemInput)(nil)).Elem(), GetOkmsServiceKeyPemKeysPemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsServiceKeyPemKeysPemArrayInput)(nil)).Elem(), GetOkmsServiceKeyPemKeysPemArray{})
 	pulumi.RegisterOutputType(OkmsIamOutput{})
 	pulumi.RegisterOutputType(OkmsIamPtrOutput{})
+	pulumi.RegisterOutputType(ServiceKeyJWKIamOutput{})
+	pulumi.RegisterOutputType(ServiceKeyJWKIamPtrOutput{})
+	pulumi.RegisterOutputType(ServiceKeyJWKKeyOutput{})
+	pulumi.RegisterOutputType(ServiceKeyJWKKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetOkmsResourceIamOutput{})
+	pulumi.RegisterOutputType(GetOkmsServiceKeyIamOutput{})
+	pulumi.RegisterOutputType(GetOkmsServiceKeyJwkIamOutput{})
 	pulumi.RegisterOutputType(GetOkmsServiceKeyJwkKeyOutput{})
 	pulumi.RegisterOutputType(GetOkmsServiceKeyJwkKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetOkmsServiceKeyPemIamOutput{})
+	pulumi.RegisterOutputType(GetOkmsServiceKeyPemKeysPemOutput{})
+	pulumi.RegisterOutputType(GetOkmsServiceKeyPemKeysPemArrayOutput{})
 }

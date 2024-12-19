@@ -70,6 +70,36 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetM3dbUserResult> Invoke(GetM3dbUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetM3dbUserResult>("ovh:CloudProject/getM3dbUser:getM3dbUser", args ?? new GetM3dbUserInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var m3dbUser = Ovh.CloudProject.GetM3dbUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["m3dbUserGroup"] = m3dbUser.Apply(getM3dbUserResult =&gt; getM3dbUserResult.Group),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetM3dbUserResult> Invoke(GetM3dbUserInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetM3dbUserResult>("ovh:CloudProject/getM3dbUser:getM3dbUser", args ?? new GetM3dbUserInvokeArgs(), options.WithDefaults());
     }
 
 

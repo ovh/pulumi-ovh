@@ -83,21 +83,11 @@ type GetCapabilitiesContainerFilterResult struct {
 }
 
 func GetCapabilitiesContainerFilterOutput(ctx *pulumi.Context, args GetCapabilitiesContainerFilterOutputArgs, opts ...pulumi.InvokeOption) GetCapabilitiesContainerFilterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCapabilitiesContainerFilterResultOutput, error) {
 			args := v.(GetCapabilitiesContainerFilterArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCapabilitiesContainerFilterResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter", args, &rv, "", opts...)
-			if err != nil {
-				return GetCapabilitiesContainerFilterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCapabilitiesContainerFilterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCapabilitiesContainerFilterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter", args, GetCapabilitiesContainerFilterResultOutput{}, options).(GetCapabilitiesContainerFilterResultOutput), nil
 		}).(GetCapabilitiesContainerFilterResultOutput)
 }
 

@@ -120,7 +120,7 @@ def get_network_private_subnets(network_id: Optional[str] = None,
         subnets=pulumi.get(__ret__, 'subnets'))
 def get_network_private_subnets_output(network_id: Optional[pulumi.Input[str]] = None,
                                        service_name: Optional[pulumi.Input[str]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkPrivateSubnetsResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkPrivateSubnetsResult]:
     """
     List public cloud project subnets of a private network.
 
@@ -142,7 +142,7 @@ def get_network_private_subnets_output(network_id: Optional[pulumi.Input[str]] =
     __args__ = dict()
     __args__['networkId'] = network_id
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getNetworkPrivateSubnets:getNetworkPrivateSubnets', __args__, opts=opts, typ=GetNetworkPrivateSubnetsResult)
     return __ret__.apply(lambda __response__: GetNetworkPrivateSubnetsResult(
         id=pulumi.get(__response__, 'id'),

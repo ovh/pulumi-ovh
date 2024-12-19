@@ -74,7 +74,7 @@ export interface GetUserS3CredentialsResult {
  * export const accessKeyIds = myS3Credentials.then(myS3Credentials => myS3Credentials.accessKeyIds);
  * ```
  */
-export function getUserS3CredentialsOutput(args: GetUserS3CredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserS3CredentialsResult> {
+export function getUserS3CredentialsOutput(args: GetUserS3CredentialsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserS3CredentialsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getUserS3Credentials:getUserS3Credentials", {
         "serviceName": args.serviceName,

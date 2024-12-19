@@ -43,7 +43,7 @@ export interface GetPermissionsGroupResult {
     readonly updatedAt: string;
     readonly urn: string;
 }
-export function getPermissionsGroupOutput(args: GetPermissionsGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionsGroupResult> {
+export function getPermissionsGroupOutput(args: GetPermissionsGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPermissionsGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getPermissionsGroup:getPermissionsGroup", {
         "allows": args.allows,

@@ -91,7 +91,7 @@ export interface GetPrivateDatabaseAllowlistResult {
  * });
  * ```
  */
-export function getPrivateDatabaseAllowlistOutput(args: GetPrivateDatabaseAllowlistOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseAllowlistResult> {
+export function getPrivateDatabaseAllowlistOutput(args: GetPrivateDatabaseAllowlistOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateDatabaseAllowlistResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist", {
         "ip": args.ip,

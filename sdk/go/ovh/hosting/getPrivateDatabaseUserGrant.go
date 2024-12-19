@@ -74,21 +74,11 @@ type LookupPrivateDatabaseUserGrantResult struct {
 }
 
 func LookupPrivateDatabaseUserGrantOutput(ctx *pulumi.Context, args LookupPrivateDatabaseUserGrantOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateDatabaseUserGrantResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateDatabaseUserGrantResultOutput, error) {
 			args := v.(LookupPrivateDatabaseUserGrantArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateDatabaseUserGrantResult
-			secret, err := ctx.InvokePackageRaw("ovh:Hosting/getPrivateDatabaseUserGrant:getPrivateDatabaseUserGrant", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateDatabaseUserGrantResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateDatabaseUserGrantResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateDatabaseUserGrantResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Hosting/getPrivateDatabaseUserGrant:getPrivateDatabaseUserGrant", args, LookupPrivateDatabaseUserGrantResultOutput{}, options).(LookupPrivateDatabaseUserGrantResultOutput), nil
 		}).(LookupPrivateDatabaseUserGrantResultOutput)
 }
 

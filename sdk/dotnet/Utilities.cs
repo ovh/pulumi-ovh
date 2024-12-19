@@ -57,6 +57,14 @@ namespace Pulumi.Ovh
             return dst;
         }
 
+        public static global::Pulumi.InvokeOutputOptions WithDefaults(this global::Pulumi.InvokeOutputOptions? src)
+        {
+            var dst = src ?? new global::Pulumi.InvokeOutputOptions{};
+            dst.Version = src?.Version ?? Version;
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github://api.github.com/ovh/pulumi-ovh";
+            return dst;
+        }
+
         private readonly static string version;
         public static string Version => version;
 

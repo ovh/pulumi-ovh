@@ -116,7 +116,7 @@ def get_volumes(region_name: Optional[str] = None,
         volumes=pulumi.get(__ret__, 'volumes'))
 def get_volumes_output(region_name: Optional[pulumi.Input[str]] = None,
                        service_name: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumesResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumesResult]:
     """
     Get all the volume from a region of a public cloud project
 
@@ -137,7 +137,7 @@ def get_volumes_output(region_name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['regionName'] = region_name
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getVolumes:getVolumes', __args__, opts=opts, typ=GetVolumesResult)
     return __ret__.apply(lambda __response__: GetVolumesResult(
         id=pulumi.get(__response__, 'id'),

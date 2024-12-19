@@ -100,7 +100,7 @@ export interface GetIpRestrictionsResult {
  * export const ips = ipRestrictions.then(ipRestrictions => ipRestrictions.ips);
  * ```
  */
-export function getIpRestrictionsOutput(args: GetIpRestrictionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpRestrictionsResult> {
+export function getIpRestrictionsOutput(args: GetIpRestrictionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpRestrictionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", {
         "clusterId": args.clusterId,

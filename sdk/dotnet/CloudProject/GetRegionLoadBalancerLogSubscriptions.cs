@@ -62,6 +62,32 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetRegionLoadBalancerLogSubscriptionsResult> Invoke(GetRegionLoadBalancerLogSubscriptionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionLoadBalancerLogSubscriptionsResult>("ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions", args ?? new GetRegionLoadBalancerLogSubscriptionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var subs = Ovh.CloudProject.GetRegionLoadBalancerLogSubscriptions.Invoke(new()
+        ///     {
+        ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+        ///         RegionName = "gggg",
+        ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegionLoadBalancerLogSubscriptionsResult> Invoke(GetRegionLoadBalancerLogSubscriptionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionLoadBalancerLogSubscriptionsResult>("ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions", args ?? new GetRegionLoadBalancerLogSubscriptionsInvokeArgs(), options.WithDefaults());
     }
 
 

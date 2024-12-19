@@ -82,7 +82,7 @@ export interface GetKubeNodesResult {
  * export const nodes = nodesKubeNodes;
  * ```
  */
-export function getKubeNodesOutput(args: GetKubeNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeNodesResult> {
+export function getKubeNodesOutput(args: GetKubeNodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeNodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeNodes:getKubeNodes", {
         "kubeId": args.kubeId,

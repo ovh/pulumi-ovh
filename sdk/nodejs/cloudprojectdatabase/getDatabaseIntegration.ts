@@ -115,7 +115,7 @@ export interface GetDatabaseIntegrationResult {
  * export const integrationType = integration.then(integration => integration.type);
  * ```
  */
-export function getDatabaseIntegrationOutput(args: GetDatabaseIntegrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseIntegrationResult> {
+export function getDatabaseIntegrationOutput(args: GetDatabaseIntegrationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseIntegrationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", {
         "clusterId": args.clusterId,

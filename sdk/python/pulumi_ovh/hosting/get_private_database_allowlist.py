@@ -177,7 +177,7 @@ def get_private_database_allowlist(ip: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'))
 def get_private_database_allowlist_output(ip: Optional[pulumi.Input[Optional[str]]] = None,
                                           service_name: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateDatabaseAllowlistResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateDatabaseAllowlistResult]:
     """
     Use this data source to retrieve information about an hosting privatedatabase whitelist.
 
@@ -198,7 +198,7 @@ def get_private_database_allowlist_output(ip: Optional[pulumi.Input[Optional[str
     __args__ = dict()
     __args__['ip'] = ip
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Hosting/getPrivateDatabaseAllowlist:getPrivateDatabaseAllowlist', __args__, opts=opts, typ=GetPrivateDatabaseAllowlistResult)
     return __ret__.apply(lambda __response__: GetPrivateDatabaseAllowlistResult(
         creation_date=pulumi.get(__response__, 'creation_date'),

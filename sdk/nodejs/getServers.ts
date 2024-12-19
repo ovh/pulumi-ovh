@@ -47,7 +47,7 @@ export interface GetServersResult {
  * const servers = ovh.getServers({});
  * ```
  */
-export function getServersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetServersResult> {
+export function getServersOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:index/getServers:getServers", {
     }, opts);

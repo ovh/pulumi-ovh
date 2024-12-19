@@ -66,21 +66,11 @@ type GetNetworkPrivatesResult struct {
 }
 
 func GetNetworkPrivatesOutput(ctx *pulumi.Context, args GetNetworkPrivatesOutputArgs, opts ...pulumi.InvokeOption) GetNetworkPrivatesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNetworkPrivatesResultOutput, error) {
 			args := v.(GetNetworkPrivatesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNetworkPrivatesResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getNetworkPrivates:getNetworkPrivates", args, &rv, "", opts...)
-			if err != nil {
-				return GetNetworkPrivatesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNetworkPrivatesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNetworkPrivatesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getNetworkPrivates:getNetworkPrivates", args, GetNetworkPrivatesResultOutput{}, options).(GetNetworkPrivatesResultOutput), nil
 		}).(GetNetworkPrivatesResultOutput)
 }
 

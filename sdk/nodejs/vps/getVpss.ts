@@ -47,7 +47,7 @@ export interface GetVpssResult {
  * const servers = ovh.Vps.getVpss({});
  * ```
  */
-export function getVpssOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetVpssResult> {
+export function getVpssOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpssResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Vps/getVpss:getVpss", {
     }, opts);

@@ -52,6 +52,27 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         public static Output<GetReferenceResourceTypeResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReferenceResourceTypeResult>("ovh:Iam/getReferenceResourceType:getReferenceResourceType", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to list all the IAM resource types.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var types = Ovh.Iam.GetReferenceResourceType.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetReferenceResourceTypeResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetReferenceResourceTypeResult>("ovh:Iam/getReferenceResourceType:getReferenceResourceType", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

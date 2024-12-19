@@ -10,7 +10,9 @@ from .get_okms_credential import *
 from .get_okms_resource import *
 from .get_okms_service_key import *
 from .get_okms_service_key_jwk import *
+from .get_okms_service_key_pem import *
 from .okms import *
 from .service_key import *
+from .service_key_jwk import *
 from ._inputs import *
 from . import outputs

@@ -170,7 +170,7 @@ def get_paymentmean_credit_card_output(description_regexp: Optional[pulumi.Input
                                        states: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                        use_default: Optional[pulumi.Input[Optional[bool]]] = None,
                                        use_last_to_expire: Optional[pulumi.Input[Optional[bool]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPaymentmeanCreditCardResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPaymentmeanCreditCardResult]:
     """
     Use this data source to retrieve information about a credit card
     payment mean associated with an OVHcloud account.
@@ -198,7 +198,7 @@ def get_paymentmean_credit_card_output(description_regexp: Optional[pulumi.Input
     __args__['states'] = states
     __args__['useDefault'] = use_default
     __args__['useLastToExpire'] = use_last_to_expire
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard', __args__, opts=opts, typ=GetPaymentmeanCreditCardResult)
     return __ret__.apply(lambda __response__: GetPaymentmeanCreditCardResult(
         default=pulumi.get(__response__, 'default'),

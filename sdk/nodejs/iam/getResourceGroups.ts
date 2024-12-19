@@ -47,7 +47,7 @@ export interface GetResourceGroupsResult {
  * const myGroups = ovh.Iam.getResourceGroups({});
  * ```
  */
-export function getResourceGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupsResult> {
+export function getResourceGroupsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getResourceGroups:getResourceGroups", {
     }, opts);

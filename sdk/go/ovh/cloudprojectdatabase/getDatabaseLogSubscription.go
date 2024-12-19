@@ -93,21 +93,11 @@ type GetDatabaseLogSubscriptionResult struct {
 }
 
 func GetDatabaseLogSubscriptionOutput(ctx *pulumi.Context, args GetDatabaseLogSubscriptionOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseLogSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDatabaseLogSubscriptionResultOutput, error) {
 			args := v.(GetDatabaseLogSubscriptionArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDatabaseLogSubscriptionResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", args, &rv, "", opts...)
-			if err != nil {
-				return GetDatabaseLogSubscriptionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDatabaseLogSubscriptionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDatabaseLogSubscriptionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", args, GetDatabaseLogSubscriptionResultOutput{}, options).(GetDatabaseLogSubscriptionResultOutput), nil
 		}).(GetDatabaseLogSubscriptionResultOutput)
 }
 

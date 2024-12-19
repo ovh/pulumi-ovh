@@ -66,7 +66,7 @@ export interface GetContainerRegistriesResult {
  * });
  * ```
  */
-export function getContainerRegistriesOutput(args: GetContainerRegistriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistriesResult> {
+export function getContainerRegistriesOutput(args: GetContainerRegistriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContainerRegistriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getContainerRegistries:getContainerRegistries", {
         "serviceName": args.serviceName,

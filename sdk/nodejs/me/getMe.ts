@@ -162,7 +162,7 @@ export interface GetMeResult {
  * const myAccount = ovh.Me.getMe({});
  * ```
  */
-export function getMeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetMeResult> {
+export function getMeOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getMe:getMe", {
     }, opts);

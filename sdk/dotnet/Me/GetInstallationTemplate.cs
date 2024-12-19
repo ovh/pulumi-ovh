@@ -58,6 +58,30 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public static Output<GetInstallationTemplateResult> Invoke(GetInstallationTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstallationTemplateResult>("ovh:Me/getInstallationTemplate:getInstallationTemplate", args ?? new GetInstallationTemplateInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get a custom installation template available for dedicated servers.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myTemplate = Ovh.Me.GetInstallationTemplate.Invoke(new()
+        ///     {
+        ///         TemplateName = "mytemplate",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstallationTemplateResult> Invoke(GetInstallationTemplateInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstallationTemplateResult>("ovh:Me/getInstallationTemplate:getInstallationTemplate", args ?? new GetInstallationTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

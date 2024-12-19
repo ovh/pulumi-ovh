@@ -266,7 +266,7 @@ def get_firewall_rule(ip: Optional[str] = None,
 def get_firewall_rule_output(ip: Optional[pulumi.Input[str]] = None,
                              ip_on_firewall: Optional[pulumi.Input[str]] = None,
                              sequence: Optional[pulumi.Input[float]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallRuleResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallRuleResult]:
     """
     Use this data source to retrieve information about a rule on an IP firewall.
 
@@ -290,7 +290,7 @@ def get_firewall_rule_output(ip: Optional[pulumi.Input[str]] = None,
     __args__['ip'] = ip
     __args__['ipOnFirewall'] = ip_on_firewall
     __args__['sequence'] = sequence
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Ip/getFirewallRule:getFirewallRule', __args__, opts=opts, typ=GetFirewallRuleResult)
     return __ret__.apply(lambda __response__: GetFirewallRuleResult(
         action=pulumi.get(__response__, 'action'),

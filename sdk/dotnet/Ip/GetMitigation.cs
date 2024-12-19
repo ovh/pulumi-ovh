@@ -60,6 +60,31 @@ namespace Pulumi.Ovh.Ip
         /// </summary>
         public static Output<GetMitigationResult> Invoke(GetMitigationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMitigationResult>("ovh:Ip/getMitigation:getMitigation", args ?? new GetMitigationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this resource to retrieve information about an IP permanent mitigation.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mitigationData = Ovh.Ip.GetMitigation.Invoke(new()
+        ///     {
+        ///         Ip = "XXXXXX",
+        ///         IpOnMitigation = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMitigationResult> Invoke(GetMitigationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMitigationResult>("ovh:Ip/getMitigation:getMitigation", args ?? new GetMitigationInvokeArgs(), options.WithDefaults());
     }
 
 

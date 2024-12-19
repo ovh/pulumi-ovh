@@ -96,7 +96,7 @@ export interface GetPaymentmeanCreditCardResult {
  * });
  * ```
  */
-export function getPaymentmeanCreditCardOutput(args?: GetPaymentmeanCreditCardOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPaymentmeanCreditCardResult> {
+export function getPaymentmeanCreditCardOutput(args?: GetPaymentmeanCreditCardOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPaymentmeanCreditCardResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", {

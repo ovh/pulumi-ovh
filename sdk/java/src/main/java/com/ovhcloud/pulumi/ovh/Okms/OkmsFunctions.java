@@ -10,10 +10,13 @@ import com.ovhcloud.pulumi.ovh.Okms.inputs.GetOkmsResourcePlainArgs;
 import com.ovhcloud.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyArgs;
 import com.ovhcloud.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyJwkArgs;
 import com.ovhcloud.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyJwkPlainArgs;
+import com.ovhcloud.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyPemArgs;
+import com.ovhcloud.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyPemPlainArgs;
 import com.ovhcloud.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyPlainArgs;
 import com.ovhcloud.pulumi.ovh.Okms.outputs.GetOkmsCredentialResult;
 import com.ovhcloud.pulumi.ovh.Okms.outputs.GetOkmsResourceResult;
 import com.ovhcloud.pulumi.ovh.Okms.outputs.GetOkmsServiceKeyJwkResult;
+import com.ovhcloud.pulumi.ovh.Okms.outputs.GetOkmsServiceKeyPemResult;
 import com.ovhcloud.pulumi.ovh.Okms.outputs.GetOkmsServiceKeyResult;
 import com.ovhcloud.pulumi.ovh.Utilities;
 import com.pulumi.core.Output;
@@ -706,5 +709,33 @@ public final class OkmsFunctions {
      */
     public static CompletableFuture<GetOkmsServiceKeyJwkResult> getOkmsServiceKeyJwkPlain(GetOkmsServiceKeyJwkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Okms/getOkmsServiceKeyJwk:getOkmsServiceKeyJwk", TypeShape.of(GetOkmsServiceKeyJwkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a KMS service key, in the PEM format.
+     * 
+     */
+    public static Output<GetOkmsServiceKeyPemResult> getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs args) {
+        return getOkmsServiceKeyPem(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a KMS service key, in the PEM format.
+     * 
+     */
+    public static CompletableFuture<GetOkmsServiceKeyPemResult> getOkmsServiceKeyPemPlain(GetOkmsServiceKeyPemPlainArgs args) {
+        return getOkmsServiceKeyPemPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a KMS service key, in the PEM format.
+     * 
+     */
+    public static Output<GetOkmsServiceKeyPemResult> getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", TypeShape.of(GetOkmsServiceKeyPemResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a KMS service key, in the PEM format.
+     * 
+     */
+    public static CompletableFuture<GetOkmsServiceKeyPemResult> getOkmsServiceKeyPemPlain(GetOkmsServiceKeyPemPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", TypeShape.of(GetOkmsServiceKeyPemResult.class), args, Utilities.withVersion(options));
     }
 }

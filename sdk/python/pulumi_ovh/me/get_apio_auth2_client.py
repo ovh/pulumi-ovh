@@ -149,7 +149,7 @@ def get_apio_auth2_client(client_id: Optional[str] = None,
         identity=pulumi.get(__ret__, 'identity'),
         name=pulumi.get(__ret__, 'name'))
 def get_apio_auth2_client_output(client_id: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAPIOAuth2ClientResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAPIOAuth2ClientResult]:
     """
     Use this data source to retrieve information about an existing OAuth2 service account.
 
@@ -167,7 +167,7 @@ def get_apio_auth2_client_output(client_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['clientId'] = client_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client', __args__, opts=opts, typ=GetAPIOAuth2ClientResult)
     return __ret__.apply(lambda __response__: GetAPIOAuth2ClientResult(
         callback_urls=pulumi.get(__response__, 'callback_urls'),

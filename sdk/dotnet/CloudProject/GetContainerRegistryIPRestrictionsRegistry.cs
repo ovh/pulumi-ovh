@@ -22,6 +22,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetContainerRegistryIPRestrictionsRegistryResult> Invoke(GetContainerRegistryIPRestrictionsRegistryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryIPRestrictionsRegistryResult>("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", args ?? new GetContainerRegistryIPRestrictionsRegistryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+        /// </summary>
+        public static Output<GetContainerRegistryIPRestrictionsRegistryResult> Invoke(GetContainerRegistryIPRestrictionsRegistryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryIPRestrictionsRegistryResult>("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", args ?? new GetContainerRegistryIPRestrictionsRegistryInvokeArgs(), options.WithDefaults());
     }
 
 

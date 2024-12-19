@@ -87,21 +87,11 @@ type LookupLogsOutputOpenSearchIndexResult struct {
 }
 
 func LookupLogsOutputOpenSearchIndexOutput(ctx *pulumi.Context, args LookupLogsOutputOpenSearchIndexOutputArgs, opts ...pulumi.InvokeOption) LookupLogsOutputOpenSearchIndexResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLogsOutputOpenSearchIndexResultOutput, error) {
 			args := v.(LookupLogsOutputOpenSearchIndexArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupLogsOutputOpenSearchIndexResult
-			secret, err := ctx.InvokePackageRaw("ovh:Dbaas/getLogsOutputOpenSearchIndex:getLogsOutputOpenSearchIndex", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLogsOutputOpenSearchIndexResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLogsOutputOpenSearchIndexResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLogsOutputOpenSearchIndexResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Dbaas/getLogsOutputOpenSearchIndex:getLogsOutputOpenSearchIndex", args, LookupLogsOutputOpenSearchIndexResultOutput{}, options).(LookupLogsOutputOpenSearchIndexResultOutput), nil
 		}).(LookupLogsOutputOpenSearchIndexResultOutput)
 }
 

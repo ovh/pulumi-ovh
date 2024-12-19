@@ -56,18 +56,8 @@ type GetInstallationTemplatesResult struct {
 
 func GetInstallationTemplatesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetInstallationTemplatesResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetInstallationTemplatesResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetInstallationTemplatesResult
-		secret, err := ctx.InvokePackageRaw("ovh:Me/getInstallationTemplates:getInstallationTemplates", nil, &rv, "", opts...)
-		if err != nil {
-			return GetInstallationTemplatesResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetInstallationTemplatesResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetInstallationTemplatesResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("ovh:Me/getInstallationTemplates:getInstallationTemplates", nil, GetInstallationTemplatesResultOutput{}, options).(GetInstallationTemplatesResultOutput), nil
 	}).(GetInstallationTemplatesResultOutput)
 }
 

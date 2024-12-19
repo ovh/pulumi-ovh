@@ -85,7 +85,7 @@ export interface GetPrivateDatabaseDbResult {
  * });
  * ```
  */
-export function getPrivateDatabaseDbOutput(args: GetPrivateDatabaseDbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateDatabaseDbResult> {
+export function getPrivateDatabaseDbOutput(args: GetPrivateDatabaseDbOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateDatabaseDbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Hosting/getPrivateDatabaseDb:getPrivateDatabaseDb", {
         "databaseName": args.databaseName,

@@ -166,7 +166,7 @@ def get_cart_output(assign: Optional[pulumi.Input[Optional[bool]]] = None,
                     description: Optional[pulumi.Input[Optional[str]]] = None,
                     expire: Optional[pulumi.Input[Optional[str]]] = None,
                     ovh_subsidiary: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCartResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCartResult]:
     """
     Use this data source to create a temporary order cart to retrieve information order cart products.
 
@@ -191,7 +191,7 @@ def get_cart_output(assign: Optional[pulumi.Input[Optional[bool]]] = None,
     __args__['description'] = description
     __args__['expire'] = expire
     __args__['ovhSubsidiary'] = ovh_subsidiary
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Order/getCart:getCart', __args__, opts=opts, typ=GetCartResult)
     return __ret__.apply(lambda __response__: GetCartResult(
         assign=pulumi.get(__response__, 'assign'),

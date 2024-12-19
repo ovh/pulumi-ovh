@@ -120,7 +120,7 @@ def get_database_postgre_sql_connection_pools(cluster_id: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_database_postgre_sql_connection_pools_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                                      service_name: Optional[pulumi.Input[str]] = None,
-                                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasePostgreSQLConnectionPoolsResult]:
+                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabasePostgreSQLConnectionPoolsResult]:
     """
     Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
 
@@ -143,7 +143,7 @@ def get_database_postgre_sql_connection_pools_output(cluster_id: Optional[pulumi
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools', __args__, opts=opts, typ=GetDatabasePostgreSQLConnectionPoolsResult)
     return __ret__.apply(lambda __response__: GetDatabasePostgreSQLConnectionPoolsResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

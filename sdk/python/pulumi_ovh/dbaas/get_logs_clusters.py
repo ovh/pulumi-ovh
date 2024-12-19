@@ -107,7 +107,7 @@ def get_logs_clusters(service_name: Optional[str] = None,
         urn=pulumi.get(__ret__, 'urn'),
         uuids=pulumi.get(__ret__, 'uuids'))
 def get_logs_clusters_output(service_name: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogsClustersResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsClustersResult]:
     """
     Use this data source to retrieve UUIDs of DBaas logs clusters.
 
@@ -125,7 +125,7 @@ def get_logs_clusters_output(service_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsClusters:getLogsClusters', __args__, opts=opts, typ=GetLogsClustersResult)
     return __ret__.apply(lambda __response__: GetLogsClustersResult(
         id=pulumi.get(__response__, 'id'),

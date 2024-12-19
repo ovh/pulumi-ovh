@@ -138,7 +138,7 @@ export interface GetCartProductOptionsPlanResult {
  * }));
  * ```
  */
-export function getCartProductOptionsPlanOutput(args: GetCartProductOptionsPlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCartProductOptionsPlanResult> {
+export function getCartProductOptionsPlanOutput(args: GetCartProductOptionsPlanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCartProductOptionsPlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Order/getCartProductOptionsPlan:getCartProductOptionsPlan", {
         "cartId": args.cartId,

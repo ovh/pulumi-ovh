@@ -79,7 +79,7 @@ def get_projects(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPro
     return AwaitableGetProjectsResult(
         id=pulumi.get(__ret__, 'id'),
         projects=pulumi.get(__ret__, 'projects'))
-def get_projects_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectsResult]:
+def get_projects_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectsResult]:
     """
     Get the details of your public cloud projects.
 
@@ -93,7 +93,7 @@ def get_projects_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Cloud/getProjects:getProjects', __args__, opts=opts, typ=GetProjectsResult)
     return __ret__.apply(lambda __response__: GetProjectsResult(
         id=pulumi.get(__response__, 'id'),

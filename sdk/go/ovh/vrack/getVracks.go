@@ -56,18 +56,8 @@ type GetVracksResult struct {
 
 func GetVracksOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVracksResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetVracksResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetVracksResult
-		secret, err := ctx.InvokePackageRaw("ovh:Vrack/getVracks:getVracks", nil, &rv, "", opts...)
-		if err != nil {
-			return GetVracksResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetVracksResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetVracksResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("ovh:Vrack/getVracks:getVracks", nil, GetVracksResultOutput{}, options).(GetVracksResultOutput), nil
 	}).(GetVracksResultOutput)
 }
 

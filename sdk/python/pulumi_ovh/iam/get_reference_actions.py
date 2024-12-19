@@ -89,7 +89,7 @@ def get_reference_actions(type: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         type=pulumi.get(__ret__, 'type'))
 def get_reference_actions_output(type: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReferenceActionsResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReferenceActionsResult]:
     """
     Use this data source to list the IAM action associated with a resource type.
 
@@ -98,7 +98,7 @@ def get_reference_actions_output(type: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getReferenceActions:getReferenceActions', __args__, opts=opts, typ=GetReferenceActionsResult)
     return __ret__.apply(lambda __response__: GetReferenceActionsResult(
         actions=pulumi.get(__response__, 'actions'),

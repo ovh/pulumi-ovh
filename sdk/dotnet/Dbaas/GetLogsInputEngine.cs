@@ -64,6 +64,33 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         public static Output<GetLogsInputEngineResult> Invoke(GetLogsInputEngineInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsInputEngineResult>("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", args ?? new GetLogsInputEngineInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a DBaas logs input engine.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var logstash = Ovh.Dbaas.GetLogsInputEngine.Invoke(new()
+        ///     {
+        ///         IsDeprecated = true,
+        ///         Name = "logstash",
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Version = "6.8",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLogsInputEngineResult> Invoke(GetLogsInputEngineInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLogsInputEngineResult>("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", args ?? new GetLogsInputEngineInvokeArgs(), options.WithDefaults());
     }
 
 

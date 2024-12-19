@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -47,6 +49,7 @@ export interface GetOkmsServiceKeyArgs {
 export interface GetOkmsServiceKeyResult {
     readonly createdAt: string;
     readonly curve: string;
+    readonly iam: outputs.Okms.GetOkmsServiceKeyIam;
     readonly id: string;
     readonly name: string;
     readonly okmsId: string;
@@ -70,7 +73,7 @@ export interface GetOkmsServiceKeyResult {
  * });
  * ```
  */
-export function getOkmsServiceKeyOutput(args: GetOkmsServiceKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOkmsServiceKeyResult> {
+export function getOkmsServiceKeyOutput(args: GetOkmsServiceKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOkmsServiceKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Okms/getOkmsServiceKey:getOkmsServiceKey", {
         "id": args.id,

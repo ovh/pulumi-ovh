@@ -22,6 +22,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public static Output<GetCapabilitiesResult> Invoke(GetCapabilitiesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesResult>("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", args ?? new GetCapabilitiesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about capabilities of a public cloud project.
+        /// </summary>
+        public static Output<GetCapabilitiesResult> Invoke(GetCapabilitiesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesResult>("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", args ?? new GetCapabilitiesInvokeArgs(), options.WithDefaults());
     }
 
 

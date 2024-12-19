@@ -93,21 +93,11 @@ type LookupVpsResult struct {
 }
 
 func LookupVpsOutput(ctx *pulumi.Context, args LookupVpsOutputArgs, opts ...pulumi.InvokeOption) LookupVpsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVpsResultOutput, error) {
 			args := v.(LookupVpsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupVpsResult
-			secret, err := ctx.InvokePackageRaw("ovh:Vps/getVps:getVps", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVpsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVpsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVpsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Vps/getVps:getVps", args, LookupVpsResultOutput{}, options).(LookupVpsResultOutput), nil
 		}).(LookupVpsResultOutput)
 }
 

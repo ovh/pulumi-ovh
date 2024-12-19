@@ -46,7 +46,7 @@ export interface GetProjectsResult {
  * const projects = ovh.Cloud.getProjects({});
  * ```
  */
-export function getProjectsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
+export function getProjectsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Cloud/getProjects:getProjects", {
     }, opts);

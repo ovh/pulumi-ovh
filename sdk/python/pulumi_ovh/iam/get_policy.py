@@ -247,7 +247,7 @@ def get_policy_output(allows: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
                       excepts: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       id: Optional[pulumi.Input[str]] = None,
                       permissions_groups: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyResult]:
     """
     Use this data source to retrieve am IAM policy.
 
@@ -275,7 +275,7 @@ def get_policy_output(allows: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     __args__['excepts'] = excepts
     __args__['id'] = id
     __args__['permissionsGroups'] = permissions_groups
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getPolicy:getPolicy', __args__, opts=opts, typ=GetPolicyResult)
     return __ret__.apply(lambda __response__: GetPolicyResult(
         allows=pulumi.get(__response__, 'allows'),

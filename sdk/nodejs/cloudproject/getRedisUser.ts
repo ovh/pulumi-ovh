@@ -111,7 +111,7 @@ export interface GetRedisUserResult {
  * export const redisUserCommands = redisUser.then(redisUser => redisUser.commands);
  * ```
  */
-export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRedisUserResult> {
+export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRedisUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getRedisUser:getRedisUser", {
         "clusterId": args.clusterId,

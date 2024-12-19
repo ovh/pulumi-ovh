@@ -58,6 +58,30 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public static Output<GetIdentityUserResult> Invoke(GetIdentityUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityUserResult>("ovh:Me/getIdentityUser:getIdentityUser", args ?? new GetIdentityUserInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about an identity user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myUser = Ovh.Me.GetIdentityUser.Invoke(new()
+        ///     {
+        ///         User = "my_user_login",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIdentityUserResult> Invoke(GetIdentityUserInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIdentityUserResult>("ovh:Me/getIdentityUser:getIdentityUser", args ?? new GetIdentityUserInvokeArgs(), options.WithDefaults());
     }
 
 

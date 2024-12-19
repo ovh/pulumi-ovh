@@ -79,7 +79,7 @@ export interface GetAPIOAuth2ClientResult {
  * });
  * ```
  */
-export function getAPIOAuth2ClientOutput(args: GetAPIOAuth2ClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAPIOAuth2ClientResult> {
+export function getAPIOAuth2ClientOutput(args: GetAPIOAuth2ClientOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAPIOAuth2ClientResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", {
         "clientId": args.clientId,

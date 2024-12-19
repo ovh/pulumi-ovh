@@ -1621,6 +1621,96 @@ export namespace Okms {
          */
         urn?: pulumi.Input<string>;
     }
+
+    export interface ServiceKeyJWKIam {
+        /**
+         * Resource display name
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Unique identifier of the resource
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Unique resource name used in policies
+         */
+        urn?: pulumi.Input<string>;
+    }
+
+    export interface ServiceKeyJWKKey {
+        /**
+         * The algorithm intended to be used with the key
+         */
+        alg?: pulumi.Input<string>;
+        /**
+         * The cryptographic curve used with the key
+         */
+        crv?: pulumi.Input<string>;
+        /**
+         * The RSA or EC private exponent
+         */
+        d?: pulumi.Input<string>;
+        /**
+         * The RSA private key's first factor CRT exponent
+         */
+        dp?: pulumi.Input<string>;
+        /**
+         * The RSA private key's second factor CRT exponent
+         */
+        dq?: pulumi.Input<string>;
+        /**
+         * The exponent value for the RSA public key
+         */
+        e?: pulumi.Input<string>;
+        /**
+         * The value of the symmetric (or other single-valued) key
+         */
+        k?: pulumi.Input<string>;
+        /**
+         * The operation for which the key is intended to be used
+         */
+        keyOps: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * key ID parameter used to match a specific key
+         */
+        kid?: pulumi.Input<string>;
+        /**
+         * Key type parameter identifies the cryptographic algorithm family used with the key, such as RSA or EC
+         */
+        kty: pulumi.Input<string>;
+        /**
+         * The modulus value for the RSA public key
+         */
+        n?: pulumi.Input<string>;
+        /**
+         * The first prime factor of the RSA private key
+         */
+        p?: pulumi.Input<string>;
+        /**
+         * The second prime factor of the RSA private key
+         */
+        q?: pulumi.Input<string>;
+        /**
+         * The CRT coefficient of the second factor of the RSA private key
+         */
+        qi?: pulumi.Input<string>;
+        /**
+         * The intended use of the public key
+         */
+        use?: pulumi.Input<string>;
+        /**
+         * The x coordinate for the Elliptic Curve point
+         */
+        x?: pulumi.Input<string>;
+        /**
+         * The y coordinate for the Elliptic Curve point
+         */
+        y?: pulumi.Input<string>;
+    }
 }
 
 export namespace Order {

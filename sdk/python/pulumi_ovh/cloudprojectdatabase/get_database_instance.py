@@ -158,7 +158,7 @@ def get_database_instance_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                  engine: Optional[pulumi.Input[str]] = None,
                                  name: Optional[pulumi.Input[str]] = None,
                                  service_name: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
     """
     Use this data source to get information about a database of a database cluster associated with a public cloud project.
 
@@ -189,7 +189,7 @@ def get_database_instance_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__['engine'] = engine
     __args__['name'] = name
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstanceResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

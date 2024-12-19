@@ -74,21 +74,11 @@ type GetLogsInputEngineResult struct {
 }
 
 func GetLogsInputEngineOutput(ctx *pulumi.Context, args GetLogsInputEngineOutputArgs, opts ...pulumi.InvokeOption) GetLogsInputEngineResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLogsInputEngineResultOutput, error) {
 			args := v.(GetLogsInputEngineArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetLogsInputEngineResult
-			secret, err := ctx.InvokePackageRaw("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", args, &rv, "", opts...)
-			if err != nil {
-				return GetLogsInputEngineResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLogsInputEngineResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLogsInputEngineResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", args, GetLogsInputEngineResultOutput{}, options).(GetLogsInputEngineResultOutput), nil
 		}).(GetLogsInputEngineResultOutput)
 }
 

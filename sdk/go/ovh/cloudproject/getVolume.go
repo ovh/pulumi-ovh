@@ -76,21 +76,11 @@ type GetVolumeResult struct {
 }
 
 func GetVolumeOutput(ctx *pulumi.Context, args GetVolumeOutputArgs, opts ...pulumi.InvokeOption) GetVolumeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVolumeResultOutput, error) {
 			args := v.(GetVolumeArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetVolumeResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getVolume:getVolume", args, &rv, "", opts...)
-			if err != nil {
-				return GetVolumeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVolumeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVolumeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getVolume:getVolume", args, GetVolumeResultOutput{}, options).(GetVolumeResultOutput), nil
 		}).(GetVolumeResultOutput)
 }
 

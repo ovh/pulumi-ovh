@@ -60,6 +60,7 @@ type GetOkmsServiceKeyJwkArgs struct {
 // A collection of values returned by getOkmsServiceKeyJwk.
 type GetOkmsServiceKeyJwkResult struct {
 	CreatedAt string                    `pulumi:"createdAt"`
+	Iam       GetOkmsServiceKeyJwkIam   `pulumi:"iam"`
 	Id        string                    `pulumi:"id"`
 	Keys      []GetOkmsServiceKeyJwkKey `pulumi:"keys"`
 	Name      string                    `pulumi:"name"`
@@ -70,21 +71,11 @@ type GetOkmsServiceKeyJwkResult struct {
 }
 
 func GetOkmsServiceKeyJwkOutput(ctx *pulumi.Context, args GetOkmsServiceKeyJwkOutputArgs, opts ...pulumi.InvokeOption) GetOkmsServiceKeyJwkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOkmsServiceKeyJwkResultOutput, error) {
 			args := v.(GetOkmsServiceKeyJwkArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetOkmsServiceKeyJwkResult
-			secret, err := ctx.InvokePackageRaw("ovh:Okms/getOkmsServiceKeyJwk:getOkmsServiceKeyJwk", args, &rv, "", opts...)
-			if err != nil {
-				return GetOkmsServiceKeyJwkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOkmsServiceKeyJwkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOkmsServiceKeyJwkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Okms/getOkmsServiceKeyJwk:getOkmsServiceKeyJwk", args, GetOkmsServiceKeyJwkResultOutput{}, options).(GetOkmsServiceKeyJwkResultOutput), nil
 		}).(GetOkmsServiceKeyJwkResultOutput)
 }
 
@@ -117,6 +108,10 @@ func (o GetOkmsServiceKeyJwkResultOutput) ToGetOkmsServiceKeyJwkResultOutputWith
 
 func (o GetOkmsServiceKeyJwkResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsServiceKeyJwkResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetOkmsServiceKeyJwkResultOutput) Iam() GetOkmsServiceKeyJwkIamOutput {
+	return o.ApplyT(func(v GetOkmsServiceKeyJwkResult) GetOkmsServiceKeyJwkIam { return v.Iam }).(GetOkmsServiceKeyJwkIamOutput)
 }
 
 func (o GetOkmsServiceKeyJwkResultOutput) Id() pulumi.StringOutput {

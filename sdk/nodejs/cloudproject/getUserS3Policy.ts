@@ -84,7 +84,7 @@ export interface GetUserS3PolicyResult {
  * }));
  * ```
  */
-export function getUserS3PolicyOutput(args: GetUserS3PolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserS3PolicyResult> {
+export function getUserS3PolicyOutput(args: GetUserS3PolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserS3PolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getUserS3Policy:getUserS3Policy", {
         "serviceName": args.serviceName,

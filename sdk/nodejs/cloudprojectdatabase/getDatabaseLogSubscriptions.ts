@@ -92,7 +92,7 @@ export interface GetDatabaseLogSubscriptionsResult {
  * export const subscriptionIds = subscriptions.then(subscriptions => subscriptions.subscriptionIds);
  * ```
  */
-export function getDatabaseLogSubscriptionsOutput(args: GetDatabaseLogSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseLogSubscriptionsResult> {
+export function getDatabaseLogSubscriptionsOutput(args: GetDatabaseLogSubscriptionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseLogSubscriptionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabaseLogSubscriptions:getDatabaseLogSubscriptions", {
         "clusterId": args.clusterId,

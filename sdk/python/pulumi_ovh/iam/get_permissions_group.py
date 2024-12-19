@@ -164,7 +164,7 @@ def get_permissions_group_output(allows: Optional[pulumi.Input[Optional[Sequence
                                  excepts: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  updated_at: Optional[pulumi.Input[Optional[str]]] = None,
                                  urn: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPermissionsGroupResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPermissionsGroupResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -175,7 +175,7 @@ def get_permissions_group_output(allows: Optional[pulumi.Input[Optional[Sequence
     __args__['excepts'] = excepts
     __args__['updatedAt'] = updated_at
     __args__['urn'] = urn
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getPermissionsGroup:getPermissionsGroup', __args__, opts=opts, typ=GetPermissionsGroupResult)
     return __ret__.apply(lambda __response__: GetPermissionsGroupResult(
         allows=pulumi.get(__response__, 'allows'),

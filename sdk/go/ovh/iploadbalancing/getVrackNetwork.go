@@ -74,21 +74,11 @@ type LookupVrackNetworkResult struct {
 }
 
 func LookupVrackNetworkOutput(ctx *pulumi.Context, args LookupVrackNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupVrackNetworkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVrackNetworkResultOutput, error) {
 			args := v.(LookupVrackNetworkArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupVrackNetworkResult
-			secret, err := ctx.InvokePackageRaw("ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVrackNetworkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVrackNetworkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVrackNetworkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork", args, LookupVrackNetworkResultOutput{}, options).(LookupVrackNetworkResultOutput), nil
 		}).(LookupVrackNetworkResultOutput)
 }
 

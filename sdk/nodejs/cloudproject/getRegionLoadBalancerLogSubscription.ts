@@ -123,7 +123,7 @@ export interface GetRegionLoadBalancerLogSubscriptionResult {
  * });
  * ```
  */
-export function getRegionLoadBalancerLogSubscriptionOutput(args: GetRegionLoadBalancerLogSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionLoadBalancerLogSubscriptionResult> {
+export function getRegionLoadBalancerLogSubscriptionOutput(args: GetRegionLoadBalancerLogSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionLoadBalancerLogSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getRegionLoadBalancerLogSubscription:getRegionLoadBalancerLogSubscription", {
         "loadbalancerId": args.loadbalancerId,

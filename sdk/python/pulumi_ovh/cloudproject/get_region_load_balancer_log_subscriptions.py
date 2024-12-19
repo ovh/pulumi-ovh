@@ -153,7 +153,7 @@ def get_region_load_balancer_log_subscriptions_output(kind: Optional[pulumi.Inpu
                                                       loadbalancer_id: Optional[pulumi.Input[str]] = None,
                                                       region_name: Optional[pulumi.Input[str]] = None,
                                                       service_name: Optional[pulumi.Input[str]] = None,
-                                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionLoadBalancerLogSubscriptionsResult]:
+                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionLoadBalancerLogSubscriptionsResult]:
     """
     Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.
 
@@ -179,7 +179,7 @@ def get_region_load_balancer_log_subscriptions_output(kind: Optional[pulumi.Inpu
     __args__['loadbalancerId'] = loadbalancer_id
     __args__['regionName'] = region_name
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions', __args__, opts=opts, typ=GetRegionLoadBalancerLogSubscriptionsResult)
     return __ret__.apply(lambda __response__: GetRegionLoadBalancerLogSubscriptionsResult(
         id=pulumi.get(__response__, 'id'),

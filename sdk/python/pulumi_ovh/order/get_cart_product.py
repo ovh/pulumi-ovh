@@ -115,7 +115,7 @@ def get_cart_product(cart_id: Optional[str] = None,
         results=pulumi.get(__ret__, 'results'))
 def get_cart_product_output(cart_id: Optional[pulumi.Input[str]] = None,
                             product: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCartProductResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCartProductResult]:
     """
     Use this data source to retrieve information of order cart product products.
 
@@ -138,7 +138,7 @@ def get_cart_product_output(cart_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['cartId'] = cart_id
     __args__['product'] = product
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Order/getCartProduct:getCartProduct', __args__, opts=opts, typ=GetCartProductResult)
     return __ret__.apply(lambda __response__: GetCartProductResult(
         cart_id=pulumi.get(__response__, 'cart_id'),

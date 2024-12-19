@@ -83,7 +83,7 @@ export interface GetIdentityGroupResult {
  * });
  * ```
  */
-export function getIdentityGroupOutput(args: GetIdentityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityGroupResult> {
+export function getIdentityGroupOutput(args: GetIdentityGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getIdentityGroup:getIdentityGroup", {
         "name": args.name,

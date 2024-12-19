@@ -126,7 +126,7 @@ def get_vrack_networks(service_name: Optional[str] = None,
 def get_vrack_networks_output(service_name: Optional[pulumi.Input[str]] = None,
                               subnet: Optional[pulumi.Input[Optional[str]]] = None,
                               vlan_id: Optional[pulumi.Input[Optional[int]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVrackNetworksResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVrackNetworksResult]:
     """
     Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
 
@@ -149,7 +149,7 @@ def get_vrack_networks_output(service_name: Optional[pulumi.Input[str]] = None,
     __args__['serviceName'] = service_name
     __args__['subnet'] = subnet
     __args__['vlanId'] = vlan_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:index/getVrackNetworks:getVrackNetworks', __args__, opts=opts, typ=GetVrackNetworksResult)
     return __ret__.apply(lambda __response__: GetVrackNetworksResult(
         id=pulumi.get(__response__, 'id'),

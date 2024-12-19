@@ -113,7 +113,7 @@ export interface GetCephResult {
  * });
  * ```
  */
-export function getCephOutput(args: GetCephOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCephResult> {
+export function getCephOutput(args: GetCephOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCephResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dedicated/getCeph:getCeph", {
         "cephVersion": args.cephVersion,

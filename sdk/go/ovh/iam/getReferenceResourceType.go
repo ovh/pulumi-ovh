@@ -56,18 +56,8 @@ type GetReferenceResourceTypeResult struct {
 
 func GetReferenceResourceTypeOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetReferenceResourceTypeResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetReferenceResourceTypeResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetReferenceResourceTypeResult
-		secret, err := ctx.InvokePackageRaw("ovh:Iam/getReferenceResourceType:getReferenceResourceType", nil, &rv, "", opts...)
-		if err != nil {
-			return GetReferenceResourceTypeResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetReferenceResourceTypeResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetReferenceResourceTypeResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("ovh:Iam/getReferenceResourceType:getReferenceResourceType", nil, GetReferenceResourceTypeResultOutput{}, options).(GetReferenceResourceTypeResultOutput), nil
 	}).(GetReferenceResourceTypeResultOutput)
 }
 

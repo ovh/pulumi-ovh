@@ -242,7 +242,7 @@ def get_logs_cluster(cluster_id: Optional[str] = None,
         urn=pulumi.get(__ret__, 'urn'))
 def get_logs_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
                             service_name: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogsClusterResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsClusterResult]:
     """
     Use this data source to retrieve informations about a DBaas logs cluster tenant.
 
@@ -263,7 +263,7 @@ def get_logs_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = 
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsCluster:getLogsCluster', __args__, opts=opts, typ=GetLogsClusterResult)
     return __ret__.apply(lambda __response__: GetLogsClusterResult(
         archive_allowed_networks=pulumi.get(__response__, 'archive_allowed_networks'),

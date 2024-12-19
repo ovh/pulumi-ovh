@@ -132,7 +132,7 @@ def get_capabilities(service_name: Optional[str] = None,
         plans=pulumi.get(__ret__, 'plans'),
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_capabilities_output(service_name: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCapabilitiesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCapabilitiesResult]:
     """
     Use this data source to get information about capabilities of a public cloud project.
 
@@ -142,7 +142,7 @@ def get_capabilities_output(service_name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProjectDatabase/getCapabilities:getCapabilities', __args__, opts=opts, typ=GetCapabilitiesResult)
     return __ret__.apply(lambda __response__: GetCapabilitiesResult(
         engines=pulumi.get(__response__, 'engines'),

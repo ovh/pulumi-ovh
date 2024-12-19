@@ -92,21 +92,11 @@ type LookupRegionLoadBalancerLogSubscriptionResult struct {
 }
 
 func LookupRegionLoadBalancerLogSubscriptionOutput(ctx *pulumi.Context, args LookupRegionLoadBalancerLogSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupRegionLoadBalancerLogSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionLoadBalancerLogSubscriptionResultOutput, error) {
 			args := v.(LookupRegionLoadBalancerLogSubscriptionArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegionLoadBalancerLogSubscriptionResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getRegionLoadBalancerLogSubscription:getRegionLoadBalancerLogSubscription", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegionLoadBalancerLogSubscriptionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegionLoadBalancerLogSubscriptionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegionLoadBalancerLogSubscriptionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getRegionLoadBalancerLogSubscription:getRegionLoadBalancerLogSubscription", args, LookupRegionLoadBalancerLogSubscriptionResultOutput{}, options).(LookupRegionLoadBalancerLogSubscriptionResultOutput), nil
 		}).(LookupRegionLoadBalancerLogSubscriptionResultOutput)
 }
 

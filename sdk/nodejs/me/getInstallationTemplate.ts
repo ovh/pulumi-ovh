@@ -117,7 +117,7 @@ export interface GetInstallationTemplateResult {
  * });
  * ```
  */
-export function getInstallationTemplateOutput(args: GetInstallationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstallationTemplateResult> {
+export function getInstallationTemplateOutput(args: GetInstallationTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstallationTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getInstallationTemplate:getInstallationTemplate", {
         "templateName": args.templateName,

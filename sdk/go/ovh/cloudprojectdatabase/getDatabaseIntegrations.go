@@ -79,21 +79,11 @@ type GetDatabaseIntegrationsResult struct {
 }
 
 func GetDatabaseIntegrationsOutput(ctx *pulumi.Context, args GetDatabaseIntegrationsOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseIntegrationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDatabaseIntegrationsResultOutput, error) {
 			args := v.(GetDatabaseIntegrationsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDatabaseIntegrationsResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProjectDatabase/getDatabaseIntegrations:getDatabaseIntegrations", args, &rv, "", opts...)
-			if err != nil {
-				return GetDatabaseIntegrationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDatabaseIntegrationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDatabaseIntegrationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProjectDatabase/getDatabaseIntegrations:getDatabaseIntegrations", args, GetDatabaseIntegrationsResultOutput{}, options).(GetDatabaseIntegrationsResultOutput), nil
 		}).(GetDatabaseIntegrationsResultOutput)
 }
 

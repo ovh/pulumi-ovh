@@ -80,7 +80,7 @@ export interface GetM3dbNamespacesResult {
  * export const namespaceIds = namespaces.then(namespaces => namespaces.namespaceIds);
  * ```
  */
-export function getM3dbNamespacesOutput(args: GetM3dbNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbNamespacesResult> {
+export function getM3dbNamespacesOutput(args: GetM3dbNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetM3dbNamespacesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces", {
         "clusterId": args.clusterId,

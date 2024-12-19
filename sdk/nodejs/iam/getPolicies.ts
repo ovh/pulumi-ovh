@@ -47,7 +47,7 @@ export interface GetPoliciesResult {
  * const myPolicies = ovh.Iam.getPolicies({});
  * ```
  */
-export function getPoliciesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
+export function getPoliciesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getPolicies:getPolicies", {
     }, opts);

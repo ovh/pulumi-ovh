@@ -43,21 +43,11 @@ type LookupContainerRegistryIPRestrictionsRegistryResult struct {
 }
 
 func LookupContainerRegistryIPRestrictionsRegistryOutput(ctx *pulumi.Context, args LookupContainerRegistryIPRestrictionsRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupContainerRegistryIPRestrictionsRegistryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupContainerRegistryIPRestrictionsRegistryResultOutput, error) {
 			args := v.(LookupContainerRegistryIPRestrictionsRegistryArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupContainerRegistryIPRestrictionsRegistryResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", args, &rv, "", opts...)
-			if err != nil {
-				return LookupContainerRegistryIPRestrictionsRegistryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupContainerRegistryIPRestrictionsRegistryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupContainerRegistryIPRestrictionsRegistryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", args, LookupContainerRegistryIPRestrictionsRegistryResultOutput{}, options).(LookupContainerRegistryIPRestrictionsRegistryResultOutput), nil
 		}).(LookupContainerRegistryIPRestrictionsRegistryResultOutput)
 }
 

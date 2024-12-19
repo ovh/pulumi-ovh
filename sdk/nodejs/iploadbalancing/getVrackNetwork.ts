@@ -83,7 +83,7 @@ export interface GetVrackNetworkResult {
  * });
  * ```
  */
-export function getVrackNetworkOutput(args: GetVrackNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVrackNetworkResult> {
+export function getVrackNetworkOutput(args: GetVrackNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVrackNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork", {
         "serviceName": args.serviceName,

@@ -2805,6 +2805,44 @@ export namespace Okms {
         urn: string;
     }
 
+    export interface GetOkmsServiceKeyIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * ID of the service key
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags: {[key: string]: string};
+        /**
+         * Unique resource name used in policies
+         */
+        urn: string;
+    }
+
+    export interface GetOkmsServiceKeyJwkIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * ID of the service key
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags: {[key: string]: string};
+        /**
+         * Unique resource name used in policies
+         */
+        urn: string;
+    }
+
     export interface GetOkmsServiceKeyJwkKey {
         /**
          * The algorithm intended to be used with the key
@@ -2848,6 +2886,32 @@ export namespace Okms {
         y: string;
     }
 
+    export interface GetOkmsServiceKeyPemIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags: {[key: string]: string};
+        /**
+         * Unique resource name used in policies
+         */
+        urn: string;
+    }
+
+    export interface GetOkmsServiceKeyPemKeysPem {
+        /**
+         * The key in base64 encoded PEM format
+         */
+        pem: string;
+    }
+
     export interface OkmsIam {
         /**
          * (String) Resource display name
@@ -2865,6 +2929,96 @@ export namespace Okms {
          * (String) Unique resource name used in policies
          */
         urn: string;
+    }
+
+    export interface ServiceKeyJWKIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags: {[key: string]: string};
+        /**
+         * Unique resource name used in policies
+         */
+        urn: string;
+    }
+
+    export interface ServiceKeyJWKKey {
+        /**
+         * The algorithm intended to be used with the key
+         */
+        alg?: string;
+        /**
+         * The cryptographic curve used with the key
+         */
+        crv?: string;
+        /**
+         * The RSA or EC private exponent
+         */
+        d?: string;
+        /**
+         * The RSA private key's first factor CRT exponent
+         */
+        dp?: string;
+        /**
+         * The RSA private key's second factor CRT exponent
+         */
+        dq?: string;
+        /**
+         * The exponent value for the RSA public key
+         */
+        e?: string;
+        /**
+         * The value of the symmetric (or other single-valued) key
+         */
+        k?: string;
+        /**
+         * The operation for which the key is intended to be used
+         */
+        keyOps: string[];
+        /**
+         * key ID parameter used to match a specific key
+         */
+        kid: string;
+        /**
+         * Key type parameter identifies the cryptographic algorithm family used with the key, such as RSA or EC
+         */
+        kty: string;
+        /**
+         * The modulus value for the RSA public key
+         */
+        n?: string;
+        /**
+         * The first prime factor of the RSA private key
+         */
+        p?: string;
+        /**
+         * The second prime factor of the RSA private key
+         */
+        q?: string;
+        /**
+         * The CRT coefficient of the second factor of the RSA private key
+         */
+        qi?: string;
+        /**
+         * The intended use of the public key
+         */
+        use?: string;
+        /**
+         * The x coordinate for the Elliptic Curve point
+         */
+        x?: string;
+        /**
+         * The y coordinate for the Elliptic Curve point
+         */
+        y?: string;
     }
 
 }

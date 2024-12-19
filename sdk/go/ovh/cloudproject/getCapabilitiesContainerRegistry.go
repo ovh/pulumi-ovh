@@ -65,21 +65,11 @@ type LookupCapabilitiesContainerRegistryResult struct {
 }
 
 func LookupCapabilitiesContainerRegistryOutput(ctx *pulumi.Context, args LookupCapabilitiesContainerRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupCapabilitiesContainerRegistryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCapabilitiesContainerRegistryResultOutput, error) {
 			args := v.(LookupCapabilitiesContainerRegistryArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupCapabilitiesContainerRegistryResult
-			secret, err := ctx.InvokePackageRaw("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCapabilitiesContainerRegistryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCapabilitiesContainerRegistryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCapabilitiesContainerRegistryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", args, LookupCapabilitiesContainerRegistryResultOutput{}, options).(LookupCapabilitiesContainerRegistryResultOutput), nil
 		}).(LookupCapabilitiesContainerRegistryResultOutput)
 }
 

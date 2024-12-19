@@ -68,6 +68,35 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetM3dbNamespacesResult> Invoke(GetM3dbNamespacesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetM3dbNamespacesResult>("ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces", args ?? new GetM3dbNamespacesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var namespaces = Ovh.CloudProject.GetM3dbNamespaces.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["namespaceIds"] = namespaces.Apply(getM3dbNamespacesResult =&gt; getM3dbNamespacesResult.NamespaceIds),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetM3dbNamespacesResult> Invoke(GetM3dbNamespacesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetM3dbNamespacesResult>("ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces", args ?? new GetM3dbNamespacesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -77,7 +77,7 @@ export interface GetVrackNetworksResult {
  * });
  * ```
  */
-export function getVrackNetworksOutput(args: GetVrackNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVrackNetworksResult> {
+export function getVrackNetworksOutput(args: GetVrackNetworksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVrackNetworksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:index/getVrackNetworks:getVrackNetworks", {
         "serviceName": args.serviceName,

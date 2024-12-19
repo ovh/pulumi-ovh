@@ -60,6 +60,31 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         public static Output<GetLogsOutputGraylogStreamResult> Invoke(GetLogsOutputGraylogStreamInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsOutputGraylogStreamResult>("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args ?? new GetLogsOutputGraylogStreamInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a DBaas logs output graylog stream.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var stream = Ovh.Dbaas.GetLogsOutputGraylogStream.Invoke(new()
+        ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Title = "my stream",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLogsOutputGraylogStreamResult> Invoke(GetLogsOutputGraylogStreamInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLogsOutputGraylogStreamResult>("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args ?? new GetLogsOutputGraylogStreamInvokeArgs(), options.WithDefaults());
     }
 
 

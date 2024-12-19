@@ -81,7 +81,7 @@ def get_reference_resource_type(opts: Optional[pulumi.InvokeOptions] = None) -> 
     return AwaitableGetReferenceResourceTypeResult(
         id=pulumi.get(__ret__, 'id'),
         types=pulumi.get(__ret__, 'types'))
-def get_reference_resource_type_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReferenceResourceTypeResult]:
+def get_reference_resource_type_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReferenceResourceTypeResult]:
     """
     Use this data source to list all the IAM resource types.
 
@@ -95,7 +95,7 @@ def get_reference_resource_type_output(opts: Optional[pulumi.InvokeOptions] = No
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getReferenceResourceType:getReferenceResourceType', __args__, opts=opts, typ=GetReferenceResourceTypeResult)
     return __ret__.apply(lambda __response__: GetReferenceResourceTypeResult(
         id=pulumi.get(__response__, 'id'),

@@ -60,6 +60,31 @@ namespace Pulumi.Ovh.Okms
         /// </summary>
         public static Output<GetOkmsServiceKeyJwkResult> Invoke(GetOkmsServiceKeyJwkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsServiceKeyJwkResult>("ovh:Okms/getOkmsServiceKeyJwk:getOkmsServiceKeyJwk", args ?? new GetOkmsServiceKeyJwkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a KMS service key, in the JWK format.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var keyInfo = Ovh.Okms.GetOkmsServiceKey.Invoke(new()
+        ///     {
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOkmsServiceKeyJwkResult> Invoke(GetOkmsServiceKeyJwkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOkmsServiceKeyJwkResult>("ovh:Okms/getOkmsServiceKeyJwk:getOkmsServiceKeyJwk", args ?? new GetOkmsServiceKeyJwkInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -108,6 +133,7 @@ namespace Pulumi.Ovh.Okms
     public sealed class GetOkmsServiceKeyJwkResult
     {
         public readonly string CreatedAt;
+        public readonly Outputs.GetOkmsServiceKeyJwkIamResult Iam;
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetOkmsServiceKeyJwkKeyResult> Keys;
         public readonly string Name;
@@ -119,6 +145,8 @@ namespace Pulumi.Ovh.Okms
         [OutputConstructor]
         private GetOkmsServiceKeyJwkResult(
             string createdAt,
+
+            Outputs.GetOkmsServiceKeyJwkIamResult iam,
 
             string id,
 
@@ -135,6 +163,7 @@ namespace Pulumi.Ovh.Okms
             string type)
         {
             CreatedAt = createdAt;
+            Iam = iam;
             Id = id;
             Keys = keys;
             Name = name;

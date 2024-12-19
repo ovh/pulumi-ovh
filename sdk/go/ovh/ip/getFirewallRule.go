@@ -95,21 +95,11 @@ type LookupFirewallRuleResult struct {
 }
 
 func LookupFirewallRuleOutput(ctx *pulumi.Context, args LookupFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupFirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFirewallRuleResultOutput, error) {
 			args := v.(LookupFirewallRuleArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupFirewallRuleResult
-			secret, err := ctx.InvokePackageRaw("ovh:Ip/getFirewallRule:getFirewallRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFirewallRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFirewallRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFirewallRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("ovh:Ip/getFirewallRule:getFirewallRule", args, LookupFirewallRuleResultOutput{}, options).(LookupFirewallRuleResultOutput), nil
 		}).(LookupFirewallRuleResultOutput)
 }
 

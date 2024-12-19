@@ -84,7 +84,7 @@ export interface GetOkmsResourceResult {
  * });
  * ```
  */
-export function getOkmsResourceOutput(args: GetOkmsResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOkmsResourceResult> {
+export function getOkmsResourceOutput(args: GetOkmsResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOkmsResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Okms/getOkmsResource:getOkmsResource", {
         "id": args.id,

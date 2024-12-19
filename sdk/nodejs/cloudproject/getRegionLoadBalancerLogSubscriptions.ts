@@ -97,7 +97,7 @@ export interface GetRegionLoadBalancerLogSubscriptionsResult {
  * });
  * ```
  */
-export function getRegionLoadBalancerLogSubscriptionsOutput(args: GetRegionLoadBalancerLogSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionLoadBalancerLogSubscriptionsResult> {
+export function getRegionLoadBalancerLogSubscriptionsOutput(args: GetRegionLoadBalancerLogSubscriptionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionLoadBalancerLogSubscriptionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions", {
         "kind": args.kind,

@@ -68,6 +68,35 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public static Output<GetKubeIpRestrictionsResult> Invoke(GetKubeIpRestrictionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeIpRestrictionsResult>("ovh:CloudProject/getKubeIpRestrictions:getKubeIpRestrictions", args ?? new GetKubeIpRestrictionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ipRestrictions = Ovh.CloudProject.GetKubeIpRestrictions.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ips"] = ipRestrictions.Apply(getKubeIpRestrictionsResult =&gt; getKubeIpRestrictionsResult.Ips),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKubeIpRestrictionsResult> Invoke(GetKubeIpRestrictionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubeIpRestrictionsResult>("ovh:CloudProject/getKubeIpRestrictions:getKubeIpRestrictions", args ?? new GetKubeIpRestrictionsInvokeArgs(), options.WithDefaults());
     }
 
 

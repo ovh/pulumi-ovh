@@ -129,7 +129,7 @@ def get_logs_input_engine_output(is_deprecated: Optional[pulumi.Input[Optional[b
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
                                  service_name: Optional[pulumi.Input[str]] = None,
                                  version: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogsInputEngineResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsInputEngineResult]:
     """
     Use this data source to retrieve information about a DBaas logs input engine.
 
@@ -156,7 +156,7 @@ def get_logs_input_engine_output(is_deprecated: Optional[pulumi.Input[Optional[b
     __args__['name'] = name
     __args__['serviceName'] = service_name
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsInputEngine:getLogsInputEngine', __args__, opts=opts, typ=GetLogsInputEngineResult)
     return __ret__.apply(lambda __response__: GetLogsInputEngineResult(
         id=pulumi.get(__response__, 'id'),

@@ -81,7 +81,7 @@ def get_identity_users(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
     return AwaitableGetIdentityUsersResult(
         id=pulumi.get(__ret__, 'id'),
         users=pulumi.get(__ret__, 'users'))
-def get_identity_users_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdentityUsersResult]:
+def get_identity_users_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdentityUsersResult]:
     """
     Use this data source to retrieve list of user logins of the account's identity users.
 
@@ -95,7 +95,7 @@ def get_identity_users_output(opts: Optional[pulumi.InvokeOptions] = None) -> pu
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Me/getIdentityUsers:getIdentityUsers', __args__, opts=opts, typ=GetIdentityUsersResult)
     return __ret__.apply(lambda __response__: GetIdentityUsersResult(
         id=pulumi.get(__response__, 'id'),

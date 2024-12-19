@@ -272,7 +272,7 @@ def get_ip_load_balancing_output(display_name: Optional[pulumi.Input[Optional[st
                                  vrack_eligibility: Optional[pulumi.Input[Optional[bool]]] = None,
                                  vrack_name: Optional[pulumi.Input[Optional[str]]] = None,
                                  zones: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpLoadBalancingResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpLoadBalancingResult]:
     """
     Use this data source to retrieve information about an IP Load Balancing product
 
@@ -317,7 +317,7 @@ def get_ip_load_balancing_output(display_name: Optional[pulumi.Input[Optional[st
     __args__['vrackEligibility'] = vrack_eligibility
     __args__['vrackName'] = vrack_name
     __args__['zones'] = zones
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing', __args__, opts=opts, typ=GetIpLoadBalancingResult)
     return __ret__.apply(lambda __response__: GetIpLoadBalancingResult(
         display_name=pulumi.get(__response__, 'display_name'),

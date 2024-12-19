@@ -60,6 +60,31 @@ namespace Pulumi.Ovh.Me
         /// </summary>
         public static Output<GetPaymentmeanCreditCardResult> Invoke(GetPaymentmeanCreditCardInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPaymentmeanCreditCardResult>("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", args ?? new GetPaymentmeanCreditCardInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a credit card
+        /// payment mean associated with an OVHcloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cc = Ovh.Me.GetPaymentmeanCreditCard.Invoke(new()
+        ///     {
+        ///         UseDefault = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPaymentmeanCreditCardResult> Invoke(GetPaymentmeanCreditCardInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPaymentmeanCreditCardResult>("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", args ?? new GetPaymentmeanCreditCardInvokeArgs(), options.WithDefaults());
     }
 
 

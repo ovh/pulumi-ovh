@@ -156,7 +156,7 @@ export interface GetLogsOutputGraylogStreamResult {
  * });
  * ```
  */
-export function getLogsOutputGraylogStreamOutput(args: GetLogsOutputGraylogStreamOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogsOutputGraylogStreamResult> {
+export function getLogsOutputGraylogStreamOutput(args: GetLogsOutputGraylogStreamOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogsOutputGraylogStreamResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", {
         "serviceName": args.serviceName,

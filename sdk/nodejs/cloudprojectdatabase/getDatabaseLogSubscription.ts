@@ -123,7 +123,7 @@ export interface GetDatabaseLogSubscriptionResult {
  * export const subscriptionLdpName = subscription.then(subscription => subscription.ldpServiceName);
  * ```
  */
-export function getDatabaseLogSubscriptionOutput(args: GetDatabaseLogSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseLogSubscriptionResult> {
+export function getDatabaseLogSubscriptionOutput(args: GetDatabaseLogSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseLogSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", {
         "clusterId": args.clusterId,

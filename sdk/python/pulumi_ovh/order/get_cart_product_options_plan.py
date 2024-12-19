@@ -255,7 +255,7 @@ def get_cart_product_options_plan_output(cart_id: Optional[pulumi.Input[str]] = 
                                          plan_code: Optional[pulumi.Input[str]] = None,
                                          price_capacity: Optional[pulumi.Input[str]] = None,
                                          product: Optional[pulumi.Input[str]] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCartProductOptionsPlanResult]:
+                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCartProductOptionsPlanResult]:
     """
     Use this data source to retrieve information of order cart product options plan.
 
@@ -289,7 +289,7 @@ def get_cart_product_options_plan_output(cart_id: Optional[pulumi.Input[str]] = 
     __args__['planCode'] = plan_code
     __args__['priceCapacity'] = price_capacity
     __args__['product'] = product
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Order/getCartProductOptionsPlan:getCartProductOptionsPlan', __args__, opts=opts, typ=GetCartProductOptionsPlanResult)
     return __ret__.apply(lambda __response__: GetCartProductOptionsPlanResult(
         cart_id=pulumi.get(__response__, 'cart_id'),

@@ -117,7 +117,7 @@ def get_user_s3_policy(service_name: Optional[str] = None,
         user_id=pulumi.get(__ret__, 'user_id'))
 def get_user_s3_policy_output(service_name: Optional[pulumi.Input[str]] = None,
                               user_id: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserS3PolicyResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserS3PolicyResult]:
     """
     Get the S3 Policy of a public cloud project user. The policy can be set by using the `CloudProject.S3Policy` resource.
 
@@ -143,7 +143,7 @@ def get_user_s3_policy_output(service_name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['serviceName'] = service_name
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getUserS3Policy:getUserS3Policy', __args__, opts=opts, typ=GetUserS3PolicyResult)
     return __ret__.apply(lambda __response__: GetUserS3PolicyResult(
         id=pulumi.get(__response__, 'id'),
