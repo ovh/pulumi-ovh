@@ -1106,6 +1106,27 @@
                 }
             }
         },
+        "ovh:CloudProject/VolumeSubOperation:VolumeSubOperation": {
+            "properties": {
+                "resourceId": {
+                    "type": "string",
+                    "description": "Affected resource of the sub-operation\n"
+                },
+                "resourceType": {
+                    "type": "string",
+                    "description": "The started date of the sub-operation\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "resourceId",
+                        "resourceType"
+                    ]
+                }
+            }
+        },
         "ovh:CloudProject/getCapabilitiesContainerFilterFeature:getCapabilitiesContainerFilterFeature": {
             "properties": {
                 "vulnerability": {
@@ -9145,7 +9166,7 @@
             }
         },
         "ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2": {
-            "description": "Creates a subnet in a private network of a public cloud region.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst subnet = new ovh.cloudproject.NetworkPrivateSubnetV2(\"subnet\", {\n    cidr: \"192.168.168.0/24\",\n    dhcp: true,\n    dnsNameservers: [\"1.1.1.1\"],\n    enableGatewayIp: true,\n    networkId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    region: \"XXX1\",\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nsubnet = ovh.cloud_project.NetworkPrivateSubnetV2(\"subnet\",\n    cidr=\"192.168.168.0/24\",\n    dhcp=True,\n    dns_nameservers=[\"1.1.1.1\"],\n    enable_gateway_ip=True,\n    network_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    region=\"XXX1\",\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var subnet = new Ovh.CloudProject.NetworkPrivateSubnetV2(\"subnet\", new()\n    {\n        Cidr = \"192.168.168.0/24\",\n        Dhcp = true,\n        DnsNameservers = new[]\n        {\n            \"1.1.1.1\",\n        },\n        EnableGatewayIp = true,\n        NetworkId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Region = \"XXX1\",\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.NewNetworkPrivateSubnetV2(ctx, \"subnet\", \u0026CloudProject.NetworkPrivateSubnetV2Args{\n\t\t\tCidr: pulumi.String(\"192.168.168.0/24\"),\n\t\t\tDhcp: pulumi.Bool(true),\n\t\t\tDnsNameservers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"1.1.1.1\"),\n\t\t\t},\n\t\t\tEnableGatewayIp: pulumi.Bool(true),\n\t\t\tNetworkId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tRegion:          pulumi.String(\"XXX1\"),\n\t\t\tServiceName:     pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.NetworkPrivateSubnetV2;\nimport com.pulumi.ovh.CloudProject.NetworkPrivateSubnetV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var subnet = new NetworkPrivateSubnetV2(\"subnet\", NetworkPrivateSubnetV2Args.builder()\n            .cidr(\"192.168.168.0/24\")\n            .dhcp(true)\n            .dnsNameservers(\"1.1.1.1\")\n            .enableGatewayIp(true)\n            .networkId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .region(\"XXX1\")\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  subnet:\n    type: ovh:CloudProject:NetworkPrivateSubnetV2\n    properties:\n      cidr: 192.168.168.0/24\n      dhcp: true\n      dnsNameservers:\n        - 1.1.1.1\n      enableGatewayIp: true\n      networkId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      region: XXX1\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nSubnet in a private network of a public cloud project can be imported using the `service_name`, `region`, `network_id` and `subnet_id`, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2 mysubnet 5ceb661434891538b54a4f2c66fc4b746e/BHS5/25807101-8aaa-4ea5-b507-61f0d661b101/0f0b73a4-403b-45e4-86d0-b438f1291909\n```\n\n",
+            "description": "Creates a subnet in a private network of a public cloud region.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst subnet = new ovh.cloudproject.NetworkPrivateSubnetV2(\"subnet\", {\n    cidr: \"192.168.168.0/24\",\n    dhcp: true,\n    dnsNameservers: [\"1.1.1.1\"],\n    enableGatewayIp: true,\n    networkId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    region: \"XXX1\",\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    useDefaultPublicDnsResolver: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nsubnet = ovh.cloud_project.NetworkPrivateSubnetV2(\"subnet\",\n    cidr=\"192.168.168.0/24\",\n    dhcp=True,\n    dns_nameservers=[\"1.1.1.1\"],\n    enable_gateway_ip=True,\n    network_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    region=\"XXX1\",\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    use_default_public_dns_resolver=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var subnet = new Ovh.CloudProject.NetworkPrivateSubnetV2(\"subnet\", new()\n    {\n        Cidr = \"192.168.168.0/24\",\n        Dhcp = true,\n        DnsNameservers = new[]\n        {\n            \"1.1.1.1\",\n        },\n        EnableGatewayIp = true,\n        NetworkId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Region = \"XXX1\",\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        UseDefaultPublicDnsResolver = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := CloudProject.NewNetworkPrivateSubnetV2(ctx, \"subnet\", \u0026CloudProject.NetworkPrivateSubnetV2Args{\n\t\t\tCidr: pulumi.String(\"192.168.168.0/24\"),\n\t\t\tDhcp: pulumi.Bool(true),\n\t\t\tDnsNameservers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"1.1.1.1\"),\n\t\t\t},\n\t\t\tEnableGatewayIp:             pulumi.Bool(true),\n\t\t\tNetworkId:                   pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tRegion:                      pulumi.String(\"XXX1\"),\n\t\t\tServiceName:                 pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tUseDefaultPublicDnsResolver: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.NetworkPrivateSubnetV2;\nimport com.pulumi.ovh.CloudProject.NetworkPrivateSubnetV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var subnet = new NetworkPrivateSubnetV2(\"subnet\", NetworkPrivateSubnetV2Args.builder()\n            .cidr(\"192.168.168.0/24\")\n            .dhcp(true)\n            .dnsNameservers(\"1.1.1.1\")\n            .enableGatewayIp(true)\n            .networkId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .region(\"XXX1\")\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .useDefaultPublicDnsResolver(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  subnet:\n    type: ovh:CloudProject:NetworkPrivateSubnetV2\n    properties:\n      cidr: 192.168.168.0/24\n      dhcp: true\n      dnsNameservers:\n        - 1.1.1.1\n      enableGatewayIp: true\n      networkId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      region: XXX1\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      useDefaultPublicDnsResolver: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nSubnet in a private network of a public cloud project can be imported using the `service_name`, `region`, `network_id` and `subnet_id`, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2 mysubnet 5ceb661434891538b54a4f2c66fc4b746e/BHS5/25807101-8aaa-4ea5-b507-61f0d661b101/0f0b73a4-403b-45e4-86d0-b438f1291909\n```\n\n",
             "properties": {
                 "allocationPools": {
                     "type": "array",
@@ -9199,11 +9220,16 @@
                 "serviceName": {
                     "type": "string",
                     "description": "The id of the public cloud project. If omitted,\nthe `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n"
+                },
+                "useDefaultPublicDnsResolver": {
+                    "type": "boolean",
+                    "description": "Set to false if you want to use your DNS resolver.\nChanging this value recreates the resource.\n"
                 }
             },
             "required": [
                 "allocationPools",
                 "cidr",
+                "dnsNameservers",
                 "gatewayIp",
                 "name",
                 "networkId",
@@ -9273,6 +9299,11 @@
                 "serviceName": {
                     "type": "string",
                     "description": "The id of the public cloud project. If omitted,\nthe `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n",
+                    "willReplaceOnChanges": true
+                },
+                "useDefaultPublicDnsResolver": {
+                    "type": "boolean",
+                    "description": "Set to false if you want to use your DNS resolver.\nChanging this value recreates the resource.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -9347,6 +9378,11 @@
                     "serviceName": {
                         "type": "string",
                         "description": "The id of the public cloud project. If omitted,\nthe `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "useDefaultPublicDnsResolver": {
+                        "type": "boolean",
+                        "description": "Set to false if you want to use your DNS resolver.\nChanging this value recreates the resource.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -10086,6 +10122,247 @@
                     "username": {
                         "type": "string",
                         "description": "the username generated for the user. This username can be used with\nthe Openstack API.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:CloudProject/volume:Volume": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "The action of the operation\n"
+                },
+                "completedAt": {
+                    "type": "string",
+                    "description": "The completed date of the operation\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation date of the operation\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Volume description\n"
+                },
+                "imageId": {
+                    "type": "string",
+                    "description": "Image ID\n"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "Instance ID\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Volume name\n"
+                },
+                "progress": {
+                    "type": "number",
+                    "description": "Volume status\n"
+                },
+                "regionName": {
+                    "type": "string",
+                    "description": "Region name\n"
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of regions\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "Id of the resource\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Service name\n"
+                },
+                "size": {
+                    "type": "number",
+                    "description": "Volume size\n"
+                },
+                "snapshotId": {
+                    "type": "string",
+                    "description": "Snapshot ID\n"
+                },
+                "startedAt": {
+                    "type": "string",
+                    "description": "Datetime of the operation creation\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Volume status\n"
+                },
+                "subOperations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:CloudProject/VolumeSubOperation:VolumeSubOperation"
+                    },
+                    "description": "Sub-operations of the operation\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the volume\n"
+                },
+                "volumeId": {
+                    "type": "string",
+                    "description": "Volume ID\n"
+                }
+            },
+            "required": [
+                "action",
+                "completedAt",
+                "createdAt",
+                "description",
+                "imageId",
+                "instanceId",
+                "name",
+                "progress",
+                "regionName",
+                "regions",
+                "resourceId",
+                "serviceName",
+                "size",
+                "snapshotId",
+                "startedAt",
+                "status",
+                "subOperations",
+                "type",
+                "volumeId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Volume description\n"
+                },
+                "imageId": {
+                    "type": "string",
+                    "description": "Image ID\n"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "Instance ID\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Volume name\n"
+                },
+                "regionName": {
+                    "type": "string",
+                    "description": "Region name\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Service name\n"
+                },
+                "size": {
+                    "type": "number",
+                    "description": "Volume size\n"
+                },
+                "snapshotId": {
+                    "type": "string",
+                    "description": "Snapshot ID\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the volume\n"
+                },
+                "volumeId": {
+                    "type": "string",
+                    "description": "Volume ID\n"
+                }
+            },
+            "requiredInputs": [
+                "regionName",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Volume resources.\n",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "The action of the operation\n"
+                    },
+                    "completedAt": {
+                        "type": "string",
+                        "description": "The completed date of the operation\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The creation date of the operation\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Volume description\n"
+                    },
+                    "imageId": {
+                        "type": "string",
+                        "description": "Image ID\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "Instance ID\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Volume name\n"
+                    },
+                    "progress": {
+                        "type": "number",
+                        "description": "Volume status\n"
+                    },
+                    "regionName": {
+                        "type": "string",
+                        "description": "Region name\n"
+                    },
+                    "regions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of regions\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Id of the resource\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Service name\n"
+                    },
+                    "size": {
+                        "type": "number",
+                        "description": "Volume size\n"
+                    },
+                    "snapshotId": {
+                        "type": "string",
+                        "description": "Snapshot ID\n"
+                    },
+                    "startedAt": {
+                        "type": "string",
+                        "description": "Datetime of the operation creation\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Volume status\n"
+                    },
+                    "subOperations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:CloudProject/VolumeSubOperation:VolumeSubOperation"
+                        },
+                        "description": "Sub-operations of the operation\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the volume\n"
+                    },
+                    "volumeId": {
+                        "type": "string",
+                        "description": "Volume ID\n"
                     }
                 },
                 "type": "object"
