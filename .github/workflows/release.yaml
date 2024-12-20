@@ -133,7 +133,7 @@ jobs:
           packages-dir: ${{github.workspace}}/sdk/python/bin/dist
           skip-existing: true
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
-        uses: JS-DevTools/npm-publish@v2.2.1
+        uses: JS-DevTools/npm-publish@v3.1.1
         with:
           access: "public"
           token: ${{ env.NPM_TOKEN }}
