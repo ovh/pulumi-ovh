@@ -69,6 +69,7 @@ from .region_storage_presign import *
 from .s3_credential import *
 from .s3_policy import *
 from .user import *
+from .volume import *
 from .workflow_backup import *
 from ._inputs import *
 from . import outputs

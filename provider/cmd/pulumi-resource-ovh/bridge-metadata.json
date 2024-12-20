@@ -24,6 +24,7 @@
             "ovh:CloudProject/s3Credential:S3Credential": 0,
             "ovh:CloudProject/s3Policy:S3Policy": 0,
             "ovh:CloudProject/user:User": 0,
+            "ovh:CloudProject/volume:Volume": 1,
             "ovh:CloudProject/workflowBackup:WorkflowBackup": 0,
             "ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance": 0,
             "ovh:CloudProjectDatabase/integration:Integration": 0,

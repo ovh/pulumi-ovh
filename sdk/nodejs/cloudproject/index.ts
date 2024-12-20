@@ -325,6 +325,11 @@ export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
+export { VolumeArgs, VolumeState } from "./volume";
+export type Volume = import("./volume").Volume;
+export const Volume: typeof import("./volume").Volume = null as any;
+utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
+
 export { WorkflowBackupArgs, WorkflowBackupState } from "./workflowBackup";
 export type WorkflowBackup = import("./workflowBackup").WorkflowBackup;
 export const WorkflowBackup: typeof import("./workflowBackup").WorkflowBackup = null as any;
@@ -381,6 +386,8 @@ const _module = {
                 return new S3Policy(name, <any>undefined, { urn })
             case "ovh:CloudProject/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "ovh:CloudProject/volume:Volume":
+                return new Volume(name, <any>undefined, { urn })
             case "ovh:CloudProject/workflowBackup:WorkflowBackup":
                 return new WorkflowBackup(name, <any>undefined, { urn })
             default:
@@ -411,4 +418,5 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProject/regionStoragePresign"
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/s3Credential", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/s3Policy", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/user", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/volume", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/workflowBackup", _module)

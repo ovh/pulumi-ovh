@@ -81,6 +81,8 @@ __all__ = [
     'ProjectPlanOptionConfigurationArgsDict',
     'UserRoleArgs',
     'UserRoleArgsDict',
+    'VolumeSubOperationArgs',
+    'VolumeSubOperationArgsDict',
     'GetKubeCustomizationArgs',
     'GetKubeCustomizationArgsDict',
     'GetKubeCustomizationApiserverArgs',
@@ -2495,6 +2497,58 @@ class UserRoleArgs:
     @permissions.setter
     def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "permissions", value)
+
+
+if not MYPY:
+    class VolumeSubOperationArgsDict(TypedDict):
+        resource_id: NotRequired[pulumi.Input[str]]
+        """
+        Affected resource of the sub-operation
+        """
+        resource_type: NotRequired[pulumi.Input[str]]
+        """
+        The started date of the sub-operation
+        """
+elif False:
+    VolumeSubOperationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VolumeSubOperationArgs:
+    def __init__(__self__, *,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource_id: Affected resource of the sub-operation
+        :param pulumi.Input[str] resource_type: The started date of the sub-operation
+        """
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Affected resource of the sub-operation
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The started date of the sub-operation
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
 
 
 if not MYPY:

@@ -31,7 +31,8 @@ class NetworkPrivateSubnetV2Args:
                  enable_gateway_ip: Optional[pulumi.Input[bool]] = None,
                  gateway_ip: Optional[pulumi.Input[str]] = None,
                  host_routes: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2HostRouteArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 use_default_public_dns_resolver: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a NetworkPrivateSubnetV2 resource.
         :param pulumi.Input[str] cidr: IP range of the subnet
@@ -53,6 +54,8 @@ class NetworkPrivateSubnetV2Args:
         :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2HostRouteArgs']]] host_routes: Static host routes of subnet
         :param pulumi.Input[str] name: Name of the subnet
                Changing this value recreates the subnet.
+        :param pulumi.Input[bool] use_default_public_dns_resolver: Set to false if you want to use your DNS resolver.
+               Changing this value recreates the resource.
         """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "network_id", network_id)
@@ -72,6 +75,8 @@ class NetworkPrivateSubnetV2Args:
             pulumi.set(__self__, "host_routes", host_routes)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if use_default_public_dns_resolver is not None:
+            pulumi.set(__self__, "use_default_public_dns_resolver", use_default_public_dns_resolver)
 
     @property
     @pulumi.getter
@@ -213,6 +218,19 @@ class NetworkPrivateSubnetV2Args:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="useDefaultPublicDnsResolver")
+    def use_default_public_dns_resolver(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to false if you want to use your DNS resolver.
+        Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "use_default_public_dns_resolver")
+
+    @use_default_public_dns_resolver.setter
+    def use_default_public_dns_resolver(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_default_public_dns_resolver", value)
+
 
 @pulumi.input_type
 class _NetworkPrivateSubnetV2State:
@@ -227,7 +245,8 @@ class _NetworkPrivateSubnetV2State:
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 service_name: Optional[pulumi.Input[str]] = None):
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 use_default_public_dns_resolver: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering NetworkPrivateSubnetV2 resources.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]] allocation_pools: DHCP allocation pools of subnet
@@ -249,6 +268,8 @@ class _NetworkPrivateSubnetV2State:
                Ex.: "GRA1". Changing this value recreates the resource.
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[bool] use_default_public_dns_resolver: Set to false if you want to use your DNS resolver.
+               Changing this value recreates the resource.
         """
         if allocation_pools is not None:
             pulumi.set(__self__, "allocation_pools", allocation_pools)
@@ -272,6 +293,8 @@ class _NetworkPrivateSubnetV2State:
             pulumi.set(__self__, "region", region)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if use_default_public_dns_resolver is not None:
+            pulumi.set(__self__, "use_default_public_dns_resolver", use_default_public_dns_resolver)
 
     @property
     @pulumi.getter(name="allocationPools")
@@ -413,6 +436,19 @@ class _NetworkPrivateSubnetV2State:
     def service_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_name", value)
 
+    @property
+    @pulumi.getter(name="useDefaultPublicDnsResolver")
+    def use_default_public_dns_resolver(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to false if you want to use your DNS resolver.
+        Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "use_default_public_dns_resolver")
+
+    @use_default_public_dns_resolver.setter
+    def use_default_public_dns_resolver(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_default_public_dns_resolver", value)
+
 
 class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @overload
@@ -430,6 +466,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
                  network_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 use_default_public_dns_resolver: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a subnet in a private network of a public cloud region.
@@ -447,7 +484,8 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
             enable_gateway_ip=True,
             network_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             region="XXX1",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            use_default_public_dns_resolver=False)
         ```
 
         ## Import
@@ -481,6 +519,8 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
                Ex.: "GRA1". Changing this value recreates the resource.
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[bool] use_default_public_dns_resolver: Set to false if you want to use your DNS resolver.
+               Changing this value recreates the resource.
         """
         ...
     @overload
@@ -504,7 +544,8 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
             enable_gateway_ip=True,
             network_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             region="XXX1",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            use_default_public_dns_resolver=False)
         ```
 
         ## Import
@@ -543,6 +584,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
                  network_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 use_default_public_dns_resolver: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -571,6 +613,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["use_default_public_dns_resolver"] = use_default_public_dns_resolver
         super(NetworkPrivateSubnetV2, __self__).__init__(
             'ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2',
             resource_name,
@@ -591,7 +634,8 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            service_name: Optional[pulumi.Input[str]] = None) -> 'NetworkPrivateSubnetV2':
+            service_name: Optional[pulumi.Input[str]] = None,
+            use_default_public_dns_resolver: Optional[pulumi.Input[bool]] = None) -> 'NetworkPrivateSubnetV2':
         """
         Get an existing NetworkPrivateSubnetV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -618,6 +662,8 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
                Ex.: "GRA1". Changing this value recreates the resource.
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[bool] use_default_public_dns_resolver: Set to false if you want to use your DNS resolver.
+               Changing this value recreates the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -634,6 +680,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
         __props__.__dict__["network_id"] = network_id
         __props__.__dict__["region"] = region
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["use_default_public_dns_resolver"] = use_default_public_dns_resolver
         return NetworkPrivateSubnetV2(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -664,7 +711,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsNameservers")
-    def dns_nameservers(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def dns_nameservers(self) -> pulumi.Output[Sequence[str]]:
         """
         DNS nameservers used by DHCP
         Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
@@ -731,4 +778,13 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
         the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="useDefaultPublicDnsResolver")
+    def use_default_public_dns_resolver(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set to false if you want to use your DNS resolver.
+        Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "use_default_public_dns_resolver")
 

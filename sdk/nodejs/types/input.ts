@@ -733,6 +733,17 @@ export namespace CloudProject {
          */
         permissions?: pulumi.Input<pulumi.Input<string>[]>;
     }
+
+    export interface VolumeSubOperation {
+        /**
+         * Affected resource of the sub-operation
+         */
+        resourceId?: pulumi.Input<string>;
+        /**
+         * The started date of the sub-operation
+         */
+        resourceType?: pulumi.Input<string>;
+    }
 }
 
 export namespace CloudProjectDatabase {

@@ -49,6 +49,7 @@ __all__ = [
     'ProjectPlanOption',
     'ProjectPlanOptionConfiguration',
     'UserRole',
+    'VolumeSubOperation',
     'GetCapabilitiesContainerFilterFeatureResult',
     'GetCapabilitiesContainerFilterRegistryLimitResult',
     'GetCapabilitiesContainerRegistryResultResult',
@@ -1810,6 +1811,56 @@ class UserRole(dict):
         list of permissions associated with the role
         """
         return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class VolumeSubOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+        elif key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeSubOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeSubOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeSubOperation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_id: Optional[str] = None,
+                 resource_type: Optional[str] = None):
+        """
+        :param str resource_id: Affected resource of the sub-operation
+        :param str resource_type: The started date of the sub-operation
+        """
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[str]:
+        """
+        Affected resource of the sub-operation
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[str]:
+        """
+        The started date of the sub-operation
+        """
+        return pulumi.get(self, "resource_type")
 
 
 @pulumi.output_type

@@ -1344,6 +1344,17 @@ export namespace CloudProject {
         permissions: string[];
     }
 
+    export interface VolumeSubOperation {
+        /**
+         * Affected resource of the sub-operation
+         */
+        resourceId: string;
+        /**
+         * The started date of the sub-operation
+         */
+        resourceType: string;
+    }
+
 }
 
 export namespace CloudProjectDatabase {

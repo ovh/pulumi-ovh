@@ -271,6 +271,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_user_s3_policy": {
 				Tok: ovhResource(cloudProjectMod, "S3Policy"),
 			},
+			"ovh_cloud_project_volume": {
+				Tok: ovhResource(cloudProjectMod, "Volume"),
+			},
 			"ovh_dbaas_logs_input": {
 				Tok: ovhResource(dbaasMod, "LogsInput"),
 			},

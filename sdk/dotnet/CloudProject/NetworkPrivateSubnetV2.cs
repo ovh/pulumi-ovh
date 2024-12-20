@@ -34,6 +34,7 @@ namespace Pulumi.Ovh.CloudProject
     ///         NetworkId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     ///         Region = "XXX1",
     ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         UseDefaultPublicDnsResolver = false,
     ///     });
     /// 
     /// });
@@ -125,6 +126,13 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to false if you want to use your DNS resolver.
+        /// Changing this value recreates the resource.
+        /// </summary>
+        [Output("useDefaultPublicDnsResolver")]
+        public Output<bool?> UseDefaultPublicDnsResolver { get; private set; } = null!;
 
 
         /// <summary>
@@ -265,6 +273,13 @@ namespace Pulumi.Ovh.CloudProject
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Set to false if you want to use your DNS resolver.
+        /// Changing this value recreates the resource.
+        /// </summary>
+        [Input("useDefaultPublicDnsResolver")]
+        public Input<bool>? UseDefaultPublicDnsResolver { get; set; }
+
         public NetworkPrivateSubnetV2Args()
         {
         }
@@ -364,6 +379,13 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
+
+        /// <summary>
+        /// Set to false if you want to use your DNS resolver.
+        /// Changing this value recreates the resource.
+        /// </summary>
+        [Input("useDefaultPublicDnsResolver")]
+        public Input<bool>? UseDefaultPublicDnsResolver { get; set; }
 
         public NetworkPrivateSubnetV2State()
         {
