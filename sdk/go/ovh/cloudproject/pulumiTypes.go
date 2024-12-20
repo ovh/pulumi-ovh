@@ -4446,6 +4446,112 @@ func (o UserRoleArrayOutput) Index(i pulumi.IntInput) UserRoleOutput {
 	}).(UserRoleOutput)
 }
 
+type VolumeSubOperation struct {
+	// Affected resource of the sub-operation
+	ResourceId *string `pulumi:"resourceId"`
+	// The started date of the sub-operation
+	ResourceType *string `pulumi:"resourceType"`
+}
+
+// VolumeSubOperationInput is an input type that accepts VolumeSubOperationArgs and VolumeSubOperationOutput values.
+// You can construct a concrete instance of `VolumeSubOperationInput` via:
+//
+//	VolumeSubOperationArgs{...}
+type VolumeSubOperationInput interface {
+	pulumi.Input
+
+	ToVolumeSubOperationOutput() VolumeSubOperationOutput
+	ToVolumeSubOperationOutputWithContext(context.Context) VolumeSubOperationOutput
+}
+
+type VolumeSubOperationArgs struct {
+	// Affected resource of the sub-operation
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// The started date of the sub-operation
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+}
+
+func (VolumeSubOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeSubOperation)(nil)).Elem()
+}
+
+func (i VolumeSubOperationArgs) ToVolumeSubOperationOutput() VolumeSubOperationOutput {
+	return i.ToVolumeSubOperationOutputWithContext(context.Background())
+}
+
+func (i VolumeSubOperationArgs) ToVolumeSubOperationOutputWithContext(ctx context.Context) VolumeSubOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeSubOperationOutput)
+}
+
+// VolumeSubOperationArrayInput is an input type that accepts VolumeSubOperationArray and VolumeSubOperationArrayOutput values.
+// You can construct a concrete instance of `VolumeSubOperationArrayInput` via:
+//
+//	VolumeSubOperationArray{ VolumeSubOperationArgs{...} }
+type VolumeSubOperationArrayInput interface {
+	pulumi.Input
+
+	ToVolumeSubOperationArrayOutput() VolumeSubOperationArrayOutput
+	ToVolumeSubOperationArrayOutputWithContext(context.Context) VolumeSubOperationArrayOutput
+}
+
+type VolumeSubOperationArray []VolumeSubOperationInput
+
+func (VolumeSubOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeSubOperation)(nil)).Elem()
+}
+
+func (i VolumeSubOperationArray) ToVolumeSubOperationArrayOutput() VolumeSubOperationArrayOutput {
+	return i.ToVolumeSubOperationArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeSubOperationArray) ToVolumeSubOperationArrayOutputWithContext(ctx context.Context) VolumeSubOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeSubOperationArrayOutput)
+}
+
+type VolumeSubOperationOutput struct{ *pulumi.OutputState }
+
+func (VolumeSubOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeSubOperation)(nil)).Elem()
+}
+
+func (o VolumeSubOperationOutput) ToVolumeSubOperationOutput() VolumeSubOperationOutput {
+	return o
+}
+
+func (o VolumeSubOperationOutput) ToVolumeSubOperationOutputWithContext(ctx context.Context) VolumeSubOperationOutput {
+	return o
+}
+
+// Affected resource of the sub-operation
+func (o VolumeSubOperationOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeSubOperation) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The started date of the sub-operation
+func (o VolumeSubOperationOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeSubOperation) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+type VolumeSubOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeSubOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeSubOperation)(nil)).Elem()
+}
+
+func (o VolumeSubOperationArrayOutput) ToVolumeSubOperationArrayOutput() VolumeSubOperationArrayOutput {
+	return o
+}
+
+func (o VolumeSubOperationArrayOutput) ToVolumeSubOperationArrayOutputWithContext(ctx context.Context) VolumeSubOperationArrayOutput {
+	return o
+}
+
+func (o VolumeSubOperationArrayOutput) Index(i pulumi.IntInput) VolumeSubOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeSubOperation {
+		return vs[0].([]VolumeSubOperation)[vs[1].(int)]
+	}).(VolumeSubOperationOutput)
+}
+
 type GetCapabilitiesContainerFilterFeature struct {
 	// Vulnerability scanning
 	Vulnerability bool `pulumi:"vulnerability"`
@@ -8885,6 +8991,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPlanOptionConfigurationArrayInput)(nil)).Elem(), ProjectPlanOptionConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserRoleInput)(nil)).Elem(), UserRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserRoleArrayInput)(nil)).Elem(), UserRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSubOperationInput)(nil)).Elem(), VolumeSubOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSubOperationArrayInput)(nil)).Elem(), VolumeSubOperationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCapabilitiesContainerFilterFeatureInput)(nil)).Elem(), GetCapabilitiesContainerFilterFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCapabilitiesContainerFilterFeatureArrayInput)(nil)).Elem(), GetCapabilitiesContainerFilterFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCapabilitiesContainerFilterRegistryLimitInput)(nil)).Elem(), GetCapabilitiesContainerFilterRegistryLimitArgs{})
@@ -9015,6 +9123,8 @@ func init() {
 	pulumi.RegisterOutputType(ProjectPlanOptionConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(UserRoleOutput{})
 	pulumi.RegisterOutputType(UserRoleArrayOutput{})
+	pulumi.RegisterOutputType(VolumeSubOperationOutput{})
+	pulumi.RegisterOutputType(VolumeSubOperationArrayOutput{})
 	pulumi.RegisterOutputType(GetCapabilitiesContainerFilterFeatureOutput{})
 	pulumi.RegisterOutputType(GetCapabilitiesContainerFilterFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetCapabilitiesContainerFilterRegistryLimitOutput{})

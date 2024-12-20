@@ -81,6 +81,7 @@
         "cloudproject/s3credential.ts",
         "cloudproject/s3policy.ts",
         "cloudproject/user.ts",
+        "cloudproject/volume.ts",
         "cloudproject/workflowBackup.ts",
         "cloudprojectdatabase/databaseInstance.ts",
         "cloudprojectdatabase/getCapabilities.ts",

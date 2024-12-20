@@ -67,6 +67,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &S3Policy{}
 	case "ovh:CloudProject/user:User":
 		r = &User{}
+	case "ovh:CloudProject/volume:Volume":
+		r = &Volume{}
 	case "ovh:CloudProject/workflowBackup:WorkflowBackup":
 		r = &WorkflowBackup{}
 	default:
@@ -195,6 +197,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProject/user",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/volume",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

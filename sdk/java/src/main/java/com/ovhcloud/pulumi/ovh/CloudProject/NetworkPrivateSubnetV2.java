@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *             .networkId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
  *             .region("XXX1")
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .useDefaultPublicDnsResolver(false)
  *             .build());
  * 
  *     }
@@ -127,15 +128,15 @@ public class NetworkPrivateSubnetV2 extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="dnsNameservers", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> dnsNameservers;
+    private Output<List<String>> dnsNameservers;
 
     /**
      * @return DNS nameservers used by DHCP
      * Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
      * 
      */
-    public Output<Optional<List<String>>> dnsNameservers() {
-        return Codegen.optional(this.dnsNameservers);
+    public Output<List<String>> dnsNameservers() {
+        return this.dnsNameservers;
     }
     /**
      * Set to true if you want to set a default gateway IP.
@@ -244,6 +245,22 @@ public class NetworkPrivateSubnetV2 extends com.pulumi.resources.CustomResource 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+    /**
+     * Set to false if you want to use your DNS resolver.
+     * Changing this value recreates the resource.
+     * 
+     */
+    @Export(name="useDefaultPublicDnsResolver", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> useDefaultPublicDnsResolver;
+
+    /**
+     * @return Set to false if you want to use your DNS resolver.
+     * Changing this value recreates the resource.
+     * 
+     */
+    public Output<Optional<Boolean>> useDefaultPublicDnsResolver() {
+        return Codegen.optional(this.useDefaultPublicDnsResolver);
     }
 
     /**

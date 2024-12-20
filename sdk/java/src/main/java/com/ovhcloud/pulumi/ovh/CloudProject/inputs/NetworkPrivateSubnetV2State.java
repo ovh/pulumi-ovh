@@ -200,6 +200,23 @@ public final class NetworkPrivateSubnetV2State extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.serviceName);
     }
 
+    /**
+     * Set to false if you want to use your DNS resolver.
+     * Changing this value recreates the resource.
+     * 
+     */
+    @Import(name="useDefaultPublicDnsResolver")
+    private @Nullable Output<Boolean> useDefaultPublicDnsResolver;
+
+    /**
+     * @return Set to false if you want to use your DNS resolver.
+     * Changing this value recreates the resource.
+     * 
+     */
+    public Optional<Output<Boolean>> useDefaultPublicDnsResolver() {
+        return Optional.ofNullable(this.useDefaultPublicDnsResolver);
+    }
+
     private NetworkPrivateSubnetV2State() {}
 
     private NetworkPrivateSubnetV2State(NetworkPrivateSubnetV2State $) {
@@ -214,6 +231,7 @@ public final class NetworkPrivateSubnetV2State extends com.pulumi.resources.Reso
         this.networkId = $.networkId;
         this.region = $.region;
         this.serviceName = $.serviceName;
+        this.useDefaultPublicDnsResolver = $.useDefaultPublicDnsResolver;
     }
 
     public static Builder builder() {
@@ -510,6 +528,29 @@ public final class NetworkPrivateSubnetV2State extends com.pulumi.resources.Reso
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        /**
+         * @param useDefaultPublicDnsResolver Set to false if you want to use your DNS resolver.
+         * Changing this value recreates the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useDefaultPublicDnsResolver(@Nullable Output<Boolean> useDefaultPublicDnsResolver) {
+            $.useDefaultPublicDnsResolver = useDefaultPublicDnsResolver;
+            return this;
+        }
+
+        /**
+         * @param useDefaultPublicDnsResolver Set to false if you want to use your DNS resolver.
+         * Changing this value recreates the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useDefaultPublicDnsResolver(Boolean useDefaultPublicDnsResolver) {
+            return useDefaultPublicDnsResolver(Output.of(useDefaultPublicDnsResolver));
         }
 
         public NetworkPrivateSubnetV2State build() {

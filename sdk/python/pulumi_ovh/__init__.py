@@ -254,6 +254,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProject/volume",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProject/workflowBackup",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {

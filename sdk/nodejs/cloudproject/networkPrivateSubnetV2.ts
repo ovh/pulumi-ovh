@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *     networkId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     region: "XXX1",
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     useDefaultPublicDnsResolver: false,
  * });
  * ```
  *
@@ -82,7 +83,7 @@ export class NetworkPrivateSubnetV2 extends pulumi.CustomResource {
      * DNS nameservers used by DHCP
      * Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
      */
-    public readonly dnsNameservers!: pulumi.Output<string[] | undefined>;
+    public readonly dnsNameservers!: pulumi.Output<string[]>;
     /**
      * Set to true if you want to set a default gateway IP.
      * Changing this value recreates the resource. Defaults to true.
@@ -116,6 +117,11 @@ export class NetworkPrivateSubnetV2 extends pulumi.CustomResource {
      * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * Set to false if you want to use your DNS resolver.
+     * Changing this value recreates the resource.
+     */
+    public readonly useDefaultPublicDnsResolver!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a NetworkPrivateSubnetV2 resource with the given unique name, arguments, and options.
@@ -141,6 +147,7 @@ export class NetworkPrivateSubnetV2 extends pulumi.CustomResource {
             resourceInputs["networkId"] = state ? state.networkId : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["useDefaultPublicDnsResolver"] = state ? state.useDefaultPublicDnsResolver : undefined;
         } else {
             const args = argsOrState as NetworkPrivateSubnetV2Args | undefined;
             if ((!args || args.cidr === undefined) && !opts.urn) {
@@ -166,6 +173,7 @@ export class NetworkPrivateSubnetV2 extends pulumi.CustomResource {
             resourceInputs["networkId"] = args ? args.networkId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["useDefaultPublicDnsResolver"] = args ? args.useDefaultPublicDnsResolver : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkPrivateSubnetV2.__pulumiType, name, resourceInputs, opts);
@@ -228,6 +236,11 @@ export interface NetworkPrivateSubnetV2State {
      * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
+    /**
+     * Set to false if you want to use your DNS resolver.
+     * Changing this value recreates the resource.
+     */
+    useDefaultPublicDnsResolver?: pulumi.Input<boolean>;
 }
 
 /**
@@ -286,4 +299,9 @@ export interface NetworkPrivateSubnetV2Args {
      * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
+    /**
+     * Set to false if you want to use your DNS resolver.
+     * Changing this value recreates the resource.
+     */
+    useDefaultPublicDnsResolver?: pulumi.Input<boolean>;
 }

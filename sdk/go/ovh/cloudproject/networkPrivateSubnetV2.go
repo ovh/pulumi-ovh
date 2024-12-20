@@ -34,10 +34,11 @@ import (
 //				DnsNameservers: pulumi.StringArray{
 //					pulumi.String("1.1.1.1"),
 //				},
-//				EnableGatewayIp: pulumi.Bool(true),
-//				NetworkId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
-//				Region:          pulumi.String("XXX1"),
-//				ServiceName:     pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				EnableGatewayIp:             pulumi.Bool(true),
+//				NetworkId:                   pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Region:                      pulumi.String("XXX1"),
+//				ServiceName:                 pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				UseDefaultPublicDnsResolver: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -90,6 +91,9 @@ type NetworkPrivateSubnetV2 struct {
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Set to false if you want to use your DNS resolver.
+	// Changing this value recreates the resource.
+	UseDefaultPublicDnsResolver pulumi.BoolPtrOutput `pulumi:"useDefaultPublicDnsResolver"`
 }
 
 // NewNetworkPrivateSubnetV2 registers a new resource with the given unique name, arguments, and options.
@@ -164,6 +168,9 @@ type networkPrivateSubnetV2State struct {
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
+	// Set to false if you want to use your DNS resolver.
+	// Changing this value recreates the resource.
+	UseDefaultPublicDnsResolver *bool `pulumi:"useDefaultPublicDnsResolver"`
 }
 
 type NetworkPrivateSubnetV2State struct {
@@ -197,6 +204,9 @@ type NetworkPrivateSubnetV2State struct {
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
+	// Set to false if you want to use your DNS resolver.
+	// Changing this value recreates the resource.
+	UseDefaultPublicDnsResolver pulumi.BoolPtrInput
 }
 
 func (NetworkPrivateSubnetV2State) ElementType() reflect.Type {
@@ -234,6 +244,9 @@ type networkPrivateSubnetV2Args struct {
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
+	// Set to false if you want to use your DNS resolver.
+	// Changing this value recreates the resource.
+	UseDefaultPublicDnsResolver *bool `pulumi:"useDefaultPublicDnsResolver"`
 }
 
 // The set of arguments for constructing a NetworkPrivateSubnetV2 resource.
@@ -268,6 +281,9 @@ type NetworkPrivateSubnetV2Args struct {
 	// The id of the public cloud project. If omitted,
 	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
+	// Set to false if you want to use your DNS resolver.
+	// Changing this value recreates the resource.
+	UseDefaultPublicDnsResolver pulumi.BoolPtrInput
 }
 
 func (NetworkPrivateSubnetV2Args) ElementType() reflect.Type {
@@ -420,6 +436,12 @@ func (o NetworkPrivateSubnetV2Output) Region() pulumi.StringOutput {
 // the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o NetworkPrivateSubnetV2Output) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Set to false if you want to use your DNS resolver.
+// Changing this value recreates the resource.
+func (o NetworkPrivateSubnetV2Output) UseDefaultPublicDnsResolver() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.BoolPtrOutput { return v.UseDefaultPublicDnsResolver }).(pulumi.BoolPtrOutput)
 }
 
 type NetworkPrivateSubnetV2ArrayOutput struct{ *pulumi.OutputState }

@@ -40,9 +40,9 @@ import (
 //	}
 //
 // ```
-func GetVolume(ctx *pulumi.Context, args *GetVolumeArgs, opts ...pulumi.InvokeOption) (*GetVolumeResult, error) {
+func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetVolumeResult
+	var rv LookupVolumeResult
 	err := ctx.Invoke("ovh:CloudProject/getVolume:getVolume", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func GetVolume(ctx *pulumi.Context, args *GetVolumeArgs, opts ...pulumi.InvokeOp
 }
 
 // A collection of arguments for invoking getVolume.
-type GetVolumeArgs struct {
+type LookupVolumeArgs struct {
 	// A valid OVHcloud public cloud region name in which the volume is available. Ex.: "GRA11".
 	RegionName string `pulumi:"regionName"`
 	// The id of the public cloud project.
@@ -61,7 +61,7 @@ type GetVolumeArgs struct {
 }
 
 // A collection of values returned by getVolume.
-type GetVolumeResult struct {
+type LookupVolumeResult struct {
 	Id string `pulumi:"id"`
 	// The name of the volume (E.g.: "GRA", meaning Gravelines, for region "GRA1")
 	Name string `pulumi:"name"`
@@ -75,17 +75,17 @@ type GetVolumeResult struct {
 	VolumeId string `pulumi:"volumeId"`
 }
 
-func GetVolumeOutput(ctx *pulumi.Context, args GetVolumeOutputArgs, opts ...pulumi.InvokeOption) GetVolumeResultOutput {
+func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVolumeResultOutput, error) {
-			args := v.(GetVolumeArgs)
+		ApplyT(func(v interface{}) (LookupVolumeResultOutput, error) {
+			args := v.(LookupVolumeArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("ovh:CloudProject/getVolume:getVolume", args, GetVolumeResultOutput{}, options).(GetVolumeResultOutput), nil
-		}).(GetVolumeResultOutput)
+			return ctx.InvokeOutput("ovh:CloudProject/getVolume:getVolume", args, LookupVolumeResultOutput{}, options).(LookupVolumeResultOutput), nil
+		}).(LookupVolumeResultOutput)
 }
 
 // A collection of arguments for invoking getVolume.
-type GetVolumeOutputArgs struct {
+type LookupVolumeOutputArgs struct {
 	// A valid OVHcloud public cloud region name in which the volume is available. Ex.: "GRA11".
 	RegionName pulumi.StringInput `pulumi:"regionName"`
 	// The id of the public cloud project.
@@ -94,54 +94,54 @@ type GetVolumeOutputArgs struct {
 	VolumeId pulumi.StringInput `pulumi:"volumeId"`
 }
 
-func (GetVolumeOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumeArgs)(nil)).Elem()
+func (LookupVolumeOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVolumeArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getVolume.
-type GetVolumeResultOutput struct{ *pulumi.OutputState }
+type LookupVolumeResultOutput struct{ *pulumi.OutputState }
 
-func (GetVolumeResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVolumeResult)(nil)).Elem()
+func (LookupVolumeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVolumeResult)(nil)).Elem()
 }
 
-func (o GetVolumeResultOutput) ToGetVolumeResultOutput() GetVolumeResultOutput {
+func (o LookupVolumeResultOutput) ToLookupVolumeResultOutput() LookupVolumeResultOutput {
 	return o
 }
 
-func (o GetVolumeResultOutput) ToGetVolumeResultOutputWithContext(ctx context.Context) GetVolumeResultOutput {
+func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx context.Context) LookupVolumeResultOutput {
 	return o
 }
 
-func (o GetVolumeResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVolumeResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupVolumeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the volume (E.g.: "GRA", meaning Gravelines, for region "GRA1")
-func (o GetVolumeResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVolumeResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupVolumeResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The region name where volume is available
-func (o GetVolumeResultOutput) RegionName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVolumeResult) string { return v.RegionName }).(pulumi.StringOutput)
+func (o LookupVolumeResultOutput) RegionName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.RegionName }).(pulumi.StringOutput)
 }
 
 // The id of the public cloud project.
-func (o GetVolumeResultOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVolumeResult) string { return v.ServiceName }).(pulumi.StringOutput)
+func (o LookupVolumeResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 // The size of the volume
-func (o GetVolumeResultOutput) Size() pulumi.Float64Output {
-	return o.ApplyT(func(v GetVolumeResult) float64 { return v.Size }).(pulumi.Float64Output)
+func (o LookupVolumeResultOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupVolumeResult) float64 { return v.Size }).(pulumi.Float64Output)
 }
 
 // The id of the volume
-func (o GetVolumeResultOutput) VolumeId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVolumeResult) string { return v.VolumeId }).(pulumi.StringOutput)
+func (o LookupVolumeResultOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.VolumeId }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetVolumeResultOutput{})
+	pulumi.RegisterOutputType(LookupVolumeResultOutput{})
 }
