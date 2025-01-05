@@ -9,7 +9,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/ovh/terraform-provider-ovh v1.3.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.49.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.98.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.99.0
 	github.com/pulumi/pulumi/sdk/v3 v3.143.0
 )
 
@@ -129,6 +129,7 @@ require (
 	github.com/natefinch/atomic v1.0.1 // indirect
 	github.com/oklog/run v1.1.0 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
+	github.com/opentofu/registry-address v0.0.0-20230922120653-901b9ae4061a // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/ovh/go-ovh v1.6.0 // indirect
