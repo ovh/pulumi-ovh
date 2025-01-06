@@ -20944,6 +20944,175 @@
                 "type": "object"
             }
         },
+        "ovh:SavingsPlan/savingsPlan:SavingsPlan": {
+            "description": "Create and manage an OVHcloud Savings Plan\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst plan = new ovh.savingsplan.SavingsPlan(\"plan\", {\n    autoRenewal: true,\n    displayName: \"one_month_rancher_savings_plan\",\n    flavor: \"Rancher\",\n    period: \"P1M\",\n    serviceName: \"\u003cpublic cloud project ID\u003e\",\n    size: 2,\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nplan = ovh.savings_plan.SavingsPlan(\"plan\",\n    auto_renewal=True,\n    display_name=\"one_month_rancher_savings_plan\",\n    flavor=\"Rancher\",\n    period=\"P1M\",\n    service_name=\"\u003cpublic cloud project ID\u003e\",\n    size=2)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var plan = new Ovh.SavingsPlan.SavingsPlan(\"plan\", new()\n    {\n        AutoRenewal = true,\n        DisplayName = \"one_month_rancher_savings_plan\",\n        Flavor = \"Rancher\",\n        Period = \"P1M\",\n        ServiceName = \"\u003cpublic cloud project ID\u003e\",\n        Size = 2,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/SavingsPlan\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := SavingsPlan.NewSavingsPlan(ctx, \"plan\", \u0026SavingsPlan.SavingsPlanArgs{\n\t\t\tAutoRenewal: pulumi.Bool(true),\n\t\t\tDisplayName: pulumi.String(\"one_month_rancher_savings_plan\"),\n\t\t\tFlavor:      pulumi.String(\"Rancher\"),\n\t\t\tPeriod:      pulumi.String(\"P1M\"),\n\t\t\tServiceName: pulumi.String(\"\u003cpublic cloud project ID\u003e\"),\n\t\t\tSize:        pulumi.Int(2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.SavingsPlan.SavingsPlan;\nimport com.pulumi.ovh.SavingsPlan.SavingsPlanArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var plan = new SavingsPlan(\"plan\", SavingsPlanArgs.builder()\n            .autoRenewal(true)\n            .displayName(\"one_month_rancher_savings_plan\")\n            .flavor(\"Rancher\")\n            .period(\"P1M\")\n            .serviceName(\"\u003cpublic cloud project ID\u003e\")\n            .size(2)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  plan:\n    type: ovh:SavingsPlan:SavingsPlan\n    properties:\n      autoRenewal: true\n      displayName: one_month_rancher_savings_plan\n      flavor: Rancher\n      period: P1M\n      serviceName: \u003cpublic cloud project ID\u003e\n      size: 2\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import \n\nA savings plan can be imported using the following format: `service_name` and `id` of the savings plan, separated by \"/\" e.g.\n\n```bash\n$ terraform import ovh_savings_plan.plan service_name/savings_plan_id\n```\n",
+            "properties": {
+                "autoRenewal": {
+                    "type": "boolean",
+                    "description": "Whether Savings Plan should be renewed at the end of the period (defaults to false)\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Custom display name, used in invoices\n"
+                },
+                "endDate": {
+                    "type": "string",
+                    "description": "End date of the Savings Plan\n"
+                },
+                "flavor": {
+                    "type": "string",
+                    "description": "Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...)\n"
+                },
+                "period": {
+                    "type": "string",
+                    "description": "Periodicity of the Savings Plan\n"
+                },
+                "periodEndAction": {
+                    "type": "string",
+                    "description": "Action performed when reaching the end of the period (controles by the `auto_renewal` parameter)\n"
+                },
+                "periodEndDate": {
+                    "type": "string",
+                    "description": "End date of the current period\n"
+                },
+                "periodStartDate": {
+                    "type": "string",
+                    "description": "Start date of the current period\n"
+                },
+                "serviceId": {
+                    "type": "integer",
+                    "description": "Billing ID of the service\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "ID of the public cloud project\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "Size of the Savings Plan\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Start date of the Savings Plan\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the Savings Plan\n"
+                }
+            },
+            "required": [
+                "autoRenewal",
+                "displayName",
+                "endDate",
+                "flavor",
+                "period",
+                "periodEndAction",
+                "periodEndDate",
+                "periodStartDate",
+                "serviceId",
+                "serviceName",
+                "size",
+                "startDate",
+                "status"
+            ],
+            "inputProperties": {
+                "autoRenewal": {
+                    "type": "boolean",
+                    "description": "Whether Savings Plan should be renewed at the end of the period (defaults to false)\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Custom display name, used in invoices\n"
+                },
+                "flavor": {
+                    "type": "string",
+                    "description": "Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...)\n",
+                    "willReplaceOnChanges": true
+                },
+                "period": {
+                    "type": "string",
+                    "description": "Periodicity of the Savings Plan\n",
+                    "willReplaceOnChanges": true
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "ID of the public cloud project\n",
+                    "willReplaceOnChanges": true
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "Size of the Savings Plan\n"
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "flavor",
+                "period",
+                "serviceName",
+                "size"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SavingsPlan resources.\n",
+                "properties": {
+                    "autoRenewal": {
+                        "type": "boolean",
+                        "description": "Whether Savings Plan should be renewed at the end of the period (defaults to false)\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Custom display name, used in invoices\n"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "description": "End date of the Savings Plan\n"
+                    },
+                    "flavor": {
+                        "type": "string",
+                        "description": "Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...)\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "period": {
+                        "type": "string",
+                        "description": "Periodicity of the Savings Plan\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "periodEndAction": {
+                        "type": "string",
+                        "description": "Action performed when reaching the end of the period (controles by the `auto_renewal` parameter)\n"
+                    },
+                    "periodEndDate": {
+                        "type": "string",
+                        "description": "End date of the current period\n"
+                    },
+                    "periodStartDate": {
+                        "type": "string",
+                        "description": "Start date of the current period\n"
+                    },
+                    "serviceId": {
+                        "type": "integer",
+                        "description": "Billing ID of the service\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "ID of the public cloud project\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "Size of the Savings Plan\n"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "description": "Start date of the Savings Plan\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the Savings Plan\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "ovh:Vps/vps:Vps": {
             "description": "## Example Usage\n\n",
             "properties": {

@@ -52,6 +52,7 @@ const (
 	vpsMod             = "Vps"
 	iamMod             = "Iam"
 	okmsMod            = "Okms"
+	savingPlansMod     = "SavingsPlan"
 )
 
 // ovhDataSource manufactures a standard resource token given a module and resource name.
@@ -476,6 +477,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_okms_service_key_jwk": {
 				Tok: ovhResource(okmsMod, "ServiceKeyJWK"),
+			},
+			"ovh_savings_plan": {
+				Tok: ovhResource(savingPlansMod, "SavingsPlan"),
 			},
 			"ovh_vrack": {
 				Tok: ovhResource(vrackMod, "Vrack"),

@@ -104,6 +104,7 @@
             "ovh:Okms/okms:Okms": 1,
             "ovh:Okms/serviceKey:ServiceKey": 1,
             "ovh:Okms/serviceKeyJWK:ServiceKeyJWK": 1,
+            "ovh:SavingsPlan/savingsPlan:SavingsPlan": 0,
             "ovh:Vps/vps:Vps": 1,
             "ovh:Vrack/cloudProject:CloudProject": 0,
             "ovh:Vrack/dedicatedServer:DedicatedServer": 0,
