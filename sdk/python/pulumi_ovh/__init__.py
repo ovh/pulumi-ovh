@@ -43,6 +43,8 @@ if typing.TYPE_CHECKING:
     okms = __okms
     import pulumi_ovh.order as __order
     order = __order
+    import pulumi_ovh.savingsplan as __savingsplan
+    savingsplan = __savingsplan
     import pulumi_ovh.vps as __vps
     vps = __vps
     import pulumi_ovh.vrack as __vrack
@@ -62,6 +64,7 @@ else:
     me = _utilities.lazy_import('pulumi_ovh.me')
     okms = _utilities.lazy_import('pulumi_ovh.okms')
     order = _utilities.lazy_import('pulumi_ovh.order')
+    savingsplan = _utilities.lazy_import('pulumi_ovh.savingsplan')
     vps = _utilities.lazy_import('pulumi_ovh.vps')
     vrack = _utilities.lazy_import('pulumi_ovh.vrack')
 
@@ -890,6 +893,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.okms",
   "classes": {
    "ovh:Okms/serviceKeyJWK:ServiceKeyJWK": "ServiceKeyJWK"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "SavingsPlan/savingsPlan",
+  "fqn": "pulumi_ovh.savingsplan",
+  "classes": {
+   "ovh:SavingsPlan/savingsPlan:SavingsPlan": "SavingsPlan"
   }
  },
  {

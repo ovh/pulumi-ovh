@@ -257,6 +257,8 @@
         "order/getCartProductPlan.ts",
         "order/index.ts",
         "provider.ts",
+        "savingsplan/index.ts",
+        "savingsplan/savingsPlan.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
