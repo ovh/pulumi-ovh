@@ -118,6 +118,7 @@ github.com/muesli/termenv; MIT
 github.com/natefinch/atomic; MIT
 github.com/oklog/run; Apache-2.0
 github.com/olekukonko/tablewriter; MIT
+github.com/opentofu/registry-address; MPL-2.0
 github.com/opentracing/basictracer-go; Apache-2.0
 github.com/opentracing/opentracing-go; Apache-2.0
 github.com/ovh/go-ovh; BSD-3-Clause
