@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			kafka, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//			kafka, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
 //				ServiceName: "XXX",
 //				Engine:      "kafka",
 //				Id:          "ZZZ",
@@ -36,7 +36,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProjectDatabase.NewKafkaTopic(ctx, "topic", &CloudProjectDatabase.KafkaTopicArgs{
+//			_, err = cloudprojectdatabase.NewKafkaTopic(ctx, "topic", &cloudprojectdatabase.KafkaTopicArgs{
 //				ServiceName:       pulumi.String(kafka.ServiceName),
 //				ClusterId:         pulumi.String(kafka.Id),
 //				MinInsyncReplicas: pulumi.Int(1),

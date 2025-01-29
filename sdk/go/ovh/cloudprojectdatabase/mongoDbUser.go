@@ -34,7 +34,7 @@ type MongoDbUser struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
 	// Available roles:
 	// * `backup@admin`
 	// * `clusterAdmin@admin`
@@ -111,7 +111,7 @@ type mongoDbUserState struct {
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
 	// Available roles:
 	// * `backup@admin`
 	// * `clusterAdmin@admin`
@@ -149,7 +149,7 @@ type MongoDbUserState struct {
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
 	// Available roles:
 	// * `backup@admin`
 	// * `clusterAdmin@admin`
@@ -187,7 +187,7 @@ type mongoDbUserArgs struct {
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
 	// Available roles:
 	// * `backup@admin`
 	// * `clusterAdmin@admin`
@@ -220,7 +220,7 @@ type MongoDbUserArgs struct {
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
 	// Available roles:
 	// * `backup@admin`
 	// * `clusterAdmin@admin`
@@ -357,7 +357,7 @@ func (o MongoDbUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MongoDbUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
-// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
 // Available roles:
 // * `backup@admin`
 // * `clusterAdmin@admin`

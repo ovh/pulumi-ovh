@@ -28,7 +28,7 @@ type M3DbUser struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Date of the creation of the user.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Group of the user:
+	// Group of the user.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -87,7 +87,7 @@ type m3dbUserState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Date of the creation of the user.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Group of the user:
+	// Group of the user.
 	Group *string `pulumi:"group"`
 	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name *string `pulumi:"name"`
@@ -107,7 +107,7 @@ type M3DbUserState struct {
 	ClusterId pulumi.StringPtrInput
 	// Date of the creation of the user.
 	CreatedAt pulumi.StringPtrInput
-	// Group of the user:
+	// Group of the user.
 	Group pulumi.StringPtrInput
 	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name pulumi.StringPtrInput
@@ -129,7 +129,7 @@ func (M3DbUserState) ElementType() reflect.Type {
 type m3dbUserArgs struct {
 	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// Group of the user:
+	// Group of the user.
 	Group *string `pulumi:"group"`
 	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name *string `pulumi:"name"`
@@ -144,7 +144,7 @@ type m3dbUserArgs struct {
 type M3DbUserArgs struct {
 	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// Group of the user:
+	// Group of the user.
 	Group pulumi.StringPtrInput
 	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name pulumi.StringPtrInput
@@ -252,7 +252,7 @@ func (o M3DbUserOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Group of the user:
+// Group of the user.
 func (o M3DbUserOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }

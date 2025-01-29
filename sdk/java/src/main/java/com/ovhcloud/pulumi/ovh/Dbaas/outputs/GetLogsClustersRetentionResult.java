@@ -32,6 +32,11 @@ public final class GetLogsClustersRetentionResult {
      * 
      */
     private String retentionId;
+    /**
+     * @return Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT)
+     * 
+     */
+    private String retentionType;
     private String serviceName;
 
     private GetLogsClustersRetentionResult() {}
@@ -66,6 +71,13 @@ public final class GetLogsClustersRetentionResult {
     public String retentionId() {
         return this.retentionId;
     }
+    /**
+     * @return Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT)
+     * 
+     */
+    public String retentionType() {
+        return this.retentionType;
+    }
     public String serviceName() {
         return this.serviceName;
     }
@@ -84,6 +96,7 @@ public final class GetLogsClustersRetentionResult {
         private String id;
         private Boolean isSupported;
         private String retentionId;
+        private String retentionType;
         private String serviceName;
         public Builder() {}
         public Builder(GetLogsClustersRetentionResult defaults) {
@@ -93,6 +106,7 @@ public final class GetLogsClustersRetentionResult {
     	      this.id = defaults.id;
     	      this.isSupported = defaults.isSupported;
     	      this.retentionId = defaults.retentionId;
+    	      this.retentionType = defaults.retentionType;
     	      this.serviceName = defaults.serviceName;
         }
 
@@ -137,6 +151,14 @@ public final class GetLogsClustersRetentionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder retentionType(String retentionType) {
+            if (retentionType == null) {
+              throw new MissingRequiredPropertyException("GetLogsClustersRetentionResult", "retentionType");
+            }
+            this.retentionType = retentionType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             if (serviceName == null) {
               throw new MissingRequiredPropertyException("GetLogsClustersRetentionResult", "serviceName");
@@ -151,6 +173,7 @@ public final class GetLogsClustersRetentionResult {
             _resultValue.id = id;
             _resultValue.isSupported = isSupported;
             _resultValue.retentionId = retentionId;
+            _resultValue.retentionType = retentionType;
             _resultValue.serviceName = serviceName;
             return _resultValue;
         }

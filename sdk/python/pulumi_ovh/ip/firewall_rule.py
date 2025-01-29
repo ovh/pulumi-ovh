@@ -476,6 +476,16 @@ class FirewallRule(pulumi.CustomResource):
             sequence=0)
         ```
 
+        ## Import
+
+        The resource can be imported using the properties `ip`, `ip_on_firewall` and `sequence`, separated by "|" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Ip/firewallRule:FirewallRule my_firewall_rule '127.0.0.1|127.0.0.2|0'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Possible values for action (deny|permit)
@@ -510,6 +520,16 @@ class FirewallRule(pulumi.CustomResource):
             ip_on_firewall="XXXXXX",
             protocol="tcp",
             sequence=0)
+        ```
+
+        ## Import
+
+        The resource can be imported using the properties `ip`, `ip_on_firewall` and `sequence`, separated by "|" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Ip/firewallRule:FirewallRule my_firewall_rule '127.0.0.1|127.0.0.2|0'
         ```
 
         :param str resource_name: The name of the resource.

@@ -24,8 +24,8 @@ import (
 //	"fmt"
 //	"os"
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Okms"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/okms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -40,11 +40,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
+//			_, err := me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Okms.NewCredential(ctx, "credNoCsr", &Okms.CredentialArgs{
+//			_, err = okms.NewCredential(ctx, "credNoCsr", &okms.CredentialArgs{
 //				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				IdentityUrns: pulumi.StringArray{
 //					pulumi.Sprintf("urn:v1:eu:identity:account:%v", data.Ovh_me.Current_account.Nichandle),
@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Okms.NewCredential(ctx, "credFromCsr", &Okms.CredentialArgs{
+//			_, err = okms.NewCredential(ctx, "credFromCsr", &okms.CredentialArgs{
 //				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				IdentityUrns: pulumi.StringArray{
 //					pulumi.Sprintf("urn:v1:eu:identity:account:%v", data.Ovh_me.Current_account.Nichandle),

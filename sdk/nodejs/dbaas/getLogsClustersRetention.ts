@@ -32,6 +32,20 @@ import * as utilities from "../utilities";
  *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
+ *
+ * Additionnaly, you can filter retentions on their type:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     duration: "P14D",
+ *     retentionType: "LOGS_INDEXING",
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
  */
 export function getLogsClustersRetention(args: GetLogsClustersRetentionArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsClustersRetentionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,6 +53,7 @@ export function getLogsClustersRetention(args: GetLogsClustersRetentionArgs, opt
         "clusterId": args.clusterId,
         "duration": args.duration,
         "retentionId": args.retentionId,
+        "retentionType": args.retentionType,
         "serviceName": args.serviceName,
     }, opts);
 }
@@ -52,13 +67,17 @@ export interface GetLogsClustersRetentionArgs {
      */
     clusterId: string;
     /**
-     * Indexed duration expressed in ISO-8601 format
+     * Indexed duration expressed in ISO-8601 format. Cannot be used if `retentionId` is defined.
      */
     duration?: string;
     /**
-     * ID of the retention object
+     * ID of the retention object. Cannot be used if `duration` or `retentionType` is defined.
      */
     retentionId?: string;
+    /**
+     * Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retentionId` is defined. Defaults to `LOGS_INDEXING` if not defined.
+     */
+    retentionType?: string;
     /**
      * The service name. It's the ID of your Logs Data Platform instance.
      */
@@ -86,6 +105,10 @@ export interface GetLogsClustersRetentionResult {
      * ID of the retention that can be used when creating a stream
      */
     readonly retentionId: string;
+    /**
+     * Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT)
+     */
+    readonly retentionType: string;
     readonly serviceName: string;
 }
 /**
@@ -116,6 +139,20 @@ export interface GetLogsClustersRetentionResult {
  *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
+ *
+ * Additionnaly, you can filter retentions on their type:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     duration: "P14D",
+ *     retentionType: "LOGS_INDEXING",
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
  */
 export function getLogsClustersRetentionOutput(args: GetLogsClustersRetentionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogsClustersRetentionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -123,6 +160,7 @@ export function getLogsClustersRetentionOutput(args: GetLogsClustersRetentionOut
         "clusterId": args.clusterId,
         "duration": args.duration,
         "retentionId": args.retentionId,
+        "retentionType": args.retentionType,
         "serviceName": args.serviceName,
     }, opts);
 }
@@ -136,13 +174,17 @@ export interface GetLogsClustersRetentionOutputArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Indexed duration expressed in ISO-8601 format
+     * Indexed duration expressed in ISO-8601 format. Cannot be used if `retentionId` is defined.
      */
     duration?: pulumi.Input<string>;
     /**
-     * ID of the retention object
+     * ID of the retention object. Cannot be used if `duration` or `retentionType` is defined.
      */
     retentionId?: pulumi.Input<string>;
+    /**
+     * Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retentionId` is defined. Defaults to `LOGS_INDEXING` if not defined.
+     */
+    retentionType?: pulumi.Input<string>;
     /**
      * The service name. It's the ID of your Logs Data Platform instance.
      */

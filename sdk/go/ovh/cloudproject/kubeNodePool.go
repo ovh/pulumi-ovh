@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewKubeNodePool(ctx, "nodePool", &CloudProject.KubeNodePoolArgs{
+//			_, err := cloudproject.NewKubeNodePool(ctx, "nodePool", &cloudproject.KubeNodePoolArgs{
 //				DesiredNodes: pulumi.Int(3),
 //				FlavorName:   pulumi.String("b2-7"),
 //				KubeId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
@@ -54,14 +54,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewKubeNodePool(ctx, "pool", &CloudProject.KubeNodePoolArgs{
+//			_, err := cloudproject.NewKubeNodePool(ctx, "pool", &cloudproject.KubeNodePoolArgs{
 //				DesiredNodes: pulumi.Int(3),
 //				FlavorName:   pulumi.String("b2-7"),
 //				KubeId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),

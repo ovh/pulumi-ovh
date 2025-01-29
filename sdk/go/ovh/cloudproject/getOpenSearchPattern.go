@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			pattern, err := CloudProject.GetOpenSearchPattern(ctx, &cloudproject.GetOpenSearchPatternArgs{
+//			pattern, err := cloudproject.GetOpenSearchPattern(ctx, &cloudproject.GetOpenSearchPatternArgs{
 //				ServiceName: "XXX",
 //				ClusterId:   "YYY",
 //				Id:          "ZZZ",

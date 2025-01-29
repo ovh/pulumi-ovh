@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Ip"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Set the reverse of an IP
-//			_, err := Ip.NewReverse(ctx, "test", &Ip.ReverseArgs{
+//			_, err := ip.NewReverse(ctx, "test", &ip.ReverseArgs{
 //				Ip:           pulumi.String("192.0.2.0/24"),
 //				ReverseIp:    pulumi.String("192.0.2.1"),
 //				ReverseValue: pulumi.String("example.com"),

@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewKubeOidc(ctx, "myOidc", &CloudProject.KubeOidcArgs{
+//			_, err := cloudproject.NewKubeOidc(ctx, "myOidc", &cloudproject.KubeOidcArgs{
 //				ServiceName:        pulumi.Any(_var.Projectid),
 //				KubeId:             pulumi.Any(ovh_cloud_project_kube.Mykube.Id),
 //				ClientId:           pulumi.String("xxx"),

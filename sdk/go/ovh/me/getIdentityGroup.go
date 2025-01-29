@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Me.GetIdentityGroup(ctx, &me.GetIdentityGroupArgs{
+//			_, err := me.GetIdentityGroup(ctx, &me.GetIdentityGroupArgs{
 //				Name: "my_group_name",
 //			}, nil)
 //			if err != nil {

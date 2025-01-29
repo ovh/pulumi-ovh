@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'OpensearchUserAclArgs',
     'OpensearchUserAclArgsDict',
+    'PrometheusTargetArgs',
+    'PrometheusTargetArgsDict',
 ]
 
 MYPY = False
@@ -72,5 +74,57 @@ class OpensearchUserAclArgs:
     @permission.setter
     def permission(self, value: pulumi.Input[str]):
         pulumi.set(self, "permission", value)
+
+
+if not MYPY:
+    class PrometheusTargetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host of the endpoint
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Connection port for the endpoint
+        """
+elif False:
+    PrometheusTargetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrometheusTargetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] host: Host of the endpoint
+        :param pulumi.Input[int] port: Connection port for the endpoint
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host of the endpoint
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Connection port for the endpoint
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
 

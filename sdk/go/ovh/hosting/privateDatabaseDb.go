@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Hosting"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Hosting.NewPrivateDatabaseDb(ctx, "database", &Hosting.PrivateDatabaseDbArgs{
+//			_, err := hosting.NewPrivateDatabaseDb(ctx, "database", &hosting.PrivateDatabaseDbArgs{
 //				DatabaseName: pulumi.String("XXXXXX"),
 //				ServiceName:  pulumi.String("XXXXXX"),
 //			})

@@ -153,6 +153,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProject/instance",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProject/kube",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
@@ -221,6 +229,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription": "RegionLoadBalancerLogSubscription"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProject/regionNetwork",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/regionNetwork:RegionNetwork": "RegionNetwork"
   }
  },
  {
@@ -345,6 +361,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProjectDatabase/mongoDbPrometheus",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
+  "classes": {
+   "ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus": "MongoDbPrometheus"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProjectDatabase/mongoDbUser",
   "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
@@ -381,6 +405,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser": "PostgresSqlUser"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProjectDatabase/prometheus",
+  "fqn": "pulumi_ovh.cloudprojectdatabase",
+  "classes": {
+   "ovh:CloudProjectDatabase/prometheus:Prometheus": "Prometheus"
   }
  },
  {

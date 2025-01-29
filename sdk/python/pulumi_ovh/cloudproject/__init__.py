@@ -25,6 +25,8 @@ from .get_container_registry_oidc import *
 from .get_container_registry_users import *
 from .get_failover_ip_attach import *
 from .get_gateway_interface import *
+from .get_instance import *
+from .get_instances import *
 from .get_kube import *
 from .get_kube_ip_restrictions import *
 from .get_kube_node_pool import *
@@ -36,6 +38,7 @@ from .get_load_balancers import *
 from .get_m3db_namespace import *
 from .get_m3db_namespaces import *
 from .get_m3db_user import *
+from .get_mongo_db_prometheus import *
 from .get_mongo_db_user import *
 from .get_network_private import *
 from .get_network_private_subnets import *
@@ -43,6 +46,7 @@ from .get_network_privates import *
 from .get_open_search_pattern import *
 from .get_open_search_patterns import *
 from .get_open_search_user import *
+from .get_prometheus import *
 from .get_redis_user import *
 from .get_region import *
 from .get_region_load_balancer_log_subscription import *
@@ -56,6 +60,7 @@ from .get_users import *
 from .get_v_rack import *
 from .get_volume import *
 from .get_volumes import *
+from .instance import *
 from .kube import *
 from .kube_ip_restrictions import *
 from .kube_node_pool import *
@@ -65,6 +70,7 @@ from .network_private_subnet import *
 from .network_private_subnet_v2 import *
 from .project import *
 from .region_load_balancer_log_subscription import *
+from .region_network import *
 from .region_storage_presign import *
 from .s3_credential import *
 from .s3_policy import *

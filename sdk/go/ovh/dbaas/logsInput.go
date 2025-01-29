@@ -21,21 +21,21 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			logstash, err := Dbaas.GetLogsInputEngine(ctx, &dbaas.GetLogsInputEngineArgs{
+//			logstash, err := dbaas.GetLogsInputEngine(ctx, &dbaas.GetLogsInputEngineArgs{
 //				Name:    pulumi.StringRef("logstash"),
 //				Version: pulumi.StringRef("7.x"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			stream, err := Dbaas.NewLogsOutputGraylogStream(ctx, "stream", &Dbaas.LogsOutputGraylogStreamArgs{
+//			stream, err := dbaas.NewLogsOutputGraylogStream(ctx, "stream", &dbaas.LogsOutputGraylogStreamArgs{
 //				ServiceName: pulumi.String("...."),
 //				Title:       pulumi.String("my stream"),
 //				Description: pulumi.String("my graylog stream"),
@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Dbaas.NewLogsInput(ctx, "input", &Dbaas.LogsInputArgs{
+//			_, err = dbaas.NewLogsInput(ctx, "input", &dbaas.LogsInputArgs{
 //				ServiceName: stream.ServiceName,
 //				Description: stream.Description,
 //				Title:       stream.Title,

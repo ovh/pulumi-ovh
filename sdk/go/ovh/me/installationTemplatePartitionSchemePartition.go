@@ -21,28 +21,28 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mytemplate, err := Me.NewInstallationTemplate(ctx, "mytemplate", &Me.InstallationTemplateArgs{
+//			mytemplate, err := me.NewInstallationTemplate(ctx, "mytemplate", &me.InstallationTemplateArgs{
 //				BaseTemplateName: pulumi.String("debian12_64"),
 //				TemplateName:     pulumi.String("mytemplate"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			scheme, err := Me.NewInstallationTemplatePartitionScheme(ctx, "scheme", &Me.InstallationTemplatePartitionSchemeArgs{
+//			scheme, err := me.NewInstallationTemplatePartitionScheme(ctx, "scheme", &me.InstallationTemplatePartitionSchemeArgs{
 //				TemplateName: mytemplate.TemplateName,
 //				Priority:     pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Me.NewInstallationTemplatePartitionSchemePartition(ctx, "root", &Me.InstallationTemplatePartitionSchemePartitionArgs{
+//			_, err = me.NewInstallationTemplatePartitionSchemePartition(ctx, "root", &me.InstallationTemplatePartitionSchemePartitionArgs{
 //				TemplateName: scheme.TemplateName,
 //				SchemeName:   scheme.Name,
 //				Mountpoint:   pulumi.String("/"),

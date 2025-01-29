@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.GetGatewayInterface(ctx, &cloudproject.GetGatewayInterfaceArgs{
+//			_, err := cloudproject.GetGatewayInterface(ctx, &cloudproject.GetGatewayInterfaceArgs{
 //				Id:          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
 //				InterfaceId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
 //				Region:      "GRA11",

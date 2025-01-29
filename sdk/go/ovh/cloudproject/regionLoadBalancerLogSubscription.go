@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewRegionLoadBalancerLogSubscription(ctx, "subscription", &CloudProject.RegionLoadBalancerLogSubscriptionArgs{
+//			_, err := cloudproject.NewRegionLoadBalancerLogSubscription(ctx, "subscription", &cloudproject.RegionLoadBalancerLogSubscriptionArgs{
 //				Kind:           pulumi.String("haproxy"),
 //				LoadbalancerId: pulumi.String("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
 //				RegionName:     pulumi.String("yyyy"),

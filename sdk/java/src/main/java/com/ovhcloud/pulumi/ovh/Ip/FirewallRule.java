@@ -57,6 +57,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * The resource can be imported using the properties `ip`, `ip_on_firewall` and `sequence`, separated by &#34;|&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Ip/firewallRule:FirewallRule my_firewall_rule &#39;127.0.0.1|127.0.0.2|0&#39;
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Ip/firewallRule:FirewallRule")
 public class FirewallRule extends com.pulumi.resources.CustomResource {

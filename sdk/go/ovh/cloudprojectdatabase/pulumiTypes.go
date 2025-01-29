@@ -122,6 +122,112 @@ func (o OpensearchUserAclArrayOutput) Index(i pulumi.IntInput) OpensearchUserAcl
 	}).(OpensearchUserAclOutput)
 }
 
+type PrometheusTarget struct {
+	// Host of the endpoint
+	Host *string `pulumi:"host"`
+	// Connection port for the endpoint
+	Port *int `pulumi:"port"`
+}
+
+// PrometheusTargetInput is an input type that accepts PrometheusTargetArgs and PrometheusTargetOutput values.
+// You can construct a concrete instance of `PrometheusTargetInput` via:
+//
+//	PrometheusTargetArgs{...}
+type PrometheusTargetInput interface {
+	pulumi.Input
+
+	ToPrometheusTargetOutput() PrometheusTargetOutput
+	ToPrometheusTargetOutputWithContext(context.Context) PrometheusTargetOutput
+}
+
+type PrometheusTargetArgs struct {
+	// Host of the endpoint
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Connection port for the endpoint
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (PrometheusTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusTarget)(nil)).Elem()
+}
+
+func (i PrometheusTargetArgs) ToPrometheusTargetOutput() PrometheusTargetOutput {
+	return i.ToPrometheusTargetOutputWithContext(context.Background())
+}
+
+func (i PrometheusTargetArgs) ToPrometheusTargetOutputWithContext(ctx context.Context) PrometheusTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusTargetOutput)
+}
+
+// PrometheusTargetArrayInput is an input type that accepts PrometheusTargetArray and PrometheusTargetArrayOutput values.
+// You can construct a concrete instance of `PrometheusTargetArrayInput` via:
+//
+//	PrometheusTargetArray{ PrometheusTargetArgs{...} }
+type PrometheusTargetArrayInput interface {
+	pulumi.Input
+
+	ToPrometheusTargetArrayOutput() PrometheusTargetArrayOutput
+	ToPrometheusTargetArrayOutputWithContext(context.Context) PrometheusTargetArrayOutput
+}
+
+type PrometheusTargetArray []PrometheusTargetInput
+
+func (PrometheusTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrometheusTarget)(nil)).Elem()
+}
+
+func (i PrometheusTargetArray) ToPrometheusTargetArrayOutput() PrometheusTargetArrayOutput {
+	return i.ToPrometheusTargetArrayOutputWithContext(context.Background())
+}
+
+func (i PrometheusTargetArray) ToPrometheusTargetArrayOutputWithContext(ctx context.Context) PrometheusTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusTargetArrayOutput)
+}
+
+type PrometheusTargetOutput struct{ *pulumi.OutputState }
+
+func (PrometheusTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusTarget)(nil)).Elem()
+}
+
+func (o PrometheusTargetOutput) ToPrometheusTargetOutput() PrometheusTargetOutput {
+	return o
+}
+
+func (o PrometheusTargetOutput) ToPrometheusTargetOutputWithContext(ctx context.Context) PrometheusTargetOutput {
+	return o
+}
+
+// Host of the endpoint
+func (o PrometheusTargetOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusTarget) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Connection port for the endpoint
+func (o PrometheusTargetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrometheusTarget) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type PrometheusTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (PrometheusTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrometheusTarget)(nil)).Elem()
+}
+
+func (o PrometheusTargetArrayOutput) ToPrometheusTargetArrayOutput() PrometheusTargetArrayOutput {
+	return o
+}
+
+func (o PrometheusTargetArrayOutput) ToPrometheusTargetArrayOutputWithContext(ctx context.Context) PrometheusTargetArrayOutput {
+	return o
+}
+
+func (o PrometheusTargetArrayOutput) Index(i pulumi.IntInput) PrometheusTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrometheusTarget {
+		return vs[0].([]PrometheusTarget)[vs[1].(int)]
+	}).(PrometheusTargetOutput)
+}
+
 type GetCapabilitiesEngine struct {
 	// Default version used for the engine.
 	DefaultVersion string `pulumi:"defaultVersion"`
@@ -993,6 +1099,8 @@ func (o GetDatabaseNodeArrayOutput) Index(i pulumi.IntInput) GetDatabaseNodeOutp
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OpensearchUserAclInput)(nil)).Elem(), OpensearchUserAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpensearchUserAclArrayInput)(nil)).Elem(), OpensearchUserAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusTargetInput)(nil)).Elem(), PrometheusTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusTargetArrayInput)(nil)).Elem(), PrometheusTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCapabilitiesEngineInput)(nil)).Elem(), GetCapabilitiesEngineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCapabilitiesEngineArrayInput)(nil)).Elem(), GetCapabilitiesEngineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCapabilitiesFlavorInput)(nil)).Elem(), GetCapabilitiesFlavorArgs{})
@@ -1009,6 +1117,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseNodeArrayInput)(nil)).Elem(), GetDatabaseNodeArray{})
 	pulumi.RegisterOutputType(OpensearchUserAclOutput{})
 	pulumi.RegisterOutputType(OpensearchUserAclArrayOutput{})
+	pulumi.RegisterOutputType(PrometheusTargetOutput{})
+	pulumi.RegisterOutputType(PrometheusTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetCapabilitiesEngineOutput{})
 	pulumi.RegisterOutputType(GetCapabilitiesEngineArrayOutput{})
 	pulumi.RegisterOutputType(GetCapabilitiesFlavorOutput{})

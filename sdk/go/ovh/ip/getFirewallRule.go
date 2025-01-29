@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Ip"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Ip.GetFirewallRule(ctx, &ip.GetFirewallRuleArgs{
+//			_, err := ip.GetFirewallRule(ctx, &ip.GetFirewallRuleArgs{
 //				Ip:           "XXXXXX",
 //				IpOnFirewall: "XXXXXX",
 //				Sequence:     0,

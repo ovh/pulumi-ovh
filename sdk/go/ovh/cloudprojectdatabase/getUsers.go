@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			users, err := CloudProjectDatabase.GetUsers(ctx, &cloudprojectdatabase.GetUsersArgs{
+//			users, err := cloudprojectdatabase.GetUsers(ctx, &cloudprojectdatabase.GetUsersArgs{
 //				ServiceName: "XXXX",
 //				Engine:      "YYYY",
 //				ClusterId:   "ZZZ",

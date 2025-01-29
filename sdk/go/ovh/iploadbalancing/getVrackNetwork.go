@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := IpLoadBalancing.GetVrackNetwork(ctx, &iploadbalancing.GetVrackNetworkArgs{
+//			_, err := iploadbalancing.GetVrackNetwork(ctx, &iploadbalancing.GetVrackNetworkArgs{
 //				ServiceName:    "XXXXXX",
 //				VrackNetworkId: "yyy",
 //			}, nil)

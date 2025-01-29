@@ -22,14 +22,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dbs, err := CloudProjectDatabase.GetDatabases(ctx, &cloudprojectdatabase.GetDatabasesArgs{
+//			dbs, err := cloudprojectdatabase.GetDatabases(ctx, &cloudprojectdatabase.GetDatabasesArgs{
 //				ServiceName: "XXXXXX",
 //				Engine:      "YYYY",
 //			}, nil)

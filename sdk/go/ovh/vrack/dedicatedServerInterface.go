@@ -25,7 +25,7 @@ import (
 // import (
 //
 //	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Vrack.NewDedicatedServerInterface(ctx, "vdsi", &Vrack.DedicatedServerInterfaceArgs{
+//			_, err = vrack.NewDedicatedServerInterface(ctx, "vdsi", &vrack.DedicatedServerInterfaceArgs{
 //				ServiceName: pulumi.String("pn-xxxxxxx"),
 //				InterfaceId: pulumi.String(server.EnabledVrackVnis[0]),
 //			})

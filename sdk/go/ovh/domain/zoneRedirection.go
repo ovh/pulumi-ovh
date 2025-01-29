@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Domain"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/domain"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Add a redirection to a sub-domain
-//			_, err := Domain.NewZoneRedirection(ctx, "test", &Domain.ZoneRedirectionArgs{
+//			_, err := domain.NewZoneRedirection(ctx, "test", &domain.ZoneRedirectionArgs{
 //				Subdomain: pulumi.String("test"),
 //				Target:    pulumi.String("http://www.ovh"),
 //				Type:      pulumi.String("visiblePermanent"),

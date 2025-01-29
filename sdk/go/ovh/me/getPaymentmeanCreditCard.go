@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Me.GetPaymentmeanCreditCard(ctx, &me.GetPaymentmeanCreditCardArgs{
+//			_, err := me.GetPaymentmeanCreditCard(ctx, &me.GetPaymentmeanCreditCardArgs{
 //				UseDefault: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {

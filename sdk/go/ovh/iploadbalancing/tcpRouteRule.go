@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			reject, err := IpLoadBalancing.NewTcpRoute(ctx, "reject", &IpLoadBalancing.TcpRouteArgs{
+//			reject, err := iploadbalancing.NewTcpRoute(ctx, "reject", &iploadbalancing.TcpRouteArgs{
 //				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
 //				Weight:      pulumi.Int(1),
 //				FrontendId:  pulumi.Int(11111),
@@ -39,7 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = IpLoadBalancing.NewTcpRouteRule(ctx, "exampleRule", &IpLoadBalancing.TcpRouteRuleArgs{
+//			_, err = iploadbalancing.NewTcpRouteRule(ctx, "exampleRule", &iploadbalancing.TcpRouteRuleArgs{
 //				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
 //				RouteId:     reject.ID(),
 //				DisplayName: pulumi.String("Match example.com host"),

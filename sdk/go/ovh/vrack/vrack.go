@@ -18,26 +18,26 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myAccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
+//			myAccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			myCart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//			myCart, err := order.GetCart(ctx, &order.GetCartArgs{
 //				OvhSubsidiary: myAccount.OvhSubsidiary,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			vrackCartProductPlan, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//			vrackCartProductPlan, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
 //				CartId:        myCart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "vrack",
@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Vrack.NewVrack(ctx, "vrackVrack", &Vrack.VrackArgs{
+//			_, err = vrack.NewVrack(ctx, "vrackVrack", &vrack.VrackArgs{
 //				OvhSubsidiary: pulumi.String(myCart.OvhSubsidiary),
 //				Description:   pulumi.String("my vrack"),
 //				Plan: &vrack.VrackPlanArgs{

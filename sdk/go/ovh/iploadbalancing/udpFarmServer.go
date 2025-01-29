@@ -21,21 +21,21 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//			lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
 //				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
 //				State:       pulumi.StringRef("ok"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			farmName, err := IpLoadBalancing.NewUdpFarm(ctx, "farmName", &IpLoadBalancing.UdpFarmArgs{
+//			farmName, err := iploadbalancing.NewUdpFarm(ctx, "farmName", &iploadbalancing.UdpFarmArgs{
 //				DisplayName: pulumi.String("ingress-8080-gra"),
 //				Port:        pulumi.Float64(80),
 //				ServiceName: pulumi.String(lb.ServiceName),
@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = IpLoadBalancing.NewUdpFarmServer(ctx, "backend", &IpLoadBalancing.UdpFarmServerArgs{
+//			_, err = iploadbalancing.NewUdpFarmServer(ctx, "backend", &iploadbalancing.UdpFarmServerArgs{
 //				Address:     pulumi.String("4.5.6.7"),
 //				DisplayName: pulumi.String("mybackend"),
 //				FarmId:      farmName.FarmId,

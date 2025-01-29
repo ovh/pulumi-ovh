@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Okms"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/okms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Okms.NewServiceKey(ctx, "keySymetric", &Okms.ServiceKeyArgs{
+//			_, err := okms.NewServiceKey(ctx, "keySymetric", &okms.ServiceKeyArgs{
 //				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				Operations: pulumi.StringArray{
 //					pulumi.String("encrypt"),
@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Okms.NewServiceKey(ctx, "keyRsa", &Okms.ServiceKeyArgs{
+//			_, err = okms.NewServiceKey(ctx, "keyRsa", &okms.ServiceKeyArgs{
 //				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				Operations: pulumi.StringArray{
 //					pulumi.String("sign"),
@@ -52,7 +52,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Okms.NewServiceKey(ctx, "keyEcdsa", &Okms.ServiceKeyArgs{
+//			_, err = okms.NewServiceKey(ctx, "keyEcdsa", &okms.ServiceKeyArgs{
 //				Curve:  pulumi.String("P-256"),
 //				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				Operations: pulumi.StringArray{

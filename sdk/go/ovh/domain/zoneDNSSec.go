@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Domain"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/domain"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Domain.NewZoneDNSSec(ctx, "dnssec", &Domain.ZoneDNSSecArgs{
+//			_, err := domain.NewZoneDNSSec(ctx, "dnssec", &domain.ZoneDNSSecArgs{
 //				ZoneName: pulumi.String("mysite.ovh"),
 //			})
 //			if err != nil {

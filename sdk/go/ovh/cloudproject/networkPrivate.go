@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewNetworkPrivate(ctx, "net", &CloudProject.NetworkPrivateArgs{
+//			_, err := cloudproject.NewNetworkPrivate(ctx, "net", &cloudproject.NetworkPrivateArgs{
 //				Regions: pulumi.StringArray{
 //					pulumi.String("GRA1"),
 //					pulumi.String("BHS1"),

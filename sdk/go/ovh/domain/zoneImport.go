@@ -25,7 +25,7 @@ import (
 //
 //	"os"
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Domain"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/domain"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -40,7 +40,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Domain.NewZoneImport(ctx, "import", &Domain.ZoneImportArgs{
+//			_, err := domain.NewZoneImport(ctx, "import", &domain.ZoneImportArgs{
 //				ZoneName: pulumi.String("mysite.ovh"),
 //				ZoneFile: pulumi.String(readFileOrPanic("./example.zone")),
 //			})

@@ -54,7 +54,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string?> PasswordReset { get; private set; } = null!;
 
         /// <summary>
-        /// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+        /// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
         /// Available roles:
         /// * `backup@admin`
         /// * `clusterAdmin@admin`
@@ -163,7 +163,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+        /// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
         /// Available roles:
         /// * `backup@admin`
         /// * `clusterAdmin@admin`
@@ -248,7 +248,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+        /// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
         /// Available roles:
         /// * `backup@admin`
         /// * `clusterAdmin@admin`

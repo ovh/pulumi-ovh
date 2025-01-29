@@ -52,7 +52,7 @@ export class M3DbUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Group of the user:
+     * Group of the user.
      */
     public readonly group!: pulumi.Output<string | undefined>;
     /**
@@ -135,7 +135,7 @@ export interface M3DbUserState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Group of the user:
+     * Group of the user.
      */
     group?: pulumi.Input<string>;
     /**
@@ -170,7 +170,7 @@ export interface M3DbUserArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Group of the user:
+     * Group of the user.
      */
     group?: pulumi.Input<string>;
     /**

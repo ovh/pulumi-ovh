@@ -32,14 +32,14 @@ public final class GetLogsClustersRetentionArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Indexed duration expressed in ISO-8601 format
+     * Indexed duration expressed in ISO-8601 format. Cannot be used if `retention_id` is defined.
      * 
      */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
     /**
-     * @return Indexed duration expressed in ISO-8601 format
+     * @return Indexed duration expressed in ISO-8601 format. Cannot be used if `retention_id` is defined.
      * 
      */
     public Optional<Output<String>> duration() {
@@ -47,18 +47,33 @@ public final class GetLogsClustersRetentionArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * ID of the retention object
+     * ID of the retention object. Cannot be used if `duration` or `retention_type` is defined.
      * 
      */
     @Import(name="retentionId")
     private @Nullable Output<String> retentionId;
 
     /**
-     * @return ID of the retention object
+     * @return ID of the retention object. Cannot be used if `duration` or `retention_type` is defined.
      * 
      */
     public Optional<Output<String>> retentionId() {
         return Optional.ofNullable(this.retentionId);
+    }
+
+    /**
+     * Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retention_id` is defined. Defaults to `LOGS_INDEXING` if not defined.
+     * 
+     */
+    @Import(name="retentionType")
+    private @Nullable Output<String> retentionType;
+
+    /**
+     * @return Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retention_id` is defined. Defaults to `LOGS_INDEXING` if not defined.
+     * 
+     */
+    public Optional<Output<String>> retentionType() {
+        return Optional.ofNullable(this.retentionType);
     }
 
     /**
@@ -82,6 +97,7 @@ public final class GetLogsClustersRetentionArgs extends com.pulumi.resources.Inv
         this.clusterId = $.clusterId;
         this.duration = $.duration;
         this.retentionId = $.retentionId;
+        this.retentionType = $.retentionType;
         this.serviceName = $.serviceName;
     }
 
@@ -125,7 +141,7 @@ public final class GetLogsClustersRetentionArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param duration Indexed duration expressed in ISO-8601 format
+         * @param duration Indexed duration expressed in ISO-8601 format. Cannot be used if `retention_id` is defined.
          * 
          * @return builder
          * 
@@ -136,7 +152,7 @@ public final class GetLogsClustersRetentionArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param duration Indexed duration expressed in ISO-8601 format
+         * @param duration Indexed duration expressed in ISO-8601 format. Cannot be used if `retention_id` is defined.
          * 
          * @return builder
          * 
@@ -146,7 +162,7 @@ public final class GetLogsClustersRetentionArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param retentionId ID of the retention object
+         * @param retentionId ID of the retention object. Cannot be used if `duration` or `retention_type` is defined.
          * 
          * @return builder
          * 
@@ -157,13 +173,34 @@ public final class GetLogsClustersRetentionArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param retentionId ID of the retention object
+         * @param retentionId ID of the retention object. Cannot be used if `duration` or `retention_type` is defined.
          * 
          * @return builder
          * 
          */
         public Builder retentionId(String retentionId) {
             return retentionId(Output.of(retentionId));
+        }
+
+        /**
+         * @param retentionType Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retention_id` is defined. Defaults to `LOGS_INDEXING` if not defined.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retentionType(@Nullable Output<String> retentionType) {
+            $.retentionType = retentionType;
+            return this;
+        }
+
+        /**
+         * @param retentionType Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retention_id` is defined. Defaults to `LOGS_INDEXING` if not defined.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retentionType(String retentionType) {
+            return retentionType(Output.of(retentionType));
         }
 
         /**

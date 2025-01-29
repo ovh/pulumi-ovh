@@ -1271,6 +1271,1225 @@ func (o GatewayInterfaceTypeArrayOutput) Index(i pulumi.IntInput) GatewayInterfa
 	}).(GatewayInterfaceTypeOutput)
 }
 
+type InstanceAddress struct {
+	// IP address
+	Ip *string `pulumi:"ip"`
+	// IP version
+	Version *int `pulumi:"version"`
+}
+
+// InstanceAddressInput is an input type that accepts InstanceAddressArgs and InstanceAddressOutput values.
+// You can construct a concrete instance of `InstanceAddressInput` via:
+//
+//	InstanceAddressArgs{...}
+type InstanceAddressInput interface {
+	pulumi.Input
+
+	ToInstanceAddressOutput() InstanceAddressOutput
+	ToInstanceAddressOutputWithContext(context.Context) InstanceAddressOutput
+}
+
+type InstanceAddressArgs struct {
+	// IP address
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// IP version
+	Version pulumi.IntPtrInput `pulumi:"version"`
+}
+
+func (InstanceAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAddress)(nil)).Elem()
+}
+
+func (i InstanceAddressArgs) ToInstanceAddressOutput() InstanceAddressOutput {
+	return i.ToInstanceAddressOutputWithContext(context.Background())
+}
+
+func (i InstanceAddressArgs) ToInstanceAddressOutputWithContext(ctx context.Context) InstanceAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAddressOutput)
+}
+
+// InstanceAddressArrayInput is an input type that accepts InstanceAddressArray and InstanceAddressArrayOutput values.
+// You can construct a concrete instance of `InstanceAddressArrayInput` via:
+//
+//	InstanceAddressArray{ InstanceAddressArgs{...} }
+type InstanceAddressArrayInput interface {
+	pulumi.Input
+
+	ToInstanceAddressArrayOutput() InstanceAddressArrayOutput
+	ToInstanceAddressArrayOutputWithContext(context.Context) InstanceAddressArrayOutput
+}
+
+type InstanceAddressArray []InstanceAddressInput
+
+func (InstanceAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAddress)(nil)).Elem()
+}
+
+func (i InstanceAddressArray) ToInstanceAddressArrayOutput() InstanceAddressArrayOutput {
+	return i.ToInstanceAddressArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceAddressArray) ToInstanceAddressArrayOutputWithContext(ctx context.Context) InstanceAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAddressArrayOutput)
+}
+
+type InstanceAddressOutput struct{ *pulumi.OutputState }
+
+func (InstanceAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAddress)(nil)).Elem()
+}
+
+func (o InstanceAddressOutput) ToInstanceAddressOutput() InstanceAddressOutput {
+	return o
+}
+
+func (o InstanceAddressOutput) ToInstanceAddressOutputWithContext(ctx context.Context) InstanceAddressOutput {
+	return o
+}
+
+// IP address
+func (o InstanceAddressOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceAddress) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// IP version
+func (o InstanceAddressOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAddress) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type InstanceAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAddress)(nil)).Elem()
+}
+
+func (o InstanceAddressArrayOutput) ToInstanceAddressArrayOutput() InstanceAddressArrayOutput {
+	return o
+}
+
+func (o InstanceAddressArrayOutput) ToInstanceAddressArrayOutputWithContext(ctx context.Context) InstanceAddressArrayOutput {
+	return o
+}
+
+func (o InstanceAddressArrayOutput) Index(i pulumi.IntInput) InstanceAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceAddress {
+		return vs[0].([]InstanceAddress)[vs[1].(int)]
+	}).(InstanceAddressOutput)
+}
+
+type InstanceAttachedVolume struct {
+	// Instance id
+	Id *string `pulumi:"id"`
+}
+
+// InstanceAttachedVolumeInput is an input type that accepts InstanceAttachedVolumeArgs and InstanceAttachedVolumeOutput values.
+// You can construct a concrete instance of `InstanceAttachedVolumeInput` via:
+//
+//	InstanceAttachedVolumeArgs{...}
+type InstanceAttachedVolumeInput interface {
+	pulumi.Input
+
+	ToInstanceAttachedVolumeOutput() InstanceAttachedVolumeOutput
+	ToInstanceAttachedVolumeOutputWithContext(context.Context) InstanceAttachedVolumeOutput
+}
+
+type InstanceAttachedVolumeArgs struct {
+	// Instance id
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (InstanceAttachedVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAttachedVolume)(nil)).Elem()
+}
+
+func (i InstanceAttachedVolumeArgs) ToInstanceAttachedVolumeOutput() InstanceAttachedVolumeOutput {
+	return i.ToInstanceAttachedVolumeOutputWithContext(context.Background())
+}
+
+func (i InstanceAttachedVolumeArgs) ToInstanceAttachedVolumeOutputWithContext(ctx context.Context) InstanceAttachedVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttachedVolumeOutput)
+}
+
+// InstanceAttachedVolumeArrayInput is an input type that accepts InstanceAttachedVolumeArray and InstanceAttachedVolumeArrayOutput values.
+// You can construct a concrete instance of `InstanceAttachedVolumeArrayInput` via:
+//
+//	InstanceAttachedVolumeArray{ InstanceAttachedVolumeArgs{...} }
+type InstanceAttachedVolumeArrayInput interface {
+	pulumi.Input
+
+	ToInstanceAttachedVolumeArrayOutput() InstanceAttachedVolumeArrayOutput
+	ToInstanceAttachedVolumeArrayOutputWithContext(context.Context) InstanceAttachedVolumeArrayOutput
+}
+
+type InstanceAttachedVolumeArray []InstanceAttachedVolumeInput
+
+func (InstanceAttachedVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAttachedVolume)(nil)).Elem()
+}
+
+func (i InstanceAttachedVolumeArray) ToInstanceAttachedVolumeArrayOutput() InstanceAttachedVolumeArrayOutput {
+	return i.ToInstanceAttachedVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceAttachedVolumeArray) ToInstanceAttachedVolumeArrayOutputWithContext(ctx context.Context) InstanceAttachedVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttachedVolumeArrayOutput)
+}
+
+type InstanceAttachedVolumeOutput struct{ *pulumi.OutputState }
+
+func (InstanceAttachedVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAttachedVolume)(nil)).Elem()
+}
+
+func (o InstanceAttachedVolumeOutput) ToInstanceAttachedVolumeOutput() InstanceAttachedVolumeOutput {
+	return o
+}
+
+func (o InstanceAttachedVolumeOutput) ToInstanceAttachedVolumeOutputWithContext(ctx context.Context) InstanceAttachedVolumeOutput {
+	return o
+}
+
+// Instance id
+func (o InstanceAttachedVolumeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceAttachedVolume) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type InstanceAttachedVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceAttachedVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAttachedVolume)(nil)).Elem()
+}
+
+func (o InstanceAttachedVolumeArrayOutput) ToInstanceAttachedVolumeArrayOutput() InstanceAttachedVolumeArrayOutput {
+	return o
+}
+
+func (o InstanceAttachedVolumeArrayOutput) ToInstanceAttachedVolumeArrayOutputWithContext(ctx context.Context) InstanceAttachedVolumeArrayOutput {
+	return o
+}
+
+func (o InstanceAttachedVolumeArrayOutput) Index(i pulumi.IntInput) InstanceAttachedVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceAttachedVolume {
+		return vs[0].([]InstanceAttachedVolume)[vs[1].(int)]
+	}).(InstanceAttachedVolumeOutput)
+}
+
+type InstanceAutoBackup struct {
+	// Unix cron pattern
+	Cron string `pulumi:"cron"`
+	// Number of backup to keep
+	Rotation int `pulumi:"rotation"`
+}
+
+// InstanceAutoBackupInput is an input type that accepts InstanceAutoBackupArgs and InstanceAutoBackupOutput values.
+// You can construct a concrete instance of `InstanceAutoBackupInput` via:
+//
+//	InstanceAutoBackupArgs{...}
+type InstanceAutoBackupInput interface {
+	pulumi.Input
+
+	ToInstanceAutoBackupOutput() InstanceAutoBackupOutput
+	ToInstanceAutoBackupOutputWithContext(context.Context) InstanceAutoBackupOutput
+}
+
+type InstanceAutoBackupArgs struct {
+	// Unix cron pattern
+	Cron pulumi.StringInput `pulumi:"cron"`
+	// Number of backup to keep
+	Rotation pulumi.IntInput `pulumi:"rotation"`
+}
+
+func (InstanceAutoBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoBackup)(nil)).Elem()
+}
+
+func (i InstanceAutoBackupArgs) ToInstanceAutoBackupOutput() InstanceAutoBackupOutput {
+	return i.ToInstanceAutoBackupOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoBackupArgs) ToInstanceAutoBackupOutputWithContext(ctx context.Context) InstanceAutoBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoBackupOutput)
+}
+
+func (i InstanceAutoBackupArgs) ToInstanceAutoBackupPtrOutput() InstanceAutoBackupPtrOutput {
+	return i.ToInstanceAutoBackupPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoBackupArgs) ToInstanceAutoBackupPtrOutputWithContext(ctx context.Context) InstanceAutoBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoBackupOutput).ToInstanceAutoBackupPtrOutputWithContext(ctx)
+}
+
+// InstanceAutoBackupPtrInput is an input type that accepts InstanceAutoBackupArgs, InstanceAutoBackupPtr and InstanceAutoBackupPtrOutput values.
+// You can construct a concrete instance of `InstanceAutoBackupPtrInput` via:
+//
+//	        InstanceAutoBackupArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceAutoBackupPtrInput interface {
+	pulumi.Input
+
+	ToInstanceAutoBackupPtrOutput() InstanceAutoBackupPtrOutput
+	ToInstanceAutoBackupPtrOutputWithContext(context.Context) InstanceAutoBackupPtrOutput
+}
+
+type instanceAutoBackupPtrType InstanceAutoBackupArgs
+
+func InstanceAutoBackupPtr(v *InstanceAutoBackupArgs) InstanceAutoBackupPtrInput {
+	return (*instanceAutoBackupPtrType)(v)
+}
+
+func (*instanceAutoBackupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutoBackup)(nil)).Elem()
+}
+
+func (i *instanceAutoBackupPtrType) ToInstanceAutoBackupPtrOutput() InstanceAutoBackupPtrOutput {
+	return i.ToInstanceAutoBackupPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceAutoBackupPtrType) ToInstanceAutoBackupPtrOutputWithContext(ctx context.Context) InstanceAutoBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoBackupPtrOutput)
+}
+
+type InstanceAutoBackupOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoBackup)(nil)).Elem()
+}
+
+func (o InstanceAutoBackupOutput) ToInstanceAutoBackupOutput() InstanceAutoBackupOutput {
+	return o
+}
+
+func (o InstanceAutoBackupOutput) ToInstanceAutoBackupOutputWithContext(ctx context.Context) InstanceAutoBackupOutput {
+	return o
+}
+
+func (o InstanceAutoBackupOutput) ToInstanceAutoBackupPtrOutput() InstanceAutoBackupPtrOutput {
+	return o.ToInstanceAutoBackupPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceAutoBackupOutput) ToInstanceAutoBackupPtrOutputWithContext(ctx context.Context) InstanceAutoBackupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAutoBackup) *InstanceAutoBackup {
+		return &v
+	}).(InstanceAutoBackupPtrOutput)
+}
+
+// Unix cron pattern
+func (o InstanceAutoBackupOutput) Cron() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceAutoBackup) string { return v.Cron }).(pulumi.StringOutput)
+}
+
+// Number of backup to keep
+func (o InstanceAutoBackupOutput) Rotation() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceAutoBackup) int { return v.Rotation }).(pulumi.IntOutput)
+}
+
+type InstanceAutoBackupPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoBackupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutoBackup)(nil)).Elem()
+}
+
+func (o InstanceAutoBackupPtrOutput) ToInstanceAutoBackupPtrOutput() InstanceAutoBackupPtrOutput {
+	return o
+}
+
+func (o InstanceAutoBackupPtrOutput) ToInstanceAutoBackupPtrOutputWithContext(ctx context.Context) InstanceAutoBackupPtrOutput {
+	return o
+}
+
+func (o InstanceAutoBackupPtrOutput) Elem() InstanceAutoBackupOutput {
+	return o.ApplyT(func(v *InstanceAutoBackup) InstanceAutoBackup {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAutoBackup
+		return ret
+	}).(InstanceAutoBackupOutput)
+}
+
+// Unix cron pattern
+func (o InstanceAutoBackupPtrOutput) Cron() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoBackup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cron
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of backup to keep
+func (o InstanceAutoBackupPtrOutput) Rotation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoBackup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Rotation
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceBootFrom struct {
+	// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+	ImageId *string `pulumi:"imageId"`
+	// Instance volume id
+	VolumeId *string `pulumi:"volumeId"`
+}
+
+// InstanceBootFromInput is an input type that accepts InstanceBootFromArgs and InstanceBootFromOutput values.
+// You can construct a concrete instance of `InstanceBootFromInput` via:
+//
+//	InstanceBootFromArgs{...}
+type InstanceBootFromInput interface {
+	pulumi.Input
+
+	ToInstanceBootFromOutput() InstanceBootFromOutput
+	ToInstanceBootFromOutputWithContext(context.Context) InstanceBootFromOutput
+}
+
+type InstanceBootFromArgs struct {
+	// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+	// Instance volume id
+	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
+}
+
+func (InstanceBootFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBootFrom)(nil)).Elem()
+}
+
+func (i InstanceBootFromArgs) ToInstanceBootFromOutput() InstanceBootFromOutput {
+	return i.ToInstanceBootFromOutputWithContext(context.Background())
+}
+
+func (i InstanceBootFromArgs) ToInstanceBootFromOutputWithContext(ctx context.Context) InstanceBootFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBootFromOutput)
+}
+
+func (i InstanceBootFromArgs) ToInstanceBootFromPtrOutput() InstanceBootFromPtrOutput {
+	return i.ToInstanceBootFromPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceBootFromArgs) ToInstanceBootFromPtrOutputWithContext(ctx context.Context) InstanceBootFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBootFromOutput).ToInstanceBootFromPtrOutputWithContext(ctx)
+}
+
+// InstanceBootFromPtrInput is an input type that accepts InstanceBootFromArgs, InstanceBootFromPtr and InstanceBootFromPtrOutput values.
+// You can construct a concrete instance of `InstanceBootFromPtrInput` via:
+//
+//	        InstanceBootFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceBootFromPtrInput interface {
+	pulumi.Input
+
+	ToInstanceBootFromPtrOutput() InstanceBootFromPtrOutput
+	ToInstanceBootFromPtrOutputWithContext(context.Context) InstanceBootFromPtrOutput
+}
+
+type instanceBootFromPtrType InstanceBootFromArgs
+
+func InstanceBootFromPtr(v *InstanceBootFromArgs) InstanceBootFromPtrInput {
+	return (*instanceBootFromPtrType)(v)
+}
+
+func (*instanceBootFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceBootFrom)(nil)).Elem()
+}
+
+func (i *instanceBootFromPtrType) ToInstanceBootFromPtrOutput() InstanceBootFromPtrOutput {
+	return i.ToInstanceBootFromPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceBootFromPtrType) ToInstanceBootFromPtrOutputWithContext(ctx context.Context) InstanceBootFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBootFromPtrOutput)
+}
+
+type InstanceBootFromOutput struct{ *pulumi.OutputState }
+
+func (InstanceBootFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBootFrom)(nil)).Elem()
+}
+
+func (o InstanceBootFromOutput) ToInstanceBootFromOutput() InstanceBootFromOutput {
+	return o
+}
+
+func (o InstanceBootFromOutput) ToInstanceBootFromOutputWithContext(ctx context.Context) InstanceBootFromOutput {
+	return o
+}
+
+func (o InstanceBootFromOutput) ToInstanceBootFromPtrOutput() InstanceBootFromPtrOutput {
+	return o.ToInstanceBootFromPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceBootFromOutput) ToInstanceBootFromPtrOutputWithContext(ctx context.Context) InstanceBootFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceBootFrom) *InstanceBootFrom {
+		return &v
+	}).(InstanceBootFromPtrOutput)
+}
+
+// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+func (o InstanceBootFromOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceBootFrom) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// Instance volume id
+func (o InstanceBootFromOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceBootFrom) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
+}
+
+type InstanceBootFromPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceBootFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceBootFrom)(nil)).Elem()
+}
+
+func (o InstanceBootFromPtrOutput) ToInstanceBootFromPtrOutput() InstanceBootFromPtrOutput {
+	return o
+}
+
+func (o InstanceBootFromPtrOutput) ToInstanceBootFromPtrOutputWithContext(ctx context.Context) InstanceBootFromPtrOutput {
+	return o
+}
+
+func (o InstanceBootFromPtrOutput) Elem() InstanceBootFromOutput {
+	return o.ApplyT(func(v *InstanceBootFrom) InstanceBootFrom {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceBootFrom
+		return ret
+	}).(InstanceBootFromOutput)
+}
+
+// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+func (o InstanceBootFromPtrOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceBootFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Instance volume id
+func (o InstanceBootFromPtrOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceBootFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeId
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceFlavor struct {
+	// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+	FlavorId string `pulumi:"flavorId"`
+}
+
+// InstanceFlavorInput is an input type that accepts InstanceFlavorArgs and InstanceFlavorOutput values.
+// You can construct a concrete instance of `InstanceFlavorInput` via:
+//
+//	InstanceFlavorArgs{...}
+type InstanceFlavorInput interface {
+	pulumi.Input
+
+	ToInstanceFlavorOutput() InstanceFlavorOutput
+	ToInstanceFlavorOutputWithContext(context.Context) InstanceFlavorOutput
+}
+
+type InstanceFlavorArgs struct {
+	// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+	FlavorId pulumi.StringInput `pulumi:"flavorId"`
+}
+
+func (InstanceFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFlavor)(nil)).Elem()
+}
+
+func (i InstanceFlavorArgs) ToInstanceFlavorOutput() InstanceFlavorOutput {
+	return i.ToInstanceFlavorOutputWithContext(context.Background())
+}
+
+func (i InstanceFlavorArgs) ToInstanceFlavorOutputWithContext(ctx context.Context) InstanceFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFlavorOutput)
+}
+
+func (i InstanceFlavorArgs) ToInstanceFlavorPtrOutput() InstanceFlavorPtrOutput {
+	return i.ToInstanceFlavorPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFlavorArgs) ToInstanceFlavorPtrOutputWithContext(ctx context.Context) InstanceFlavorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFlavorOutput).ToInstanceFlavorPtrOutputWithContext(ctx)
+}
+
+// InstanceFlavorPtrInput is an input type that accepts InstanceFlavorArgs, InstanceFlavorPtr and InstanceFlavorPtrOutput values.
+// You can construct a concrete instance of `InstanceFlavorPtrInput` via:
+//
+//	        InstanceFlavorArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceFlavorPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFlavorPtrOutput() InstanceFlavorPtrOutput
+	ToInstanceFlavorPtrOutputWithContext(context.Context) InstanceFlavorPtrOutput
+}
+
+type instanceFlavorPtrType InstanceFlavorArgs
+
+func InstanceFlavorPtr(v *InstanceFlavorArgs) InstanceFlavorPtrInput {
+	return (*instanceFlavorPtrType)(v)
+}
+
+func (*instanceFlavorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFlavor)(nil)).Elem()
+}
+
+func (i *instanceFlavorPtrType) ToInstanceFlavorPtrOutput() InstanceFlavorPtrOutput {
+	return i.ToInstanceFlavorPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFlavorPtrType) ToInstanceFlavorPtrOutputWithContext(ctx context.Context) InstanceFlavorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFlavorPtrOutput)
+}
+
+type InstanceFlavorOutput struct{ *pulumi.OutputState }
+
+func (InstanceFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFlavor)(nil)).Elem()
+}
+
+func (o InstanceFlavorOutput) ToInstanceFlavorOutput() InstanceFlavorOutput {
+	return o
+}
+
+func (o InstanceFlavorOutput) ToInstanceFlavorOutputWithContext(ctx context.Context) InstanceFlavorOutput {
+	return o
+}
+
+func (o InstanceFlavorOutput) ToInstanceFlavorPtrOutput() InstanceFlavorPtrOutput {
+	return o.ToInstanceFlavorPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFlavorOutput) ToInstanceFlavorPtrOutputWithContext(ctx context.Context) InstanceFlavorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceFlavor) *InstanceFlavor {
+		return &v
+	}).(InstanceFlavorPtrOutput)
+}
+
+// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+func (o InstanceFlavorOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFlavor) string { return v.FlavorId }).(pulumi.StringOutput)
+}
+
+type InstanceFlavorPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFlavorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFlavor)(nil)).Elem()
+}
+
+func (o InstanceFlavorPtrOutput) ToInstanceFlavorPtrOutput() InstanceFlavorPtrOutput {
+	return o
+}
+
+func (o InstanceFlavorPtrOutput) ToInstanceFlavorPtrOutputWithContext(ctx context.Context) InstanceFlavorPtrOutput {
+	return o
+}
+
+func (o InstanceFlavorPtrOutput) Elem() InstanceFlavorOutput {
+	return o.ApplyT(func(v *InstanceFlavor) InstanceFlavor {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceFlavor
+		return ret
+	}).(InstanceFlavorOutput)
+}
+
+// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+func (o InstanceFlavorPtrOutput) FlavorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFlavor) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FlavorId
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceGroup struct {
+	// Group id
+	GroupId *string `pulumi:"groupId"`
+}
+
+// InstanceGroupInput is an input type that accepts InstanceGroupArgs and InstanceGroupOutput values.
+// You can construct a concrete instance of `InstanceGroupInput` via:
+//
+//	InstanceGroupArgs{...}
+type InstanceGroupInput interface {
+	pulumi.Input
+
+	ToInstanceGroupOutput() InstanceGroupOutput
+	ToInstanceGroupOutputWithContext(context.Context) InstanceGroupOutput
+}
+
+type InstanceGroupArgs struct {
+	// Group id
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+}
+
+func (InstanceGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroup)(nil)).Elem()
+}
+
+func (i InstanceGroupArgs) ToInstanceGroupOutput() InstanceGroupOutput {
+	return i.ToInstanceGroupOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupArgs) ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupOutput)
+}
+
+func (i InstanceGroupArgs) ToInstanceGroupPtrOutput() InstanceGroupPtrOutput {
+	return i.ToInstanceGroupPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupArgs) ToInstanceGroupPtrOutputWithContext(ctx context.Context) InstanceGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupOutput).ToInstanceGroupPtrOutputWithContext(ctx)
+}
+
+// InstanceGroupPtrInput is an input type that accepts InstanceGroupArgs, InstanceGroupPtr and InstanceGroupPtrOutput values.
+// You can construct a concrete instance of `InstanceGroupPtrInput` via:
+//
+//	        InstanceGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceGroupPtrInput interface {
+	pulumi.Input
+
+	ToInstanceGroupPtrOutput() InstanceGroupPtrOutput
+	ToInstanceGroupPtrOutputWithContext(context.Context) InstanceGroupPtrOutput
+}
+
+type instanceGroupPtrType InstanceGroupArgs
+
+func InstanceGroupPtr(v *InstanceGroupArgs) InstanceGroupPtrInput {
+	return (*instanceGroupPtrType)(v)
+}
+
+func (*instanceGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroup)(nil)).Elem()
+}
+
+func (i *instanceGroupPtrType) ToInstanceGroupPtrOutput() InstanceGroupPtrOutput {
+	return i.ToInstanceGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceGroupPtrType) ToInstanceGroupPtrOutputWithContext(ctx context.Context) InstanceGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupPtrOutput)
+}
+
+type InstanceGroupOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroup)(nil)).Elem()
+}
+
+func (o InstanceGroupOutput) ToInstanceGroupOutput() InstanceGroupOutput {
+	return o
+}
+
+func (o InstanceGroupOutput) ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput {
+	return o
+}
+
+func (o InstanceGroupOutput) ToInstanceGroupPtrOutput() InstanceGroupPtrOutput {
+	return o.ToInstanceGroupPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupOutput) ToInstanceGroupPtrOutputWithContext(ctx context.Context) InstanceGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroup) *InstanceGroup {
+		return &v
+	}).(InstanceGroupPtrOutput)
+}
+
+// Group id
+func (o InstanceGroupOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceGroup) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+type InstanceGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroup)(nil)).Elem()
+}
+
+func (o InstanceGroupPtrOutput) ToInstanceGroupPtrOutput() InstanceGroupPtrOutput {
+	return o
+}
+
+func (o InstanceGroupPtrOutput) ToInstanceGroupPtrOutputWithContext(ctx context.Context) InstanceGroupPtrOutput {
+	return o
+}
+
+func (o InstanceGroupPtrOutput) Elem() InstanceGroupOutput {
+	return o.ApplyT(func(v *InstanceGroup) InstanceGroup {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroup
+		return ret
+	}).(InstanceGroupOutput)
+}
+
+// Group id
+func (o InstanceGroupPtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetwork struct {
+	// Set the new instance as public boolean
+	Public *bool `pulumi:"public"`
+}
+
+// InstanceNetworkInput is an input type that accepts InstanceNetworkArgs and InstanceNetworkOutput values.
+// You can construct a concrete instance of `InstanceNetworkInput` via:
+//
+//	InstanceNetworkArgs{...}
+type InstanceNetworkInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkOutput() InstanceNetworkOutput
+	ToInstanceNetworkOutputWithContext(context.Context) InstanceNetworkOutput
+}
+
+type InstanceNetworkArgs struct {
+	// Set the new instance as public boolean
+	Public pulumi.BoolPtrInput `pulumi:"public"`
+}
+
+func (InstanceNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetwork)(nil)).Elem()
+}
+
+func (i InstanceNetworkArgs) ToInstanceNetworkOutput() InstanceNetworkOutput {
+	return i.ToInstanceNetworkOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkArgs) ToInstanceNetworkOutputWithContext(ctx context.Context) InstanceNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkOutput)
+}
+
+func (i InstanceNetworkArgs) ToInstanceNetworkPtrOutput() InstanceNetworkPtrOutput {
+	return i.ToInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkArgs) ToInstanceNetworkPtrOutputWithContext(ctx context.Context) InstanceNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkOutput).ToInstanceNetworkPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkPtrInput is an input type that accepts InstanceNetworkArgs, InstanceNetworkPtr and InstanceNetworkPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkPtrInput` via:
+//
+//	        InstanceNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPtrOutput() InstanceNetworkPtrOutput
+	ToInstanceNetworkPtrOutputWithContext(context.Context) InstanceNetworkPtrOutput
+}
+
+type instanceNetworkPtrType InstanceNetworkArgs
+
+func InstanceNetworkPtr(v *InstanceNetworkArgs) InstanceNetworkPtrInput {
+	return (*instanceNetworkPtrType)(v)
+}
+
+func (*instanceNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetwork)(nil)).Elem()
+}
+
+func (i *instanceNetworkPtrType) ToInstanceNetworkPtrOutput() InstanceNetworkPtrOutput {
+	return i.ToInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkPtrType) ToInstanceNetworkPtrOutputWithContext(ctx context.Context) InstanceNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPtrOutput)
+}
+
+type InstanceNetworkOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetwork)(nil)).Elem()
+}
+
+func (o InstanceNetworkOutput) ToInstanceNetworkOutput() InstanceNetworkOutput {
+	return o
+}
+
+func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Context) InstanceNetworkOutput {
+	return o
+}
+
+func (o InstanceNetworkOutput) ToInstanceNetworkPtrOutput() InstanceNetworkPtrOutput {
+	return o.ToInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkOutput) ToInstanceNetworkPtrOutputWithContext(ctx context.Context) InstanceNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetwork) *InstanceNetwork {
+		return &v
+	}).(InstanceNetworkPtrOutput)
+}
+
+// Set the new instance as public boolean
+func (o InstanceNetworkOutput) Public() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceNetwork) *bool { return v.Public }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetwork)(nil)).Elem()
+}
+
+func (o InstanceNetworkPtrOutput) ToInstanceNetworkPtrOutput() InstanceNetworkPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPtrOutput) ToInstanceNetworkPtrOutputWithContext(ctx context.Context) InstanceNetworkPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPtrOutput) Elem() InstanceNetworkOutput {
+	return o.ApplyT(func(v *InstanceNetwork) InstanceNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetwork
+		return ret
+	}).(InstanceNetworkOutput)
+}
+
+// Set the new instance as public boolean
+func (o InstanceNetworkPtrOutput) Public() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceNetwork) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Public
+	}).(pulumi.BoolPtrOutput)
+}
+
+type InstanceSshKey struct {
+	// SSH Keypair name
+	Name string `pulumi:"name"`
+}
+
+// InstanceSshKeyInput is an input type that accepts InstanceSshKeyArgs and InstanceSshKeyOutput values.
+// You can construct a concrete instance of `InstanceSshKeyInput` via:
+//
+//	InstanceSshKeyArgs{...}
+type InstanceSshKeyInput interface {
+	pulumi.Input
+
+	ToInstanceSshKeyOutput() InstanceSshKeyOutput
+	ToInstanceSshKeyOutputWithContext(context.Context) InstanceSshKeyOutput
+}
+
+type InstanceSshKeyArgs struct {
+	// SSH Keypair name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (InstanceSshKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSshKey)(nil)).Elem()
+}
+
+func (i InstanceSshKeyArgs) ToInstanceSshKeyOutput() InstanceSshKeyOutput {
+	return i.ToInstanceSshKeyOutputWithContext(context.Background())
+}
+
+func (i InstanceSshKeyArgs) ToInstanceSshKeyOutputWithContext(ctx context.Context) InstanceSshKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSshKeyOutput)
+}
+
+func (i InstanceSshKeyArgs) ToInstanceSshKeyPtrOutput() InstanceSshKeyPtrOutput {
+	return i.ToInstanceSshKeyPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceSshKeyArgs) ToInstanceSshKeyPtrOutputWithContext(ctx context.Context) InstanceSshKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSshKeyOutput).ToInstanceSshKeyPtrOutputWithContext(ctx)
+}
+
+// InstanceSshKeyPtrInput is an input type that accepts InstanceSshKeyArgs, InstanceSshKeyPtr and InstanceSshKeyPtrOutput values.
+// You can construct a concrete instance of `InstanceSshKeyPtrInput` via:
+//
+//	        InstanceSshKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceSshKeyPtrInput interface {
+	pulumi.Input
+
+	ToInstanceSshKeyPtrOutput() InstanceSshKeyPtrOutput
+	ToInstanceSshKeyPtrOutputWithContext(context.Context) InstanceSshKeyPtrOutput
+}
+
+type instanceSshKeyPtrType InstanceSshKeyArgs
+
+func InstanceSshKeyPtr(v *InstanceSshKeyArgs) InstanceSshKeyPtrInput {
+	return (*instanceSshKeyPtrType)(v)
+}
+
+func (*instanceSshKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSshKey)(nil)).Elem()
+}
+
+func (i *instanceSshKeyPtrType) ToInstanceSshKeyPtrOutput() InstanceSshKeyPtrOutput {
+	return i.ToInstanceSshKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceSshKeyPtrType) ToInstanceSshKeyPtrOutputWithContext(ctx context.Context) InstanceSshKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSshKeyPtrOutput)
+}
+
+type InstanceSshKeyOutput struct{ *pulumi.OutputState }
+
+func (InstanceSshKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSshKey)(nil)).Elem()
+}
+
+func (o InstanceSshKeyOutput) ToInstanceSshKeyOutput() InstanceSshKeyOutput {
+	return o
+}
+
+func (o InstanceSshKeyOutput) ToInstanceSshKeyOutputWithContext(ctx context.Context) InstanceSshKeyOutput {
+	return o
+}
+
+func (o InstanceSshKeyOutput) ToInstanceSshKeyPtrOutput() InstanceSshKeyPtrOutput {
+	return o.ToInstanceSshKeyPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSshKeyOutput) ToInstanceSshKeyPtrOutputWithContext(ctx context.Context) InstanceSshKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceSshKey) *InstanceSshKey {
+		return &v
+	}).(InstanceSshKeyPtrOutput)
+}
+
+// SSH Keypair name
+func (o InstanceSshKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceSshKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type InstanceSshKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceSshKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSshKey)(nil)).Elem()
+}
+
+func (o InstanceSshKeyPtrOutput) ToInstanceSshKeyPtrOutput() InstanceSshKeyPtrOutput {
+	return o
+}
+
+func (o InstanceSshKeyPtrOutput) ToInstanceSshKeyPtrOutputWithContext(ctx context.Context) InstanceSshKeyPtrOutput {
+	return o
+}
+
+func (o InstanceSshKeyPtrOutput) Elem() InstanceSshKeyOutput {
+	return o.ApplyT(func(v *InstanceSshKey) InstanceSshKey {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceSshKey
+		return ret
+	}).(InstanceSshKeyOutput)
+}
+
+// SSH Keypair name
+func (o InstanceSshKeyPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSshKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceSshKeyCreate struct {
+	// SSH Key pair name
+	Name string `pulumi:"name"`
+	// SSH Public key
+	PublicKey string `pulumi:"publicKey"`
+}
+
+// InstanceSshKeyCreateInput is an input type that accepts InstanceSshKeyCreateArgs and InstanceSshKeyCreateOutput values.
+// You can construct a concrete instance of `InstanceSshKeyCreateInput` via:
+//
+//	InstanceSshKeyCreateArgs{...}
+type InstanceSshKeyCreateInput interface {
+	pulumi.Input
+
+	ToInstanceSshKeyCreateOutput() InstanceSshKeyCreateOutput
+	ToInstanceSshKeyCreateOutputWithContext(context.Context) InstanceSshKeyCreateOutput
+}
+
+type InstanceSshKeyCreateArgs struct {
+	// SSH Key pair name
+	Name pulumi.StringInput `pulumi:"name"`
+	// SSH Public key
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+}
+
+func (InstanceSshKeyCreateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSshKeyCreate)(nil)).Elem()
+}
+
+func (i InstanceSshKeyCreateArgs) ToInstanceSshKeyCreateOutput() InstanceSshKeyCreateOutput {
+	return i.ToInstanceSshKeyCreateOutputWithContext(context.Background())
+}
+
+func (i InstanceSshKeyCreateArgs) ToInstanceSshKeyCreateOutputWithContext(ctx context.Context) InstanceSshKeyCreateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSshKeyCreateOutput)
+}
+
+func (i InstanceSshKeyCreateArgs) ToInstanceSshKeyCreatePtrOutput() InstanceSshKeyCreatePtrOutput {
+	return i.ToInstanceSshKeyCreatePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceSshKeyCreateArgs) ToInstanceSshKeyCreatePtrOutputWithContext(ctx context.Context) InstanceSshKeyCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSshKeyCreateOutput).ToInstanceSshKeyCreatePtrOutputWithContext(ctx)
+}
+
+// InstanceSshKeyCreatePtrInput is an input type that accepts InstanceSshKeyCreateArgs, InstanceSshKeyCreatePtr and InstanceSshKeyCreatePtrOutput values.
+// You can construct a concrete instance of `InstanceSshKeyCreatePtrInput` via:
+//
+//	        InstanceSshKeyCreateArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceSshKeyCreatePtrInput interface {
+	pulumi.Input
+
+	ToInstanceSshKeyCreatePtrOutput() InstanceSshKeyCreatePtrOutput
+	ToInstanceSshKeyCreatePtrOutputWithContext(context.Context) InstanceSshKeyCreatePtrOutput
+}
+
+type instanceSshKeyCreatePtrType InstanceSshKeyCreateArgs
+
+func InstanceSshKeyCreatePtr(v *InstanceSshKeyCreateArgs) InstanceSshKeyCreatePtrInput {
+	return (*instanceSshKeyCreatePtrType)(v)
+}
+
+func (*instanceSshKeyCreatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSshKeyCreate)(nil)).Elem()
+}
+
+func (i *instanceSshKeyCreatePtrType) ToInstanceSshKeyCreatePtrOutput() InstanceSshKeyCreatePtrOutput {
+	return i.ToInstanceSshKeyCreatePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceSshKeyCreatePtrType) ToInstanceSshKeyCreatePtrOutputWithContext(ctx context.Context) InstanceSshKeyCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSshKeyCreatePtrOutput)
+}
+
+type InstanceSshKeyCreateOutput struct{ *pulumi.OutputState }
+
+func (InstanceSshKeyCreateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSshKeyCreate)(nil)).Elem()
+}
+
+func (o InstanceSshKeyCreateOutput) ToInstanceSshKeyCreateOutput() InstanceSshKeyCreateOutput {
+	return o
+}
+
+func (o InstanceSshKeyCreateOutput) ToInstanceSshKeyCreateOutputWithContext(ctx context.Context) InstanceSshKeyCreateOutput {
+	return o
+}
+
+func (o InstanceSshKeyCreateOutput) ToInstanceSshKeyCreatePtrOutput() InstanceSshKeyCreatePtrOutput {
+	return o.ToInstanceSshKeyCreatePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSshKeyCreateOutput) ToInstanceSshKeyCreatePtrOutputWithContext(ctx context.Context) InstanceSshKeyCreatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceSshKeyCreate) *InstanceSshKeyCreate {
+		return &v
+	}).(InstanceSshKeyCreatePtrOutput)
+}
+
+// SSH Key pair name
+func (o InstanceSshKeyCreateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceSshKeyCreate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// SSH Public key
+func (o InstanceSshKeyCreateOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceSshKeyCreate) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+type InstanceSshKeyCreatePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceSshKeyCreatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSshKeyCreate)(nil)).Elem()
+}
+
+func (o InstanceSshKeyCreatePtrOutput) ToInstanceSshKeyCreatePtrOutput() InstanceSshKeyCreatePtrOutput {
+	return o
+}
+
+func (o InstanceSshKeyCreatePtrOutput) ToInstanceSshKeyCreatePtrOutputWithContext(ctx context.Context) InstanceSshKeyCreatePtrOutput {
+	return o
+}
+
+func (o InstanceSshKeyCreatePtrOutput) Elem() InstanceSshKeyCreateOutput {
+	return o.ApplyT(func(v *InstanceSshKeyCreate) InstanceSshKeyCreate {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceSshKeyCreate
+		return ret
+	}).(InstanceSshKeyCreateOutput)
+}
+
+// SSH Key pair name
+func (o InstanceSshKeyCreatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSshKeyCreate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH Public key
+func (o InstanceSshKeyCreatePtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSshKeyCreate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type KubeCustomization struct {
 	// Kubernetes API server customization
 	//
@@ -4322,6 +5541,526 @@ func (o ProjectPlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) Proj
 	}).(ProjectPlanOptionConfigurationOutput)
 }
 
+type RegionNetworkSubnet struct {
+	// List of IP pools allocated in subnet
+	AllocationPools []RegionNetworkSubnetAllocationPool `pulumi:"allocationPools"`
+	// Subnet range in CIDR notation
+	Cidr string `pulumi:"cidr"`
+	// DNS nameservers
+	DnsNameServers []string `pulumi:"dnsNameServers"`
+	// Enable DHCP for the subnet
+	EnableDhcp bool `pulumi:"enableDhcp"`
+	// Set a gateway ip for the subnet
+	EnableGatewayIp bool `pulumi:"enableGatewayIp"`
+	// Gateway IP
+	GatewayIp *string `pulumi:"gatewayIp"`
+	// Host routes
+	HostRoutes []RegionNetworkSubnetHostRoute `pulumi:"hostRoutes"`
+	// IP version
+	IpVersion float64 `pulumi:"ipVersion"`
+	// Subnet name
+	Name *string `pulumi:"name"`
+	// Use default DNS
+	UseDefaultPublicDnsresolver *bool `pulumi:"useDefaultPublicDnsresolver"`
+}
+
+// RegionNetworkSubnetInput is an input type that accepts RegionNetworkSubnetArgs and RegionNetworkSubnetOutput values.
+// You can construct a concrete instance of `RegionNetworkSubnetInput` via:
+//
+//	RegionNetworkSubnetArgs{...}
+type RegionNetworkSubnetInput interface {
+	pulumi.Input
+
+	ToRegionNetworkSubnetOutput() RegionNetworkSubnetOutput
+	ToRegionNetworkSubnetOutputWithContext(context.Context) RegionNetworkSubnetOutput
+}
+
+type RegionNetworkSubnetArgs struct {
+	// List of IP pools allocated in subnet
+	AllocationPools RegionNetworkSubnetAllocationPoolArrayInput `pulumi:"allocationPools"`
+	// Subnet range in CIDR notation
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// DNS nameservers
+	DnsNameServers pulumi.StringArrayInput `pulumi:"dnsNameServers"`
+	// Enable DHCP for the subnet
+	EnableDhcp pulumi.BoolInput `pulumi:"enableDhcp"`
+	// Set a gateway ip for the subnet
+	EnableGatewayIp pulumi.BoolInput `pulumi:"enableGatewayIp"`
+	// Gateway IP
+	GatewayIp pulumi.StringPtrInput `pulumi:"gatewayIp"`
+	// Host routes
+	HostRoutes RegionNetworkSubnetHostRouteArrayInput `pulumi:"hostRoutes"`
+	// IP version
+	IpVersion pulumi.Float64Input `pulumi:"ipVersion"`
+	// Subnet name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Use default DNS
+	UseDefaultPublicDnsresolver pulumi.BoolPtrInput `pulumi:"useDefaultPublicDnsresolver"`
+}
+
+func (RegionNetworkSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkSubnet)(nil)).Elem()
+}
+
+func (i RegionNetworkSubnetArgs) ToRegionNetworkSubnetOutput() RegionNetworkSubnetOutput {
+	return i.ToRegionNetworkSubnetOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkSubnetArgs) ToRegionNetworkSubnetOutputWithContext(ctx context.Context) RegionNetworkSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkSubnetOutput)
+}
+
+func (i RegionNetworkSubnetArgs) ToRegionNetworkSubnetPtrOutput() RegionNetworkSubnetPtrOutput {
+	return i.ToRegionNetworkSubnetPtrOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkSubnetArgs) ToRegionNetworkSubnetPtrOutputWithContext(ctx context.Context) RegionNetworkSubnetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkSubnetOutput).ToRegionNetworkSubnetPtrOutputWithContext(ctx)
+}
+
+// RegionNetworkSubnetPtrInput is an input type that accepts RegionNetworkSubnetArgs, RegionNetworkSubnetPtr and RegionNetworkSubnetPtrOutput values.
+// You can construct a concrete instance of `RegionNetworkSubnetPtrInput` via:
+//
+//	        RegionNetworkSubnetArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionNetworkSubnetPtrInput interface {
+	pulumi.Input
+
+	ToRegionNetworkSubnetPtrOutput() RegionNetworkSubnetPtrOutput
+	ToRegionNetworkSubnetPtrOutputWithContext(context.Context) RegionNetworkSubnetPtrOutput
+}
+
+type regionNetworkSubnetPtrType RegionNetworkSubnetArgs
+
+func RegionNetworkSubnetPtr(v *RegionNetworkSubnetArgs) RegionNetworkSubnetPtrInput {
+	return (*regionNetworkSubnetPtrType)(v)
+}
+
+func (*regionNetworkSubnetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkSubnet)(nil)).Elem()
+}
+
+func (i *regionNetworkSubnetPtrType) ToRegionNetworkSubnetPtrOutput() RegionNetworkSubnetPtrOutput {
+	return i.ToRegionNetworkSubnetPtrOutputWithContext(context.Background())
+}
+
+func (i *regionNetworkSubnetPtrType) ToRegionNetworkSubnetPtrOutputWithContext(ctx context.Context) RegionNetworkSubnetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkSubnetPtrOutput)
+}
+
+type RegionNetworkSubnetOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkSubnet)(nil)).Elem()
+}
+
+func (o RegionNetworkSubnetOutput) ToRegionNetworkSubnetOutput() RegionNetworkSubnetOutput {
+	return o
+}
+
+func (o RegionNetworkSubnetOutput) ToRegionNetworkSubnetOutputWithContext(ctx context.Context) RegionNetworkSubnetOutput {
+	return o
+}
+
+func (o RegionNetworkSubnetOutput) ToRegionNetworkSubnetPtrOutput() RegionNetworkSubnetPtrOutput {
+	return o.ToRegionNetworkSubnetPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkSubnetOutput) ToRegionNetworkSubnetPtrOutputWithContext(ctx context.Context) RegionNetworkSubnetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionNetworkSubnet) *RegionNetworkSubnet {
+		return &v
+	}).(RegionNetworkSubnetPtrOutput)
+}
+
+// List of IP pools allocated in subnet
+func (o RegionNetworkSubnetOutput) AllocationPools() RegionNetworkSubnetAllocationPoolArrayOutput {
+	return o.ApplyT(func(v RegionNetworkSubnet) []RegionNetworkSubnetAllocationPool { return v.AllocationPools }).(RegionNetworkSubnetAllocationPoolArrayOutput)
+}
+
+// Subnet range in CIDR notation
+func (o RegionNetworkSubnetOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionNetworkSubnet) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// DNS nameservers
+func (o RegionNetworkSubnetOutput) DnsNameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegionNetworkSubnet) []string { return v.DnsNameServers }).(pulumi.StringArrayOutput)
+}
+
+// Enable DHCP for the subnet
+func (o RegionNetworkSubnetOutput) EnableDhcp() pulumi.BoolOutput {
+	return o.ApplyT(func(v RegionNetworkSubnet) bool { return v.EnableDhcp }).(pulumi.BoolOutput)
+}
+
+// Set a gateway ip for the subnet
+func (o RegionNetworkSubnetOutput) EnableGatewayIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v RegionNetworkSubnet) bool { return v.EnableGatewayIp }).(pulumi.BoolOutput)
+}
+
+// Gateway IP
+func (o RegionNetworkSubnetOutput) GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkSubnet) *string { return v.GatewayIp }).(pulumi.StringPtrOutput)
+}
+
+// Host routes
+func (o RegionNetworkSubnetOutput) HostRoutes() RegionNetworkSubnetHostRouteArrayOutput {
+	return o.ApplyT(func(v RegionNetworkSubnet) []RegionNetworkSubnetHostRoute { return v.HostRoutes }).(RegionNetworkSubnetHostRouteArrayOutput)
+}
+
+// IP version
+func (o RegionNetworkSubnetOutput) IpVersion() pulumi.Float64Output {
+	return o.ApplyT(func(v RegionNetworkSubnet) float64 { return v.IpVersion }).(pulumi.Float64Output)
+}
+
+// Subnet name
+func (o RegionNetworkSubnetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkSubnet) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Use default DNS
+func (o RegionNetworkSubnetOutput) UseDefaultPublicDnsresolver() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionNetworkSubnet) *bool { return v.UseDefaultPublicDnsresolver }).(pulumi.BoolPtrOutput)
+}
+
+type RegionNetworkSubnetPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkSubnetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkSubnet)(nil)).Elem()
+}
+
+func (o RegionNetworkSubnetPtrOutput) ToRegionNetworkSubnetPtrOutput() RegionNetworkSubnetPtrOutput {
+	return o
+}
+
+func (o RegionNetworkSubnetPtrOutput) ToRegionNetworkSubnetPtrOutputWithContext(ctx context.Context) RegionNetworkSubnetPtrOutput {
+	return o
+}
+
+func (o RegionNetworkSubnetPtrOutput) Elem() RegionNetworkSubnetOutput {
+	return o.ApplyT(func(v *RegionNetworkSubnet) RegionNetworkSubnet {
+		if v != nil {
+			return *v
+		}
+		var ret RegionNetworkSubnet
+		return ret
+	}).(RegionNetworkSubnetOutput)
+}
+
+// List of IP pools allocated in subnet
+func (o RegionNetworkSubnetPtrOutput) AllocationPools() RegionNetworkSubnetAllocationPoolArrayOutput {
+	return o.ApplyT(func(v *RegionNetworkSubnet) []RegionNetworkSubnetAllocationPool {
+		if v == nil {
+			return nil
+		}
+		return v.AllocationPools
+	}).(RegionNetworkSubnetAllocationPoolArrayOutput)
+}
+
+// Subnet range in CIDR notation
+func (o RegionNetworkSubnetPtrOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkSubnet) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// DNS nameservers
+func (o RegionNetworkSubnetPtrOutput) DnsNameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionNetworkSubnet) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsNameServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Enable DHCP for the subnet
+func (o RegionNetworkSubnetPtrOutput) EnableDhcp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkSubnet) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableDhcp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set a gateway ip for the subnet
+func (o RegionNetworkSubnetPtrOutput) EnableGatewayIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkSubnet) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableGatewayIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gateway IP
+func (o RegionNetworkSubnetPtrOutput) GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkSubnet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Host routes
+func (o RegionNetworkSubnetPtrOutput) HostRoutes() RegionNetworkSubnetHostRouteArrayOutput {
+	return o.ApplyT(func(v *RegionNetworkSubnet) []RegionNetworkSubnetHostRoute {
+		if v == nil {
+			return nil
+		}
+		return v.HostRoutes
+	}).(RegionNetworkSubnetHostRouteArrayOutput)
+}
+
+// IP version
+func (o RegionNetworkSubnetPtrOutput) IpVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RegionNetworkSubnet) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.IpVersion
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Subnet name
+func (o RegionNetworkSubnetPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkSubnet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use default DNS
+func (o RegionNetworkSubnetPtrOutput) UseDefaultPublicDnsresolver() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkSubnet) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseDefaultPublicDnsresolver
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RegionNetworkSubnetAllocationPool struct {
+	// Last IP for the pool (eg: 192.168.1.24)
+	End *string `pulumi:"end"`
+	// First IP for the pool (eg: 192.168.1.12)
+	Start *string `pulumi:"start"`
+}
+
+// RegionNetworkSubnetAllocationPoolInput is an input type that accepts RegionNetworkSubnetAllocationPoolArgs and RegionNetworkSubnetAllocationPoolOutput values.
+// You can construct a concrete instance of `RegionNetworkSubnetAllocationPoolInput` via:
+//
+//	RegionNetworkSubnetAllocationPoolArgs{...}
+type RegionNetworkSubnetAllocationPoolInput interface {
+	pulumi.Input
+
+	ToRegionNetworkSubnetAllocationPoolOutput() RegionNetworkSubnetAllocationPoolOutput
+	ToRegionNetworkSubnetAllocationPoolOutputWithContext(context.Context) RegionNetworkSubnetAllocationPoolOutput
+}
+
+type RegionNetworkSubnetAllocationPoolArgs struct {
+	// Last IP for the pool (eg: 192.168.1.24)
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// First IP for the pool (eg: 192.168.1.12)
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (RegionNetworkSubnetAllocationPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkSubnetAllocationPool)(nil)).Elem()
+}
+
+func (i RegionNetworkSubnetAllocationPoolArgs) ToRegionNetworkSubnetAllocationPoolOutput() RegionNetworkSubnetAllocationPoolOutput {
+	return i.ToRegionNetworkSubnetAllocationPoolOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkSubnetAllocationPoolArgs) ToRegionNetworkSubnetAllocationPoolOutputWithContext(ctx context.Context) RegionNetworkSubnetAllocationPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkSubnetAllocationPoolOutput)
+}
+
+// RegionNetworkSubnetAllocationPoolArrayInput is an input type that accepts RegionNetworkSubnetAllocationPoolArray and RegionNetworkSubnetAllocationPoolArrayOutput values.
+// You can construct a concrete instance of `RegionNetworkSubnetAllocationPoolArrayInput` via:
+//
+//	RegionNetworkSubnetAllocationPoolArray{ RegionNetworkSubnetAllocationPoolArgs{...} }
+type RegionNetworkSubnetAllocationPoolArrayInput interface {
+	pulumi.Input
+
+	ToRegionNetworkSubnetAllocationPoolArrayOutput() RegionNetworkSubnetAllocationPoolArrayOutput
+	ToRegionNetworkSubnetAllocationPoolArrayOutputWithContext(context.Context) RegionNetworkSubnetAllocationPoolArrayOutput
+}
+
+type RegionNetworkSubnetAllocationPoolArray []RegionNetworkSubnetAllocationPoolInput
+
+func (RegionNetworkSubnetAllocationPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionNetworkSubnetAllocationPool)(nil)).Elem()
+}
+
+func (i RegionNetworkSubnetAllocationPoolArray) ToRegionNetworkSubnetAllocationPoolArrayOutput() RegionNetworkSubnetAllocationPoolArrayOutput {
+	return i.ToRegionNetworkSubnetAllocationPoolArrayOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkSubnetAllocationPoolArray) ToRegionNetworkSubnetAllocationPoolArrayOutputWithContext(ctx context.Context) RegionNetworkSubnetAllocationPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkSubnetAllocationPoolArrayOutput)
+}
+
+type RegionNetworkSubnetAllocationPoolOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkSubnetAllocationPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkSubnetAllocationPool)(nil)).Elem()
+}
+
+func (o RegionNetworkSubnetAllocationPoolOutput) ToRegionNetworkSubnetAllocationPoolOutput() RegionNetworkSubnetAllocationPoolOutput {
+	return o
+}
+
+func (o RegionNetworkSubnetAllocationPoolOutput) ToRegionNetworkSubnetAllocationPoolOutputWithContext(ctx context.Context) RegionNetworkSubnetAllocationPoolOutput {
+	return o
+}
+
+// Last IP for the pool (eg: 192.168.1.24)
+func (o RegionNetworkSubnetAllocationPoolOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkSubnetAllocationPool) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// First IP for the pool (eg: 192.168.1.12)
+func (o RegionNetworkSubnetAllocationPoolOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkSubnetAllocationPool) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkSubnetAllocationPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkSubnetAllocationPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionNetworkSubnetAllocationPool)(nil)).Elem()
+}
+
+func (o RegionNetworkSubnetAllocationPoolArrayOutput) ToRegionNetworkSubnetAllocationPoolArrayOutput() RegionNetworkSubnetAllocationPoolArrayOutput {
+	return o
+}
+
+func (o RegionNetworkSubnetAllocationPoolArrayOutput) ToRegionNetworkSubnetAllocationPoolArrayOutputWithContext(ctx context.Context) RegionNetworkSubnetAllocationPoolArrayOutput {
+	return o
+}
+
+func (o RegionNetworkSubnetAllocationPoolArrayOutput) Index(i pulumi.IntInput) RegionNetworkSubnetAllocationPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionNetworkSubnetAllocationPool {
+		return vs[0].([]RegionNetworkSubnetAllocationPool)[vs[1].(int)]
+	}).(RegionNetworkSubnetAllocationPoolOutput)
+}
+
+type RegionNetworkSubnetHostRoute struct {
+	// Host route destination (eg: 192.168.1.0/24)
+	Destination *string `pulumi:"destination"`
+	// Host route next hop (eg: 192.168.1.254)
+	NextHop *string `pulumi:"nextHop"`
+}
+
+// RegionNetworkSubnetHostRouteInput is an input type that accepts RegionNetworkSubnetHostRouteArgs and RegionNetworkSubnetHostRouteOutput values.
+// You can construct a concrete instance of `RegionNetworkSubnetHostRouteInput` via:
+//
+//	RegionNetworkSubnetHostRouteArgs{...}
+type RegionNetworkSubnetHostRouteInput interface {
+	pulumi.Input
+
+	ToRegionNetworkSubnetHostRouteOutput() RegionNetworkSubnetHostRouteOutput
+	ToRegionNetworkSubnetHostRouteOutputWithContext(context.Context) RegionNetworkSubnetHostRouteOutput
+}
+
+type RegionNetworkSubnetHostRouteArgs struct {
+	// Host route destination (eg: 192.168.1.0/24)
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	// Host route next hop (eg: 192.168.1.254)
+	NextHop pulumi.StringPtrInput `pulumi:"nextHop"`
+}
+
+func (RegionNetworkSubnetHostRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkSubnetHostRoute)(nil)).Elem()
+}
+
+func (i RegionNetworkSubnetHostRouteArgs) ToRegionNetworkSubnetHostRouteOutput() RegionNetworkSubnetHostRouteOutput {
+	return i.ToRegionNetworkSubnetHostRouteOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkSubnetHostRouteArgs) ToRegionNetworkSubnetHostRouteOutputWithContext(ctx context.Context) RegionNetworkSubnetHostRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkSubnetHostRouteOutput)
+}
+
+// RegionNetworkSubnetHostRouteArrayInput is an input type that accepts RegionNetworkSubnetHostRouteArray and RegionNetworkSubnetHostRouteArrayOutput values.
+// You can construct a concrete instance of `RegionNetworkSubnetHostRouteArrayInput` via:
+//
+//	RegionNetworkSubnetHostRouteArray{ RegionNetworkSubnetHostRouteArgs{...} }
+type RegionNetworkSubnetHostRouteArrayInput interface {
+	pulumi.Input
+
+	ToRegionNetworkSubnetHostRouteArrayOutput() RegionNetworkSubnetHostRouteArrayOutput
+	ToRegionNetworkSubnetHostRouteArrayOutputWithContext(context.Context) RegionNetworkSubnetHostRouteArrayOutput
+}
+
+type RegionNetworkSubnetHostRouteArray []RegionNetworkSubnetHostRouteInput
+
+func (RegionNetworkSubnetHostRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionNetworkSubnetHostRoute)(nil)).Elem()
+}
+
+func (i RegionNetworkSubnetHostRouteArray) ToRegionNetworkSubnetHostRouteArrayOutput() RegionNetworkSubnetHostRouteArrayOutput {
+	return i.ToRegionNetworkSubnetHostRouteArrayOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkSubnetHostRouteArray) ToRegionNetworkSubnetHostRouteArrayOutputWithContext(ctx context.Context) RegionNetworkSubnetHostRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkSubnetHostRouteArrayOutput)
+}
+
+type RegionNetworkSubnetHostRouteOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkSubnetHostRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkSubnetHostRoute)(nil)).Elem()
+}
+
+func (o RegionNetworkSubnetHostRouteOutput) ToRegionNetworkSubnetHostRouteOutput() RegionNetworkSubnetHostRouteOutput {
+	return o
+}
+
+func (o RegionNetworkSubnetHostRouteOutput) ToRegionNetworkSubnetHostRouteOutputWithContext(ctx context.Context) RegionNetworkSubnetHostRouteOutput {
+	return o
+}
+
+// Host route destination (eg: 192.168.1.0/24)
+func (o RegionNetworkSubnetHostRouteOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkSubnetHostRoute) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+// Host route next hop (eg: 192.168.1.254)
+func (o RegionNetworkSubnetHostRouteOutput) NextHop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkSubnetHostRoute) *string { return v.NextHop }).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkSubnetHostRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkSubnetHostRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionNetworkSubnetHostRoute)(nil)).Elem()
+}
+
+func (o RegionNetworkSubnetHostRouteArrayOutput) ToRegionNetworkSubnetHostRouteArrayOutput() RegionNetworkSubnetHostRouteArrayOutput {
+	return o
+}
+
+func (o RegionNetworkSubnetHostRouteArrayOutput) ToRegionNetworkSubnetHostRouteArrayOutputWithContext(ctx context.Context) RegionNetworkSubnetHostRouteArrayOutput {
+	return o
+}
+
+func (o RegionNetworkSubnetHostRouteArrayOutput) Index(i pulumi.IntInput) RegionNetworkSubnetHostRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionNetworkSubnetHostRoute {
+		return vs[0].([]RegionNetworkSubnetHostRoute)[vs[1].(int)]
+	}).(RegionNetworkSubnetHostRouteOutput)
+}
+
 type UserRole struct {
 	// A description associated with the user.
 	Description *string `pulumi:"description"`
@@ -5512,6 +7251,581 @@ func (o GetContainerRegistryUsersResultArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerRegistryUsersResult {
 		return vs[0].([]GetContainerRegistryUsersResult)[vs[1].(int)]
 	}).(GetContainerRegistryUsersResultOutput)
+}
+
+type GetInstanceAddress struct {
+	// IP address
+	Ip string `pulumi:"ip"`
+	// IP version
+	Version int `pulumi:"version"`
+}
+
+// GetInstanceAddressInput is an input type that accepts GetInstanceAddressArgs and GetInstanceAddressOutput values.
+// You can construct a concrete instance of `GetInstanceAddressInput` via:
+//
+//	GetInstanceAddressArgs{...}
+type GetInstanceAddressInput interface {
+	pulumi.Input
+
+	ToGetInstanceAddressOutput() GetInstanceAddressOutput
+	ToGetInstanceAddressOutputWithContext(context.Context) GetInstanceAddressOutput
+}
+
+type GetInstanceAddressArgs struct {
+	// IP address
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// IP version
+	Version pulumi.IntInput `pulumi:"version"`
+}
+
+func (GetInstanceAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAddress)(nil)).Elem()
+}
+
+func (i GetInstanceAddressArgs) ToGetInstanceAddressOutput() GetInstanceAddressOutput {
+	return i.ToGetInstanceAddressOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAddressArgs) ToGetInstanceAddressOutputWithContext(ctx context.Context) GetInstanceAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAddressOutput)
+}
+
+// GetInstanceAddressArrayInput is an input type that accepts GetInstanceAddressArray and GetInstanceAddressArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAddressArrayInput` via:
+//
+//	GetInstanceAddressArray{ GetInstanceAddressArgs{...} }
+type GetInstanceAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAddressArrayOutput() GetInstanceAddressArrayOutput
+	ToGetInstanceAddressArrayOutputWithContext(context.Context) GetInstanceAddressArrayOutput
+}
+
+type GetInstanceAddressArray []GetInstanceAddressInput
+
+func (GetInstanceAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAddress)(nil)).Elem()
+}
+
+func (i GetInstanceAddressArray) ToGetInstanceAddressArrayOutput() GetInstanceAddressArrayOutput {
+	return i.ToGetInstanceAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAddressArray) ToGetInstanceAddressArrayOutputWithContext(ctx context.Context) GetInstanceAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAddressArrayOutput)
+}
+
+type GetInstanceAddressOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAddress)(nil)).Elem()
+}
+
+func (o GetInstanceAddressOutput) ToGetInstanceAddressOutput() GetInstanceAddressOutput {
+	return o
+}
+
+func (o GetInstanceAddressOutput) ToGetInstanceAddressOutputWithContext(ctx context.Context) GetInstanceAddressOutput {
+	return o
+}
+
+// IP address
+func (o GetInstanceAddressOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAddress) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// IP version
+func (o GetInstanceAddressOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAddress) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetInstanceAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAddress)(nil)).Elem()
+}
+
+func (o GetInstanceAddressArrayOutput) ToGetInstanceAddressArrayOutput() GetInstanceAddressArrayOutput {
+	return o
+}
+
+func (o GetInstanceAddressArrayOutput) ToGetInstanceAddressArrayOutputWithContext(ctx context.Context) GetInstanceAddressArrayOutput {
+	return o
+}
+
+func (o GetInstanceAddressArrayOutput) Index(i pulumi.IntInput) GetInstanceAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAddress {
+		return vs[0].([]GetInstanceAddress)[vs[1].(int)]
+	}).(GetInstanceAddressOutput)
+}
+
+type GetInstanceAttachedVolume struct {
+	// Instance id
+	Id string `pulumi:"id"`
+}
+
+// GetInstanceAttachedVolumeInput is an input type that accepts GetInstanceAttachedVolumeArgs and GetInstanceAttachedVolumeOutput values.
+// You can construct a concrete instance of `GetInstanceAttachedVolumeInput` via:
+//
+//	GetInstanceAttachedVolumeArgs{...}
+type GetInstanceAttachedVolumeInput interface {
+	pulumi.Input
+
+	ToGetInstanceAttachedVolumeOutput() GetInstanceAttachedVolumeOutput
+	ToGetInstanceAttachedVolumeOutputWithContext(context.Context) GetInstanceAttachedVolumeOutput
+}
+
+type GetInstanceAttachedVolumeArgs struct {
+	// Instance id
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetInstanceAttachedVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachedVolume)(nil)).Elem()
+}
+
+func (i GetInstanceAttachedVolumeArgs) ToGetInstanceAttachedVolumeOutput() GetInstanceAttachedVolumeOutput {
+	return i.ToGetInstanceAttachedVolumeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAttachedVolumeArgs) ToGetInstanceAttachedVolumeOutputWithContext(ctx context.Context) GetInstanceAttachedVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachedVolumeOutput)
+}
+
+// GetInstanceAttachedVolumeArrayInput is an input type that accepts GetInstanceAttachedVolumeArray and GetInstanceAttachedVolumeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAttachedVolumeArrayInput` via:
+//
+//	GetInstanceAttachedVolumeArray{ GetInstanceAttachedVolumeArgs{...} }
+type GetInstanceAttachedVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAttachedVolumeArrayOutput() GetInstanceAttachedVolumeArrayOutput
+	ToGetInstanceAttachedVolumeArrayOutputWithContext(context.Context) GetInstanceAttachedVolumeArrayOutput
+}
+
+type GetInstanceAttachedVolumeArray []GetInstanceAttachedVolumeInput
+
+func (GetInstanceAttachedVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAttachedVolume)(nil)).Elem()
+}
+
+func (i GetInstanceAttachedVolumeArray) ToGetInstanceAttachedVolumeArrayOutput() GetInstanceAttachedVolumeArrayOutput {
+	return i.ToGetInstanceAttachedVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAttachedVolumeArray) ToGetInstanceAttachedVolumeArrayOutputWithContext(ctx context.Context) GetInstanceAttachedVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachedVolumeArrayOutput)
+}
+
+type GetInstanceAttachedVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAttachedVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachedVolume)(nil)).Elem()
+}
+
+func (o GetInstanceAttachedVolumeOutput) ToGetInstanceAttachedVolumeOutput() GetInstanceAttachedVolumeOutput {
+	return o
+}
+
+func (o GetInstanceAttachedVolumeOutput) ToGetInstanceAttachedVolumeOutputWithContext(ctx context.Context) GetInstanceAttachedVolumeOutput {
+	return o
+}
+
+// Instance id
+func (o GetInstanceAttachedVolumeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedVolume) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetInstanceAttachedVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAttachedVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAttachedVolume)(nil)).Elem()
+}
+
+func (o GetInstanceAttachedVolumeArrayOutput) ToGetInstanceAttachedVolumeArrayOutput() GetInstanceAttachedVolumeArrayOutput {
+	return o
+}
+
+func (o GetInstanceAttachedVolumeArrayOutput) ToGetInstanceAttachedVolumeArrayOutputWithContext(ctx context.Context) GetInstanceAttachedVolumeArrayOutput {
+	return o
+}
+
+func (o GetInstanceAttachedVolumeArrayOutput) Index(i pulumi.IntInput) GetInstanceAttachedVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAttachedVolume {
+		return vs[0].([]GetInstanceAttachedVolume)[vs[1].(int)]
+	}).(GetInstanceAttachedVolumeOutput)
+}
+
+type GetInstancesInstance struct {
+	// Instance IP addresses
+	Addresses []GetInstancesInstanceAddress `pulumi:"addresses"`
+	// Volumes attached to the instance
+	AttachedVolumes []GetInstancesInstanceAttachedVolume `pulumi:"attachedVolumes"`
+	// Flavor id
+	FlavorId string `pulumi:"flavorId"`
+	// Flavor name
+	FlavorName string `pulumi:"flavorName"`
+	// Instance id
+	Id string `pulumi:"id"`
+	// Image id
+	ImageId string `pulumi:"imageId"`
+	// Instance name
+	Name string `pulumi:"name"`
+	// SSH Keypair
+	SshKey string `pulumi:"sshKey"`
+	// Instance task state
+	TaskState string `pulumi:"taskState"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+//	GetInstancesInstanceArgs{...}
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	// Instance IP addresses
+	Addresses GetInstancesInstanceAddressArrayInput `pulumi:"addresses"`
+	// Volumes attached to the instance
+	AttachedVolumes GetInstancesInstanceAttachedVolumeArrayInput `pulumi:"attachedVolumes"`
+	// Flavor id
+	FlavorId pulumi.StringInput `pulumi:"flavorId"`
+	// Flavor name
+	FlavorName pulumi.StringInput `pulumi:"flavorName"`
+	// Instance id
+	Id pulumi.StringInput `pulumi:"id"`
+	// Image id
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// Instance name
+	Name pulumi.StringInput `pulumi:"name"`
+	// SSH Keypair
+	SshKey pulumi.StringInput `pulumi:"sshKey"`
+	// Instance task state
+	TaskState pulumi.StringInput `pulumi:"taskState"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+// Instance IP addresses
+func (o GetInstancesInstanceOutput) Addresses() GetInstancesInstanceAddressArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceAddress { return v.Addresses }).(GetInstancesInstanceAddressArrayOutput)
+}
+
+// Volumes attached to the instance
+func (o GetInstancesInstanceOutput) AttachedVolumes() GetInstancesInstanceAttachedVolumeArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceAttachedVolume { return v.AttachedVolumes }).(GetInstancesInstanceAttachedVolumeArrayOutput)
+}
+
+// Flavor id
+func (o GetInstancesInstanceOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.FlavorId }).(pulumi.StringOutput)
+}
+
+// Flavor name
+func (o GetInstancesInstanceOutput) FlavorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.FlavorName }).(pulumi.StringOutput)
+}
+
+// Instance id
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Image id
+func (o GetInstancesInstanceOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// Instance name
+func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// SSH Keypair
+func (o GetInstancesInstanceOutput) SshKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SshKey }).(pulumi.StringOutput)
+}
+
+// Instance task state
+func (o GetInstancesInstanceOutput) TaskState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.TaskState }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
+type GetInstancesInstanceAddress struct {
+	// IP address
+	Ip string `pulumi:"ip"`
+	// IP version
+	Version int `pulumi:"version"`
+}
+
+// GetInstancesInstanceAddressInput is an input type that accepts GetInstancesInstanceAddressArgs and GetInstancesInstanceAddressOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceAddressInput` via:
+//
+//	GetInstancesInstanceAddressArgs{...}
+type GetInstancesInstanceAddressInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceAddressOutput() GetInstancesInstanceAddressOutput
+	ToGetInstancesInstanceAddressOutputWithContext(context.Context) GetInstancesInstanceAddressOutput
+}
+
+type GetInstancesInstanceAddressArgs struct {
+	// IP address
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// IP version
+	Version pulumi.IntInput `pulumi:"version"`
+}
+
+func (GetInstancesInstanceAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceAddress)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceAddressArgs) ToGetInstancesInstanceAddressOutput() GetInstancesInstanceAddressOutput {
+	return i.ToGetInstancesInstanceAddressOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceAddressArgs) ToGetInstancesInstanceAddressOutputWithContext(ctx context.Context) GetInstancesInstanceAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceAddressOutput)
+}
+
+// GetInstancesInstanceAddressArrayInput is an input type that accepts GetInstancesInstanceAddressArray and GetInstancesInstanceAddressArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceAddressArrayInput` via:
+//
+//	GetInstancesInstanceAddressArray{ GetInstancesInstanceAddressArgs{...} }
+type GetInstancesInstanceAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceAddressArrayOutput() GetInstancesInstanceAddressArrayOutput
+	ToGetInstancesInstanceAddressArrayOutputWithContext(context.Context) GetInstancesInstanceAddressArrayOutput
+}
+
+type GetInstancesInstanceAddressArray []GetInstancesInstanceAddressInput
+
+func (GetInstancesInstanceAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceAddress)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceAddressArray) ToGetInstancesInstanceAddressArrayOutput() GetInstancesInstanceAddressArrayOutput {
+	return i.ToGetInstancesInstanceAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceAddressArray) ToGetInstancesInstanceAddressArrayOutputWithContext(ctx context.Context) GetInstancesInstanceAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceAddressArrayOutput)
+}
+
+type GetInstancesInstanceAddressOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceAddress)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceAddressOutput) ToGetInstancesInstanceAddressOutput() GetInstancesInstanceAddressOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAddressOutput) ToGetInstancesInstanceAddressOutputWithContext(ctx context.Context) GetInstancesInstanceAddressOutput {
+	return o
+}
+
+// IP address
+func (o GetInstancesInstanceAddressOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAddress) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// IP version
+func (o GetInstancesInstanceAddressOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAddress) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetInstancesInstanceAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceAddress)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceAddressArrayOutput) ToGetInstancesInstanceAddressArrayOutput() GetInstancesInstanceAddressArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAddressArrayOutput) ToGetInstancesInstanceAddressArrayOutputWithContext(ctx context.Context) GetInstancesInstanceAddressArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAddressArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceAddress {
+		return vs[0].([]GetInstancesInstanceAddress)[vs[1].(int)]
+	}).(GetInstancesInstanceAddressOutput)
+}
+
+type GetInstancesInstanceAttachedVolume struct {
+	// Instance id
+	Id string `pulumi:"id"`
+}
+
+// GetInstancesInstanceAttachedVolumeInput is an input type that accepts GetInstancesInstanceAttachedVolumeArgs and GetInstancesInstanceAttachedVolumeOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceAttachedVolumeInput` via:
+//
+//	GetInstancesInstanceAttachedVolumeArgs{...}
+type GetInstancesInstanceAttachedVolumeInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceAttachedVolumeOutput() GetInstancesInstanceAttachedVolumeOutput
+	ToGetInstancesInstanceAttachedVolumeOutputWithContext(context.Context) GetInstancesInstanceAttachedVolumeOutput
+}
+
+type GetInstancesInstanceAttachedVolumeArgs struct {
+	// Instance id
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetInstancesInstanceAttachedVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceAttachedVolume)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceAttachedVolumeArgs) ToGetInstancesInstanceAttachedVolumeOutput() GetInstancesInstanceAttachedVolumeOutput {
+	return i.ToGetInstancesInstanceAttachedVolumeOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceAttachedVolumeArgs) ToGetInstancesInstanceAttachedVolumeOutputWithContext(ctx context.Context) GetInstancesInstanceAttachedVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceAttachedVolumeOutput)
+}
+
+// GetInstancesInstanceAttachedVolumeArrayInput is an input type that accepts GetInstancesInstanceAttachedVolumeArray and GetInstancesInstanceAttachedVolumeArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceAttachedVolumeArrayInput` via:
+//
+//	GetInstancesInstanceAttachedVolumeArray{ GetInstancesInstanceAttachedVolumeArgs{...} }
+type GetInstancesInstanceAttachedVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceAttachedVolumeArrayOutput() GetInstancesInstanceAttachedVolumeArrayOutput
+	ToGetInstancesInstanceAttachedVolumeArrayOutputWithContext(context.Context) GetInstancesInstanceAttachedVolumeArrayOutput
+}
+
+type GetInstancesInstanceAttachedVolumeArray []GetInstancesInstanceAttachedVolumeInput
+
+func (GetInstancesInstanceAttachedVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceAttachedVolume)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceAttachedVolumeArray) ToGetInstancesInstanceAttachedVolumeArrayOutput() GetInstancesInstanceAttachedVolumeArrayOutput {
+	return i.ToGetInstancesInstanceAttachedVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceAttachedVolumeArray) ToGetInstancesInstanceAttachedVolumeArrayOutputWithContext(ctx context.Context) GetInstancesInstanceAttachedVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceAttachedVolumeArrayOutput)
+}
+
+type GetInstancesInstanceAttachedVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceAttachedVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceAttachedVolume)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceAttachedVolumeOutput) ToGetInstancesInstanceAttachedVolumeOutput() GetInstancesInstanceAttachedVolumeOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAttachedVolumeOutput) ToGetInstancesInstanceAttachedVolumeOutputWithContext(ctx context.Context) GetInstancesInstanceAttachedVolumeOutput {
+	return o
+}
+
+// Instance id
+func (o GetInstancesInstanceAttachedVolumeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAttachedVolume) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceAttachedVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceAttachedVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceAttachedVolume)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceAttachedVolumeArrayOutput) ToGetInstancesInstanceAttachedVolumeArrayOutput() GetInstancesInstanceAttachedVolumeArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAttachedVolumeArrayOutput) ToGetInstancesInstanceAttachedVolumeArrayOutputWithContext(ctx context.Context) GetInstancesInstanceAttachedVolumeArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAttachedVolumeArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceAttachedVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceAttachedVolume {
+		return vs[0].([]GetInstancesInstanceAttachedVolume)[vs[1].(int)]
+	}).(GetInstancesInstanceAttachedVolumeOutput)
 }
 
 type GetKubeCustomization struct {
@@ -8307,6 +10621,112 @@ func (o GetOpenSearchUserAclArrayOutput) Index(i pulumi.IntInput) GetOpenSearchU
 	}).(GetOpenSearchUserAclOutput)
 }
 
+type GetPrometheusTarget struct {
+	// Host of the endpoint
+	Host string `pulumi:"host"`
+	// Connection port for the endpoint
+	Port int `pulumi:"port"`
+}
+
+// GetPrometheusTargetInput is an input type that accepts GetPrometheusTargetArgs and GetPrometheusTargetOutput values.
+// You can construct a concrete instance of `GetPrometheusTargetInput` via:
+//
+//	GetPrometheusTargetArgs{...}
+type GetPrometheusTargetInput interface {
+	pulumi.Input
+
+	ToGetPrometheusTargetOutput() GetPrometheusTargetOutput
+	ToGetPrometheusTargetOutputWithContext(context.Context) GetPrometheusTargetOutput
+}
+
+type GetPrometheusTargetArgs struct {
+	// Host of the endpoint
+	Host pulumi.StringInput `pulumi:"host"`
+	// Connection port for the endpoint
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetPrometheusTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusTarget)(nil)).Elem()
+}
+
+func (i GetPrometheusTargetArgs) ToGetPrometheusTargetOutput() GetPrometheusTargetOutput {
+	return i.ToGetPrometheusTargetOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusTargetArgs) ToGetPrometheusTargetOutputWithContext(ctx context.Context) GetPrometheusTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusTargetOutput)
+}
+
+// GetPrometheusTargetArrayInput is an input type that accepts GetPrometheusTargetArray and GetPrometheusTargetArrayOutput values.
+// You can construct a concrete instance of `GetPrometheusTargetArrayInput` via:
+//
+//	GetPrometheusTargetArray{ GetPrometheusTargetArgs{...} }
+type GetPrometheusTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetPrometheusTargetArrayOutput() GetPrometheusTargetArrayOutput
+	ToGetPrometheusTargetArrayOutputWithContext(context.Context) GetPrometheusTargetArrayOutput
+}
+
+type GetPrometheusTargetArray []GetPrometheusTargetInput
+
+func (GetPrometheusTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusTarget)(nil)).Elem()
+}
+
+func (i GetPrometheusTargetArray) ToGetPrometheusTargetArrayOutput() GetPrometheusTargetArrayOutput {
+	return i.ToGetPrometheusTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusTargetArray) ToGetPrometheusTargetArrayOutputWithContext(ctx context.Context) GetPrometheusTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusTargetArrayOutput)
+}
+
+type GetPrometheusTargetOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusTarget)(nil)).Elem()
+}
+
+func (o GetPrometheusTargetOutput) ToGetPrometheusTargetOutput() GetPrometheusTargetOutput {
+	return o
+}
+
+func (o GetPrometheusTargetOutput) ToGetPrometheusTargetOutputWithContext(ctx context.Context) GetPrometheusTargetOutput {
+	return o
+}
+
+// Host of the endpoint
+func (o GetPrometheusTargetOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusTarget) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Connection port for the endpoint
+func (o GetPrometheusTargetOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrometheusTarget) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetPrometheusTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusTarget)(nil)).Elem()
+}
+
+func (o GetPrometheusTargetArrayOutput) ToGetPrometheusTargetArrayOutput() GetPrometheusTargetArrayOutput {
+	return o
+}
+
+func (o GetPrometheusTargetArrayOutput) ToGetPrometheusTargetArrayOutputWithContext(ctx context.Context) GetPrometheusTargetArrayOutput {
+	return o
+}
+
+func (o GetPrometheusTargetArrayOutput) Index(i pulumi.IntInput) GetPrometheusTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrometheusTarget {
+		return vs[0].([]GetPrometheusTarget)[vs[1].(int)]
+	}).(GetPrometheusTargetOutput)
+}
+
 type GetRegionService struct {
 	// The name of the region associated with the public cloud
 	// project.
@@ -8945,6 +11365,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExternalInformationIpArrayInput)(nil)).Elem(), GatewayExternalInformationIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInterfaceTypeInput)(nil)).Elem(), GatewayInterfaceTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInterfaceTypeArrayInput)(nil)).Elem(), GatewayInterfaceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAddressInput)(nil)).Elem(), InstanceAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAddressArrayInput)(nil)).Elem(), InstanceAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttachedVolumeInput)(nil)).Elem(), InstanceAttachedVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttachedVolumeArrayInput)(nil)).Elem(), InstanceAttachedVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoBackupInput)(nil)).Elem(), InstanceAutoBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoBackupPtrInput)(nil)).Elem(), InstanceAutoBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBootFromInput)(nil)).Elem(), InstanceBootFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBootFromPtrInput)(nil)).Elem(), InstanceBootFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFlavorInput)(nil)).Elem(), InstanceFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFlavorPtrInput)(nil)).Elem(), InstanceFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupInput)(nil)).Elem(), InstanceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupPtrInput)(nil)).Elem(), InstanceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInput)(nil)).Elem(), InstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPtrInput)(nil)).Elem(), InstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSshKeyInput)(nil)).Elem(), InstanceSshKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSshKeyPtrInput)(nil)).Elem(), InstanceSshKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSshKeyCreateInput)(nil)).Elem(), InstanceSshKeyCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSshKeyCreatePtrInput)(nil)).Elem(), InstanceSshKeyCreateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationInput)(nil)).Elem(), KubeCustomizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationArrayInput)(nil)).Elem(), KubeCustomizationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationApiserverInput)(nil)).Elem(), KubeCustomizationApiserverArgs{})
@@ -8989,6 +11427,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPlanOptionArrayInput)(nil)).Elem(), ProjectPlanOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPlanOptionConfigurationInput)(nil)).Elem(), ProjectPlanOptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPlanOptionConfigurationArrayInput)(nil)).Elem(), ProjectPlanOptionConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetInput)(nil)).Elem(), RegionNetworkSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetPtrInput)(nil)).Elem(), RegionNetworkSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetAllocationPoolInput)(nil)).Elem(), RegionNetworkSubnetAllocationPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetAllocationPoolArrayInput)(nil)).Elem(), RegionNetworkSubnetAllocationPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetHostRouteInput)(nil)).Elem(), RegionNetworkSubnetHostRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetHostRouteArrayInput)(nil)).Elem(), RegionNetworkSubnetHostRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserRoleInput)(nil)).Elem(), UserRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserRoleArrayInput)(nil)).Elem(), UserRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSubOperationInput)(nil)).Elem(), VolumeSubOperationArgs{})
@@ -9009,6 +11453,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRegistriesResultArrayInput)(nil)).Elem(), GetContainerRegistriesResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRegistryUsersResultInput)(nil)).Elem(), GetContainerRegistryUsersResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRegistryUsersResultArrayInput)(nil)).Elem(), GetContainerRegistryUsersResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAddressInput)(nil)).Elem(), GetInstanceAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAddressArrayInput)(nil)).Elem(), GetInstanceAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachedVolumeInput)(nil)).Elem(), GetInstanceAttachedVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachedVolumeArrayInput)(nil)).Elem(), GetInstanceAttachedVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceAddressInput)(nil)).Elem(), GetInstancesInstanceAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceAddressArrayInput)(nil)).Elem(), GetInstancesInstanceAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceAttachedVolumeInput)(nil)).Elem(), GetInstancesInstanceAttachedVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceAttachedVolumeArrayInput)(nil)).Elem(), GetInstancesInstanceAttachedVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationInput)(nil)).Elem(), GetKubeCustomizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationArrayInput)(nil)).Elem(), GetKubeCustomizationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationApiserverInput)(nil)).Elem(), GetKubeCustomizationApiserverArgs{})
@@ -9047,6 +11501,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPrivatesNetworkRegionArrayInput)(nil)).Elem(), GetNetworkPrivatesNetworkRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchUserAclInput)(nil)).Elem(), GetOpenSearchUserAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchUserAclArrayInput)(nil)).Elem(), GetOpenSearchUserAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusTargetInput)(nil)).Elem(), GetPrometheusTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusTargetArrayInput)(nil)).Elem(), GetPrometheusTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionServiceInput)(nil)).Elem(), GetRegionServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionServiceArrayInput)(nil)).Elem(), GetRegionServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserRoleInput)(nil)).Elem(), GetUserRoleArgs{})
@@ -9077,6 +11533,24 @@ func init() {
 	pulumi.RegisterOutputType(GatewayExternalInformationIpArrayOutput{})
 	pulumi.RegisterOutputType(GatewayInterfaceTypeOutput{})
 	pulumi.RegisterOutputType(GatewayInterfaceTypeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceAddressOutput{})
+	pulumi.RegisterOutputType(InstanceAddressArrayOutput{})
+	pulumi.RegisterOutputType(InstanceAttachedVolumeOutput{})
+	pulumi.RegisterOutputType(InstanceAttachedVolumeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceAutoBackupOutput{})
+	pulumi.RegisterOutputType(InstanceAutoBackupPtrOutput{})
+	pulumi.RegisterOutputType(InstanceBootFromOutput{})
+	pulumi.RegisterOutputType(InstanceBootFromPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFlavorOutput{})
+	pulumi.RegisterOutputType(InstanceFlavorPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupOutput{})
+	pulumi.RegisterOutputType(InstanceGroupPtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPtrOutput{})
+	pulumi.RegisterOutputType(InstanceSshKeyOutput{})
+	pulumi.RegisterOutputType(InstanceSshKeyPtrOutput{})
+	pulumi.RegisterOutputType(InstanceSshKeyCreateOutput{})
+	pulumi.RegisterOutputType(InstanceSshKeyCreatePtrOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationArrayOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationApiserverOutput{})
@@ -9121,6 +11595,12 @@ func init() {
 	pulumi.RegisterOutputType(ProjectPlanOptionArrayOutput{})
 	pulumi.RegisterOutputType(ProjectPlanOptionConfigurationOutput{})
 	pulumi.RegisterOutputType(ProjectPlanOptionConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(RegionNetworkSubnetOutput{})
+	pulumi.RegisterOutputType(RegionNetworkSubnetPtrOutput{})
+	pulumi.RegisterOutputType(RegionNetworkSubnetAllocationPoolOutput{})
+	pulumi.RegisterOutputType(RegionNetworkSubnetAllocationPoolArrayOutput{})
+	pulumi.RegisterOutputType(RegionNetworkSubnetHostRouteOutput{})
+	pulumi.RegisterOutputType(RegionNetworkSubnetHostRouteArrayOutput{})
 	pulumi.RegisterOutputType(UserRoleOutput{})
 	pulumi.RegisterOutputType(UserRoleArrayOutput{})
 	pulumi.RegisterOutputType(VolumeSubOperationOutput{})
@@ -9141,6 +11621,16 @@ func init() {
 	pulumi.RegisterOutputType(GetContainerRegistriesResultArrayOutput{})
 	pulumi.RegisterOutputType(GetContainerRegistryUsersResultOutput{})
 	pulumi.RegisterOutputType(GetContainerRegistryUsersResultArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAddressOutput{})
+	pulumi.RegisterOutputType(GetInstanceAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAttachedVolumeOutput{})
+	pulumi.RegisterOutputType(GetInstanceAttachedVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceAddressOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceAttachedVolumeOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceAttachedVolumeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationArrayOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationApiserverOutput{})
@@ -9179,6 +11669,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNetworkPrivatesNetworkRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchUserAclOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchUserAclArrayOutput{})
+	pulumi.RegisterOutputType(GetPrometheusTargetOutput{})
+	pulumi.RegisterOutputType(GetPrometheusTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionServiceOutput{})
 	pulumi.RegisterOutputType(GetRegionServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetUserRoleOutput{})

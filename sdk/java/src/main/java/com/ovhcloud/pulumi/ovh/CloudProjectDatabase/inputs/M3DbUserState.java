@@ -46,14 +46,14 @@ public final class M3DbUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Group of the user:
+     * Group of the user.
      * 
      */
     @Import(name="group")
     private @Nullable Output<String> group;
 
     /**
-     * @return Group of the user:
+     * @return Group of the user.
      * 
      */
     public Optional<Output<String>> group() {
@@ -211,7 +211,7 @@ public final class M3DbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param group Group of the user:
+         * @param group Group of the user.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class M3DbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param group Group of the user:
+         * @param group Group of the user.
          * 
          * @return builder
          * 

@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vps"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vps"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Vps.GetVps(ctx, &vps.GetVpsArgs{
+//			_, err := vps.GetVps(ctx, &vps.GetVpsArgs{
 //				ServiceName: "XXXXXX",
 //			}, nil)
 //			if err != nil {

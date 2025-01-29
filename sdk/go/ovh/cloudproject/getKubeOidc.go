@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			oidc, err := CloudProject.GetKubeOidc(ctx, &cloudproject.GetKubeOidcArgs{
+//			oidc, err := cloudproject.GetKubeOidc(ctx, &cloudproject.GetKubeOidcArgs{
 //				ServiceName: "XXXXXX",
 //				KubeId:      "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
 //			}, nil)

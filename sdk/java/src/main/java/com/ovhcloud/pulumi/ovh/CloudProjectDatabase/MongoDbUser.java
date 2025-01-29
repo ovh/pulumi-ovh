@@ -100,7 +100,7 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.passwordReset);
     }
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
      * Available roles:
      * * `backup{@literal @}admin`
      * * `clusterAdmin{@literal @}admin`
@@ -125,7 +125,7 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> roles;
 
     /**
-     * @return Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+     * @return Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
      * Available roles:
      * * `backup{@literal @}admin`
      * * `clusterAdmin{@literal @}admin`

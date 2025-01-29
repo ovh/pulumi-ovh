@@ -23,22 +23,22 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			stream, err := Dbaas.GetLogsOutputGraylogStream(ctx, &dbaas.GetLogsOutputGraylogStreamArgs{
+//			stream, err := dbaas.GetLogsOutputGraylogStream(ctx, &dbaas.GetLogsOutputGraylogStreamArgs{
 //				ServiceName: "ldp-xx-xxxxx",
 //				Title:       "my stream",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			db, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//			db, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
 //				ServiceName: "XXX",
 //				Engine:      "YYY",
 //				Id:          "ZZZ",
@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProjectDatabase.NewLogSubscription(ctx, "subscription", &CloudProjectDatabase.LogSubscriptionArgs{
+//			_, err = cloudprojectdatabase.NewLogSubscription(ctx, "subscription", &cloudprojectdatabase.LogSubscriptionArgs{
 //				ServiceName: pulumi.String(db.ServiceName),
 //				Engine:      pulumi.String(db.Engine),
 //				ClusterId:   pulumi.String(db.Id),

@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Ip"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Ip.NewFirewallRule(ctx, "myFirewallRule", &Ip.FirewallRuleArgs{
+//			_, err := ip.NewFirewallRule(ctx, "myFirewallRule", &ip.FirewallRuleArgs{
 //				Action:       pulumi.String("deny"),
 //				Ip:           pulumi.String("XXXXXX"),
 //				IpOnFirewall: pulumi.String("XXXXXX"),
@@ -42,6 +42,16 @@ import (
 //		})
 //	}
 //
+// ```
+//
+// ## Import
+//
+// The resource can be imported using the properties `ip`, `ip_on_firewall` and `sequence`, separated by "|" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Ip/firewallRule:FirewallRule my_firewall_rule '127.0.0.1|127.0.0.2|0'
 // ```
 type FirewallRule struct {
 	pulumi.CustomResourceState

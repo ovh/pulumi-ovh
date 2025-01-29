@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Vrack.NewIpLoadbalancing(ctx, "viplb", &Vrack.IpLoadbalancingArgs{
+//			_, err := vrack.NewIpLoadbalancing(ctx, "viplb", &vrack.IpLoadbalancingArgs{
 //				LoadbalancingId: pulumi.String("yyy"),
 //				ServiceName:     pulumi.String("xxx"),
 //			})
