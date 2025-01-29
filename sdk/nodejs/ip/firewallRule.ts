@@ -21,6 +21,16 @@ import * as utilities from "../utilities";
  *     sequence: 0,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The resource can be imported using the properties `ip`, `ip_on_firewall` and `sequence`, separated by "|" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Ip/firewallRule:FirewallRule my_firewall_rule '127.0.0.1|127.0.0.2|0'
+ * ```
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Gateway{}
 	case "ovh:CloudProject/gatewayInterface:GatewayInterface":
 		r = &GatewayInterface{}
+	case "ovh:CloudProject/instance:Instance":
+		r = &Instance{}
 	case "ovh:CloudProject/kube:Kube":
 		r = &Kube{}
 	case "ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions":
@@ -59,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Project{}
 	case "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription":
 		r = &RegionLoadBalancerLogSubscription{}
+	case "ovh:CloudProject/regionNetwork:RegionNetwork":
+		r = &RegionNetwork{}
 	case "ovh:CloudProject/regionStoragePresign:RegionStoragePresign":
 		r = &RegionStoragePresign{}
 	case "ovh:CloudProject/s3Credential:S3Credential":
@@ -136,6 +140,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"CloudProject/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"CloudProject/kube",
 		&module{version},
 	)
@@ -177,6 +186,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProject/regionLoadBalancerLogSubscription",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/regionNetwork",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Ip"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Ip.NewMove(ctx, "moveIpToLoadBalancerXxxxx", &Ip.MoveArgs{
+//			_, err := ip.NewMove(ctx, "moveIpToLoadBalancerXxxxx", &ip.MoveArgs{
 //				Ip: pulumi.String("1.2.3.4"),
 //				RoutedTo: &ip.MoveRoutedToArgs{
 //					ServiceName: pulumi.String("loadbalancer-XXXXX"),
@@ -50,14 +50,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Ip"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Ip.NewMove(ctx, "parkIp", &Ip.MoveArgs{
+//			_, err := ip.NewMove(ctx, "parkIp", &ip.MoveArgs{
 //				Ip: pulumi.String("1.2.3.4"),
 //				RoutedTo: &ip.MoveRoutedToArgs{
 //					ServiceName: pulumi.String(""),

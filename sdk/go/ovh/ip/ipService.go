@@ -18,26 +18,26 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Ip"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
+//			_, err := me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//			mycart, err := order.GetCart(ctx, &order.GetCartArgs{
 //				OvhSubsidiary: "fr",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ipblockCartProductPlan, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//			ipblockCartProductPlan, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
 //				CartId:        mycart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "ip",
@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Ip.NewIpService(ctx, "ipblockIpService", &Ip.IpServiceArgs{
+//			_, err = ip.NewIpService(ctx, "ipblockIpService", &ip.IpServiceArgs{
 //				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				Description:   pulumi.String("my ip block"),
 //				Plan: &ip.IpServicePlanArgs{

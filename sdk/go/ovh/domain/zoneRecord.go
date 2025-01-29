@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Domain"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/domain"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -27,7 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Add a record to a sub-domain
-//			_, err := Domain.NewZoneRecord(ctx, "test", &Domain.ZoneRecordArgs{
+//			_, err := domain.NewZoneRecord(ctx, "test", &domain.ZoneRecordArgs{
 //				Fieldtype: pulumi.String("A"),
 //				Subdomain: pulumi.String("test"),
 //				Target:    pulumi.String("0.0.0.0"),

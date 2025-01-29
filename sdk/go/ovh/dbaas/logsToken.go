@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Dbaas.NewLogsToken(ctx, "token", &Dbaas.LogsTokenArgs{
+//			_, err := dbaas.NewLogsToken(ctx, "token", &dbaas.LogsTokenArgs{
 //				ServiceName: pulumi.String("ldp-xx-xxxxx"),
 //			})
 //			if err != nil {

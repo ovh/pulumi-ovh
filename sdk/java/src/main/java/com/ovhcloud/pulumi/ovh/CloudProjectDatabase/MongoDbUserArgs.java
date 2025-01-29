@@ -63,7 +63,7 @@ public final class MongoDbUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
      * Available roles:
      * * `backup{@literal @}admin`
      * * `clusterAdmin{@literal @}admin`
@@ -88,7 +88,7 @@ public final class MongoDbUserArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> roles;
 
     /**
-     * @return Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+     * @return Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
      * Available roles:
      * * `backup{@literal @}admin`
      * * `clusterAdmin{@literal @}admin`
@@ -222,7 +222,7 @@ public final class MongoDbUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
          * Available roles:
          * * `backup{@literal @}admin`
          * * `clusterAdmin{@literal @}admin`
@@ -251,7 +251,7 @@ public final class MongoDbUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
          * Available roles:
          * * `backup{@literal @}admin`
          * * `clusterAdmin{@literal @}admin`
@@ -279,7 +279,7 @@ public final class MongoDbUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
          * Available roles:
          * * `backup{@literal @}admin`
          * * `clusterAdmin{@literal @}admin`

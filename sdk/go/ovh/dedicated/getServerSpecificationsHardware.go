@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Dedicated.GetServerSpecificationsHardware(ctx, &dedicated.GetServerSpecificationsHardwareArgs{
+//			_, err := dedicated.GetServerSpecificationsHardware(ctx, &dedicated.GetServerSpecificationsHardwareArgs{
 //				ServiceName: "myserver",
 //			}, nil)
 //			if err != nil {

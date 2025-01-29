@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			privateNetworkPrivate, err := CloudProject.GetNetworkPrivate(ctx, &cloudproject.GetNetworkPrivateArgs{
+//			privateNetworkPrivate, err := cloudproject.GetNetworkPrivate(ctx, &cloudproject.GetNetworkPrivateArgs{
 //				ServiceName: "XXXXXX",
 //				NetworkId:   "XXX",
 //			}, nil)

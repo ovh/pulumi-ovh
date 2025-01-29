@@ -21,21 +21,21 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.GetContainerRegistry(ctx, &cloudproject.GetContainerRegistryArgs{
+//			_, err := cloudproject.GetContainerRegistry(ctx, &cloudproject.GetContainerRegistryArgs{
 //				ServiceName: "XXXXXX",
 //				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProject.NewContainerRegistryUser(ctx, "user", &CloudProject.ContainerRegistryUserArgs{
+//			_, err = cloudproject.NewContainerRegistryUser(ctx, "user", &cloudproject.ContainerRegistryUserArgs{
 //				ServiceName: pulumi.Any(ovh_cloud_project_containerregistry.Registry.Service_name),
 //				RegistryId:  pulumi.Any(ovh_cloud_project_containerregistry.Registry.Id),
 //				Email:       pulumi.String("foo@bar.com"),

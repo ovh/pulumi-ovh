@@ -58,14 +58,14 @@ public class M3DbUser extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * Group of the user:
+     * Group of the user.
      * 
      */
     @Export(name="group", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> group;
 
     /**
-     * @return Group of the user:
+     * @return Group of the user.
      * 
      */
     public Output<Optional<String>> group() {

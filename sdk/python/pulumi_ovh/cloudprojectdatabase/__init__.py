@@ -37,11 +37,13 @@ from .kafka_topic import *
 from .log_subscription import *
 from .m3_db_namespace import *
 from .m3_db_user import *
+from .mongo_db_prometheus import *
 from .mongo_db_user import *
 from .opensearch_pattern import *
 from .opensearch_user import *
 from .postgres_sql_connection_pool import *
 from .postgres_sql_user import *
+from .prometheus import *
 from .redis_user import *
 from .user import *
 from ._inputs import *

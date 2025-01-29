@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Dbaas.NewLogsOutputGraylogStream(ctx, "stream", &Dbaas.LogsOutputGraylogStreamArgs{
+//			_, err := dbaas.NewLogsOutputGraylogStream(ctx, "stream", &dbaas.LogsOutputGraylogStreamArgs{
 //				Description: pulumi.String("my graylog stream"),
 //				ServiceName: pulumi.String("...."),
 //				Title:       pulumi.String("my stream"),
@@ -49,14 +49,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			retention, err := Dbaas.GetLogsClustersRetention(ctx, &dbaas.GetLogsClustersRetentionArgs{
+//			retention, err := dbaas.GetLogsClustersRetention(ctx, &dbaas.GetLogsClustersRetentionArgs{
 //				ServiceName: "ldp-xx-xxxxx",
 //				ClusterId:   "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 //				Duration:    pulumi.StringRef("P14D"),
@@ -64,7 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Dbaas.NewLogsOutputGraylogStream(ctx, "stream", &Dbaas.LogsOutputGraylogStreamArgs{
+//			_, err = dbaas.NewLogsOutputGraylogStream(ctx, "stream", &dbaas.LogsOutputGraylogStreamArgs{
 //				ServiceName: pulumi.String("...."),
 //				Title:       pulumi.String("my stream"),
 //				Description: pulumi.String("my graylog stream"),

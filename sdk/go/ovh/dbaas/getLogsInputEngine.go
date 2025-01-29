@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Dbaas.GetLogsInputEngine(ctx, &dbaas.GetLogsInputEngineArgs{
+//			_, err := dbaas.GetLogsInputEngine(ctx, &dbaas.GetLogsInputEngineArgs{
 //				IsDeprecated: pulumi.BoolRef(true),
 //				Name:         pulumi.StringRef("logstash"),
 //				ServiceName:  "ldp-xx-xxxxx",

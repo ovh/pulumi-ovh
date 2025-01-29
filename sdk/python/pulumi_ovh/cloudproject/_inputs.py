@@ -35,6 +35,24 @@ __all__ = [
     'GatewayExternalInformationIpArgsDict',
     'GatewayInterfaceArgs',
     'GatewayInterfaceArgsDict',
+    'InstanceAddressArgs',
+    'InstanceAddressArgsDict',
+    'InstanceAttachedVolumeArgs',
+    'InstanceAttachedVolumeArgsDict',
+    'InstanceAutoBackupArgs',
+    'InstanceAutoBackupArgsDict',
+    'InstanceBootFromArgs',
+    'InstanceBootFromArgsDict',
+    'InstanceFlavorArgs',
+    'InstanceFlavorArgsDict',
+    'InstanceGroupArgs',
+    'InstanceGroupArgsDict',
+    'InstanceNetworkArgs',
+    'InstanceNetworkArgsDict',
+    'InstanceSshKeyArgs',
+    'InstanceSshKeyArgsDict',
+    'InstanceSshKeyCreateArgs',
+    'InstanceSshKeyCreateArgsDict',
     'KubeCustomizationArgs',
     'KubeCustomizationArgsDict',
     'KubeCustomizationApiserverArgs',
@@ -79,6 +97,12 @@ __all__ = [
     'ProjectPlanOptionArgsDict',
     'ProjectPlanOptionConfigurationArgs',
     'ProjectPlanOptionConfigurationArgsDict',
+    'RegionNetworkSubnetArgs',
+    'RegionNetworkSubnetArgsDict',
+    'RegionNetworkSubnetAllocationPoolArgs',
+    'RegionNetworkSubnetAllocationPoolArgsDict',
+    'RegionNetworkSubnetHostRouteArgs',
+    'RegionNetworkSubnetHostRouteArgsDict',
     'UserRoleArgs',
     'UserRoleArgsDict',
     'VolumeSubOperationArgs',
@@ -925,6 +949,368 @@ class GatewayInterfaceArgs:
     @subnet_id.setter
     def subnet_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnet_id", value)
+
+
+if not MYPY:
+    class InstanceAddressArgsDict(TypedDict):
+        ip: NotRequired[pulumi.Input[str]]
+        """
+        IP address
+        """
+        version: NotRequired[pulumi.Input[int]]
+        """
+        IP version
+        """
+elif False:
+    InstanceAddressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceAddressArgs:
+    def __init__(__self__, *,
+                 ip: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] ip: IP address
+        :param pulumi.Input[int] version: IP version
+        """
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[int]]:
+        """
+        IP version
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class InstanceAttachedVolumeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Instance id
+        """
+elif False:
+    InstanceAttachedVolumeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceAttachedVolumeArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: Instance id
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class InstanceAutoBackupArgsDict(TypedDict):
+        cron: pulumi.Input[str]
+        """
+        Unix cron pattern
+        """
+        rotation: pulumi.Input[int]
+        """
+        Number of backup to keep
+        """
+elif False:
+    InstanceAutoBackupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceAutoBackupArgs:
+    def __init__(__self__, *,
+                 cron: pulumi.Input[str],
+                 rotation: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] cron: Unix cron pattern
+        :param pulumi.Input[int] rotation: Number of backup to keep
+        """
+        pulumi.set(__self__, "cron", cron)
+        pulumi.set(__self__, "rotation", rotation)
+
+    @property
+    @pulumi.getter
+    def cron(self) -> pulumi.Input[str]:
+        """
+        Unix cron pattern
+        """
+        return pulumi.get(self, "cron")
+
+    @cron.setter
+    def cron(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cron", value)
+
+    @property
+    @pulumi.getter
+    def rotation(self) -> pulumi.Input[int]:
+        """
+        Number of backup to keep
+        """
+        return pulumi.get(self, "rotation")
+
+    @rotation.setter
+    def rotation(self, value: pulumi.Input[int]):
+        pulumi.set(self, "rotation", value)
+
+
+if not MYPY:
+    class InstanceBootFromArgsDict(TypedDict):
+        image_id: NotRequired[pulumi.Input[str]]
+        """
+        Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+        """
+        volume_id: NotRequired[pulumi.Input[str]]
+        """
+        Instance volume id
+        """
+elif False:
+    InstanceBootFromArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceBootFromArgs:
+    def __init__(__self__, *,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 volume_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] image_id: Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+        :param pulumi.Input[str] volume_id: Instance volume id
+        """
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance volume id
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_id", value)
+
+
+if not MYPY:
+    class InstanceFlavorArgsDict(TypedDict):
+        flavor_id: pulumi.Input[str]
+        """
+        Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+        """
+elif False:
+    InstanceFlavorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceFlavorArgs:
+    def __init__(__self__, *,
+                 flavor_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] flavor_id: Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+        """
+        pulumi.set(__self__, "flavor_id", flavor_id)
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> pulumi.Input[str]:
+        """
+        Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @flavor_id.setter
+    def flavor_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "flavor_id", value)
+
+
+if not MYPY:
+    class InstanceGroupArgsDict(TypedDict):
+        group_id: NotRequired[pulumi.Input[str]]
+        """
+        Group id
+        """
+elif False:
+    InstanceGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceGroupArgs:
+    def __init__(__self__, *,
+                 group_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] group_id: Group id
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group id
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+
+if not MYPY:
+    class InstanceNetworkArgsDict(TypedDict):
+        public: NotRequired[pulumi.Input[bool]]
+        """
+        Set the new instance as public boolean
+        """
+elif False:
+    InstanceNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceNetworkArgs:
+    def __init__(__self__, *,
+                 public: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] public: Set the new instance as public boolean
+        """
+        if public is not None:
+            pulumi.set(__self__, "public", public)
+
+    @property
+    @pulumi.getter
+    def public(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set the new instance as public boolean
+        """
+        return pulumi.get(self, "public")
+
+    @public.setter
+    def public(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "public", value)
+
+
+if not MYPY:
+    class InstanceSshKeyArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        SSH Keypair name
+        """
+elif False:
+    InstanceSshKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceSshKeyArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: SSH Keypair name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        SSH Keypair name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class InstanceSshKeyCreateArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        SSH Key pair name
+        """
+        public_key: pulumi.Input[str]
+        """
+        SSH Public key
+        """
+elif False:
+    InstanceSshKeyCreateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceSshKeyCreateArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 public_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: SSH Key pair name
+        :param pulumi.Input[str] public_key: SSH Public key
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "public_key", public_key)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        SSH Key pair name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> pulumi.Input[str]:
+        """
+        SSH Public key
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "public_key", value)
 
 
 if not MYPY:
@@ -2405,6 +2791,318 @@ class ProjectPlanOptionConfigurationArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class RegionNetworkSubnetArgsDict(TypedDict):
+        cidr: pulumi.Input[str]
+        """
+        Subnet range in CIDR notation
+        """
+        enable_dhcp: pulumi.Input[bool]
+        """
+        Enable DHCP for the subnet
+        """
+        enable_gateway_ip: pulumi.Input[bool]
+        """
+        Set a gateway ip for the subnet
+        """
+        ip_version: pulumi.Input[float]
+        """
+        IP version
+        """
+        allocation_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionNetworkSubnetAllocationPoolArgsDict']]]]
+        """
+        List of IP pools allocated in subnet
+        """
+        dns_name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        DNS nameservers
+        """
+        gateway_ip: NotRequired[pulumi.Input[str]]
+        """
+        Gateway IP
+        """
+        host_routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionNetworkSubnetHostRouteArgsDict']]]]
+        """
+        Host routes
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Subnet name
+        """
+        use_default_public_dnsresolver: NotRequired[pulumi.Input[bool]]
+        """
+        Use default DNS
+        """
+elif False:
+    RegionNetworkSubnetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkSubnetArgs:
+    def __init__(__self__, *,
+                 cidr: pulumi.Input[str],
+                 enable_dhcp: pulumi.Input[bool],
+                 enable_gateway_ip: pulumi.Input[bool],
+                 ip_version: pulumi.Input[float],
+                 allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkSubnetAllocationPoolArgs']]]] = None,
+                 dns_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 gateway_ip: Optional[pulumi.Input[str]] = None,
+                 host_routes: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkSubnetHostRouteArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 use_default_public_dnsresolver: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] cidr: Subnet range in CIDR notation
+        :param pulumi.Input[bool] enable_dhcp: Enable DHCP for the subnet
+        :param pulumi.Input[bool] enable_gateway_ip: Set a gateway ip for the subnet
+        :param pulumi.Input[float] ip_version: IP version
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkSubnetAllocationPoolArgs']]] allocation_pools: List of IP pools allocated in subnet
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_name_servers: DNS nameservers
+        :param pulumi.Input[str] gateway_ip: Gateway IP
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkSubnetHostRouteArgs']]] host_routes: Host routes
+        :param pulumi.Input[str] name: Subnet name
+        :param pulumi.Input[bool] use_default_public_dnsresolver: Use default DNS
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "enable_dhcp", enable_dhcp)
+        pulumi.set(__self__, "enable_gateway_ip", enable_gateway_ip)
+        pulumi.set(__self__, "ip_version", ip_version)
+        if allocation_pools is not None:
+            pulumi.set(__self__, "allocation_pools", allocation_pools)
+        if dns_name_servers is not None:
+            pulumi.set(__self__, "dns_name_servers", dns_name_servers)
+        if gateway_ip is not None:
+            pulumi.set(__self__, "gateway_ip", gateway_ip)
+        if host_routes is not None:
+            pulumi.set(__self__, "host_routes", host_routes)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if use_default_public_dnsresolver is not None:
+            pulumi.set(__self__, "use_default_public_dnsresolver", use_default_public_dnsresolver)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> pulumi.Input[str]:
+        """
+        Subnet range in CIDR notation
+        """
+        return pulumi.get(self, "cidr")
+
+    @cidr.setter
+    def cidr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cidr", value)
+
+    @property
+    @pulumi.getter(name="enableDhcp")
+    def enable_dhcp(self) -> pulumi.Input[bool]:
+        """
+        Enable DHCP for the subnet
+        """
+        return pulumi.get(self, "enable_dhcp")
+
+    @enable_dhcp.setter
+    def enable_dhcp(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable_dhcp", value)
+
+    @property
+    @pulumi.getter(name="enableGatewayIp")
+    def enable_gateway_ip(self) -> pulumi.Input[bool]:
+        """
+        Set a gateway ip for the subnet
+        """
+        return pulumi.get(self, "enable_gateway_ip")
+
+    @enable_gateway_ip.setter
+    def enable_gateway_ip(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable_gateway_ip", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> pulumi.Input[float]:
+        """
+        IP version
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: pulumi.Input[float]):
+        pulumi.set(self, "ip_version", value)
+
+    @property
+    @pulumi.getter(name="allocationPools")
+    def allocation_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkSubnetAllocationPoolArgs']]]]:
+        """
+        List of IP pools allocated in subnet
+        """
+        return pulumi.get(self, "allocation_pools")
+
+    @allocation_pools.setter
+    def allocation_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkSubnetAllocationPoolArgs']]]]):
+        pulumi.set(self, "allocation_pools", value)
+
+    @property
+    @pulumi.getter(name="dnsNameServers")
+    def dns_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        DNS nameservers
+        """
+        return pulumi.get(self, "dns_name_servers")
+
+    @dns_name_servers.setter
+    def dns_name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_name_servers", value)
+
+    @property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Gateway IP
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @gateway_ip.setter
+    def gateway_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gateway_ip", value)
+
+    @property
+    @pulumi.getter(name="hostRoutes")
+    def host_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkSubnetHostRouteArgs']]]]:
+        """
+        Host routes
+        """
+        return pulumi.get(self, "host_routes")
+
+    @host_routes.setter
+    def host_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkSubnetHostRouteArgs']]]]):
+        pulumi.set(self, "host_routes", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subnet name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="useDefaultPublicDnsresolver")
+    def use_default_public_dnsresolver(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use default DNS
+        """
+        return pulumi.get(self, "use_default_public_dnsresolver")
+
+    @use_default_public_dnsresolver.setter
+    def use_default_public_dnsresolver(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_default_public_dnsresolver", value)
+
+
+if not MYPY:
+    class RegionNetworkSubnetAllocationPoolArgsDict(TypedDict):
+        end: NotRequired[pulumi.Input[str]]
+        """
+        Last IP for the pool (eg: 192.168.1.24)
+        """
+        start: NotRequired[pulumi.Input[str]]
+        """
+        First IP for the pool (eg: 192.168.1.12)
+        """
+elif False:
+    RegionNetworkSubnetAllocationPoolArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkSubnetAllocationPoolArgs:
+    def __init__(__self__, *,
+                 end: Optional[pulumi.Input[str]] = None,
+                 start: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end: Last IP for the pool (eg: 192.168.1.24)
+        :param pulumi.Input[str] start: First IP for the pool (eg: 192.168.1.12)
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last IP for the pool (eg: 192.168.1.24)
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> Optional[pulumi.Input[str]]:
+        """
+        First IP for the pool (eg: 192.168.1.12)
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start", value)
+
+
+if not MYPY:
+    class RegionNetworkSubnetHostRouteArgsDict(TypedDict):
+        destination: NotRequired[pulumi.Input[str]]
+        """
+        Host route destination (eg: 192.168.1.0/24)
+        """
+        next_hop: NotRequired[pulumi.Input[str]]
+        """
+        Host route next hop (eg: 192.168.1.254)
+        """
+elif False:
+    RegionNetworkSubnetHostRouteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkSubnetHostRouteArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None,
+                 next_hop: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] destination: Host route destination (eg: 192.168.1.0/24)
+        :param pulumi.Input[str] next_hop: Host route next hop (eg: 192.168.1.254)
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if next_hop is not None:
+            pulumi.set(__self__, "next_hop", next_hop)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host route destination (eg: 192.168.1.0/24)
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host route next hop (eg: 192.168.1.254)
+        """
+        return pulumi.get(self, "next_hop")
+
+    @next_hop.setter
+    def next_hop(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop", value)
 
 
 if not MYPY:

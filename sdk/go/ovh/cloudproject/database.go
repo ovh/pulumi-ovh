@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewDatabase(ctx, "cassandradb", &CloudProject.DatabaseArgs{
+//			_, err := cloudproject.NewDatabase(ctx, "cassandradb", &cloudproject.DatabaseArgs{
 //				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description: pulumi.String("my-first-cassandra"),
 //				Engine:      pulumi.String("cassandra"),
@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProject.NewDatabase(ctx, "kafkadb", &CloudProject.DatabaseArgs{
+//			_, err = cloudproject.NewDatabase(ctx, "kafkadb", &cloudproject.DatabaseArgs{
 //				ServiceName:         pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description:         pulumi.String("my-first-kafka"),
 //				Engine:              pulumi.String("kafka"),
@@ -74,7 +74,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProject.NewDatabase(ctx, "m3db", &CloudProject.DatabaseArgs{
+//			_, err = cloudproject.NewDatabase(ctx, "m3db", &cloudproject.DatabaseArgs{
 //				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description: pulumi.String("my-first-m3db"),
 //				Engine:      pulumi.String("m3db"),
@@ -90,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProject.NewDatabase(ctx, "mongodb", &CloudProject.DatabaseArgs{
+//			_, err = cloudproject.NewDatabase(ctx, "mongodb", &cloudproject.DatabaseArgs{
 //				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description: pulumi.String("my-first-mongodb"),
 //				Engine:      pulumi.String("mongodb"),
@@ -106,7 +106,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProject.NewDatabase(ctx, "mysqldb", &CloudProject.DatabaseArgs{
+//			_, err = cloudproject.NewDatabase(ctx, "mysqldb", &cloudproject.DatabaseArgs{
 //				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description: pulumi.String("my-first-mysql"),
 //				Engine:      pulumi.String("mysql"),
@@ -126,7 +126,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProject.NewDatabase(ctx, "opensearchdb", &CloudProject.DatabaseArgs{
+//			_, err = cloudproject.NewDatabase(ctx, "opensearchdb", &cloudproject.DatabaseArgs{
 //				ServiceName:           pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description:           pulumi.String("my-first-opensearch"),
 //				Engine:                pulumi.String("opensearch"),
@@ -143,7 +143,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProject.NewDatabase(ctx, "pgsqldb", &CloudProject.DatabaseArgs{
+//			_, err = cloudproject.NewDatabase(ctx, "pgsqldb", &cloudproject.DatabaseArgs{
 //				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description: pulumi.String("my-first-postgresql"),
 //				Engine:      pulumi.String("postgresql"),
@@ -169,7 +169,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProject.NewDatabase(ctx, "redisdb", &CloudProject.DatabaseArgs{
+//			_, err = cloudproject.NewDatabase(ctx, "redisdb", &cloudproject.DatabaseArgs{
 //				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description: pulumi.String("my-first-redis"),
 //				Engine:      pulumi.String("redis"),
@@ -185,7 +185,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProject.NewDatabase(ctx, "grafana", &CloudProject.DatabaseArgs{
+//			_, err = cloudproject.NewDatabase(ctx, "grafana", &cloudproject.DatabaseArgs{
 //				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description: pulumi.String("my-first-grafana"),
 //				Engine:      pulumi.String("grafana"),
@@ -214,14 +214,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewDatabase(ctx, "postgresql", &CloudProject.DatabaseArgs{
+//			_, err := cloudproject.NewDatabase(ctx, "postgresql", &cloudproject.DatabaseArgs{
 //				Description: pulumi.String("my-first-postgresql"),
 //				Engine:      pulumi.String("postgresql"),
 //				Flavor:      pulumi.String("db1-15"),
@@ -253,14 +253,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewDatabase(ctx, "mongodb", &CloudProject.DatabaseArgs{
+//			_, err := cloudproject.NewDatabase(ctx, "mongodb", &cloudproject.DatabaseArgs{
 //				Description: pulumi.String("my-first-mongodb"),
 //				Engine:      pulumi.String("mongodb"),
 //				Flavor:      pulumi.String("db1-30"),

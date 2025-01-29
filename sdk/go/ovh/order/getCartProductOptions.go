@@ -20,25 +20,25 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myAccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
+//			myAccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			myCart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//			myCart, err := order.GetCart(ctx, &order.GetCartArgs{
 //				OvhSubsidiary: myAccount.OvhSubsidiary,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Order.GetCartProductOptions(ctx, &order.GetCartProductOptionsArgs{
+//			_, err = order.GetCartProductOptions(ctx, &order.GetCartProductOptionsArgs{
 //				CartId:   myCart.Id,
 //				Product:  "cloud",
 //				PlanCode: "project",

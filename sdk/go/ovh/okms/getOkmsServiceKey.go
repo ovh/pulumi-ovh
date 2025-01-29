@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Okms"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/okms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Okms.GetOkmsServiceKey(ctx, &okms.GetOkmsServiceKeyArgs{
+//			_, err := okms.GetOkmsServiceKey(ctx, &okms.GetOkmsServiceKeyArgs{
 //				Id:     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 //				OkmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 //			}, nil)

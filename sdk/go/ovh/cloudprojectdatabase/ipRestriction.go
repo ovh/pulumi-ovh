@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			db, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//			db, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
 //				ServiceName: "XXXX",
 //				Engine:      "YYYY",
 //				Id:          "ZZZZ",
@@ -39,7 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProjectDatabase.NewIpRestriction(ctx, "ipRestriction", &CloudProjectDatabase.IpRestrictionArgs{
+//			_, err = cloudprojectdatabase.NewIpRestriction(ctx, "ipRestriction", &cloudprojectdatabase.IpRestrictionArgs{
 //				ServiceName: pulumi.String(db.ServiceName),
 //				Engine:      pulumi.String(db.Engine),
 //				ClusterId:   pulumi.String(db.Id),

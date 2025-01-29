@@ -21,25 +21,25 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Iam"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iam"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			account, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
+//			account, err := me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			myGroup, err := Me.NewIdentityGroup(ctx, "myGroup", &Me.IdentityGroupArgs{
+//			myGroup, err := me.NewIdentityGroup(ctx, "myGroup", &me.IdentityGroupArgs{
 //				Description: pulumi.String("my_group created in Terraform"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Iam.NewPolicy(ctx, "manager", &Iam.PolicyArgs{
+//			_, err = iam.NewPolicy(ctx, "manager", &iam.PolicyArgs{
 //				Description: pulumi.String("Users are allowed to use the OVH manager"),
 //				Identities: pulumi.StringArray{
 //					myGroup.GroupURN,

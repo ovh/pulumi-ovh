@@ -108,14 +108,14 @@ public class SavingsPlan extends com.pulumi.resources.CustomResource {
         return this.endDate;
     }
     /**
-     * Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...)
+     * Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
      * 
      */
     @Export(name="flavor", refs={String.class}, tree="[0]")
     private Output<String> flavor;
 
     /**
-     * @return Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...)
+     * @return Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
      * 
      */
     public Output<String> flavor() {

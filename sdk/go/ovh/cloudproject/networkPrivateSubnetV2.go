@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewNetworkPrivateSubnetV2(ctx, "subnet", &CloudProject.NetworkPrivateSubnetV2Args{
+//			_, err := cloudproject.NewNetworkPrivateSubnetV2(ctx, "subnet", &cloudproject.NetworkPrivateSubnetV2Args{
 //				Cidr: pulumi.String("192.168.168.0/24"),
 //				Dhcp: pulumi.Bool(true),
 //				DnsNameservers: pulumi.StringArray{

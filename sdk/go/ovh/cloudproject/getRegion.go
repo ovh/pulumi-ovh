@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.GetRegion(ctx, &cloudproject.GetRegionArgs{
+//			_, err := cloudproject.GetRegion(ctx, &cloudproject.GetRegionArgs{
 //				Name:        "GRA1",
 //				ServiceName: "XXXXXX",
 //			}, nil)

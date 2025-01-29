@@ -23,14 +23,14 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			user, err := CloudProject.NewUser(ctx, "user", &CloudProject.UserArgs{
+//			user, err := cloudproject.NewUser(ctx, "user", &cloudproject.UserArgs{
 //				ServiceName: pulumi.String("XXX"),
 //				Description: pulumi.String("my user"),
 //				RoleNames: pulumi.StringArray{
@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProject.NewS3Credential(ctx, "myS3Credentials", &CloudProject.S3CredentialArgs{
+//			_, err = cloudproject.NewS3Credential(ctx, "myS3Credentials", &cloudproject.S3CredentialArgs{
 //				ServiceName: user.ServiceName,
 //				UserId:      user.ID(),
 //			})
@@ -73,7 +73,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = CloudProject.NewS3Policy(ctx, "policy", &CloudProject.S3PolicyArgs{
+//			_, err = cloudproject.NewS3Policy(ctx, "policy", &cloudproject.S3PolicyArgs{
 //				ServiceName: user.ServiceName,
 //				UserId:      user.ID(),
 //				Policy:      pulumi.String(json0),

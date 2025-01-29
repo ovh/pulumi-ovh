@@ -20,22 +20,22 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			rescue, err := Dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
+//			rescue, err := dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
 //				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
 //				BootType:    pulumi.StringRef("rescue"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			debian, err := Me.NewInstallationTemplate(ctx, "debian", &Me.InstallationTemplateArgs{
+//			debian, err := me.NewInstallationTemplate(ctx, "debian", &me.InstallationTemplateArgs{
 //				BaseTemplateName: pulumi.String("debian12_64"),
 //				TemplateName:     pulumi.String("mydebian12"),
 //				Customization: &me.InstallationTemplateCustomizationArgs{
@@ -45,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Dedicated.NewServerInstallTask(ctx, "serverInstall", &Dedicated.ServerInstallTaskArgs{
+//			_, err = dedicated.NewServerInstallTask(ctx, "serverInstall", &dedicated.ServerInstallTaskArgs{
 //				ServiceName:     pulumi.String("nsxxxxxxx.ip-xx-xx-xx.eu"),
 //				TemplateName:    debian.TemplateName,
 //				BootidOnDestroy: pulumi.Int(rescue.Results[0]),
@@ -82,7 +82,7 @@ import (
 //	"fmt"
 //
 //	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -95,14 +95,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			rescue, err := Dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
+//			rescue, err := dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
 //				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
 //				BootType:    pulumi.StringRef("rescue"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Dedicated.NewServerInstallTask(ctx, "serverInstall", &Dedicated.ServerInstallTaskArgs{
+//			_, err = dedicated.NewServerInstallTask(ctx, "serverInstall", &dedicated.ServerInstallTaskArgs{
 //				ServiceName:     pulumi.String(server.ServiceName),
 //				TemplateName:    pulumi.String("byolinux_64"),
 //				BootidOnDestroy: pulumi.Int(rescue.Results[0]),
@@ -178,7 +178,7 @@ import (
 // import (
 //
 //	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -191,14 +191,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			rescue, err := Dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
+//			rescue, err := dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
 //				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
 //				BootType:    pulumi.StringRef("rescue"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Dedicated.NewServerInstallTask(ctx, "serverInstall", &Dedicated.ServerInstallTaskArgs{
+//			_, err = dedicated.NewServerInstallTask(ctx, "serverInstall", &dedicated.ServerInstallTaskArgs{
 //				ServiceName:     pulumi.String(server.ServiceName),
 //				TemplateName:    pulumi.String("win2019-std_64"),
 //				BootidOnDestroy: pulumi.Int(rescue.Results[0]),

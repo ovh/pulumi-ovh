@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Iam"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iam"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Iam.GetPermissionsGroup(ctx, &iam.GetPermissionsGroupArgs{
+//			_, err := iam.GetPermissionsGroup(ctx, &iam.GetPermissionsGroupArgs{
 //				Urn: "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
 //			}, nil)
 //			if err != nil {

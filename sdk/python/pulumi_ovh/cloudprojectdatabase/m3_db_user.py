@@ -29,7 +29,7 @@ class M3DbUserArgs:
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] group: Group of the user:
+        :param pulumi.Input[str] group: Group of the user.
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         """
@@ -71,7 +71,7 @@ class M3DbUserArgs:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        Group of the user:
+        Group of the user.
         """
         return pulumi.get(self, "group")
 
@@ -119,7 +119,7 @@ class _M3DbUserState:
         Input properties used for looking up and filtering M3DbUser resources.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
-        :param pulumi.Input[str] group: Group of the user:
+        :param pulumi.Input[str] group: Group of the user.
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
@@ -172,7 +172,7 @@ class _M3DbUserState:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        Group of the user:
+        Group of the user.
         """
         return pulumi.get(self, "group")
 
@@ -267,7 +267,7 @@ class M3DbUser(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] group: Group of the user:
+        :param pulumi.Input[str] group: Group of the user.
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
@@ -360,7 +360,7 @@ class M3DbUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] created_at: Date of the creation of the user.
-        :param pulumi.Input[str] group: Group of the user:
+        :param pulumi.Input[str] group: Group of the user.
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
@@ -402,7 +402,7 @@ class M3DbUser(pulumi.CustomResource):
     @pulumi.getter
     def group(self) -> pulumi.Output[Optional[str]]:
         """
-        Group of the user:
+        Group of the user.
         """
         return pulumi.get(self, "group")
 

@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			projectUsers, err := CloudProject.GetUsers(ctx, &cloudproject.GetUsersArgs{
+//			projectUsers, err := cloudproject.GetUsers(ctx, &cloudproject.GetUsersArgs{
 //				ServiceName: "XXX",
 //			}, nil)
 //			if err != nil {
@@ -36,14 +36,14 @@ import (
 //			// Get the user ID of a previously created user with the description "S3-User"
 //			users := "TODO: For expression"
 //			s3UserId := users[0]
-//			myS3Credentials, err := CloudProject.GetUserS3Credentials(ctx, &cloudproject.GetUserS3CredentialsArgs{
+//			myS3Credentials, err := cloudproject.GetUserS3Credentials(ctx, &cloudproject.GetUserS3CredentialsArgs{
 //				ServiceName: projectUsers.ServiceName,
 //				UserId:      s3UserId,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			myS3Credential, err := CloudProject.GetUserS3Credential(ctx, &cloudproject.GetUserS3CredentialArgs{
+//			myS3Credential, err := cloudproject.GetUserS3Credential(ctx, &cloudproject.GetUserS3CredentialArgs{
 //				ServiceName: myS3Credentials.ServiceName,
 //				UserId:      myS3Credentials.UserId,
 //				AccessKeyId: myS3Credentials.AccessKeyIds[0],

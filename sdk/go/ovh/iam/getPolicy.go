@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Iam"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iam"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Iam.GetPolicy(ctx, &iam.GetPolicyArgs{
+//			_, err := iam.GetPolicy(ctx, &iam.GetPolicyArgs{
 //				Id: "my_policy_id",
 //			}, nil)
 //			if err != nil {

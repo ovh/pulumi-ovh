@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Vrack.NewCloudProject(ctx, "vcp", &Vrack.CloudProjectArgs{
+//			_, err := vrack.NewCloudProject(ctx, "vcp", &vrack.CloudProjectArgs{
 //				ProjectId:   pulumi.String("67890"),
 //				ServiceName: pulumi.String("12345"),
 //			})

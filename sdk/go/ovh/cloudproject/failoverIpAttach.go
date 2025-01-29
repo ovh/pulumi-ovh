@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewFailoverIpAttach(ctx, "myFailoverIp", &CloudProject.FailoverIpAttachArgs{
+//			_, err := cloudproject.NewFailoverIpAttach(ctx, "myFailoverIp", &cloudproject.FailoverIpAttachArgs{
 //				Ip:          pulumi.String("XXXXXX"),
 //				RoutedTo:    pulumi.String("XXXXXX"),
 //				ServiceName: pulumi.String("XXXXXX"),

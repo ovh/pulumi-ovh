@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := IpLoadBalancing.NewHttpRoute(ctx, "httpsRedirect", &IpLoadBalancing.HttpRouteArgs{
+//			_, err := iploadbalancing.NewHttpRoute(ctx, "httpsRedirect", &iploadbalancing.HttpRouteArgs{
 //				Action: &iploadbalancing.HttpRouteActionArgs{
 //					Status: pulumi.Int(302),
 //					Target: pulumi.String("https://${host}${path}${arguments}"),

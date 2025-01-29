@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := IpLoadBalancing.NewTcpRoute(ctx, "tcpReject", &IpLoadBalancing.TcpRouteArgs{
+//			_, err := iploadbalancing.NewTcpRoute(ctx, "tcpReject", &iploadbalancing.TcpRouteArgs{
 //				Action: &iploadbalancing.TcpRouteActionArgs{
 //					Type: pulumi.String("reject"),
 //				},

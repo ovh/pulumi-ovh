@@ -406,6 +406,85 @@ export namespace CloudProject {
         unschedulable?: pulumi.Input<boolean>;
     }
 
+    export interface InstanceAddress {
+        /**
+         * IP address
+         */
+        ip?: pulumi.Input<string>;
+        /**
+         * IP version
+         */
+        version?: pulumi.Input<number>;
+    }
+
+    export interface InstanceAttachedVolume {
+        /**
+         * Instance id
+         */
+        id?: pulumi.Input<string>;
+    }
+
+    export interface InstanceAutoBackup {
+        /**
+         * Unix cron pattern
+         */
+        cron: pulumi.Input<string>;
+        /**
+         * Number of backup to keep
+         */
+        rotation: pulumi.Input<number>;
+    }
+
+    export interface InstanceBootFrom {
+        /**
+         * Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+         */
+        imageId?: pulumi.Input<string>;
+        /**
+         * Instance volume id
+         */
+        volumeId?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFlavor {
+        /**
+         * Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+         */
+        flavorId: pulumi.Input<string>;
+    }
+
+    export interface InstanceGroup {
+        /**
+         * Group id
+         */
+        groupId?: pulumi.Input<string>;
+    }
+
+    export interface InstanceNetwork {
+        /**
+         * Set the new instance as public boolean
+         */
+        public?: pulumi.Input<boolean>;
+    }
+
+    export interface InstanceSshKey {
+        /**
+         * SSH Keypair name
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface InstanceSshKeyCreate {
+        /**
+         * SSH Key pair name
+         */
+        name: pulumi.Input<string>;
+        /**
+         * SSH Public key
+         */
+        publicKey: pulumi.Input<string>;
+    }
+
     export interface KubeCustomization {
         /**
          * Kubernetes API server customization
@@ -715,6 +794,71 @@ export namespace CloudProject {
         value: pulumi.Input<string>;
     }
 
+    export interface RegionNetworkSubnet {
+        /**
+         * List of IP pools allocated in subnet
+         */
+        allocationPools?: pulumi.Input<pulumi.Input<inputs.CloudProject.RegionNetworkSubnetAllocationPool>[]>;
+        /**
+         * Subnet range in CIDR notation
+         */
+        cidr: pulumi.Input<string>;
+        /**
+         * DNS nameservers
+         */
+        dnsNameServers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Enable DHCP for the subnet
+         */
+        enableDhcp: pulumi.Input<boolean>;
+        /**
+         * Set a gateway ip for the subnet
+         */
+        enableGatewayIp: pulumi.Input<boolean>;
+        /**
+         * Gateway IP
+         */
+        gatewayIp?: pulumi.Input<string>;
+        /**
+         * Host routes
+         */
+        hostRoutes?: pulumi.Input<pulumi.Input<inputs.CloudProject.RegionNetworkSubnetHostRoute>[]>;
+        /**
+         * IP version
+         */
+        ipVersion: pulumi.Input<number>;
+        /**
+         * Subnet name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Use default DNS
+         */
+        useDefaultPublicDnsresolver?: pulumi.Input<boolean>;
+    }
+
+    export interface RegionNetworkSubnetAllocationPool {
+        /**
+         * Last IP for the pool (eg: 192.168.1.24)
+         */
+        end?: pulumi.Input<string>;
+        /**
+         * First IP for the pool (eg: 192.168.1.12)
+         */
+        start?: pulumi.Input<string>;
+    }
+
+    export interface RegionNetworkSubnetHostRoute {
+        /**
+         * Host route destination (eg: 192.168.1.0/24)
+         */
+        destination?: pulumi.Input<string>;
+        /**
+         * Host route next hop (eg: 192.168.1.254)
+         */
+        nextHop?: pulumi.Input<string>;
+    }
+
     export interface UserRole {
         /**
          * A description associated with the user.
@@ -757,6 +901,17 @@ export namespace CloudProjectDatabase {
          * Available permission:
          */
         permission: pulumi.Input<string>;
+    }
+
+    export interface PrometheusTarget {
+        /**
+         * Host of the endpoint
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * Connection port for the endpoint
+         */
+        port?: pulumi.Input<number>;
     }
 }
 

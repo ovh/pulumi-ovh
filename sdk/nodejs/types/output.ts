@@ -521,6 +521,81 @@ export namespace CloudProject {
         user: string;
     }
 
+    export interface GetInstanceAddress {
+        /**
+         * IP address
+         */
+        ip: string;
+        /**
+         * IP version
+         */
+        version: number;
+    }
+
+    export interface GetInstanceAttachedVolume {
+        /**
+         * Instance id
+         */
+        id: string;
+    }
+
+    export interface GetInstancesInstance {
+        /**
+         * Instance IP addresses
+         */
+        addresses: outputs.CloudProject.GetInstancesInstanceAddress[];
+        /**
+         * Volumes attached to the instance
+         */
+        attachedVolumes: outputs.CloudProject.GetInstancesInstanceAttachedVolume[];
+        /**
+         * Flavor id
+         */
+        flavorId: string;
+        /**
+         * Flavor name
+         */
+        flavorName: string;
+        /**
+         * Instance id
+         */
+        id: string;
+        /**
+         * Image id
+         */
+        imageId: string;
+        /**
+         * Instance name
+         */
+        name: string;
+        /**
+         * SSH Keypair
+         */
+        sshKey: string;
+        /**
+         * Instance task state
+         */
+        taskState: string;
+    }
+
+    export interface GetInstancesInstanceAddress {
+        /**
+         * IP address
+         */
+        ip: string;
+        /**
+         * IP version
+         */
+        version: number;
+    }
+
+    export interface GetInstancesInstanceAttachedVolume {
+        /**
+         * Instance id
+         */
+        id: string;
+    }
+
     export interface GetKubeCustomization {
         /**
          * Kubernetes API server customization
@@ -923,6 +998,17 @@ export namespace CloudProject {
         permission: string;
     }
 
+    export interface GetPrometheusTarget {
+        /**
+         * Host of the endpoint
+         */
+        host: string;
+        /**
+         * Connection port for the endpoint
+         */
+        port: number;
+    }
+
     export interface GetRegionService {
         /**
          * The name of the region associated with the public cloud
@@ -1014,6 +1100,85 @@ export namespace CloudProject {
          * The size of the volume
          */
         size: number;
+    }
+
+    export interface InstanceAddress {
+        /**
+         * IP address
+         */
+        ip: string;
+        /**
+         * IP version
+         */
+        version: number;
+    }
+
+    export interface InstanceAttachedVolume {
+        /**
+         * Instance id
+         */
+        id: string;
+    }
+
+    export interface InstanceAutoBackup {
+        /**
+         * Unix cron pattern
+         */
+        cron: string;
+        /**
+         * Number of backup to keep
+         */
+        rotation: number;
+    }
+
+    export interface InstanceBootFrom {
+        /**
+         * Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+         */
+        imageId?: string;
+        /**
+         * Instance volume id
+         */
+        volumeId?: string;
+    }
+
+    export interface InstanceFlavor {
+        /**
+         * Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+         */
+        flavorId: string;
+    }
+
+    export interface InstanceGroup {
+        /**
+         * Group id
+         */
+        groupId?: string;
+    }
+
+    export interface InstanceNetwork {
+        /**
+         * Set the new instance as public boolean
+         */
+        public?: boolean;
+    }
+
+    export interface InstanceSshKey {
+        /**
+         * SSH Keypair name
+         */
+        name: string;
+    }
+
+    export interface InstanceSshKeyCreate {
+        /**
+         * SSH Key pair name
+         */
+        name: string;
+        /**
+         * SSH Public key
+         */
+        publicKey: string;
     }
 
     export interface KubeCustomization {
@@ -1325,6 +1490,71 @@ export namespace CloudProject {
         value: string;
     }
 
+    export interface RegionNetworkSubnet {
+        /**
+         * List of IP pools allocated in subnet
+         */
+        allocationPools?: outputs.CloudProject.RegionNetworkSubnetAllocationPool[];
+        /**
+         * Subnet range in CIDR notation
+         */
+        cidr: string;
+        /**
+         * DNS nameservers
+         */
+        dnsNameServers?: string[];
+        /**
+         * Enable DHCP for the subnet
+         */
+        enableDhcp: boolean;
+        /**
+         * Set a gateway ip for the subnet
+         */
+        enableGatewayIp: boolean;
+        /**
+         * Gateway IP
+         */
+        gatewayIp?: string;
+        /**
+         * Host routes
+         */
+        hostRoutes?: outputs.CloudProject.RegionNetworkSubnetHostRoute[];
+        /**
+         * IP version
+         */
+        ipVersion: number;
+        /**
+         * Subnet name
+         */
+        name?: string;
+        /**
+         * Use default DNS
+         */
+        useDefaultPublicDnsresolver?: boolean;
+    }
+
+    export interface RegionNetworkSubnetAllocationPool {
+        /**
+         * Last IP for the pool (eg: 192.168.1.24)
+         */
+        end?: string;
+        /**
+         * First IP for the pool (eg: 192.168.1.12)
+         */
+        start?: string;
+    }
+
+    export interface RegionNetworkSubnetHostRoute {
+        /**
+         * Host route destination (eg: 192.168.1.0/24)
+         */
+        destination?: string;
+        /**
+         * Host route next hop (eg: 192.168.1.254)
+         */
+        nextHop?: string;
+    }
+
     export interface UserRole {
         /**
          * A description associated with the user.
@@ -1501,6 +1731,17 @@ export namespace CloudProjectDatabase {
          * Available permission:
          */
         permission: string;
+    }
+
+    export interface PrometheusTarget {
+        /**
+         * Host of the endpoint
+         */
+        host: string;
+        /**
+         * Connection port for the endpoint
+         */
+        port: number;
     }
 
 }

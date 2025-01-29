@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Dbaas.NewLogsOutputOpenSearchIndex(ctx, "index", &Dbaas.LogsOutputOpenSearchIndexArgs{
+//			_, err := dbaas.NewLogsOutputOpenSearchIndex(ctx, "index", &dbaas.LogsOutputOpenSearchIndexArgs{
 //				Description: pulumi.String("my opensearch index"),
 //				ServiceName: pulumi.String("...."),
 //				Suffix:      pulumi.String("index"),

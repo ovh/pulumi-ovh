@@ -36,7 +36,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Group of the user:
+        /// Group of the user.
         /// </summary>
         [Output("group")]
         public Output<string?> Group { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Group of the user:
+        /// Group of the user.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Group of the user:
+        /// Group of the user.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }

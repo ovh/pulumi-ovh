@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Ip"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Ip.NewMitigation(ctx, "mitigation", &Ip.MitigationArgs{
+//			_, err := ip.NewMitigation(ctx, "mitigation", &ip.MitigationArgs{
 //				Ip:             pulumi.String("XXXXXX"),
 //				IpOnMitigation: pulumi.String("XXXXXX"),
 //			})

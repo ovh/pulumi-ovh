@@ -446,6 +446,44 @@ public final class DbaasFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * Additionnaly, you can filter retentions on their type:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .duration("P14D")
+     *             .retentionType("LOGS_INDEXING")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetLogsClustersRetentionResult> getLogsClustersRetention(GetLogsClustersRetentionArgs args) {
         return getLogsClustersRetention(args, InvokeOptions.Empty);
@@ -518,6 +556,44 @@ public final class DbaasFunctions {
      *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
      *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
      *             .duration("P14D")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Additionnaly, you can filter retentions on their type:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .duration("P14D")
+     *             .retentionType("LOGS_INDEXING")
      *             .serviceName("ldp-xx-xxxxx")
      *             .build());
      * 
@@ -608,6 +684,44 @@ public final class DbaasFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * Additionnaly, you can filter retentions on their type:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .duration("P14D")
+     *             .retentionType("LOGS_INDEXING")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetLogsClustersRetentionResult> getLogsClustersRetention(GetLogsClustersRetentionArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", TypeShape.of(GetLogsClustersRetentionResult.class), args, Utilities.withVersion(options));
@@ -680,6 +794,44 @@ public final class DbaasFunctions {
      *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
      *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
      *             .duration("P14D")
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Additionnaly, you can filter retentions on their type:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .duration("P14D")
+     *             .retentionType("LOGS_INDEXING")
      *             .serviceName("ldp-xx-xxxxx")
      *             .build());
      * 

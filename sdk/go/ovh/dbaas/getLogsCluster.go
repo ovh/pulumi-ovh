@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Dbaas.GetLogsCluster(ctx, &dbaas.GetLogsClusterArgs{
+//			_, err := dbaas.GetLogsCluster(ctx, &dbaas.GetLogsClusterArgs{
 //				ClusterId:   pulumi.StringRef("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				ServiceName: "ldp-xx-xxxxx",
 //			}, nil)

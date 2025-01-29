@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Dedicated.NewNasHAPartition(ctx, "myPartition", &Dedicated.NasHAPartitionArgs{
+//			_, err := dedicated.NewNasHAPartition(ctx, "myPartition", &dedicated.NasHAPartitionArgs{
 //				Protocol:    pulumi.String("NFS"),
 //				ServiceName: pulumi.String("zpool-12345"),
 //				Size:        pulumi.Int(20),

@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dbaas"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Dbaas.NewLogsCluster(ctx, "ldp", &Dbaas.LogsClusterArgs{
+//			_, err := dbaas.NewLogsCluster(ctx, "ldp", &dbaas.LogsClusterArgs{
 //				ArchiveAllowedNetworks: pulumi.StringArray{
 //					pulumi.String("10.0.0.0/16"),
 //				},

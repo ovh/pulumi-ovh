@@ -105,6 +105,16 @@ export const getGatewayInterface: typeof import("./getGatewayInterface").getGate
 export const getGatewayInterfaceOutput: typeof import("./getGatewayInterface").getGatewayInterfaceOutput = null as any;
 utilities.lazyLoad(exports, ["getGatewayInterface","getGatewayInterfaceOutput"], () => require("./getGatewayInterface"));
 
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
 export { GetKubeArgs, GetKubeResult, GetKubeOutputArgs } from "./getKube";
 export const getKube: typeof import("./getKube").getKube = null as any;
 export const getKubeOutput: typeof import("./getKube").getKubeOutput = null as any;
@@ -160,6 +170,11 @@ export const getM3dbUser: typeof import("./getM3dbUser").getM3dbUser = null as a
 export const getM3dbUserOutput: typeof import("./getM3dbUser").getM3dbUserOutput = null as any;
 utilities.lazyLoad(exports, ["getM3dbUser","getM3dbUserOutput"], () => require("./getM3dbUser"));
 
+export { GetMongoDbPrometheusArgs, GetMongoDbPrometheusResult, GetMongoDbPrometheusOutputArgs } from "./getMongoDbPrometheus";
+export const getMongoDbPrometheus: typeof import("./getMongoDbPrometheus").getMongoDbPrometheus = null as any;
+export const getMongoDbPrometheusOutput: typeof import("./getMongoDbPrometheus").getMongoDbPrometheusOutput = null as any;
+utilities.lazyLoad(exports, ["getMongoDbPrometheus","getMongoDbPrometheusOutput"], () => require("./getMongoDbPrometheus"));
+
 export { GetMongoDbUserArgs, GetMongoDbUserResult, GetMongoDbUserOutputArgs } from "./getMongoDbUser";
 export const getMongoDbUser: typeof import("./getMongoDbUser").getMongoDbUser = null as any;
 export const getMongoDbUserOutput: typeof import("./getMongoDbUser").getMongoDbUserOutput = null as any;
@@ -194,6 +209,11 @@ export { GetOpenSearchUserArgs, GetOpenSearchUserResult, GetOpenSearchUserOutput
 export const getOpenSearchUser: typeof import("./getOpenSearchUser").getOpenSearchUser = null as any;
 export const getOpenSearchUserOutput: typeof import("./getOpenSearchUser").getOpenSearchUserOutput = null as any;
 utilities.lazyLoad(exports, ["getOpenSearchUser","getOpenSearchUserOutput"], () => require("./getOpenSearchUser"));
+
+export { GetPrometheusArgs, GetPrometheusResult, GetPrometheusOutputArgs } from "./getPrometheus";
+export const getPrometheus: typeof import("./getPrometheus").getPrometheus = null as any;
+export const getPrometheusOutput: typeof import("./getPrometheus").getPrometheusOutput = null as any;
+utilities.lazyLoad(exports, ["getPrometheus","getPrometheusOutput"], () => require("./getPrometheus"));
 
 export { GetRedisUserArgs, GetRedisUserResult, GetRedisUserOutputArgs } from "./getRedisUser";
 export const getRedisUser: typeof import("./getRedisUser").getRedisUser = null as any;
@@ -260,6 +280,11 @@ export const getVolumes: typeof import("./getVolumes").getVolumes = null as any;
 export const getVolumesOutput: typeof import("./getVolumes").getVolumesOutput = null as any;
 utilities.lazyLoad(exports, ["getVolumes","getVolumesOutput"], () => require("./getVolumes"));
 
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
 export { KubeArgs, KubeState } from "./kube";
 export type Kube = import("./kube").Kube;
 export const Kube: typeof import("./kube").Kube = null as any;
@@ -304,6 +329,11 @@ export { RegionLoadBalancerLogSubscriptionArgs, RegionLoadBalancerLogSubscriptio
 export type RegionLoadBalancerLogSubscription = import("./regionLoadBalancerLogSubscription").RegionLoadBalancerLogSubscription;
 export const RegionLoadBalancerLogSubscription: typeof import("./regionLoadBalancerLogSubscription").RegionLoadBalancerLogSubscription = null as any;
 utilities.lazyLoad(exports, ["RegionLoadBalancerLogSubscription"], () => require("./regionLoadBalancerLogSubscription"));
+
+export { RegionNetworkArgs, RegionNetworkState } from "./regionNetwork";
+export type RegionNetwork = import("./regionNetwork").RegionNetwork;
+export const RegionNetwork: typeof import("./regionNetwork").RegionNetwork = null as any;
+utilities.lazyLoad(exports, ["RegionNetwork"], () => require("./regionNetwork"));
 
 export { RegionStoragePresignArgs, RegionStoragePresignState } from "./regionStoragePresign";
 export type RegionStoragePresign = import("./regionStoragePresign").RegionStoragePresign;
@@ -360,6 +390,8 @@ const _module = {
                 return new Gateway(name, <any>undefined, { urn })
             case "ovh:CloudProject/gatewayInterface:GatewayInterface":
                 return new GatewayInterface(name, <any>undefined, { urn })
+            case "ovh:CloudProject/instance:Instance":
+                return new Instance(name, <any>undefined, { urn })
             case "ovh:CloudProject/kube:Kube":
                 return new Kube(name, <any>undefined, { urn })
             case "ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions":
@@ -378,6 +410,8 @@ const _module = {
                 return new Project(name, <any>undefined, { urn })
             case "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription":
                 return new RegionLoadBalancerLogSubscription(name, <any>undefined, { urn })
+            case "ovh:CloudProject/regionNetwork:RegionNetwork":
+                return new RegionNetwork(name, <any>undefined, { urn })
             case "ovh:CloudProject/regionStoragePresign:RegionStoragePresign":
                 return new RegionStoragePresign(name, <any>undefined, { urn })
             case "ovh:CloudProject/s3Credential:S3Credential":
@@ -405,6 +439,7 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProject/database", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/failoverIpAttach", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/gateway", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/gatewayInterface", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/instance", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kube", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeIpRestrictions", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeNodePool", _module)
@@ -414,6 +449,7 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivateSubnet"
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivateSubnetV2", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/project", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/regionLoadBalancerLogSubscription", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/regionNetwork", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/regionStoragePresign", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/s3Credential", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/s3Policy", _module)

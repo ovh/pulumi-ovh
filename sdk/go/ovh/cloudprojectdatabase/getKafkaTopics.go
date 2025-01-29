@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			topics, err := CloudProjectDatabase.GetKafkaTopics(ctx, &cloudprojectdatabase.GetKafkaTopicsArgs{
+//			topics, err := cloudprojectdatabase.GetKafkaTopics(ctx, &cloudprojectdatabase.GetKafkaTopicsArgs{
 //				ServiceName: "XXX",
 //				ClusterId:   "YYY",
 //			}, nil)

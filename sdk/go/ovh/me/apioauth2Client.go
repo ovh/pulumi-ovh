@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Me.NewAPIOAuth2Client(ctx, "myOauth2ClientAuthCode", &Me.APIOAuth2ClientArgs{
+//			_, err := me.NewAPIOAuth2Client(ctx, "myOauth2ClientAuthCode", &me.APIOAuth2ClientArgs{
 //				CallbackUrls: pulumi.StringArray{
 //					pulumi.String("https://my-app.com/callback"),
 //				},
@@ -53,14 +53,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Me.NewAPIOAuth2Client(ctx, "myOauth2ClientClientCreds", &Me.APIOAuth2ClientArgs{
+//			_, err := me.NewAPIOAuth2Client(ctx, "myOauth2ClientClientCreds", &me.APIOAuth2ClientArgs{
 //				Description: pulumi.String("An OAuth2 client using the client credentials flow for my app"),
 //				Flow:        pulumi.String("CLIENT_CREDENTIALS"),
 //			})

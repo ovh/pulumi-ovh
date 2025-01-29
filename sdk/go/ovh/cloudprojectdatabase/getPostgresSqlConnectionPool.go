@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testPoolPostgresSqlConnectionPool, err := CloudProjectDatabase.GetPostgresSqlConnectionPool(ctx, &cloudprojectdatabase.GetPostgresSqlConnectionPoolArgs{
+//			testPoolPostgresSqlConnectionPool, err := cloudprojectdatabase.GetPostgresSqlConnectionPool(ctx, &cloudprojectdatabase.GetPostgresSqlConnectionPoolArgs{
 //				ServiceName: "XXX",
 //				ClusterId:   "YYY",
 //				Name:        "ZZZ",

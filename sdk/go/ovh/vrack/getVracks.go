@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Vrack"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Vrack.GetVracks(ctx, map[string]interface{}{}, nil)
+//			_, err := vrack.GetVracks(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

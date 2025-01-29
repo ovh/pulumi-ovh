@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			projectUsers, err := CloudProject.GetUsers(ctx, &cloudproject.GetUsersArgs{
+//			projectUsers, err := cloudproject.GetUsers(ctx, &cloudproject.GetUsersArgs{
 //				ServiceName: "XXX",
 //			}, nil)
 //			if err != nil {
@@ -36,7 +36,7 @@ import (
 //			// Get the user ID of a previously created user with the description "S3-User"
 //			users := "TODO: For expression"
 //			s3UserId := users[0]
-//			_, err = CloudProject.GetUserS3Policy(ctx, &cloudproject.GetUserS3PolicyArgs{
+//			_, err = cloudproject.GetUserS3Policy(ctx, &cloudproject.GetUserS3PolicyArgs{
 //				ServiceName: projectUsers.ServiceName,
 //				UserId:      s3UserId,
 //			}, nil)

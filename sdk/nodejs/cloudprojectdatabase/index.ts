@@ -165,6 +165,11 @@ export type M3DbUser = import("./m3dbUser").M3DbUser;
 export const M3DbUser: typeof import("./m3dbUser").M3DbUser = null as any;
 utilities.lazyLoad(exports, ["M3DbUser"], () => require("./m3dbUser"));
 
+export { MongoDbPrometheusArgs, MongoDbPrometheusState } from "./mongoDbPrometheus";
+export type MongoDbPrometheus = import("./mongoDbPrometheus").MongoDbPrometheus;
+export const MongoDbPrometheus: typeof import("./mongoDbPrometheus").MongoDbPrometheus = null as any;
+utilities.lazyLoad(exports, ["MongoDbPrometheus"], () => require("./mongoDbPrometheus"));
+
 export { MongoDbUserArgs, MongoDbUserState } from "./mongoDbUser";
 export type MongoDbUser = import("./mongoDbUser").MongoDbUser;
 export const MongoDbUser: typeof import("./mongoDbUser").MongoDbUser = null as any;
@@ -189,6 +194,11 @@ export { PostgresSqlUserArgs, PostgresSqlUserState } from "./postgresSqlUser";
 export type PostgresSqlUser = import("./postgresSqlUser").PostgresSqlUser;
 export const PostgresSqlUser: typeof import("./postgresSqlUser").PostgresSqlUser = null as any;
 utilities.lazyLoad(exports, ["PostgresSqlUser"], () => require("./postgresSqlUser"));
+
+export { PrometheusArgs, PrometheusState } from "./prometheus";
+export type Prometheus = import("./prometheus").Prometheus;
+export const Prometheus: typeof import("./prometheus").Prometheus = null as any;
+utilities.lazyLoad(exports, ["Prometheus"], () => require("./prometheus"));
 
 export { RedisUserArgs, RedisUserState } from "./redisUser";
 export type RedisUser = import("./redisUser").RedisUser;
@@ -223,6 +233,8 @@ const _module = {
                 return new M3DbNamespace(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/m3DbUser:M3DbUser":
                 return new M3DbUser(name, <any>undefined, { urn })
+            case "ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus":
+                return new MongoDbPrometheus(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser":
                 return new MongoDbUser(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern":
@@ -233,6 +245,8 @@ const _module = {
                 return new PostgresSqlConnectionPool(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser":
                 return new PostgresSqlUser(name, <any>undefined, { urn })
+            case "ovh:CloudProjectDatabase/prometheus:Prometheus":
+                return new Prometheus(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/redisUser:RedisUser":
                 return new RedisUser(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/user:User":
@@ -251,10 +265,12 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/kafkaTopic", 
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/logSubscription", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/m3DbNamespace", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/m3DbUser", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/mongoDbPrometheus", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/mongoDbUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/opensearchPattern", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/opensearchUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/postgresSqlConnectionPool", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/postgresSqlUser", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/prometheus", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/redisUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/user", _module)

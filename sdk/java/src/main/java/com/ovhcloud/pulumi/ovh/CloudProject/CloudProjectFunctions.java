@@ -23,6 +23,10 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFailoverIpAttachArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFailoverIpAttachPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetGatewayInterfaceArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetGatewayInterfacePlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetInstanceArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetInstancePlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetInstancesArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetInstancesPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetKubeArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetKubeIpRestrictionsArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetKubeIpRestrictionsPlainArgs;
@@ -45,6 +49,8 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetM3dbNamespacesArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetM3dbNamespacesPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetM3dbUserArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetM3dbUserPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetMongoDbPrometheusArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetMongoDbPrometheusPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetMongoDbUserArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetMongoDbUserPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateArgs;
@@ -59,6 +65,8 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetOpenSearchPatternsArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetOpenSearchPatternsPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetOpenSearchUserArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetOpenSearchUserPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetPrometheusArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetPrometheusPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRedisUserArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRedisUserPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRegionArgs;
@@ -95,6 +103,8 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetContainerRegistryResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetContainerRegistryUsersInvokeResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetFailoverIpAttachResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetGatewayInterfaceResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetInstanceResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetInstancesResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeIpRestrictionsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeNodePoolNodesResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeNodePoolResult;
@@ -106,6 +116,7 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetLoadBalancersResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetM3dbNamespaceResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetM3dbNamespacesResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetM3dbUserResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetMongoDbPrometheusResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetMongoDbUserResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetNetworkPrivateResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetNetworkPrivateSubnetsResult;
@@ -113,6 +124,7 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetNetworkPrivatesResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetOpenSearchPatternResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetOpenSearchPatternsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetOpenSearchUserResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetPrometheusResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRedisUserResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRegionLoadBalancerLogSubscriptionResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRegionLoadBalancerLogSubscriptionsResult;
@@ -1597,6 +1609,382 @@ public final class CloudProjectFunctions {
      */
     public static CompletableFuture<GetGatewayInterfaceResult> getGatewayInterfacePlain(GetGatewayInterfacePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getGatewayInterface:getGatewayInterface", TypeShape.of(GetGatewayInterfaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This datasource uses a Beta API**
+     * Use this data source to get the instance of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To get information of an instance:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = CloudProjectFunctions.getInstance(GetInstanceArgs.builder()
+     *             .instanceId("ZZZZZ")
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args) {
+        return getInstance(args, InvokeOptions.Empty);
+    }
+    /**
+     * **This datasource uses a Beta API**
+     * Use this data source to get the instance of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To get information of an instance:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = CloudProjectFunctions.getInstance(GetInstanceArgs.builder()
+     *             .instanceId("ZZZZZ")
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args) {
+        return getInstancePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * **This datasource uses a Beta API**
+     * Use this data source to get the instance of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To get information of an instance:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = CloudProjectFunctions.getInstance(GetInstanceArgs.builder()
+     *             .instanceId("ZZZZZ")
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This datasource uses a Beta API**
+     * Use this data source to get the instance of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To get information of an instance:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = CloudProjectFunctions.getInstance(GetInstanceArgs.builder()
+     *             .instanceId("ZZZZZ")
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This datasource uses a Beta API**
+     * 
+     * Use this data source to get the list of instances in a region of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To list your instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = CloudProjectFunctions.getInstances(GetInstancesArgs.builder()
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
+        return getInstances(args, InvokeOptions.Empty);
+    }
+    /**
+     * **This datasource uses a Beta API**
+     * 
+     * Use this data source to get the list of instances in a region of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To list your instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = CloudProjectFunctions.getInstances(GetInstancesArgs.builder()
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
+        return getInstancesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * **This datasource uses a Beta API**
+     * 
+     * Use this data source to get the list of instances in a region of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To list your instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = CloudProjectFunctions.getInstances(GetInstancesArgs.builder()
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This datasource uses a Beta API**
+     * 
+     * Use this data source to get the list of instances in a region of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To list your instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = CloudProjectFunctions.getInstances(GetInstancesArgs.builder()
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
@@ -3555,6 +3943,182 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetMongoDbPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prometheus = CloudProjectFunctions.getMongoDbPrometheus(GetMongoDbPrometheusArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("name", prometheus.applyValue(getMongoDbPrometheusResult -> getMongoDbPrometheusResult.username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMongoDbPrometheusResult> getMongoDbPrometheus(GetMongoDbPrometheusArgs args) {
+        return getMongoDbPrometheus(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetMongoDbPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prometheus = CloudProjectFunctions.getMongoDbPrometheus(GetMongoDbPrometheusArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("name", prometheus.applyValue(getMongoDbPrometheusResult -> getMongoDbPrometheusResult.username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMongoDbPrometheusResult> getMongoDbPrometheusPlain(GetMongoDbPrometheusPlainArgs args) {
+        return getMongoDbPrometheusPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetMongoDbPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prometheus = CloudProjectFunctions.getMongoDbPrometheus(GetMongoDbPrometheusArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("name", prometheus.applyValue(getMongoDbPrometheusResult -> getMongoDbPrometheusResult.username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMongoDbPrometheusResult> getMongoDbPrometheus(GetMongoDbPrometheusArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getMongoDbPrometheus:getMongoDbPrometheus", TypeShape.of(GetMongoDbPrometheusResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetMongoDbPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prometheus = CloudProjectFunctions.getMongoDbPrometheus(GetMongoDbPrometheusArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("name", prometheus.applyValue(getMongoDbPrometheusResult -> getMongoDbPrometheusResult.username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMongoDbPrometheusResult> getMongoDbPrometheusPlain(GetMongoDbPrometheusPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getMongoDbPrometheus:getMongoDbPrometheus", TypeShape.of(GetMongoDbPrometheusResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
      * 
      * ## Example Usage
@@ -4793,6 +5357,186 @@ public final class CloudProjectFunctions {
      */
     public static CompletableFuture<GetOpenSearchUserResult> getOpenSearchUserPlain(GetOpenSearchUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", TypeShape.of(GetOpenSearchUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a prometheus of a database cluster associated with a public cloud project. For mongodb, please use ovh.CloudProjectDatabase.MongoDbPrometheus datasource
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prometheus = CloudProjectFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("name", prometheus.applyValue(getPrometheusResult -> getPrometheusResult.username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPrometheusResult> getPrometheus(GetPrometheusArgs args) {
+        return getPrometheus(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a prometheus of a database cluster associated with a public cloud project. For mongodb, please use ovh.CloudProjectDatabase.MongoDbPrometheus datasource
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prometheus = CloudProjectFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("name", prometheus.applyValue(getPrometheusResult -> getPrometheusResult.username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPrometheusResult> getPrometheusPlain(GetPrometheusPlainArgs args) {
+        return getPrometheusPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a prometheus of a database cluster associated with a public cloud project. For mongodb, please use ovh.CloudProjectDatabase.MongoDbPrometheus datasource
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prometheus = CloudProjectFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("name", prometheus.applyValue(getPrometheusResult -> getPrometheusResult.username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPrometheusResult> getPrometheus(GetPrometheusArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getPrometheus:getPrometheus", TypeShape.of(GetPrometheusResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a prometheus of a database cluster associated with a public cloud project. For mongodb, please use ovh.CloudProjectDatabase.MongoDbPrometheus datasource
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prometheus = CloudProjectFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("name", prometheus.applyValue(getPrometheusResult -> getPrometheusResult.username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPrometheusResult> getPrometheusPlain(GetPrometheusPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getPrometheus:getPrometheus", TypeShape.of(GetPrometheusResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get information about a user of a redis cluster associated with a public cloud project.

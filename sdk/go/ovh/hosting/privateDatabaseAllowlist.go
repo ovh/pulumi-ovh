@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Hosting"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Hosting.NewPrivateDatabaseAllowlist(ctx, "ip", &Hosting.PrivateDatabaseAllowlistArgs{
+//			_, err := hosting.NewPrivateDatabaseAllowlist(ctx, "ip", &hosting.PrivateDatabaseAllowlistArgs{
 //				Ip:          pulumi.String("1.2.3.4"),
 //				Service:     pulumi.Bool(true),
 //				ServiceName: pulumi.String("XXXXXX"),

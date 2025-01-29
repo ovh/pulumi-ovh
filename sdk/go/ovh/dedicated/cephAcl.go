@@ -21,20 +21,20 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myCeph, err := Dedicated.GetCeph(ctx, &dedicated.GetCephArgs{
+//			myCeph, err := dedicated.GetCeph(ctx, &dedicated.GetCephArgs{
 //				ServiceName: "94d423da-0e55-45f2-9812-836460a19939",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Dedicated.NewCephAcl(ctx, "my-acl", &Dedicated.CephAclArgs{
+//			_, err = dedicated.NewCephAcl(ctx, "my-acl", &dedicated.CephAclArgs{
 //				ServiceName: pulumi.String(myCeph.Id),
 //				Network:     pulumi.String("1.2.3.4"),
 //				Netmask:     pulumi.String("255.255.255.255"),

@@ -26,7 +26,7 @@ class GetLogsClustersRetentionResult:
     """
     A collection of values returned by getLogsClustersRetention.
     """
-    def __init__(__self__, cluster_id=None, duration=None, id=None, is_supported=None, retention_id=None, service_name=None):
+    def __init__(__self__, cluster_id=None, duration=None, id=None, is_supported=None, retention_id=None, retention_type=None, service_name=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -42,6 +42,9 @@ class GetLogsClustersRetentionResult:
         if retention_id and not isinstance(retention_id, str):
             raise TypeError("Expected argument 'retention_id' to be a str")
         pulumi.set(__self__, "retention_id", retention_id)
+        if retention_type and not isinstance(retention_type, str):
+            raise TypeError("Expected argument 'retention_type' to be a str")
+        pulumi.set(__self__, "retention_type", retention_type)
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
@@ -84,6 +87,14 @@ class GetLogsClustersRetentionResult:
         return pulumi.get(self, "retention_id")
 
     @property
+    @pulumi.getter(name="retentionType")
+    def retention_type(self) -> str:
+        """
+        Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT)
+        """
+        return pulumi.get(self, "retention_type")
+
+    @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         return pulumi.get(self, "service_name")
@@ -100,12 +111,14 @@ class AwaitableGetLogsClustersRetentionResult(GetLogsClustersRetentionResult):
             id=self.id,
             is_supported=self.is_supported,
             retention_id=self.retention_id,
+            retention_type=self.retention_type,
             service_name=self.service_name)
 
 
 def get_logs_clusters_retention(cluster_id: Optional[str] = None,
                                 duration: Optional[str] = None,
                                 retention_id: Optional[str] = None,
+                                retention_type: Optional[str] = None,
                                 service_name: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLogsClustersRetentionResult:
     """
@@ -133,16 +146,30 @@ def get_logs_clusters_retention(cluster_id: Optional[str] = None,
         service_name="ldp-xx-xxxxx")
     ```
 
+    Additionnaly, you can filter retentions on their type:
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        duration="P14D",
+        retention_type="LOGS_INDEXING",
+        service_name="ldp-xx-xxxxx")
+    ```
+
 
     :param str cluster_id: Cluster ID
-    :param str duration: Indexed duration expressed in ISO-8601 format
-    :param str retention_id: ID of the retention object
+    :param str duration: Indexed duration expressed in ISO-8601 format. Cannot be used if `retention_id` is defined.
+    :param str retention_id: ID of the retention object. Cannot be used if `duration` or `retention_type` is defined.
+    :param str retention_type: Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retention_id` is defined. Defaults to `LOGS_INDEXING` if not defined.
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['duration'] = duration
     __args__['retentionId'] = retention_id
+    __args__['retentionType'] = retention_type
     __args__['serviceName'] = service_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention', __args__, opts=opts, typ=GetLogsClustersRetentionResult).value
@@ -153,10 +180,12 @@ def get_logs_clusters_retention(cluster_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         is_supported=pulumi.get(__ret__, 'is_supported'),
         retention_id=pulumi.get(__ret__, 'retention_id'),
+        retention_type=pulumi.get(__ret__, 'retention_type'),
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_logs_clusters_retention_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                        duration: Optional[pulumi.Input[Optional[str]]] = None,
                                        retention_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                       retention_type: Optional[pulumi.Input[Optional[str]]] = None,
                                        service_name: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsClustersRetentionResult]:
     """
@@ -184,16 +213,30 @@ def get_logs_clusters_retention_output(cluster_id: Optional[pulumi.Input[str]] =
         service_name="ldp-xx-xxxxx")
     ```
 
+    Additionnaly, you can filter retentions on their type:
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        duration="P14D",
+        retention_type="LOGS_INDEXING",
+        service_name="ldp-xx-xxxxx")
+    ```
+
 
     :param str cluster_id: Cluster ID
-    :param str duration: Indexed duration expressed in ISO-8601 format
-    :param str retention_id: ID of the retention object
+    :param str duration: Indexed duration expressed in ISO-8601 format. Cannot be used if `retention_id` is defined.
+    :param str retention_id: ID of the retention object. Cannot be used if `duration` or `retention_type` is defined.
+    :param str retention_type: Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retention_id` is defined. Defaults to `LOGS_INDEXING` if not defined.
     :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['duration'] = duration
     __args__['retentionId'] = retention_id
+    __args__['retentionType'] = retention_type
     __args__['serviceName'] = service_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention', __args__, opts=opts, typ=GetLogsClustersRetentionResult)
@@ -203,4 +246,5 @@ def get_logs_clusters_retention_output(cluster_id: Optional[pulumi.Input[str]] =
         id=pulumi.get(__response__, 'id'),
         is_supported=pulumi.get(__response__, 'is_supported'),
         retention_id=pulumi.get(__response__, 'retention_id'),
+        retention_type=pulumi.get(__response__, 'retention_type'),
         service_name=pulumi.get(__response__, 'service_name')))

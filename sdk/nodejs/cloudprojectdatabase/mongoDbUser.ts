@@ -64,7 +64,7 @@ export class MongoDbUser extends pulumi.CustomResource {
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
      * Available roles:
      * * `backup@admin`
      * * `clusterAdmin@admin`
@@ -165,7 +165,7 @@ export interface MongoDbUserState {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
      * Available roles:
      * * `backup@admin`
      * * `clusterAdmin@admin`
@@ -214,7 +214,7 @@ export interface MongoDbUserArgs {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
      * Available roles:
      * * `backup@admin`
      * * `clusterAdmin@admin`

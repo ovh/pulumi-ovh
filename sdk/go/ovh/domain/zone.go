@@ -18,26 +18,26 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Domain"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/domain"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
+//			myaccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//			mycart, err := order.GetCart(ctx, &order.GetCartArgs{
 //				OvhSubsidiary: myaccount.OvhSubsidiary,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			zoneCartProductPlan, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//			zoneCartProductPlan, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
 //				CartId:        mycart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "dns",
@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Domain.NewZone(ctx, "zoneZone", &Domain.ZoneArgs{
+//			_, err = domain.NewZone(ctx, "zoneZone", &domain.ZoneArgs{
 //				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				Plan: &domain.ZonePlanArgs{
 //					Duration:    pulumi.String(zoneCartProductPlan.SelectedPrices[0].Duration),

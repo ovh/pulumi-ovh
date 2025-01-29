@@ -26,6 +26,15 @@ __all__ = [
     'GatewayExternalInformation',
     'GatewayExternalInformationIp',
     'GatewayInterface',
+    'InstanceAddress',
+    'InstanceAttachedVolume',
+    'InstanceAutoBackup',
+    'InstanceBootFrom',
+    'InstanceFlavor',
+    'InstanceGroup',
+    'InstanceNetwork',
+    'InstanceSshKey',
+    'InstanceSshKeyCreate',
     'KubeCustomization',
     'KubeCustomizationApiserver',
     'KubeCustomizationApiserverAdmissionplugin',
@@ -48,6 +57,9 @@ __all__ = [
     'ProjectPlanConfiguration',
     'ProjectPlanOption',
     'ProjectPlanOptionConfiguration',
+    'RegionNetworkSubnet',
+    'RegionNetworkSubnetAllocationPool',
+    'RegionNetworkSubnetHostRoute',
     'UserRole',
     'VolumeSubOperation',
     'GetCapabilitiesContainerFilterFeatureResult',
@@ -58,6 +70,11 @@ __all__ = [
     'GetCapabilitiesContainerRegistryResultPlanRegistryLimitResult',
     'GetContainerRegistriesResultResult',
     'GetContainerRegistryUsersResultResult',
+    'GetInstanceAddressResult',
+    'GetInstanceAttachedVolumeResult',
+    'GetInstancesInstanceResult',
+    'GetInstancesInstanceAddressResult',
+    'GetInstancesInstanceAttachedVolumeResult',
     'GetKubeCustomizationResult',
     'GetKubeCustomizationApiserverResult',
     'GetKubeCustomizationApiserverAdmissionpluginResult',
@@ -78,6 +95,7 @@ __all__ = [
     'GetNetworkPrivatesNetworkResult',
     'GetNetworkPrivatesNetworkRegionResult',
     'GetOpenSearchUserAclResult',
+    'GetPrometheusTargetResult',
     'GetRegionServiceResult',
     'GetUserRoleResult',
     'GetUsersUserResult',
@@ -720,6 +738,289 @@ class GatewayInterface(dict):
         ID of the subnet.
         """
         return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class InstanceAddress(dict):
+    def __init__(__self__, *,
+                 ip: Optional[str] = None,
+                 version: Optional[int] = None):
+        """
+        :param str ip: IP address
+        :param int version: IP version
+        """
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        IP address
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[int]:
+        """
+        IP version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class InstanceAttachedVolume(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None):
+        """
+        :param str id: Instance id
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Instance id
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class InstanceAutoBackup(dict):
+    def __init__(__self__, *,
+                 cron: str,
+                 rotation: int):
+        """
+        :param str cron: Unix cron pattern
+        :param int rotation: Number of backup to keep
+        """
+        pulumi.set(__self__, "cron", cron)
+        pulumi.set(__self__, "rotation", rotation)
+
+    @property
+    @pulumi.getter
+    def cron(self) -> str:
+        """
+        Unix cron pattern
+        """
+        return pulumi.get(self, "cron")
+
+    @property
+    @pulumi.getter
+    def rotation(self) -> int:
+        """
+        Number of backup to keep
+        """
+        return pulumi.get(self, "rotation")
+
+
+@pulumi.output_type
+class InstanceBootFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageId":
+            suggest = "image_id"
+        elif key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceBootFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceBootFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceBootFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image_id: Optional[str] = None,
+                 volume_id: Optional[str] = None):
+        """
+        :param str image_id: Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+        :param str volume_id: Instance volume id
+        """
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[str]:
+        """
+        Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[str]:
+        """
+        Instance volume id
+        """
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class InstanceFlavor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "flavorId":
+            suggest = "flavor_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFlavor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFlavor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFlavor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 flavor_id: str):
+        """
+        :param str flavor_id: Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+        """
+        pulumi.set(__self__, "flavor_id", flavor_id)
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> str:
+        """
+        Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+        """
+        return pulumi.get(self, "flavor_id")
+
+
+@pulumi.output_type
+class InstanceGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupId":
+            suggest = "group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 group_id: Optional[str] = None):
+        """
+        :param str group_id: Group id
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[str]:
+        """
+        Group id
+        """
+        return pulumi.get(self, "group_id")
+
+
+@pulumi.output_type
+class InstanceNetwork(dict):
+    def __init__(__self__, *,
+                 public: Optional[bool] = None):
+        """
+        :param bool public: Set the new instance as public boolean
+        """
+        if public is not None:
+            pulumi.set(__self__, "public", public)
+
+    @property
+    @pulumi.getter
+    def public(self) -> Optional[bool]:
+        """
+        Set the new instance as public boolean
+        """
+        return pulumi.get(self, "public")
+
+
+@pulumi.output_type
+class InstanceSshKey(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: SSH Keypair name
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        SSH Keypair name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class InstanceSshKeyCreate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceSshKeyCreate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceSshKeyCreate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceSshKeyCreate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 public_key: str):
+        """
+        :param str name: SSH Key pair name
+        :param str public_key: SSH Public key
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "public_key", public_key)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        SSH Key pair name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        SSH Public key
+        """
+        return pulumi.get(self, "public_key")
 
 
 @pulumi.output_type
@@ -1759,6 +2060,239 @@ class ProjectPlanOptionConfiguration(dict):
 
 
 @pulumi.output_type
+class RegionNetworkSubnet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableDhcp":
+            suggest = "enable_dhcp"
+        elif key == "enableGatewayIp":
+            suggest = "enable_gateway_ip"
+        elif key == "ipVersion":
+            suggest = "ip_version"
+        elif key == "allocationPools":
+            suggest = "allocation_pools"
+        elif key == "dnsNameServers":
+            suggest = "dns_name_servers"
+        elif key == "gatewayIp":
+            suggest = "gateway_ip"
+        elif key == "hostRoutes":
+            suggest = "host_routes"
+        elif key == "useDefaultPublicDnsresolver":
+            suggest = "use_default_public_dnsresolver"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkSubnet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkSubnet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkSubnet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr: str,
+                 enable_dhcp: bool,
+                 enable_gateway_ip: bool,
+                 ip_version: float,
+                 allocation_pools: Optional[Sequence['outputs.RegionNetworkSubnetAllocationPool']] = None,
+                 dns_name_servers: Optional[Sequence[str]] = None,
+                 gateway_ip: Optional[str] = None,
+                 host_routes: Optional[Sequence['outputs.RegionNetworkSubnetHostRoute']] = None,
+                 name: Optional[str] = None,
+                 use_default_public_dnsresolver: Optional[bool] = None):
+        """
+        :param str cidr: Subnet range in CIDR notation
+        :param bool enable_dhcp: Enable DHCP for the subnet
+        :param bool enable_gateway_ip: Set a gateway ip for the subnet
+        :param float ip_version: IP version
+        :param Sequence['RegionNetworkSubnetAllocationPoolArgs'] allocation_pools: List of IP pools allocated in subnet
+        :param Sequence[str] dns_name_servers: DNS nameservers
+        :param str gateway_ip: Gateway IP
+        :param Sequence['RegionNetworkSubnetHostRouteArgs'] host_routes: Host routes
+        :param str name: Subnet name
+        :param bool use_default_public_dnsresolver: Use default DNS
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "enable_dhcp", enable_dhcp)
+        pulumi.set(__self__, "enable_gateway_ip", enable_gateway_ip)
+        pulumi.set(__self__, "ip_version", ip_version)
+        if allocation_pools is not None:
+            pulumi.set(__self__, "allocation_pools", allocation_pools)
+        if dns_name_servers is not None:
+            pulumi.set(__self__, "dns_name_servers", dns_name_servers)
+        if gateway_ip is not None:
+            pulumi.set(__self__, "gateway_ip", gateway_ip)
+        if host_routes is not None:
+            pulumi.set(__self__, "host_routes", host_routes)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if use_default_public_dnsresolver is not None:
+            pulumi.set(__self__, "use_default_public_dnsresolver", use_default_public_dnsresolver)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> str:
+        """
+        Subnet range in CIDR notation
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter(name="enableDhcp")
+    def enable_dhcp(self) -> bool:
+        """
+        Enable DHCP for the subnet
+        """
+        return pulumi.get(self, "enable_dhcp")
+
+    @property
+    @pulumi.getter(name="enableGatewayIp")
+    def enable_gateway_ip(self) -> bool:
+        """
+        Set a gateway ip for the subnet
+        """
+        return pulumi.get(self, "enable_gateway_ip")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> float:
+        """
+        IP version
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter(name="allocationPools")
+    def allocation_pools(self) -> Optional[Sequence['outputs.RegionNetworkSubnetAllocationPool']]:
+        """
+        List of IP pools allocated in subnet
+        """
+        return pulumi.get(self, "allocation_pools")
+
+    @property
+    @pulumi.getter(name="dnsNameServers")
+    def dns_name_servers(self) -> Optional[Sequence[str]]:
+        """
+        DNS nameservers
+        """
+        return pulumi.get(self, "dns_name_servers")
+
+    @property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> Optional[str]:
+        """
+        Gateway IP
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @property
+    @pulumi.getter(name="hostRoutes")
+    def host_routes(self) -> Optional[Sequence['outputs.RegionNetworkSubnetHostRoute']]:
+        """
+        Host routes
+        """
+        return pulumi.get(self, "host_routes")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Subnet name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="useDefaultPublicDnsresolver")
+    def use_default_public_dnsresolver(self) -> Optional[bool]:
+        """
+        Use default DNS
+        """
+        return pulumi.get(self, "use_default_public_dnsresolver")
+
+
+@pulumi.output_type
+class RegionNetworkSubnetAllocationPool(dict):
+    def __init__(__self__, *,
+                 end: Optional[str] = None,
+                 start: Optional[str] = None):
+        """
+        :param str end: Last IP for the pool (eg: 192.168.1.24)
+        :param str start: First IP for the pool (eg: 192.168.1.12)
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> Optional[str]:
+        """
+        Last IP for the pool (eg: 192.168.1.24)
+        """
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter
+    def start(self) -> Optional[str]:
+        """
+        First IP for the pool (eg: 192.168.1.12)
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class RegionNetworkSubnetHostRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nextHop":
+            suggest = "next_hop"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkSubnetHostRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkSubnetHostRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkSubnetHostRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination: Optional[str] = None,
+                 next_hop: Optional[str] = None):
+        """
+        :param str destination: Host route destination (eg: 192.168.1.0/24)
+        :param str next_hop: Host route next hop (eg: 192.168.1.254)
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if next_hop is not None:
+            pulumi.set(__self__, "next_hop", next_hop)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        """
+        Host route destination (eg: 192.168.1.0/24)
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> Optional[str]:
+        """
+        Host route next hop (eg: 192.168.1.254)
+        """
+        return pulumi.get(self, "next_hop")
+
+
+@pulumi.output_type
 class UserRole(dict):
     def __init__(__self__, *,
                  description: Optional[str] = None,
@@ -2225,6 +2759,206 @@ class GetContainerRegistryUsersResultResult(dict):
         User name
         """
         return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class GetInstanceAddressResult(dict):
+    def __init__(__self__, *,
+                 ip: str,
+                 version: int):
+        """
+        :param str ip: IP address
+        :param int version: IP version
+        """
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        IP address
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def version(self) -> int:
+        """
+        IP version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetInstanceAttachedVolumeResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: Instance id
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Instance id
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 addresses: Sequence['outputs.GetInstancesInstanceAddressResult'],
+                 attached_volumes: Sequence['outputs.GetInstancesInstanceAttachedVolumeResult'],
+                 flavor_id: str,
+                 flavor_name: str,
+                 id: str,
+                 image_id: str,
+                 name: str,
+                 ssh_key: str,
+                 task_state: str):
+        """
+        :param Sequence['GetInstancesInstanceAddressArgs'] addresses: Instance IP addresses
+        :param Sequence['GetInstancesInstanceAttachedVolumeArgs'] attached_volumes: Volumes attached to the instance
+        :param str flavor_id: Flavor id
+        :param str flavor_name: Flavor name
+        :param str id: Instance id
+        :param str image_id: Image id
+        :param str name: Instance name
+        :param str ssh_key: SSH Keypair
+        :param str task_state: Instance task state
+        """
+        pulumi.set(__self__, "addresses", addresses)
+        pulumi.set(__self__, "attached_volumes", attached_volumes)
+        pulumi.set(__self__, "flavor_id", flavor_id)
+        pulumi.set(__self__, "flavor_name", flavor_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ssh_key", ssh_key)
+        pulumi.set(__self__, "task_state", task_state)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> Sequence['outputs.GetInstancesInstanceAddressResult']:
+        """
+        Instance IP addresses
+        """
+        return pulumi.get(self, "addresses")
+
+    @property
+    @pulumi.getter(name="attachedVolumes")
+    def attached_volumes(self) -> Sequence['outputs.GetInstancesInstanceAttachedVolumeResult']:
+        """
+        Volumes attached to the instance
+        """
+        return pulumi.get(self, "attached_volumes")
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> str:
+        """
+        Flavor id
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @property
+    @pulumi.getter(name="flavorName")
+    def flavor_name(self) -> str:
+        """
+        Flavor name
+        """
+        return pulumi.get(self, "flavor_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Instance id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        """
+        Image id
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Instance name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="sshKey")
+    def ssh_key(self) -> str:
+        """
+        SSH Keypair
+        """
+        return pulumi.get(self, "ssh_key")
+
+    @property
+    @pulumi.getter(name="taskState")
+    def task_state(self) -> str:
+        """
+        Instance task state
+        """
+        return pulumi.get(self, "task_state")
+
+
+@pulumi.output_type
+class GetInstancesInstanceAddressResult(dict):
+    def __init__(__self__, *,
+                 ip: str,
+                 version: int):
+        """
+        :param str ip: IP address
+        :param int version: IP version
+        """
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        IP address
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def version(self) -> int:
+        """
+        IP version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetInstancesInstanceAttachedVolumeResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: Instance id
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Instance id
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -3318,6 +4052,35 @@ class GetOpenSearchUserAclResult(dict):
         Permission of the ACL.
         """
         return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class GetPrometheusTargetResult(dict):
+    def __init__(__self__, *,
+                 host: str,
+                 port: int):
+        """
+        :param str host: Host of the endpoint
+        :param int port: Connection port for the endpoint
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Host of the endpoint
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Connection port for the endpoint
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

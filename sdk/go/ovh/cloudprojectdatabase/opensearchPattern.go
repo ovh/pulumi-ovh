@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			opensearch, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//			opensearch, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
 //				ServiceName: "XXX",
 //				Engine:      "opensearch",
 //				Id:          "ZZZ",
@@ -36,7 +36,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProjectDatabase.NewOpensearchPattern(ctx, "pattern", &CloudProjectDatabase.OpensearchPatternArgs{
+//			_, err = cloudprojectdatabase.NewOpensearchPattern(ctx, "pattern", &cloudprojectdatabase.OpensearchPatternArgs{
 //				ServiceName:   pulumi.String(opensearch.ServiceName),
 //				ClusterId:     pulumi.String(opensearch.Id),
 //				MaxIndexCount: pulumi.Int(2),

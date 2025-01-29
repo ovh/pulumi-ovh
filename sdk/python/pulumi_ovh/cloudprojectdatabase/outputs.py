@@ -16,6 +16,7 @@ from .. import _utilities
 
 __all__ = [
     'OpensearchUserAcl',
+    'PrometheusTarget',
     'GetCapabilitiesEngineResult',
     'GetCapabilitiesFlavorResult',
     'GetCapabilitiesOptionResult',
@@ -54,6 +55,37 @@ class OpensearchUserAcl(dict):
         Available permission:
         """
         return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class PrometheusTarget(dict):
+    def __init__(__self__, *,
+                 host: Optional[str] = None,
+                 port: Optional[int] = None):
+        """
+        :param str host: Host of the endpoint
+        :param int port: Connection port for the endpoint
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        Host of the endpoint
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Connection port for the endpoint
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

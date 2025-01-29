@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := CloudProject.NewAlerting(ctx, "myAlert", &CloudProject.AlertingArgs{
+//			_, err := cloudproject.NewAlerting(ctx, "myAlert", &cloudproject.AlertingArgs{
 //				Delay:            pulumi.Float64(3600),
 //				Email:            pulumi.String("aaa.bbb@domain.com"),
 //				MonthlyThreshold: pulumi.Float64(1000),

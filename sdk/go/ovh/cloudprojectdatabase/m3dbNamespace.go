@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProjectDatabase"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			m3db, err := CloudProjectDatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//			m3db, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
 //				ServiceName: "XXX",
 //				Engine:      "m3db",
 //				Id:          "ZZZ",
@@ -36,7 +36,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = CloudProjectDatabase.NewM3DbNamespace(ctx, "namespace", &CloudProjectDatabase.M3DbNamespaceArgs{
+//			_, err = cloudprojectdatabase.NewM3DbNamespace(ctx, "namespace", &cloudprojectdatabase.M3DbNamespaceArgs{
 //				ServiceName:             pulumi.String(m3db.ServiceName),
 //				ClusterId:               pulumi.String(m3db.Id),
 //				Resolution:              pulumi.String("P2D"),

@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Cloud"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloud"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Cloud.GetProject(ctx, &cloud.GetProjectArgs{
+//			_, err := cloud.GetProject(ctx, &cloud.GetProjectArgs{
 //				ServiceName: "XXX",
 //			}, nil)
 //			if err != nil {

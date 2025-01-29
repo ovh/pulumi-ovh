@@ -31,7 +31,7 @@ class MongoDbUserArgs:
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
                Available roles:
                * `backup@admin`
                * `clusterAdmin@admin`
@@ -113,7 +113,7 @@ class MongoDbUserArgs:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+        Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
         Available roles:
         * `backup@admin`
         * `clusterAdmin@admin`
@@ -158,7 +158,7 @@ class _MongoDbUserState:
         :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
                Available roles:
                * `backup@admin`
                * `clusterAdmin@admin`
@@ -262,7 +262,7 @@ class _MongoDbUserState:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+        Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
         Available roles:
         * `backup@admin`
         * `clusterAdmin@admin`
@@ -341,7 +341,7 @@ class MongoDbUser(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
                Available roles:
                * `backup@admin`
                * `clusterAdmin@admin`
@@ -453,7 +453,7 @@ class MongoDbUser(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
                Available roles:
                * `backup@admin`
                * `clusterAdmin@admin`
@@ -534,7 +534,7 @@ class MongoDbUser(pulumi.CustomResource):
     @pulumi.getter
     def roles(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles
+        Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
         Available roles:
         * `backup@admin`
         * `clusterAdmin@admin`

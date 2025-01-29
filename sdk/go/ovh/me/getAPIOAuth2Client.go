@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Me.GetAPIOAuth2Client(ctx, &me.GetAPIOAuth2ClientArgs{
+//			_, err := me.GetAPIOAuth2Client(ctx, &me.GetAPIOAuth2ClientArgs{
 //				ClientId: "5f8969a993ec8b4b",
 //			}, nil)
 //			if err != nil {

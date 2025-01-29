@@ -18,26 +18,26 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Me"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Order"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := Me.GetMe(ctx, map[string]interface{}{}, nil)
+//			myaccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			mycart, err := Order.GetCart(ctx, &order.GetCartArgs{
+//			mycart, err := order.GetCart(ctx, &order.GetCartArgs{
 //				OvhSubsidiary: myaccount.OvhSubsidiary,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			iplb, err := Order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//			iplb, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
 //				CartId:        mycart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "ipLoadbalancing",
@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			bhs, err := Order.GetCartProductOptionsPlan(ctx, &order.GetCartProductOptionsPlanArgs{
+//			bhs, err := order.GetCartProductOptionsPlan(ctx, &order.GetCartProductOptionsPlanArgs{
 //				CartId:          iplb.CartId,
 //				PriceCapacity:   iplb.PriceCapacity,
 //				Product:         iplb.Product,
@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = IpLoadBalancing.NewLoadBalancer(ctx, "iplb-lb1", &IpLoadBalancing.LoadBalancerArgs{
+//			_, err = iploadbalancing.NewLoadBalancer(ctx, "iplb-lb1", &iploadbalancing.LoadBalancerArgs{
 //				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				DisplayName:   pulumi.String("my ip loadbalancing"),
 //				Plan: &iploadbalancing.LoadBalancerPlanArgs{

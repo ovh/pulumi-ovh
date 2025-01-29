@@ -21,21 +21,21 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/IpLoadBalancing"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lb, err := IpLoadBalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//			lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
 //				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
 //				State:       pulumi.StringRef("ok"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = IpLoadBalancing.NewSsl(ctx, "sslname", &IpLoadBalancing.SslArgs{
+//			_, err = iploadbalancing.NewSsl(ctx, "sslname", &iploadbalancing.SslArgs{
 //				Certificate: pulumi.String("..."),
 //				Chain:       pulumi.String("..."),
 //				DisplayName: pulumi.String("test"),

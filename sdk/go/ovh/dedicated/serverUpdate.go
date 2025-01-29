@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Dedicated"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			rescue, err := Dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
+//			rescue, err := dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
 //				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
 //				BootType:    pulumi.StringRef("rescue"),
 //				Kernel:      pulumi.StringRef("rescue64-pro"),
@@ -34,7 +34,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Dedicated.NewServerUpdate(ctx, "server", &Dedicated.ServerUpdateArgs{
+//			_, err = dedicated.NewServerUpdate(ctx, "server", &dedicated.ServerUpdateArgs{
 //				ServiceName: pulumi.String("nsxxxxxxx.ip-xx-xx-xx.eu"),
 //				BootId:      pulumi.Int(rescue.Results[0]),
 //				Monitoring:  pulumi.Bool(true),

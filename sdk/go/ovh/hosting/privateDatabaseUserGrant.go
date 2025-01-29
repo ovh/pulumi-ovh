@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/Hosting"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Hosting.NewPrivateDatabaseUserGrant(ctx, "userGrant", &Hosting.PrivateDatabaseUserGrantArgs{
+//			_, err := hosting.NewPrivateDatabaseUserGrant(ctx, "userGrant", &hosting.PrivateDatabaseUserGrantArgs{
 //				DatabaseName: pulumi.String("ovhcloud"),
 //				Grant:        pulumi.String("admin"),
 //				ServiceName:  pulumi.String("XXXXXX"),

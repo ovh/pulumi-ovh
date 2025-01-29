@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &M3DbNamespace{}
 	case "ovh:CloudProjectDatabase/m3DbUser:M3DbUser":
 		r = &M3DbUser{}
+	case "ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus":
+		r = &MongoDbPrometheus{}
 	case "ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser":
 		r = &MongoDbUser{}
 	case "ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern":
@@ -49,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PostgresSqlConnectionPool{}
 	case "ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser":
 		r = &PostgresSqlUser{}
+	case "ovh:CloudProjectDatabase/prometheus:Prometheus":
+		r = &Prometheus{}
 	case "ovh:CloudProjectDatabase/redisUser:RedisUser":
 		r = &RedisUser{}
 	case "ovh:CloudProjectDatabase/user:User":
@@ -113,6 +117,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"CloudProjectDatabase/mongoDbPrometheus",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"CloudProjectDatabase/mongoDbUser",
 		&module{version},
 	)
@@ -134,6 +143,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProjectDatabase/postgresSqlUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProjectDatabase/prometheus",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
