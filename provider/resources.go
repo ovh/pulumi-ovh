@@ -205,11 +205,17 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_database_postgresql_connection_pool": {
 				Tok: ovhResource(cloudProjectDbMod, "PostgresSqlConnectionPool"),
 			},
+			"ovh_cloud_project_database_prometheus": {
+				Tok: ovhResource(cloudProjectDbMod, "Prometheus"),
+			},
 			"ovh_cloud_project_database_m3db_namespace": {
 				Tok: ovhResource(cloudProjectDbMod, "M3DbNamespace"),
 			},
 			"ovh_cloud_project_database_m3db_user": {
 				Tok: ovhResource(cloudProjectDbMod, "M3DbUser"),
+			},
+			"ovh_cloud_project_database_mongodb_prometheus": {
+				Tok: ovhResource(cloudProjectDbMod, "MongoDbPrometheus"),
 			},
 			"ovh_cloud_project_database_mongodb_user": {
 				Tok: ovhResource(cloudProjectDbMod, "MongoDbUser"),
@@ -248,6 +254,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_kube_oidc": {
 				Tok: ovhResource(cloudProjectMod, "KubeOidc"),
 			},
+			"ovh_cloud_project_instance": {
+				Tok: ovhResource(cloudProjectMod, "Instance"),
+			},
 			"ovh_cloud_project_network_private": {
 				Tok: ovhResource(cloudProjectMod, "NetworkPrivate"),
 			},
@@ -256,6 +265,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_network_private_subnet_v2": {
 				Tok: ovhResource(cloudProjectMod, "NetworkPrivateSubnetV2"),
+			},
+			"ovh_cloud_project_region_network": {
+				Tok: ovhResource(cloudProjectMod, "RegionNetwork"),
 			},
 			"ovh_cloud_project_region_storage_presign": {
 				Tok: ovhResource(cloudProjectMod, "RegionStoragePresign"),
@@ -682,6 +694,12 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_database_mongodb_user": {
 				Tok: ovhDataSource(cloudProjectMod, "getMongoDbUser"),
 			},
+			"ovh_cloud_project_database_mongodb_prometheus": {
+				Tok: ovhDataSource(cloudProjectMod, "getMongoDbPrometheus"),
+			},
+			"ovh_cloud_project_database_prometheus": {
+				Tok: ovhDataSource(cloudProjectMod, "getPrometheus"),
+			},
 			"ovh_cloud_project_database_opensearch_pattern": {
 				Tok: ovhDataSource(cloudProjectMod, "getOpenSearchPattern"),
 			},
@@ -696,6 +714,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_loadbalancer": {
 				Tok: ovhDataSource(cloudProjectMod, "getLoadBalancer"),
+			},
+			"ovh_cloud_project_instance": {
+				Tok: ovhDataSource(cloudProjectMod, "getInstance"),
+			},
+			"ovh_cloud_project_instances": {
+				Tok: ovhDataSource(cloudProjectMod, "getInstances"),
 			},
 			"ovh_cloud_project_loadbalancers": {
 				Tok: ovhDataSource(cloudProjectMod, "getLoadBalancers"),
