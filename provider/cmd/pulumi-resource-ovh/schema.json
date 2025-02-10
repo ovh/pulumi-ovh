@@ -1586,6 +1586,80 @@
                 }
             }
         },
+        "ovh:CloudProject/getFloatingIPsCloudProjectFloatingip:getFloatingIPsCloudProjectFloatingip": {
+            "properties": {
+                "associatedEntity": {
+                    "$ref": "#/types/ovh:CloudProject/getFloatingIPsCloudProjectFloatingipAssociatedEntity:getFloatingIPsCloudProjectFloatingipAssociatedEntity",
+                    "description": "Associated entity with the floating IP\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the floating IP\n"
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "Value of the floating IP\n"
+                },
+                "networkId": {
+                    "type": "string",
+                    "description": "ID of the network\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Floating ip region\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the floating IP (active┃down┃error)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "associatedEntity",
+                "id",
+                "ip",
+                "networkId",
+                "region",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:CloudProject/getFloatingIPsCloudProjectFloatingipAssociatedEntity:getFloatingIPsCloudProjectFloatingipAssociatedEntity": {
+            "properties": {
+                "gatewayId": {
+                    "type": "string",
+                    "description": "ID of the gateway\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the floating IP\n"
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "Value of the floating IP\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "gatewayId",
+                "id",
+                "ip",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "ovh:CloudProject/getInstanceAddress:getInstanceAddress": {
             "properties": {
                 "ip": {
@@ -4362,7 +4436,7 @@
                     "items": {
                         "$ref": "#/types/ovh:Ip/IpServicePlanOptionConfiguration:IpServicePlanOptionConfiguration"
                     },
-                    "description": "Representation of a configuration item for personalizing product\n"
+                    "description": "Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder\u0026branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)\n"
                 },
                 "duration": {
                     "type": "string",
@@ -9536,7 +9610,7 @@
             }
         },
         "ovh:CloudProject/networkPrivate:NetworkPrivate": {
-            "description": "Creates a private network in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst net = new ovh.cloudproject.NetworkPrivate(\"net\", {\n    regions: [\n        \"GRA1\",\n        \"BHS1\",\n    ],\n    serviceName: \"XXXXXX\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnet = ovh.cloud_project.NetworkPrivate(\"net\",\n    regions=[\n        \"GRA1\",\n        \"BHS1\",\n    ],\n    service_name=\"XXXXXX\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var net = new Ovh.CloudProject.NetworkPrivate(\"net\", new()\n    {\n        Regions = new[]\n        {\n            \"GRA1\",\n            \"BHS1\",\n        },\n        ServiceName = \"XXXXXX\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudproject.NewNetworkPrivate(ctx, \"net\", \u0026cloudproject.NetworkPrivateArgs{\n\t\t\tRegions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"GRA1\"),\n\t\t\t\tpulumi.String(\"BHS1\"),\n\t\t\t},\n\t\t\tServiceName: pulumi.String(\"XXXXXX\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.NetworkPrivate;\nimport com.pulumi.ovh.CloudProject.NetworkPrivateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var net = new NetworkPrivate(\"net\", NetworkPrivateArgs.builder()\n            .regions(            \n                \"GRA1\",\n                \"BHS1\")\n            .serviceName(\"XXXXXX\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  net:\n    type: ovh:CloudProject:NetworkPrivate\n    properties:\n      regions:\n        - GRA1\n        - BHS1\n      serviceName: XXXXXX\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nPrivate network in a public cloud project can be imported using the `service_name` and the `network_id`, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678\n```\n\n",
+            "description": "Creates a private network in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst net = new ovh.cloudproject.NetworkPrivate(\"net\", {\n    regions: [\n        \"GRA1\",\n        \"BHS1\",\n    ],\n    serviceName: \"XXXXXX\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnet = ovh.cloud_project.NetworkPrivate(\"net\",\n    regions=[\n        \"GRA1\",\n        \"BHS1\",\n    ],\n    service_name=\"XXXXXX\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var net = new Ovh.CloudProject.NetworkPrivate(\"net\", new()\n    {\n        Regions = new[]\n        {\n            \"GRA1\",\n            \"BHS1\",\n        },\n        ServiceName = \"XXXXXX\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudproject.NewNetworkPrivate(ctx, \"net\", \u0026cloudproject.NetworkPrivateArgs{\n\t\t\tRegions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"GRA1\"),\n\t\t\t\tpulumi.String(\"BHS1\"),\n\t\t\t},\n\t\t\tServiceName: pulumi.String(\"XXXXXX\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.NetworkPrivate;\nimport com.pulumi.ovh.CloudProject.NetworkPrivateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var net = new NetworkPrivate(\"net\", NetworkPrivateArgs.builder()\n            .regions(            \n                \"GRA1\",\n                \"BHS1\")\n            .serviceName(\"XXXXXX\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  net:\n    type: ovh:CloudProject:NetworkPrivate\n    properties:\n      regions:\n        - GRA1\n        - BHS1\n      serviceName: XXXXXX\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nPrivate network in a public cloud project can be imported using the `service_name` and the `network_id` as `pn-xxxx` format, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet service_name/network_id\n```\n\n",
             "properties": {
                 "name": {
                     "type": "string",
@@ -9668,7 +9742,7 @@
             }
         },
         "ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet": {
-            "description": "Creates a subnet in a private network of a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst subnet = new ovh.cloudproject.NetworkPrivateSubnet(\"subnet\", {\n    dhcp: true,\n    end: \"192.168.168.200\",\n    network: \"192.168.168.0/24\",\n    networkId: \"0234543\",\n    noGateway: false,\n    region: \"GRA1\",\n    serviceName: \"xxxxx\",\n    start: \"192.168.168.100\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nsubnet = ovh.cloud_project.NetworkPrivateSubnet(\"subnet\",\n    dhcp=True,\n    end=\"192.168.168.200\",\n    network=\"192.168.168.0/24\",\n    network_id=\"0234543\",\n    no_gateway=False,\n    region=\"GRA1\",\n    service_name=\"xxxxx\",\n    start=\"192.168.168.100\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var subnet = new Ovh.CloudProject.NetworkPrivateSubnet(\"subnet\", new()\n    {\n        Dhcp = true,\n        End = \"192.168.168.200\",\n        Network = \"192.168.168.0/24\",\n        NetworkId = \"0234543\",\n        NoGateway = false,\n        Region = \"GRA1\",\n        ServiceName = \"xxxxx\",\n        Start = \"192.168.168.100\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudproject.NewNetworkPrivateSubnet(ctx, \"subnet\", \u0026cloudproject.NetworkPrivateSubnetArgs{\n\t\t\tDhcp:        pulumi.Bool(true),\n\t\t\tEnd:         pulumi.String(\"192.168.168.200\"),\n\t\t\tNetwork:     pulumi.String(\"192.168.168.0/24\"),\n\t\t\tNetworkId:   pulumi.String(\"0234543\"),\n\t\t\tNoGateway:   pulumi.Bool(false),\n\t\t\tRegion:      pulumi.String(\"GRA1\"),\n\t\t\tServiceName: pulumi.String(\"xxxxx\"),\n\t\t\tStart:       pulumi.String(\"192.168.168.100\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.NetworkPrivateSubnet;\nimport com.pulumi.ovh.CloudProject.NetworkPrivateSubnetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var subnet = new NetworkPrivateSubnet(\"subnet\", NetworkPrivateSubnetArgs.builder()\n            .dhcp(true)\n            .end(\"192.168.168.200\")\n            .network(\"192.168.168.0/24\")\n            .networkId(\"0234543\")\n            .noGateway(false)\n            .region(\"GRA1\")\n            .serviceName(\"xxxxx\")\n            .start(\"192.168.168.100\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  subnet:\n    type: ovh:CloudProject:NetworkPrivateSubnet\n    properties:\n      dhcp: true\n      end: 192.168.168.200\n      network: 192.168.168.0/24\n      networkId: '0234543'\n      noGateway: false\n      region: GRA1\n      serviceName: xxxxx\n      start: 192.168.168.100\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nSubnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909\n```\n\n",
+            "description": "Creates a subnet in a private network of a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst subnet = new ovh.cloudproject.NetworkPrivateSubnet(\"subnet\", {\n    dhcp: true,\n    end: \"192.168.168.200\",\n    network: \"192.168.168.0/24\",\n    networkId: \"0234543\",\n    noGateway: false,\n    region: \"GRA1\",\n    serviceName: \"xxxxx\",\n    start: \"192.168.168.100\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nsubnet = ovh.cloud_project.NetworkPrivateSubnet(\"subnet\",\n    dhcp=True,\n    end=\"192.168.168.200\",\n    network=\"192.168.168.0/24\",\n    network_id=\"0234543\",\n    no_gateway=False,\n    region=\"GRA1\",\n    service_name=\"xxxxx\",\n    start=\"192.168.168.100\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var subnet = new Ovh.CloudProject.NetworkPrivateSubnet(\"subnet\", new()\n    {\n        Dhcp = true,\n        End = \"192.168.168.200\",\n        Network = \"192.168.168.0/24\",\n        NetworkId = \"0234543\",\n        NoGateway = false,\n        Region = \"GRA1\",\n        ServiceName = \"xxxxx\",\n        Start = \"192.168.168.100\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudproject.NewNetworkPrivateSubnet(ctx, \"subnet\", \u0026cloudproject.NetworkPrivateSubnetArgs{\n\t\t\tDhcp:        pulumi.Bool(true),\n\t\t\tEnd:         pulumi.String(\"192.168.168.200\"),\n\t\t\tNetwork:     pulumi.String(\"192.168.168.0/24\"),\n\t\t\tNetworkId:   pulumi.String(\"0234543\"),\n\t\t\tNoGateway:   pulumi.Bool(false),\n\t\t\tRegion:      pulumi.String(\"GRA1\"),\n\t\t\tServiceName: pulumi.String(\"xxxxx\"),\n\t\t\tStart:       pulumi.String(\"192.168.168.100\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.NetworkPrivateSubnet;\nimport com.pulumi.ovh.CloudProject.NetworkPrivateSubnetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var subnet = new NetworkPrivateSubnet(\"subnet\", NetworkPrivateSubnetArgs.builder()\n            .dhcp(true)\n            .end(\"192.168.168.200\")\n            .network(\"192.168.168.0/24\")\n            .networkId(\"0234543\")\n            .noGateway(false)\n            .region(\"GRA1\")\n            .serviceName(\"xxxxx\")\n            .start(\"192.168.168.100\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  subnet:\n    type: ovh:CloudProject:NetworkPrivateSubnet\n    properties:\n      dhcp: true\n      end: 192.168.168.200\n      network: 192.168.168.0/24\n      networkId: '0234543'\n      noGateway: false\n      region: GRA1\n      serviceName: xxxxx\n      start: 192.168.168.100\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nSubnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` as `pn-xxxx` format and the `subnet_id`, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet service_name/network_id/subnet_id\n```\n\n",
             "properties": {
                 "cidr": {
                     "type": "string",
@@ -9849,7 +9923,7 @@
                     "items": {
                         "$ref": "#/types/ovh:CloudProject/NetworkPrivateSubnetV2AllocationPool:NetworkPrivateSubnetV2AllocationPool"
                     },
-                    "description": "DHCP allocation pools of subnet\n"
+                    "description": "List of IP allocation pools\nChanging this value recreates the resource.\n"
                 },
                 "cidr": {
                     "type": "string",
@@ -9918,7 +9992,7 @@
                     "items": {
                         "$ref": "#/types/ovh:CloudProject/NetworkPrivateSubnetV2AllocationPool:NetworkPrivateSubnetV2AllocationPool"
                     },
-                    "description": "DHCP allocation pools of subnet\n",
+                    "description": "List of IP allocation pools\nChanging this value recreates the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "cidr": {
@@ -9997,7 +10071,7 @@
                         "items": {
                             "$ref": "#/types/ovh:CloudProject/NetworkPrivateSubnetV2AllocationPool:NetworkPrivateSubnetV2AllocationPool"
                         },
-                        "description": "DHCP allocation pools of subnet\n",
+                        "description": "List of IP allocation pools\nChanging this value recreates the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "cidr": {
@@ -15122,6 +15196,10 @@
                     "type": "string",
                     "description": "Resource display name\n"
                 },
+                "efiBootloaderPath": {
+                    "type": "string",
+                    "description": "Path of the EFI bootloader\n"
+                },
                 "iam": {
                     "$ref": "#/types/ovh:Dedicated/ServerIam:ServerIam",
                     "description": "IAM resource information\n"
@@ -15244,6 +15322,7 @@
                 "commercialRange",
                 "datacenter",
                 "displayName",
+                "efiBootloaderPath",
                 "iam",
                 "ip",
                 "linkSpeed",
@@ -15284,6 +15363,10 @@
                 "displayName": {
                     "type": "string",
                     "description": "Resource display name\n"
+                },
+                "efiBootloaderPath": {
+                    "type": "string",
+                    "description": "Path of the EFI bootloader\n"
                 },
                 "monitoring": {
                     "type": "boolean",
@@ -15371,6 +15454,10 @@
                     "displayName": {
                         "type": "string",
                         "description": "Resource display name\n"
+                    },
+                    "efiBootloaderPath": {
+                        "type": "string",
+                        "description": "Path of the EFI bootloader\n"
                     },
                     "iam": {
                         "$ref": "#/types/ovh:Dedicated/ServerIam:ServerIam",
@@ -15858,6 +15945,10 @@
                     "type": "string",
                     "description": "display name of the dedicated server\n"
                 },
+                "efiBootloaderPath": {
+                    "type": "string",
+                    "description": "path of the EFI bootloader\n"
+                },
                 "monitoring": {
                     "type": "boolean",
                     "description": "Icmp monitoring state\n"
@@ -15874,6 +15965,7 @@
             "required": [
                 "bootId",
                 "displayName",
+                "efiBootloaderPath",
                 "monitoring",
                 "serviceName",
                 "state"
@@ -15890,6 +15982,10 @@
                 "displayName": {
                     "type": "string",
                     "description": "display name of the dedicated server\n"
+                },
+                "efiBootloaderPath": {
+                    "type": "string",
+                    "description": "path of the EFI bootloader\n"
                 },
                 "monitoring": {
                     "type": "boolean",
@@ -15921,6 +16017,10 @@
                     "displayName": {
                         "type": "string",
                         "description": "display name of the dedicated server\n"
+                    },
+                    "efiBootloaderPath": {
+                        "type": "string",
+                        "description": "path of the EFI bootloader\n"
                     },
                     "monitoring": {
                         "type": "boolean",
@@ -17694,7 +17794,7 @@
             }
         },
         "ovh:Ip/ipService:IpService": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst myaccount = ovh.Me.getMe({});\nconst mycart = ovh.Order.getCart({\n    ovhSubsidiary: \"fr\",\n});\nconst ipblockCartProductPlan = mycart.then(mycart =\u003e ovh.Order.getCartProductPlan({\n    cartId: mycart.id,\n    priceCapacity: \"renew\",\n    product: \"ip\",\n    planCode: \"ip-v4-s30-ripe\",\n}));\nconst ipblockIpService = new ovh.ip.IpService(\"ipblockIpService\", {\n    ovhSubsidiary: mycart.then(mycart =\u003e mycart.ovhSubsidiary),\n    description: \"my ip block\",\n    plan: {\n        duration: ipblockCartProductPlan.then(ipblockCartProductPlan =\u003e ipblockCartProductPlan.selectedPrices?.[0]?.duration),\n        planCode: ipblockCartProductPlan.then(ipblockCartProductPlan =\u003e ipblockCartProductPlan.planCode),\n        pricingMode: ipblockCartProductPlan.then(ipblockCartProductPlan =\u003e ipblockCartProductPlan.selectedPrices?.[0]?.pricingMode),\n        configurations: [{\n            label: \"country\",\n            value: \"FR\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmyaccount = ovh.Me.get_me()\nmycart = ovh.Order.get_cart(ovh_subsidiary=\"fr\")\nipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,\n    price_capacity=\"renew\",\n    product=\"ip\",\n    plan_code=\"ip-v4-s30-ripe\")\nipblock_ip_service = ovh.ip.IpService(\"ipblockIpService\",\n    ovh_subsidiary=mycart.ovh_subsidiary,\n    description=\"my ip block\",\n    plan={\n        \"duration\": ipblock_cart_product_plan.selected_prices[0].duration,\n        \"plan_code\": ipblock_cart_product_plan.plan_code,\n        \"pricing_mode\": ipblock_cart_product_plan.selected_prices[0].pricing_mode,\n        \"configurations\": [{\n            \"label\": \"country\",\n            \"value\": \"FR\",\n        }],\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myaccount = Ovh.Me.GetMe.Invoke();\n\n    var mycart = Ovh.Order.GetCart.Invoke(new()\n    {\n        OvhSubsidiary = \"fr\",\n    });\n\n    var ipblockCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()\n    {\n        CartId = mycart.Apply(getCartResult =\u003e getCartResult.Id),\n        PriceCapacity = \"renew\",\n        Product = \"ip\",\n        PlanCode = \"ip-v4-s30-ripe\",\n    });\n\n    var ipblockIpService = new Ovh.Ip.IpService(\"ipblockIpService\", new()\n    {\n        OvhSubsidiary = mycart.Apply(getCartResult =\u003e getCartResult.OvhSubsidiary),\n        Description = \"my ip block\",\n        Plan = new Ovh.Ip.Inputs.IpServicePlanArgs\n        {\n            Duration = ipblockCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.SelectedPrices[0]?.Duration),\n            PlanCode = ipblockCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.PlanCode),\n            PricingMode = ipblockCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.SelectedPrices[0]?.PricingMode),\n            Configurations = new[]\n            {\n                new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs\n                {\n                    Label = \"country\",\n                    Value = \"FR\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip\"\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/me\"\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/order\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := me.GetMe(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmycart, err := order.GetCart(ctx, \u0026order.GetCartArgs{\n\t\t\tOvhSubsidiary: \"fr\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tipblockCartProductPlan, err := order.GetCartProductPlan(ctx, \u0026order.GetCartProductPlanArgs{\n\t\t\tCartId:        mycart.Id,\n\t\t\tPriceCapacity: \"renew\",\n\t\t\tProduct:       \"ip\",\n\t\t\tPlanCode:      \"ip-v4-s30-ripe\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = ip.NewIpService(ctx, \"ipblockIpService\", \u0026ip.IpServiceArgs{\n\t\t\tOvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),\n\t\t\tDescription:   pulumi.String(\"my ip block\"),\n\t\t\tPlan: \u0026ip.IpServicePlanArgs{\n\t\t\t\tDuration:    pulumi.String(ipblockCartProductPlan.SelectedPrices[0].Duration),\n\t\t\t\tPlanCode:    pulumi.String(ipblockCartProductPlan.PlanCode),\n\t\t\t\tPricingMode: pulumi.String(ipblockCartProductPlan.SelectedPrices[0].PricingMode),\n\t\t\t\tConfigurations: ip.IpServicePlanConfigurationArray{\n\t\t\t\t\t\u0026ip.IpServicePlanConfigurationArgs{\n\t\t\t\t\t\tLabel: pulumi.String(\"country\"),\n\t\t\t\t\t\tValue: pulumi.String(\"FR\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.MeFunctions;\nimport com.pulumi.ovh.Order.OrderFunctions;\nimport com.pulumi.ovh.Order.inputs.GetCartArgs;\nimport com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;\nimport com.pulumi.ovh.Ip.IpService;\nimport com.pulumi.ovh.Ip.IpServiceArgs;\nimport com.pulumi.ovh.Ip.inputs.IpServicePlanArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myaccount = MeFunctions.getMe();\n\n        final var mycart = OrderFunctions.getCart(GetCartArgs.builder()\n            .ovhSubsidiary(\"fr\")\n            .build());\n\n        final var ipblockCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()\n            .cartId(mycart.applyValue(getCartResult -\u003e getCartResult.id()))\n            .priceCapacity(\"renew\")\n            .product(\"ip\")\n            .planCode(\"ip-v4-s30-ripe\")\n            .build());\n\n        var ipblockIpService = new IpService(\"ipblockIpService\", IpServiceArgs.builder()\n            .ovhSubsidiary(mycart.applyValue(getCartResult -\u003e getCartResult.ovhSubsidiary()))\n            .description(\"my ip block\")\n            .plan(IpServicePlanArgs.builder()\n                .duration(ipblockCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.selectedPrices()[0].duration()))\n                .planCode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.planCode()))\n                .pricingMode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.selectedPrices()[0].pricingMode()))\n                .configurations(IpServicePlanConfigurationArgs.builder()\n                    .label(\"country\")\n                    .value(\"FR\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ipblockIpService:\n    type: ovh:Ip:IpService\n    properties:\n      ovhSubsidiary: ${mycart.ovhSubsidiary}\n      description: my ip block\n      plan:\n        duration: ${ipblockCartProductPlan.selectedPrices[0].duration}\n        planCode: ${ipblockCartProductPlan.planCode}\n        pricingMode: ${ipblockCartProductPlan.selectedPrices[0].pricingMode}\n        configurations:\n          - label: country\n            value: FR\nvariables:\n  myaccount:\n    fn::invoke:\n      function: ovh:Me:getMe\n      arguments: {}\n  mycart:\n    fn::invoke:\n      function: ovh:Order:getCart\n      arguments:\n        ovhSubsidiary: fr\n  ipblockCartProductPlan:\n    fn::invoke:\n      function: ovh:Order:getCartProductPlan\n      arguments:\n        cartId: ${mycart.id}\n        priceCapacity: renew\n        product: ip\n        planCode: ip-v4-s30-ripe\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe resource can be imported using its `service_name`, E.g.,\n\nhcl\n\nimport {\n\n  to = ovh_ip_service.ipblock\n\n  id = \"ip-xx.xx.xx.xx\"\n\n}\n\nbash\n\n$ pulumi preview -generate-config-out=ipblock.tf\n\n$ pulumi up\n\nThe file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.\n\nSee https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.\n\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst myaccount = ovh.Me.getMe({});\nconst mycart = ovh.Order.getCart({\n    ovhSubsidiary: \"fr\",\n});\nconst ipblockCartProductPlan = mycart.then(mycart =\u003e ovh.Order.getCartProductPlan({\n    cartId: mycart.id,\n    priceCapacity: \"renew\",\n    product: \"ip\",\n    planCode: \"ip-v4-s30-ripe\",\n}));\nconst ipblockIpService = new ovh.ip.IpService(\"ipblockIpService\", {\n    ovhSubsidiary: mycart.then(mycart =\u003e mycart.ovhSubsidiary),\n    description: \"my ip block\",\n    plan: {\n        duration: ipblockCartProductPlan.then(ipblockCartProductPlan =\u003e ipblockCartProductPlan.selectedPrices?.[0]?.duration),\n        planCode: ipblockCartProductPlan.then(ipblockCartProductPlan =\u003e ipblockCartProductPlan.planCode),\n        pricingMode: ipblockCartProductPlan.then(ipblockCartProductPlan =\u003e ipblockCartProductPlan.selectedPrices?.[0]?.pricingMode),\n        configurations: [\n            {\n                label: \"country\",\n                value: \"FR\",\n            },\n            {\n                label: \"region\",\n                value: \"europe\",\n            },\n            {\n                label: \"destination\",\n                value: \"parking\",\n            },\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmyaccount = ovh.Me.get_me()\nmycart = ovh.Order.get_cart(ovh_subsidiary=\"fr\")\nipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,\n    price_capacity=\"renew\",\n    product=\"ip\",\n    plan_code=\"ip-v4-s30-ripe\")\nipblock_ip_service = ovh.ip.IpService(\"ipblockIpService\",\n    ovh_subsidiary=mycart.ovh_subsidiary,\n    description=\"my ip block\",\n    plan={\n        \"duration\": ipblock_cart_product_plan.selected_prices[0].duration,\n        \"plan_code\": ipblock_cart_product_plan.plan_code,\n        \"pricing_mode\": ipblock_cart_product_plan.selected_prices[0].pricing_mode,\n        \"configurations\": [\n            {\n                \"label\": \"country\",\n                \"value\": \"FR\",\n            },\n            {\n                \"label\": \"region\",\n                \"value\": \"europe\",\n            },\n            {\n                \"label\": \"destination\",\n                \"value\": \"parking\",\n            },\n        ],\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myaccount = Ovh.Me.GetMe.Invoke();\n\n    var mycart = Ovh.Order.GetCart.Invoke(new()\n    {\n        OvhSubsidiary = \"fr\",\n    });\n\n    var ipblockCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()\n    {\n        CartId = mycart.Apply(getCartResult =\u003e getCartResult.Id),\n        PriceCapacity = \"renew\",\n        Product = \"ip\",\n        PlanCode = \"ip-v4-s30-ripe\",\n    });\n\n    var ipblockIpService = new Ovh.Ip.IpService(\"ipblockIpService\", new()\n    {\n        OvhSubsidiary = mycart.Apply(getCartResult =\u003e getCartResult.OvhSubsidiary),\n        Description = \"my ip block\",\n        Plan = new Ovh.Ip.Inputs.IpServicePlanArgs\n        {\n            Duration = ipblockCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.SelectedPrices[0]?.Duration),\n            PlanCode = ipblockCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.PlanCode),\n            PricingMode = ipblockCartProductPlan.Apply(getCartProductPlanResult =\u003e getCartProductPlanResult.SelectedPrices[0]?.PricingMode),\n            Configurations = new[]\n            {\n                new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs\n                {\n                    Label = \"country\",\n                    Value = \"FR\",\n                },\n                new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs\n                {\n                    Label = \"region\",\n                    Value = \"europe\",\n                },\n                new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs\n                {\n                    Label = \"destination\",\n                    Value = \"parking\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip\"\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/me\"\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/order\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := me.GetMe(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmycart, err := order.GetCart(ctx, \u0026order.GetCartArgs{\n\t\t\tOvhSubsidiary: \"fr\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tipblockCartProductPlan, err := order.GetCartProductPlan(ctx, \u0026order.GetCartProductPlanArgs{\n\t\t\tCartId:        mycart.Id,\n\t\t\tPriceCapacity: \"renew\",\n\t\t\tProduct:       \"ip\",\n\t\t\tPlanCode:      \"ip-v4-s30-ripe\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = ip.NewIpService(ctx, \"ipblockIpService\", \u0026ip.IpServiceArgs{\n\t\t\tOvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),\n\t\t\tDescription:   pulumi.String(\"my ip block\"),\n\t\t\tPlan: \u0026ip.IpServicePlanArgs{\n\t\t\t\tDuration:    pulumi.String(ipblockCartProductPlan.SelectedPrices[0].Duration),\n\t\t\t\tPlanCode:    pulumi.String(ipblockCartProductPlan.PlanCode),\n\t\t\t\tPricingMode: pulumi.String(ipblockCartProductPlan.SelectedPrices[0].PricingMode),\n\t\t\t\tConfigurations: ip.IpServicePlanConfigurationArray{\n\t\t\t\t\t\u0026ip.IpServicePlanConfigurationArgs{\n\t\t\t\t\t\tLabel: pulumi.String(\"country\"),\n\t\t\t\t\t\tValue: pulumi.String(\"FR\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026ip.IpServicePlanConfigurationArgs{\n\t\t\t\t\t\tLabel: pulumi.String(\"region\"),\n\t\t\t\t\t\tValue: pulumi.String(\"europe\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026ip.IpServicePlanConfigurationArgs{\n\t\t\t\t\t\tLabel: pulumi.String(\"destination\"),\n\t\t\t\t\t\tValue: pulumi.String(\"parking\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.MeFunctions;\nimport com.pulumi.ovh.Order.OrderFunctions;\nimport com.pulumi.ovh.Order.inputs.GetCartArgs;\nimport com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;\nimport com.pulumi.ovh.Ip.IpService;\nimport com.pulumi.ovh.Ip.IpServiceArgs;\nimport com.pulumi.ovh.Ip.inputs.IpServicePlanArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myaccount = MeFunctions.getMe();\n\n        final var mycart = OrderFunctions.getCart(GetCartArgs.builder()\n            .ovhSubsidiary(\"fr\")\n            .build());\n\n        final var ipblockCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()\n            .cartId(mycart.applyValue(getCartResult -\u003e getCartResult.id()))\n            .priceCapacity(\"renew\")\n            .product(\"ip\")\n            .planCode(\"ip-v4-s30-ripe\")\n            .build());\n\n        var ipblockIpService = new IpService(\"ipblockIpService\", IpServiceArgs.builder()\n            .ovhSubsidiary(mycart.applyValue(getCartResult -\u003e getCartResult.ovhSubsidiary()))\n            .description(\"my ip block\")\n            .plan(IpServicePlanArgs.builder()\n                .duration(ipblockCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.selectedPrices()[0].duration()))\n                .planCode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.planCode()))\n                .pricingMode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -\u003e getCartProductPlanResult.selectedPrices()[0].pricingMode()))\n                .configurations(                \n                    IpServicePlanConfigurationArgs.builder()\n                        .label(\"country\")\n                        .value(\"FR\")\n                        .build(),\n                    IpServicePlanConfigurationArgs.builder()\n                        .label(\"region\")\n                        .value(\"europe\")\n                        .build(),\n                    IpServicePlanConfigurationArgs.builder()\n                        .label(\"destination\")\n                        .value(\"parking\")\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ipblockIpService:\n    type: ovh:Ip:IpService\n    properties:\n      ovhSubsidiary: ${mycart.ovhSubsidiary}\n      description: my ip block\n      plan:\n        duration: ${ipblockCartProductPlan.selectedPrices[0].duration}\n        planCode: ${ipblockCartProductPlan.planCode}\n        pricingMode: ${ipblockCartProductPlan.selectedPrices[0].pricingMode}\n        configurations:\n          - label: country\n            value: FR\n          - label: region\n            value: europe\n          - label: destination\n            value: parking\nvariables:\n  myaccount:\n    fn::invoke:\n      function: ovh:Me:getMe\n      arguments: {}\n  mycart:\n    fn::invoke:\n      function: ovh:Order:getCart\n      arguments:\n        ovhSubsidiary: fr\n  ipblockCartProductPlan:\n    fn::invoke:\n      function: ovh:Order:getCartProductPlan\n      arguments:\n        cartId: ${mycart.id}\n        priceCapacity: renew\n        product: ip\n        planCode: ip-v4-s30-ripe\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe resource can be imported using its `service_name`, E.g.,\n\nhcl\n\nimport {\n\n  to = ovh_ip_service.ipblock\n\n  id = \"ip-xx.xx.xx.xx\"\n\n}\n\nbash\n\n$ pulumi preview -generate-config-out=ipblock.tf\n\n$ pulumi up\n\nThe file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.\n\nSee https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.\n\n",
             "properties": {
                 "canBeTerminated": {
                     "type": "boolean",
@@ -21942,7 +22042,7 @@
                 },
                 "flavor": {
                     "type": "string",
-                    "description": "Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).\n"
+                    "description": "Savings Plan flavor. The list of available flavors can be retrieved in the next section.\n"
                 },
                 "period": {
                     "type": "string",
@@ -22007,7 +22107,7 @@
                 },
                 "flavor": {
                     "type": "string",
-                    "description": "Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).\n",
+                    "description": "Savings Plan flavor. The list of available flavors can be retrieved in the next section.\n",
                     "willReplaceOnChanges": true
                 },
                 "period": {
@@ -22049,7 +22149,7 @@
                     },
                     "flavor": {
                         "type": "string",
-                        "description": "Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).\n",
+                        "description": "Savings Plan flavor. The list of available flavors can be retrieved in the next section.\n",
                         "willReplaceOnChanges": true
                     },
                     "period": {
@@ -23524,6 +23624,56 @@
                     "serviceName",
                     "status",
                     "subType"
+                ]
+            }
+        },
+        "ovh:CloudProject/getFloatingIPs:getFloatingIPs": {
+            "description": "Use this data source to get the floating IPs of a public cloud project.\n\n## Example Usage\n\nTo get information of floating IPs:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.CloudProjectFunctions;\nimport com.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()\n            .region(\"XXXX\")\n            .serviceName(\"YYYY\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  ips:\n    fn::invoke:\n      function: ovh:CloudProject:getFloatingIPs\n      arguments:\n        region: XXXX\n        serviceName: YYYY\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getFloatingIPs.\n",
+                "properties": {
+                    "regionName": {
+                        "type": "string",
+                        "description": "Public cloud region name\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "regionName",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFloatingIPs.\n",
+                "properties": {
+                    "cloudProjectFloatingips": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:CloudProject/getFloatingIPsCloudProjectFloatingip:getFloatingIPsCloudProjectFloatingip"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "regionName": {
+                        "type": "string",
+                        "description": "Floating IP region\n"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cloudProjectFloatingips",
+                    "regionName",
+                    "serviceName",
+                    "id"
                 ]
             }
         },
@@ -28393,6 +28543,13 @@
                         "type": "boolean",
                         "description": "Send an email to customer if any issue is detected\n"
                     },
+                    "partitionsLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "the list of the HA-NAS partitions name\n"
+                    },
                     "serviceName": {
                         "type": "string",
                         "description": "The storage service name\n"
@@ -28414,10 +28571,78 @@
                     "diskType",
                     "ip",
                     "monitored",
+                    "partitionsLists",
                     "serviceName",
                     "NasHAURN",
                     "zpoolCapacity",
                     "zpoolSize",
+                    "id"
+                ]
+            }
+        },
+        "ovh:Dedicated/getNasHAPartition:getNasHAPartition": {
+            "description": "Use this data source to retrieve information about a dedicated HA-NAS partition.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@pulumi/ovh\";\n\nconst myNasHaPartition = ovh.Dedicated.getNasHAPartition({\n    name: \"my-zpool-partition\",\n    serviceName: \"zpool-12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmy_nas_ha_partition = ovh.Dedicated.get_nas_ha_partition(name=\"my-zpool-partition\",\n    service_name=\"zpool-12345\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myNasHaPartition = Ovh.Dedicated.GetNasHAPartition.Invoke(new()\n    {\n        Name = \"my-zpool-partition\",\n        ServiceName = \"zpool-12345\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dedicated.GetNasHAPartition(ctx, \u0026dedicated.GetNasHAPartitionArgs{\n\t\t\tName:        \"my-zpool-partition\",\n\t\t\tServiceName: \"zpool-12345\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Dedicated.DedicatedFunctions;\nimport com.pulumi.ovh.Dedicated.inputs.GetNasHAPartitionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myNasHaPartition = DedicatedFunctions.getNasHAPartition(GetNasHAPartitionArgs.builder()\n            .name(\"my-zpool-partition\")\n            .serviceName(\"zpool-12345\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myNasHaPartition:\n    fn::invoke:\n      function: ovh:Dedicated:getNasHAPartition\n      arguments:\n        name: my-zpool-partition\n        serviceName: zpool-12345\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNasHAPartition.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of your dedicated HA-NAS partition.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The service_name of your dedicated HA-NAS.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNasHAPartition.\n",
+                "properties": {
+                    "capacity": {
+                        "type": "integer",
+                        "description": "Percentage of partition space used in %\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A brief description of the partition\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "protocol": {
+                        "type": "string",
+                        "description": "one of \"NFS\", \"CIFS\" or \"NFS_CIFS\"\n"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "size of the partition in GB\n"
+                    },
+                    "usedBySnapshots": {
+                        "type": "integer",
+                        "description": "Percentage of partition space used by snapshots in %\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "capacity",
+                    "description",
+                    "name",
+                    "protocol",
+                    "serviceName",
+                    "size",
+                    "usedBySnapshots",
                     "id"
                 ]
             }
@@ -31901,6 +32126,10 @@
                         "type": "string",
                         "description": "Dedicated server display name\n"
                     },
+                    "efiBootloaderPath": {
+                        "type": "string",
+                        "description": "Path of the EFI bootloader of the dedicated server\n"
+                    },
                     "enabledPublicVnis": {
                         "type": "array",
                         "items": {
@@ -32023,6 +32252,7 @@
                     "commercialRange",
                     "datacenter",
                     "displayName",
+                    "efiBootloaderPath",
                     "enabledPublicVnis",
                     "enabledVrackAggregationVnis",
                     "enabledVrackVnis",
