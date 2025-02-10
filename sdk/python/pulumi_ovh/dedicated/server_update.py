@@ -23,6 +23,7 @@ class ServerUpdateArgs:
                  boot_id: Optional[pulumi.Input[int]] = None,
                  boot_script: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
@@ -31,6 +32,7 @@ class ServerUpdateArgs:
         :param pulumi.Input[int] boot_id: boot id of the server
         :param pulumi.Input[str] boot_script: boot script of the server
         :param pulumi.Input[str] display_name: display name of the dedicated server
+        :param pulumi.Input[str] efi_bootloader_path: path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
         """
@@ -41,6 +43,8 @@ class ServerUpdateArgs:
             pulumi.set(__self__, "boot_script", boot_script)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if efi_bootloader_path is not None:
+            pulumi.set(__self__, "efi_bootloader_path", efi_bootloader_path)
         if monitoring is not None:
             pulumi.set(__self__, "monitoring", monitoring)
         if state is not None:
@@ -95,6 +99,18 @@ class ServerUpdateArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="efiBootloaderPath")
+    def efi_bootloader_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        path of the EFI bootloader
+        """
+        return pulumi.get(self, "efi_bootloader_path")
+
+    @efi_bootloader_path.setter
+    def efi_bootloader_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "efi_bootloader_path", value)
+
+    @property
     @pulumi.getter
     def monitoring(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -125,6 +141,7 @@ class _ServerUpdateState:
                  boot_id: Optional[pulumi.Input[int]] = None,
                  boot_script: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
@@ -133,6 +150,7 @@ class _ServerUpdateState:
         :param pulumi.Input[int] boot_id: boot id of the server
         :param pulumi.Input[str] boot_script: boot script of the server
         :param pulumi.Input[str] display_name: display name of the dedicated server
+        :param pulumi.Input[str] efi_bootloader_path: path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
@@ -143,6 +161,8 @@ class _ServerUpdateState:
             pulumi.set(__self__, "boot_script", boot_script)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if efi_bootloader_path is not None:
+            pulumi.set(__self__, "efi_bootloader_path", efi_bootloader_path)
         if monitoring is not None:
             pulumi.set(__self__, "monitoring", monitoring)
         if service_name is not None:
@@ -185,6 +205,18 @@ class _ServerUpdateState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="efiBootloaderPath")
+    def efi_bootloader_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        path of the EFI bootloader
+        """
+        return pulumi.get(self, "efi_bootloader_path")
+
+    @efi_bootloader_path.setter
+    def efi_bootloader_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "efi_bootloader_path", value)
 
     @property
     @pulumi.getter
@@ -231,6 +263,7 @@ class ServerUpdate(pulumi.CustomResource):
                  boot_id: Optional[pulumi.Input[int]] = None,
                  boot_script: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -258,6 +291,7 @@ class ServerUpdate(pulumi.CustomResource):
         :param pulumi.Input[int] boot_id: boot id of the server
         :param pulumi.Input[str] boot_script: boot script of the server
         :param pulumi.Input[str] display_name: display name of the dedicated server
+        :param pulumi.Input[str] efi_bootloader_path: path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
@@ -304,6 +338,7 @@ class ServerUpdate(pulumi.CustomResource):
                  boot_id: Optional[pulumi.Input[int]] = None,
                  boot_script: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -319,6 +354,7 @@ class ServerUpdate(pulumi.CustomResource):
             __props__.__dict__["boot_id"] = boot_id
             __props__.__dict__["boot_script"] = boot_script
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["efi_bootloader_path"] = efi_bootloader_path
             __props__.__dict__["monitoring"] = monitoring
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
@@ -337,6 +373,7 @@ class ServerUpdate(pulumi.CustomResource):
             boot_id: Optional[pulumi.Input[int]] = None,
             boot_script: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            efi_bootloader_path: Optional[pulumi.Input[str]] = None,
             monitoring: Optional[pulumi.Input[bool]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'ServerUpdate':
@@ -350,6 +387,7 @@ class ServerUpdate(pulumi.CustomResource):
         :param pulumi.Input[int] boot_id: boot id of the server
         :param pulumi.Input[str] boot_script: boot script of the server
         :param pulumi.Input[str] display_name: display name of the dedicated server
+        :param pulumi.Input[str] efi_bootloader_path: path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
@@ -361,6 +399,7 @@ class ServerUpdate(pulumi.CustomResource):
         __props__.__dict__["boot_id"] = boot_id
         __props__.__dict__["boot_script"] = boot_script
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["efi_bootloader_path"] = efi_bootloader_path
         __props__.__dict__["monitoring"] = monitoring
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["state"] = state
@@ -389,6 +428,14 @@ class ServerUpdate(pulumi.CustomResource):
         display name of the dedicated server
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="efiBootloaderPath")
+    def efi_bootloader_path(self) -> pulumi.Output[str]:
+        """
+        path of the EFI bootloader
+        """
+        return pulumi.get(self, "efi_bootloader_path")
 
     @property
     @pulumi.getter

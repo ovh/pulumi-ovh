@@ -57,7 +57,7 @@ type SavingsPlan struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// End date of the Savings Plan
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
-	// Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
 	Flavor pulumi.StringOutput `pulumi:"flavor"`
 	// Periodicity of the Savings Plan
 	Period pulumi.StringOutput `pulumi:"period"`
@@ -130,7 +130,7 @@ type savingsPlanState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// End date of the Savings Plan
 	EndDate *string `pulumi:"endDate"`
-	// Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
 	Flavor *string `pulumi:"flavor"`
 	// Periodicity of the Savings Plan
 	Period *string `pulumi:"period"`
@@ -159,7 +159,7 @@ type SavingsPlanState struct {
 	DisplayName pulumi.StringPtrInput
 	// End date of the Savings Plan
 	EndDate pulumi.StringPtrInput
-	// Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
 	Flavor pulumi.StringPtrInput
 	// Periodicity of the Savings Plan
 	Period pulumi.StringPtrInput
@@ -190,7 +190,7 @@ type savingsPlanArgs struct {
 	AutoRenewal *bool `pulumi:"autoRenewal"`
 	// Custom display name, used in invoices
 	DisplayName string `pulumi:"displayName"`
-	// Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
 	Flavor string `pulumi:"flavor"`
 	// Periodicity of the Savings Plan
 	Period string `pulumi:"period"`
@@ -206,7 +206,7 @@ type SavingsPlanArgs struct {
 	AutoRenewal pulumi.BoolPtrInput
 	// Custom display name, used in invoices
 	DisplayName pulumi.StringInput
-	// Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
 	Flavor pulumi.StringInput
 	// Periodicity of the Savings Plan
 	Period pulumi.StringInput
@@ -318,7 +318,7 @@ func (o SavingsPlanOutput) EndDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *SavingsPlan) pulumi.StringOutput { return v.EndDate }).(pulumi.StringOutput)
 }
 
-// Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
 func (o SavingsPlanOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v *SavingsPlan) pulumi.StringOutput { return v.Flavor }).(pulumi.StringOutput)
 }

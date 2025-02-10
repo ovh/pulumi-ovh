@@ -20,14 +20,16 @@ public final class NetworkPrivateSubnetV2State extends com.pulumi.resources.Reso
     public static final NetworkPrivateSubnetV2State Empty = new NetworkPrivateSubnetV2State();
 
     /**
-     * DHCP allocation pools of subnet
+     * List of IP allocation pools
+     * Changing this value recreates the resource.
      * 
      */
     @Import(name="allocationPools")
     private @Nullable Output<List<NetworkPrivateSubnetV2AllocationPoolArgs>> allocationPools;
 
     /**
-     * @return DHCP allocation pools of subnet
+     * @return List of IP allocation pools
+     * Changing this value recreates the resource.
      * 
      */
     public Optional<Output<List<NetworkPrivateSubnetV2AllocationPoolArgs>>> allocationPools() {
@@ -253,7 +255,8 @@ public final class NetworkPrivateSubnetV2State extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param allocationPools DHCP allocation pools of subnet
+         * @param allocationPools List of IP allocation pools
+         * Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -264,7 +267,8 @@ public final class NetworkPrivateSubnetV2State extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param allocationPools DHCP allocation pools of subnet
+         * @param allocationPools List of IP allocation pools
+         * Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -274,7 +278,8 @@ public final class NetworkPrivateSubnetV2State extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param allocationPools DHCP allocation pools of subnet
+         * @param allocationPools List of IP allocation pools
+         * Changing this value recreates the resource.
          * 
          * @return builder
          * 

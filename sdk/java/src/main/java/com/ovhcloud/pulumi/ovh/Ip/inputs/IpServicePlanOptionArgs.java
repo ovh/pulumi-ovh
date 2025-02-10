@@ -34,14 +34,14 @@ public final class IpServicePlanOptionArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Representation of a configuration item for personalizing product
+     * Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
      * 
      */
     @Import(name="configurations")
     private @Nullable Output<List<IpServicePlanOptionConfigurationArgs>> configurations;
 
     /**
-     * @return Representation of a configuration item for personalizing product
+     * @return Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
      * 
      */
     public Optional<Output<List<IpServicePlanOptionConfigurationArgs>>> configurations() {
@@ -143,7 +143,7 @@ public final class IpServicePlanOptionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param configurations Representation of a configuration item for personalizing product
+         * @param configurations Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class IpServicePlanOptionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param configurations Representation of a configuration item for personalizing product
+         * @param configurations Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class IpServicePlanOptionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param configurations Representation of a configuration item for personalizing product
+         * @param configurations Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
          * 
          * @return builder
          * 

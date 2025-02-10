@@ -92,6 +92,10 @@ export class Server extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Path of the EFI bootloader
+     */
+    public readonly efiBootloaderPath!: pulumi.Output<string>;
+    /**
      * IAM resource information
      */
     public /*out*/ readonly iam!: pulumi.Output<outputs.Dedicated.ServerIam>;
@@ -211,6 +215,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["datacenter"] = state ? state.datacenter : undefined;
             resourceInputs["details"] = state ? state.details : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["efiBootloaderPath"] = state ? state.efiBootloaderPath : undefined;
             resourceInputs["iam"] = state ? state.iam : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["linkSpeed"] = state ? state.linkSpeed : undefined;
@@ -244,6 +249,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["bootScript"] = args ? args.bootScript : undefined;
             resourceInputs["details"] = args ? args.details : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["efiBootloaderPath"] = args ? args.efiBootloaderPath : undefined;
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
             resourceInputs["noIntervention"] = args ? args.noIntervention : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
@@ -312,6 +318,10 @@ export interface ServerState {
      * Resource display name
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Path of the EFI bootloader
+     */
+    efiBootloaderPath?: pulumi.Input<string>;
     /**
      * IAM resource information
      */
@@ -433,6 +443,10 @@ export interface ServerArgs {
      * Resource display name
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Path of the EFI bootloader
+     */
+    efiBootloaderPath?: pulumi.Input<string>;
     /**
      * Icmp monitoring state
      */

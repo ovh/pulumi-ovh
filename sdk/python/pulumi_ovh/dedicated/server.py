@@ -25,6 +25,7 @@ class ServerArgs:
                  boot_script: Optional[pulumi.Input[str]] = None,
                  details: Optional[pulumi.Input['ServerDetailsArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  no_intervention: Optional[pulumi.Input[bool]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,7 @@ class ServerArgs:
         :param pulumi.Input[str] boot_script: Boot script of the server
         :param pulumi.Input['ServerDetailsArgs'] details: A structure describing informations about installation custom
         :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[bool] no_intervention: Prevent datacenter intervention
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
@@ -62,6 +64,8 @@ class ServerArgs:
             pulumi.set(__self__, "details", details)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if efi_bootloader_path is not None:
+            pulumi.set(__self__, "efi_bootloader_path", efi_bootloader_path)
         if monitoring is not None:
             pulumi.set(__self__, "monitoring", monitoring)
         if no_intervention is not None:
@@ -134,6 +138,18 @@ class ServerArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="efiBootloaderPath")
+    def efi_bootloader_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path of the EFI bootloader
+        """
+        return pulumi.get(self, "efi_bootloader_path")
+
+    @efi_bootloader_path.setter
+    def efi_bootloader_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "efi_bootloader_path", value)
 
     @property
     @pulumi.getter
@@ -284,6 +300,7 @@ class _ServerState:
                  datacenter: Optional[pulumi.Input[str]] = None,
                  details: Optional[pulumi.Input['ServerDetailsArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  iam: Optional[pulumi.Input['ServerIamArgs']] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  link_speed: Optional[pulumi.Input[float]] = None,
@@ -320,6 +337,7 @@ class _ServerState:
         :param pulumi.Input[str] datacenter: Dedicated datacenter localisation (bhs1,bhs2,...)
         :param pulumi.Input['ServerDetailsArgs'] details: A structure describing informations about installation custom
         :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input['ServerIamArgs'] iam: IAM resource information
         :param pulumi.Input[str] ip: Dedicated server ip (IPv4)
         :param pulumi.Input[float] link_speed: Link speed of the server
@@ -359,6 +377,8 @@ class _ServerState:
             pulumi.set(__self__, "details", details)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if efi_bootloader_path is not None:
+            pulumi.set(__self__, "efi_bootloader_path", efi_bootloader_path)
         if iam is not None:
             pulumi.set(__self__, "iam", iam)
         if ip is not None:
@@ -497,6 +517,18 @@ class _ServerState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="efiBootloaderPath")
+    def efi_bootloader_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path of the EFI bootloader
+        """
+        return pulumi.get(self, "efi_bootloader_path")
+
+    @efi_bootloader_path.setter
+    def efi_bootloader_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "efi_bootloader_path", value)
 
     @property
     @pulumi.getter
@@ -823,6 +855,7 @@ class Server(pulumi.CustomResource):
                  boot_script: Optional[pulumi.Input[str]] = None,
                  details: Optional[pulumi.Input[Union['ServerDetailsArgs', 'ServerDetailsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  no_intervention: Optional[pulumi.Input[bool]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
@@ -871,6 +904,7 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[str] boot_script: Boot script of the server
         :param pulumi.Input[Union['ServerDetailsArgs', 'ServerDetailsArgsDict']] details: A structure describing informations about installation custom
         :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[bool] no_intervention: Prevent datacenter intervention
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
@@ -936,6 +970,7 @@ class Server(pulumi.CustomResource):
                  boot_script: Optional[pulumi.Input[str]] = None,
                  details: Optional[pulumi.Input[Union['ServerDetailsArgs', 'ServerDetailsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  no_intervention: Optional[pulumi.Input[bool]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
@@ -961,6 +996,7 @@ class Server(pulumi.CustomResource):
             __props__.__dict__["boot_script"] = boot_script
             __props__.__dict__["details"] = details
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["efi_bootloader_path"] = efi_bootloader_path
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["no_intervention"] = no_intervention
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
@@ -1008,6 +1044,7 @@ class Server(pulumi.CustomResource):
             datacenter: Optional[pulumi.Input[str]] = None,
             details: Optional[pulumi.Input[Union['ServerDetailsArgs', 'ServerDetailsArgsDict']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            efi_bootloader_path: Optional[pulumi.Input[str]] = None,
             iam: Optional[pulumi.Input[Union['ServerIamArgs', 'ServerIamArgsDict']]] = None,
             ip: Optional[pulumi.Input[str]] = None,
             link_speed: Optional[pulumi.Input[float]] = None,
@@ -1049,6 +1086,7 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter: Dedicated datacenter localisation (bhs1,bhs2,...)
         :param pulumi.Input[Union['ServerDetailsArgs', 'ServerDetailsArgsDict']] details: A structure describing informations about installation custom
         :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input[Union['ServerIamArgs', 'ServerIamArgsDict']] iam: IAM resource information
         :param pulumi.Input[str] ip: Dedicated server ip (IPv4)
         :param pulumi.Input[float] link_speed: Link speed of the server
@@ -1085,6 +1123,7 @@ class Server(pulumi.CustomResource):
         __props__.__dict__["datacenter"] = datacenter
         __props__.__dict__["details"] = details
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["efi_bootloader_path"] = efi_bootloader_path
         __props__.__dict__["iam"] = iam
         __props__.__dict__["ip"] = ip
         __props__.__dict__["link_speed"] = link_speed
@@ -1169,6 +1208,14 @@ class Server(pulumi.CustomResource):
         Resource display name
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="efiBootloaderPath")
+    def efi_bootloader_path(self) -> pulumi.Output[str]:
+        """
+        Path of the EFI bootloader
+        """
+        return pulumi.get(self, "efi_bootloader_path")
 
     @property
     @pulumi.getter

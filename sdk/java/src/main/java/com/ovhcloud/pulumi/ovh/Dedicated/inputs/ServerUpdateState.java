@@ -63,6 +63,21 @@ public final class ServerUpdateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * path of the EFI bootloader
+     * 
+     */
+    @Import(name="efiBootloaderPath")
+    private @Nullable Output<String> efiBootloaderPath;
+
+    /**
+     * @return path of the EFI bootloader
+     * 
+     */
+    public Optional<Output<String>> efiBootloaderPath() {
+        return Optional.ofNullable(this.efiBootloaderPath);
+    }
+
+    /**
      * Icmp monitoring state
      * 
      */
@@ -113,6 +128,7 @@ public final class ServerUpdateState extends com.pulumi.resources.ResourceArgs {
         this.bootId = $.bootId;
         this.bootScript = $.bootScript;
         this.displayName = $.displayName;
+        this.efiBootloaderPath = $.efiBootloaderPath;
         this.monitoring = $.monitoring;
         this.serviceName = $.serviceName;
         this.state = $.state;
@@ -197,6 +213,27 @@ public final class ServerUpdateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param efiBootloaderPath path of the EFI bootloader
+         * 
+         * @return builder
+         * 
+         */
+        public Builder efiBootloaderPath(@Nullable Output<String> efiBootloaderPath) {
+            $.efiBootloaderPath = efiBootloaderPath;
+            return this;
+        }
+
+        /**
+         * @param efiBootloaderPath path of the EFI bootloader
+         * 
+         * @return builder
+         * 
+         */
+        public Builder efiBootloaderPath(String efiBootloaderPath) {
+            return efiBootloaderPath(Output.of(efiBootloaderPath));
         }
 
         /**

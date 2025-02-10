@@ -146,6 +146,10 @@ namespace Pulumi.Ovh
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Path of the EFI bootloader of the dedicated server
+        /// </summary>
+        public readonly string EfiBootloaderPath;
+        /// <summary>
         /// List of enabled public VNI uuids
         /// </summary>
         public readonly ImmutableArray<string> EnabledPublicVnis;
@@ -256,6 +260,8 @@ namespace Pulumi.Ovh
 
             string displayName,
 
+            string efiBootloaderPath,
+
             ImmutableArray<string> enabledPublicVnis,
 
             ImmutableArray<string> enabledVrackAggregationVnis,
@@ -313,6 +319,7 @@ namespace Pulumi.Ovh
             CommercialRange = commercialRange;
             Datacenter = datacenter;
             DisplayName = displayName;
+            EfiBootloaderPath = efiBootloaderPath;
             EnabledPublicVnis = enabledPublicVnis;
             EnabledVrackAggregationVnis = enabledVrackAggregationVnis;
             EnabledVrackVnis = enabledVrackVnis;

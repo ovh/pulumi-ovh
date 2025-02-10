@@ -21,6 +21,8 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetContainerRegistryUsersArgs
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetContainerRegistryUsersPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFailoverIpAttachArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFailoverIpAttachPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFloatingIPsPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetGatewayInterfaceArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetGatewayInterfacePlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetInstanceArgs;
@@ -102,6 +104,7 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetContainerRegistryOIDCResu
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetContainerRegistryResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetContainerRegistryUsersInvokeResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetFailoverIpAttachResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetFloatingIPsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetGatewayInterfaceResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetInstanceResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetInstancesResult;
@@ -1429,6 +1432,186 @@ public final class CloudProjectFunctions {
      */
     public static CompletableFuture<GetFailoverIpAttachResult> getFailoverIpAttachPlain(GetFailoverIpAttachPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach", TypeShape.of(GetFailoverIpAttachResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To get information of floating IPs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFloatingIPsResult> getFloatingIPs(GetFloatingIPsArgs args) {
+        return getFloatingIPs(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To get information of floating IPs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFloatingIPsResult> getFloatingIPsPlain(GetFloatingIPsPlainArgs args) {
+        return getFloatingIPsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To get information of floating IPs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFloatingIPsResult> getFloatingIPs(GetFloatingIPsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getFloatingIPs:getFloatingIPs", TypeShape.of(GetFloatingIPsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To get information of floating IPs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
+     *             .region("XXXX")
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFloatingIPsResult> getFloatingIPsPlain(GetFloatingIPsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getFloatingIPs:getFloatingIPs", TypeShape.of(GetFloatingIPsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this datasource to get a public cloud project Gateway Interface.

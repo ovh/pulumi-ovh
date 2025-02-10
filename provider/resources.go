@@ -661,6 +661,9 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_failover_ip_attach": {
 				Tok: ovhDataSource(cloudProjectMod, "getFailoverIpAttach"),
 			},
+			"ovh_cloud_project_floatingips": {
+				Tok: ovhDataSource(cloudProjectMod, "getFloatingIPs"),
+			},
 			"ovh_cloud_project_gateway_interface": {
 				Tok: ovhDataSource(cloudProjectMod, "getGatewayInterface"),
 			},
@@ -802,6 +805,9 @@ func Provider() tfbridge.ProviderInfo {
 						Name: "NasHAURN",
 					},
 				},
+			},
+			"ovh_dedicated_nasha_partition": {
+				Tok: ovhDataSource(dedicatedMod, "getNasHAPartition"),
 			},
 			"ovh_dedicated_server_boots": {
 				Tok: ovhDataSource(dedicatedMod, "getServerBoots"),

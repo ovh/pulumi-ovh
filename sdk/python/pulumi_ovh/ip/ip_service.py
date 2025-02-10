@@ -378,10 +378,20 @@ class IpService(pulumi.CustomResource):
                 "duration": ipblock_cart_product_plan.selected_prices[0].duration,
                 "plan_code": ipblock_cart_product_plan.plan_code,
                 "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
-                "configurations": [{
-                    "label": "country",
-                    "value": "FR",
-                }],
+                "configurations": [
+                    {
+                        "label": "country",
+                        "value": "FR",
+                    },
+                    {
+                        "label": "region",
+                        "value": "europe",
+                    },
+                    {
+                        "label": "destination",
+                        "value": "parking",
+                    },
+                ],
             })
         ```
 
@@ -444,10 +454,20 @@ class IpService(pulumi.CustomResource):
                 "duration": ipblock_cart_product_plan.selected_prices[0].duration,
                 "plan_code": ipblock_cart_product_plan.plan_code,
                 "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
-                "configurations": [{
-                    "label": "country",
-                    "value": "FR",
-                }],
+                "configurations": [
+                    {
+                        "label": "country",
+                        "value": "FR",
+                    },
+                    {
+                        "label": "region",
+                        "value": "europe",
+                    },
+                    {
+                        "label": "destination",
+                        "value": "parking",
+                    },
+                ],
             })
         ```
 

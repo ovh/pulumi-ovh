@@ -61,7 +61,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Output<string> EndDate { get; private set; } = null!;
 
         /// <summary>
-        /// Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+        /// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         /// </summary>
         [Output("flavor")]
         public Output<string> Flavor { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+        /// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         /// </summary>
         [Input("flavor", required: true)]
         public Input<string> Flavor { get; set; } = null!;
@@ -230,7 +230,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+        /// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         /// </summary>
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }

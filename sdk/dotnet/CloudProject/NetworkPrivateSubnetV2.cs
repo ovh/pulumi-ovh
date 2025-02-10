@@ -54,7 +54,8 @@ namespace Pulumi.Ovh.CloudProject
     public partial class NetworkPrivateSubnetV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// DHCP allocation pools of subnet
+        /// List of IP allocation pools
+        /// Changing this value recreates the resource.
         /// </summary>
         [Output("allocationPools")]
         public Output<ImmutableArray<Outputs.NetworkPrivateSubnetV2AllocationPool>> AllocationPools { get; private set; } = null!;
@@ -185,7 +186,8 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.NetworkPrivateSubnetV2AllocationPoolArgs>? _allocationPools;
 
         /// <summary>
-        /// DHCP allocation pools of subnet
+        /// List of IP allocation pools
+        /// Changing this value recreates the resource.
         /// </summary>
         public InputList<Inputs.NetworkPrivateSubnetV2AllocationPoolArgs> AllocationPools
         {
@@ -292,7 +294,8 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.NetworkPrivateSubnetV2AllocationPoolGetArgs>? _allocationPools;
 
         /// <summary>
-        /// DHCP allocation pools of subnet
+        /// List of IP allocation pools
+        /// Changing this value recreates the resource.
         /// </summary>
         public InputList<Inputs.NetworkPrivateSubnetV2AllocationPoolGetArgs> AllocationPools
         {

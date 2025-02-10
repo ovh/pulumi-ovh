@@ -150,6 +150,10 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         public readonly bool Monitored;
         /// <summary>
+        /// the list of the HA-NAS partitions name
+        /// </summary>
+        public readonly ImmutableArray<string> PartitionsLists;
+        /// <summary>
         /// The storage service name
         /// </summary>
         public readonly string ServiceName;
@@ -180,6 +184,8 @@ namespace Pulumi.Ovh.Dedicated
 
             bool monitored,
 
+            ImmutableArray<string> partitionsLists,
+
             string serviceName,
 
             double zpoolCapacity,
@@ -194,6 +200,7 @@ namespace Pulumi.Ovh.Dedicated
             Id = id;
             Ip = ip;
             Monitored = monitored;
+            PartitionsLists = partitionsLists;
             ServiceName = serviceName;
             ZpoolCapacity = zpoolCapacity;
             ZpoolSize = zpoolSize;

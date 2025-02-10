@@ -51,6 +51,16 @@ namespace Pulumi.Ovh.Ip
     ///                     Label = "country",
     ///                     Value = "FR",
     ///                 },
+    ///                 new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "region",
+    ///                     Value = "europe",
+    ///                 },
+    ///                 new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "destination",
+    ///                     Value = "parking",
+    ///                 },
     ///             },
     ///         },
     ///     });

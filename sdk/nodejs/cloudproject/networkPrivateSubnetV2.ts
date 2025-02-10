@@ -66,7 +66,8 @@ export class NetworkPrivateSubnetV2 extends pulumi.CustomResource {
     }
 
     /**
-     * DHCP allocation pools of subnet
+     * List of IP allocation pools
+     * Changing this value recreates the resource.
      */
     public readonly allocationPools!: pulumi.Output<outputs.CloudProject.NetworkPrivateSubnetV2AllocationPool[]>;
     /**
@@ -185,7 +186,8 @@ export class NetworkPrivateSubnetV2 extends pulumi.CustomResource {
  */
 export interface NetworkPrivateSubnetV2State {
     /**
-     * DHCP allocation pools of subnet
+     * List of IP allocation pools
+     * Changing this value recreates the resource.
      */
     allocationPools?: pulumi.Input<pulumi.Input<inputs.CloudProject.NetworkPrivateSubnetV2AllocationPool>[]>;
     /**
@@ -248,7 +250,8 @@ export interface NetworkPrivateSubnetV2State {
  */
 export interface NetworkPrivateSubnetV2Args {
     /**
-     * DHCP allocation pools of subnet
+     * List of IP allocation pools
+     * Changing this value recreates the resource.
      */
     allocationPools?: pulumi.Input<pulumi.Input<inputs.CloudProject.NetworkPrivateSubnetV2AllocationPool>[]>;
     /**

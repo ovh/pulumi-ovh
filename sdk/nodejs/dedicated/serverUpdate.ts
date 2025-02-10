@@ -67,6 +67,10 @@ export class ServerUpdate extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * path of the EFI bootloader
+     */
+    public readonly efiBootloaderPath!: pulumi.Output<string>;
+    /**
      * Icmp monitoring state
      */
     public readonly monitoring!: pulumi.Output<boolean>;
@@ -95,6 +99,7 @@ export class ServerUpdate extends pulumi.CustomResource {
             resourceInputs["bootId"] = state ? state.bootId : undefined;
             resourceInputs["bootScript"] = state ? state.bootScript : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["efiBootloaderPath"] = state ? state.efiBootloaderPath : undefined;
             resourceInputs["monitoring"] = state ? state.monitoring : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
@@ -106,6 +111,7 @@ export class ServerUpdate extends pulumi.CustomResource {
             resourceInputs["bootId"] = args ? args.bootId : undefined;
             resourceInputs["bootScript"] = args ? args.bootScript : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["efiBootloaderPath"] = args ? args.efiBootloaderPath : undefined;
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
@@ -131,6 +137,10 @@ export interface ServerUpdateState {
      * display name of the dedicated server
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * path of the EFI bootloader
+     */
+    efiBootloaderPath?: pulumi.Input<string>;
     /**
      * Icmp monitoring state
      */
@@ -161,6 +171,10 @@ export interface ServerUpdateArgs {
      * display name of the dedicated server
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * path of the EFI bootloader
+     */
+    efiBootloaderPath?: pulumi.Input<string>;
     /**
      * Icmp monitoring state
      */

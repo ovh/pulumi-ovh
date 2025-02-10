@@ -58,6 +58,14 @@ import (
 //							Label: pulumi.String("country"),
 //							Value: pulumi.String("FR"),
 //						},
+//						&ip.IpServicePlanConfigurationArgs{
+//							Label: pulumi.String("region"),
+//							Value: pulumi.String("europe"),
+//						},
+//						&ip.IpServicePlanConfigurationArgs{
+//							Label: pulumi.String("destination"),
+//							Value: pulumi.String("parking"),
+//						},
 //					},
 //				},
 //			})

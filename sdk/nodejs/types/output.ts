@@ -521,6 +521,52 @@ export namespace CloudProject {
         user: string;
     }
 
+    export interface GetFloatingIPsCloudProjectFloatingip {
+        /**
+         * Associated entity with the floating IP
+         */
+        associatedEntity: outputs.CloudProject.GetFloatingIPsCloudProjectFloatingipAssociatedEntity;
+        /**
+         * ID of the floating IP
+         */
+        id: string;
+        /**
+         * Value of the floating IP
+         */
+        ip: string;
+        /**
+         * ID of the network
+         */
+        networkId: string;
+        /**
+         * Floating ip region
+         */
+        region: string;
+        /**
+         * Status of the floating IP (active┃down┃error)
+         */
+        status: string;
+    }
+
+    export interface GetFloatingIPsCloudProjectFloatingipAssociatedEntity {
+        /**
+         * ID of the gateway
+         */
+        gatewayId: string;
+        /**
+         * ID of the floating IP
+         */
+        id: string;
+        /**
+         * Value of the floating IP
+         */
+        ip: string;
+        /**
+         * Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+         */
+        type: string;
+    }
+
     export interface GetInstanceAddress {
         /**
          * IP address
@@ -2583,7 +2629,7 @@ export namespace Ip {
          */
         catalogName?: string;
         /**
-         * Representation of a configuration item for personalizing product
+         * Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
          */
         configurations?: outputs.Ip.IpServicePlanOptionConfiguration[];
         /**

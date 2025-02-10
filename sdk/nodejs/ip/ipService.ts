@@ -31,10 +31,20 @@ import * as utilities from "../utilities";
  *         duration: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.duration),
  *         planCode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.planCode),
  *         pricingMode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.pricingMode),
- *         configurations: [{
- *             label: "country",
- *             value: "FR",
- *         }],
+ *         configurations: [
+ *             {
+ *                 label: "country",
+ *                 value: "FR",
+ *             },
+ *             {
+ *                 label: "region",
+ *                 value: "europe",
+ *             },
+ *             {
+ *                 label: "destination",
+ *                 value: "parking",
+ *             },
+ *         ],
  *     },
  * });
  * ```

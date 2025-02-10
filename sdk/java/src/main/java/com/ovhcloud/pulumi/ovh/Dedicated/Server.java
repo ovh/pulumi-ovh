@@ -154,6 +154,20 @@ public class Server extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * Path of the EFI bootloader
+     * 
+     */
+    @Export(name="efiBootloaderPath", refs={String.class}, tree="[0]")
+    private Output<String> efiBootloaderPath;
+
+    /**
+     * @return Path of the EFI bootloader
+     * 
+     */
+    public Output<String> efiBootloaderPath() {
+        return this.efiBootloaderPath;
+    }
+    /**
      * IAM resource information
      * 
      */

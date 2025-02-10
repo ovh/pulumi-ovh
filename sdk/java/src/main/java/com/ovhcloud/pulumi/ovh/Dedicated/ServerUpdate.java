@@ -110,6 +110,20 @@ public class ServerUpdate extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * path of the EFI bootloader
+     * 
+     */
+    @Export(name="efiBootloaderPath", refs={String.class}, tree="[0]")
+    private Output<String> efiBootloaderPath;
+
+    /**
+     * @return path of the EFI bootloader
+     * 
+     */
+    public Output<String> efiBootloaderPath() {
+        return this.efiBootloaderPath;
+    }
+    /**
      * Icmp monitoring state
      * 
      */

@@ -43,7 +43,8 @@ class NetworkPrivateSubnetV2Args:
                Ex.: "GRA1". Changing this value recreates the resource.
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]] allocation_pools: DHCP allocation pools of subnet
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]] allocation_pools: List of IP allocation pools
+               Changing this value recreates the resource.
         :param pulumi.Input[bool] dhcp: Enable DHCP.
                Changing this forces a new resource to be created. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: DNS nameservers used by DHCP
@@ -134,7 +135,8 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter(name="allocationPools")
     def allocation_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]]]:
         """
-        DHCP allocation pools of subnet
+        List of IP allocation pools
+        Changing this value recreates the resource.
         """
         return pulumi.get(self, "allocation_pools")
 
@@ -249,7 +251,8 @@ class _NetworkPrivateSubnetV2State:
                  use_default_public_dns_resolver: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering NetworkPrivateSubnetV2 resources.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]] allocation_pools: DHCP allocation pools of subnet
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]] allocation_pools: List of IP allocation pools
+               Changing this value recreates the resource.
         :param pulumi.Input[str] cidr: IP range of the subnet
                Changing this value recreates the subnet.
         :param pulumi.Input[bool] dhcp: Enable DHCP.
@@ -300,7 +303,8 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter(name="allocationPools")
     def allocation_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]]]:
         """
-        DHCP allocation pools of subnet
+        List of IP allocation pools
+        Changing this value recreates the resource.
         """
         return pulumi.get(self, "allocation_pools")
 
@@ -500,7 +504,8 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2AllocationPoolArgs', 'NetworkPrivateSubnetV2AllocationPoolArgsDict']]]] allocation_pools: DHCP allocation pools of subnet
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2AllocationPoolArgs', 'NetworkPrivateSubnetV2AllocationPoolArgsDict']]]] allocation_pools: List of IP allocation pools
+               Changing this value recreates the resource.
         :param pulumi.Input[str] cidr: IP range of the subnet
                Changing this value recreates the subnet.
         :param pulumi.Input[bool] dhcp: Enable DHCP.
@@ -643,7 +648,8 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2AllocationPoolArgs', 'NetworkPrivateSubnetV2AllocationPoolArgsDict']]]] allocation_pools: DHCP allocation pools of subnet
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2AllocationPoolArgs', 'NetworkPrivateSubnetV2AllocationPoolArgsDict']]]] allocation_pools: List of IP allocation pools
+               Changing this value recreates the resource.
         :param pulumi.Input[str] cidr: IP range of the subnet
                Changing this value recreates the subnet.
         :param pulumi.Input[bool] dhcp: Enable DHCP.
@@ -687,7 +693,8 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter(name="allocationPools")
     def allocation_pools(self) -> pulumi.Output[Sequence['outputs.NetworkPrivateSubnetV2AllocationPool']]:
         """
-        DHCP allocation pools of subnet
+        List of IP allocation pools
+        Changing this value recreates the resource.
         """
         return pulumi.get(self, "allocation_pools")
 

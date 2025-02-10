@@ -7253,6 +7253,229 @@ func (o GetContainerRegistryUsersResultArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetContainerRegistryUsersResultOutput)
 }
 
+type GetFloatingIPsCloudProjectFloatingip struct {
+	// Associated entity with the floating IP
+	AssociatedEntity GetFloatingIPsCloudProjectFloatingipAssociatedEntity `pulumi:"associatedEntity"`
+	// ID of the floating IP
+	Id string `pulumi:"id"`
+	// Value of the floating IP
+	Ip string `pulumi:"ip"`
+	// ID of the network
+	NetworkId string `pulumi:"networkId"`
+	// Floating ip region
+	Region string `pulumi:"region"`
+	// Status of the floating IP (active┃down┃error)
+	Status string `pulumi:"status"`
+}
+
+// GetFloatingIPsCloudProjectFloatingipInput is an input type that accepts GetFloatingIPsCloudProjectFloatingipArgs and GetFloatingIPsCloudProjectFloatingipOutput values.
+// You can construct a concrete instance of `GetFloatingIPsCloudProjectFloatingipInput` via:
+//
+//	GetFloatingIPsCloudProjectFloatingipArgs{...}
+type GetFloatingIPsCloudProjectFloatingipInput interface {
+	pulumi.Input
+
+	ToGetFloatingIPsCloudProjectFloatingipOutput() GetFloatingIPsCloudProjectFloatingipOutput
+	ToGetFloatingIPsCloudProjectFloatingipOutputWithContext(context.Context) GetFloatingIPsCloudProjectFloatingipOutput
+}
+
+type GetFloatingIPsCloudProjectFloatingipArgs struct {
+	// Associated entity with the floating IP
+	AssociatedEntity GetFloatingIPsCloudProjectFloatingipAssociatedEntityInput `pulumi:"associatedEntity"`
+	// ID of the floating IP
+	Id pulumi.StringInput `pulumi:"id"`
+	// Value of the floating IP
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// ID of the network
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// Floating ip region
+	Region pulumi.StringInput `pulumi:"region"`
+	// Status of the floating IP (active┃down┃error)
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetFloatingIPsCloudProjectFloatingipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingip)(nil)).Elem()
+}
+
+func (i GetFloatingIPsCloudProjectFloatingipArgs) ToGetFloatingIPsCloudProjectFloatingipOutput() GetFloatingIPsCloudProjectFloatingipOutput {
+	return i.ToGetFloatingIPsCloudProjectFloatingipOutputWithContext(context.Background())
+}
+
+func (i GetFloatingIPsCloudProjectFloatingipArgs) ToGetFloatingIPsCloudProjectFloatingipOutputWithContext(ctx context.Context) GetFloatingIPsCloudProjectFloatingipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFloatingIPsCloudProjectFloatingipOutput)
+}
+
+// GetFloatingIPsCloudProjectFloatingipArrayInput is an input type that accepts GetFloatingIPsCloudProjectFloatingipArray and GetFloatingIPsCloudProjectFloatingipArrayOutput values.
+// You can construct a concrete instance of `GetFloatingIPsCloudProjectFloatingipArrayInput` via:
+//
+//	GetFloatingIPsCloudProjectFloatingipArray{ GetFloatingIPsCloudProjectFloatingipArgs{...} }
+type GetFloatingIPsCloudProjectFloatingipArrayInput interface {
+	pulumi.Input
+
+	ToGetFloatingIPsCloudProjectFloatingipArrayOutput() GetFloatingIPsCloudProjectFloatingipArrayOutput
+	ToGetFloatingIPsCloudProjectFloatingipArrayOutputWithContext(context.Context) GetFloatingIPsCloudProjectFloatingipArrayOutput
+}
+
+type GetFloatingIPsCloudProjectFloatingipArray []GetFloatingIPsCloudProjectFloatingipInput
+
+func (GetFloatingIPsCloudProjectFloatingipArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFloatingIPsCloudProjectFloatingip)(nil)).Elem()
+}
+
+func (i GetFloatingIPsCloudProjectFloatingipArray) ToGetFloatingIPsCloudProjectFloatingipArrayOutput() GetFloatingIPsCloudProjectFloatingipArrayOutput {
+	return i.ToGetFloatingIPsCloudProjectFloatingipArrayOutputWithContext(context.Background())
+}
+
+func (i GetFloatingIPsCloudProjectFloatingipArray) ToGetFloatingIPsCloudProjectFloatingipArrayOutputWithContext(ctx context.Context) GetFloatingIPsCloudProjectFloatingipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFloatingIPsCloudProjectFloatingipArrayOutput)
+}
+
+type GetFloatingIPsCloudProjectFloatingipOutput struct{ *pulumi.OutputState }
+
+func (GetFloatingIPsCloudProjectFloatingipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingip)(nil)).Elem()
+}
+
+func (o GetFloatingIPsCloudProjectFloatingipOutput) ToGetFloatingIPsCloudProjectFloatingipOutput() GetFloatingIPsCloudProjectFloatingipOutput {
+	return o
+}
+
+func (o GetFloatingIPsCloudProjectFloatingipOutput) ToGetFloatingIPsCloudProjectFloatingipOutputWithContext(ctx context.Context) GetFloatingIPsCloudProjectFloatingipOutput {
+	return o
+}
+
+// Associated entity with the floating IP
+func (o GetFloatingIPsCloudProjectFloatingipOutput) AssociatedEntity() GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput {
+	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) GetFloatingIPsCloudProjectFloatingipAssociatedEntity {
+		return v.AssociatedEntity
+	}).(GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput)
+}
+
+// ID of the floating IP
+func (o GetFloatingIPsCloudProjectFloatingipOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Value of the floating IP
+func (o GetFloatingIPsCloudProjectFloatingipOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// ID of the network
+func (o GetFloatingIPsCloudProjectFloatingipOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// Floating ip region
+func (o GetFloatingIPsCloudProjectFloatingipOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Status of the floating IP (active┃down┃error)
+func (o GetFloatingIPsCloudProjectFloatingipOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetFloatingIPsCloudProjectFloatingipArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFloatingIPsCloudProjectFloatingipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFloatingIPsCloudProjectFloatingip)(nil)).Elem()
+}
+
+func (o GetFloatingIPsCloudProjectFloatingipArrayOutput) ToGetFloatingIPsCloudProjectFloatingipArrayOutput() GetFloatingIPsCloudProjectFloatingipArrayOutput {
+	return o
+}
+
+func (o GetFloatingIPsCloudProjectFloatingipArrayOutput) ToGetFloatingIPsCloudProjectFloatingipArrayOutputWithContext(ctx context.Context) GetFloatingIPsCloudProjectFloatingipArrayOutput {
+	return o
+}
+
+func (o GetFloatingIPsCloudProjectFloatingipArrayOutput) Index(i pulumi.IntInput) GetFloatingIPsCloudProjectFloatingipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFloatingIPsCloudProjectFloatingip {
+		return vs[0].([]GetFloatingIPsCloudProjectFloatingip)[vs[1].(int)]
+	}).(GetFloatingIPsCloudProjectFloatingipOutput)
+}
+
+type GetFloatingIPsCloudProjectFloatingipAssociatedEntity struct {
+	// ID of the gateway
+	GatewayId string `pulumi:"gatewayId"`
+	// ID of the floating IP
+	Id string `pulumi:"id"`
+	// Value of the floating IP
+	Ip string `pulumi:"ip"`
+	// Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+	Type string `pulumi:"type"`
+}
+
+// GetFloatingIPsCloudProjectFloatingipAssociatedEntityInput is an input type that accepts GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs and GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput values.
+// You can construct a concrete instance of `GetFloatingIPsCloudProjectFloatingipAssociatedEntityInput` via:
+//
+//	GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs{...}
+type GetFloatingIPsCloudProjectFloatingipAssociatedEntityInput interface {
+	pulumi.Input
+
+	ToGetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput() GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput
+	ToGetFloatingIPsCloudProjectFloatingipAssociatedEntityOutputWithContext(context.Context) GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput
+}
+
+type GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs struct {
+	// ID of the gateway
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// ID of the floating IP
+	Id pulumi.StringInput `pulumi:"id"`
+	// Value of the floating IP
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingipAssociatedEntity)(nil)).Elem()
+}
+
+func (i GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs) ToGetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput() GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput {
+	return i.ToGetFloatingIPsCloudProjectFloatingipAssociatedEntityOutputWithContext(context.Background())
+}
+
+func (i GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs) ToGetFloatingIPsCloudProjectFloatingipAssociatedEntityOutputWithContext(ctx context.Context) GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput)
+}
+
+type GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput struct{ *pulumi.OutputState }
+
+func (GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingipAssociatedEntity)(nil)).Elem()
+}
+
+func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) ToGetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput() GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput {
+	return o
+}
+
+func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) ToGetFloatingIPsCloudProjectFloatingipAssociatedEntityOutputWithContext(ctx context.Context) GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput {
+	return o
+}
+
+// ID of the gateway
+func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// ID of the floating IP
+func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Value of the floating IP
+func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type GetInstanceAddress struct {
 	// IP address
 	Ip string `pulumi:"ip"`
@@ -11453,6 +11676,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRegistriesResultArrayInput)(nil)).Elem(), GetContainerRegistriesResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRegistryUsersResultInput)(nil)).Elem(), GetContainerRegistryUsersResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRegistryUsersResultArrayInput)(nil)).Elem(), GetContainerRegistryUsersResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingipInput)(nil)).Elem(), GetFloatingIPsCloudProjectFloatingipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingipArrayInput)(nil)).Elem(), GetFloatingIPsCloudProjectFloatingipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingipAssociatedEntityInput)(nil)).Elem(), GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAddressInput)(nil)).Elem(), GetInstanceAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAddressArrayInput)(nil)).Elem(), GetInstanceAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachedVolumeInput)(nil)).Elem(), GetInstanceAttachedVolumeArgs{})
@@ -11621,6 +11847,9 @@ func init() {
 	pulumi.RegisterOutputType(GetContainerRegistriesResultArrayOutput{})
 	pulumi.RegisterOutputType(GetContainerRegistryUsersResultOutput{})
 	pulumi.RegisterOutputType(GetContainerRegistryUsersResultArrayOutput{})
+	pulumi.RegisterOutputType(GetFloatingIPsCloudProjectFloatingipOutput{})
+	pulumi.RegisterOutputType(GetFloatingIPsCloudProjectFloatingipArrayOutput{})
+	pulumi.RegisterOutputType(GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput{})
 	pulumi.RegisterOutputType(GetInstanceAddressOutput{})
 	pulumi.RegisterOutputType(GetInstanceAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAttachedVolumeOutput{})

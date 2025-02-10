@@ -68,7 +68,7 @@ export class SavingsPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly endDate!: pulumi.Output<string>;
     /**
-     * Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+     * Savings Plan flavor. The list of available flavors can be retrieved in the next section.
      */
     public readonly flavor!: pulumi.Output<string>;
     /**
@@ -187,7 +187,7 @@ export interface SavingsPlanState {
      */
     endDate?: pulumi.Input<string>;
     /**
-     * Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+     * Savings Plan flavor. The list of available flavors can be retrieved in the next section.
      */
     flavor?: pulumi.Input<string>;
     /**
@@ -241,7 +241,7 @@ export interface SavingsPlanArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+     * Savings Plan flavor. The list of available flavors can be retrieved in the next section.
      */
     flavor: pulumi.Input<string>;
     /**

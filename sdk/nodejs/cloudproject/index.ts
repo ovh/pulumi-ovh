@@ -100,6 +100,11 @@ export const getFailoverIpAttach: typeof import("./getFailoverIpAttach").getFail
 export const getFailoverIpAttachOutput: typeof import("./getFailoverIpAttach").getFailoverIpAttachOutput = null as any;
 utilities.lazyLoad(exports, ["getFailoverIpAttach","getFailoverIpAttachOutput"], () => require("./getFailoverIpAttach"));
 
+export { GetFloatingIPsArgs, GetFloatingIPsResult, GetFloatingIPsOutputArgs } from "./getFloatingIPs";
+export const getFloatingIPs: typeof import("./getFloatingIPs").getFloatingIPs = null as any;
+export const getFloatingIPsOutput: typeof import("./getFloatingIPs").getFloatingIPsOutput = null as any;
+utilities.lazyLoad(exports, ["getFloatingIPs","getFloatingIPsOutput"], () => require("./getFloatingIPs"));
+
 export { GetGatewayInterfaceArgs, GetGatewayInterfaceResult, GetGatewayInterfaceOutputArgs } from "./getGatewayInterface";
 export const getGatewayInterface: typeof import("./getGatewayInterface").getGatewayInterface = null as any;
 export const getGatewayInterfaceOutput: typeof import("./getGatewayInterface").getGatewayInterfaceOutput = null as any;

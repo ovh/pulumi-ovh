@@ -130,6 +130,21 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Path of the EFI bootloader
+     * 
+     */
+    @Import(name="efiBootloaderPath")
+    private @Nullable Output<String> efiBootloaderPath;
+
+    /**
+     * @return Path of the EFI bootloader
+     * 
+     */
+    public Optional<Output<String>> efiBootloaderPath() {
+        return Optional.ofNullable(this.efiBootloaderPath);
+    }
+
+    /**
      * IAM resource information
      * 
      */
@@ -520,6 +535,7 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         this.datacenter = $.datacenter;
         this.details = $.details;
         this.displayName = $.displayName;
+        this.efiBootloaderPath = $.efiBootloaderPath;
         this.iam = $.iam;
         this.ip = $.ip;
         this.linkSpeed = $.linkSpeed;
@@ -712,6 +728,27 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param efiBootloaderPath Path of the EFI bootloader
+         * 
+         * @return builder
+         * 
+         */
+        public Builder efiBootloaderPath(@Nullable Output<String> efiBootloaderPath) {
+            $.efiBootloaderPath = efiBootloaderPath;
+            return this;
+        }
+
+        /**
+         * @param efiBootloaderPath Path of the EFI bootloader
+         * 
+         * @return builder
+         * 
+         */
+        public Builder efiBootloaderPath(String efiBootloaderPath) {
+            return efiBootloaderPath(Output.of(efiBootloaderPath));
         }
 
         /**

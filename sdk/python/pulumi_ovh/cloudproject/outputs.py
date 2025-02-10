@@ -70,6 +70,8 @@ __all__ = [
     'GetCapabilitiesContainerRegistryResultPlanRegistryLimitResult',
     'GetContainerRegistriesResultResult',
     'GetContainerRegistryUsersResultResult',
+    'GetFloatingIPsCloudProjectFloatingipResult',
+    'GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult',
     'GetInstanceAddressResult',
     'GetInstanceAttachedVolumeResult',
     'GetInstancesInstanceResult',
@@ -2759,6 +2761,130 @@ class GetContainerRegistryUsersResultResult(dict):
         User name
         """
         return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class GetFloatingIPsCloudProjectFloatingipResult(dict):
+    def __init__(__self__, *,
+                 associated_entity: 'outputs.GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult',
+                 id: str,
+                 ip: str,
+                 network_id: str,
+                 region: str,
+                 status: str):
+        """
+        :param 'GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs' associated_entity: Associated entity with the floating IP
+        :param str id: ID of the floating IP
+        :param str ip: Value of the floating IP
+        :param str network_id: ID of the network
+        :param str region: Floating ip region
+        :param str status: Status of the floating IP (active┃down┃error)
+        """
+        pulumi.set(__self__, "associated_entity", associated_entity)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "network_id", network_id)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="associatedEntity")
+    def associated_entity(self) -> 'outputs.GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult':
+        """
+        Associated entity with the floating IP
+        """
+        return pulumi.get(self, "associated_entity")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the floating IP
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        Value of the floating IP
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> str:
+        """
+        ID of the network
+        """
+        return pulumi.get(self, "network_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Floating ip region
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Status of the floating IP (active┃down┃error)
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult(dict):
+    def __init__(__self__, *,
+                 gateway_id: str,
+                 id: str,
+                 ip: str,
+                 type: str):
+        """
+        :param str gateway_id: ID of the gateway
+        :param str id: ID of the floating IP
+        :param str ip: Value of the floating IP
+        :param str type: Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+        """
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> str:
+        """
+        ID of the gateway
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the floating IP
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        Value of the floating IP
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

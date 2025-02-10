@@ -61,6 +61,12 @@ namespace Pulumi.Ovh.Dedicated
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// path of the EFI bootloader
+        /// </summary>
+        [Output("efiBootloaderPath")]
+        public Output<string> EfiBootloaderPath { get; private set; } = null!;
+
+        /// <summary>
         /// Icmp monitoring state
         /// </summary>
         [Output("monitoring")]
@@ -144,6 +150,12 @@ namespace Pulumi.Ovh.Dedicated
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// path of the EFI bootloader
+        /// </summary>
+        [Input("efiBootloaderPath")]
+        public Input<string>? EfiBootloaderPath { get; set; }
+
+        /// <summary>
         /// Icmp monitoring state
         /// </summary>
         [Input("monitoring")]
@@ -186,6 +198,12 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// path of the EFI bootloader
+        /// </summary>
+        [Input("efiBootloaderPath")]
+        public Input<string>? EfiBootloaderPath { get; set; }
 
         /// <summary>
         /// Icmp monitoring state

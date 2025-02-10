@@ -8,6 +8,7 @@ import typing
 from .ceph_acl import *
 from .get_ceph import *
 from .get_nas_ha import *
+from .get_nas_ha_partition import *
 from .get_server_boots import *
 from .get_server_specifications_hardware import *
 from .get_server_specifications_network import *

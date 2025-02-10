@@ -24,6 +24,7 @@ from .get_container_registry_ip_restrictions_registry import *
 from .get_container_registry_oidc import *
 from .get_container_registry_users import *
 from .get_failover_ip_attach import *
+from .get_floating_ips import *
 from .get_gateway_interface import *
 from .get_instance import *
 from .get_instances import *

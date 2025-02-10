@@ -583,7 +583,7 @@ func (o IpServicePlanConfigurationArrayOutput) Index(i pulumi.IntInput) IpServic
 type IpServicePlanOption struct {
 	// Catalog name
 	CatalogName *string `pulumi:"catalogName"`
-	// Representation of a configuration item for personalizing product
+	// Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
 	Configurations []IpServicePlanOptionConfiguration `pulumi:"configurations"`
 	// duration
 	Duration string `pulumi:"duration"`
@@ -607,7 +607,7 @@ type IpServicePlanOptionInput interface {
 type IpServicePlanOptionArgs struct {
 	// Catalog name
 	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
-	// Representation of a configuration item for personalizing product
+	// Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
 	Configurations IpServicePlanOptionConfigurationArrayInput `pulumi:"configurations"`
 	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
@@ -673,7 +673,7 @@ func (o IpServicePlanOptionOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpServicePlanOption) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
-// Representation of a configuration item for personalizing product
+// Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
 func (o IpServicePlanOptionOutput) Configurations() IpServicePlanOptionConfigurationArrayOutput {
 	return o.ApplyT(func(v IpServicePlanOption) []IpServicePlanOptionConfiguration { return v.Configurations }).(IpServicePlanOptionConfigurationArrayOutput)
 }

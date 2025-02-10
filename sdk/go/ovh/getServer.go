@@ -70,6 +70,8 @@ type GetServerResult struct {
 	Datacenter string `pulumi:"datacenter"`
 	// Dedicated server display name
 	DisplayName string `pulumi:"displayName"`
+	// Path of the EFI bootloader of the dedicated server
+	EfiBootloaderPath string `pulumi:"efiBootloaderPath"`
 	// List of enabled public VNI uuids
 	EnabledPublicVnis []string `pulumi:"enabledPublicVnis"`
 	// List of enabled vrackAggregation VNI uuids
@@ -187,6 +189,11 @@ func (o GetServerResultOutput) Datacenter() pulumi.StringOutput {
 // Dedicated server display name
 func (o GetServerResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Path of the EFI bootloader of the dedicated server
+func (o GetServerResultOutput) EfiBootloaderPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.EfiBootloaderPath }).(pulumi.StringOutput)
 }
 
 // List of enabled public VNI uuids

@@ -71,10 +71,19 @@ import javax.annotation.Nullable;
  *                 .duration(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
  *                 .planCode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
  *                 .pricingMode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
- *                 .configurations(IpServicePlanConfigurationArgs.builder()
- *                     .label("country")
- *                     .value("FR")
- *                     .build())
+ *                 .configurations(                
+ *                     IpServicePlanConfigurationArgs.builder()
+ *                         .label("country")
+ *                         .value("FR")
+ *                         .build(),
+ *                     IpServicePlanConfigurationArgs.builder()
+ *                         .label("region")
+ *                         .value("europe")
+ *                         .build(),
+ *                     IpServicePlanConfigurationArgs.builder()
+ *                         .label("destination")
+ *                         .value("parking")
+ *                         .build())
  *                 .build())
  *             .build());
  * 

@@ -28,7 +28,7 @@ class SavingsPlanArgs:
         """
         The set of arguments for constructing a SavingsPlan resource.
         :param pulumi.Input[str] display_name: Custom display name, used in invoices
-        :param pulumi.Input[str] flavor: Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+        :param pulumi.Input[str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         :param pulumi.Input[str] period: Periodicity of the Savings Plan
         :param pulumi.Input[str] service_name: ID of the public cloud project
         :param pulumi.Input[int] size: Size of the Savings Plan
@@ -58,7 +58,7 @@ class SavingsPlanArgs:
     @pulumi.getter
     def flavor(self) -> pulumi.Input[str]:
         """
-        Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+        Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         """
         return pulumi.get(self, "flavor")
 
@@ -136,7 +136,7 @@ class _SavingsPlanState:
         :param pulumi.Input[bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
         :param pulumi.Input[str] display_name: Custom display name, used in invoices
         :param pulumi.Input[str] end_date: End date of the Savings Plan
-        :param pulumi.Input[str] flavor: Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+        :param pulumi.Input[str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         :param pulumi.Input[str] period: Periodicity of the Savings Plan
         :param pulumi.Input[str] period_end_action: Action performed when reaching the end of the period (controles by the `auto_renewal` parameter)
         :param pulumi.Input[str] period_end_date: End date of the current period
@@ -214,7 +214,7 @@ class _SavingsPlanState:
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[str]]:
         """
-        Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+        Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         """
         return pulumi.get(self, "flavor")
 
@@ -369,7 +369,7 @@ class SavingsPlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
         :param pulumi.Input[str] display_name: Custom display name, used in invoices
-        :param pulumi.Input[str] flavor: Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+        :param pulumi.Input[str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         :param pulumi.Input[str] period: Periodicity of the Savings Plan
         :param pulumi.Input[str] service_name: ID of the public cloud project
         :param pulumi.Input[int] size: Size of the Savings Plan
@@ -488,7 +488,7 @@ class SavingsPlan(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
         :param pulumi.Input[str] display_name: Custom display name, used in invoices
         :param pulumi.Input[str] end_date: End date of the Savings Plan
-        :param pulumi.Input[str] flavor: Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+        :param pulumi.Input[str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         :param pulumi.Input[str] period: Periodicity of the Savings Plan
         :param pulumi.Input[str] period_end_action: Action performed when reaching the end of the period (controles by the `auto_renewal` parameter)
         :param pulumi.Input[str] period_end_date: End date of the current period
@@ -546,7 +546,7 @@ class SavingsPlan(pulumi.CustomResource):
     @pulumi.getter
     def flavor(self) -> pulumi.Output[str]:
         """
-        Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+        Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         """
         return pulumi.get(self, "flavor")
 
