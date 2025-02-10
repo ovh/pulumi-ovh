@@ -50,6 +50,11 @@ public final class GetServerResult {
      */
     private String displayName;
     /**
+     * @return Path of the EFI bootloader of the dedicated server
+     * 
+     */
+    private String efiBootloaderPath;
+    /**
      * @return List of enabled public VNI uuids
      * 
      */
@@ -216,6 +221,13 @@ public final class GetServerResult {
      */
     public String displayName() {
         return this.displayName;
+    }
+    /**
+     * @return Path of the EFI bootloader of the dedicated server
+     * 
+     */
+    public String efiBootloaderPath() {
+        return this.efiBootloaderPath;
     }
     /**
      * @return List of enabled public VNI uuids
@@ -401,6 +413,7 @@ public final class GetServerResult {
         private String commercialRange;
         private String datacenter;
         private String displayName;
+        private String efiBootloaderPath;
         private List<String> enabledPublicVnis;
         private List<String> enabledVrackAggregationVnis;
         private List<String> enabledVrackVnis;
@@ -436,6 +449,7 @@ public final class GetServerResult {
     	      this.commercialRange = defaults.commercialRange;
     	      this.datacenter = defaults.datacenter;
     	      this.displayName = defaults.displayName;
+    	      this.efiBootloaderPath = defaults.efiBootloaderPath;
     	      this.enabledPublicVnis = defaults.enabledPublicVnis;
     	      this.enabledVrackAggregationVnis = defaults.enabledVrackAggregationVnis;
     	      this.enabledVrackVnis = defaults.enabledVrackVnis;
@@ -517,6 +531,14 @@ public final class GetServerResult {
               throw new MissingRequiredPropertyException("GetServerResult", "displayName");
             }
             this.displayName = displayName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder efiBootloaderPath(String efiBootloaderPath) {
+            if (efiBootloaderPath == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "efiBootloaderPath");
+            }
+            this.efiBootloaderPath = efiBootloaderPath;
             return this;
         }
         @CustomType.Setter
@@ -743,6 +765,7 @@ public final class GetServerResult {
             _resultValue.commercialRange = commercialRange;
             _resultValue.datacenter = datacenter;
             _resultValue.displayName = displayName;
+            _resultValue.efiBootloaderPath = efiBootloaderPath;
             _resultValue.enabledPublicVnis = enabledPublicVnis;
             _resultValue.enabledVrackAggregationVnis = enabledVrackAggregationVnis;
             _resultValue.enabledVrackVnis = enabledVrackVnis;

@@ -58,6 +58,8 @@ type ServerUpdate struct {
 	BootScript pulumi.StringPtrOutput `pulumi:"bootScript"`
 	// display name of the dedicated server
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// path of the EFI bootloader
+	EfiBootloaderPath pulumi.StringOutput `pulumi:"efiBootloaderPath"`
 	// Icmp monitoring state
 	Monitoring pulumi.BoolOutput `pulumi:"monitoring"`
 	// The serviceName of your dedicated server.
@@ -105,6 +107,8 @@ type serverUpdateState struct {
 	BootScript *string `pulumi:"bootScript"`
 	// display name of the dedicated server
 	DisplayName *string `pulumi:"displayName"`
+	// path of the EFI bootloader
+	EfiBootloaderPath *string `pulumi:"efiBootloaderPath"`
 	// Icmp monitoring state
 	Monitoring *bool `pulumi:"monitoring"`
 	// The serviceName of your dedicated server.
@@ -120,6 +124,8 @@ type ServerUpdateState struct {
 	BootScript pulumi.StringPtrInput
 	// display name of the dedicated server
 	DisplayName pulumi.StringPtrInput
+	// path of the EFI bootloader
+	EfiBootloaderPath pulumi.StringPtrInput
 	// Icmp monitoring state
 	Monitoring pulumi.BoolPtrInput
 	// The serviceName of your dedicated server.
@@ -139,6 +145,8 @@ type serverUpdateArgs struct {
 	BootScript *string `pulumi:"bootScript"`
 	// display name of the dedicated server
 	DisplayName *string `pulumi:"displayName"`
+	// path of the EFI bootloader
+	EfiBootloaderPath *string `pulumi:"efiBootloaderPath"`
 	// Icmp monitoring state
 	Monitoring *bool `pulumi:"monitoring"`
 	// The serviceName of your dedicated server.
@@ -155,6 +163,8 @@ type ServerUpdateArgs struct {
 	BootScript pulumi.StringPtrInput
 	// display name of the dedicated server
 	DisplayName pulumi.StringPtrInput
+	// path of the EFI bootloader
+	EfiBootloaderPath pulumi.StringPtrInput
 	// Icmp monitoring state
 	Monitoring pulumi.BoolPtrInput
 	// The serviceName of your dedicated server.
@@ -263,6 +273,11 @@ func (o ServerUpdateOutput) BootScript() pulumi.StringPtrOutput {
 // display name of the dedicated server
 func (o ServerUpdateOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerUpdate) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// path of the EFI bootloader
+func (o ServerUpdateOutput) EfiBootloaderPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerUpdate) pulumi.StringOutput { return v.EfiBootloaderPath }).(pulumi.StringOutput)
 }
 
 // Icmp monitoring state

@@ -26,7 +26,7 @@ class GetNasHAResult:
     """
     A collection of values returned by getNasHA.
     """
-    def __init__(__self__, nas_haurn=None, can_create_partition=None, custom_name=None, datacenter=None, disk_type=None, id=None, ip=None, monitored=None, service_name=None, zpool_capacity=None, zpool_size=None):
+    def __init__(__self__, nas_haurn=None, can_create_partition=None, custom_name=None, datacenter=None, disk_type=None, id=None, ip=None, monitored=None, partitions_lists=None, service_name=None, zpool_capacity=None, zpool_size=None):
         if nas_haurn and not isinstance(nas_haurn, str):
             raise TypeError("Expected argument 'nas_haurn' to be a str")
         pulumi.set(__self__, "nas_haurn", nas_haurn)
@@ -51,6 +51,9 @@ class GetNasHAResult:
         if monitored and not isinstance(monitored, bool):
             raise TypeError("Expected argument 'monitored' to be a bool")
         pulumi.set(__self__, "monitored", monitored)
+        if partitions_lists and not isinstance(partitions_lists, list):
+            raise TypeError("Expected argument 'partitions_lists' to be a list")
+        pulumi.set(__self__, "partitions_lists", partitions_lists)
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
@@ -126,6 +129,14 @@ class GetNasHAResult:
         return pulumi.get(self, "monitored")
 
     @property
+    @pulumi.getter(name="partitionsLists")
+    def partitions_lists(self) -> Sequence[str]:
+        """
+        the list of the HA-NAS partitions name
+        """
+        return pulumi.get(self, "partitions_lists")
+
+    @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
@@ -164,6 +175,7 @@ class AwaitableGetNasHAResult(GetNasHAResult):
             id=self.id,
             ip=self.ip,
             monitored=self.monitored,
+            partitions_lists=self.partitions_lists,
             service_name=self.service_name,
             zpool_capacity=self.zpool_capacity,
             zpool_size=self.zpool_size)
@@ -200,6 +212,7 @@ def get_nas_ha(service_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         ip=pulumi.get(__ret__, 'ip'),
         monitored=pulumi.get(__ret__, 'monitored'),
+        partitions_lists=pulumi.get(__ret__, 'partitions_lists'),
         service_name=pulumi.get(__ret__, 'service_name'),
         zpool_capacity=pulumi.get(__ret__, 'zpool_capacity'),
         zpool_size=pulumi.get(__ret__, 'zpool_size'))
@@ -233,6 +246,7 @@ def get_nas_ha_output(service_name: Optional[pulumi.Input[str]] = None,
         id=pulumi.get(__response__, 'id'),
         ip=pulumi.get(__response__, 'ip'),
         monitored=pulumi.get(__response__, 'monitored'),
+        partitions_lists=pulumi.get(__response__, 'partitions_lists'),
         service_name=pulumi.get(__response__, 'service_name'),
         zpool_capacity=pulumi.get(__response__, 'zpool_capacity'),
         zpool_size=pulumi.get(__response__, 'zpool_size')))

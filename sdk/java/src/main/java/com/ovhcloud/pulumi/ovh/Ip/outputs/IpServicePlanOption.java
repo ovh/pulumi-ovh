@@ -20,7 +20,7 @@ public final class IpServicePlanOption {
      */
     private @Nullable String catalogName;
     /**
-     * @return Representation of a configuration item for personalizing product
+     * @return Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
      * 
      */
     private @Nullable List<IpServicePlanOptionConfiguration> configurations;
@@ -49,7 +49,7 @@ public final class IpServicePlanOption {
         return Optional.ofNullable(this.catalogName);
     }
     /**
-     * @return Representation of a configuration item for personalizing product
+     * @return Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
      * 
      */
     public List<IpServicePlanOptionConfiguration> configurations() {

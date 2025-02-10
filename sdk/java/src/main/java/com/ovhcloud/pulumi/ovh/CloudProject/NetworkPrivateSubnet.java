@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` and the `subnet_id`, separated by &#34;/&#34; E.g.,
+ * Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` as `pn-xxxx` format and the `subnet_id`, separated by &#34;/&#34; E.g.,
  * 
  * bash
  * 
  * ```sh
- * $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet ookie9mee8Shaeghaeleeju7Xeghohv6e/pn-12345678/0f0b73a4-403b-45e4-86d0-b438f1291909
+ * $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet service_name/network_id/subnet_id
  * ```
  * 
  */

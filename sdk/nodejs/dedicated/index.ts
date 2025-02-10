@@ -20,6 +20,11 @@ export const getNasHA: typeof import("./getNasHA").getNasHA = null as any;
 export const getNasHAOutput: typeof import("./getNasHA").getNasHAOutput = null as any;
 utilities.lazyLoad(exports, ["getNasHA","getNasHAOutput"], () => require("./getNasHA"));
 
+export { GetNasHAPartitionArgs, GetNasHAPartitionResult, GetNasHAPartitionOutputArgs } from "./getNasHAPartition";
+export const getNasHAPartition: typeof import("./getNasHAPartition").getNasHAPartition = null as any;
+export const getNasHAPartitionOutput: typeof import("./getNasHAPartition").getNasHAPartitionOutput = null as any;
+utilities.lazyLoad(exports, ["getNasHAPartition","getNasHAPartitionOutput"], () => require("./getNasHAPartition"));
+
 export { GetServerBootsArgs, GetServerBootsResult, GetServerBootsOutputArgs } from "./getServerBoots";
 export const getServerBoots: typeof import("./getServerBoots").getServerBoots = null as any;
 export const getServerBootsOutput: typeof import("./getServerBoots").getServerBootsOutput = null as any;

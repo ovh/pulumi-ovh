@@ -27,7 +27,7 @@ class GetServerResult:
     """
     A collection of values returned by getServer.
     """
-    def __init__(__self__, server_urn=None, availability_zone=None, boot_id=None, boot_script=None, commercial_range=None, datacenter=None, display_name=None, enabled_public_vnis=None, enabled_vrack_aggregation_vnis=None, enabled_vrack_vnis=None, id=None, ip=None, ips=None, link_speed=None, monitoring=None, name=None, new_upgrade_system=None, no_intervention=None, os=None, power_state=None, professional_use=None, rack=None, region=None, rescue_mail=None, rescue_ssh_key=None, reverse=None, root_device=None, server_id=None, service_name=None, state=None, support_level=None, vnis=None):
+    def __init__(__self__, server_urn=None, availability_zone=None, boot_id=None, boot_script=None, commercial_range=None, datacenter=None, display_name=None, efi_bootloader_path=None, enabled_public_vnis=None, enabled_vrack_aggregation_vnis=None, enabled_vrack_vnis=None, id=None, ip=None, ips=None, link_speed=None, monitoring=None, name=None, new_upgrade_system=None, no_intervention=None, os=None, power_state=None, professional_use=None, rack=None, region=None, rescue_mail=None, rescue_ssh_key=None, reverse=None, root_device=None, server_id=None, service_name=None, state=None, support_level=None, vnis=None):
         if server_urn and not isinstance(server_urn, str):
             raise TypeError("Expected argument 'server_urn' to be a str")
         pulumi.set(__self__, "server_urn", server_urn)
@@ -49,6 +49,9 @@ class GetServerResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if efi_bootloader_path and not isinstance(efi_bootloader_path, str):
+            raise TypeError("Expected argument 'efi_bootloader_path' to be a str")
+        pulumi.set(__self__, "efi_bootloader_path", efi_bootloader_path)
         if enabled_public_vnis and not isinstance(enabled_public_vnis, list):
             raise TypeError("Expected argument 'enabled_public_vnis' to be a list")
         pulumi.set(__self__, "enabled_public_vnis", enabled_public_vnis)
@@ -180,6 +183,14 @@ class GetServerResult:
         Dedicated server display name
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="efiBootloaderPath")
+    def efi_bootloader_path(self) -> str:
+        """
+        Path of the EFI bootloader of the dedicated server
+        """
+        return pulumi.get(self, "efi_bootloader_path")
 
     @property
     @pulumi.getter(name="enabledPublicVnis")
@@ -389,6 +400,7 @@ class AwaitableGetServerResult(GetServerResult):
             commercial_range=self.commercial_range,
             datacenter=self.datacenter,
             display_name=self.display_name,
+            efi_bootloader_path=self.efi_bootloader_path,
             enabled_public_vnis=self.enabled_public_vnis,
             enabled_vrack_aggregation_vnis=self.enabled_vrack_aggregation_vnis,
             enabled_vrack_vnis=self.enabled_vrack_vnis,
@@ -446,6 +458,7 @@ def get_server(service_name: Optional[str] = None,
         commercial_range=pulumi.get(__ret__, 'commercial_range'),
         datacenter=pulumi.get(__ret__, 'datacenter'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        efi_bootloader_path=pulumi.get(__ret__, 'efi_bootloader_path'),
         enabled_public_vnis=pulumi.get(__ret__, 'enabled_public_vnis'),
         enabled_vrack_aggregation_vnis=pulumi.get(__ret__, 'enabled_vrack_aggregation_vnis'),
         enabled_vrack_vnis=pulumi.get(__ret__, 'enabled_vrack_vnis'),
@@ -500,6 +513,7 @@ def get_server_output(service_name: Optional[pulumi.Input[str]] = None,
         commercial_range=pulumi.get(__response__, 'commercial_range'),
         datacenter=pulumi.get(__response__, 'datacenter'),
         display_name=pulumi.get(__response__, 'display_name'),
+        efi_bootloader_path=pulumi.get(__response__, 'efi_bootloader_path'),
         enabled_public_vnis=pulumi.get(__response__, 'enabled_public_vnis'),
         enabled_vrack_aggregation_vnis=pulumi.get(__response__, 'enabled_vrack_aggregation_vnis'),
         enabled_vrack_vnis=pulumi.get(__response__, 'enabled_vrack_vnis'),

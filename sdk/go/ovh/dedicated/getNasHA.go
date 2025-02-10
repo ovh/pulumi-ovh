@@ -72,6 +72,8 @@ type GetNasHAResult struct {
 	Ip string `pulumi:"ip"`
 	// Send an email to customer if any issue is detected
 	Monitored bool `pulumi:"monitored"`
+	// the list of the HA-NAS partitions name
+	PartitionsLists []string `pulumi:"partitionsLists"`
 	// The storage service name
 	ServiceName string `pulumi:"serviceName"`
 	// percentage of HA-NAS space used in %
@@ -152,6 +154,11 @@ func (o GetNasHAResultOutput) Ip() pulumi.StringOutput {
 // Send an email to customer if any issue is detected
 func (o GetNasHAResultOutput) Monitored() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNasHAResult) bool { return v.Monitored }).(pulumi.BoolOutput)
+}
+
+// the list of the HA-NAS partitions name
+func (o GetNasHAResultOutput) PartitionsLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNasHAResult) []string { return v.PartitionsLists }).(pulumi.StringArrayOutput)
 }
 
 // The storage service name

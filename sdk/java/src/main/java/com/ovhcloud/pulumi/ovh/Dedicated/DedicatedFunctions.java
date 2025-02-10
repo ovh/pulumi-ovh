@@ -6,6 +6,8 @@ package com.ovhcloud.pulumi.ovh.Dedicated;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetCephArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetCephPlainArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetNasHAArgs;
+import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetNasHAPartitionArgs;
+import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetNasHAPartitionPlainArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetNasHAPlainArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetServerBootsArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetServerBootsPlainArgs;
@@ -14,6 +16,7 @@ import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetServerSpecificationsHardwareP
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetServerSpecificationsNetworkArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetServerSpecificationsNetworkPlainArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.GetCephResult;
+import com.ovhcloud.pulumi.ovh.Dedicated.outputs.GetNasHAPartitionResult;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.GetNasHAResult;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.GetServerBootsResult;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.GetServerSpecificationsHardwareResult;
@@ -361,6 +364,178 @@ public final class DedicatedFunctions {
      */
     public static CompletableFuture<GetNasHAResult> getNasHAPlain(GetNasHAPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Dedicated/getNasHA:getNasHA", TypeShape.of(GetNasHAResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a dedicated HA-NAS partition.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetNasHAPartitionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNasHaPartition = DedicatedFunctions.getNasHAPartition(GetNasHAPartitionArgs.builder()
+     *             .name("my-zpool-partition")
+     *             .serviceName("zpool-12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNasHAPartitionResult> getNasHAPartition(GetNasHAPartitionArgs args) {
+        return getNasHAPartition(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a dedicated HA-NAS partition.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetNasHAPartitionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNasHaPartition = DedicatedFunctions.getNasHAPartition(GetNasHAPartitionArgs.builder()
+     *             .name("my-zpool-partition")
+     *             .serviceName("zpool-12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNasHAPartitionResult> getNasHAPartitionPlain(GetNasHAPartitionPlainArgs args) {
+        return getNasHAPartitionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a dedicated HA-NAS partition.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetNasHAPartitionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNasHaPartition = DedicatedFunctions.getNasHAPartition(GetNasHAPartitionArgs.builder()
+     *             .name("my-zpool-partition")
+     *             .serviceName("zpool-12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNasHAPartitionResult> getNasHAPartition(GetNasHAPartitionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dedicated/getNasHAPartition:getNasHAPartition", TypeShape.of(GetNasHAPartitionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a dedicated HA-NAS partition.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetNasHAPartitionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNasHaPartition = DedicatedFunctions.getNasHAPartition(GetNasHAPartitionArgs.builder()
+     *             .name("my-zpool-partition")
+     *             .serviceName("zpool-12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNasHAPartitionResult> getNasHAPartitionPlain(GetNasHAPartitionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Dedicated/getNasHAPartition:getNasHAPartition", TypeShape.of(GetNasHAPartitionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.

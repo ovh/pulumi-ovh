@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -52,6 +53,11 @@ public final class GetNasHAResult {
      * 
      */
     private Boolean monitored;
+    /**
+     * @return the list of the HA-NAS partitions name
+     * 
+     */
+    private List<String> partitionsLists;
     /**
      * @return The storage service name
      * 
@@ -126,6 +132,13 @@ public final class GetNasHAResult {
         return this.monitored;
     }
     /**
+     * @return the list of the HA-NAS partitions name
+     * 
+     */
+    public List<String> partitionsLists() {
+        return this.partitionsLists;
+    }
+    /**
      * @return The storage service name
      * 
      */
@@ -164,6 +177,7 @@ public final class GetNasHAResult {
         private String id;
         private String ip;
         private Boolean monitored;
+        private List<String> partitionsLists;
         private String serviceName;
         private Double zpoolCapacity;
         private Double zpoolSize;
@@ -178,6 +192,7 @@ public final class GetNasHAResult {
     	      this.id = defaults.id;
     	      this.ip = defaults.ip;
     	      this.monitored = defaults.monitored;
+    	      this.partitionsLists = defaults.partitionsLists;
     	      this.serviceName = defaults.serviceName;
     	      this.zpoolCapacity = defaults.zpoolCapacity;
     	      this.zpoolSize = defaults.zpoolSize;
@@ -248,6 +263,17 @@ public final class GetNasHAResult {
             return this;
         }
         @CustomType.Setter
+        public Builder partitionsLists(List<String> partitionsLists) {
+            if (partitionsLists == null) {
+              throw new MissingRequiredPropertyException("GetNasHAResult", "partitionsLists");
+            }
+            this.partitionsLists = partitionsLists;
+            return this;
+        }
+        public Builder partitionsLists(String... partitionsLists) {
+            return partitionsLists(List.of(partitionsLists));
+        }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             if (serviceName == null) {
               throw new MissingRequiredPropertyException("GetNasHAResult", "serviceName");
@@ -281,6 +307,7 @@ public final class GetNasHAResult {
             _resultValue.id = id;
             _resultValue.ip = ip;
             _resultValue.monitored = monitored;
+            _resultValue.partitionsLists = partitionsLists;
             _resultValue.serviceName = serviceName;
             _resultValue.zpoolCapacity = zpoolCapacity;
             _resultValue.zpoolSize = zpoolSize;

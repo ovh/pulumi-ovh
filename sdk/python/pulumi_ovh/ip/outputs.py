@@ -321,7 +321,7 @@ class IpServicePlanOption(dict):
         :param str plan_code: Plan code
         :param str pricing_mode: Pricing model identifier
         :param str catalog_name: Catalog name
-        :param Sequence['IpServicePlanOptionConfigurationArgs'] configurations: Representation of a configuration item for personalizing product
+        :param Sequence['IpServicePlanOptionConfigurationArgs'] configurations: Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -367,7 +367,7 @@ class IpServicePlanOption(dict):
     @pulumi.getter
     def configurations(self) -> Optional[Sequence['outputs.IpServicePlanOptionConfiguration']]:
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
         """
         return pulumi.get(self, "configurations")
 

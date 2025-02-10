@@ -55,6 +55,8 @@ type Server struct {
 	Details ServerDetailsPtrOutput `pulumi:"details"`
 	// Resource display name
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Path of the EFI bootloader
+	EfiBootloaderPath pulumi.StringOutput `pulumi:"efiBootloaderPath"`
 	// IAM resource information
 	Iam ServerIamOutput `pulumi:"iam"`
 	// Dedicated server ip (IPv4)
@@ -152,6 +154,8 @@ type serverState struct {
 	Details *ServerDetails `pulumi:"details"`
 	// Resource display name
 	DisplayName *string `pulumi:"displayName"`
+	// Path of the EFI bootloader
+	EfiBootloaderPath *string `pulumi:"efiBootloaderPath"`
 	// IAM resource information
 	Iam *ServerIam `pulumi:"iam"`
 	// Dedicated server ip (IPv4)
@@ -220,6 +224,8 @@ type ServerState struct {
 	Details ServerDetailsPtrInput
 	// Resource display name
 	DisplayName pulumi.StringPtrInput
+	// Path of the EFI bootloader
+	EfiBootloaderPath pulumi.StringPtrInput
 	// IAM resource information
 	Iam ServerIamPtrInput
 	// Dedicated server ip (IPv4)
@@ -286,6 +292,8 @@ type serverArgs struct {
 	Details *ServerDetails `pulumi:"details"`
 	// Resource display name
 	DisplayName *string `pulumi:"displayName"`
+	// Path of the EFI bootloader
+	EfiBootloaderPath *string `pulumi:"efiBootloaderPath"`
 	// Icmp monitoring state
 	Monitoring *bool `pulumi:"monitoring"`
 	// Prevent datacenter intervention
@@ -320,6 +328,8 @@ type ServerArgs struct {
 	Details ServerDetailsPtrInput
 	// Resource display name
 	DisplayName pulumi.StringPtrInput
+	// Path of the EFI bootloader
+	EfiBootloaderPath pulumi.StringPtrInput
 	// Icmp monitoring state
 	Monitoring pulumi.BoolPtrInput
 	// Prevent datacenter intervention
@@ -464,6 +474,11 @@ func (o ServerOutput) Details() ServerDetailsPtrOutput {
 // Resource display name
 func (o ServerOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Path of the EFI bootloader
+func (o ServerOutput) EfiBootloaderPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.EfiBootloaderPath }).(pulumi.StringOutput)
 }
 
 // IAM resource information

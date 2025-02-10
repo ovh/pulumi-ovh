@@ -72,6 +72,10 @@ export interface GetNasHAResult {
      */
     readonly monitored: boolean;
     /**
+     * the list of the HA-NAS partitions name
+     */
+    readonly partitionsLists: string[];
+    /**
      * The storage service name
      */
     readonly serviceName: string;

@@ -61,7 +61,8 @@ import (
 type NetworkPrivateSubnetV2 struct {
 	pulumi.CustomResourceState
 
-	// DHCP allocation pools of subnet
+	// List of IP allocation pools
+	// Changing this value recreates the resource.
 	AllocationPools NetworkPrivateSubnetV2AllocationPoolArrayOutput `pulumi:"allocationPools"`
 	// IP range of the subnet
 	// Changing this value recreates the subnet.
@@ -138,7 +139,8 @@ func GetNetworkPrivateSubnetV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkPrivateSubnetV2 resources.
 type networkPrivateSubnetV2State struct {
-	// DHCP allocation pools of subnet
+	// List of IP allocation pools
+	// Changing this value recreates the resource.
 	AllocationPools []NetworkPrivateSubnetV2AllocationPool `pulumi:"allocationPools"`
 	// IP range of the subnet
 	// Changing this value recreates the subnet.
@@ -174,7 +176,8 @@ type networkPrivateSubnetV2State struct {
 }
 
 type NetworkPrivateSubnetV2State struct {
-	// DHCP allocation pools of subnet
+	// List of IP allocation pools
+	// Changing this value recreates the resource.
 	AllocationPools NetworkPrivateSubnetV2AllocationPoolArrayInput
 	// IP range of the subnet
 	// Changing this value recreates the subnet.
@@ -214,7 +217,8 @@ func (NetworkPrivateSubnetV2State) ElementType() reflect.Type {
 }
 
 type networkPrivateSubnetV2Args struct {
-	// DHCP allocation pools of subnet
+	// List of IP allocation pools
+	// Changing this value recreates the resource.
 	AllocationPools []NetworkPrivateSubnetV2AllocationPool `pulumi:"allocationPools"`
 	// IP range of the subnet
 	// Changing this value recreates the subnet.
@@ -251,7 +255,8 @@ type networkPrivateSubnetV2Args struct {
 
 // The set of arguments for constructing a NetworkPrivateSubnetV2 resource.
 type NetworkPrivateSubnetV2Args struct {
-	// DHCP allocation pools of subnet
+	// List of IP allocation pools
+	// Changing this value recreates the resource.
 	AllocationPools NetworkPrivateSubnetV2AllocationPoolArrayInput
 	// IP range of the subnet
 	// Changing this value recreates the subnet.
@@ -373,7 +378,8 @@ func (o NetworkPrivateSubnetV2Output) ToNetworkPrivateSubnetV2OutputWithContext(
 	return o
 }
 
-// DHCP allocation pools of subnet
+// List of IP allocation pools
+// Changing this value recreates the resource.
 func (o NetworkPrivateSubnetV2Output) AllocationPools() NetworkPrivateSubnetV2AllocationPoolArrayOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) NetworkPrivateSubnetV2AllocationPoolArrayOutput {
 		return v.AllocationPools

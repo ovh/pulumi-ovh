@@ -398,7 +398,7 @@ if not MYPY:
         """
         configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionConfigurationArgsDict']]]]
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
         """
 elif False:
     IpServicePlanOptionArgsDict: TypeAlias = Mapping[str, Any]
@@ -416,7 +416,7 @@ class IpServicePlanOptionArgs:
         :param pulumi.Input[str] plan_code: Plan code
         :param pulumi.Input[str] pricing_mode: Pricing model identifier
         :param pulumi.Input[str] catalog_name: Catalog name
-        :param pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product
+        :param pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -478,7 +478,7 @@ class IpServicePlanOptionArgs:
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionConfigurationArgs']]]]:
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
         """
         return pulumi.get(self, "configurations")
 

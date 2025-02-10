@@ -63,14 +63,14 @@ public final class SavingsPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+     * Savings Plan flavor. The list of available flavors can be retrieved in the next section.
      * 
      */
     @Import(name="flavor")
     private @Nullable Output<String> flavor;
 
     /**
-     * @return Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+     * @return Savings Plan flavor. The list of available flavors can be retrieved in the next section.
      * 
      */
     public Optional<Output<String>> flavor() {
@@ -312,7 +312,7 @@ public final class SavingsPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flavor Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+         * @param flavor Savings Plan flavor. The list of available flavors can be retrieved in the next section.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class SavingsPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flavor Savings Plan flavor (e.g. Rancher, C3-4, any instance flavor, ...).
+         * @param flavor Savings Plan flavor. The list of available flavors can be retrieved in the next section.
          * 
          * @return builder
          * 

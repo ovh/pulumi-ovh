@@ -1427,7 +1427,7 @@ export namespace Ip {
          */
         catalogName?: pulumi.Input<string>;
         /**
-         * Representation of a configuration item for personalizing product
+         * Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
          */
         configurations?: pulumi.Input<pulumi.Input<inputs.Ip.IpServicePlanOptionConfiguration>[]>;
         /**

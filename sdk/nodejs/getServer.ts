@@ -70,6 +70,10 @@ export interface GetServerResult {
      */
     readonly displayName: string;
     /**
+     * Path of the EFI bootloader of the dedicated server
+     */
+    readonly efiBootloaderPath: string;
+    /**
      * List of enabled public VNI uuids
      */
     readonly enabledPublicVnis: string[];

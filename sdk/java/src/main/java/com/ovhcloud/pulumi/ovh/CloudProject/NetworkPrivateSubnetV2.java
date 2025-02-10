@@ -77,14 +77,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2")
 public class NetworkPrivateSubnetV2 extends com.pulumi.resources.CustomResource {
     /**
-     * DHCP allocation pools of subnet
+     * List of IP allocation pools
+     * Changing this value recreates the resource.
      * 
      */
     @Export(name="allocationPools", refs={List.class,NetworkPrivateSubnetV2AllocationPool.class}, tree="[0,1]")
     private Output<List<NetworkPrivateSubnetV2AllocationPool>> allocationPools;
 
     /**
-     * @return DHCP allocation pools of subnet
+     * @return List of IP allocation pools
+     * Changing this value recreates the resource.
      * 
      */
     public Output<List<NetworkPrivateSubnetV2AllocationPool>> allocationPools() {
